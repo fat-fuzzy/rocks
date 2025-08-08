@@ -188,14 +188,14 @@ importers:
         specifier: ^0.3.12
         version: 0.3.12
       stylelint:
-        specifier: ^16.23.0
-        version: 16.23.0(typescript@5.9.2)
+        specifier: ^16.23.1
+        version: 16.23.1(typescript@5.9.2)
       stylelint-config-standard:
         specifier: ^38.0.0
-        version: 38.0.0(stylelint@16.23.0(typescript@5.9.2))
+        version: 38.0.0(stylelint@16.23.1(typescript@5.9.2))
       stylelint-config-standard-scss:
         specifier: ^15.0.1
-        version: 15.0.1(postcss@8.5.6)(stylelint@16.23.0(typescript@5.9.2))
+        version: 15.0.1(postcss@8.5.6)(stylelint@16.23.1(typescript@5.9.2))
       tslib:
         specifier: ^2.8.1
         version: 2.8.1
@@ -3371,6 +3371,7 @@ packages:
 
   glob@7.2.3:
     resolution: {integrity: sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==}
+    deprecated: Glob versions prior to v9 are no longer supported
 
   global-directory@4.0.1:
     resolution: {integrity: sha512-wHTUcDUoZ1H5/0iVqEudYW4/kAlN5cZ3j/bXn0Dpbizl9iaUVeWSHqiOjsgk6OW2bkLclbBjzewBz6weQ1zA2Q==}
@@ -3560,6 +3561,7 @@ packages:
 
   inflight@1.0.6:
     resolution: {integrity: sha512-k92I/b08q4wvFscXCLvqfsHCrjrF7yiXsQuIVvVE7N82W3+aqpzuUdBbfhWcy/FZR3/4IgflMgKLOsvPDrGCJA==}
+    deprecated: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
 
   inherits@2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
@@ -5442,8 +5444,8 @@ packages:
     peerDependencies:
       stylelint: ^16.0.2
 
-  stylelint@16.23.0:
-    resolution: {integrity: sha512-69T5aS2LUY306ekt1Q1oaSPwz/jaG9HjyMix3UMrai1iEbuOafBe2Dh8xlyczrxFAy89qcKyZWWtc42XLx3Bbw==}
+  stylelint@16.23.1:
+    resolution: {integrity: sha512-dNvDTsKV1U2YtiUDfe9d2gp902veFeo3ecCWdGlmLm2WFrAV0+L5LoOj/qHSBABQwMsZPJwfC4bf39mQm1S5zw==}
     engines: {node: '>=18.12.0'}
     hasBin: true
 
@@ -10912,33 +10914,33 @@ snapshots:
       postcss: 8.5.6
       postcss-selector-parser: 7.1.0
 
-  stylelint-config-recommended-scss@15.0.1(postcss@8.5.6)(stylelint@16.23.0(typescript@5.9.2)):
+  stylelint-config-recommended-scss@15.0.1(postcss@8.5.6)(stylelint@16.23.1(typescript@5.9.2)):
     dependencies:
       postcss-scss: 4.0.9(postcss@8.5.6)
-      stylelint: 16.23.0(typescript@5.9.2)
-      stylelint-config-recommended: 16.0.0(stylelint@16.23.0(typescript@5.9.2))
-      stylelint-scss: 6.12.1(stylelint@16.23.0(typescript@5.9.2))
+      stylelint: 16.23.1(typescript@5.9.2)
+      stylelint-config-recommended: 16.0.0(stylelint@16.23.1(typescript@5.9.2))
+      stylelint-scss: 6.12.1(stylelint@16.23.1(typescript@5.9.2))
     optionalDependencies:
       postcss: 8.5.6
 
-  stylelint-config-recommended@16.0.0(stylelint@16.23.0(typescript@5.9.2)):
+  stylelint-config-recommended@16.0.0(stylelint@16.23.1(typescript@5.9.2)):
     dependencies:
-      stylelint: 16.23.0(typescript@5.9.2)
+      stylelint: 16.23.1(typescript@5.9.2)
 
-  stylelint-config-standard-scss@15.0.1(postcss@8.5.6)(stylelint@16.23.0(typescript@5.9.2)):
+  stylelint-config-standard-scss@15.0.1(postcss@8.5.6)(stylelint@16.23.1(typescript@5.9.2)):
     dependencies:
-      stylelint: 16.23.0(typescript@5.9.2)
-      stylelint-config-recommended-scss: 15.0.1(postcss@8.5.6)(stylelint@16.23.0(typescript@5.9.2))
-      stylelint-config-standard: 38.0.0(stylelint@16.23.0(typescript@5.9.2))
+      stylelint: 16.23.1(typescript@5.9.2)
+      stylelint-config-recommended-scss: 15.0.1(postcss@8.5.6)(stylelint@16.23.1(typescript@5.9.2))
+      stylelint-config-standard: 38.0.0(stylelint@16.23.1(typescript@5.9.2))
     optionalDependencies:
       postcss: 8.5.6
 
-  stylelint-config-standard@38.0.0(stylelint@16.23.0(typescript@5.9.2)):
+  stylelint-config-standard@38.0.0(stylelint@16.23.1(typescript@5.9.2)):
     dependencies:
-      stylelint: 16.23.0(typescript@5.9.2)
-      stylelint-config-recommended: 16.0.0(stylelint@16.23.0(typescript@5.9.2))
+      stylelint: 16.23.1(typescript@5.9.2)
+      stylelint-config-recommended: 16.0.0(stylelint@16.23.1(typescript@5.9.2))
 
-  stylelint-scss@6.12.1(stylelint@16.23.0(typescript@5.9.2)):
+  stylelint-scss@6.12.1(stylelint@16.23.1(typescript@5.9.2)):
     dependencies:
       css-tree: 3.1.0
       is-plain-object: 5.0.0
@@ -10948,9 +10950,9 @@ snapshots:
       postcss-resolve-nested-selector: 0.1.6
       postcss-selector-parser: 7.1.0
       postcss-value-parser: 4.2.0
-      stylelint: 16.23.0(typescript@5.9.2)
+      stylelint: 16.23.1(typescript@5.9.2)
 
-  stylelint@16.23.0(typescript@5.9.2):
+  stylelint@16.23.1(typescript@5.9.2):
     dependencies:
       '@csstools/css-parser-algorithms': 3.0.5(@csstools/css-tokenizer@3.0.4)
       '@csstools/css-tokenizer': 3.0.4
