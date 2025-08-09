@@ -8,25 +8,26 @@
 	let {size = 'xs', onupdate, gridItems}: GridControlProps = $props()
 
 	let gridMenuItems = $derived(
-		gridItems?.map((c) => ({
-			id: c,
-			name: c,
-			title: c,
-			value: c,
+		gridItems?.map(({id, label}) => ({
+			id,
+			label,
+			name: id,
+			title: id,
+			value: id,
 		})) || [],
 	)
 
 	let items: string[] = $state([])
 
-	function loadGrid(selected: {name: string}[]) {
+	function loadGrid(selected: {id: string}[]) {
 		if (selected.length > 0) {
-			items = selected.map((s) => s.name)
+			items = selected.map((s) => s.id)
 		} else {
 			items = []
 		}
 	}
 
-	function updateGrid(selected: {name: string}[]) {
+	function updateGrid(selected: {id: string}[]) {
 		loadGrid(selected)
 		onupdate(items)
 	}
