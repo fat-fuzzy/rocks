@@ -123,6 +123,7 @@
 	}
 
 	function reset() {
+		clearBlob()
 		pause()
 		actor.feedback.canvas = []
 		let random = Math.random()

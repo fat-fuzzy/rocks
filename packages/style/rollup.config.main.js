@@ -1,4 +1,5 @@
 import scss from 'rollup-plugin-scss'
+import * as sass from 'sass'
 import postcss from 'postcss'
 import autoprefixer from 'autoprefixer'
 import postcssImport from 'postcss-import'
@@ -20,6 +21,7 @@ export default {
 	plugins: [
 		scss({
 			fileName: 'main.css',
+			sass: sass,
 		}), // will output compiled styles to "dist/main.css",
 		postcss({
 			extract: true,
@@ -27,13 +29,5 @@ export default {
 			minimize: production,
 			sourceMap: !production,
 		}),
-		// This creates a index.js file (that Turborepo can detect ?)
-		{
-			name: 'create-index-js',
-			writeBundle() {
-				const cssImport = `import './main.css';\n`
-				fs.writeFileSync(path.join(outDir, 'index.js'), cssImport)
-			},
-		},
 	],
 }
