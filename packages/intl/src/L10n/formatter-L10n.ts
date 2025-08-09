@@ -1,9 +1,9 @@
-import type {Formatter, ErrorMessages} from '$types'
+import type {FormatErrors, ErrorMessages} from '$types'
 import {Locale} from '../types/enums.js'
 import errors_en from './en/ui-form-errors.js'
 import labels_en from './en/ui-form-labels.js'
 
-class L10nFormatter implements Formatter {
+class L10nFormatter implements FormatErrors {
 	/**
 	 * Error messages for form validation
 	 */
