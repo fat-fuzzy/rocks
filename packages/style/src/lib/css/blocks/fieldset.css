@@ -33,10 +33,10 @@ fieldset.check {
 		--accent: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
 		--color-accent: var(--accent-semantic, var(--accent));
 		aspect-ratio: 1/1;
-		max-block-size: var(--ui-size-lg);
-		inline-size: auto;
 		flex-grow: 0;
-		flex-basis: var(--ui-size-lg);
+		flex-basis: auto;
+		block-size: calc(var(--ui-size-lg) + var(--outline-offset-lg));
+		inline-size: auto;
 		accent-color: var(--color-accent);
 		padding: var(--outline-offset-lg);
 	}

@@ -46,8 +46,8 @@
   --color-lightness-000: 95%;
   --color-lightness-100: 90%;
   --color-lightness-200: 80%;
-  --color-lightness-300: 65%;
-  --color-lightness-400: 54%;
+  --color-lightness-300: 58%;
+  --color-lightness-400: 52%;
   --color-lightness-500: 42%;
   --color-lightness-600: 32%;
   --color-lightness-dark-base: 25%;
@@ -85,13 +85,13 @@
   --color-state-active-chroma: var(--color-chroma-500);
   --color-state-active-lightness: 42%;
   --color-state-default-chroma: var(--color-chroma-300);
-  --color-state-default-lightness: 65%;
+  --color-state-default-lightness: 58%;
   --color-state-disabled-chroma: var(--color-chroma-100);
   --color-state-disabled-lightness: 90%;
   --color-state-focus-chroma: var(--color-chroma-500);
   --color-state-focus-lightness: 42%;
   --color-state-hover-chroma: var(--color-chroma-400);
-  --color-state-hover-lightness: 54%;
+  --color-state-hover-lightness: 52%;
   --color-state-visited-chroma: var(--color-chroma-200);
   --color-state-visited-lightness: 80%;
   --color-theme-accent: var(--color-hue-seagreen);
