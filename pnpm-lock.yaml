@@ -532,6 +532,9 @@ importers:
       '@fat-fuzzy/gfx':
         specifier: workspace:*
         version: link:../gfx
+      '@fat-fuzzy/intl':
+        specifier: workspace:*
+        version: link:../intl
       '@fat-fuzzy/style':
         specifier: workspace:*
         version: link:../style
