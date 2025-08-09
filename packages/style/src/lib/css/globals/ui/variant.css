@@ -17,16 +17,19 @@
 	border: var(--border-width-md) solid var(--color-accent);
 }
 
-[class*=':outline']:not(label, pre):hover {
-	background-color: inherit;
-}
-
 [class*=':bare']:not(label, pre) {
 	--border-color-bare: oklch(
 		var(--lightness-surface-2) var(--chroma-contrast) var(--hue)
 	);
 	--border-color: var(--color-bg, var(--border-color-bare));
 	border: var(--border-width-md) solid var(--border-color);
+	background-color: inherit;
+}
+
+[class*=':bare']:not(label, button, pre):focus,
+[class*=':bare']:not(label, button, pre):hover,
+[class*=':outline']:not(label, button, pre):focus,
+[class*=':outline']:not(label, button, pre):hover {
 	background-color: inherit;
 }
 

@@ -98,7 +98,7 @@
 
 [class*='bg:'].variant\:bare:focus,
 [class*='bg:'].variant\:outline:focus {
-	--shade-focus: var(--color-bg);
+	--shade-focus: inherit;
 	--ink-focus: oklch(
 		var(--lightness-contrast-base) var(--chroma-contrast-base) var(--hue)
 	);
@@ -114,4 +114,5 @@
 [class*='bg:'].color\:neutral.variant\:outline:focus {
 	outline-color: var(--color-border, var(--ink-focus));
 	border-color: var(--color-border, var(--ink-focus));
+	background-color: var(--shade-focus);
 }

@@ -122,6 +122,14 @@ button[class*='bg:']:not([class*=':neutral']) {
 	}
 }
 
+button[class*='bg:'].color\:neutral.variant\:bare:hover,
+button[class*='bg:'].color\:neutral.variant\:outline:hover {
+	--color-bg: oklch(
+		var(--lightness-surface-1) var(--color-chroma-neutral) var(--hue)
+	);
+	background-color: var(--color-bg);
+}
+
 [class*='settings:day'],
 [color-scheme='light'] {
 	color-scheme: light;
