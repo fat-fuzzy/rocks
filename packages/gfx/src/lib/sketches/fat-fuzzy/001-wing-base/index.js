@@ -5,7 +5,7 @@
  ***********************
  */
 import dom from '../../../dom'
-import {createWing} from '../common/wing-props'
+import {createWing, generateWingsGrid} from '../common/wing-props'
 import setup from '../../../webgl/setup'
 import {drawScene} from '../common/draw-wing'
 import {initBuffers} from '../../../webgl/buffers/geometry-2d'
@@ -35,11 +35,11 @@ let meta = {
 	categories: ['Projects'],
 	tags: ['2D', 'webgl', 'matrix', 'wings'],
 	controls: ['speed', 'color', 'grid', 'loop'],
-	grid: ['base1', 'base2', 'base3'],
+	grid: generateWingsGrid({collection: 'wing-base', orderBy: 'id'}),
 }
 
 let currentWing
-let wingName = meta.grid[0]
+let wingId = meta.grid[0].id
 
 function init(canvas) {
 	// Initialize the GL context
@@ -76,7 +76,7 @@ function loadProgram(canvas) {
 	dom.resize(canvas)
 
 	// Initial Wing
-	currentWing = createWing(wingName, canvas)
+	currentWing = createWing(wingId, canvas)
 
 	// Collect all the info needed to use the shader program.
 	// Look up which attribute our shader program is using
@@ -116,16 +116,16 @@ function draw() {
 function update(sceneContext) {
 	if (sceneContext) {
 		let {grid} = sceneContext
-		if (grid && grid[0] !== currentWing.name) {
-			wingName = grid[0]
-			if (!wingName) {
+		if (grid && grid[0] !== currentWing.id) {
+			wingId = grid[0]
+			if (!wingId) {
 				console.warn(`Wing ${grid[0]} not found`)
-				wingName = meta.grid[0]
+				wingId = meta.grid[0].id
 			}
 
 			clear()
 
-			currentWing = createWing(wingName, gl.canvas)
+			currentWing = createWing(wingId, gl.canvas)
 		}
 	}
 
@@ -157,7 +157,7 @@ function stop() {
 	if (fragmentShader) gl.deleteShader(fragmentShader)
 	if (programInfo.program) gl.deleteProgram(programInfo.program)
 	currentWing = null
-	wingName = meta.grid[0]
+	wingId = meta.grid[0].id
 }
 
 export default {init, meta, main, draw, update, clear, stop}

@@ -2,7 +2,8 @@ import utils from '../../../math/utils'
 import vectors from '../../../math/vectors'
 
 export default class Wing {
-	name
+	id
+	label
 	group
 	// Context
 	position
@@ -41,7 +42,7 @@ export default class Wing {
 
 	/**
 	 * @param {*} wingOptions = {
-			name: string,
+			id: string,
 			position: number[],
 			translation: number[],
 			scale: number[],
@@ -60,7 +61,8 @@ export default class Wing {
 		}
 	 */
 	constructor({
-		name,
+		id,
+		label,
 		group,
 		position,
 		translation,
@@ -78,7 +80,8 @@ export default class Wing {
 		canvasWidth,
 		canvasHeight,
 	}) {
-		this.name = name
+		this.id = id
+		this.label = label
 		this.group = group
 		// Context
 		this.position = position
