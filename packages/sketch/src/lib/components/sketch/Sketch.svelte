@@ -335,20 +335,53 @@
 	layout="steam"
 >
 	{#snippet main()}
-		{#if meta.warnings && meta.warnings.length && actor.state.canvas === CanvasState.idle}
-			<div class="feedback">
-				{#each meta.warnings as warning, i (i)}
-					<Feedback
-						status="warning"
-						context="prose"
-						{size}
-						title={warning.title}
-					>
-						{warning.message}
-					</Feedback>
-				{/each}
+		{#await Promise.resolve()}
+			<div class="feedback w:full">
+				<Feedback status="info" context="prose" {size} title="MISSING JS">
+					<p>
+						Some content on this page needs JavaScript enabled to display
+						interactive animations.
+					</p>
+					<p>
+						Please check your browser settings or try a different browser to
+						access that content.
+					</p>
+				</Feedback>
 			</div>
-		{/if}
+		{:then}
+			{#if canvas?.getContext('webgl2') === null}
+				<div class="feedback w:full">
+					<Feedback status="info" context="prose" {size} title="MISSING WebGL">
+						<p>
+							Some content on this page needs WebGL enabled to display
+							interactive animations.
+						</p>
+						<p>
+							It seems that your browser does not support WebGL 2. Please check
+							your browser settings or try a different browser to access that
+							content.
+						</p>
+					</Feedback>
+				</div>
+				<p class={`feedback emoji:default ${size} content`}>
+					The canvas element needs JavaScript enabled to display WebGL
+					animations
+				</p>
+			{:else if meta.warnings && meta.warnings.length && actor.state.canvas === CanvasState.idle}
+				<div class="feedback w:full">
+					{#each meta.warnings as warning, i (i)}
+						<Feedback
+							status="warning"
+							context="prose"
+							{size}
+							title={warning.title}
+						>
+							{warning.message}
+						</Feedback>
+					{/each}
+				</div>
+			{/if}
+		{/await}
 		<div
 			class={`${frameClasses} color:primary bg:${actor.state.canvas === CanvasState.idle ? 'inherit' : meta.background}`}
 		>
@@ -358,10 +391,6 @@
 				bind:this={canvas}
 				inert={actor.getSketchDisabled()}
 			>
-				<p class={`feedback emoji:default ${size} content`}>
-					The canvas element needs JavaScript enabled to display and interact
-					with animations
-				</p>
 			</canvas>
 			{#if actor.feedback.canvas.length}
 				<div class="feedback">
