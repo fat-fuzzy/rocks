@@ -39,16 +39,17 @@ class ToggleMenuActor implements FuzzySystem {
 
 		this.groups = new Map(
 			Array.from(gridMenuItems.entries()).map(([group, items]) => {
-				const states = items.map((item: ToggleProps) => [
-					item.id,
-					{...item, state: item.initial || UiState.inactive},
-				])
+				const states = this.buildStates(items)
 				return [group, states]
 			}),
 		)
 
-		this.state = new Map(
-			items.map((item) => [
+		this.state = this.buildStates(items)
+	}
+
+	private buildStates(items: ToggleProps[]): Map<string, FuzzyPayload> {
+		return new Map(
+			items.map((item: ToggleProps) => [
 				item.id,
 				{...item, state: item.initial || UiState.inactive},
 			]),
