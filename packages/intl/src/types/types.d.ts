@@ -21,7 +21,7 @@ export type L10nLabels = {
 	[locale in Locale]: Labels
 }
 
-export interface Formatter {
+export interface FormatErrors {
 	locale: string
 	errors: L10nErrors
 	labels: L10nLabels
@@ -32,4 +32,10 @@ export interface Formatter {
 	): Message
 
 	getErrorMessage(key: string, ...args: (string | number)[]): Message
+}
+
+export interface FormatDateTime {
+	locale: string
+	formatDateTime(date: Date, options: Intl.DateTimeFormatOptions): string
+	createSimpleDateString(date: Date): string
 }

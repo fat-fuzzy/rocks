@@ -82,23 +82,6 @@
 		</li>
 		<li>
 			<Button
-				id="snap"
-				name="snap"
-				color="neutral"
-				{variant}
-				{size}
-				{font}
-				shape="pill w:full"
-				value="snap"
-				asset="snap"
-				onclick={snap}
-				disabled={actor.getSnapDisabled()}
-			>
-				snap
-			</Button>
-		</li>
-		<li>
-			<Button
 				id="clear"
 				name="clear"
 				color="accent"
@@ -112,6 +95,23 @@
 				disabled={actor.getClearDisabled()}
 			>
 				clear
+			</Button>
+		</li>
+		<li>
+			<Button
+				id="snap"
+				name="snap"
+				color="neutral"
+				{variant}
+				{size}
+				{font}
+				shape="pill w:full"
+				value="snap"
+				asset="snap"
+				onclick={snap}
+				disabled={actor.getSnapDisabled()}
+			>
+				snap
 			</Button>
 		</li>
 		<li>

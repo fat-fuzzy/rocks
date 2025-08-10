@@ -5,7 +5,7 @@
  ***********************
  */
 import dom from '../../../dom'
-import {createWing} from '../common/wing-props'
+import {createWing, generateWingsGrid} from '../common/wing-props'
 import setup from '../../../webgl/setup'
 import {drawScene} from '../common/draw-wing'
 import {initBuffers} from '../../../webgl/buffers/geometry-2d'
@@ -24,9 +24,6 @@ let programInfo = {
 }
 let bgColor = [0.0298, 0.02089, 0.1233]
 
-// Initialize the wing here to maintain color across main calls
-// TODO: chose color mode
-
 let meta = {
 	project: 'fat-fuzzy',
 	id: '002',
@@ -38,10 +35,10 @@ let meta = {
 	categories: ['Projects'],
 	tags: ['2D', 'webgl', 'matrix', 'wings'],
 	controls: ['speed', 'color', 'grid', 'loop'],
-	grid: ['base1', 'base2', 'base3'],
+	grid: generateWingsGrid({collection: 'wing-base', orderBy: 'id'}),
 }
 let currentWing
-let wingName = meta.grid[0]
+let wingId = meta.grid[0].id
 
 function init(canvas) {
 	// Initialize the GL context
@@ -78,7 +75,7 @@ function loadProgram(canvas) {
 	dom.resize(canvas)
 
 	// Initial Wing
-	currentWing = createWing(wingName, canvas)
+	currentWing = createWing(wingId, canvas)
 
 	currentWing.init(gl.canvas.width, gl.canvas.height)
 
@@ -120,16 +117,16 @@ function draw() {
 function update(sceneContext) {
 	if (sceneContext) {
 		let {grid} = sceneContext
-		if (grid && grid[0] !== currentWing.name) {
-			wingName = grid[0]
-			if (!wingName) {
+		if (grid && grid[0] !== currentWing.id) {
+			wingId = grid[0]
+			if (!wingId) {
 				console.warn(`Wing ${grid[0]} not found`)
-				wingName = meta.grid[0]
+				wingId = meta.grid[0].id
 			}
 
 			clear()
 
-			currentWing = createWing(wingName, gl.canvas)
+			currentWing = createWing(wingId, gl.canvas)
 		}
 	}
 
@@ -162,7 +159,7 @@ function stop() {
 	if (fragmentShader) gl.deleteShader(fragmentShader)
 	if (programInfo.program) gl.deleteProgram(programInfo.program)
 	currentWing = null
-	wingName = meta.grid[0]
+	wingId = meta.grid[0].id
 }
 
 export default {init, meta, main, draw, update, clear, stop}

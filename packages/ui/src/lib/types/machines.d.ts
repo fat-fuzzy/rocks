@@ -9,6 +9,7 @@ export type FuzzyPayload = {
 	id: string
 	name: string
 	value?: string | number
+	group?: string | number // If the payload item is part of a group
 	state: string
 	action?: (event: FuzzyEvent) => void // Callback function defined in the parent component
 }
@@ -22,7 +23,7 @@ export type FuzzyState = {
 	label?: string // Element label
 	asset?: string // Element icon: the `value` in emoji:value or svg:value
 	variant?: string // Variant style for the element state
-	state?: UiState | string// Name of the current state
+	state?: UiState | string // Name of the current state
 	event?: string // Event that can be emitted from the current state
 	action?: (payload: FuzzyPayload) => void // Action available on the current state
 }

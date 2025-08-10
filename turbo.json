@@ -23,7 +23,8 @@
 			],
 			"outputs": [
 				"dist/**"
-			]
+			],
+			"cache": false
 		},
 		"@fat-fuzzy/style#build:lib": {
 			"dependsOn": [
