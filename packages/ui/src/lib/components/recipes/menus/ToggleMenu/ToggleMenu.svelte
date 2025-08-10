@@ -93,9 +93,7 @@
 {#snippet menuContent()}
 	<menu {id} class={menuClasses} data-testid={id}>
 		{#if actor.groups.size === 1}
-			{#each actor.groups as [group, items] (group)}
-				{@render groupContent(items)}
-			{/each}
+			{@render groupContent(actor.state)}
 		{:else if actor.groups.size > 1}
 			{#each actor.groups as [group, items] (group)}
 				<li>
