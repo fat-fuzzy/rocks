@@ -35,7 +35,11 @@ let meta = {
 	categories: ['Projects'],
 	tags: ['2D', 'webgl', 'matrix', 'wings'],
 	controls: ['speed', 'color', 'grid', 'loop'],
-	grid: generateWingsGrid({collection: 'wabi-sabi', orderBy: 'label'}),
+	grid: generateWingsGrid({
+		collection: 'wabi-sabi',
+		orderBy: 'label',
+		groupBy: 'group',
+	}),
 }
 let currentWing
 let wingId = meta.grid[0].id

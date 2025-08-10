@@ -474,7 +474,7 @@ function createWing(wingId, canvas) {
  * @returns
  */
 function generateWingsGrid(options) {
-	let {collection, orderBy} = options || {}
+	let {collection, orderBy, groupBy} = options || {}
 	const wingGroups = new Map()
 
 	let wingsTotal = 0
@@ -489,6 +489,7 @@ function generateWingsGrid(options) {
 		if (collection && wing.collection !== collection) {
 			return
 		}
+
 		groupId = wing.options.group
 
 		if (groupCount[groupId] === undefined) {
@@ -506,9 +507,10 @@ function generateWingsGrid(options) {
 		wingData = {
 			id: wing.options.id,
 			label,
+			group: groupBy ? groupId : undefined,
 		}
 
-		if (orderBy === 'id' || orderBy === 'label') {
+		if (groupBy === undefined && (orderBy === 'id' || orderBy === 'label')) {
 			grid.push(wingData)
 			return
 		}
@@ -521,6 +523,35 @@ function generateWingsGrid(options) {
 		wingsTotal++
 	})
 
+	if (groupBy === 'group') {
+		// Sort groups by id
+		const sortedGroups = Array.from(wingGroups.entries()).sort(([a], [b]) => {
+			let compare = a.localeCompare(b)
+			return compare > 0 ? 1 : compare < 0 ? -1 : 0
+		})
+
+		sortedGroups.forEach(([groupId, groupWings]) => {
+			groupWings.forEach((wing) => {
+				grid.push(wing)
+			})
+		})
+
+		if (orderBy === 'id') {
+			grid.sort((a, b) => b.id - a.id)
+			return grid
+		}
+
+		if (orderBy === 'label') {
+			grid.sort((a, b) => {
+				let compare = a.label.localeCompare(b.label)
+				return compare > 0 ? 1 : compare < 0 ? -1 : 0
+			})
+			return grid
+		}
+
+		return grid
+	}
+
 	if (orderBy === 'id') {
 		grid.sort((a, b) => b.id - a.id)
 		return grid
@@ -529,8 +560,6 @@ function generateWingsGrid(options) {
 	if (orderBy === 'label') {
 		grid.sort((a, b) => {
 			let compare = a.label.localeCompare(b.label)
-			console.log(`Comparing ${b.label} with ${a.label}: ${compare}`)
-
 			return compare > 0 ? 1 : compare < 0 ? -1 : 0
 		})
 		return grid
