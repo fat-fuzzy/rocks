@@ -53,5 +53,5 @@ export type GridControlProps = {
 	breakpoint?: string
 	threshold?: string
 	onupdate: (payload: string[]) => void
-	gridItems: {id: string; label: string}[]
+	gridItems: {id: string; label: string; group?: string}[]
 }

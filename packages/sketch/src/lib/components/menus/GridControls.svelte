@@ -8,9 +8,10 @@
 	let {size = 'xs', onupdate, gridItems}: GridControlProps = $props()
 
 	let gridMenuItems = $derived(
-		gridItems?.map(({id, label}) => ({
+		gridItems?.map(({id, label, group}) => ({
 			id,
 			label,
+			group,
 			name: id,
 			title: id,
 			value: id,
@@ -27,7 +28,7 @@
 		}
 	}
 
-	function updateGrid(selected: {id: string}[]) {
+	function updateGrid(selected: {id: string; group?: string | number}[]) {
 		loadGrid(selected)
 		onupdate(items)
 	}

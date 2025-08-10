@@ -19,8 +19,9 @@
 	let channelMenuItems = $derived(
 		channels?.map((c) => ({
 			id: c,
+			label: c,
 			name: c,
-			title: c,
+			title: '',
 			value: c,
 		})) || [],
 	)
@@ -28,8 +29,9 @@
 	let blurMenuItems = $derived(
 		blur?.map((b) => ({
 			id: String(b),
+			label: `blur ${b}`,
 			name: String(b),
-			title: `blur ${b}`,
+			title: '',
 			value: b,
 		})) || [],
 	)
@@ -37,8 +39,9 @@
 	let effectMenuItems = $derived(
 		convolutions?.map((b) => ({
 			id: b,
+			label: b,
 			name: b,
-			title: b,
+			title: '',
 			value: b,
 		})) || [],
 	)

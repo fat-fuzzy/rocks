@@ -11,6 +11,7 @@
 		title,
 		initial = UiState.inactive,
 		value,
+		group,
 		disabled,
 		formaction,
 		align,
@@ -38,6 +39,7 @@
 		id: name, // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value
 		name,
 		value,
+		group,
 		state: store.state,
 		action: store.update.bind(store),
 	})
