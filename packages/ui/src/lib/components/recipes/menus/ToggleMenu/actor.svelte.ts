@@ -3,14 +3,53 @@ import {UiState, ButtonEvent} from '$types'
 
 class ToggleMenuActor implements FuzzySystem {
 	state: Map<string, FuzzyPayload> = $state(new Map())
+	groups: Map<string, Map<string, FuzzyPayload>> = $state(new Map())
 	mode = 'radio'
 
 	public init({mode, items}: {mode: string; items: ToggleProps[]}) {
 		if (mode) {
 			this.mode = mode
 		}
-		this.state = new Map(
-			items.map((item) => [
+
+		const gridMenuItems = items?.reduce(
+			(groups: Map<string, ToggleProps[]>, {id, label, group}) => {
+				let groupLabel = String(group)
+				if (!groupLabel) {
+					groupLabel = 'default'
+				}
+
+				let groupItems = groups.get(groupLabel)
+				if (!groupItems) {
+					groupItems = []
+				}
+				groupItems.push({
+					id,
+					label,
+					name: id,
+					group: id,
+					title: '',
+					value: id,
+				})
+
+				groups.set(groupLabel, groupItems)
+				return groups
+			},
+			new Map(),
+		)
+
+		this.groups = new Map(
+			Array.from(gridMenuItems.entries()).map(([group, items]) => {
+				const states = this.buildStates(items)
+				return [group, states]
+			}),
+		)
+
+		this.state = this.buildStates(items)
+	}
+
+	private buildStates(items: ToggleProps[]): Map<string, FuzzyPayload> {
+		return new Map(
+			items.map((item: ToggleProps) => [
 				item.id,
 				{...item, state: item.initial || UiState.inactive},
 			]),

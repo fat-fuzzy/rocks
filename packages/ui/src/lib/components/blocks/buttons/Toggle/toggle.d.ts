@@ -31,6 +31,7 @@ export type ToggleProps = UiBlockProps & {
 	text?: string
 	initial?: UiState // Initial state of the button
 	value?: string | number
+	group?: string | number // If the payload item is part of a group
 	states?: FuzzyMachine
 	onclick?: (payload: FuzzyPayload) => void
 	init?: (payload: FuzzyPayload) => void

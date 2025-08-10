@@ -228,7 +228,11 @@ ff-callout[class*='magic'].shape\:round {
 }
 
 .magic\:feather {
-	--color-magic-feather: var(--color-magic-primary-light);
+	--hue-magic-feather: var(--color-theme-primary);
+	--color-magic-feather: oklch(
+		var(--lightness-contrast-magic-feather) var(--chroma-contrast-magic-feather)
+			var(--hue-magic-feather)
+	);
 	--magic-gradient: linear-gradient(
 		to top,
 		transparent 0% 9%,
@@ -241,9 +245,6 @@ ff-callout[class*='magic'].shape\:round {
 		transparent 0% 9%,
 		var(--color-magic-feather) 50% 100%
 	);
-	--lightness-contrast: var(--color-lightness-000);
-	--chroma-contrast: var(--color-chroma-000);
-	--hue: var(--color-theme-primary-light);
 
 	&[class*='svg'] {
 		--magic-gradient: linear-gradient(
@@ -256,26 +257,30 @@ ff-callout[class*='magic'].shape\:round {
 
 @media (prefers-color-scheme: dark) {
 	.magic\:feather {
-		--color-magic-feather: var(--color-magic-primary-dark);
-	}
-}
-
-@media (prefers-color-scheme: light) {
-	.magic\:feather {
-		--color-magic-feather: var(--color-magic-primary-light);
+		--lightness-contrast-magic-feather: var(--color-lightness-dark-base);
+		--chroma-contrast-magic-feather: var(--color-chroma-100);
 	}
 }
 
 [class*='settings:night'],
 [color-scheme='dark'] {
 	.magic\:feather {
-		--color-magic-feather: var(--color-magic-primary-dark);
+		--lightness-contrast-magic-feather: var(--color-lightness-dark-base);
+		--chroma-contrast-magic-feather: var(--color-chroma-100);
+	}
+}
+
+@media (prefers-color-scheme: light) {
+	.magic\:feather {
+		--lightness-contrast-magic-feather: var(--color-lightness-light-base);
+		--chroma-contrast-magic-feather: var(--color-chroma-100);
 	}
 }
 
 [class*='settings:day'],
 [color-scheme='light'] {
 	.magic\:feather {
-		--color-magic-feather: var(--color-magic-primary-light);
+		--lightness-contrast-magic-feather: var(--color-lightness-light-base);
+		--chroma-contrast-magic-feather: var(--color-chroma-100);
 	}
 }

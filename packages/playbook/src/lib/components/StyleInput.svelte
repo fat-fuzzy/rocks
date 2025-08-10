@@ -34,7 +34,8 @@
 		items.map((i) => {
 			return {
 				...i,
-				text: i.text ?? '',
+				label: i.label ?? i.asset ?? i.text ?? i.id,
+				text: '',
 				asset: i.asset ?? '',
 				initial: i.value === currentValue ? 'active' : 'inactive',
 				name: i.id,
@@ -97,11 +98,12 @@
 	function handleToggle(
 		selected: {
 			name: string
+			label: string
 			value?: string | number
 			state: string
 		}[],
 	) {
-		let items: {id: string; name: string; value: string}[] = []
+		let items: {id: string; name: string; label: string; value: string}[] = []
 		let payload = {
 			id,
 			name: familyName.toLowerCase(),
@@ -111,6 +113,7 @@
 			payload.items = selected.map((item) => {
 				return {
 					id,
+					label: item.label,
 					name: item.name.toLowerCase(),
 					value: String(item.value),
 				}

@@ -122,106 +122,33 @@ button[class*='bg:']:not([class*=':neutral']) {
 	}
 }
 
-[class*='settings:day'],
-[color-scheme='light'] {
-	color-scheme: light;
-	button.variant\:fill:not([disabled]):hover {
-		--lightness: var(--color-lightness-400);
-	}
+button[class*='bg:'].color\:neutral.variant\:bare:hover,
+button[class*='bg:'].color\:neutral.variant\:outline:hover {
+	--color-bg: oklch(
+		var(--lightness-surface-1) var(--color-chroma-neutral) var(--hue)
+	);
+	background-color: var(--color-bg);
+}
 
-	button[class*='bg:']:not([class*=':neutral']) {
-		&.variant\:outline:hover,
-		&.variant\:bare:hover {
-			--lightness: var(--color-lightness-000);
-			--chroma: var(--color-chroma-000);
-			--lightness-contrast: var(--color-lightness-400);
-			--chroma-contrast: var(--color-chroma-400);
-			background-color: var(--shade);
-			color: var(--ink);
-		}
-	}
+button.variant\:fill:not([disabled]):hover {
+	--lightness: var(--lightness-surface-4);
+}
 
-	button[class*='bg:']:not([class*=':neutral']) {
-		&.variant\:outline:active,
-		&.variant\:bare:active {
-			--lightness-contrast: var(--color-lightness-500);
-		}
+button[class*='bg:']:not([class*=':neutral']) {
+	&.variant\:outline:hover,
+	&.variant\:bare:hover {
+		--lightness: var(--lightness-surface-1);
+		--chroma: var(--chroma-surface-1);
+		--lightness-contrast: var(--lightness-surface-1-contrast);
+		--chroma-contrast: var(--chroma-surface-1-contrast);
+		background-color: var(--shade);
+		color: var(--ink);
 	}
 }
 
-[class*='settings:night'],
-[color-scheme='dark'] {
-	color-scheme: dark;
-	button.variant\:fill:not([disabled]):hover {
-		--lightness: var(--color-lightness-300);
-	}
-
-	button[class*='bg:']:not([class*=':neutral']) {
-		&.variant\:outline:hover,
-		&.variant\:bare:hover {
-			--lightness: var(--color-lightness-400);
-			--chroma: var(--color-chroma-400);
-			--lightness-contrast: var(--color-lightness-000);
-			--chroma-contrast: var(--color-chroma-000);
-			background-color: var(--shade);
-			color: var(--ink);
-		}
-	}
-
-	button[class*='bg:']:not([class*=':neutral']) {
-		&.variant\:outline:active,
-		&.variant\:bare:active {
-			--lightness-contrast: var(--color-lightness-100);
-		}
-	}
-}
-
-@media (prefers-color-scheme: light) {
-	button.variant\:fill:not([disabled]):hover {
-		--lightness: var(--color-lightness-400);
-	}
-
-	button[class*='bg:']:not([class*=':neutral']) {
-		&.variant\:outline:hover,
-		&.variant\:bare:hover {
-			--lightness: var(--color-lightness-000);
-			--chroma: var(--color-chroma-000);
-			--lightness-contrast: var(--color-lightness-400);
-			--chroma-contrast: var(--color-chroma-400);
-			background-color: var(--shade);
-			color: var(--ink);
-		}
-	}
-
-	button[class*='bg:']:not([class*=':neutral']) {
-		&.variant\:outline:active,
-		&.variant\:bare:active {
-			--lightness-contrast: var(--color-lightness-500);
-		}
-	}
-}
-
-@media (prefers-color-scheme: dark) {
-	button.variant\:fill:not([disabled]):hover {
-		--lightness: var(--color-lightness-300);
-	}
-
-	button[class*='bg:']:not([class*=':neutral']) {
-		&.variant\:outline:hover,
-		&.variant\:bare:hover {
-			--lightness: var(--color-lightness-400);
-			--chroma: var(--color-chroma-400);
-			--lightness-contrast: var(--color-lightness-000);
-			--chroma-contrast: var(--color-chroma-000);
-			background-color: var(--shade);
-			color: var(--ink);
-		}
-	}
-
-	button[class*='bg:']:not([class*=':neutral']) {
-		&.variant\:outline:active,
-		&.variant\:bare:active {
-			--lightness-contrast: var(--color-lightness-100);
-		}
+button[class*='bg:']:not([class*=':neutral']) {
+	&.variant\:outline:active,
+	&.variant\:bare:active {
+		--lightness-contrast: var(--chroma-surface-2-contrast);
 	}
 }

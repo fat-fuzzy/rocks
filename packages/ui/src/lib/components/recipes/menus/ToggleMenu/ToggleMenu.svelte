@@ -21,7 +21,7 @@
 		layout = 'switcher',
 		threshold,
 		background = 'inherit',
-
+		align = 'start',
 		mode = 'radio',
 		formaction,
 		items = [],
@@ -46,6 +46,7 @@
 			threshold,
 			container,
 			background,
+			align,
 		}),
 	)
 
@@ -67,27 +68,41 @@
 	})
 </script>
 
+{#snippet groupContent(items: Map<string, FuzzyPayload>)}
+	{#each items as [itemId, props]}
+		<li class="l:stack:3xs">
+			<Toggle
+				init={loadMenu}
+				onclick={updateMenu}
+				{type}
+				{formaction}
+				{color}
+				{variant}
+				{size}
+				{shape}
+				{asset}
+				{assetType}
+				{disabled}
+				{...props}
+				id={itemId}
+			/>
+		</li>
+	{/each}
+{/snippet}
+
 {#snippet menuContent()}
 	<menu {id} class={menuClasses} data-testid={id}>
-		{#each actor.state as [itemId, props]}
-			<li>
-				<Toggle
-					init={loadMenu}
-					onclick={updateMenu}
-					{type}
-					{formaction}
-					{color}
-					{variant}
-					{size}
-					{shape}
-					{asset}
-					{assetType}
-					{disabled}
-					{...props}
-					id={itemId}
-				/>
-			</li>
-		{/each}
+		{#if actor.groups.size === 1}
+			{@render groupContent(actor.state)}
+		{:else if actor.groups.size > 1}
+			{#each actor.groups as [group, items] (group)}
+				<li>
+					<ol class="unstyled">
+						{@render groupContent(items)}
+					</ol>
+				</li>
+			{/each}
+		{/if}
 	</menu>
 {/snippet}
 
