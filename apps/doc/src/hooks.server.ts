@@ -1,6 +1,6 @@
 import type {Handle} from '@sveltejs/kit'
 import ui from '@fat-fuzzy/ui'
-import uiStateService from '$lib/forms/services/session'
+import uiStateService from '$lib/server/services/session'
 
 const {APP_PREFIX} = ui.constants
 
