@@ -1,7 +1,7 @@
 import {error} from '@sveltejs/kit'
 import pages from '$data/pages'
 import images from '$data/images'
-import {commonActions} from '$lib/forms/actions/page-actions'
+import {commonActions} from '$lib/server/actions/page-actions'
 
 const page = 'home'
 
