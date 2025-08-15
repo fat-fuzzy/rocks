@@ -3,7 +3,7 @@ import {fail} from '@sveltejs/kit'
 
 import ui from '@fat-fuzzy/ui'
 import playbook from '@fat-fuzzy/playbook'
-import uiStateService from '$lib/forms/services/session.js'
+import uiStateService from '$lib/server/services/session.js'
 
 const {DsStateUpdate, DsStylesUpdate} = playbook.actions
 const {SignUpUser} = ui.forms

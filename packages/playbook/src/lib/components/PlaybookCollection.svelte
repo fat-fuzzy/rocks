@@ -123,7 +123,7 @@
 					: `${link}/${category}/${name}`}
 				<article
 					id={`article-${title}-${name}`}
-					class={`variant:bare ui:${name.toLowerCase()} scroll:x`}
+					class={`variant:bare ui:${name.toLowerCase()} scroll:y compact`}
 				>
 					<svelte:element
 						this={`h${String(elementTitleDepth)}`}

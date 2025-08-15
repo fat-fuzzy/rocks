@@ -18,3 +18,11 @@
 [class*='emoji:']:not([class*='justify:'], [class*='l:frame'])::before {
 	margin-inline: var(--icon-gap, var(--ui-size-sm));
 }
+
+[class*='emoji:'].justify\:start::before {
+	margin-inline-end: var(--icon-gap, var(--ui-size-sm));
+}
+
+[class*='emoji:'].justify\:end::before {
+	margin-inline-start: var(--icon-gap, var(--ui-size-sm));
+}

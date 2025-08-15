@@ -9,6 +9,10 @@
 	scrollbar-color: var(--thumb) var(--track);
 }
 
+[class*='scroll:'].compact {
+	scrollbar-gutter: unset;
+}
+
 .scroll\:y {
 	--size-y: 100%;
 	overflow: hidden auto;
