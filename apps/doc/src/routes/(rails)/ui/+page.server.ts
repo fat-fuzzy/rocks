@@ -1,7 +1,7 @@
 import type {Actions} from './$types'
-import uiActions from '$lib/forms/actions/ui-actions'
-import {commonActions} from '$lib/forms/actions/page-actions'
-import {playbookActions} from '$lib/forms/actions/playbook-actions'
+import uiActions from '$lib/server/actions/ui-actions'
+import {commonActions} from '$lib/server/actions/page-actions'
+import {playbookActions} from '$lib/server/actions/playbook-actions'
 
 export const actions = {
 	...commonActions,
