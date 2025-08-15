@@ -30,16 +30,23 @@
 				<p>{page.status}: {message}</p>
 				<div class="l:switcher:xs">
 					<button
-						class="variant:fill bg:danger size:lg emoji:point-left"
+						class="variant:fill bg:danger size:lg emoji:point-left justify:start"
 						onclick={() => history.back()}
 					>
 						Back
 					</button>
 
-					<Magic spell="fuzzy" size="md" circle="dotted" mask="text">
-						<div class="l:flex align:center justify:center">
-							<ff-icon class="emoji:home font:lg"></ff-icon>
-							<a class="font:h1" href="/"> Home </a>
+					<Magic
+						spell="fuzzy"
+						size="2xs"
+						circle="dotted"
+						mask="text"
+						shape="mellow"
+					>
+						<div class="l:flex align:center">
+							<ff-icon class="emoji:home font:lg size:md justify:center"
+							></ff-icon>
+							<a class="font:h1 font:md maki:inline size:xs" href="/"> Home </a>
 						</div>
 					</Magic>
 				</div>
