@@ -9,27 +9,23 @@
  */
 
 import type {Handle} from '@sveltejs/kit'
+import {dev} from '$app/environment'
 
 const DEFAULT_DIRECTIVES: Record<string, string[]> = {
 	'base-uri': ["'self'"],
 	'child-src': ["'self'"],
 	'connect-src': ["'self'"],
-	'default-src': ["'self'"],
 	'font-src': ["'self'"],
 	'form-action': ["'self'"],
 	'frame-ancestors': ["'self'"],
 	'frame-src': ["'self'"],
-	'img-src': ["'self'", 'data:', 'https://fat-fuzzy.goatcounter.com/count'],
-	'media-src': ["'self' data:"],
+	'img-src': ["'self'", 'data:'],
+	'media-src': ["'self'", 'data:'],
 	'object-src': ["'self'"],
 	'plugin-types': ["'self'"],
 	'require-trusted-types-for': ["'script'"],
-	sandbox: ['allow-same-origin'], // 'allow-same-origin' allows scripts to run in the sandbox https://web.dev/articles/sandboxed-iframes
-	'script-src': ["'self'"],
-	'script-src-attr': ["'self'"],
-	'style-src': ["'self'"],
 	'upgrade-insecure-requests': [],
-	'worker-src': ["'self'"],
+	'worker-src': ["'self'", 'blob:'],
 }
 
 const TEST_DIRECTIVES: Record<string, string[]> = {
@@ -38,7 +34,11 @@ const TEST_DIRECTIVES: Record<string, string[]> = {
 }
 
 function formatCsp(csp: Record<string, string[]>): string {
-	const defaultDirectives = Object.entries(csp).map(([key, directives]) => {
+	const defaultDirectives = Object.entries(csp).map(([key, value]) => {
+		let directives = value
+		if (value.length === 1 && value[0] === "'self'" && dev) {
+			directives.push('ws://localhost:*')
+		}
 		return `${key} ${directives.join(' ')}`
 	})
 
