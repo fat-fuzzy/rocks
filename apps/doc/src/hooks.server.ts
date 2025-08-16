@@ -5,7 +5,6 @@ import {setStyles} from '$lib/server/hooks/setStyles'
 import {setSecHeaders} from '$lib/server/hooks/setSecHeaders'
 
 export const handle: Handle = sequence(
-	// setCspHeaders(),
 	setSecHeaders(),
 	setStyles(),
 ) satisfies Handle
