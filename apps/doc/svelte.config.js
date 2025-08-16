@@ -35,6 +35,16 @@ const config = {
 				throw new Error(message)
 			},
 		},
+		/**
+		 * This includes Content Security Policy (CSP) and other security-related headers.
+		 * Verify:
+		 * - https://securityheaders.com
+		 * CSP Resources:
+		 * - https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP
+		 * - https://web.dev/articles/csp
+		 * - https://scotthelme.co.uk/content-security-policy-an-introduction/
+		 * - https://svelte.dev/docs/kit/configuration#csp
+		 */
 		csp: {
 			mode: 'auto',
 			directives: {
