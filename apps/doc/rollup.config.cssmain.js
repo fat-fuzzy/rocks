@@ -9,10 +9,10 @@ import path from 'node:path'
 
 const production = process.env.NODE_ENV === 'production'
 const inDir = path.resolve('src/lib/styles/css')
-const outDir = path.resolve('static/styles/css')
+const outDir = path.resolve('static/styles')
 
 /**
- * This config will output 1 bundled CSS file to "dist/main.css"
+ * This config will output 1 bundled CSS file to "static/styles/main.css"
  */
 export default {
 	input: `${inDir}/index.js`,
