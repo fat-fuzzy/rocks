@@ -197,7 +197,7 @@
 	</article>
 </main>
 
-<style>
+<style nonce="%sveltekit.nonce%">
 	/**
 Adapted from https://github.com/argyleink/gui-challenges/tree/main/color-palettes
 */

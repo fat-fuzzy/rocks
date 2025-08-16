@@ -134,6 +134,6 @@
 	</menu>
 </div>
 
-<style>
+<style nonce="%sveltekit.nonce%">
 	@import '../../styles/css/player.css';
 </style>
