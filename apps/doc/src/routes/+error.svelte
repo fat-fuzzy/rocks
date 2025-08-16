@@ -1,6 +1,5 @@
 <script lang="ts">
 	import {page} from '$app/state'
-	import '$lib/styles/css/main.css'
 	import ui from '@fat-fuzzy/ui'
 
 	const {Feedback, Magic} = ui.blocks

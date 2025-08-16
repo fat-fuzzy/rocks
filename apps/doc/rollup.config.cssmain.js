@@ -8,8 +8,8 @@ import postcssPresetEnv from 'postcss-preset-env'
 import path from 'node:path'
 
 const production = process.env.NODE_ENV === 'production'
-const inDir = path.resolve('src/lib')
-const outDir = path.resolve('dist')
+const inDir = path.resolve('src/lib/styles/css')
+const outDir = path.resolve('static/styles/css')
 
 /**
  * This config will output 1 bundled CSS file to "dist/main.css"

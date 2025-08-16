@@ -24,3 +24,4 @@ tests/e2e/test-results
 # === Assets ignores
 
 /static/tests
+/static/styles
