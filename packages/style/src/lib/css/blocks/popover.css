@@ -34,9 +34,9 @@ rf-popover,
 }
 
 @supports (anchor-name: -anchor-name) {
-	.anchor {
+	.anchor[data-anchorid] {
 		--anchor-name: --popover-anchor;
-		anchor-name: var(--anchor-name);
+		anchor-name: attr(data-anchorid);
 	}
 
 	[popover] {
