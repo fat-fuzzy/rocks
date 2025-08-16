@@ -163,6 +163,6 @@
 	{/await}
 </form>
 
-<style>
+<style nonce="%sveltekit.nonce%">
 	@import '../../styles/css/geometry.css';
 </style>
