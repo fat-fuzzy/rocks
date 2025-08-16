@@ -1,7 +1,6 @@
 import type {Cookies} from '@sveltejs/kit'
 import type {UiStateGetInput, UiStateSetInput} from '$lib/types/services.js'
 import {dev} from '$app/environment'
-import {base} from '$app/paths'
 
 const expire = {
 	short: 60 * 60 * 15,
@@ -9,22 +8,18 @@ const expire = {
 	long: 60 * 60 * 24 * 24 * 3,
 }
 
-const trustedDomains = ['localhost', 'rocks.pages.dev']
-
 function setSecureCookie({
 	cookies,
 	key,
 	value,
-	path = base,
+	path = '/',
 	maxAge = expire.short,
-	domain,
 }: {
 	cookies: Cookies
 	key: string
 	value: string
 	path?: string
 	maxAge?: number
-	domain?: string
 }) {
 	cookies.set(key, value, {
 		httpOnly: true,
@@ -32,7 +27,6 @@ function setSecureCookie({
 		secure: true,
 		path,
 		maxAge,
-		domain,
 	})
 }
 
@@ -41,7 +35,8 @@ function setSecureCookie({
  * @returns
  */
 function getUiState({cookies, key}: UiStateGetInput): any {
-	const serialized = cookies.get(key)
+	let secureKey = `__Host-${key}`
+	const serialized = cookies.get(secureKey)
 	if (!serialized) {
 		return {}
 	}
@@ -50,20 +45,19 @@ function getUiState({cookies, key}: UiStateGetInput): any {
 }
 
 function setUiState({cookies, key, value, options}: UiStateSetInput) {
+	let secureKey = `__Host-${key}`
 	if (dev) {
-		cookies.set(key, JSON.stringify(value), {
-			path: options.path ?? '/',
+		cookies.set(secureKey, JSON.stringify(value), {
+			path: options.path,
 			maxAge: expire.short,
-			domain: trustedDomains[0],
 		})
 	} else {
 		setSecureCookie({
 			cookies,
-			key,
+			key: secureKey,
 			value: JSON.stringify(value),
-			path: options.path ?? '/',
+			path: options.path,
 			maxAge: expire.short,
-			domain: trustedDomains[1],
 		})
 	}
 }
