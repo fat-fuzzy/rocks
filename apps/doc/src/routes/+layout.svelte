@@ -1,9 +1,6 @@
 <script lang="ts">
 	import type {Snippet} from 'svelte'
 	import {onMount} from 'svelte'
-
-	import '$lib/styles/css/main.css'
-
 	import {page} from '$app/state'
 	import {dev} from '$app/environment'
 	import ui from '@fat-fuzzy/ui'

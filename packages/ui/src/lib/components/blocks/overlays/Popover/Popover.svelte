@@ -40,8 +40,6 @@
 		}
 	}
 
-	let popoverAnchorStyle = $derived(`--anchor-name: --popover-anchor-${id}`)
-
 	onMount(() => {
 		if (!popover) {
 			return
@@ -68,7 +66,7 @@
 </script>
 
 <ff-popover {id} bind:this={invoker} class={fixedClass} data-testid={id}>
-	<span class="anchor" style={popoverAnchorStyle}>
+	<span class="anchor" data-anchorid={`popover-anchor-${id}`}>
 		<!-- HTML Validation fails -->
 		<!-- TODO: watch issue github.com/validator/validator/issues/1534 -->
 		<Button
@@ -92,7 +90,6 @@
 		popover={invoke}
 		aria-live="polite"
 		class={revealClasses}
-		style={popoverAnchorStyle}
 	>
 		{@render children()}
 	</ff-reveal>

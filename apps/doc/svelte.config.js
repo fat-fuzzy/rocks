@@ -35,6 +35,42 @@ const config = {
 				throw new Error(message)
 			},
 		},
+		/**
+		 * This includes Content Security Policy (CSP) and other security-related headers.
+		 * Verify:
+		 * - https://securityheaders.com
+		 * CSP Resources:
+		 * - https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP
+		 * - https://web.dev/articles/csp
+		 * - https://scotthelme.co.uk/content-security-policy-an-introduction/
+		 * - https://svelte.dev/docs/kit/configuration#csp
+		 *
+		 * TODO: Fix CSP-related issues: tests fail, safari issues
+		 */
+		csp: {
+			mode: 'auto',
+			directives: {
+				'default-src': ["'self'"],
+				'script-src': ["'self'"],
+				'style-src': ["'self'"],
+				'style-src-elem': ["'self'"],
+				'style-src-attr': ["'self'"],
+				'base-uri': ["'self'"],
+				'child-src': ["'self'"],
+				'connect-src': ["'self'"],
+				'font-src': ["'self'"],
+				'form-action': ["'self'"],
+				'frame-ancestors': ["'none'"],
+				'frame-src': ["'none'"],
+				'img-src': ["'self'", 'data:'],
+				'media-src': ["'self'", 'data:'],
+				'object-src': ["'self'"],
+				'plugin-types': ["'self'"],
+				'require-trusted-types-for': ["'script'"],
+				'upgrade-insecure-requests': true,
+				'worker-src': ["'self'", 'blob:'],
+			},
+		},
 		alias: {
 			$utils: path.resolve('./src/utils'),
 			$data: path.resolve('./src/data'),

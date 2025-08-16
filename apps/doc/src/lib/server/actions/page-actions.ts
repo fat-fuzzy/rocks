@@ -1,8 +1,8 @@
 import type {RequestEvent} from '@sveltejs/kit'
 import ui from '@fat-fuzzy/ui'
 
-import uiActions from '$lib/forms/actions/ui-actions'
-import settingsActions from '$lib/forms/actions/settings-actions'
+import uiActions from '$lib/server/actions/ui-actions'
+import settingsActions from '$lib/server/actions/settings-actions'
 
 const {APP_PREFIX} = ui.constants
 

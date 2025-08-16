@@ -3,7 +3,7 @@ import type {RequestEvent} from '@sveltejs/kit'
 import {error} from '@sveltejs/kit'
 import ui from '@fat-fuzzy/ui'
 
-import uiStateService from '$lib/forms/services/session.js'
+import uiStateService from '$lib/server/services/session.js'
 const {AppContext} = ui.forms
 
 const {APP_PREFIX} = ui.constants

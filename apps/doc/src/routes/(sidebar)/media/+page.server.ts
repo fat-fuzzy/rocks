@@ -1,5 +1,5 @@
 import {error} from '@sveltejs/kit'
-import {commonActions} from '$lib/forms/actions/page-actions'
+import {commonActions} from '$lib/server/actions/page-actions'
 
 export const load = async () => {
 	error(404, 'Not found')

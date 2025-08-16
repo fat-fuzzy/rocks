@@ -1,0 +1,12 @@
+.rc-scout > .l\:flex {
+	gap: 0.5em;
+}
+
+ff-icon.rc-scout__logo {
+	display: inline-block;
+	padding: 0;
+	border: 0;
+	margin: 0;
+	width: var(--ui-size);
+	height: var(--ui-size);
+}

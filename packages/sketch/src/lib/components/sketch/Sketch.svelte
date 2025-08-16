@@ -473,6 +473,6 @@
 	{/snippet}
 </PageRails>
 
-<style>
+<style nonce="%sveltekit.nonce%">
 	@import '../../styles/css/sketch.css';
 </style>

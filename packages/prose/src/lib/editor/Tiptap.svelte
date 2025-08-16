@@ -48,7 +48,7 @@
 	</div>
 </div>
 
-<style>
+<style nonce="%sveltekit.nonce%">
 	.l\:frame\:prose {
 		aspect-ratio: 15 / 10;
 	}
