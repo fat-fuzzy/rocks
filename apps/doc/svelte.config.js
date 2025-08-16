@@ -44,6 +44,8 @@ const config = {
 		 * - https://web.dev/articles/csp
 		 * - https://scotthelme.co.uk/content-security-policy-an-introduction/
 		 * - https://svelte.dev/docs/kit/configuration#csp
+		 *
+		 * TODO: Fix CSP-related issues: tests fail, safari issues
 		 */
 		csp: {
 			mode: 'auto',
