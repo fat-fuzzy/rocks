@@ -35,8 +35,11 @@ function setSecureCookie({
  * @returns
  */
 function getUiState({cookies, key}: UiStateGetInput): any {
-	let secureKey = `__Host-${key}`
-	const serialized = cookies.get(secureKey)
+	let prefixedKey = key
+	if (!dev) {
+		prefixedKey = `__Host-${key}`
+	}
+	const serialized = cookies.get(prefixedKey)
 	if (!serialized) {
 		return {}
 	}
@@ -45,16 +48,15 @@ function getUiState({cookies, key}: UiStateGetInput): any {
 }
 
 function setUiState({cookies, key, value, options}: UiStateSetInput) {
-	let secureKey = `__Host-${key}`
 	if (dev) {
-		cookies.set(secureKey, JSON.stringify(value), {
+		cookies.set(key, JSON.stringify(value), {
 			path: options.path,
 			maxAge: expire.short,
 		})
 	} else {
 		setSecureCookie({
 			cookies,
-			key: secureKey,
+			key: `__Host-${key}`,
 			value: JSON.stringify(value),
 			path: options.path,
 			maxAge: expire.short,
