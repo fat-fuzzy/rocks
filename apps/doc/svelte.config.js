@@ -65,7 +65,6 @@ const config = {
 				'img-src': ["'self'", 'data:'],
 				'media-src': ["'self'", 'data:'],
 				'object-src': ["'self'"],
-				'plugin-types': ["'self'"],
 				'require-trusted-types-for': ["'script'"],
 				'upgrade-insecure-requests': true,
 				'worker-src': ["'self'", 'blob:'],
