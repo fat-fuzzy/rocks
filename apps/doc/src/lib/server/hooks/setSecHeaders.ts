@@ -8,8 +8,8 @@ import type {Handle} from '@sveltejs/kit'
 
 const PERMISSIONS_POLICY_DIRECTIVES = [
 	'accelerometer=()',
-	'ambient-light-sensor=()',
-	'attribute-reporting=()',
+	// 'ambient-light-sensor=()',
+	// 'attribute-reporting=()',
 	'autoplay=()',
 	'bluetooth=()',
 	'browsing-topics=()',
@@ -28,7 +28,7 @@ const PERMISSIONS_POLICY_DIRECTIVES = [
 	// 'identity-credentials-get=()',
 	// 'idle-detection=()',
 	'local-fonts=(self)',
-	'magnetometer=()',
+	// 'magnetometer=()',
 	'microphone=()',
 	'midi=()',
 	// 'otp-credentials=()',
