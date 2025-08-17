@@ -51,7 +51,7 @@ export const setPermissionsPolicy =
 	(): Handle =>
 	async ({event, resolve}) => {
 		event.setHeaders({
-			'Permissions-Policy': PERMISSIONS_POLICY_DIRECTIVES.join('; '),
+			'Permissions-Policy': PERMISSIONS_POLICY_DIRECTIVES.join(', '),
 		})
 		return resolve(event)
 	}
