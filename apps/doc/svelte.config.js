@@ -45,7 +45,13 @@ const config = {
 		 * - https://scotthelme.co.uk/content-security-policy-an-introduction/
 		 * - https://svelte.dev/docs/kit/configuration#csp
 		 *
-		 * TODO: Fix CSP-related issues: tests fail, safari issues
+		 * TODO:
+		 * Known SvelteKit Issues with TrustedType:
+		 * - https://github.com/sveltejs/svelte/issues/10826
+		 * - https://github.com/sveltejs/svelte/issues/14438
+		 * Plus:
+		 * - tests fail
+		 * - safari has issues in dev environment
 		 */
 		csp: {
 			mode: 'auto',
