@@ -39,6 +39,9 @@ const config = {
 		 * This includes Content Security Policy (CSP) and other security-related headers.
 		 * Verify:
 		 * - https://securityheaders.com
+		 * - Chrome DevTools Console & Security Panel
+		 * - Firefox DevTools
+		 * - Safari DevTools + Simulator
 		 * CSP Resources:
 		 * - https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP
 		 * - https://web.dev/articles/csp
@@ -71,7 +74,7 @@ const config = {
 				'img-src': ["'self'", 'data:'],
 				'media-src': ["'self'", 'data:'],
 				'object-src': ["'self'"],
-				'require-trusted-types-for': ["'script'"],
+				// 'require-trusted-types-for': ["'script'"], // See SvelteKit Issues above
 				'upgrade-insecure-requests': true,
 				'worker-src': ["'self'", 'blob:'],
 			},
