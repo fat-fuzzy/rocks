@@ -15,7 +15,7 @@
 		"test": "turbo run test",
 		"format": "prettier --write \"**/*.{ts,tsx,md}\"",
 		"prepare": "husky install",
-		"cz": "cz --no-verify"
+		"cz": "cz"
 	},
 	"peerDependencies": {
 		"@types/node": "^22.0.0",
