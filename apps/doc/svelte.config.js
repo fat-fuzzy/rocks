@@ -46,7 +46,7 @@ const config = {
 		 * - https://svelte.dev/docs/kit/configuration#csp
 		 *
 		 * TODO:
-		 * Known SvelteKit Issues with TrustedType:
+		 * Known SvelteKit Issues with TrustedHTML:
 		 * - https://github.com/sveltejs/svelte/issues/10826
 		 * - https://github.com/sveltejs/svelte/issues/14438
 		 * Plus:
