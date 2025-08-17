@@ -52,6 +52,7 @@ const config = {
 		 * Known SvelteKit Issues with TrustedHTML:
 		 * - https://github.com/sveltejs/svelte/issues/10826
 		 * - https://github.com/sveltejs/svelte/issues/14438
+		 * - Svelte announcer has inline style that violates CSP
 		 * Plus:
 		 * - tests fail
 		 * - safari has issues in dev environment
