@@ -65,7 +65,7 @@
 		"@types/eslint": "^9.6.1",
 		"@types/node": "^24.2.0",
 		"@typescript-eslint/eslint-plugin": "^8.38.0",
-		"@typescript-eslint/parser": "^8.38.0",
+		"@typescript-eslint/parser": "^8.40.0",
 		"eslint": "^9.32.0",
 		"eslint-config-prettier": "^10.1.8",
 		"eslint-config-turbo": "^2.5.5",
