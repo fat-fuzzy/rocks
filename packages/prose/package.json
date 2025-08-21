@@ -55,7 +55,7 @@
 		"@sveltejs/kit": "^2.27.0",
 		"@sveltejs/package": "^2.4.0",
 		"@sveltejs/vite-plugin-svelte": "^6.1.0",
-		"@tiptap/core": "^3.0.9",
+		"@tiptap/core": "^3.2.1",
 		"@tiptap/pm": "^3.0.9",
 		"@tiptap/starter-kit": "^3.0.9",
 		"@types/eslint": "^9.6.1",
