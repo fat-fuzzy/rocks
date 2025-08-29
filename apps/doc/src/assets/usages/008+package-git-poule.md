@@ -86,6 +86,7 @@ This will output a `commit_types.csv` in the current directory.
 An earlier version of the script output a JSON file under the following format:
 
 ```json
+/* prettier-ignore */
 {
   "commits": [
     ["PR", "HASH", "TIMESTAMP", "EMOJI", "SCOPE", "DESCRIPTION", "AUTHOR"],
