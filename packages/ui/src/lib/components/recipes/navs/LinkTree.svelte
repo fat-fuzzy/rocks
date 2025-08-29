@@ -36,10 +36,10 @@
 	let linkClass = depth === 0 ? 'font:md maki:inline:2xs' : 'font:md'
 </script>
 
-{#snippet nestedLinkTree(subItems: NavItem[], slug: string)}
+{#snippet nestedLinkTree(subItems: NavItem[], slug: string, itemPath?: string)}
 	<LinkTree
 		items={subItems}
-		path={format.formatHref(path, slug)}
+		path={format.formatHref(itemPath ?? path, slug)}
 		id={`${id}-${slug}`}
 		{layout}
 		{size}
@@ -55,7 +55,7 @@
 	data-sveltekit-preload-data={preload ? preload : undefined}
 >
 	{#each items as item (item.slug)}
-		{@const {slug, title, asset} = item}
+		{@const {slug, title, asset, itemPath} = item}
 		{@const subItems = item.items}
 		{@const buttonAssetClass = subItems && asset ? asset : ''}
 		{@const linkAssetClass = !subItems && asset ? `emoji:${asset}` : ''}
@@ -64,10 +64,11 @@
 			: alignClass}
 		{@const reveal = {[slug]: DEFAULT_REVEAL_STATE}}
 		<li
-			aria-current={$page.url.pathname === format.formatHref(path, slug)
+			aria-current={$page.url.pathname ===
+			format.formatHref(itemPath ?? path, slug)
 				? 'page'
 				: undefined}
-			class={$page.url.pathname === format.formatHref(path, slug)
+			class={$page.url.pathname === format.formatHref(itemPath ?? path, slug)
 				? `${itemClass} ${colorClass} ${shapeClass}`
 				: `${itemClass} ${shapeClass}`}
 		>
@@ -97,13 +98,13 @@
 			{:else}
 				<a
 					data-sveltekit-preload-data
-					href={format.formatHref(path, slug)}
+					href={format.formatHref(itemPath ?? path, slug)}
 					class={`${linkClass} ${linkAssetClass}`}
 				>
 					{title}
 				</a>
 				{#if subItems}
-					{@render nestedLinkTree(subItems, slug)}
+					{@render nestedLinkTree(subItems, slug, itemPath)}
 				{/if}
 			{/if}
 		</li>
