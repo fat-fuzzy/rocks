@@ -1,5 +1,11 @@
 # @fat-fuzzy/cz-changelog
 
+## 0.1.8
+
+### Patch Changes
+
+- d1028fd: Dynamic nested links, linting, config & dependency updates
+
 ## 0.1.7
 
 ### Patch Changes
