@@ -1,5 +1,15 @@
 # @fat-fuzzy/ui
 
+## 0.1.73
+
+### Patch Changes
+
+- d1028fd: Dynamic nested links, linting, config & dependency updates
+- Updated dependencies [d1028fd]
+  - @fat-fuzzy/validation@0.1.10
+  - @fat-fuzzy/config@0.1.16
+  - @fat-fuzzy/style@0.1.20
+
 ## 0.1.72
 
 ### Patch Changes
