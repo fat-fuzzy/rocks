@@ -30,7 +30,7 @@ pnpm i -D @fat-fuzzy/playbook
 
 ### UI Library requirements
 
-The `Playground`  component assumes that the UI library exports components grouped into five objects:
+The `Playground` component assumes that the UI library exports components grouped into five objects:
 
 - `tokens`
 - `blocks`

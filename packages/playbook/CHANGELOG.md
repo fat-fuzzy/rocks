@@ -1,5 +1,15 @@
 # @fat-fuzzy/playbook
 
+## 0.1.25
+
+### Patch Changes
+
+- d1028fd: Dynamic nested links, linting, config & dependency updates
+- Updated dependencies [d1028fd]
+  - @fat-fuzzy/config@0.1.16
+  - @fat-fuzzy/ui@0.1.73
+  - @fat-fuzzy/style@0.1.20
+
 ## 0.1.24
 
 ### Patch Changes

@@ -16,9 +16,7 @@ export function remarkShiki() {
 		})
 		visit(tree, 'inlineCode', (node) => {
 			node.type = 'html'
-			node.value = `<code class="language-text">${escapeHtml(
-				node.value,
-			)}</code>`
+			node.value = `<code class="language-text">${escapeHtml(node.value)}</code>`
 		})
 	}
 }
@@ -96,9 +94,7 @@ function renderToHtml(lines, options = {}) {
 			if (token.fontStyle & FontStyle.Underline) {
 				cssDeclarations.push('text-decoration: underline')
 			}
-			html += `<span style="${cssDeclarations.join('; ')}">${escapeHtml(
-				token.content,
-			)}</span>`
+			html += `<span style="${cssDeclarations.join('; ')}">${escapeHtml(token.content)}</span>`
 		})
 
 		html += `</span>\n`

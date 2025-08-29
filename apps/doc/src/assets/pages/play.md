@@ -5,6 +5,7 @@ slug: play
 id: '005'
 tags: ['pages', 'play']
 ---
+
 This page contains creative coding content, lessons and experiments.
 
 In other words, it's 🌈 Play !

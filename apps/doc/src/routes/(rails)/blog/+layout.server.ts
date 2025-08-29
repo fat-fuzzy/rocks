@@ -1,6 +1,7 @@
 import blog from '$data/blog'
 
 import {buildNav} from '$data/nav'
+import type {NavItem} from '$types'
 
 const posts = blog.markdowns.filter(({meta}) => meta.status !== 'draft')
 
@@ -10,7 +11,31 @@ export const load = async ({locals, url}) => {
 	sidebar.reveal = locals.sidebar.reveal ?? sidebar.reveal
 	sidebar.items = sidebar.items.map((item) => {
 		if (item.slug === 'blog') {
-			item.items = posts.map(({meta}) => meta)
+			// Build posts navbar with nested links for series
+			item.items = posts.reduce((links: NavItem[], {meta}) => {
+				if (meta.series) {
+					if (meta.index === 1) {
+						meta.items = meta.series.items
+							.map((id, index) => {
+								if (index > 0) {
+									const item = posts.find((p) => p.meta.id === id)
+									if (item) {
+										return {
+											slug: item.meta.slug,
+											title: item.meta.title,
+											itemPath: '/blog',
+										}
+									}
+								}
+							})
+							.filter((i) => i !== undefined) as NavItem[]
+						links.push(meta)
+					}
+				} else {
+					links.push(meta)
+				}
+				return links
+			}, [])
 		}
 		return item
 	})

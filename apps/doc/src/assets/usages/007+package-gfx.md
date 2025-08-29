@@ -39,7 +39,7 @@ Import and use the sketches:
   import {dev} from '$app/environment'
   import gfx from '@fat-fuzzy/gfx'
   import {graphics} from '@fat-fuzzy/sketch'
-  
+
   let scene = $derived(gfx.gl.sketches.find((s) => s.meta.slug === $page.data.slug))
 </script>
 

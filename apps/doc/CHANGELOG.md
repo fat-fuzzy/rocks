@@ -1,5 +1,11 @@
 # @fat-fuzzy/doc
 
+## 0.1.61
+
+### Patch Changes
+
+- d1028fd: Dynamic nested links, linting, config & dependency updates
+
 ## 0.1.60
 
 ### Patch Changes

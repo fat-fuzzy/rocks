@@ -9,6 +9,7 @@ categories: ['webgl', 'learn']
 tags: ['2D', 'wings']
 series: ['001', '003']
 ---
+
 ## Context
 
 I'm trying to build a schematic animated wing using the `LINE` WebGL primitive. Is "primitive" the right word in this technical context? I'm not sure, but it seems analogue to technical primitives found elsewhere.
@@ -30,7 +31,7 @@ Use primitive type `LINE` to model the mechanics of the Wing's structure and fea
    - a radius+ulna bone structure that moves the mid wing in and out
    - a metacarpal 'finger' bone that moves the wing tip in and out
    - a metacarpal 'thumb' bone that moves the wing tip in and out
-1. The wing has 3 layers of feathers:
+1. The wing has 4 layers of feathers:
    - layer 1:
      - the humerus bone has 6 feathers
      - the radius+ulna bone structure has 10 feathers
@@ -50,9 +51,9 @@ Use primitive type `LINE` to model the mechanics of the Wing's structure and fea
 
 ### Wing movement
 
-- **A Cycle** contains **2 Sequences**
-- **A Sequence** contains **5 Movements: [pause, beginning, middle, end, pause]**
-- **A Movement** contains  **100 - 1000 [middle steps], (100 - 1000) / 3 [end steps], 7 [pause steps]**
+- **A Cycle** contains 2 Sequences
+- **A Sequence** contains 5 Movements: [pause, beginning, middle, end, pause]
+- **A Movement** contains 100 - 1000 [middle steps], (100 - 1000) / 3 [end steps], 7 [pause steps]
 
 In other words:
 
@@ -65,7 +66,7 @@ In other words:
    Each sequence has the following movements:
 
    | 1     | 2         | 3      | 4   | (five)  |
-   | ----- | --------- | -------|---- |-------- |
+   | ----- | --------- | ------ | --- | ------- |
    | pause | beginning | middle | end | (pause) |
 
 1. **Movement**

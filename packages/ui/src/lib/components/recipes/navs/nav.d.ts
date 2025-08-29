@@ -17,6 +17,7 @@ export type NavItem = {
 	shape?: string
 	formaction?: string
 	actionPath?: string
+	itemPath?: string
 	preload?: string
 	items?: NavItem[]
 }

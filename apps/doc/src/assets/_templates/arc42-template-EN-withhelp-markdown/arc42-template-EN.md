@@ -371,7 +371,6 @@ following white box template. It contains
 
 - black box descriptions of the contained building blocks. For these
   we offer you alternatives:
-
   - use _one_ table for a short and pragmatic overview of all
     contained building blocks and their interfaces
 

@@ -8,6 +8,7 @@ description: 'Some low-carb tech ways of fixing things'
 author: 'patiboh'
 tags: ['html', 'tooling', 'art']
 ---
+
 I'd been steadily working on this website, when I got to a point where I was aware of the many unsolved issues that lay before me, but could not focus on a way forward. Competing for attention were bugs, my impatient self wanting to do more creative things, and an itching desire to learn more about the back end of the stack and distributed systems. A demanding wishlist on top of an already demanding schedule.
 
 What to do ?

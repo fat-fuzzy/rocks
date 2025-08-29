@@ -1,5 +1,16 @@
 # @fat-fuzzy/sketch
 
+## 0.1.26
+
+### Patch Changes
+
+- d1028fd: Dynamic nested links, linting, config & dependency updates
+- Updated dependencies [d1028fd]
+  - @fat-fuzzy/config@0.1.16
+  - @fat-fuzzy/gfx@0.1.11
+  - @fat-fuzzy/ui@0.1.73
+  - @fat-fuzzy/style@0.1.20
+
 ## 0.1.25
 
 ### Patch Changes

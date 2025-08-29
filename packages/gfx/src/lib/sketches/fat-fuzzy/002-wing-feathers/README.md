@@ -17,7 +17,7 @@ Use primitive type `LINE` :
 
 - [MDN - WebGL Constants](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Constants)
 - [webglfundamentals - Points, Lines, and Triangles](https://webglfundamentals.org/webgl/lessons/webgl-points-lines-triangles.html)
-TODO
+  TODO
 
 ### Wing Structure
 
@@ -27,7 +27,7 @@ TODO
    - a radius+ulna bone structure that moves the mid wing in and out
    - a metacarpal 'finger' bone that moves the wing tip in and out
    - a metacarpal 'thumb' bone that moves the wing tip in and out
-1. The wing has 3 layers of feathers:
+1. The wing has 4 layers of feathers:
    - layer 1:
      - the humerus bone has 6 feathers
      - the radius+ulna bone structure has 10 feathers
@@ -47,7 +47,7 @@ TODO
 
 ### Wing movement
 
-**1 Cycle** > **2 Sequences** > **5 Movements: [pause, beginning, middle, end, pause]** >  **100 - 1000 [middle steps], (100 - 1000) / 3 [end steps], 7 [pause steps]**
+**1 Cycle** > **2 Sequences** > **5 Movements:** [pause, beginning, middle, end, pause] > 100 - 1000 [middle steps], (100 - 1000) / 3 [end steps], 7 [pause steps]
 
 1. Cycle
    - the wing moves in a cycle of two sequences of movements: opening and closing
