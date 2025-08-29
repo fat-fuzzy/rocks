@@ -1,0 +1,4 @@
+fileignoreconfig:
+- filename: packages/prose/src/lib/editor/Menu.svelte
+  checksum: 80db7f3985638a076a73d6a3e8d948e865628611e0c4953c61cddabc4531780b
+version: "0.1.0"
