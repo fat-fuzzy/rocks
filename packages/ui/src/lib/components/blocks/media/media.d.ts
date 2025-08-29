@@ -1,4 +1,4 @@
-import type { Snippet } from "svelte";
+import type {Snippet} from 'svelte'
 export type Source = {width: string; height: string; format: string}
 
 export type MediaProps = {

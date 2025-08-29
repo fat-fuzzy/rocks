@@ -11,10 +11,10 @@ If there is a script with `defer` attribute, it will load scripts after the docu
 
 ```html
 <head>
-  <script defer src="deps.js"></script>
-  <script defer src="bundle.js"></script>
-  <script src="app.js" type="module"></script>
-  <!-- ESM modules are deferred by default -->
+	<script defer src="deps.js"></script>
+	<script defer src="bundle.js"></script>
+	<script src="app.js" type="module"></script>
+	<!-- ESM modules are deferred by default -->
 </head>
 ```
 
@@ -26,8 +26,8 @@ If there is a script with `async` attribute, it will be executed as soon as it i
 
 ```html
 <head>
-  <!-- Async modules will run as soon as they are loaded -->
-  <script async type="module" src="animation.js"></script>
+	<!-- Async modules will run as soon as they are loaded -->
+	<script async type="module" src="animation.js"></script>
 </head>
 ```
 
@@ -55,27 +55,27 @@ You can hook to a `connected` event from a custom element inside a component: th
 
 ```js
 customElements.define(
-  'enhance-parent',
-  class extends HTMLElement {
-    connectedCallback() {
-      console.log('connected', this.innerHTML)
-    }
-    disconnectCallback() {
-       console.log('disconnected', this.innerHTML)
-    }
-  },
+	'enhance-parent',
+	class extends HTMLElement {
+		connectedCallback() {
+			console.log('connected', this.innerHTML)
+		}
+		disconnectCallback() {
+			console.log('disconnected', this.innerHTML)
+		}
+	},
 )
 ```
 
 ```html
 <div class="gallery">
-  <!-- ... content -->
+	<!-- ... content -->
 
-  <!--
+	<!--
          👇 This will trigger a 'connected' event:
          by the time this loads, I can be sure that all the content in "gallery" will have loaded
      -->
-  <enhance-parent></enhance-parent>
+	<enhance-parent></enhance-parent>
 </div>
 ```
 

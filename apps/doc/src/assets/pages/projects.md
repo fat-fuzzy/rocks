@@ -5,6 +5,7 @@ slug: projects
 id: '006'
 tags: ['pages', 'projects']
 ---
+
 Here you'll find my creative coding sketches.
 They may be personal explorations, pieces of larger works in progress, or simple experiments with code.
 
