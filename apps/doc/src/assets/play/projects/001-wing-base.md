@@ -9,6 +9,7 @@ categories: ['webgl', 'learn']
 tags: ['2D', 'wings']
 series: ['001', '003']
 ---
+
 ## Context
 
 I'm trying to build a schematic animated wing using the `LINE` WebGL primitive. Is "primitive" the right word in this technical context? I'm not sure, but it seems analogue to technical primitives found elsewhere.
@@ -65,7 +66,7 @@ In other words:
    Each sequence has the following movements:
 
    | 1     | 2         | 3      | 4   | (five)  |
-   | ----- | --------- | -------|---- |-------- |
+   | ----- | --------- | ------ | --- | ------- |
    | pause | beginning | middle | end | (pause) |
 
 1. **Movement**

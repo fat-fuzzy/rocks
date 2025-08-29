@@ -17,7 +17,7 @@
 		media,
 		sizes,
 		style,
-		context
+		context,
 	}: MediaProps = $props()
 
 	let frameClass = $derived(
@@ -27,7 +27,6 @@
 				? `l:frame:${dimensions}`
 				: 'l:frame',
 	)
-
 </script>
 
 <ff-media>
@@ -62,7 +61,7 @@
 				{loading}
 				{style}
 				dimensions="full"
-				/>
+			/>
 		{/if}
 	</div>
 	{#if context}
