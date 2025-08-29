@@ -1,4 +1,6 @@
 fileignoreconfig:
 - filename: packages/prose/src/lib/editor/Menu.svelte
   checksum: 80db7f3985638a076a73d6a3e8d948e865628611e0c4953c61cddabc4531780b
-version: "0.1.0"
+- filename: pnpm-lock.yaml
+  checksum: 43e00771685fd1c548681042f3a2ace6b9cb5f17373fbcdbe53e47c14ef14651
+version: "0.1.1"
