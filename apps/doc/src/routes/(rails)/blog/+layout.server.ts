@@ -22,13 +22,14 @@ export const load = async ({locals, url}) => {
 									if (item) {
 										return {
 											slug: item.meta.slug,
-											title: item.meta.title,
+											title: item.meta.series.title,
 											itemPath: '/blog',
 										}
 									}
 								}
 							})
 							.filter((i) => i !== undefined) as NavItem[]
+						meta.title = meta.series.title
 						links.push(meta)
 					}
 				} else {
