@@ -43,6 +43,7 @@
 	.zone\:2 {
 		grid-template-areas: 'zone-main zone-main page-context';
 		grid-template-rows: 1fr;
+		grid-template-columns: 1fr auto;
 
 		> .page-context:not(.empty) {
 			scrollbar-width: thin;
