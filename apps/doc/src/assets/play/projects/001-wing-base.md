@@ -66,9 +66,9 @@ In other words:
 
    Each sequence has the following movements:
 
-   | 1     | 2         | 3      | 4   | (five)  |
-   | ----- | --------- | ------ | --- | ------- |
-   | pause | beginning | middle | end | (pause) |
+| 1     | 2         | 3      | 4   | (five)  |
+| ----- | --------- | ------ | --- | ------- |
+| pause | beginning | middle | end | (pause) |
 
 1. **Movement**
    - each movement has a series of steps which can be variable in length
