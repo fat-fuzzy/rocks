@@ -25,7 +25,7 @@ The design system will make my job easier in the long run: the project is small 
 
 Given the scale of this project I'll borrow from this source to get me started:
 
-Adapted from : [InVision Guide - Building an MVP Design System](https://www.invisionapp.com/lp/design-system-mvp-guide)
+Adapted from : [InVision Guide - Building an MVP Design System] (InVision is no longer, and the link is no longer available)
 
 ### Design System Overview
 

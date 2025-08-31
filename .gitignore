@@ -141,6 +141,7 @@ iam-policy-default.json
 .npmrc
 
 ### R Studio ignores & data sets ignores ###
+.Rproj.user
 .RData
 .Rhistory
 packages/lib/src/data

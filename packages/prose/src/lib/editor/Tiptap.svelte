@@ -45,10 +45,8 @@
 	{#if editor}
 		<Menu {editor} {commands} />
 	{/if}
-	<div
-		class="l:frame:prose maki:block:lg ravioli:md variant:bare dotted scroll:y"
-	>
-		<div class="content" bind:this={element}></div>
+	<div class="l:frame:prose maki:block:lg ravioli:md variant:bare dotted">
+		<div class="content scroll:y" bind:this={element}></div>
 	</div>
 </div>
 

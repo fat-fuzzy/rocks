@@ -15,7 +15,7 @@ th {
 	--lightness: var(--color-lightness-200);
 	padding: var(--ui-size) var(--ui-size-lg);
 	background-color: var(--shade);
-	text-align: center;
+	text-align: start;
 }
 
 td {

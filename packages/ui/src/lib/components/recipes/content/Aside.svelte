@@ -8,7 +8,7 @@
 	let publishedIcon = updated !== created ? 'outdated' : 'published'
 </script>
 
-<aside class="l:switcher:md th:sm justify:end">
+<aside>
 	{#if updated && created}
 		<div class="l:burrito:lg">
 			<Feedback

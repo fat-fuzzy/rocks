@@ -61,18 +61,19 @@ In other words:
    - the wing moves in a cycle of two sequences of movements:
      - opening sequence
      - closing sequence
+
 1. **Sequence**
 
    Each sequence has the following movements:
 
-   | 1     | 2         | 3      | 4   | (five)  |
-   | ----- | --------- | ------ | --- | ------- |
-   | pause | beginning | middle | end | (pause) |
+| 1     | 2         | 3      | 4   | (five)  |
+| ----- | --------- | ------ | --- | ------- |
+| pause | beginning | middle | end | (pause) |
 
 1. **Movement**
    - each movement has a series of steps which can be variable in length
    - the number of steps of a movement determines its speed and smoothness
-   - the first movement (and last) is followed by a pause movement (= no translation geometric terms)
+   - the first movement (and last) is followed by a pause movement (= no transformation in geometric terms)
 
 <h2 id="resources">Resources</h2>
 
