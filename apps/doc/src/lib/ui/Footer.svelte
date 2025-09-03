@@ -14,8 +14,7 @@
 		ui.utils.format.getClassNameFromPathname(page.url.pathname),
 	)
 	let aboutContainerClass = $derived(pageClass === 'page:home' ? '' : '')
-	// let footerOpen = $derived(pageClass === 'page:home' ? true : false)
-	let footerOpen = $derived(false)
+	let footerOpen = $derived(pageClass === 'page:home' ? true : false)
 </script>
 
 <footer class={footerClass}>

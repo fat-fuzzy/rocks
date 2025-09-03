@@ -14,6 +14,7 @@ type ScrollyProps = {
 	title?: string
 	level?: number
 	fixed?: boolean
+	direction?: string
 	dimensions?: string
 	animations?: string[]
 	items: ScrollyItemProps[]

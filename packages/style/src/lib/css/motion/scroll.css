@@ -37,6 +37,10 @@
 	scroll-snap-type: y;
 }
 
+.scroll\:y.rtl {
+	direction: rtl;
+}
+
 .scroll\:x.snap {
 	scroll-snap-type: x;
 }

@@ -9,6 +9,7 @@
 		fixed = false,
 		animations = ['fade'],
 		dimensions,
+		direction = '',
 		items,
 		snap = 'start',
 		magic,
@@ -75,7 +76,10 @@
 	data-testid="scrolly"
 	class={`scrolly scroll:container ${scrollContainerClasses}`}
 >
-	<ul bind:this={scrollArea} class="scroll:y snap w:full unstyled">
+	<ul
+		bind:this={scrollArea}
+		class={`scroll:y snap ${direction} w:full unstyled`}
+	>
 		<li class={`snap:center scroll:title`}>
 			<svelte:element this={`h${level}`} class="w:full text:center">
 				{title}
