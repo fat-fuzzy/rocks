@@ -1,3 +1,7 @@
+/**
+ * Settings: Day Variants
+ */
+
 @media (prefers-color-scheme: light) {
 	html {
 		color-scheme: light;
@@ -50,8 +54,108 @@
 		--shadow: oklch(
 			var(--lightness-accent-base) var(--chroma-accent-base) var(--hue)
 		);
+
+		--thumb: oklch(
+			var(--lightness-surface-3) var(--chroma-surface-3) var(--hue)
+		);
+		--track: oklch(var(--lightness-base) var(--chroma-base) var(--hue));
+		background-color: oklch(
+			var(--lightness-base) var(--chroma-base) var(--hue)
+		);
 	}
 }
+
+[class*='settings:day'],
+[color-scheme='light'] {
+	color-scheme: light;
+	--hue: var(--color-theme-primary);
+	--lightness-base: var(--color-lightness-light-base);
+	--lightness-accent-base: var(--color-lightness-400);
+	--lightness-contrast-base: var(--color-lightness-600);
+	--chroma-base: var(--color-chroma-neutral);
+	--chroma-contrast-base: var(--color-chroma-600);
+	--lightness: var(--color-lightness-light-base);
+	--lightness-accent: var(--color-lightness-300);
+	--lightness-contrast: var(--color-lightness-600);
+	--lightness-focus: var(--color-lightness-400);
+	--lightness-contrast-focus: var(--color-lightness-000);
+	--lightness-ui-base: var(--color-lightness-300);
+	--lightness-ui-base-pressed-hover: var(--color-lightness-400);
+	--lightness-ui-contrast-base: var(--color-lightness-light-base);
+	--lightness-ui-hover-base: var(--color-lightness-400);
+	--lightness-ui-hover-contrast-base: var(--color-lightness-light-base);
+	--lightness-surface-1: var(--color-lightness-000);
+	--lightness-surface-1-contrast: var(--color-lightness-400);
+	--lightness-surface-2: var(--color-lightness-100);
+	--lightness-surface-2-contrast: var(--color-lightness-500);
+	--lightness-surface-3: var(--color-lightness-200);
+	--lightness-surface-3-contrast: var(--color-lightness-600);
+	--lightness-surface-4: var(--color-lightness-400);
+	--lightness-surface-4-contrast: var(--color-lightness-100);
+	--lightness-surface-5: var(--color-lightness-500);
+	--lightness-surface-5-contrast: var(--color-lightness-000);
+	--chroma: var(--color-chroma-neutral);
+	--chroma-accent-base: var(--color-chroma-300);
+	--chroma-ink: var(--color-chroma-600);
+	--chroma-contrast: var(--color-chroma-600);
+	--chroma-focus: var(--color-chroma-400);
+	--chroma-contrast-focus: var(--color-chroma-000);
+	--chroma-surface-1: var(--color-chroma-000);
+	--chroma-surface-1-contrast: var(--color-chroma-400);
+	--chroma-surface-2: var(--color-chroma-100);
+	--chroma-surface-2-contrast: var(--color-chroma-500);
+	--chroma-surface-3: var(--color-chroma-200);
+	--chroma-surface-3-contrast: var(--color-chroma-600);
+	--chroma-surface-4: var(--color-chroma-400);
+	--chroma-surface-4-contrast: var(--color-chroma-100);
+	--chroma-surface-5: var(--color-chroma-400);
+	--chroma-surface-5-contrast: var(--color-chroma-100);
+	--shade: oklch(var(--lightness-base) var(--chroma) var(--hue));
+	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
+	--accent: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
+	--shadow: oklch(
+		var(--lightness-accent-base) var(--chroma-accent-base) var(--hue)
+	);
+
+	--thumb: oklch(var(--lightness-surface-3) var(--chroma-surface-3) var(--hue));
+	--track: oklch(var(--lightness-base) var(--chroma-base) var(--hue));
+	background-color: oklch(var(--lightness-base) var(--chroma-base) var(--hue));
+}
+
+html:has([class*='settings:day:']) {
+	--thumb: oklch(var(--lightness-surface-5) var(--chroma-surface-5) var(--hue));
+	--track: oklch(
+		var(--lightness-contrast-base) var(--chroma-contrast-base) var(--hue)
+	);
+	background-color: oklch(
+		var(--lightness-contrast-base) var(--chroma-contrast-base) var(--hue)
+	);
+}
+
+.settings\:day\:contrast {
+	--lightness-base: var(--color-lightness-light-contrast);
+}
+
+.settings\:day\:blend {
+	--lightness-base: var(--color-lightness-light-blend);
+}
+
+@media (prefers-color-scheme: light) {
+	.emoji\:blend::before {
+		content: var(--emoji-blend-day);
+	}
+}
+
+[class*='settings:day'],
+[color-scheme='light'] {
+	.emoji\:blend::before {
+		content: var(--emoji-blend-day);
+	}
+}
+
+/**
+ * Settings: Night Variants
+ */
 
 @media (prefers-color-scheme: dark) {
 	html {
@@ -106,61 +210,15 @@
 		--shadow: oklch(
 			var(--lightness-accent-base) var(--chroma-accent-base) var(--hue)
 		);
+
+		--thumb: oklch(
+			var(--lightness-surface-2) var(--chroma-surface-2) var(--hue)
+		);
+		--track: oklch(var(--lightness-base) var(--chroma-base) var(--hue));
+		background-color: oklch(
+			var(--lightness-base) var(--chroma-base) var(--hue)
+		);
 	}
-}
-
-[class*='settings:day'],
-[color-scheme='light'] {
-	color-scheme: light;
-	--hue: var(--color-theme-primary);
-	--lightness-base: var(--color-lightness-light-base);
-	--lightness-accent-base: var(--color-lightness-400);
-	--lightness-contrast-base: var(--color-lightness-600);
-	--chroma-base: var(--color-chroma-neutral);
-	--chroma-contrast-base: var(--color-chroma-600);
-	--lightness: var(--color-lightness-light-base);
-	--lightness-accent: var(--color-lightness-300);
-	--lightness-contrast: var(--color-lightness-600);
-	--lightness-focus: var(--color-lightness-400);
-	--lightness-contrast-focus: var(--color-lightness-000);
-	--lightness-ui-base: var(--color-lightness-300);
-	--lightness-ui-base-pressed-hover: var(--color-lightness-400);
-	--lightness-ui-contrast-base: var(--color-lightness-light-base);
-	--lightness-ui-hover-base: var(--color-lightness-400);
-	--lightness-ui-hover-contrast-base: var(--color-lightness-light-base);
-	--lightness-surface-1: var(--color-lightness-000);
-	--lightness-surface-1-contrast: var(--color-lightness-400);
-	--lightness-surface-2: var(--color-lightness-100);
-	--lightness-surface-2-contrast: var(--color-lightness-500);
-	--lightness-surface-3: var(--color-lightness-200);
-	--lightness-surface-3-contrast: var(--color-lightness-600);
-	--lightness-surface-4: var(--color-lightness-400);
-	--lightness-surface-4-contrast: var(--color-lightness-100);
-	--lightness-surface-5: var(--color-lightness-500);
-	--lightness-surface-5-contrast: var(--color-lightness-000);
-	--chroma: var(--color-chroma-neutral);
-	--chroma-accent-base: var(--color-chroma-300);
-	--chroma-ink: var(--color-chroma-600);
-	--chroma-contrast: var(--color-chroma-600);
-	--chroma-focus: var(--color-chroma-400);
-	--chroma-contrast-focus: var(--color-chroma-000);
-	--chroma-surface-1: var(--color-chroma-000);
-	--chroma-surface-1-contrast: var(--color-chroma-400);
-	--chroma-surface-2: var(--color-chroma-100);
-	--chroma-surface-2-contrast: var(--color-chroma-500);
-	--chroma-surface-3: var(--color-chroma-200);
-	--chroma-surface-3-contrast: var(--color-chroma-600);
-	--chroma-surface-4: var(--color-chroma-400);
-	--chroma-surface-4-contrast: var(--color-chroma-100);
-	--chroma-surface-5: var(--color-chroma-400);
-	--chroma-surface-5-contrast: var(--color-chroma-100);
-
-	--shade: oklch(var(--lightness-base) var(--chroma) var(--hue));
-	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
-	--accent: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
-	--shadow: oklch(
-		var(--lightness-accent-base) var(--chroma-accent-base) var(--hue)
-	);
 }
 
 [class*='settings:night'],
@@ -216,14 +274,10 @@
 	--shadow: oklch(
 		var(--lightness-accent-base) var(--chroma-accent-base) var(--hue)
 	);
-}
 
-.settings\:day\:contrast {
-	--lightness-base: var(--color-lightness-light-contrast);
-}
-
-.settings\:day\:blend {
-	--lightness-base: var(--color-lightness-light-blend);
+	--thumb: oklch(var(--lightness-surface-2) var(--chroma-surface-2) var(--hue));
+	--track: oklch(var(--lightness-base) var(--chroma-base) var(--hue));
+	background-color: oklch(var(--lightness-base) var(--chroma-base) var(--hue));
 }
 
 .settings\:night\:contrast {
@@ -232,12 +286,6 @@
 
 .settings\:night\:blend {
 	--lightness-base: var(--color-lightness-dark-blend);
-}
-
-@media (prefers-color-scheme: light) {
-	.emoji\:blend::before {
-		content: var(--emoji-blend-day);
-	}
 }
 
 @media (prefers-color-scheme: dark) {
@@ -253,9 +301,6 @@
 	}
 }
 
-[class*='settings:day'],
-[color-scheme='light'] {
-	.emoji\:blend::before {
-		content: var(--emoji-blend-day);
-	}
+html:has([class*='settings:night:']) {
+	--thumb: oklch(var(--lightness-surface-2) var(--chroma-surface-2) var(--hue));
 }
