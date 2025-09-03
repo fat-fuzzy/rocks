@@ -28,6 +28,7 @@
 			animations={['fade']}
 			items={sections}
 			level={1}
+			direction="rtl"
 			snap="center"
 			magic={{spell: 'fuzzy', shape: 'round'}}
 		/>

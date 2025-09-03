@@ -32,7 +32,7 @@
 		metro: 'l:grid size:3xs scroll:y align:start bg:inherit',
 		railway: 'l:grid size:3xs scroll:y align:start bg:inherit',
 		steam: 'l:grid size:3xs scroll:y align:start align:start bg:inherit',
-		tgv: 'snap:center align:start scroll:container bg:inherit',
+		tgv: 'snap:center align:start bg:inherit',
 		tram: 'l:grid snap:start size:3xs scroll:y align:start bg:inherit',
 		voyager: 'l:grid snap:start size:3xs scroll:y align:start bg:inherit ',
 		urbanist: 'snap:start l:grid size:3xs scroll:y bg:inherit',
