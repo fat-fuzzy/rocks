@@ -23,15 +23,17 @@
 	layout="tram"
 >
 	{#snippet main()}
-		<ul class="l:grid:auto size:sm">
+		<ul class="l:grid:auto size:sm unstyled">
 			{#each markdowns as { meta }, i (i)}
 				{#if meta.status !== 'draft'}
-					<a
-						class="surface:2:neutral ravioli:sm"
-						href={`${page.url.pathname}/${meta.slug}`}
-					>
-						{Number(meta.id)} - {meta.title}
-					</a>
+					<li class="surface:2:neutral ravioli:3xs l:stack shape:mellow">
+						<a
+							class="raviolink w:full"
+							href={`${page.url.pathname}/${meta.slug}`}
+						>
+							{Number(meta.id)} - {meta.title}
+						</a>
+					</li>
 				{/if}
 			{/each}
 		</ul>
@@ -40,7 +42,7 @@
 		<p class="font:md font:heading font:semibold cannelloni:inline size:2xs">
 			Tags
 		</p>
-		<div class="l:grid:auto size:xs maki:block">
+		<div class="l:grid:auto size:sm maki:block">
 			{#each tags as tag}
 				<details class="surface:1:neutral shape:soft" open>
 					<summary
@@ -48,7 +50,7 @@
 					>
 						{tag}
 					</summary>
-					<div class="ravioli:lg shape:soft">
+					<div class="ravioli:md shape:soft">
 						<ul class="unstyled">
 							{#each markdowns as { meta }}
 								{#if meta.tags.includes(tag)}

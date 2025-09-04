@@ -6,7 +6,7 @@ table {
 	line-height: var(--font-leading-ui);
 }
 
-*:has(table) {
+[class*='l\:text']:has(table) {
 	max-inline-size: var(var(--text-inline-size, var(--max-inline-size)), 100%);
 	overflow: auto;
 }

@@ -20,15 +20,17 @@
 	layout="tram"
 >
 	{#snippet main()}
-		<ul class="l:grid:auto size:xs">
+		<ul class="l:grid:auto size:sm unstyled">
 			{#each markdowns as { meta }, i (i)}
 				{#if meta.status !== 'draft'}
-					<a
-						class="surface:2:neutral ravioli:sm"
-						href={`${page.url.pathname}/${meta.slug}`}
-					>
-						{Number(meta.id)} - {meta.title}
-					</a>
+					<li class="surface:2:neutral ravioli:3xs l:stack shape:mellow">
+						<a
+							class="raviolink w:full"
+							href={`${page.url.pathname}/${meta.slug}`}
+						>
+							{Number(meta.id)} - {meta.title}
+						</a>
+					</li>
 				{/if}
 			{/each}
 		</ul>
