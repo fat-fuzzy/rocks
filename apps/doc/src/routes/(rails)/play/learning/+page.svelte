@@ -48,7 +48,7 @@
 						>
 							{tag}
 						</summary>
-						<div class="ravioli:lg shape:soft">
+						<div class="ravioli:md shape:soft">
 							<ul class="unstyled">
 								{#each sketches as { slug, asset, title, tags }}
 									{#if tags.includes(tag)}

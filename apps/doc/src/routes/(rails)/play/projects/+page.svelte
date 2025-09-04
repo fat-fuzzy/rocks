@@ -45,12 +45,12 @@
 						>
 							{tag}
 						</summary>
-						<div class="ravioli:3xs shape:soft">
+						<div class="ravioli:md shape:soft">
 							<ul class="unstyled">
 								{#each sketches as { slug, asset, title, tags }}
 									{#if tags.includes(tag)}
-										<li class={`ravioli:3xs ${asset}`}>
-											<a class="font:md" href={`${path}/${slug}`}>
+										<li class={`size:sm emoji:${asset}`}>
+											<a class="font:sm" href={`${path}/${slug}`}>
 												{title}
 											</a>
 										</li>
