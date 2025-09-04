@@ -123,6 +123,7 @@
 }
 
 html:has([class*='settings:day:']) {
+	--hue: var(--color-theme-primary);
 	--thumb: oklch(var(--lightness-surface-5) var(--chroma-surface-5) var(--hue));
 	--track: oklch(
 		var(--lightness-contrast-base) var(--chroma-contrast-base) var(--hue)
@@ -302,5 +303,6 @@ html:has([class*='settings:day:']) {
 }
 
 html:has([class*='settings:night:']) {
+	--hue: var(--color-theme-primary);
 	--thumb: oklch(var(--lightness-surface-2) var(--chroma-surface-2) var(--hue));
 }
