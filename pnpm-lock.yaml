@@ -544,6 +544,9 @@ importers:
       '@terrazzo/plugin-css':
         specifier: ^0.10.1
         version: 0.10.2(@terrazzo/cli@0.10.1(hono@4.9.0))
+      '@terrazzo/plugin-js':
+        specifier: ^0.10.1
+        version: 0.10.1(@terrazzo/cli@0.10.1(hono@4.9.0))
       autoprefixer:
         specifier: ^10.4.21
         version: 10.4.21(postcss@8.5.6)
@@ -2260,6 +2263,11 @@ packages:
 
   '@terrazzo/plugin-css@0.10.2':
     resolution: {integrity: sha512-RSkIRMMipz300zfL0gX27HPq9xLRV9PwB5RkQuaryAjzHbjM8Cv5cyAVECukFUC0PDH4/FklCFEvvREG+erFrg==}
+    peerDependencies:
+      '@terrazzo/cli': ^0.10.1
+
+  '@terrazzo/plugin-js@0.10.1':
+    resolution: {integrity: sha512-GRIw+BJQLoYXw3nzAZ2I40uyKSuX5hptJiCBMtykQ5pmvdLEe48pjMiiy4nhxWN3oNEVxGOabu/sOH3ygZvRLg==}
     peerDependencies:
       '@terrazzo/cli': ^0.10.1
 
@@ -7837,6 +7845,11 @@ snapshots:
       '@terrazzo/cli': 0.10.1(hono@4.9.0)
       '@terrazzo/token-tools': 0.10.1
       wildcard-match: 5.1.4
+
+  '@terrazzo/plugin-js@0.10.1(@terrazzo/cli@0.10.1(hono@4.9.0))':
+    dependencies:
+      '@terrazzo/cli': 0.10.1(hono@4.9.0)
+      '@terrazzo/token-tools': 0.10.1
 
   '@terrazzo/token-tools@0.10.1':
     dependencies:

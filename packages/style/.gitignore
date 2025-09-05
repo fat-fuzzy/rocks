@@ -17,5 +17,7 @@ vite.config.ts.timestamp-*
 /playwright/.cache/
 
 # CSS side effects
-/src/lib/css/mixins/*.css
+src/lib/css/mixins/*.css
+src/lib/css/variables/
+!src/lib/css/variables/index.js
 /logs

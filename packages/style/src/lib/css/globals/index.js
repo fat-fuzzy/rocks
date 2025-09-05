@@ -29,7 +29,8 @@ import './text/typography.css'
 import './text/scale.css'
 
 /* Icons */
-import './icons/icon.css' /* Use to display emojis and svg icons */
-import './icons/svg.css' /* Use to display svg icons */
-import './icons/assets.css' /* Use to display svg icons */
-import './icons/emoji.css' /* Use to display emoji icons */
+import './icons/icon.css' /* Use to style all icons */
+import './icons/svg.css' /* Use to style SVG icons */
+import './icons/emoji.css' /* Use to style emoji icons */
+import './icons/assets-svg.css' /* SVG assets */
+import './icons/assets-emoji.css' /* emoji assets */
