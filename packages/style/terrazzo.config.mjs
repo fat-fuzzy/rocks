@@ -1,5 +1,7 @@
 import {defineConfig} from '@terrazzo/cli'
-import css from '@terrazzo/plugin-css'
+import pluginCSS from '@terrazzo/plugin-css'
+import pluginJS from '@terrazzo/plugin-js'
+import pluginAssetsEmoji from './src/lib/plugins/assets-emoji.js'
 
 const paths = {
 	in: './src/lib/tokens/',
@@ -15,12 +17,13 @@ const files = [
 	'scale.json',
 	'font.json',
 	'settings.json',
+	'assets-emoji.json',
 ]
 
 export default defineConfig({
-	tokens: files.map((file) => `${paths['in']}${file}`),
+	tokens: files.map((file) => `${paths.in}${file}`),
 	plugins: [
-		css({
+		pluginCSS({
 			transform(token, mode) {
 				switch (token.$type) {
 					case 'derived': {
@@ -37,8 +40,14 @@ export default defineConfig({
 				}
 			},
 		}),
+		pluginJS({
+			js: 'variables.js',
+		}),
+		pluginAssetsEmoji({
+			js: 'assets-emoji.js',
+		}),
 	],
-	outDir: paths['out'],
+	outDir: paths.out,
 	lint: {
 		/** @see https://terrazzo.app/docs/cli/lint */
 	},
