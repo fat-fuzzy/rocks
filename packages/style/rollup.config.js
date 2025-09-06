@@ -5,4 +5,4 @@ import scssConfig from './rollup.config.scss.js'
 /**
  * This config will run each config in order and output a css library in "dist/lib/"
  */
-export default [scssConfig, mainConfig, libConfig]
+export default [scssConfig, libConfig, mainConfig]
