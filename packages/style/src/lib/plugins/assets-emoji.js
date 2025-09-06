@@ -1,4 +1,4 @@
-export default function derivedVariable() {
+export default function emojiAsset() {
 	return {
 		name: 'emoji-assets',
 		async transform({tokens, setTransform}) {
@@ -48,12 +48,12 @@ export default function derivedVariable() {
 				}
 			}
 			output.push('};', '', 'export default tokens;', '')
-			outputFile('assets.js', output.join('\n'))
+			outputFile('assets-emoji.js', output.join('\n'))
 		},
 
 		buildTokensTS({getTransforms, outputFile}) {
 			const tsOutput = []
-			tsOutput.push('export type IconName = ')
+			tsOutput.push('export type EmojiIcon = ')
 			const svgTypes = getTransforms({
 				format: 'ts',
 				id: 'emoji.icon.*',
@@ -64,7 +64,7 @@ export default function derivedVariable() {
 				}
 			}
 			tsOutput.push('', '')
-			outputFile('assets.ts', tsOutput.join('\n'))
+			outputFile('assets-emoji.ts', tsOutput.join('\n'))
 		},
 
 		buildTokensCSS({getTransforms, outputFile}) {

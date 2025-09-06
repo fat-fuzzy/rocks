@@ -1,0 +1,15 @@
+{
+	"svg": {
+		"$type": "asset-svg",
+		"icon": {
+			"$value": [
+				"egg",
+				"magic",
+				"sparkles",
+				"water",
+				"tsunami",
+				"github"
+			]
+		}
+	}
+}
