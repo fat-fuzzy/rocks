@@ -2,7 +2,7 @@
 	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
 
-	const {PageRails, Aside} = ui.content
+	const {PageRails, PageContext} = ui.content
 	const {EscapeHtml} = ui.headless
 
 	let appContext = $derived(page.data.appContext)
@@ -30,7 +30,7 @@
 			<EscapeHtml id={slug} {html} size="md" />
 		{/snippet}
 		{#snippet aside()}
-			<Aside
+			<PageContext
 				created={markdown.meta.date_created}
 				updated={markdown.meta.date_updated}
 			/>
