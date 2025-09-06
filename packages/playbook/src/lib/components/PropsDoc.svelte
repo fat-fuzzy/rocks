@@ -18,7 +18,7 @@
 				<ul class="tags l:switcher:2xs" data-testid="doc-state-props">
 					{#each meta.props_state as prop}
 						<li
-							class="font:xs ravioli:3xs surface:1:primary variant:bare shape:soft text:center"
+							class="font:xs ravioli:3xs surface:1:primary variant:bare shape:soft"
 							data-testid={`prop-state-${prop}`}
 						>
 							{prop}
@@ -37,7 +37,7 @@
 				<ul class="tags l:switcher:2xs" data-testid="doc-child-props">
 					{#each meta.content_types as prop}
 						<li
-							class="font:xs ravioli:3xs surface:1:accent variant:bare shape:soft text:center"
+							class="font:xs ravioli:3xs surface:1:accent variant:bare shape:soft"
 							data-testid={`prop-child-${prop}`}
 						>
 							{prop}
