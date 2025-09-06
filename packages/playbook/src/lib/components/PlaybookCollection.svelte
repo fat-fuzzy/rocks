@@ -1,6 +1,8 @@
 <script lang="ts">
 	import type {Snippet} from 'svelte'
 	import type {Meta} from '$types'
+	import {onMount} from 'svelte'
+
 	import ui from '@fat-fuzzy/ui'
 	import PropsDemo from './PropsDemo.svelte'
 	import PropsDoc from './PropsDoc.svelte'
@@ -80,14 +82,38 @@
 	let componentNames = $derived(Object.keys(items))
 
 	//== App preferences (user controlled)
-	let spell = $derived(context.app.brightness === 'day' ? 'dawn' : 'dusk')
+	let useDarkScheme = $state(context.app.brightness === 'night')
+	let spell = $derived.by(() => {
+		if (!context.app.brightness) {
+			return useDarkScheme ? 'dusk' : 'dawn'
+		} else {
+			return context.app.brightness === 'day' ? 'dawn' : 'dusk'
+		}
+	})
+
 	let collectionContainer = $derived(
 		category === 'blocks' ? 'l:grid:auto size:md' : 'l:grid:auto size:lg',
 	)
-
 	let link = $derived(
 		path.substring(0, path.indexOf(category) + category.length),
 	)
+
+	function handleThemeChange(event: MediaQueryListEvent | MediaQueryList) {
+		if (!context.app.brightness) {
+			useDarkScheme = event.matches ? true : false
+		}
+	}
+
+	onMount(() => {
+		const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)')
+		handleThemeChange(prefersDarkScheme)
+		// Listen for changes (but only apply if no saved preference)
+		prefersDarkScheme.addEventListener('change', handleThemeChange)
+
+		return () => {
+			prefersDarkScheme.removeEventListener('change', handleThemeChange)
+		}
+	})
 </script>
 
 {#snippet categoryElements()}
