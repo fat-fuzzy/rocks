@@ -257,14 +257,14 @@ html:has([class*='settings:night:']),
 
 @media (prefers-color-scheme: light) {
 	.emoji\:blend::before {
-		content: var(--emoji-blend-day);
+		content: var(--emoji-icon-blend-day);
 	}
 }
 
 [class*='settings:day'],
 [color-scheme='light'] {
 	.emoji\:blend::before {
-		content: var(--emoji-blend-day);
+		content: var(--emoji-icon-blend-day);
 	}
 }
 
@@ -278,13 +278,13 @@ html:has([class*='settings:night:']),
 
 @media (prefers-color-scheme: dark) {
 	.emoji\:blend::before {
-		content: var(--emoji-blend-night);
+		content: var(--emoji-icon-blend-night);
 	}
 }
 
 [class*='settings:night'],
 [color-scheme='dark'] {
 	.emoji\:blend::before {
-		content: var(--emoji-blend-night);
+		content: var(--emoji-icon-blend-night);
 	}
 }
