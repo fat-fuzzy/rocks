@@ -113,7 +113,7 @@
 </main>
 
 {#if layout !== 'tgv'}
-	<div
+	<aside
 		id={`context-${id}`}
 		class={`page-context ${contextClass} ${mediaClass} scroll:y`}
 	>
@@ -125,5 +125,5 @@
 				{@render aside()}
 			{/if}
 		</div>
-	</div>
+	</aside>
 {/if}
