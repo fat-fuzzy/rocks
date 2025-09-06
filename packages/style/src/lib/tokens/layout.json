@@ -94,25 +94,25 @@
 		},
 		"breakpoint": {
 			"2xs": {
-				"$value": "320px"
+				"$value": "20rem"
 			},
 			"xs": {
-				"$value": "620px"
+				"$value": "38.75rem"
 			},
 			"sm": {
-				"$value": "935px"
+				"$value": "58.45rem"
 			},
 			"md": {
-				"$value": "1360px"
+				"$value": "85rem"
 			},
 			"lg": {
-				"$value": "1620px"
+				"$value": "101.25rem"
 			},
 			"xl": {
-				"$value": "2048px"
+				"$value": "128rem"
 			},
 			"2xl": {
-				"$value": "3048px"
+				"$value": "190.5rem"
 			}
 		},
 		"threshold": {
