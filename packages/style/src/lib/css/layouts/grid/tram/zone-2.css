@@ -3,9 +3,10 @@
  * Contains main content & page context
  */
 
-
 @media screen and (min-width: 620px) {
 	.tram.zone\:2 {
+		grid-template-columns: 1fr 1fr var(--sidebar-width);
+
 		> .page-context {
 			max-block-size: var(--max-block-size);
 		}
