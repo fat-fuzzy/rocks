@@ -54,6 +54,7 @@
 		{title}
 	</svelte:element>
 	<nav
+		aria-label="Breadcrumb"
 		id={`${id}-breadcrumbs`}
 		class={`breadcrumbs ${navClasses}`}
 		data-testid={`${id}-breadcrumbs`}
