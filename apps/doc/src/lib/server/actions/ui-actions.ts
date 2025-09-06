@@ -1,3 +1,4 @@
+import type {RequestEvent} from '@sveltejs/kit'
 import type {UiActionSetInput, UiActionSetOutput} from '$lib/types/actions.js'
 import {error} from '@sveltejs/kit'
 import ui from '@fat-fuzzy/ui'
@@ -65,7 +66,7 @@ async function handleToggleUiReveal({
 	}
 }
 
-async function handleToggleSidebar(event) {
+async function handleToggleSidebar(event: RequestEvent) {
 	const element = 'sidebar'
 	return handleToggleUiReveal({
 		event,
@@ -76,7 +77,7 @@ async function handleToggleSidebar(event) {
 	})
 }
 
-async function handleToggleAppContext(event) {
+async function handleToggleAppContext(event: RequestEvent) {
 	const element = 'appContext'
 	return handleToggleUiReveal({
 		event,
@@ -87,7 +88,7 @@ async function handleToggleAppContext(event) {
 	})
 }
 
-async function handleToggleNav(event) {
+async function handleToggleNav(event: RequestEvent) {
 	const element = 'nav'
 	return handleToggleUiReveal({
 		event,
@@ -98,7 +99,7 @@ async function handleToggleNav(event) {
 	})
 }
 
-async function handleToggleTokens(event) {
+async function handleToggleTokens(event: RequestEvent) {
 	const element = 'tokens'
 	return handleToggleUiReveal({
 		event,
@@ -109,7 +110,7 @@ async function handleToggleTokens(event) {
 	})
 }
 
-async function handleToggleBlocks(event) {
+async function handleToggleBlocks(event: RequestEvent) {
 	const element = 'blocks'
 	return handleToggleUiReveal({
 		event,
@@ -120,7 +121,7 @@ async function handleToggleBlocks(event) {
 	})
 }
 
-async function handleToggleLayouts(event) {
+async function handleToggleLayouts(event: RequestEvent) {
 	const element = 'layouts'
 	return handleToggleUiReveal({
 		event,
@@ -131,7 +132,7 @@ async function handleToggleLayouts(event) {
 	})
 }
 
-async function handleToggleRecipes(event) {
+async function handleToggleRecipes(event: RequestEvent) {
 	const element = 'recipes'
 	return handleToggleUiReveal({
 		event,
@@ -142,7 +143,7 @@ async function handleToggleRecipes(event) {
 	})
 }
 
-async function handleTogglePageContext(event) {
+async function handleTogglePageContext(event: RequestEvent) {
 	const element = 'pageContext'
 	return handleToggleUiReveal({
 		event,
@@ -153,7 +154,7 @@ async function handleTogglePageContext(event) {
 	})
 }
 
-async function handleToggleUsage(event) {
+async function handleToggleUsage(event: RequestEvent) {
 	const element = 'usage'
 	return handleToggleUiReveal({
 		event,
@@ -164,7 +165,7 @@ async function handleToggleUsage(event) {
 	})
 }
 
-async function handleToggleDecisions(event) {
+async function handleToggleDecisions(event: RequestEvent) {
 	const element = 'decisions'
 	return handleToggleUiReveal({
 		event,
@@ -175,7 +176,7 @@ async function handleToggleDecisions(event) {
 	})
 }
 
-async function handleToggleLearning(event) {
+async function handleToggleLearning(event: RequestEvent) {
 	const element = 'learning'
 	return handleToggleUiReveal({
 		event,
@@ -186,7 +187,7 @@ async function handleToggleLearning(event) {
 	})
 }
 
-async function handleToggleProjects(event) {
+async function handleToggleProjects(event: RequestEvent) {
 	const element = 'projects'
 	return handleToggleUiReveal({
 		event,
