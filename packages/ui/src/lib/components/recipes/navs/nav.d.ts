@@ -35,6 +35,7 @@ export type NavProps = UiBlockProps & {
 
 export type PageNavProps = UiBlockProps & {
 	id: string
+	label?: string
 	hash?: string
 	layout?: string
 	background?: string
