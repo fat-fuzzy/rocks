@@ -15,7 +15,6 @@
 	justify-content: var(--justify, space-between);
 	align-items: center;
 	inline-size: 100%;
-	scrollbar-color: var(--thumb) var(--track);
 }
 
 /*

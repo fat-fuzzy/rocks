@@ -58,13 +58,12 @@
 		--thumb: oklch(
 			var(--lightness-surface-3) var(--chroma-surface-3) var(--hue)
 		);
-		--track: oklch(var(--lightness-base) var(--chroma-base) var(--hue));
-		background-color: oklch(
-			var(--lightness-base) var(--chroma-base) var(--hue)
-		);
+		--track: var(--shade);
+		background-color: var(--shade);
 	}
 }
 
+html:has([class*='settings:day:']),
 [class*='settings:day'],
 [color-scheme='light'] {
 	color-scheme: light;
@@ -118,40 +117,8 @@
 	);
 
 	--thumb: oklch(var(--lightness-surface-3) var(--chroma-surface-3) var(--hue));
-	--track: oklch(var(--lightness-base) var(--chroma-base) var(--hue));
-	background-color: oklch(var(--lightness-base) var(--chroma-base) var(--hue));
-}
-
-html:has([class*='settings:day:']) {
-	--hue: var(--color-theme-primary);
-	--thumb: oklch(var(--lightness-surface-5) var(--chroma-surface-5) var(--hue));
-	--track: oklch(
-		var(--lightness-contrast-base) var(--chroma-contrast-base) var(--hue)
-	);
-	background-color: oklch(
-		var(--lightness-contrast-base) var(--chroma-contrast-base) var(--hue)
-	);
-}
-
-.settings\:day\:contrast {
-	--lightness-base: var(--color-lightness-light-contrast);
-}
-
-.settings\:day\:blend {
-	--lightness-base: var(--color-lightness-light-blend);
-}
-
-@media (prefers-color-scheme: light) {
-	.emoji\:blend::before {
-		content: var(--emoji-blend-day);
-	}
-}
-
-[class*='settings:day'],
-[color-scheme='light'] {
-	.emoji\:blend::before {
-		content: var(--emoji-blend-day);
-	}
+	--track: var(--shade);
+	background-color: var(--shade);
 }
 
 /**
@@ -215,13 +182,12 @@ html:has([class*='settings:day:']) {
 		--thumb: oklch(
 			var(--lightness-surface-2) var(--chroma-surface-2) var(--hue)
 		);
-		--track: oklch(var(--lightness-base) var(--chroma-base) var(--hue));
-		background-color: oklch(
-			var(--lightness-base) var(--chroma-base) var(--hue)
-		);
+		--track: var(--shade);
+		background-color: var(--shade);
 	}
 }
 
+html:has([class*='settings:night:']),
 [class*='settings:night'],
 [color-scheme='dark'] {
 	color-scheme: dark;
@@ -277,8 +243,29 @@ html:has([class*='settings:day:']) {
 	);
 
 	--thumb: oklch(var(--lightness-surface-2) var(--chroma-surface-2) var(--hue));
-	--track: oklch(var(--lightness-base) var(--chroma-base) var(--hue));
-	background-color: oklch(var(--lightness-base) var(--chroma-base) var(--hue));
+	--track: var(--shade);
+	background-color: var(--shade);
+}
+
+.settings\:day\:contrast {
+	--lightness-base: var(--color-lightness-light-contrast);
+}
+
+.settings\:day\:blend {
+	--lightness-base: var(--color-lightness-light-blend);
+}
+
+@media (prefers-color-scheme: light) {
+	.emoji\:blend::before {
+		content: var(--emoji-icon-blend-day);
+	}
+}
+
+[class*='settings:day'],
+[color-scheme='light'] {
+	.emoji\:blend::before {
+		content: var(--emoji-icon-blend-day);
+	}
 }
 
 .settings\:night\:contrast {
@@ -291,18 +278,13 @@ html:has([class*='settings:day:']) {
 
 @media (prefers-color-scheme: dark) {
 	.emoji\:blend::before {
-		content: var(--emoji-blend-night);
+		content: var(--emoji-icon-blend-night);
 	}
 }
 
 [class*='settings:night'],
 [color-scheme='dark'] {
 	.emoji\:blend::before {
-		content: var(--emoji-blend-night);
+		content: var(--emoji-icon-blend-night);
 	}
-}
-
-html:has([class*='settings:night:']) {
-	--hue: var(--color-theme-primary);
-	--thumb: oklch(var(--lightness-surface-2) var(--chroma-surface-2) var(--hue));
 }

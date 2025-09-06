@@ -1,10 +1,7 @@
 /* Scroll container */
 [class*='scroll:'] {
-	--lightness-scrollbar: var(--lightness-base);
-	--chroma-scrollbar: var(--chroma-base);
 	scrollbar-gutter: stable;
 	scrollbar-width: thin;
-	scrollbar-color: var(--thumb) var(--track);
 }
 
 [class*='scroll:'].compact {

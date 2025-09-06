@@ -17,7 +17,7 @@ export default {
 		{
 			name: 'create-index-js',
 			writeBundle() {
-				const cssImport = `import './main.css';\n`
+				const cssImport = `import './index.css';\n`
 				fs.writeFileSync(path.join(outDir, 'index.js'), cssImport)
 			},
 		},
