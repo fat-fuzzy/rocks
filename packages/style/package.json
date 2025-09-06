@@ -8,7 +8,7 @@
 	"scripts": {
 		"clean": "node ./clean-dist.js",
 		"prebuild": "pnpm clean",
-		"build": "turbo build:scss build:main build:lib",
+		"build": "turbo build:scss build:lib build:main",
 		"build:all": "pnpm build:tokens && pnpm build",
 		"build:lib": "rollup --config rollup.config.lib.js",
 		"build:main": "rollup --config rollup.config.main.js",
