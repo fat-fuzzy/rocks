@@ -27,7 +27,7 @@ let meta = {
 	id: '007',
 	slug: 'center-origin',
 	title: 'Center Origin',
-	asset: 'bullseye',
+	asset: 'center-origin',
 	categories: ['Learning'],
 	tags: ['2D', 'webgl', 'webglfundamentals', 'matrix'],
 	controls: ['matrix-2d', 'loop'],

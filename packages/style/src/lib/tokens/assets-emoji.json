@@ -508,13 +508,13 @@
 			"geometry-2d": {
 				"$value": "{emoji.base.straight-ruler}"
 			},
-			"geometry-3": {
+			"matrix-2d": {
 				"$value": "{emoji.base.triangular-ruler}"
 			},
-			"russian-dolls": {
+			"hierarchical": {
 				"$value": "{emoji.base.russian-dolls}"
 			},
-			"bullseye": {
+			"center-origin": {
 				"$value": "{emoji.base.bullseye}"
 			},
 			"projection": {
