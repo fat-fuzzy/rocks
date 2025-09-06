@@ -21,19 +21,13 @@
 
 	function handleThemeChange(event: MediaQueryListEvent | MediaQueryList) {
 		if (!page.data.appContext.brightness) {
-			if (event.matches) {
-				useDarkScheme = true
-			} else {
-				useDarkScheme = false
-			}
+			useDarkScheme = event.matches ? true : false
 		}
 	}
 
 	onMount(() => {
 		const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)')
-
 		handleThemeChange(prefersDarkScheme)
-
 		// Listen for changes (but only apply if no saved preference)
 		prefersDarkScheme.addEventListener('change', handleThemeChange)
 
