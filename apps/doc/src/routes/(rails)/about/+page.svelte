@@ -7,7 +7,7 @@
 	const {EscapeHtml} = ui.headless
 	const {Picture} = ui.drafts
 
-	let pageContext = $derived({...page.data.pageContext, title: 'On this Page'})
+	let pageContext = $derived({...page.data.pageContext, label: 'On this Page'})
 	let images = $derived(page.data.images)
 	let brightness = $derived(pageContext.brightness)
 	let markdown = $derived(page.data.content)

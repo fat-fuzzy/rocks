@@ -24,7 +24,7 @@
 	})
 </script>
 
-<nav {id} class={id}>
+<nav aria-label="Page Navigation" {id} class={id}>
 	<ul class={`${layoutClasses} unstyled`}>
 		{#each items as { title, slug, color, size, variant, shape, asset }}
 			{@const iconClasses = styleHelper.getStyles({
