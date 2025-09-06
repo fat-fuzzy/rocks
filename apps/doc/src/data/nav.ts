@@ -22,7 +22,7 @@ export const links = [
 
 const navBase = {
 	id: 'sidebar',
-	label: 'content',
+	label: 'Secondary Navigation',
 	reveal: DEFAULT_SIDEBAR_REVEAL_STATE.reveal,
 	breakpoint: 'sm',
 	size: 'sm',
