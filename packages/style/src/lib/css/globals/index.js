@@ -32,5 +32,3 @@ import './text/scale.css'
 import './icons/icon.css' /* Use to style all icons */
 import './icons/svg.css' /* Use to style SVG icons */
 import './icons/emoji.css' /* Use to style emoji icons */
-import './icons/assets-svg.css' /* SVG assets */
-import './icons/assets-emoji.css' /* emoji assets */

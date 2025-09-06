@@ -2,6 +2,7 @@ import {defineConfig} from '@terrazzo/cli'
 import pluginCSS from '@terrazzo/plugin-css'
 import pluginJS from '@terrazzo/plugin-js'
 import pluginAssetsEmoji from './src/lib/plugins/assets-emoji.js'
+import pluginAssetsSvg from './src/lib/plugins/assets-svg.js'
 
 const paths = {
 	in: './src/lib/tokens/',
@@ -18,6 +19,7 @@ const files = [
 	'font.json',
 	'settings.json',
 	'assets-emoji.json',
+	'assets-svg.json',
 ]
 
 export default defineConfig({
@@ -45,6 +47,9 @@ export default defineConfig({
 		}),
 		pluginAssetsEmoji({
 			js: 'assets-emoji.js',
+		}),
+		pluginAssetsSvg({
+			js: 'assets-svg.js',
 		}),
 	],
 	outDir: paths.out,
