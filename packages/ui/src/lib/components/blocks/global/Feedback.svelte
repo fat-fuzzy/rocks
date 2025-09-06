@@ -6,6 +6,7 @@
 	let {
 		id = 'Feedback',
 		asset = 'default',
+		element = 'div',
 		title,
 		text,
 		status,
@@ -67,7 +68,13 @@
 		class={feedbackClasses}
 		data-testid={testId}>{#if children}{@render children()}{:else if text}{text}{/if}</pre>
 {:else if context === 'form' || context === 'prose'}
-	<aside {id} class={feedbackClasses} data-testid={testId} aria-live={ariaLive}>
+	<svelte:element
+		this={element}
+		{id}
+		class={feedbackClasses}
+		data-testid={testId}
+		aria-live={ariaLive}
+	>
 		{#if feedbackTitle}
 			<p class={`status ${textAlign}`}>{feedbackTitle}</p>
 		{/if}
@@ -78,5 +85,5 @@
 				<p>{text}</p>
 			{/if}
 		</div>
-	</aside>
+	</svelte:element>
 {/if}
