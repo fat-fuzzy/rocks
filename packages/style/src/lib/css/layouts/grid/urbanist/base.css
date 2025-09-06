@@ -5,7 +5,6 @@
 html:has(.l\:grid\:urbanist) {
 	block-size: -webkit-fill-available;
 	scrollbar-width: thin;
-	scrollbar-color: var(--thumb) var(--track);
 	scrollbar-gutter: stable;
 }
 

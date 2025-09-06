@@ -27,10 +27,6 @@
 }
 
 ff-reveal {
-	/* transition: transform 250ms ease-in-out; */
-	--lightness-scrollbar: var(--lightness-base);
-	--chroma-scrollbar: var(--chroma-base);
-
 	block-size: var(--y-size);
 	max-block-size: var(--y-size);
 	scrollbar-color: var(--thumb) var(--track);
