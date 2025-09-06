@@ -1,0 +1,588 @@
+{
+	"emoji": {
+		"base": {
+			"$type": "asset-emoji",
+			"bunny": {
+				"$value": "🐰"
+			},
+			"hat": {
+				"$value": "🎩"
+			},
+			"bulb": {
+				"$value": "💡"
+			},
+			"confetti": {
+				"$value": "🎉"
+			},
+			"bell": {
+				"$value": "🔔"
+			},
+			"poop": {
+				"$value": "💩"
+			},
+			"sun": {
+				"$value": "☀️"
+			},
+			"moon": {
+				"$value": "🌙"
+			},
+			"invader": {
+				"$value": "👾"
+			},
+			"octopus": {
+				"$value": "🐙"
+			},
+			"spouting-whale": {
+				"$value": "🐳"
+			},
+			"otter": {
+				"$value": "🦦"
+			},
+			"turtle": {
+				"$value": "🐢"
+			},
+			"tiger": {
+				"$value": "🐯"
+			},
+			"wave": {
+				"$value": "🌊"
+			},
+			"lion": {
+				"$value": "🦁"
+			},
+			"heart": {
+				"$value": "❤️"
+			},
+			"sparkles": {
+				"$value": "✨"
+			},
+			"egg": {
+				"$value": "🥚"
+			},
+			"hatching-chick": {
+				"$value": "🐣"
+			},
+			"chick": {
+				"$value": "🐥"
+			},
+			"link": {
+				"$value": "🔗"
+			},
+			"point-left": {
+				"$value": "👈"
+			},
+			"point-right": {
+				"$value": "👉"
+			},
+			"point-up": {
+				"$value": "👆"
+			},
+			"point-down": {
+				"$value": "👇"
+			},
+			"log": {
+				"$value": "🪵"
+			},
+			"control-knobs": {
+				"$value": "🎛️"
+			},
+			"pencil": {
+				"$value": "✏️"
+			},
+			"memo": {
+				"$value": "📝"
+			},
+			"fountain-pen": {
+				"$value": "🖋️"
+			},
+			"magic-wand": {
+				"$value": "🪄"
+			},
+			"gear": {
+				"$value": "⚙️"
+			},
+			"umbrella": {
+				"$value": "☂️"
+			},
+			"lightning": {
+				"$value": "⚡️"
+			},
+			"construction-sign": {
+				"$value": "🚧"
+			},
+			"shower": {
+				"$value": "🚿"
+			},
+			"lotus": {
+				"$value": "🪷"
+			},
+			"hole": {
+				"$value": "🕳️"
+			},
+			"robot": {
+				"$value": "🤖"
+			},
+			"star": {
+				"$value": "🌟"
+			},
+			"slot-machine": {
+				"$value": "🎰"
+			},
+			"yellow-square": {
+				"$value": "🟨"
+			},
+			"straight-ruler": {
+				"$value": "📏"
+			},
+			"triangular-ruler": {
+				"$value": "📐"
+			},
+			"russian-dolls": {
+				"$value": "🪆"
+			},
+			"bullseye": {
+				"$value": "🎯"
+			},
+			"world-map": {
+				"$value": "🗺️"
+			},
+			"game-dice": {
+				"$value": "🎲"
+			},
+			"film-camera": {
+				"$value": "🎥"
+			},
+			"film-frames": {
+				"$value": "🎞️"
+			},
+			"crayon": {
+				"$value": "🖍️"
+			},
+			"framed-picture": {
+				"$value": "🖼️"
+			},
+			"cyclone": {
+				"$value": "🌀"
+			},
+			"new-moon": {
+				"$value": "🌑"
+			},
+			"half-moon": {
+				"$value": "🌗"
+			},
+			"new-moon-face": {
+				"$value": "🌚"
+			},
+			"full-moon-face": {
+				"$value": "🌝"
+			},
+			"rainbow": {
+				"$value": "🌈"
+			},
+			"beans": {
+				"$value": "🫘"
+			},
+			"seedling": {
+				"$value": "🌱"
+			},
+			"herb": {
+				"$value": "🌿"
+			},
+			"tree": {
+				"$value": "🌳"
+			},
+			"scales": {
+				"$value": "⚖️"
+			},
+			"open-book": {
+				"$value": "📖"
+			},
+			"purple-round": {
+				"$value": "🟣"
+			},
+			"lipstick": {
+				"$value": "💄"
+			},
+			"roller-skate": {
+				"$value": "🛼"
+			},
+			"toolbox": {
+				"$value": "🧰"
+			},
+			"brain": {
+				"$value": "🧠"
+			},
+			"kite": {
+				"$value": "🪁"
+			},
+			"wing": {
+				"$value": "🪽"
+			},
+			"feather": {
+				"$value": "🪶"
+			},
+			"phoenix": {
+				"$value": "🐦‍🔥"
+			},
+			"owl": {
+				"$value": "🦉"
+			},
+			"recycle": {
+				"$value": "♻️"
+			},
+			"calendar": {
+				"$value": "📅"
+			},
+			"tear-off-calendar": {
+				"$value": "📆"
+			},
+			"chilli": {
+				"$value": "🌶️"
+			},
+			"cookie": {
+				"$value": "🍪"
+			},
+			"tangerine": {
+				"$value": "🍊"
+			},
+			"bubbles": {
+				"$value": "🫧"
+			},
+			"tram-car": {
+				"$value": "🚋"
+			},
+			"pill": {
+				"$value": "💊"
+			},
+			"sun-behind-cloud": {
+				"$value": "⛅️"
+			},
+			"sun-behind-large-cloud": {
+				"$value": "🌥️"
+			},
+			"camera-with-flash": {
+				"$value": "📸"
+			}
+		},
+		"icon": {
+			"link": {
+				"$value": "{emoji.base.link}"
+			},
+			"point-left": {
+				"$value": "{emoji.base.point-left}"
+			},
+			"point-right": {
+				"$value": "{emoji.base.point-right}"
+			},
+			"point-up": {
+				"$value": "{emoji.base.point-up}"
+			},
+			"point-down": {
+				"$value": "{emoji.base.point-down}"
+			},
+			"pencil": {
+				"$value": "{emoji.base.pencil}"
+			},
+			"default": {
+				"$value": "{emoji.base.bunny}"
+			},
+			"info": {
+				"$value": "{emoji.base.bulb}"
+			},
+			"success": {
+				"$value": "{emoji.base.confetti}"
+			},
+			"warning": {
+				"$value": "{emoji.base.bell}"
+			},
+			"error": {
+				"$value": "{emoji.base.poop}"
+			},
+			"day": {
+				"$value": "{emoji.base.sun}"
+			},
+			"night": {
+				"$value": "{emoji.base.moon}"
+			},
+			"contrast": {
+				"$value": "{emoji.base.half-moon}"
+			},
+			"blend": {
+				"$value": "{emoji.base.new-moon}"
+			},
+			"blend-night": {
+				"$value": "{emoji.base.new-moon-face}"
+			},
+			"blend-day": {
+				"$value": "{emoji.base.full-moon-face}"
+			},
+			"tokens": {
+				"$value": "{emoji.base.beans}"
+			},
+			"blocks": {
+				"$value": "{emoji.base.seedling}"
+			},
+			"layouts": {
+				"$value": "{emoji.base.herb}"
+			},
+			"recipes": {
+				"$value": "{emoji.base.tree}"
+			},
+			"vader": {
+				"$value": "{emoji.base.invader}"
+			},
+			"ollie": {
+				"$value": "{emoji.base.octopus}"
+			},
+			"moby": {
+				"$value": "{emoji.base.spouting-whale}"
+			},
+			"octopus": {
+				"$value": "{emoji.base.octopus}"
+			},
+			"otter": {
+				"$value": "{emoji.base.otter}"
+			},
+			"turtle": {
+				"$value": "{emoji.base.turtle}"
+			},
+			"tiger": {
+				"$value": "{emoji.base.tiger}"
+			},
+			"rainbow": {
+				"$value": "{emoji.base.rainbow}"
+			},
+			"idea": {
+				"$value": "{emoji.base.bulb}"
+			},
+			"profile": {
+				"$value": "{emoji.base.lion}"
+			},
+			"favorite": {
+				"$value": "{emoji.base.heart}"
+			},
+			"sparkles": {
+				"$value": "{emoji.base.sparkles}"
+			},
+			"home": {
+				"$value": "{emoji.base.egg}"
+			},
+			"about": {
+				"$value": "{emoji.base.chick}"
+			},
+			"machines": {
+				"$value": "{emoji.base.robot}"
+			},
+			"star": {
+				"$value": "{emoji.base.star}"
+			},
+			"menu": {
+				"$value": "{emoji.base.bunny}"
+			},
+			"settings": {
+				"$value": "{emoji.base.control-knobs}"
+			},
+			"log": {
+				"$value": "{emoji.base.log}"
+			},
+			"usage": {
+				"$value": "{emoji.base.open-book}"
+			},
+			"decisions": {
+				"$value": "{emoji.base.scales}"
+			},
+			"context": {
+				"$value": "{emoji.base.umbrella}"
+			},
+			"switch-active": {
+				"$value": "{emoji.base.bunny}"
+			},
+			"switch-inactive": {
+				"$value": "{emoji.base.hat}"
+			},
+			"doc": {
+				"$value": "{emoji.base.memo}"
+			},
+			"comments": {
+				"$value": "{emoji.base.pencil}"
+			},
+			"ui": {
+				"$value": "{emoji.base.rainbow}"
+			},
+			"playbook": {
+				"$value": "{emoji.base.roller-skate}"
+			},
+			"nojs": {
+				"$value": "{emoji.base.bunny}"
+			},
+			"wip": {
+				"$value": "{emoji.base.construction-sign}"
+			},
+			"square": {
+				"$value": "{emoji.base.yellow-square}"
+			},
+			"round": {
+				"$value": "{emoji.base.purple-round}"
+			},
+			"pill": {
+				"$value": "{emoji.base.pill}"
+			},
+			"mellow": {
+				"$value": "{emoji.base.sun-behind-cloud}"
+			},
+			"soft": {
+				"$value": "{emoji.base.sun-behind-large-cloud}"
+			},
+			"prose": {
+				"$value": "{emoji.base.fountain-pen}"
+			},
+			"dates": {
+				"$value": "{emoji.base.calendar}"
+			},
+			"published": {
+				"$value": "{emoji.base.calendar}"
+			},
+			"updated": {
+				"$value": "{emoji.base.calendar}"
+			},
+			"outdated": {
+				"$value": "{emoji.base.tear-off-calendar}"
+			},
+			"spicy": {
+				"$value": "{emoji.base.chilli}"
+			},
+			"cookie": {
+				"$value": "{emoji.base.cookie}"
+			},
+			"raw": {
+				"$value": "{emoji.base.tangerine}"
+			},
+			"magic": {
+				"$value": "{emoji.base.magic-wand}"
+			},
+			"wave": {
+				"$value": "{emoji.base.wave}"
+			},
+			"perf": {
+				"$value": "{emoji.base.lightning}"
+			},
+			"tuning": {
+				"$value": "{emoji.base.gear}"
+			},
+			"bubbles": {
+				"$value": "{emoji.base.bubbles}"
+			},
+			"tram": {
+				"$value": "{emoji.base.tram-car}"
+			},
+			"sketch": {
+				"$value": "{emoji.base.spouting-whale}"
+			},
+			"play": {
+				"$value": "{emoji.base.sparkles}"
+			},
+			"pause": {
+				"$value": "{emoji.base.lotus}"
+			},
+			"clear": {
+				"$value": "{emoji.base.spouting-whale}"
+			},
+			"stop": {
+				"$value": "{emoji.base.yellow-square}"
+			},
+			"snap": {
+				"$value": "{emoji.base.camera-with-flash}"
+			},
+			"update": {
+				"$value": "{emoji.base.lightning}"
+			},
+			"not-found": {
+				"$value": "{emoji.base.hole}"
+			},
+			"random": {
+				"$value": "{emoji.base.slot-machine}"
+			},
+			"rect": {
+				"$value": "{emoji.base.yellow-square}"
+			},
+			"geometry-2d": {
+				"$value": "{emoji.base.straight-ruler}"
+			},
+			"geometry-3": {
+				"$value": "{emoji.base.triangular-ruler}"
+			},
+			"russian-dolls": {
+				"$value": "{emoji.base.russian-dolls}"
+			},
+			"bullseye": {
+				"$value": "{emoji.base.bullseye}"
+			},
+			"projection": {
+				"$value": "{emoji.base.world-map}"
+			},
+			"matrix-3d": {
+				"$value": "{emoji.base.game-dice}"
+			},
+			"camera-3d": {
+				"$value": "{emoji.base.film-camera}"
+			},
+			"animation-3d": {
+				"$value": "{emoji.base.film-frames}"
+			},
+			"filters": {
+				"$value": "{emoji.base.crayon}"
+			},
+			"convolution": {
+				"$value": "{emoji.base.cyclone}"
+			},
+			"texture": {
+				"$value": "{emoji.base.framed-picture}"
+			},
+			"multiple-tex": {
+				"$value": "{emoji.base.new-moon-face}"
+			},
+			"package-style": {
+				"$value": "{emoji.base.sparkles}"
+			},
+			"package-utilities": {
+				"$value": "{emoji.base.toolbox}"
+			},
+			"package-ui": {
+				"$value": "{emoji.base.tree}"
+			},
+			"package-playbook": {
+				"$value": "{emoji.base.roller-skate}"
+			},
+			"package-prose": {
+				"$value": "{emoji.base.fountain-pen}"
+			},
+			"package-sketch": {
+				"$value": "{emoji.base.rainbow}"
+			},
+			"package-gfx": {
+				"$value": "{emoji.base.invader}"
+			},
+			"package-git-poule": {
+				"$value": "{emoji.base.hatching-chick}"
+			},
+			"learning": {
+				"$value": "{emoji.base.brain}"
+			},
+			"projects": {
+				"$value": "{emoji.base.kite}"
+			},
+			"wing": {
+				"$value": "{emoji.base.wing}"
+			},
+			"feather": {
+				"$value": "{emoji.base.feather}"
+			},
+			"phoenix": {
+				"$value": "{emoji.base.phoenix}"
+			},
+			"fat-fuzzy": {
+				"$value": "{emoji.base.owl}"
+			}
+		}
+	}
+}

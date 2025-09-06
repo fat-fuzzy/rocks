@@ -6,7 +6,6 @@
 
 /* SCSS design token definitions */
 @use './mixins/scale';
-@use './mixins/assets';
 @use './mixins/mixins';
 
 // Generate Tokens
@@ -16,6 +15,5 @@ $theme-prefix: '-'; // creates CSS variables with specific app prefix. Use '--' 
 	scale.$modular-scale,
 	scale.$modular-scale-steps-plus,
 	scale.$modular-scale-steps-minus,
-	assets.$emojis,
 	$theme-prefix
 );

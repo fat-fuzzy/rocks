@@ -110,6 +110,7 @@
 		--font-size-ui: var(--font-size-md);
 		--sidebar-width: var(--layout-sidebar-md);
 		--gap: var(--layout-gap-md);
+		scrollbar-color: var(--thumb) var(--track);
 	}
 
 	body {
