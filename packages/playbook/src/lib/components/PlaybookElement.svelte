@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {Meta} from '$types'
-	import {getContext} from 'svelte'
+	import {onMount, getContext} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
 	import {PlaybookActor} from '$lib/api/actor.svelte'
 	import {getPlaybookTab, getDocTab} from '$lib/props'
@@ -81,7 +81,14 @@
 	let containerStyles = $derived(styles.layouts?.families?.container || '')
 
 	//== App settings (user controlled)
-	let spell = $derived(context.app.brightness === 'day' ? 'dawn' : 'dusk')
+	let useDarkScheme = $state(context.app.brightness === 'night')
+	let spell = $derived.by(() => {
+		if (!context.app.brightness) {
+			return useDarkScheme ? 'dusk' : 'dawn'
+		} else {
+			return context.app.brightness === 'day' ? 'dawn' : 'dusk'
+		}
+	})
 	//== Layout settings (user controlled)
 	// Container options
 	// - [container + size] work together
@@ -111,6 +118,23 @@
 	let link = $derived(
 		path.substring(0, path.indexOf(category) + category.length),
 	)
+
+	function handleThemeChange(event: MediaQueryListEvent | MediaQueryList) {
+		if (!context.app.brightness) {
+			useDarkScheme = event.matches ? true : false
+		}
+	}
+
+	onMount(() => {
+		const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)')
+		handleThemeChange(prefersDarkScheme)
+		// Listen for changes (but only apply if no saved preference)
+		prefersDarkScheme.addEventListener('change', handleThemeChange)
+
+		return () => {
+			prefersDarkScheme.removeEventListener('change', handleThemeChange)
+		}
+	})
 </script>
 
 <PageRails
