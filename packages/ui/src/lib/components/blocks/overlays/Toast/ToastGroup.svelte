@@ -12,7 +12,7 @@
 	})
 </script>
 
-<aside bind:this={toasts} class="toaster">
+<aside aria-label="Notifications" bind:this={toasts} class="toaster">
 	{#each toaster.toasts as toast (toast.id)}
 		<Toast {...toast} />
 	{/each}
