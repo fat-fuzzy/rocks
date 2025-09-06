@@ -10,12 +10,12 @@ const usagesMarkdowns = usages.markdowns
 	.reverse()
 
 export const load = async ({locals, url, params}) => {
-	const sidebar = buildNav('doc')
+	const sidebar = buildNav('about')
 
 	sidebar.reveal = locals.sidebar.reveal ?? sidebar.reveal
 	sidebar.actionPath = url.pathname
 	sidebar.layout =
-		url.pathname === '/doc/decisions' || url.pathname === '/doc/usage'
+		url.pathname === '/about/decisions' || url.pathname === '/about/usage'
 			? 'tram'
 			: sidebar.layout
 	sidebar.items[0].items = (sidebar.items[0].items ?? []).map((item) => {

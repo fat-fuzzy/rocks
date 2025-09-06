@@ -70,7 +70,7 @@
 <nav
 	id={`nav-${id}`}
 	class={navClasses}
-	aria-label={title}
+	aria-label={label}
 	data-testid={`nav-${id}`}
 >
 	<SkipLinks id={`sidebar-${id}`} text="Skip to content" href="#main" />

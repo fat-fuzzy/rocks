@@ -18,8 +18,9 @@
 }
 
 [class*='l:text'] > * {
+	--gap: var(--grid-gap, var(--ui-size));
 	inline-size: 100%;
-	max-inline-size: calc(100% - var(var(--grid-gap, --gap), var(--ui-size)));
+	max-inline-size: calc(100% - var(--gap));
 }
 
 [class^='l:text'] > * + h1,

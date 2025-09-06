@@ -82,7 +82,7 @@ import InputGroup from '$lib/components/blocks/inputs/InputGroup.svelte'
 import Magic from '$lib/components/blocks/global/Magic.svelte'
 import Image from '$lib/components/blocks/media/Image.svelte'
 import Picture from '$lib/components/blocks/media/Picture.svelte'
-import Aside from '$lib/components/recipes/content/Aside.svelte'
+import PageContext from '$lib/components/recipes/content/PageContext.svelte'
 import PageNav from '$lib/components/recipes/navs/PageNav.svelte'
 import PageHeader from '$lib/components/recipes/content/PageHeader.svelte'
 import Zoomer from '$lib/components/blocks/overlays/Zoomer.svelte'
@@ -182,11 +182,11 @@ const raw = {
 }
 
 const content = {
-	Aside,
 	LayoutGrid,
 	LayoutSidebar,
 	PageMain,
 	PageRails,
+	PageContext,
 }
 
 const drafts = {

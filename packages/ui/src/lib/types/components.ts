@@ -61,11 +61,11 @@ export interface Raw {
 }
 
 export interface Content {
-	Aside: typeof import('$lib/components/recipes/content/Aside.svelte').default
 	LayoutGrid: typeof import('$lib/components/recipes/grid/LayoutGrid.svelte').default
 	LayoutSidebar: typeof import('$lib/components/recipes/content/LayoutSidebar.svelte').default
 	PageMain: typeof import('$lib/components/recipes/content/PageMain.svelte').default
 	PageRails: typeof import('$lib/components/recipes/grid/PageRails.svelte').default
+	PageContext: typeof import('$lib/components/recipes/content/PageContext.svelte').default
 }
 
 export interface Drafts {

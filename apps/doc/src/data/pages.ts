@@ -4,7 +4,7 @@ const pathPrefix = '/src/assets/pages/'
 
 const pages: {[page: string]: any} = {
 	home: import.meta.glob('/src/assets/pages/home.md'),
-	doc: import.meta.glob('/src/assets/pages/doc.md'),
+	doc: import.meta.glob('/src/assets/pages/about.md'),
 	play: import.meta.glob('/src/assets/pages/play.md'),
 	ui: import.meta.glob('/src/assets/pages/ui.md'),
 	blog: import.meta.glob('/src/assets/pages/blog.md'),

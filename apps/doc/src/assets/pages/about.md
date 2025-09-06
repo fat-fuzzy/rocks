@@ -1,7 +1,7 @@
 ---
-title: Fat Fuzzy Doc
+title: What the Fuzzy ??
 description: 'Documentation for the Fat Fuzzy Rocks packages'
-slug: doc
+slug: about
 id: '001'
 tags: ['pages', 'doc']
 ---

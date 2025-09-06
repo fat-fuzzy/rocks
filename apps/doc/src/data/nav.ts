@@ -14,7 +14,7 @@ const rawNames = Object.keys(ui.raw).sort(sortAsc)
 const {DEFAULT_SIDEBAR_REVEAL_STATE} = ui.constants
 
 export const links = [
-	{slug: 'doc', title: 'Doc', layout: 'sidebar'},
+	{slug: 'about', title: 'About', layout: 'sidebar'},
 	{slug: 'ui', title: 'UI', layout: 'sidebar'},
 	{slug: 'blog', title: 'Blog', layout: 'sidebar'},
 	{slug: 'play', title: 'Play', layout: 'sidebar'},
@@ -22,7 +22,7 @@ export const links = [
 
 const navBase = {
 	id: 'sidebar',
-	label: 'content',
+	label: 'Secondary Navigation',
 	reveal: DEFAULT_SIDEBAR_REVEAL_STATE.reveal,
 	breakpoint: 'sm',
 	size: 'sm',
@@ -42,10 +42,10 @@ export const pages: {[key: string]: NavItem} = {
 		layout: 'metro',
 		items: [],
 	},
-	doc: {
-		slug: 'doc',
+	about: {
+		slug: 'about',
+		label: 'About',
 		title: 'Doc',
-		label: 'Doc',
 		asset: 'doc',
 		layout: 'voyager',
 		items: [
@@ -54,7 +54,7 @@ export const pages: {[key: string]: NavItem} = {
 				title: 'Usage',
 				asset: 'usage',
 				formaction: 'toggleUsage',
-				actionPath: '/doc/usage',
+				actionPath: '/about/usage',
 				items: [],
 			},
 			{
@@ -62,13 +62,14 @@ export const pages: {[key: string]: NavItem} = {
 				title: 'Decisions',
 				asset: 'decisions',
 				formaction: 'toggleDecisions',
-				actionPath: '/doc/decisions',
+				actionPath: '/about/decisions',
 				items: [],
 			},
 		],
 	},
 	play: {
 		slug: 'play',
+		label: 'Play',
 		title: 'Sketches',
 		asset: 'rainbow',
 		layout: 'metro',

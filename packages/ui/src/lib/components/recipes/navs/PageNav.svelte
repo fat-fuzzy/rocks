@@ -4,6 +4,7 @@
 
 	let {
 		id = 'page-nav',
+		label = 'Page Navigation',
 		size = '2xs',
 		layout = 'switcher',
 		align = 'center',
@@ -24,7 +25,7 @@
 	})
 </script>
 
-<nav {id} class={id}>
+<nav aria-label={label} {id} class={id}>
 	<ul class={`${layoutClasses} unstyled`}>
 		{#each items as { title, slug, color, size, variant, shape, asset }}
 			{@const iconClasses = styleHelper.getStyles({

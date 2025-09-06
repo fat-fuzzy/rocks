@@ -73,6 +73,7 @@
 </script>
 
 <nav
+	aria-labelledby="title"
 	data-testid="scrolly"
 	class={`scrolly scroll:container ${scrollContainerClasses}`}
 >
@@ -81,7 +82,7 @@
 		class={`scroll:y snap ${direction} w:full unstyled`}
 	>
 		<li class={`snap:center scroll:title`}>
-			<svelte:element this={`h${level}`} class="w:full text:center">
+			<svelte:element this={`h${level}`} id="title" class="w:full text:center">
 				{title}
 			</svelte:element>
 		</li>
