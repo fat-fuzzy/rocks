@@ -9,6 +9,7 @@
 		var(--lightness-accent-base) var(--chroma-accent-base) var(--hue)
 	);
 	--accent: oklch(var(--lightness-accent) var(--chroma-accent-base) var(--hue));
+	--thumb: oklch(var(--lightness-surface-3) var(--chroma) var(--hue));
 
 	--shadow-sm: var(--shadow-base-sm-offset-x) var(--shadow-base-sm-offset-y)
 		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
@@ -27,6 +28,7 @@
 		var(--lightness-accent-base) var(--chroma-accent-base) var(--hue)
 	);
 	--accent: oklch(var(--lightness-accent) var(--chroma-accent-base) var(--hue));
+	--thumb: oklch(var(--lightness-surface-3) var(--chroma) var(--hue));
 
 	--shadow-sm: var(--shadow-base-sm-offset-x) var(--shadow-base-sm-offset-y)
 		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
@@ -45,6 +47,7 @@
 		var(--lightness-accent-base) var(--chroma-accent-base) var(--hue)
 	);
 	--accent: oklch(var(--lightness-accent) var(--chroma-accent-base) var(--hue));
+	--thumb: oklch(var(--lightness-surface-3) var(--chroma) var(--hue));
 
 	--shadow-sm: var(--shadow-base-sm-offset-x) var(--shadow-base-sm-offset-y)
 		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
@@ -67,6 +70,7 @@
 	--shadow: oklch(
 		var(--lightness-accent-base) var(--color-chroma-neutral) var(--hue)
 	);
+	--thumb: oklch(var(--lightness-surface-3) var(--chroma) var(--hue));
 
 	--shadow-sm: var(--shadow-base-sm-offset-x) var(--shadow-base-sm-offset-y)
 		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
@@ -84,6 +88,7 @@
 	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
 	--accent: oklch(var(--lightness-accent) var(--chroma-accent-base) var(--hue));
 	--shadow: oklch(var(--lightness-accent) var(--chroma-accent-base) var(--hue));
+	--thumb: oklch(var(--lightness-surface-3) var(--chroma) var(--hue));
 	accent-color: var(--accent);
 }
 
