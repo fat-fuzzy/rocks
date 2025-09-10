@@ -18,13 +18,6 @@
 	background-color: var(--bg-color);
 }
 
-.state\:pause,
-.state\:feedback,
-.state\:idle,
-.state\:stop {
-	background-color: var(--shade);
-}
-
 .state\:idle {
 	display: flex;
 	align-items: center;
