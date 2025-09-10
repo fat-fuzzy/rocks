@@ -1,12 +1,9 @@
 .DS_Store
 .svelte-kit
 node_modules
-/build
-/package
 .env
 .env.*
 !.env.example
-vite.config.js*
 
 # Ignore files for PNPM, NPM and YARN
 pnpm-lock.yaml
@@ -14,6 +11,8 @@ pnpm-workspace.yaml
 package-lock.json
 yarn.lock
 
+**/build
+**/package
 **/dist
 **/playwright/.cache
 **/playwright_report

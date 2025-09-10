@@ -23,7 +23,7 @@
 		open={footerOpen}
 	>
 		<summary class="raviolink font:heading bg:inherit color:neutral">
-			About
+			Colophon
 		</summary>
 		<div class="l:stack:2xl maki:block size:lg">
 			<p>
