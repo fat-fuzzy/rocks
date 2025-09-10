@@ -21,7 +21,7 @@ pages.forEach((item) => {
 			test(`Sub page content on refresh: ${subpage.title}`, async ({page}) => {
 				await page.goto(`/${item.slug}/${subpage.slug}`)
 				await page.reload()
-				if (item.slug !== 'doc') {
+				if (item.slug !== 'about') {
 					await expect(page.getByTestId(`html-${subpage.slug}`)).toBeVisible()
 				} else {
 					await expect(page.getByRole('link', {name: `0 -`})).toBeVisible()

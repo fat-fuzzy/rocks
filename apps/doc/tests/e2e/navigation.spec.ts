@@ -28,9 +28,9 @@ pages.forEach((item) => {
 			).toBeVisible()
 		} else {
 			await page.getByRole('link', {name: item.title}).nth(0).click()
-			await expect(
-				page.getByRole('heading', {name: `Fat Fuzzy ${item.title}`}),
-			).toBeVisible()
+			const name =
+				item.title === 'About' ? 'What the Fuzzy ??' : `Fat Fuzzy ${item.title}`
+			await expect(page.getByRole('heading', {name})).toBeVisible()
 		}
 	})
 
@@ -58,7 +58,7 @@ test(`Settings menu works as expected`, async ({page}) => {
 	await page.goto('/')
 	await expect(page.getByRole('button', {name: 'Brightness'})).toBeVisible()
 	await expect(page.getByRole('button', {name: 'Contrast'})).toBeVisible()
-	await page.goto('/doc')
+	await page.goto('/about')
 	await expect(page.getByRole('button', {name: 'Brightness'})).toBeVisible()
 	await expect(page.getByRole('button', {name: 'Contrast'})).toBeVisible()
 	await expect(

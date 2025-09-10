@@ -1,13 +1,13 @@
 const pages = [
 	{path: '/', slug: '', title: 'Home'},
 	{
-		path: '/doc',
-		slug: 'doc',
-		title: 'Doc',
+		path: '/about',
+		slug: 'about',
+		title: 'About',
 		items: [
-			{path: '/doc/usage', slug: 'usage', title: 'Usage', linkTitle: 'Usage'},
+			{path: '/about/usage', slug: 'usage', title: 'Usage', linkTitle: 'Usage'},
 			{
-				path: '/doc/decisions',
+				path: '/about/decisions',
 				slug: 'decisions',
 				title: 'Decisions Log',
 				linkTitle: 'Usage',
