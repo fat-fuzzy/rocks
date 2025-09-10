@@ -57,6 +57,6 @@
 	"browserslist": "defaults",
 	"type": "module",
 	"dependencies": {
-		"@terrazzo/cli": "0.10.1"
+		"@terrazzo/cli": "0.10.2"
 	}
 }
