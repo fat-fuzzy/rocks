@@ -22,7 +22,7 @@
 	overflow: auto;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 37.5rem) {
 	/* Hide zoom button when there is no roo mto zoom  */
 	.l\:side:has(.button-zoom) {
 		display: none;

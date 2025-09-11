@@ -7,16 +7,15 @@
 	--grid-gap: 0;
 	grid-template-areas: 'zone-main';
 	grid-template-rows: subgrid;
-	max-block-size: var(--max-block-size);
 }
 
-@media screen and (min-width: 620px) {
+@media screen and (min-width: 38.75rem) {
 	.tgv.zone\:2 {
 		padding-inline: 0;
 	}
 }
 
-@media screen and (min-width: 1100px) {
+@media screen and (min-width: 68.75rem) {
 	.tgv.zone\:2 {
 		grid-column-start: 1;
 	}
