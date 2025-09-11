@@ -59,7 +59,7 @@
 	padding-inline: var(--outline-offset-lg);
 }
 
-@media screen and (min-width: 620px) {
+@media screen and (min-width: 38.75rem) {
 	/* This form contains the actual settings */
 	.exchange > .context > .app-context > form {
 		display: none;
@@ -87,7 +87,7 @@
 	}
 }
 
-@media screen and (min-width: 935px) {
+@media screen and (min-width: 58.45rem) {
 	.exchange > .context,
 	.exchange > .context > .app-context:is(.collapsed, .expanded) ff-reveal {
 		justify-content: flex-end;
@@ -100,7 +100,7 @@
 	}
 }
 
-@media screen and (min-width: 1100px) {
+@media screen and (min-width: 68.75rem) {
 	.exchange > .context {
 		grid-column-start: 5;
 	}

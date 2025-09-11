@@ -64,16 +64,15 @@ TODO: padding for overlapping main on header (use w/ bg:blur)
 }
 
 .scrolly.scroll\:container[class*='l:frame'] {
-	block-size: 85vh;
+	block-size: 100vh;
 }
 
 .scroll\:item .media {
 	block-size: 100%;
 	max-inline-size: var(--max-inline-size, var(--text-inline-size, 100%));
-	margin-block: var(--size-base-2xl);
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 37.5rem) {
 	.scroll\:item .item-link {
 		transform: translate(53%, -15%);
 		min-inline-size: calc(
@@ -83,7 +82,7 @@ TODO: padding for overlapping main on header (use w/ bg:blur)
 	}
 }
 
-@media screen and (min-width: 600px) and (max-height: 600px) {
+@media screen and (min-width: 37.5rem) and (max-height: 37.5rem) {
 	.scroll\:item .item-link {
 		transform: translate(53%, -30%);
 		min-inline-size: calc(
@@ -92,7 +91,7 @@ TODO: padding for overlapping main on header (use w/ bg:blur)
 	}
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 48rem) {
 	.scroll\:item {
 		justify-content: var(--justify, flex-start);
 	}
@@ -102,7 +101,7 @@ TODO: padding for overlapping main on header (use w/ bg:blur)
 	}
 }
 
-@media screen and (min-width: 800px) and (max-height: 400px) {
+@media screen and (min-width: 50rem) and (max-height: 25rem) {
 	.scroll\:item .item-link {
 		min-inline-size: calc(
 			var(--layout-sidebar-collapsed) / var(--size-ratio-md) - 2 *
@@ -111,7 +110,7 @@ TODO: padding for overlapping main on header (use w/ bg:blur)
 	}
 }
 
-@media screen and (min-width: 800px) and (min-height: 500px) {
+@media screen and (min-width: 50rem) and (min-height: 31.25rem) {
 	.scroll\:item .item-link {
 		min-inline-size: calc(
 			var(--layout-sidebar-collapsed) / var(--size-ratio-sm)
@@ -119,7 +118,7 @@ TODO: padding for overlapping main on header (use w/ bg:blur)
 	}
 }
 
-@media screen and (min-width: 935px) and (min-height: 600px) {
+@media screen and (min-width: 58.45rem) and (min-height: 37.5rem) {
 	.scroll\:item .item-link {
 		min-inline-size: var(--layout-sidebar-collapsed);
 	}

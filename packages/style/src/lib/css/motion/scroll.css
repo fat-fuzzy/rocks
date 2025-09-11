@@ -40,10 +40,6 @@
 	scroll-snap-type: x;
 }
 
-/* .scrollbar\:hide-y {
-	width: calc(100% + 100px);
-} */
-
 .snap\:start {
 	scroll-snap-align: start;
 	scroll-snap-stop: normal;

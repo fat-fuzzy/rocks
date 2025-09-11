@@ -22,7 +22,7 @@
 	}
 }
 
-@media screen and (min-width: 620px) {
+@media screen and (min-width: 38.75rem) {
 	.zone\:main {
 		padding-block-start: var(--ui-size-lg);
 		max-block-size: var(--max-block-size);
@@ -33,7 +33,7 @@
 	}
 }
 
-@media screen and (min-width: 935px) {
+@media screen and (min-width: 58.45rem) {
 	.zone\:main {
 		grid-column-start: 1;
 		grid-column-end: 3;

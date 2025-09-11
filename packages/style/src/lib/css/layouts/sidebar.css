@@ -8,7 +8,7 @@
 /* TODO: Figure out how to handle this better (use container query ?)
  * Currently used for media page: see also blocks/media.css
  */
-@media (min-width: 800px) {
+@media (min-width: 50rem) {
 	[class*='l:sidebar'] {
 		&.justify\:center > [class*='l:main'] > * {
 			inline-size: calc(100% - var(--sidebar-width) + var(--gap));

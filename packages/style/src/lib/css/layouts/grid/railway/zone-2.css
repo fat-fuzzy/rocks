@@ -11,7 +11,7 @@
 	}
 }
 
-@media screen and (min-width: 620px) {
+@media screen and (min-width: 38.75rem) {
 	.railway.zone\:2 {
 		> .page-context:not(.empty) {
 			max-block-size: var(--max-block-size);

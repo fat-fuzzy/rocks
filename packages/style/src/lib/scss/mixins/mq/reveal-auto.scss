@@ -30,10 +30,10 @@
 	}
 }
 
-@include switchToRowStyles_RevealAuto(320px, '2xs');
-@include switchToRowStyles_RevealAuto(620px, 'xs');
-@include switchToRowStyles_RevealAuto(935px, 'sm');
-@include switchToRowStyles_RevealAuto(1360px, 'md');
-@include switchToRowStyles_RevealAuto(1620px, 'lg');
-@include switchToRowStyles_RevealAuto(2048px, 'xl');
-@include switchToRowStyles_RevealAuto(3048px, '2xl');
+@include switchToRowStyles_RevealAuto(20rem, '2xs');
+@include switchToRowStyles_RevealAuto(38.75rem, 'xs');
+@include switchToRowStyles_RevealAuto(58.45rem, 'sm');
+@include switchToRowStyles_RevealAuto(85rem, 'md');
+@include switchToRowStyles_RevealAuto(101.25rem, 'lg');
+@include switchToRowStyles_RevealAuto(128rem, 'xl');
+@include switchToRowStyles_RevealAuto(190.5rem, '2xl');

@@ -8,10 +8,10 @@
 	}
 }
 
-@include switchToRowStyles_Burrito(220px, '2xs');
-@include switchToRowStyles_Burrito(240px, 'xs');
-@include switchToRowStyles_Burrito(260px, 'sm');
-@include switchToRowStyles_Burrito(280px, 'md');
-@include switchToRowStyles_Burrito(320px, 'lg');
-@include switchToRowStyles_Burrito(360px, 'xl');
-@include switchToRowStyles_Burrito(380px, '2xl');
+@include switchToRowStyles_Burrito(20rem, '2xs');
+@include switchToRowStyles_Burrito(38.75rem, 'xs');
+@include switchToRowStyles_Burrito(58.45rem, 'sm');
+@include switchToRowStyles_Burrito(85rem, 'md');
+@include switchToRowStyles_Burrito(101.25rem, 'lg');
+@include switchToRowStyles_Burrito(128rem, 'xl');
+@include switchToRowStyles_Burrito(190.5rem, '2xl');
