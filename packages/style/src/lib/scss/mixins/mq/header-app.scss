@@ -35,33 +35,20 @@
 			margin-block: 0;
 
 			.header-nav {
-				flex-flow: row nowrap;
-				padding: 0;
 				margin: 0;
 				inline-size: fit-content;
 				block-size: 100%;
+				padding-inline: 0;
 				padding-block: 0;
-
-				li {
-					display: flex;
-					align-items: var(--align, center);
-					justify-content: var(--justify, center);
-					inline-size: fit-content;
-
-					a {
-						align-items: var(--align, center);
-						justify-content: var(--justify, center);
-					}
-				}
 			}
 		}
 	}
 }
 
-@include switchToRowStyles_Header(320px, '2xs');
-@include switchToRowStyles_Header(620px, 'xs');
-@include switchToRowStyles_Header(935px, 'sm');
-@include switchToRowStyles_Header(1360px, 'md');
-@include switchToRowStyles_Header(1620px, 'lg');
-@include switchToRowStyles_Header(2048px, 'xl');
-@include switchToRowStyles_Header(3048px, '2xl');
+@include switchToRowStyles_Header(20rem, '2xs');
+@include switchToRowStyles_Header(38.75rem, 'xs');
+@include switchToRowStyles_Header(58.45rem, 'sm');
+@include switchToRowStyles_Header(85rem, 'md');
+@include switchToRowStyles_Header(101.25rem, 'lg');
+@include switchToRowStyles_Header(128rem, 'xl');
+@include switchToRowStyles_Header(190.5rem, '2xl');

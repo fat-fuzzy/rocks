@@ -58,7 +58,7 @@ ff-reveal.collapsed {
 	inline-size: calc(var(--sidebar-width) - 2 * var(--gap));
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 64rem) {
 	ff-reveal.collapsed {
 		margin-block-start: var(--outline-offset-lg);
 	}

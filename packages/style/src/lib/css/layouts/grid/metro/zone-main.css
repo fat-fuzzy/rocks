@@ -16,14 +16,14 @@
 	}
 }
 
-@media screen and (min-width: 620px) {
+@media screen and (min-width: 38.75rem) {
 	.metro.zone\:main {
 		grid-column-start: 1;
 		grid-column-end: 3;
 	}
 }
 
-@media screen and (min-width: 1100px) {
+@media screen and (min-width: 68.75rem) {
 	.metro.zone\:main {
 		grid-column-start: 1;
 		grid-column-end: 5;
