@@ -3,25 +3,6 @@
 /* TODO: clean this up - not so good  */
 @mixin switchToRowStyles_Header($breakpoint, $size) {
 	@media screen and (min-width: #{$breakpoint}) {
-		.header-app:has(.l\:reveal\:auto.bp\:#{$size}) {
-			padding-block: 0;
-			padding-inline: var(--gap);
-		}
-
-		.header-app .l\:reveal\:auto.bp\:#{$size} {
-			justify-content: var(--justify);
-
-			> ff-reveal {
-				position: unset;
-				flex-wrap: nowrap;
-				display: flex;
-				block-size: fit-content;
-				inline-size: fit-content;
-				padding: 0;
-				box-shadow: unset;
-			}
-		}
-
 		ff-reveal.collapsed:has(.header-nav) {
 			box-shadow: unset;
 		}
