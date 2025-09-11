@@ -1,8 +1,8 @@
 [class*='surface:0'] {
 	--lightness: var(--lightness-base);
 	--lightness-contrast: var(--lightness-contrast-base);
-	--chroma: var(--chroma-surface-base);
-	--chroma-contrast: var(--chroma-surface-base);
+	--chroma: var(--chroma-base);
+	--chroma-contrast: var(--chroma-base);
 }
 
 [class*='surface:1'] {
