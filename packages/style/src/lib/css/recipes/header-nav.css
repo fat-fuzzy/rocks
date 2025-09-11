@@ -2,27 +2,6 @@
  * App header - Main Nav
  */
 
-.header-app {
-	position: relative;
-
-	.expanded > ff-reveal {
-		--y-axis: calc(var(--ui-header-height) + var(--outline-offset-lg));
-		--x-axis: calc(2 * var(--outline-offset-sm));
-		position: absolute;
-		top: var(--y-axis);
-		block-size: fit-content;
-		max-block-size: calc(100vh - var(--y-axis));
-		overflow: auto;
-		max-inline-size: calc(100vw - 2 * var(--x-axis));
-		margin-block-start: var(--outline-offset-sm);
-	}
-}
-
-.header-app > [class*='l:main'] {
-	min-inline-size: unset;
-	flex-grow: 1;
-}
-
 .expanded > ff-reveal:has(.header-nav) {
 	display: flex;
 	left: var(--x-axis);
@@ -30,13 +9,16 @@
 	box-shadow: var(--shadow-md);
 }
 
-.header-nav.l\:flex[class*='size'] {
+.header-nav {
 	--justify: space-evenly;
 	--gap: var(--grid-gap, var(--size-base-xs));
 	gap: var(--grid-gap, 0);
 	padding-inline: var(--outline-offset-md);
 
 	li {
+		display: flex;
+		align-items: var(--align, center);
+		justify-content: var(--justify, center);
 		background-color: inherit;
 		border-block-start: var(--border-width-xl) solid transparent;
 		inline-size: fit-content;
@@ -46,6 +28,8 @@
 		a {
 			display: flex;
 			block-size: calc(100% - 2 * var(--border-width-xl));
+			align-items: var(--align, center);
+			justify-content: var(--justify, center);
 			inline-size: fit-content;
 			text-transform: uppercase;
 			padding-block: calc(var(--size-base-3xs) + var(--border-width-md));
@@ -60,18 +44,6 @@
 				text-decoration: none;
 				background-color: inherit;
 			}
-		}
-	}
-}
-
-.header-app > [class*='l:side'] {
-	flex-basis: content; /* property as content of flex container */
-	flex-grow: 0;
-
-	menu {
-		li {
-			display: flex;
-			align-items: center;
 		}
 	}
 }

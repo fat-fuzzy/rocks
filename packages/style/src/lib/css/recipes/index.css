@@ -6,7 +6,7 @@
 @import './tabs.css'; /* Use for tabs */
 @import './scrolly.css'; /* Use with ScrollReveal component  */
 
-@import './header-app.css'; /* Use for main app header */
+@import './header-nav.css'; /* Use for main app header */
 @import './layout-page.css'; /* Define page layout varians here */
 @import './article.css'; /* Use for articles (header + section(s) + optional footer) */
 
