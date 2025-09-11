@@ -43,7 +43,7 @@
 	font-family: var(--font-family-heading);
 }
 
-@media screen and (min-width: 620px) {
+@media screen and (min-width: 38.75rem) {
 	.exchange.swap > .sidebar {
 		padding-inline-start: 0;
 	}
@@ -67,14 +67,14 @@
 	}
 }
 
-@media screen and (min-width: 935px) {
+@media screen and (min-width: 58.45rem) {
 	.exchange > .sidebar [class*='gare:'].width\:xl,
 	.exchange > .sidebar:is([open], .expanded) > ff-reveal {
 		--overlay-block-size: var(--overlay-height-sm);
 	}
 }
 
-@media screen and (min-width: 1100px) {
+@media screen and (min-width: 68.75rem) {
 	.exchange > .sidebar {
 		z-index: initial;
 	}
