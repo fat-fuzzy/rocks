@@ -54,7 +54,7 @@ nav li a[role='tab'] {
 	scroll-margin-block: 4.5em; /* TODO: fix magic number */
 }
 
-@media screen and (min-width: 975px) {
+@media screen and (min-width: 60.95rem) {
 	[role='tabpanel']:first-of-type:target {
 		scroll-margin-block: 15em; /* TODO: fix magic number */
 	}
