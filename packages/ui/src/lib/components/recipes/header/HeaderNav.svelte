@@ -49,7 +49,7 @@
 	{redirect}
 >
 	<ul
-		class="header-nav l:flex size:md unstyled color:primary align:center justify:evenly w:full"
+		class="header-nav l:switcher:2xs size:md unstyled color:primary align:center justify:evenly w:full bg:inherit"
 	>
 		<li aria-current={path === '/' ? 'page' : undefined}>
 			<a data-sveltekit-preload-data href="/">Home</a>
