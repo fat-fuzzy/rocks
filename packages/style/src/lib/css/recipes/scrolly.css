@@ -17,12 +17,6 @@
 	inline-size: 100%;
 }
 
-/*
-TODO: padding for overlapping main on header (use w/ bg:blur)
-.scroll\:title {
-	padding-block-start: var(--ui-header-height);
-} */
-
 .scroll\:item {
 	inline-size: auto;
 	max-inline-size: 100%;
