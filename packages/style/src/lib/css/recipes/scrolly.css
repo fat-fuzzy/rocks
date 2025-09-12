@@ -33,14 +33,14 @@
 	top: 50%;
 	right: 50%;
 	z-index: 2;
-	transform: translate(55%, 20%);
+	transform: translate(52%, 20%);
 	transition: transform 300ms ease-in-out;
 	min-inline-size: calc(var(--layout-sidebar-collapsed) / var(--size-ratio-md));
 }
 
 @media screen and (min-height: 20rem) {
 	.scroll\:item .item-link {
-		transform: translate(55%, 100%);
+		transform: translate(52%, 100%);
 	}
 }
 
