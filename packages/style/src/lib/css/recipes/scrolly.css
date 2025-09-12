@@ -33,9 +33,15 @@
 	top: 50%;
 	right: 50%;
 	z-index: 2;
-	transform: translate(55%, 100%);
+	transform: translate(55%, 20%);
 	transition: transform 300ms ease-in-out;
 	min-inline-size: calc(var(--layout-sidebar-collapsed) / var(--size-ratio-md));
+}
+
+@media screen and (min-height: 20rem) {
+	.scroll\:item .item-link {
+		transform: translate(55%, 100%);
+	}
 }
 
 .scroll\:item .item-link ff-callout {
@@ -55,10 +61,6 @@
 .scroll\:item .item-link > * {
 	inline-size: 100%;
 	block-size: 100%;
-}
-
-.scrolly.scroll\:container[class*='l:frame'] {
-	block-size: 100vh;
 }
 
 .scroll\:item .media {

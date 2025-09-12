@@ -8,7 +8,7 @@
 		ext,
 		alt,
 		orientation = 'landscape',
-		dimensions = 'feature',
+		dimensions,
 		loading,
 		width,
 		height,
@@ -19,11 +19,7 @@
 	}: MediaProps = $props()
 
 	let frameClass = $derived(
-		dimensions === 'full'
-			? ''
-			: dimensions
-				? `l:frame:${dimensions}`
-				: 'l:frame',
+		dimensions === 'full' ? '' : dimensions ? `l:frame:${dimensions}` : '',
 	)
 
 	function getWebPSources(width: string) {
