@@ -17,12 +17,6 @@
 	inline-size: 100%;
 }
 
-/*
-TODO: padding for overlapping main on header (use w/ bg:blur)
-.scroll\:title {
-	padding-block-start: var(--ui-header-height);
-} */
-
 .scroll\:item {
 	inline-size: auto;
 	max-inline-size: 100%;
@@ -39,9 +33,15 @@ TODO: padding for overlapping main on header (use w/ bg:blur)
 	top: 50%;
 	right: 50%;
 	z-index: 2;
-	transform: translate(55%, 100%);
+	transform: translate(52%, 20%);
 	transition: transform 300ms ease-in-out;
 	min-inline-size: calc(var(--layout-sidebar-collapsed) / var(--size-ratio-md));
+}
+
+@media screen and (min-height: 20rem) {
+	.scroll\:item .item-link {
+		transform: translate(52%, 100%);
+	}
 }
 
 .scroll\:item .item-link ff-callout {
@@ -61,10 +61,6 @@ TODO: padding for overlapping main on header (use w/ bg:blur)
 .scroll\:item .item-link > * {
 	inline-size: 100%;
 	block-size: 100%;
-}
-
-.scrolly.scroll\:container[class*='l:frame'] {
-	block-size: 100vh;
 }
 
 .scroll\:item .media {

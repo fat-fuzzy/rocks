@@ -9,8 +9,6 @@
 	min-block-size: unset;
 	padding-inline: 0;
 	scrollbar-gutter: unset;
-	min-block-size: var(--max-block-size);
-	max-block-size: var(--max-block-size);
 
 	.scroll\:y h1 {
 		padding-block-start: calc(var(--ui-header-height) + var(--size-base-3xs));
@@ -23,7 +21,6 @@
 
 		.scroll\:container {
 			scrollbar-gutter: unset;
-			max-block-size: var(--max-block-size);
 		}
 	}
 }
