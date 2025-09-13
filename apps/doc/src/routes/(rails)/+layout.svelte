@@ -5,11 +5,13 @@
 	import {page} from '$app/state'
 	import {links} from '$data/nav'
 	import Footer from '$lib/ui/Footer.svelte'
+	import Socials from '$lib/ui/Socials.svelte'
 
 	const {Cookies, HeaderNav, RevealContext} = ui.drafts
 	const {RevealNav} = ui.recipes
 	const {LayoutGrid} = ui.content
 	const {Magic} = ui.blocks
+	import {linksSocials} from '$data/nav'
 
 	type Props = {
 		children: Snippet
@@ -147,6 +149,9 @@
 
 {#snippet zoneFooter()}
 	<Footer>
+		{#snippet socials()}
+			<Socials links={linksSocials} />
+		{/snippet}
 		{#snippet actions()}
 			{#if appContext.consent}
 				<Cookies

@@ -67,17 +67,4 @@
 		{redirect}
 		onupdate={preferences.onupdate}
 	/>
-	<ul class="links:settings end unstyled">
-		{#each preferences.links as { title, url, shape, size, asset }, i (i)}
-			<li>
-				<a
-					class={`${variant} shape:${shape} color:${color} ${asset} size:${size}`}
-					href={url}
-					{title}
-					aria-label={title}
-				>
-				</a>
-			</li>
-		{/each}
-	</ul>
 </Reveal>

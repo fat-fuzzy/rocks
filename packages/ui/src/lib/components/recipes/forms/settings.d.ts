@@ -11,7 +11,6 @@ import type {
 export type AppContextItems = {
 	display: SwitchProps[]
 	// language?:  ///
-	links: {[key: string]: string}[]
 	onupdate?: (payload: FuzzyPayload) => void
 }
 

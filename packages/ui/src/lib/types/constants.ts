@@ -171,17 +171,6 @@ const APP_SETTINGS: AppContextItems = {
 			},
 		},
 	],
-	links: [
-		{
-			id: 'link-github',
-			title: 'GitHub',
-			url: 'https://github.com/fat-fuzzy/rocks',
-			asset: 'svg:github',
-			shape: 'round',
-			size: 'md',
-			color: 'primary',
-		},
-	],
 }
 
 export default {
