@@ -66,7 +66,7 @@
 			name="nav"
 			title="Menu"
 			label="Menu"
-			size="sm"
+			size="3xs"
 			font="xs"
 			variant="outline"
 			color="primary"
@@ -105,7 +105,7 @@
 				scroll="y"
 				layer={1}
 				justify="evenly"
-				size="sm"
+				size="3xs"
 				font="xs"
 				width="lg"
 				height="sm"
@@ -123,7 +123,7 @@
 			path={page.url.pathname}
 			actionPath={page.url.pathname}
 			breakpoint="xs"
-			size="sm"
+			size="3xs"
 			font="xs"
 			layout="grid"
 			formaction="updateSettings"

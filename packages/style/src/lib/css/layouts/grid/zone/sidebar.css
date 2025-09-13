@@ -12,6 +12,7 @@
 	grid-template-columns: subgrid;
 	grid-template-rows: subgrid;
 	z-index: var(--layout-z-index-layer);
+	align-items: end;
 }
 
 .exchange > .sidebar > .gare-control {
@@ -44,6 +45,14 @@
 }
 
 @media screen and (min-width: 38.75rem) {
+	.exchange > .sidebar [name='sidebar'] > [class*='l:switcher'] {
+		--ui-size: var(--size-base-sm);
+	}
+
+	.exchange > .sidebar [name='sidebar'] > [class*='l:switcher'] span {
+		font-size: var(--font-size-sm);
+	}
+
 	.exchange.swap > .sidebar {
 		padding-inline-start: 0;
 	}

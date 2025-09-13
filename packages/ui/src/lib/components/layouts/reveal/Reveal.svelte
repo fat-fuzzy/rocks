@@ -68,7 +68,10 @@
 	)
 
 	let expanded = $derived(payload.state)
-	let revealLayoutClasses = $derived(`${expanded} ${layoutClasses}`)
+	let layoutSize = $derived(size ? `size:${size}` : '')
+	let revealLayoutClasses = $derived(
+		`${expanded} ${layoutClasses} ${layoutSize}`,
+	)
 	let revealClasses = $derived(
 		auto
 			? `${className} l:reveal:auto ${revealLayoutClasses}`
