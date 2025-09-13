@@ -3,4 +3,6 @@ fileignoreconfig:
   checksum: 80db7f3985638a076a73d6a3e8d948e865628611e0c4953c61cddabc4531780b
 - filename: pnpm-lock.yaml
   checksum: 37941dc96904d060e7f6d85d996c7317c9eb396e45f5bf382ca67c293f632ec2
+- filename: apps/doc/src/lib/ui/RcScout.svelte
+  checksum: 9d8a4dc6e960e47361d8e60d78bbc13f32ac3d294b82443ff9cd414f1fcffcd7
 version: "0.1.1"
