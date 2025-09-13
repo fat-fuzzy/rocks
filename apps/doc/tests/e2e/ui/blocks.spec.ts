@@ -12,7 +12,7 @@ test.describe.configure({mode: 'serial'})
 
 ready.forEach((component) => {
 	test.describe(`${component} tests`, () => {
-		test(`Doc has expected headings and content`, async ({page}) => {
+		test(`About page has expected headings and content`, async ({page}) => {
 			await page.goto(`${path}/${component}`)
 			styleProps = await page
 				.getByTestId('doc-style-props')

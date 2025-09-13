@@ -13,7 +13,6 @@
 .exchange > .context > .app-context {
 	grid-template-columns: subgrid;
 	align-items: center;
-	justify-content: start;
 	inline-size: 100%;
 }
 
@@ -24,6 +23,7 @@
 .exchange > .context > .app-context ff-reveal {
 	display: flex;
 	align-items: center;
+	justify-content: end;
 }
 
 .exchange > .context > .app-context.expanded ff-reveal {
@@ -79,7 +79,6 @@
 	.exchange > .context > .app-context ff-reveal {
 		--gap: var(--size-base-3xs);
 		display: flex;
-		justify-content: flex-start;
 	}
 
 	.exchange > .context > .app-context:not(details) ff-reveal {
@@ -95,8 +94,8 @@
 
 	/* This form contains the actual settings */
 	.exchange > .context > .app-context ff-reveal > form {
-		padding-inline: var(--outline-offset-lg) var(--outline-offset-sm);
-		padding-block: var(--outline-offset-lg);
+		padding-inline: var(--ui-size-sm) var(--outline-offset-sm);
+		padding-block: var(--ui-size-sm);
 	}
 }
 

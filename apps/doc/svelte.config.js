@@ -62,7 +62,7 @@ const config = {
 			directives: {
 				'default-src': ["'self'"],
 				'script-src': ["'self'", 'https://gc.zgo.at'],
-				'style-src': ["'self'"],
+				'style-src': ["'self'", 'data:'],
 				'style-src-elem': ["'self'"],
 				'style-src-attr': ["'self'"],
 				'base-uri': ["'self'"],

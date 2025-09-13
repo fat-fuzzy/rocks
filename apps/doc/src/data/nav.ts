@@ -2,7 +2,7 @@ import type {NavItem} from '$types'
 import ui from '@fat-fuzzy/ui'
 
 // TODO: move to utils / clean
-function sortAsc(a, b) {
+function sortAsc(a: string | number, b: string | number) {
 	return a < b ? -1 : b < a ? 1 : 0
 }
 const tokenNames = Object.keys(ui.tokens).sort(sortAsc)
@@ -18,6 +18,18 @@ export const links = [
 	{slug: 'ui', title: 'UI', layout: 'sidebar'},
 	{slug: 'blog', title: 'Blog', layout: 'sidebar'},
 	{slug: 'play', title: 'Play', layout: 'sidebar'},
+]
+
+export const linksSocials = [
+	{
+		id: 'link-github',
+		title: 'GitHub',
+		url: 'https://github.com/fat-fuzzy/rocks',
+		asset: 'svg:github',
+		shape: 'round',
+		size: 'md',
+		color: 'primary',
+	},
 ]
 
 const navBase = {

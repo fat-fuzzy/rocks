@@ -5,10 +5,11 @@
 	import {page} from '$app/state'
 
 	type Props = {
+		socials?: Snippet
 		actions?: Snippet
 	}
 
-	let {actions}: Props = $props()
+	let {actions, socials}: Props = $props()
 	let footerClass = 'text:center bg:inherit color:neutral '
 	let pageClass = $derived(
 		ui.utils.format.getClassNameFromPathname(page.url.pathname),
@@ -26,15 +27,20 @@
 			Colophon
 		</summary>
 		<div class="l:stack:2xl maki:block size:lg">
-			<p>
-				Made with 🩷 by <a
-					href="https://github.com/patiboh"
-					target="_blank"
-					rel="noopener"
-				>
-					@patiboh
-				</a>
-			</p>
+			<div class="l:flex justify:center">
+				<p>
+					Made with 🩷 by <a
+						href="https://github.com/patiboh"
+						target="_blank"
+						rel="noopener"
+					>
+						@patiboh
+					</a>
+				</p>
+				{#if socials}
+					{@render socials()}
+				{/if}
+			</div>
 			<RcScout />
 		</div>
 	</details>

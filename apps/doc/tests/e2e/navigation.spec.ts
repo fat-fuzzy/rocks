@@ -61,9 +61,6 @@ test(`Settings menu works as expected`, async ({page}) => {
 	await page.goto('/about')
 	await expect(page.getByRole('button', {name: 'Brightness'})).toBeVisible()
 	await expect(page.getByRole('button', {name: 'Contrast'})).toBeVisible()
-	await expect(
-		page.getByRole('link', {name: 'GitHub', exact: true}),
-	).toBeVisible()
 })
 
 pages.forEach((item) => {
