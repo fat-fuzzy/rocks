@@ -22,6 +22,7 @@
 		font,
 		variant,
 		justify,
+		text,
 		asset,
 		init,
 		onclick,
@@ -87,6 +88,6 @@
 		{init}
 		{onclick}
 	>
-		<span class={`ellipsis text:${justify} font:${font}`}>{label}</span>
+		<span class={`ellipsis text:${text} font:${font}`}>{label}</span>
 	</Expand>
 </form>

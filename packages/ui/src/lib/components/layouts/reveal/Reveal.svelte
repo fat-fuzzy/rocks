@@ -35,6 +35,7 @@
 		variant,
 		align,
 		justify,
+		text,
 		scroll,
 		height,
 		background,
@@ -131,6 +132,7 @@
 		{variant}
 		{align}
 		{justify}
+		{text}
 	/>
 
 	<RevealContent

@@ -26,6 +26,10 @@
 	grid-row: span 2;
 }
 
+.exchange > .sidebar > .app-name p {
+	line-height: 1;
+}
+
 .exchange > .sidebar > .app-name ff-callout {
 	border-top: var(--border-width-md) dotted var(--shade);
 	border-radius: 0;
@@ -45,6 +49,10 @@
 }
 
 @media screen and (min-width: 38.75rem) {
+	.exchange > .sidebar > .app-name p {
+		line-height: var(--font-leading-body);
+	}
+
 	.exchange > .sidebar [name='sidebar'] > [class*='l:switcher'] {
 		--ui-size: var(--size-base-sm);
 	}

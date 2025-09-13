@@ -24,6 +24,10 @@
 }
 
 @media screen and (min-width: 38.75rem) {
+	.zone\:1.exchange {
+		align-items: center;
+	}
+
 	.swap.exchange {
 		grid-template-areas: 'sidebar navbar context';
 	}
@@ -32,6 +36,7 @@
 @media screen and (min-width: 58.45rem) {
 	.zone\:1.exchange {
 		padding-inline: var(--grid-gap);
+		align-items: start;
 	}
 }
 
