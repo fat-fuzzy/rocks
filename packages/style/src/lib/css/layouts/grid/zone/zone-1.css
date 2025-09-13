@@ -10,7 +10,9 @@
 	grid-template-rows: subgrid;
 	grid-auto-flow: row;
 	z-index: var(--layout-z-index-reveal);
-	padding-inline: var(--outline-offset-lg);
+	padding-inline: var(--grid-gap);
+	align-items: end;
+	grid-gap: calc(var(--grid-gap) / 2);
 
 	details > summary {
 		display: block;

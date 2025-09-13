@@ -5,7 +5,7 @@
 
 .exchange > .navbar .expanded ff-reveal {
 	position: absolute;
-	top: var(--ui-header-height);
+	top: calc(var(--ui-header-height) + var(--grid-gap));
 	left: calc(var(--outline-offset-sm) + var(--grid-gap));
 	right: var(--grid-gap);
 }

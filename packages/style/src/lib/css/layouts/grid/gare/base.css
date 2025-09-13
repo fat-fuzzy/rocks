@@ -31,13 +31,13 @@ details[class*='gare:'] > ff-reveal,
 
 .gare\:ouest > ff-reveal,
 .gare\:ouest:is([open], .expanded) > ff-reveal {
-	top: var(--ui-header-height);
+	top: calc(var(--ui-header-height) + var(--grid-gap));
 	left: var(--grid-gap);
 	right: calc(var(--grid-gap) + var(--outline-offset-md));
 }
 
 .gare\:est:is([open], .expanded) > ff-reveal {
-	top: var(--ui-header-height);
+	top: calc(var(--ui-header-height) + var(--grid-gap));
 	right: calc(var(--grid-gap) + var(--outline-offset-lg));
 }
 
