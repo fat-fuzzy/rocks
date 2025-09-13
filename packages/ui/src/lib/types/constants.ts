@@ -4,7 +4,7 @@ import type {
 	CookiePreferences,
 	ViewingPreferences,
 } from '$types'
-import {UiState, UiSettings} from '$types'
+import {UiState} from '$types'
 import {SWITCH_MACHINE} from '$lib/components/blocks/buttons/Switch/definitions.js'
 import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/definitions.js'
 
@@ -20,7 +20,7 @@ const DEFAULT_REVEAL_STATE: UiRevealState = {reveal: UiState.collapsed}
 
 const DEFAULT_SIDEBAR_REVEAL_STATE: UiRevealState = {reveal: UiState.collapsed}
 
-const DEFAULT_NAV_REVEAL_STATE: UiRevealState = {reveal: UiState.expanded}
+const DEFAULT_NAV_REVEAL_STATE: UiRevealState = {reveal: UiState.collapsed}
 
 const DEFAULT_PREFERENCES: ViewingPreferences = {
 	reveal: UiState.collapsed,
