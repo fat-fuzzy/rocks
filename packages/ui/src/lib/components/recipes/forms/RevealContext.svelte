@@ -17,6 +17,8 @@
 		variant = 'outline',
 		asset = 'settings',
 		align = 'end',
+		justify,
+		text,
 		formaction,
 		actionPath,
 		redirect,
@@ -53,6 +55,8 @@
 	{variant}
 	{asset}
 	{align}
+	{justify}
+	{text}
 	formaction="toggleAppContext"
 >
 	<Settings

@@ -71,7 +71,8 @@
 			variant="outline"
 			color="primary"
 			asset="home"
-			justify="start"
+			justify="center"
+			text="start"
 			dismiss="outside"
 			auto={true}
 			{links}
@@ -127,6 +128,8 @@
 			font="xs"
 			layout="grid"
 			formaction="updateSettings"
+			justify="center"
+			text="start"
 			background="inherit"
 			context={appContext}
 			reveal={appContext.reveal}
