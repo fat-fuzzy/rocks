@@ -45,7 +45,8 @@
 	let submitDisabled: boolean | undefined = $state(undefined)
 	let title = 'Cookies'
 	let description = '🍪 This website uses cookies 🍪'
-	let successMessage = `Your cookie preferences have been saved! Your can change them any time the footer 👇`
+	let successMessage =
+		'Your cookie preferences have been saved! Your can change them any time the footer.'
 	let fixed = $derived(!consent ? 'bottom-right' : undefined)
 
 	// TODO: Integrate inputTypes into validator from schema
