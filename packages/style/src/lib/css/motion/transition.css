@@ -14,6 +14,14 @@
 	opacity: 0;
 }
 
+.image\:fade\:in img {
+	opacity: 1;
+}
+
+.image\:fade\:out img {
+	opacity: 0;
+}
+
 .slide\:in {
 	block-size: 100%;
 }
