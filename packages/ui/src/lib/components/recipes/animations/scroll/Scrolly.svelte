@@ -41,23 +41,17 @@
 		entries.forEach((entry) => {
 			let element = entry.target
 
-			if (entry.intersectionRatio > 0.3) {
+			if (entry.intersectionRatio > 0.35) {
 				animations.forEach((animation) => {
 					element.classList.add(`image:${animation}:in`)
 					element.classList.remove(`image:${animation}:out`)
 				})
-			} else if (entry.intersectionRatio < 0.3) {
+			} else if (entry.intersectionRatio <= 0) {
 				animations.forEach((animation) => {
 					element.classList.remove(`image:${animation}:in`)
 					element.classList.add(`image:${animation}:out`)
 				})
-			} else {
-				animations.forEach((animation) => {
-					element.classList.remove(`image:${animation}:in`)
-					element.classList.remove(`image:${animation}:out`)
-				})
 			}
-			prevRatio = entry.intersectionRatio
 		})
 	}
 
@@ -65,7 +59,7 @@
 		if (!scrollArea) return
 		if (!observer) {
 			observer = new IntersectionObserver(handleIntersect, {
-				rootMargin: '30% 0% -30% 0%',
+				rootMargin: '0px',
 				threshold: buildThresholdList(),
 			})
 		}
