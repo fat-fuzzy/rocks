@@ -7,7 +7,7 @@
 	"path": "images/fat-fuzzy/all",
 	"title": "Fat Fuzzy 5",
 	"alt": "Fat Fuzzy, a colorful owl, with its wings fully extended.",
-	"style": "filter: contrast(0.85) brightness(0.95)",
+	"style": "filter: opacity(0.775) contrast(0.95)",
 	"media": [
 		{
 			"query": "(min-width: 3600px)",

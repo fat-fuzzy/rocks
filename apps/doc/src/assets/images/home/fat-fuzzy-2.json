@@ -7,7 +7,7 @@
 	"path": "images/fat-fuzzy/all",
 	"title": "Fat Fuzzy 2",
 	"alt": "Fat Fuzzy, a colorful owl, getting ready to spread its wings.",
-	"style": "filter: contrast(0.85) brightness(0.95)",
+	"style": "filter: opacity(0.775) contrast(0.95)",
 	"media": [
 		{
 			"query": "(min-width: 3600px)",
