@@ -1,5 +1,5 @@
 .scrolly.scroll\:container {
-	--hue-scrolly-item: var(--color-theme-primary);
+	--hue-scrolly-item: var(--color-palette-framboise);
 	--color-scrolly-fade: oklch(
 		var(--lightness-surface-3) var(--chroma-surface-3) var(--hue-scrolly-item)
 	);
@@ -10,6 +10,30 @@
 		var(--color-scrolly-fade) 100%
 	);
 	block-size: 100%;
+}
+
+@media (prefers-color-scheme: light) {
+	[color-scheme='light'] .scrolly.scroll\:container,
+	[class*='settings:day'] .scrolly.scroll\:container {
+		--hue-scrolly-item: var(--color-palette-framboise);
+	}
+}
+
+html:has([class*='settings:day:']) .scrolly.scroll\:container,
+[color-scheme='light'] .scrolly.scroll\:container,
+[class*='settings:day'] .scrolly.scroll\:container {
+	--hue-scrolly-item: var(--color-palette-framboise);
+}
+
+@media (prefers-color-scheme: dark) {
+	[color-scheme='dark'] .scrolly.scroll\:container,
+	[class*='settings:night'] .scrolly.scroll\:container {
+		--hue-scrolly-item: var(--color-palette-mora);
+	}
+}
+
+[class*='settings:night'] .scrolly.scroll\:container {
+	--hue-scrolly-item: var(--color-palette-mora);
 }
 
 .scrolly.scroll\:container {
