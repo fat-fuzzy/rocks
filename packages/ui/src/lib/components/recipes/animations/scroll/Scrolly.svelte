@@ -41,18 +41,17 @@
 		entries.forEach((entry) => {
 			let element = entry.target
 
-			if (entry.intersectionRatio > 0.05) {
+			if (entry.intersectionRatio > 0.35) {
 				animations.forEach((animation) => {
-					element.classList.add(`${animation}:in`)
-					element.classList.remove(`${animation}:out`)
+					element.classList.add(`image:${animation}:in`)
+					element.classList.remove(`image:${animation}:out`)
 				})
-			} else {
+			} else if (entry.intersectionRatio <= 0) {
 				animations.forEach((animation) => {
-					element.classList.remove(`${animation}:in`)
-					element.classList.add(`${animation}:out`)
+					element.classList.remove(`image:${animation}:in`)
+					element.classList.add(`image:${animation}:out`)
 				})
 			}
-			prevRatio = entry.intersectionRatio
 		})
 	}
 

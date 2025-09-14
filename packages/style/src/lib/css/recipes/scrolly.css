@@ -1,11 +1,39 @@
 .scrolly.scroll\:container {
+	--hue-scrolly-item: var(--color-palette-framboise);
+	--color-scrolly-fade: oklch(
+		var(--lightness-surface-3) var(--chroma-surface-3) var(--hue-scrolly-item)
+	);
 	position: sticky;
 	background: linear-gradient(
 		to bottom,
 		transparent 0%,
-		var(--color-shadow-primary) 100%
+		var(--color-scrolly-fade) 100%
 	);
 	block-size: 100%;
+}
+
+@media (prefers-color-scheme: light) {
+	[color-scheme='light'] .scrolly.scroll\:container,
+	[class*='settings:day'] .scrolly.scroll\:container {
+		--hue-scrolly-item: var(--color-palette-framboise);
+	}
+}
+
+html:has([class*='settings:day:']) .scrolly.scroll\:container,
+[color-scheme='light'] .scrolly.scroll\:container,
+[class*='settings:day'] .scrolly.scroll\:container {
+	--hue-scrolly-item: var(--color-palette-framboise);
+}
+
+@media (prefers-color-scheme: dark) {
+	[color-scheme='dark'] .scrolly.scroll\:container,
+	[class*='settings:night'] .scrolly.scroll\:container {
+		--hue-scrolly-item: var(--color-palette-mora);
+	}
+}
+
+[class*='settings:night'] .scrolly.scroll\:container {
+	--hue-scrolly-item: var(--color-palette-mora);
 }
 
 .scrolly.scroll\:container {
@@ -15,6 +43,7 @@
 	justify-content: var(--justify, space-between);
 	align-items: center;
 	inline-size: 100%;
+	max-block-size: 100vh;
 }
 
 .scroll\:item {
@@ -33,14 +62,14 @@
 	top: 50%;
 	right: 50%;
 	z-index: 2;
-	transform: translate(52%, 15%);
+	transform: translate(52%, 32%) scale(1.3);
 	transition: transform 300ms ease-in-out;
 	min-inline-size: calc(var(--layout-sidebar-collapsed) / var(--size-ratio-md));
 }
 
-@media screen and (min-height: 20rem) {
+@media screen and (min-height: 25rem) {
 	.scroll\:item .item-link {
-		transform: translate(52%, 100%);
+		transform: translate(52%, 100%) scale(1.25);
 	}
 }
 
@@ -70,7 +99,7 @@
 
 @media screen and (min-width: 37.5rem) {
 	.scroll\:item .item-link {
-		transform: translate(53%, -15%);
+		transform: translate(53%, -15%) scale(1.15);
 		min-inline-size: calc(
 			var(--layout-sidebar-collapsed) / var(--size-ratio-md) - 2 *
 				var(--outline-offset-lg)
@@ -80,7 +109,7 @@
 
 @media screen and (min-width: 37.5rem) and (max-height: 37.5rem) {
 	.scroll\:item .item-link {
-		transform: translate(53%, -30%);
+		transform: translate(53%, -30%) scale(1.1);
 		min-inline-size: calc(
 			var(--layout-sidebar-collapsed) / var(--size-ratio-md)
 		);

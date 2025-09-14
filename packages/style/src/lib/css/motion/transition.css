@@ -1,5 +1,5 @@
 [class*=':in'] {
-	transition: opacity 200ms ease-in-out 150ms;
+	transition: opacity 150ms ease-in-out;
 }
 
 [class*=':out'] {
@@ -11,6 +11,14 @@
 }
 
 .fade\:out {
+	opacity: 0;
+}
+
+.image\:fade\:in img {
+	opacity: 1;
+}
+
+.image\:fade\:out img {
 	opacity: 0;
 }
 
