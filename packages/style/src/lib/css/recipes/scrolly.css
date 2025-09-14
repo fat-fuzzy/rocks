@@ -1,9 +1,13 @@
 .scrolly.scroll\:container {
+	--hue-scrolly-item: var(--color-theme-primary);
+	--color-scrolly-fade: oklch(
+		var(--lightness-surface-3) var(--chroma-surface-3) var(--hue-scrolly-item)
+	);
 	position: sticky;
 	background: linear-gradient(
 		to bottom,
 		transparent 0%,
-		var(--color-shadow-primary) 100%
+		var(--color-scrolly-fade) 100%
 	);
 	block-size: 100%;
 }
