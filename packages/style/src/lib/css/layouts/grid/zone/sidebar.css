@@ -49,12 +49,16 @@
 }
 
 @media screen and (min-width: 38.75rem) {
+	.exchange > .sidebar {
+		align-items: center;
+	}
+
 	.exchange > .sidebar > .app-name p {
 		line-height: var(--font-leading-body);
 	}
 
 	.exchange > .sidebar [name='sidebar'] > [class*='l:switcher'] {
-		--ui-size: var(--size-base-sm);
+		--ui-size: var(--size-base-xs);
 	}
 
 	.exchange > .sidebar [name='sidebar'] > [class*='l:switcher'] span {
