@@ -4,7 +4,18 @@ APPS := apps/doc
 
 # Package directories
 
-PACKAGES := packages/config packages/cz-changelog packages/git-poule packages/gfx packages/intl packages/lib packages/markdown packages/media packages/playbook packages/sketch packages/style packages/ui packages/validation 
+PACKAGES := packages/config \
+	packages/cz-changelog \
+	packages/gfx \
+	packages/git-poule \
+	packages/intl \
+	packages/media \
+	packages/playbook \
+	packages/prose \
+	packages/sketch \
+	packages/style \
+	packages/ui \
+	packages/validation 
 
 all:install
 
