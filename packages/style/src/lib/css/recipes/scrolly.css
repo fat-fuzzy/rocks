@@ -28,12 +28,12 @@ html:has([class*='settings:day:']) .scrolly.scroll\:container,
 @media (prefers-color-scheme: dark) {
 	[color-scheme='dark'] .scrolly.scroll\:container,
 	[class*='settings:night'] .scrolly.scroll\:container {
-		--hue-scrolly-item: var(--color-palette-mora);
+		--hue-scrolly-item: var(--color-palette-grape);
 	}
 }
 
 [class*='settings:night'] .scrolly.scroll\:container {
-	--hue-scrolly-item: var(--color-palette-mora);
+	--hue-scrolly-item: var(--color-palette-grape);
 }
 
 .scrolly.scroll\:container {
