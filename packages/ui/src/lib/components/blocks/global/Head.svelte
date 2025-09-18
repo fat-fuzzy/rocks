@@ -17,14 +17,4 @@
 <svelte:head>
 	<title>{fullTitle}</title>
 	<meta name="description" content={description} />
-	<meta
-		name="theme-color"
-		media="(prefers-color-scheme: light)"
-		content="day"
-	/>
-	<meta
-		name="theme-color"
-		media="(prefers-color-scheme: dark)"
-		content="night"
-	/>
 </svelte:head>
