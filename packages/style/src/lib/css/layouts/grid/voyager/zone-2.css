@@ -22,3 +22,9 @@
 		}
 	}
 }
+
+@media screen and (min-width: 68.75rem) {
+	.voyager.zone\:2 {
+		grid-template-columns: subgrid;
+	}
+}

@@ -1,5 +1,7 @@
 .metro.zone\:main {
-	grid-template-columns: subgrid;
+	grid-template-areas:
+		'page-header'
+		'page-main';
 	grid-template-rows: auto 1fr;
 	grid-column-start: 1;
 	grid-column-end: -1;
@@ -25,8 +27,9 @@
 
 @media screen and (min-width: 68.75rem) {
 	.metro.zone\:main {
-		grid-column-start: 1;
+		grid-column-start: 4;
 		grid-column-end: 5;
+		padding-inline: calc(3.5 * var(--grid-gap)) 0;
 	}
 
 	.exchange ~ .metro.zone\:2.hug .page-context:not(.empty) {
@@ -38,6 +41,7 @@
 		~ .hug .metro.zone\:main {
 			grid-column-start: 1;
 			grid-column-end: 2;
+			padding-inline: 0;
 		}
 
 		~ .hug .page-context:not(.empty) {
