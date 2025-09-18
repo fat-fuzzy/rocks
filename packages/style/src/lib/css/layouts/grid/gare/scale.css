@@ -89,7 +89,7 @@
 	[class*='gare:'][class*='width:']:not([class*=':full']).expanded > ff-reveal,
 	[class*='gare:'] > ff-reveal {
 		--sidebar-width: var(--layout-sidebar-md);
-		--overlay-inline-size: calc(var(--sidebar-width) + 2 * var(--grid-gap));
+		--overlay-inline-size: calc(var(--sidebar-width) - var(--grid-gap));
 	}
 
 	[class*='gare:'][class*='width:']:not([class*=':full'])[open] > ff-reveal {

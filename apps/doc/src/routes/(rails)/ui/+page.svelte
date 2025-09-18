@@ -29,7 +29,7 @@
 	layout="voyager"
 >
 	{#snippet main()}
-		<EscapeHtml id={slug} html={content.html} size="md" />
+		<EscapeHtml id={slug} html={content.html} size="xl" />
 
 		<div>
 			{#each categories as category}
@@ -46,7 +46,7 @@
 						id={`${slug}-${category}`}
 						html={markdowns.categories.find(({meta}) => meta.slug === category)
 							.html}
-						size="md"
+						size="xl"
 					/>
 				</PlaybookCollection>
 			{/each}

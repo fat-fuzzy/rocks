@@ -19,7 +19,7 @@
 {#key scene}
 	{#if scene}
 		<Sketch {scene} meta={scene.meta} size="sm" {dev}>
-			<EscapeHtml id={slug} {html} size="md" />
+			<EscapeHtml id={slug || scene.meta.slug} {html} size="xl" />
 		</Sketch>
 	{/if}
 {/key}
