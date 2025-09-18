@@ -26,6 +26,6 @@
 	layout="metro"
 >
 	{#snippet main()}
-		<EscapeHtml id={slug} {html} size="md" />
+		<EscapeHtml id={slug} {html} size="xl" />
 	{/snippet}
 </PageRails>

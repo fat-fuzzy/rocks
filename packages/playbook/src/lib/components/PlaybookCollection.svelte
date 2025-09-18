@@ -191,7 +191,7 @@
 				<EscapeHtml
 					id="doc"
 					html={content.html || ''}
-					size="md"
+					size="xl"
 					font="md"
 					element="section"
 				/>
