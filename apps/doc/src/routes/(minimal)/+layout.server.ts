@@ -44,6 +44,7 @@ export const load = async ({locals, url, params}) => {
 					} else {
 						const link = {
 							slug: meta.slug,
+							talk: meta.talk,
 							title: meta.series.title,
 							itemPath: `/speaking/${meta.talk}`,
 						}

@@ -18,7 +18,7 @@
 	let {children}: Props = $props()
 
 	let sidenav = $derived(page.data.sidebar)
-	let isTalkPage = $derived(page.params.talk)
+	let talk = $derived(page.params.talk)
 	let layout = $derived(page.data.layout ?? sidenav.layout)
 	let appContext = $derived(page.data.appContext)
 	let slide = $derived(page.data.content)
@@ -54,7 +54,7 @@
 	let series = $derived(
 		slide.meta.series && slide.meta.index > 0
 			? slide.meta.series.items.map((id) =>
-					page.data.markdowns.find((slide) => slide.meta.id === id),
+					page.data.talks.find((slide) => slide.meta.id === id),
 				)
 			: null,
 	)
@@ -112,7 +112,7 @@
 {/snippet}
 
 {#snippet zoneFooter()}
-	{#if isTalkPage}
+	{#if talk}
 		<Footer>
 			<nav id="slides-nav" class="l:flex align:center justify:end w:full">
 				{#if slide.meta.index === 0}
