@@ -9,3 +9,7 @@
 :fullscreen .page-context {
 	display: none;
 }
+
+:fullscreen .breadcrumbs {
+	display: none;
+}
