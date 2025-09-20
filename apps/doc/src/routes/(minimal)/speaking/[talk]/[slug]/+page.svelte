@@ -11,29 +11,28 @@
 	let description = $derived(slide.meta.description)
 	let html = $derived(slide.html)
 	let slug = $derived(slide.slug)
-	let series = $derived(
-		slide.meta.series
-			? slide.meta.series.items.map((id) =>
-					page.data.markdowns.find((slide) => slide.meta.id === id),
-				)
-			: null,
-	)
+
+	$effect(() => {
+		if (slide) {
+			html = slide.html
+		}
+	})
 </script>
 
-{#key slide.id}
-	<PageRails
-		pageName={title}
-		{title}
-		{description}
-		size="sm"
-		path={page.url.pathname}
-		nav={page.data.nav}
-		app={appContext}
-		layout="steam"
-	>
-		{#snippet main()}
+<PageRails
+	pageName={title}
+	{title}
+	{description}
+	size="sm"
+	path={page.url.pathname}
+	nav={page.data.nav}
+	app={appContext}
+	layout="steam"
+>
+	{#snippet main()}
+		{#key html}
 			<EscapeHtml id={slug} {html} size="xl" />
-		{/snippet}
-		{#snippet aside()}{/snippet}
-	</PageRails>
-{/key}
+		{/key}
+	{/snippet}
+	{#snippet aside()}{/snippet}
+</PageRails>
