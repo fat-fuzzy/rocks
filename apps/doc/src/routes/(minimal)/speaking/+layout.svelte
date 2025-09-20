@@ -18,6 +18,7 @@
 	let {children}: Props = $props()
 
 	let sidenav = $derived(page.data.sidebar)
+	let isTalkPage = $derived(page.params.talk)
 	let layout = $derived(page.data.layout ?? sidenav.layout)
 	let appContext = $derived(page.data.appContext)
 	let slide = $derived(page.data.content)
@@ -111,40 +112,57 @@
 {/snippet}
 
 {#snippet zoneFooter()}
-	<Footer>
-		<nav id="slides-nav" class="l:flex align:center justify:end w:full">
-			{#if slide.meta.index === 0}
-				<a
-					href={`/speaking/${slide.meta.talk}/slide-1`}
-					class="emoji:start justify:start"
-				>
-					{`Start`}
-				</a>
-			{:else}
-				{#if slide.meta.index === 1}
-					<p class="emoji:default justify:start">Intro</p>
-				{/if}
-				{#if slide.meta.index > 1}
+	{#if isTalkPage}
+		<Footer>
+			<nav id="slides-nav" class="l:flex align:center justify:end w:full">
+				{#if slide.meta.index === 0}
 					<a
-						href={`/speaking/${slide.meta.talk}/slide-${slide.meta.index - 1}`}
-						class="emoji:point-left justify:start"
+						href={`/speaking/${slide.meta.talk}/slide-1`}
+						class="emoji:start justify:start"
 					>
-						{`Slide ${slide.meta.index - 1}`}
+						{`Start`}
 					</a>
+				{:else}
+					{#if slide.meta.index === 1}
+						<p class="emoji:default justify:start">Intro</p>
+					{/if}
+					{#if slide.meta.index > 1}
+						<a
+							href={`/speaking/${slide.meta.talk}/slide-${slide.meta.index - 1}`}
+							class="emoji:point-left justify:start"
+						>
+							{`Slide ${slide.meta.index - 1}`}
+						</a>
+					{/if}
+					/
+					{#if slide.meta.index < series?.length}
+						<a
+							href={`/speaking/${slide.meta.talk}/slide-${slide.meta.index + 1}`}
+							class="emoji:point-right justify:end"
+						>
+							{`Slide ${slide.meta.index + 1}`}
+						</a>
+					{/if}
+					{#if slide.meta.index === series?.length}
+						<p class="emoji:end justify:start">La Fin!</p>
+					{/if}
 				{/if}
-				/
-				{#if slide.meta.index < series?.length}
-					<a
-						href={`/speaking/${slide.meta.talk}/slide-${slide.meta.index + 1}`}
-						class="emoji:point-right justify:end"
-					>
-						{`Slide ${slide.meta.index + 1}`}
-					</a>
+			</nav>
+		</Footer>
+	{:else}
+		<Footer>
+			{#snippet socials()}
+				<Socials links={linksSocials} />
+			{/snippet}
+			{#snippet actions()}
+				{#if appContext.consent}
+					<Cookies
+						consent={appContext.consent}
+						actionPath={appContext.actionPath}
+						font="lg"
+					/>
 				{/if}
-				{#if slide.meta.index === series?.length}
-					<p class="emoji:end justify:start">La Fin!</p>
-				{/if}
-			{/if}
-		</nav>
-	</Footer>
+			{/snippet}
+		</Footer>
+	{/if}
 {/snippet}
