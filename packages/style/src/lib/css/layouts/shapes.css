@@ -4,11 +4,23 @@
 	align-items: var(--align, center);
 	justify-content: var(--justify, center);
 	aspect-ratio: 1/1;
+	block-size: fit-content;
 	inline-size: auto;
 	object-fit: contain;
 }
 
-.shape\:round,
+.shape\:round {
+	line-height: 0;
+	border-radius: 100vmax;
+}
+
+.shape\:round.index {
+	block-size: 2em;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
 .shape\:round > * {
 	line-height: 1;
 	border-radius: 100vmax;

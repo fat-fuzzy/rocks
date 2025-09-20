@@ -1,0 +1,19 @@
+.slides-nav .index {
+	text-align: center;
+}
+
+.slides-nav [class*='shape:'][class*='emoji'] {
+	padding-block: 0;
+}
+
+.slides-nav a:first-child,
+.slides-nav p:first-child {
+	min-inline-size: 5em;
+	text-align: start;
+}
+
+.slides-nav a:last-child,
+.slides-nav p:last-child {
+	min-inline-size: 5em;
+	text-align: end;
+}

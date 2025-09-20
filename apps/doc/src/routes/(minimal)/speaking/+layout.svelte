@@ -114,13 +114,16 @@
 {#snippet zoneFooter()}
 	{#if talk}
 		<Footer>
-			<nav id="slides-nav" class="l:flex align:center justify:end w:full">
+			<nav
+				id="slides-nav"
+				class="slides-nav l:flex size:md align:center justify:end"
+			>
 				{#if slide.meta.index === 0}
 					<a
 						href={`/speaking/${slide.meta.talk}/slide-1`}
-						class="emoji:start justify:start"
+						class="emoji:start justify:start shape:mellow"
 					>
-						{`Start`}
+						Showtime!
 					</a>
 				{:else}
 					{#if slide.meta.index === 1}
@@ -129,22 +132,26 @@
 					{#if slide.meta.index > 1}
 						<a
 							href={`/speaking/${slide.meta.talk}/slide-${slide.meta.index - 1}`}
-							class="emoji:point-left justify:start"
+							class="emoji:point-left justify:start shape:mellow"
 						>
-							{`Slide ${slide.meta.index - 1}`}
+							{slide.meta.index - 1}
 						</a>
 					{/if}
-					/
+					<p
+						class="surface:4:primary shape:round index variant:fill ravioli:2xs"
+					>
+						{slide.meta.index}
+					</p>
 					{#if slide.meta.index < series?.length}
 						<a
 							href={`/speaking/${slide.meta.talk}/slide-${slide.meta.index + 1}`}
-							class="emoji:point-right justify:end"
+							class="emoji:point-right justify:end shape:mellow"
 						>
-							{`Slide ${slide.meta.index + 1}`}
+							{slide.meta.index + 1}
 						</a>
 					{/if}
 					{#if slide.meta.index === series?.length}
-						<p class="emoji:end justify:start">La Fin!</p>
+						<p class="emoji:end justify:start">Fin!</p>
 					{/if}
 				{/if}
 			</nav>
