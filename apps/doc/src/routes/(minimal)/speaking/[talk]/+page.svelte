@@ -7,7 +7,7 @@
 
 	let markdown = $derived(page.data.content)
 	let appContext = $derived(page.data.appContext)
-	let title = $derived('')
+	let title = $derived(markdown.meta.title)
 	let description = $derived(markdown.meta.description)
 	let html = $derived(markdown.html)
 	let slug = $derived(markdown.meta.slug)

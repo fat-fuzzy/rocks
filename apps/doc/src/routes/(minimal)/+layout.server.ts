@@ -9,7 +9,9 @@ const {DEFAULT_PREFERENCES, DEFAULT_REVEAL_STATE} = ui.constants
 export const load = async ({locals, url, params}) => {
 	const pageName = url.pathname.split('/')
 	let sidebar
-	let talks = await speaking.fetchMarkdowns(params.talk || 'all')
+	let talks = params.talk
+		? await speaking.fetchMarkdowns(params.talk)
+		: await speaking.fetchTalks()
 
 	if (pageName.length > 0 && pageName[1]) {
 		sidebar = buildNav(pageName[1])
@@ -40,7 +42,12 @@ export const load = async ({locals, url, params}) => {
 							links.push(meta)
 						}
 					} else {
-						links.push(meta)
+						const link = {
+							slug: meta.slug,
+							title: meta.series.title,
+							itemPath: `/speaking/${meta.talk}`,
+						}
+						links.push(link)
 					}
 					return links
 				}, [])
