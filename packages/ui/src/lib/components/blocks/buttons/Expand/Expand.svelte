@@ -67,10 +67,7 @@
 	}
 
 	onMount(() => {
-		if (init) init(payload)
-	})
-
-	onMount(() => {
+		if (init) init(payload as FuzzyPayload)
 		let expandEvent =
 			initial === UiState.collapsed ? ButtonEvent.expand : ButtonEvent.collapse
 		actor.update(expandEvent)

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type {HeaderProps} from '$types'
+	import styleHelper from '$lib/utils/styles.js'
 	import Reveal from '$lib/components/layouts/reveal/Reveal.svelte'
 
 	let {
@@ -12,9 +13,11 @@
 		shape,
 		color,
 		background,
+		threshold,
+		layout = 'switcher',
 		asset,
-		justify,
-		dismiss,
+		justify = 'evenly',
+		dismiss = 'outside',
 		auto,
 		title,
 		path,
@@ -24,6 +27,19 @@
 		redirect,
 		links,
 	}: HeaderProps = $props()
+
+	let revealState = $derived(reveal)
+	let linkListClasses = $derived(
+		styleHelper.getStyles({
+			color,
+			size,
+			layout,
+			threshold,
+			align: 'center',
+			justify: 'between',
+			background: 'inherit',
+		}),
+	)
 </script>
 
 <Reveal
@@ -48,9 +64,7 @@
 	{actionPath}
 	{redirect}
 >
-	<ul
-		class="header-nav l:switcher:2xs size:md unstyled color:primary align:center justify:evenly w:full bg:inherit"
-	>
+	<ul class={`header-nav unstyled w:full ${linkListClasses}`}>
 		<li aria-current={path === '/' ? 'page' : undefined}>
 			<a data-sveltekit-preload-data href="/">Home</a>
 		</li>

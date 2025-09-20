@@ -5,7 +5,7 @@ button {
 	--lightness-accent: var(--lightness-ui-base);
 	--lightness-contrast: var(--lightness-ui-contrast-base);
 	--chroma-contrast: var(--chroma-base);
-	--chroma-accent: var(--color-chroma-400);
+	--chroma-accent: var(--chroma-accent-base);
 	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
 	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
 	--accent: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));

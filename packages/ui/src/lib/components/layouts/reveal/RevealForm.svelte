@@ -1,9 +1,11 @@
 <script lang="ts">
 	import type {RevealLayoutProps} from '$types'
+	import {DismissEvent} from '$types'
 	import {enhance} from '$app/forms'
 	import constants from '$lib/types/constants.js'
 	import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/definitions.js'
 	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
+	import {clickOutside} from '$lib/utils/click-outside'
 
 	const {ALIGN_OPPOSITE, DEFAULT_REVEAL_STATE, TRANSITION_REVEAL} = constants
 
@@ -22,12 +24,14 @@
 		font,
 		variant,
 		justify,
+		dismiss,
 		text,
 		asset,
 		init,
 		onclick,
 	}: RevealLayoutProps = $props()
 
+	let node: HTMLElement
 	let buttonAset = $state(asset)
 	$effect(() => {
 		buttonAset = asset
@@ -52,12 +56,12 @@
 	// 	const target = e.target as HTMLElement
 	// 	if (
 	// 		dismiss !== DismissEvent.outside ||
-	// 		payload.state !== 'expanded' ||
+	// 		reveal !== 'expanded' ||
 	// 		target.id !== `${id}-reveal`
 	// 	) {
 	// 		return
 	// 	}
-	// 	payload.state = 'collapsed' // TODO: Fix this does nothing
+	// 	reveal = 'collapsed' // TODO: Fix this does nothing
 	// }
 </script>
 
@@ -70,7 +74,9 @@
 			? `${actionPath}?/${action}`
 			: `?/${action}`
 		: undefined}
+	bind:this={node}
 	use:enhance
+	use:clickOutside
 >
 	<Expand
 		id={`button-reveal-${id}`}

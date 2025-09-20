@@ -85,18 +85,6 @@
 		}
 		payload.state = 'collapsed'
 	}
-
-	// function handleClickOutside(e: MouseEvent) {
-	// 	const target = e.target as HTMLElement
-	// 	if (
-	// 		dismiss !== DismissEvent.outside ||
-	// 		payload.state !== 'expanded' ||
-	// 		target.id !== `${id}-reveal`
-	// 	) {
-	// 		return
-	// 	}
-	// 	payload.state = 'collapsed' // TODO: Fix this does nothing
-	// }
 </script>
 
 <svelte:window onkeyup={onKeyUp} />

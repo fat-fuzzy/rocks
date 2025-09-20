@@ -16,11 +16,19 @@
 			margin-block: 0;
 
 			.header-nav {
+				--justify: center;
 				margin: 0;
 				inline-size: fit-content;
 				block-size: 100%;
 				padding-inline: 0;
 				padding-block: 0;
+			}
+
+			.header-nav li {
+				flex-grow: 0;
+				flex-basis: auto;
+				border-inline-start: unset;
+				border-block-start: var(--border-width-xl) solid var(--border-color);
 			}
 		}
 	}

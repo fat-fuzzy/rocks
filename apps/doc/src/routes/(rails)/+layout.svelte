@@ -4,6 +4,7 @@
 	import ui from '@fat-fuzzy/ui'
 	import {page} from '$app/state'
 	import {links} from '$data/nav'
+	import {linksSocials} from '$data/nav'
 	import Footer from '$lib/ui/Footer.svelte'
 	import Socials from '$lib/ui/Socials.svelte'
 
@@ -11,7 +12,6 @@
 	const {RevealNav} = ui.recipes
 	const {LayoutGrid} = ui.content
 	const {Magic} = ui.blocks
-	import {linksSocials} from '$data/nav'
 
 	type Props = {
 		children: Snippet
@@ -69,6 +69,8 @@
 			title="Menu"
 			label="Menu"
 			size="3xs"
+			threshold="xs"
+			breakpoint="xs"
 			font="xs"
 			variant="outline"
 			color="primary"
@@ -81,7 +83,6 @@
 			path={page.url.pathname}
 			reveal={mainNav.reveal}
 			actionPath={page.url.pathname}
-			breakpoint="xs"
 			background="inherit"
 			formaction="toggleNav"
 		/>

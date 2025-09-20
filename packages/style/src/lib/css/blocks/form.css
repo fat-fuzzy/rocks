@@ -1,7 +1,7 @@
 form {
 	--hue: var(--color-theme-primary);
 	--lightness-accent: var(--color-lightness-400);
-	--chroma-accent: var(--color-chroma-400);
+	--chroma-accent: var(--chroma-accent-base);
 	--lightness-contrast: var(--color-lightness-base);
 	--chroma-contrast: var(--color-chroma-base);
 	--accent: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
