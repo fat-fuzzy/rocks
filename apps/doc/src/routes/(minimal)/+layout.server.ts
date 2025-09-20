@@ -6,21 +6,21 @@ import speaking from '$data/speaking'
 
 const {DEFAULT_PREFERENCES, DEFAULT_REVEAL_STATE} = ui.constants
 
-export const load = async ({locals, url}) => {
+export const load = async ({locals, url, params}) => {
 	const pageName = url.pathname.split('/')
 	let sidebar
-	let talks = await speaking.fetchTalks()
+	let talks = await speaking.fetchMarkdowns(params.talk || 'all')
 
 	if (pageName.length > 0 && pageName[1]) {
 		sidebar = buildNav(pageName[1])
-		sidebar.reveal = locals.sidebar.reveal ?? sidebar.reveal
 		sidebar.actionPath = url.pathname
+		sidebar.reveal = locals.sidebar.reveal ?? sidebar.reveal
 		sidebar.items = sidebar.items.map((item) => {
 			if (item.slug === 'speaking') {
 				// Build talks navbar with nested links for series
 				item.items = talks.reduce((links: NavItem[], {meta}) => {
 					if (meta.series) {
-						if (meta.index === 1) {
+						if (meta.index === 0) {
 							meta.items = meta.series.items
 								.map((id, index) => {
 									if (index > 0) {
@@ -28,8 +28,9 @@ export const load = async ({locals, url}) => {
 										if (item) {
 											return {
 												slug: item.meta.slug,
+												talk: item.meta.talk,
 												title: item.meta.series.title,
-												itemPath: '/speaking',
+												itemPath: `/speaking/${meta.talk}`,
 											}
 										}
 									}
