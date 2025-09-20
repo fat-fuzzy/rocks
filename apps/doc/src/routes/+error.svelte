@@ -16,14 +16,13 @@
 				return 'error'
 		}
 	})
-	let description = 'Something went wrong!'
-	let message = $derived(page.error?.message ?? 'An error occurred')
+	let message = $derived(page.error?.message ?? 'Something went wrong!')
 </script>
 
-<Head {title} description={`Details page for media: ${title}`} />
+<Head title="" pageName={String(page.status)} description={message} />
 
 <main id="main" class="ravioli:2xl maki:block:xl">
-	<Burrito {title} {description} size="3xl">
+	<Burrito {title} size="3xl">
 		<Feedback {asset} {status} context="prose" size="2xl" container="taco">
 			<div class="l:stack:lg">
 				<p>{page.status}: {message}</p>
