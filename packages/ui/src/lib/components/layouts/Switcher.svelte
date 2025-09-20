@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type {LayoutProps} from '$types'
+	import type {LayoutPrimitiveProps} from '$types'
 
-	let {size = 'md', threshold, children}: LayoutProps = $props()
+	let {size = 'md', threshold, children}: LayoutPrimitiveProps = $props()
 </script>
 
 <div class={`l:switcher:${size} th:${threshold}`}>

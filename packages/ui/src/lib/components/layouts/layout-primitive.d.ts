@@ -5,12 +5,12 @@ import type {
 	UiLayoutProps,
 	UiContentProps,
 	UiBlockProps,
-	FormProps,
 	UiAnimationEvent,
 	NavItem,
 } from '$types'
 
-export type LayoutProps = UiLayoutProps & UiContentProps & FormProps
+export type LayoutPrimitiveProps = UiLayoutProps & UiContentProps
+
 export type GridProps = LayoutProps & {
 	areas?: {
 		zone: Snippet

@@ -1,16 +1,9 @@
 <script lang="ts">
-	import type {Snippet} from 'svelte'
-	import type {RevealNavProps} from '$types'
+	import type {LayoutProps} from '$types'
 	import {DismissEvent} from '$types'
 	import RevealNav from '$lib/components/recipes/navs/RevealNav.svelte'
 
-	type Props = {
-		size?: string
-		nav: RevealNavProps
-		app?: {settings: {[key: string]: string}}
-		children: Snippet
-	}
-	let {size = 'md', nav, app, children}: Props = $props()
+	let {size = 'md', sidenav, app, children}: LayoutProps = $props()
 
 	let brightness = $derived(app?.settings?.brightness)
 	let contrast = $derived(app?.settings?.contrast)
@@ -20,10 +13,10 @@
 </script>
 
 <div class={`l:sidebar size:${size} align-content:start ${settingsClass}`}>
-	{#if nav}
-		<div class={`l:side reveal-nav ${nav.reveal}`}>
+	{#if sidenav}
+		<div class={`l:side reveal-nav ${sidenav.reveal}`}>
 			<RevealNav
-				{...nav}
+				{...sidenav}
 				position="sticky"
 				place="left"
 				justify="between"
