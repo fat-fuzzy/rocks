@@ -130,7 +130,7 @@
 	}
 
 	a {
-		color: var(--color-ink-nav, var(--ink));
+		color: var(--color-ink, var(--ink));
 		font-size: var(--font-size-ui);
 		font-family: var(--font-family-ui);
 		line-height: var(--font-leading-body);
