@@ -10,7 +10,11 @@
 	let media = $derived(page.data)
 	let title = $derived(media.title ?? '')
 	let description = $derived(media.description ?? '')
-	let frameclass = $derived(media.height < media.width ? 'maki:block:2xl' : '')
+	let frameclass = $derived(
+		media.height < media.width
+			? 'maki:block:2xl l:flex justify:center align:start'
+			: '',
+	)
 </script>
 
 <Head {title} description={`Details page for media: ${title}`} />
@@ -20,7 +24,7 @@
 		<div class="l:stack:xs l:taco:md maki:block">
 			<button
 				onclick={() => history.back()}
-				class="bg:primary variant:fill size:xs"
+				class="bg:primary variant:fill size:sm"
 			>
 				Back
 			</button>
@@ -54,11 +58,12 @@
 						{description}
 						path={page.url.pathname}
 						size="sm"
-						variant="fill"
 						layout="center"
 						cta="Zoom"
+						href="#zoom"
+						open={page.url.hash === '#zoom'}
 					>
-						<div class="zoom l:main:90 col:center">
+						<div class="zoom l:main:90">
 							<Picture
 								src={media.src}
 								ext={media.ext}

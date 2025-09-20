@@ -24,7 +24,6 @@ dialog[open] {
 	opacity: 1;
 	top: 0;
 	z-index: var(--layout-z-index-overlay);
-	overflow: auto;
 	padding-block: var(--dialog-padding);
 	padding-inline: var(--dialog-padding);
 	inline-size: var(--max-dialog-block);
@@ -32,11 +31,13 @@ dialog[open] {
 	overflow: auto;
 
 	> form {
-		position: relative;
-		top: var(--dialog-padding);
+		position: absolute;
+		top: 0;
 	}
 
 	> ff-dialog {
+		position: relative;
+		top: var(--ui-header-height);
 		display: block;
 		inline-size: 100%;
 		block-size: 100%;

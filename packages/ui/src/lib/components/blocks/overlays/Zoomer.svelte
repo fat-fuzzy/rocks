@@ -1,59 +1,67 @@
 <script lang="ts">
-	import {page} from '$app/state'
-	import ui from '@fat-fuzzy/ui'
-	import type {Snippet} from 'svelte'
-
-	const {Picture} = ui.drafts
+	import {goto} from '$app/navigation'
+	import {onMount, type Snippet} from 'svelte'
 
 	let {
 		children,
-		title,
-		description,
-		path,
 		size = 'md',
 		variant = 'outline',
-		layout = 'center',
+		path,
 		cta = 'Zoom',
+		href = '#zoom',
+		open = false,
 	}: {
 		title: string
 		description: string
 		path: string
 		size: string
-		variant: string
+		variant?: string
 		layout: string
 		children: Snippet
 		cta: string
+		href: string
+		open: boolean
 	} = $props()
-	let dialog: HTMLDialogElement
-	let stage: boolean | undefined = $state(undefined)
-	let media = $derived(page.data)
-	let frameclass = $derived(
-		media.height && media.height < media.width ? 'maki:block:2xl' : '',
-	)
 
-	function openDialog(e) {
+	let dialog: HTMLDialogElement
+	let form: HTMLFormElement
+
+	function openDialog() {
 		dialog.show()
-		stage = true
 		window.scrollTo(0, 0)
 	}
 
-	function closeDialog(e) {
-		stage = undefined
-	}
+	$effect(() => {
+		if (dialog) {
+			if (open) {
+				openDialog()
+			} else {
+				dialog.close()
+			}
+		}
+	})
 </script>
 
-<button
-	class={`bg:primary variant:${variant}  size:${size} maki:block`}
-	onclick={openDialog}
+<div
+	class={`l:flex maki:block:${size} raviolink zoom-control surface:4:primary shape:mellow variant:${variant} justify:center`}
 >
-	{cta}
-</button>
+	<a {href} onclick={openDialog}>
+		{cta}
+	</a>
+</div>
 
-<dialog bind:this={dialog} class="zoomer">
-	<form method="dialog" class="l:flex justify:end button-zoom ravioli:md">
+<dialog bind:this={dialog} class={`zoomer l:stack:${size}`}>
+	<form
+		method="dialog"
+		bind:this={form}
+		class="l:flex justify:end button-zoom ravioli:sm maki:inline"
+	>
 		<button
-			class="bg:primary variant:outline size:xs maki:block"
-			onclick={closeDialog}
+			class={`bg:primary variant:outline size:${size}`}
+			onclick={() => {
+				form.submit()
+				goto(path)
+			}}
 		>
 			Close
 		</button>
