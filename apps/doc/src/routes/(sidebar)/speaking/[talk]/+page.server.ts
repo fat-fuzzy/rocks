@@ -1,9 +1,9 @@
 import {error} from '@sveltejs/kit'
-import talks from '$data/talks'
+import speaking from '$data/speaking'
 import {commonActions} from '$lib/server/actions/page-actions'
 
 export const load = async ({params}) => {
-	let markdowns = await talks.fetchMarkdowns(params.talk)
+	let markdowns = await speaking.fetchMarkdowns(params.talk)
 
 	if (!markdowns?.length) {
 		error(404, {message: 'Not found'})

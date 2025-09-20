@@ -262,6 +262,9 @@
 			},
 			"camera-with-flash": {
 				"$value": "📸"
+			},
+			"studio-microphone": {
+				"$value": "🎙️"
 			}
 		},
 		"icon": {
@@ -492,6 +495,9 @@
 			},
 			"snap": {
 				"$value": "{emoji.base.camera-with-flash}"
+			},
+			"speaking": {
+				"$value": "{emoji.base.studio-microphone}"
 			},
 			"update": {
 				"$value": "{emoji.base.lightning}"

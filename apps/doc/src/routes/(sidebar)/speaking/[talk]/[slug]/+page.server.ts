@@ -1,5 +1,5 @@
 import {error} from '@sveltejs/kit'
-import slides from '$data/talks'
+import slides from '$data/speaking'
 import {commonActions} from '$lib/server/actions/page-actions'
 
 /**

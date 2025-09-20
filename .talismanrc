@@ -5,8 +5,8 @@ fileignoreconfig:
   checksum: 37941dc96904d060e7f6d85d996c7317c9eb396e45f5bf382ca67c293f632ec2
 - filename: apps/doc/src/lib/ui/RcScout.svelte
   checksum: 9d8a4dc6e960e47361d8e60d78bbc13f32ac3d294b82443ff9cd414f1fcffcd7
-- filename: apps/doc/src/data/talks.ts
-  checksum: 7e5d645170a40a2c04cdcae1ee9bf2db33e82023254fe7dd110e2c1e1ab043d5
+- filename: apps/doc/src/data/speaking.ts
+  checksum: 256709c3e10745bab3f71549597e91074410821e38271ae9566fb5bf5845ef80
 - filename: packages/ui/src/lib/components/recipes/content/layout.d.ts
   checksum: 009e998a4c815eaf179d195e7b5c334cae95deb3319d501c9b5b10542cef6f71
 version: "0.1.3"
