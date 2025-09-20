@@ -265,11 +265,17 @@
 			},
 			"studio-microphone": {
 				"$value": "🎙️"
+			},
+			"chequered-flag": {
+				"$value": "🏁"
 			}
 		},
 		"icon": {
 			"link": {
 				"$value": "{emoji.base.link}"
+			},
+			"end": {
+				"$value": "{emoji.base.chequered-flag}"
 			},
 			"point-left": {
 				"$value": "{emoji.base.point-left}"

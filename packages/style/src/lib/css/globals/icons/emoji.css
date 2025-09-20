@@ -23,6 +23,6 @@
 	margin-inline-end: var(--icon-gap, var(--ui-size-sm));
 }
 
-[class*='emoji:'].justify\:end::before {
+[class*='emoji:'].justify\:end::after {
 	margin-inline-start: var(--icon-gap, var(--ui-size-sm));
 }
