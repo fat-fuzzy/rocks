@@ -61,6 +61,7 @@ export const load = async ({locals, url}) => {
 	pageContext.actionPath = url.pathname
 
 	return {
+		talks,
 		sidebar,
 		pageContext,
 		appContext,

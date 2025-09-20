@@ -1,15 +1,10 @@
 import {error} from '@sveltejs/kit'
-import speaking from '$data/speaking'
 import {commonActions} from '$lib/server/actions/page-actions'
 
-export const load = async ({params}) => {
-	let markdowns = await speaking.fetchMarkdowns(params.talk)
+export const load = async ({parent, params}) => {
+	const {talks} = await parent()
 
-	if (!markdowns?.length) {
-		error(404, {message: 'Not found'})
-	}
-
-	const content = markdowns[0]
+	const content = talks.find((p) => p.meta.slug === params.talk)
 
 	if (!content?.meta) {
 		error(404, {message: 'Not found'})
