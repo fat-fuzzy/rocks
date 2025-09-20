@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type {LayoutProps} from '$types'
+	import type {LayoutPrimitiveProps} from '$types'
 
-	let {size = 'md', children}: LayoutProps = $props()
+	let {size = 'md', children}: LayoutPrimitiveProps = $props()
 </script>
 
 <div class={`l:stack:${size}`}>

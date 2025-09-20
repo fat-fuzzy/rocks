@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type {LayoutProps} from '$types'
-	let {size = 'md', children}: LayoutProps = $props()
+	import type {LayoutPrimitiveProps} from '$types'
+	let {size = 'md', children}: LayoutPrimitiveProps = $props()
 </script>
 
 <div class={`l:burrito:${size}`}>

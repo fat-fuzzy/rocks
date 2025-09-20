@@ -1,5 +1,8 @@
+import type {FormProps} from '$types'
+
 export type RevealLayoutProps = LayoutProps &
-	UiBlockProps & {
+	UiBlockProps &
+	FormProps & {
 		reveal: string
 		auto?: boolean
 		element?: string
@@ -9,7 +12,8 @@ export type RevealLayoutProps = LayoutProps &
 	}
 
 export type RevealTrainProps = LayoutProps &
-	UiBlockProps & {
+	UiBlockProps &
+	FormProps & {
 		element?: string // Element can be a string defining an HTML tag or a tag.class composed name. Ex: element = 'aside.page-context'
 		area?: string
 		reveal: {id: string; state: string}
