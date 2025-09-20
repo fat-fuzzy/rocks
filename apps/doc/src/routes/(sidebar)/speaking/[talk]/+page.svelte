@@ -9,6 +9,6 @@
 	let description = $derived(markdown.meta.description)
 </script>
 
-<PageMain {title} {description} size="md" justify="center">
+<PageMain {title} {description} size="md" layout="center" justify="center">
 	<div class="l:frame:video">TODO</div>
 </PageMain>
