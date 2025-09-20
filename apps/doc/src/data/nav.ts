@@ -171,7 +171,7 @@ export const pages: {[key: string]: NavItem} = {
 		label: 'Speaking',
 		title: 'Talks',
 		asset: 'speaking',
-		layout: 'metro',
+		layout: 'steam',
 		items: [],
 	},
 }

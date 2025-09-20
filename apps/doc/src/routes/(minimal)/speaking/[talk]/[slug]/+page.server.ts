@@ -7,10 +7,10 @@ import {commonActions} from '$lib/server/actions/page-actions'
  * @param params Request parameters
  * @returns post data
  */
-export const load = async ({params}) => {
-	const {talk, slug} = params
-	let markdowns = await slides.fetchMarkdowns(talk)
-	const markdown = markdowns.find(
+export const load = async ({params, parent}) => {
+	const {slug} = params
+	const {talks} = await parent()
+	const markdown = talks.find(
 		(v) => v.meta.status !== 'draft' && v.meta.slug === slug,
 	)
 
@@ -19,7 +19,7 @@ export const load = async ({params}) => {
 	}
 
 	return {
-		markdowns,
+		talks,
 		content: {
 			...markdown,
 		},
