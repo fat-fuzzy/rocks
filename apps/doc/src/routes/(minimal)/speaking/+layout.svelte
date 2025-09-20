@@ -3,6 +3,7 @@
 
 	import ui from '@fat-fuzzy/ui'
 	import {page} from '$app/state'
+	import {linksSocials} from '$data/nav'
 	import Footer from '$lib/ui/Footer.svelte'
 	import Socials from '$lib/ui/Socials.svelte'
 
@@ -10,7 +11,6 @@
 	const {RevealNav} = ui.recipes
 	const {LayoutGrid} = ui.content
 	const {Magic} = ui.blocks
-	import {linksSocials} from '$data/nav'
 
 	type Props = {
 		children: Snippet
