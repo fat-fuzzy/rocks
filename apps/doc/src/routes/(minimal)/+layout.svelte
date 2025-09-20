@@ -11,11 +11,10 @@
 
 	const {LayoutSidebar} = ui.content
 
-	let sidenav = $derived(page.data.sidebar)
 	let appContext = $derived(page.data.appContext)
 </script>
 
-<LayoutSidebar {sidenav} app={appContext}>
+<LayoutSidebar app={appContext}>
 	{#if children}
 		{@render children()}
 	{:else}

@@ -274,6 +274,9 @@
 			"link": {
 				"$value": "{emoji.base.link}"
 			},
+			"start": {
+				"$value": "{emoji.base.hat}"
+			},
 			"end": {
 				"$value": "{emoji.base.chequered-flag}"
 			},
