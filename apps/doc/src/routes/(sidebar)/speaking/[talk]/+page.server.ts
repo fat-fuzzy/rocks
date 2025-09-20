@@ -22,6 +22,7 @@ export const load = async ({params}) => {
 
 export const actions = {
 	toggleNav: commonActions.toggleNav,
+	toggleSidebar: commonActions.toggleSidebar,
 	toggleAppContext: commonActions.toggleAppContext,
 	updateSettings: commonActions.updateSettings,
 }
