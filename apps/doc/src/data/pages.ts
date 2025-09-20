@@ -17,4 +17,5 @@ async function fetchMarkdowns(page: string): Promise<{[key: string]: any}> {
 	const markdowns = await assetsUtils.fetchMarkdowns(pathPrefix, imports)
 	return markdowns.sort(assetsUtils.sortByIdDesc)
 }
+
 export default {fetchMarkdowns}

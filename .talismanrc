@@ -5,4 +5,6 @@ fileignoreconfig:
   checksum: 37941dc96904d060e7f6d85d996c7317c9eb396e45f5bf382ca67c293f632ec2
 - filename: apps/doc/src/lib/ui/RcScout.svelte
   checksum: 9d8a4dc6e960e47361d8e60d78bbc13f32ac3d294b82443ff9cd414f1fcffcd7
-version: "0.1.1"
+- filename: apps/doc/src/data/talks.ts
+  checksum: 7e5d645170a40a2c04cdcae1ee9bf2db33e82023254fe7dd110e2c1e1ab043d5
+version: "0.1.2"
