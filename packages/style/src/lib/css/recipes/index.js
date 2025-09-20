@@ -13,3 +13,4 @@ import './article.css' /* Use for articles (header + section(s) + optional foote
 import './playbook.css' /* Use for API components (used in Doc website): TODO: move to playbook package */
 import './app.css' /* Use for app layout specifics */
 import './page-nav.css' /* Use for page content nav specifics */
+import './fullscreen.css' /* Full screen styles (layout steam: slides, sketch) */
