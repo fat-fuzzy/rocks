@@ -17,3 +17,24 @@
 	min-inline-size: 5em;
 	text-align: end;
 }
+
+[class*='page:speaking'] .steam.zone\:main {
+	max-block-size: var(--overlay-height-xs);
+}
+
+[class*='page:speaking'] .steam.zone\:2 > .page-context:not(.empty) {
+	max-block-size: var(--overlay-height-lg);
+}
+
+@media screen and (min-width: 38.75rem) {
+	[class*='page:speaking'] .steam.zone\:main {
+		max-block-size: var(--max-block-size);
+	}
+
+	:fullscreen
+		[class*='page:speaking']
+		.steam.zone\:2
+		> .page-context:not(.empty) {
+		display: none;
+	}
+}
