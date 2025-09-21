@@ -82,9 +82,3 @@
 .th\:2xl {
 	--threshold: var(--layout-threshold-2xl);
 }
-
-@container (burrito) {
-	[class*='l:switcher:'] {
-		--threshold: var(--sidebar-width);
-	}
-}
