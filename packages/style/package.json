@@ -8,7 +8,7 @@
 	"scripts": {
 		"clean": "node ./clean-dist.js",
 		"prebuild": "pnpm clean",
-		"build": "pnpm build:tokens && pnpm build:css",
+		"build": "pnpm build:tokens && pnpm build:scss && pnpm build:css",
 		"build:css": "rollup --config rollup.config.js",
 		"build:lib": "rollup --config rollup.config.lib.js",
 		"build:main": "rollup --config rollup.config.main.js",
