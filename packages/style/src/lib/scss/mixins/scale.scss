@@ -1,3 +1,5 @@
+@use 'sass:map';
+
 // == FLUID SCALE
 
 /**
@@ -16,10 +18,41 @@ $modular-scale: (
 
 	// min size of base font
 	fluid-min-size: 16,
-
 	// max size of base font
 	fluid-max-size: 18,
+
 	fluid-min-ratio: 1.2,
 	fluid-max-ratio: 1.25,
 	fluid-screen: 100vw,
+
+	// fluid-min-width / 16
+	width-min: 20,
+	// fluid-max-width / 16
+	width-max: 77.5,
+	// fluid-min-size / 16 ->  Min font size
+	size-min: 1,
+	// fluid-max-size / 16 ->  Max font size
+	size-max: 1.125,
+	// negative of width-min -> Precalc
+	width-neg: -20,
+	// width-max - width-min -> Precalc
+	fluid-width: 57.5,
+	// size-max - size-min -> Precalc
+	slope-numerator: 0.125,
+	// size-max - size-min -> Precalc
+	slope-denominator: 57.5,
+	// slope-numerator / slope-denominator -> Precalc
+	slope: 0.00217391,
+	// slope-numerator / slope-denominator -> Precalc
+	y-axis: 0.9565218,
+);
+
+$f-slope: map.get($modular-scale, 'slope');
+$f-size-min-0: map.get($modular-scale, 'size-max');
+$f-size-max-0: map.get($modular-scale, 'size-min');
+$fluid-0: clamp(
+	map.get($modular-scale, 'size-min') * 1rem,
+	map.get($modular-scale, 'y-axis') * 1rem + map.get($modular-scale, 'slope') *
+		100vw,
+	map.get($modular-scale, 'size-max') * 1rem
 );

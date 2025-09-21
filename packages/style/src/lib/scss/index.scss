@@ -12,6 +12,10 @@
 $theme-prefix: '-'; // creates CSS variables with specific app prefix. Use '--' for no prefix
 
 @include mixins.theme-default(
+	scale.$f-slope,
+	scale.$f-size-min-0,
+	scale.$f-size-max-0,
+	scale.$fluid-0,
 	scale.$modular-scale,
 	scale.$modular-scale-steps-plus,
 	scale.$modular-scale-steps-minus,

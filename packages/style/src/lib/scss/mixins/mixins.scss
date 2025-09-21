@@ -1,5 +1,6 @@
 @use 'sass:map';
 @use 'sass:color';
+@use 'sass:math';
 
 // == CSS VARS
 
@@ -48,32 +49,20 @@ $current_cssvars: ();
 * It can probably be improved with better usage of sass syntax
 */
 @mixin generate-typographic-scale(
+	$scale: $modular-scale,
+	$f-slope: $f-slope,
+	$f-size-min-0: $f-size-min-0,
+	$f-size-max-0: $f-size-max-0,
+	$fluid-0: $fluid-0,
 	$steps-plus: $modular-scale-steps-plus,
 	$steps-minus: $modular-scale-steps-minus
 ) {
-	$width-min: calc(var(--fluid-min-width) / 16);
-	$width-max: calc(var(--fluid-max-width) / 16);
-	$size-min: calc(var(--fluid-min-size) / 16); // Min font size
-	$size-max: calc(var(--fluid-max-size) / 16); // Max font size
-	$width-neg: calc(-1 * #{$width-min}); // Precalc
-	$fluid-width: calc(#{$width-max} - #{$width-min}); // Precalc
-	$slope: calc(#{$size-max} - #{$size-min} / #{$width-max} - #{$width-min});
-	$y-axis: calc(calc(-1 * #{$width-min}) * #{$slope} + #{$size-min});
-
-	--f-slope: #{$slope};
-	--f-size-min-0: #{$size-max};
-	--f-size-max-0: #{$size-min};
-	--fluid-0: clamp(
-		#{$size-min} * 1rem,
-		#{$y-axis} * 1rem + #{$slope} * 100vw,
-		#{$size-max} * 1rem
-	);
-
+	$slope: map.get($scale, 'slope');
 	$previous-step: 0;
-	$size-min-step: $size-min;
-	$size-max-step: $size-max;
-	$width-neg-step: $width-neg;
-	$y-axis-step: $y-axis;
+	$size-min-step: map.get($scale, 'size-min');
+	$size-max-step: map.get($scale, 'size-max');
+	$width-neg-step: map.get($scale, 'width-neg');
+	$y-axis-step: map.get($scale, 'y-axis');
 
 	@each $step in $steps-plus {
 		$size-min-step: calc(#{$size-min-step} * var(--fluid-min-ratio));
@@ -95,10 +84,10 @@ $current_cssvars: ();
 	}
 
 	$previous-step: 0;
-	$size-min-step: $size-min;
-	$size-max-step: $size-max;
-	$width-neg-step: $width-neg;
-	$y-axis-step: $y-axis;
+	$size-min-step: map.get($scale, 'size-min');
+	$size-max-step: map.get($scale, 'size-max');
+	$width-neg-step: map.get($scale, 'width-neg');
+	$y-axis-step: map.get($scale, 'y-axis');
 
 	@each $step in $steps-minus {
 		$size-min-step: calc(#{$size-min-step} / var(--fluid-min-ratio));
@@ -121,6 +110,10 @@ $current_cssvars: ();
 }
 
 @mixin theme-default(
+	$f-slope,
+	$f-size-min-0,
+	$f-size-max-0,
+	$fluid-0,
 	$modular-scale,
 	$modular-scale-steps-plus,
 	$modular-scale-steps-minus,
@@ -130,6 +123,11 @@ $current_cssvars: ();
 		// Generate Typographic variables
 		@include generate-css-vars($modular-scale, $prefix);
 		@include generate-typographic-scale(
+			$modular-scale,
+			$f-slope,
+			$f-size-min-0,
+			$f-size-max-0,
+			$fluid-0,
 			$modular-scale-steps-plus,
 			$modular-scale-steps-minus
 		);
