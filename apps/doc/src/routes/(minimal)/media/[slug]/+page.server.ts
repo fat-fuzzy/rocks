@@ -17,7 +17,7 @@ export const load = async ({params}) => {
 	}
 
 	return {
-		src: `/${imageData.json.path}/${slug}`,
+		src: `/${imageData.json.id}`,
 		...imageData.json,
 		sources: imageData.json.sources,
 	}

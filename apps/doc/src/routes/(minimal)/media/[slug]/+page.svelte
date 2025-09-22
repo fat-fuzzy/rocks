@@ -23,7 +23,10 @@
 	{#snippet side()}
 		<div class="l:stack:xs l:taco:md maki:block">
 			<button
-				onclick={() => history.back()}
+				onclick={() => {
+					// TODO: fix this:L use <a> instead
+					history.back()
+				}}
 				class="bg:primary variant:fill size:sm"
 			>
 				Back

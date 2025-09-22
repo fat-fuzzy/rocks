@@ -1,6 +1,5 @@
 <script lang="ts">
-	import {goto} from '$app/navigation'
-	import {onMount, type Snippet} from 'svelte'
+	import type {Snippet} from 'svelte'
 
 	let {
 		children,
@@ -59,8 +58,9 @@
 		<button
 			class={`bg:primary variant:outline size:${size}`}
 			onclick={() => {
+				// TODO: use <a> instead ?
+				history.back()
 				form.submit()
-				goto(path)
 			}}
 		>
 			Close
