@@ -1,0 +1,190 @@
+{
+	"id": "images/media/webgl-scene",
+	"file": "webgl-scene",
+	"ext": "jpg",
+	"width": 1646,
+	"height": 1047,
+	"path": "images/media",
+	"alt": "A white on black drawing showing a one-point perspective scene where a cube, a sphere and a cone pose at the center of the stage, with their little white eyes looking to the spectator. To the left, an old-school camera on a tripod is aiming at them, and hanging from the ceiling to the right, a stage light is also aiming at them. It represents a WebGL scene as if it where a film being made.",
+	"media": [
+		{
+			"query": "(min-width: 3600px)",
+			"srcset": [
+				{
+					"width": 2000,
+					"dpr": 2
+				}
+			]
+		},
+		{
+			"query": "(min-width: 1000px)",
+			"srcset": [
+				{
+					"width": 1500,
+					"dpr": 1.5
+				}
+			]
+		},
+		{
+			"query": "(min-width: 800px)",
+			"srcset": [
+				{
+					"width": 1000,
+					"dpr": 1
+				},
+				{
+					"width": 1500,
+					"dpr": 2
+				}
+			]
+		},
+		{
+			"query": "(min-width: 500px)",
+			"srcset": [
+				{
+					"width": 500,
+					"dpr": 1
+				}
+			]
+		}
+	],
+	"srcset": [
+		{
+			"width": 2000,
+			"media": [
+				{
+					"query": "(min-width: 1200px)",
+					"dpr": 1.5
+				},
+				{
+					"query": "(min-width: 1000px)",
+					"dpr": 2
+				},
+				{
+					"query": "(min-width: 600px)",
+					"dpr": 3
+				}
+			]
+		},
+		{
+			"width": 1500,
+			"media": [
+				{
+					"query": "(min-width: 1000px)",
+					"dpr": 1.5
+				},
+				{
+					"query": "(min-width: 750px)",
+					"dpr": 2
+				},
+				{
+					"query": "(min-width: 530px)",
+					"dpr": 2.5
+				}
+			]
+		},
+		{
+			"width": 1000,
+			"media": [
+				{
+					"query": "(min-width: 970px)",
+					"dpr": 1
+				},
+				{
+					"dpr": 2
+				}
+			]
+		},
+		{
+			"width": 500,
+			"media": [
+				{
+					"query": "(min-width: 430px)",
+					"dpr": 1
+				},
+				{
+					"query": "(min-width: 300px)",
+					"dpr": 1.5
+				},
+				{
+					"dpr": 2
+				}
+			]
+		}
+	],
+	"sizes": [
+		{
+			"query": "(min-width:1620px)",
+			"slot": "60vw"
+		},
+		{
+			"query": "(min-width:1360px)",
+			"slot": "60vw"
+		},
+		{
+			"query": "(min-width:935px)",
+			"slot": "70vw"
+		},
+		{
+			"slot": "100vw"
+		}
+	],
+	"sources": [
+		{
+			"format": "webp",
+			"width": 1500,
+			"height": 954,
+			"channels": 3,
+			"premultiplied": false,
+			"size": 43064
+		},
+		{
+			"format": "jpeg",
+			"width": 1500,
+			"height": 954,
+			"channels": 3,
+			"premultiplied": false,
+			"size": 79694
+		},
+		{
+			"format": "webp",
+			"width": 1000,
+			"height": 636,
+			"channels": 3,
+			"premultiplied": false,
+			"size": 26578
+		},
+		{
+			"format": "jpeg",
+			"width": 1000,
+			"height": 636,
+			"channels": 3,
+			"premultiplied": false,
+			"size": 46560
+		},
+		{
+			"format": "webp",
+			"width": 500,
+			"height": 318,
+			"channels": 3,
+			"premultiplied": false,
+			"size": 9994
+		},
+		{
+			"format": "jpeg",
+			"width": 500,
+			"height": 318,
+			"channels": 3,
+			"premultiplied": false,
+			"size": 16326
+		},
+		{
+			"format": "png",
+			"width": 1646,
+			"height": 1047,
+			"channels": 3,
+			"premultiplied": false,
+			"size": 187434
+		}
+	]
+}

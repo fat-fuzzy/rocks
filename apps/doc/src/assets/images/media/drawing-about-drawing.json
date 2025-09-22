@@ -1,0 +1,206 @@
+{
+	"id": "images/media/drawing-about-drawing",
+	"file": "drawing-about-drawing",
+	"ext": "png",
+	"width": 2732,
+	"height": 2048,
+	"path": "images/media",
+	"alt": "A black and white line drawing of a comic style stick girl that lovingly squeezes her floaty creature friend in a tight hug. The friend looks like a mix between a cute ghost and a balloon tied in the middle with pointy head and lower body like two meringues stuck where its neck is. There is a red heart coming out of the squeeze, and a small white and yellow flower with a green stem in the background. The scene is framed by a symmetrical wavy black background. ",
+	"media": [
+		{
+			"query": "(min-width: 3600px)",
+			"srcset": [
+				{
+					"width": 2000,
+					"dpr": 2
+				}
+			]
+		},
+		{
+			"query": "(min-width: 1000px)",
+			"srcset": [
+				{
+					"width": 1500,
+					"dpr": 1.5
+				}
+			]
+		},
+		{
+			"query": "(min-width: 800px)",
+			"srcset": [
+				{
+					"width": 1000,
+					"dpr": 1
+				},
+				{
+					"width": 1500,
+					"dpr": 2
+				}
+			]
+		},
+		{
+			"query": "(min-width: 500px)",
+			"srcset": [
+				{
+					"width": 500,
+					"dpr": 1
+				}
+			]
+		}
+	],
+	"srcset": [
+		{
+			"width": 2000,
+			"media": [
+				{
+					"query": "(min-width: 1200px)",
+					"dpr": 1.5
+				},
+				{
+					"query": "(min-width: 1000px)",
+					"dpr": 2
+				},
+				{
+					"query": "(min-width: 600px)",
+					"dpr": 3
+				}
+			]
+		},
+		{
+			"width": 1500,
+			"media": [
+				{
+					"query": "(min-width: 1000px)",
+					"dpr": 1.5
+				},
+				{
+					"query": "(min-width: 750px)",
+					"dpr": 2
+				},
+				{
+					"query": "(min-width: 530px)",
+					"dpr": 2.5
+				}
+			]
+		},
+		{
+			"width": 1000,
+			"media": [
+				{
+					"query": "(min-width: 970px)",
+					"dpr": 1
+				},
+				{
+					"dpr": 2
+				}
+			]
+		},
+		{
+			"width": 500,
+			"media": [
+				{
+					"query": "(min-width: 430px)",
+					"dpr": 1
+				},
+				{
+					"query": "(min-width: 300px)",
+					"dpr": 1.5
+				},
+				{
+					"dpr": 2
+				}
+			]
+		}
+	],
+	"sizes": [
+		{
+			"query": "(min-width:1620px)",
+			"slot": "60vw"
+		},
+		{
+			"query": "(min-width:1360px)",
+			"slot": "60vw"
+		},
+		{
+			"query": "(min-width:935px)",
+			"slot": "70vw"
+		},
+		{
+			"slot": "100vw"
+		}
+	],
+	"sources": [
+		{
+			"format": "webp",
+			"width": 2000,
+			"height": 1499,
+			"channels": 4,
+			"premultiplied": true,
+			"size": 71528
+		},
+		{
+			"format": "png",
+			"width": 2000,
+			"height": 1499,
+			"channels": 4,
+			"premultiplied": true,
+			"size": 125192
+		},
+		{
+			"format": "webp",
+			"width": 1500,
+			"height": 1124,
+			"channels": 4,
+			"premultiplied": true,
+			"size": 51380
+		},
+		{
+			"format": "png",
+			"width": 1500,
+			"height": 1124,
+			"channels": 4,
+			"premultiplied": true,
+			"size": 74367
+		},
+		{
+			"format": "webp",
+			"width": 1000,
+			"height": 750,
+			"channels": 4,
+			"premultiplied": true,
+			"size": 30736
+		},
+		{
+			"format": "png",
+			"width": 1000,
+			"height": 750,
+			"channels": 4,
+			"premultiplied": true,
+			"size": 41434
+		},
+		{
+			"format": "webp",
+			"width": 500,
+			"height": 375,
+			"channels": 4,
+			"premultiplied": true,
+			"size": 12352
+		},
+		{
+			"format": "png",
+			"width": 500,
+			"height": 375,
+			"channels": 4,
+			"premultiplied": true,
+			"size": 16316
+		},
+		{
+			"format": "png",
+			"width": 2732,
+			"height": 2048,
+			"channels": 4,
+			"premultiplied": false,
+			"size": 307668
+		}
+	]
+}
