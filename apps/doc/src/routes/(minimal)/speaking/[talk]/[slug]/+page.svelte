@@ -3,6 +3,7 @@
 	import ui from '@fat-fuzzy/ui'
 
 	const {PageRails} = ui.content
+	const {Image} = ui.drafts
 	const {EscapeHtml} = ui.headless
 
 	let appContext = $derived(page.data.appContext)
@@ -12,6 +13,7 @@
 	let description = $derived(slide.meta.description)
 	let html = $derived(slide.html)
 	let slug = $derived(slide.slug)
+	let image = $derived(page.data.image)
 
 	$effect(() => {
 		if (slide) {
@@ -31,6 +33,12 @@
 	layout="steam"
 >
 	{#snippet main()}
+		{#if image}
+			<div class="splash maki:block size:lg">
+				<Image {...image} />
+			</div>
+		{/if}
+
 		{#key html}
 			<EscapeHtml id={slug} {html} size="xl" />
 		{/key}

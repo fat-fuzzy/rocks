@@ -72,6 +72,7 @@ export interface Drafts {
 	Fieldset: typeof import('$lib/components/blocks/inputs/Fieldset.svelte').default
 	Popover: typeof import('$lib/components/blocks/overlays/Popover/Popover.svelte').default
 	InputGroup: typeof import('$lib/components/blocks/inputs/InputGroup.svelte').default
+	Image: typeof import('$lib/components/blocks/media/Image.svelte').default
 	Picture: typeof import('$lib/components/blocks/media/Picture.svelte').default
 	Scrolly: typeof import('$lib/components/recipes/animations/scroll/Scrolly.svelte').default
 	ScrollyItem: typeof import('$lib/components/recipes/animations/scroll/ScrollyItem.svelte').default

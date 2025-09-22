@@ -8,7 +8,7 @@ talk: talk-title
 slug: slide-1
 status: draft (draft/published/archived)
 author: 'Me'
-description: 'This is a template for talk slides, where the series items are the slides'
+image: 'optional-splash-image'
 series:
   {
     title: 'Talk title',
