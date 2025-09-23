@@ -116,7 +116,7 @@
 		<Footer>
 			<nav
 				id="slides-nav"
-				class="slides-nav l:flex size:md align:center justify:end"
+				class="slides-nav l:flex size:xs align:center justify:end"
 			>
 				{#if slide.meta.index === 0}
 					<a
