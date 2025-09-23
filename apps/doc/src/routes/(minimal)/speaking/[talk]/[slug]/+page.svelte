@@ -12,7 +12,7 @@
 	let title = $derived(slide.meta.title)
 	let description = $derived(slide.meta.description)
 	let html = $derived(slide.html)
-	let slug = $derived(slide.slug)
+	let slug = $derived(slide.meta.slug)
 	let image = $derived(page.data.image)
 
 	$effect(() => {
@@ -49,7 +49,7 @@
 			{#key notes.html}
 				<details open>
 					<summary class="font:sm">Notes</summary>
-					<EscapeHtml id={`${slug}-notes`} html={notes.html} font="sm" />
+					<EscapeHtml id={`${slug}-notes`} html={notes.html} />
 				</details>
 			{/key}
 		{/if}

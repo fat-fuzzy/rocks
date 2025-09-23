@@ -25,12 +25,14 @@
 /* TODO:: simplify these selectors */
 [class*='page:speaking'] .steam.zone\:2 > .page-context:not(.empty) {
 	max-block-size: var(--overlay-height-lg);
+	font-size: var(--font-size-md);
 }
 
 @media screen and (min-width: 38.75rem) {
 	[class*='page:speaking'] .steam.zone\:main,
 	[class*='page:speaking'] .steam.zone\:2 > .page-context:not(.empty) {
 		max-block-size: var(--max-block-size);
+		font-size: var(--font-size-sm);
 	}
 
 	:fullscreen [class*='page:speaking'] .zone\:main:has(.splash) {
