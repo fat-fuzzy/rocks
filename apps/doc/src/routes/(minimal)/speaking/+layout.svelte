@@ -127,7 +127,12 @@
 					</a>
 				{:else}
 					{#if slide.meta.index === 1}
-						<p class="emoji:default justify:start">Intro</p>
+						<a
+							href={`/speaking/${slide.meta.talk}`}
+							class="emoji:default justify:start shape:mellow"
+						>
+							Intro
+						</a>
 					{/if}
 					{#if slide.meta.index > 1}
 						<a
