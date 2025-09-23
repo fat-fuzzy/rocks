@@ -12,7 +12,7 @@
 		path = '',
 		description = `Basic page layout`,
 		pageName,
-		size,
+		text,
 		layout = 'sidebar',
 		justify,
 		tabs,
@@ -92,7 +92,7 @@
 	{/if}
 {/snippet}
 <main {id}>
-	<PageHeader size={size as UiSize} {layout} {justify} {...header} />
+	<PageHeader text={text as UiSize} {layout} {justify} {...header} />
 
 	<section class={`tab-content ${noJsClass}`}>
 		{#each tabs as { slug, content }}

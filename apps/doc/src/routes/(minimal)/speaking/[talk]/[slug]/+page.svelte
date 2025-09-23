@@ -26,7 +26,7 @@
 	pageName={title}
 	{title}
 	{description}
-	size="sm"
+	text="xl"
 	path={page.url.pathname}
 	nav={page.data.nav}
 	app={appContext}
