@@ -52,7 +52,7 @@
 		"rollup": "4.46.2",
 		"rollup-plugin-postcss": "4.0.2",
 		"rollup-plugin-scss": "4.0.1",
-		"sass": "1.90.0"
+		"sass": "1.93.1"
 	},
 	"browserslist": "defaults",
 	"type": "module",
