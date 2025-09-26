@@ -11,4 +11,6 @@ fileignoreconfig:
   checksum: 009e998a4c815eaf179d195e7b5c334cae95deb3319d501c9b5b10542cef6f71
 - filename: apps/doc/src/routes/(minimal)/+layout.svelte
   checksum: eb3625b05cbe9083cc005bd6884d266a53985ad20ec618c65ffd2c25654d06a5
-version: "0.1.5"
+- filename: apps/doc/src/assets/speaking/pp-code/speaker-notes/001-8+slide-8.md
+  checksum: 45ee09c06b4c0ab7638ad405fb013b971967a1431dd5c7e9968459155c79c08c
+version: "0.1.6"
