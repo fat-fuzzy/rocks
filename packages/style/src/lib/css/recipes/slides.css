@@ -19,12 +19,12 @@
 }
 
 [class*='page:speaking'] .steam.zone\:main {
-	max-block-size: var(--overlay-height-md);
+	max-block-size: unset;
 }
 
 /* TODO:: simplify these selectors */
 [class*='page:speaking'] .steam.zone\:2 > .page-context:not(.empty) {
-	max-block-size: var(--overlay-height-sm);
+	max-block-size: unset;
 	font-size: var(--font-size-md);
 }
 
