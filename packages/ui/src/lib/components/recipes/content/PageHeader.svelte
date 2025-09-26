@@ -4,7 +4,7 @@
 
 	let {
 		title = 'PageHeder',
-		size,
+		text,
 		layout,
 		justify,
 		main,
@@ -19,10 +19,9 @@
 		}),
 	)
 
-	let mainClasses = $derived(layout === 'center' ? `text:center` : '')
-	let contentClasses = $derived(
-		layout === 'center' ? 'l:text:md maki:auto' : `l:text:md`,
-	)
+	let mainClasses = $derived(layout === 'center' ? 'text:center' : '')
+	let contentClasses = $derived(layout === 'center' ? 'maki:auto' : '')
+	let textClass = $derived(text ? `l:text:${text}` : '')
 </script>
 
 {#snippet headerMain()}
@@ -33,7 +32,9 @@
 	{/if}
 {/snippet}
 
-<header class={`page-header ${headerClass} ${mainClasses} ${contentClasses}`}>
+<header
+	class={`page-header ${textClass} ${headerClass} ${mainClasses} ${contentClasses}`}
+>
 	{#if layout === 'sidebar'}
 		<div class="l:main">
 			{@render headerMain()}

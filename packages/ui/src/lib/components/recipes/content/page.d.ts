@@ -21,7 +21,7 @@ export type PageHeaderProps = {
 	title: string
 	layout?: string
 	justify?: string
-	size?: UiSize
+	text?: UiSize
 	media?: boolean
 	main?: Snippet
 	side?: Snippet
@@ -34,7 +34,7 @@ export type PageProps = {
 	hash?: string
 	description: string
 	pageName?: string
-	size?: string
+	text?: string
 	header?: SidebarLayoutProps
 	layout?: string
 	justify?: string

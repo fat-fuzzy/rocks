@@ -13,18 +13,37 @@
 
 /*   Open state of the dialog  */
 .zoomer[open] {
+	position: fixed;
 	top: 0;
-	overflow: auto;
+	bottom: 0;
+	left: 0;
+	right: 0;
 	transform: translateY(0);
 	transform: scaleY(1);
 	inline-size: 100%;
 	block-size: 100%;
 	overflow: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+html:has(.zoomer[open]) {
+	overflow: hidden;
+}
+
+[class*='l:text']:has(.zoomer) {
+	text-align: right;
+	text-align: -moz-right;
+}
+
+[class*='l:text']:has(.zoomer[open]) {
+	max-inline-size: unset;
 }
 
 @media screen and (max-width: 37.5rem) {
 	/* Hide zoom button when there is no roo mto zoom  */
-	.l\:side:has(.button-zoom) {
+	.l\:side:has(.zoom-control) {
 		display: none;
 		flex-basis: 0;
 		flex-grow: 0;

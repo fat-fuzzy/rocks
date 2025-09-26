@@ -28,6 +28,7 @@
 
 .exchange > .sidebar > .app-name p {
 	line-height: 1;
+	inline-size: max-content;
 }
 
 .exchange > .sidebar > .app-name ff-callout {

@@ -1,7 +1,7 @@
-import blog from '$data/blog'
-
-import {buildNav} from '$data/nav'
 import type {NavItem} from '$types'
+
+import blog from '$data/blog'
+import {buildNav} from '$data/nav'
 
 const posts = blog.markdowns.filter(({meta}) => meta.status !== 'draft')
 

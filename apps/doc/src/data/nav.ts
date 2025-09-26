@@ -158,6 +158,22 @@ export const pages: {[key: string]: NavItem} = {
 			},
 		],
 	},
+	media: {
+		slug: 'media',
+		label: 'Media',
+		title: 'Collections',
+		asset: 'pencil',
+		layout: 'sidebar',
+		items: [],
+	},
+	speaking: {
+		slug: 'speaking',
+		label: 'Speaking',
+		title: 'Talks',
+		asset: 'speaking',
+		layout: 'steam',
+		items: [],
+	},
 }
 
 export function buildNav(page: string) {

@@ -1,0 +1,62 @@
+.slides-nav .index {
+	text-align: center;
+}
+
+.slides-nav [class*='shape:'][class*='emoji'] {
+	padding-block: 0;
+}
+
+.slides-nav a:first-child,
+.slides-nav p:first-child {
+	min-inline-size: 5em;
+	text-align: start;
+}
+
+.slides-nav a:last-child,
+.slides-nav p:last-child {
+	min-inline-size: 5em;
+	text-align: end;
+}
+
+[class*='page:speaking'] .steam.zone\:main {
+	max-block-size: var(--overlay-height-xs);
+}
+
+/* TODO:: simplify these selectors */
+[class*='page:speaking'] .steam.zone\:2 > .page-context:not(.empty) {
+	max-block-size: var(--overlay-height-lg);
+	font-size: var(--font-size-md);
+}
+
+@media screen and (min-width: 38.75rem) {
+	[class*='page:speaking'] .steam.zone\:main,
+	[class*='page:speaking'] .steam.zone\:2 > .page-context:not(.empty) {
+		max-block-size: var(--max-block-size);
+		font-size: var(--font-size-sm);
+	}
+
+	:fullscreen [class*='page:speaking'] .zone\:main:has(.splash) {
+		justify-items: center;
+	}
+
+	:fullscreen [class*='page:speaking'] .zone\:main:has(.splash) h1 {
+		justify-content: center;
+	}
+
+	:fullscreen [class*='page:speaking']:not([class*='slide-']) .splash {
+		margin-block-end: 0;
+		max-block-size: 100%;
+		max-inline-size: unset;
+	}
+
+	:fullscreen
+		[class*='page:speaking']
+		.steam.zone\:2
+		> .page-context:not(.empty) {
+		display: none;
+	}
+
+	:fullscreen [class*='page:speaking'] .splash ~ [class*='l:text'] {
+		display: none;
+	}
+}

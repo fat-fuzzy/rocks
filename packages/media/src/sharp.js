@@ -11,6 +11,20 @@ let promises = []
 
 const images = [
 	{
+		file: 'webgl-scene',
+		ext: 'jpg',
+		width: 1646,
+		height: 1047,
+		path: 'images/media',
+	},
+	{
+		file: 'drawing-about-drawing',
+		ext: 'png',
+		width: 2732,
+		height: 2048,
+		path: 'images/media',
+	},
+	{
 		file: 'css-taco',
 		ext: 'png',
 		width: 606,
@@ -73,27 +87,6 @@ const images = [
 		height: 1708,
 		path: 'images/fat-fuzzy/all',
 	},
-	// {
-	// 	file: 'Fat-Fuzzy-color-1',
-	// 	ext: 'png',
-	// 	width: 2732,
-	// 	height: 2048,
-	// 	path: 'images/fat-fuzzy/color',
-	// },
-	// {
-	// 	file: 'Fat-Fuzzy-color-2',
-	// 	ext: 'png',
-	// 	width: 2732,
-	// 	height: 2048,
-	// 	path: 'images/fat-fuzzy/color',
-	// },
-	// {
-	// 	file: 'Fat-Fuzzy-color-3',
-	// 	ext: 'png',
-	// 	width: 2732,
-	// 	height: 1708,
-	// 	path: 'images/fat-fuzzy/color',
-	// },
 ]
 
 const host = 'http://localhost:5173'
@@ -147,7 +140,7 @@ function optimize(sharpStream, image, config) {
 	promises.push(
 		sharpStream
 			.clone()
-			.png({quality: 100})
+			.webp({quality: 100})
 			.toFile(`./out/${filePath}-${width}-${height}.webp`),
 	)
 	// https://github.com/sindresorhus/got/blob/main/documentation/3-streams.md

@@ -262,11 +262,23 @@
 			},
 			"camera-with-flash": {
 				"$value": "📸"
+			},
+			"studio-microphone": {
+				"$value": "🎙️"
+			},
+			"chequered-flag": {
+				"$value": "🏁"
 			}
 		},
 		"icon": {
 			"link": {
 				"$value": "{emoji.base.link}"
+			},
+			"start": {
+				"$value": "{emoji.base.hat}"
+			},
+			"end": {
+				"$value": "{emoji.base.chequered-flag}"
 			},
 			"point-left": {
 				"$value": "{emoji.base.point-left}"
@@ -492,6 +504,9 @@
 			},
 			"snap": {
 				"$value": "{emoji.base.camera-with-flash}"
+			},
+			"speaking": {
+				"$value": "{emoji.base.studio-microphone}"
 			},
 			"update": {
 				"$value": "{emoji.base.lightning}"

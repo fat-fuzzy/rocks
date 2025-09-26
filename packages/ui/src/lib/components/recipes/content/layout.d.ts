@@ -6,4 +6,6 @@ export type LayoutProps = {
 	header?: Snippet
 	sidenav?: RevealNavProps
 	main?: Snippet
+	app?: {settings: {[key: string]: string}}
+	children: Snippet
 }

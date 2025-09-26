@@ -1,0 +1,15 @@
+/**
+ * Grid Urbanist Layout
+ */
+
+:fullscreen .zone\:1 {
+	display: none;
+}
+
+:fullscreen .page-context {
+	display: none;
+}
+
+:fullscreen .breadcrumbs {
+	display: none;
+}

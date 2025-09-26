@@ -13,6 +13,7 @@
 		description = `Rails layout (zones 1-5)`,
 		pageName,
 		size,
+		text, // Text size for main content & header
 		dimensions,
 		justify,
 		main,
@@ -88,10 +89,10 @@
 <main {id} class={`zone:main ${layout} ${zoneMainClass}`}>
 	{#if layout === 'tgv'}
 		{#if useHeader}
-			<PageHeader {title} size={size as UiSize} layout="center" />
+			<PageHeader {title} text={text as UiSize} layout="center" />
 		{/if}
 	{:else}
-		<PageHeader {title} size={size as UiSize} {justify} layout={headerLayout}>
+		<PageHeader {title} text={text as UiSize} {justify} layout={headerLayout}>
 			{#snippet main()}
 				<Breadcrumbs
 					id={`${id}-header-content`}

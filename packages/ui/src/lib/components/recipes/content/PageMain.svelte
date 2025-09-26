@@ -8,7 +8,7 @@
 		title = 'PageMain',
 		description = `Basic page layout`,
 		pageName,
-		size,
+		text,
 		layout = 'sidebar',
 		justify,
 		header,
@@ -21,7 +21,7 @@
 <Head pageName={currentPage} {title} {description} />
 
 <main {id} class={`l:${layout}`}>
-	<PageHeader {title} size={size as UiSize} {layout} {justify} {...header} />
+	<PageHeader {title} text={text as UiSize} {layout} {justify} {...header} />
 
 	{#if children}
 		{@render children()}

@@ -3,7 +3,7 @@
  - Links in navs have specific styles (except for hover), see: * styles/core/blocks/nav.scss`
  == */
 a {
-	color: var(--color-ink-nav, var(--ink));
+	color: var(--color-ink, var(--ink));
 	background-color: var(--color-bg);
 	border-color: var(--ink);
 	text-decoration-color: var(--ink);

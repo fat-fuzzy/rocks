@@ -7,9 +7,10 @@
 	type Props = {
 		socials?: Snippet
 		actions?: Snippet
+		children?: Snippet
 	}
 
-	let {actions, socials}: Props = $props()
+	let {actions, socials, children}: Props = $props()
 	let footerClass = 'text:center bg:inherit color:neutral '
 	let pageClass = $derived(
 		ui.utils.format.getClassNameFromPathname(page.url.pathname),
@@ -19,34 +20,40 @@
 </script>
 
 <footer class={footerClass}>
-	<details
-		class={`footer-content font:sm ${aboutContainerClass}`}
-		open={footerOpen}
-	>
-		<summary class="raviolink font:heading bg:inherit color:neutral">
-			Colophon
-		</summary>
-		<div class="l:stack:2xl maki:block size:lg">
-			<div class="l:flex justify:center">
-				<p>
-					Made with 🩷 by <a
-						href="https://github.com/patiboh"
-						target="_blank"
-						rel="noopener"
-					>
-						@patiboh
-					</a>
-				</p>
-				{#if socials}
-					{@render socials()}
-				{/if}
-			</div>
-			<RcScout />
+	{#if children}
+		<div class="footer-content l:flex justify:center">
+			{@render children()}
 		</div>
-	</details>
-	<div class="footer-actions">
-		{#if actions}
-			{@render actions()}
-		{/if}
-	</div>
+	{:else}
+		<details
+			class={`footer-content font:sm ${aboutContainerClass}`}
+			open={footerOpen}
+		>
+			<summary class="raviolink font:heading bg:inherit color:neutral">
+				Colophon
+			</summary>
+			<div class="l:stack:2xl maki:block size:lg">
+				<div class="l:flex justify:center">
+					<p>
+						Made with 🩷 by <a
+							href="https://github.com/patiboh"
+							target="_blank"
+							rel="noopener"
+						>
+							@patiboh
+						</a>
+					</p>
+					{#if socials}
+						{@render socials()}
+					{/if}
+				</div>
+				<RcScout />
+			</div>
+		</details>
+		<div class="footer-actions">
+			{#if actions}
+				{@render actions()}
+			{/if}
+		</div>
+	{/if}
 </footer>
