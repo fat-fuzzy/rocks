@@ -41,4 +41,5 @@ export const actions = {
 	toggleSidebar: commonActions.toggleSidebar,
 	toggleAppContext: commonActions.toggleAppContext,
 	updateSettings: commonActions.updateSettings,
+	saveCookiePreferences: commonActions.saveCookiePreferences,
 }
