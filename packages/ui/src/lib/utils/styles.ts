@@ -1,7 +1,7 @@
 import type {UiBlockProps, UiTextContext} from '$types'
 import {UiStatus} from '$types'
 
-function getElementStyles(props: UiBlockProps): string {
+function getBlockStyles(props: UiBlockProps): string {
 	let {
 		color,
 		size,
@@ -16,7 +16,7 @@ function getElementStyles(props: UiBlockProps): string {
 		background,
 	} = props
 
-	/* Element styles */
+	/* Block styles */
 	let colorClass = color ? `color:${color}` : '' // TODO: clarify bg/color/surface
 	let backgroundClass = background
 		? `bg:${background}`
@@ -175,7 +175,7 @@ function getStyles(props: UiBlockProps): string {
 		background,
 	} = props
 
-	let elementClasses = getElementStyles({
+	let elementClasses = getBlockStyles({
 		color,
 		size,
 		font,
@@ -208,6 +208,6 @@ export default {
 	getStyles,
 	getContainerStyles,
 	getLayoutStyles,
-	getElementStyles,
+	getBlockStyles,
 	getFeedbackStyles,
 }

@@ -1,14 +1,18 @@
 {
 	"svg": {
 		"$type": "asset-svg",
+		"$descriptiom": "SVG icons from https://icons.getbootstrap.com",
 		"icon": {
 			"$value": [
+				"chevron-down",
+				"chevron-left",
+				"chevron-right",
 				"egg",
+				"github",
 				"magic",
 				"sparkles",
-				"water",
 				"tsunami",
-				"github"
+				"water"
 			]
 		}
 	}

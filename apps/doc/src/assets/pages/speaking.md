@@ -6,4 +6,4 @@ id: '008'
 tags: ['pages', 'speaking']
 ---
 
-These pages contain the notes, slides, and links from my speaking engagements.
+These pages contain the slides, notes, and resources from my speaking engagements.

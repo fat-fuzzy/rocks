@@ -18,6 +18,8 @@
 		asset,
 		children,
 		reveal,
+		depth,
+		assetType,
 		formaction,
 		actionPath,
 		onclick,
@@ -26,14 +28,19 @@
 	let linkReveal = $state(
 		reveal ? {[slug]: reveal} : {[slug]: DEFAULT_REVEAL_STATE},
 	)
+
+	let defaultAssetDown = assetType === 'svg' ? 'chevron-down' : 'point-down'
+	let defaultAssetLeft = assetType === 'svg' ? 'chevron-left' : 'point-left'
+	let defaultAssetRight = assetType === 'svg' ? 'chevron-right' : 'point-right'
+
 	let states = {
 		expanded: {
 			...EXPAND_MACHINE.expanded,
-			asset: asset ? asset : `point-down`,
+			asset: asset ? asset : defaultAssetDown,
 		},
 		collapsed: {
 			...EXPAND_MACHINE.collapsed,
-			asset: asset ? asset : `point-left`,
+			asset: asset ? asset : depth > 1 ? defaultAssetRight : defaultAssetLeft,
 		},
 	}
 
@@ -53,26 +60,36 @@
 	}
 </script>
 
+{#snippet expander()}
+	<Expand
+		id={`button-reveal-${slug}`}
+		{variant}
+		{title}
+		{size}
+		{color}
+		{shape}
+		{assetType}
+		initial={reveal.reveal}
+		value={linkReveal[slug].reveal}
+		name={`reveal-${slug}`}
+		controls={`links-${slug}`}
+		{states}
+		formaction={action}
+		onclick={toggleReveal}
+	/>
+{/snippet}
+
 <div class={layoutClasses}>
-	<div class="l:flex nowrap justify:between align:center">
+	<div class="l:flex nowrap size:3xs justify:between align:center">
+		{#if depth > 1}
+			{@render expander()}
+		{/if}
 		<a data-sveltekit-preload-data {href} class="font:md">
 			{title}
 		</a>
-		<Expand
-			id={`button-reveal-${slug}`}
-			{variant}
-			{title}
-			{size}
-			{color}
-			{shape}
-			initial={reveal.reveal}
-			value={linkReveal[slug].reveal}
-			name={`reveal-${slug}`}
-			controls={`links-${slug}`}
-			{states}
-			formaction={action}
-			onclick={toggleReveal}
-		/>
+		{#if depth === 1}
+			{@render expander()}
+		{/if}
 	</div>
 	<ff-reveal id={`links-${slug}`} class={`${revealClasses} bg:inherit`}>
 		{#if children}

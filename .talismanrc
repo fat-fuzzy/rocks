@@ -7,10 +7,14 @@ fileignoreconfig:
   checksum: 9d8a4dc6e960e47361d8e60d78bbc13f32ac3d294b82443ff9cd414f1fcffcd7
 - filename: apps/doc/src/data/speaking.ts
   checksum: 4bb1ef75fced8546006463eff5e052e56fdbd01b3f9f127934c9fdd97a56cfa8
+- filename: apps/doc/src/data/ui.ts
+  checksum: 088f6935db91958141d3e52dfa4a46bf2afb3472407baa3d0c39bb8221ca8db0
 - filename: packages/ui/src/lib/components/recipes/content/layout.d.ts
   checksum: 009e998a4c815eaf179d195e7b5c334cae95deb3319d501c9b5b10542cef6f71
 - filename: apps/doc/src/routes/(minimal)/+layout.svelte
   checksum: eb3625b05cbe9083cc005bd6884d266a53985ad20ec618c65ffd2c25654d06a5
 - filename: apps/doc/src/assets/speaking/pp-code/speaker-notes/001-8+slide-8.md
   checksum: 45ee09c06b4c0ab7638ad405fb013b971967a1431dd5c7e9968459155c79c08c
-version: "0.1.6"
+- filename: packages/ui/src/lib/components/recipes/grid/LayoutGrid.svelte
+  checksum: b02e2cb3273c31887cd12299e9e26dd509f40219823aa97d57379fe06738e539
+version: "0.1.8"

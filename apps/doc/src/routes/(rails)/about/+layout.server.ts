@@ -1,6 +1,9 @@
-import {buildNav} from '$data/nav'
+import type {NavItem} from '$types'
+
+import {buildNav, buildSubnav} from '$data/nav'
 import decisions from '$data/decisions'
 import usages from '$data/usages'
+import speaking from '$data/speaking'
 
 const decisionsMarkdowns = decisions.markdowns
 	.filter(({meta}) => meta.status !== 'draft')
@@ -11,18 +14,36 @@ const usagesMarkdowns = usages.markdowns
 
 export const load = async ({locals, url, params}) => {
 	const sidebar = buildNav('about')
+	let talks
+	let speakerNotes
+
+	if (params.talk) {
+		talks = await speaking.fetchMarkdowns(params.talk)
+		speakerNotes = await speaking.fetchSpeakerNotes(params.talk)
+	} else {
+		talks = await speaking.fetchTalks()
+	}
 
 	sidebar.reveal = locals.sidebar.reveal ?? sidebar.reveal
 	sidebar.actionPath = url.pathname
 	sidebar.layout =
 		url.pathname === '/about/decisions' || url.pathname === '/about/usage'
 			? 'tram'
-			: sidebar.layout
+			: url.pathname.startsWith('/about/speaking')
+				? 'steam'
+				: 'tram'
+
 	sidebar.items[0].items = (sidebar.items[0].items ?? []).map((item) => {
 		if (item.slug === 'usage') {
 			item.items = usagesMarkdowns.map(({meta}) => meta)
 		} else if (item.slug === 'decisions') {
 			item.items = decisionsMarkdowns.map(({meta}) => meta)
+		} else if (item.slug === 'speaking') {
+			if (!params.talk) {
+				item.items = talks.map(({meta}) => meta)
+			} else {
+				item.items = buildSubnav('/about/speaking', talks)
+			}
 		}
 		return item
 	})
@@ -35,7 +56,9 @@ export const load = async ({locals, url, params}) => {
 			decisions: decisionsMarkdowns,
 			usages: usagesMarkdowns,
 		},
-		layout: params.slug ? 'metro' : 'voyager',
+		layout: sidebar.layout ? sidebar.layout : params.slug ? 'metro' : 'voyager',
+		talks,
+		speakerNotes,
 	}
 
 	return data

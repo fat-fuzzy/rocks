@@ -22,6 +22,15 @@
 	let sidenav = $derived(page.data.sidebar)
 	let layout = $derived(page.data.layout ?? sidenav.layout)
 	let appContext = $derived(page.data.appContext)
+	let talk = $derived(page.params.talk)
+	let slide = $derived(page.data.content)
+	let series = $derived(
+		slide?.meta?.series && slide.meta.index > 0
+			? slide.meta.series.items.map((id) =>
+					page.data.talks.find((slide) => slide.meta.id === id),
+				)
+			: null,
+	)
 
 	type AreaZone = {
 		zone: Snippet
@@ -148,18 +157,69 @@
 {/snippet}
 
 {#snippet zoneFooter()}
-	<Footer>
-		{#snippet socials()}
-			<Socials links={linksSocials} />
-		{/snippet}
-		{#snippet actions()}
-			{#if appContext.consent}
-				<Cookies
-					consent={appContext.consent}
-					actionPath={appContext.actionPath}
-					font="lg"
-				/>
-			{/if}
-		{/snippet}
-	</Footer>
+	{#if talk}
+		<Footer>
+			<nav
+				id="slides-nav"
+				class="slides-nav l:flex size:xs align:center justify:end"
+			>
+				{#if slide.meta.index === 0}
+					<a
+						href={`/about/speaking/${slide.meta.talk}/slide-1`}
+						class="emoji:start justify:start shape:mellow"
+					>
+						Showtime!
+					</a>
+				{:else}
+					{#if slide.meta.index === 1}
+						<a
+							href={`/about/speaking/${slide.meta.talk}`}
+							class="emoji:default justify:start shape:mellow"
+						>
+							Intro
+						</a>
+					{/if}
+					{#if slide.meta.index > 1}
+						<a
+							href={`/about/speaking/${slide.meta.talk}/slide-${slide.meta.index - 1}`}
+							class="emoji:point-left justify:start shape:mellow"
+						>
+							{slide.meta.index - 1}
+						</a>
+					{/if}
+					<p
+						class="surface:4:primary shape:round index variant:fill ravioli:2xs"
+					>
+						{slide.meta.index}
+					</p>
+					{#if slide.meta.index < series?.length}
+						<a
+							href={`/about/speaking/${slide.meta.talk}/slide-${slide.meta.index + 1}`}
+							class="emoji:point-right justify:end shape:mellow"
+						>
+							{slide.meta.index + 1}
+						</a>
+					{/if}
+					{#if slide.meta.index === series?.length}
+						<p class="emoji:end justify:start">Fin!</p>
+					{/if}
+				{/if}
+			</nav>
+		</Footer>
+	{:else}
+		<Footer>
+			{#snippet socials()}
+				<Socials links={linksSocials} />
+			{/snippet}
+			{#snippet actions()}
+				{#if appContext.consent}
+					<Cookies
+						consent={appContext.consent}
+						actionPath={appContext.actionPath}
+						font="lg"
+					/>
+				{/if}
+			{/snippet}
+		</Footer>
+	{/if}
 {/snippet}

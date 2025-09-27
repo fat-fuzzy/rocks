@@ -355,7 +355,7 @@
 			{/if}
 		{/await}
 		<div
-			class={`${frameClasses} color:primary bg:${actor.state.canvas === CanvasState.idle ? 'inherit' : meta.background}`}
+			class={`${frameClasses} splash color:primary bg:${actor.state.canvas === CanvasState.idle ? 'inherit' : meta.background}`}
 		>
 			<canvas
 				id={`${id}.canvas`}

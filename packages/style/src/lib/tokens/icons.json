@@ -26,13 +26,13 @@
 		},
 		"svg": {
 			"2xs": {
-				"$value": "calc(var(--icon-svg-xs) / var(--size-ratio-sm))"
+				"$value": "calc(var(--icon-svg-xs) / var(--size-ratio-md))"
 			},
 			"xs": {
-				"$value": "calc(var(--icon-svg-sm) / var(--size-ratio-sm))"
+				"$value": "calc(var(--icon-svg-sm) / var(--size-ratio-md))"
 			},
 			"sm": {
-				"$value": "calc(var(--icon-svg-md) / var(--size-ratio-sm))"
+				"$value": "calc(var(--icon-svg-md) / var(--size-ratio-md))"
 			},
 			"md": {
 				"$value": "2rem"
