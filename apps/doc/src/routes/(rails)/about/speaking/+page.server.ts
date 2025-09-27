@@ -1,6 +1,6 @@
 import {error} from '@sveltejs/kit'
 import pages from '$data/pages'
-import {commonActions} from '$lib/server/actions/page-actions'
+import {actions as parentActions} from '../+page.server'
 
 const page = 'speaking'
 const markdowns = await pages.fetchMarkdowns(page)
@@ -24,10 +24,4 @@ export const load = async ({parent}) => {
 	}
 }
 
-export const actions = {
-	toggleNav: commonActions.toggleNav,
-	toggleSidebar: commonActions.toggleSidebar,
-	toggleAppContext: commonActions.toggleAppContext,
-	updateSettings: commonActions.updateSettings,
-	saveCookiePreferences: commonActions.saveCookiePreferences,
-}
+export const actions = parentActions

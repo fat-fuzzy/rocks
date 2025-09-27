@@ -77,6 +77,15 @@ export const pages: {[key: string]: NavItem} = {
 				actionPath: '/about/decisions',
 				items: [],
 			},
+			{
+				slug: 'speaking',
+				title: 'Speaking',
+				label: 'Speaking',
+				asset: 'speaking',
+				layout: 'steam',
+				actionPath: '/about/speaking',
+				items: [],
+			},
 		],
 	},
 	play: {
@@ -166,14 +175,6 @@ export const pages: {[key: string]: NavItem} = {
 		layout: 'sidebar',
 		items: [],
 	},
-	speaking: {
-		slug: 'speaking',
-		label: 'Speaking',
-		title: 'Talks',
-		asset: 'speaking',
-		layout: 'steam',
-		items: [],
-	},
 }
 
 export function buildNav(page: string) {
@@ -214,4 +215,42 @@ export function buildNav(page: string) {
 	}
 
 	return nav
+}
+
+export function buildSubnav(path: string, markdowns: Markdown[]) {
+	const subnav: NavItem[] = markdowns.reduce((links: NavItem[], {meta}) => {
+		if (meta.series) {
+			if (meta.index === 0) {
+				meta.items = meta.series.items
+					.map((id: string, index: number) => {
+						if (index > 0) {
+							const item = markdowns.find((p) => p.meta.id === id)
+							if (item) {
+								return {
+									slug: item.meta.slug,
+									talk: item.meta.talk,
+									title: item.meta.series?.title,
+									itemPath: `${path}/${meta.talk}`,
+								}
+							}
+						}
+					})
+					.filter((item) => item !== undefined) as NavItem[]
+
+				meta.title = meta.series.title
+				links.push(meta)
+			}
+		} else {
+			const link = {
+				slug: meta.slug,
+				talk: meta.talk,
+				title: meta.title,
+				itemPath: `${path}/${meta.talk}`,
+			}
+			links.push(link)
+		}
+		return links
+	}, [])
+
+	return subnav
 }
