@@ -1,3 +1,4 @@
+import type {Markdown} from '$types'
 import assetsUtils from './assets'
 
 const categoryPrefix = '/src/assets/ui/'
@@ -16,7 +17,7 @@ const recipesImports = import.meta.glob('/src/assets/ui/recipes/*.md')
 const rawImports = import.meta.glob('/src/assets/ui/raw/*.md')
 // const graphicsImports = import.meta.glob('/src/assets/ui/graphics/*.md')
 
-async function fetchMarkdowns(): Promise<{[key: string]: any}> {
+async function fetchMarkdowns(): Promise<{[key: string]: Markdown[]}> {
 	const [categories, tokens, blocks, layouts, recipes, raw] = await Promise.all(
 		[
 			assetsUtils.fetchMarkdowns(categoryPrefix, categoryImports),

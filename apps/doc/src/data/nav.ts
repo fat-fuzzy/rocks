@@ -1,4 +1,4 @@
-import type {NavItem} from '$types'
+import type {NavItem, Markdown} from '$types'
 import ui from '@fat-fuzzy/ui'
 
 // TODO: move to utils / clean
