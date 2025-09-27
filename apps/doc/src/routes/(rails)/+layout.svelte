@@ -25,7 +25,7 @@
 	let talk = $derived(page.params.talk)
 	let slide = $derived(page.data.content)
 	let series = $derived(
-		slide.meta.series && slide.meta.index > 0
+		slide?.meta?.series && slide.meta.index > 0
 			? slide.meta.series.items.map((id) =>
 					page.data.talks.find((slide) => slide.meta.id === id),
 				)
