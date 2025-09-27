@@ -9,7 +9,7 @@ slug: pp-code
 status: 
 author: 'patiboh'
 image: 'webgl-scene'
-description: 'This is a template for talk slides, where the series items are the slides'
+description: 'Un talk pour partager les motivations, stratégies et leçons apprises à travers le développement d’une pratique personnelle du code.'
 series:
   {
     title: 'Pratique Personnelle du Code',
