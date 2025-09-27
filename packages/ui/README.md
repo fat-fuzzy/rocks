@@ -1,6 +1,6 @@
 # Style
 
-You can read the documentation for this package here: [Fat Fuzzy Usage | Style](https://rocks.pages.dev/doc/usage/ui)
+You can read the documentation for this package here: [Fat Fuzzy Usage | Style](https://rocks.pages.dev/about/usage/ui)
 
 Read more about creating a library [in the Svelte docs](https://kit.svelte.dev/docs/packaging).
 

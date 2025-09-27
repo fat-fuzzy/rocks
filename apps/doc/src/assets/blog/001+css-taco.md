@@ -20,7 +20,7 @@ But there was also a glaring hallucination going on here: 🌮 != 🌯
 Moreover, this pointed to an inconsistency in my CSS naming strategy.
 I had created a [Center layout](https://every-layout.dev/layouts/center/) and named the CSS class: `l:center`.
 I had also created a [Burrito layout](https://rocks.pages.dev/ui/layouts/Burrito) (CSS class: `l:burrito`), which is essentially a width- constrained center layout.
-These are the only two "container" classes in the library ([`@fat-fuzzy/style`](https://rocks.pages.dev/doc/usage/style)), yet their names don't really convey the layout semantics shared between the two.
+These are the only two "container" classes in the library ([`@fat-fuzzy/style`](https://rocks.pages.dev/about/usage/style)), yet their names don't really convey the layout semantics shared between the two.
 
 ## The solution
 
