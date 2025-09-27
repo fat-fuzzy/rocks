@@ -41,8 +41,6 @@ export const load = async ({locals, url, params}) => {
 			item.items = decisionsMarkdowns.map(({meta}) => meta)
 			item.reveal = locals.navDecisions
 		} else if (item.slug === 'speaking') {
-			console.log('locals.navSpeaking', locals.navSpeaking)
-
 			item.reveal = locals.navSpeaking
 			if (!params.talk) {
 				item.items = talks.map(({meta}) => meta)
