@@ -15,6 +15,7 @@ export type NavItem = {
 	size?: string
 	variant?: string
 	shape?: string
+	reveal?: UiRevealState
 	formaction?: string
 	actionPath?: string
 	itemPath?: string

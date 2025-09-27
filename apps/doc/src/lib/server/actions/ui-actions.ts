@@ -143,6 +143,17 @@ async function handleToggleRecipes(event: RequestEvent) {
 	})
 }
 
+async function handleToggleRaw(event: RequestEvent) {
+	const element = 'raw'
+	return handleToggleUiReveal({
+		event,
+		element,
+		options: {
+			state: DEFAULT_REVEAL_STATE,
+		},
+	})
+}
+
 async function handleTogglePageContext(event: RequestEvent) {
 	const element = 'pageContext'
 	return handleToggleUiReveal({
@@ -167,6 +178,17 @@ async function handleToggleUsage(event: RequestEvent) {
 
 async function handleToggleDecisions(event: RequestEvent) {
 	const element = 'decisions'
+	return handleToggleUiReveal({
+		event,
+		element,
+		options: {
+			state: DEFAULT_REVEAL_STATE,
+		},
+	})
+}
+
+async function handleToggleSpeaking(event: RequestEvent) {
+	const element = 'speaking'
 	return handleToggleUiReveal({
 		event,
 		element,
@@ -206,9 +228,11 @@ export default {
 	handleToggleBlocks,
 	handleToggleLayouts,
 	handleToggleRecipes,
+	handleToggleRaw,
 	handleTogglePageContext,
 	handleToggleUsage,
 	handleToggleDecisions,
+	handleToggleSpeaking,
 	handleToggleLearning,
 	handleToggleProjects,
 }

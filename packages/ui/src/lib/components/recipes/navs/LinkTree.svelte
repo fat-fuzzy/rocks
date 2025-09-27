@@ -56,14 +56,14 @@
 	data-sveltekit-preload-data={preload ? preload : undefined}
 >
 	{#each items as item (item.slug)}
-		{@const {slug, title, asset, itemPath} = item}
+		{@const {slug, title, asset, reveal, itemPath} = item}
 		{@const subItems = item.items}
 		{@const buttonAssetClass = subItems && asset ? asset : ''}
 		{@const linkAssetClass = !subItems && asset ? `emoji:${asset}` : ''}
 		{@const itemClass = !subItems
 			? `${buttonAssetClass} ${alignClass}`
 			: alignClass}
-		{@const reveal = {[slug]: DEFAULT_REVEAL_STATE}}
+		{@const value = {[slug]: reveal ? reveal : DEFAULT_REVEAL_STATE}}
 		<li
 			aria-current={$page.url.pathname ===
 			format.formatHref(itemPath ?? path, slug)
@@ -77,7 +77,7 @@
 				<input
 					type="hidden"
 					name={`state-${slug}`}
-					value={reveal[slug].reveal}
+					value={value[slug].reveal}
 					oninput={(e) => {
 						if (oninput) {
 							oninput(e)

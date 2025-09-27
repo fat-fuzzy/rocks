@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type {ExpandLinkProps, FuzzyPayload} from '$types'
+	import {enhance} from '$app/forms'
 	import {UiShape, UiVariant} from '$types'
 	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
 	import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/definitions.js'
@@ -61,22 +62,22 @@
 </script>
 
 {#snippet expander()}
-	<Expand
-		id={`button-reveal-${slug}`}
-		{variant}
-		{title}
-		{size}
-		{color}
-		{shape}
-		{assetType}
-		initial={reveal.reveal}
-		value={linkReveal[slug].reveal}
-		name={`reveal-${slug}`}
-		controls={`links-${slug}`}
-		{states}
-		formaction={action}
-		onclick={toggleReveal}
-	/>
+	<form method="POST" {action} use:enhance>
+		<Expand
+			id={`button-reveal-${slug}`}
+			{variant}
+			{title}
+			{size}
+			{color}
+			{shape}
+			{assetType}
+			value={linkReveal[slug].reveal}
+			name={`reveal-${slug}`}
+			controls={`links-${slug}`}
+			{states}
+			onclick={toggleReveal}
+		/>
+	</form>
 {/snippet}
 
 <div class={layoutClasses}>

@@ -11,14 +11,16 @@ const revealForms = [
 	'sidebar',
 	'appContext',
 	'pageContext',
-	// doc page forms
+	// about page forms
 	'usage',
 	'decisions',
+	'speaking',
 	// ui page forms
 	'tokens',
 	'blocks',
 	'layouts',
 	'recipes',
+	'raw',
 	// play page forms
 	'projects',
 	'learning',
@@ -35,8 +37,16 @@ enum FormsEnum {
 	blocks = 'blocks',
 	layouts = 'layouts',
 	recipes = 'recipes',
+	raw = 'raw',
 	dsState = 'dsState',
 	dsStyles = 'dsStyles',
+	// about page forms
+	decisions = 'decisions',
+	usage = 'usage',
+	speaking = 'speaking',
+	// play page forms,
+	learning = 'learning',
+	projects = 'projects',
 }
 
 export const setStyles =
@@ -83,6 +93,14 @@ export const setStyles =
 		event.locals.navBlocks = reveal[FormsEnum.blocks]
 		event.locals.navLayouts = reveal[FormsEnum.layouts]
 		event.locals.navRecipes = reveal[FormsEnum.recipes]
+		event.locals.navRaw = reveal[FormsEnum.raw]
+		// About Page Forms
+		event.locals.navDecisions = reveal[FormsEnum.decisions]
+		event.locals.navUsage = reveal[FormsEnum.usage]
+		event.locals.navSpeaking = reveal[FormsEnum.speaking]
+		// Play Page Forms
+		event.locals.navLearning = reveal[FormsEnum.learning]
+		event.locals.navProjects = reveal[FormsEnum.projects]
 
 		return resolve(event)
 	}

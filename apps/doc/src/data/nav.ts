@@ -92,6 +92,7 @@ export const pages: {[key: string]: NavItem} = {
 				label: 'Speaking',
 				asset: 'speaking',
 				layout: 'steam',
+				formaction: 'toggleSpeaking',
 				actionPath: '/about/speaking',
 				items: [],
 			},

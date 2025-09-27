@@ -9,6 +9,12 @@ declare namespace App {
 		navBlocks
 		navLayouts
 		navRecipes
+		navRaw
+		navDecisions
+		navUsage
+		navSpeaking
+		navLearning
+		navProjects
 		sidebar
 		settings
 		appContext

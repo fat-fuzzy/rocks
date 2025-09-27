@@ -27,6 +27,11 @@ class UiReveal {
 		if (data.has(`button-reveal-${this.id}`)) {
 			updated = data.get(`button-reveal-${this.id}`)
 		}
+
+		if (data.has(`reveal-${this.id}`)) {
+			updated = data.get(`reveal-${this.id}`)
+		}
+
 		if (!updated) {
 			return {
 				success: false,
