@@ -72,15 +72,16 @@ ul.depth-1 {
 }
 
 ul.depth-2 {
-	padding-inline: calc(2 * var(--ui-size-sm)) var(--outline-offset-sm);
+	padding-inline: var(--outline-offset-sm);
 }
 
 ul.depth-3 {
-	padding-inline-start: calc(3 * var(--ui-size));
+	padding-inline-start: calc(2 * var(--ui-size) + var(--outline-offset-lg));
 }
 
+/* Avoid this level of nesting */
 ul.depth-4 {
-	padding-inline-start: calc(4 * var(--ui-size));
+	padding-inline-start: calc(4 * var(--ui-size) + var(--outline-offset-lg));
 }
 
 /* override Active Link styles for top level link */

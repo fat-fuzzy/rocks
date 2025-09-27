@@ -17,11 +17,13 @@
 		children,
 	}: ContentProps = $props()
 
-	let blockClasses = styleHelper.getElementStyles({
+	let blockClasses = styleHelper.getBlockStyles({
 		size,
 		layout,
 		color,
 		background,
+		justify,
+		align,
 	})
 	let containerClasses = styleHelper.getLayoutStyles({
 		size,

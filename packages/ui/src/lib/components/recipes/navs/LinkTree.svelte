@@ -21,6 +21,7 @@
 		align,
 		id,
 		depth = 0,
+		assetType,
 		container,
 		items = [],
 		preload,
@@ -90,8 +91,11 @@
 					asset={buttonAssetClass}
 					href={format.formatHref(path, slug)}
 					size={UiSize['2xs']}
+					font={UiSize['sm']}
 					actionPath={item.actionPath}
 					formaction={item.formaction}
+					{depth}
+					assetType={depth === 2 ? 'svg' : assetType ? assetType : 'emoji'}
 				>
 					{@render nestedLinkTree(subItems, slug)}
 				</ExpandLink>

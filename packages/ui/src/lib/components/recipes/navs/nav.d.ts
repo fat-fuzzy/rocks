@@ -75,6 +75,7 @@ export type ExpandLinkProps = UiBlockProps & {
 	title: string
 	children: Snippet
 	reveal: UiState
+	depth: number
 	formaction?: string
 	actionPath?: string
 	onclick?: (payload: FuzzyPayload) => void
