@@ -4,7 +4,7 @@
 	const {meta, series}: {meta: MarkdownMeta; series: string[]} = $props()
 </script>
 
-{#if meta.index !== undefined && series?.length}
+{#if meta.index !== undefined}
 	<nav
 		id="slides-nav"
 		class="slides-nav l:flex size:xs align:center justify:end"
