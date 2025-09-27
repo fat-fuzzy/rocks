@@ -18,6 +18,11 @@
 	display: none;
 }
 
+:fullscreen .l\:grid\:urbanist {
+	block-size: var(--max-block-size, 90vh);
+	inline-size: 100vw;
+}
+
 :fullscreen .splash ~ [class*='l:text'] {
 	display: none;
 }
