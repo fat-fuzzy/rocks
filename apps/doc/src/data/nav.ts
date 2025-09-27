@@ -27,7 +27,16 @@ export const linksSocials = [
 		url: 'https://github.com/fat-fuzzy/rocks',
 		asset: 'svg:github',
 		shape: 'round',
-		size: 'md',
+		size: 'sm',
+		color: 'primary',
+	},
+	{
+		id: 'link-rss',
+		title: 'RSS',
+		url: 'https://rocks.pages.dev/blog/rss.xml',
+		asset: 'svg:rss',
+		shape: 'square',
+		size: 'sm',
 		color: 'primary',
 	},
 ]
