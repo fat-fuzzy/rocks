@@ -19,21 +19,13 @@
 	--overlay-inline-size: var(--sidebar-width);
 }
 
-[class*='gare:'].width\:md {
+[class*='gare:'].width\:md,
+[class*='gare:'].width\:lg {
 	--sidebar-width: var(--layout-sidebar-md);
 	--overlay-inline-size: var(--sidebar-width);
 }
 
-[class*='gare:'].width\:lg {
-	--sidebar-xl: calc(50vw - 2 * var(--grid-gap));
-	--overlay-inline-size: var(--sidebar-xl);
-}
-
-[class*='gare:'].width\:xl {
-	--sidebar-2xl: calc(100vw - 2 * var(--grid-gap));
-	--overlay-inline-size: var(--sidebar-2xl);
-}
-
+[class*='gare:'].width\:xl,
 [class*='gare:'].width\:full {
 	--sidebar-2xl: calc(100vw - 2 * var(--grid-gap));
 	--overlay-inline-size: var(--sidebar-2xl);
