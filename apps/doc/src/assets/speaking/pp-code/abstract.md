@@ -13,7 +13,7 @@ description: 'This is a template for talk slides, where the series items are the
 series:
   {
     title: 'Pratique Personnelle du Code',
-    items: ['001-1', '001-2', '001-3', '001-4', '001-5', '001-6', '001-7', '001-8'],
+    items: ['001-0', '001-1', '001-2', '001-3', '001-4', '001-5', '001-6', '001-7', '001-8'],
   }
 tags: ['2025']
 ---
