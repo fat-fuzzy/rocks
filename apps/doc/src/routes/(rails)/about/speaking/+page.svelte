@@ -5,10 +5,11 @@
 	const {PageRails} = ui.content
 	const {EscapeHtml} = ui.headless
 
+	let title = 'Speaking'
+	let description = 'Slide decks and notes from talks and workshops'
+
 	let markdown = $derived(page.data.content)
 	let appContext = $derived(page.data.appContext)
-	let title = $derived('')
-	let description = $derived(markdown.meta.description)
 	let html = $derived(markdown.html)
 	let slug = $derived(markdown.meta.slug)
 </script>
