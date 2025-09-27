@@ -13,3 +13,25 @@
 :fullscreen .breadcrumbs {
 	display: none;
 }
+
+:fullscreen .page-context:not(.empty) {
+	display: none;
+}
+
+:fullscreen .splash ~ [class*='l:text'] {
+	display: none;
+}
+
+:fullscreen .zone\:main:has(.page-main .splash) {
+	justify-items: center;
+}
+
+:fullscreen .zone\:main:has(.page-main .splash) h1 {
+	justify-content: center;
+}
+
+:fullscreen [class*='page:']:not([class*='slide-']) .splash {
+	margin-block-end: 0;
+	max-block-size: var(--max-block-size, 80vh);
+	max-inline-size: unset;
+}

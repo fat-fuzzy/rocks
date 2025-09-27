@@ -1,5 +1,7 @@
 <script lang="ts">
 	import type {LayoutGridProps} from '$types'
+
+	import {onMount} from 'svelte'
 	import format from '$lib/utils/format.js'
 
 	let {areas, size, layout, app, path}: LayoutGridProps = $props()
@@ -15,9 +17,39 @@
 		layout === 'steam' || layout === 'tram' ? 'contain' : '',
 	)
 	let sizeClass = $derived(size ? `size:${size}` : '')
+
+	let zoneFullScreen: HTMLElement | undefined = $state()
+	let acceptsFullScreen = $derived(layout === 'steam')
+
+	function toggleFullScreen() {
+		if (!acceptsFullScreen || !zoneFullScreen) return
+
+		if (zoneFullScreen.requestFullscreen) {
+			zoneFullScreen.requestFullscreen()
+		} else {
+			// Otherwise exit the full screen
+			document.exitFullscreen?.()
+		}
+	}
+
+	onMount(() => {
+		if (!acceptsFullScreen || !zoneFullScreen) return
+
+		// On pressing ENTER call toggleFullScreen method
+		document.addEventListener('keydown', (e) => {
+			if (e.key === 'Enter') {
+				toggleFullScreen()
+			}
+		})
+
+		return () => {
+			document?.removeEventListener('keydown', () => {})
+		}
+	})
 </script>
 
 <div
+	bind:this={zoneFullScreen}
 	class={`rails l:grid:urbanist ${containClass} ${layout} ${themeClass} ${sizeClass}`}
 >
 	{#each areas as { zone, grid, gare, hug, exchange, scroll, tag }, i (i)}

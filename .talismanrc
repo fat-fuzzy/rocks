@@ -15,4 +15,6 @@ fileignoreconfig:
   checksum: eb3625b05cbe9083cc005bd6884d266a53985ad20ec618c65ffd2c25654d06a5
 - filename: apps/doc/src/assets/speaking/pp-code/speaker-notes/001-8+slide-8.md
   checksum: 45ee09c06b4c0ab7638ad405fb013b971967a1431dd5c7e9968459155c79c08c
-version: "0.1.7"
+- filename: packages/ui/src/lib/components/recipes/grid/LayoutGrid.svelte
+  checksum: b02e2cb3273c31887cd12299e9e26dd509f40219823aa97d57379fe06738e539
+version: "0.1.8"
