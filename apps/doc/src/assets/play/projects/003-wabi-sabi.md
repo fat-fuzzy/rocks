@@ -25,4 +25,4 @@ WebGLFundamentals
 
 Fat Fuzzy
 
-- [my implementation of the WebGLFundamentals 2D Matrix lesson](https://rocks.pages.dev/play/learning/matrix-2d) using the package [Sketch](https://rocks.pages.dev/doc/usage/sketch) ☺️
+- [my implementation of the WebGLFundamentals 2D Matrix lesson](https://rocks.pages.dev/play/learning/matrix-2d) using the package [Sketch](https://rocks.pages.dev/about/usage/sketch) ☺️

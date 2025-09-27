@@ -1,6 +1,6 @@
 # CZ Changelog
 
-You can read the documentation for this package here: [Fat Fuzzy Usage | Utilities](https://rocks.pages.dev/doc/usage/utilities)
+You can read the documentation for this package here: [Fat Fuzzy Usage | Utilities](https://rocks.pages.dev/about/usage/utilities)
 
 ## Below is the original doc for the package cz-conventional-changelog
 
