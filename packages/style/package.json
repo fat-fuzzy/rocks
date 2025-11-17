@@ -41,8 +41,8 @@
 	},
 	"devDependencies": {
 		"@fat-fuzzy/config": "workspace:*",
-		"@terrazzo/plugin-css": "0.10.1",
-		"@terrazzo/plugin-js": "0.10.1",
+		"@terrazzo/plugin-css": "0.10.4",
+		"@terrazzo/plugin-js": "0.10.3",
 		"autoprefixer": "10.4.21",
 		"cssnano": "7.1.1",
 		"glob": "12.0.0",
