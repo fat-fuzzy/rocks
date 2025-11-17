@@ -2,7 +2,7 @@ fileignoreconfig:
 - filename: packages/prose/src/lib/editor/Menu.svelte
   checksum: 80db7f3985638a076a73d6a3e8d948e865628611e0c4953c61cddabc4531780b
 - filename: pnpm-lock.yaml
-  checksum: 558ceac412ff8e2d4ed283f8c906463f7a426c62650e348e7eeabc6fba5ef685
+  checksum: 1b99df6258df915c29117dd716b7fc36eec72267a679e595633bb3f4c1268d56
 - filename: apps/doc/src/lib/ui/RcScout.svelte
   checksum: 9d8a4dc6e960e47361d8e60d78bbc13f32ac3d294b82443ff9cd414f1fcffcd7
 - filename: apps/doc/src/data/speaking.ts
