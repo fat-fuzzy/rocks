@@ -6,6 +6,7 @@
 	import {links} from '$data/nav'
 	import Footer from '$lib/ui/Footer.svelte'
 	import Socials from '$lib/ui/Socials.svelte'
+	import NavSlides from '$lib/ui/NavSlides.svelte'
 
 	const {Cookies, HeaderNav, RevealContext} = ui.drafts
 	const {RevealNav} = ui.recipes
@@ -159,52 +160,7 @@
 {#snippet zoneFooter()}
 	{#if talk}
 		<Footer>
-			<nav
-				id="slides-nav"
-				class="slides-nav l:flex size:xs align:center justify:end"
-			>
-				{#if slide.meta.index === 0}
-					<a
-						href={`/about/speaking/${slide.meta.talk}/slide-1`}
-						class="emoji:start justify:start shape:mellow"
-					>
-						Showtime!
-					</a>
-				{:else}
-					{#if slide.meta.index === 1}
-						<a
-							href={`/about/speaking/${slide.meta.talk}`}
-							class="emoji:default justify:start shape:mellow"
-						>
-							Intro
-						</a>
-					{/if}
-					{#if slide.meta.index > 1}
-						<a
-							href={`/about/speaking/${slide.meta.talk}/slide-${slide.meta.index - 1}`}
-							class="emoji:point-left justify:start shape:mellow"
-						>
-							{slide.meta.index - 1}
-						</a>
-					{/if}
-					<p
-						class="surface:4:primary shape:round index variant:fill ravioli:2xs"
-					>
-						{slide.meta.index}
-					</p>
-					{#if slide.meta.index < series?.length}
-						<a
-							href={`/about/speaking/${slide.meta.talk}/slide-${slide.meta.index + 1}`}
-							class="emoji:point-right justify:end shape:mellow"
-						>
-							{slide.meta.index + 1}
-						</a>
-					{/if}
-					{#if slide.meta.index === series?.length}
-						<p class="emoji:end justify:start">Fin!</p>
-					{/if}
-				{/if}
-			</nav>
+			<NavSlides {series} meta={slide?.meta ?? {}} />
 		</Footer>
 	{:else}
 		<Footer>

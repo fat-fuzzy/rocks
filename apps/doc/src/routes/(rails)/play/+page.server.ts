@@ -7,12 +7,12 @@ const page = 'play'
 
 export const load = async ({parent}) => {
 	let {sidebar, pageContext} = await parent()
-	let content = await pages.fetchMarkdowns(page)
+	let markdowns = await pages.fetchMarkdowns(page)
 
-	if (!content?.length) {
+	if (!markdowns?.length) {
 		error(404, {message: 'Not found'})
 	}
-	content = content[0]
+	let content = markdowns[0]
 
 	if (!content?.meta) {
 		error(404, {message: 'Not found'})
@@ -27,6 +27,12 @@ export const load = async ({parent}) => {
 
 export const actions = {
 	...commonActions,
-	toggleLearning: async (event) => uiActions.handleToggleLearning(event),
-	toggleProjects: async (event) => uiActions.handleToggleProjects(event),
+	toggleLearning: async (event) => {
+		const updated = await uiActions.handleToggleLearning(event)
+		event.locals.navLearning = updated.state
+	},
+	toggleProjects: async (event) => {
+		const updated = await uiActions.handleToggleProjects(event)
+		event.locals.navProjects = updated.state
+	},
 }

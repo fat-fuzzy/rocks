@@ -6,9 +6,6 @@
 
 	import ExpandLink from './ExpandLink.svelte'
 	import LinkTree from './LinkTree.svelte'
-	import constants from '$lib/types/constants.js'
-
-	const {DEFAULT_REVEAL_STATE} = constants
 
 	let page = getStores().page
 
@@ -25,7 +22,6 @@
 		container,
 		items = [],
 		preload,
-		oninput,
 	}: LinkTreeProps = $props()
 
 	let layoutClass = layout ? `l:${layout}:${size} l:${container}` : ''
@@ -56,14 +52,13 @@
 	data-sveltekit-preload-data={preload ? preload : undefined}
 >
 	{#each items as item (item.slug)}
-		{@const {slug, title, asset, itemPath} = item}
+		{@const {slug, title, asset, reveal, itemPath} = item}
 		{@const subItems = item.items}
 		{@const buttonAssetClass = subItems && asset ? asset : ''}
 		{@const linkAssetClass = !subItems && asset ? `emoji:${asset}` : ''}
 		{@const itemClass = !subItems
 			? `${buttonAssetClass} ${alignClass}`
 			: alignClass}
-		{@const reveal = {[slug]: DEFAULT_REVEAL_STATE}}
 		<li
 			aria-current={$page.url.pathname ===
 			format.formatHref(itemPath ?? path, slug)
@@ -74,16 +69,6 @@
 				: `${itemClass} ${shapeClass}`}
 		>
 			{#if subItems && depth > 0}
-				<input
-					type="hidden"
-					name={`state-${slug}`}
-					value={reveal[slug].reveal}
-					oninput={(e) => {
-						if (oninput) {
-							oninput(e)
-						}
-					}}
-				/>
 				<ExpandLink
 					{title}
 					{reveal}

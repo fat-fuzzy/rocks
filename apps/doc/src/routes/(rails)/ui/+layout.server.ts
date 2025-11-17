@@ -6,14 +6,30 @@ const page = 'ui'
 const markdowns = assets.markdowns
 
 export const load = async ({locals, params, parent}) => {
-	const {sidebar} = await parent()
 	let content = null
 
 	const component = params.component
 	const category = params.category
 
 	const slug = component ? component : category
+
+	const {sidebar} = await parent()
 	sidebar.layout = slug ? 'tram' : sidebar.layout
+
+	sidebar.items[0].items = (sidebar.items[0].items ?? []).map((item) => {
+		if (item.slug === 'tokens') {
+			item.reveal = locals.navTokens
+		} else if (item.slug === 'blocks') {
+			item.reveal = locals.navBlocks
+		} else if (item.slug === 'layouts') {
+			item.reveal = locals.navLayouts
+		} else if (item.slug === 'recipes') {
+			item.reveal = locals.navRecipes
+		} else if (item.slug === 'raw') {
+			item.reveal = locals.navRaw
+		}
+		return item
+	})
 
 	if (!slug) {
 		content = await pages.fetchMarkdowns(page)

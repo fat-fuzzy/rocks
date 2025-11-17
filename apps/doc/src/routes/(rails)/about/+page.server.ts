@@ -52,6 +52,16 @@ export const load = async ({parent}) => {
 
 export const actions = {
 	...commonActions,
-	toggleUsage: async (event) => uiActions.handleToggleUsage(event),
-	toggleDecisions: async (event) => uiActions.handleToggleDecisions(event),
+	toggleUsage: async (event) => {
+		const updated = await uiActions.handleToggleUsage(event)
+		event.locals.navUsage = updated.state
+	},
+	toggleDecisions: async (event) => {
+		const updated = await uiActions.handleToggleDecisions(event)
+		event.locals.navDecisions = updated.state
+	},
+	toggleSpeaking: async (event) => {
+		const updated = await uiActions.handleToggleSpeaking(event)
+		event.locals.navSpeaking = updated.state
+	},
 }

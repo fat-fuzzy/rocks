@@ -1,11 +1,12 @@
 <script lang="ts">
 	import type {ExpandLinkProps, FuzzyPayload} from '$types'
-	import {UiShape, UiVariant} from '$types'
+	import {enhance} from '$app/forms'
+	import {UiShape, UiVariant, UiState} from '$types'
 	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
 	import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/definitions.js'
 	import constants from '$lib/types/constants.js'
 
-	const {DEFAULT_REVEAL_STATE} = constants
+	const {DEFAULT_REVEAL_STATE, TRANSITION_REVEAL} = constants
 
 	let {
 		href,
@@ -25,9 +26,7 @@
 		onclick,
 	}: ExpandLinkProps = $props()
 
-	let linkReveal = $state(
-		reveal ? {[slug]: reveal} : {[slug]: DEFAULT_REVEAL_STATE},
-	)
+	let value = $state(reveal ? {[slug]: reveal} : {[slug]: DEFAULT_REVEAL_STATE})
 
 	let defaultAssetDown = assetType === 'svg' ? 'chevron-down' : 'point-down'
 	let defaultAssetLeft = assetType === 'svg' ? 'chevron-left' : 'point-left'
@@ -44,7 +43,7 @@
 		},
 	}
 
-	let revealClasses = $derived(linkReveal[slug].reveal ?? 'collapsed')
+	let revealClasses = $derived(value[slug].reveal ?? UiState.collapsed)
 	let layoutClasses = $derived(`l:reveal top ${revealClasses}`)
 	let action = $state(
 		formaction && actionPath
@@ -53,7 +52,7 @@
 	)
 
 	function toggleReveal(payload: FuzzyPayload) {
-		linkReveal[slug].reveal = payload.state
+		value[slug].reveal = payload.state
 		if (onclick) {
 			onclick(payload)
 		}
@@ -61,22 +60,22 @@
 </script>
 
 {#snippet expander()}
-	<Expand
-		id={`button-reveal-${slug}`}
-		{variant}
-		{title}
-		{size}
-		{color}
-		{shape}
-		{assetType}
-		initial={reveal.reveal}
-		value={linkReveal[slug].reveal}
-		name={`reveal-${slug}`}
-		controls={`links-${slug}`}
-		{states}
-		formaction={action}
-		onclick={toggleReveal}
-	/>
+	<form method="POST" {action} use:enhance>
+		<Expand
+			id={`button-reveal-${slug}`}
+			name={`button-reveal-${slug}`}
+			{variant}
+			{title}
+			{size}
+			{color}
+			{shape}
+			{assetType}
+			initial={TRANSITION_REVEAL[value[slug].reveal]}
+			controls={`links-${slug}`}
+			{states}
+			onclick={toggleReveal}
+		/>
+	</form>
 {/snippet}
 
 <div class={layoutClasses}>
