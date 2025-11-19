@@ -14,9 +14,6 @@ importers:
       localhost:4873:
         specifier: link:registry=http://localhost:4873
         version: link:registry=http:/localhost:4873
-      typescript:
-        specifier: ^5.0.0
-        version: 5.9.2
     devDependencies:
       '@changesets/cli':
         specifier: 2.29.6
@@ -45,6 +42,9 @@ importers:
       turbo:
         specifier: 2.5.6
         version: 2.5.6
+      typescript:
+        specifier: 5.9.2
+        version: 5.9.2
 
   apps/doc:
     dependencies:
