@@ -1,8 +1,18 @@
 {
-	"extends": "./src/tsconfig.json",
 	"compilerOptions": {
+		"module": "esnext",
+		"target": "esnext",
+		"moduleResolution": "bundler",
 		"outDir": "./dist",
-		"rootDir": "./src"
+		"rootDir": "./src",
+		"strict": true,
+		"allowJs": true,
+		"checkJs": true,
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"declaration": true,
+		"skipLibCheck": true,
+		"sourceMap": true
 	},
 	"include": ["src/**/*.ts", "src/prettier.config.js"],
 	"exclude": ["node_modules", "dist"]
