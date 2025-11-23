@@ -1,11 +1,11 @@
 import {defineConfig} from '@terrazzo/cli'
 import pluginCSS from '@terrazzo/plugin-css'
 import pluginJS from '@terrazzo/plugin-js'
-import pluginAssetsEmoji from './src/lib/plugins/assets-emoji.js'
-import pluginAssetsSvg from './src/lib/plugins/assets-svg.js'
+import pluginAssetsEmoji from './src/lib/tokens/plugins/assets-emoji.js'
+import pluginAssetsSvg from './src/lib/tokens/plugins/assets-svg.js'
 
 const paths = {
-	in: './src/lib/tokens/',
+	in: './src/lib/tokens/definitions/',
 	out: './src/lib/css/variables/',
 }
 

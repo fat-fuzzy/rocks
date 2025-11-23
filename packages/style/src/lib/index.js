@@ -1,3 +1,7 @@
+/**
+ * CSS Exports
+ */
+
 /* Global config */
 import './css/variables/index.js'
 
