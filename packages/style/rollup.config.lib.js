@@ -1,23 +1,57 @@
+import {createRequire} from 'node:module'
+import fs from 'node:fs'
+import path from 'node:path'
 import * as glob from 'glob'
+import terser from '@rollup/plugin-terser'
 import postcss from 'rollup-plugin-postcss'
 import scss from 'rollup-plugin-scss'
 import postcssPresetEnv from 'postcss-preset-env'
 import autoprefixer from 'autoprefixer'
 import cssnano from 'cssnano'
-import fs from 'node:fs'
-import path from 'node:path'
+
+const require = createRequire(import.meta.url)
+const pkg = require('./package.json')
 
 const production = process.env.NODE_ENV === 'production'
 const inDir = path.resolve('src/lib')
 const outDir = path.resolve('dist')
 const cssFiles = glob.sync('src/lib/css/**/*.css')
 
+// Plugin to copy type declarations
+function copyTypes() {
+	return {
+		name: 'copy-types',
+		writeBundle() {
+			const typesDir = path.resolve('src/types')
+			const distTypesDir = path.resolve('dist/types')
+
+			if (fs.existsSync(typesDir)) {
+				fs.mkdirSync(distTypesDir, {recursive: true})
+				const typeFiles = fs.readdirSync(typesDir)
+
+				typeFiles.forEach((file) => {
+					fs.copyFileSync(
+						path.join(typesDir, file),
+						path.join(distTypesDir, file),
+					)
+				})
+			}
+		},
+	}
+}
 /**
  * This config will preserve folder structure of source files (scss and css, not json) and output a css library in "dist/lib/"
  */
 export default {
 	input: `${inDir}/index.js`,
-	output: {dir: outDir, format: 'esm'},
+	output: [
+		{
+			file: pkg.module,
+			format: 'es',
+			sourcemap: !production,
+			plugins: [terser()],
+		},
+	],
 	plugins: [
 		scss({
 			input: cssFiles,
@@ -35,5 +69,6 @@ export default {
 			minimize: production,
 			sourceMap: !production,
 		}),
+		copyTypes(),
 	],
 }
