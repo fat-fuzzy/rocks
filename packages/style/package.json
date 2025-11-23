@@ -41,6 +41,7 @@
 	},
 	"devDependencies": {
 		"@fat-fuzzy/config": "workspace:*",
+		"@rollup/plugin-terser": "0.4.4",
 		"@terrazzo/plugin-css": "0.10.4",
 		"@terrazzo/plugin-js": "0.10.3",
 		"autoprefixer": "10.4.21",
