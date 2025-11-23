@@ -1,5 +1,5 @@
-import type {UiBlockProps, UiTextContext} from '$types'
-import {UiStatus} from '$types'
+import type {UiBlockProps} from '$types'
+import {UiStatus, UiTextContext} from '$types'
 
 function getBlockStyles(props: UiBlockProps): string {
 	let {
@@ -101,8 +101,8 @@ function getLayoutStyles(props: UiBlockProps): string {
 
 function getFeedbackStyles(
 	props: UiBlockProps,
-	status: UiStatus,
-	context: UiTextContext,
+	status: typeof UiStatus,
+	context: string,
 ): string {
 	let {
 		size,
@@ -145,10 +145,10 @@ function getFeedbackStyles(
 			? `${assetTypeClass}:${asset}`
 			: ''
 	let typeClass = context ? `feedback:${context}` : 'feedback'
-	let backgroundClass = context === 'code' ? '' : `bg:${status}:100`
+	let backgroundClass = context === UiTextContext.code ? '' : `bg:${status}:100`
 	let layerClass = layer ? `layer:${layer}` : ''
 	let containerClass =
-		container && context !== 'code' ? `l:${container}:${size}` : ''
+		container && context !== UiTextContext.code ? `l:${container}:${size}` : ''
 
 	let feedbackClasses = `${typeClass} ${statusClass} ${assetClass} ${sizeClass} ${fontClass} ${shapeClass} ${layoutClass} ${variantClass} ${alignClass} ${justifyClass} ${layerClass} ${backgroundClass} ${containerClass}`
 

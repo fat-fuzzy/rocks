@@ -1,12 +1,14 @@
 import type {Snippet} from 'svelte'
 import type {
+	ButtonType,
 	FuzzyPayload,
 	FuzzyState,
 	FuzzyMachine,
 	UiBlockProps,
 } from '$lib/types'
+import {UiState} from '$types'
 
-export type UiStateToggle = UiState.active | UiState.inactive
+export type UiStateToggle = typeof UiState.active | typeof UiState.inactive
 
 export type ToggleMachine = {
 	active: FuzzyState
@@ -29,7 +31,7 @@ export type ToggleProps = UiBlockProps & {
 	type?: ButtonType
 	children?: Snippet
 	text?: string
-	initial?: UiState // Initial state of the button
+	initial?: string // Initial state of the button
 	value?: string | number
 	group?: string | number // If the payload item is part of a group
 	states?: FuzzyMachine

@@ -1,6 +1,5 @@
 import type {ExpandProps, FuzzyPayload, FuzzySystem} from '$types'
 import {UiState, ButtonEvent} from '$types'
-
 class RevealActor implements FuzzySystem {
 	state: Map<string, ExpandProps> = $state(new Map())
 	mode = 'radio'

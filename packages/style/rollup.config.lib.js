@@ -17,28 +17,6 @@ const inDir = path.resolve('src/lib')
 const outDir = path.resolve('dist')
 const cssFiles = glob.sync('src/lib/css/**/*.css')
 
-// Plugin to copy type declarations
-function copyTypes() {
-	return {
-		name: 'copy-types',
-		writeBundle() {
-			const typesDir = path.resolve('src/types')
-			const distTypesDir = path.resolve('dist/types')
-
-			if (fs.existsSync(typesDir)) {
-				fs.mkdirSync(distTypesDir, {recursive: true})
-				const typeFiles = fs.readdirSync(typesDir)
-
-				typeFiles.forEach((file) => {
-					fs.copyFileSync(
-						path.join(typesDir, file),
-						path.join(distTypesDir, file),
-					)
-				})
-			}
-		},
-	}
-}
 /**
  * This config will preserve folder structure of source files (scss and css, not json) and output a css library in "dist/lib/"
  */
@@ -57,7 +35,7 @@ export default {
 			input: cssFiles,
 			output: function (styles, styleNodes) {
 				Object.entries(styleNodes).forEach(([id, content]) => {
-					const outputPath = path.join('dist', path.relative('src', id))
+					const outputPath = path.join(outDir, path.relative('src', id))
 					fs.mkdirSync(path.dirname(outputPath), {recursive: true})
 					fs.writeFileSync(outputPath, content)
 				})
@@ -69,6 +47,5 @@ export default {
 			minimize: production,
 			sourceMap: !production,
 		}),
-		copyTypes(),
 	],
 }

@@ -16,7 +16,7 @@ const config = {
 			$stores: path.resolve('./src/lib/stores'),
 			$utils: path.resolve('./src/utils'),
 			$data: path.resolve('./src/data'),
-			$types: path.resolve('./src/lib/types/index.d.ts'),
+			$types: path.resolve('./src/lib/types/'),
 		},
 	},
 	extensions: ['.svelte', ...mdsvexConfig.extensions],

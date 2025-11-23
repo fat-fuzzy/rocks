@@ -1,15 +1,16 @@
 import {UiState} from '$types'
 
 export class PopoverActor {
-	public popovers: {id: string; element: HTMLElement; state: UiState}[] =
-		$state([])
+	public popovers: {id: string; element: HTMLElement; state: string}[] = $state(
+		[],
+	)
 
 	constructor() {}
 
 	public addPopover(popover: {
 		id: string
 		element: HTMLElement
-		state: UiState
+		state: string
 	}): void {
 		this.popovers.push(popover)
 	}

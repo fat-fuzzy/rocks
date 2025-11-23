@@ -89,7 +89,7 @@
 	// function handleClickOutside(e: MouseEvent) {
 	// 	const target = e.target as HTMLElement
 	// 	if (
-	// 		dismiss !== DismissEvent.outside ||
+	// 		dismiss !== UiDismissEvent.outside ||
 	// 		payload.state !== 'expanded' ||
 	// 		target.id !== `${id}-reveal`
 	// 	) {

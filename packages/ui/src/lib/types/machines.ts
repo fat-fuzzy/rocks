@@ -1,7 +1,6 @@
 /**
  * Fuzzy State Machine
  */
-import type {UiState} from '$types'
 
 export type FuzzyEvent = boolean | number | string | Event
 
@@ -23,7 +22,7 @@ export type FuzzyState = {
 	label?: string // Element label
 	asset?: string // Element icon: the `value` in emoji:value or svg:value
 	variant?: string // Variant style for the element state
-	state?: UiState | string // Name of the current state
+	state?: string // Name of the current state
 	event?: string // Event that can be emitted from the current state
 	action?: (payload: FuzzyPayload) => void // Action available on the current state
 }
@@ -31,21 +30,15 @@ export type FuzzyState = {
 /**
  * Describes the state of a component
  */
-export type FuzzyMachine = {
-	[state in UiState]?: FuzzyState
-}
+export type FuzzyMachine = Record<string, FuzzyState>
 
 /**
  * Describes the transitions between states
  */
-export type FuzzyTransitions = {
-	[state: string]: {
-		[event: string]: UiState
-	}
-}
+export type FuzzyTransitions = Record<string, Record<string, string>>
 
 export interface FuzzyActor {
-	state: UiState
+	state: string
 	machine: FuzzyMachine
 	transitions: FuzzyTransitions
 	currentState: FuzzyState

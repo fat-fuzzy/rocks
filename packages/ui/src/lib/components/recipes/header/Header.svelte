@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type {HeaderProps} from '$types'
-	import {DismissEvent} from '$types'
 
+	import {DismissEvent} from '$types'
 	import constants from '$lib/types/constants.js'
 	import Settings from '$lib/components/recipes/forms/Settings.svelte'
 	import HeaderNav from '$lib/components/recipes/header/HeaderNav.svelte'

@@ -1,5 +1,5 @@
 // Reexport your entry components here
-/// <reference path="./types/index.d.ts" />
+/// <reference path="./types/index.ts" />
 
 import type {FatFuzzyUi} from '$types'
 /**

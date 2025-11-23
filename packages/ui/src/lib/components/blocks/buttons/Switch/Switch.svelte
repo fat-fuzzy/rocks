@@ -1,7 +1,7 @@
 <script lang="ts">
 	import {onMount} from 'svelte'
 	import type {FuzzyPayload, SwitchProps} from '$types'
-	import {ButtonEvent, UiState} from '$types'
+	import {UiState} from '$types'
 	import Actor from './actor.svelte.js'
 
 	let {
@@ -59,7 +59,7 @@
 	)
 
 	function handleClick(event: MouseEvent) {
-		actor.update(actor.currentState.event as ButtonEvent)
+		if (actor.currentState) actor.update(actor.currentState.event as string)
 		if (actor.currentState.action) {
 			actor.currentState.action(payload as FuzzyPayload)
 		}
