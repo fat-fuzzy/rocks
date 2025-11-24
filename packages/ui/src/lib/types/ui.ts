@@ -1,16 +1,5 @@
 import type {Snippet} from 'svelte'
-import {
-	AriaLiveEnum,
-	UiSettings,
-	UiSize,
-	UiDimensions,
-	UiShape,
-	UiColor,
-	UiVariant,
-	UiMoveParams,
-	UiMouseEvent,
-	UiTouchEvent,
-} from '$types'
+import {AriaLiveEnum, Preferences} from '$types'
 
 export type ButtonContext = {
 	id: string
@@ -19,20 +8,18 @@ export type ButtonContext = {
 }
 
 export type AriaLive =
-	| AriaLiveEnum.polite
-	| AriaLiveEnum.off
-	| AriaLiveEnum.assertive
+	| typeof AriaLiveEnum.polite
+	| typeof AriaLiveEnum.off
+	| typeof AriaLiveEnum.assertive
 	| null
 	| undefined
 
-export type Autocomplete = FullAutoFill | null | undefined
+export type Autocomplete = AutoFill | null | undefined
 
-export type Settings = {
-	[option in Preferences]?: string
-}
+export type Settings = typeof Preferences
 
 export type UiRevealState = {
-	reveal: UiState | string
+	reveal: string
 }
 
 export type InputPayload = {
@@ -95,8 +82,4 @@ export type SwitchState = {
 	send: (event: string) => unknown
 }
 
-export type UiAnimationEvent = UiMouseEvent | UiTouchEvent
-
-export type UiCoords = {
-	[param in UiMoveParams]: number[]
-}
+export type UiAnimationEvent = MouseEvent | TouchEvent

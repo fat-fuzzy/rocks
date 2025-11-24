@@ -1,4 +1,4 @@
-/// <reference path="./types/index.d.ts" />
+/// <reference path="./types/index.ts" />
 import L10nFormatter from './L10n/formatter-L10n.js'
 import DatetimeFormatter from './L10n/formatter-datetime.js'
 

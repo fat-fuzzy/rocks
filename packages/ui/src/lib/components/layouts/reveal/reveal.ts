@@ -1,4 +1,11 @@
-import type {FormProps} from '$types'
+import type {Snippet} from 'svelte'
+import type {
+	FormProps,
+	LayoutProps,
+	UiBlockProps,
+	UiAnimationEvent,
+	FuzzyPayload,
+} from '$types'
 
 export type RevealLayoutProps = LayoutProps &
 	UiBlockProps &
@@ -7,7 +14,7 @@ export type RevealLayoutProps = LayoutProps &
 		auto?: boolean
 		element?: string
 		trigger?: UiAnimationEvent
-		dismiss?: DismissEvent
+		dismiss?: string
 		onclick?: (payload: FuzzyPayload) => void
 	}
 

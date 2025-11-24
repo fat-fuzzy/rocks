@@ -1,11 +1,16 @@
+import {createRequire} from 'node:module'
+import fs from 'node:fs'
+import path from 'node:path'
 import * as glob from 'glob'
+import terser from '@rollup/plugin-terser'
 import postcss from 'rollup-plugin-postcss'
 import scss from 'rollup-plugin-scss'
 import postcssPresetEnv from 'postcss-preset-env'
 import autoprefixer from 'autoprefixer'
 import cssnano from 'cssnano'
-import fs from 'node:fs'
-import path from 'node:path'
+
+const require = createRequire(import.meta.url)
+const pkg = require('./package.json')
 
 const production = process.env.NODE_ENV === 'production'
 const inDir = path.resolve('src/lib')
@@ -17,13 +22,20 @@ const cssFiles = glob.sync('src/lib/css/**/*.css')
  */
 export default {
 	input: `${inDir}/index.js`,
-	output: {dir: outDir, format: 'esm'},
+	output: [
+		{
+			file: pkg.module,
+			format: 'es',
+			sourcemap: !production,
+			plugins: [terser()],
+		},
+	],
 	plugins: [
 		scss({
 			input: cssFiles,
 			output: function (styles, styleNodes) {
 				Object.entries(styleNodes).forEach(([id, content]) => {
-					const outputPath = path.join('dist', path.relative('src', id))
+					const outputPath = path.join(outDir, path.relative('src', id))
 					fs.mkdirSync(path.dirname(outputPath), {recursive: true})
 					fs.writeFileSync(outputPath, content)
 				})

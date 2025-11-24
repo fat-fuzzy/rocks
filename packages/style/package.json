@@ -9,13 +9,13 @@
 		"clean": "node ./clean-dist.js",
 		"prebuild": "pnpm clean",
 		"build": "pnpm build:tokens && pnpm build:scss && pnpm build:css",
-		"build:css": "rollup --config rollup.config.js",
-		"build:lib": "rollup --config rollup.config.lib.js",
-		"build:main": "rollup --config rollup.config.main.js",
-		"build:scss": "rollup --config rollup.config.scss.js",
+		"build:css": "rollup -c rollup.config.js",
+		"build:lib": "rollup -c rollup.config.lib.js",
+		"build:main": "rollup -c rollup.config.main.js",
+		"build:scss": "rollup -c rollup.config.scss.js",
 		"build:tokens": "tz build",
 		"dev": "pnpm build:tokens && pnpm dev:scss",
-		"dev:scss": "rollup --config rollup.config.scss.js -w",
+		"dev:scss": "rollup -c rollup.config.scss.js -w",
 		"lint:css": "./node_modules/@fat-fuzzy/config/node_modules/.bin/stylelint ./src/lib/css/**/*.css &> ./logs/stylelint-css.log",
 		"lint:scss": "./node_modules/@fat-fuzzy/config/node_modules/.bin/stylelint ./src/lib/scss/**/*.scss &> ./logs/stylelint-scss.log",
 		"lint:prettier": "prettier --check --ignore-path=../../.prettierignore . && eslint \".\"",
@@ -23,12 +23,13 @@
 		"format": "prettier --write --ignore-path=../../.prettierignore .",
 		"test": "echo \"@fat-fuzzy/style: no tests specified\""
 	},
-	"main": "dist/main.css",
+	"main": "dist/index.js",
+	"module": "dist/index.js",
 	"files": [
-		"dist/css"
+		"dist/*"
 	],
 	"exports": {
-		".": "./dist/main.css",
+		".": "./dist/index.js",
 		"./css": "./dist/main.css",
 		"./css/blocks/*": "./dist/lib/css/blocks/*",
 		"./css/config/*": "./dist/lib/css/config/*",
@@ -41,6 +42,7 @@
 	},
 	"devDependencies": {
 		"@fat-fuzzy/config": "workspace:*",
+		"@rollup/plugin-terser": "0.4.4",
 		"@terrazzo/plugin-css": "0.10.4",
 		"@terrazzo/plugin-js": "0.10.3",
 		"autoprefixer": "10.4.21",

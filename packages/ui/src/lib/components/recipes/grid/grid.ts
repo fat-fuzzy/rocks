@@ -1,5 +1,4 @@
-import type {Snippet} from 'svelte'
-import type {LayoutProps, NavItem, PageProps, GridProps} from '$types'
+import type {NavItem, PageProps, GridProps, CookiePreferences} from '$types'
 
 export type LayoutGridProps = GridProps & {
 	app?: {

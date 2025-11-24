@@ -13,6 +13,6 @@ yarn.lock
 
 **/build
 **/package
-**/dist
+**/dist/
 **/playwright/.cache
 **/playwright_report

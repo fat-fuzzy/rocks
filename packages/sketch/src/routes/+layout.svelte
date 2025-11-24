@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {Snippet} from 'svelte'
-	import '@fat-fuzzy/style'
+	import '@fat-fuzzy/style/css'
 	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
 

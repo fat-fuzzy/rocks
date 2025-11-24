@@ -541,6 +541,9 @@ importers:
       '@fat-fuzzy/config':
         specifier: workspace:*
         version: link:../config
+      '@rollup/plugin-terser':
+        specifier: 0.4.4
+        version: 0.4.4(rollup@4.51.0)
       '@terrazzo/plugin-css':
         specifier: 0.10.4
         version: 0.10.4(@terrazzo/cli@0.10.3(hono@4.9.0))

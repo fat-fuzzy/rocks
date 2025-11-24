@@ -1,3 +1,7 @@
+/**
+ * CSS Exports
+ */
+
 /* Global config */
 import './css/variables/index.js'
 
@@ -24,3 +28,12 @@ import './css/globals/visibility.css'
 
 /* Media Queries */
 import './css/mixins/index.css'
+
+/**
+ * JavaScript Exports
+ */
+/* Style props to use in Component libraries */
+export * as style_props from './props/definitions.js'
+export * as icons_emoji from './css/variables/assets-emoji.js'
+export * as icons_svg from './css/variables/assets-svg.js'
+export * as design_tokens from './css/variables/variables.js'

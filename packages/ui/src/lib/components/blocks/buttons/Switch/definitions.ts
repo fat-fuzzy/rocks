@@ -9,8 +9,8 @@ export const SWITCH_MACHINE: SwitchMachine = {
 		label: 'Active',
 	},
 	inactive: {
-		id: UiState.active,
-		state: UiState.active,
+		id: UiState.inactive,
+		state: UiState.inactive,
 		event: ButtonEvent.switch,
 		label: 'Inactive',
 	},

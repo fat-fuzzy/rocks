@@ -5,6 +5,7 @@
 	import {dev} from '$app/environment'
 	import ui from '@fat-fuzzy/ui'
 	import Beacon from '$lib/ui/Beacon.svelte'
+	import '$lib/styles/css/main.css'
 
 	const {Cookies, ToastGroup} = ui.drafts
 

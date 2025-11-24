@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {ToggleProps} from '$types'
-	import {UiState, ButtonEvent} from '$types'
+	import {UiState} from '$types'
 	import {onMount} from 'svelte'
 	import Actor from './actor.svelte.js'
 
@@ -61,7 +61,7 @@
 	)
 
 	function handleClick(event: MouseEvent) {
-		store.update(store.currentState.event as ButtonEvent)
+		store.update(store.currentState.event as string)
 		if (onclick) onclick(payload)
 	}
 

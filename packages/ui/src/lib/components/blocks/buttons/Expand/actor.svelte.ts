@@ -1,5 +1,4 @@
 import type {
-	ButtonEvent,
 	UiBlockProps,
 	UiStateExpand,
 	ExpandMachine,
@@ -11,7 +10,7 @@ import {EXPAND_MACHINE, EXPAND_TRANSITIONS} from './definitions.js'
 import styleHelper from '$lib/utils/styles.js'
 
 class ExpandActor implements FuzzyActor {
-	state: UiStateExpand = $state(UiState.collapsed)
+	state = $state<UiStateExpand>(UiState.collapsed)
 	machine = $state(EXPAND_MACHINE)
 	transitions = EXPAND_TRANSITIONS
 	currentState = $derived(this.machine[this.state])
@@ -37,7 +36,7 @@ class ExpandActor implements FuzzyActor {
 		}
 	}
 
-	getTransition(event: ButtonEvent): UiStateExpand {
+	getTransition(event: string): UiStateExpand {
 		const state = this.state as UiStateExpand
 		const transition = this.transitions[state][event]
 		if (transition) {
@@ -46,7 +45,7 @@ class ExpandActor implements FuzzyActor {
 		return state
 	}
 
-	public update(event: ButtonEvent): void {
+	public update(event: string): void {
 		this.state = this.getTransition(event)
 	}
 

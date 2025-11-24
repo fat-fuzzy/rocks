@@ -91,6 +91,8 @@
 		aria-live="polite"
 		class={revealClasses}
 	>
-		{@render children()}
+		{#if children}
+			{@render children()}
+		{/if}
 	</ff-reveal>
 </ff-popover>

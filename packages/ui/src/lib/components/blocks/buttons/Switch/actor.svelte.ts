@@ -1,13 +1,12 @@
 import type {
-	ButtonEvent,
 	FuzzyPayload,
 	FuzzyActor,
 	UiBlockProps,
 	UiStateSwitch,
 	SwitchMachine,
 } from '$types'
-import {SWITCH_MACHINE, SWITCH_TRANSITIONS} from './definitions.js'
 import {UiState} from '$types'
+import {SWITCH_MACHINE, SWITCH_TRANSITIONS} from './definitions.js'
 import styleHelper from '$lib/utils/styles.js'
 
 class SwitchActor implements FuzzyActor {
@@ -37,8 +36,8 @@ class SwitchActor implements FuzzyActor {
 		}
 	}
 
-	public getTransition(event: ButtonEvent): UiStateSwitch {
-		const state = this.state
+	public getTransition(event: string): UiStateSwitch {
+		const state = this.state as UiStateSwitch
 		const transition = this.transitions[state][event]
 		if (transition) {
 			return transition as UiStateSwitch
@@ -46,7 +45,7 @@ class SwitchActor implements FuzzyActor {
 		return state
 	}
 
-	public update(event: ButtonEvent): void {
+	public update(event: string): void {
 		this.state = this.getTransition(event)
 	}
 
