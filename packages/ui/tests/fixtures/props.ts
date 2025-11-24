@@ -39,13 +39,7 @@ function getContainerClasses(props: UiLayoutProps): string {
 
 function getLayoutClasses(props: UiLayoutProps): string {
 	let classes = []
-	if (
-		props.layout === 'stack' ||
-		props.layout === 'grid' ||
-		props.layout === 'switcher' ||
-		props.layout === 'sidebar'
-	)
-		classes.push(`l:${props.layout}:${props.size}`)
+	if (props.layout === 'stack') classes.push(`l:${props.layout}:${props.size}`)
 	else if (props.layout) {
 		if (props.layout) classes.push(`l:${props.layout}`)
 		if (props.size) classes.push(`size:${props.size}`)
@@ -56,17 +50,17 @@ function getLayoutClasses(props: UiLayoutProps): string {
 
 function getBlockClasses(props: UiBlockProps): string {
 	let classes = []
-	if (props.assetType)
-		classes.push(`${props.assetType ?? 'emoji'}:${props.asset}`)
 	if (props.color) classes.push(`color:${props.color}`)
 	if (props.background) classes.push(`bg:${props.background}`)
 	if (props.size) classes.push(`size:${props.size}`)
-	if (props.shape) classes.push(`shape:${props.shape}`)
-	if (props.variant) classes.push(`variant:${props.variant}`)
 	if (props.font) classes.push(`font:${props.font}`)
-	if (props.justify) classes.push(`justify:${props.justify}`)
+	if (props.assetType)
+		classes.push(`${props.assetType ?? 'emoji'}:${props.asset}`)
+	if (props.variant) classes.push(`variant:${props.variant}`)
+	if (props.shape) classes.push(`shape:${props.shape}`)
 	if (props.alignSelf) classes.push(`align-self:${props.alignSelf}`)
 	if (props.align) classes.push(`align:${props.align}`)
+	if (props.justify) classes.push(`justify:${props.justify}`)
 	return classes.join(' ')
 }
 
