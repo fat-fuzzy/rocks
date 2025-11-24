@@ -1,5 +1,5 @@
 import type {UiBlockProps} from '$types'
-import {UiStatus, UiTextContext} from '$types'
+import {UiShape, UiStatus, UiTextContext} from '$types'
 
 function getBlockStyles(props: UiBlockProps): string {
 	let {
@@ -154,13 +154,13 @@ function getFeedbackStyles(
 	let alignClass = align ? `align:${align}` : ''
 	let justifyClass = justify ? `justify:${justify}` : ''
 
-	if (shape === 'round' || shape === 'square') {
+	if (shape === UiShape.round || shape === UiShape.square) {
 		layoutClass = `l:stack${size}`
 		alignClass = 'align:center'
 		justifyClass = 'justify:center'
 	}
 
-	if (shape === 'pill') {
+	if (shape === UiShape.pill) {
 		alignClass = 'align:center'
 		justifyClass = 'justify:center'
 	}

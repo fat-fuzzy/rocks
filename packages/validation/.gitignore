@@ -104,8 +104,8 @@ Temporary Items
 
 
 # Ignore build artifacts
-dist/
-build/
+dist
+build
 
 # turbo
 .turbo
