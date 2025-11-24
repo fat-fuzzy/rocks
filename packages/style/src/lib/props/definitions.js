@@ -62,6 +62,10 @@ const UiShape = Object.freeze({
 	__proto__: null,
 	round: 'round',
 	square: 'square',
+	pill: 'pill',
+	soft: 'soft',
+	mellow: 'mellow',
+	none: 'none',
 })
 
 const UiDimension = Object.freeze({
