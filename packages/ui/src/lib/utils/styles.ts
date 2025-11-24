@@ -16,6 +16,17 @@ function getBlockStyles(props: UiBlockProps): string {
 		background,
 	} = props
 
+	let classes = []
+	if (assetType) classes.push(`${assetType ?? 'emoji'}:${asset}`)
+	if (color) classes.push(`color:${color}`)
+	if (background) classes.push(`bg:${background}`)
+	if (size) classes.push(`size:${size}`)
+	if (shape) classes.push(`shape:${shape}`)
+	if (variant) classes.push(`variant:${variant}`)
+	if (font) classes.push(`font:${font}`)
+	if (justify) classes.push(`justify:${justify}`)
+	if (alignSelf) classes.push(`align-self:${alignSelf}`)
+	if (align) classes.push(`align:${align}`)
 	/* Block styles */
 	let colorClass = color ? `color:${color}` : '' // TODO: clarify bg/color/surface
 	let backgroundClass = background
@@ -28,15 +39,16 @@ function getBlockStyles(props: UiBlockProps): string {
 	let assetTypeClass = assetType ? assetType : 'emoji'
 	let assetClass = asset ? `${assetTypeClass}:${asset}` : ''
 	let variantClass = variant ? `variant:${variant}` : ''
-	let shapeClass = shape ? ` shape:${shape}` : ''
+	let shapeClass = shape ? `shape:${shape}` : ''
 	let alignClass = alignSelf ? `align-self:${alignSelf}` : ''
 	let alignSelfClass = align ? `align:${align}` : ''
-	let justifyClass = justify ? `justify:${justify}` : ''
+	let justifyClass = justify
+		? `justify:${justify}`
+		: shapeClass
+			? 'justify:center'
+			: ''
 
-	if (shapeClass) {
-		justifyClass = 'justify:center'
-	}
-	let elementClasses = `${assetClass} ${colorClass} ${backgroundClass} ${sizeClass} ${shapeClass} ${variantClass} ${alignClass} ${alignSelfClass} ${justifyClass} ${fontClass}`
+	let elementClasses = `${assetClass} ${colorClass} ${backgroundClass} ${sizeClass} ${shapeClass} ${variantClass} ${fontClass} ${justifyClass} ${alignClass} ${alignSelfClass}`
 
 	return elementClasses.trim()
 }
@@ -49,7 +61,7 @@ function getContainerStyles(props: UiBlockProps): string {
 
 	let containerClass =
 		container === 'ravioli' ? container : container ? `l:${container} ` : ''
-	let layerClass = layer ? ` layer:${layer}` : ''
+	let layerClass = layer ? `layer:${layer}` : ''
 
 	if (containerClass) {
 		containerClass = dimensions
@@ -80,8 +92,8 @@ function getLayoutStyles(props: UiBlockProps): string {
 	let breakpointClass = breakpoint ? `bp:${breakpoint}` : ''
 	let layoutClass = layout && shape && shape !== 'pill' ? 'stack' : layout
 	let scrollClass = scroll ? `scroll:${scroll}` : ''
-	let heightClass = height ? ` h:${height}` : ''
-	let layerClass = layer ? ` layer:${layer}` : ''
+	let heightClass = height ? `h:${height}` : ''
+	let layerClass = layer ? `layer:${layer}` : ''
 	let positionClass = position ? position : ''
 	let backgroundClass = background ? `bg:${background}` : ''
 
