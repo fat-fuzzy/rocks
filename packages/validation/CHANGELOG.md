@@ -1,5 +1,11 @@
 # @fat-fuzzy/validation
 
+## 0.1.11
+
+### Patch Changes
+
+- 98cca67: CLean dependencies, bugfixes
+
 ## 0.1.10
 
 ### Patch Changes

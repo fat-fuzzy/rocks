@@ -1,5 +1,11 @@
 # @fat-fuzzy/ui
 
+## 0.1.74
+
+### Patch Changes
+
+- 98cca67: CLean dependencies, bugfixes
+
 ## 0.1.73
 
 ### Patch Changes

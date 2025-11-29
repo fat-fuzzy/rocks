@@ -1,5 +1,11 @@
 # @fat-fuzzy/doc
 
+## 0.1.62
+
+### Patch Changes
+
+- 98cca67: CLean dependencies, bugfixes
+
 ## 0.1.61
 
 ### Patch Changes

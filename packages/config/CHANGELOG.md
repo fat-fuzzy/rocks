@@ -1,5 +1,11 @@
 # @fat-fuzzy/config
 
+## 0.1.17
+
+### Patch Changes
+
+- 98cca67: CLean dependencies, bugfixes
+
 ## 0.1.16
 
 ### Patch Changes
