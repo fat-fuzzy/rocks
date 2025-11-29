@@ -1,5 +1,11 @@
 # @fat-fuzzy/sketch
 
+## 0.1.27
+
+### Patch Changes
+
+- 98cca67: CLean dependencies, bugfixes
+
 ## 0.1.26
 
 ### Patch Changes
