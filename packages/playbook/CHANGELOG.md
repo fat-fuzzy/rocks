@@ -1,5 +1,11 @@
 # @fat-fuzzy/playbook
 
+## 0.1.26
+
+### Patch Changes
+
+- 98cca67: CLean dependencies, bugfixes
+
 ## 0.1.25
 
 ### Patch Changes
