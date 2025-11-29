@@ -3,3 +3,4 @@ packages:
   - packages/*
 onlyBuiltDependencies:
   - svelte-preprocess
+registry: 'http://localhost:4873/'

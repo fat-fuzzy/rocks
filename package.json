@@ -38,8 +38,5 @@
 		"node": ">=22.0.0",
 		"npm": ">=9.6.4"
 	},
-	"prettier": "./packages/config/dist/prettier.config.js",
-	"dependencies": {
-		"localhost:4873": "link:registry=http://localhost:4873"
-	}
+	"prettier": "./packages/config/dist/prettier.config.js"
 }
