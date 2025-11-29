@@ -2,7 +2,7 @@ fileignoreconfig:
 - filename: packages/prose/src/lib/editor/Menu.svelte
   checksum: 80db7f3985638a076a73d6a3e8d948e865628611e0c4953c61cddabc4531780b
 - filename: pnpm-lock.yaml
-  checksum: 22aa7bb26cd226dc4893895cbd6fa9cce5d3397352f9cfcc30105446754ede9c
+  checksum: 8dd83e2596f92724f165537857604c6e38195c9e8df2940f86809afd5b00e35d
 - filename: apps/doc/src/lib/ui/RcScout.svelte
   checksum: 9d8a4dc6e960e47361d8e60d78bbc13f32ac3d294b82443ff9cd414f1fcffcd7
 - filename: apps/doc/src/data/speaking.ts
@@ -17,4 +17,4 @@ fileignoreconfig:
   checksum: 45ee09c06b4c0ab7638ad405fb013b971967a1431dd5c7e9968459155c79c08c
 - filename: packages/ui/src/lib/components/recipes/grid/LayoutGrid.svelte
   checksum: b02e2cb3273c31887cd12299e9e26dd509f40219823aa97d57379fe06738e539
-version: "0.1.8"
+version: "0.1.9"
