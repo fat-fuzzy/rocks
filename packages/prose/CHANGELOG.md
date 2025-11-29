@@ -1,5 +1,11 @@
 # @fat-fuzzy/prose
 
+## 0.1.20
+
+### Patch Changes
+
+- 98cca67: CLean dependencies, bugfixes
+
 ## 0.1.19
 
 ### Patch Changes
