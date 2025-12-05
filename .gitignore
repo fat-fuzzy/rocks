@@ -144,11 +144,10 @@ iam-policy-default.json
 .Rproj.user
 .RData
 .Rhistory
-packages/lib/src/data
 dist/
 
 ### Styles ###
-packages/style/src/css/tokens/*
+packages/style/src/css/variables/*
 packages/style/src/tests/tmp/*
 
 # Ignore font files for now
