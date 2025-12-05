@@ -69,4 +69,4 @@ import shader from '/some/shader.glsl?raw'
 
 ## Resources
 
-I've grouped my resources for learning web graphics here: [Play](https://rocks.pages.dev/play)
+You'll find some resources I've found useful for learning web graphics here: [Play > Learning](https://rocks.pages.dev/play/learning)

@@ -14,10 +14,9 @@ There are also some WebGL shaders, that I add as I continue to learn, and I migh
 
 ## Packages Overview
 
-The repository is organized into three workspaces (these are top-level directories in the repository):
+The repository is organized into 2 workspaces (these are top-level directories in the repository):
 
 - **apps** : contains client facing code, organized by project. It contains **apps/doc** which is this site!
-- **infra** : contains infrastructure code. This is WIP and in private repos for the moment
 - **packages** : contains UI, web graphics, logic and experiments libraries, as well as common config
 
 You can learn more about individual packages in the [Packages](/doc/usage/packages) section.
