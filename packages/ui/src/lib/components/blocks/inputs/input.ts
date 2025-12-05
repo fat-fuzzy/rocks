@@ -1,17 +1,14 @@
 import type {Snippet} from 'svelte'
 import type {
-	InputType,
 	Autocomplete,
 	FuzzyPayload,
 	UiBlockProps,
 	UiStatus,
-	UiSize,
-	UiVariant,
 	IFormValidator,
 } from '$types'
 
 export type MessageGroup = {
-	[UiStatus]: string[]
+	UiStatus: string[]
 }
 
 export type FeedbackMessage = {
@@ -48,7 +45,7 @@ export type InputCommonProps = {
 	 * State props
 	 */
 	hint?: string
-	status?: UiStatus
+	status?: typeof UiStatus
 	checked?: boolean
 	title?: string
 	value?: string | number
@@ -57,12 +54,12 @@ export type InputCommonProps = {
 	required?: boolean
 
 	children?: Snippet
-	onfocus?: (payload: InputPayload) => void
-	onblur?: (payload: InputPayload) => void
-	oninput?: (payload: InputPayload) => void
-	onreset?: (payload: FuzzyPayload) => void
-	onsubmit?: (payload: FuzzyPayload) => void
-	onchange?: (payload: FuzzyPayload) => void
+	onfocus?: (event: Event, payload?: FuzzyPayload) => void
+	onblur?: (event: Event, payload?: FuzzyPayload) => void
+	oninput?: (event: Event, payload?: FuzzyPayload) => void
+	onreset?: (event: Event, payload?: FuzzyPayload) => void
+	onsubmit?: (event: Event, payload?: FuzzyPayload) => void
+	onchange?: (event: Event, payload?: FuzzyPayload) => void
 }
 
 export type InputProps = UiBlockProps & ValidationProps & InputCommonProps

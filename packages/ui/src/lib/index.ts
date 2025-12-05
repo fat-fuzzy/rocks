@@ -2,6 +2,8 @@
 /// <reference path="./types/index.ts" />
 
 import type {FatFuzzyUi} from '$types'
+import type {FatFuzzyTools} from './types/tools'
+export type * from '$types'
 /**
  * Headless components
  */
@@ -219,8 +221,7 @@ const headless = {
 	EscapeHtml,
 }
 
-export default {
-	actors,
+const UI: FatFuzzyUi = {
 	drafts,
 	headless,
 	tokens,
@@ -229,7 +230,79 @@ export default {
 	recipes,
 	raw,
 	content,
+}
+
+const TOOLS: FatFuzzyTools = {
+	actors,
 	utils,
 	forms,
 	constants,
-} as FatFuzzyUi
+}
+
+export default {
+	...UI,
+	...TOOLS,
+}
+
+export {
+	Color,
+	Typography,
+	Button,
+	Expand,
+	Switch,
+	Toggle,
+	Feedback,
+	Magic,
+	InputCheck,
+	InputRadio,
+	InputRange,
+	InputFile,
+	Burrito,
+	Reveal,
+	Stack,
+	Switcher,
+	Sidebar,
+	ButtonMenu,
+	ToggleMenu,
+	RevealMenu,
+	SignUp,
+	Nav,
+	RevealNav,
+	Header,
+	CSSMetro,
+	CSSRailway,
+	CSSSteam,
+	CSSTgv,
+	CSSTram,
+	CSSVoyager,
+	CSSUrbanist,
+	LayoutGrid,
+	LayoutSidebar,
+	PageMain,
+	PageRails,
+	PageContext,
+	CSSTheme,
+	Fieldset,
+	Popover,
+	// InputPassword,
+	// InputFeedback,
+	ExpandLink,
+	InputGroup,
+	Image,
+	Picture,
+	Scrolly,
+	ScrollyItem,
+	Breadcrumbs,
+	HeaderNav,
+	Settings,
+	PageNav,
+	PageHeader,
+	RevealContext,
+	Zoomer,
+	Tabs,
+	Cookies,
+	Toast,
+	ToastGroup,
+	Head,
+	EscapeHtml,
+}

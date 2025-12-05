@@ -47,7 +47,7 @@ class ToggleMenuActor implements FuzzySystem {
 		this.state = this.buildStates(items)
 	}
 
-	private buildStates(items: ToggleProps[]): Map<string, FuzzyPayload> {
+	buildStates(items: ToggleProps[]): Map<string, FuzzyPayload> {
 		return new Map(
 			items.map((item: ToggleProps) => [
 				item.id,

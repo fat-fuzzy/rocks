@@ -1,5 +1,6 @@
 import type {Snippet} from 'svelte'
 import {AriaLiveEnum, Preferences} from '$types'
+import type {UiState} from '$types'
 
 export type ButtonContext = {
 	id: string
@@ -19,7 +20,7 @@ export type Autocomplete = AutoFill | null | undefined
 export type Settings = typeof Preferences
 
 export type UiRevealState = {
-	reveal: string
+	reveal: typeof UiState
 }
 
 export type InputPayload = {

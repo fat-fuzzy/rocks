@@ -22,11 +22,14 @@
 		depth,
 		assetType,
 		formaction,
+		actionParams,
 		actionPath,
 		onclick,
 	}: ExpandLinkProps = $props()
 
-	let value = $state(reveal ? {[slug]: reveal} : {[slug]: DEFAULT_REVEAL_STATE})
+	let value = $state(
+		reveal ? {[slug]: {reveal}} : {[slug]: DEFAULT_REVEAL_STATE},
+	)
 
 	let defaultAssetDown = assetType === 'svg' ? 'chevron-down' : 'point-down'
 	let defaultAssetLeft = assetType === 'svg' ? 'chevron-left' : 'point-left'
@@ -52,6 +55,7 @@
 	)
 
 	function toggleReveal(payload: FuzzyPayload) {
+		// @ts-expect-error state must be UiState (TODO: fix)
 		value[slug].reveal = payload.state
 		if (onclick) {
 			onclick(payload)
@@ -70,7 +74,7 @@
 			{color}
 			{shape}
 			{assetType}
-			initial={TRANSITION_REVEAL[value[slug].reveal]}
+			initial={TRANSITION_REVEAL[String(value[slug].reveal)]}
 			controls={`links-${slug}`}
 			{states}
 			onclick={toggleReveal}

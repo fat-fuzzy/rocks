@@ -70,7 +70,7 @@
 	}
 
 	onMount(() => {
-		if (init) init(payload)
+		if (init) init(payload as FuzzyPayload)
 	})
 
 	onMount(() => {

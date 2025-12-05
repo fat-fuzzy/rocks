@@ -3,8 +3,10 @@ import type {
 	RevealLayoutProps,
 	FuzzyPayload,
 	FormCommonProps,
-	Tab,
+	UiRevealState,
+	UiState,
 } from '$types'
+
 import type {Snippet} from 'svelte'
 
 export type NavItem = {
@@ -75,9 +77,10 @@ export type ExpandLinkProps = UiBlockProps & {
 	slug: string
 	title: string
 	children: Snippet
-	reveal: UiState
+	reveal: typeof UiState
 	depth: number
 	formaction?: string
+	actionParams?: string
 	actionPath?: string
 	onclick?: (payload: FuzzyPayload) => void
 }
