@@ -1,5 +1,4 @@
-import type {UiBlockProps} from '$types'
-import {UiShape, UiStatus, UiTextContext} from '$types'
+import type {UiStatus, UiBlockProps} from '$types'
 
 function getBlockStyles(props: UiBlockProps): string {
 	let {
@@ -128,7 +127,7 @@ function getLayoutStyles(props: UiBlockProps): string {
 
 function getFeedbackStyles(
 	props: UiBlockProps,
-	status: typeof UiStatus,
+	status: UiStatus,
 	context: string,
 ): string {
 	let {
@@ -154,13 +153,13 @@ function getFeedbackStyles(
 	let alignClass = align ? `align:${align}` : ''
 	let justifyClass = justify ? `justify:${justify}` : ''
 
-	if (shape === UiShape.round || shape === UiShape.square) {
+	if (shape === 'round' || shape === 'square') {
 		layoutClass = `l:stack${size}`
 		alignClass = 'align:center'
 		justifyClass = 'justify:center'
 	}
 
-	if (shape === UiShape.pill) {
+	if (shape === 'pill') {
 		alignClass = 'align:center'
 		justifyClass = 'justify:center'
 	}
@@ -173,10 +172,10 @@ function getFeedbackStyles(
 			? `${assetTypeClass}:${asset}`
 			: ''
 	let typeClass = context ? `feedback:${context}` : 'feedback'
-	let backgroundClass = context === UiTextContext.code ? '' : `bg:${status}:100`
+	let backgroundClass = context === 'code' ? '' : `bg:${status}:100`
 	let layerClass = layer ? `layer:${layer}` : ''
 	let containerClass =
-		container && context !== UiTextContext.code ? `l:${container}:${size}` : ''
+		container && context !== 'code' ? `l:${container}:${size}` : ''
 
 	if (typeClass) classes.push(typeClass)
 	if (statusClass) classes.push(statusClass)

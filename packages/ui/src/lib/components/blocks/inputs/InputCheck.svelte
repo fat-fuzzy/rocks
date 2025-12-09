@@ -1,6 +1,5 @@
 <script lang="ts">
 	import type {InputProps} from '$types'
-	import {UiStatus, UiTextContext} from '$types'
 	import styleHelper from '$lib/utils/styles.js'
 	import Feedback from '$lib/components/blocks/global/Feedback.svelte'
 
@@ -11,7 +10,7 @@
 		checked,
 		disabled,
 		required,
-		status = UiStatus.default,
+		status = 'default',
 		hint,
 
 		layout = 'switcher',
@@ -66,7 +65,7 @@
 		id={`input-feedback-${id}`}
 		{asset}
 		{status}
-		context={UiTextContext.form}
+		context="form"
 		{font}
 		{size}
 		{variant}

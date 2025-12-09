@@ -3,8 +3,8 @@ import type {
 	UiRevealState,
 	CookiePreferences,
 	ViewingPreferences,
+	NavItem,
 } from '$types'
-import {UiState} from '$types'
 
 import {SWITCH_MACHINE} from '$lib/components/blocks/buttons/Switch/definitions.js'
 import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/definitions.js'
@@ -17,27 +17,27 @@ const DEFAULT_COOKIES_CONSENT: CookiePreferences = {
 	analytics: false,
 }
 
-const DEFAULT_REVEAL_STATE: UiRevealState = {reveal: UiState.collapsed}
+const DEFAULT_REVEAL_STATE: UiRevealState = {reveal: 'collapsed'}
 
-const DEFAULT_SIDEBAR_REVEAL_STATE: UiRevealState = {reveal: UiState.collapsed}
+const DEFAULT_SIDEBAR_REVEAL_STATE: UiRevealState = {reveal: 'collapsed'}
 
-const DEFAULT_NAV_REVEAL_STATE: UiRevealState = {reveal: UiState.collapsed}
+const DEFAULT_NAV_REVEAL_STATE: UiRevealState = {reveal: 'collapsed'}
 
 const DEFAULT_PREFERENCES: ViewingPreferences = {
-	reveal: UiState.collapsed,
+	reveal: 'collapsed',
 	consent: DEFAULT_COOKIES_CONSENT,
 }
 
 const DEFAULT_SCENE_ID = '004'
 
 const STATE_SWITCHER: {[key: string]: string} = {
-	active: UiState.inactive,
-	inactive: UiState.active,
+	active: 'inactive',
+	inactive: 'active',
 }
 
 const TRANSITION_REVEAL: {[key: string]: string} = {
-	expanded: UiState.collapsed,
-	collapsed: UiState.expanded,
+	expanded: 'collapsed',
+	collapsed: 'expanded',
 }
 
 const TRANSITION_BRIGHTNESS: {[key: string]: string} = {
@@ -123,9 +123,7 @@ const DEFAULT_STYLES /*: StyleTree */ = {
 	},
 }
 
-const APP_LINKS: {[key: string]: string}[] = [
-	{slug: 'about', title: 'About', layout: 'taco'},
-]
+const APP_LINKS: NavItem[] = [{slug: 'about', title: 'About'}]
 
 const APP_SETTINGS: AppContextItems = {
 	display: [

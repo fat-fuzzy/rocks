@@ -1,5 +1,4 @@
 import type {ToggleProps, FuzzyPayload, FuzzySystem} from '$types'
-import {UiState, ButtonEvent} from '$types'
 
 class ToggleMenuActor implements FuzzySystem {
 	state: Map<string, FuzzyPayload> = $state(new Map())
@@ -51,7 +50,7 @@ class ToggleMenuActor implements FuzzySystem {
 		return new Map(
 			items.map((item: ToggleProps) => [
 				item.id,
-				{...item, state: item.initial || UiState.inactive},
+				{...item, state: item.initial || 'inactive'},
 			]),
 		)
 	}
@@ -59,7 +58,7 @@ class ToggleMenuActor implements FuzzySystem {
 	public getSelected(): FuzzyPayload[] {
 		let selected: FuzzyPayload[] = []
 		this.state.forEach((item) => {
-			if (item.state === UiState.active) {
+			if (item.state === 'active') {
 				selected.push(item)
 			}
 		})
@@ -70,15 +69,15 @@ class ToggleMenuActor implements FuzzySystem {
 	public update(payload: FuzzyPayload): void {
 		if (payload && payload.action) {
 			this.state.set(payload.name, payload)
-			if (this.mode === 'radio' && payload.state === UiState.active) {
+			if (this.mode === 'radio' && payload.state === 'active') {
 				this.state.forEach((value, key) => {
 					if (
 						key !== payload.name &&
-						value.state === UiState.active &&
+						value.state === 'active' &&
 						value.action
 					) {
-						value.action(ButtonEvent.toggle)
-						value.state = UiState.inactive
+						value.action('toggle')
+						value.state = 'inactive'
 						this.state.set(key, value)
 					}
 				})

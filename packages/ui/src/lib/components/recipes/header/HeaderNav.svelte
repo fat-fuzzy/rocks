@@ -42,7 +42,7 @@
 	{justify}
 	{dismiss}
 	{auto}
-	{reveal}
+	reveal={reveal ?? 'collapsed'}
 	{breakpoint}
 	{formaction}
 	{actionPath}

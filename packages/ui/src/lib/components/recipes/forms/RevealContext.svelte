@@ -58,12 +58,14 @@
 	{justify}
 	{text}
 	formaction="toggleAppContext"
+	{actionPath}
 >
 	<Settings
 		id={`${id}-menu`}
+		name={`${id}-menu`}
+		label=""
 		items={preferences.display}
 		{formaction}
-		{actionPath}
 		{redirect}
 		onupdate={preferences.onupdate}
 	/>

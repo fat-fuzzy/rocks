@@ -7,7 +7,7 @@
 		"declaration": true,
 		"outDir": "./dist",
 		"rootDir": "./",
-		"declarationDir": "./dist/types",
+		"declarationDir": "./dist/",
 		"forceConsistentCasingInFileNames": true,
 		"resolveJsonModule": true,
 		"skipLibCheck": true,

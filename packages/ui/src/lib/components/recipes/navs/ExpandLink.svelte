@@ -1,7 +1,6 @@
 <script lang="ts">
 	import type {ExpandLinkProps, FuzzyPayload} from '$types'
 	import {enhance} from '$app/forms'
-	import {UiShape, UiVariant, UiState} from '$types'
 	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
 	import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/definitions.js'
 	import constants from '$lib/types/constants.js'
@@ -13,8 +12,8 @@
 		slug,
 		color,
 		size,
-		variant = UiVariant.bare,
-		shape = UiShape.square,
+		variant = 'bare',
+		shape = 'square',
 		title,
 		asset,
 		children,
@@ -22,7 +21,6 @@
 		depth,
 		assetType,
 		formaction,
-		actionParams,
 		actionPath,
 		onclick,
 	}: ExpandLinkProps = $props()
@@ -46,7 +44,7 @@
 		},
 	}
 
-	let revealClasses = $derived(value[slug].reveal ?? UiState.collapsed)
+	let revealClasses = $derived(value[slug].reveal ?? 'collapsed')
 	let layoutClasses = $derived(`l:reveal top ${revealClasses}`)
 	let action = $state(
 		formaction && actionPath

@@ -1,11 +1,10 @@
 import type {FeedbackProps} from '$types'
-import {UiStatus} from '$types'
 import toaster from '$lib/components/blocks/overlays/Toast/actor.svelte'
 
 export const errorToast = (text: string) => {
 	const toast: Partial<FeedbackProps> = {
 		text,
-		status: UiStatus.error,
+		status: 'error',
 		asset: 'poop',
 	}
 
@@ -15,7 +14,7 @@ export const errorToast = (text: string) => {
 export const successToast = (text: string) => {
 	const toast: Partial<FeedbackProps> = {
 		text,
-		status: UiStatus.success,
+		status: 'success',
 		asset: 'tada',
 	}
 

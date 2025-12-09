@@ -36,7 +36,6 @@
 		},
 		"test": {
 			"dependsOn": [
-				"^build",
 				"^test"
 			],
 			"outputs": [

@@ -1,6 +1,5 @@
 <script lang="ts">
-	import type {ToggleProps} from '$types'
-	import {UiState} from '$types'
+	import type {FuzzyPayload, ToggleProps} from '$types'
 	import {onMount} from 'svelte'
 	import Actor from './actor.svelte.js'
 
@@ -9,7 +8,7 @@
 		name = 'toggle',
 		label,
 		title,
-		initial = UiState.inactive,
+		initial = 'inactive',
 		value,
 		group,
 		disabled,
@@ -61,12 +60,12 @@
 	)
 
 	function handleClick(event: MouseEvent) {
-		store.update(store.currentState.event as string)
-		if (onclick) onclick(payload)
+		store.update('toggle')
+		if (onclick) onclick(payload as FuzzyPayload)
 	}
 
 	onMount(() => {
-		if (init) init(payload)
+		if (init) init(payload as FuzzyPayload)
 	})
 </script>
 

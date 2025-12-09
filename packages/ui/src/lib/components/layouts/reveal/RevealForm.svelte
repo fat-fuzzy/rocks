@@ -11,7 +11,6 @@
 		id = 'RevealForm',
 		name = 'RevealForm',
 		label = 'RevealForm',
-		method = 'POST', // TODO: change to GET with params
 		formaction,
 		actionPath,
 		redirect,
@@ -47,24 +46,12 @@
 	let action = $state(
 		redirect ? `${formaction}&redirectTo=${redirect}` : formaction,
 	)
-
-	// function handleClickOutside(e: MouseEvent) {
-	// 	const target = e.target as HTMLElement
-	// 	if (
-	// 		dismiss !== DismissEvent.outside ||
-	// 		payload.state !== 'expanded' ||
-	// 		target.id !== `${id}-reveal`
-	// 	) {
-	// 		return
-	// 	}
-	// 	payload.state = 'collapsed' // TODO: Fix this does nothing
-	// }
 </script>
 
 <form
 	{id}
 	{name}
-	{method}
+	method="POST"
 	action={action
 		? actionPath
 			? `${actionPath}?/${action}`

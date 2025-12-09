@@ -1,17 +1,87 @@
 // Reexport your entry components here
 /// <reference path="./types/index.ts" />
 
-import type {FatFuzzyUi} from '$types'
-import type {FatFuzzyTools} from './types/tools'
-export type * from '$types'
+// export type * from '$types'
 /**
  * Headless components
  */
-import Head from '$lib/components/blocks/global/Head.svelte'
+// export {default as Head} from '$lib/components/blocks/global/Head.svelte'
+
+// export {default as Color} from '$lib/components/tokens/Color.svelte'
+// export {default as Typography} from '$lib/components/tokens/Typography.svelte'
+
+// export {default as Button} from '$lib/components/blocks/buttons/Button.svelte'
+// export {default as Expand} from '$lib/components/blocks/buttons/Expand/Expand.svelte'
+// export {default as Switch} from '$lib/components/blocks/buttons/Switch/Switch.svelte'
+// export {default as Toggle} from '$lib/components/blocks/buttons/Toggle/Toggle.svelte'
+
+// export {default as Feedback} from '$lib/components/blocks/global/Feedback.svelte'
+// export {default as EscapeHtml} from '$lib/components/blocks/global/EscapeHtml.svelte'
+// export {default as Popover} from '$lib/components/blocks/overlays/Popover/Popover.svelte'
+
+// export {default as InputCheck} from '$lib/components/blocks/inputs/InputCheck.svelte'
+// export {default as InputRadio} from '$lib/components/blocks/inputs/InputRadio.svelte'
+// export {default as InputRange} from '$lib/components/blocks/inputs/InputRange.svelte'
+// export {default as InputFile} from '$lib/components/blocks/inputs/InputFile.svelte'
+// export {default as Fieldset} from '$lib/components/blocks/inputs/Fieldset.svelte'
+// export {default as InputGroup} from '$lib/components/blocks/inputs/InputGroup.svelte'
+
+// export {default as Burrito} from '$lib/components/layouts/Burrito.svelte'
+// export {default as Reveal} from '$lib/components/layouts/reveal/Reveal.svelte'
+// export {default as Sidebar} from '$lib/components/layouts/Sidebar.svelte'
+// export {default as Stack} from '$lib/components/layouts/Stack.svelte'
+// export {default as Switcher} from '$lib/components/layouts/Switcher.svelte'
+
+// export {default as RevealMenu} from '$lib/components/recipes/menus/RevealMenu.svelte'
+// export {default as ButtonMenu} from '$lib/components/recipes/menus/ButtonMenu.svelte'
+// export {default as ToggleMenu} from '$lib/components/recipes/menus/ToggleMenu/ToggleMenu.svelte'
+// export {default as Settings} from '$lib/components/recipes/forms/Settings.svelte'
+// export {default as RevealContext} from '$lib/components/recipes/forms/RevealContext.svelte'
+// export {default as SignUp} from '$lib/components/recipes/forms/SignUp.svelte'
+
+// export {default as Nav} from '$lib/components/recipes/navs/Nav.svelte'
+// export {default as RevealNav} from '$lib/components/recipes/navs/RevealNav.svelte'
+// export {default as Breadcrumbs} from '$lib/components/recipes/navs/Breadcrumbs.svelte'
+// export {default as PageNav} from '$lib/components/recipes/navs/PageNav.svelte'
+// export {default as ExpandLink} from '$lib/components/recipes/navs/ExpandLink.svelte'
+
+// export {default as HeaderNav} from '$lib/components/recipes/header/HeaderNav.svelte'
+
+// export {default as LayoutGrid} from '$lib/components/recipes/grid/LayoutGrid.svelte'
+// export {default as LayoutSidebar} from '$lib/components/recipes/content/LayoutSidebar.svelte'
+// export {default as PageMain} from '$lib/components/recipes/content/PageMain.svelte'
+// export {default as PageRails} from '$lib/components/recipes/grid/PageRails.svelte'
+// export {default as PageContext} from '$lib/components/recipes/content/PageContext.svelte'
+// export {default as PageHeader} from '$lib/components/recipes/content/PageHeader.svelte'
+
+// export {default as CSSTheme} from '$lib/components/raw/css-theme.svelte'
+// export {default as CSSMetro} from '$lib/components/raw/css-grid-metro.svelte'
+// export {default as CSSRailway} from '$lib/components/raw/css-grid-railway.svelte'
+// export {default as CSSSteam} from '$lib/components/raw/css-grid-steam.svelte'
+// export {default as CSSTgv} from '$lib/components/raw/css-grid-tgv.svelte'
+// export {default as CSSTram} from '$lib/components/raw/css-grid-tram.svelte'
+// export {default as CSSVoyager} from '$lib/components/raw/css-grid-voyager.svelte'
+// export {default as CSSUrbanist} from '$lib/components/raw/css-grid-urbanist.svelte'
+
+// export {default as Magic} from '$lib/components/blocks/global/Magic.svelte'
+// export {default as Image} from '$lib/components/blocks/media/Image.svelte'
+// export {default as Picture} from '$lib/components/blocks/media/Picture.svelte'
+// export {default as Zoomer} from '$lib/components/blocks/overlays/Zoomer.svelte'
+// export {default as Toast} from '$lib/components/blocks/overlays/Toast/Toast.svelte'
+// export {default as ToastGroup} from '$lib/components/blocks/overlays/Toast/ToastGroup.svelte'
+
+// export {default as Scrolly} from '$lib/components/recipes/animations/scroll/Scrolly.svelte'
+// export {default as ScrollyItem} from '$lib/components/recipes/animations/scroll/ScrollyItem.svelte'
+// export {default as Tabs} from '$lib/components/recipes/tabs/Tabs.svelte'
+// export {default as Cookies} from '$lib/components/recipes/forms/Cookies.svelte'
+
+// export {default as Toaster} from '$lib/components/blocks/overlays/Toast/actor.svelte.js'
+// export {default as PopoverActor} from '$lib/components/blocks/overlays/Popover/actor.svelte.js'
 
 /**
- * Layout components
+ * Base components
  */
+import Head from '$lib/components/blocks/global/Head.svelte'
 import Color from '$lib/components/tokens/Color.svelte'
 import Typography from '$lib/components/tokens/Typography.svelte'
 
@@ -55,7 +125,6 @@ import Nav from '$lib/components/recipes/navs/Nav.svelte'
 import RevealNav from '$lib/components/recipes/navs/RevealNav.svelte'
 import Breadcrumbs from '$lib/components/recipes/navs/Breadcrumbs.svelte'
 
-import Header from '$lib/components/recipes/header/Header.svelte'
 import HeaderNav from '$lib/components/recipes/header/HeaderNav.svelte'
 
 /**
@@ -170,7 +239,6 @@ const recipes = {
 	SignUp,
 	Nav,
 	RevealNav,
-	Header,
 }
 
 const raw = {
@@ -221,7 +289,7 @@ const headless = {
 	EscapeHtml,
 }
 
-const UI: FatFuzzyUi = {
+const UI = {
 	drafts,
 	headless,
 	tokens,
@@ -232,7 +300,7 @@ const UI: FatFuzzyUi = {
 	content,
 }
 
-const TOOLS: FatFuzzyTools = {
+const TOOLS = {
 	actors,
 	utils,
 	forms,
@@ -242,67 +310,4 @@ const TOOLS: FatFuzzyTools = {
 export default {
 	...UI,
 	...TOOLS,
-}
-
-export {
-	Color,
-	Typography,
-	Button,
-	Expand,
-	Switch,
-	Toggle,
-	Feedback,
-	Magic,
-	InputCheck,
-	InputRadio,
-	InputRange,
-	InputFile,
-	Burrito,
-	Reveal,
-	Stack,
-	Switcher,
-	Sidebar,
-	ButtonMenu,
-	ToggleMenu,
-	RevealMenu,
-	SignUp,
-	Nav,
-	RevealNav,
-	Header,
-	CSSMetro,
-	CSSRailway,
-	CSSSteam,
-	CSSTgv,
-	CSSTram,
-	CSSVoyager,
-	CSSUrbanist,
-	LayoutGrid,
-	LayoutSidebar,
-	PageMain,
-	PageRails,
-	PageContext,
-	CSSTheme,
-	Fieldset,
-	Popover,
-	// InputPassword,
-	// InputFeedback,
-	ExpandLink,
-	InputGroup,
-	Image,
-	Picture,
-	Scrolly,
-	ScrollyItem,
-	Breadcrumbs,
-	HeaderNav,
-	Settings,
-	PageNav,
-	PageHeader,
-	RevealContext,
-	Zoomer,
-	Tabs,
-	Cookies,
-	Toast,
-	ToastGroup,
-	Head,
-	EscapeHtml,
 }

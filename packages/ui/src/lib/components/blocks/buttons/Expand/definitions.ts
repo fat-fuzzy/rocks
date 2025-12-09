@@ -1,26 +1,25 @@
 import type {FuzzyTransitions, ExpandMachine} from '$types'
-import {UiState, ButtonEvent} from '$types'
 
 export const EXPAND_MACHINE: ExpandMachine = {
 	expanded: {
-		id: UiState.expanded,
-		state: UiState.expanded,
-		event: ButtonEvent.collapse,
+		id: 'expanded',
+		state: 'expanded',
+		event: 'collapse',
 		label: 'Collapse',
 	},
 	collapsed: {
-		id: UiState.collapsed,
-		state: UiState.collapsed,
-		event: ButtonEvent.expand,
+		id: 'collapsed',
+		state: 'collapsed',
+		event: 'expand',
 		label: 'Expand',
 	},
 }
 
 export const EXPAND_TRANSITIONS: FuzzyTransitions = {
 	expanded: {
-		collapse: UiState.collapsed,
+		collapse: 'collapsed',
 	},
 	collapsed: {
-		expand: UiState.expanded,
+		expand: 'expanded',
 	},
 }
