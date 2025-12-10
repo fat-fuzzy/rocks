@@ -9,6 +9,8 @@ export type GridProps = LayoutProps & {
 		grid?: boolean
 		gare?: string
 		scroll?: string
+		exchange?: boolean
+		tag?: string
 	}[]
 }
 

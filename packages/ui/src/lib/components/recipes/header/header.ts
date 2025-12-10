@@ -17,8 +17,6 @@ export type HeaderProps = UiBlockProps &
 		auto?: boolean
 		dismiss?: string
 		sidebar?: Snippet
-		context: AppContextItems
 		links: NavItem[]
-		app: {[key: string]: string}
 		children?: Snippet
 	}

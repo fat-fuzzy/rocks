@@ -97,7 +97,7 @@
 		validator.validateInput(event)
 
 		if (onchange) {
-			onchange({payload: event})
+			onchange(event)
 		}
 	}
 
