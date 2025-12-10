@@ -37,15 +37,16 @@
 
 					<Magic
 						spell="fuzzy"
-						size="2xs"
+						size="3xs"
 						circle="dotted"
 						mask="text"
 						shape="mellow"
 					>
 						<div class="l:flex align:center">
-							<ff-icon class="emoji:home font:lg size:md justify:center"
-							></ff-icon>
-							<a class="font:h1 font:md maki:inline size:xs" href="/"> Home </a>
+							<ff-icon class="emoji:home font:lg justify:center"></ff-icon>
+							<a class="font:h1 font:lg maki:inline size:2xs" href="/">
+								Home
+							</a>
 						</div>
 					</Magic>
 				</div>
