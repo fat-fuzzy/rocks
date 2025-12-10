@@ -18,8 +18,6 @@ export type AriaLive = 'polite' | 'off' | 'assertive' | null | undefined
 
 export type Autocomplete = AutoFill | null | undefined
 
-export type Settings = Preferences
-
 export type UiRevealState = {
 	reveal: string
 }

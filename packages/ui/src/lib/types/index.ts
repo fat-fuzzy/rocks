@@ -2,7 +2,7 @@ export type * from '$lib/types/ui'
 export type * from '$lib/types/style'
 export type * from '$lib/types/state'
 export type * from '$lib/types/machines'
-export type * from '$lib/types/tools'
+// export type * from '$lib/types/tools'
 export type * from '$lib/types/components'
 export type * from '$lib/types/validation'
 
