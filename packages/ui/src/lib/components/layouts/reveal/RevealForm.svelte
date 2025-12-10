@@ -69,7 +69,7 @@
 		controls={`${id}-reveal-content`}
 		asset={buttonAset}
 		justify={`${justify} nowrap`}
-		initial={TRANSITION_REVEAL[reveal]}
+		initial={reveal}
 		place={placeIcon}
 		states={revealStates}
 		{init}
