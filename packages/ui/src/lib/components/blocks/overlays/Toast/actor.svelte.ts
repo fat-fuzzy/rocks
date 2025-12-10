@@ -8,8 +8,8 @@ class Toaster {
 		id: string
 		toast?: HTMLOutputElement
 	}[] = $state([])
-	private toaster: HTMLElement | null = null
-	private toasterHeight = 0
+	toaster: HTMLElement | null = null
+	toasterHeight = 0
 
 	constructor() {}
 
@@ -28,7 +28,7 @@ class Toaster {
 		this.eatToast(id, toast)
 	}
 
-	private flipToast(toast: HTMLOutputElement) {
+	flipToast(toast: HTMLOutputElement) {
 		const first = this.toaster?.offsetHeight as number
 		const delta = first - this.toasterHeight
 		const {matches: motionOK} = window.matchMedia(
@@ -51,7 +51,7 @@ class Toaster {
 		this.toasterHeight = first
 	}
 
-	private async completeAnimations(
+	async completeAnimations(
 		id: string,
 		output: HTMLOutputElement,
 	): Promise<string> {
@@ -64,7 +64,7 @@ class Toaster {
 		})
 	}
 
-	private eatToast(id: string, output: HTMLOutputElement) {
+	eatToast(id: string, output: HTMLOutputElement) {
 		this.toasts = this.toasts.filter((toast) => toast.id !== id)
 		this.toasterHeight = this.toasterHeight - output.offsetHeight
 	}

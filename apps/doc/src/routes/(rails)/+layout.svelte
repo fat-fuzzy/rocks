@@ -84,7 +84,6 @@
 			color="primary"
 			asset="home"
 			justify="center"
-			text="start"
 			dismiss="outside"
 			auto={true}
 			{links}

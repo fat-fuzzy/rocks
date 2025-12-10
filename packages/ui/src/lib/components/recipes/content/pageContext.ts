@@ -1,3 +1,5 @@
+import type {Snippet} from 'svelte'
+
 export type AsideProps = {
 	created?: string
 	updated?: string

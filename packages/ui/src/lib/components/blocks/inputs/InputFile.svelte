@@ -1,6 +1,5 @@
 <script lang="ts">
 	import type {InputFileProps} from '$types'
-	import {UiStatus, UiTextContext} from '$types'
 	import styleHelper from '$lib/utils/styles.js'
 	import Feedback from '$lib/components/blocks/global/Feedback.svelte'
 	import Fieldset from '$lib/components/blocks/inputs/Fieldset.svelte'
@@ -12,7 +11,7 @@
 		hint = 'File types accepted: png, jpeg',
 		disabled,
 		multiple = true,
-		status = UiStatus.default,
+		status = 'default',
 		fileType = 'image/png, image/jpeg',
 
 		layout = 'stack',
@@ -78,7 +77,7 @@
 		<Feedback
 			id={`input-feedback-${id}`}
 			{status}
-			context={UiTextContext.form}
+			context="form"
 			{size}
 			{variant}
 		>

@@ -1,5 +1,12 @@
 import type {Snippet} from 'svelte'
-import {AriaLiveEnum, Preferences} from '$types'
+import type {
+	Preferences,
+	UiColor,
+	UiShape,
+	UiVariant,
+	UiSize,
+	UiDimension,
+} from '$types'
 
 export type ButtonContext = {
 	id: string
@@ -7,16 +14,9 @@ export type ButtonContext = {
 	value: string | number
 }
 
-export type AriaLive =
-	| typeof AriaLiveEnum.polite
-	| typeof AriaLiveEnum.off
-	| typeof AriaLiveEnum.assertive
-	| null
-	| undefined
+export type AriaLive = 'polite' | 'off' | 'assertive' | null | undefined
 
 export type Autocomplete = AutoFill | null | undefined
-
-export type Settings = typeof Preferences
 
 export type UiRevealState = {
 	reveal: string
@@ -35,19 +35,19 @@ export type UiLayoutProps = {
 	align?: string
 	alignSelf?: string
 	justify?: string
-	size?: string
-	font?: string
-	theme?: string
+	size?: UiSize
+	font?: UiSize
+	theme?: UiColor
 
 	scroll?: string
 	container?: string
 	direction?: string
 	place?: string
 	position?: string
-	dimensions?: string
+	dimensions?: UiDimension
 	layout?: string
-	threshold?: string
-	breakpoint?: string
+	threshold?: UiSize
+	breakpoint?: UiSize
 }
 
 export type UiBlockProps = UiLayoutProps & {
@@ -56,12 +56,13 @@ export type UiBlockProps = UiLayoutProps & {
 	 */
 	asset?: string // the `value` part of emoji:value or svg:value
 	assetType?: string // the `svg` or `emoji` part of emoji:value or svg:value
-	color?: string
+	color?: UiColor
 	font?: string
-	shape?: string
-	variant?: string
+	shape?: UiShape
+	variant?: UiVariant
 	background?: string
 	height?: string
+	width?: string
 	layer?: string
 }
 

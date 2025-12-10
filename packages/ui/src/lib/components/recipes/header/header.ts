@@ -1,16 +1,22 @@
 import type {Snippet} from 'svelte'
-import type {UiBlockProps, FormProps, AppContextItems} from '$types'
+import type {
+	UiBlockProps,
+	FormCommonProps,
+	AppContextItems,
+	NavItem,
+} from '$types'
 
 export type HeaderProps = UiBlockProps &
-	FormProps & {
+	FormCommonProps & {
 		id?: string
 		title?: string
 		path?: string
 		position?: string
 		placement?: string
-		main: {[key: string]: string}[]
+		reveal?: string
+		auto?: boolean
+		dismiss?: string
 		sidebar?: Snippet
-		context: AppContextItems
-		app: {[key: string]: string}
+		links: NavItem[]
 		children?: Snippet
 	}

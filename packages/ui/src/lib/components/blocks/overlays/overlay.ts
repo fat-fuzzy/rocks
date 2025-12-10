@@ -1,17 +1,19 @@
 import type {Snippet} from 'svelte'
-import type {UiBlockProps, UiLayoutProps} from '$types'
-import {props} from '$types'
-
-const {AriaInvoke} = props
+import type {
+	UiBlockProps,
+	UiLayoutProps,
+	FuzzyPayload,
+	AriaInvoke,
+} from '$types'
 
 export type OverlayProps = UiBlockProps &
 	UiLayoutProps & {
 		id: string
 		role?: string // AriaRole
 		title: string
-		invoke?: typeof AriaInvoke
+		invoke?: AriaInvoke
 		open?: boolean
 		fixed?: string
 		children?: Snippet
-		onbeforetoggle?: (payload: FuzzyPayload) => void
+		onbeforetoggle?: (event: Event, payload?: FuzzyPayload) => void
 	}

@@ -6,9 +6,8 @@ import type {
 	FuzzyMachine,
 	UiBlockProps,
 } from '$lib/types'
-import {UiState} from '$types'
 
-export type UiStateToggle = typeof UiState.active | typeof UiState.inactive
+export type UiStateToggle = 'active' | 'inactive'
 
 export type ToggleMachine = {
 	active: FuzzyState

@@ -2,7 +2,6 @@
 	import type {FuzzyPayload, OverlayProps} from '$types'
 
 	import {onMount} from 'svelte'
-	import {UiShape, UiVariant, AriaInvoke, UiState} from '$types'
 	import Button from '$lib/components/blocks/buttons/Button.svelte'
 	import actor from './actor.svelte'
 
@@ -12,30 +11,30 @@
 		title,
 		color,
 		size,
-		variant = UiVariant.fill,
-		shape = UiShape.round,
+		variant = 'fill',
+		shape = 'round',
 		children,
 		fixed,
 		place,
 		asset,
 		layer,
-		invoke = AriaInvoke.auto,
+		invoke = 'auto',
 		onbeforetoggle,
 	}: OverlayProps = $props()
 
 	let popover: HTMLElement
 	let invoker: HTMLElement | undefined
 	let expanded = $derived(actor.isActive(id))
-	let reveal = $derived(expanded ? UiState.expanded : UiState.collapsed)
+	let reveal = $derived(expanded ? 'expanded' : 'collapsed')
 
 	let fixedClass = $state(fixed ? `fixed:${place}` : `place:${place}`)
 	let layerClass = $state(layer ? `layer:${layer}` : '')
 	let revealClasses = $derived(`${fixedClass} ${layerClass}`)
 
 	function toggleReveal(payload: FuzzyPayload) {
-		if (payload.value === UiState.expanded) {
+		if (payload.value === 'expanded') {
 			actor.showPopover(id)
-		} else if (payload.value === UiState.collapsed) {
+		} else if (payload.value === 'collapsed') {
 			actor.hidePopover(id)
 		}
 	}

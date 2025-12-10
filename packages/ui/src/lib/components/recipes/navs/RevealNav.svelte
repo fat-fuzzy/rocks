@@ -1,6 +1,5 @@
 <script lang="ts">
 	import type {RevealNavProps} from '$types'
-	import {DismissEvent} from '$types'
 	import styleHelper from '$lib/utils/styles.js'
 	import Reveal from '$lib/components/layouts/reveal/Reveal.svelte'
 	import SkipLinks from '$lib/components/recipes/navs/SkipLinks.svelte'
@@ -20,7 +19,7 @@
 		layout,
 		scroll,
 		layer,
-		dismiss = DismissEvent.outside,
+		dismiss = 'outside',
 		color,
 		size,
 		shape,

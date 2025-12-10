@@ -4,17 +4,18 @@ import type {
 	UiBlockProps,
 	UiStateSwitch,
 	SwitchMachine,
+	UiVariant,
 } from '$types'
-import {UiState} from '$types'
+
 import {SWITCH_MACHINE, SWITCH_TRANSITIONS} from './definitions.js'
 import styleHelper from '$lib/utils/styles.js'
 
 class SwitchActor implements FuzzyActor {
-	state: UiStateSwitch = $state(UiState.inactive)
+	state: UiStateSwitch = $state('inactive')
 	machine = $state(SWITCH_MACHINE)
 	transitions = SWITCH_TRANSITIONS
 	currentState = $derived(this.machine[this.state])
-	pressed = $derived(this.state === UiState.active)
+	pressed = $derived(this.state === 'active')
 	value = $derived(this.currentState?.value || this.state)
 	id = $derived(this.currentState?.id)
 	label = $derived(this.currentState?.label || '')
@@ -56,7 +57,7 @@ class SwitchActor implements FuzzyActor {
 		let blockClasses = styleHelper.getStyles({
 			...props,
 			asset: currentAsset,
-			variant: currentVariant,
+			variant: currentVariant as UiVariant,
 		})
 
 		return `switch ${blockClasses}`

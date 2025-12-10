@@ -1,6 +1,5 @@
 <script lang="ts">
 	import type {FeedbackProps, AriaLive, UiStatus, UiTextContext} from '$types'
-	import {AriaLiveEnum} from '$types'
 	import styleHelper from '$lib/utils/styles.js'
 
 	let {
@@ -39,9 +38,7 @@
 			context as UiTextContext,
 		),
 	)
-	let ariaLive: AriaLive = $derived(
-		context === 'form' ? AriaLiveEnum.polite : undefined,
-	)
+	let ariaLive: AriaLive = $derived(context === 'form' ? 'polite' : undefined)
 	let testId = $derived(id === 'Feedback' ? id : `Feedback-${id}`)
 	let textAlign = $derived(
 		shape === 'round' || shape === 'square' || shape === 'pill'

@@ -1,10 +1,10 @@
 <script lang="ts">
-	import '@fat-fuzzy/style'
+	import '@fat-fuzzy/style/css'
 	import ui from '@fat-fuzzy/ui'
 	import type {Snippet} from 'svelte'
 
 	const {APP_SETTINGS, APP_LINKS} = ui.constants
-	const {Header} = ui.recipes
+	const {HeaderNav} = ui.drafts
 
 	type Props = {children: Snippet}
 
@@ -17,8 +17,8 @@
 	let footerClass = `l:taco font:sm ${brightness} bg:${contrast}`
 </script>
 
-<Header
-	main={headerData.links}
+<HeaderNav
+	links={headerData.links}
 	context={headerData.settings}
 	layout="taco"
 	app={{brightness: 'day', contrast: 'blend'}}
@@ -26,7 +26,7 @@
 	<h1 class="l:flex ravioli:md icon:svg:egg size:xl font:xl align:center">
 		Fat Fuzzy Style
 	</h1>
-</Header>
+</HeaderNav>
 <main class={mainClass}>
 	{#if children}
 		{@render children()}

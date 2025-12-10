@@ -1,3 +1,6 @@
+import type {Snippet} from 'svelte'
+import type {UiBlockProps, UiLayoutProps} from '$types'
+
 export type Tab = UiBlockProps & {
 	slug: string
 	id?: string

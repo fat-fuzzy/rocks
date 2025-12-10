@@ -1,6 +1,5 @@
 <script lang="ts">
 	import type {SignUpProps} from '$types'
-	import {UiStatus, UiTextContext, UiColor, UiVariant, InputType} from '$types'
 	import {onMount} from 'svelte'
 	import {enhance} from '$app/forms'
 	import Button from '$lib/components/blocks/buttons/Button.svelte'
@@ -11,7 +10,6 @@
 
 	let {
 		id = 'sign-up-form',
-		method = 'POST',
 		title = 'Sign Up',
 		description = 'A sample signup form',
 		actionPath, // 'ui'
@@ -21,8 +19,8 @@
 		container,
 		level = 2, // <h*> element level
 		size,
-		color = UiColor.primary,
-		variant = UiVariant.fill,
+		color = 'primary',
+		variant = 'fill',
 		asset = 'log',
 		align = 'center',
 		background = 'contrast',
@@ -92,12 +90,10 @@
 
 <div class={`ravioli:${size} ${background} l:${container}:${size}`}>
 	{#if successPlaceholder}
-		<Feedback status={UiStatus.success} context={UiTextContext.form}>
-			Form submitted!
-		</Feedback>
+		<Feedback status="success" context="form">Form submitted!</Feedback>
 	{:else}
 		<form
-			{method}
+			method="POST"
 			class={`l:stack:${size} ravioli:${size}`}
 			action={action && actionPath ? `${actionPath}?/${action}` : undefined}
 			use:enhance
@@ -111,7 +107,7 @@
 				</header>
 				<Input
 					id="username"
-					type={InputType.text}
+					type="text"
 					name="sample_username"
 					label="Username"
 					required
@@ -125,7 +121,7 @@
 				/>
 				<Input
 					id="email"
-					type={InputType.email}
+					type="email"
 					name="sample_email"
 					label="Email"
 					required
@@ -138,7 +134,7 @@
 					{validator}
 				/>
 				<InputPassword
-					type={InputType.password}
+					type="password"
 					id="password"
 					name="sample_password"
 					label="Password"
@@ -154,7 +150,7 @@
 				/>
 				<InputPassword
 					id="confirm_password"
-					type={InputType.password}
+					type="password"
 					name="confirm_password"
 					label="Confirm Password"
 					required

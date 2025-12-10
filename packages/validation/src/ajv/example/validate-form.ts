@@ -1,6 +1,5 @@
 import validations from '@fat-fuzzy/validation'
 import type {IFormValidator} from '$types'
-import {UiStatus} from '$types'
 const {sanitize, validate} = validations
 
 /**
@@ -73,7 +72,7 @@ class FormValidator implements IFormValidator {
 		fields.forEach((field: any) => {
 			if (this.form[field].changed) {
 				this.form[field].is_valid = true
-				this.form[field].feedback[UiStatus.error] = undefined
+				this.form[field].feedback['error'] = undefined
 			}
 		})
 		const validateMap: {[fieldName: string]: string} = {}
@@ -93,11 +92,11 @@ class FormValidator implements IFormValidator {
 				.filter((error: any) => error.instancePath.substring(1) === name)
 				.map((error: any) => error.message)
 			if (inputErrors.length) {
-				this.form[name].feedback[UiStatus.error] = inputErrors
+				this.form[name].feedback['error'] = inputErrors
 				this.form[name].is_valid = false
 			} else {
 				this.form[name].is_valid = true
-				this.form[name].feedback[UiStatus.error] = undefined
+				this.form[name].feedback['error'] = undefined
 			}
 		})
 	}
@@ -112,7 +111,7 @@ class FormValidator implements IFormValidator {
 	}
 
 	public getFieldErrors(name: string): string[] {
-		let errors = this.form[name]?.feedback[UiStatus.error]
+		let errors = this.form[name]?.feedback['error']
 		return errors
 	}
 
