@@ -22,9 +22,7 @@
 	name="header-nav"
 	label=""
 	links={headerData.links}
-	context={headerData.settings}
 	layout="taco"
-	app={{brightness: 'day', contrast: 'blend'}}
 >
 	<h1 class="l:flex ravioli:md icon:svg:egg size:xl font:xl align:center">
 		Fat Fuzzy Style

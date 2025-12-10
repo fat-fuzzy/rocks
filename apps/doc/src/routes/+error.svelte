@@ -1,4 +1,5 @@
 <script lang="ts">
+	import type {UiStatus} from '@fat-fuzzy/ui'
 	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
 
@@ -7,7 +8,7 @@
 	const {Burrito} = ui.layouts
 
 	let title = $derived(`Fat Fuzzy ${page.status}`)
-	let status = $state('error')
+	let status: UiStatus = $state('error')
 	let asset = $derived.by(() => {
 		switch (page.status) {
 			case 404:
