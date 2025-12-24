@@ -1,9 +1,58 @@
 import type {UiBlockProps, UiLayoutProps} from '$lib/types'
 
-const PROPS_CONTAINER: UiBlockProps = {
-	container: 'ravioli',
-	size: 'lg',
-}
+const PROPS_CONTAINER: {props: UiLayoutProps; expected: string}[] = [
+	{
+		props: {
+			container: 'burrito',
+			size: '2xl',
+			layer: '1',
+		},
+		expected: 'layer:1 l:burrito:2xl',
+	},
+	{
+		props: {
+			container: 'burrito',
+			size: 'lg',
+		},
+		expected: 'l:burrito:lg',
+	},
+	{
+		props: {
+			container: 'taco',
+			size: 'md',
+		},
+		expected: 'l:taco:md',
+	},
+	{
+		props: {
+			container: 'ravioli',
+			size: 'sm',
+		},
+		expected: 'ravioli:sm',
+	},
+	{
+		props: {
+			container: 'frame',
+			size: 'xl',
+			dimensions: 'square',
+		},
+		expected: 'l:frame:square size:xl',
+	},
+	{
+		props: {
+			container: 'frame',
+			size: 'xs',
+		},
+		expected: 'l:frame:xs',
+	},
+	{
+		props: {
+			container: 'frame',
+			size: 'xs',
+		},
+		expected: 'l:frame:xs',
+	},
+]
 
 const PROPS_LAYOUT: UiLayoutProps = {
 	layout: 'stack',
@@ -25,20 +74,8 @@ const PROPS_BLOCK: UiBlockProps = {
 	assetType: 'emoji',
 }
 
-function getContainerClasses(props: UiLayoutProps): string {
-	let classes = []
-	if (props.container === 'ravioli')
-		classes.push(`${props.container}:${props.size}`)
-	else if (props.container) {
-		classes.push(`${props.container}`)
-		if (props.size) classes.push(`size:${props.size}`)
-	}
-
-	return classes.join(' ')
-}
-
 function getLayoutClasses(props: UiLayoutProps): string {
-	let classes = []
+	const classes = []
 	if (props.layout === 'stack') classes.push(`l:${props.layout}:${props.size}`)
 	else if (props.layout) {
 		if (props.layout) classes.push(`l:${props.layout}`)
@@ -49,7 +86,7 @@ function getLayoutClasses(props: UiLayoutProps): string {
 }
 
 function getBlockClasses(props: UiBlockProps): string {
-	let classes = []
+	const classes = []
 	if (props.color) classes.push(`color:${props.color}`)
 	if (props.background) classes.push(`bg:${props.background}`)
 	if (props.size) classes.push(`size:${props.size}`)
@@ -64,11 +101,10 @@ function getBlockClasses(props: UiBlockProps): string {
 	return classes.join(' ')
 }
 
-export default {
+export {
 	PROPS_CONTAINER,
 	PROPS_LAYOUT,
 	PROPS_BLOCK,
-	getContainerClasses,
 	getLayoutClasses,
 	getBlockClasses,
 }
