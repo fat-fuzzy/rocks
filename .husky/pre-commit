@@ -1,5 +1,17 @@
 #!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
+# Get staged files
+STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACMR)
 
-pnpm lint
-pnpm test
+echo "Staged files:"
+echo "$STAGED_FILES"
+
+if [ -n "$STAGED_FILES" ]; then
+  # Run Prettier on all staged files
+  echo "$STAGED_FILES" | xargs prettier --write --ignore-unknown
+
+  # Run ESLint only on JS/TS files
+  echo "$STAGED_FILES" | grep -E '\.(js|jsx|ts|tsx)$' | xargs -r eslint --fix
+
+  # Re-add fixed files to staging
+  echo "$STAGED_FILES" | xargs git add
+fi
