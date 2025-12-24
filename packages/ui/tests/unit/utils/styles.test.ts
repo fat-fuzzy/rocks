@@ -1,56 +1,32 @@
 import {describe, test, expect} from 'vitest'
 
 import styles from '$lib/utils/styles'
-import props from '../../fixtures/props'
-const blockProps = props.PROPS_BLOCK
-const containerProps = props.PROPS_CONTAINER
-const layoutProps = props.PROPS_LAYOUT
+import {
+	PROPS_BLOCK,
+	PROPS_CONTAINER,
+	PROPS_LAYOUT,
+	getLayoutClasses,
+	getBlockClasses,
+} from '$tests/fixtures/props'
 
 describe('style.ts - a library that builds class names from style prop names', () => {
 	describe('getContainerStyles', () => {
 		test('generates container styles', () => {
-			let actualValues = styles.getContainerStyles(containerProps)
-			let expectedClasses = props.getContainerClasses(containerProps)
-			expect(actualValues).toBe(expectedClasses)
+			PROPS_CONTAINER.forEach((fixture) => {
+				const actualValues = styles.getContainerStyles(fixture.props)
+				expect(actualValues).toBe(fixture.expected)
+			})
 		})
 
 		test('returns empty string when no container props provided', () => {
 			expect(styles.getContainerStyles({})).toBe('')
 		})
-
-		test('generates ravioli container without l: prefix', () => {
-			expect(styles.getContainerStyles({container: 'ravioli'})).toContain(
-				'ravioli',
-			)
-			expect(styles.getContainerStyles({container: 'ravioli'})).not.toContain(
-				'l:ravioli',
-			)
-		})
-
-		test('combines container with dimensions', () => {
-			let result = styles.getContainerStyles({
-				container: 'frame',
-				dimensions: 'video',
-				size: 'md',
-			})
-			expect(result).toBe('l:frame:video size:md')
-		})
-
-		test('uses size when dimensions not provided', () => {
-			let result = styles.getContainerStyles({container: 'frame', size: 'md'})
-			expect(result).toBe('l:frame:md')
-		})
-
-		test('includes layer class when provided', () => {
-			let result = styles.getContainerStyles({container: 'stack', layer: '1'})
-			expect(result).toContain('layer:1')
-		})
 	})
 
 	describe('getLayoutStyles', () => {
 		test('generates layout styles', () => {
-			let actualValues = styles.getLayoutStyles(layoutProps)
-			let expectedClasses = props.getLayoutClasses(layoutProps)
+			const actualValues = styles.getLayoutStyles(PROPS_LAYOUT)
+			const expectedClasses = getLayoutClasses(PROPS_LAYOUT)
 			expect(actualValues).toBe(expectedClasses)
 		})
 
@@ -59,17 +35,17 @@ describe('style.ts - a library that builds class names from style prop names', (
 		})
 
 		test('converts layout with pill shape to stack', () => {
-			let result = styles.getLayoutStyles({layout: 'grid', shape: 'pill'})
+			const result = styles.getLayoutStyles({layout: 'grid', shape: 'pill'})
 			expect(result).toBe('l:grid shape:pill')
 		})
 
 		test('converts layout with non-pill shape to stack', () => {
-			let result = styles.getLayoutStyles({layout: 'grid', shape: 'round'})
+			const result = styles.getLayoutStyles({layout: 'grid', shape: 'round'})
 			expect(result).toBe('l:stack shape:round')
 		})
 
 		test('combines layout with size', () => {
-			let result = styles.getLayoutStyles({layout: 'stack', size: 'lg'})
+			const result = styles.getLayoutStyles({layout: 'stack', size: 'lg'})
 			expect(result).toBe('l:stack:lg')
 		})
 
@@ -77,15 +53,15 @@ describe('style.ts - a library that builds class names from style prop names', (
 		 * TODO: throw warning when switcher used without threshold
 		 */
 		test('includes switcher class', () => {
-			let result = styles.getLayoutStyles({layout: 'switcher', threshold: 'md'})
+			const result = styles.getLayoutStyles({layout: 'switcher', threshold: 'md'})
 			expect(result).toContain('th:md')
 		})
 	})
 
 	describe('getBlockStyles', () => {
 		test('generates block styles', () => {
-			let actualValues = styles.getBlockStyles(blockProps)
-			let expectedClasses = props.getBlockClasses(blockProps)
+			const actualValues = styles.getBlockStyles(PROPS_BLOCK)
+			const expectedClasses = getBlockClasses(PROPS_BLOCK)
 			expect(actualValues).toBe(expectedClasses)
 		})
 
@@ -94,12 +70,12 @@ describe('style.ts - a library that builds class names from style prop names', (
 		})
 
 		test('uses color for background when background not provided', () => {
-			let result = styles.getBlockStyles({color: 'primary'})
+			const result = styles.getBlockStyles({color: 'primary'})
 			expect(result).toContain('bg:primary')
 		})
 
 		test('prefers background over color for bg class', () => {
-			let result = styles.getBlockStyles({
+			const result = styles.getBlockStyles({
 				color: 'primary',
 				background: 'secondary',
 			})
@@ -108,24 +84,24 @@ describe('style.ts - a library that builds class names from style prop names', (
 		})
 
 		test('uses size for font when font not provided', () => {
-			let result = styles.getBlockStyles({size: 'lg'})
+			const result = styles.getBlockStyles({size: 'lg'})
 			expect(result).toContain('font:lg')
 		})
 
 		test('defaults assetType to emoji when not provided', () => {
-			let result = styles.getBlockStyles({asset: 'profile'})
+			const result = styles.getBlockStyles({asset: 'profile'})
 			expect(result).toContain('emoji:profile')
 		})
 
 		test('adds justify center when shape is provided without explicit justify', () => {
-			let result = styles.getBlockStyles({shape: 'round'})
+			const result = styles.getBlockStyles({shape: 'round'})
 			expect(result).toContain('justify:center')
 		})
 	})
 
 	describe('getStyles', () => {
 		test('combines all style types', () => {
-			let result = styles.getStyles({
+			const result = styles.getStyles({
 				container: 'ravioli',
 				layout: 'grid',
 				color: 'primary',
@@ -143,7 +119,7 @@ describe('style.ts - a library that builds class names from style prop names', (
 		})
 
 		test('returns trimmed string with no extra spaces', () => {
-			let result = styles.getStyles({size: 'md'})
+			const result = styles.getStyles({size: 'md'})
 			expect(result).not.toMatch(/^\s/)
 			expect(result).not.toMatch(/\s$/)
 			expect(result).not.toMatch(/\s{2,}/)
