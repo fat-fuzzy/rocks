@@ -8,6 +8,7 @@ id: '004'
 author: 'patiboh'
 tags: ['ml', 'opinion']
 ---
+
 ## This is Not about AI
 
 I've avoided writing about AI, because I'm somewhat tired of it surfacing at the turn of almost every scroll, click and conference, often in discourses that are frankly not very interesting, enlightening and even less fun to read.
