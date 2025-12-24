@@ -33,9 +33,7 @@ This has the added advantage of making dodgy recipes easier to spot:
 
 ```html
 <div class="l:burrito">
-  <p class="l:taco">
-      Are you sure ?
-  </p>
+	<p class="l:taco">Are you sure ?</p>
 </div>
 ```
 

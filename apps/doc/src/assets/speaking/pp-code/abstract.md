@@ -6,14 +6,25 @@ date_created: '2025-09-19'
 date_updated: '2025-09-19'
 talk: pp-code
 slug: pp-code
-status: 
+status:
 author: 'patiboh'
 image: 'webgl-scene'
 description: 'Un talk pour partager les motivations, stratégies et leçons apprises à travers le développement d’une pratique personnelle du code.'
 series:
   {
     title: 'Pratique Personnelle du Code',
-    items: ['001-0', '001-1', '001-2', '001-3', '001-4', '001-5', '001-6', '001-7', '001-8'],
+    items:
+      [
+        '001-0',
+        '001-1',
+        '001-2',
+        '001-3',
+        '001-4',
+        '001-5',
+        '001-6',
+        '001-7',
+        '001-8',
+      ],
   }
 tags: ['2025']
 ---
