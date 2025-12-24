@@ -1,6 +1,6 @@
 import type {Snippet} from 'svelte'
 import type {
-	Preferences,
+	UiContainer,
 	UiColor,
 	UiShape,
 	UiVariant,
@@ -40,11 +40,12 @@ export type UiLayoutProps = {
 	theme?: UiColor
 
 	scroll?: string
-	container?: string
+	container?: UiContainer
 	direction?: string
 	place?: string
 	position?: string
 	dimensions?: UiDimension
+	layer?: string
 	layout?: string
 	threshold?: UiSize
 	breakpoint?: UiSize
@@ -63,7 +64,6 @@ export type UiBlockProps = UiLayoutProps & {
 	background?: string
 	height?: string
 	width?: string
-	layer?: string
 }
 
 export type UiContentProps = {
