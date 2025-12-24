@@ -1,6 +1,7 @@
 import type {Snippet} from 'svelte'
 import type {
 	UiContainer,
+	UiLayout,
 	UiColor,
 	UiShape,
 	UiVariant,
@@ -38,6 +39,9 @@ export type UiLayoutProps = {
 	size?: UiSize
 	font?: UiSize
 	theme?: UiColor
+	shape?: UiShape
+	height?: string
+	background?: string
 
 	scroll?: string
 	container?: UiContainer
@@ -46,7 +50,7 @@ export type UiLayoutProps = {
 	position?: string
 	dimensions?: UiDimension
 	layer?: string
-	layout?: string
+	layout?: UiLayout
 	threshold?: UiSize
 	breakpoint?: UiSize
 }
@@ -59,10 +63,7 @@ export type UiBlockProps = UiLayoutProps & {
 	assetType?: string // the `svg` or `emoji` part of emoji:value or svg:value
 	color?: UiColor
 	font?: string
-	shape?: UiShape
 	variant?: UiVariant
-	background?: string
-	height?: string
 	width?: string
 }
 

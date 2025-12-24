@@ -1,4 +1,4 @@
-import type {UiStatus, UiBlockProps} from '$types'
+import type {UiStatus, UiBlockProps, UiLayoutProps} from '$types'
 
 function getBlockStyles(props: UiBlockProps): string {
 	const {
@@ -78,7 +78,7 @@ function getContainerStyles(props: UiBlockProps): string {
 	return classes.join(' ').trim()
 }
 
-function getLayoutStyles(props: UiBlockProps): string {
+function getLayoutStyles(props: UiLayoutProps): string {
 	const {
 		size,
 		height,
@@ -96,7 +96,6 @@ function getLayoutStyles(props: UiBlockProps): string {
 	const thresholdClass = threshold ? `th:${threshold}` : ''
 	const shapeClass = shape ? `shape:${shape}` : ''
 	const breakpointClass = breakpoint ? `bp:${breakpoint}` : ''
-	let layoutClass = layout && shape && shape !== 'pill' ? 'stack' : layout
 	const scrollClass = scroll ? `scroll:${scroll}` : ''
 	const heightClass = height ? `h:${height}` : ''
 	const layerClass = layer ? `layer:${layer}` : ''
@@ -104,6 +103,10 @@ function getLayoutStyles(props: UiBlockProps): string {
 	const backgroundClass = background ? `bg:${background}` : ''
 	const sizeClass = size ? `size:${size}` : ''
 
+	let layoutClass =
+		layout && shape && (shape === 'round' || shape === 'square')
+			? 'stack'
+			: (layout as string)
 	if (layoutClass) {
 		layoutClass =
 			layout && size
@@ -155,12 +158,10 @@ function getFeedbackStyles(
 	let justifyClass = justify ? `justify:${justify}` : ''
 
 	if (shape === 'round' || shape === 'square') {
-		layoutClass = `l:stack${size}`
-		alignClass = 'align:center'
-		justifyClass = 'justify:center'
+		layoutClass = `l:stack:${size}`
 	}
 
-	if (shape === 'pill') {
+	if (shape === 'round' || shape === 'square' || shape === 'pill') {
 		alignClass = 'align:center'
 		justifyClass = 'justify:center'
 	}
