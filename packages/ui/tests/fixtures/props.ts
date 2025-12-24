@@ -54,10 +54,53 @@ const PROPS_CONTAINER: {props: UiLayoutProps; expected: string}[] = [
 	},
 ]
 
-const PROPS_LAYOUT: UiLayoutProps = {
-	layout: 'stack',
-	size: 'md',
-}
+const PROPS_LAYOUT: {props: UiLayoutProps; expected: string}[] = [
+	{
+		props: {
+			layout: 'stack',
+			size: '2xl',
+		},
+		expected: 'l:stack:2xl',
+	},
+	{
+		props: {
+			layout: 'switcher',
+			size: 'xl',
+		},
+		expected: 'l:switcher:xl',
+	},
+	{
+		props: {
+			layout: 'grid',
+			size: 'lg',
+		},
+		expected: 'l:grid:lg',
+	},
+	{
+		props: {
+			layout: 'switcher',
+			size: 'md',
+			shape: 'round',
+		},
+		expected: 'l:stack:md shape:round',
+	},
+	{
+		props: {
+			layout: 'switcher',
+			size: 'md',
+			shape: 'pill',
+		},
+		expected: 'l:switcher:md shape:pill',
+	},
+	{
+		props: {
+			layout: 'grid',
+			size: 'md',
+			layer: '1',
+		},
+		expected: 'l:grid:md layer:1',
+	},
+]
 
 const PROPS_BLOCK: UiBlockProps = {
 	color: 'primary',
@@ -72,17 +115,6 @@ const PROPS_BLOCK: UiBlockProps = {
 	alignSelf: 'center',
 	asset: 'moby',
 	assetType: 'emoji',
-}
-
-function getLayoutClasses(props: UiLayoutProps): string {
-	const classes = []
-	if (props.layout === 'stack') classes.push(`l:${props.layout}:${props.size}`)
-	else if (props.layout) {
-		if (props.layout) classes.push(`l:${props.layout}`)
-		if (props.size) classes.push(`size:${props.size}`)
-	}
-
-	return classes.join(' ')
 }
 
 function getBlockClasses(props: UiBlockProps): string {
@@ -101,10 +133,4 @@ function getBlockClasses(props: UiBlockProps): string {
 	return classes.join(' ')
 }
 
-export {
-	PROPS_CONTAINER,
-	PROPS_LAYOUT,
-	PROPS_BLOCK,
-	getLayoutClasses,
-	getBlockClasses,
-}
+export {PROPS_CONTAINER, PROPS_LAYOUT, PROPS_BLOCK, getBlockClasses}

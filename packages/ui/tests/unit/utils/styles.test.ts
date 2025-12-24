@@ -5,7 +5,6 @@ import {
 	PROPS_BLOCK,
 	PROPS_CONTAINER,
 	PROPS_LAYOUT,
-	getLayoutClasses,
 	getBlockClasses,
 } from '$tests/fixtures/props'
 
@@ -25,18 +24,14 @@ describe('style.ts - a library that builds class names from style prop names', (
 
 	describe('getLayoutStyles', () => {
 		test('generates layout styles', () => {
-			const actualValues = styles.getLayoutStyles(PROPS_LAYOUT)
-			const expectedClasses = getLayoutClasses(PROPS_LAYOUT)
-			expect(actualValues).toBe(expectedClasses)
+			PROPS_LAYOUT.forEach((fixture) => {
+				const actualValues = styles.getLayoutStyles(fixture.props)
+				expect(actualValues).toBe(fixture.expected)
+			})
 		})
 
 		test('returns empty string when no layout props provided', () => {
 			expect(styles.getLayoutStyles({})).toBe('')
-		})
-
-		test('converts layout with pill shape to stack', () => {
-			const result = styles.getLayoutStyles({layout: 'grid', shape: 'pill'})
-			expect(result).toBe('l:grid shape:pill')
 		})
 
 		test('converts layout with non-pill shape to stack', () => {
@@ -44,16 +39,14 @@ describe('style.ts - a library that builds class names from style prop names', (
 			expect(result).toBe('l:stack shape:round')
 		})
 
-		test('combines layout with size', () => {
-			const result = styles.getLayoutStyles({layout: 'stack', size: 'lg'})
-			expect(result).toBe('l:stack:lg')
-		})
-
 		/**
 		 * TODO: throw warning when switcher used without threshold
 		 */
 		test('includes switcher class', () => {
-			const result = styles.getLayoutStyles({layout: 'switcher', threshold: 'md'})
+			const result = styles.getLayoutStyles({
+				layout: 'switcher',
+				threshold: 'md',
+			})
 			expect(result).toContain('th:md')
 		})
 	})
