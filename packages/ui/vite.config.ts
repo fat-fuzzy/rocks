@@ -4,10 +4,21 @@ import {defineConfig} from 'vitest/config'
 export default defineConfig({
 	plugins: [sveltekit()],
 	test: {
+		reporters: ['html'],
 		include: [
 			'src/**/*.{test,spec}.{js,ts}',
 			'tests/unit/**/*.{test,spec}.{js,ts}',
 		],
+		coverage: {
+			enabled: true,
+			provider: 'v8',
+			include: ['src/**/*.{js,ts}'],
+			exclude: [
+				'src/app.d.ts',
+				'src/**/definitions.{js,ts}',
+				'src/lib/types/*.{js,ts}',
+			],
+		},
 	},
 	build: {
 		target: 'esnext',
