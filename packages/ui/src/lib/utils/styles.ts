@@ -1,7 +1,7 @@
 import type {UiStatus, UiBlockProps} from '$types'
 
 function getBlockStyles(props: UiBlockProps): string {
-	let {
+	const {
 		color,
 		size,
 		font,
@@ -15,23 +15,23 @@ function getBlockStyles(props: UiBlockProps): string {
 		background,
 	} = props
 
-	let classes = []
+	const classes = []
 	/* Block styles */
-	let colorClass = color ? `color:${color}` : '' // TODO: clarify bg/color/surface
-	let backgroundClass = background
+	const colorClass = color ? `color:${color}` : '' // TODO: clarify bg/color/surface
+	const backgroundClass = background
 		? `bg:${background}`
 		: color
 			? `bg:${color}`
 			: ''
-	let sizeClass = size ? `size:${size}` : ''
-	let fontClass = font ? `font:${font}` : size ? `font:${size}` : ''
-	let assetTypeClass = assetType ? assetType : 'emoji'
-	let assetClass = asset ? `${assetTypeClass}:${asset}` : ''
-	let variantClass = variant ? `variant:${variant}` : ''
-	let shapeClass = shape ? `shape:${shape}` : ''
-	let alignClass = alignSelf ? `align-self:${alignSelf}` : ''
-	let alignSelfClass = align ? `align:${align}` : ''
-	let justifyClass = justify
+	const sizeClass = size ? `size:${size}` : ''
+	const fontClass = font ? `font:${font}` : size ? `font:${size}` : ''
+	const assetTypeClass = assetType ? assetType : 'emoji'
+	const assetClass = asset ? `${assetTypeClass}:${asset}` : ''
+	const variantClass = variant ? `variant:${variant}` : ''
+	const shapeClass = shape ? `shape:${shape}` : ''
+	const alignClass = alignSelf ? `align-self:${alignSelf}` : ''
+	const alignSelfClass = align ? `align:${align}` : ''
+	const justifyClass = justify
 		? `justify:${justify}`
 		: shapeClass
 			? 'justify:center'
@@ -55,30 +55,31 @@ function getBlockStyles(props: UiBlockProps): string {
  * Context styles
  */
 function getContainerStyles(props: UiBlockProps): string {
-	let {size, container, dimensions, layer} = props
+	const {size, container, dimensions, layer} = props
 
-	let classes = []
-	let containerClass =
+	const classes = []
+	const containerClass =
 		container === 'ravioli' ? container : container ? `l:${container}` : ''
-	let layerClass = layer ? `layer:${layer}` : ''
+	const layerClass = layer ? `layer:${layer}` : ''
+	if (layerClass) classes.push(layerClass)
 
 	if (containerClass) {
-		let dimensionsClass = dimensions ? `${containerClass}:${dimensions}` : ''
-		let sizeClass =
-			!dimensions && size ? `${containerClass}:${size}` : `size:${size}`
+		const dimensionsClass = dimensions ? `${containerClass}:${dimensions}` : ''
+		const sizeClass =
+			!dimensions && size
+				? `${containerClass}:${size}`
+				: `${dimensionsClass} size:${size}`
 
-		if (dimensionsClass) classes.push(dimensionsClass)
+		if (!sizeClass && dimensionsClass) classes.push(dimensionsClass)
 		if (sizeClass) classes.push(sizeClass)
+		if (!dimensions && !size) classes.push(containerClass)
 	}
-
-	if (containerClass && !dimensions && !size) classes.push(containerClass)
-	if (layerClass) classes.push(layerClass)
 
 	return classes.join(' ').trim()
 }
 
 function getLayoutStyles(props: UiBlockProps): string {
-	let {
+	const {
 		size,
 		height,
 		shape,
@@ -91,17 +92,17 @@ function getLayoutStyles(props: UiBlockProps): string {
 		background,
 	} = props
 
-	let classes = []
-	let thresholdClass = threshold ? `th:${threshold}` : ''
-	let shapeClass = shape ? `shape:${shape}` : ''
-	let breakpointClass = breakpoint ? `bp:${breakpoint}` : ''
+	const classes = []
+	const thresholdClass = threshold ? `th:${threshold}` : ''
+	const shapeClass = shape ? `shape:${shape}` : ''
+	const breakpointClass = breakpoint ? `bp:${breakpoint}` : ''
 	let layoutClass = layout && shape && shape !== 'pill' ? 'stack' : layout
-	let scrollClass = scroll ? `scroll:${scroll}` : ''
-	let heightClass = height ? `h:${height}` : ''
-	let layerClass = layer ? `layer:${layer}` : ''
-	let positionClass = position ? position : ''
-	let backgroundClass = background ? `bg:${background}` : ''
-	let sizeClass = size ? `size:${size}` : ''
+	const scrollClass = scroll ? `scroll:${scroll}` : ''
+	const heightClass = height ? `h:${height}` : ''
+	const layerClass = layer ? `layer:${layer}` : ''
+	const positionClass = position ? position : ''
+	const backgroundClass = background ? `bg:${background}` : ''
+	const sizeClass = size ? `size:${size}` : ''
 
 	if (layoutClass) {
 		layoutClass =
@@ -130,7 +131,7 @@ function getFeedbackStyles(
 	status: UiStatus,
 	context: string,
 ): string {
-	let {
+	const {
 		size,
 		font,
 		asset,
@@ -143,11 +144,11 @@ function getFeedbackStyles(
 		container,
 	} = props
 
-	let classes = []
-	let variantClass = variant ? `variant:${variant}` : ''
-	let sizeClass = size ? `size:${size}` : ''
-	let fontClass = font ? `font:${font}` : ''
-	let shapeClass = shape ? `shape:${shape}` : ''
+	const classes = []
+	const variantClass = variant ? `variant:${variant}` : ''
+	const sizeClass = size ? `size:${size}` : ''
+	const fontClass = font ? `font:${font}` : ''
+	const shapeClass = shape ? `shape:${shape}` : ''
 
 	let layoutClass = ''
 	let alignClass = align ? `align:${align}` : ''
@@ -164,17 +165,17 @@ function getFeedbackStyles(
 		justifyClass = 'justify:center'
 	}
 
-	let statusClass = status ? `status:${status}` : ''
-	let assetTypeClass = asset === 'none' ? '' : assetType ? assetType : 'emoji'
-	let assetClass = status
+	const statusClass = status ? `status:${status}` : ''
+	const assetTypeClass = asset === 'none' ? '' : assetType ? assetType : 'emoji'
+	const assetClass = status
 		? `${assetTypeClass}:${status}`
 		: asset
 			? `${assetTypeClass}:${asset}`
 			: ''
-	let typeClass = context ? `feedback:${context}` : 'feedback'
-	let backgroundClass = context === 'code' ? '' : `bg:${status}:100`
-	let layerClass = layer ? `layer:${layer}` : ''
-	let containerClass =
+	const typeClass = context ? `feedback:${context}` : 'feedback'
+	const backgroundClass = context === 'code' ? '' : `bg:${status}:100`
+	const layerClass = layer ? `layer:${layer}` : ''
+	const containerClass =
 		container && context !== 'code' ? `l:${container}:${size}` : ''
 
 	if (typeClass) classes.push(typeClass)
@@ -196,7 +197,7 @@ function getFeedbackStyles(
 }
 
 function getStyles(props: UiBlockProps): string {
-	let {
+	const {
 		color,
 		size,
 		font,
@@ -215,7 +216,7 @@ function getStyles(props: UiBlockProps): string {
 		background,
 	} = props
 
-	let elementClasses = getBlockStyles({
+	const elementClasses = getBlockStyles({
 		color,
 		size,
 		font,
@@ -227,7 +228,7 @@ function getStyles(props: UiBlockProps): string {
 		variant,
 	})
 
-	let layoutClasses = getLayoutStyles({
+	const layoutClasses = getLayoutStyles({
 		size,
 		shape,
 		layout,
@@ -237,9 +238,9 @@ function getStyles(props: UiBlockProps): string {
 		background,
 	})
 
-	let containerClasses = getContainerStyles({size, container, dimensions})
+	const containerClasses = getContainerStyles({size, container, dimensions})
 
-	let classes = `${containerClasses} ${layoutClasses} ${elementClasses}`
+	const classes = `${containerClasses} ${layoutClasses} ${elementClasses}`
 
 	return classes.trim()
 }
