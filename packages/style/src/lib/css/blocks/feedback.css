@@ -58,3 +58,7 @@ p + [class*='feedback:'] {
 	background-color: var(--color-bg);
 	border-color: var(--color-bg);
 }
+
+.feedback\:code[class*='shape:'][class*='l:stack']:only-child::before {
+	margin-block-end: var(--ui-size-lg);
+}
