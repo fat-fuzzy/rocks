@@ -66,8 +66,9 @@ const PROPS_LAYOUT: {props: UiLayoutProps; expected: string}[] = [
 		props: {
 			layout: 'switcher',
 			size: 'xl',
+			threshold: 'md',
 		},
-		expected: 'l:switcher:xl',
+		expected: 'l:switcher:xl th:md',
 	},
 	{
 		props: {
@@ -81,6 +82,7 @@ const PROPS_LAYOUT: {props: UiLayoutProps; expected: string}[] = [
 			layout: 'switcher',
 			size: 'md',
 			shape: 'round',
+			threshold: 'md',
 		},
 		expected: 'l:stack:md shape:round',
 	},
@@ -89,8 +91,9 @@ const PROPS_LAYOUT: {props: UiLayoutProps; expected: string}[] = [
 			layout: 'switcher',
 			size: 'md',
 			shape: 'pill',
+			threshold: 'md',
 		},
-		expected: 'l:switcher:md shape:pill',
+		expected: 'l:switcher:md th:md shape:pill',
 	},
 	{
 		props: {

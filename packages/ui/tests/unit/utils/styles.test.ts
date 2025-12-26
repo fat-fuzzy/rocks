@@ -39,9 +39,6 @@ describe('style.ts - a library that builds class names from style prop names', (
 			expect(result).toBe('l:stack shape:round')
 		})
 
-		/**
-		 * TODO: throw warning when switcher used without threshold
-		 */
 		test('includes switcher class', () => {
 			const result = styles.getLayoutStyles({
 				layout: 'switcher',
