@@ -46,7 +46,7 @@ function appendModifier(base: string, modifier: string | undefined): string {
 }
 
 function getClass(propName: string, prop: string | undefined): string {
-	if (prop === undefined) {
+	if (prop === undefined || prop === 'none') {
 		return ''
 	}
 
@@ -55,7 +55,7 @@ function getClass(propName: string, prop: string | undefined): string {
 }
 
 function getContainerStyles(props: UiContainerProps): string {
-	const {size, container, dimensions, layer} = props
+	const {container, dimensions, layer, size} = props
 
 	const classes = []
 	const containerClass =
@@ -124,13 +124,13 @@ function getLayoutStyles(props: UiLayoutProps): string {
 		if (sizeClass) classes.push(sizeClass)
 	}
 
-	if (shapeClass) classes.push(shapeClass)
+	if (backgroundClass) classes.push(backgroundClass)
 	if (breakpointClass) classes.push(breakpointClass)
-	if (scrollClass) classes.push(scrollClass)
 	if (heightClass) classes.push(heightClass)
 	if (layerClass) classes.push(layerClass)
 	if (positionClass) classes.push(positionClass)
-	if (backgroundClass) classes.push(backgroundClass)
+	if (scrollClass) classes.push(scrollClass)
+	if (shapeClass) classes.push(shapeClass)
 
 	return classes.join(' ').trim()
 }
@@ -174,13 +174,13 @@ function getBlockStyles(props: UiBlockProps): string {
 			: undefined
 	const justifyClass = getClass('justify', justifyBase)
 
-	if (colorClass) classes.push(colorClass)
-	if (fontClass) classes.push(fontClass)
-	if (assetClass) classes.push(assetClass)
-	if (variantClass) classes.push(variantClass)
 	if (alignClass) classes.push(alignClass)
 	if (alignSelfClass) classes.push(alignSelfClass)
+	if (assetClass) classes.push(assetClass)
+	if (colorClass) classes.push(colorClass)
+	if (fontClass) classes.push(fontClass)
 	if (justifyClass) classes.push(justifyClass)
+	if (variantClass) classes.push(variantClass)
 
 	return classes.join(' ').trim()
 }
@@ -217,11 +217,11 @@ function getFeedbackStyles(
 	const containerClass =
 		container && context !== 'code' ? `l:${container}:${size}` : ''
 
-	if (typeClass) classes.push(typeClass)
-	if (statusClass) classes.push(statusClass)
 	if (assetClass) classes.push(assetClass)
 	if (backgroundClass) classes.push(backgroundClass)
 	if (containerClass) classes.push(containerClass)
+	if (statusClass) classes.push(statusClass)
+	if (typeClass) classes.push(typeClass)
 
 	return classes.join(' ').trim()
 }
