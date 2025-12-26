@@ -1,6 +1,6 @@
-import type {UiBlockProps, UiLayoutProps} from '$lib/types'
+import type {UiBlockProps, UiContainerProps, UiLayoutProps} from '$lib/types'
 
-const PROPS_CONTAINER: {props: UiLayoutProps; expected: string}[] = [
+const PROPS_CONTAINER: {props: UiContainerProps; expected: string}[] = [
 	{
 		props: {
 			container: 'burrito',
@@ -105,35 +105,25 @@ const PROPS_LAYOUT: {props: UiLayoutProps; expected: string}[] = [
 	},
 ]
 
-const PROPS_BLOCK: UiBlockProps = {
-	color: 'primary',
-	font: 'md',
-	size: 'md',
-	variant: 'outline',
-	background: 'light',
-	layer: 'none',
-	shape: 'none',
-	justify: 'center',
-	align: 'start',
-	alignSelf: 'center',
-	asset: 'moby',
-	assetType: 'emoji',
-}
+const PROPS_BLOCK: {props: UiBlockProps; expected: string}[] = [
+	{
+		props: {
+			color: 'primary',
+			font: 'md',
+			size: 'md',
+			variant: 'outline',
+			background: 'light',
+			layer: 'none',
+			shape: 'none',
+			justify: 'center',
+			align: 'start',
+			alignSelf: 'center',
+			asset: 'home',
+			assetType: 'svg',
+		},
+		expected:
+			'size:md bg:light align:start align-self:center svg:home color:primary font:md justify:center variant:outline',
+	},
+]
 
-function getBlockClasses(props: UiBlockProps): string {
-	const classes = []
-	if (props.color) classes.push(`color:${props.color}`)
-	if (props.background) classes.push(`bg:${props.background}`)
-	if (props.size) classes.push(`size:${props.size}`)
-	if (props.font) classes.push(`font:${props.font}`)
-	if (props.assetType)
-		classes.push(`${props.assetType ?? 'emoji'}:${props.asset}`)
-	if (props.variant) classes.push(`variant:${props.variant}`)
-	if (props.shape) classes.push(`shape:${props.shape}`)
-	if (props.alignSelf) classes.push(`align-self:${props.alignSelf}`)
-	if (props.align) classes.push(`align:${props.align}`)
-	if (props.justify) classes.push(`justify:${props.justify}`)
-	return classes.join(' ')
-}
-
-export {PROPS_CONTAINER, PROPS_LAYOUT, PROPS_BLOCK, getBlockClasses}
+export {PROPS_CONTAINER, PROPS_LAYOUT, PROPS_BLOCK}

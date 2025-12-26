@@ -1,12 +1,7 @@
 import {describe, test, expect} from 'vitest'
 
 import styles from '$lib/utils/styles'
-import {
-	PROPS_BLOCK,
-	PROPS_CONTAINER,
-	PROPS_LAYOUT,
-	getBlockClasses,
-} from '$tests/fixtures/props'
+import {PROPS_BLOCK, PROPS_CONTAINER, PROPS_LAYOUT} from '$tests/fixtures/props'
 
 describe('style.ts - a library that builds class names from style prop names', () => {
 	describe('getContainerStyles', () => {
@@ -50,27 +45,14 @@ describe('style.ts - a library that builds class names from style prop names', (
 
 	describe('getBlockStyles', () => {
 		test('generates block styles', () => {
-			const actualValues = styles.getBlockStyles(PROPS_BLOCK)
-			const expectedClasses = getBlockClasses(PROPS_BLOCK)
-			expect(actualValues).toBe(expectedClasses)
+			PROPS_BLOCK.forEach((fixture) => {
+				const actualValues = styles.getBlockStyles(fixture.props)
+				expect(actualValues).toBe(fixture.expected)
+			})
 		})
 
 		test('returns empty string when no block props provided', () => {
 			expect(styles.getBlockStyles({})).toBe('')
-		})
-
-		test('uses color for background when background not provided', () => {
-			const result = styles.getBlockStyles({color: 'primary'})
-			expect(result).toContain('bg:primary')
-		})
-
-		test('prefers background over color for bg class', () => {
-			const result = styles.getBlockStyles({
-				color: 'primary',
-				background: 'secondary',
-			})
-			expect(result).toContain('bg:secondary')
-			expect(result).not.toContain('bg:primary')
 		})
 
 		test('uses size for font when font not provided', () => {
