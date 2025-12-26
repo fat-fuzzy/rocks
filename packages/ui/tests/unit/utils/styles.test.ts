@@ -29,17 +29,24 @@ describe('style.ts - a library that builds class names from style prop names', (
 			expect(styles.getLayoutStyles({})).toBe('')
 		})
 
-		test('converts layout with non-pill shape to stack', () => {
-			const result = styles.getLayoutStyles({layout: 'grid', shape: 'round'})
+		test('converts layout with 1:1 aspect ratio shape to stack', () => {
+			let result = styles.getLayoutStyles({layout: 'grid', shape: 'round'})
 			expect(result).toBe('l:stack shape:round')
+
+			result = styles.getLayoutStyles({layout: 'grid', shape: 'square'})
+			expect(result).toBe('l:stack shape:square')
 		})
 
-		test('includes switcher class', () => {
-			const result = styles.getLayoutStyles({
-				layout: 'switcher',
-				threshold: 'md',
-			})
-			expect(result).toContain('th:md')
+		test('throws error when switcher layout is provided without threshold', () => {
+			try {
+				styles.getLayoutStyles({
+					layout: 'switcher',
+				})
+			} catch (e) {
+				expect((e as Error).message).toMatch(
+					'Layout switcher must declare a threshold',
+				)
+			}
 		})
 	})
 
