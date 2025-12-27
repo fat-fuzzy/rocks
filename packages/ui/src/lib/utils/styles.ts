@@ -137,19 +137,10 @@ function getLayoutStyles(props: UiLayoutProps): string {
 
 	const alignSelfClass = getClass('alignSelf', alignSelf)
 
-	const alignBase =
-		shape === 'round' || shape === 'square'
-			? 'center'
-			: align
-				? align
-				: undefined
+	const alignBase = shape === 'round' || shape === 'square' ? 'center' : align
 	const alignClass = getClass('align', alignBase)
 	const justifyBase =
-		shape === 'round' || shape === 'square'
-			? 'center'
-			: justify
-				? justify
-				: undefined
+		shape === 'round' || shape === 'square' ? 'center' : justify
 
 	const justifyClass = getClass('justify', justifyBase)
 
@@ -181,6 +172,7 @@ function getBlockStyles(props: UiBlockProps): string {
 	const fontBase = font ? font : size
 	const fontClass = getClass('font', fontBase)
 
+	const sizeClass = getClass('size', size)
 	const assetTypeClass = assetType ? assetType : 'emoji'
 	const assetClass = appendModifier(assetTypeClass, asset)
 	const variantClass = getClass('variant', variant)
@@ -188,6 +180,7 @@ function getBlockStyles(props: UiBlockProps): string {
 	if (assetClass) classes.push(assetClass)
 	if (colorClass) classes.push(colorClass)
 	if (fontClass) classes.push(fontClass)
+	if (sizeClass) classes.push(sizeClass)
 	if (variantClass) classes.push(variantClass)
 
 	return classes.join(' ').trim()
