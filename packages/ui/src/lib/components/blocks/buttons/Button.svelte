@@ -39,7 +39,7 @@
 			justify,
 			asset,
 			variant,
-			layout: shape && shape !== 'pill' ? '' : 'switcher',
+			layout: shape && shape !== 'pill' ? undefined : 'switcher',
 			dimensions,
 		}),
 	)
