@@ -141,12 +141,14 @@ const PROPS_BLOCK: {props: UiBlockProps; expected: string}[] = [
 	{
 		props: {
 			color: 'primary',
-			font: 'md',
+			font: 'xs',
+			size: 'md',
 			variant: 'outline',
 			asset: 'home',
 			assetType: 'svg',
 		},
-		expected: 'bg:primary svg:home color:primary font:md variant:outline',
+		expected:
+			'bg:primary svg:home color:primary font:xs size:md variant:outline',
 	},
 ]
 
