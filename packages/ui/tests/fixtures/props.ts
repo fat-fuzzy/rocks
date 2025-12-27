@@ -142,19 +142,11 @@ const PROPS_BLOCK: {props: UiBlockProps; expected: string}[] = [
 		props: {
 			color: 'primary',
 			font: 'md',
-			size: 'md',
 			variant: 'outline',
-			background: 'light',
-			layer: 'none',
-			shape: 'none',
-			justify: 'center',
-			align: 'start',
-			alignSelf: 'center',
 			asset: 'home',
 			assetType: 'svg',
 		},
-		expected:
-			'size:md align:start align-self:center bg:light justify:center svg:home color:primary font:md variant:outline',
+		expected: 'bg:primary svg:home color:primary font:md variant:outline',
 	},
 ]
 

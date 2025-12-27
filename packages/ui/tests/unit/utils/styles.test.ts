@@ -33,6 +33,11 @@ describe('style.ts - a library that builds class names from style prop names', (
 		test('returns empty string when no layout props provided', () => {
 			expect(styles.getLayoutStyles({})).toBe('')
 		})
+
+		test('adds justify center when shape is provided without explicit justify', () => {
+			const result = styles.getLayoutStyles({shape: 'round'})
+			expect(result).toContain('justify:center')
+		})
 	})
 
 	describe('getBlockStyles', () => {
@@ -47,19 +52,9 @@ describe('style.ts - a library that builds class names from style prop names', (
 			expect(styles.getBlockStyles({})).toBe('')
 		})
 
-		test('uses size for font when font not provided', () => {
-			const result = styles.getBlockStyles({size: 'lg'})
-			expect(result).toContain('font:lg')
-		})
-
 		test('defaults assetType to emoji when not provided', () => {
 			const result = styles.getBlockStyles({asset: 'profile'})
 			expect(result).toContain('emoji:profile')
-		})
-
-		test('adds justify center when shape is provided without explicit justify', () => {
-			const result = styles.getBlockStyles({shape: 'round'})
-			expect(result).toContain('justify:center')
 		})
 	})
 
@@ -95,7 +90,6 @@ describe('style.ts - a library that builds class names from style prop names', (
 			expect(classes).toContain('ravioli:md')
 			expect(classes).toContain('l:grid:md')
 			expect(classes).toContain('color:primary')
-			expect(classes).toContain('size:md')
 			expect(classes.length).toBeGreaterThan(3)
 		})
 
@@ -104,6 +98,11 @@ describe('style.ts - a library that builds class names from style prop names', (
 			expect(result).not.toMatch(/^\s/)
 			expect(result).not.toMatch(/\s$/)
 			expect(result).not.toMatch(/\s{2,}/)
+		})
+
+		test('uses size for font when font not provided', () => {
+			const result = styles.getBlockStyles({size: 'lg'})
+			expect(result).toContain('font:lg')
 		})
 	})
 })
