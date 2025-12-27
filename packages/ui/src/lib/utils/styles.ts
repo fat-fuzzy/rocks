@@ -58,8 +58,11 @@ function getContainerStyles(props: UiContainerProps): string {
 	const {container, dimensions, layer, size} = props
 
 	const classes = []
-	const containerClass =
-		container === 'ravioli' ? container : getClass('container', container)
+
+	const containerClass = container?.startsWith('ravioli')
+		? container
+		: getClass('container', container)
+
 	const layerClass = getClass('layer', layer)
 	if (layerClass) classes.push(layerClass)
 
@@ -68,7 +71,9 @@ function getContainerStyles(props: UiContainerProps): string {
 		const sizeClass =
 			!dimensions && size
 				? appendModifier(containerClass, size)
-				: `${dimensionsClass} size:${size}`
+				: size
+					? `${dimensionsClass} size:${size}`
+					: ''
 
 		if (!sizeClass && dimensionsClass) classes.push(dimensionsClass)
 		if (sizeClass) classes.push(sizeClass)
@@ -80,6 +85,9 @@ function getContainerStyles(props: UiContainerProps): string {
 
 function getLayoutStyles(props: UiLayoutProps): string {
 	const {
+		align,
+		alignSelf,
+		justify,
 		size,
 		height,
 		shape,
@@ -103,16 +111,19 @@ function getLayoutStyles(props: UiLayoutProps): string {
 	const positionClass = position ? position : ''
 
 	const layoutBase =
-		layout && shape && (shape === 'round' || shape === 'square')
-			? 'stack'
-			: (layout as string)
+		shape === 'round' || shape === 'square' ? 'stack' : (layout as string)
 
 	if (layoutBase) {
 		if (layoutBase === 'switcher' && !thresholdClass) {
-			throw Error('Layout switcher must declare a threshold')
+			console.warn(
+				'Switcher layout will not wrap without a threshold and no threshold is provided',
+			)
 		}
 
-		let layoutClass = getClass('layout', layoutBase)
+		let layoutClass = layoutBase?.startsWith('ravioli')
+			? layoutBase
+			: getClass('layout', layoutBase)
+
 		if (size) layoutClass = appendModifier(layoutClass, size)
 
 		classes.push(layoutClass)
@@ -124,9 +135,30 @@ function getLayoutStyles(props: UiLayoutProps): string {
 		if (sizeClass) classes.push(sizeClass)
 	}
 
+	const alignSelfClass = getClass('alignSelf', alignSelf)
+
+	const alignBase =
+		shape === 'round' || shape === 'square'
+			? 'center'
+			: align
+				? align
+				: undefined
+	const alignClass = getClass('align', alignBase)
+	const justifyBase =
+		shape === 'round' || shape === 'square'
+			? 'center'
+			: justify
+				? justify
+				: undefined
+
+	const justifyClass = getClass('justify', justifyBase)
+
+	if (alignClass) classes.push(alignClass)
+	if (alignSelfClass) classes.push(alignSelfClass)
 	if (backgroundClass) classes.push(backgroundClass)
 	if (breakpointClass) classes.push(breakpointClass)
 	if (heightClass) classes.push(heightClass)
+	if (justifyClass) classes.push(justifyClass)
 	if (layerClass) classes.push(layerClass)
 	if (positionClass) classes.push(positionClass)
 	if (scrollClass) classes.push(scrollClass)
@@ -136,22 +168,15 @@ function getLayoutStyles(props: UiLayoutProps): string {
 }
 
 function getBlockStyles(props: UiBlockProps): string {
-	const {
-		align,
-		alignSelf,
-		asset,
-		assetType,
-		color,
-		font,
-		justify,
-		shape,
-		size,
-		variant,
-	} = props
+	const {asset, assetType, background, color, font, size, variant} = props
 
-	const layoutStyles = getLayoutStyles(props)
-	const classes = [layoutStyles]
+	const classes = []
+
 	const colorClass = getClass('color', color) // TODO: clarify bg/color/surface
+	if (!background && color) {
+		const backgroundClass = getClass('background', color)
+		if (backgroundClass) classes.push(backgroundClass)
+	}
 
 	const fontBase = font ? font : size
 	const fontClass = getClass('font', fontBase)
@@ -159,27 +184,10 @@ function getBlockStyles(props: UiBlockProps): string {
 	const assetTypeClass = assetType ? assetType : 'emoji'
 	const assetClass = appendModifier(assetTypeClass, asset)
 	const variantClass = getClass('variant', variant)
-	const alignSelfClass = getClass('alignSelf', alignSelf)
 
-	const alignBase = align
-		? align
-		: shape === 'round' || shape === 'square' || shape === 'pill'
-			? 'center'
-			: undefined
-	const alignClass = getClass('align', alignBase)
-	const justifyBase = justify
-		? justify
-		: shape === 'round' || shape === 'square' || shape === 'pill'
-			? 'center'
-			: undefined
-	const justifyClass = getClass('justify', justifyBase)
-
-	if (alignClass) classes.push(alignClass)
-	if (alignSelfClass) classes.push(alignSelfClass)
 	if (assetClass) classes.push(assetClass)
 	if (colorClass) classes.push(colorClass)
 	if (fontClass) classes.push(fontClass)
-	if (justifyClass) classes.push(justifyClass)
 	if (variantClass) classes.push(variantClass)
 
 	return classes.join(' ').trim()
@@ -190,8 +198,7 @@ function getFeedbackStyles(
 	status: UiStatus,
 	context: string,
 ): string {
-	const {align, asset, assetType, justify, container, font, variant, size} =
-		props
+	const {asset, assetType, container, font, size, variant} = props
 
 	const layoutStyles = getLayoutStyles(props)
 	const blockStyles = getBlockStyles({
@@ -199,25 +206,22 @@ function getFeedbackStyles(
 		asset,
 		assetType,
 		variant,
-		align,
-		justify,
 	})
 
 	const classes = [layoutStyles, blockStyles]
 
 	const statusClass = getClass('status', status)
-	const assetTypeClass = asset === 'none' ? '' : assetType ? assetType : 'emoji'
-	const assetClass = status
-		? `${assetTypeClass}:${status}`
-		: asset
-			? `${assetTypeClass}:${asset}`
-			: ''
 	const typeClass = context ? `feedback:${context}` : 'feedback'
 	const backgroundClass = context === 'code' ? '' : `bg:${status}:100`
-	const containerClass =
-		container && context !== 'code' ? `l:${container}:${size}` : ''
+	const containerBase = container?.startsWith('ravioli')
+		? container
+		: getClass('container', container)
 
-	if (assetClass) classes.push(assetClass)
+	const containerClass =
+		container && context !== 'code' && container !== 'raviolink'
+			? appendModifier(containerBase, size)
+			: containerBase
+
 	if (backgroundClass) classes.push(backgroundClass)
 	if (containerClass) classes.push(containerClass)
 	if (statusClass) classes.push(statusClass)
@@ -251,14 +255,14 @@ function getStyles(props: UiBlockProps): string {
 		size,
 		font,
 		shape,
-		align,
-		justify,
 		asset,
 		assetType,
 		variant,
 	})
 
 	const layoutClasses = getLayoutStyles({
+		align,
+		justify,
 		size,
 		shape,
 		layout,
