@@ -120,9 +120,7 @@ function getLayoutStyles(props: UiLayoutProps): string {
 			)
 		}
 
-		let layoutClass = layoutBase?.startsWith('ravioli')
-			? layoutBase
-			: getClass('layout', layoutBase)
+		let layoutClass = getClass('layout', layoutBase)
 
 		if (size) layoutClass = appendModifier(layoutClass, size)
 
@@ -204,7 +202,7 @@ function getFeedbackStyles(
 	const classes = [layoutStyles, blockStyles]
 
 	const statusClass = getClass('status', status)
-	const typeClass = context ? `feedback:${context}` : 'feedback'
+	const typeClass = `feedback:${context}`
 	const backgroundClass = context === 'code' ? '' : `bg:${status}:100`
 	const containerBase = container?.startsWith('ravioli')
 		? container
