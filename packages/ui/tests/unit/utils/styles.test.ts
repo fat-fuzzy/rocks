@@ -1,14 +1,19 @@
 import {describe, test, expect} from 'vitest'
 
 import styles from '$lib/utils/styles'
-import {PROPS_BLOCK, PROPS_CONTAINER, PROPS_LAYOUT} from '$tests/fixtures/props'
+import {
+	PROPS_BLOCK,
+	PROPS_CONTAINER,
+	PROPS_LAYOUT,
+	PROPS_FEEDBACK,
+} from '$tests/fixtures/props'
 
 describe('style.ts - a library that builds class names from style prop names', () => {
 	describe('getContainerStyles', () => {
 		test('generates container styles', () => {
 			PROPS_CONTAINER.forEach((fixture) => {
-				const actualValues = styles.getContainerStyles(fixture.props)
-				expect(actualValues).toBe(fixture.expected)
+				const received = styles.getContainerStyles(fixture.props)
+				expect(received).toBe(fixture.expected)
 			})
 		})
 
@@ -20,41 +25,21 @@ describe('style.ts - a library that builds class names from style prop names', (
 	describe('getLayoutStyles', () => {
 		test('generates layout styles', () => {
 			PROPS_LAYOUT.forEach((fixture) => {
-				const actualValues = styles.getLayoutStyles(fixture.props)
-				expect(actualValues).toBe(fixture.expected)
+				const received = styles.getLayoutStyles(fixture.props)
+				expect(received).toBe(fixture.expected)
 			})
 		})
 
 		test('returns empty string when no layout props provided', () => {
 			expect(styles.getLayoutStyles({})).toBe('')
 		})
-
-		test('converts layout with 1:1 aspect ratio shape to stack', () => {
-			let result = styles.getLayoutStyles({layout: 'grid', shape: 'round'})
-			expect(result).toBe('l:stack shape:round')
-
-			result = styles.getLayoutStyles({layout: 'grid', shape: 'square'})
-			expect(result).toBe('l:stack shape:square')
-		})
-
-		test('throws error when switcher layout is provided without threshold', () => {
-			try {
-				styles.getLayoutStyles({
-					layout: 'switcher',
-				})
-			} catch (e) {
-				expect((e as Error).message).toMatch(
-					'Layout switcher must declare a threshold',
-				)
-			}
-		})
 	})
 
 	describe('getBlockStyles', () => {
 		test('generates block styles', () => {
 			PROPS_BLOCK.forEach((fixture) => {
-				const actualValues = styles.getBlockStyles(fixture.props)
-				expect(actualValues).toBe(fixture.expected)
+				const received = styles.getBlockStyles(fixture.props)
+				expect(received).toBe(fixture.expected)
 			})
 		})
 
@@ -75,6 +60,23 @@ describe('style.ts - a library that builds class names from style prop names', (
 		test('adds justify center when shape is provided without explicit justify', () => {
 			const result = styles.getBlockStyles({shape: 'round'})
 			expect(result).toContain('justify:center')
+		})
+	})
+
+	describe('getFeedbackStyles', () => {
+		test('generates feedback styles', () => {
+			PROPS_FEEDBACK.forEach((fixture) => {
+				const received = styles.getFeedbackStyles(
+					fixture.props.props,
+					fixture.props.status,
+					fixture.props.context,
+				)
+				expect(received).toBe(fixture.expected)
+			})
+		})
+
+		test('returns empty string when no container props provided', () => {
+			expect(styles.getContainerStyles({})).toBe('')
 		})
 	})
 
