@@ -108,6 +108,12 @@ const PROPS_LAYOUT: {props: UiLayoutProps; expected: string}[] = [
 	},
 	{
 		props: {
+			layout: 'switcher',
+		},
+		expected: 'l:switcher',
+	},
+	{
+		props: {
 			layout: 'grid',
 			size: 'md',
 			layer: '1',
@@ -127,6 +133,20 @@ const PROPS_LAYOUT: {props: UiLayoutProps; expected: string}[] = [
 			breakpoint: 'md',
 		},
 		expected: 'l:reveal bp:md',
+	},
+	{
+		props: {
+			layout: 'reveal',
+			background: 'light',
+		},
+		expected: 'l:reveal bg:light',
+	},
+	{
+		props: {
+			layout: 'reveal',
+			alignSelf: 'end',
+		},
+		expected: 'l:reveal align-self:end',
 	},
 	{
 		props: {
@@ -166,6 +186,19 @@ const PROPS_FEEDBACK: {
 			context: 'code',
 		},
 		expected: 'size:md variant:bare status:warning feedback:code',
+	},
+	{
+		props: {
+			props: {
+				size: 'lg',
+				variant: 'fill',
+				container: 'burrito',
+			},
+			status: 'info',
+			context: 'form',
+		},
+		expected:
+			'size:lg variant:fill bg:info:100 l:burrito:lg status:info feedback:form',
 	},
 	{
 		props: {
