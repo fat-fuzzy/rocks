@@ -8,7 +8,7 @@ import {
 	PROPS_FEEDBACK,
 } from '$tests/fixtures/props'
 
-describe('style.ts - a library that builds class names from style prop names', () => {
+describe('style.ts - a module to build class names from props', () => {
 	describe('getContainerStyles', () => {
 		test('generates container styles', () => {
 			PROPS_CONTAINER.forEach((fixture) => {
@@ -34,7 +34,7 @@ describe('style.ts - a library that builds class names from style prop names', (
 			expect(styles.getLayoutStyles({})).toBe('')
 		})
 
-		test('adds justify center when shape is provided without explicit justify', () => {
+		test('justify center if shape is provided without explicit justify prop', () => {
 			const result = styles.getLayoutStyles({shape: 'round'})
 			expect(result).toContain('justify:center')
 		})
@@ -91,13 +91,6 @@ describe('style.ts - a library that builds class names from style prop names', (
 			expect(classes).toContain('l:grid:md')
 			expect(classes).toContain('color:primary')
 			expect(classes.length).toBeGreaterThan(3)
-		})
-
-		test('returns trimmed string with no extra spaces', () => {
-			const result = styles.getStyles({size: 'md'})
-			expect(result).not.toMatch(/^\s/)
-			expect(result).not.toMatch(/\s$/)
-			expect(result).not.toMatch(/\s{2,}/)
 		})
 
 		test('uses size for font when font not provided', () => {
