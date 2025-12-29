@@ -15,6 +15,7 @@ export default defineConfig({
 		},
 	},
 	test: {
+		reporters: ['html'],
 		setupFiles: ['vitest-browser-svelte'],
 		include: [
 			'tests/browser/**/*.{test,spec}.ts',
@@ -30,10 +31,6 @@ export default defineConfig({
 		coverage: {
 			enabled: true,
 			provider: 'v8',
-			include: [
-				'tests/browser/**/*.{test,spec}.ts',
-				'tests/**/*.browser.{test,spec}.ts',
-			],
 			exclude: [
 				'src/app.d.ts',
 				'src/**/definitions.{js,ts}',
