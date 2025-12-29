@@ -164,7 +164,7 @@ function getBlockStyles(props: UiBlockProps): string {
 	const colorClass = getClass('color', color) // TODO: clarify bg/color/surface
 	if (!background && color) {
 		const backgroundClass = getClass('background', color)
-		if (backgroundClass) classes.push(backgroundClass)
+		classes.push(backgroundClass)
 	}
 
 	const fontBase = font ? font : size
@@ -202,8 +202,12 @@ function getFeedbackStyles(
 	const classes = [layoutStyles, blockStyles]
 
 	const statusClass = getClass('status', status)
+	classes.push(statusClass)
+
 	const typeClass = `feedback:${context}`
-	const backgroundClass = context === 'code' ? '' : `bg:${status}:100`
+	classes.push(typeClass)
+
+	const backgroundClass = context === 'code' ? undefined : `bg:${status}:100`
 	const containerBase = container?.startsWith('ravioli')
 		? container
 		: getClass('container', container)
@@ -215,8 +219,6 @@ function getFeedbackStyles(
 
 	if (backgroundClass) classes.push(backgroundClass)
 	if (containerClass) classes.push(containerClass)
-	if (statusClass) classes.push(statusClass)
-	if (typeClass) classes.push(typeClass)
 
 	return classes.join(' ').trim()
 }

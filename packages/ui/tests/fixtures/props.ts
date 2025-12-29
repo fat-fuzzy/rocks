@@ -198,7 +198,7 @@ const PROPS_FEEDBACK: {
 			context: 'form',
 		},
 		expected:
-			'size:lg variant:fill bg:info:100 l:burrito:lg status:info feedback:form',
+			'size:lg variant:fill status:info feedback:form bg:info:100 l:burrito:lg',
 	},
 	{
 		props: {
@@ -213,7 +213,7 @@ const PROPS_FEEDBACK: {
 			context: 'prose',
 		},
 		expected:
-			'l:stack:md align:center justify:center shape:round variant:outline bg:default:100 raviolink status:default feedback:prose',
+			'l:stack:md align:center justify:center shape:round variant:outline status:default feedback:prose bg:default:100 raviolink',
 	},
 ]
 
