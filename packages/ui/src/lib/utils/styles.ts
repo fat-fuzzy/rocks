@@ -114,11 +114,12 @@ function getLayoutStyles(props: UiLayoutProps): string {
 		shape === 'round' || shape === 'square' ? 'stack' : (layout as string)
 
 	if (layoutBase) {
-		if (layoutBase === 'switcher' && !thresholdClass) {
-			console.warn(
-				'Switcher layout will not wrap without a threshold and no threshold is provided',
-			)
-		}
+		// TODO: fix this later
+		// if (layoutBase === 'switcher' && !thresholdClass) {
+		// 	console.warn(
+		// 		'Switcher layout will not wrap without a threshold and no threshold is provided',
+		// 	)
+		// }
 
 		let layoutClass = getClass('layout', layoutBase)
 

@@ -1,5 +1,5 @@
 import validations from '@fat-fuzzy/validation'
-import type {IFormValidator} from '$types'
+import type {IFormValidator, InputTypes, FormToValidate} from '$types'
 const {sanitize, validate} = validations
 
 /**
@@ -10,8 +10,8 @@ const {sanitize, validate} = validations
  * @returns a validation class with utility methods to validate the form and fields, check and manage field statuses, and manage feedback messages
  */
 class FormValidator implements IFormValidator {
-	form: {[key: string]: any} = $state({})
-	inputTypes: {[name: string]: string} = $state({}) // Map of input names to their types
+	form: FormToValidate = $state({})
+	inputTypes: InputTypes = $state({}) // Map of input names to their types
 	errors: string[] = $state([])
 	ajvValidate: any = $state(() => ({}))
 
@@ -24,7 +24,7 @@ class FormValidator implements IFormValidator {
 
 	validationHandler() {
 		return {
-			set: (target: any, prop: string, value: any) => {
+			set: (target: FormToValidate, prop: string, value: any) => {
 				const sanitized = sanitize.sanitizeForm(prop, value, this.inputTypes)
 
 				if (sanitized) {
@@ -34,7 +34,7 @@ class FormValidator implements IFormValidator {
 				}
 				return true
 			},
-			get: (target: any, prop: string) => {
+			get: (target: FormToValidate, prop: string) => {
 				return target[prop]
 			},
 		}
@@ -81,7 +81,8 @@ class FormValidator implements IFormValidator {
 				this.form[field].feedback['error'] = undefined
 			}
 		})
-		const validateMap: {[fieldName: string]: string} = {}
+		const validateMap: {[fieldName: string]: FormDataEntryValue | undefined} =
+			{}
 		fields.forEach((field) => {
 			if (this.form[field].changed) {
 				validateMap[field] = this.form[field].value
@@ -116,7 +117,7 @@ class FormValidator implements IFormValidator {
 		return field?.changed && !field.is_valid
 	}
 
-	public getFieldErrors(name: string): string[] {
+	public getFieldErrors(name: string): string[] | undefined {
 		let errors = this.form[name]?.feedback['error']
 		return errors
 	}
