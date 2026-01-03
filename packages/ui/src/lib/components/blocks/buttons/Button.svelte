@@ -67,7 +67,9 @@
 >
 	{#if children}
 		{@render children()}
-	{:else if label}
-		{label}
+	{:else if shape}
+		<span class="sr-only">{title}</span>
+	{:else}
+		{label ?? title}
 	{/if}
 </button>
