@@ -14,7 +14,7 @@
 		"lint": "turbo run lint",
 		"test": "turbo run test",
 		"format": "prettier --write \"**/*.{ts,tsx,md}\"",
-		"prepare": "husky install",
+		"prepare": "husky",
 		"cz": "cz"
 	},
 	"devDependencies": {
