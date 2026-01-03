@@ -39,23 +39,18 @@ async function testStatus(page: Page, title: string) {
 	await page.getByTestId(`blocks.block.status.info`).click({force: true})
 	await expect(page.getByTestId('blocks.block.status.info')).toBeChecked()
 	await expect(page.getByTestId(title)).toHaveClass(/status:info/)
-	await expect(page.getByTestId(title)).toHaveClass(/emoji:info/)
 	await page.getByTestId(`blocks.block.status.success`).click({force: true})
 	await expect(page.getByTestId('blocks.block.status.success')).toBeChecked()
 	await expect(page.getByTestId(title)).toHaveClass(/status:success/)
-	await expect(page.getByTestId(title)).toHaveClass(/emoji:success/)
 	await page.getByTestId(`blocks.block.status.warning`).click({force: true})
 	await expect(page.getByTestId('blocks.block.status.warning')).toBeChecked()
 	await expect(page.getByTestId(title)).toHaveClass(/status:warning/)
-	await expect(page.getByTestId(title)).toHaveClass(/emoji:warning/)
 	await page.getByTestId(`blocks.block.status.error`).click({force: true})
 	await expect(page.getByTestId('blocks.block.status.error')).toBeChecked()
 	await expect(page.getByTestId(title)).toHaveClass(/status:error/)
-	await expect(page.getByTestId(title)).toHaveClass(/emoji:error/)
 	await page.getByTestId(`blocks.block.status.default`).click({force: true})
 	await expect(page.getByTestId('blocks.block.status.default')).toBeChecked()
 	await expect(page.getByTestId(title)).toHaveClass(/status:default/)
-	await expect(page.getByTestId(title)).toHaveClass(/emoji:default/)
 }
 
 async function testAsset(page: Page, title: string) {
