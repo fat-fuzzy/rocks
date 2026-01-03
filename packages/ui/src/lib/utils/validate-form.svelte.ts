@@ -52,7 +52,7 @@ class FormValidator implements IFormValidator {
 		this.ajvValidate = () => ({})
 	}
 
-	async init(formData: FormData, fields: {[name: string]: string}) {
+	async init(formData: FormData, fields: InputTypes) {
 		if (!formData) {
 			// We shouldn't reach this state: the data should be available, or the server should have returned an error before reaching this point and the form should not have been rendered
 			// console.error('Error fetching form data')
