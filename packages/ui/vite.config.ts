@@ -15,8 +15,11 @@ export default defineConfig({
 			include: ['src/**/*.{js,ts}'],
 			exclude: [
 				'src/app.d.ts',
+				'src/**/*.dom.{js,ts}',
 				'src/**/definitions.{js,ts}',
 				'src/lib/types/*.{js,ts}',
+				'src/lib/**/*.dom.ts',
+				'src/lib/components/*.svelte',
 			],
 		},
 	},

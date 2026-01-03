@@ -1,6 +1,6 @@
 export interface Utils {
 	format: typeof import('$lib/utils/format.js').default
-	clickOutside: typeof import('$lib/utils/click-outside.js')
+	clickOutside: typeof import('$lib/utils/click-outside.dom.js')
 }
 
 export interface Forms {

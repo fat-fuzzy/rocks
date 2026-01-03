@@ -3,7 +3,7 @@ import {test, expect, describe} from 'vitest'
 import {render} from 'vitest-browser-svelte'
 import ClickOutside from './ClickOutside.svelte'
 
-describe('click-outside.ts - Dispatch an event on click outside of a DOM node', () => {
+describe('click-outside.dom.ts - Dispatch an event on click outside of a DOM node', () => {
 	test('Dispatches clickoutside event when clicking outside the element', async () => {
 		const {getByText} = render(ClickOutside)
 		const clickArea = getByText('Outside!')
