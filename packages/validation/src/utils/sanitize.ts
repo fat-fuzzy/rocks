@@ -20,8 +20,9 @@ function replaceChar(s: string): string {
 }
 
 export function sanitizePlainText(input: string): string {
-	let sanitized = input.trim()
+	const sanitized = input.trim()
 	if (sanitized === '') return sanitized
+	// eslint-disable-next-line no-useless-escape
 	return sanitized.replace(/[&<>"'`=\/]/g, replaceChar)
 }
 
@@ -44,7 +45,7 @@ function sanitizeURL(input: string): string {
 	try {
 		new URL(input)
 		return input
-	} catch (_) {
+	} catch {
 		return ''
 	}
 }
@@ -53,7 +54,7 @@ function sanitizeDate(input: string): string {
 	return !isNaN(Date.parse(input)) ? input : ''
 }
 
-async function sanitizeForm(
+function sanitizeForm(
 	name: string,
 	value: string | number,
 	inputTypeMap: {[key: string]: string},

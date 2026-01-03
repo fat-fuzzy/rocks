@@ -21,8 +21,9 @@ function replaceChar(s) {
 
 function sanitizePlainText(input) {
 	if (typeof input !== 'string') return ''
-	let sanitized = input.trim()
+	const sanitized = input.trim()
 	if (sanitized === '') return sanitized
+	// eslint-disable-next-line no-useless-escape
 	return sanitized.replace(/[&<>"'`=\/]/g, replaceChar)
 }
 
@@ -44,7 +45,7 @@ function sanitizeURL(input) {
 	try {
 		new URL(input)
 		return input
-	} catch (_) {
+	} catch {
 		return ''
 	}
 }
@@ -53,7 +54,7 @@ function sanitizeDate(input) {
 	return !isNaN(Date.parse(input))
 }
 
-async function sanitizeForm(name, value, inputTypeMap) {
+function sanitizeForm(name, value, inputTypeMap) {
 	// Retrieve input type from the mapping
 	const inputType = inputTypeMap[name] || 'text' // Default to 'text' if not found
 

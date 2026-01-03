@@ -1,6 +1,6 @@
 export interface Utils {
 	format: typeof import('$lib/utils/format.js').default
-	clickOutside: typeof import('$lib/utils/click-outside.js')
+	clickOutside: typeof import('$lib/utils/click-outside.dom.js')
 }
 
 export interface Forms {
@@ -57,6 +57,7 @@ export interface Raw {
 	CSSTram: typeof import('$lib/components/raw/css-grid-tram.svelte').default
 	CSSVoyager: typeof import('$lib/components/raw/css-grid-voyager.svelte').default
 	CSSUrbanist: typeof import('$lib/components/raw/css-grid-urbanist.svelte').default
+	CSSTheme: typeof import('$lib/components/raw/css-theme.svelte').default
 }
 
 export interface Content {

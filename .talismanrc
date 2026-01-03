@@ -17,4 +17,6 @@ fileignoreconfig:
   checksum: 45ee09c06b4c0ab7638ad405fb013b971967a1431dd5c7e9968459155c79c08c
 - filename: packages/ui/src/lib/components/recipes/grid/LayoutGrid.svelte
   checksum: b02e2cb3273c31887cd12299e9e26dd509f40219823aa97d57379fe06738e539
+- filename: packages/ui/src/lib/types/validation.ts
+  checksum: d9022ac51843b489db39c015cc12974b898f1a366d62c03179fd10429cac9b83
 version: "0.1.10"

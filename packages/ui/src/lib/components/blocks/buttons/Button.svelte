@@ -39,7 +39,7 @@
 			justify,
 			asset,
 			variant,
-			layout: shape && shape !== 'pill' ? '' : 'switcher',
+			layout: shape && shape !== 'pill' ? undefined : 'switcher',
 			dimensions,
 		}),
 	)
@@ -67,7 +67,9 @@
 >
 	{#if children}
 		{@render children()}
-	{:else if label}
-		{label}
+	{:else if shape}
+		<span class="sr-only">{title}</span>
+	{:else}
+		{label ?? title}
 	{/if}
 </button>

@@ -8,7 +8,7 @@ import crypto from 'crypto'
 import Ajv from 'ajv'
 import addFormats from 'ajv-formats'
 import addErrors from 'ajv-errors'
-import schemas from '../in/ajv.schema.sample.js'
+import schemas from '../in/ajv.schemas.js'
 import utils from '../../utils/gpg.js'
 import constants from '../../utils/constants.js'
 

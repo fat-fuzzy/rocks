@@ -33,7 +33,7 @@
 		<EscapeHtml id={slug} html={content.html} size="xl" />
 
 		<div>
-			{#each categories as category}
+			{#each categories as category, index (index)}
 				<PlaybookCollection
 					{category}
 					path={page.url.pathname}

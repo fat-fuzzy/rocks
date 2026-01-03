@@ -1,3 +1,7 @@
+export type UiContainer = 'burrito' | 'taco' | 'frame' | 'ravioli' | 'raviolink'
+
+export type UiLayout = 'stack' | 'switcher' | 'grid' | 'flex' | 'reveal'
+
 export type UiStatus = 'default' | 'info' | 'success' | 'warning' | 'error'
 
 export type UiTextContext = 'form' | 'prose' | 'code'
