@@ -60,26 +60,20 @@ class FormValidator implements IFormValidator {
 	}
 
 	async init(formData: FormData, fields: InputTypes) {
-		if (!formData) {
-			// We shouldn't reach this state: the data should be available, or the server should have returned an error before reaching this point and the form should not have been rendered
-			// console.error('Error fetching form data')
-		} else {
-			// TODO: Figure out inputTypes from schema
-			this.inputTypes = fields
+		this.inputTypes = fields
 
-			/* This makes sure every field is covered  */
-			for (const name in this.inputTypes) {
-				this.form[name] = {
-					feedback: {},
-					touched: false,
-					changed: false,
-				}
+		/* This makes sure every field is covered  */
+		for (const name in this.inputTypes) {
+			this.form[name] = {
+				feedback: {},
+				touched: false,
+				changed: false,
 			}
+		}
 
-			/* This initializes the field value, if any  */
-			for (const [name, value] of formData) {
-				this.form[name].value = value
-			}
+		/* This initializes the field value, if any  */
+		for (const [name, value] of formData) {
+			this.form[name].value = value
 		}
 	}
 
