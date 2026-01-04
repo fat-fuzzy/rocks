@@ -20,6 +20,8 @@ class FormValidator implements IFormValidator {
 	errors: {instancePath: string; message: string}[] = $state([])
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	ajvValidate: any = $state(() => ({}))
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	sanitize: any = sanitize.sanitizeForm
 
 	constructor(validationFunctionName: string) {
 		this.form = new Proxy({}, this.validationHandler())
@@ -35,7 +37,7 @@ class FormValidator implements IFormValidator {
 				field: string,
 				value: FormDataEntryValue,
 			) => {
-				const sanitized = sanitize.sanitizeForm(field, value, this.inputTypes)
+				const sanitized = this.sanitize(field, value, this.inputTypes)
 
 				if (sanitized) {
 					target[field] = sanitized

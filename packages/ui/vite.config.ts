@@ -9,6 +9,7 @@ export default defineConfig({
 			'src/**/*.{test,spec}.{js,ts}',
 			'tests/unit/**/*.{test,spec}.{js,ts}',
 		],
+		exclude: ['tests/unit/**/dom/*.{test,spec}.ts'],
 		coverage: {
 			enabled: true,
 			provider: 'v8',

@@ -108,7 +108,7 @@ import PopoverActor from '$lib/components/blocks/overlays/Popover/actor.svelte.j
  * Utilities
  */
 import constants from '$lib/types/constants.js'
-import * as clickOutside from '$lib/utils/click-outside.dom.js'
+import * as clickOutside from '$lib/utils/dom/click-outside.js'
 import format from '$lib/utils/format.js'
 import type {FatFuzzyUi} from '$types'
 

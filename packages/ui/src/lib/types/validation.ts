@@ -20,6 +20,7 @@ export interface IFormValidator {
 	inputTypes: InputTypes
 	errors: ValidationError[]
 	ajvValidate: unknown
+	sanitize: unknown
 
 	validationHandler(): ProxyHandler<object>
 	validate: () => void
