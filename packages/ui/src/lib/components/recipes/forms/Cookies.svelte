@@ -5,7 +5,7 @@
 
 	import styleHelper from '$lib/utils/styles.js'
 	import popoverActor from '$lib/components/blocks/overlays/Popover/actor.svelte'
-	import FormValidator from '$lib/utils/validate-form.svelte.js'
+	import FormValidator from '$lib/utils/validate-form.svelte'
 	import Button from '$lib/components/blocks/buttons/Button.svelte'
 	import InputGroup from '$lib/components/blocks/inputs/InputGroup.svelte'
 	import InputCheck from '$lib/components/blocks/inputs/InputCheck.svelte'

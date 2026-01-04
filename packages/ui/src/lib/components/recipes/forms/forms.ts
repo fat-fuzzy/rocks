@@ -1,5 +1,5 @@
 import type {InputCommonProps, InputProps, ViewingPreferences} from '$types'
-import FormValidator from '$lib/utils/validate-form.svelte.js'
+import FormValidator from '$lib/utils/validate-form.svelte'
 
 export type FormCommonProps = InputCommonProps & {
 	depth?: number
