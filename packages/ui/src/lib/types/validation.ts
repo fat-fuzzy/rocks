@@ -9,6 +9,10 @@ export type FormToValidate = {
 	}
 }
 
+export type SchemaToValidate = {
+	[fieldName: string]: FormDataEntryValue | undefined
+}
+
 export interface IFormValidator {
 	form: FormToValidate
 	inputTypes: InputTypes

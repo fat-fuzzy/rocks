@@ -1,5 +1,10 @@
 import validations from '@fat-fuzzy/validation'
-import type {IFormValidator, InputTypes, FormToValidate} from '$types'
+import type {
+	IFormValidator,
+	InputTypes,
+	FormToValidate,
+	SchemaToValidate,
+} from '$types'
 const {sanitize, validate} = validations
 
 /**
@@ -27,20 +32,20 @@ class FormValidator implements IFormValidator {
 		return {
 			set: (
 				target: FormToValidate,
-				prop: string,
+				field: string,
 				value: FormDataEntryValue,
 			) => {
-				const sanitized = sanitize.sanitizeForm(prop, value, this.inputTypes)
+				const sanitized = sanitize.sanitizeForm(field, value, this.inputTypes)
 
 				if (sanitized) {
-					target[prop] = sanitized
+					target[field] = sanitized
 				} else {
 					return false
 				}
 				return true
 			},
-			get: (target: FormToValidate, prop: string) => {
-				return target[prop]
+			get: (target: FormToValidate, field: string) => {
+				return target[field]
 			},
 		}
 	}
@@ -76,43 +81,49 @@ class FormValidator implements IFormValidator {
 		}
 	}
 
-	public validate() {
-		const fields = Object.keys(this.form)
+	preValidate(fields: string[]): SchemaToValidate {
 		// Reset error states before validation
 		this.errors = []
-		fields.forEach((field: string) => {
+		const schema: SchemaToValidate = {}
+
+		fields.forEach((field) => {
 			if (this.form[field].changed) {
+				this.form[field].is_valid = true
+				this.form[field].feedback['error'] = undefined
+				schema[field] = this.form[field].value
+			}
+		})
+
+		return schema
+	}
+
+	postValidate(fields: string[]): void {
+		fields.forEach((field) => {
+			const inputErrors = this.errors
+				// eslint-disable-next-line @typescript-eslint/no-explicit-any
+				.filter((error: any) => error.instancePath.substring(1) === field)
+				// eslint-disable-next-line @typescript-eslint/no-explicit-any
+				.map((error: any) => error.message)
+			if (inputErrors.length) {
+				this.form[field].feedback['error'] = inputErrors
+				this.form[field].is_valid = false
+			} else {
 				this.form[field].is_valid = true
 				this.form[field].feedback['error'] = undefined
 			}
 		})
-		const validateMap: {[fieldName: string]: FormDataEntryValue | undefined} =
-			{}
-		fields.forEach((field) => {
-			if (this.form[field].changed) {
-				validateMap[field] = this.form[field].value
-			}
-		})
-		const valid = this.ajvValidate(validateMap)
+	}
 
+	public validate() {
+		const fields = Object.keys(this.form)
+		const schema = this.preValidate(fields)
+
+		const valid = this.ajvValidate(schema)
 		if (!valid) {
 			this.errors = this.ajvValidate.errors
 		}
 
-		fields.forEach((name: string) => {
-			const inputErrors = this.errors
-				// eslint-disable-next-line @typescript-eslint/no-explicit-any
-				.filter((error: any) => error.instancePath.substring(1) === name)
-				// eslint-disable-next-line @typescript-eslint/no-explicit-any
-				.map((error: any) => error.message)
-			if (inputErrors.length) {
-				this.form[name].feedback['error'] = inputErrors
-				this.form[name].is_valid = false
-			} else {
-				this.form[name].is_valid = true
-				this.form[name].feedback['error'] = undefined
-			}
-		})
+		this.postValidate(fields)
 	}
 
 	public formHasErrors(): boolean {
