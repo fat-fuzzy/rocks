@@ -4,6 +4,7 @@ import type {
 	InputTypes,
 	FormToValidate,
 	SchemaToValidate,
+	ValidationError,
 } from '$types'
 const {sanitize, validate} = validations
 
@@ -17,7 +18,7 @@ const {sanitize, validate} = validations
 class FormValidator implements IFormValidator {
 	form: FormToValidate = $state({})
 	inputTypes: InputTypes = $state({}) // Map of input names to their types
-	errors: {instancePath: string; message: string}[] = $state([])
+	errors: ValidationError[] = $state([])
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	ajvValidate: any = $state(() => ({}))
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
