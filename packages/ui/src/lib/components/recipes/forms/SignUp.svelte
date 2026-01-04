@@ -6,7 +6,7 @@
 	import Feedback from '$lib/components/blocks/global/Feedback.svelte'
 	import Input from '$lib/components/blocks/inputs/Input.svelte'
 	import InputPassword from '$lib/components/blocks/inputs/InputPassword.svelte'
-	import FormValidator from '$lib/utils/validate-form.svelte'
+	import FormValidator from '$lib/utils/FormValidator.svelte'
 
 	let {
 		id = 'sign-up-form',

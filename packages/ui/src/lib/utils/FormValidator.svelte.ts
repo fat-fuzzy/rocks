@@ -17,7 +17,7 @@ const {sanitize, validate} = validations
 class FormValidator implements IFormValidator {
 	form: FormToValidate = $state({})
 	inputTypes: InputTypes = $state({}) // Map of input names to their types
-	errors: string[] = $state([])
+	errors: {instancePath: string; message: string}[] = $state([])
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	ajvValidate: any = $state(() => ({}))
 
