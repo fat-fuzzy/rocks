@@ -62,17 +62,18 @@ function sanitizeDate(input) {
 function sanitizeForm(type, value) {
 	// Sanitize input based on its type
 
-	let sanitized = value
+	let sanitized = ''
 
 	switch (type) {
 		case 'password':
 		case 'checkbox':
 		case 'radio':
+			sanitized = value
 			break
 
 		case 'text':
 		case 'textarea':
-		case 'tel':
+		case 'phone':
 		case 'search':
 			sanitized = sanitizePlainText(value)
 			break
@@ -111,6 +112,7 @@ function sanitizeForm(type, value) {
 				? (sanitized = sanitizePlainText(value))
 				: ''
 	}
+
 	return sanitized
 }
 

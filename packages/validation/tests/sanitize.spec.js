@@ -73,8 +73,8 @@ describe('sanitizeForm', () => {
 			expect(result).toContain('&lt;script&gt;')
 		})
 
-		it('should sanitize tel input', () => {
-			const result = sanitizeForm('tel', '+1-555-<script>')
+		it('should sanitize phone input', () => {
+			const result = sanitizeForm('phone', '+1-555-<script>')
 			expect(result).toContain('&lt;script&gt;')
 		})
 	})
