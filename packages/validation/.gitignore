@@ -123,3 +123,4 @@ build
 # Ignore specific temporary files
 src/ajv/out/*.tmp
 tests/out
+html
