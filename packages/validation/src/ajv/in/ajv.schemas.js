@@ -127,7 +127,7 @@ const schemaInputs = {
 		type: 'string',
 		maxLength: 200,
 		errorMessage: {
-			maxLength: messages.getErrorMessage('FORMAT_TEXT_MIN', 200),
+			maxLength: messages.getErrorMessage('FORMAT_TEXT_MAX', 200),
 		},
 	},
 	checkbox: {
@@ -156,10 +156,10 @@ const schemaInputs = {
 }
 
 /**
- * Validation schema for the form: AjvValidator
+ * Validation schema for the form: TestForm
  */
-const schemaAjvValidator = {
-	$id: '#/definitions/AjvValidator',
+const schemaTestForm = {
+	$id: '#/definitions/TestFormSchema',
 	$schema: 'http://json-schema.org/draft-07/schema#',
 	type: 'object',
 	properties: {
@@ -167,7 +167,13 @@ const schemaAjvValidator = {
 		sample_phone: {$ref: '#/definitions/phone'},
 		sample_email: {$ref: '#/definitions/email'},
 		sample_password: {$ref: '#/definitions/password'},
-		confirm_password: {$ref: '#/definitions/confirm_password'},
+		confirm_password: {
+			type: 'string',
+			const: {$data: '1/sample_password'},
+			errorMessage: {
+				const: 'Passwords do not match',
+			},
+		},
 		sample_postcode: {$ref: '#/definitions/postcode'},
 		sample_description: {$ref: '#/definitions/textarea'},
 		sample_checkbox: {$ref: '#/definitions/checkbox'},
@@ -237,5 +243,5 @@ export default {
 	schemaSignUp,
 	schemaUiState,
 	schemaCookiePreferences,
-	schemaAjvValidator,
+	schemaTestForm,
 }

@@ -19,3 +19,4 @@ yarn.lock
 **/dist/
 **/playwright/.cache
 **/playwright_report
+**/out/
