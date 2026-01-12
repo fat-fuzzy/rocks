@@ -201,7 +201,7 @@ const schemaSignUp = {
 			type: 'string',
 			const: {$data: '1/sample_password'},
 			errorMessage: {
-				const: messages.getErrorMessage('FORMAT_PATTERN', 3),
+				const: messages.getErrorMessage('MATCH_PASSWORD'),
 			},
 		},
 	},
