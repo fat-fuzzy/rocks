@@ -25,23 +25,21 @@ class FormValidator implements IFormValidator {
 	sanitize: any = sanitize.sanitizeForm
 
 	constructor(validationFunctionName: string) {
-		this.form = new Proxy({}, this.validationHandler())
-		this.errors = []
 		// @ts-expect-error need to add types for ajvValidate
 		this.ajvValidate = validate[validationFunctionName]
 	}
 
 	validationHandler() {
 		return {
-			set: (
-				target: FormToValidate,
-				field: string,
-				value: FormDataEntryValue,
-			) => {
-				const sanitized = this.sanitize(field, value, this.inputTypes)
+			set: (target: FormToValidate, field: string, value: string | number) => {
+				const inputType = this.inputTypes[field]
+				const sanitized = this.sanitize(inputType, value)
 
 				if (sanitized) {
-					target[field] = sanitized
+					target[field] = {
+						...target[field],
+						value: sanitized,
+					}
 				} else {
 					return false
 				}
@@ -54,7 +52,7 @@ class FormValidator implements IFormValidator {
 	}
 
 	async destroy() {
-		this.form = {}
+		this.form = new Proxy({}, this.validationHandler())
 		this.inputTypes = {}
 		this.errors = []
 		this.ajvValidate = () => ({})
@@ -62,19 +60,41 @@ class FormValidator implements IFormValidator {
 
 	async init(formData: FormData, fields: InputTypes) {
 		this.inputTypes = fields
+		const inputs: FormToValidate = {}
 
-		/* This makes sure every field is covered  */
+		// Make sure every expected field is covered
 		for (const name in this.inputTypes) {
-			this.form[name] = {
+			inputs[name] = {
 				feedback: {},
 				touched: false,
 				changed: false,
 			}
 		}
 
-		/* This initializes the field value, if any  */
+		this.form = new Proxy(inputs, this.validationHandler())
+
+		// Initialize field value
 		for (const [name, value] of formData) {
-			this.form[name].value = value
+			if (typeof value !== 'object') {
+				this.setFieldValue(name, value)
+			} else {
+				// TODO: handle file inputs
+			}
+		}
+	}
+
+	/**
+	 * Safely set a field value with sanitization
+	 */
+	private setFieldValue(name: string, value: string | number): void {
+		const inputType = this.inputTypes[name]
+		const sanitized = this.sanitize(inputType, value)
+
+		if (sanitized !== null) {
+			this.form[name] = {
+				...this.form[name],
+				value: sanitized,
+			}
 		}
 	}
 
@@ -84,9 +104,12 @@ class FormValidator implements IFormValidator {
 		const schema: SchemaToValidate = {}
 
 		fields.forEach((field) => {
-			if (this.form[field].changed) {
+			if (this.form[field]?.changed) {
 				this.form[field].is_valid = true
-				this.form[field].feedback['error'] = undefined
+				this.form[field].feedback = {
+					...this.form[field].feedback,
+					error: undefined,
+				}
 				schema[field] = this.form[field].value
 			}
 		})
@@ -102,8 +125,8 @@ class FormValidator implements IFormValidator {
 				// eslint-disable-next-line @typescript-eslint/no-explicit-any
 				.map((error: any) => error.message)
 			if (inputErrors.length) {
-				this.form[field].feedback['error'] = inputErrors
 				this.form[field].is_valid = false
+				this.form[field].feedback['error'] = inputErrors
 			} else {
 				this.form[field].is_valid = true
 				this.form[field].feedback['error'] = undefined
@@ -138,28 +161,35 @@ class FormValidator implements IFormValidator {
 	}
 
 	public validateInput(event: Event) {
-		if (event.target instanceof HTMLInputElement) {
-			const name = event.target.name
-			const value = event.target.value
-			this.form[name].value = value
-			this.validate()
-		}
+		const target = event.target as HTMLInputElement
+		const name = target.name
+		const value = target.value
+
+		this.setFieldValue(name, value)
+		this.validate()
 	}
 
 	public touchInput(event: Event) {
-		if (event.target instanceof HTMLInputElement) {
-			const field = event.target.name
-			this.form[field].touched = true
+		const target = event.target as HTMLInputElement
+		const name = target.name
+
+		this.form[name] = {
+			...this.form[name],
+			touched: true,
 		}
 	}
 
 	public changeInput(event: Event) {
-		if (event.target instanceof HTMLInputElement) {
-			const name = event.target.name
-			this.form[name].changed = true
+		const target = event.target as HTMLInputElement
+		const name = target.name
+
+		this.form[name] = {
+			...this.form[name],
+			changed: true,
 		}
-		// validate the field when it changes: remove this if you want to validate the form only on `blur` or `submit` events
-		// Use a debounce mechanism for slow/complex/async validations (e.g. API calls)
+		// validate the field when it changes:
+		// - remove this if you want to validate the form only on `blur` or `submit` events
+		// - use a debounce mechanism for slow/complex/async validations (e.g. API calls)
 		this.validateInput(event)
 	}
 }
