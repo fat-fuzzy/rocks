@@ -31,7 +31,7 @@ export type InputFeedbackProps = {
 }
 
 export type ValidationProps = {
-	type: string
+	type?: string
 	validator: IFormValidator
 }
 

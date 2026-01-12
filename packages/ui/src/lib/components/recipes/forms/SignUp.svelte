@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {SignUpProps} from '$types'
+	import type {FormProps} from '$types'
 	import {onMount} from 'svelte'
 	import {enhance} from '$app/forms'
 	import Button from '$lib/components/blocks/buttons/Button.svelte'
@@ -16,14 +16,14 @@
 		formaction, // 'signup'
 		redirect,
 		container,
-		level = 2, // <h*> element level
+		depth = 2, // <h*> element depth
 		size,
 		color = 'primary',
 		variant = 'fill',
 		asset = 'log',
 		align = 'center',
 		background = 'contrast',
-	}: SignUpProps = $props()
+	}: FormProps = $props()
 
 	let boundForm: HTMLFormElement | undefined = $state()
 	let formData: FormData | undefined = $state()
@@ -100,7 +100,7 @@
 		>
 			{#key validator}
 				<header class={`l:stack:${size} text:${align} ${asset}`}>
-					<svelte:element this={`h${level}`}>{title}</svelte:element>
+					<svelte:element this={`h${depth}`}>{title}</svelte:element>
 					<p class={`font:${size}`}>{description}</p>
 				</header>
 				<Input
