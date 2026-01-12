@@ -39,7 +39,7 @@ export const load = async ({locals, params, parent}) => {
 			content = content[0]
 		}
 	} else if (category === 'graphics') {
-		redirect(301, '/doc/usage/sketch')
+		redirect(301, '/about/usage/sketch')
 	} else if (slug === component && category) {
 		const categoryMarkdowns = markdowns[category]
 		if (!categoryMarkdowns?.length) {
