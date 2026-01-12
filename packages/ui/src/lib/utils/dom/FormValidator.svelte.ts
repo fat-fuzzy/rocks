@@ -32,16 +32,9 @@ class FormValidator implements IFormValidator {
 	validationHandler() {
 		return {
 			set: (target: FormToValidate, field: string, value: string | number) => {
-				const inputType = this.inputTypes[field]
-				const sanitized = this.sanitize(inputType, value)
-
-				if (sanitized) {
-					target[field] = {
-						...target[field],
-						value: sanitized,
-					}
-				} else {
-					return false
+				target[field] = {
+					...target[field],
+					value: this.sanitize(this.inputTypes[field], value),
 				}
 				return true
 			},
@@ -124,6 +117,7 @@ class FormValidator implements IFormValidator {
 				.filter((error: any) => error.instancePath.substring(1) === field)
 				// eslint-disable-next-line @typescript-eslint/no-explicit-any
 				.map((error: any) => error.message)
+
 			if (inputErrors.length) {
 				this.form[field].is_valid = false
 				this.form[field].feedback['error'] = inputErrors
