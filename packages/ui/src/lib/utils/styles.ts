@@ -172,11 +172,15 @@ function getBlockStyles(props: UiBlockProps): string {
 	const fontClass = getClass('font', fontBase)
 
 	const sizeClass = getClass('size', size)
-	const assetTypeClass = assetType ? assetType : 'emoji'
-	const assetClass = appendModifier(assetTypeClass, asset)
+
+	if (asset) {
+		const assetTypeClass = assetType ? assetType : 'emoji'
+		const assetClass = appendModifier(assetTypeClass, asset)
+		if (assetClass) classes.push(assetClass)
+	}
+
 	const variantClass = getClass('variant', variant)
 
-	if (assetClass) classes.push(assetClass)
 	if (colorClass) classes.push(colorClass)
 	if (fontClass) classes.push(fontClass)
 	if (sizeClass) classes.push(sizeClass)
@@ -204,6 +208,11 @@ function getFeedbackStyles(
 
 	const statusClass = getClass('status', status)
 	classes.push(statusClass)
+
+	const defaultAssetType = assetType ?? 'emoji'
+	const defaultAssetClass = appendModifier(defaultAssetType, status)
+
+	classes.push(defaultAssetClass)
 
 	const typeClass = `feedback:${context}`
 	classes.push(typeClass)
