@@ -580,6 +580,9 @@ importers:
       '@fat-fuzzy/config':
         specifier: workspace:*
         version: link:../config
+      '@fat-fuzzy/intl':
+        specifier: workspace:*
+        version: link:../intl
       '@fat-fuzzy/style':
         specifier: workspace:*
         version: link:../style
