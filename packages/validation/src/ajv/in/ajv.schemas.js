@@ -171,7 +171,7 @@ const schemaTestForm = {
 			type: 'string',
 			const: {$data: '1/sample_password'},
 			errorMessage: {
-				const: 'Passwords do not match',
+				const: messages.getErrorMessage('MATCH_PASSWORD'),
 			},
 		},
 		sample_postcode: {$ref: '#/definitions/postcode'},
@@ -201,7 +201,7 @@ const schemaSignUp = {
 			type: 'string',
 			const: {$data: '1/sample_password'},
 			errorMessage: {
-				const: 'Passwords do not match',
+				const: messages.getErrorMessage('FORMAT_PATTERN', 3),
 			},
 		},
 	},
