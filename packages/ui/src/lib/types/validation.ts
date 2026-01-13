@@ -9,11 +9,18 @@ export type FormToValidate = {
 	}
 }
 
+export type SchemaToValidate = {
+	[fieldName: string]: FormDataEntryValue | undefined
+}
+
+export type ValidationError = {instancePath: string; message: string}
+
 export interface IFormValidator {
 	form: FormToValidate
 	inputTypes: InputTypes
-	errors: string[]
+	errors: ValidationError[]
 	ajvValidate: unknown
+	sanitize: unknown
 
 	validationHandler(): ProxyHandler<object>
 	validate: () => void

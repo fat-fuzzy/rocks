@@ -25,9 +25,12 @@ const {validate} = validations
 const validationFunction = validate[validationFunctionName]
 ```
 
-You can see a full example of a form validation helper class in `src/example/validate-form.ts`
+## Examples
 
-Additionally, you can see an example with a Svelte component in the package `@fat-fuzzy/ui`: the component `components/recipes/forms/SignUp.svelte` uses the validation function `SignUpValidationFunction` defined here.
+You can see a full usage example in the package `@fat-fuzzy/ui`
+
+- form validation helper class in `src/example/FormValidator.svelte.ts`
+- usage with a Svelte component in `components/recipes/forms/SignUp.svelte`. The component uses the validation function `SignUpValidationFunction` defined here.
 
 ## TODO
 

@@ -28,7 +28,7 @@ class AppContext {
 		let updated = false
 
 		if (data.has('brightness')) {
-			let brightness = String(data.get('brightness'))
+			const brightness = String(data.get('brightness'))
 			// This sets the inital brightness value and enables the sync of JS toggles
 			if (!this.state.brightness || this.state.brightness !== brightness) {
 				this.state.brightness = brightness
@@ -41,8 +41,8 @@ class AppContext {
 		}
 
 		if (data.has('contrast')) {
-			let contrast = String(data.get('contrast'))
-			// This sets the inital contrast value and enables the sync of JS toggles
+			const contrast = String(data.get('contrast'))
+			// This sets the initial contrast value and enables the sync of JS toggles
 			if (!this.state.contrast || this.state.contrast !== contrast) {
 				this.state.contrast = contrast
 			} else {
@@ -54,7 +54,7 @@ class AppContext {
 		}
 
 		if (data.has('consent-submit')) {
-			let legitimateInterest = data.get('legitimateInterest')
+			const legitimateInterest = data.get('legitimateInterest')
 			this.state.consent.legitimateInterest =
 				legitimateInterest?.toString() === 'on'
 			updated = true

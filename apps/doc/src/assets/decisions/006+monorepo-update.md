@@ -9,7 +9,7 @@ tags: ['architecture', 'tooling']
 
 ## Context and Problem
 
-Managing and deploying a monorepo poses a number of problems I had not foreseen ( see [1 - Use Monorepo](/doc/decisions/use-monorepo)):
+Managing and deploying a monorepo poses a number of problems I had not foreseen ( see [1 - Use Monorepo](/about/decisions/use-monorepo)):
 
 - how to deploy individual packages that use shared resources?
 - how to test that interdependent packages are built correctly ?

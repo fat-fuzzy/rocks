@@ -36,14 +36,14 @@ const AJV_OPTIONS = {
 // Add your Schemas here
 const FormInputs = schemas.schemaInputs
 const SignUpSchema = schemas.schemaSignUp
-// const AjvValidator = schemas.schemaAjvValidator
+const TestForm = schemas.schemaTestForm
 const UiStateSchema = schemas.schemaUiState
 const CookiePreferencesSchema = schemas.schemaCookiePreferences
 const ajv = new Ajv({
 	...AJV_OPTIONS,
 	schemas: [
 		FormInputs,
-		// AjvValidator,
+		TestForm,
 		SignUpSchema,
 		UiStateSchema,
 		CookiePreferencesSchema,
@@ -57,7 +57,7 @@ addErrors(ajv)
  * Generate validation functions for each schema
  */
 let moduleCode = standaloneCode(ajv, {
-	// FormValidationFunction: '#/definitions/AjvValidator',
+	TestFormValidationFunction: '#/definitions/TestFormSchema',
 	SignUpValidationFunction: '#/definitions/SignUpSchema',
 	UiStateValidationFunction: '#/definitions/UiStateSchema',
 	CookiePreferencesValidationFunction: '#/definitions/CookiePreferencesSchema',

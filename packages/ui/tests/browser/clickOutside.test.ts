@@ -1,5 +1,5 @@
-import {userEvent} from 'vitest/browser'
 import {test, expect, describe} from 'vitest'
+import {userEvent} from 'vitest/browser'
 import {render} from 'vitest-browser-svelte'
 import ClickOutside from './ClickOutside.svelte'
 

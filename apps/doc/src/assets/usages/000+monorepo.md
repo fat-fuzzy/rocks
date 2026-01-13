@@ -19,7 +19,7 @@ The repository is organized into 2 workspaces (these are top-level directories i
 - **apps** : contains client facing code, organized by project. It contains **apps/doc** which is this site!
 - **packages** : contains UI, web graphics, logic and experiments libraries, as well as common config
 
-You can learn more about individual packages in the [Packages](/doc/usage/packages) section.
+You can learn more about individual packages in the [Packages](/about/usage/packages) section.
 
 ## Requirements
 
