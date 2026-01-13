@@ -1,5 +1,5 @@
 /**
- *  Simple sanitization functions to use before validation
+ *  Basic sanitization functions to use before validation
  */
 import path from 'node:path'
 
