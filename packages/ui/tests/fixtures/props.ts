@@ -185,7 +185,7 @@ const PROPS_FEEDBACK: {
 			status: 'warning',
 			context: 'code',
 		},
-		expected: 'size:md variant:bare status:warning feedback:code',
+		expected: 'size:md variant:bare status:warning emoji:warning feedback:code',
 	},
 	{
 		props: {
@@ -198,7 +198,7 @@ const PROPS_FEEDBACK: {
 			context: 'form',
 		},
 		expected:
-			'size:lg variant:fill status:info feedback:form bg:info:100 l:burrito:lg',
+			'size:lg variant:fill status:info emoji:info feedback:form bg:info:100 l:burrito:lg',
 	},
 	{
 		props: {
@@ -213,7 +213,7 @@ const PROPS_FEEDBACK: {
 			context: 'prose',
 		},
 		expected:
-			'l:stack:md align:center justify:center shape:round variant:outline status:default feedback:prose bg:default:100 raviolink',
+			'l:stack:md align:center justify:center shape:round variant:outline status:default emoji:default feedback:prose bg:default:100 raviolink',
 	},
 ]
 
