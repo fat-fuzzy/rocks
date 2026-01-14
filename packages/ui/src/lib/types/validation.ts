@@ -1,12 +1,14 @@
 export type InputTypes = {[name: string]: string}
+export type FieldToValidate = {
+	feedback: {[key: string]: string[] | undefined}
+	touched: boolean
+	changed: boolean
+	value?: FormDataEntryValue
+	is_valid?: boolean
+}
+
 export type FormToValidate = {
-	[key: string]: {
-		feedback: {[key: string]: string[] | undefined}
-		touched: boolean
-		changed: boolean
-		value?: FormDataEntryValue
-		is_valid?: boolean
-	}
+	[key: string]: FieldToValidate
 }
 
 export type SchemaToValidate = {
