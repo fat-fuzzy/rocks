@@ -32,11 +32,12 @@ class FormValidator implements IFormValidator {
 	validationHandler() {
 		return {
 			set: (target: FormToValidate, field: string, value: string | number) => {
-				target[field] = {
-					...target[field],
-					value: this.sanitize(this.inputTypes[field], value),
-				}
-				return true
+				// TODO: this is not used: why ?
+				return Reflect.set(
+					target,
+					field,
+					this.sanitize(this.inputTypes[field], value),
+				)
 			},
 			get: (target: FormToValidate, field: string) => {
 				return target[field]
@@ -69,22 +70,10 @@ class FormValidator implements IFormValidator {
 		// Initialize field value
 		for (const [name, value] of formData) {
 			if (typeof value !== 'object') {
-				this.setFieldValue(name, value)
+				this.form[name].value = this.sanitize(this.inputTypes[name], value)
 			} else {
 				// TODO: handle file inputs
 			}
-		}
-	}
-
-	/**
-	 * Safely set a field value with sanitization
-	 */
-	private setFieldValue(name: string, value: string | number): void {
-		const inputType = this.inputTypes[name]
-		const sanitized = this.sanitize(inputType, value)
-		this.form[name] = {
-			...this.form[name],
-			value: sanitized,
 		}
 	}
 
@@ -156,7 +145,10 @@ class FormValidator implements IFormValidator {
 		const name = target.name
 		const value = target.value
 
-		this.setFieldValue(name, value)
+		this.form[name] = {
+			...this.form[name],
+			value: this.sanitize(this.inputTypes[name], value),
+		}
 		this.validate()
 	}
 
