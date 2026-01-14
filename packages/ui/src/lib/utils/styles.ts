@@ -176,7 +176,7 @@ function getBlockStyles(props: UiBlockProps): string {
 	if (asset) {
 		const assetTypeClass = assetType ? assetType : 'emoji'
 		const assetClass = appendModifier(assetTypeClass, asset)
-		if (assetClass) classes.push(assetClass)
+		classes.push(assetClass)
 	}
 
 	const variantClass = getClass('variant', variant)
