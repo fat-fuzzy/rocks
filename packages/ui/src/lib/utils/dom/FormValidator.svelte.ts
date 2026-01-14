@@ -82,12 +82,9 @@ class FormValidator implements IFormValidator {
 	private setFieldValue(name: string, value: string | number): void {
 		const inputType = this.inputTypes[name]
 		const sanitized = this.sanitize(inputType, value)
-
-		if (sanitized !== null) {
-			this.form[name] = {
-				...this.form[name],
-				value: sanitized,
-			}
+		this.form[name] = {
+			...this.form[name],
+			value: sanitized,
 		}
 	}
 
