@@ -24,6 +24,7 @@ export interface IFormValidator {
 	ajvValidate: unknown
 	sanitize: unknown
 
+	validationHandler?(fieldName: string): ProxyHandler<object> // Do not use this with Svelte runes
 	setFieldValue?(field: string, value: string): void
 	validate: () => void
 	init(formData: FormData, fields: InputTypes): void

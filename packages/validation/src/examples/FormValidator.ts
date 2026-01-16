@@ -3,9 +3,10 @@ import type {
 	IFormValidator,
 	InputTypes,
 	FormToValidate,
+	FieldToValidate,
 	SchemaToValidate,
 	ValidationError,
-} from '$types'
+} from './validation'
 const {sanitize, validate} = validations
 
 /**
@@ -16,17 +17,42 @@ const {sanitize, validate} = validations
  * @returns a validation class with utility methods to validate the form and fields, check and manage field statuses, and manage feedback messages
  */
 class FormValidator implements IFormValidator {
-	form: FormToValidate = $state({})
-	inputTypes: InputTypes = $state({}) // Map of input names to their types
-	errors: ValidationError[] = $state([])
+	form: FormToValidate = {}
+	inputTypes: InputTypes = {} // Map of input names to their types
+	errors: ValidationError[] = []
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	ajvValidate: any = $state(() => ({}))
+	ajvValidate: any = () => ({})
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	sanitize: any = sanitize.sanitizeForm
 
 	constructor(validationFunctionName: string) {
 		// @ts-expect-error need to add types for ajvValidate
 		this.ajvValidate = validate[validationFunctionName]
+	}
+
+	validationHandler(fieldName: string) {
+		return {
+			set: (
+				target: FieldToValidate,
+				prop: string,
+				value: FormDataEntryValue,
+			) => {
+				let sanitized = value
+
+				if (prop === 'value') {
+					const inputType = this.inputTypes[fieldName]
+					sanitized = this.sanitize(inputType, value)
+				}
+
+				return Reflect.set(target, prop, sanitized)
+			},
+			get: (target: FieldToValidate, prop: string) => {
+				// if (prop in target && prop === 'value') {
+				// 	return this.sanitize(this.inputTypes[prop], target[prop])
+				// }
+				return Reflect.get(target, prop)
+			},
+		}
 	}
 
 	async destroy() {
@@ -39,38 +65,26 @@ class FormValidator implements IFormValidator {
 	async init(formData: FormData, fields: InputTypes) {
 		this.inputTypes = fields
 
-		// Initialize all fields
+		// Make sure every expected field is covered
 		for (const name in this.inputTypes) {
-			this.form[name] = {
+			const fieldData: FieldToValidate = {
 				feedback: {},
 				touched: false,
 				changed: false,
 				value: undefined,
 				is_valid: undefined,
 			}
+			this.form[name] = new Proxy(fieldData, this.validationHandler(name))
 		}
-
-		// Set initial values with sanitization
+		// Initialize field value
 		for (const [name, value] of formData) {
-			if (typeof value === 'string') {
-				this.setFieldValue(name, value)
-			} else {
+			if (typeof value !== 'string') {
 				// TODO: handle file inputs
+				continue
 			}
-		}
-	}
 
-	/**
-	 * Set a field value with automatic sanitization
-	 */
-	setFieldValue(field: string, value: string): void {
-		const inputType = this.inputTypes[field]
-		const sanitized = this.sanitize(inputType, value)
-
-		// Update the entire field object to trigger Svelte reactivity
-		this.form[field] = {
-			...this.form[field],
-			value: sanitized,
+			// This assignment triggers the Proxy set handler!
+			this.form[name].value = value
 		}
 	}
 
@@ -133,7 +147,8 @@ class FormValidator implements IFormValidator {
 	}
 
 	public getFieldErrors(name: string): string[] | undefined {
-		return this.form[name]?.feedback.error
+		const errors = this.form[name]?.feedback.error
+		return errors
 	}
 
 	public validateInput(event: Event) {
@@ -141,7 +156,8 @@ class FormValidator implements IFormValidator {
 		const name = target.name
 		const value = target.value
 
-		this.setFieldValue(name, value)
+		this.form[name].value = value
+
 		this.validate()
 	}
 
@@ -149,20 +165,14 @@ class FormValidator implements IFormValidator {
 		const target = event.target as HTMLInputElement
 		const name = target.name
 
-		this.form[name] = {
-			...this.form[name],
-			touched: true,
-		}
+		this.form[name].touched = true
 	}
 
 	public changeInput(event: Event) {
 		const target = event.target as HTMLInputElement
 		const name = target.name
 
-		this.form[name] = {
-			...this.form[name],
-			changed: true,
-		}
+		this.form[name].changed = true
 		// validate the field when it changes:
 		// - remove this if you want to validate the form only on `blur` or `submit` events
 		// - use a debounce mechanism for slow/complex/async validations (e.g. API calls)

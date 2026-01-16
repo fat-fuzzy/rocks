@@ -352,14 +352,13 @@ describe('FormValidator - a class that validates form inputs using validation fu
 		})
 	})
 
-	describe('validationHandler proxy', () => {
+	describe('setFieldValue', () => {
 		it('should sanitize values when setting', async () => {
 			const formData = new FormData()
 
 			if (INPUTS.sample_email.value.unsanitized) {
 				formData.append('sample_email', INPUTS.sample_email.value.unsanitized)
 			}
-
 			await validator.init(formData, {sample_email: 'email'})
 
 			expect(mockSanitize).toHaveBeenCalledWith(

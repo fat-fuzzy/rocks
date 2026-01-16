@@ -7,7 +7,7 @@ describe('FormValidator - sanitize inputs before validation', () => {
 	let validator: FormValidator
 
 	beforeEach(() => {
-		validator = new FormValidator('MockValidationFunction')
+		validator = new FormValidator('TestFormValidationFunction')
 	})
 
 	describe('init', () => {
@@ -28,15 +28,17 @@ describe('FormValidator - sanitize inputs before validation', () => {
 		})
 	})
 
-	describe('validationHandler proxy', () => {
+	describe('setFieldValue', () => {
 		it('should sanitize values when setting', async () => {
 			const formData = new FormData()
 
 			if (INPUTS.sample_email.value.unsanitized) {
 				formData.append('sample_email', INPUTS.sample_email.value.unsanitized)
+				validator.setFieldValue(
+					'sample_email',
+					INPUTS.sample_email.value.unsanitized,
+				)
 			}
-
-			await validator.init(formData, {sample_email: 'email'})
 
 			const sanitizedValue = validator.form.sample_email.value
 
