@@ -1,7 +1,7 @@
 import type {Snippet} from 'svelte'
 import type {
 	UiStatus,
-	Autocomplete,
+	AutoComplete,
 	FuzzyPayload,
 	UiBlockProps,
 	IFormValidator,
@@ -31,7 +31,7 @@ export type InputFeedbackProps = {
 }
 
 export type ValidationProps = {
-	type: string
+	type?: string
 	validator: IFormValidator
 }
 
@@ -40,7 +40,7 @@ export type InputCommonProps = {
 	name: string
 	label: string
 	placeholder?: string
-	autocomplete?: Autocomplete
+	autocomplete?: AutoComplete
 
 	/**
 	 * State props

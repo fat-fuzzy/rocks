@@ -12,7 +12,7 @@ import Toaster from '$lib/components/blocks/overlays/Toast/actor.svelte.js'
 import PopoverActor from '$lib/components/blocks/overlays/Popover/actor.svelte.js'
 
 import constants from '$lib/types/constants.js'
-import * as clickOutside from '$lib/utils/click-outside.js'
+import * as clickOutside from '$lib/utils/dom/click-outside.js'
 import format from '$lib/utils/format.js'
 
 export interface Utils {

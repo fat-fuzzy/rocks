@@ -4,7 +4,8 @@
 
 	let {
 		id = 'Feedback',
-		asset = 'default',
+		asset,
+		assetType = 'emoji',
 		element = 'div',
 		title,
 		text,
@@ -17,7 +18,7 @@
 		font,
 		variant,
 		layer,
-		container = 'raviolink ',
+		container = 'raviolink',
 		children,
 	}: FeedbackProps = $props()
 
@@ -27,6 +28,7 @@
 				size,
 				font,
 				asset,
+				assetType,
 				shape,
 				variant,
 				layer,

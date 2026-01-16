@@ -20,7 +20,7 @@ Over the years, I have seen industry focus go back and forth between languages, 
 
 Ultimately though, managing change is a big chunk of what my job entails.
 
-This blog (and this site) is a reflection of my [evolving posture](/doc/decisions) within those cycles ♻️
+This blog (and this site) is a reflection of my [evolving posture](/about/decisions) within those cycles ♻️
 
 ## The Web
 

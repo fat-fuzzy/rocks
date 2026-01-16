@@ -1,4 +1,5 @@
 <script lang="ts">
+	import type {Markdown} from '$types'
 	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
 	import playbook from '@fat-fuzzy/playbook'
@@ -32,7 +33,7 @@
 		<EscapeHtml id={slug} html={content.html} size="xl" />
 
 		<div>
-			{#each categories as category}
+			{#each categories as category, index (index)}
 				<PlaybookCollection
 					{category}
 					path={page.url.pathname}
@@ -44,8 +45,9 @@
 				>
 					<EscapeHtml
 						id={`${slug}-${category}`}
-						html={markdowns.categories.find(({meta}) => meta.slug === category)
-							.html}
+						html={markdowns.categories.find(
+							({meta}: Markdown) => meta.slug === category,
+						).html}
 						size="xl"
 					/>
 				</PlaybookCollection>

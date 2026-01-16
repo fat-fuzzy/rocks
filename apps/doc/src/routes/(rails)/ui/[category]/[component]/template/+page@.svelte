@@ -12,10 +12,12 @@
 	let content = $derived(page.data.content)
 </script>
 
-<PlaybookRaw
-	{title}
-	{category}
-	{content}
-	path={`${path}${page.url.hash}`}
-	{formaction}
-/>
+{#if category && title}
+	<PlaybookRaw
+		{title}
+		{category}
+		{content}
+		path={`${path}${page.url.hash}`}
+		{formaction}
+	/>
+{/if}

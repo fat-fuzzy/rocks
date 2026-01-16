@@ -42,7 +42,7 @@ You can see how this is done for the UI library package: [exports from @fat-fuzz
 
 ### Building the pages
 
-Build the routing structure using this example: [UI route for @fat-fuzzy/doc](https://github.com/fat-fuzzy/rocks/tree/main/apps/doc/src/routes/(rails)/ui)
+Build the routing structure using this example: [UI route for @fat-fuzzy/doc](<https://github.com/fat-fuzzy/rocks/tree/main/apps/doc/src/routes/(rails)/ui>)
 
 ### Providing content
 

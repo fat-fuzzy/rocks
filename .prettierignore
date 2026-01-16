@@ -5,6 +5,9 @@ node_modules
 .env.*
 !.env.example
 
+# Ignore Husky hooks
+.husky/
+
 # Ignore files for PNPM, NPM and YARN
 pnpm-lock.yaml
 pnpm-workspace.yaml
@@ -16,3 +19,4 @@ yarn.lock
 **/dist/
 **/playwright/.cache
 **/playwright_report
+**/out/

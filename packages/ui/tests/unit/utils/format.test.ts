@@ -19,7 +19,7 @@ describe('format.ts - formatting utilities', () => {
 	})
 
 	test('capitalizes strings', () => {
-		let capitalized = format.capitalize('hello world')
+		const capitalized = format.capitalize('hello world')
 		expect(capitalized).toBe('Hello world')
 	})
 })

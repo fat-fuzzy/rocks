@@ -1,5 +1,5 @@
 // Reexport your entry components here
-/// <reference path="./types/index.ts" />
+import './types/index'
 
 export type * from '$types'
 /**
@@ -108,7 +108,7 @@ import PopoverActor from '$lib/components/blocks/overlays/Popover/actor.svelte.j
  * Utilities
  */
 import constants from '$lib/types/constants.js'
-import * as clickOutside from '$lib/utils/click-outside.js'
+import * as clickOutside from '$lib/utils/dom/click-outside.js'
 import format from '$lib/utils/format.js'
 import type {FatFuzzyUi} from '$types'
 
@@ -167,7 +167,7 @@ const recipes = {
 }
 
 const raw = {
-	// CSSTheme,
+	CSSTheme,
 	CSSMetro,
 	CSSRailway,
 	CSSSteam,
