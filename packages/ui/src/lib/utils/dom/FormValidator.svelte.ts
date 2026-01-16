@@ -29,24 +29,8 @@ class FormValidator implements IFormValidator {
 		this.ajvValidate = validate[validationFunctionName]
 	}
 
-	validationHandler() {
-		return {
-			set: (target: FormToValidate, field: string, value: string | number) => {
-				// TODO: this is not used: why ?
-				return Reflect.set(
-					target,
-					field,
-					this.sanitize(this.inputTypes[field], value),
-				)
-			},
-			get: (target: FormToValidate, field: string) => {
-				return target[field]
-			},
-		}
-	}
-
 	async destroy() {
-		this.form = new Proxy({}, this.validationHandler())
+		this.form = {}
 		this.inputTypes = {}
 		this.errors = []
 		this.ajvValidate = () => ({})
@@ -54,26 +38,39 @@ class FormValidator implements IFormValidator {
 
 	async init(formData: FormData, fields: InputTypes) {
 		this.inputTypes = fields
-		const inputs: FormToValidate = {}
 
-		// Make sure every expected field is covered
+		// Initialize all fields
 		for (const name in this.inputTypes) {
-			inputs[name] = {
+			this.form[name] = {
 				feedback: {},
 				touched: false,
 				changed: false,
+				value: undefined,
+				is_valid: undefined,
 			}
 		}
 
-		this.form = new Proxy(inputs, this.validationHandler())
-
-		// Initialize field value
+		// Set initial values with sanitization
 		for (const [name, value] of formData) {
-			if (typeof value !== 'object') {
-				this.form[name].value = this.sanitize(this.inputTypes[name], value)
+			if (typeof value === 'string') {
+				this.setFieldValue(name, value)
 			} else {
 				// TODO: handle file inputs
 			}
+		}
+	}
+
+	/**
+	 * Set a field value with automatic sanitization
+	 */
+	setFieldValue(field: string, value: string): void {
+		const inputType = this.inputTypes[field]
+		const sanitized = this.sanitize(inputType, value)
+
+		// Update the entire field object to trigger Svelte reactivity
+		this.form[field] = {
+			...this.form[field],
+			value: sanitized,
 		}
 	}
 
@@ -136,8 +133,7 @@ class FormValidator implements IFormValidator {
 	}
 
 	public getFieldErrors(name: string): string[] | undefined {
-		const errors = this.form[name]?.feedback['error']
-		return errors
+		return this.form[name]?.feedback.error
 	}
 
 	public validateInput(event: Event) {
@@ -145,10 +141,7 @@ class FormValidator implements IFormValidator {
 		const name = target.name
 		const value = target.value
 
-		this.form[name] = {
-			...this.form[name],
-			value: this.sanitize(this.inputTypes[name], value),
-		}
+		this.setFieldValue(name, value)
 		this.validate()
 	}
 

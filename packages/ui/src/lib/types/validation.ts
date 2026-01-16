@@ -24,7 +24,7 @@ export interface IFormValidator {
 	ajvValidate: unknown
 	sanitize: unknown
 
-	validationHandler(): ProxyHandler<object>
+	setFieldValue?(field: string, value: string): void
 	validate: () => void
 	init(formData: FormData, fields: InputTypes): void
 	destroy(): void
