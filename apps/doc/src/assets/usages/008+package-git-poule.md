@@ -11,7 +11,7 @@ tags: ['example', 'doc', 'git-poule', 'git', 'data', 'packages', 'wip']
 ## Contents
 
 This package is a tool to extract commit data from the repository.
-It is used in conjunction with the package `@fat-fuzzy/cz-changelog` (see the [Utility Packages](/doc/usage/utilities) for details).
+It is used in conjunction with the package `@fat-fuzzy/cz-changelog` (see the [Utility Packages](/about/usage/utilities) for details).
 
 Quick n dirty script to extract commit data and output it into a csv format.
 It parses all commits accessible via `git log` provided that the commit messages follow the format defined in a `cz-conventional-commit` format used in the repository.

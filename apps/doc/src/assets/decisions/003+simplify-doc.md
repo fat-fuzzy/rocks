@@ -61,7 +61,7 @@ Removed scripts in root package.json:
 
 ```json
 "scripts": {
-    "build:doc": "adr-log -d ./packages/doc/decisions",
+    "build:doc": "adr-log -d ./packages/about/decisions",
     "build:design": "node  ./packages/design/node_modules/.bin/build.js",
     "build": "npm run build:doc",
 },

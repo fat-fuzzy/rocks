@@ -32,12 +32,16 @@ utils.blocks.ready.forEach(async (block) => {
 		page,
 	}) => {
 		await page.goto(utils.blocks.path())
-		// TODO: Enable open sidebar by default on > 1100px breakpoints
 		await page
 			.getByTestId(sidebarTestId)
 			.getByRole('button', {name: 'UI'})
 			.click()
 		await expect(page.getByTestId(`${uiNavTestId}-blocks`)).toBeVisible()
+		// Subnav is open by default: close and open again to ensure consistent state
+		await page
+			.getByTestId(uiNavTestId)
+			.getByTestId('button-reveal-blocks')
+			.click()
 		await page
 			.getByTestId(uiNavTestId)
 			.getByTestId('button-reveal-blocks')

@@ -3,10 +3,9 @@
 	import {onMount} from 'svelte'
 	import {enhance} from '$app/forms'
 
-	import {UiStatus, UiTextContext, UiColor, UiVariant} from '$types'
 	import styleHelper from '$lib/utils/styles.js'
 	import popoverActor from '$lib/components/blocks/overlays/Popover/actor.svelte'
-	import FormValidator from '$lib/utils/validate-form.svelte.js'
+	import FormValidator from '$lib/utils/dom/FormValidator.svelte'
 	import Button from '$lib/components/blocks/buttons/Button.svelte'
 	import InputGroup from '$lib/components/blocks/inputs/InputGroup.svelte'
 	import InputCheck from '$lib/components/blocks/inputs/InputCheck.svelte'
@@ -17,7 +16,6 @@
 
 	let {
 		id = 'cookie-preferences',
-		method = 'POST',
 		actionPath,
 		formaction = 'saveCookiePreferences',
 		redirect,
@@ -25,8 +23,8 @@
 		container,
 		level = 3, // <h*> element level
 		size = 'md',
-		color = UiColor.accent,
-		variant = UiVariant.fill,
+		color = 'accent',
+		variant = 'fill',
 		consent,
 		onsubmit,
 		onchange,
@@ -99,7 +97,7 @@
 		validator.validateInput(event)
 
 		if (onchange) {
-			onchange({payload: event})
+			onchange(event)
 		}
 	}
 
@@ -127,9 +125,9 @@
 >
 	<Feedback
 		id="cookies-consent"
-		status={UiStatus.default}
+		status="default"
 		asset="none"
-		context={UiTextContext.form}
+		context="form"
 		container="burrito:lg "
 		{size}
 		font="md"
@@ -137,7 +135,7 @@
 	>
 		<form
 			{id}
-			{method}
+			method="POST"
 			name="cookie-preferences"
 			class={layoutClasses}
 			action={action

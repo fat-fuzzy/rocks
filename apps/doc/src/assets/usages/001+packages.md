@@ -15,7 +15,7 @@ This project contains the following packages :
 **Frontend & Exploratory Packages**
 
 - **[@fat-fuzzy/gfx](https://github.com/fat-fuzzy/rocks/tree/main/packages/gfx)** Everything related to working with web graphics, except the interface
-- **[@fat-fuzzy/playbook](https://github.com/fat-fuzzy/rocks/tree/main/packages/playbook)** a library used to display, document and test the `@fat-fuzzy/style` and `@fat-fuzzy/ui` packages, started as a way to replace Storybook (you can read about this decision [here](/doc/decisions/simplify-doc))
+- **[@fat-fuzzy/playbook](https://github.com/fat-fuzzy/rocks/tree/main/packages/playbook)** a library used to display, document and test the `@fat-fuzzy/style` and `@fat-fuzzy/ui` packages, started as a way to replace Storybook (you can read about this decision [here](/about/decisions/simplify-doc))
 - **[@fat-fuzzy/prose](https://github.com/fat-fuzzy/rocks/tree/main/packages/prose)** a library used to edit and display text content
 - **[@fat-fuzzy/sketch](https://github.com/fat-fuzzy/rocks/tree/main/packages/sketch)** a library used to display and handle interactive web graphics programs: this usage is one of the initial motivations for this project
 - **[@fat-fuzzy/style](https://github.com/fat-fuzzy/rocks/tree/main/packages/style)** a CSS library

@@ -52,7 +52,7 @@
 	bind:this={zoneFullScreen}
 	class={`rails l:grid:urbanist ${containClass} ${layout} ${themeClass} ${sizeClass}`}
 >
-	{#each areas as { zone, grid, gare, hug, exchange, scroll, tag }, i (i)}
+	{#each areas as { zone, grid, gare, exchange, scroll, tag }, i (i)}
 		{@const gridClass = grid ? `l:grid ${sizeClass}` : ''}
 		{@const gareClass = gare ? gare : ''}
 		{@const exchangeClass = exchange ? 'exchange bg:inherit' : 'bg:inherit'}

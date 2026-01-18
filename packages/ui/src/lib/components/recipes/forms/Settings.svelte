@@ -6,7 +6,6 @@
 	let {
 		id = 'ui-settings',
 		name = 'settings',
-		method = 'POST',
 		background,
 		color = 'primary',
 		formaction,
@@ -31,7 +30,7 @@
 
 <form
 	{name}
-	{method}
+	method="POST"
 	action={action
 		? actionPath
 			? `${actionPath}?/${action}`

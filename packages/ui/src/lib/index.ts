@@ -1,15 +1,11 @@
 // Reexport your entry components here
-/// <reference path="./types/index.ts" />
+import './types/index'
 
-import type {FatFuzzyUi} from '$types'
+export type * from '$types'
 /**
  * Headless components
  */
 import Head from '$lib/components/blocks/global/Head.svelte'
-
-/**
- * Layout components
- */
 import Color from '$lib/components/tokens/Color.svelte'
 import Typography from '$lib/components/tokens/Typography.svelte'
 
@@ -53,7 +49,6 @@ import Nav from '$lib/components/recipes/navs/Nav.svelte'
 import RevealNav from '$lib/components/recipes/navs/RevealNav.svelte'
 import Breadcrumbs from '$lib/components/recipes/navs/Breadcrumbs.svelte'
 
-import Header from '$lib/components/recipes/header/Header.svelte'
 import HeaderNav from '$lib/components/recipes/header/HeaderNav.svelte'
 
 /**
@@ -113,8 +108,9 @@ import PopoverActor from '$lib/components/blocks/overlays/Popover/actor.svelte.j
  * Utilities
  */
 import constants from '$lib/types/constants.js'
-import * as clickOutside from '$lib/utils/click-outside.js'
+import * as clickOutside from '$lib/utils/dom/click-outside.js'
 import format from '$lib/utils/format.js'
+import type {FatFuzzyUi} from '$types'
 
 /***************************************************
  * Prepare Exports
@@ -168,10 +164,10 @@ const recipes = {
 	SignUp,
 	Nav,
 	RevealNav,
-	Header,
 }
 
 const raw = {
+	CSSTheme,
 	CSSMetro,
 	CSSRailway,
 	CSSSteam,
@@ -190,7 +186,6 @@ const content = {
 }
 
 const drafts = {
-	CSSTheme,
 	Fieldset,
 	Popover,
 	// InputPassword,
@@ -220,7 +215,6 @@ const headless = {
 }
 
 export default {
-	actors,
 	drafts,
 	headless,
 	tokens,
@@ -229,6 +223,7 @@ export default {
 	recipes,
 	raw,
 	content,
+	actors,
 	utils,
 	forms,
 	constants,

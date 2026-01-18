@@ -1,6 +1,5 @@
 <script lang="ts">
 	import type {LayoutProps} from '$types'
-	import {DismissEvent} from '$types'
 	import RevealNav from '$lib/components/recipes/navs/RevealNav.svelte'
 
 	let {size = 'md', sidenav, app, children}: LayoutProps = $props()
@@ -21,7 +20,7 @@
 				place="left"
 				justify="between"
 				size="md"
-				dismiss={DismissEvent.click}
+				dismiss="click"
 			/>
 		</div>
 	{/if}

@@ -67,7 +67,6 @@ const recipes = {
 		'RevealMenu',
 		'RevealNav',
 		'ToggleMenu',
-		'Header',
 		'Nav',
 		'SignUp',
 	],

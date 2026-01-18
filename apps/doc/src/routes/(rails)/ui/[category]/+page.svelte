@@ -15,14 +15,16 @@
 </script>
 
 {#key path}
-	<!-- This key is used to re-render the component when the path changes -->
-	<PlaybookCollection
-		{category}
-		path={`${path}${hash}`}
-		depth={1}
-		isPage={true}
-		{formaction}
-		{content}
-		context={{app: appContext, page: pageContext}}
-	/>
+	{#if category}
+		<!-- This key is used to re-render the component when the path changes -->
+		<PlaybookCollection
+			{category}
+			path={`${path}${hash}`}
+			depth={1}
+			isPage={true}
+			{formaction}
+			{content}
+			context={{app: appContext, page: pageContext}}
+		/>
+	{/if}
 {/key}

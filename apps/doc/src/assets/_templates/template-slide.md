@@ -16,6 +16,7 @@ series:
   }
 tags: ['YYYY']
 ---
+
 ## What is this talk about ?
 
 - What will you get out of this ?

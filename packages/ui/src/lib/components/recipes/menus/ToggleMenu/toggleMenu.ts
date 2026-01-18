@@ -1,5 +1,4 @@
 import type {UiBlockProps, FuzzyPayload, ToggleProps} from '$types'
-import {UiState} from '$types'
 
 export type ToggleMenuProps = UiBlockProps & {
 	/**

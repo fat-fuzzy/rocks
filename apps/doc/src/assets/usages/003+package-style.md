@@ -37,7 +37,7 @@ You can then import the desired CSS stylesheet from another CSS file:
 Or import the full minified CSS using JavaScript, for example in `+layout.svelte`:
 
 ```js
-import '@fat-fuzzy/style'
+import '@fat-fuzzy/style/css'
 ```
 
 [WIP] Or import the individual stylesheets into your components (recommended usage for a component library)
@@ -50,9 +50,9 @@ import '@fat-fuzzy/style/css/blocks/button.css'
 
 ```html
 <link
- href="{% static 'styles/css/main.css' %}"
- rel="stylesheet"
- type="text/css"
+	href="{% static 'styles/css/main.css' %}"
+	rel="stylesheet"
+	type="text/css"
 />
 ```
 

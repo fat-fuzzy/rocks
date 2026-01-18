@@ -4,17 +4,17 @@ import type {
 	ExpandMachine,
 	FuzzyActor,
 	FuzzyPayload,
+	UiVariant,
 } from '$types'
-import {UiState} from '$types'
 import {EXPAND_MACHINE, EXPAND_TRANSITIONS} from './definitions.js'
 import styleHelper from '$lib/utils/styles.js'
 
 class ExpandActor implements FuzzyActor {
-	state = $state<UiStateExpand>(UiState.collapsed)
+	state = $state<UiStateExpand>('collapsed')
 	machine = $state(EXPAND_MACHINE)
 	transitions = EXPAND_TRANSITIONS
 	currentState = $derived(this.machine[this.state])
-	expanded = $derived(this.state === UiState.expanded)
+	expanded = $derived(this.state === 'expanded')
 	value = $derived(this.currentState?.value || this.state)
 	id = $derived(this.currentState?.id)
 	label = $derived(this.currentState?.label || '')
@@ -56,7 +56,7 @@ class ExpandActor implements FuzzyActor {
 		let blockClasses = styleHelper.getStyles({
 			...props,
 			asset: currentAsset,
-			variant: currentVariant,
+			variant: currentVariant as UiVariant,
 		})
 
 		return `expand ${blockClasses}`

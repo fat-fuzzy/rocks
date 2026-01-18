@@ -1,5 +1,36 @@
 #!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
 
-pnpm lint
-pnpm test
+# Get staged files
+STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACMR)
+
+echo "Staged files: $STAGED_FILES"
+
+if [ -n "$STAGED_FILES" ]; then
+
+  echo "=== Running Prettier check ==="
+  # Check Prettier on all staged files (without fixing)
+  echo "$STAGED_FILES" | xargs prettier --check --ignore-unknown
+  PRETTIER_EXIT=$?
+
+  # Check ESLint only on JS/TS files (without fixing)
+  JS_FILES=$(echo "$STAGED_FILES" | grep -E '\.(js|jsx|ts|tsx)$' || true )
+  ESLINT_EXIT=0
+
+  if [ -n "$JS_FILES" ]; then
+
+    echo "=== Running ESLint check ==="
+
+    echo "$JS_FILES" | xargs eslint
+    ESLINT_EXIT=$?
+  fi
+
+  # Exit with error if either check failed
+  if [ $PRETTIER_EXIT -ne 0 ] || [ $ESLINT_EXIT -ne 0 ]; then
+    echo ""
+    echo "❌ Commit blocked: Please fix linting/formatting issues above"
+    exit 1
+  fi
+fi
+
+echo "✅ All checks passed"
+exit 0

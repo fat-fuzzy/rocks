@@ -1,6 +1,6 @@
 export interface Utils {
 	format: typeof import('$lib/utils/format.js').default
-	clickOutside: typeof import('$lib/utils/click-outside.js')
+	clickOutside: typeof import('$lib/utils/dom/click-outside.js')
 }
 
 export interface Forms {
@@ -47,7 +47,6 @@ export interface Recipes {
 	SignUp: typeof import('$lib/components/recipes/forms/SignUp.svelte').default
 	Nav: typeof import('$lib/components/recipes/navs/Nav.svelte').default
 	RevealNav: typeof import('$lib/components/recipes/navs/RevealNav.svelte').default
-	Header: typeof import('$lib/components/recipes/header/Header.svelte').default
 }
 
 export interface Raw {
@@ -58,6 +57,7 @@ export interface Raw {
 	CSSTram: typeof import('$lib/components/raw/css-grid-tram.svelte').default
 	CSSVoyager: typeof import('$lib/components/raw/css-grid-voyager.svelte').default
 	CSSUrbanist: typeof import('$lib/components/raw/css-grid-urbanist.svelte').default
+	CSSTheme: typeof import('$lib/components/raw/css-theme.svelte').default
 }
 
 export interface Content {

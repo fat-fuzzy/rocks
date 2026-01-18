@@ -1,4 +1,5 @@
 <script lang="ts">
+	import type {UiStatus} from '@fat-fuzzy/ui'
 	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
 
@@ -7,7 +8,7 @@
 	const {Burrito} = ui.layouts
 
 	let title = $derived(`Fat Fuzzy ${page.status}`)
-	let status = $state('error')
+	let status: UiStatus = $state('error')
 	let asset = $derived.by(() => {
 		switch (page.status) {
 			case 404:
@@ -36,15 +37,16 @@
 
 					<Magic
 						spell="fuzzy"
-						size="2xs"
+						size="3xs"
 						circle="dotted"
 						mask="text"
 						shape="mellow"
 					>
 						<div class="l:flex align:center">
-							<ff-icon class="emoji:home font:lg size:md justify:center"
-							></ff-icon>
-							<a class="font:h1 font:md maki:inline size:xs" href="/"> Home </a>
+							<ff-icon class="emoji:home font:lg justify:center"></ff-icon>
+							<a class="font:h1 font:lg maki:inline size:2xs" href="/">
+								Home
+							</a>
 						</div>
 					</Magic>
 				</div>

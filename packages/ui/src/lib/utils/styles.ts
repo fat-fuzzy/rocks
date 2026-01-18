@@ -1,85 +1,93 @@
-import type {UiBlockProps} from '$types'
-import {UiShape, UiStatus, UiTextContext} from '$types'
+import type {
+	UiStatus,
+	UiContainerProps,
+	UiLayoutProps,
+	UiBlockProps,
+} from '$types'
 
-function getBlockStyles(props: UiBlockProps): string {
-	let {
-		color,
-		size,
-		font,
-		shape,
+const STYLE_BASE_CLASS: Record<string, string> = {
+	align: 'align',
+	alignSelf: 'align-self',
+	background: 'bg',
+	breakpoint: 'bp',
+	color: 'color',
+	container: 'l', // TODO: use `c:` prefix
+	font: 'font',
+	justify: 'justify',
+	height: 'h',
+	layer: 'layer',
+	layout: 'l',
+	size: 'size',
+	scroll: 'scroll',
+	shape: 'shape',
+	status: 'status',
+	theme: 'color', // TODO: check / harmonize
+	threshold: 'th',
+	variant: 'variant',
+}
+
+// eslint-disable-next-line
+const STYLE_MODIFIER: Record<string, string> = {
+	asset: 'asset',
+	assetType: 'assetType',
+	dimensions: 'dimensions',
+	direction: 'direction',
+	place: 'place',
+	position: 'position',
+	width: 'width',
+}
+
+function appendModifier(base: string, modifier: string | undefined): string {
+	if (modifier === undefined) {
+		return ''
+	}
+
+	return `${base}:${modifier}`
+}
+
+function getClass(propName: string, prop: string | undefined): string {
+	if (prop === undefined || prop === 'none') {
+		return ''
+	}
+
+	const base = STYLE_BASE_CLASS[propName]
+	return appendModifier(base, prop)
+}
+
+function getContainerStyles(props: UiContainerProps): string {
+	const {container, dimensions, layer, size} = props
+
+	const classes = []
+
+	const containerClass = container?.startsWith('ravioli')
+		? container
+		: getClass('container', container)
+
+	const layerClass = getClass('layer', layer)
+	if (layerClass) classes.push(layerClass)
+
+	if (containerClass) {
+		const dimensionsClass = appendModifier(containerClass, dimensions)
+		const sizeClass =
+			!dimensions && size
+				? appendModifier(containerClass, size)
+				: size
+					? `${dimensionsClass} size:${size}`
+					: ''
+
+		if (!sizeClass && dimensionsClass) classes.push(dimensionsClass)
+		if (sizeClass) classes.push(sizeClass)
+		if (!dimensions && !size) classes.push(containerClass)
+	}
+
+	return classes.join(' ').trim()
+}
+
+function getLayoutStyles(props: UiLayoutProps): string {
+	const {
 		align,
 		alignSelf,
 		justify,
-		asset,
-		assetType,
-		variant,
-		background,
-	} = props
-
-	let classes = []
-	/* Block styles */
-	let colorClass = color ? `color:${color}` : '' // TODO: clarify bg/color/surface
-	let backgroundClass = background
-		? `bg:${background}`
-		: color
-			? `bg:${color}`
-			: ''
-	let sizeClass = size ? `size:${size}` : ''
-	let fontClass = font ? `font:${font}` : size ? `font:${size}` : ''
-	let assetTypeClass = assetType ? assetType : 'emoji'
-	let assetClass = asset ? `${assetTypeClass}:${asset}` : ''
-	let variantClass = variant ? `variant:${variant}` : ''
-	let shapeClass = shape ? `shape:${shape}` : ''
-	let alignClass = alignSelf ? `align-self:${alignSelf}` : ''
-	let alignSelfClass = align ? `align:${align}` : ''
-	let justifyClass = justify
-		? `justify:${justify}`
-		: shapeClass
-			? 'justify:center'
-			: ''
-
-	if (colorClass) classes.push(colorClass)
-	if (backgroundClass) classes.push(backgroundClass)
-	if (sizeClass) classes.push(sizeClass)
-	if (fontClass) classes.push(fontClass)
-	if (assetClass) classes.push(assetClass)
-	if (variantClass) classes.push(variantClass)
-	if (shapeClass) classes.push(shapeClass)
-	if (alignClass) classes.push(alignClass)
-	if (alignSelfClass) classes.push(alignSelfClass)
-	if (justifyClass) classes.push(justifyClass)
-
-	return classes.join(' ').trim()
-}
-
-/**
- * Context styles
- */
-function getContainerStyles(props: UiBlockProps): string {
-	let {size, container, dimensions, layer} = props
-
-	let classes = []
-	let containerClass =
-		container === 'ravioli' ? container : container ? `l:${container}` : ''
-	let layerClass = layer ? `layer:${layer}` : ''
-
-	if (containerClass) {
-		let dimensionsClass = dimensions ? `${containerClass}:${dimensions}` : ''
-		let sizeClass =
-			!dimensions && size ? `${containerClass}:${size}` : `size:${size}`
-
-		if (dimensionsClass) classes.push(dimensionsClass)
-		if (sizeClass) classes.push(sizeClass)
-	}
-
-	if (containerClass && !dimensions && !size) classes.push(containerClass)
-	if (layerClass) classes.push(layerClass)
-
-	return classes.join(' ').trim()
-}
-
-function getLayoutStyles(props: UiBlockProps): string {
-	let {
 		size,
 		height,
 		shape,
@@ -92,104 +100,133 @@ function getLayoutStyles(props: UiBlockProps): string {
 		background,
 	} = props
 
-	let classes = []
-	let thresholdClass = threshold ? `th:${threshold}` : ''
-	let shapeClass = shape ? `shape:${shape}` : ''
-	let breakpointClass = breakpoint ? `bp:${breakpoint}` : ''
-	let layoutClass = layout && shape && shape !== 'pill' ? 'stack' : layout
-	let scrollClass = scroll ? `scroll:${scroll}` : ''
-	let heightClass = height ? `h:${height}` : ''
-	let layerClass = layer ? `layer:${layer}` : ''
-	let positionClass = position ? position : ''
-	let backgroundClass = background ? `bg:${background}` : ''
-	let sizeClass = size ? `size:${size}` : ''
+	const classes = []
+	const thresholdClass = getClass('threshold', threshold)
+	const shapeClass = getClass('shape', shape)
+	const breakpointClass = getClass('breakpoint', breakpoint)
+	const scrollClass = getClass('scroll', scroll)
+	const heightClass = getClass('height', height)
+	const layerClass = getClass('layer', layer)
+	const backgroundClass = getClass('background', background)
+	const positionClass = position ? position : ''
 
-	if (layoutClass) {
-		layoutClass =
-			layout && size
-				? `l:${layoutClass}:${size}`
-				: sizeClass
-					? `l:${layoutClass} ${sizeClass}`
-					: `l:${layoutClass}`
+	const layoutBase =
+		shape === 'round' || shape === 'square' ? 'stack' : (layout as string)
+
+	if (layoutBase) {
+		// TODO: fix this later
+		// if (layoutBase === 'switcher' && !thresholdClass) {
+		// 	console.warn(
+		// 		'Switcher layout will not wrap without a threshold and no threshold is provided',
+		// 	)
+		// }
+
+		let layoutClass = getClass('layout', layoutBase)
+
+		if (size) layoutClass = appendModifier(layoutClass, size)
+
+		classes.push(layoutClass)
+		if (layoutBase === 'switcher') {
+			classes.push(thresholdClass)
+		}
+	} else {
+		const sizeClass = getClass('size', size)
+		if (sizeClass) classes.push(sizeClass)
 	}
 
-	if (layoutClass) classes.push(layoutClass)
-	if (shapeClass) classes.push(shapeClass)
-	if (thresholdClass) classes.push(thresholdClass)
+	const alignSelfClass = getClass('alignSelf', alignSelf)
+
+	const alignBase = shape === 'round' || shape === 'square' ? 'center' : align
+	const alignClass = getClass('align', alignBase)
+	const justifyBase =
+		shape === 'round' || shape === 'square' ? 'center' : justify
+
+	const justifyClass = getClass('justify', justifyBase)
+
+	if (alignClass) classes.push(alignClass)
+	if (alignSelfClass) classes.push(alignSelfClass)
+	if (backgroundClass) classes.push(backgroundClass)
 	if (breakpointClass) classes.push(breakpointClass)
-	if (scrollClass) classes.push(scrollClass)
 	if (heightClass) classes.push(heightClass)
+	if (justifyClass) classes.push(justifyClass)
 	if (layerClass) classes.push(layerClass)
 	if (positionClass) classes.push(positionClass)
-	if (backgroundClass) classes.push(backgroundClass)
+	if (scrollClass) classes.push(scrollClass)
+	if (shapeClass) classes.push(shapeClass)
+
+	return classes.join(' ').trim()
+}
+
+function getBlockStyles(props: UiBlockProps): string {
+	const {asset, assetType, background, color, font, size, variant} = props
+
+	const classes = []
+
+	const colorClass = getClass('color', color) // TODO: clarify bg/color/surface
+	if (!background && color) {
+		const backgroundClass = getClass('background', color)
+		classes.push(backgroundClass)
+	}
+
+	const fontBase = font ? font : size
+	const fontClass = getClass('font', fontBase)
+
+	const sizeClass = getClass('size', size)
+
+	if (asset) {
+		const assetTypeClass = assetType ? assetType : 'emoji'
+		const assetClass = appendModifier(assetTypeClass, asset)
+		classes.push(assetClass)
+	}
+
+	const variantClass = getClass('variant', variant)
+
+	if (colorClass) classes.push(colorClass)
+	if (fontClass) classes.push(fontClass)
+	if (sizeClass) classes.push(sizeClass)
+	if (variantClass) classes.push(variantClass)
 
 	return classes.join(' ').trim()
 }
 
 function getFeedbackStyles(
 	props: UiBlockProps,
-	status: typeof UiStatus,
+	status: UiStatus,
 	context: string,
 ): string {
-	let {
-		size,
+	const {asset, assetType, container, font, size, variant} = props
+
+	const layoutStyles = getLayoutStyles(props)
+	const blockStyles = getBlockStyles({
 		font,
 		asset,
 		assetType,
 		variant,
-		shape,
-		align,
-		justify,
-		layer,
-		container,
-	} = props
+	})
 
-	let classes = []
-	let variantClass = variant ? `variant:${variant}` : ''
-	let sizeClass = size ? `size:${size}` : ''
-	let fontClass = font ? `font:${font}` : ''
-	let shapeClass = shape ? `shape:${shape}` : ''
+	const classes = [layoutStyles, blockStyles]
 
-	let layoutClass = ''
-	let alignClass = align ? `align:${align}` : ''
-	let justifyClass = justify ? `justify:${justify}` : ''
+	const statusClass = getClass('status', status)
+	classes.push(statusClass)
 
-	if (shape === UiShape.round || shape === UiShape.square) {
-		layoutClass = `l:stack${size}`
-		alignClass = 'align:center'
-		justifyClass = 'justify:center'
-	}
+	const defaultAssetType = assetType ?? 'emoji'
+	const defaultAssetClass = appendModifier(defaultAssetType, status)
 
-	if (shape === UiShape.pill) {
-		alignClass = 'align:center'
-		justifyClass = 'justify:center'
-	}
+	classes.push(defaultAssetClass)
 
-	let statusClass = status ? `status:${status}` : ''
-	let assetTypeClass = asset === 'none' ? '' : assetType ? assetType : 'emoji'
-	let assetClass = status
-		? `${assetTypeClass}:${status}`
-		: asset
-			? `${assetTypeClass}:${asset}`
-			: ''
-	let typeClass = context ? `feedback:${context}` : 'feedback'
-	let backgroundClass = context === UiTextContext.code ? '' : `bg:${status}:100`
-	let layerClass = layer ? `layer:${layer}` : ''
-	let containerClass =
-		container && context !== UiTextContext.code ? `l:${container}:${size}` : ''
+	const typeClass = `feedback:${context}`
+	classes.push(typeClass)
 
-	if (typeClass) classes.push(typeClass)
-	if (statusClass) classes.push(statusClass)
-	if (assetClass) classes.push(assetClass)
-	if (sizeClass) classes.push(sizeClass)
-	if (fontClass) classes.push(fontClass)
-	if (layerClass) classes.push(layerClass)
-	if (shapeClass) classes.push(shapeClass)
-	if (layoutClass) classes.push(layoutClass)
-	if (variantClass) classes.push(variantClass)
-	if (alignClass) classes.push(alignClass)
-	if (justifyClass) classes.push(justifyClass)
-	if (layerClass) classes.push(layerClass)
+	const backgroundClass = context === 'code' ? undefined : `bg:${status}:100`
+	const containerBase = container?.startsWith('ravioli')
+		? container
+		: getClass('container', container)
+
+	const containerClass =
+		container && context !== 'code' && container !== 'raviolink'
+			? appendModifier(containerBase, size)
+			: containerBase
+
 	if (backgroundClass) classes.push(backgroundClass)
 	if (containerClass) classes.push(containerClass)
 
@@ -197,7 +234,7 @@ function getFeedbackStyles(
 }
 
 function getStyles(props: UiBlockProps): string {
-	let {
+	const {
 		color,
 		size,
 		font,
@@ -216,19 +253,19 @@ function getStyles(props: UiBlockProps): string {
 		background,
 	} = props
 
-	let elementClasses = getBlockStyles({
+	const blockClasses = getBlockStyles({
 		color,
 		size,
 		font,
 		shape,
-		align,
-		justify,
 		asset,
 		assetType,
 		variant,
 	})
 
-	let layoutClasses = getLayoutStyles({
+	const layoutClasses = getLayoutStyles({
+		align,
+		justify,
 		size,
 		shape,
 		layout,
@@ -238,9 +275,9 @@ function getStyles(props: UiBlockProps): string {
 		background,
 	})
 
-	let containerClasses = getContainerStyles({size, container, dimensions})
+	const containerClasses = getContainerStyles({size, container, dimensions})
 
-	let classes = `${containerClasses} ${layoutClasses} ${elementClasses}`
+	const classes = `${containerClasses} ${layoutClasses} ${blockClasses}`
 
 	return classes.trim()
 }

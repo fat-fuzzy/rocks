@@ -1,5 +1,5 @@
-import type {InputCommonProps, ButtonType, FuzzyPayload} from '$types'
-import FormValidator from '$lib/utils/validate-form.svelte.js'
+import type {InputCommonProps, InputProps, ViewingPreferences} from '$types'
+import FormValidator from '$lib/utils/dom/FormValidator.svelte'
 
 export type FormCommonProps = InputCommonProps & {
 	depth?: number
@@ -16,6 +16,7 @@ export type FormProps = InputProps & {
 	description?: string
 	formaction?: string
 	path?: string
+	actionPath?: string
 	redirect?: string
 	method?: string
 	disabled?: boolean
@@ -23,22 +24,8 @@ export type FormProps = InputProps & {
 	inputTypes: {[name: string]: string}
 }
 
-export type SignUpProps = InputProps & {
-	level?: number
-	description?: string
-	formaction?: string
-	actionPath?: string
-	redirect?: string
-	method?: string
-	disabled?: boolean
-}
-
-export type CookiesPreferencesProps = InputProps & {
-	level?: number
-	description?: string
-	formaction?: string
-	actionPath?: string
-	redirect?: string
-	method?: string
-	disabled?: boolean
-}
+export type CookiesPreferencesProps = InputProps &
+	FormCommonProps &
+	ViewingPreferences & {
+		level?: number
+	}

@@ -1,37 +1,36 @@
 <script lang="ts">
-	import type {SignUpProps} from '$types'
-	import {UiStatus, UiTextContext, UiColor, UiVariant, InputType} from '$types'
+	import type {FormProps} from '$types'
 	import {onMount} from 'svelte'
 	import {enhance} from '$app/forms'
 	import Button from '$lib/components/blocks/buttons/Button.svelte'
 	import Feedback from '$lib/components/blocks/global/Feedback.svelte'
 	import Input from '$lib/components/blocks/inputs/Input.svelte'
 	import InputPassword from '$lib/components/blocks/inputs/InputPassword.svelte'
-	import FormValidator from '$lib/utils/validate-form.svelte.js'
+	import FormValidator from '$lib/utils/dom/FormValidator.svelte'
 
 	let {
 		id = 'sign-up-form',
-		method = 'POST',
 		title = 'Sign Up',
 		description = 'A sample signup form',
 		actionPath, // 'ui'
 		formaction, // 'signup'
 		redirect,
-		layout,
 		container,
-		level = 2, // <h*> element level
+		depth = 2, // <h*> element depth
 		size,
-		color = UiColor.primary,
-		variant = UiVariant.fill,
+		color = 'primary',
+		variant = 'fill',
 		asset = 'log',
 		align = 'center',
 		background = 'contrast',
-	}: SignUpProps = $props()
+	}: FormProps = $props()
 
 	let boundForm: HTMLFormElement | undefined = $state()
 	let formData: FormData | undefined = $state()
 	let validator: FormValidator = new FormValidator('SignUpValidationFunction')
-	let disabled: boolean | undefined = $state(undefined)
+	let disabled: boolean | undefined = $derived(
+		validator.formHasErrors() ? true : undefined,
+	)
 	let successPlaceholder: boolean = $state(false)
 
 	// TODO: Integrate inputTypes into validator from schema
@@ -41,10 +40,6 @@
 		sample_password: 'password',
 		confirm_password: 'password',
 	}
-
-	$effect(() => {
-		disabled = validator.formHasErrors()
-	})
 
 	/**
 	 * For the form to work:
@@ -92,12 +87,11 @@
 
 <div class={`ravioli:${size} ${background} l:${container}:${size}`}>
 	{#if successPlaceholder}
-		<Feedback status={UiStatus.success} context={UiTextContext.form}>
-			Form submitted!
-		</Feedback>
+		<Feedback status="success" context="form">Form submitted!</Feedback>
 	{:else}
 		<form
-			{method}
+			{id}
+			method="POST"
 			class={`l:stack:${size} ravioli:${size}`}
 			action={action && actionPath ? `${actionPath}?/${action}` : undefined}
 			use:enhance
@@ -106,12 +100,12 @@
 		>
 			{#key validator}
 				<header class={`l:stack:${size} text:${align} ${asset}`}>
-					<svelte:element this={`h${level}`}>{title}</svelte:element>
+					<svelte:element this={`h${depth}`}>{title}</svelte:element>
 					<p class={`font:${size}`}>{description}</p>
 				</header>
 				<Input
 					id="username"
-					type={InputType.text}
+					type="text"
 					name="sample_username"
 					label="Username"
 					required
@@ -125,7 +119,7 @@
 				/>
 				<Input
 					id="email"
-					type={InputType.email}
+					type="email"
 					name="sample_email"
 					label="Email"
 					required
@@ -138,7 +132,7 @@
 					{validator}
 				/>
 				<InputPassword
-					type={InputType.password}
+					type="password"
 					id="password"
 					name="sample_password"
 					label="Password"
@@ -154,7 +148,7 @@
 				/>
 				<InputPassword
 					id="confirm_password"
-					type={InputType.password}
+					type="password"
 					name="confirm_password"
 					label="Confirm Password"
 					required

@@ -1,7 +1,6 @@
 <script lang="ts">
 	import type {ExpandLinkProps, FuzzyPayload} from '$types'
 	import {enhance} from '$app/forms'
-	import {UiShape, UiVariant, UiState} from '$types'
 	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
 	import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/definitions.js'
 	import constants from '$lib/types/constants.js'
@@ -13,8 +12,8 @@
 		slug,
 		color,
 		size,
-		variant = UiVariant.bare,
-		shape = UiShape.square,
+		variant = 'bare',
+		shape = 'square',
 		title,
 		asset,
 		children,
@@ -26,7 +25,9 @@
 		onclick,
 	}: ExpandLinkProps = $props()
 
-	let value = $state(reveal ? {[slug]: reveal} : {[slug]: DEFAULT_REVEAL_STATE})
+	let value = $state(
+		reveal ? {[slug]: {reveal}} : {[slug]: DEFAULT_REVEAL_STATE},
+	)
 
 	let defaultAssetDown = assetType === 'svg' ? 'chevron-down' : 'point-down'
 	let defaultAssetLeft = assetType === 'svg' ? 'chevron-left' : 'point-left'
@@ -43,7 +44,7 @@
 		},
 	}
 
-	let revealClasses = $derived(value[slug].reveal ?? UiState.collapsed)
+	let revealClasses = $derived(value[slug].reveal ?? 'collapsed')
 	let layoutClasses = $derived(`l:reveal top ${revealClasses}`)
 	let action = $state(
 		formaction && actionPath
@@ -52,6 +53,7 @@
 	)
 
 	function toggleReveal(payload: FuzzyPayload) {
+		// @ts-expect-error state must be UiState (TODO: fix)
 		value[slug].reveal = payload.state
 		if (onclick) {
 			onclick(payload)
@@ -60,22 +62,23 @@
 </script>
 
 {#snippet expander()}
-	<form method="POST" {action} use:enhance>
-		<Expand
-			id={`button-reveal-${slug}`}
-			name={`button-reveal-${slug}`}
-			{variant}
-			{title}
-			{size}
-			{color}
-			{shape}
-			{assetType}
-			initial={TRANSITION_REVEAL[value[slug].reveal]}
-			controls={`links-${slug}`}
-			{states}
-			onclick={toggleReveal}
-		/>
-	</form>
+	<!-- TODO: : generate toggleReveal actions per talk -->
+	<!-- <form method="POST" {action} use:enhance> -->
+	<Expand
+		id={`button-reveal-${slug}`}
+		name={`button-reveal-${slug}`}
+		{variant}
+		{title}
+		{size}
+		{color}
+		{shape}
+		{assetType}
+		initial={TRANSITION_REVEAL[String(value[slug].reveal)]}
+		controls={`links-${slug}`}
+		{states}
+		onclick={toggleReveal}
+	/>
+	<!-- </form> -->
 {/snippet}
 
 <div class={layoutClasses}>

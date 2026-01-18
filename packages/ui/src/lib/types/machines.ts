@@ -9,7 +9,7 @@ export type FuzzyPayload = {
 	name: string
 	value?: string | number
 	group?: string | number // If the payload item is part of a group
-	state: string
+	state?: string
 	action?: (event: FuzzyEvent) => void // Callback function defined in the parent component
 }
 

@@ -5,17 +5,16 @@ import type {
 	FuzzyActor,
 	ToggleMachine,
 	UiStateToggle,
+	UiVariant,
 } from '$types'
-import {UiState} from '$types'
 import {TOGGLE_MACHINE, TOGGLE_TRANSITIONS} from './definitions.js'
 import styleHelper from '$lib/utils/styles.js'
 class ToggleActor implements FuzzyActor {
-	state: UiStateToggle = $state(UiState.inactive)
+	state: UiStateToggle = $state('inactive')
 	machine = $state(TOGGLE_MACHINE)
 	transitions = TOGGLE_TRANSITIONS
-	// @ts-expect-error TODO: Fix this.state type
 	currentState = $derived(this.machine[this.state])
-	pressed = $derived(this.state === UiState.active)
+	pressed = $derived(this.state === 'active')
 	value = $derived(this.currentState?.value || this.state)
 	id = $derived(this.currentState?.id)
 	label = $derived(this.currentState?.label || '')
@@ -41,7 +40,7 @@ class ToggleActor implements FuzzyActor {
 		const state = this.state
 		const transition = this.transitions[state][event]
 		if (transition) {
-			return transition as UiState
+			return transition as UiStateToggle
 		}
 		return state
 	}
@@ -57,7 +56,7 @@ class ToggleActor implements FuzzyActor {
 		let blockClasses = styleHelper.getStyles({
 			...props,
 			asset: currentAsset,
-			variant: currentVariant,
+			variant: currentVariant as UiVariant,
 		})
 
 		return `toggle ${blockClasses}`
