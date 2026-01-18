@@ -62,22 +62,23 @@
 </script>
 
 {#snippet expander()}
-	<form method="POST" {action} use:enhance>
-		<Expand
-			id={`button-reveal-${slug}`}
-			name={`button-reveal-${slug}`}
-			{variant}
-			{title}
-			{size}
-			{color}
-			{shape}
-			{assetType}
-			initial={TRANSITION_REVEAL[String(value[slug].reveal)]}
-			controls={`links-${slug}`}
-			{states}
-			onclick={toggleReveal}
-		/>
-	</form>
+	<!-- TODO: : generate toggleReveal actions per talk -->
+	<!-- <form method="POST" {action} use:enhance> -->
+	<Expand
+		id={`button-reveal-${slug}`}
+		name={`button-reveal-${slug}`}
+		{variant}
+		{title}
+		{size}
+		{color}
+		{shape}
+		{assetType}
+		initial={TRANSITION_REVEAL[String(value[slug].reveal)]}
+		controls={`links-${slug}`}
+		{states}
+		onclick={toggleReveal}
+	/>
+	<!-- </form> -->
 {/snippet}
 
 <div class={layoutClasses}>

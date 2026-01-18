@@ -188,7 +188,7 @@ export const pages: {[key: string]: NavItem} = {
 }
 
 export function buildNav(page: string) {
-	let nav = {...navBase, ...pages[page]}
+	const nav = {...navBase, ...pages[page]}
 	nav.label = pages[page].label ?? page
 	nav.items = [pages[page]]
 
@@ -231,6 +231,7 @@ export function buildSubnav(path: string, markdowns: Markdown[]) {
 	const subnav: NavItem[] = markdowns.reduce((links: NavItem[], {meta}) => {
 		if (meta.series) {
 			if (meta.index === 0) {
+				// First item in series, build the series links from metadata
 				meta.items = meta.series.items
 					.map((id: string, index: number) => {
 						if (index > 0) {
@@ -251,6 +252,7 @@ export function buildSubnav(path: string, markdowns: Markdown[]) {
 				links.push(meta)
 			}
 		} else {
+			// Not a series, just add the link
 			const link = {
 				slug: meta.slug,
 				talk: meta.talk,
