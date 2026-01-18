@@ -1,5 +1,3 @@
-import type {NavItem} from '$types'
-
 import {buildNav, buildSubnav} from '$data/nav'
 import decisions from '$data/decisions'
 import usages from '$data/usages'
@@ -43,7 +41,10 @@ export const load = async ({locals, url, params}) => {
 		} else if (item.slug === 'speaking') {
 			item.reveal = locals.navSpeaking
 			if (!params.talk) {
-				item.items = talks.map(({meta}) => meta)
+				item.items = talks.map(({meta}) => ({
+					...meta,
+					formaction: `toggleTalk-${meta.slug}`, // TODO: : generate toggleReveal actions per talk
+				}))
 			} else {
 				item.items = buildSubnav('/about/speaking', talks)
 			}

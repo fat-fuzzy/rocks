@@ -24,8 +24,8 @@ import {vert} from './shaders/vertex-shader-3d'
 const {DEFAULT_3D_GEOMETRY_TEX_COORDS} = geometries
 let imageAssetsPath = 'images/sketches'
 let filename = 'f-texture.png'
-let imgWidth = 256
-let imgHeight = 256
+// let imgWidth = 256
+// let imgHeight = 256
 let url = `/${imageAssetsPath}/${filename}`
 let gl
 let vao
@@ -46,6 +46,7 @@ let meta = {
 	slug: 'texture',
 	title: 'Texture',
 	asset: 'texture',
+	status: 'draft',
 	categories: ['Learning'],
 	tags: ['color', 'texture', 'matrix', 'camera', 'webgl', 'webglfundamentals'],
 	controls: ['loop', 'camera'],
@@ -147,7 +148,8 @@ function draw(now) {
 	gl.bindVertexArray(null)
 }
 
-function update({texture, geometry, camera}) {
+// function update({texture, geometry, camera}) {
+function update() {
 	programInfo.context = {
 		texture: {
 			image,
