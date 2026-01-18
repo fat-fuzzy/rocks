@@ -84,7 +84,7 @@ const config = {
 			$utils: path.resolve('./src/utils'),
 			$data: path.resolve('./src/data'),
 			$assets: path.resolve('./src/assets'),
-			$types: path.resolve('./src/lib/types/index.d.ts'),
+			$types: path.resolve('./src/lib/types/index'),
 		},
 	},
 	build: {

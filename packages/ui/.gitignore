@@ -16,3 +16,5 @@ dist
 /blob-report/
 /playwright/.cache/
 tests/e2e/test-results
+__screenshots__
+html

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import '@fat-fuzzy/style/css'
 	import type {Snippet} from 'svelte'
 	import {onMount} from 'svelte'
 	import {page} from '$app/state'

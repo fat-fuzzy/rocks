@@ -7,10 +7,10 @@ const {schemas} = constants
 
 schemas.forEach((schema) => {
 	test(`should validate ${schema.name} for string inputs`, () => {
-		let ajvValidate = validations[schema.fn]
+		const ajvValidate = validations[schema.fn]
 
 		fc.assert(
-			fc.property(fc.boolean(), (match) => {
+			fc.property(fc.boolean(), () => {
 				const validateMap = schema.properties.reduce((propMap, property) => {
 					propMap[property] = schema.valid[property]
 					return propMap

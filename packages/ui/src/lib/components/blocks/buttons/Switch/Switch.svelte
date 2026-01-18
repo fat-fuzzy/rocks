@@ -1,14 +1,13 @@
 <script lang="ts">
 	import {onMount} from 'svelte'
 	import type {FuzzyPayload, SwitchProps} from '$types'
-	import {UiState} from '$types'
 	import Actor from './actor.svelte.js'
 
 	let {
 		id = 'switch',
 		name = 'switch',
 		title,
-		initial = UiState.inactive,
+		initial = 'inactive',
 		disabled,
 		formaction,
 		states,
@@ -66,7 +65,7 @@
 	}
 
 	onMount(() => {
-		if (init) init(payload)
+		if (init) init(payload as FuzzyPayload)
 	})
 </script>
 

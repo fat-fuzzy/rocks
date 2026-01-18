@@ -15,12 +15,14 @@
 </script>
 
 {#key path}
-	<PlaybookElement
-		{title}
-		{category}
-		{content}
-		{path}
-		{formaction}
-		context={{app: appContext, page: pageContext}}
-	/>
+	{#if category && title}
+		<PlaybookElement
+			{title}
+			{category}
+			{content}
+			{path}
+			{formaction}
+			context={{app: appContext, page: pageContext}}
+		/>
+	{/if}
 {/key}

@@ -1,10 +1,7 @@
 <script lang="ts">
 	import type {RevealLayoutProps} from '$types'
-
-	import {DismissEvent} from '$types'
 	import constants from '$lib/types/constants.js'
 	import styleHelper from '$lib/utils/styles.js'
-	// import {clickOutside} from '$lib/utils/click-outside.js'
 	import RevealForm from '$lib/components/layouts/reveal/RevealForm.svelte'
 	import RevealContent from '$lib/components/layouts/reveal/RevealContent.svelte'
 
@@ -18,7 +15,6 @@
 		auto = false,
 		method = 'POST', // TODO: change to GET with params
 		formaction,
-		actionPath,
 		redirect,
 		layout,
 		reveal = DEFAULT_REVEAL_STATE.reveal,
@@ -30,12 +26,9 @@
 		shape,
 		font,
 		breakpoint,
-		// trigger = ButtonEvent.click,
-		dismiss = DismissEvent.click,
 		variant,
 		align,
 		justify,
-		text,
 		scroll,
 		height,
 		background,
@@ -85,18 +78,6 @@
 		}
 		payload.state = 'collapsed'
 	}
-
-	// function handleClickOutside(e: MouseEvent) {
-	// 	const target = e.target as HTMLElement
-	// 	if (
-	// 		dismiss !== UiDismissEvent.outside ||
-	// 		payload.state !== 'expanded' ||
-	// 		target.id !== `${id}-reveal`
-	// 	) {
-	// 		return
-	// 	}
-	// 	payload.state = 'collapsed' // TODO: Fix this does nothing
-	// }
 </script>
 
 <svelte:window onkeyup={onKeyUp} />
@@ -120,7 +101,6 @@
 		{label}
 		{name}
 		{method}
-		{actionPath}
 		{formaction}
 		{redirect}
 		{reveal}
@@ -132,11 +112,12 @@
 		{variant}
 		{align}
 		{justify}
-		{text}
 	/>
 
 	<RevealContent
 		id={`${id}-reveal-content`}
+		name={`${id}-reveal-content`}
+		label=""
 		{place}
 		{reveal}
 		{scroll}

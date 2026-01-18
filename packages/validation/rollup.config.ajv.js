@@ -1,8 +1,5 @@
-import {createRequire} from 'module'
 import commonjs from '@rollup/plugin-commonjs'
 import terser from '@rollup/plugin-terser'
-const require = createRequire(import.meta.url)
-const packageJson = require('./package.json')
 export default [
 	// CommonJS (for Node) and ES module (for bundlers) build.
 	// (We could have three entries in the configuration array

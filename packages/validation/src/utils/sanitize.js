@@ -1,6 +1,5 @@
 /**
- *  Simple sanitization functions to use before validation
- *
+ *  Basic sanitization functions to use before validation
  */
 import path from 'node:path'
 
@@ -21,8 +20,9 @@ function replaceChar(s) {
 
 function sanitizePlainText(input) {
 	if (typeof input !== 'string') return ''
-	let sanitized = input.trim()
+	const sanitized = input.trim()
 	if (sanitized === '') return sanitized
+	// eslint-disable-next-line no-useless-escape
 	return sanitized.replace(/[&<>"'`=\/]/g, replaceChar)
 }
 
@@ -30,6 +30,7 @@ function sanitizeNumber(input) {
 	return isNaN(input) ? null : input
 }
 
+// TODO: https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html#email-address-validation
 function sanitizeEmail(input) {
 	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 	return emailRegex.test(input) ? input : ''
@@ -41,41 +42,78 @@ function sanitizeFilePath(input) {
 }
 
 function sanitizeURL(input) {
+	const sanitized = input.trim()
+	if (sanitized === '') return sanitized
 	try {
-		new URL(input)
-		return input
-	} catch (_) {
-		return ''
+		const url = new URL(input)
+		if (url.protocol !== 'http:' && url.protocol !== 'https:') {
+			return null
+		}
+		return url.href
+	} catch {
+		return null
 	}
 }
 
 function sanitizeDate(input) {
-	return !isNaN(Date.parse(input))
+	return !isNaN(Date.parse(input)) ? input : null
 }
 
-async function sanitizeForm(name, value, inputTypeMap) {
-	// Retrieve input type from the mapping
-	const inputType = inputTypeMap[name] || 'text' // Default to 'text' if not found
-
+function sanitizeForm(type, value) {
 	// Sanitize input based on its type
-	let sanitizedValue = ''
-	if (inputType === 'password') {
-		return value
-	} else if (inputType === 'text') {
-		sanitizedValue = sanitizePlainText(value)
-	} else if (inputType === 'number') {
-		sanitizedValue = sanitizeNumber(Number(value)) ? value : ''
-	} else if (inputType === 'email') {
-		sanitizedValue = sanitizeEmail(value) ? value : ''
-	} else if (inputType === 'url') {
-		sanitizedValue = sanitizeURL(value) ? value : ''
-	} else if (inputType === 'date') {
-		sanitizedValue = sanitizeDate(value) ? value : ''
-	} else if (inputType === 'file') {
-		sanitizedValue = sanitizeFilePath(value) ? value : ''
+
+	let sanitized = ''
+
+	switch (type) {
+		case 'password':
+		case 'checkbox':
+		case 'radio':
+			sanitized = value
+			break
+
+		case 'text':
+		case 'textarea':
+		case 'phone':
+		case 'search':
+			sanitized = sanitizePlainText(value)
+			break
+
+		case 'number':
+		case 'range':
+			sanitized = sanitizeNumber(Number(value))
+			break
+
+		case 'email': {
+			const sanitizedEmail = sanitizePlainText(value)
+			sanitized = sanitizeEmail(sanitizedEmail)
+			break
+		}
+
+		case 'url':
+			sanitized = sanitizeURL(value)
+			break
+
+		case 'date':
+		case 'datetime-local':
+			// case 'time': TODO
+			sanitized = sanitizeDate(value)
+			break
+
+		case 'file':
+			sanitized = sanitizeFilePath(value)
+			break
+
+		default:
+			// For unknown types, sanitize as text
+			console.warn(
+				`Unknown input type "${type}", defaulting to text sanitization`,
+			)
+			return typeof value === 'string'
+				? (sanitized = sanitizePlainText(value))
+				: ''
 	}
 
-	return sanitizedValue
+	return sanitized
 }
 
 export default {sanitizeForm, sanitizePlainText}

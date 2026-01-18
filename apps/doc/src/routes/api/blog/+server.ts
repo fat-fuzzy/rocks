@@ -4,13 +4,12 @@ import pages from '$data/pages'
 
 const page = 'blog'
 
-export async function GET({url}) {
+export async function GET() {
 	const posts = blog.markdowns.filter(({meta}) => meta.status !== 'draft')
 
-	// TODO: This would be a call to an external API or database
 	const content = await pages.fetchMarkdowns(page)
 
-	if (!content?.meta) {
+	if (!content || !content[0].meta) {
 		error(404, {message: 'Not found'})
 	}
 

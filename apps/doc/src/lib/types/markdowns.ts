@@ -1,3 +1,5 @@
+import type {NavItem} from '$types'
+
 export type MarkdownMeta = {
 	id: string
 	index?: number
@@ -12,7 +14,6 @@ export type MarkdownMeta = {
 	date_created?: string
 	date_updated?: string
 	author?: string
-	description?: string
 	tags?: string[]
 	image?: string
 }

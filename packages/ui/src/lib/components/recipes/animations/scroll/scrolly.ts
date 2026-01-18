@@ -1,16 +1,15 @@
-import type {Snippet} from 'svelte'
-import {PictureProps, MagicProps} from '$types'
+import type {MediaProps, MagicProps} from '$types'
 
-type ScrollyItemProps = {
+export type ScrollyItemProps = {
 	overlay?: boolean
 	title: string
 	link: string
 	content: string
 	asset: string
-	image: PictureProps
+	image: MediaProps
 }
 
-type ScrollyProps = {
+export type ScrollyProps = {
 	title?: string
 	level?: number
 	fixed?: boolean

@@ -1,11 +1,11 @@
 <script lang="ts">
 	import type {FeedbackProps, AriaLive, UiStatus, UiTextContext} from '$types'
-	import {AriaLiveEnum} from '$types'
 	import styleHelper from '$lib/utils/styles.js'
 
 	let {
 		id = 'Feedback',
-		asset = 'default',
+		asset,
+		assetType = 'emoji',
 		element = 'div',
 		title,
 		text,
@@ -18,7 +18,7 @@
 		font,
 		variant,
 		layer,
-		container = 'raviolink ',
+		container = 'raviolink',
 		children,
 	}: FeedbackProps = $props()
 
@@ -28,6 +28,7 @@
 				size,
 				font,
 				asset,
+				assetType,
 				shape,
 				variant,
 				layer,
@@ -39,9 +40,7 @@
 			context as UiTextContext,
 		),
 	)
-	let ariaLive: AriaLive = $derived(
-		context === 'form' ? AriaLiveEnum.polite : undefined,
-	)
+	let ariaLive: AriaLive = $derived(context === 'form' ? 'polite' : undefined)
 	let testId = $derived(id === 'Feedback' ? id : `Feedback-${id}`)
 	let textAlign = $derived(
 		shape === 'round' || shape === 'square' || shape === 'pill'

@@ -6,11 +6,10 @@ import type {
 	SidebarLayoutProps,
 	NavItem,
 	UiLayoutProps,
-	Settings,
 	CookiePreferences,
 } from '$types'
 
-type ProseProps = {
+export type ProseProps = {
 	title: string
 	slug: string
 	asset: string

@@ -1,13 +1,5 @@
 import type {Snippet} from 'svelte'
-import type {
-	FuzzyPayload,
-	DismissEvent,
-	UiLayoutProps,
-	UiContentProps,
-	UiBlockProps,
-	UiAnimationEvent,
-	NavItem,
-} from '$types'
+import type {LayoutProps, UiLayoutProps, UiContentProps} from '$types'
 
 export type LayoutPrimitiveProps = UiLayoutProps & UiContentProps
 
@@ -17,6 +9,8 @@ export type GridProps = LayoutProps & {
 		grid?: boolean
 		gare?: string
 		scroll?: string
+		exchange?: boolean
+		tag?: string
 	}[]
 }
 

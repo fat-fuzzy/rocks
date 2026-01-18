@@ -1,11 +1,10 @@
 import type {FuzzyState, ToggleProps} from '$types'
-import {UiState} from '$types'
 
-export type UiStateSwitch = typeof UiState.active | typeof UiState.inactive
+export type UiStateSwitch = 'active' | 'inactive'
 
 export type SwitchMachine = {
-	[UiState.active]: FuzzyState
-	[UiState.inactive]: FuzzyState
+	active: FuzzyState
+	inactive: FuzzyState
 }
 
 /**

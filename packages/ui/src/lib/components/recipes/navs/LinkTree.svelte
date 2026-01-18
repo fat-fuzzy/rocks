@@ -1,6 +1,5 @@
 <script lang="ts">
 	import type {LinkTreeProps, NavItem} from '$types'
-	import {UiSize, UiColor} from '$types'
 	import format from '$lib/utils/format.js'
 	import {getStores} from '$app/stores'
 
@@ -12,8 +11,8 @@
 	let {
 		path = '',
 		layout,
-		size = UiSize['2xs'],
-		color = UiColor.primary,
+		size = '2xs',
+		color = 'primary',
 		shape = 'mellow',
 		align,
 		id,
@@ -75,8 +74,8 @@
 					{slug}
 					asset={buttonAssetClass}
 					href={format.formatHref(path, slug)}
-					size={UiSize['2xs']}
-					font={UiSize['sm']}
+					size={'2xs'}
+					font="sm"
 					actionPath={item.actionPath}
 					formaction={item.formaction}
 					{depth}

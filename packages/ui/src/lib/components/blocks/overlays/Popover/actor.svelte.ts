@@ -1,5 +1,3 @@
-import {UiState} from '$types'
-
 export class PopoverActor {
 	public popovers: {id: string; element: HTMLElement; state: string}[] = $state(
 		[],
@@ -21,7 +19,7 @@ export class PopoverActor {
 			return false
 		}
 
-		return popover.state === UiState.active
+		return popover.state === 'active'
 	}
 
 	public removePopover(id: string): void {
@@ -34,7 +32,7 @@ export class PopoverActor {
 			return
 		}
 
-		popover.state === UiState.inactive
+		popover.state === 'inactive'
 		popover.element.hidePopover()
 	}
 
@@ -43,7 +41,7 @@ export class PopoverActor {
 		if (!popover) {
 			return
 		}
-		popover.state === UiState.active
+		popover.state === 'active'
 		popover.element.showPopover()
 	}
 }

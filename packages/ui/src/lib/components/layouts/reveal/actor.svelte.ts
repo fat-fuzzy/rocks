@@ -1,5 +1,4 @@
 import type {ExpandProps, FuzzyPayload, FuzzySystem} from '$types'
-import {UiState, ButtonEvent} from '$types'
 class RevealActor implements FuzzySystem {
 	state: Map<string, ExpandProps> = $state(new Map())
 	mode = 'radio'
@@ -13,7 +12,7 @@ class RevealActor implements FuzzySystem {
 			this.state = new Map(
 				items.map((item) => [
 					item.id,
-					{...item, state: item.initial || UiState.collapsed},
+					{...item, state: item.initial || 'collapsed'},
 				]),
 			)
 		}
@@ -28,28 +27,35 @@ class RevealActor implements FuzzySystem {
 	}
 
 	public getRevealState(id: string): string | undefined {
-		return this.state.get(id)?.state
+		const state = this.state.get(id)?.value
+		return state ? String(state) : undefined
 	}
 
 	public toggleReveal(payload: FuzzyPayload): void {
 		let itemToReval = this.state.get(payload.id)
 		if (itemToReval) {
-			if (itemToReval.action) itemToReval.action(itemToReval.event)
+			// if (itemToReval.action) itemToReval.action(itemToReval)
 			this.state.set(payload.id, itemToReval)
 		}
 	}
 
 	public update(payload: FuzzyPayload): void {
 		if (payload && payload.action) {
-			this.state.set(payload.name, payload)
-			if (this.mode === 'radio' && payload.state === UiState.expanded) {
+			const expandProps = this.state.get(payload.name)
+
+			if (expandProps) {
+				expandProps.value = payload.value
+				this.state.set(payload.name, expandProps)
+			}
+
+			if (this.mode === 'radio' && payload.state === 'expanded') {
 				this.state.forEach((value, key) => {
 					if (
 						key !== payload.name &&
-						value.state === UiState.expanded &&
+						value.value === 'expanded' &&
 						value.action
 					) {
-						value.action(ButtonEvent.collapse)
+						value.action('collapse')
 						this.state.set(key, value)
 					}
 				})

@@ -9,8 +9,8 @@
 		area,
 		scroll,
 		layer,
-		children,
 		background,
+		children,
 	}: RevealLayoutProps = $props()
 
 	let expanded = $derived(reveal)

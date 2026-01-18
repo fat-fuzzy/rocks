@@ -33,6 +33,6 @@ Install the package as a `devDependency`:
 pnpm i -D @fat-fuzzy/sketch
 ```
 
-Use it in conjunction with the [`@fat-fuzzy/gfx`](https://github.com/fat-fuzzy/rocks/tree/main/packages/gfx) package as documented in the [Usage | GFX](/doc/usage/gfx) page.
+Use it in conjunction with the [`@fat-fuzzy/gfx`](https://github.com/fat-fuzzy/rocks/tree/main/packages/gfx) package as documented in the [Usage | GFX](/about/usage/gfx) page.
 
 You can see how the interface is rendered in the [PLAY](/play) page's sketches.
