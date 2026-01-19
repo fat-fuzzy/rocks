@@ -9,7 +9,7 @@
 	import InputRadio from '$lib/components/blocks/inputs/InputRadio.svelte'
 	import InputGroup from '$lib/components/blocks/inputs/InputGroup.svelte'
 	import InputPassword from '$lib/components/blocks/inputs/InputPassword.svelte'
-	import FormValidator from '$lib/utils/dom/FormValidator.svelte'
+	import FormValidator from '$lib/utils/browser/FormValidator.svelte'
 
 	let {
 		id = 'test-form',

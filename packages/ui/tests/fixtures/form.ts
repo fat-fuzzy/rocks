@@ -1,5 +1,5 @@
 import fatFuzzyIntl from '@fat-fuzzy/intl'
-import FormValidator from '$lib/utils/dom/FormValidator.svelte'
+import FormValidator from '$lib/utils/browser/FormValidator.svelte'
 
 const {L10nFormatter} = fatFuzzyIntl
 const messages = new L10nFormatter('en')

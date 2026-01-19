@@ -5,7 +5,7 @@ const {DEFAULT_PREFERENCES, TRANSITION_BRIGHTNESS, TRANSITION_CONTRAST} =
 	constants
 
 class AppContext {
-	state: ViewingPreferences = $state(DEFAULT_PREFERENCES)
+	state: ViewingPreferences = DEFAULT_PREFERENCES
 	/**
 	 * Initialize default Settings object or from the user's cookie values, if any
 	 */

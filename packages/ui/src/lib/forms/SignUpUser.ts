@@ -1,4 +1,4 @@
-import FormValidator from '$lib/utils/dom/FormValidator.svelte'
+import FormValidator from '$lib/utils/browser/FormValidator.svelte'
 
 class SignUpUser {
 	inputTypes: {[name: string]: string} = {

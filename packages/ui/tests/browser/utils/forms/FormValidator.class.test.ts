@@ -1,7 +1,7 @@
 import {describe, it, expect, beforeEach, vi} from 'vitest'
 import validations from '@fat-fuzzy/validation'
 
-import FormValidator from '$lib/utils/dom/FormValidator.svelte'
+import FormValidator from '$lib/utils/browser/FormValidator.svelte'
 import {
 	INPUTS,
 	getInputFields,
