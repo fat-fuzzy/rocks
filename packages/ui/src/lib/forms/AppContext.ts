@@ -13,11 +13,13 @@ class AppContext {
 		if (preferences) {
 			this.state = preferences
 		}
-		if (!this.state.consent) {
-			this.state.consent = {
-				functional: true,
-				legitimateInterest: true,
-			}
+
+		if (!this.state.consent.functional) {
+			this.state.consent.functional = true
+		}
+
+		if (!this.state.consent.legitimateInterest) {
+			this.state.consent.legitimateInterest = true
 		}
 	}
 
