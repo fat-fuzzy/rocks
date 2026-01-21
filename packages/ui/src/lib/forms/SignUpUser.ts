@@ -2,7 +2,7 @@ import FormValidator from '$lib/utils/browser/FormValidator.svelte'
 
 class SignUpUser {
 	inputTypes: {[name: string]: string} = {
-		sample_username: 'username',
+		sample_username: 'text',
 		sample_email: 'email',
 		sample_password: 'password',
 		confirm_password: 'password',
