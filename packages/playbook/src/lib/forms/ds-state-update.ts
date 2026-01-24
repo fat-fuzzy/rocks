@@ -7,15 +7,15 @@ const {DEFAULT_REVEAL_STATE} = ui.constants
 export type UiActionGetInput = {
 	cookies: Cookies
 	key: string
-	defaultAction?: any
+	defaultAction?: unknown
 }
 
 export type UiActionSetInput = {
 	data: FormData
 	block: string
-	value?: any
+	value?: unknown
 	options: {
-		state?: any
+		state?: unknown
 		domain?: string
 	} // TODO: improve options (use schema ?)
 }
@@ -24,7 +24,7 @@ export type UiActionSetOutput = {
 	success: boolean
 	key?: string
 	type?: string
-	state?: any
+	state?: unknown
 	message?: string
 }
 
@@ -88,7 +88,7 @@ class DsStateUpdate {
 	handleToggleUiReveal({data, block}): boolean {
 		const currentState = this.state[block as keyof DsState]
 
-		const reveal = new UiReveal(currentState, block)
+		const reveal = new UiReveal(block, currentState)
 		const newState = reveal.reveal(data)
 		if (!newState.success) {
 			return false

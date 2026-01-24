@@ -37,7 +37,7 @@ async function handleToggleUiReveal({
 	}
 
 	try {
-		const reveal = new UiReveal(currentState, element)
+		const reveal = new UiReveal(element, currentState)
 		const newState = reveal.reveal(data)
 
 		if (!newState.success) {
@@ -61,7 +61,7 @@ async function handleToggleUiReveal({
 		return {
 			success: false,
 			type: element,
-			message: 'Failed to update UI', // TODO: improve / manage error message with intl package,
+			message: (error as Error).message || 'Failed to update UI', // TODO: improve / manage error message with intl package,
 		}
 	}
 }

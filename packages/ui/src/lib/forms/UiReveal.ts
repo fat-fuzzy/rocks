@@ -9,7 +9,7 @@ class UiReveal {
 	/**
 	 * Initialize default state object or from the user's cookie values, if any
 	 */
-	constructor(state: {[key: string]: string} | null = null, id: string) {
+	constructor(id: string, state: {[key: string]: string} | null = null) {
 		this.id = id
 		if (state) {
 			this.state = state
