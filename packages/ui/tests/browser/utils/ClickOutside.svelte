@@ -1,5 +1,5 @@
 <script lang="ts">
-	import {clickOutside} from '$lib/utils/dom/click-outside'
+	import {clickOutside} from '$lib/utils/browser/click-outside'
 
 	let outsideClicked = $state(false)
 

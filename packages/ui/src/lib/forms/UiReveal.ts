@@ -9,7 +9,7 @@ class UiReveal {
 	/**
 	 * Initialize default state object or from the user's cookie values, if any
 	 */
-	constructor(state: {[key: string]: string} | null = null, id: string) {
+	constructor(id: string, state: {[key: string]: string} | null = null) {
 		this.id = id
 		if (state) {
 			this.state = state
@@ -24,28 +24,27 @@ class UiReveal {
 	reveal(data: FormData) {
 		let updated
 
-		if (data.has(`button-reveal-${this.id}`)) {
-			updated = data.get(`button-reveal-${this.id}`)
-		}
-
-		if (!updated) {
+		if (!data.has(`button-reveal-${this.id}`)) {
 			return {
 				success: false,
 			}
-		}
+		} else {
+			updated = data.get(`button-reveal-${this.id}`)
 
-		/**
-		 * This makes it work without javascript:
-		 * The button value changes with JS but not without
-		 */
-		if (updated === this.state.reveal) {
-			updated = TRANSITION_REVEAL[updated]
-		}
+			/**
+			 * This makes it work without javascript:
+			 * The button value changes with JS but not without
+			 */
+			if (updated === this.state.reveal) {
+				updated = TRANSITION_REVEAL[updated]
+			}
 
-		this.state.reveal = updated.toString()
-		return {
-			success: true,
-			state: this.state,
+			this.state.reveal = String(updated)
+
+			return {
+				success: true,
+				state: this.state,
+			}
 		}
 	}
 

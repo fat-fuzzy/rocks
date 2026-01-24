@@ -13,6 +13,7 @@
 	let {
 		id = 'reveal-menu',
 		title = 'RevealMenu',
+		label = 'RevealMenu',
 		reveal = 'collapsed',
 		formaction,
 		actionPath,
@@ -23,7 +24,7 @@
 		size,
 		threshold,
 		justify = 'start',
-		variant = '',
+		variant = 'fill',
 		align = 'start',
 		background,
 		place = 'left',
@@ -50,6 +51,8 @@
 
 <Reveal
 	{id}
+	name={id}
+	{label}
 	{variant}
 	{title}
 	{size}
@@ -63,7 +66,7 @@
 	{justify}
 >
 	<menu id={`menu-${id}`} class={`${menuClasses} ${show}`}>
-		{#each items as buttonProps}
+		{#each items as buttonProps (buttonProps.id)}
 			<li>
 				<Button
 					{onclick}

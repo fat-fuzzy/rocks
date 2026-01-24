@@ -1,5 +1,5 @@
 import fatFuzzyIntl from '@fat-fuzzy/intl'
-import FormValidator from '$lib/utils/dom/FormValidator.svelte'
+import FormValidator from '$lib/utils/browser/FormValidator.svelte'
 
 const {L10nFormatter} = fatFuzzyIntl
 const messages = new L10nFormatter('en')
@@ -109,6 +109,60 @@ const INPUTS: {
 	},
 }
 
+const SIGNUP_INPUTS: {
+	[name: string]: {
+		label: string
+		type: string
+		dependsOn?: string
+		value: {
+			valid: string
+			invalid?: string
+			unsanitized?: string
+			sanitized?: string
+		}
+		errors: string[]
+	}
+} = {
+	sample_username: {
+		label: 'Username',
+		type: 'text',
+		value: {valid: 'FatTheFuzzy', invalid: 'F'},
+		errors: [
+			messages.getErrorMessage('FORMAT_TEXT_MIN', 3),
+			// messages.getErrorMessage('FORMAT_TEXT_MAX', 1000),
+			// messages.getErrorMessage('FORMAT_USERNAME'),
+		],
+	},
+	sample_email: {
+		label: 'Email',
+		type: 'email',
+		value: {
+			valid: 'bird@fat-fuzzy.rocks',
+			invalid: 'bird@fat-fuzzy',
+			unsanitized: '<script>bird@fat-fuzzy.rocks',
+			sanitized: '&lt;script&gt;bird@fat-fuzzy.rocks',
+		},
+		errors: [messages.getErrorMessage('FORMAT_EMAIL')],
+	},
+	sample_password: {
+		label: 'Password',
+		type: 'password',
+		value: {valid: 'ThisIsNotSecure!!!123', invalid: 'pwd'},
+		errors: [
+			messages.getErrorMessage('FORMAT_TEXT_MIN', 12),
+			messages.getErrorMessage('FORMAT_PATTERN', 3),
+			messages.getErrorMessage('FORMAT_PATTERN', 3, 'digit'),
+		],
+	},
+	confirm_password: {
+		label: 'Confirm Pwd',
+		type: 'password',
+		dependsOn: 'sample_password',
+		value: {valid: 'ThisIsNotSecure!!!123', invalid: 'ThisIsNotSecure'},
+		errors: [messages.getErrorMessage('MATCH_PASSWORD')],
+	},
+}
+
 function getInputFields() {
 	return Object.keys(INPUTS)
 		.map((key) => ({
@@ -147,4 +201,4 @@ async function initFormDataWithInputs(
 	await validator.init(formData, getInputFields())
 }
 
-export {INPUTS, getInputFields, initFormDataWithInputs}
+export {INPUTS, SIGNUP_INPUTS, getInputFields, initFormDataWithInputs}

@@ -5,7 +5,7 @@ const {DEFAULT_PREFERENCES, TRANSITION_BRIGHTNESS, TRANSITION_CONTRAST} =
 	constants
 
 class AppContext {
-	state: ViewingPreferences = $state(DEFAULT_PREFERENCES)
+	state: ViewingPreferences = DEFAULT_PREFERENCES
 	/**
 	 * Initialize default Settings object or from the user's cookie values, if any
 	 */
@@ -13,11 +13,13 @@ class AppContext {
 		if (preferences) {
 			this.state = preferences
 		}
-		if (!this.state.consent) {
-			this.state.consent = {
-				functional: true,
-				legitimateInterest: true,
-			}
+
+		if (!this.state.consent.functional) {
+			this.state.consent.functional = true
+		}
+
+		if (!this.state.consent.legitimateInterest) {
+			this.state.consent.legitimateInterest = true
 		}
 	}
 

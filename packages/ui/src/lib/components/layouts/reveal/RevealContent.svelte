@@ -1,11 +1,9 @@
 <script lang="ts">
 	import type {RevealLayoutProps} from '$types'
-	import constants from '$lib/types/constants.js'
-	const {DEFAULT_REVEAL_STATE} = constants
 
 	let {
 		id = 'RevealContent',
-		reveal = DEFAULT_REVEAL_STATE.reveal,
+		reveal,
 		area,
 		scroll,
 		layer,

@@ -1,7 +1,7 @@
 import {describe, it, expect, beforeEach, vi} from 'vitest'
 import validations from '@fat-fuzzy/validation'
 
-import FormValidator from '$lib/utils/dom/FormValidator.svelte'
+import FormValidator from '$lib/utils/browser/FormValidator.svelte'
 import {
 	INPUTS,
 	getInputFields,
@@ -101,7 +101,7 @@ describe('FormValidator - a class that validates form inputs using validation fu
 			await validator.init(formData, {email: 'email', name: 'text'})
 		})
 
-		it('should only include changed fields in schema', () => {
+		it('should include changed or unchanged fields in schema', () => {
 			validator.form.email.changed = true
 			validator.form.email.value = INPUTS.sample_email.value.valid
 			validator.form.name.changed = false
@@ -109,8 +109,10 @@ describe('FormValidator - a class that validates form inputs using validation fu
 
 			const schema = validator.preValidate(['email', 'name'])
 
-			expect(schema).toEqual({email: INPUTS.sample_email.value.valid})
-			expect(schema.name).toBeUndefined()
+			expect(schema).toEqual({
+				email: INPUTS.sample_email.value.valid,
+				name: INPUTS.sample_name.value.valid,
+			})
 		})
 
 		it('should reset errors array', () => {
