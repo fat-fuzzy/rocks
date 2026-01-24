@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {ExpandLinkProps, FuzzyPayload} from '$types'
-	import {enhance} from '$app/forms'
+	// import {enhance} from '$app/forms'
 	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
 	import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/definitions.js'
 	import constants from '$lib/types/constants.js'
@@ -20,8 +20,8 @@
 		reveal,
 		depth,
 		assetType,
-		formaction,
-		actionPath,
+		// formaction,
+		// actionPath,
 		onclick,
 	}: ExpandLinkProps = $props()
 
@@ -46,11 +46,11 @@
 
 	let revealClasses = $derived(value[slug].reveal ?? 'collapsed')
 	let layoutClasses = $derived(`l:reveal top ${revealClasses}`)
-	let action = $state(
-		formaction && actionPath
-			? `${actionPath}?/${formaction}`
-			: `?/${formaction}`,
-	)
+	// let action = $state(
+	// 	formaction && actionPath
+	// 		? `${actionPath}?/${formaction}`
+	// 		: `?/${formaction}`,
+	// )
 
 	function toggleReveal(payload: FuzzyPayload) {
 		// @ts-expect-error state must be UiState (TODO: fix)

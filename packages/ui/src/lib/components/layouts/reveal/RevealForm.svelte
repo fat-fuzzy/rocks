@@ -5,7 +5,7 @@
 	import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/definitions.js'
 	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
 
-	const {ALIGN_OPPOSITE, DEFAULT_REVEAL_STATE, TRANSITION_REVEAL} = constants
+	const {ALIGN_OPPOSITE, DEFAULT_REVEAL_STATE} = constants
 
 	let {
 		id = 'RevealForm',
@@ -27,19 +27,19 @@
 		onclick,
 	}: RevealLayoutProps = $props()
 
-	let buttonAset = $state(asset)
-	$effect(() => {
-		buttonAset = asset
-	})
+	let buttonAset = $derived(asset)
+
 	let placeIcon = justify ? ALIGN_OPPOSITE[justify] : ''
 	let revealStates = $derived({
 		expanded: {
 			...EXPAND_MACHINE.expanded,
 			text: label,
+			action: onclick,
 		},
 		collapsed: {
 			...EXPAND_MACHINE.collapsed,
 			text: label,
+			action: onclick,
 		},
 	})
 
