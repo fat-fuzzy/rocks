@@ -28,7 +28,10 @@ export default defineConfig({
 		coverage: {
 			enabled: true,
 			provider: 'v8',
-			include: ['src/lib/**/dom/**/*.{js,ts}', 'src/lib/components/*.svelte'],
+			include: [
+				'src/lib/**/browser/**/*.{js,ts}',
+				'src/lib/components/*.svelte',
+			],
 			exclude: [
 				'src/app.d.ts',
 				'src/**/definitions.{js,ts}',

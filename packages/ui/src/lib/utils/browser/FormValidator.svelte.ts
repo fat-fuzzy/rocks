@@ -87,6 +87,8 @@ class FormValidator implements IFormValidator {
 					error: undefined,
 				}
 				schema[field] = this.form[field].value
+			} else {
+				schema[field] = this.form[field].value
 			}
 		})
 
