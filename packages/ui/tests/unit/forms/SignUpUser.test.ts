@@ -2,15 +2,15 @@ import {describe, it, expect} from 'vitest'
 import SignUpUser from '$lib/forms/SignUpUser'
 import {SIGNUP_INPUTS} from '$tests/fixtures/form'
 
+const signUpFields = [
+	'sample_username',
+	'sample_email',
+	'sample_password',
+	'confirm_password',
+]
+
 describe(`SignUpUser - a class that reads user FormData and validates it using on JSON Schema`, () => {
 	const userContext = new SignUpUser()
-	const signUpFields = [
-		'sample_username',
-		'sample_email',
-		'sample_password',
-		'confirm_password',
-	]
-
 	describe('constructor', () => {
 		it('should initialize with no arguments', () => {
 			expect(userContext.toString()).toEqual('')
