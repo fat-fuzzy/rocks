@@ -21,6 +21,7 @@
 		redirect,
 		layout = 'stack',
 		container,
+		containerSize = 'lg',
 		level = 3, // <h*> element level
 		size = 'md',
 		color = 'accent',
@@ -66,12 +67,15 @@
 		redirect ? `${formaction}&redirectTo=${redirect}` : formaction,
 	)
 
-	let layoutClasses = styleHelper.getStyles({
-		size,
-		font: 'md',
-		layout,
-		container,
-	})
+	let layoutClasses = $derived(
+		styleHelper.getStyles({
+			size,
+			font: 'md',
+			layout,
+			container,
+			containerSize,
+		}),
+	)
 
 	function handleSubmit(event: Event) {
 		if (!validator.errors.length) {
@@ -117,6 +121,7 @@
 	title="Cookies"
 	asset="cookie"
 	container="burrito"
+	{containerSize}
 	variant="fill"
 	layer="3"
 	color={cookiesPartial ? 'accent' : 'primary'}
@@ -128,7 +133,8 @@
 		status="default"
 		asset="none"
 		context="form"
-		container="burrito:lg "
+		container="burrito"
+		{containerSize}
 		{size}
 		font="md"
 		variant="bare"

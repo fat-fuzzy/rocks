@@ -23,6 +23,14 @@ const PROPS_CONTAINER: {props: UiContainerProps; expected: string}[] = [
 	},
 	{
 		props: {
+			container: 'burrito',
+			containerSize: 'lg',
+			size: 'md',
+		},
+		expected: 'l:burrito:lg',
+	},
+	{
+		props: {
 			container: 'taco',
 			size: 'md',
 		},
