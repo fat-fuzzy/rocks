@@ -15,9 +15,9 @@ class ExpandActor implements FuzzyActor {
 	transitions = EXPAND_TRANSITIONS
 	currentState = $derived(this.machine[this.state])
 	expanded = $derived(this.state === 'expanded')
-	value = $derived(this.currentState?.value || this.state)
-	id = $derived(this.currentState?.id)
-	label = $derived(this.currentState?.label || '')
+	value = $derived(this.currentState.value || this.state)
+	id = $derived(this.currentState.id)
+	label = $derived(this.currentState.label)
 
 	constructor({
 		initial,
@@ -50,16 +50,16 @@ class ExpandActor implements FuzzyActor {
 	}
 
 	public getStyles(props: UiBlockProps): string {
-		let currentVariant = this.currentState?.variant ?? props.variant
-		let currentAsset = this.currentState?.asset ?? props.asset
+		const currentVariant = this.currentState?.variant ?? props.variant
+		const currentAsset = this.currentState?.asset ?? props.asset
 
-		let blockClasses = styleHelper.getStyles({
+		const blockClasses = styleHelper.getBlockStyles({
 			...props,
 			asset: currentAsset,
 			variant: currentVariant as UiVariant,
 		})
 
-		return `expand ${blockClasses}`
+		return `expand ${blockClasses}`.trim()
 	}
 }
 

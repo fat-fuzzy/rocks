@@ -17,8 +17,8 @@ class ToggleActor implements FuzzyActor {
 	currentState = $derived(this.machine[this.state])
 	pressed = $derived(this.state === 'active')
 	value = $derived(this.currentState?.value || this.state)
-	id = $derived(this.currentState?.id)
-	label = $derived(this.currentState?.label || '')
+	id = $derived(this.currentState.id)
+	label = $derived(this.currentState.label)
 
 	constructor({
 		initial,
