@@ -45,7 +45,7 @@
 
 {#snippet menuContent()}
 	<menu {id} class={menuClasses}>
-		{#each items as props, i}
+		{#each items as props, i (i)}
 			{@const itemColor = props.color ?? color}
 			{@const itemVariant = props.variant ?? variant}
 			{@const itemSize = props.size ?? size}

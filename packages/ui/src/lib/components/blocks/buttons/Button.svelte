@@ -25,7 +25,7 @@
 		onclick,
 	}: ButtonProps = $props()
 
-	function handleClick(event: MouseEvent) {
+	function handleClick() {
 		if (onclick) onclick(payload)
 	}
 
@@ -44,7 +44,7 @@
 		}),
 	)
 
-	let payload = $state({
+	let payload = $derived({
 		id: name, // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value
 		name,
 		value,

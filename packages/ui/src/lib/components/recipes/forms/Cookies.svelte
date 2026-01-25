@@ -41,7 +41,7 @@
 	let cookiesPartial = $derived(
 		consent && consent.functional && !consent.legitimateInterest,
 	)
-	let submitDisabled: boolean | undefined = $state(undefined)
+	let submitDisabled: boolean | undefined = $derived(validator.formHasErrors())
 	let title = 'Cookies'
 	let description = '🍪 This website uses cookies 🍪'
 	let successMessage =
@@ -53,10 +53,6 @@
 		legitimateInterest: 'checkbox',
 		functional: 'checkbox',
 	}
-
-	$effect(() => {
-		submitDisabled = validator.formHasErrors()
-	})
 
 	/**
 	 * For the form to work:
