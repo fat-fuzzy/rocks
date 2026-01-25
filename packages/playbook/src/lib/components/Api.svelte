@@ -68,7 +68,7 @@
 		class={`${apiLayout} bp:${apiBreakpoint} ${apiSize}`}
 		action={action && actionPath ? `${actionPath}?/${action}` : `?/${action}`}
 	>
-		{#each categories as category}
+		{#each categories as category, i (i)}
 			<StyleFamily
 				{category}
 				meta={category !== 'app' ? meta : undefined}

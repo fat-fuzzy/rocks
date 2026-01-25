@@ -1,11 +1,4 @@
-import type {
-	Filters,
-	GeometryContext,
-	CameraContext,
-	GeometryControlsProps,
-	SceneContext,
-	TextureContext,
-} from '$types'
+import type {Filters, SceneContext} from '$types'
 
 export type CameraControlsProps = {
 	id: string

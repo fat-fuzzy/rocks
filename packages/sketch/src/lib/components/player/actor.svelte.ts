@@ -1,9 +1,6 @@
-import type {
-	FeedbackType,
-	PlayerPayload,
-	PlayerSwitchType,
-	PlayerEventsType,
-} from '$types'
+import type {FuzzyPayload} from '@fat-fuzzy/ui'
+
+import type {FeedbackType, PlayerSwitchType, PlayerEventsType} from '$types'
 import {PlayerEvent, PlayerState, PlayerAction} from '$types'
 import {
 	PLAYER_EVENTS,
@@ -37,7 +34,7 @@ class PlayerActor {
 		onclick,
 	}: {
 		initial?: PlayerState
-		onclick: (payload: PlayerPayload) => void
+		onclick: (payload: FuzzyPayload) => void
 	}) {
 		this.state = initial ?? PlayerState.idle
 		this.playSwitch.active.onclick = onclick

@@ -45,13 +45,13 @@
 	}: SketchProps = $props()
 
 	let id = $derived(meta?.id ? `sketch-${meta.id}` : 'sketch')
-	let debug = dev
+	let debug = $derived(dev)
 	let filters: Filters = $state(DEFAULT_FILTERS)
 	let canvas: HTMLCanvasElement | undefined = $state(undefined)
 	let sceneContext: SceneContext = $state({})
-	let title = meta.title
-	let asset = meta.asset
-	let dimensions = meta.dimensions || 'video'
+	let title = $derived(meta.title)
+	let asset = $derived(meta.asset)
+	let dimensions = $derived(meta.dimensions || 'video')
 
 	let frame: number
 	let time: number
@@ -76,9 +76,11 @@
 			: '',
 	)
 
-	let backgroundClass = background
-		? `l:frame:${dimensions} scene bg:${background}`
-		: `l:frame:${dimensions} scene`
+	let backgroundClass = $derived(
+		background
+			? `l:frame:${dimensions} scene bg:${background}`
+			: `l:frame:${dimensions} scene`,
+	)
 
 	let frameClasses = $derived(
 		`canvas ${backgroundClass} ${layer} ${currentState} ${currentAsset}`,
@@ -299,7 +301,7 @@
 <PageRails
 	pageName={meta.categories[0]}
 	{title}
-	description={meta.description}
+	description={meta.description || ''}
 	path={page.url.pathname}
 	nav={page.data.pageNav}
 	{context}
