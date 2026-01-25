@@ -17,8 +17,8 @@ class ToggleActor implements FuzzyActor {
 	currentState = $derived(this.machine[this.state])
 	pressed = $derived(this.state === 'active')
 	value = $derived(this.currentState?.value || this.state)
-	id = $derived(this.currentState.id)
-	label = $derived(this.currentState.label)
+	id = $derived(this.currentState?.id)
+	label = $derived(this.currentState?.label || '')
 
 	constructor({
 		initial,
@@ -39,7 +39,11 @@ class ToggleActor implements FuzzyActor {
 
 	public getTransition(event: ButtonEvent): UiStateToggle {
 		const state = this.state
-		return this.transitions[state][event] as UiStateToggle
+		const transition = this.transitions[state][event]
+		if (transition) {
+			return transition as UiStateToggle
+		}
+		return state
 	}
 
 	public update(event: ButtonEvent): void {
@@ -50,7 +54,7 @@ class ToggleActor implements FuzzyActor {
 		const currentVariant = this.currentState?.variant ?? props.variant
 		const currentAsset = this.currentState?.asset ?? props.asset
 
-		const blockClasses = styleHelper.getBlockStyles({
+		const blockClasses = styleHelper.getStyles({
 			...props,
 			asset: currentAsset,
 			variant: currentVariant as UiVariant,

@@ -16,9 +16,9 @@ class SwitchActor implements FuzzyActor {
 	transitions = SWITCH_TRANSITIONS
 	currentState = $derived(this.machine[this.state])
 	pressed = $derived(this.state === 'active')
-	value = $derived(this.currentState.value || this.state)
-	id = $derived(this.currentState.id)
-	label = $derived(this.currentState.label)
+	value = $derived(this.currentState?.value || this.state)
+	id = $derived(this.currentState?.id)
+	label = $derived(this.currentState?.label || '')
 
 	constructor({
 		initial,
@@ -39,7 +39,11 @@ class SwitchActor implements FuzzyActor {
 
 	public getTransition(event: string): UiStateSwitch {
 		const state = this.state as UiStateSwitch
-		return this.transitions[state][event] as UiStateSwitch
+		const transition = this.transitions[state][event]
+		if (transition) {
+			return transition as UiStateSwitch
+		}
+		return state
 	}
 
 	public update(event: string): void {
@@ -50,7 +54,7 @@ class SwitchActor implements FuzzyActor {
 		const currentVariant = this.currentState?.variant ?? props.variant
 		const currentAsset = this.currentState?.asset ?? props.asset
 
-		const blockClasses = styleHelper.getBlockStyles({
+		const blockClasses = styleHelper.getStyles({
 			...props,
 			asset: currentAsset,
 			variant: currentVariant as UiVariant,
