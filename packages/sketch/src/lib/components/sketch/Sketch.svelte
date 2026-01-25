@@ -299,7 +299,7 @@
 <PageRails
 	pageName={meta.categories[0]}
 	{title}
-	description={meta.description}
+	description={meta.description || ''}
 	path={page.url.pathname}
 	nav={page.data.pageNav}
 	{context}

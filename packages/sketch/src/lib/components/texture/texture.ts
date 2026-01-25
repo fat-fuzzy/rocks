@@ -1,8 +1,11 @@
+import type {Filters} from '$types'
+import type {UiColor, UiSize, UiVariant} from '@fat-fuzzy/ui'
+
 export type FiltersProps = {
 	id: string
-	color?: string
-	size?: string
-	variant?: string
+	color?: UiColor
+	size?: UiSize
+	variant?: UiVariant
 	background?: string
 	layout?: string
 	breakpoint?: string
@@ -11,5 +14,5 @@ export type FiltersProps = {
 	channels?: string[]
 	blur?: number[]
 	convolutions?: string[]
-	onupdate: (payload: any) => void // TODO: Fix type
+	onupdate: (payload: Filters) => void
 }

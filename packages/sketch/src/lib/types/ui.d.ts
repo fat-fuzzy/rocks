@@ -1,3 +1,5 @@
+import type {UiDimension} from '@fat-fuzzy/ui'
+
 export type FeedbackType = {
 	status: string
 	message: string
@@ -36,15 +38,19 @@ export type ProgramInfo = {
 export type SceneMeta = {
 	controls: string[]
 	id?: string
-	title?: string
+	title: string
+	description?: string
 	asset?: string
-	dimensions?: string
+	dimensions?: UiDimension
+	background?: string
 	input?: string
 	camera?: number
 	filename?: string
 	filters?: Filters
-	grid?: string[]
+	grid?: {id: string; label: string; group?: string | undefined}[]
 	draft?: boolean
+	warnings?: {title: string; message: string}[]
+	categories: string[]
 }
 
 export type Filters = {
