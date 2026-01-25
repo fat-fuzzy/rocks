@@ -1,4 +1,4 @@
-import type {FuzzyPayload} from '$types'
+import type {ButtonEvent, FuzzyPayload} from '$types'
 import {describe, it, expect} from 'vitest'
 import ToggleActor from '$lib/components/blocks/buttons/Toggle/actor.svelte'
 import {
@@ -62,6 +62,12 @@ describe(`ToggleActor - a class to manage Toggle button states`, () => {
 		it('should transition active to inactive toggle event', () => {
 			const actor = new ToggleActor(defaultActiveConfig)
 			const transition = actor.getTransition('toggle')
+			expect(transition).toEqual('inactive')
+		})
+
+		it('should not transition on unknown event ', () => {
+			const actor = new ToggleActor(defaultInactiveConfig)
+			const transition = actor.getTransition('blah' as ButtonEvent)
 			expect(transition).toEqual('inactive')
 		})
 	})

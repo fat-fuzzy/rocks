@@ -1,4 +1,4 @@
-import type {FuzzyPayload} from '$types'
+import type {ButtonEvent, FuzzyPayload} from '$types'
 import {describe, it, expect} from 'vitest'
 import SwitchActor from '$lib/components/blocks/buttons/Switch/actor.svelte'
 import {
@@ -62,6 +62,12 @@ describe(`SwitchActor - a class to manage Switch button states`, () => {
 		it('should transition active to inactive switch event', () => {
 			const actor = new SwitchActor(defaultActiveConfig)
 			const transition = actor.getTransition('switch')
+			expect(transition).toEqual('inactive')
+		})
+
+		it('should not transition on unknown event ', () => {
+			const actor = new SwitchActor(defaultInactiveConfig)
+			const transition = actor.getTransition('blah' as ButtonEvent)
 			expect(transition).toEqual('inactive')
 		})
 	})
