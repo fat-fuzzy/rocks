@@ -7,7 +7,8 @@ import type {
 	UiStateToggle,
 	UiVariant,
 } from '$types'
-import {TOGGLE_MACHINE, TOGGLE_TRANSITIONS} from './definitions.js'
+import {TOGGLE_MACHINE, TOGGLE_TRANSITIONS} from './definitions'
+
 import styleHelper from '$lib/utils/styles.js'
 class ToggleActor implements FuzzyActor {
 	state: UiStateToggle = $state('inactive')
@@ -50,16 +51,16 @@ class ToggleActor implements FuzzyActor {
 	}
 
 	public getStyles(props: UiBlockProps): string {
-		let currentVariant = this.currentState?.variant ?? props.variant
-		let currentAsset = this.currentState?.asset ?? props.asset
+		const currentVariant = this.currentState?.variant ?? props.variant
+		const currentAsset = this.currentState?.asset ?? props.asset
 
-		let blockClasses = styleHelper.getStyles({
+		const blockClasses = styleHelper.getBlockStyles({
 			...props,
 			asset: currentAsset,
 			variant: currentVariant as UiVariant,
 		})
 
-		return `toggle ${blockClasses}`
+		return `toggle ${blockClasses}`.trim()
 	}
 }
 
