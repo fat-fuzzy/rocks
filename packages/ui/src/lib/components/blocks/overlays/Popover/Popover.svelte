@@ -27,8 +27,8 @@
 	let expanded = $derived(actor.isActive(id))
 	let reveal = $derived(expanded ? 'expanded' : 'collapsed')
 
-	let fixedClass = $state(fixed ? `fixed:${place}` : `place:${place}`)
-	let layerClass = $state(layer ? `layer:${layer}` : '')
+	let fixedClass = $derived(fixed ? `fixed:${place}` : `place:${place}`)
+	let layerClass = $derived(layer ? `layer:${layer}` : '')
 	let revealClasses = $derived(`${fixedClass} ${layerClass}`)
 
 	function toggleReveal(payload: FuzzyPayload) {

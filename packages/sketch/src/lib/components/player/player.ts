@@ -1,5 +1,6 @@
 import {EventOrder} from '$types'
-import type {PlayerEvent, PlayerState} from '$types'
+import type {PlayerEvent, PlayerState, PlayerAction} from '$types'
+import type {UiColor, UiSize, UiVariant, FuzzyPayload} from '@fat-fuzzy/ui'
 
 export type PlayerUi = 'play' | 'pause' | 'stop' | 'clear'
 
@@ -27,8 +28,6 @@ export type PlayerTransitionsType = {
 	}
 }
 
-export type PlayerPayload = {value: string | number; state: string}
-
 export type PlayerSwitchState = {
 	id: string
 	value: string | number
@@ -36,16 +35,16 @@ export type PlayerSwitchState = {
 	asset: string
 	variant: string
 	state: string
-	onclick?: (payload: PlayerPayload) => void
+	onclick?: (payload: FuzzyPayload) => void
 }
 
 export type PlayerProps = {
 	id?: string
-	size: string
-	font?: string
-	variant?: string
+	font?: UiSize
+	size: UiSize
+	variant?: UiVariant
 
-	color?: string
+	color?: UiColor
 	disabled?: boolean
 	initial?: string
 	canvas?: HTMLCanvasElement
@@ -55,5 +54,5 @@ export type PlayerProps = {
 	clear: (payload: {event: PlayerEvent}) => void
 	stop: (payload: {event: PlayerEvent}) => void
 	init?: (payload: {event: PlayerEvent}) => void
-	snap?: (payload: {event: PlayerEvent}) => void
+	snap?: () => void
 }

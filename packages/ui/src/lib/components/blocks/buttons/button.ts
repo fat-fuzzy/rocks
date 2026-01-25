@@ -1,5 +1,5 @@
 import type {Snippet} from 'svelte'
-import type {UiBlockProps} from '$types'
+import type {FuzzyPayload, UiBlockProps} from '$types'
 
 export type ButtonType = 'button' | 'submit' | 'reset' | null | undefined
 
@@ -18,5 +18,5 @@ export type ButtonProps = UiBlockProps & {
 
 	type?: ButtonType
 	children?: Snippet
-	onclick?: (payload: any) => void
+	onclick?: (payload: FuzzyPayload) => void
 }
