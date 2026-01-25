@@ -108,7 +108,7 @@ describe(`ExpandActor - a class to manage Expand button states`, () => {
 		it('should return correct styles for Expand button from UiBlockProps object', () => {
 			const actor = new ExpandActor({})
 			const styles = actor.getStyles(PROPS_BLOCK[0].props)
-			expect(styles).toEqual(`expand ${PROPS_BLOCK[0].expected}`)
+			expect(styles).toEqual(`expand size:md ${PROPS_BLOCK[0].expected}`)
 		})
 
 		it('should return correct styles for Expand button from empty object', () => {

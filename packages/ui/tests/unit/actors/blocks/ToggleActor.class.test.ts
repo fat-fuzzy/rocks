@@ -84,7 +84,7 @@ describe(`ToggleActor - a class to manage Toggle button states`, () => {
 		it('should return correct styles for Toggle button from UiBlockProps object', () => {
 			const actor = new ToggleActor({})
 			const styles = actor.getStyles(PROPS_BLOCK[0].props)
-			expect(styles).toEqual(`toggle ${PROPS_BLOCK[0].expected}`)
+			expect(styles).toEqual(`toggle size:md ${PROPS_BLOCK[0].expected}`)
 		})
 
 		it('should return correct styles for Toggle button from empty object', () => {

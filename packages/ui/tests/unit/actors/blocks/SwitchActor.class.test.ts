@@ -90,7 +90,7 @@ describe(`SwitchActor - a class to manage Switch button states`, () => {
 		it('should return correct styles for Switch button from UiBlockProps object', () => {
 			const actor = new SwitchActor({})
 			const styles = actor.getStyles(PROPS_BLOCK[0].props)
-			expect(styles).toEqual(`switch ${PROPS_BLOCK[0].expected}`)
+			expect(styles).toEqual(`switch size:md ${PROPS_BLOCK[0].expected}`)
 		})
 
 		it('should return correct styles for Switch button from empty object', () => {
