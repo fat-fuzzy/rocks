@@ -174,7 +174,7 @@ function getBlockStyles(props: UiBlockProps): string {
 
 	const sizeClass = getClass('size', size)
 
-	if (asset) {
+	if (asset && asset !== 'none') {
 		const assetTypeClass = assetType ? assetType : 'emoji'
 		const assetClass = appendModifier(assetTypeClass, asset)
 		classes.push(assetClass)
@@ -211,10 +211,11 @@ function getFeedbackStyles(
 	const statusClass = getClass('status', status)
 	classes.push(statusClass)
 
-	const defaultAssetType = assetType ?? 'emoji'
-	const defaultAssetClass = appendModifier(defaultAssetType, status)
-
-	classes.push(defaultAssetClass)
+	if (asset !== 'none') {
+		const defaultAssetType = assetType ?? 'emoji'
+		const defaultAssetClass = appendModifier(defaultAssetType, status)
+		classes.push(defaultAssetClass)
+	}
 
 	const typeClass = `feedback:${context}`
 	classes.push(typeClass)

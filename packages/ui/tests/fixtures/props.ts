@@ -223,6 +223,22 @@ const PROPS_FEEDBACK: {
 		expected:
 			'l:stack:md align:center justify:center shape:round variant:outline status:default emoji:default feedback:prose bg:default:100 raviolink',
 	},
+	{
+		props: {
+			props: {
+				size: 'md',
+				variant: 'outline',
+				shape: 'round',
+				justify: 'end',
+				container: 'raviolink',
+				asset: 'none',
+			},
+			status: 'default',
+			context: 'prose',
+		},
+		expected:
+			'l:stack:md align:center justify:center shape:round variant:outline status:default feedback:prose bg:default:100 raviolink',
+	},
 ]
 
 export {PROPS_CONTAINER, PROPS_LAYOUT, PROPS_BLOCK, PROPS_FEEDBACK}
