@@ -69,7 +69,7 @@
 </script>
 
 {#snippet groupContent(items: Map<string, FuzzyPayload>)}
-	{#each items as [itemId, props]}
+	{#each items as [itemId, props] (itemId)}
 		<li class="l:stack:3xs">
 			<Toggle
 				init={loadMenu}
