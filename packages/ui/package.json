@@ -16,6 +16,7 @@
 		"format": "prettier --write .",
 		"test": "pnpm test:unit && pnpm test:browser && pnpm test:e2e",
 		"test:unit": "vitest run",
+		"test:types": "vitest run --typecheck",
 		"test:coverage": "vitest --ui",
 		"test:browser": "vitest run --config=vitest.browser.config.ts",
 		"test:browser:ui": "vitest --config=vitest.browser.ui.config.ts",
