@@ -17,16 +17,6 @@ export const TEST_CONFIG_BASE = {
 	include: ['tests/browser/**/*.{test,spec}.ts'],
 }
 
-export const COVERAGE_BASE = {
-	enabled: true,
-	include: ['src/lib/**/browser/**/*.{js,ts}', 'src/lib/components/*.svelte'],
-	exclude: [
-		'src/app.d.ts',
-		'src/**/definitions.{js,ts}',
-		'src/lib/types/*.{js,ts}',
-	],
-}
-
 export default defineConfig({
 	plugins: [sveltekit()],
 	resolve: {
@@ -40,11 +30,11 @@ export default defineConfig({
 			// https://vitest.dev/config/browser/playwright
 			provider: playwright(),
 			headless: true,
-			instances: [{browser: 'chromium'}],
-		},
-		coverage: {
-			provider: 'v8',
-			...COVERAGE_BASE,
+			instances: [
+				{browser: 'chromium'},
+				{browser: 'firefox'},
+				{browser: 'webkit'},
+			],
 		},
 	},
 	optimizeDeps: {

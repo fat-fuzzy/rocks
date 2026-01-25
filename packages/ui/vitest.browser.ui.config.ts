@@ -1,11 +1,17 @@
 import {defineConfig} from 'vitest/config'
 import {playwright} from '@vitest/browser-playwright'
 import {sveltekit} from '@sveltejs/kit/vite'
-import {
-	ALIAS_BASE,
-	TEST_CONFIG_BASE,
-	COVERAGE_BASE,
-} from './vitest.browser.config'
+import {ALIAS_BASE, TEST_CONFIG_BASE} from './vitest.browser.config'
+
+export const COVERAGE_BASE = {
+	enabled: true,
+	include: ['src/lib/**/browser/**/*.{js,ts}', 'src/lib/components/*.svelte'],
+	exclude: [
+		'src/app.d.ts',
+		'src/**/definitions.{js,ts}',
+		'src/lib/types/*.{js,ts}',
+	],
+}
 
 export default defineConfig({
 	plugins: [sveltekit()],
