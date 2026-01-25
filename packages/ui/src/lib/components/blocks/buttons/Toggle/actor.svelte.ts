@@ -39,11 +39,7 @@ class ToggleActor implements FuzzyActor {
 
 	public getTransition(event: ButtonEvent): UiStateToggle {
 		const state = this.state
-		const transition = this.transitions[state][event]
-		if (transition) {
-			return transition as UiStateToggle
-		}
-		return state
+		return this.transitions[state][event] as UiStateToggle
 	}
 
 	public update(event: ButtonEvent): void {
