@@ -17,7 +17,7 @@ class ExpandActor implements FuzzyActor {
 	expanded = $derived(this.state === 'expanded')
 	value = $derived(this.currentState?.value || this.state)
 	id = $derived(this.currentState?.id)
-	label = $derived(this.currentState?.label || '')
+	label = $derived(this.currentState?.label)
 
 	constructor({
 		initial,
