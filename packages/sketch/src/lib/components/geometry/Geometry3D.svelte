@@ -32,25 +32,25 @@
 		})
 	}
 
-	let {scale, translation} = context
+	let {scale, translation} = $derived(context)
 
 	// input attributes
 	let maxZ = $state(1)
 	let minZ = $state(-1000)
 
 	// Dimensions
-	let maxX = $state(canvasWidth)
-	let maxY = $state(canvasHeight)
-	let minX = $state(-canvasWidth)
-	let minY = $state(-canvasHeight)
+	let maxX = $derived(canvasWidth)
+	let maxY = $derived(canvasHeight)
+	let minX = $derived(-canvasWidth)
+	let minY = $derived(-canvasHeight)
 	// Position
-	let coordX = $state(translation[0] ?? 0)
-	let coordY = $state(translation[1] ?? 0)
-	let coordZ = $state(translation[2] ?? 0)
+	let coordX = $derived(translation[0] ?? 0)
+	let coordY = $derived(translation[1] ?? 0)
+	let coordZ = $derived(translation[2] ?? 0)
 	// Scale
-	let scaleX = $state(scale[0] ?? 1)
-	let scaleY = $state(scale[1] ?? 1)
-	let scaleZ = $state(scale[2] ?? 1)
+	let scaleX = $derived(scale[0] ?? 1)
+	let scaleY = $derived(scale[1] ?? 1)
+	let scaleZ = $derived(scale[2] ?? 1)
 
 	// Rotation
 	let angleX = $state(190)
@@ -63,9 +63,12 @@
 		translation: [coordX, coordY, coordZ],
 		scale: [scaleX, scaleY, scaleZ],
 	})
-	let action =
-		formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
-	let backgroundClass = background ? `bg:${background}` : ''
+	let action = $derived(
+		formaction && redirect
+			? `${formaction}&redirectTo=${redirect}`
+			: formaction,
+	)
+	let backgroundClass = $derived(background ? `bg:${background}` : '')
 </script>
 
 <form
@@ -140,7 +143,7 @@
 		{disabled}
 	/>
 	{#await Promise.resolve()}
-		<div class={`l:frame:twin ravioli:lg`}>
+		<div class="l:frame:twin ravioli:lg">
 			<Button
 				id="update-geometry"
 				name="update-geometry"

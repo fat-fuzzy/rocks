@@ -31,20 +31,20 @@
 			geometry: payload,
 		})
 
-	let {scale, translation, rotation} = context
+	let {scale, translation, rotation} = $derived(context)
 
 	// input attributes
-	let angle = $state(0)
+	let angle = $derived(rotation[0])
 
 	// Dimensions
-	let maxX = $state(canvasWidth)
-	let maxY = $state(canvasHeight)
+	let maxX = $derived(canvasWidth)
+	let maxY = $derived(canvasHeight)
 	// Position
-	let coordX = $state(translation[0] ?? 0)
-	let coordY = $state(translation[1] ?? 0)
+	let coordX = $derived(translation[0] ?? 0)
+	let coordY = $derived(translation[1] ?? 0)
 	// Scale
-	let scaleX = $state(scale[0] ?? 1)
-	let scaleY = $state(scale[1] ?? 1)
+	let scaleX = $derived(scale[0] ?? 1)
+	let scaleY = $derived(scale[1] ?? 1)
 
 	let payload = $derived({
 		color: context.color,
@@ -53,9 +53,12 @@
 		scale: [scaleX, scaleY],
 	})
 
-	let action =
-		formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
-	let backgroundClass = background ? `bg:${background}` : ''
+	let action = $derived(
+		formaction && redirect
+			? `${formaction}&redirectTo=${redirect}`
+			: formaction,
+	)
+	let backgroundClass = $derived(background ? `bg:${background}` : '')
 </script>
 
 <form
@@ -98,7 +101,7 @@
 	/>
 	{#await Promise.resolve()}
 		<!-- This will display if no JS is present -->>
-		<div class={`l:frame:twin ravioli:lg`}>
+		<div class="l:frame:twin ravioli:lg">
 			<Button
 				id="update-geometry"
 				name="update-geometry"
