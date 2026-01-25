@@ -35,7 +35,7 @@ describe(`ToggleActor - a class to manage Toggle button states`, () => {
 			expect(actor.pressed).toEqual(false)
 			expect(actor.value).toEqual('inactive')
 			expect(actor.id).toEqual('inactive')
-			expect(actor.label).toEqual('')
+			expect(actor.label).toEqual('Inactive')
 		})
 
 		it('should initialize with a non-empty config object', () => {
@@ -48,7 +48,7 @@ describe(`ToggleActor - a class to manage Toggle button states`, () => {
 			expect(actor.pressed).toEqual(true)
 			expect(actor.value).toEqual('active')
 			expect(actor.id).toEqual('active')
-			expect(actor.label).toEqual('')
+			expect(actor.label).toEqual('Active')
 		})
 	})
 
