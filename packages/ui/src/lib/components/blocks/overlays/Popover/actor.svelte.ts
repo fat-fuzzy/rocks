@@ -23,7 +23,7 @@ export class PopoverActor {
 			return false
 		}
 
-		return popover.state === 'active'
+		return popover.state === 'expanded'
 	}
 
 	public removePopover(id: string): void {
@@ -36,7 +36,7 @@ export class PopoverActor {
 			return
 		}
 
-		popover.state = 'inactive'
+		popover.state = 'collapsed'
 		popover.element.hidePopover()
 	}
 
@@ -45,7 +45,7 @@ export class PopoverActor {
 		if (!popover) {
 			return
 		}
-		popover.state = 'active'
+		popover.state = 'expanded'
 		popover.element.showPopover()
 	}
 }
