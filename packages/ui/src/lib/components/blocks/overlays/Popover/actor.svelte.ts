@@ -29,25 +29,6 @@ export class PopoverActor {
 	public removePopover(id: string): void {
 		this.popovers = this.popovers.filter((popover) => popover.id !== id)
 	}
-
-	public hidePopover(id: string): void {
-		const popover = this.popovers.find((popover) => popover.id === id)
-		if (!popover) {
-			return
-		}
-
-		popover.state = 'collapsed'
-		popover.element.hidePopover()
-	}
-
-	public showPopover(id: string): void {
-		const popover = this.popovers.find((popover) => popover.id === id)
-		if (!popover) {
-			return
-		}
-		popover.state = 'expanded'
-		popover.element.showPopover()
-	}
 }
 
 const actor = new PopoverActor()

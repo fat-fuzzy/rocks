@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {FuzzyPayload, OverlayProps} from '$types'
+	import type {OverlayProps} from '$types'
 
 	import {onMount} from 'svelte'
 	import Button from '$lib/components/blocks/buttons/Button.svelte'
@@ -24,39 +24,17 @@
 
 	let popover: HTMLElement
 	let invoker: HTMLElement | undefined
-	let expanded = $derived(actor.isActive(id))
-	let reveal = $derived(expanded ? 'expanded' : 'collapsed')
 
 	let fixedClass = $derived(fixed ? `fixed:${place}` : `place:${place}`)
 	let layerClass = $derived(layer ? `layer:${layer}` : '')
 	let revealClasses = $derived(`${fixedClass} ${layerClass}`)
 
-	function toggleReveal(payload: FuzzyPayload) {
-		if (payload.value === 'expanded') {
-			actor.showPopover(id)
-		} else if (payload.value === 'collapsed') {
-			actor.hidePopover(id)
-		}
-	}
-
 	onMount(() => {
-		if (!popover) {
-			return
-		}
-		if (expanded) {
-			popover.showPopover()
-		}
-		if (!invoker) {
-			return
-		}
-
-		popover.addEventListener('beforetoggle', (event) => {
-			if (onbeforetoggle) {
+		if (onbeforetoggle) {
+			popover.addEventListener('beforetoggle', (event) => {
 				onbeforetoggle(event)
-			}
-		})
-
-		actor.addPopover({id, element: popover, state: reveal})
+			})
+		}
 
 		return () => {
 			actor.removePopover(id)
@@ -79,7 +57,6 @@
 			{shape}
 			name={`button-popover-${id}`}
 			popovertarget={`${id}-popover`}
-			onclick={toggleReveal}
 		/>
 	</span>
 	<ff-reveal
