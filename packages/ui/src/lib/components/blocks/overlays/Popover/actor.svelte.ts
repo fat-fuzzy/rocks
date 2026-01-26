@@ -5,6 +5,10 @@ export class PopoverActor {
 
 	constructor() {}
 
+	reset() {
+		this.popovers = []
+	}
+
 	public addPopover(popover: {
 		id: string
 		element: HTMLElement

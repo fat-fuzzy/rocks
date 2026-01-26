@@ -89,6 +89,7 @@
 		popover={invoke}
 		aria-live="polite"
 		class={revealClasses}
+		data-testid={`${id}-popover`}
 	>
 		{#if children}
 			{@render children()}
