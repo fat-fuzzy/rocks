@@ -22,14 +22,9 @@ const POPOVER_PROPS = [
 			id: 'test-popover-2',
 			role: 'dialog',
 			title: 'Test Popover 2',
-			fixed: 'true',
 			place: 'top',
 			asset: 'cookie',
-			layer: '1',
 			invoke: 'manual' as AriaInvoke, // won't light dismiss
-			onbeforetoggle: () => {
-				console.log('Popover onbeforetoggle')
-			},
 		},
 		expected: {content: 'Popover Content 2'},
 	},
