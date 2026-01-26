@@ -17,8 +17,6 @@
 	data-testid={`${popover1.props.id}-invoker`}
 >
 	<span class="anchor" data-anchorid={`popover-anchor-${popover1.props.id}`}>
-		<!-- HTML Validation fails -->
-		<!-- TODO: watch issue github.com/validator/validator/issues/1534 -->
 		<Button
 			id={`button-popover-${popover1.props.id}`}
 			type="button"
@@ -43,8 +41,6 @@
 	data-testid={`${popover2.props.id}-invoker`}
 >
 	<span class="anchor" data-anchorid={`popover-anchor-${popover2.props.id}`}>
-		<!-- HTML Validation fails -->
-		<!-- TODO: watch issue github.com/validator/validator/issues/1534 -->
 		<Button
 			id={`button-popover-${popover2.props.id}`}
 			type="button"

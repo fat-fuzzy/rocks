@@ -6,7 +6,7 @@ import Popover from './PopoverActor.svelte'
 
 import {POPOVER_PROPS} from '$tests/fixtures/block-props'
 
-describe(`PopoverActor - a class to manage popovers`, () => {
+describe(`PopoverActor - a class to manage popovers from external context`, () => {
 	beforeEach(() => {
 		actor.reset()
 	})

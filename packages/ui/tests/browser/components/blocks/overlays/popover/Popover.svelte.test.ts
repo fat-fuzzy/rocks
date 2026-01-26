@@ -111,5 +111,23 @@ describe(`Popover - a popover component`, () => {
 
 			expect(popoverContent).toBeVisible()
 		})
+
+		it(`should hide an active popover if external event hides the popover via the PopoverActor`, async () => {
+			const popover = POPOVER_PROPS[0]
+
+			page.render(Popover, {count: 2, externalEvent: true})
+
+			await page.getByRole('button', {name: popover.props.title}).click()
+			const popoverRole = page.getByRole(popover.props.role)
+			const popoverContent = page.getByText(popover.expected.content)
+
+			expect(popoverRole).toBeInViewport()
+			expect(popoverContent).toBeVisible()
+
+			await page.getByText('Enter the popoverId').fill(popover.props.id)
+			await page.getByText('Save and close').click()
+
+			expect(popoverContent).not.toBeVisible()
+		})
 	})
 })
