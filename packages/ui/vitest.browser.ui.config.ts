@@ -5,7 +5,11 @@ import {ALIAS_BASE, TEST_CONFIG_BASE} from './vitest.browser.config'
 
 export const COVERAGE_BASE = {
 	enabled: true,
-	include: ['src/lib/**/browser/**/*.{js,ts}', 'src/lib/components/*.svelte'],
+	include: [
+		'src/lib/**/browser/**/*.{js,ts}',
+		'src/lib/components/**/*.svelte',
+		'src/lib/components/**/*.svelte.{js,ts}',
+	],
 	exclude: [
 		'src/app.d.ts',
 		'src/**/definitions.{js,ts}',

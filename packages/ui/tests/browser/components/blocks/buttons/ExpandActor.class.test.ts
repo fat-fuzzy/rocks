@@ -5,7 +5,7 @@ import {
 	EXPAND_MACHINE,
 	EXPAND_TRANSITIONS,
 } from '$lib/components/blocks/buttons/Expand/definitions'
-import {PROPS_BLOCK} from '$tests/fixtures/props'
+import {PROPS_BLOCK} from '$tests/fixtures/style-props'
 
 const defaultCollapsedConfig = {
 	initial: 'collapsed',

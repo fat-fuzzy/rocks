@@ -5,6 +5,10 @@ export class PopoverActor {
 
 	constructor() {}
 
+	reset() {
+		this.popovers = []
+	}
+
 	public addPopover(popover: {
 		id: string
 		element: HTMLElement
@@ -32,7 +36,7 @@ export class PopoverActor {
 			return
 		}
 
-		popover.state === 'inactive'
+		popover.state = 'inactive'
 		popover.element.hidePopover()
 	}
 
@@ -41,7 +45,7 @@ export class PopoverActor {
 		if (!popover) {
 			return
 		}
-		popover.state === 'active'
+		popover.state = 'active'
 		popover.element.showPopover()
 	}
 }
