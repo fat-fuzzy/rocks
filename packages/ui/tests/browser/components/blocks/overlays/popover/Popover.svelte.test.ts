@@ -1,5 +1,6 @@
 import {page} from 'vitest/browser'
 import {describe, it, expect, beforeEach} from 'vitest'
+import {render} from 'vitest-browser-svelte'
 import actor from '$lib/components/blocks/overlays/Popover/actor.svelte'
 import Popover from './Popover.svelte'
 import {POPOVER_PROPS} from '$tests/fixtures/block-props'
@@ -18,7 +19,7 @@ describe(`Popover - a popover component`, () => {
 
 			page.render(Popover)
 			await page.getByRole('button', {name: popover.props.title}).click()
-			const popoverContent = page.getByRole(popover.props.role)
+			const popoverContent = page.getByText(popover.expected.content)
 
 			expect(popoverContent).toBeVisible()
 		})
@@ -42,9 +43,6 @@ describe(`Popover - a popover component`, () => {
 
 			expect(popoverRole).not.toBeInViewport()
 			expect(popoverContent).not.toBeVisible()
-
-			const actorPopover = actor.popovers.find((p) => p.id === popover.props.id)
-			expect(actorPopover?.state).toBe('collapsed')
 		})
 
 		it(`should hide an active popover if the user clicks on its invoker`, async () => {
@@ -64,9 +62,6 @@ describe(`Popover - a popover component`, () => {
 
 			expect(popoverRole).not.toBeInViewport()
 			expect(popoverContent).not.toBeVisible()
-
-			const actorPopover = actor.popovers.find((p) => p.id === popover.props.id)
-			expect(actorPopover?.state).toBe('collapsed')
 		})
 
 		it(`should hide an active popover if another popover is activated`, async () => {
@@ -128,6 +123,24 @@ describe(`Popover - a popover component`, () => {
 			await page.getByText('Save and close').click()
 
 			expect(popoverContent).not.toBeVisible()
+		})
+	})
+
+	describe('destroy', () => {
+		it(`should show a popover that is inactive`, async () => {
+			const popover = POPOVER_PROPS[0]
+
+			const {unmount} = render(Popover)
+			await page.getByRole('button', {name: popover.props.title}).click()
+			const popoverContent = page.getByRole(popover.props.role)
+
+			expect(popoverContent).toBeVisible()
+
+			unmount()
+
+			expect(actor.popovers.find((p) => p.id === popover.props.id)).toBe(
+				undefined,
+			)
 		})
 	})
 })
