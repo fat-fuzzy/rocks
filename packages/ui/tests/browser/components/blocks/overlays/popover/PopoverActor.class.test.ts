@@ -19,7 +19,7 @@ describe(`PopoverActor - a class to manage popovers`, () => {
 			const popoverData = {
 				id: popoverProps.id,
 				element: element.element() as HTMLElement,
-				state: 'inactive',
+				state: 'collapsed',
 			}
 			actor.addPopover(popoverData)
 			expect(actor.popovers.length).toBe(1)
@@ -37,7 +37,7 @@ describe(`PopoverActor - a class to manage popovers`, () => {
 			const popoverData = {
 				id: popoverProps.id,
 				element: element.element() as HTMLElement,
-				state: 'inactive',
+				state: 'collapsed',
 			}
 
 			actor.addPopover(popoverData)
@@ -53,7 +53,7 @@ describe(`PopoverActor - a class to manage popovers`, () => {
 			const popoverData = {
 				id: popoverProps.id,
 				element: element.element() as HTMLElement,
-				state: 'active',
+				state: 'expanded',
 			}
 
 			actor.addPopover(popoverData)
@@ -68,7 +68,7 @@ describe(`PopoverActor - a class to manage popovers`, () => {
 			const popoverData = {
 				id: popoverProps.id,
 				element: element.element() as HTMLElement,
-				state: 'inactive',
+				state: 'collapsed',
 			}
 
 			actor.addPopover(popoverData)
@@ -93,7 +93,7 @@ describe(`PopoverActor - a class to manage popovers`, () => {
 			const popoverData1 = {
 				id: popoverProps1.props.id,
 				element: element1.element() as HTMLElement,
-				state: 'inactive',
+				state: 'collapsed',
 			}
 
 			const popoverProps2 = POPOVER_PROPS[1]
@@ -101,7 +101,7 @@ describe(`PopoverActor - a class to manage popovers`, () => {
 			const popoverData2 = {
 				id: popoverProps2.props.id,
 				element: element2.element() as HTMLElement,
-				state: 'inactive',
+				state: 'collapsed',
 			}
 
 			actor.addPopover(popoverData1)

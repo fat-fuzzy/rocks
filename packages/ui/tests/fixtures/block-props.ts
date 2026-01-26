@@ -10,7 +10,7 @@ const POPOVER_PROPS = [
 			place: 'bottom',
 			asset: 'cookie',
 			layer: '1',
-			invoke: 'manual' as AriaInvoke,
+			invoke: 'auto' as AriaInvoke, // will light dismiss
 			onbeforetoggle: () => {
 				console.log('Popover onbeforetoggle')
 			},
@@ -26,7 +26,7 @@ const POPOVER_PROPS = [
 			place: 'top',
 			asset: 'cookie',
 			layer: '1',
-			invoke: 'auto' as AriaInvoke,
+			invoke: 'manual' as AriaInvoke, // won't light dismiss
 			onbeforetoggle: () => {
 				console.log('Popover onbeforetoggle')
 			},

@@ -17,3 +17,17 @@
 		<p>{popover2.expected.content}</p>
 	</Popover>
 {/if}
+
+<p class="click-outside">Click outside</p>
+
+<style>
+	.click-outside {
+		background-color: steelblue;
+		height: 100px;
+		color: white;
+		border-radius: 4px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+</style>
