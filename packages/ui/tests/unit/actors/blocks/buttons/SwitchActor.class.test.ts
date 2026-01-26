@@ -5,7 +5,7 @@ import {
 	SWITCH_MACHINE,
 	SWITCH_TRANSITIONS,
 } from '$lib/components/blocks/buttons/Switch/definitions'
-import {PROPS_BLOCK} from '$tests/fixtures/props'
+import {PROPS_BLOCK} from '$tests/fixtures/style-props'
 
 const defaultActiveConfig = {
 	initial: 'active',

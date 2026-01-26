@@ -5,7 +5,7 @@ import {
 	TOGGLE_MACHINE,
 	TOGGLE_TRANSITIONS,
 } from '$lib/components/blocks/buttons/Toggle/definitions'
-import {PROPS_BLOCK} from '$tests/fixtures/props'
+import {PROPS_BLOCK} from '$tests/fixtures/style-props'
 
 const defaultActiveConfig = {
 	initial: 'active',
