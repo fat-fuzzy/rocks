@@ -3,6 +3,9 @@ import {describe, it, expect} from 'vitest'
 import Popover from './Popover.svelte'
 import {POPOVER_PROPS} from '$tests/fixtures/block-props'
 
+// TODO: : figure out errors during tests (not failing):
+// - Popover not visible, but detected as visible
+
 describe(`Popover - a popover component`, () => {
 	describe('showPopover', () => {
 		it(`should show a popover that is inactive`, async () => {

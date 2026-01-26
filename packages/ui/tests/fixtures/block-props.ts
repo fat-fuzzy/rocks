@@ -10,7 +10,7 @@ const POPOVER_PROPS = [
 			place: 'bottom',
 			asset: 'cookie',
 			layer: '1',
-			invoke: 'auto' as AriaInvoke,
+			invoke: 'manual' as AriaInvoke,
 			onbeforetoggle: () => {
 				console.log('Popover onbeforetoggle')
 			},
