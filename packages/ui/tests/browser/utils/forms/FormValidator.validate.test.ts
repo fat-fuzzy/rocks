@@ -1,7 +1,7 @@
 import {describe, test, expect} from 'vitest'
 import {userEvent, type Locator} from 'vitest/browser'
 import {render} from 'vitest-browser-svelte'
-import {INPUTS} from '$tests/fixtures/form'
+import {INPUTS} from '$tests/fixtures/form-inputs'
 import Form from './Form.svelte'
 
 describe('FormValidator - Svelte Integration Tests', () => {
