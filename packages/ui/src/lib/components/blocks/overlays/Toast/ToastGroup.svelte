@@ -6,9 +6,7 @@
 	let toasts: HTMLElement
 
 	onMount(() => {
-		if (toasts) {
-			toaster.initialize(toasts)
-		}
+		toaster.init(toasts)
 	})
 </script>
 

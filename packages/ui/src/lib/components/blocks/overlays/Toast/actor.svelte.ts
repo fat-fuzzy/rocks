@@ -3,22 +3,29 @@ import type {FeedbackProps} from '$types'
 /**
  * Adapted from : https://web.dev/articles/building/a-toast-component
  */
+
+type ToastState = {
+	id: string
+	toast?: HTMLOutputElement
+}
+
 class Toaster {
-	public toasts: {
-		id: string
-		toast?: HTMLOutputElement
-	}[] = $state([])
-	toaster: HTMLElement | null = null
+	public toasts: ToastState[] = $state([])
+	toaster: HTMLElement | undefined = undefined
 	toasterHeight = 0
 
 	constructor() {}
 
-	public initialize(toaster: HTMLElement) {
+	public reset() {
+		this.toasts = []
+	}
+
+	public init(toaster: HTMLElement) {
 		this.toaster = toaster
 	}
 
 	public addToast(toast: Partial<FeedbackProps>) {
-		const id = window.crypto.randomUUID()
+		const id = toast.id ?? crypto.randomUUID()
 		this.toasts = [...this.toasts, {id, ...toast}]
 	}
 
@@ -34,20 +41,18 @@ class Toaster {
 		const {matches: motionOK} = window.matchMedia(
 			'(prefers-reduced-motion: no-preference)',
 		)
-		let animation
+
 		if (this.toasts.length && motionOK) {
-			animation = toast.animate(
+			const animation = toast.animate(
 				[{transform: `translateY(${delta}px)`}, {transform: 'translateY(0)'}],
 				{
 					duration: 3000,
 					easing: 'ease-out',
 				},
 			)
-		}
-
-		if (animation) {
 			animation.startTime = document.timeline.currentTime
 		}
+
 		this.toasterHeight = first
 	}
 
@@ -55,6 +60,7 @@ class Toaster {
 		id: string,
 		output: HTMLOutputElement,
 	): Promise<string> {
+		// eslint-disable-next-line
 		return new Promise(async (resolve) => {
 			await Promise.all(
 				output.getAnimations().map((animation) => animation.finished),
