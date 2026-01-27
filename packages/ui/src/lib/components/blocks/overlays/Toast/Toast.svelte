@@ -19,7 +19,13 @@
 	})
 </script>
 
-<output {id} aria-live="polite" class="toast" bind:this={toast}>
+<output
+	{id}
+	aria-live="polite"
+	class="toast"
+	bind:this={toast}
+	data-testid={id}
+>
 	<Feedback {context} {status} font="sm">
 		{#if children}
 			{@render children()}

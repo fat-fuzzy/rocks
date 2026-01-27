@@ -1,3 +1,4 @@
+import type {UiState} from '$types'
 import {page} from 'vitest/browser'
 import {describe, it, expect, beforeEach} from 'vitest'
 import {render} from 'vitest-browser-svelte'
@@ -11,7 +12,7 @@ describe(`Popover - a popover component`, () => {
 	})
 
 	describe('showPopover', () => {
-		it(`should show a popover that is inactive`, async () => {
+		it(`should show a popover that is collapsed on click`, async () => {
 			const popover = POPOVER_PROPS[0]
 
 			page.render(Popover)
@@ -23,7 +24,7 @@ describe(`Popover - a popover component`, () => {
 	})
 
 	describe('hidePopover', () => {
-		it(`should hide a popover that is active`, async () => {
+		it(`should hide a popover that is expanded on click`, async () => {
 			const popover = POPOVER_PROPS[0]
 			page.render(Popover)
 
@@ -42,32 +43,10 @@ describe(`Popover - a popover component`, () => {
 			expect(popoverContent).not.toBeVisible()
 
 			const actorPopover = actor.popovers.find((p) => p.id === popover.props.id)
-			expect(actorPopover?.state).toBe('collapsed')
+			expect(actorPopover?.state).toBe(undefined)
 		})
 
-		it(`should hide an active popover if the user clicks on its invoker`, async () => {
-			const popover = POPOVER_PROPS[0]
-			page.render(Popover)
-
-			await page.getByRole('button', {name: popover.props.title}).click()
-			let popoverRole = page.getByRole(popover.props.role)
-			let popoverContent = page.getByText(popover.expected.content)
-
-			expect(popoverRole).toBeInViewport()
-			expect(popoverContent).toBeVisible()
-
-			await page.getByRole('button', {name: popover.props.title}).click()
-			popoverRole = page.getByTestId(popover.props.id)
-			popoverContent = page.getByText(popover.expected.content)
-
-			expect(popoverRole).not.toBeInViewport()
-			expect(popoverContent).not.toBeVisible()
-
-			const actorPopover = actor.popovers.find((p) => p.id === popover.props.id)
-			expect(actorPopover?.state).toBe('collapsed')
-		})
-
-		it(`should hide an active popover if another popover is activated`, async () => {
+		it(`should hide an expanded popover if another popover is activated`, async () => {
 			const popover1 = POPOVER_PROPS[0]
 			const popover2 = POPOVER_PROPS[1]
 
@@ -86,7 +65,7 @@ describe(`Popover - a popover component`, () => {
 			expect(popoverContent).not.toBeVisible()
 		})
 
-		it(`should hide an active popover set to 'auto' if the user clicks outside the popover content`, async () => {
+		it(`should hide an expanded popover set to 'auto' if the user clicks outside the popover content`, async () => {
 			const popover = POPOVER_PROPS[0]
 			page.render(Popover)
 
@@ -100,7 +79,7 @@ describe(`Popover - a popover component`, () => {
 			expect(popoverContent).not.toBeVisible()
 		})
 
-		it(`should not hide an active popover set to 'manual' if the user clicks outside the popover content`, async () => {
+		it(`should not hide an expanded popover set to 'manual' if the user clicks outside the popover content`, async () => {
 			const popover = POPOVER_PROPS[0]
 			page.render(Popover)
 
@@ -110,7 +89,7 @@ describe(`Popover - a popover component`, () => {
 			expect(popoverContent).toBeVisible()
 		})
 
-		it(`should hide an active popover if external event hides the popover via the PopoverActor`, async () => {
+		it(`should hide an expanded popover if external event hides the popover via the PopoverActor`, async () => {
 			const popover = POPOVER_PROPS[0]
 
 			page.render(Popover, {count: 2, externalEvent: true})
@@ -127,10 +106,50 @@ describe(`Popover - a popover component`, () => {
 
 			expect(popoverContent).not.toBeVisible()
 		})
+
+		it(`should hide a popover if the actor changes the popover's state to collapsed`, () => {
+			const popover = POPOVER_PROPS[0]
+
+			const {getByTestId} = render(Popover)
+
+			const element = getByTestId(`${popover.props.id}-popover`)
+			const popoverData = {
+				id: popover.props.id,
+				element: element.element() as HTMLElement,
+				state: 'expanded' as UiState,
+			}
+			actor.addPopover(popoverData)
+			expect(actor.popovers.length).toBe(1)
+
+			actor.hidePopover(popover.props.id)
+			const popoverContent = page.getByText(popover.expected.content)
+
+			expect(popoverContent).not.toBeVisible()
+		})
+
+		it(`should show a popover if the actor changes the popover's state to expanded`, () => {
+			const popover = POPOVER_PROPS[0]
+
+			const {getByTestId} = render(Popover)
+
+			const element = getByTestId(`${popover.props.id}-popover`)
+			const popoverData = {
+				id: popover.props.id,
+				element: element.element() as HTMLElement,
+				state: 'collapsed' as UiState,
+			}
+			actor.addPopover(popoverData)
+			expect(actor.popovers.length).toBe(1)
+
+			actor.showPopover(popover.props.id)
+			const popoverContent = page.getByText(popover.expected.content)
+
+			expect(popoverContent).toBeVisible()
+		})
 	})
 
 	describe('destroy', () => {
-		it(`should show a popover that is inactive`, async () => {
+		it(`should show a popover that is collapsed`, async () => {
 			const popover = POPOVER_PROPS[0]
 
 			const {unmount} = render(Popover)

@@ -2,6 +2,8 @@
 	import Button from '$lib/components/blocks/buttons/Button.svelte'
 	import {POPOVER_PROPS} from '$tests/fixtures/block-props'
 
+	let {count = 1}: {count?: number} = $props()
+
 	const popover1 = POPOVER_PROPS[0]
 	const popover2 = POPOVER_PROPS[1]
 
@@ -22,7 +24,7 @@
 			type="button"
 			title={popover1.props.title}
 			name={`button-popover-${popover1.props.id}`}
-			popovertarget={`${popover1.props.id}-popover`}
+			popovertarget={popover1.props.id}
 		/>
 	</span>
 	<ff-reveal
@@ -35,29 +37,31 @@
 	</ff-reveal>
 </ff-popover>
 
-<ff-popover
-	id={`${popover2.props.id}-invoker`}
-	bind:this={invoker2}
-	data-testid={`${popover2.props.id}-invoker`}
->
-	<span class="anchor" data-anchorid={`popover-anchor-${popover2.props.id}`}>
-		<Button
-			id={`button-popover-${popover2.props.id}`}
-			type="button"
-			title={popover2.props.title}
-			name={`button-popover-${popover2.props.id}`}
-			popovertarget={`${popover2.props.id}-popover`}
-		/>
-	</span>
-	<ff-reveal
-		id={popover2.props.id}
-		bind:this={popoverElement2}
-		popover={popover2.props.invoke}
-		data-testid={popover2.props.id}
+{#if count === 2}
+	<ff-popover
+		id={`${popover2.props.id}-invoker`}
+		bind:this={invoker2}
+		data-testid={`${popover2.props.id}-invoker`}
 	>
-		{popover2.expected.content}
-	</ff-reveal>
-</ff-popover>
+		<span class="anchor" data-anchorid={`popover-anchor-${popover2.props.id}`}>
+			<Button
+				id={`button-popover-${popover2.props.id}`}
+				type="button"
+				title={popover2.props.title}
+				name={`button-popover-${popover2.props.id}`}
+				popovertarget={popover2.props.id}
+			/>
+		</span>
+		<ff-reveal
+			id={popover2.props.id}
+			bind:this={popoverElement2}
+			popover={popover2.props.invoke}
+			data-testid={popover2.props.id}
+		>
+			{popover2.expected.content}
+		</ff-reveal>
+	</ff-popover>
+{/if}
 
 <style>
 	ff-reveal {

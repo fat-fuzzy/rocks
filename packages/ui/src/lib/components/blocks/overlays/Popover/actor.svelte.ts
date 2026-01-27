@@ -1,7 +1,9 @@
+import type {UiState} from '$types'
+
+type PopoverState = {id: string; element: HTMLElement; state?: UiState}
+
 export class PopoverActor {
-	public popovers: {id: string; element: HTMLElement; state: string}[] = $state(
-		[],
-	)
+	public popovers: PopoverState[] = $state([])
 
 	constructor() {}
 
@@ -12,22 +14,33 @@ export class PopoverActor {
 	public addPopover(popover: {
 		id: string
 		element: HTMLElement
-		state: string
+		state?: UiState
 	}): void {
+		const popoverExists = this.popovers.find((p) => p.id === popover.id)
+		if (popoverExists) {
+			return
+		}
+
 		this.popovers.push(popover)
 	}
 
-	public isActive(id: string): boolean {
+	public getPopoverState(id: string): UiState | undefined {
 		const popover = this.popovers.find((popover) => popover.id === id)
-		if (!popover) {
-			return false
-		}
 
-		return popover.state === 'expanded'
+		return popover?.state
 	}
 
 	public removePopover(id: string): void {
 		this.popovers = this.popovers.filter((popover) => popover.id !== id)
+	}
+
+	public updatePopoverState(id: string, state: UiState): void {
+		const popover = this.popovers.find((popover) => popover.id === id)
+		if (!popover) {
+			return
+		}
+
+		popover.state = state
 	}
 
 	public hidePopover(id: string): void {
@@ -36,8 +49,8 @@ export class PopoverActor {
 			return
 		}
 
-		popover.state = 'collapsed'
 		popover.element.hidePopover()
+		this.updatePopoverState(id, 'collapsed')
 	}
 
 	public showPopover(id: string): void {

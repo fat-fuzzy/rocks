@@ -1,9 +1,12 @@
 <script lang="ts">
-	import type {FuzzyPayload, OverlayProps} from '$types'
+	import type {FuzzyPayload, OverlayProps, UiState} from '$types'
 
 	import {onMount} from 'svelte'
 	import Button from '$lib/components/blocks/buttons/Button.svelte'
 	import actor from './actor.svelte'
+	import constants from '$lib/types/constants.js'
+
+	const {TRANSITION_REVEAL} = constants
 
 	let {
 		id,
@@ -24,32 +27,18 @@
 
 	let popover: HTMLElement
 	let invoker: HTMLElement | undefined
-	let expanded = $derived(actor.isActive(id))
-	let reveal = $derived(expanded ? 'expanded' : 'collapsed')
+	let reveal: UiState | undefined = $derived(actor.getPopoverState(id))
 
 	let fixedClass = $derived(fixed ? `fixed:${place}` : `place:${place}`)
 	let layerClass = $derived(layer ? `layer:${layer}` : '')
 	let revealClasses = $derived(`${fixedClass} ${layerClass}`)
 
 	function toggleReveal(payload: FuzzyPayload) {
-		if (payload.value === 'expanded') {
-			actor.showPopover(id)
-		} else if (payload.value === 'collapsed') {
-			actor.hidePopover(id)
-		}
+		const updatedValue = TRANSITION_REVEAL[String(payload.value)] as UiState
+		actor.updatePopoverState(id, updatedValue)
 	}
 
 	onMount(() => {
-		if (!popover) {
-			return
-		}
-		if (expanded) {
-			popover.showPopover()
-		}
-		if (!invoker) {
-			return
-		}
-
 		popover.addEventListener('beforetoggle', (event) => {
 			if (onbeforetoggle) {
 				onbeforetoggle(event)
@@ -66,8 +55,6 @@
 
 <ff-popover {id} bind:this={invoker} class={fixedClass} data-testid={id}>
 	<span class="anchor" data-anchorid={`popover-anchor-${id}`}>
-		<!-- HTML Validation fails -->
-		<!-- TODO: watch issue github.com/validator/validator/issues/1534 -->
 		<Button
 			{asset}
 			id={`button-popover-${id}`}
@@ -80,6 +67,7 @@
 			name={`button-popover-${id}`}
 			popovertarget={`${id}-popover`}
 			onclick={toggleReveal}
+			value={reveal ? TRANSITION_REVEAL[reveal] : undefined}
 		/>
 	</span>
 	<ff-reveal
