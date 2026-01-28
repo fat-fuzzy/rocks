@@ -20,7 +20,7 @@
 	"author": "Patricia Boh",
 	"license": "MIT",
 	"devDependencies": {
-		"@eslint/compat": "1.3.2",
+		"@eslint/compat": "2.0.1",
 		"@fat-fuzzy/config": "workspace:*",
 		"@rollup/plugin-json": "6.1.0",
 		"@rollup/plugin-terser": "0.4.4",
