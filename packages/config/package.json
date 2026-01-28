@@ -50,7 +50,7 @@
 		"globals": "16.3.0",
 		"prettier": "3.6.2",
 		"prettier-plugin-svelte": "3.4.0",
-		"publint": "0.3.12",
+		"publint": "0.3.17",
 		"stylelint": "16.25.0",
 		"stylelint-config-standard": "39.0.0",
 		"stylelint-config-standard-scss": "15.0.1",

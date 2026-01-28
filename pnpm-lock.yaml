@@ -193,8 +193,8 @@ importers:
         specifier: 3.4.0
         version: 3.4.0(prettier@3.6.2)(svelte@5.46.4)
       publint:
-        specifier: 0.3.12
-        version: 0.3.12
+        specifier: 0.3.17
+        version: 0.3.17
       stylelint:
         specifier: 16.25.0
         version: 16.25.0(typescript@5.9.2)
@@ -375,8 +375,8 @@ importers:
         specifier: 6.1.3
         version: 6.1.3(svelte@5.46.4)(vite@7.1.11(@types/node@24.10.1)(jiti@2.5.1)(sass@1.93.2)(terser@5.43.1)(yaml@2.8.1))
       publint:
-        specifier: 0.3.12
-        version: 0.3.12
+        specifier: 0.3.17
+        version: 0.3.17
       svelte:
         specifier: 5.46.4
         version: 5.46.4
@@ -444,8 +444,8 @@ importers:
         specifier: 0.12.6
         version: 0.12.6(svelte@5.46.4)
       publint:
-        specifier: 0.3.12
-        version: 0.3.12
+        specifier: 0.3.17
+        version: 0.3.17
       svelte:
         specifier: 5.46.4
         version: 5.46.4
@@ -498,8 +498,8 @@ importers:
         specifier: 6.1.3
         version: 6.1.3(svelte@5.46.4)(vite@7.1.11(@types/node@24.10.1)(jiti@2.5.1)(sass@1.93.2)(terser@5.43.1)(yaml@2.8.1))
       publint:
-        specifier: 0.3.12
-        version: 0.3.12
+        specifier: 0.3.17
+        version: 0.3.17
       svelte:
         specifier: 5.46.4
         version: 5.46.4
@@ -622,8 +622,8 @@ importers:
         specifier: 8.5.6
         version: 8.5.6
       publint:
-        specifier: 0.3.12
-        version: 0.3.12
+        specifier: 0.3.17
+        version: 0.3.17
       svelte:
         specifier: 5.46.4
         version: 5.46.4
@@ -2110,8 +2110,8 @@ packages:
   '@poppinss/exception@1.2.3':
     resolution: {integrity: sha512-dCED+QRChTVatE9ibtoaxc+WkdzOSjYTKi/+uacHWIsfodVfpsueo3+DKpgU5Px8qXjgmXkSvhXvSCz3fnP9lw==}
 
-  '@publint/pack@0.1.2':
-    resolution: {integrity: sha512-S+9ANAvUmjutrshV4jZjaiG8XQyuJIZ8a4utWmN/vW1sgQ9IfBnPndwkmQYw53QmouOIytT874u65HEmu6H5jw==}
+  '@publint/pack@0.1.3':
+    resolution: {integrity: sha512-dHDWeutAerz+Z2wFYAce7Y51vd4rbLBfUh0BNnyul4xKoVsPUVJBrOAFsJvtvYBwGFJSqKsxyyHf/7evZ8+Q5Q==}
     engines: {node: '>=18'}
 
   '@remirror/core-constants@3.0.0':
@@ -4813,8 +4813,8 @@ packages:
   package-manager-detector@0.2.11:
     resolution: {integrity: sha512-BEnLolu+yuz22S56CU1SUKq3XC3PkwD5wv4ikR4MfGvnRVcmzXR9DwSlW2fEamyTPyXHomBJRzgapeuBvRNzJQ==}
 
-  package-manager-detector@1.3.0:
-    resolution: {integrity: sha512-ZsEbbZORsyHuO00lY1kV3/t72yp6Ysay6Pd17ZAlNGuGwmWDLCJxFpRs0IzfXfj1o4icJOkUEioexFHzyPurSQ==}
+  package-manager-detector@1.6.0:
+    resolution: {integrity: sha512-61A5ThoTiDG/C8s8UMZwSorAGwMJ0ERVGj2OjoW5pAalsNOg15+iQiPzrLJ4jhZ1HJzmC2PIHT2oEiH3R5fzNA==}
 
   parent-module@1.0.1:
     resolution: {integrity: sha512-GQ2EWRpQV8/o+Aw8YqtfZZPfNRWZYkbidE9k5rpl/hC3vtHHBfGm2Ifi6qWV+coDGkrUKZAxE3Lot5kcsRlh+g==}
@@ -5605,8 +5605,8 @@ packages:
   proto-list@1.2.4:
     resolution: {integrity: sha512-vtK/94akxsTMhe0/cbfpR+syPuszcuwhqVjJq26CuNDgFGj682oRBXOP5MJpv2r7JtE8MsiepGIqvvOTBwn2vA==}
 
-  publint@0.3.12:
-    resolution: {integrity: sha512-1w3MMtL9iotBjm1mmXtG3Nk06wnq9UhGNRpQ2j6n1Zq7YAD6gnxMMZMIxlRPAydVjVbjSm+n0lhwqsD1m4LD5w==}
+  publint@0.3.17:
+    resolution: {integrity: sha512-Q3NLegA9XM6usW+dYQRG1g9uEHiYUzcCVBJDJ7yMcWRqVU9LYZUWdqbwMZfmTCFC5PZLQpLAmhvRcQRl3exqkw==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -7959,7 +7959,7 @@ snapshots:
 
   '@poppinss/exception@1.2.3': {}
 
-  '@publint/pack@0.1.2': {}
+  '@publint/pack@0.1.3': {}
 
   '@remirror/core-constants@3.0.0': {}
 
@@ -10969,7 +10969,7 @@ snapshots:
     dependencies:
       quansync: 0.2.10
 
-  package-manager-detector@1.3.0: {}
+  package-manager-detector@1.6.0: {}
 
   parent-module@1.0.1:
     dependencies:
@@ -11792,10 +11792,10 @@ snapshots:
 
   proto-list@1.2.4: {}
 
-  publint@0.3.12:
+  publint@0.3.17:
     dependencies:
-      '@publint/pack': 0.1.2
-      package-manager-detector: 1.3.0
+      '@publint/pack': 0.1.3
+      package-manager-detector: 1.6.0
       picocolors: 1.1.1
       sade: 1.8.1
 
