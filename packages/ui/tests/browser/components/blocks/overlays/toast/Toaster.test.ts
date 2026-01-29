@@ -3,7 +3,7 @@ import type {UiStatus} from '$types'
 import {describe, it, expect, beforeEach} from 'vitest'
 import {page} from 'vitest/browser'
 import actor from '$lib/components/blocks/overlays/Toast/actor.svelte'
-import ToasterContext from './ToasterContext.svelte'
+import ToastTest from './ToastTest.svelte'
 
 const toast = {
 	id: 'info-toast',
@@ -18,7 +18,7 @@ describe.only(`Toaster - a class to manage Toasts`, () => {
 
 	describe('init', () => {
 		it(`should initialize a toaster correctly`, () => {
-			page.render(ToasterContext)
+			page.render(ToastTest)
 
 			expect(actor.toaster).toBeDefined()
 		})
@@ -26,7 +26,7 @@ describe.only(`Toaster - a class to manage Toasts`, () => {
 
 	describe('addToast', () => {
 		it(`should put a fresh toast in the toaster`, () => {
-			page.render(ToasterContext)
+			page.render(ToastTest)
 			actor.addToast(toast)
 
 			expect(actor.toasts.find((p) => p.id === toast.id)).toMatchObject(toast)
@@ -35,7 +35,7 @@ describe.only(`Toaster - a class to manage Toasts`, () => {
 
 	describe('cookToast', () => {
 		it(`should display a toast when it's toasted`, async () => {
-			page.render(ToasterContext)
+			page.render(ToastTest)
 			actor.addToast(toast)
 
 			// Cooking toast ...
@@ -46,7 +46,7 @@ describe.only(`Toaster - a class to manage Toasts`, () => {
 
 	describe('eatToast', () => {
 		it.only(`should eat a toast once it's done`, async () => {
-			page.render(ToasterContext)
+			page.render(ToastTest)
 			actor.addToast(toast)
 
 			// Toast should be done ...
