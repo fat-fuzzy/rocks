@@ -1,7 +1,7 @@
 import {test, expect, describe} from 'vitest'
 import {userEvent} from 'vitest/browser'
 import {render} from 'vitest-browser-svelte'
-import ClickOutside from './ClickOutside.svelte'
+import ClickOutside from './ClickOutsideTest.svelte'
 
 describe('click-outside.dom.ts - Dispatch an event on click outside of a DOM node', () => {
 	test('Dispatches clickoutside event when clicking outside the element', async () => {

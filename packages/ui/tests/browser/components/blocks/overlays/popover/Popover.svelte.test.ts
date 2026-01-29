@@ -3,7 +3,7 @@ import {page} from 'vitest/browser'
 import {describe, it, expect, beforeEach} from 'vitest'
 import {render} from 'vitest-browser-svelte'
 import actor from '$lib/components/blocks/overlays/Popover/actor.svelte'
-import Popover from './Popover.svelte'
+import Popover from './PopoverTest.svelte'
 import {POPOVER_PROPS} from '$tests/fixtures/block-props'
 
 describe(`Popover - a popover component`, () => {
