@@ -1,5 +1,28 @@
 import type {AriaInvoke} from '$types'
 
+import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/definitions'
+
+const EXPAND_PROPS = [
+	{
+		props: {
+			id: 'expand-1',
+			name: 'expand-1',
+			controls: 'expand-content-1',
+			states: EXPAND_MACHINE,
+			action: () => {},
+			event: 'expand',
+		},
+	},
+	{
+		props: {
+			id: 'expand-2',
+			name: 'expand-2',
+			controls: 'expand-content-2',
+			states: EXPAND_MACHINE,
+		},
+	},
+]
+
 const POPOVER_PROPS = [
 	{
 		props: {
@@ -30,4 +53,4 @@ const POPOVER_PROPS = [
 	},
 ]
 
-export {POPOVER_PROPS}
+export {EXPAND_PROPS, POPOVER_PROPS}
