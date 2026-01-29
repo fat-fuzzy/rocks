@@ -1,9 +1,10 @@
 import type {ExpandProps, FuzzyPayload, FuzzySystem} from '$types'
+
 class RevealActor implements FuzzySystem {
 	state: Map<string, ExpandProps> = $state(new Map())
 	mode = 'radio'
 
-	public init({mode, items}: {mode: string; items: ExpandProps[]}) {
+	public init({mode, items}: {mode?: string; items: ExpandProps[]}) {
 		if (mode) {
 			this.mode = mode
 		}
@@ -16,6 +17,11 @@ class RevealActor implements FuzzySystem {
 				]),
 			)
 		}
+	}
+
+	public reset() {
+		this.state = new Map()
+		this.mode = 'radio'
 	}
 
 	public addRevealItem(id: string, item: ExpandProps): void {
@@ -32,9 +38,8 @@ class RevealActor implements FuzzySystem {
 	}
 
 	public toggleReveal(payload: FuzzyPayload): void {
-		let itemToReval = this.state.get(payload.id)
+		const itemToReval = this.state.get(payload.id)
 		if (itemToReval) {
-			// if (itemToReval.action) itemToReval.action(itemToReval)
 			this.state.set(payload.id, itemToReval)
 		}
 	}
