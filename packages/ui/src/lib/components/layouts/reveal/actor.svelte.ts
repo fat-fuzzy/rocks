@@ -37,13 +37,18 @@ class RevealActor implements FuzzySystem {
 		return state ? String(state) : undefined
 	}
 
+	// TODO: review this logic
 	public toggleReveal(payload: FuzzyPayload): void {
 		const itemToReval = this.state.get(payload.id)
-		if (itemToReval) {
-			this.state.set(payload.id, itemToReval)
+
+		if (!itemToReval) {
+			return
 		}
+
+		this.state.set(payload.id, payload as ExpandProps)
 	}
 
+	// TODO: review this logic
 	public update(payload: FuzzyPayload): void {
 		if (payload && payload.action) {
 			const expandProps = this.state.get(payload.name)

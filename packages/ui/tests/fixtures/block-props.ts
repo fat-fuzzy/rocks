@@ -8,6 +8,7 @@ const EXPAND_PROPS = [
 			id: 'expand-1',
 			name: 'expand-1',
 			controls: 'expand-content-1',
+			state: 'collapsed',
 			states: EXPAND_MACHINE,
 			action: () => {},
 			event: 'expand',
@@ -17,8 +18,22 @@ const EXPAND_PROPS = [
 		props: {
 			id: 'expand-2',
 			name: 'expand-2',
+			value: 'expanded',
 			controls: 'expand-content-2',
 			states: EXPAND_MACHINE,
+		},
+	},
+]
+const EXPAND_TOGGLE_PROPS = [
+	{
+		props: {
+			id: 'expand-1',
+			name: 'expand-1',
+			controls: 'expand-content-1',
+			states: EXPAND_MACHINE,
+			state: 'expanded',
+			action: () => {},
+			event: 'collapse',
 		},
 	},
 ]
@@ -53,4 +68,4 @@ const POPOVER_PROPS = [
 	},
 ]
 
-export {EXPAND_PROPS, POPOVER_PROPS}
+export {EXPAND_PROPS, EXPAND_TOGGLE_PROPS, POPOVER_PROPS}
