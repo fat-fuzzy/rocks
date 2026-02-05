@@ -30,13 +30,8 @@
 		onupdate,
 	}: ToggleMenuProps = $props()
 
-	let actor = $state(new ToggleMenuActor())
-	actor.init({
-		items,
-		mode,
-	})
-
-	let type: ButtonType = formaction ? 'submit' : 'button'
+	let actor = new ToggleMenuActor()
+	let type: ButtonType = $derived(formaction ? 'submit' : 'button')
 
 	let menuClasses = $derived(
 		styleHelper.getStyles({
@@ -62,6 +57,11 @@
 	}
 
 	onMount(() => {
+		actor.init({
+			items,
+			mode,
+		})
+
 		if (init) {
 			init(actor.getSelected())
 		}
