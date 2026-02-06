@@ -29,7 +29,7 @@
 		children,
 	}: ToggleProps = $props()
 
-	let store = new Actor({
+	let actor = new Actor({
 		initial,
 		onclick,
 	})
@@ -39,12 +39,12 @@
 		name,
 		value,
 		group,
-		state: store.state,
-		action: store.update.bind(store),
+		state: actor.state,
+		action: actor.update.bind(actor),
 	})
 
 	let buttonClasses = $derived(
-		store.getStyles({
+		actor.getStyles({
 			color,
 			size,
 			font,
@@ -60,7 +60,7 @@
 	)
 
 	function handleClick(event: MouseEvent) {
-		store.update('toggle')
+		actor.update('toggle')
 		if (onclick) onclick(payload as FuzzyPayload)
 	}
 
@@ -79,7 +79,7 @@
 	{value}
 	class={buttonClasses}
 	data-key={name}
-	aria-pressed={store.pressed}
+	aria-pressed={actor.pressed}
 	onclick={handleClick}
 	data-testid={id}
 >
