@@ -165,7 +165,8 @@ const EXPAND_PROPS = [
 		props: {
 			id: 'expand-2',
 			name: 'expand-2',
-			value: 'expanded',
+			value: 'collapsed',
+			state: 'collapsed',
 			controls: 'expand-content-2',
 			states: EXPAND_MACHINE,
 		},

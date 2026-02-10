@@ -1,6 +1,6 @@
 <script lang="ts">
 	import {onMount} from 'svelte'
-	import type {ExpandProps, FuzzyPayload} from '$types'
+	import type {ExpandProps, FuzzyEvent, FuzzyPayload} from '$types'
 	import Actor from './actor.svelte.js'
 
 	let {
@@ -9,6 +9,7 @@
 		controls,
 		title,
 		initial = 'expanded',
+		value,
 		disabled,
 		formaction,
 		states,
@@ -34,14 +35,15 @@
 		onclick,
 		machine: states,
 	})
+	const update = (event: FuzzyEvent): void => update(event)
 
 	let payload = $derived({
 		id: name, // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value
 		name,
-		value: actor.value,
+		value,
 		expanded: actor.expanded,
 		state: actor.state,
-		action: actor.update.bind(actor),
+		action: update,
 	})
 
 	let buttonClasses = $derived(
@@ -62,10 +64,11 @@
 	)
 
 	function handleClick(event: MouseEvent) {
-		if (actor.currentState) actor.update(actor.currentState.event as string)
+		if (actor.currentState) update(actor.currentState.event as string)
 		if (actor.currentState.action) {
 			actor.currentState.action(payload as FuzzyPayload)
 		}
+		if (onclick) onclick(payload as FuzzyPayload)
 	}
 
 	onMount(() => {
