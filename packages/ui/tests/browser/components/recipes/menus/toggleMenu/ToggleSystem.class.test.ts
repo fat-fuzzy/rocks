@@ -1,44 +1,44 @@
 import {describe, it, expect, beforeEach} from 'vitest'
-import ToggleMenuActor from '$lib/components/recipes/menus/ToggleMenu/actor.svelte'
+import ToggleSystem from '$lib/components/recipes/menus/ToggleMenu/system.svelte'
 import {TOGGLE_PROPS, TOGGLE_GROUP_PROPS} from '$tests/fixtures/block-props'
 
-describe(`ToggleMenuActor - a class to manage ToggleMenu components`, () => {
-	const actor = new ToggleMenuActor()
+describe(`ToggleSystem - a class to manage ToggleMenu components`, () => {
+	const system = new ToggleSystem()
 
 	beforeEach(() => {
-		actor.reset()
+		system.reset()
 	})
 
 	describe('init', () => {
 		it(`should initialize mode from args`, () => {
-			actor.init({mode: 'check', items: []})
+			system.init({mode: 'check', items: []})
 
-			expect(actor.mode).toBe('check')
-			expect(actor.state.get(TOGGLE_PROPS[0].props.id)).toBe(undefined)
+			expect(system.mode).toBe('check')
+			expect(system.state.get(TOGGLE_PROPS[0].props.id)).toBe(undefined)
 		})
 
 		it(`should initialize state from args`, () => {
-			actor.init({items: TOGGLE_PROPS.map((toggle) => toggle.props)})
+			system.init({items: TOGGLE_PROPS.map((toggle) => toggle.props)})
 
-			expect(actor.mode).toBe('radio')
-			expect(actor.state.get(TOGGLE_PROPS[0].props.id)).toMatchObject(
+			expect(system.mode).toBe('radio')
+			expect(system.state.get(TOGGLE_PROPS[0].props.id)).toMatchObject(
 				TOGGLE_PROPS[0].props,
 			)
-			expect(actor.state.get(TOGGLE_PROPS[1].props.id)).toMatchObject(
+			expect(system.state.get(TOGGLE_PROPS[1].props.id)).toMatchObject(
 				TOGGLE_PROPS[1].props,
 			)
 		})
 
 		it(`should initialize groups from args`, () => {
-			actor.init({items: TOGGLE_GROUP_PROPS.map((toggle) => toggle.props)})
+			system.init({items: TOGGLE_GROUP_PROPS.map((toggle) => toggle.props)})
 
-			expect(actor.mode).toBe('radio')
+			expect(system.mode).toBe('radio')
 
 			// Get the group from the first group item
 			const groupName = TOGGLE_GROUP_PROPS[0].props.group
 			let group
 			if (groupName) {
-				group = actor.groups.get(TOGGLE_GROUP_PROPS[0].props.group)
+				group = system.groups.get(TOGGLE_GROUP_PROPS[0].props.group)
 			}
 
 			// Test against the group from the second group item
@@ -56,7 +56,7 @@ describe(`ToggleMenuActor - a class to manage ToggleMenu components`, () => {
 
 	describe('buildGroups', () => {
 		it(`should put toggle props into a group `, () => {
-			const result = actor.buildGroups(new Map(), TOGGLE_GROUP_PROPS[0].props)
+			const result = system.buildGroups(new Map(), TOGGLE_GROUP_PROPS[0].props)
 
 			const group = TOGGLE_GROUP_PROPS[0].props.group
 
@@ -71,7 +71,7 @@ describe(`ToggleMenuActor - a class to manage ToggleMenu components`, () => {
 		})
 
 		it(`should create a default group for items with unidentified group`, () => {
-			const result = actor.buildGroups(new Map(), TOGGLE_GROUP_PROPS[3].props)
+			const result = system.buildGroups(new Map(), TOGGLE_GROUP_PROPS[3].props)
 
 			const expected = TOGGLE_GROUP_PROPS[3].expected?.state
 
@@ -83,13 +83,13 @@ describe(`ToggleMenuActor - a class to manage ToggleMenu components`, () => {
 		})
 	})
 
-	describe('getSelected', () => {
+	describe('getState', () => {
 		it(`should return the currently active toggle items`, () => {
-			actor.init({items: TOGGLE_PROPS.map((toggle) => toggle.props)})
+			system.init({items: TOGGLE_PROPS.map((toggle) => toggle.props)})
 
 			const expected = TOGGLE_PROPS[1].expected?.selected
 
-			const result = actor.getSelected()
+			const result = system.getState()
 			if (expected) {
 				expect(result).toMatchObject([expected])
 			} else {
@@ -100,13 +100,13 @@ describe(`ToggleMenuActor - a class to manage ToggleMenu components`, () => {
 
 	describe('update', () => {
 		it(`should set only one active item in radio mode`, () => {
-			actor.init({
+			system.init({
 				items: TOGGLE_PROPS.map((toggle) => toggle.props),
 			})
 
 			const expected1 = TOGGLE_PROPS[1].expected?.selected
 
-			actor.update({
+			system.update({
 				id: 'toggle-1',
 				name: 'toggle-1',
 				state: 'active',
@@ -116,7 +116,7 @@ describe(`ToggleMenuActor - a class to manage ToggleMenu components`, () => {
 			const expected0 = TOGGLE_PROPS[0].expected?.selected
 
 			if (expected1 && expected0) {
-				const result = actor.getSelected()
+				const result = system.getState()
 
 				// Only one toggle should be active
 				expect(result.length).toBe(1)
@@ -127,14 +127,14 @@ describe(`ToggleMenuActor - a class to manage ToggleMenu components`, () => {
 		})
 
 		it(`should set all active items in check mode`, () => {
-			actor.init({
+			system.init({
 				mode: 'check',
 				items: TOGGLE_PROPS.map((toggle) => toggle.props),
 			})
 
 			const expected1 = TOGGLE_PROPS[1].expected?.selected
 
-			actor.update({
+			system.update({
 				id: 'toggle-1',
 				name: 'toggle-1',
 				state: 'active',
@@ -144,7 +144,7 @@ describe(`ToggleMenuActor - a class to manage ToggleMenu components`, () => {
 			const expected0 = TOGGLE_PROPS[0].expected?.selected
 
 			if (expected1 && expected0) {
-				const result = actor.getSelected()
+				const result = system.getState()
 
 				// More than one toggle should be active
 				expect(result.length).toBe(2)
@@ -156,25 +156,25 @@ describe(`ToggleMenuActor - a class to manage ToggleMenu components`, () => {
 		})
 
 		it(`should do nothing if the toggle payload has no action`, () => {
-			actor.init({
+			system.init({
 				items: TOGGLE_PROPS.map((toggle) => toggle.props),
 			})
 
 			const expected1 = TOGGLE_PROPS[1].expected?.selected
-			let result = actor.getSelected()
+			let result = system.getState()
 
 			if (expected1) {
 				expect(result.length).toBe(1)
 				expect(result[0].id).toBe(expected1.id)
 			}
 
-			actor.update({
+			system.update({
 				id: 'toggle-1',
 				name: 'toggle-1',
 				state: 'active',
 			})
 
-			result = actor.getSelected()
+			result = system.getState()
 
 			if (expected1) {
 				// More than one toggle should be active

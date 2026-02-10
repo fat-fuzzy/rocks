@@ -1,10 +1,9 @@
 import type {ToggleProps, FuzzyPayload, FuzzySystem} from '$types'
 
-class ToggleMenuActor implements FuzzySystem {
+class ToggleSystem implements FuzzySystem<ToggleProps> {
+	mode = 'radio'
 	state: Map<string, FuzzyPayload> = $state(new Map())
 	groups: Map<string, Map<string, FuzzyPayload>> = $state(new Map())
-	mode = 'radio'
-
 	public reset() {
 		this.state = new Map()
 		this.groups = new Map()
@@ -25,7 +24,9 @@ class ToggleMenuActor implements FuzzySystem {
 			}),
 		)
 
-		this.state = this.buildStates(items)
+		if (items.length > 0) {
+			this.state = this.buildStates(items)
+		}
 	}
 
 	/**
@@ -73,7 +74,7 @@ class ToggleMenuActor implements FuzzySystem {
 		)
 	}
 
-	public getSelected(): FuzzyPayload[] {
+	public getState(): FuzzyPayload[] {
 		const selected: FuzzyPayload[] = []
 		this.state.forEach((item) => {
 			if (item.state === 'active') {
@@ -84,9 +85,20 @@ class ToggleMenuActor implements FuzzySystem {
 		return selected
 	}
 
+	public setState(payload: FuzzyPayload): void {
+		const itemToUpdate = this.state.get(payload.id)
+
+		if (!itemToUpdate) {
+			return
+		}
+
+		this.state.set(payload.id, payload as ToggleProps)
+	}
+
 	public update(payload: FuzzyPayload): void {
 		if (payload && payload.action) {
-			this.state.set(payload.name, payload)
+			this.setState(payload)
+
 			if (this.mode === 'radio' && payload.state === 'active') {
 				this.state.forEach((value, key) => {
 					if (
@@ -96,7 +108,7 @@ class ToggleMenuActor implements FuzzySystem {
 					) {
 						value.action('toggle')
 						value.state = 'inactive'
-						this.state.set(key, value)
+						this.setState(value)
 					}
 				})
 			}
@@ -104,4 +116,4 @@ class ToggleMenuActor implements FuzzySystem {
 	}
 }
 
-export default ToggleMenuActor
+export default ToggleSystem

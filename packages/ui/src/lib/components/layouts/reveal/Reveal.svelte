@@ -1,7 +1,9 @@
 <script lang="ts">
 	import type {RevealLayoutProps} from '$types'
+
 	import constants from '$lib/types/constants.js'
 	import styleHelper from '$lib/utils/styles.js'
+	import system from '$lib/components/layouts/reveal/system.svelte'
 	import RevealForm from '$lib/components/layouts/reveal/RevealForm.svelte'
 	import RevealContent from '$lib/components/layouts/reveal/RevealContent.svelte'
 
@@ -37,15 +39,21 @@
 		children,
 	}: RevealLayoutProps = $props()
 
-	let html = $state(element.split('.'))
+	let html = $derived(element.split('.'))
 	let {tag, className} = $derived.by(() => ({
 		tag: html[0],
 		className: html[1],
 	}))
 
-	let payload = $derived({
-		state: reveal,
-		id: `button-reveal-${id}`,
+	const controlId = $derived(system.getControlId(id))
+	const contentId = $derived(system.getContentId(id))
+
+	let payload = $derived.by(() => {
+		return {
+			value: reveal,
+			id: controlId,
+			name: controlId,
+		}
 	})
 
 	let layoutClasses = $derived.by(() =>
@@ -61,10 +69,9 @@
 		}),
 	)
 
-	let expanded = $derived(payload.state)
 	let layoutSize = $derived(size ? `size:${size}` : '')
 	let revealLayoutClasses = $derived(
-		`${expanded} ${layoutClasses} ${layoutSize}`,
+		`${payload.value} ${layoutClasses} ${layoutSize}`,
 	)
 	let revealClasses = $derived(
 		auto
@@ -73,10 +80,10 @@
 	)
 
 	function onKeyUp(e: KeyboardEvent) {
-		if (e.key === 'Escape' && payload.state === 'expanded') {
+		if (e.key !== 'Escape') {
 			return
 		}
-		payload.state = 'collapsed'
+		system.update({...payload, value: 'collapsed'})
 	}
 </script>
 
@@ -115,8 +122,8 @@
 	/>
 
 	<RevealContent
-		id={`${id}-reveal-content`}
-		name={`${id}-reveal-content`}
+		id={contentId}
+		name={contentId}
 		label=""
 		{place}
 		{reveal}

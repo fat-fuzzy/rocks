@@ -49,6 +49,18 @@ export interface FuzzyActor {
 	label: string
 }
 
-export interface FuzzySystem {
+export type FuzzyArgs<T> = {mode?: string; items: T[]}
+
+export interface FuzzySystem<T> {
+	mode?: string
 	state: Map<string, FuzzyPayload>
+	reset: () => void
+	init: (args: FuzzyArgs<T>) => void
+	buildStates?: (items: T[]) => Map<FuzzyEvent, FuzzyPayload>
+	getStateItem?: (id: string) => T | undefined
+	setStateItem?: (item: T) => void
+	deleteStateItem?: (id: string) => void
+	getState: (id?: string) => T[] | string | undefined
+	setState: (payload: FuzzyPayload) => void
+	update: (payload: FuzzyPayload) => void
 }
