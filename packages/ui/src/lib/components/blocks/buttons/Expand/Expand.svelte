@@ -28,6 +28,7 @@
 		children,
 		init,
 		onclick,
+		system,
 	}: ExpandProps = $props()
 
 	let actor = new Actor({
@@ -35,7 +36,7 @@
 		onclick,
 		machine: states,
 	})
-	const update = (event: FuzzyEvent): void => update(event)
+	const update = (event: FuzzyEvent): void => actor.update(event)
 
 	let payload = $derived({
 		id: name, // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value
@@ -73,6 +74,19 @@
 
 	onMount(() => {
 		if (init) init(payload as FuzzyPayload)
+		if (system) {
+			if (system.setStateItem)
+				system.setStateItem({
+					id: id,
+					name: id,
+					controls,
+					action: update,
+				})
+
+			return () => {
+				if (system.deleteStateItem) system.deleteStateItem(id)
+			}
+		}
 	})
 </script>
 

@@ -2,7 +2,7 @@
 	import type {RevealLayoutProps} from '$types'
 	import {enhance} from '$app/forms'
 	import constants from '$lib/types/constants.js'
-	import actor from '$lib/components/layouts/reveal/actor.svelte'
+	import system from '$lib/components/layouts/reveal/system.svelte'
 	import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/definitions.js'
 	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
 
@@ -29,8 +29,8 @@
 	}: RevealLayoutProps = $props()
 
 	let buttonAset = $derived(asset)
-	const controlId = $derived(actor.getControlId(id))
-	const contentId = $derived(actor.getContentId(id))
+	const controlId = $derived(system.getControlId(id))
+	const contentId = $derived(system.getContentId(id))
 
 	let placeIcon = $derived(justify ? ALIGN_OPPOSITE[justify] : '')
 	let revealStates = $derived({

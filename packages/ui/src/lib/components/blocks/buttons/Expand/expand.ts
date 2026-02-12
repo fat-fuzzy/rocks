@@ -1,4 +1,4 @@
-import type {FuzzyState, ToggleProps, FuzzyEvent} from '$types'
+import type {FuzzyState, ToggleProps, FuzzyEvent, FuzzySystem} from '$types'
 
 export type UiStateExpand = 'expanded' | 'collapsed'
 
@@ -14,4 +14,5 @@ export type ExpandProps = ToggleProps & {
 	states?: ExpandMachine
 	action?: (event: FuzzyEvent) => void
 	event?: FuzzyEvent
+	system?: FuzzySystem<ExpandProps>
 }

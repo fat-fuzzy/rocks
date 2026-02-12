@@ -1,4 +1,5 @@
 <script lang="ts">
+	import {clickOutside} from '$lib/utils/browser/click-outside'
 	import type {RevealLayoutProps} from '$types'
 
 	let {
@@ -9,6 +10,7 @@
 		layer,
 		background,
 		children,
+		onclickoutside,
 	}: RevealLayoutProps = $props()
 
 	let expanded = $derived(reveal)
@@ -16,9 +18,17 @@
 	let layerClass = $derived(layer ? `layer:${layer}` : '')
 	let backgroundClass = $derived(background ? `bg:${background}` : '')
 	let areaClass = $derived(area ? area : '')
+
+	function handleClickOutside() {
+		if (onclickoutside) {
+			onclickoutside()
+		}
+	}
 </script>
 
 <ff-reveal
+	use:clickOutside
+	onclickoutside={handleClickOutside}
 	{id}
 	class={`${expanded} ${areaClass} ${scrollClass} ${layerClass} ${backgroundClass}`}
 >
