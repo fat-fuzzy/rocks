@@ -12,6 +12,7 @@ export type ExpandMachine = {
 export type ExpandProps = ToggleProps & {
 	controls: string
 	states?: ExpandMachine
+	state?: string
 	action?: (event: FuzzyEvent) => void
 	event?: FuzzyEvent
 	system?: FuzzySystem<ExpandProps>

@@ -74,14 +74,11 @@
 
 	onMount(() => {
 		if (init) init(payload as FuzzyPayload)
-		if (system) {
-			if (system.setStateItem)
-				system.setStateItem({
-					id: id,
-					name: id,
-					controls,
-					action: update,
-				})
+		if (system && system.setStateItem) {
+			system.setStateItem({
+				...payload,
+				controls,
+			})
 
 			return () => {
 				if (system.deleteStateItem) system.deleteStateItem(id)
