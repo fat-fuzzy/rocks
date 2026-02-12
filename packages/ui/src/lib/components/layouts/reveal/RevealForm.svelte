@@ -76,6 +76,7 @@
 		states={revealStates}
 		{init}
 		{onclick}
+		{system}
 	>
 		<span class={`ellipsis text:${text} font:${font}`}>{label}</span>
 	</Expand>
