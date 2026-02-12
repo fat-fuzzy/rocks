@@ -79,6 +79,10 @@
 			: `${className} l:reveal ${revealLayoutClasses}`,
 	)
 
+	function collapseReveal() {
+		system.update({...payload, value: 'collapsed'})
+	}
+
 	function onKeyUp(e: KeyboardEvent) {
 		if (e.key !== 'Escape') {
 			return
@@ -130,6 +134,7 @@
 		{scroll}
 		{layer}
 		{background}
+		onclickoutside={collapseReveal}
 	>
 		{#if children}
 			{@render children()}

@@ -18,6 +18,7 @@ export type RevealLayoutProps = LayoutProps &
 		dismiss?: string
 		text?: string
 		onclick?: (payload: FuzzyPayload) => void
+		onclickoutside?: () => void
 		init?: (payload: FuzzyPayload) => void
 	}
 
