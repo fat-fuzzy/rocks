@@ -4,7 +4,7 @@
 	let {
 		size,
 		align,
-		dimension,
+		dimensions,
 		side,
 		main,
 		justify,
@@ -12,10 +12,10 @@
 		wrap,
 	}: SidebarLayoutProps = $props()
 
-	let mainClass = dimension ? `l:main:${dimension}` : 'l:main'
-	let alignClass = align ? `align:${align}` : ''
-	let justifyClass = justify ? `justify:${justify}` : ''
-	let wrapClass = wrap ? `wrap:${wrap}` : ''
+	let mainClass = $derived(dimensions ? `l:main:${dimensions}` : 'l:main')
+	let alignClass = $derived(align ? `align:${align}` : '')
+	let justifyClass = $derived(justify ? `justify:${justify}` : '')
+	let wrapClass = $derived(wrap ? `wrap:${wrap}` : '')
 </script>
 
 <div
@@ -27,13 +27,13 @@
 				{@render main()}
 			{/if}
 		</div>
-		<div class={`l:side`}>
+		<div class="l:side">
 			{#if side}
 				{@render side()}
 			{/if}
 		</div>
 	{:else}
-		<div class={`l:side`}>
+		<div class="l:side">
 			{#if side}
 				{@render side()}
 			{/if}
