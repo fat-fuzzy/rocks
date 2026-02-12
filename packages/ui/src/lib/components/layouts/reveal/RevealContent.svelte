@@ -1,10 +1,9 @@
 <script lang="ts">
-	import {clickOutside} from '$lib/utils/browser/click-outside'
 	import type {RevealLayoutProps} from '$types'
+	import {clickOutside} from '$lib/utils/browser/click-outside'
 
 	let {
 		id = 'RevealContent',
-		reveal,
 		area,
 		scroll,
 		layer,
@@ -13,11 +12,13 @@
 		onclickoutside,
 	}: RevealLayoutProps = $props()
 
-	let expanded = $derived(reveal)
 	let scrollClass = $derived(scroll ? `scroll:${scroll}` : '')
 	let layerClass = $derived(layer ? `layer:${layer}` : '')
 	let backgroundClass = $derived(background ? `bg:${background}` : '')
 	let areaClass = $derived(area ? area : '')
+	let revealClass = $derived(
+		`${areaClass} ${scrollClass} ${layerClass} ${backgroundClass}`,
+	)
 
 	function handleClickOutside() {
 		if (onclickoutside) {
@@ -30,7 +31,7 @@
 	use:clickOutside
 	onclickoutside={handleClickOutside}
 	{id}
-	class={`${expanded} ${areaClass} ${scrollClass} ${layerClass} ${backgroundClass}`}
+	class={revealClass}
 >
 	{#if children}
 		{@render children()}

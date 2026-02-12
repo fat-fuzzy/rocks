@@ -32,12 +32,7 @@ class RevealSystem implements FuzzySystem<ExpandProps> {
 	 * @returns a map of toggle menu items states
 	 */
 	buildStates(items: ExpandProps[]): Map<string, FuzzyPayload> {
-		return new Map(
-			items.map((item: ExpandProps) => [
-				item.id,
-				{...item, state: item.initial || 'collapsed'},
-			]),
-		)
+		return new Map(items.map((item: ExpandProps) => [item.id, item]))
 	}
 
 	public getControlId(id: string) {
@@ -85,27 +80,26 @@ class RevealSystem implements FuzzySystem<ExpandProps> {
 	}
 
 	public setState(payload: FuzzyPayload): void {
-		const itemToUpdate = this.state.get(payload.id)
+		const expandProps = this.getStateItem(payload.id)
 
-		if (!itemToUpdate) {
+		if (!expandProps || !expandProps.action || !payload.state) {
 			return
 		}
 
-		this.state.set(payload.id, payload as ExpandProps)
+		console.log('system setState')
+		console.log(payload)
+		const event = payload.state === 'collapsed' ? 'collapse' : 'expand'
+		expandProps.action(event)
+		this.state.set(expandProps.id, expandProps)
 	}
 
 	public update(payload: FuzzyPayload): void {
-		if (payload && payload.action) {
+		if (payload) {
 			this.setState(payload)
 
 			if (this.mode === 'radio' && payload.state === 'expanded') {
 				this.state.forEach((value, key) => {
-					if (
-						key !== payload.id &&
-						value.state === 'expanded' &&
-						value.action
-					) {
-						value.action('collapse')
+					if (key !== payload.id && value.state === 'expanded') {
 						value.state = 'collapsed'
 						this.setState(value)
 					}

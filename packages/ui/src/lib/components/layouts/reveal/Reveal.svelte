@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {RevealLayoutProps} from '$types'
+	import type {FuzzyPayload, RevealLayoutProps} from '$types'
 
 	import constants from '$lib/types/constants.js'
 	import styleHelper from '$lib/utils/styles.js'
@@ -45,15 +45,14 @@
 		className: html[1],
 	}))
 
-	const controlId = $derived(system.getControlId(id))
-	const contentId = $derived(system.getContentId(id))
+	let controlId = $derived(system.getControlId(id))
+	let contentId = $derived(system.getContentId(id))
+	let state = $derived.by(() => system.getState(controlId) ?? reveal)
 
-	let payload = $derived.by(() => {
-		return {
-			value: reveal,
-			id: controlId,
-			name: controlId,
-		}
+	let payload = $derived({
+		state,
+		id: controlId,
+		name: controlId,
 	})
 
 	let layoutClasses = $derived.by(() =>
@@ -70,9 +69,7 @@
 	)
 
 	let layoutSize = $derived(size ? `size:${size}` : '')
-	let revealLayoutClasses = $derived(
-		`${payload.value} ${layoutClasses} ${layoutSize}`,
-	)
+	let revealLayoutClasses = $derived(`${state} ${layoutClasses} ${layoutSize}`)
 	let revealClasses = $derived(
 		auto
 			? `${className} l:reveal:auto ${revealLayoutClasses}`
@@ -80,14 +77,14 @@
 	)
 
 	function collapseReveal() {
-		system.update({...payload, value: 'collapsed'})
+		system.update({...payload, state: 'collapsed'})
 	}
 
 	function onKeyUp(e: KeyboardEvent) {
 		if (e.key !== 'Escape') {
 			return
 		}
-		system.update({...payload, value: 'collapsed'})
+		system.update({...payload, state: 'collapsed'})
 	}
 </script>
 
@@ -123,6 +120,7 @@
 		{variant}
 		{align}
 		{justify}
+		onclick={(payload: FuzzyPayload) => system.update(payload)}
 	/>
 
 	<RevealContent
