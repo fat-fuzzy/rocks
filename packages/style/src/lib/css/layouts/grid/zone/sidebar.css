@@ -15,19 +15,6 @@
 	align-items: end;
 }
 
-/* .sidebar [class*='gare:']:is([class*='est'], [class*='ouest']) > form {
-	display: grid;
-	grid-area: gare-control;
-	grid-template-columns: subgrid;
-}
-
-.sidebar [class*='gare:']:is([class*='est'], [class*='ouest']) > ff-reveal {
-	display: grid;
-	grid-area: gare-depot;
-	grid-template-columns: subgrid;
-	grid-row: span 2;
-} */
-
 .exchange > .sidebar > .app-name p {
 	line-height: 1;
 	inline-size: max-content;
