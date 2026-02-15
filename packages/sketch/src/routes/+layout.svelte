@@ -79,12 +79,13 @@
 		place="ouest"
 		layout="rails"
 		scroll="y"
-		layer={1}
+		layer="1"
 		justify="evenly"
 		size="sm"
 		font="xs"
 		width="lg"
 		height="sm"
+		breakpoint="sm"
 		background="inherit"
 		dismiss="outside"
 	/>
