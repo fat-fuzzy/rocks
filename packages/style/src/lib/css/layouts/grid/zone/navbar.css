@@ -3,43 +3,38 @@
 	grid-template-columns: subgrid;
 }
 
-.exchange > .navbar .expanded ff-reveal {
+.navbar > nav > form:has([aria-expanded='true']) + ff-reveal {
 	position: absolute;
 	top: calc(var(--ui-header-height) + var(--grid-gap));
 	left: calc(var(--outline-offset-sm) + var(--grid-gap));
 	right: var(--grid-gap);
 }
 
-.exchange > .navbar > nav,
-.exchange > .navbar > nav form,
-.exchange > .navbar > nav [aria-expanded] {
+.navbar > nav,
+.navbar > nav form,
+.navbar > nav [aria-expanded] {
 	inline-size: 100%;
 	max-inline-size: unset;
 }
 
-.exchange > .navbar > nav [aria-expanded] span {
+.navbar > nav [aria-expanded] span {
 	text-align: center;
 }
 
 @media screen and (min-width: 38.75rem) {
-	.exchange > .navbar {
+	.navbar {
 		grid-column: span 1;
 	}
 
-	.exchange > .navbar > nav {
+	.navbar > nav {
 		justify-content: flex-start;
 	}
 
-	.exchange > .navbar > nav form {
+	.navbar > nav > form {
 		display: none;
 	}
 
-	.exchange > .zone\:1 .l\:reveal\:auto.bp\:xs .header-nav {
-		block-size: fit-content;
-	}
-
-	.exchange > .navbar > .expanded > ff-reveal,
-	.exchange > .navbar > .collapsed > ff-reveal {
+	.navbar > nav > form:has([aria-expanded]) + ff-reveal {
 		--x-size: fit-content;
 		--y-size: fit-content;
 		position: unset;
