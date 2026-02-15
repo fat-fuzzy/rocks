@@ -1,4 +1,4 @@
-import type {AriaInvoke} from '$types'
+import type {AriaInvoke, FuzzyEvent, UiState} from '$types'
 
 import {TOGGLE_MACHINE} from '$lib/components/blocks/buttons/Toggle/definitions'
 import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/definitions'
@@ -155,18 +155,18 @@ const EXPAND_PROPS = [
 			id: 'expand-1',
 			name: 'expand-1',
 			controls: 'expand-content-1',
-			state: 'collapsed',
+			state: 'collapsed' as UiState,
 			value: 'value-1',
 			states: EXPAND_MACHINE,
 			action: () => {},
-			event: 'expand',
+			event: 'expand' as FuzzyEvent,
 		},
 	},
 	{
 		props: {
 			id: 'expand-2',
 			name: 'expand-2',
-			state: 'collapsed',
+			state: 'collapsed' as UiState,
 			value: 'value-2',
 			controls: 'expand-content-2',
 			states: EXPAND_MACHINE,

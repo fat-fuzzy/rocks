@@ -1,4 +1,10 @@
-import type {ExpandProps, FuzzyPayload, FuzzySystem} from '$types'
+import type {
+	ExpandProps,
+	FuzzyEvent,
+	FuzzyPayload,
+	FuzzySystem,
+	UiState,
+} from '$types'
 
 /**
  * Manage the combined state of more than one reveal component
@@ -53,7 +59,7 @@ class RevealSystem implements FuzzySystem<ExpandProps> {
 		return `content-reveal-${baseId}`
 	}
 
-	public setStateItem(item: ExpandProps): void {
+	public setStateItem(item: FuzzyPayload): void {
 		this.state.set(item.id, item)
 	}
 
@@ -61,47 +67,41 @@ class RevealSystem implements FuzzySystem<ExpandProps> {
 		this.state.delete(id)
 	}
 
-	public getStateItem(id: string): ExpandProps | undefined {
-		const control = this.state.get(id)
-		if (control) {
-			return {
-				...control,
-				controls: this.getContentIdFromControlId(id),
-			}
-		}
-		return control
+	public getStateItem(id: string): FuzzyPayload | undefined {
+		return this.state.get(id)
 	}
 
-	public getState(id?: string): string | undefined {
-		if (id) {
-			const state = this.state.get(id)?.state
-			return state ? String(state) : undefined
-		}
+	public getState(id: string): string | undefined {
+		const state = this.state.get(id)?.state
+		return state ? String(state) : undefined
 	}
 
 	public setState(payload: FuzzyPayload): void {
-		const expandProps = this.getStateItem(payload.id)
-
-		if (!expandProps || !expandProps.action || !payload.state) {
+		const toUpdate = this.getStateItem(payload.id)
+		if (!toUpdate) {
 			return
 		}
 
-		console.log('system setState')
-		console.log(payload)
-		const event = payload.state === 'collapsed' ? 'collapse' : 'expand'
-		expandProps.action(event)
-		this.state.set(expandProps.id, expandProps)
+		this.state.set(toUpdate.id, payload)
 	}
 
 	public update(payload: FuzzyPayload): void {
-		if (payload) {
+		if (payload && payload.action && payload.event) {
+			payload.action(payload.event)
 			this.setState(payload)
 
 			if (this.mode === 'radio' && payload.state === 'expanded') {
 				this.state.forEach((value, key) => {
 					if (key !== payload.id && value.state === 'expanded') {
-						value.state = 'collapsed'
-						this.setState(value)
+						const updated = {
+							id: key,
+							name: key,
+							event: 'collapse' as FuzzyEvent,
+							state: 'collapsed' as UiState,
+							value: value.value,
+							action: value?.action,
+						}
+						this.setState(updated)
 					}
 				})
 			}

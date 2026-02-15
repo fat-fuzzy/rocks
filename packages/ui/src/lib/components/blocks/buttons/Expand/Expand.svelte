@@ -28,7 +28,6 @@
 		children,
 		init,
 		onclick,
-		system,
 	}: ExpandProps = $props()
 
 	const actor = new Actor()
@@ -61,32 +60,20 @@
 	)
 
 	function handleClick(event: MouseEvent) {
-		if (system) {
-			system.update(payload)
-		} else if (actor.event) {
-			actor.update(actor.event)
+		if (actor.currentState.event) actor.update(actor.currentState.event)
+		if (actor.currentState.action) {
+			actor.currentState.action(payload as FuzzyPayload)
 		}
 	}
 
 	onMount(() => {
+		if (init) init(payload as FuzzyPayload)
+
 		actor.init({
 			initial,
 			onclick,
 			machine: states,
 		})
-
-		if (init) init(payload as FuzzyPayload)
-
-		if (system && system.setStateItem) {
-			system.setStateItem({
-				...payload,
-				controls,
-			})
-
-			return () => {
-				if (system.deleteStateItem) system.deleteStateItem(id)
-			}
-		}
 	})
 </script>
 

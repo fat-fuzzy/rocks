@@ -1,4 +1,4 @@
-import type {FuzzyState, ButtonStateProps, FuzzySystem} from '$types'
+import type {FuzzyState, ButtonStateProps} from '$types'
 
 export type UiStateExpand = 'expanded' | 'collapsed'
 
@@ -13,5 +13,4 @@ export type ExpandMachine = {
 export type ExpandProps = ButtonStateProps & {
 	controls: string
 	states?: ExpandMachine
-	system?: FuzzySystem<ExpandProps>
 }

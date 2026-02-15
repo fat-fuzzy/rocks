@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {RevealLayoutProps} from '$types'
+	import type {RevealLayoutProps, UiState} from '$types'
 	import {enhance} from '$app/forms'
 	import constants from '$lib/types/constants.js'
 	import system from '$lib/components/layouts/reveal/system.svelte'
@@ -71,12 +71,11 @@
 		controls={contentId}
 		asset={buttonAset}
 		justify={`${justify} nowrap`}
-		initial={reveal}
+		initial={reveal as UiState}
 		place={placeIcon}
 		states={revealStates}
 		{init}
 		{onclick}
-		{system}
 	>
 		<span class={`ellipsis text:${text} font:${font}`}>{label}</span>
 	</Expand>

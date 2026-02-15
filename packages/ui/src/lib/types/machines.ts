@@ -12,6 +12,7 @@ export type FuzzyPayload = {
 	value?: string | number
 	group?: string | number // If the payload item is part of a group
 	state?: UiState
+	event?: FuzzyEvent // Event that can be emitted from the current state
 	action?: (event: FuzzyEvent) => void // Callback function defined in the parent component
 }
 
@@ -57,8 +58,8 @@ export interface FuzzySystem<T> {
 	reset: () => void
 	init: (args: FuzzyArgs<T>) => void
 	buildStates?: (items: T[]) => Map<string, FuzzyPayload>
-	getStateItem?: (id: string) => T | undefined
-	setStateItem?: (item: T) => void
+	getStateItem?: (id: string) => FuzzyPayload | undefined
+	setStateItem?: (item: FuzzyPayload) => void
 	deleteStateItem?: (id: string) => void
 	getState: (id: string) => T[] | string | undefined
 	setState: (payload: FuzzyPayload) => void

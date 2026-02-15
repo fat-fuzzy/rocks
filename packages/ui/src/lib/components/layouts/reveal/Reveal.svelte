@@ -49,12 +49,6 @@
 	let contentId = $derived(system.getContentId(id))
 	let state = $derived.by(() => system.getState(controlId) ?? reveal)
 
-	let payload = $derived({
-		state,
-		id: controlId,
-		name: controlId,
-	})
-
 	let layoutClasses = $derived.by(() =>
 		styleHelper.getLayoutStyles({
 			height,
@@ -76,15 +70,10 @@
 			: `${className} l:reveal ${revealLayoutClasses}`,
 	)
 
-	function collapseReveal() {
-		system.update({...payload, state: 'collapsed'})
-	}
-
 	function onKeyUp(e: KeyboardEvent) {
-		if (e.key !== 'Escape') {
+		if (e.key !== 'Escape' && state === 'expanded') {
 			return
 		}
-		system.update({...payload, state: 'collapsed'})
 	}
 </script>
 
@@ -125,14 +114,12 @@
 
 	<RevealContent
 		id={contentId}
-		name={contentId}
-		label=""
+		{controlId}
 		{place}
 		{reveal}
 		{scroll}
 		{layer}
 		{background}
-		onclickoutside={collapseReveal}
 	>
 		{#if children}
 			{@render children()}

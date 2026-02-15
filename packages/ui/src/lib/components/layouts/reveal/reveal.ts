@@ -10,6 +10,7 @@ import type {
 export type RevealLayoutProps = LayoutPrimitiveProps &
 	UiBlockProps &
 	FormCommonProps & {
+		controlId?: string
 		area?: string
 		reveal: string
 		auto?: boolean
@@ -31,4 +32,13 @@ export type RevealTrainProps = LayoutPrimitiveProps &
 		stations: RevealLayoutProps[]
 		platforms: Snippet[]
 		children?: Snippet
+	}
+
+export type RevealContentProps = LayoutPrimitiveProps &
+	UiBlockProps & {
+		reveal: string
+		controlId: string
+		area?: string
+		trigger?: UiAnimationEvent
+		onclickoutside?: () => void
 	}
