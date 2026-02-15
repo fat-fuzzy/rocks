@@ -65,7 +65,7 @@ details[class*='gare:'] > ff-reveal {
 	.gare\:est:is[open] > ff-reveal,
 	.gare\:ouest:is[open] > ff-reveal {
 		block-size: fit-content;
-		inline-size: 100%;
+		inline-size: var(--overlay-inline-size);
 		max-block-size: var(--overlay-block-size);
 		max-inline-size: var(--overlay-inline-size);
 	}
