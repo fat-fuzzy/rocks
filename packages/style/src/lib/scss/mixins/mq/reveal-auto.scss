@@ -15,17 +15,9 @@
 			position: unset;
 			white-space: normal;
 			max-block-size: unset;
-			border-radius: unset;
 		}
 
-		.l\:reveal\:auto.bp\:#{$size}.collapsed > ff-reveal {
-			top: 0;
-			inline-size: auto;
-			min-inline-size: unset;
-			max-block-size: unset;
-		}
-
-		.l\:reveal\:auto.bp\:#{$size} [aria-expanded] {
+		.l\:reveal\:auto.bp\:#{$size} > form:has([aria-expanded]) {
 			display: none;
 		}
 	}
