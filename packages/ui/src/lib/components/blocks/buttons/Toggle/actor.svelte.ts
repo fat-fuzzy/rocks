@@ -1,5 +1,5 @@
 import type {
-	ButtonEvent,
+	FuzzyEvent,
 	UiBlockProps,
 	FuzzyPayload,
 	FuzzyActor,
@@ -39,7 +39,7 @@ class ToggleActor implements FuzzyActor {
 		}
 	}
 
-	public getTransition(event: ButtonEvent): UiStateToggle {
+	public getTransition(event: FuzzyEvent): UiStateToggle {
 		const state = this.state
 		const transition = this.transitions[state][event]
 		if (transition) {
@@ -48,7 +48,7 @@ class ToggleActor implements FuzzyActor {
 		return state
 	}
 
-	public update(event: ButtonEvent): void {
+	public update(event: FuzzyEvent): void {
 		this.state = this.getTransition(event)
 	}
 
