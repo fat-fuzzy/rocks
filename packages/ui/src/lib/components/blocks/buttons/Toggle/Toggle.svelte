@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {FuzzyEvent, FuzzyPayload, ToggleProps} from '$types'
+	import type {ButtonEvent, FuzzyPayload, ToggleProps} from '$types'
 	import {onMount} from 'svelte'
 	import Actor from './actor.svelte.js'
 
@@ -10,6 +10,7 @@
 		title,
 		initial = 'inactive',
 		value,
+		states,
 		group,
 		disabled,
 		formaction,
@@ -29,11 +30,7 @@
 		children,
 	}: ToggleProps = $props()
 
-	let actor = new Actor({
-		initial,
-		onclick,
-	})
-	const update = (event: FuzzyEvent): void => actor.update(event)
+	let actor = new Actor()
 
 	let payload = $derived({
 		id: name, // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value
@@ -41,7 +38,7 @@
 		value,
 		group,
 		state: actor.state,
-		action: update,
+		action: actor.update.bind(actor),
 	})
 
 	let buttonClasses = $derived(
@@ -66,6 +63,12 @@
 	}
 
 	onMount(() => {
+		actor.init({
+			initial,
+			onclick,
+			machine: states,
+		})
+
 		if (init) init(payload as FuzzyPayload)
 	})
 </script>

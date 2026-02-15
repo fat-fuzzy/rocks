@@ -31,12 +31,7 @@
 		system,
 	}: ExpandProps = $props()
 
-	let actor = new Actor({
-		initial,
-		onclick,
-		machine: states,
-	})
-	const update = (event: FuzzyEvent): void => actor.update(event)
+	const actor = new Actor()
 
 	let payload = $derived({
 		id: name, // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value
@@ -44,7 +39,7 @@
 		value,
 		expanded: actor.expanded,
 		state: actor.state,
-		action: update,
+		action: actor.update.bind(actor),
 	})
 
 	let buttonClasses = $derived(
@@ -65,14 +60,19 @@
 	)
 
 	function handleClick(event: MouseEvent) {
-		if (actor.currentState) update(actor.currentState.event as string)
-		if (actor.currentState.action) {
-			actor.currentState.action(payload as FuzzyPayload)
+		update(actor.currentState.event as string)
+		if (onclick) {
+			onclick(payload)
 		}
-		if (onclick) onclick(payload as FuzzyPayload)
 	}
 
 	onMount(() => {
+		actor.init({
+			initial,
+			onclick,
+			machine: states,
+		})
+
 		if (init) init(payload as FuzzyPayload)
 		if (system && system.setStateItem) {
 			system.setStateItem({

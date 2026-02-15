@@ -21,7 +21,9 @@ class SwitchActor implements FuzzyActor {
 	id = $derived(this.currentState?.id)
 	label = $derived(this.currentState?.label)
 
-	constructor({
+	constructor() {}
+
+	init({
 		initial,
 		onclick,
 		machine,
