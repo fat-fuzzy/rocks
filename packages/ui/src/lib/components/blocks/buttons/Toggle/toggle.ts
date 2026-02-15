@@ -3,7 +3,6 @@ import type {
 	ButtonType,
 	FuzzyPayload,
 	FuzzyState,
-	FuzzyMachine,
 	UiBlockProps,
 } from '$lib/types'
 
@@ -33,7 +32,7 @@ export type ToggleProps = UiBlockProps & {
 	initial?: string // Initial state of the button
 	value?: string | number
 	group?: string | number // If the payload item is part of a group
-	states?: FuzzyMachine
+	states?: ToggleMachine
 	onclick?: (payload: FuzzyPayload) => void
 	init?: (payload: FuzzyPayload) => void
 }
