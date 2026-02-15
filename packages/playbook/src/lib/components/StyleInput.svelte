@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type {IStyleInputGroup, IStyleFamily} from '$types'
 
+	import type {FuzzyPayload, UiSize} from '@fat-fuzzy/ui'
 	import fatFuzzyUi from '@fat-fuzzy/ui'
 	const {InputRange} = fatFuzzyUi.blocks
 	const {InputGroup} = fatFuzzyUi.drafts
@@ -21,8 +22,8 @@
 
 	let {styleInput, family, familyName, formaction, onupdate}: Props = $props()
 
-	let apiSize = '2xs'
-	let apiFont = 'xs'
+	let apiSize: UiSize = '2xs'
+	let apiFont: UiSize = 'xs'
 	let apiColor = 'primary'
 	let apiVariant = 'outline'
 	let apiJustify = 'stretch'
@@ -32,12 +33,13 @@
 
 	let updatedItems = $derived(
 		items.map((i) => {
+			const state = i.value === currentValue ? 'active' : 'inactive'
 			return {
 				...i,
 				label: i.label ?? i.asset ?? i.text ?? i.id,
-				text: '',
+				text: i.text ?? '',
 				asset: i.asset ?? '',
-				initial: i.value === currentValue ? 'active' : 'inactive',
+				initial: state,
 				name: i.id,
 				id: i.id,
 			}
@@ -98,12 +100,11 @@
 	function handleToggle(
 		selected: {
 			name: string
-			label: string
 			value?: string | number
 			state: string
 		}[],
 	) {
-		let items: {id: string; name: string; label: string; value: string}[] = []
+		let items: {id: string; name: string; value: string}[] = []
 		let payload = {
 			id,
 			name: familyName.toLowerCase(),
@@ -113,18 +114,12 @@
 			payload.items = selected.map((item) => {
 				return {
 					id,
-					label: item.label,
 					name: item.name.toLowerCase(),
 					value: String(item.value),
 				}
 			})
 		} else {
-			let singleton = {
-				id,
-				name: id,
-				value: '',
-			}
-			payload.items = [singleton]
+			payload.items = []
 		}
 		onupdate(payload)
 	}
@@ -165,8 +160,8 @@
 			mode={styleInput.mode ?? 'radio'}
 			{assetType}
 			{formaction}
-			onupdate={(event) => handleToggle(event)}
-			init={(event) => handleToggle(event)}
+			onupdate={(payload: FuzzyPayload[]) => handleToggle(payload)}
+			init={() => handleToggle(updatedItems)}
 		/>
 	</Fieldset>
 {:else}

@@ -24,9 +24,24 @@ const defaultExpandedConfig = {
 }
 
 describe(`ExpandActor - a class to manage Expand button states`, () => {
+	const actor = new ExpandActor()
+
 	describe('constructor', () => {
+		it('should create an instance with  default values', () => {
+			expect(actor.state).toEqual('collapsed')
+			expect(actor.machine).toMatchObject(EXPAND_MACHINE)
+			expect(actor.transitions).toMatchObject(EXPAND_TRANSITIONS)
+			expect(actor.currentState).toMatchObject(EXPAND_MACHINE.collapsed)
+			expect(actor.expanded).toEqual(false)
+			expect(actor.value).toEqual('collapsed')
+			expect(actor.id).toEqual('collapsed')
+			expect(actor.label).toEqual('Expand')
+		})
+	})
+
+	describe('init', () => {
 		it('should initialize with an empty object', () => {
-			const actor = new ExpandActor({})
+			actor.init({})
 
 			expect(actor.state).toEqual('collapsed')
 			expect(actor.machine).toMatchObject(EXPAND_MACHINE)
@@ -38,15 +53,21 @@ describe(`ExpandActor - a class to manage Expand button states`, () => {
 			expect(actor.label).toEqual('Expand')
 		})
 
-		it('should initialize with a non-empty config object', () => {
-			const actor = new ExpandActor(defaultExpandedConfig)
+		it('should initialize with a config object', () => {
+			const customConfig = {
+				...defaultExpandedConfig,
+				machine: {...EXPAND_MACHINE},
+			}
+			customConfig.machine.expanded.value = 'custom-value-expanded'
+			customConfig.machine.collapsed.value = 'custom-value-collapsed'
+			actor.init(customConfig)
 
 			expect(actor.state).toEqual('expanded')
 			expect(actor.machine).toMatchObject(EXPAND_MACHINE)
 			expect(actor.transitions).toMatchObject(EXPAND_TRANSITIONS)
 			expect(actor.currentState).toMatchObject(EXPAND_MACHINE.expanded)
 			expect(actor.expanded).toEqual(true)
-			expect(actor.value).toEqual('expanded')
+			expect(actor.value).toEqual('custom-value-expanded')
 			expect(actor.id).toEqual('expanded')
 			expect(actor.label).toEqual('Collapse')
 		})
@@ -54,25 +75,25 @@ describe(`ExpandActor - a class to manage Expand button states`, () => {
 
 	describe('getTransition', () => {
 		it('should transition collapsed to expanded event', () => {
-			const actor = new ExpandActor(defaultCollapsedConfig)
+			actor.init(defaultCollapsedConfig)
 			const transition = actor.getTransition('expand')
 			expect(transition).toEqual('expanded')
 		})
 
 		it('should not transition on collapse event if in collapsed state', () => {
-			const actor = new ExpandActor(defaultCollapsedConfig)
+			actor.init(defaultCollapsedConfig)
 			actor.update('collapse')
 			expect(actor.state).toEqual('collapsed')
 		})
 
 		it('should transition expanded to collapsed event', () => {
-			const actor = new ExpandActor(defaultExpandedConfig)
+			actor.init(defaultExpandedConfig)
 			const transition = actor.getTransition('collapse')
 			expect(transition).toEqual('collapsed')
 		})
 
 		it('should not transition on expand event if in expanded state', () => {
-			const actor = new ExpandActor(defaultExpandedConfig)
+			actor.init(defaultExpandedConfig)
 			actor.update('expand')
 			expect(actor.state).toEqual('expanded')
 		})
@@ -80,25 +101,25 @@ describe(`ExpandActor - a class to manage Expand button states`, () => {
 
 	describe('update', () => {
 		it('should transition collapsed to expanded event', () => {
-			const actor = new ExpandActor(defaultCollapsedConfig)
+			actor.init(defaultCollapsedConfig)
 			actor.update('expand')
 			expect(actor.state).toEqual('expanded')
 		})
 
 		it('should not change state from collapsed on collapse event', () => {
-			const actor = new ExpandActor(defaultCollapsedConfig)
+			actor.init(defaultCollapsedConfig)
 			actor.update('collapse')
 			expect(actor.state).toEqual('collapsed')
 		})
 
 		it('should transition expanded to collapsed event', () => {
-			const actor = new ExpandActor(defaultExpandedConfig)
+			actor.init(defaultExpandedConfig)
 			actor.update('collapse')
 			expect(actor.state).toEqual('collapsed')
 		})
 
 		it('should not change state from collapsed on collapse event', () => {
-			const actor = new ExpandActor(defaultExpandedConfig)
+			actor.init(defaultExpandedConfig)
 			actor.update('expand')
 			expect(actor.state).toEqual('expanded')
 		})
@@ -106,13 +127,11 @@ describe(`ExpandActor - a class to manage Expand button states`, () => {
 
 	describe('getStyles', () => {
 		it('should return correct styles for Expand button from UiBlockProps object', () => {
-			const actor = new ExpandActor({})
 			const styles = actor.getStyles(PROPS_BLOCK[0].props)
 			expect(styles).toEqual(`expand size:md ${PROPS_BLOCK[0].expected}`)
 		})
 
 		it('should return correct styles for Expand button from empty object', () => {
-			const actor = new ExpandActor({})
 			const styles = actor.getStyles({})
 			expect(styles).toEqual('expand')
 		})

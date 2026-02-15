@@ -3,61 +3,63 @@
  * Expand / Collapse content
  */
 
-.gare-control {
-	border-radius: 0;
+/* COMMON styles */
+
+[class*='gare:'] > .expanded > ff-reveal {
+	margin-inline-start: var(--outline-offset-md);
+	grid-template-areas:
+		'gare-control'
+		'gare-depot';
 }
 
-details:has(.gare-control) {
-	padding-block: 0;
-	position: unset;
-}
-
-details[class*='gare:'] > ff-reveal,
-.l\:reveal[class*='gare:'] > .expanded > ff-reveal {
+[class*='gare:'] > .expanded > ff-reveal {
 	margin-inline-start: var(--outline-offset-md);
 }
 
-[class*='zone:'] > .navbar > nav form > [class*='l:switcher'],
-[class*='zone:'] > .app-context > form > [class*='l:switcher'],
-[class*='zone:'] > nav > form > [class*='l:switcher'] {
-	--gap: var(--grid-gap);
-}
-
-.gare\:est,
-.gare\:ouest {
+[class*='gare:']:is([class*='est'], [class*='ouest']) {
 	block-size: fit-content;
 	max-block-size: var(--overlay-block-size);
 }
 
-.gare\:ouest > ff-reveal,
-.gare\:ouest:is([open], .expanded) > ff-reveal {
-	top: calc(var(--ui-header-height) + var(--grid-gap));
-	left: var(--grid-gap);
-	right: calc(var(--grid-gap) + var(--outline-offset-md));
+[class*='gare:']:is([class*='est'], [class*='ouest']).collapsed > ff-reveal {
+	clip-path: rect(0 0 0 0);
+	border: 0;
+	height: auto;
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 0;
+	height: 0;
+	inline-size: 0;
+	block-size: 0;
+	white-space: nowrap;
 }
 
-.gare\:est:is([open], .expanded) > ff-reveal {
-	top: calc(var(--ui-header-height) + var(--grid-gap));
-	right: calc(var(--grid-gap) + var(--outline-offset-lg));
-}
-
-[class*='gare:']:is([class*='est'], [class*='ouest'], [class*='nord']):is(
-		[open],
-		.expanded
-	)
-	> ff-reveal {
-	block-size: fit-content;
-	max-block-size: var(--overlay-block-size);
-	overflow: hidden auto;
-}
-
-.gare\:est:is([open], .expanded) > ff-reveal,
-.gare\:ouest:is([open], .expanded) > ff-reveal {
+[class*='gare:']:is([class*='est'], [class*='ouest']).expanded > ff-reveal,
+[class*='gare:'] > form:has([aria-expanded='true']) + ff-reveal {
 	position: absolute;
 	block-size: fit-content;
 	max-block-size: var(--overlay-block-size);
 	inline-size: var(--overlay-inline-size);
 	z-index: var(--layout-z-index-reveal);
+	overflow: hidden auto;
+}
+
+/* OUEST styles */
+
+.gare\:ouest > form:has([aria-expanded='true']) + ff-reveal {
+	position: absolute;
+	top: calc(var(--ui-header-height) + var(--grid-gap));
+	left: var(--grid-gap);
+	right: calc(var(--grid-gap) + var(--outline-offset-md));
+	bottom: var(--grid-gap);
+}
+
+/* EST styles */
+.gare\:est:is([open], .expanded) > ff-reveal {
+	top: calc(var(--ui-header-height) + var(--grid-gap));
+	right: calc(var(--grid-gap) + var(--outline-offset-lg));
 }
 
 @media screen and (min-width: 58.45rem) {
@@ -85,8 +87,15 @@ details[class*='gare:'] > ff-reveal,
 	.gare\:ouest:is([open], .expanded) > ff-reveal {
 		box-shadow: unset;
 	}
-	.gare\:est .gare-control,
-	.gare\:ouest .gare-control {
+
+	.gare\:ouest > ff-reveal,
+	.gare\:ouest:is([open], .expanded) > ff-reveal {
+		right: unset;
+		bottom: var(--grid-gap);
+	}
+
+	.gare\:est > form > [aria-expanded],
+	.gare\:ouest > form > [aria-expanded] {
 		inline-size: 100%;
 		max-inline-size: var(--overlay-inline-size);
 	}

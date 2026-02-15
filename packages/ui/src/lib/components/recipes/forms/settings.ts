@@ -3,7 +3,6 @@ import type {
 	UiState,
 	UiSettings,
 	UiBlockProps,
-	UiLayoutProps,
 	FormCommonProps,
 	SwitchProps,
 	FuzzyPayload,
@@ -37,12 +36,13 @@ export type SettingsProps = UiBlockProps &
 		onupdate?: (payload: FuzzyPayload) => void
 	}
 
-export type RevealContextProps = SettingsProps &
-	UiLayoutProps &
+export type RevealContextProps = UiBlockProps &
 	FormCommonProps & {
 		breakpoint: string
+		path?: string
 		text?: string
 		reveal: UiState
 		actionPath?: string
 		context: ViewingPreferences
+		children?: Snippet
 	}

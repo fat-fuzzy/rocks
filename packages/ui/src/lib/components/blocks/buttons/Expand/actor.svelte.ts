@@ -5,6 +5,8 @@ import type {
 	FuzzyActor,
 	FuzzyPayload,
 	UiVariant,
+	FuzzyEvent,
+	UiState,
 } from '$types'
 import {EXPAND_MACHINE, EXPAND_TRANSITIONS} from './definitions.js'
 import styleHelper from '$lib/utils/styles.js'
@@ -19,12 +21,14 @@ class ExpandActor implements FuzzyActor {
 	id = $derived(this.currentState?.id)
 	label = $derived(this.currentState?.label)
 
-	constructor({
+	constructor() {}
+
+	init({
 		initial,
 		onclick,
 		machine,
 	}: {
-		initial?: string
+		initial?: UiState
 		onclick?: (payload: FuzzyPayload) => void
 		machine?: ExpandMachine
 	}) {
@@ -36,16 +40,16 @@ class ExpandActor implements FuzzyActor {
 		}
 	}
 
-	getTransition(event: string): UiStateExpand {
+	getTransition(event: FuzzyEvent): UiStateExpand {
 		const state = this.state as UiStateExpand
-		const transition = this.transitions[state][event]
+		const transition = this.transitions[state][String(event)]
 		if (transition) {
 			return transition as UiStateExpand
 		}
 		return state
 	}
 
-	public update(event: string): void {
+	public update(event: FuzzyEvent): void {
 		this.state = this.getTransition(event)
 	}
 

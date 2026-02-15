@@ -2,16 +2,17 @@
  * Fuzzy State Machine
  */
 
-import type {UiState} from '$types'
+import type {UiState, UiVariant} from '$types'
 
-export type FuzzyEvent = boolean | number | string | Event
+export type FuzzyEvent = 'toggle' | 'switch' | 'collapse' | 'expand'
 
 export type FuzzyPayload = {
 	id: string
 	name: string
 	value?: string | number
 	group?: string | number // If the payload item is part of a group
-	state?: string
+	state?: UiState
+	event?: FuzzyEvent // Event that can be emitted from the current state
 	action?: (event: FuzzyEvent) => void // Callback function defined in the parent component
 }
 
@@ -23,9 +24,9 @@ export type FuzzyState = {
 	value?: string | number // Element value
 	label: string // Element label
 	asset?: string // Element icon: the `value` in emoji:value or svg:value
-	variant?: string // Variant style for the element state
+	variant?: UiVariant // Variant style for the element state
 	state?: UiState // Name of the current state
-	event?: string // Event that can be emitted from the current state
+	event?: FuzzyEvent // Event that can be emitted from the current state
 	action?: (payload: FuzzyPayload) => void // Action available on the current state
 }
 
@@ -49,6 +50,18 @@ export interface FuzzyActor {
 	label: string
 }
 
-export interface FuzzySystem {
+export type FuzzyArgs<T> = {mode?: string; items: T[]}
+
+export interface FuzzySystem<T> {
+	mode?: string
 	state: Map<string, FuzzyPayload>
+	reset: () => void
+	init: (args: FuzzyArgs<T>) => void
+	buildStates?: (items: T[]) => Map<string, FuzzyPayload>
+	getStateItem?: (id: string) => FuzzyPayload | undefined
+	setStateItem?: (item: FuzzyPayload) => void
+	deleteStateItem?: (id: string) => void
+	getState: (id: string) => T[] | string | undefined
+	setState: (payload: FuzzyPayload) => void
+	update: (payload: FuzzyPayload) => void
 }

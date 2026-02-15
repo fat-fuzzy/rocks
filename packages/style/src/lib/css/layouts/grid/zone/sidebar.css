@@ -1,68 +1,58 @@
 /**
- * ZONE 2
+ * AREA sidebar
  * Left Sidebar contains secondary navigation
  */
 
-.exchange > .sidebar {
+.sidebar {
 	--max-block-size: calc(100vh - 2 * var(--ui-header-height) - var(--grid-gap));
 	grid-area: sidebar;
-	grid-template-areas:
-		'gare-control'
-		'gare-depot';
-	grid-template-columns: subgrid;
 	grid-template-rows: subgrid;
 	z-index: var(--layout-z-index-layer);
 	align-items: end;
 }
 
-.exchange > .sidebar > .gare-control {
-	grid-area: gare-control;
-	grid-template-columns: subgrid;
-}
-
-.exchange > .sidebar > .gare-depot {
-	grid-area: gare-depot;
-	grid-template-columns: subgrid;
-	grid-row: span 2;
-}
-
-.exchange > .sidebar > .app-name p {
+.sidebar > .app-name p {
 	line-height: 1;
 	inline-size: max-content;
 }
 
-.exchange > .sidebar > .app-name ff-callout {
+.sidebar > .app-name ff-callout {
 	border-top: var(--border-width-md) dotted var(--shade);
 	border-radius: 0;
 }
 
-.exchange > .sidebar > .app-name ff-callout ff-icon {
+.sidebar > .app-name ff-callout ff-icon {
 	display: none;
 }
 
-.exchange > .sidebar > .app-name,
-.exchange > .sidebar:has(.app-name),
-.exchange > .sidebar [name='sidebar'] > [class*='l:switcher'],
-.exchange > .sidebar > .collapsed > [name='sidebar'],
-.exchange > .sidebar > .collapsed > [name='sidebar'] > [class*='l:switcher'] {
+.sidebar > .app-name,
+.sidebar:has(.app-name),
+.sidebar [name='sidebar'] > [class*='l:switcher'] {
 	inline-size: 100%;
 	font-family: var(--font-family-heading);
 }
 
 @media screen and (min-width: 38.75rem) {
-	.exchange > .sidebar {
+	.sidebar {
 		align-items: center;
 	}
 
-	.exchange > .sidebar > .app-name p {
+	.sidebar > .app-name,
+	.sidebar:has(.app-name) {
+		inline-size: 100%;
+		max-inline-size: var(--sidebar-width);
+	}
+
+	.sidebar > .app-name p {
 		line-height: var(--font-leading-body);
 	}
 
-	.exchange > .sidebar [name='sidebar'] > [class*='l:switcher'] {
+	.sidebar [name='sidebar'] > [class*='l:switcher'] {
 		--ui-size: var(--size-base-xs);
+		gap: 0;
 	}
 
-	.exchange > .sidebar [name='sidebar'] > [class*='l:switcher'] span {
+	.sidebar [name='sidebar'] > [class*='l:switcher'] span {
 		font-size: var(--font-size-sm);
 	}
 
@@ -70,86 +60,53 @@
 		padding-inline-start: 0;
 	}
 
-	.exchange > .sidebar > .app-name,
-	.exchange > .sidebar:has(.app-name) {
-		inline-size: 100%;
-		max-inline-size: var(--sidebar-width);
-	}
-
-	.exchange > .sidebar [name='sidebar'] > [class*='l:switcher'] {
-		gap: 0;
-	}
-
-	.exchange > .sidebar.width\:lg,
-	.exchange > .sidebar.width\:lg:is([open], .expanded) > ff-reveal,
-	.exchange > .sidebar.width\:xl,
-	.exchange > .sidebar.width\:xl:is([open], .expanded) > ff-reveal,
-	.exchange > .sidebar > ff-reveal {
+	.sidebar.width\:lg,
+	.sidebar.width\:xl {
 		--sidebar-width: var(--layout-sidebar-md);
 	}
 }
 
 @media screen and (min-width: 58.45rem) {
-	.exchange > .sidebar [class*='gare:'].width\:xl,
-	.exchange > .sidebar:is([open], .expanded) > ff-reveal {
+	.sidebar [class*='gare:'].width\:xl {
 		--overlay-block-size: var(--overlay-height-sm);
 	}
 }
 
 @media screen and (min-width: 68.75rem) {
-	.exchange > .sidebar {
+	.sidebar {
 		z-index: initial;
 	}
-	.exchange > .sidebar > .app-name,
-	.exchange > .sidebar > details {
-		grid-column: span 3;
-	}
 
-	.exchange > .sidebar > .app-name,
-	.exchange > .sidebar > nav,
-	.exchange > .sidebar > nav > form {
+	.sidebar > nav,
+	.sidebar > nav > form {
 		inline-size: 100%;
 		max-inline-size: var(--overlay-inline-size);
 		padding-inline-end: calc(var(--grid-gap) - var(--outline-offset-md));
 	}
 
-	.exchange > .sidebar > .app-name {
+	.sidebar > nav > ff-reveal {
+		padding-inline-start: calc(var(--grid-gap) - var(--outline-offset-md));
+	}
+
+	.sidebar > .app-name {
 		padding-inline-end: calc(var(--grid-gap) + var(--outline-offset-md));
 	}
 
-	.exchange > .sidebar > .app-name ff-callout ff-icon {
+	.sidebar > .app-name ff-callout ff-icon {
 		display: block;
 	}
 
-	.exchange > .sidebar:is([open], .expanded) > ff-reveal,
-	.exchange > .sidebar:is([open], .expanded) > ff-reveal {
-		--overlay-inline-size: calc(var(--sidebar-width) + 3 * var(--grid-gap));
-		left: calc(2 * var(--grid-gap));
-		right: unset;
-		grid-row-start: 1;
-	}
-
-	.exchange > .sidebar.width\:lg,
-	.exchange > .sidebar.width\:lg:is([open], .expanded) > ff-reveal,
-	.exchange > .sidebar > ff-reveal {
+	.sidebar.width\:lg {
 		--sidebar-width: var(--layout-sidebar-md);
 		--overlay-block-size: var(--max-block-size);
 	}
 
-	.exchange > .sidebar.width\:full > ff-reveal {
+	.sidebar.width\:full {
 		--sidebar-lg: calc(
 			100vw - var(--sidebar-width) - 4 * var(--grid-gap) -
 				var(--outline-offset-lg)
 		);
 		--overlay-inline-size: var(--sidebar-lg);
 		--overlay-block-size: var(--overlay-height-sm);
-	}
-
-	.exchange > .sidebar > .app-name,
-	.exchange > .sidebar:has(.app-name),
-	.exchange > .sidebar [name='sidebar'] > [class*='l:switcher'],
-	.exchange > .sidebar > .collapsed > [name='sidebar'],
-	.exchange > .sidebar > .collapsed > [name='sidebar'] > [class*='l:switcher'] {
-		inline-size: var(--overlay-inline-size);
 	}
 }

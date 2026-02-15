@@ -15,6 +15,7 @@
 	.voyager.zone\:main {
 		grid-column-start: 4;
 		grid-column-end: -1;
+		max-block-size: var(--max-block-size);
 		padding-inline: calc(3.5 * var(--grid-gap)) 0;
 	}
 

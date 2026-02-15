@@ -9,6 +9,7 @@
 		controls,
 		title,
 		initial = 'expanded',
+		value,
 		disabled,
 		formaction,
 		states,
@@ -29,16 +30,13 @@
 		onclick,
 	}: ExpandProps = $props()
 
-	let actor = new Actor({
-		initial,
-		onclick,
-		machine: states,
-	})
+	const actor = new Actor()
 
 	let payload = $derived({
 		id: name, // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value
 		name,
-		value: actor.value,
+		value,
+		event: actor.event,
 		expanded: actor.expanded,
 		state: actor.state,
 		action: actor.update.bind(actor),
@@ -62,7 +60,7 @@
 	)
 
 	function handleClick(event: MouseEvent) {
-		if (actor.currentState) actor.update(actor.currentState.event as string)
+		if (actor.currentState.event) actor.update(actor.currentState.event)
 		if (actor.currentState.action) {
 			actor.currentState.action(payload as FuzzyPayload)
 		}
@@ -70,6 +68,12 @@
 
 	onMount(() => {
 		if (init) init(payload as FuzzyPayload)
+
+		actor.init({
+			initial,
+			onclick,
+			machine: states,
+		})
 	})
 </script>
 
