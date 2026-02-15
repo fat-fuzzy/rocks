@@ -8,7 +8,7 @@
 	flex-direction: column;
 	inline-size: var(--x-size);
 	block-size: var(--y-size);
-	inline-size: 100%;
+	max-inline-size: var(--overlay-inline-size);
 	color: var(--ink);
 	z-index: var(--layout-z-index-layer);
 	transition: inline-size 250ms ease-in-out;
