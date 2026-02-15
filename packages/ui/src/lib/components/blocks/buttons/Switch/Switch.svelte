@@ -54,8 +54,9 @@
 	)
 
 	function handleClick(event: MouseEvent) {
-		if (actor.currentState)
-			actor.update(actor.currentState.event as ButtonEvent)
+		if (actor.currentState.event) {
+			actor.update(actor.currentState.event)
+		}
 		if (actor.currentState.action) {
 			actor.currentState.action(payload as FuzzyPayload)
 		}

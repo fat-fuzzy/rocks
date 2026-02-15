@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {ButtonEvent, FuzzyPayload, ToggleProps} from '$types'
+	import type {FuzzyPayload, ToggleProps} from '$types'
 	import {onMount} from 'svelte'
 	import Actor from './actor.svelte.js'
 
@@ -58,7 +58,9 @@
 	)
 
 	function handleClick(event: MouseEvent) {
-		update('toggle')
+		if (actor.currentState.event) {
+			actor.update(actor.currentState.event)
+		}
 		if (onclick) onclick(payload as FuzzyPayload)
 	}
 

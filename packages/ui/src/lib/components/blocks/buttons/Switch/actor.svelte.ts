@@ -5,7 +5,7 @@ import type {
 	UiStateSwitch,
 	SwitchMachine,
 	UiVariant,
-	ButtonEvent,
+	FuzzyEvent,
 } from '$types'
 
 import {SWITCH_MACHINE, SWITCH_TRANSITIONS} from './definitions.js'
@@ -40,7 +40,7 @@ class SwitchActor implements FuzzyActor {
 		}
 	}
 
-	public getTransition(event: ButtonEvent): UiStateSwitch {
+	public getTransition(event: FuzzyEvent): UiStateSwitch {
 		const state = this.state as UiStateSwitch
 		const transition = this.transitions[state][event]
 		if (transition) {
@@ -49,7 +49,7 @@ class SwitchActor implements FuzzyActor {
 		return state
 	}
 
-	public update(event: ButtonEvent): void {
+	public update(event: FuzzyEvent): void {
 		this.state = this.getTransition(event)
 	}
 
