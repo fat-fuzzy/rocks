@@ -14,7 +14,7 @@ details[class*='gare:'] > ff-reveal {
 	border-radius: 0;
 }
 
-.gare\:ouest:is([open], .expanded) > ff-reveal {
+.gare\:ouest[open] > ff-reveal {
 	position: absolute;
 	top: calc(var(--ui-header-height) + var(--grid-gap));
 	left: var(--grid-gap);
@@ -22,50 +22,23 @@ details[class*='gare:'] > ff-reveal {
 	/* bottom: var(--grid-gap); */
 }
 
-.gare\:est:is([open], .expanded) > ff-reveal {
+.gare\:est[open] > ff-reveal {
 	position: absolute;
 	top: calc(var(--ui-header-height) + var(--grid-gap));
 	right: calc(var(--grid-gap) + var(--outline-offset-lg));
 }
-/* 
-details[class*='gare:']:is([class*='est'], [class*='ouest'], [class*='nord'])
-	> ff-reveal {
-	clip-path: rect(0 0 0 0);
-	border: 0;
-	height: auto;
-	margin: 0;
-	overflow: hidden;
-	padding: 0;
-	position: absolute;
-	width: 0;
-	height: 0;
-	inline-size: 0;
-	block-size: 0;
-	white-space: nowrap;
-} */
-
-[class*='gare:']:is([class*='est'], [class*='ouest'], [class*='nord'])[open]
-	> ff-reveal {
-	overflow: hidden auto;
-	block-size: fit-content;
-	max-block-size: var(--overlay-block-size);
-	inline-size: var(--overlay-inline-size);
-	z-index: var(--layout-z-index-reveal);
-}
 
 @media screen and (min-width: 58.45rem) {
-	.gare\:ouest > ff-reveal,
-	.gare\:ouest:is([open], .expanded) > ff-reveal {
+	.gare\:ouest[open] > ff-reveal {
 		left: calc(2 * var(--grid-gap));
 	}
 
-	.gare\:est > ff-reveal,
-	.gare\:est:is([open], .expanded) > ff-reveal {
+	.gare\:est[open] > ff-reveal {
 		box-shadow: unset;
 	}
 
-	.gare\:est:is([open], .expanded) > ff-reveal,
-	.gare\:ouest:is([open], .expanded) > ff-reveal {
+	.gare\:es[open] > ff-reveal,
+	.gare\:oues[open] > ff-reveal {
 		block-size: fit-content;
 		inline-size: 100%;
 		max-block-size: var(--overlay-block-size);
@@ -74,20 +47,12 @@ details[class*='gare:']:is([class*='est'], [class*='ouest'], [class*='nord'])
 }
 
 @media screen and (min-width: 68.75rem) {
-	.gare\:ouest > ff-reveal,
-	.gare\:ouest:is([open], .expanded) > ff-reveal {
+	.gare\:ouest[open] > ff-reveal {
 		box-shadow: unset;
 	}
 
-	.gare\:ouest > ff-reveal,
-	.gare\:ouest:is([open], .expanded) > ff-reveal {
+	.gare\:ouest[open] > ff-reveal {
 		right: unset;
 		bottom: var(--grid-gap);
-	}
-
-	.gare\:est > form > [aria-expanded],
-	.gare\:ouest > form > [aria-expanded] {
-		inline-size: 100%;
-		max-inline-size: var(--overlay-inline-size);
 	}
 }

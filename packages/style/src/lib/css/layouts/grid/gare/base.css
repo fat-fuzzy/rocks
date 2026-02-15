@@ -16,12 +16,6 @@
 	margin-inline-start: var(--outline-offset-md);
 }
 
-[class*='zone:'] > .navbar > nav form > [class*='l:switcher'],
-[class*='zone:'] > .app-context > form > [class*='l:switcher'],
-[class*='zone:'] > nav > form > [class*='l:switcher'] {
-	--gap: var(--grid-gap);
-}
-
 [class*='gare:']:is([class*='est'], [class*='ouest']) {
 	block-size: fit-content;
 	max-block-size: var(--overlay-block-size);
@@ -42,9 +36,8 @@
 	white-space: nowrap;
 }
 
-[class*='gare:']:is([class*='est'], [class*='ouest'], [class*='nord'])
-	> form:has([aria-expanded='true'])
-	+ ff-reveal {
+[class*='gare:']:is([class*='est'], [class*='ouest']).expanded > ff-reveal,
+[class*='gare:'] > form:has([aria-expanded='true']) + ff-reveal {
 	position: absolute;
 	block-size: fit-content;
 	max-block-size: var(--overlay-block-size);
