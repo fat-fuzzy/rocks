@@ -35,14 +35,12 @@ ff-reveal {
 	margin-block-start: var(--outline-offset-lg);
 }
 
+[class*='l:reveal'] > ff-control:has([aria-expanded='false']) + ff-reveal,
 [class*='l:reveal'] > form:has([aria-expanded='false']) + ff-reveal {
 	--x-size: 0;
 	--y-size: 0;
 
-	border: 0;
-	margin: 0;
 	overflow: hidden;
-	padding: 0;
 	position: absolute;
 	white-space: nowrap;
 }

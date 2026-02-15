@@ -41,6 +41,7 @@
 		margin: 0 auto;
 		z-index: var(--layout-z-index-reveal);
 		box-shadow: unset;
+		border-radius: unset;
 	}
 }
 

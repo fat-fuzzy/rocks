@@ -9,12 +9,12 @@
 
 		.l\:reveal\:auto.bp\:#{$size} > ff-reveal {
 			block-size: auto;
-			margin: initial;
 			overflow: hidden;
-			padding: initial;
 			position: unset;
 			white-space: normal;
 			max-block-size: unset;
+			border-radius: unset;
+			box-shadow: unset;
 		}
 
 		.l\:reveal\:auto.bp\:#{$size} > form:has([aria-expanded]) {

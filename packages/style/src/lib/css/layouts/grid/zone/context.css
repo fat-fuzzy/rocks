@@ -48,6 +48,10 @@
 }
 
 @media screen and (min-width: 38.75rem) {
+	.exchange > .context {
+		grid-column-start: 7;
+	}
+
 	/* This form contains the actual settings */
 	.app-context > form {
 		display: none;
@@ -57,12 +61,14 @@
 	.app-context > form:has([aria-expanded]) + ff-reveal {
 		box-shadow: unset;
 		position: unset;
-		padding-inline: var(--size-base-3xs);
+		inline-size: max-content;
+		justify-self: end;
+		padding-block: var(--size-base-3xs);
 	}
 }
 
-@media screen and (min-width: 68.75rem) {
+@media screen and (min-width: 58.75rem) {
 	.exchange > .context {
-		grid-column-start: 5;
+		grid-column-start: 7;
 	}
 }
