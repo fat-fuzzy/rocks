@@ -38,7 +38,8 @@ ff-reveal {
 	margin-block-start: var(--outline-offset-lg);
 }
 
-ff-reveal.collapsed {
+ff-reveal.collapsed,
+form:has([aria-expanded='false']) + ff-reveal {
 	--x-size: 0;
 	--y-size: 0;
 
@@ -59,7 +60,8 @@ ff-reveal.collapsed {
 }
 
 @media screen and (min-width: 64rem) {
-	ff-reveal.collapsed {
+	ff-reveal.collapsed,
+	[class*='l:reveal'].collapsed ff-reveal {
 		margin-block-start: var(--outline-offset-lg);
 	}
 }

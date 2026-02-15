@@ -18,7 +18,7 @@
 			border-radius: unset;
 		}
 
-		.l\:reveal\:auto.bp\:#{$size} > ff-reveal.collapsed {
+		.l\:reveal\:auto.bp\:#{$size}.collapsed > ff-reveal {
 			top: 0;
 			inline-size: auto;
 			min-inline-size: unset;
