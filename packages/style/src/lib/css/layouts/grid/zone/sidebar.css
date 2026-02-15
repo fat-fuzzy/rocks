@@ -6,10 +6,6 @@
 .sidebar {
 	--max-block-size: calc(100vh - 2 * var(--ui-header-height) - var(--grid-gap));
 	grid-area: sidebar;
-	grid-template-areas:
-		'gare-control'
-		'gare-depot';
-	grid-template-columns: subgrid;
 	grid-template-rows: subgrid;
 	z-index: var(--layout-z-index-layer);
 	align-items: end;
@@ -112,11 +108,5 @@
 		);
 		--overlay-inline-size: var(--sidebar-lg);
 		--overlay-block-size: var(--overlay-height-sm);
-	}
-
-	.sidebar > .app-name,
-	.sidebar:has(.app-name),
-	.sidebar [name='sidebar'] > [class*='l:switcher'] {
-		inline-size: var(--overlay-inline-size);
 	}
 }
