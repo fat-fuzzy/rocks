@@ -39,7 +39,6 @@ import './grid/auto.css' /* Gallery grid layout with equal sized areas */
 /* Metro grid collapsible elements */
 import './grid/gare/scale.css'
 import './grid/gare/base.css'
-import './grid/gare/animation.css'
 
 /* Metro grid areas (zones 1- 5 ...) */
 import './grid/zone/zone-1.css'
