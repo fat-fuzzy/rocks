@@ -27,7 +27,7 @@
 	layout="voyager"
 >
 	{#snippet main()}
-		<Sidebar dimension={50} size="2xl" wrap="reverse">
+		<Sidebar dimensions={50} size="2xl" wrap="reverse">
 			{#snippet side()}
 				<EscapeHtml id={slug} {html} size="xl" />
 			{/snippet}
