@@ -18,6 +18,13 @@ describe('click-outside.dom.ts - Dispatch an event on click outside of a DOM nod
 		await expect.element(getByText('Clicked outside!')).not.toBeInTheDocument()
 	})
 
+	test('Does not execute callback if click target is an ignored element', async () => {
+		const {getByText} = render(ClickOutside)
+		const clickArea = getByText('Ignore my event!')
+		await userEvent.click(clickArea)
+		await expect.element(getByText('Clicked outside!')).not.toBeInTheDocument()
+	})
+
 	test('Removes event listener on destroy', async () => {
 		const {getByText, unmount} = render(ClickOutside)
 
