@@ -90,7 +90,7 @@
 			path={page.url.pathname}
 			reveal={mainNav.reveal}
 			actionPath={page.url.pathname}
-			breakpoint="xs"
+			breakpoint="sm"
 			background="inherit"
 			formaction="toggleNav"
 		/>
