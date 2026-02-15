@@ -1,23 +1,11 @@
 <script lang="ts">
 	import type {Snippet} from 'svelte'
+	import type {ViewingPreferences} from '@fat-fuzzy/ui'
+
 	import {onMount, getContext, setContext} from 'svelte'
 	import {page} from '$app/state'
 	import playbookActor from '$lib/api/actor.svelte'
 	import StylesApi from '$lib/api/styles.svelte'
-	// import type {ViewingPreferences} from '../../../../ui/dist/types' // TODO: fix this import
-
-	type CookiePreferences = {
-		functional?: boolean
-		legitimateInterest?: boolean
-		analytics?: boolean
-	}
-
-	type ViewingPreferences = {
-		reveal: string
-		brightness?: string
-		contrast?: string
-		consent: CookiePreferences
-	}
 
 	type Props = {
 		app: ViewingPreferences
