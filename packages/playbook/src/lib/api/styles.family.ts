@@ -1,4 +1,5 @@
 import type {StyleNode, IStyleFamily, StyleFamilyOptions} from '$types'
+import type {UiContainer, UiLayout, UiSize, UiVariant} from '@fat-fuzzy/ui'
 import StyleInputGroup from './styles.input-group'
 
 class StyleFamily implements IStyleFamily {
@@ -7,13 +8,13 @@ class StyleFamily implements IStyleFamily {
 	title: string
 	items: Array<StyleInputGroup>
 	itemsMap: Map<string, StyleInputGroup>
-	layout?: string
-	container?: string
-	breakpoint?: string
-	threshold?: string
-	size?: string
+	layout?: UiLayout
+	container?: UiContainer
+	breakpoint?: UiSize
+	threshold?: UiSize
+	size?: UiSize
 	justify?: string
-	variant?: string
+	variant?: UiVariant
 
 	constructor({
 		id,
@@ -51,6 +52,7 @@ class StyleFamily implements IStyleFamily {
 	}
 
 	getStyleTree() {
+		// eslint-disable-next-line
 		const [category, family] = this.id.split('.')
 		const children = this.items.reduce((childrenTrees, style) => {
 			return {...childrenTrees, ...style.getStyleTree()}
