@@ -3,7 +3,7 @@
 /* TODO: clean this up - not so good  */
 @mixin switchToRowStyles_Header($breakpoint, $size) {
 	@media screen and (min-width: #{$breakpoint}) {
-		ff-reveal.collapsed:has(.header-nav) {
+		[class*='l:reveal'].collapsed ff-reveal:has(.header-nav) {
 			box-shadow: unset;
 		}
 

@@ -40,6 +40,8 @@
 
 	.exchange > .navbar > .expanded > ff-reveal,
 	.exchange > .navbar > .collapsed > ff-reveal {
+		--x-size: fit-content;
+		--y-size: fit-content;
 		position: unset;
 		margin: 0 auto;
 		z-index: var(--layout-z-index-reveal);

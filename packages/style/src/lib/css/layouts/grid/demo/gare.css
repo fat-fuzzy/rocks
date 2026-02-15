@@ -5,29 +5,31 @@
 
 /* COMMON styles */
 
-[class*='gare:'] > .expanded > ff-reveal {
-	margin-inline-start: var(--outline-offset-md);
-	grid-template-areas:
-		'gare-control'
-		'gare-depot';
-}
-
-[class*='gare:'] > .expanded > ff-reveal {
+details[class*='gare:'] > ff-reveal {
 	margin-inline-start: var(--outline-offset-md);
 }
 
-[class*='zone:'] > .navbar > nav form > [class*='l:switcher'],
-[class*='zone:'] > .app-context > form > [class*='l:switcher'],
-[class*='zone:'] > nav > form > [class*='l:switcher'] {
-	--gap: var(--grid-gap);
+.gare-control {
+	display: grid;
+	border-radius: 0;
 }
 
-[class*='gare:']:is([class*='est'], [class*='ouest']) {
-	block-size: fit-content;
-	max-block-size: var(--overlay-block-size);
+.gare\:ouest:is([open], .expanded) > ff-reveal {
+	position: absolute;
+	top: calc(var(--ui-header-height) + var(--grid-gap));
+	left: var(--grid-gap);
+	/* right: calc(var(--grid-gap) + var(--outline-offset-md)); */
+	/* bottom: var(--grid-gap); */
 }
 
-[class*='gare:']:is([class*='est'], [class*='ouest']).collapsed > ff-reveal {
+.gare\:est:is([open], .expanded) > ff-reveal {
+	position: absolute;
+	top: calc(var(--ui-header-height) + var(--grid-gap));
+	right: calc(var(--grid-gap) + var(--outline-offset-lg));
+}
+/* 
+details[class*='gare:']:is([class*='est'], [class*='ouest'], [class*='nord'])
+	> ff-reveal {
 	clip-path: rect(0 0 0 0);
 	border: 0;
 	height: auto;
@@ -40,33 +42,15 @@
 	inline-size: 0;
 	block-size: 0;
 	white-space: nowrap;
-}
+} */
 
-[class*='gare:']:is([class*='est'], [class*='ouest'], [class*='nord'])
-	> form:has([aria-expanded='true'])
-	+ ff-reveal {
-	position: absolute;
+[class*='gare:']:is([class*='est'], [class*='ouest'], [class*='nord'])[open]
+	> ff-reveal {
+	overflow: hidden auto;
 	block-size: fit-content;
 	max-block-size: var(--overlay-block-size);
 	inline-size: var(--overlay-inline-size);
 	z-index: var(--layout-z-index-reveal);
-	overflow: hidden auto;
-}
-
-/* OUEST styles */
-
-.gare\:ouest > form:has([aria-expanded='true']) + ff-reveal {
-	position: absolute;
-	top: calc(var(--ui-header-height) + var(--grid-gap));
-	left: var(--grid-gap);
-	right: calc(var(--grid-gap) + var(--outline-offset-md));
-	bottom: var(--grid-gap);
-}
-
-/* EST styles */
-.gare\:est:is([open], .expanded) > ff-reveal {
-	top: calc(var(--ui-header-height) + var(--grid-gap));
-	right: calc(var(--grid-gap) + var(--outline-offset-lg));
 }
 
 @media screen and (min-width: 58.45rem) {
