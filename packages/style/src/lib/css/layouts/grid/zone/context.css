@@ -54,7 +54,7 @@
 	}
 
 	.app-context > ff-reveal,
-	.app-context > form:has([aria-expanded='true']) + ff-reveal {
+	.app-context > form:has([aria-expanded]) + ff-reveal {
 		box-shadow: unset;
 		position: unset;
 		padding-inline: var(--size-base-3xs);
