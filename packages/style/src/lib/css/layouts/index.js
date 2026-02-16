@@ -74,5 +74,7 @@ import './grid/voyager/zone-2.css'
 import './grid/voyager/zone-main.css'
 
 /* Grid Demo specific code */
-import './grid/demo/gare.css'
-import './grid/demo/sidebar.css'
+import './grid/raw/scale.css'
+import './grid/raw/gare.css'
+import './grid/raw/sidebar.css'
+import './grid/raw/context.css'
