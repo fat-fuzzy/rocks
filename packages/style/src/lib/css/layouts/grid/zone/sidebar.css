@@ -4,7 +4,6 @@
  */
 
 .sidebar {
-	--max-block-size: calc(100vh - 2 * var(--ui-header-height) - var(--grid-gap));
 	grid-area: sidebar;
 	grid-template-rows: subgrid;
 	z-index: var(--layout-z-index-layer);
@@ -59,11 +58,6 @@
 	.exchange.swap > .sidebar {
 		padding-inline-start: 0;
 	}
-
-	.sidebar.width\:lg,
-	.sidebar.width\:xl {
-		--sidebar-width: var(--layout-sidebar-md);
-	}
 }
 
 @media screen and (min-width: 58.45rem) {
@@ -81,7 +75,6 @@
 	.sidebar > nav > form {
 		inline-size: 100%;
 		max-inline-size: var(--overlay-inline-size);
-		padding-inline-end: calc(var(--grid-gap) - var(--outline-offset-md));
 	}
 
 	.sidebar > nav > ff-reveal {
@@ -96,8 +89,7 @@
 		display: block;
 	}
 
-	.sidebar.width\:lg {
-		--sidebar-width: var(--layout-sidebar-md);
+	.sidebar {
 		--overlay-block-size: var(--max-block-size);
 	}
 

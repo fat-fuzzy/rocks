@@ -119,8 +119,8 @@
 				justify="evenly"
 				size="3xs"
 				font="xs"
-				width="lg"
-				height="sm"
+				width="md"
+				height="lg"
 				background="neutral"
 				dismiss="outside"
 			/>

@@ -108,7 +108,7 @@
 		--ui-size-lg: calc(var(--ui-size) * var(--size-ratio-md));
 		--font-size: var(--font-size-md);
 		--font-size-ui: var(--font-size-md);
-		--sidebar-width: var(--layout-sidebar-md);
+		--sidebar-width: var(--overlay-inline-size);
 		--gap: var(--layout-gap-md);
 		scrollbar-color: var(--thumb) var(--track);
 	}

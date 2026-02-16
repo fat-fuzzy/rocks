@@ -7,6 +7,7 @@
 	/* TODO: Use transforms here instead */
 	--overlay-inline-size: 0;
 	--overlay-block-size: 0;
+	--max-block-size: calc(100vh - var(--ui-header-height) - 2 * var(--grid-gap));
 }
 
 [class*='gare:'].collapsed {
@@ -41,7 +42,7 @@
 
 [class*='gare:'].height\:lg {
 	--overlay-block-size: calc(
-		100vh - 2 * var(--ui-header-height) - var(--grid-gap) -
+		100vh - var(--ui-header-height) - 2 * var(--grid-gap) -
 			var(--outline-offset-lg)
 	);
 }
@@ -77,38 +78,13 @@
 		inline-size: auto;
 	}
 
-	[class*='gare:'][class*='width:']:not([class*=':full']),
-	[class*='gare:'][class*='width:']:not([class*=':full']).expanded > ff-reveal,
-	[class*='gare:'] > ff-reveal {
+	[class*='gare:'][class*='width:']:not([class*=':full']) > ff-reveal {
 		--sidebar-width: var(--layout-sidebar-md);
-		--overlay-inline-size: calc(var(--sidebar-width) - var(--grid-gap));
-	}
-
-	[class*='gare:'][class*='width:']:not([class*=':full'])[open] > ff-reveal {
-		--sidebar-width: var(--layout-sidebar-md);
-		--overlay-inline-size: calc(var(--sidebar-width) - 2 * var(--grid-gap));
-	}
-
-	.gare\:ouest > ff-reveal,
-	.gare\:ouest:is([open], .expanded) > ff-reveal {
-		--sidebar-width: var(--layout-sidebar-md);
-		--overlay-inline-size: calc(var(--sidebar-width) + 6 * var(--grid-gap));
-	}
-
-	.gare\:ouest[open]:not([class*=':full']) > ff-reveal {
-		inline-size: var(--overlay-inline-size);
-	}
-
-	[class*='gare:'] .gare-control {
-		inline-size: 100%;
+		--overlay-inline-size: var(--sidebar-width);
 	}
 
 	[class*='gare:'] > ff-reveal,
 	[class*='gare:'][class*='height:']:not(.width\:full) {
-		--overlay-block-size: var(--max-block-size);
-	}
-
-	.gare\:ouest[open].width\:full > ff-reveal {
 		--overlay-block-size: var(--max-block-size);
 	}
 }
