@@ -35,7 +35,7 @@
 </script>
 
 <ToggleMenu
-	id="channels"
+	id="grid"
 	{size}
 	mode="radio"
 	layout="switcher"

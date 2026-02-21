@@ -83,6 +83,7 @@
 				{asset}
 				{assetType}
 				{disabled}
+				width="full"
 				{...props}
 				id={itemId}
 			/>

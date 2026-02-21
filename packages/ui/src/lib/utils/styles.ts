@@ -15,6 +15,7 @@ const STYLE_BASE_CLASS: Record<string, string> = {
 	font: 'font',
 	justify: 'justify',
 	height: 'h',
+	width: 'width',
 	layer: 'layer',
 	layout: 'l',
 	size: 'size',
@@ -91,6 +92,7 @@ function getLayoutStyles(props: UiLayoutProps): string {
 		justify,
 		size,
 		height,
+		width,
 		shape,
 		layout,
 		scroll,
@@ -106,6 +108,7 @@ function getLayoutStyles(props: UiLayoutProps): string {
 	const shapeClass = getClass('shape', shape)
 	const breakpointClass = getClass('breakpoint', breakpoint)
 	const scrollClass = getClass('scroll', scroll)
+	const widthClass = getClass('width', width)
 	const heightClass = getClass('height', height)
 	const layerClass = getClass('layer', layer)
 	const backgroundClass = getClass('background', background)
@@ -148,6 +151,7 @@ function getLayoutStyles(props: UiLayoutProps): string {
 	if (alignSelfClass) classes.push(alignSelfClass)
 	if (backgroundClass) classes.push(backgroundClass)
 	if (breakpointClass) classes.push(breakpointClass)
+	if (widthClass) classes.push(widthClass)
 	if (heightClass) classes.push(heightClass)
 	if (justifyClass) classes.push(justifyClass)
 	if (layerClass) classes.push(layerClass)
@@ -245,6 +249,8 @@ function getStyles(props: UiBlockProps): string {
 		shape,
 		align,
 		justify,
+		width,
+		height,
 		asset,
 		assetType,
 		variant,
@@ -270,6 +276,8 @@ function getStyles(props: UiBlockProps): string {
 	const layoutClasses = getLayoutStyles({
 		align,
 		justify,
+		width,
+		height,
 		size,
 		shape,
 		layout,
