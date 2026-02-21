@@ -4,7 +4,6 @@ import props from '../../utils/props.block'
 
 const {ready} = utils.blocks
 const path = utils.blocks.path()
-let styleProps: string[] = []
 
 test.describe.configure({mode: 'serial'})
 
@@ -32,7 +31,7 @@ ready.forEach((component) => {
 		test(`Playbook page is accessible`, async ({page}) => {
 			await page.goto(`${path}/${component}`)
 			await page.getByRole('link', {name: 'Playbook'}).click()
-			page.getByRole('heading', {level: 2, name: 'Playbook'}).isVisible
+			page.getByRole('heading', {level: 2, name: 'Playbook'}).isVisible()
 		})
 
 		test(`Playbook has working size input`, async ({page}) => {
