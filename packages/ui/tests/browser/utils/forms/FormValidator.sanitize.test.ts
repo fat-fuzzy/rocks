@@ -1,7 +1,7 @@
 import {describe, it, expect, beforeEach} from 'vitest'
 
 import FormValidator from '$lib/utils/browser/FormValidator.svelte'
-import {INPUTS} from '$tests/fixtures/form'
+import {INPUTS} from '$tests/fixtures/form-inputs'
 
 describe('FormValidator - sanitize inputs before validation', () => {
 	let validator: FormValidator

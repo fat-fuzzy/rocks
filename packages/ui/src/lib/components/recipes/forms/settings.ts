@@ -3,7 +3,6 @@ import type {
 	UiState,
 	UiSettings,
 	UiBlockProps,
-	UiLayoutProps,
 	FormCommonProps,
 	SwitchProps,
 	FuzzyPayload,
@@ -22,9 +21,9 @@ export type CookiePreferences = {
 }
 
 export type ViewingPreferences = {
-	reveal: string | UiState // TODO: generate @fat-fuzzy/ui types
-	brightness?: string | UiSettings // TODO: generate @fat-fuzzy/ui types
-	contrast?: string | UiSettings // TODO: generate @fat-fuzzy/ui types
+	reveal: UiState
+	brightness: UiSettings
+	contrast?: UiSettings
 	consent: CookiePreferences
 }
 
@@ -37,12 +36,13 @@ export type SettingsProps = UiBlockProps &
 		onupdate?: (payload: FuzzyPayload) => void
 	}
 
-export type RevealContextProps = SettingsProps &
-	UiLayoutProps &
+export type RevealContextProps = UiBlockProps &
 	FormCommonProps & {
 		breakpoint: string
+		path?: string
 		text?: string
 		reveal: UiState
 		actionPath?: string
 		context: ViewingPreferences
+		children?: Snippet
 	}

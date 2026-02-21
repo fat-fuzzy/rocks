@@ -2,12 +2,22 @@
  * ZONE 3
  * Contains main content & page context
  */
+.tram.zone\:2 {
+	> .zone\:main {
+		max-block-size: calc(var(--overlay-height-md) - var(--grid-gap, --gap));
+	}
+
+	> .page-context:not(.empty) {
+		max-block-size: var(--overlay-height-xs);
+	}
+}
 
 @media screen and (min-width: 38.75rem) {
 	.tram.zone\:2 {
-		grid-template-columns: 1fr 1fr var(--sidebar-width);
+		grid-template-columns: 1fr 1fr var(--layout-sidebar-md);
 
-		> .page-context {
+		> .zone\:main,
+		> .page-context:not(.empty) {
 			max-block-size: var(--max-block-size);
 		}
 	}
@@ -16,6 +26,7 @@
 @media screen and (min-width: 68.75rem) {
 	.tram.zone\:2 {
 		grid-template-columns: subgrid;
+
 		> .page-context {
 			max-block-size: var(--max-block-size);
 		}

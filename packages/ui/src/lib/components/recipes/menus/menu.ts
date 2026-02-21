@@ -2,8 +2,7 @@ import type {
 	UiBlockProps,
 	ButtonProps,
 	RevealLayoutProps,
-	FormProps,
-	SwitchProps,
+	FuzzyPayload,
 } from '$types'
 
 export type ButtonMenuProps = UiBlockProps & {
@@ -16,10 +15,10 @@ export type ButtonMenuProps = UiBlockProps & {
 	disabled?: boolean | undefined
 	formaction?: string
 	items: ButtonProps[]
-	onupdate?: (payload: {name: string; value: string | number}) => void
+	onupdate?: (payload: FuzzyPayload) => void
 }
 
 export type RevealMenuProps = RevealLayoutProps & {
-	items: any[]
-	onclick?: (event: MouseEvent, payload: any) => void // TODO: type this
+	items: ButtonProps[]
+	onclick?: (payload: FuzzyPayload) => void // TODO: type this
 }

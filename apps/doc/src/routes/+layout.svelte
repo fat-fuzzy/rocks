@@ -15,7 +15,7 @@
 	}
 
 	let {children}: Props = $props()
-	let useDarkScheme = $state(page.data.appContext.brightness === 'night')
+	let useDarkScheme = $derived(page.data.appContext.brightness === 'night')
 	let appContext = $derived({
 		...page.data.appContext,
 		brightness: useDarkScheme ? 'night' : 'day',

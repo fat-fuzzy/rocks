@@ -1,7 +1,8 @@
 <script lang="ts">
-	import type {RevealLayoutProps} from '$types'
+	import type {RevealLayoutProps, UiState} from '$types'
 	import {enhance} from '$app/forms'
 	import constants from '$lib/types/constants.js'
+	import system from '$lib/components/layouts/reveal/system.svelte'
 	import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/definitions.js'
 	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
 
@@ -28,8 +29,10 @@
 	}: RevealLayoutProps = $props()
 
 	let buttonAset = $derived(asset)
+	const controlId = $derived(system.getControlId(id))
+	const contentId = $derived(system.getContentId(id))
 
-	let placeIcon = justify ? ALIGN_OPPOSITE[justify] : ''
+	let placeIcon = $derived(justify ? ALIGN_OPPOSITE[justify] : '')
 	let revealStates = $derived({
 		expanded: {
 			...EXPAND_MACHINE.expanded,
@@ -43,13 +46,12 @@
 		},
 	})
 
-	let action = $state(
+	let action = $derived(
 		redirect ? `${formaction}&redirectTo=${redirect}` : formaction,
 	)
 </script>
 
 <form
-	{id}
 	{name}
 	method="POST"
 	action={action
@@ -60,16 +62,16 @@
 	use:enhance
 >
 	<Expand
-		id={`button-reveal-${id}`}
-		name={`button-reveal-${id}`}
+		id={controlId}
+		name={controlId}
 		{shape}
 		{color}
 		{variant}
 		{size}
-		controls={`${id}-reveal-content`}
+		controls={contentId}
 		asset={buttonAset}
 		justify={`${justify} nowrap`}
-		initial={reveal}
+		initial={reveal as UiState}
 		place={placeIcon}
 		states={revealStates}
 		{init}

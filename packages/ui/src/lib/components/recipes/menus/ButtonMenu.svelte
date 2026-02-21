@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {ButtonType, ButtonMenuProps} from '$types'
+	import type {ButtonType, ButtonMenuProps, FuzzyPayload} from '$types'
 
 	import styleHelper from '$lib/utils/styles.js'
 	import Button from '$lib/components/blocks/buttons/Button.svelte'
@@ -24,14 +24,13 @@
 		onupdate,
 	}: ButtonMenuProps = $props()
 
-	function updateMenu(payload: {name: string; value: string | number}) {
+	function updateMenu(payload: FuzzyPayload) {
 		if (onupdate) {
 			onupdate(payload)
 		}
 	}
 
-	let type: ButtonType = formaction ? 'submit' : 'button'
-
+	let type: ButtonType = $derived(formaction ? 'submit' : 'button')
 	let menuClasses = $derived(
 		styleHelper.getStyles({
 			color,
@@ -46,7 +45,7 @@
 
 {#snippet menuContent()}
 	<menu {id} class={menuClasses}>
-		{#each items as props, i}
+		{#each items as props, i (i)}
 			{@const itemColor = props.color ?? color}
 			{@const itemVariant = props.variant ?? variant}
 			{@const itemSize = props.size ?? size}

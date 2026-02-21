@@ -54,7 +54,6 @@
 
 	function toggleReveal(payload: FuzzyPayload) {
 		// @ts-expect-error state must be UiState (TODO: fix)
-		value[slug].reveal = payload.state
 		if (onclick) {
 			onclick(payload)
 		}
@@ -82,7 +81,7 @@
 {/snippet}
 
 <div class={layoutClasses}>
-	<div class="l:flex nowrap size:3xs justify:between align:center">
+	<ff-control class="l:flex nowrap size:3xs justify:between align:center">
 		{#if depth > 1}
 			{@render expander()}
 		{/if}
@@ -92,7 +91,7 @@
 		{#if depth === 1}
 			{@render expander()}
 		{/if}
-	</div>
+	</ff-control>
 	<ff-reveal id={`links-${slug}`} class={`${revealClasses} bg:inherit`}>
 		{#if children}
 			{@render children()}

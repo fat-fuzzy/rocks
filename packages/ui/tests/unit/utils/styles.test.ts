@@ -6,7 +6,7 @@ import {
 	PROPS_CONTAINER,
 	PROPS_LAYOUT,
 	PROPS_FEEDBACK,
-} from '$tests/fixtures/props'
+} from '$tests/fixtures/style-props'
 
 describe('style.ts - a module to build class names from props', () => {
 	describe('getContainerStyles', () => {

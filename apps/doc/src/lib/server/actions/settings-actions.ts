@@ -1,12 +1,11 @@
 import type {UiActionSetOutput} from '$lib/types/actions.js'
 import type {RequestEvent} from '@sveltejs/kit'
-import {error} from '@sveltejs/kit'
 import ui from '@fat-fuzzy/ui'
 
 import uiStateService from '$lib/server/services/session.js'
 const {AppContext} = ui.forms
 
-const {APP_PREFIX} = ui.constants
+const {APP_PREFIX, DEFAULT_PREFERENCES} = ui.constants
 
 async function handleUpdateAppSettings(
 	event: RequestEvent,
@@ -21,16 +20,20 @@ async function handleUpdateAppSettings(
 	})
 
 	try {
+		// TODO: Fix type checking (currentState == {})
 		const newState = new AppContext(currentState)
+		let updatedState
 
 		if (!newState.update(data).success) {
-			error(500, `Failed to update ${key}`)
+			updatedState = DEFAULT_PREFERENCES
+		} else {
+			updatedState = newState.state
 		}
 
 		uiStateService.setUiState({
 			cookies,
 			key,
-			value: newState.state,
+			value: updatedState,
 			options: {
 				path: '/',
 			},
@@ -39,13 +42,14 @@ async function handleUpdateAppSettings(
 		return {
 			success: true,
 			key,
-			state: newState.state,
+			state: updatedState,
 		}
-	} catch (error) {
+	} catch {
 		return {
 			success: false,
 			key,
 			message: `Failed to update ${key}`,
+			state: DEFAULT_PREFERENCES,
 		}
 	}
 }

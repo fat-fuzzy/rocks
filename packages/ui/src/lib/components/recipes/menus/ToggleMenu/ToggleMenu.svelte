@@ -5,7 +5,7 @@
 
 	import styleHelper from '$lib/utils/styles.js'
 	import Toggle from '$lib/components/blocks/buttons/Toggle/Toggle.svelte'
-	import ToggleMenuActor from './actor.svelte.js'
+	import ToggleSystem from './system.svelte.js'
 
 	let {
 		id = 'toggle-menu',
@@ -22,7 +22,7 @@
 		threshold,
 		background = 'inherit',
 		align = 'start',
-		mode = 'radio',
+		mode,
 		formaction,
 		items = [],
 		disabled,
@@ -30,13 +30,8 @@
 		onupdate,
 	}: ToggleMenuProps = $props()
 
-	let actor = $state(new ToggleMenuActor())
-	actor.init({
-		items,
-		mode,
-	})
-
-	let type: ButtonType = formaction ? 'submit' : 'button'
+	let system = new ToggleSystem()
+	let type: ButtonType = $derived(formaction ? 'submit' : 'button')
 
 	let menuClasses = $derived(
 		styleHelper.getStyles({
@@ -51,26 +46,31 @@
 	)
 
 	function updateMenu(payload: FuzzyPayload) {
-		actor.update(payload)
+		system.update(payload)
 		if (onupdate) {
-			onupdate(actor.getSelected())
+			onupdate(system.getState())
 		}
 	}
 
 	function loadMenu(payload: FuzzyPayload) {
-		actor.update(payload)
+		system.update(payload)
 	}
 
 	onMount(() => {
+		system.init({
+			items,
+			mode,
+		})
+
 		if (init) {
-			init(actor.getSelected())
+			init(system.getState())
 		}
 	})
 </script>
 
 {#snippet groupContent(items: Map<string, FuzzyPayload>)}
-	{#each items as [itemId, props]}
-		<li class="l:stack:3xs">
+	{#each items as [itemId, props] (itemId)}
+		<li>
 			<Toggle
 				init={loadMenu}
 				onclick={updateMenu}
@@ -92,10 +92,10 @@
 
 {#snippet menuContent()}
 	<menu {id} class={menuClasses} data-testid={id}>
-		{#if actor.groups.size === 1}
-			{@render groupContent(actor.state)}
-		{:else if actor.groups.size > 1}
-			{#each actor.groups as [group, items] (group)}
+		{#if system.groups.size === 1}
+			{@render groupContent(system.state)}
+		{:else if system.groups.size > 1}
+			{#each system.groups as [group, items] (group)}
 				<li>
 					<ol class="unstyled">
 						{@render groupContent(items)}

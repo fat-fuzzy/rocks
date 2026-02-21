@@ -39,16 +39,15 @@ import './grid/auto.css' /* Gallery grid layout with equal sized areas */
 /* Metro grid collapsible elements */
 import './grid/gare/scale.css'
 import './grid/gare/base.css'
-import './grid/gare/animation.css'
 
 /* Metro grid areas (zones 1- 5 ...) */
-import './grid/zone/context.css'
-import './grid/zone/navbar.css'
-import './grid/zone/sidebar.css'
 import './grid/zone/zone-1.css'
 import './grid/zone/zone-2.css'
 import './grid/zone/zone-3.css'
 import './grid/zone/zone-main.css'
+import './grid/zone/context.css'
+import './grid/zone/navbar.css'
+import './grid/zone/sidebar.css'
 
 import './grid/urbanist/base.css'
 import './grid/urbanist/grid.css'
@@ -73,3 +72,9 @@ import './grid/tram/zone-main.css'
 
 import './grid/voyager/zone-2.css'
 import './grid/voyager/zone-main.css'
+
+/* Grid Demo specific code */
+import './grid/raw/scale.css'
+import './grid/raw/gare.css'
+import './grid/raw/sidebar.css'
+import './grid/raw/context.css'

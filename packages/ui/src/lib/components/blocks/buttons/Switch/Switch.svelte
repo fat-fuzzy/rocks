@@ -1,6 +1,6 @@
 <script lang="ts">
 	import {onMount} from 'svelte'
-	import type {FuzzyPayload, SwitchProps} from '$types'
+	import type {ButtonEvent, FuzzyPayload, SwitchProps} from '$types'
 	import Actor from './actor.svelte.js'
 
 	let {
@@ -27,11 +27,7 @@
 		children,
 	}: SwitchProps = $props()
 
-	let actor = new Actor({
-		initial,
-		onclick,
-		machine: states,
-	})
+	const actor = new Actor()
 
 	let payload = $derived({
 		id: name, // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value. TODO : clean this
@@ -58,13 +54,21 @@
 	)
 
 	function handleClick(event: MouseEvent) {
-		if (actor.currentState) actor.update(actor.currentState.event as string)
+		if (actor.currentState.event) {
+			actor.update(actor.currentState.event)
+		}
 		if (actor.currentState.action) {
 			actor.currentState.action(payload as FuzzyPayload)
 		}
 	}
 
 	onMount(() => {
+		actor.init({
+			initial,
+			onclick,
+			machine: states,
+		})
+
 		if (init) init(payload as FuzzyPayload)
 	})
 </script>

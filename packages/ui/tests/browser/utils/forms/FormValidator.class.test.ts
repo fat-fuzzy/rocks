@@ -6,7 +6,7 @@ import {
 	INPUTS,
 	getInputFields,
 	initFormDataWithInputs,
-} from '$tests/fixtures/form'
+} from '$tests/fixtures/form-inputs'
 
 const {sanitize, validate} = validations
 
