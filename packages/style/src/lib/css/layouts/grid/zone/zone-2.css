@@ -4,6 +4,8 @@
  */
 
 .zone\:2 {
+	--sidebar-width: var(--layout-sidebar-sm);
+
 	grid-area: zone-2;
 	grid-template-areas:
 		'zone-main    zone-main    zone-main'
@@ -41,6 +43,8 @@
 
 @media screen and (min-width: 38.75rem) {
 	.zone\:2 {
+		--sidebar-width: var(--layout-sidebar-sm);
+
 		grid-template-areas: 'zone-main zone-main page-context';
 		grid-template-rows: 1fr;
 		grid-template-columns: 1fr auto;
@@ -60,8 +64,14 @@
 		}
 
 		> .page-context > details {
-			--max-inline-size: calc(var(--sidebar-width) - 3 * var(--grid-gap));
+			--max-inline-size: calc(var(--layout-sidebar-md)- 3 * var(--grid-gap));
 		}
+	}
+}
+
+@media screen and (min-width: 58.45rem) {
+	.zone\:2 {
+		--sidebar-width: var(--layout-sidebar-md);
 	}
 }
 

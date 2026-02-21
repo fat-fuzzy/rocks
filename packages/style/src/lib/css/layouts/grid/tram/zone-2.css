@@ -14,7 +14,7 @@
 
 @media screen and (min-width: 38.75rem) {
 	.tram.zone\:2 {
-		grid-template-columns: 1fr 1fr var(--layout-sidebar-md);
+		grid-template-columns: 1fr 1fr var(--sidebar-width);
 
 		> .zone\:main,
 		> .page-context:not(.empty) {

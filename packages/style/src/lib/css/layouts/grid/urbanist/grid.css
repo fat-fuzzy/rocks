@@ -3,6 +3,7 @@
  */
 
 .l\:grid\:urbanist {
+	--sidebar-width: var(--layout-sidebar-sm);
 	--max-block-size: calc(
 		100vh - 2 * var(--ui-header-height) - 2 * var(--grid-gap)
 	);
@@ -35,7 +36,7 @@
 
 @media screen and (min-width: 38.75rem) {
 	.l\:grid\:urbanist {
-		--sidebar-width: var(--layout-sidebar-sm);
+		--sidebar-width: var(--layout-sidebar-md);
 	}
 
 	.l\:grid\:urbanist.steam {
