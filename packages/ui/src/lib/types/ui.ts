@@ -25,6 +25,7 @@ export type InputPayload = {
 
 export type UiContainerProps = {
 	container?: UiContainer
+	containerSize?: UiSize
 	dimensions?: UiDimension // TODO: check / harmonize STYLE_MODIFIER
 	layer?: string
 	size?: UiSize

@@ -1,9 +1,9 @@
 import type {Snippet} from 'svelte'
 import type {LayoutProps, UiLayoutProps, UiContentProps} from '$types'
 
-export type LayoutPrimitiveProps = UiLayoutProps & UiContentProps
+export type LayoutPrimitiveProps = LayoutProps & UiLayoutProps & UiContentProps
 
-export type GridProps = LayoutProps & {
+export type GridProps = LayoutPrimitiveProps & {
 	areas?: {
 		zone: Snippet
 		grid?: boolean
@@ -14,13 +14,13 @@ export type GridProps = LayoutProps & {
 	}[]
 }
 
-export type DetailsLayoutProps = LayoutProps & {
+export type DetailsLayoutProps = LayoutPrimitiveProps & {
 	summary: Snippet
 	variant?: string
 	open?: boolean
 }
 
-export type SidebarLayoutProps = LayoutProps & {
+export type SidebarLayoutProps = LayoutPrimitiveProps & {
 	main: Snippet
 	side: Snippet
 }

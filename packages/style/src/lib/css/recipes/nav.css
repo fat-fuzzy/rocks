@@ -195,22 +195,28 @@ a[class*='ravioli']:hover {
 			--x-size: var(--sidebar-width);
 			transition: inline-size 250ms ease-in-out;
 			/* transition: transform 250ms ease-in-out; */
-		}
 
-		> ff-reveal.expanded {
-			inline-size: 100%;
-			transform: translateX(var(--size-base-3xs));
-			transition: transform 250ms ease-in;
-			transition: inline-size 250ms ease-in-out;
-		}
+			> ff-reveal {
+				inline-size: 100%;
+				transform: translateX(var(--size-base-3xs));
+				transition: transform 250ms ease-in;
+				transition: inline-size 250ms ease-in-out;
+			}
 
-		> ff-reveal.expanded > * {
-			inline-size: 100%;
-			transition: inline-size 250ms ease-in-out;
+			> ff-reveal > * {
+				inline-size: 100%;
+				transition: inline-size 250ms ease-in-out;
+			}
 		}
 		> .collapsed {
 			--y-size: var(--ui-header-height);
 			--x-size: calc(--sidebar-width);
+
+			> ff-reveal {
+				--x-axis: calc(var(--x-size) * -1);
+				inline-size: 100%;
+				block-size: var(--y-size);
+			}
 
 			ul {
 				> * {
@@ -221,12 +227,6 @@ a[class*='ravioli']:hover {
 					margin-block-start: var(--outline-offset-lg);
 				}
 			}
-		}
-
-		> ff-reveal.collapsed {
-			--x-axis: calc(var(--x-size) * -1);
-			inline-size: 100%;
-			block-size: var(--y-size);
 		}
 	}
 }

@@ -1,0 +1,15 @@
+/**
+ * AREA sidebar
+ * Left Sidebar contains secondary navigation
+ */
+
+.sidebar > [class*='gare:'] > summary {
+	grid-area: gare-control;
+	grid-template-columns: subgrid;
+}
+
+@media screen and (min-width: 68.75rem) {
+	.sidebar > details {
+		grid-column: span 3;
+	}
+}

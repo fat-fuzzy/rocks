@@ -5,13 +5,18 @@
  *  Dispatch event on click outside of node
  */
 
-export function clickOutside(node: HTMLElement) {
-	const handleClick = (event: Event) => {
+export function clickOutside(
+	node: HTMLElement,
+	args: {callback: (event: Event) => void; ignore: string[]},
+) {
+	const handleClick = (event: MouseEvent) => {
 		const target = event.target as HTMLElement
+		if (args.ignore.includes(target.id)) {
+			return
+		}
+
 		if (node && !node.contains(target) && !event.defaultPrevented) {
-			node.dispatchEvent(
-				new CustomEvent('clickoutside', node as CustomEventInit),
-			)
+			args.callback(event)
 		}
 	}
 

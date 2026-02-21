@@ -20,7 +20,7 @@ class FormValidator implements IFormValidator {
 	inputTypes: InputTypes = $state({}) // Map of input names to their types
 	errors: ValidationError[] = $state([])
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	ajvValidate: any = $state(() => ({}))
+	ajvValidate: any = $state()
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	sanitize: any = sanitize.sanitizeForm
 

@@ -10,6 +10,7 @@
 		title,
 		initial = 'inactive',
 		value,
+		states,
 		group,
 		disabled,
 		formaction,
@@ -29,22 +30,19 @@
 		children,
 	}: ToggleProps = $props()
 
-	let store = new Actor({
-		initial,
-		onclick,
-	})
+	let actor = new Actor()
 
 	let payload = $derived({
 		id: name, // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value
 		name,
 		value,
 		group,
-		state: store.state,
-		action: store.update.bind(store),
+		state: actor.state,
+		action: actor.update.bind(actor),
 	})
 
 	let buttonClasses = $derived(
-		store.getStyles({
+		actor.getStyles({
 			color,
 			size,
 			font,
@@ -60,11 +58,19 @@
 	)
 
 	function handleClick(event: MouseEvent) {
-		store.update('toggle')
+		if (actor.currentState.event) {
+			actor.update(actor.currentState.event)
+		}
 		if (onclick) onclick(payload as FuzzyPayload)
 	}
 
 	onMount(() => {
+		actor.init({
+			initial,
+			onclick,
+			machine: states,
+		})
+
 		if (init) init(payload as FuzzyPayload)
 	})
 </script>
@@ -79,7 +85,7 @@
 	{value}
 	class={buttonClasses}
 	data-key={name}
-	aria-pressed={store.pressed}
+	aria-pressed={actor.pressed}
 	onclick={handleClick}
 	data-testid={id}
 >

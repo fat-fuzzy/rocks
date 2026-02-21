@@ -19,8 +19,7 @@
 			100vh - var(--ui-header-height) - 2 * var(--ui-size-lg)
 		);
 		--y-size: var(--y-size-sticky);
-
-		ff-reveal.collapsed {
+		[class*='l:reveal'].collapsed ff-reveal {
 			border: initial;
 			margin: initial;
 			overflow: auto;

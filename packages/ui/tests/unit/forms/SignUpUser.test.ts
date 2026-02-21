@@ -1,6 +1,6 @@
 import {describe, it, expect} from 'vitest'
 import SignUpUser from '$lib/forms/SignUpUser'
-import {SIGNUP_INPUTS} from '$tests/fixtures/form'
+import {SIGNUP_INPUTS} from '$tests/fixtures/form-inputs'
 
 const signUpFields = [
 	'sample_username',

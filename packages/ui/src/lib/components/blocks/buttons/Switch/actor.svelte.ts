@@ -5,6 +5,7 @@ import type {
 	UiStateSwitch,
 	SwitchMachine,
 	UiVariant,
+	FuzzyEvent,
 } from '$types'
 
 import {SWITCH_MACHINE, SWITCH_TRANSITIONS} from './definitions.js'
@@ -18,9 +19,11 @@ class SwitchActor implements FuzzyActor {
 	pressed = $derived(this.state === 'active')
 	value = $derived(this.currentState?.value || this.state)
 	id = $derived(this.currentState?.id)
-	label = $derived(this.currentState?.label || '')
+	label = $derived(this.currentState?.label)
 
-	constructor({
+	constructor() {}
+
+	init({
 		initial,
 		onclick,
 		machine,
@@ -37,7 +40,7 @@ class SwitchActor implements FuzzyActor {
 		}
 	}
 
-	public getTransition(event: string): UiStateSwitch {
+	public getTransition(event: FuzzyEvent): UiStateSwitch {
 		const state = this.state as UiStateSwitch
 		const transition = this.transitions[state][event]
 		if (transition) {
@@ -46,21 +49,21 @@ class SwitchActor implements FuzzyActor {
 		return state
 	}
 
-	public update(event: string): void {
+	public update(event: FuzzyEvent): void {
 		this.state = this.getTransition(event)
 	}
 
 	public getStyles(props: UiBlockProps): string {
-		let currentVariant = this.currentState?.variant ?? props.variant
-		let currentAsset = this.currentState?.asset ?? props.asset
+		const currentVariant = this.currentState?.variant ?? props.variant
+		const currentAsset = this.currentState?.asset ?? props.asset
 
-		let blockClasses = styleHelper.getStyles({
+		const blockClasses = styleHelper.getStyles({
 			...props,
 			asset: currentAsset,
 			variant: currentVariant as UiVariant,
 		})
 
-		return `switch ${blockClasses}`
+		return `switch ${blockClasses}`.trim()
 	}
 }
 

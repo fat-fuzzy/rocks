@@ -65,10 +65,10 @@
 <svelte:window on:keydown={keydown} />
 
 {#if formOptions}
-	{#each formOptions as categoryOptions}
+	{#each formOptions as categoryOptions (categoryOptions.name)}
 		{#if categoryOptions.families}
 			{@const families = Object.keys(categoryOptions.families)}
-			{#each families as familyName}
+			{#each families as familyName (familyName)}
 				{@const family = categoryOptions.families[familyName]}
 				<details class="surface:1:neutral l:stack:2xs shape:soft" open>
 					<summary
@@ -81,7 +81,7 @@
 						class="l:flex:2xs justify:stretch align:start ravioli:xs shape:soft"
 						data-testid={`details-content-${familyName}`}
 					>
-						{#each family.items as styleInputGroup}
+						{#each family.items as styleInputGroup (styleInputGroup.id)}
 							<StyleInput
 								{family}
 								styleInput={styleInputGroup}

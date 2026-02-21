@@ -29,7 +29,7 @@ export const load = async ({locals, url, params}) => {
 			? 'tram'
 			: url.pathname.startsWith('/about/speaking')
 				? 'steam'
-				: 'tram'
+				: 'voyager'
 
 	sidebar.items[0].items = (sidebar.items[0].items ?? []).map((item) => {
 		if (item.slug === 'usage') {

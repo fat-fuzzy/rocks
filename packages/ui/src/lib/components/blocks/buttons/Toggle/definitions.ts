@@ -5,11 +5,13 @@ export const TOGGLE_MACHINE: ToggleMachine = {
 		id: 'active',
 		state: 'active',
 		event: 'toggle',
+		label: 'Active',
 	},
 	inactive: {
 		id: 'inactive',
 		state: 'inactive',
 		event: 'toggle',
+		label: 'Inactive',
 	},
 }
 

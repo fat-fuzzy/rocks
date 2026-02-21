@@ -3,6 +3,7 @@ import type {
 	StyleInputOptions,
 	StyleInputGroupOptions,
 } from '$types'
+import type {UiContainer, UiLayout, UiSize, UiVariant} from '@fat-fuzzy/ui'
 
 /**
  * Class Implementations to use
@@ -14,12 +15,12 @@ class StyleInputGroup implements IStyleInputGroup {
 	input: string
 	items: Array<StyleInputOptions>
 	value: string
-	layout?: string
-	container?: string
-	breakpoint?: string
-	threshold?: string
-	size?: string
-	variant?: string
+	layout?: UiLayout
+	container?: UiContainer
+	breakpoint?: UiSize
+	threshold?: UiSize
+	size?: UiSize
+	variant?: UiVariant
 	mode?: string
 	assetType?: string
 
@@ -73,6 +74,7 @@ class StyleInputGroup implements IStyleInputGroup {
 	}
 
 	getStyleTree() {
+		// eslint-disable-next-line
 		const [category, family, style] = this.id.split('.')
 		return {[style]: this.value}
 	}
