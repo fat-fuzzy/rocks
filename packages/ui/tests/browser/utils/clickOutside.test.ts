@@ -1,7 +1,7 @@
 import {test, expect, describe} from 'vitest'
 import {userEvent} from 'vitest/browser'
 import {render} from 'vitest-browser-svelte'
-import ClickOutside from './ClickOutside.svelte'
+import ClickOutside from './ClickOutsideTest.svelte'
 
 describe('click-outside.dom.ts - Dispatch an event on click outside of a DOM node', () => {
 	test('Dispatches clickoutside event when clicking outside the element', async () => {
@@ -14,6 +14,13 @@ describe('click-outside.dom.ts - Dispatch an event on click outside of a DOM nod
 	test('Does not dispatch clickoutside event when clicking inside the element', async () => {
 		const {getByText} = render(ClickOutside)
 		const clickArea = getByText('Click outside me!')
+		await userEvent.click(clickArea)
+		await expect.element(getByText('Clicked outside!')).not.toBeInTheDocument()
+	})
+
+	test('Does not execute callback if click target is an ignored element', async () => {
+		const {getByText} = render(ClickOutside)
+		const clickArea = getByText('Ignore my event!')
 		await userEvent.click(clickArea)
 		await expect.element(getByText('Clicked outside!')).not.toBeInTheDocument()
 	})

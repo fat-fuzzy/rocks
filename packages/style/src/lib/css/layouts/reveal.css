@@ -8,7 +8,7 @@
 	flex-direction: column;
 	inline-size: var(--x-size);
 	block-size: var(--y-size);
-	inline-size: 100%;
+	max-inline-size: var(--overlay-inline-size);
 	color: var(--ink);
 	z-index: var(--layout-z-index-layer);
 	transition: inline-size 250ms ease-in-out;
@@ -20,7 +20,7 @@
 	}
 }
 
-[class^='l:reveal'] > form > [aria-expanded] {
+[class*='l:reveal'] > form > [aria-expanded] {
 	font-family: var(--font-family-heading);
 	font-weight: var(--font-weight-ui);
 	padding: var(--ui-size-sm) var(--ui-size);
@@ -32,26 +32,17 @@ ff-reveal {
 	scrollbar-color: var(--thumb) var(--track);
 	background-color: var(--shade, inherit);
 	border-radius: var(--border-radius-lg);
-}
-
-ff-reveal {
 	margin-block-start: var(--outline-offset-lg);
 }
 
-ff-reveal.collapsed {
+[class*='l:reveal'] > ff-control:has([aria-expanded='false']) + ff-reveal,
+[class*='l:reveal'] > form:has([aria-expanded='false']) + ff-reveal {
 	--x-size: 0;
 	--y-size: 0;
 
-	border: 0;
-	margin: 0;
 	overflow: hidden;
-	padding: 0;
 	position: absolute;
 	white-space: nowrap;
-}
-
-[class^='l:reveal'].end {
-	justify-self: flex-end;
 }
 
 [class^='l:reveal'][class^='bp:'].l\:stack:only-child {
@@ -59,7 +50,7 @@ ff-reveal.collapsed {
 }
 
 @media screen and (min-width: 64rem) {
-	ff-reveal.collapsed {
+	[class*='l:reveal'] > form:has([aria-expanded='false']) + ff-reveal {
 		margin-block-start: var(--outline-offset-lg);
 	}
 }

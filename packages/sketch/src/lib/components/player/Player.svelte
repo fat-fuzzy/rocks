@@ -1,4 +1,5 @@
 <script lang="ts">
+	import type {FuzzyPayload} from '@fat-fuzzy/ui'
 	import {onMount} from 'svelte'
 
 	import ui from '@fat-fuzzy/ui'
@@ -22,7 +23,7 @@
 		init,
 	}: PlayerProps = $props()
 
-	function updatePlayer(payload: {value?: string | number}) {
+	function updatePlayer(payload: FuzzyPayload) {
 		let event = payload.value as PlayerEvent
 		if (event === 'play') {
 			event =
@@ -30,7 +31,7 @@
 					? PlayerEvent.pause
 					: PlayerEvent.play
 		}
-		switch (payload.value) {
+		switch (event) {
 			case PlayerEvent.play:
 				play({event})
 				break
@@ -71,7 +72,7 @@
 					{color}
 					{size}
 					{font}
-					shape="pill w:full"
+					shape="pill"
 					initial={actor.playState}
 					disabled={actor.getPlayDisabled()}
 					onclick={updatePlayer}
@@ -88,7 +89,7 @@
 				{variant}
 				{size}
 				{font}
-				shape="pill w:full"
+				shape="pill"
 				value="clear"
 				asset="clear"
 				onclick={updatePlayer}
@@ -105,7 +106,7 @@
 				{variant}
 				{size}
 				{font}
-				shape="pill w:full"
+				shape="pill"
 				value="snap"
 				asset="snap"
 				onclick={snap}
@@ -122,7 +123,7 @@
 				{variant}
 				{size}
 				{font}
-				shape="pill w:full"
+				shape="pill"
 				value="stop"
 				asset="rect"
 				onclick={updatePlayer}

@@ -1,0 +1,13 @@
+@media screen and (min-width: 58.75rem) {
+	.exchange > .context:has(details) {
+		grid-column-start: 5;
+	}
+
+	.exchange > .context details {
+		grid-column: 1 / -1;
+	}
+
+	.exchange > .context details > summary {
+		inline-size: 100%;
+	}
+}

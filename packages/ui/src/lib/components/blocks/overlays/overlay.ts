@@ -1,3 +1,4 @@
+import type {AriaRole} from 'svelte/elements'
 import type {Snippet} from 'svelte'
 import type {
 	UiBlockProps,
@@ -9,7 +10,7 @@ import type {
 export type OverlayProps = UiBlockProps &
 	UiLayoutProps & {
 		id: string
-		role?: string // AriaRole
+		role?: AriaRole // See: https://hidde.blog/popover-semantics/
 		title: string
 		invoke?: AriaInvoke
 		open?: boolean
