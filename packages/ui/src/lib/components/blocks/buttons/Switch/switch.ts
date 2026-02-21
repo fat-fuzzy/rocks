@@ -1,4 +1,4 @@
-import type {FuzzyState, ToggleProps} from '$types'
+import type {FuzzyState, ButtonStateProps} from '$types'
 
 export type UiStateSwitch = 'active' | 'inactive'
 
@@ -10,6 +10,6 @@ export type SwitchMachine = {
 /**
  * This component contains a button that will Switch between these two states. Each state has its own text and asset (if any) and possible style according to its active / inactive state
  */
-export type SwitchProps = ToggleProps & {
+export type SwitchProps = ButtonStateProps & {
 	states?: SwitchMachine
 }

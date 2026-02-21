@@ -19,7 +19,7 @@
 			Base colors
 		</svelte:element>
 		<div class="l:grid:auto size:md">
-			{#each baseColor as base}
+			{#each baseColor as base, i (i)}
 				<figure class={`${colorClasses} bg:primary:${base}`}>
 					<figcaption>color:{base}</figcaption>
 				</figure>
@@ -32,13 +32,13 @@
 			Theme colors
 		</svelte:element>
 		<div class="l:grid:auto size:sm">
-			{#each colors as color}
+			{#each colors as color, i (i)}
 				<article class="l:switcher:md th:md">
 					<svelte:element this={`h${depth + 2}`} class="font:md">
 						{color}
 					</svelte:element>
 					<div class="l:stack:2xs">
-						{#each variants as variant}
+						{#each variants as variant, i (i)}
 							<figure class={`${colorClasses} bg:${color}:${variant}`}>
 								<figcaption>{color}:{variant}</figcaption>
 							</figure>
@@ -54,13 +54,13 @@
 			Semantic colors
 		</svelte:element>
 		<div class="l:grid:auto size:xs">
-			{#each status as color}
+			{#each status as color, i (i)}
 				<article class="l:switcher:md th:md">
 					<svelte:element this={`h${depth + 2}`} class="font:md">
 						{color}
 					</svelte:element>
 					<div class="l:stack:2xs">
-						{#each statusVariants as variant}
+						{#each statusVariants as variant, i (i)}
 							<figure class={`${colorClasses} bg:${color}:${variant}`}>
 								<figcaption>{color}:{variant}</figcaption>
 							</figure>

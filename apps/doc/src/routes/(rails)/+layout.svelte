@@ -90,7 +90,7 @@
 			path={page.url.pathname}
 			reveal={mainNav.reveal}
 			actionPath={page.url.pathname}
-			breakpoint="xs"
+			breakpoint="sm"
 			background="inherit"
 			formaction="toggleNav"
 		/>
@@ -119,8 +119,8 @@
 				justify="evenly"
 				size="3xs"
 				font="xs"
-				width="lg"
-				height="sm"
+				width="md"
+				height="lg"
 				background="neutral"
 				dismiss="outside"
 			/>

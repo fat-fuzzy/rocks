@@ -1,8 +1,8 @@
 import {describe, test, expect} from 'vitest'
 import {userEvent, type Locator} from 'vitest/browser'
 import {render} from 'vitest-browser-svelte'
-import {INPUTS} from '$tests/fixtures/form'
-import Form from './Form.svelte'
+import {INPUTS} from '$tests/fixtures/form-inputs'
+import Form from './FormTest.svelte'
 
 describe('FormValidator - Svelte Integration Tests', () => {
 	describe('validateInput', async () => {

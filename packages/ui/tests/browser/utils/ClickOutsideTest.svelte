@@ -9,10 +9,14 @@
 </script>
 
 <div>
-	<p use:clickOutside onclickoutside={handleClickOutside} class="click-outside">
+	<p
+		use:clickOutside={{callback: handleClickOutside, ignore: ['ignored']}}
+		class="click-outside"
+	>
 		Click outside me!
 	</p>
 	<p class="outside">Outside!</p>
+	<p id="ignored" class="outside-ignore">Ignore my event!</p>
 </div>
 
 {#if outsideClicked}
@@ -36,6 +40,10 @@
 
 	.outside {
 		background-color: darkslateblue;
+	}
+
+	.outside-ignore {
+		background-color: orange;
 	}
 
 	output {

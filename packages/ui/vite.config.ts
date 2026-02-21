@@ -1,6 +1,10 @@
 import {sveltekit} from '@sveltejs/kit/vite'
 import {defineConfig} from 'vitest/config'
 
+// NOTE: if a test has not been cancelled properly it can leave a a process running on Svelte's preview port,
+// and subsequent tests will not run. To fix this :
+// - Find the process with the command: `lsof -i:4173`
+// - Kill the process using the PID returned by the previous command: `kill -9 1234` (where `1234 is the PID)
 export default defineConfig({
 	plugins: [sveltekit()],
 	test: {
@@ -16,7 +20,8 @@ export default defineConfig({
 				'src/**/definitions.{js,ts}',
 				'src/lib/types/*.{js,ts}',
 				'src/lib/**/*.browser.ts',
-				'src/lib/components/*.svelte',
+				'src/lib/index.ts',
+				'src/lib/components/',
 			],
 		},
 	},

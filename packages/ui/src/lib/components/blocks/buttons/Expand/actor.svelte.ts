@@ -5,6 +5,8 @@ import type {
 	FuzzyActor,
 	FuzzyPayload,
 	UiVariant,
+	FuzzyEvent,
+	UiState,
 } from '$types'
 import {EXPAND_MACHINE, EXPAND_TRANSITIONS} from './definitions.js'
 import styleHelper from '$lib/utils/styles.js'
@@ -17,14 +19,16 @@ class ExpandActor implements FuzzyActor {
 	expanded = $derived(this.state === 'expanded')
 	value = $derived(this.currentState?.value || this.state)
 	id = $derived(this.currentState?.id)
-	label = $derived(this.currentState?.label || '')
+	label = $derived(this.currentState?.label)
 
-	constructor({
+	constructor() {}
+
+	init({
 		initial,
 		onclick,
 		machine,
 	}: {
-		initial?: string
+		initial?: UiState
 		onclick?: (payload: FuzzyPayload) => void
 		machine?: ExpandMachine
 	}) {
@@ -36,30 +40,30 @@ class ExpandActor implements FuzzyActor {
 		}
 	}
 
-	getTransition(event: string): UiStateExpand {
+	getTransition(event: FuzzyEvent): UiStateExpand {
 		const state = this.state as UiStateExpand
-		const transition = this.transitions[state][event]
+		const transition = this.transitions[state][String(event)]
 		if (transition) {
 			return transition as UiStateExpand
 		}
 		return state
 	}
 
-	public update(event: string): void {
+	public update(event: FuzzyEvent): void {
 		this.state = this.getTransition(event)
 	}
 
 	public getStyles(props: UiBlockProps): string {
-		let currentVariant = this.currentState?.variant ?? props.variant
-		let currentAsset = this.currentState?.asset ?? props.asset
+		const currentVariant = this.currentState?.variant ?? props.variant
+		const currentAsset = this.currentState?.asset ?? props.asset
 
-		let blockClasses = styleHelper.getStyles({
+		const blockClasses = styleHelper.getStyles({
 			...props,
 			asset: currentAsset,
 			variant: currentVariant as UiVariant,
 		})
 
-		return `expand ${blockClasses}`
+		return `expand ${blockClasses}`.trim()
 	}
 }
 

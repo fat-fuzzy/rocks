@@ -1,27 +1,25 @@
 <script lang="ts">
-	import type {RevealLayoutProps} from '$types'
+	import type {RevealContentProps} from '$types'
 
 	let {
 		id = 'RevealContent',
-		reveal,
 		area,
 		scroll,
 		layer,
 		background,
 		children,
-	}: RevealLayoutProps = $props()
+	}: RevealContentProps = $props()
 
-	let expanded = $derived(reveal)
 	let scrollClass = $derived(scroll ? `scroll:${scroll}` : '')
 	let layerClass = $derived(layer ? `layer:${layer}` : '')
 	let backgroundClass = $derived(background ? `bg:${background}` : '')
 	let areaClass = $derived(area ? area : '')
+	let revealClass = $derived(
+		`${areaClass} ${scrollClass} ${layerClass} ${backgroundClass}`,
+	)
 </script>
 
-<ff-reveal
-	{id}
-	class={`${expanded} ${areaClass} ${scrollClass} ${layerClass} ${backgroundClass}`}
->
+<ff-reveal {id} class={revealClass}>
 	{#if children}
 		{@render children()}
 	{/if}

@@ -1,4 +1,5 @@
-import type {FeedbackType, Filters, Scene} from '$types'
+import type {UiColor, UiSize, UiVariant, UiLayout} from '@fat-fuzzy/ui'
+import type {FeedbackType, SceneMeta, Scene} from '$types'
 import {
 	SketchEvent,
 	SketchState,
@@ -54,20 +55,15 @@ export type SketchTransitionsType = {
 	}
 }
 
-// TODO: Get types from @fat-fuzzy/ui
-type UiRevealState = {
-	reveal: string
-}
-
 export type SketchProps = {
 	scene: Scene
 	meta: SceneMeta
 	layer?: string // if 'layer' the canvas will appear on a layer (with drop shadow)
-	color?: string
-	size?: string
-	variant?: string
+	color?: UiColor
+	size?: UiSize
+	variant?: UiVariant
 	background?: string
-	layout?: string
+	layout?: UiLayout
 	breakpoint?: string
 	dev?: boolean
 	mainFooter?: Snippet
