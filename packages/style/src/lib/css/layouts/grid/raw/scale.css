@@ -1,0 +1,33 @@
+/**
+ * GARES: Scale
+ * Expand / Collapse content
+ */
+
+@media screen and (min-width: 68.75rem) {
+	.zone\:main,
+	[class*='zone:']:has(.zone\:main) {
+		inline-size: auto;
+	}
+
+	[class*='gare:'][class*='width:']:not([class*=':full'])[open] > ff-reveal {
+		--sidebar-width: var(--layout-sidebar-md);
+		--overlay-inline-size: calc(var(--sidebar-width) - 2 * var(--grid-gap));
+	}
+
+	.gare\:ouest[open] > ff-reveal {
+		--sidebar-width: var(--layout-sidebar-md);
+		--overlay-inline-size: var(--sidebar-width);
+	}
+
+	.gare\:ouest[open]:not([class*=':full']) > ff-reveal {
+		inline-size: var(--overlay-inline-size);
+	}
+
+	[class*='gare:'] .gare-control {
+		inline-size: 100%;
+	}
+
+	.gare\:ouest[open].width\:full > ff-reveal {
+		--overlay-block-size: var(--max-block-size);
+	}
+}

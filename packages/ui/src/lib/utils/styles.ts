@@ -55,7 +55,7 @@ function getClass(propName: string, prop: string | undefined): string {
 }
 
 function getContainerStyles(props: UiContainerProps): string {
-	const {container, dimensions, layer, size} = props
+	const {container, dimensions, layer, size, containerSize} = props
 
 	const classes = []
 
@@ -68,11 +68,12 @@ function getContainerStyles(props: UiContainerProps): string {
 
 	if (containerClass) {
 		const dimensionsClass = appendModifier(containerClass, dimensions)
+		const localSize = containerSize ?? size
 		const sizeClass =
-			!dimensions && size
-				? appendModifier(containerClass, size)
-				: size
-					? `${dimensionsClass} size:${size}`
+			!dimensions && localSize
+				? appendModifier(containerClass, localSize)
+				: localSize
+					? `${dimensionsClass} size:${localSize}`
 					: ''
 
 		if (!sizeClass && dimensionsClass) classes.push(dimensionsClass)
@@ -173,7 +174,7 @@ function getBlockStyles(props: UiBlockProps): string {
 
 	const sizeClass = getClass('size', size)
 
-	if (asset) {
+	if (asset && asset !== 'none') {
 		const assetTypeClass = assetType ? assetType : 'emoji'
 		const assetClass = appendModifier(assetTypeClass, asset)
 		classes.push(assetClass)
@@ -194,7 +195,8 @@ function getFeedbackStyles(
 	status: UiStatus,
 	context: string,
 ): string {
-	const {asset, assetType, container, font, size, variant} = props
+	const {asset, assetType, container, font, size, containerSize, variant} =
+		props
 
 	const layoutStyles = getLayoutStyles(props)
 	const blockStyles = getBlockStyles({
@@ -209,10 +211,11 @@ function getFeedbackStyles(
 	const statusClass = getClass('status', status)
 	classes.push(statusClass)
 
-	const defaultAssetType = assetType ?? 'emoji'
-	const defaultAssetClass = appendModifier(defaultAssetType, status)
-
-	classes.push(defaultAssetClass)
+	if (asset !== 'none') {
+		const defaultAssetType = assetType ?? 'emoji'
+		const defaultAssetClass = appendModifier(defaultAssetType, status)
+		classes.push(defaultAssetClass)
+	}
 
 	const typeClass = `feedback:${context}`
 	classes.push(typeClass)
@@ -222,9 +225,10 @@ function getFeedbackStyles(
 		? container
 		: getClass('container', container)
 
+	const localSize = containerSize ?? size
 	const containerClass =
 		container && context !== 'code' && container !== 'raviolink'
-			? appendModifier(containerBase, size)
+			? appendModifier(containerBase, localSize)
 			: containerBase
 
 	if (backgroundClass) classes.push(backgroundClass)

@@ -1,6 +1,10 @@
 .tram.zone\:main {
 	grid-column: span 3;
+	grid-template-rows: auto 1fr;
 	min-block-size: unset;
+	max-block-size: var(--overlay-height-md);
+	overscroll-behavior-y: contain;
+	scrollbar-width: none;
 }
 
 @media screen and (min-width: 38.75rem) {
@@ -9,19 +13,22 @@
 		grid-column-end: 3;
 		block-size: auto;
 		max-block-size: var(--max-block-size);
+		scrollbar-width: thin;
 	}
 }
 
 @media screen and (min-width: 68.75rem) {
 	.tram.zone\:main {
 		grid-column-start: 1;
-		grid-column: span 4;
+		grid-column-end: 5;
+		max-block-size: var(--max-block-size);
 		padding-inline-end: calc(2 * var(--grid-gap));
 	}
 
 	.exchange:has(.gare\:ouest[open], .gare\:ouest.expanded)
 		~ .zone\:2.hug
 		.tram.zone\:main {
-		grid-column: span 1;
+		grid-column-start: 1;
+		grid-column-end: 2;
 	}
 }

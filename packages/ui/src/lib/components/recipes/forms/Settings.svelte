@@ -15,17 +15,15 @@
 		onupdate,
 	}: SettingsProps = $props()
 
-	let settingsId = id
+	let settingsId = $derived(id)
 	let action = $derived(
 		redirect ? `${formaction}&redirectTo=${redirect}` : formaction,
 	)
 
-	let showBackground = background
-		? `bg:${background}`
-		: !color
-			? 'bg:inherit'
-			: ''
-	let formClasses = `l:flex size:3xs nowrap ${showBackground}`
+	let showBackground = $derived(
+		background ? `bg:${background}` : !color ? 'bg:inherit' : '',
+	)
+	let formClasses = $derived(`l:flex size:3xs nowrap ${showBackground}`)
 </script>
 
 <form
@@ -38,9 +36,9 @@
 		: undefined}
 	use:enhance
 	class={`menu:${name} ${formClasses}`}
-	onsubmit={(e) => onupdate}
+	onsubmit={() => onupdate}
 >
-	{#each items as { id, name, title, initial, variant, shape, color, size, value, states }}
+	{#each items as { id, name, title, initial, variant, shape, color, size, value, states } (id)}
 		<Switch
 			id={`${settingsId}-${id}`}
 			{name}

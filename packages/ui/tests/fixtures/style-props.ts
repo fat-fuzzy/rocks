@@ -23,6 +23,14 @@ const PROPS_CONTAINER: {props: UiContainerProps; expected: string}[] = [
 	},
 	{
 		props: {
+			container: 'burrito',
+			containerSize: 'lg',
+			size: 'md',
+		},
+		expected: 'l:burrito:lg',
+	},
+	{
+		props: {
 			container: 'taco',
 			size: 'md',
 		},
@@ -214,6 +222,22 @@ const PROPS_FEEDBACK: {
 		},
 		expected:
 			'l:stack:md align:center justify:center shape:round variant:outline status:default emoji:default feedback:prose bg:default:100 raviolink',
+	},
+	{
+		props: {
+			props: {
+				size: 'md',
+				variant: 'outline',
+				shape: 'round',
+				justify: 'end',
+				container: 'raviolink',
+				asset: 'none',
+			},
+			status: 'default',
+			context: 'prose',
+		},
+		expected:
+			'l:stack:md align:center justify:center shape:round variant:outline status:default feedback:prose bg:default:100 raviolink',
 	},
 ]
 

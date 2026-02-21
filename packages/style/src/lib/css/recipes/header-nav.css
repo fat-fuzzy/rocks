@@ -11,7 +11,7 @@
 
 .header-nav {
 	--justify: space-evenly;
-	--gap: var(--grid-gap, var(--size-base-xs));
+	--gap: var(--grid-gap, var(--size-base-2xs));
 	gap: var(--grid-gap, 0);
 	padding-inline: var(--outline-offset-md);
 	border-radius: inherit;
@@ -24,7 +24,7 @@
 		border-block-start: var(--border-width-xl) solid transparent;
 		inline-size: fit-content;
 		padding-block: var(--outline-offset-md);
-		padding-inline: var(--outline-offset-sm);
+		padding-inline: var(--outline-offset-xs);
 
 		&:first-child {
 			border-top-left-radius: inherit;
@@ -55,6 +55,14 @@
 				text-decoration: none;
 				background-color: inherit;
 			}
+		}
+	}
+}
+
+@media screen and (min-width: 38.75rem) {
+	.header-nav {
+		li {
+			padding-inline: var(--outline-offset-sm);
 		}
 	}
 }

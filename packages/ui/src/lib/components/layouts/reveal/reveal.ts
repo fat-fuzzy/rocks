@@ -1,15 +1,16 @@
 import type {Snippet} from 'svelte'
 import type {
 	FormCommonProps,
-	LayoutProps,
+	LayoutPrimitiveProps,
 	UiBlockProps,
 	UiAnimationEvent,
 	FuzzyPayload,
 } from '$types'
 
-export type RevealLayoutProps = LayoutProps &
+export type RevealLayoutProps = LayoutPrimitiveProps &
 	UiBlockProps &
 	FormCommonProps & {
+		controlId?: string
 		area?: string
 		reveal: string
 		auto?: boolean
@@ -18,10 +19,11 @@ export type RevealLayoutProps = LayoutProps &
 		dismiss?: string
 		text?: string
 		onclick?: (payload: FuzzyPayload) => void
+		onclickoutside?: () => void
 		init?: (payload: FuzzyPayload) => void
 	}
 
-export type RevealTrainProps = LayoutProps &
+export type RevealTrainProps = LayoutPrimitiveProps &
 	UiBlockProps &
 	FormCommonProps & {
 		element?: string // Element can be a string defining an HTML tag or a tag.class composed name. Ex: element = 'aside.page-context'
@@ -30,4 +32,13 @@ export type RevealTrainProps = LayoutProps &
 		stations: RevealLayoutProps[]
 		platforms: Snippet[]
 		children?: Snippet
+	}
+
+export type RevealContentProps = LayoutPrimitiveProps &
+	UiBlockProps & {
+		reveal: string
+		controlId: string
+		area?: string
+		trigger?: UiAnimationEvent
+		onclickoutside?: () => void
 	}

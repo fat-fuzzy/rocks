@@ -1,5 +1,4 @@
 import type {Snippet} from 'svelte'
-import {enhance} from '$app/forms'
 import type {GeometryContext, SceneContext} from '$types'
 
 export type PositionProps = {

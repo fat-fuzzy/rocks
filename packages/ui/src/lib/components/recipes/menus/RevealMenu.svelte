@@ -1,10 +1,10 @@
 <script lang="ts">
-	import type {RevealMenuProps} from '$types'
+	import type {RevealMenuProps, UiVariant} from '$types'
 
 	import styleHelper from '$lib/utils/styles.js'
 	import Reveal from '$lib/components/layouts/reveal/Reveal.svelte'
 	import Button from '$lib/components/blocks/buttons/Button.svelte'
-	const VARIANT_MATCH: {[key: string]: string} = {
+	const VARIANT_MATCH: {[key: string]: UiVariant} = {
 		outline: 'bare',
 		bare: 'bare',
 		fill: 'outline',

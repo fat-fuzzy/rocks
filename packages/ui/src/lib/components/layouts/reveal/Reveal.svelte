@@ -1,7 +1,9 @@
 <script lang="ts">
-	import type {RevealLayoutProps} from '$types'
+	import type {FuzzyPayload, RevealLayoutProps} from '$types'
+
 	import constants from '$lib/types/constants.js'
 	import styleHelper from '$lib/utils/styles.js'
+	import system from '$lib/components/layouts/reveal/system.svelte'
 	import RevealForm from '$lib/components/layouts/reveal/RevealForm.svelte'
 	import RevealContent from '$lib/components/layouts/reveal/RevealContent.svelte'
 
@@ -37,16 +39,15 @@
 		children,
 	}: RevealLayoutProps = $props()
 
-	let html = $state(element.split('.'))
+	let html = $derived(element.split('.'))
 	let {tag, className} = $derived.by(() => ({
 		tag: html[0],
 		className: html[1],
 	}))
 
-	let payload = $derived({
-		state: reveal,
-		id: `button-reveal-${id}`,
-	})
+	let controlId = $derived(system.getControlId(id))
+	let contentId = $derived(system.getContentId(id))
+	let state = $derived.by(() => system.getState(controlId) ?? reveal)
 
 	let layoutClasses = $derived.by(() =>
 		styleHelper.getLayoutStyles({
@@ -61,11 +62,8 @@
 		}),
 	)
 
-	let expanded = $derived(payload.state)
 	let layoutSize = $derived(size ? `size:${size}` : '')
-	let revealLayoutClasses = $derived(
-		`${expanded} ${layoutClasses} ${layoutSize}`,
-	)
+	let revealLayoutClasses = $derived(`${state} ${layoutClasses} ${layoutSize}`)
 	let revealClasses = $derived(
 		auto
 			? `${className} l:reveal:auto ${revealLayoutClasses}`
@@ -73,10 +71,9 @@
 	)
 
 	function onKeyUp(e: KeyboardEvent) {
-		if (e.key === 'Escape' && payload.state === 'expanded') {
+		if (e.key !== 'Escape' && state === 'expanded') {
 			return
 		}
-		payload.state = 'collapsed'
 	}
 </script>
 
@@ -112,12 +109,12 @@
 		{variant}
 		{align}
 		{justify}
+		onclick={(payload: FuzzyPayload) => system.update(payload)}
 	/>
 
 	<RevealContent
-		id={`${id}-reveal-content`}
-		name={`${id}-reveal-content`}
-		label=""
+		id={contentId}
+		{controlId}
 		{place}
 		{reveal}
 		{scroll}

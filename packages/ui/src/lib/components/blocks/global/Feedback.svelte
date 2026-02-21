@@ -19,6 +19,7 @@
 		variant,
 		layer,
 		container = 'raviolink',
+		containerSize,
 		children,
 	}: FeedbackProps = $props()
 
@@ -35,6 +36,7 @@
 				align,
 				justify,
 				container,
+				containerSize,
 			},
 			status as UiStatus,
 			context as UiTextContext,

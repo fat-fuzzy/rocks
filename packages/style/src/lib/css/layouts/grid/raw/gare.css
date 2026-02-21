@@ -1,0 +1,62 @@
+/**
+ * GARES
+ * Expand / Collapse content
+ */
+
+.gare-control {
+	display: grid;
+	border-radius: 0;
+}
+
+[class*='gare:'][open] > ff-reveal {
+	position: absolute;
+	top: calc(var(--ui-header-height) + var(--grid-gap));
+	block-size: fit-content;
+	inline-size: 100%;
+	max-block-size: var(--overlay-block-size);
+	max-inline-size: var(--overlay-inline-size);
+}
+
+.gare\:ouest[open] > ff-reveal {
+	left: var(--outline-offset-lg);
+}
+
+.gare\:est[open] > ff-reveal {
+	right: var(--outline-offset-lg);
+}
+
+@media screen and (min-width: 58.45rem) {
+	.gare\:est[open] > ff-reveal {
+		box-shadow: unset;
+	}
+}
+
+@media screen and (min-width: 68.75rem) {
+	.gare\:ouest[open] > ff-reveal {
+		box-shadow: unset;
+	}
+
+	.gare\:ouest[open] > ff-reveal {
+		bottom: var(--grid-gap);
+	}
+}
+
+@media screen and (min-width: 58.45rem) {
+	.gare\:est:is[open] > ff-reveal {
+		box-shadow: unset;
+	}
+
+	[class*='gare:'][open] > ff-reveal {
+		--overlay-block-size: var(--max-block-size);
+	}
+}
+
+@media screen and (min-width: 68.75rem) {
+	.gare\:ouest:is[open] > ff-reveal {
+		box-shadow: unset;
+	}
+
+	.gare\:ouest:is[open] > ff-reveal {
+		right: unset;
+	}
+}
