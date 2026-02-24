@@ -39,6 +39,7 @@ export type UiLayoutProps = UiContainerProps & {
 	direction?: string // TODO: check / harmonize STYLE_MODIFIER
 	font?: UiSize
 	height?: string // TODO: check / harmonize (height/width classes)
+	width?: string
 	justify?: string
 	layout?: UiLayout
 	place?: string // TODO: check / harmonize STYLE_MODIFIER
