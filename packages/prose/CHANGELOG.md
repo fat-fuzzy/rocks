@@ -1,5 +1,11 @@
 # @fat-fuzzy/prose
 
+## 0.1.21
+
+### Patch Changes
+
+- ca9b869: Type fixes, bugfixes, dep updates, tests, cleanup
+
 ## 0.1.20
 
 ### Patch Changes

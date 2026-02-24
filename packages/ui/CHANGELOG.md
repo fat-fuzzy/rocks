@@ -1,5 +1,11 @@
 # @fat-fuzzy/ui
 
+## 0.1.75
+
+### Patch Changes
+
+- ca9b869: Type fixes, bugfixes, dep updates, tests, cleanup
+
 ## 0.1.74
 
 ### Patch Changes

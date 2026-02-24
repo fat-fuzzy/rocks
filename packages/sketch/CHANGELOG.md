@@ -1,5 +1,11 @@
 # @fat-fuzzy/sketch
 
+## 0.1.28
+
+### Patch Changes
+
+- ca9b869: Type fixes, bugfixes, dep updates, tests, cleanup
+
 ## 0.1.27
 
 ### Patch Changes

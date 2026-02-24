@@ -1,5 +1,11 @@
 # @fat-fuzzy/config
 
+## 0.1.18
+
+### Patch Changes
+
+- ca9b869: Type fixes, bugfixes, dep updates, tests, cleanup
+
 ## 0.1.17
 
 ### Patch Changes
