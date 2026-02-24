@@ -1,5 +1,11 @@
 # @fat-fuzzy/style
 
+## 0.1.22
+
+### Patch Changes
+
+- ca9b869: Type fixes, bugfixes, dep updates, tests, cleanup
+
 ## 0.1.21
 
 ### Patch Changes
