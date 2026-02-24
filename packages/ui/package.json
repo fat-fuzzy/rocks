@@ -65,7 +65,7 @@
 		"svelte": "5.53.1",
 		"svelte-check": "4.3.4",
 		"tslib": "2.8.1",
-		"typescript": "5.9.2",
+		"typescript": "5.9.3",
 		"vite": "7.1.11",
 		"vitest": "4.0.16",
 		"vitest-browser-svelte": "2.0.1"
