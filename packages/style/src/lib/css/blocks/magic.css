@@ -33,6 +33,7 @@ ff-callout[class*='magic'] {
 
 		a,
 		p,
+		span,
 		svg {
 			background: var(--magic-gradient);
 			background: var(--webkit-magic-gradient);
