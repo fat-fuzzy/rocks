@@ -12,7 +12,6 @@
 		hash,
 		description = `Rails layout (zones 1-5)`,
 		pageName,
-		size,
 		text, // Text size for main content & header
 		dimensions,
 		justify,
@@ -21,7 +20,6 @@
 		aside,
 		footer,
 		useHeader = true,
-		context, // TODO: This should be the page context's expanded state
 		layout = 'metro',
 	}: PageRailsProps = $props()
 
