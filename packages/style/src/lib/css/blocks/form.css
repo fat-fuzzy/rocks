@@ -68,10 +68,21 @@ label > input {
 	max-inline-size: 100%;
 }
 
+label:has(input[type='radio']),
+label:has(input[type='checkbox']) {
+	inline-size: 100%;
+}
+
+label:has(input[type='radio']) span,
+label:has(input[type='checkbox'])span {
+	min-inline-size: max-content;
+}
+
 label > input[type='radio'],
 label > input[type='checkbox'] {
 	padding: 0;
 	outline-offset: 0;
+	max-inline-size: 1.6em; /* local relative size that improves alignment in switcher layouts : TODO: fix magic number */
 }
 
 /* TODO : cleanup - use "current" size values */
