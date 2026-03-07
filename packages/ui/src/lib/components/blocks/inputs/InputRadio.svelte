@@ -15,6 +15,7 @@
 		hint,
 
 		layout = 'switcher',
+		threshold = '2xs',
 		asset,
 		align,
 		justify,
@@ -42,6 +43,7 @@
 			asset,
 			variant,
 			layout,
+			threshold,
 			container,
 			background: background ? background : 'inherit',
 		}),
