@@ -38,7 +38,7 @@
 		"!dist/**/*.spec.*"
 	],
 	"dependencies": {
-		"dompurify": "3.2.6"
+		"dompurify": "3.3.1"
 	},
 	"peerDependencies": {
 		"@sveltejs/kit": "2.53.3",
