@@ -1,5 +1,11 @@
 # @fat-fuzzy/doc
 
+## 0.1.64
+
+### Patch Changes
+
+- 919b417: Input & type fixes, style improvements
+
 ## 0.1.63
 
 ### Patch Changes
