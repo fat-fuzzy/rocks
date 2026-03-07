@@ -1,9 +1,10 @@
 <script lang="ts">
+	import type {Component} from 'svelte'
+
 	import type {FieldsetProps, InputProps} from '$types'
 	import Fieldset from '$lib/components/blocks/inputs/Fieldset.svelte'
 	import InputRadio from '$lib/components/blocks/inputs/InputRadio.svelte'
 	import InputCheck from '$lib/components/blocks/inputs/InputCheck.svelte'
-
 	let {
 		id,
 		name,
@@ -22,7 +23,9 @@
 		children,
 	}: FieldsetProps & Partial<InputProps> = $props()
 
-	const COMPONENT_IMPORTS: {[input: string]: any} = {
+	const COMPONENT_IMPORTS: {
+		[input: string]: Component<InputProps, object, ''>
+	} = {
 		radio: InputRadio,
 		checkbox: InputCheck,
 	}
@@ -35,7 +38,7 @@
 			value: target.value,
 		}
 		if (oninput) {
-			oninput(payload)
+			oninput(event, payload)
 		}
 	}
 </script>
@@ -53,13 +56,16 @@
 	{color}
 >
 	{@const InputComponent = COMPONENT_IMPORTS[type]}
-	{#each items as input}
-		{@const checked = input.value === value}
+	{#each items as input, index (index)}
+		{@const checked =
+			input.value && value
+				? input.value === value || value.includes(String(input.value))
+				: false}
 		<InputComponent
-			{value}
+			{...input}
+			value={input.value}
 			{checked}
 			color={input.color || color}
-			{...input}
 			{justify}
 			{container}
 			{size}

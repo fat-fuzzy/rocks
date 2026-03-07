@@ -71,6 +71,7 @@ export type FieldsetProps = UiBlockProps & {
 	 */
 	id: string
 	name: string
+	value?: string
 	legend?: string
 	disabled?: boolean
 

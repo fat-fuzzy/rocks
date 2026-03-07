@@ -44,7 +44,7 @@
 		"@fat-fuzzy/style": "workspace:*",
 		"@fat-fuzzy/ui": "workspace:*",
 		"@fat-fuzzy/intl": "workspace:*",
-		"@playwright/test": "1.56.1",
+		"@playwright/test": "1.58.2",
 		"@sveltejs/adapter-cloudflare": "7.2.4",
 		"@sveltejs/kit": "2.53.3",
 		"@sveltejs/package": "2.5.0",
@@ -53,7 +53,7 @@
 		"svelte": "5.53.5",
 		"svelte-check": "4.3.4",
 		"tslib": "2.8.1",
-		"typescript": "5.9.2",
+		"typescript": "5.9.3",
 		"vite": "7.1.11",
 		"vitest": "3.2.4"
 	},

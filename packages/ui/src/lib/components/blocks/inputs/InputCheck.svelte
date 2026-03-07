@@ -7,13 +7,15 @@
 		id,
 		name,
 		label = 'Checkbox input',
-		checked,
+		checked = false,
 		disabled,
+		value,
 		required,
 		status = 'default',
 		hint,
 
 		layout = 'switcher',
+		threshold = '2xs',
 		asset,
 		align,
 		justify,
@@ -41,6 +43,7 @@
 			asset,
 			variant,
 			layout,
+			threshold,
 			container,
 			background: background ? background : 'inherit',
 		}),
@@ -52,6 +55,7 @@
 	<input
 		{id}
 		{name}
+		{value}
 		type="checkbox"
 		bind:checked
 		{required}

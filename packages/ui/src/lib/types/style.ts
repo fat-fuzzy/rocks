@@ -1,6 +1,17 @@
 export type UiContainer = 'burrito' | 'taco' | 'frame' | 'ravioli' | 'raviolink'
 
-export type UiLayout = 'stack' | 'switcher' | 'grid' | 'flex' | 'reveal'
+export type UiLayout =
+	| 'stack'
+	| 'switcher'
+	| 'grid'
+	| 'flex'
+	| 'reveal'
+	| 'metro'
+	| 'voyager'
+	| 'tram'
+	| 'tgv'
+	| 'steam'
+	| 'railway'
 
 export type UiStatus = 'default' | 'info' | 'success' | 'warning' | 'error'
 
