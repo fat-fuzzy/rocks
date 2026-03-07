@@ -1,5 +1,11 @@
 # @fat-fuzzy/playbook
 
+## 0.1.28
+
+### Patch Changes
+
+- 919b417: Input & type fixes, style improvements
+
 ## 0.1.27
 
 ### Patch Changes
