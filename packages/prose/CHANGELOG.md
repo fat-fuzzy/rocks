@@ -1,5 +1,11 @@
 # @fat-fuzzy/prose
 
+## 0.1.22
+
+### Patch Changes
+
+- 919b417: Input & type fixes, style improvements
+
 ## 0.1.21
 
 ### Patch Changes
