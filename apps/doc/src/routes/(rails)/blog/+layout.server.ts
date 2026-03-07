@@ -6,7 +6,7 @@ import {buildNav} from '$data/nav'
 const posts = blog.markdowns.filter(({meta}) => meta.status !== 'draft')
 
 export const load = async ({locals, url}) => {
-	let sidebar = buildNav('blog')
+	const sidebar = buildNav('blog')
 	sidebar.actionPath = url.pathname
 	sidebar.reveal = locals.sidebar.reveal ?? sidebar.reveal
 	sidebar.items = sidebar.items.map((item) => {
@@ -22,7 +22,7 @@ export const load = async ({locals, url}) => {
 									if (item) {
 										return {
 											slug: item.meta.slug,
-											title: item.meta.series.title,
+											title: item.meta?.series?.title,
 											itemPath: '/blog',
 										}
 									}
