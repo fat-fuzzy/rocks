@@ -1,5 +1,11 @@
 # @fat-fuzzy/sketch
 
+## 0.1.29
+
+### Patch Changes
+
+- 919b417: Input & type fixes, style improvements
+
 ## 0.1.28
 
 ### Patch Changes
