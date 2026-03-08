@@ -1,5 +1,11 @@
 # @fat-fuzzy/prose
 
+## 0.1.24
+
+### Patch Changes
+
+- 7f30ec3: Fix esport
+
 ## 0.1.23
 
 ### Patch Changes
