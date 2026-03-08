@@ -106,6 +106,10 @@
 		aspect-ratio: 15 / 8;
 	}
 
+	.l\:frame\:prose.h\:xs {
+		aspect-ratio: 15 / 3;
+	}
+
 	.l\:frame\:prose.h\:sm {
 		aspect-ratio: 15 / 5;
 	}
