@@ -1,5 +1,12 @@
 # @fat-fuzzy/prose
 
+## 0.1.26
+
+### Patch Changes
+
+- 1a11dc3: Fix tsconfig & type exports
+- 7048186: Fix tsconfig & type exports
+
 ## 0.1.25
 
 ### Patch Changes

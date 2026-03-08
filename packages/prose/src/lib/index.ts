@@ -1,5 +1,6 @@
 // Reexport your entry components here
 import './types/index'
+import type {FatFuzzyProse} from '$types'
 
 export type * from '$types'
 
@@ -15,4 +16,4 @@ const editor = {
 	Tiptap,
 }
 
-export default editor
+export default {editor} as FatFuzzyProse
