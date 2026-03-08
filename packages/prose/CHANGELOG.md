@@ -1,5 +1,11 @@
 # @fat-fuzzy/prose
 
+## 0.1.30
+
+### Patch Changes
+
+- 29ef209: Bump to 0.1.30
+
 ## 0.1.29
 
 ### Patch Changes
