@@ -18,20 +18,20 @@
 		"cz": "cz"
 	},
 	"devDependencies": {
-		"@changesets/cli": "2.29.8",
-		"@eslint/compat": "2.0.1",
+		"@changesets/cli": "2.30.0",
+		"@eslint/compat": "2.0.3",
 		"@fat-fuzzy/config": "workspace:*",
-		"@types/node": "24.10.1",
+		"@types/node": "25.3.5",
 		"commitizen": "4.3.1",
 		"cz-conventional-changelog": "3.3.0",
 		"husky": "9.1.7",
-		"eslint": "9.34.0",
-		"prettier": "3.6.2",
-		"prettier-plugin-svelte": "3.4.0",
-		"turbo": "2.7.5",
-		"typescript": "5.9.2"
+		"eslint": "10.0.3",
+		"prettier": "3.8.1",
+		"prettier-plugin-svelte": "3.5.1",
+		"turbo": "2.8.14",
+		"typescript": "5.9.3"
 	},
-	"packageManager": "pnpm@10.15.0",
+	"packageManager": "pnpm@10.31.0",
 	"engines": {
 		"node": ">=22.0.0",
 		"npm": ">=9.6.4"

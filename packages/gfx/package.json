@@ -20,13 +20,13 @@
 	"author": "Patricia Boh",
 	"license": "MIT",
 	"devDependencies": {
-		"@eslint/compat": "2.0.1",
+		"@eslint/compat": "2.0.3",
 		"@fat-fuzzy/config": "workspace:*",
 		"@rollup/plugin-json": "6.1.0",
-		"@rollup/plugin-terser": "0.4.4",
+		"@rollup/plugin-terser": "1.0.0",
 		"rollup": "4.59.0",
 		"tslib": "2.8.1",
-		"typescript": "5.9.2"
+		"typescript": "5.9.3"
 	},
 	"type": "module",
 	"files": [
