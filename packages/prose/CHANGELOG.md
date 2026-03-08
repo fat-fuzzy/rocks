@@ -1,5 +1,11 @@
 # @fat-fuzzy/prose
 
+## 0.1.28
+
+### Patch Changes
+
+- 9e82396: Re publish changes
+
 ## 0.1.27
 
 ### Patch Changes
