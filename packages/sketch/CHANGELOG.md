@@ -1,5 +1,11 @@
 # @fat-fuzzy/sketch
 
+## 0.1.30
+
+### Patch Changes
+
+- edc68e0: Update dependencies,export prose ui
+
 ## 0.1.29
 
 ### Patch Changes
