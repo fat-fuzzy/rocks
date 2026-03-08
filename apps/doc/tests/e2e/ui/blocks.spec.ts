@@ -13,7 +13,7 @@ ready.forEach((component) => {
 	test.describe(`${component} tests`, () => {
 		test(`About page has expected headings and content`, async ({page}) => {
 			await page.goto(`${path}/${component}`)
-			styleProps = await page
+			await page
 				.getByTestId('doc-style-props')
 				.getByRole('listitem')
 				.allInnerTexts()
@@ -93,7 +93,7 @@ ready.forEach((component) => {
 		if (component === 'Feedback') {
 			test(`Playbook has working context input`, async ({page}) => {
 				await page.goto(`${path}/${component}`)
-				styleProps = await page
+				await page
 					.getByTestId('doc-style-props')
 					.getByRole('listitem')
 					.allInnerTexts()
@@ -103,7 +103,7 @@ ready.forEach((component) => {
 
 			test(`Playbook has working status input`, async ({page}) => {
 				await page.goto(`${path}/${component}`)
-				styleProps = await page
+				await page
 					.getByTestId('doc-style-props')
 					.getByRole('listitem')
 					.allInnerTexts()
