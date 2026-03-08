@@ -1,5 +1,11 @@
 # @fat-fuzzy/cz-changelog
 
+## 0.1.10
+
+### Patch Changes
+
+- edc68e0: Update dependencies,export prose ui
+
 ## 0.1.9
 
 ### Patch Changes
