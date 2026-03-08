@@ -1,5 +1,11 @@
 # @fat-fuzzy/prose
 
+## 0.1.29
+
+### Patch Changes
+
+- 62dc4a2: Add extra height option
+
 ## 0.1.28
 
 ### Patch Changes
