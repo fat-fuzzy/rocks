@@ -1,4 +1,6 @@
 <script lang="ts">
+	import type {UiColor, UiSize, UiVariant} from '@fat-fuzzy/ui'
+
 	import {onMount, onDestroy} from 'svelte'
 	import {Editor} from '@tiptap/core'
 	import StarterKit from '@tiptap/starter-kit'
@@ -10,7 +12,19 @@
 
 	// @ts-expect-error editor is not defined at this point but will be on mount
 	let editor: Editor = $state()
-	let {html, height}: {html: string} = $props()
+	let {
+		html,
+		color = 'primary',
+		variant = 'outline',
+		height = 'md',
+	}: {
+		html: string
+		color?: UiColor
+		variant?: UiVariant
+		height?: UiSize
+	} = $props()
+
+	let heighClass = $derived(height ? `h:${height}` : '')
 	let commands = $state({
 		bold: false,
 		italic: false,
@@ -78,15 +92,28 @@
 
 <div class="l:text:lg">
 	{#if editor}
-		<EditorMenu {editor} {commands} />
+		<EditorMenu {editor} {commands} {color} {variant} />
 	{/if}
-	<div class="l:frame:prose maki:block:lg ravioli:md variant:bare dotted">
+	<div
+		class={`l:frame:prose ${heighClass} maki:block:lg ravioli:md variant:bare dotted`}
+	>
 		<div class="content scroll:y" bind:this={element}></div>
 	</div>
 </div>
 
 <style nonce="%sveltekit.nonce%">
 	.l\:frame\:prose {
+		aspect-ratio: 15 / 8;
+	}
+
+	.l\:frame\:prose.h\:sm {
+		aspect-ratio: 15 / 5;
+	}
+
+	.l\:frame\:prose.h\:md {
+		aspect-ratio: 15 / 8;
+	}
+	.l\:frame\:prose.h\:lg {
 		aspect-ratio: 15 / 10;
 	}
 </style>
