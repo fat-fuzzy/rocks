@@ -1,10 +1,16 @@
 # @fat-fuzzy/prose
 
+## 0.1.25
+
+### Patch Changes
+
+- 7f30ec3: Fix package export
+
 ## 0.1.24
 
 ### Patch Changes
 
-- 7f30ec3: Fix esport
+- 7f30ec3: Fix export
 
 ## 0.1.23
 
