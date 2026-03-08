@@ -41,6 +41,11 @@
 	},
 	"peerDependencies": {
 		"@sveltejs/kit": "2.53.4",
+		"@tiptap/core": "3.20.1",
+		"@tiptap/extension-list": "3.20.1",
+		"@tiptap/extension-text-style": "3.20.1",
+		"@tiptap/pm": "3.20.1",
+		"@tiptap/starter-kit": "3.20.1",
 		"svelte": "5.53.5"
 	},
 	"devDependencies": {
@@ -48,12 +53,14 @@
 		"@fat-fuzzy/config": "workspace:*",
 		"@fat-fuzzy/style": "workspace:*",
 		"@fat-fuzzy/ui": "workspace:*",
-		"@playwright/test": "1.58.2",
+		"@playwright/test": "1.57.0",
 		"@sveltejs/adapter-auto": "7.0.1",
 		"@sveltejs/kit": "2.53.4",
 		"@sveltejs/package": "2.5.7",
 		"@sveltejs/vite-plugin-svelte": "6.2.4",
 		"@tiptap/core": "3.20.1",
+		"@tiptap/extension-list": "3.20.1",
+		"@tiptap/extension-text-style": "3.20.1",
 		"@tiptap/pm": "3.20.1",
 		"@tiptap/starter-kit": "3.20.1",
 		"@types/eslint": "9.6.1",
