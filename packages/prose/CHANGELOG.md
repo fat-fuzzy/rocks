@@ -1,5 +1,11 @@
 # @fat-fuzzy/prose
 
+## 0.1.27
+
+### Patch Changes
+
+- 91b75d9: Improve editor commands, enable custom styles
+
 ## 0.1.26
 
 ### Patch Changes
