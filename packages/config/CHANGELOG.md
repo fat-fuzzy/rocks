@@ -1,5 +1,11 @@
 # @fat-fuzzy/config
 
+## 0.1.19
+
+### Patch Changes
+
+- edc68e0: Update dependencies,export prose ui
+
 ## 0.1.18
 
 ### Patch Changes
