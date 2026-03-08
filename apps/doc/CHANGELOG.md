@@ -1,5 +1,11 @@
 # @fat-fuzzy/doc
 
+## 0.1.65
+
+### Patch Changes
+
+- edc68e0: Update dependencies,export prose ui
+
 ## 0.1.64
 
 ### Patch Changes
