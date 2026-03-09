@@ -1,5 +1,11 @@
 # @fat-fuzzy/prose
 
+## 0.1.31
+
+### Patch Changes
+
+- fbbbb80: Add editors with menu presets
+
 ## 0.1.30
 
 ### Patch Changes
