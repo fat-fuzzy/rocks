@@ -1,5 +1,7 @@
 <script lang="ts">
-	import Tiptap from '$lib/editor/Tiptap.svelte'
+	import TiptapBasic from '$lib/editor/basic/Tiptap.svelte'
+	import TiptapFull from '$lib/editor/full/Tiptap.svelte'
+	import TiptapMinimal from '$lib/editor/minimal/Tiptap.svelte'
 	import ui from '@fat-fuzzy/ui'
 
 	const {PageMain} = ui.content
@@ -10,5 +12,9 @@
 </script>
 
 <PageMain {title} {description}>
-	<Tiptap {html} />
+	<div>
+		<TiptapMinimal {html} />
+		<TiptapBasic {html} />
+		<TiptapFull {html} />
+	</div>
 </PageMain>
