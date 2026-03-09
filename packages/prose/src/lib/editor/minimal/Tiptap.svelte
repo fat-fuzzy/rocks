@@ -5,8 +5,9 @@
 	import {Editor} from '@tiptap/core'
 	import StarterKit from '@tiptap/starter-kit'
 	import {TextStyleKit} from '@tiptap/extension-text-style'
+	import Link from '@tiptap/extension-link'
 
-	import EditorMenu from '$lib/editor/EditorMenu.svelte'
+	import EditorMenu from '$lib/editor/minimal/EditorMenu.svelte'
 
 	let element: Element
 
@@ -16,7 +17,7 @@
 		html,
 		color = 'primary',
 		variant = 'outline',
-		height = 'md',
+		height = 'xs',
 	}: {
 		html: string
 		color?: UiColor
@@ -28,20 +29,14 @@
 	let commands = $state({
 		bold: false,
 		italic: false,
-		strike: false,
-		marks: false,
-		nodes: false,
 		h1: false,
 		h2: false,
 		h3: false,
 		h4: false,
-		h5: false,
-		h6: false,
 		p: false,
-		ol: false,
-		ul: false,
 		hr: false,
-		hb: false,
+		link: false,
+		isLink: false,
 		undo: false,
 		redo: false,
 	})
@@ -49,31 +44,99 @@
 	function setActiveElement() {
 		commands.bold = editor.isActive('bold')
 		commands.italic = editor.isActive('italic')
-		commands.strike = editor.isActive('strike')
-		commands.marks = editor.isActive('marks')
-		commands.nodes = editor.isActive('nodes')
 		commands.h1 = editor.isActive('heading', {level: 1})
 		commands.h2 = editor.isActive('heading', {level: 2})
 		commands.h3 = editor.isActive('heading', {level: 3})
 		commands.h4 = editor.isActive('heading', {level: 4})
-		commands.h5 = editor.isActive('heading', {level: 5})
-		commands.h6 = editor.isActive('heading', {level: 6})
 		commands.p = editor.isActive('paragraph')
-		commands.ol = editor.isActive('orderedList')
-		commands.ul = editor.isActive('bulletList')
+		commands.link = editor.isActive('link')
 		commands.hr = editor.isActive('horizontalRule')
-		commands.hb = editor.isActive('hardBreak')
 	}
 
 	function setDisabledElement() {
 		commands.undo = editor.can().chain().focus().undo().run()
 		commands.redo = editor.can().chain().focus().redo().run()
+		commands.isLink = editor.can().chain().focus().unsetLink().run()
 	}
 
 	onMount(() => {
 		editor = new Editor({
 			element: element,
-			extensions: [StarterKit, TextStyleKit],
+			extensions: [
+				StarterKit,
+				TextStyleKit,
+				Link.extend({name: 'customLink'}).configure({
+					openOnClick: false,
+					autolink: true,
+					defaultProtocol: 'https',
+					protocols: ['http', 'https'],
+					isAllowedUri: (url, ctx) => {
+						try {
+							// construct URL
+							const parsedUrl = url.includes(':')
+								? new URL(url)
+								: new URL(`${ctx.defaultProtocol}://${url}`)
+
+							// use default validation
+							if (!ctx.defaultValidate(parsedUrl.href)) {
+								return false
+							}
+
+							// disallowed protocols
+							const disallowedProtocols = ['ftp', 'file', 'mailto']
+							const protocol = parsedUrl.protocol.replace(':', '')
+
+							if (disallowedProtocols.includes(protocol)) {
+								return false
+							}
+
+							// only allow protocols specified in ctx.protocols
+							const allowedProtocols = ctx.protocols.map((p) =>
+								typeof p === 'string' ? p : p.scheme,
+							)
+
+							if (!allowedProtocols.includes(protocol)) {
+								return false
+							}
+
+							// disallowed domains
+							const disallowedDomains = [
+								'example-phishing.com',
+								'malicious-site.net',
+							]
+							const domain = parsedUrl.hostname
+
+							if (disallowedDomains.includes(domain)) {
+								return false
+							}
+
+							// all checks have passed
+							return true
+						} catch {
+							return false
+						}
+					},
+					shouldAutoLink: (url) => {
+						try {
+							// construct URL
+							const parsedUrl = url.includes(':')
+								? new URL(url)
+								: new URL(`https://${url}`)
+
+							// only auto-link if the domain is not in the disallowed list
+							const disallowedDomains = [
+								'example-no-autolink.com',
+								'another-no-autolink.com',
+							]
+							const domain = parsedUrl.hostname
+
+							return !disallowedDomains.includes(domain)
+						} catch {
+							return false
+						}
+					},
+				}),
+			],
 			content: html,
 			onTransaction: () => {
 				// force re-render so `editor.isActive` works as expected
