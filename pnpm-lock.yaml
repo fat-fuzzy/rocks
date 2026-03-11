@@ -425,6 +425,9 @@ importers:
       '@tiptap/static-renderer':
         specifier: ^3.20.1
         version: 3.20.1(@tiptap/core@3.20.1(@tiptap/pm@3.20.1))(@tiptap/pm@3.20.1)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+      dompurify:
+        specifier: 3.3.2
+        version: 3.3.2
     devDependencies:
       '@eslint/compat':
         specifier: 2.0.3
