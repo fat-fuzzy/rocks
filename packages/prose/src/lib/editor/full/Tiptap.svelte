@@ -5,25 +5,29 @@
 	import {onMount, onDestroy} from 'svelte'
 	import {Editor} from '@tiptap/core'
 	import settings from '$lib/editor/editor-settings'
-
 	import EditorMenu from '$lib/editor/full/EditorMenu.svelte'
 
-	let element: Element
-
-	// @ts-expect-error editor is not defined at this point but will be on mount
-	let editor: Editor = $state()
 	let {
 		html,
+		id = 'editor-full',
+		type,
+		tags,
 		color = 'primary',
 		variant = 'outline',
-		height = 'md',
+		height = 'sm',
 	}: {
 		html: string
+		id?: string
+		type?: string
+		tags?: string[]
 		color?: UiColor
 		variant?: UiVariant
 		height?: UiSize
 	} = $props()
 
+	let element: Element
+	// @ts-expect-error editor is not defined at this point but will be on mount
+	let editor: Editor = $state()
 	let heighClass = $derived(height ? `h:${height}` : '')
 	let commands = $state({
 		bold: false,
@@ -96,13 +100,11 @@
 	})
 </script>
 
-<div class="l:text:lg">
+<ff-prose {id} class="l:text:lg" data-type={type} data-tags={tags?.join(':')}>
 	{#if editor}
 		<EditorMenu {editor} {commands} {color} {variant} />
 	{/if}
-	<div
-		class={`l:frame:prose ${heighClass} maki:block:lg ravioli:md variant:bare dotted`}
-	>
+	<div class={`l:frame:prose ${heighClass} variant:bare dotted`}>
 		<div class="content scroll:y" bind:this={element}></div>
 	</div>
-</div>
+</ff-prose>
