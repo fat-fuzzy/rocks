@@ -1,0 +1,72 @@
+.editor-menu {
+	max-inline-size: unset;
+}
+
+.button-group {
+	--gap: 0;
+
+	button {
+		border-radius: 0;
+		border-right: 0;
+		padding-inline: var(--ui-size-sm);
+		block-size: 100%;
+	}
+
+	button:first-child {
+		border-top-left-radius: var(--border-radius-base);
+		border-bottom-left-radius: var(--border-radius-base);
+	}
+
+	button:last-child {
+		border-top-right-radius: var(--border-radius-base);
+		border-bottom-right-radius: var(--border-radius-base);
+		border-right: var(--border-width-md) solid var(--accent);
+	}
+
+	.font\:italic,
+	.singleton {
+		padding-inline: var(--ui-size);
+	}
+
+	.singleton,
+	.text {
+		font-size: 1rem;
+		line-height: 0.925;
+	}
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5 {
+	font-size: 1rem;
+	padding-inline: var(--ui-size-sm);
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5 {
+	line-height: 0.925;
+}
+
+.l\:frame\:prose {
+	aspect-ratio: 15 / 8;
+}
+
+.l\:frame\:prose.h\:xs {
+	aspect-ratio: 15 / 3;
+}
+
+.l\:frame\:prose.h\:sm {
+	aspect-ratio: 15 / 5;
+}
+
+.l\:frame\:prose.h\:md {
+	aspect-ratio: 15 / 8;
+}
+.l\:frame\:prose.h\:lg {
+	aspect-ratio: 15 / 10;
+}
