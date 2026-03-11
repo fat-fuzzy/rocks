@@ -1,5 +1,11 @@
 # @fat-fuzzy/prose
 
+## 0.1.32
+
+### Patch Changes
+
+- 888dce0: Improve editor menus and text style utilities
+
 ## 0.1.31
 
 ### Patch Changes
