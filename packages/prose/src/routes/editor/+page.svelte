@@ -1,6 +1,5 @@
 <script lang="ts">
-	import TiptapBasic from '$lib/editor/basic/Tiptap.svelte'
-	import TiptapFull from '$lib/editor/full/Tiptap.svelte'
+	import Editor from '$lib/editor/Editor.svelte'
 	import ui from '@fat-fuzzy/ui'
 
 	const {PageMain} = ui.content
@@ -13,14 +12,16 @@
 <PageMain title="" {description}>
 	<div class="l:stack:md maki:block:2xl">
 		<h1>{title}</h1>
-		<TiptapBasic
+		<Editor
 			{html}
+			preset="basic"
 			id="a-quick-message"
 			tags={['short', 'sweet']}
 			height="xs"
 		/>
-		<TiptapFull
+		<Editor
 			{html}
+			preset="full"
 			id="an-elaborate-argument"
 			tags={['draw', 'conclusion']}
 			height="md"

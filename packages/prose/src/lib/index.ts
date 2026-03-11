@@ -8,12 +8,10 @@ export type * from '$types'
  * TipTap components
  * see: https://tiptap.dev/docs/examples/basics/default-text-editor
  */
-import TiptapBasic from '$lib/editor/basic/Tiptap.svelte'
-import TiptapFull from '$lib/editor/full/Tiptap.svelte'
+import Editor from '$lib/editor/Editor.svelte'
 
 const editor = {
-	TiptapBasic,
-	TiptapFull,
+	Editor,
 }
 
 export default {editor} as FatFuzzyProse
