@@ -12,12 +12,14 @@
 	let {
 		editor,
 		commands,
+		preset,
 		size = 'xs',
 		color,
 		variant,
 	}: {
 		editor: Editor
 		commands: {[key: string]: boolean}
+		preset?: string
 		size?: UiSize
 		color: UiColor
 		variant?: UiVariant
@@ -39,7 +41,9 @@
 		<FlowControl {editor} {commands} {size} {color} {variant} />
 	</div>
 
-	<div class="w:full l:flex justify:end">
-		<Unformat {editor} {commands} {size} {color} {variant} />
-	</div>
+	{#if preset === 'full'}
+		<div class="w:full l:flex justify:end">
+			<Unformat {editor} {commands} {size} {color} {variant} />
+		</div>
+	{/if}
 </menu>
