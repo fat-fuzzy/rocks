@@ -3,6 +3,8 @@
 	import type {UiColor, UiSize, UiVariant} from '@fat-fuzzy/ui'
 
 	import '$lib/styles/css/editor.css'
+	import DOMPurify from 'dompurify'
+	import {browser} from '$app/environment'
 	import {onMount, onDestroy} from 'svelte'
 	import {Editor} from '@tiptap/core'
 	import settings from '$lib/editor/editor-settings'
@@ -31,6 +33,8 @@
 	} = $props()
 
 	let element: Element
+	let purify
+	let escaped = ''
 	// @ts-expect-error editor is not defined at this point but will be on mount
 	let editor: Editor = $state()
 	let heighClass = $derived(height ? `h:${height}` : '')
@@ -86,10 +90,15 @@
 	}
 
 	onMount(() => {
+		if (browser) {
+			purify = DOMPurify(window)
+			escaped = purify.sanitize(html)
+		}
+
 		editor = new Editor({
 			element: element,
 			extensions: settings.extensions,
-			content: html,
+			content: escaped,
 			onTransaction: () => {
 				// force re-render so `editor.isActive` works as expected
 				setActiveElement()
