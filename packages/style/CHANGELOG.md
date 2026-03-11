@@ -1,5 +1,11 @@
 # @fat-fuzzy/style
 
+## 0.1.25
+
+### Patch Changes
+
+- 888dce0: Improve editor menus and text style utilities
+
 ## 0.1.24
 
 ### Patch Changes

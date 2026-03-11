@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type {UiColor, UiSize, UiVariant} from '@fat-fuzzy/ui'
 
+	import '$lib/styles/css/editor.css'
 	import {onMount, onDestroy} from 'svelte'
 	import {Editor} from '@tiptap/core'
 	import settings from '$lib/editor/editor-settings'
@@ -26,6 +27,7 @@
 	let heighClass = $derived(height ? `h:${height}` : '')
 	let commands = $state({
 		bold: false,
+		semibold: false,
 		italic: false,
 		strike: false,
 		marks: false,
@@ -49,6 +51,7 @@
 
 	function setActiveElement() {
 		commands.bold = editor.isActive('bold')
+		commands.semibold = editor.isActive('semibold')
 		commands.italic = editor.isActive('italic')
 		commands.strike = editor.isActive('strike')
 		commands.marks = editor.isActive('marks')
@@ -103,24 +106,3 @@
 		<div class="content scroll:y" bind:this={element}></div>
 	</div>
 </div>
-
-<style nonce="%sveltekit.nonce%">
-	.l\:frame\:prose {
-		aspect-ratio: 15 / 8;
-	}
-
-	.l\:frame\:prose.h\:xs {
-		aspect-ratio: 15 / 3;
-	}
-
-	.l\:frame\:prose.h\:sm {
-		aspect-ratio: 15 / 5;
-	}
-
-	.l\:frame\:prose.h\:md {
-		aspect-ratio: 15 / 8;
-	}
-	.l\:frame\:prose.h\:lg {
-		aspect-ratio: 15 / 10;
-	}
-</style>

@@ -1,79 +1,147 @@
+import {Mark, mergeAttributes} from '@tiptap/core'
 import StarterKit from '@tiptap/starter-kit'
 import {TextStyleKit} from '@tiptap/extension-text-style'
 import Link from '@tiptap/extension-link'
+import Bold from '@tiptap/extension-bold'
 
-const extensions = [
-	StarterKit,
-	TextStyleKit,
-	Link.extend({name: 'customLink'}).configure({
-		openOnClick: false,
-		autolink: true,
-		defaultProtocol: 'https',
-		protocols: ['http', 'https'],
-		isAllowedUri: (url, ctx) => {
-			try {
-				// construct URL
-				const parsedUrl = url.includes(':')
-					? new URL(url)
-					: new URL(`${ctx.defaultProtocol}://${url}`)
+declare module '@tiptap/core' {
+	interface Commands<ReturnType> {
+		semibold: {
+			toggleSemiBold: () => ReturnType
+		}
+	}
+}
 
-				// use default validation
-				if (!ctx.defaultValidate(parsedUrl.href)) {
-					return false
-				}
+const SemiBold = Mark.create({
+	name: 'semibold',
+	addOptions() {
+		return {class: 'font:semibold'}
+	},
 
-				// disallowed protocols
-				const disallowedProtocols = ['ftp', 'file', 'mailto']
-				const protocol = parsedUrl.protocol.replace(':', '')
+	addAttributes() {
+		return {
+			class: {
+				default: null,
+				parseHTML: (element) =>
+					element.className.includes(this.options.class)
+						? this.options.class
+						: null,
+				renderHTML: (attributes) => ({
+					class: attributes.class ?? this.options.class,
+				}),
+			},
+		}
+	},
 
-				if (disallowedProtocols.includes(protocol)) {
-					return false
-				}
+	parseHTML() {
+		return [
+			{
+				tag: `[class*="${this.options.class}"]`,
+			},
+		]
+	},
 
-				// only allow protocols specified in ctx.protocols
-				const allowedProtocols = ctx.protocols.map((p) =>
-					typeof p === 'string' ? p : p.scheme,
-				)
+	renderHTML({HTMLAttributes}) {
+		return ['span', mergeAttributes(HTMLAttributes), 0]
+	},
 
-				if (!allowedProtocols.includes(protocol)) {
-					return false
-				}
+	addCommands() {
+		return {
+			toggleSemiBold:
+				() =>
+				({commands}) => {
+					// Remove bold before toggling semibold
+					commands.unsetMark('bold')
+					return commands.toggleMark(this.name)
+				},
+		}
+	},
+})
 
-				// disallowed domains
-				const disallowedDomains = ['example-phishing.com', 'malicious-site.net']
-				const domain = parsedUrl.hostname
+const CustomBold = Bold.extend({
+	addCommands() {
+		return {
+			toggleBold:
+				() =>
+				({commands}) => {
+					// Remove semibold before toggling bold
+					commands.unsetMark('semibold')
+					return commands.toggleMark(this.name)
+				},
+		}
+	},
+})
 
-				if (disallowedDomains.includes(domain)) {
-					return false
-				}
+const CustomLink = Link.extend({name: 'customLink'}).configure({
+	openOnClick: false,
+	autolink: true,
+	defaultProtocol: 'https',
+	protocols: ['http', 'https'],
+	isAllowedUri: (url, ctx) => {
+		try {
+			// construct URL
+			const parsedUrl = url.includes(':')
+				? new URL(url)
+				: new URL(`${ctx.defaultProtocol}://${url}`)
 
-				// all checks have passed
-				return true
-			} catch {
+			// use default validation
+			if (!ctx.defaultValidate(parsedUrl.href)) {
 				return false
 			}
-		},
-		shouldAutoLink: (url) => {
-			try {
-				// construct URL
-				const parsedUrl = url.includes(':')
-					? new URL(url)
-					: new URL(`https://${url}`)
 
-				// only auto-link if the domain is not in the disallowed list
-				const disallowedDomains = [
-					'example-no-autolink.com',
-					'another-no-autolink.com',
-				]
-				const domain = parsedUrl.hostname
+			// disallowed protocols
+			const disallowedProtocols = ['ftp', 'file', 'mailto']
+			const protocol = parsedUrl.protocol.replace(':', '')
 
-				return !disallowedDomains.includes(domain)
-			} catch {
+			if (disallowedProtocols.includes(protocol)) {
 				return false
 			}
-		},
-	}),
-]
+
+			// only allow protocols specified in ctx.protocols
+			const allowedProtocols = ctx.protocols.map((p) =>
+				typeof p === 'string' ? p : p.scheme,
+			)
+
+			if (!allowedProtocols.includes(protocol)) {
+				return false
+			}
+
+			// disallowed domains: this is your own text, maybe whitelist instead ?
+			const disallowedDomains: string[] = []
+			const domain = parsedUrl.hostname
+
+			if (disallowedDomains.includes(domain)) {
+				return false
+			}
+
+			// all checks have passed
+			return true
+		} catch {
+			return false
+		}
+	},
+	shouldAutoLink: (url) => {
+		try {
+			// construct URL
+			const parsedUrl = url.includes(':')
+				? new URL(url)
+				: new URL(`https://${url}`)
+
+			// only auto-link if the domain is not in the disallowed list
+			const disallowedDomains = [
+				'example-no-autolink.com',
+				'another-no-autolink.com',
+			]
+			const domain = parsedUrl.hostname
+
+			return !disallowedDomains.includes(domain)
+		} catch {
+			return false
+		}
+	},
+})
+
+const extensions = [StarterKit, TextStyleKit, SemiBold, CustomBold, CustomLink]
 
 export default {
 	extensions,

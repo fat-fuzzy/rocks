@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type {UiColor, UiSize, UiVariant} from '@fat-fuzzy/ui'
 
+	import '$lib/styles/css/editor.css'
 	import {onMount, onDestroy} from 'svelte'
 	import {Editor} from '@tiptap/core'
 	import settings from '$lib/editor/editor-settings'
@@ -26,6 +27,7 @@
 	let heighClass = $derived(height ? `h:${height}` : '')
 	let commands = $state({
 		bold: false,
+		semibold: false,
 		italic: false,
 		h1: false,
 		h2: false,
@@ -43,6 +45,7 @@
 
 	function setActiveElement() {
 		commands.bold = editor.isActive('bold')
+		commands.semibold = editor.isActive('semibold')
 		commands.italic = editor.isActive('italic')
 		commands.h1 = editor.isActive('heading', {level: 1})
 		commands.h2 = editor.isActive('heading', {level: 2})
