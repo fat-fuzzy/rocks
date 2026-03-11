@@ -21,12 +21,13 @@
 		element?: string
 	} = $props()
 	let purify
-	let escaped = $state(html)
-	let containerTag = $state(element || 'div')
-	let textClass = $state(size ? `l:${layout}:${size}` : `l:${layout}`)
-	let fontClass = $state(font ? `font:${font}` : '')
-	let marginClass = $state(margin ? `maki:${margin}` : '')
-	let containerClasses = $state(`${textClass} ${marginClass} ${fontClass}`)
+	let escaped = $derived(html)
+	let containerTag = $derived(element || 'div')
+	let textClass = $derived(size ? `l:${layout}:${size}` : `l:${layout}`)
+	let fontClass = $derived(font ? `font:${font}` : '')
+	let marginClass = $derived(margin ? `maki:${margin}` : '')
+	let containerClasses = $derived(`${textClass} ${marginClass} ${fontClass}`)
+
 	onMount(() => {
 		if (browser) {
 			purify = DOMPurify(window)
