@@ -1,4 +1,5 @@
 <script lang="ts">
+	import type {JSONContent} from '@tiptap/core'
 	import type {UiColor, UiSize, UiVariant} from '@fat-fuzzy/ui'
 
 	import '$lib/styles/css/editor.css'
@@ -15,6 +16,8 @@
 		color = 'primary',
 		variant = 'outline',
 		height = 'sm',
+		onupdate,
+		onblur,
 	}: {
 		html: string
 		id?: string
@@ -23,6 +26,8 @@
 		color?: UiColor
 		variant?: UiVariant
 		height?: UiSize
+		onupdate?: (content: JSONContent) => void
+		onblur?: (content: JSONContent) => void
 	} = $props()
 
 	let element: Element
@@ -90,6 +95,12 @@
 				setActiveElement()
 				setDisabledElement()
 			},
+			onUpdate: onupdate
+				? ({editor}: {editor: Editor}) => onupdate(editor.getJSON())
+				: undefined,
+			onBlur: onblur
+				? ({editor}: {editor: Editor}) => onblur(editor.getJSON())
+				: undefined,
 		})
 	})
 
