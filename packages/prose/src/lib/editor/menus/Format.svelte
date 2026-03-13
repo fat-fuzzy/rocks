@@ -38,7 +38,7 @@
 		class={`toggle color:${color} variant:${variant} size:${size}`}
 	>
 		<span class="sr-only">Numbered List</span>
-		<span aria-hidden={true} class="line:nil l:stack justify:between">
+		<span aria-hidden={true} class="line:tiny l:stack justify:between">
 			<span><span class="font:tiny">1</span> —</span>
 			<span><span class="font:tiny">2</span> —</span>
 			<span><span class="font:tiny">3</span> —</span>
@@ -65,15 +65,11 @@
 <style>
 	/* TODO: use svg icons instead */
 	.line\:tiny {
-		line-height: 0.435;
-	}
-
-	.line\:nil {
-		line-height: 0.435;
+		line-height: 0.442;
 	}
 
 	.font\:tiny {
-		font-size: 0.35rem;
+		font-size: 0.28rem;
 		line-height: 0;
 	}
 </style>
