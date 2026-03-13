@@ -129,7 +129,7 @@
 	{#if editor}
 		<EditorMenu {editor} {commands} {color} {variant} {preset} />
 	{/if}
-	<div class={`l:frame:prose ${heighClass} variant:bare dotted`}>
+	<div class={`prose-editor ${heighClass} variant:bare dotted`}>
 		<div class="content scroll:y" bind:this={element}></div>
 	</div>
 </ff-prose>
