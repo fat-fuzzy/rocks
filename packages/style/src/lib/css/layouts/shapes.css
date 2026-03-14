@@ -48,7 +48,10 @@ button[class*='shape:'] {
 	inline-size: auto;
 }
 
-button.shape\:pill {
+button.shape\:pill,
+button.shape\:soft,
+button.shape\:mellow,
+button.shape\:none {
 	inline-size: 100%;
 	min-inline-size: 6ch; /* TODO: fix magic number */
 }
