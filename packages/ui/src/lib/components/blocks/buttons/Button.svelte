@@ -41,7 +41,7 @@
 			asset,
 			assetType,
 			variant,
-			layout: shape && shape !== 'pill' ? undefined : 'switcher',
+			layout: shape ? 'flex' : 'switcher',
 			dimensions,
 		}),
 	)
@@ -70,7 +70,7 @@
 	onclick={handleClick}
 	data-testid={id}
 	{popovertarget}
-	aria-label={isIconButton ? label : name}
+	aria-label={isIconButton ? (label ?? name) : undefined}
 >
 	{#if children}
 		{@render children()}

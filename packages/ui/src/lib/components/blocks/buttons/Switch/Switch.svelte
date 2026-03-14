@@ -40,9 +40,11 @@
 	})
 
 	let currentAsset = $derived(actor.currentState.asset || asset)
-
 	let isIconButton = $derived(
 		(shape === 'round' || shape === 'square') && currentAsset,
+	)
+	let ariaLabel = $derived(
+		isIconButton ? (actor.currentState.label ?? label ?? name) : undefined,
 	)
 
 	let buttonClasses = $derived(
@@ -56,7 +58,7 @@
 			asset,
 			assetType,
 			variant,
-			layout: shape && shape !== 'pill' ? layout : 'switcher',
+			layout: shape ? 'flex' : 'switcher',
 			dimensions,
 		}),
 	)
@@ -91,7 +93,7 @@
 	value={actor.value}
 	class={buttonClasses}
 	data-key={name}
-	aria-label={isIconButton ? (actor.currentState.label ?? label) : name}
+	aria-label={ariaLabel}
 	aria-pressed={actor.pressed}
 	onclick={handleClick}
 	data-testid={id}
@@ -99,6 +101,6 @@
 	{#if children}
 		{@render children()}
 	{:else if !isIconButton}
-		<span aria-hidden={true}>{actor.currentState.label ?? label}</span>
+		<span>{actor.currentState.label ?? label}</span>
 	{/if}
 </button>
