@@ -1,4 +1,4 @@
-import type {FuzzyPayload} from '$types'
+import type {FuzzyPayload, UiState} from '$types'
 import {describe, it, expect} from 'vitest'
 import ExpandActor from '$lib/components/blocks/buttons/Expand/actor.svelte'
 import {
@@ -8,7 +8,7 @@ import {
 import {PROPS_BLOCK} from '$tests/fixtures/style-props'
 
 const defaultCollapsedConfig = {
-	initial: 'collapsed',
+	initial: 'collapsed' as UiState,
 	onclick: (payload: FuzzyPayload) => {
 		console.log(JSON.stringify(payload))
 	},
@@ -16,7 +16,7 @@ const defaultCollapsedConfig = {
 }
 
 const defaultExpandedConfig = {
-	initial: 'expanded',
+	initial: 'expanded' as UiState,
 	onclick: (payload: FuzzyPayload) => {
 		console.log(JSON.stringify(payload))
 	},

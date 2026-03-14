@@ -193,8 +193,10 @@ const POPOVER_PROPS = [
 			id: 'test-popover-1',
 			role: 'dialog',
 			title: 'Test Popover 1',
+			label: 'Test Popover 1',
 			fixed: 'true',
-			place: 'bottom',
+			place: 'bottom-right',
+			position: 'top',
 			asset: 'cookie',
 			layer: '1',
 			invoke: 'auto' as AriaInvoke, // will light dismiss
@@ -209,7 +211,9 @@ const POPOVER_PROPS = [
 			id: 'test-popover-2',
 			role: 'dialog',
 			title: 'Test Popover 2',
-			place: 'top',
+			label: 'Test Popover 2',
+			place: 'top-left',
+			position: 'bottom',
 			asset: 'cookie',
 			invoke: 'manual' as AriaInvoke, // won't light dismiss
 		},
