@@ -20,7 +20,9 @@ export class PopoverActor {
 		if (popoverExists) {
 			return
 		}
-
+		if (popover.state === 'expanded') {
+			popover.element.showPopover()
+		}
 		this.popovers.push(popover)
 	}
 
