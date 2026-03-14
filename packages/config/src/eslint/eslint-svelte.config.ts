@@ -8,7 +8,7 @@ export const svelteConfigOverrides = [
 	// svelte.configs.prettier is often included in svelte.configs.recommended or handled by top-level prettier
 	...svelte.configs.recommended, // Svelte specific rules and parser setup
 	{
-		files: ['**/*.svelte', '**/*.svx'], // Ensure this targets only .svelte files if TS/JS files are handled by baseConfig
+		files: ['**/*.svelte', '**/*.svelte.ts', '**/*.svx'], // Ensure this targets only .svelte files if TS/JS files are handled by baseConfig
 		languageOptions: {
 			parserOptions: {
 				projectService: true, // For type-aware linting in <script lang="ts">
