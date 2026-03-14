@@ -1,12 +1,12 @@
 <script lang="ts">
 	import {onMount} from 'svelte'
-	import type {ButtonEvent, FuzzyPayload, SwitchProps} from '$types'
+	import type {FuzzyPayload, SwitchProps} from '$types'
 	import Actor from './actor.svelte.js'
 
 	let {
 		id = 'switch',
 		name = 'switch',
-		title,
+		label,
 		initial = 'inactive',
 		disabled,
 		formaction,
@@ -14,6 +14,7 @@
 		align,
 		justify = 'center',
 		asset,
+		assetType,
 		color,
 		size,
 		font,
@@ -30,13 +31,19 @@
 	const actor = new Actor()
 
 	let payload = $derived({
-		id: name, // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value. TODO : clean this
+		id,
 		name,
 		value: actor.value,
 		state: actor.state,
 		pressed: actor.pressed,
 		action: actor.update.bind(actor),
 	})
+
+	let currentAsset = $derived(actor.currentState.asset || asset)
+
+	let isIconButton = $derived(
+		(shape === 'round' || shape === 'square') && currentAsset,
+	)
 
 	let buttonClasses = $derived(
 		actor.getStyles({
@@ -47,6 +54,7 @@
 			align,
 			justify,
 			asset,
+			assetType,
 			variant,
 			layout: shape && shape !== 'pill' ? layout : 'switcher',
 			dimensions,
@@ -67,6 +75,7 @@
 			initial,
 			onclick,
 			machine: states,
+			label,
 		})
 
 		if (init) init(payload as FuzzyPayload)
@@ -77,22 +86,19 @@
 	{id}
 	{type}
 	{name}
-	{title}
 	{disabled}
 	{formaction}
 	value={actor.value}
 	class={buttonClasses}
 	data-key={name}
+	aria-label={isIconButton ? (actor.currentState.label ?? label) : name}
 	aria-pressed={actor.pressed}
 	onclick={handleClick}
 	data-testid={id}
 >
 	{#if children}
 		{@render children()}
-	{:else if shape}
-		<span class="sr-only">{title}</span>
-	{:else}
-		<span class="sr-only">{title}</span>
-		<span class="viz-only">{actor.label}</span>
+	{:else if !isIconButton}
+		<span aria-hidden={true}>{actor.currentState.label ?? label}</span>
 	{/if}
 </button>

@@ -10,7 +10,6 @@
 	let {
 		id = 'toggle-menu',
 		title,
-
 		asset,
 		assetType,
 		color,

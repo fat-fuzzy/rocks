@@ -36,8 +36,7 @@
 			const state = i.value === currentValue ? 'active' : 'inactive'
 			return {
 				...i,
-				label: i.label ?? i.asset ?? i.text ?? i.id,
-				text: i.text ?? '',
+				label: i.label ?? i.asset ?? i.name ?? i.id,
 				asset: i.asset ?? '',
 				initial: state,
 				name: i.id,
@@ -90,6 +89,7 @@
 				{
 					id,
 					name: name.toLowerCase(),
+					label: name.toLowerCase(),
 					value: target.value,
 				},
 			],
@@ -115,6 +115,7 @@
 				return {
 					id,
 					name: item.name.toLowerCase(),
+					label: item.name.toLowerCase(),
 					value: String(item.value),
 				}
 			})

@@ -54,10 +54,10 @@
 		<li aria-current={path === '/' ? 'page' : undefined}>
 			<a data-sveltekit-preload-data href="/">Home</a>
 		</li>
-		{#each links as { slug, title }}
+		{#each links as { slug, label }, i (i)}
 			<li aria-current={path?.startsWith(`/${slug}`) ? 'page' : undefined}>
 				<a data-sveltekit-preload-data href={`/${slug}`}>
-					{title}
+					{label}
 				</a>
 			</li>
 		{/each}

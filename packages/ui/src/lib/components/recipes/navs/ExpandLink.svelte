@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {ExpandLinkProps, FuzzyPayload} from '$types'
+	import type {ExpandLinkProps, FuzzyPayload, UiState} from '$types'
 	// import {enhance} from '$app/forms'
 	import Expand from '$lib/components/blocks/buttons/Expand/Expand.svelte'
 	import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/definitions.js'
@@ -14,7 +14,7 @@
 		size,
 		variant = 'bare',
 		shape = 'square',
-		title,
+		label,
 		asset,
 		children,
 		reveal,
@@ -25,24 +25,32 @@
 		onclick,
 	}: ExpandLinkProps = $props()
 
-	let value = $state(
+	let value = $derived(
 		reveal ? {[slug]: {reveal}} : {[slug]: DEFAULT_REVEAL_STATE},
 	)
 
-	let defaultAssetDown = assetType === 'svg' ? 'chevron-down' : 'point-down'
-	let defaultAssetLeft = assetType === 'svg' ? 'chevron-left' : 'point-left'
-	let defaultAssetRight = assetType === 'svg' ? 'chevron-right' : 'point-right'
+	let defaultAssetDown = $derived(
+		assetType === 'svg' ? 'chevron-down' : 'point-down',
+	)
+	let defaultAssetLeft = $derived(
+		assetType === 'svg' ? 'chevron-left' : 'point-left',
+	)
+	let defaultAssetRight = $derived(
+		assetType === 'svg' ? 'chevron-right' : 'point-right',
+	)
 
-	let states = {
+	let states = $derived({
 		expanded: {
 			...EXPAND_MACHINE.expanded,
 			asset: asset ? asset : defaultAssetDown,
+			label: `Hide ${label}`,
 		},
 		collapsed: {
 			...EXPAND_MACHINE.collapsed,
 			asset: asset ? asset : depth > 1 ? defaultAssetRight : defaultAssetLeft,
+			label: `Show ${label}`,
 		},
-	}
+	})
 
 	let revealClasses = $derived(value[slug].reveal ?? 'collapsed')
 	let layoutClasses = $derived(`l:reveal top ${revealClasses}`)
@@ -67,12 +75,12 @@
 		id={`button-reveal-${slug}`}
 		name={`button-reveal-${slug}`}
 		{variant}
-		{title}
+		{label}
 		{size}
 		{color}
 		{shape}
 		{assetType}
-		initial={TRANSITION_REVEAL[String(value[slug].reveal)]}
+		initial={TRANSITION_REVEAL[String(value[slug].reveal)] as UiState}
 		controls={`links-${slug}`}
 		{states}
 		onclick={toggleReveal}
@@ -86,7 +94,7 @@
 			{@render expander()}
 		{/if}
 		<a data-sveltekit-preload-data {href} class="font:md">
-			{title}
+			{label}
 		</a>
 		{#if depth === 1}
 			{@render expander()}

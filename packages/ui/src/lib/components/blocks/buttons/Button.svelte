@@ -5,7 +5,7 @@
 	let {
 		id = 'button',
 		name = 'button',
-		title,
+		ref,
 		label,
 		value,
 		disabled,
@@ -13,6 +13,7 @@
 		align,
 		justify = 'center',
 		asset, // the `value` in emoji:value or svg:value
+		assetType,
 		color,
 		size,
 		font,
@@ -38,6 +39,7 @@
 			align,
 			justify,
 			asset,
+			assetType,
 			variant,
 			layout: shape && shape !== 'pill' ? undefined : 'switcher',
 			dimensions,
@@ -45,17 +47,21 @@
 	)
 
 	let payload = $derived({
-		id: name, // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value
+		id,
 		name,
 		value,
 	})
+
+	let isIconButton = $derived(
+		(shape === 'round' || shape === 'square') && asset,
+	)
 </script>
 
 <button
+	bind:this={ref}
 	{id}
 	{type}
 	{name}
-	{title}
 	{disabled}
 	{formaction}
 	{value}
@@ -64,12 +70,11 @@
 	onclick={handleClick}
 	data-testid={id}
 	{popovertarget}
+	aria-label={isIconButton ? label : name}
 >
 	{#if children}
 		{@render children()}
-	{:else if shape}
-		<span class="sr-only">{title}</span>
-	{:else}
-		{label ?? title}
+	{:else if !isIconButton}
+		{label}
 	{/if}
 </button>

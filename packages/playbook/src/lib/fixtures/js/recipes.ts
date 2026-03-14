@@ -1,7 +1,7 @@
 import ui from '@fat-fuzzy/ui'
 const {APP_SETTINGS} = ui.constants
 
-export const links = [{id: 'link-list.doc', slug: 'doc', title: 'Doc'}]
+export const links = [{id: 'link-list.doc', slug: 'doc', label: 'Doc'}]
 
 export default {
 	ButtonMenu: {
@@ -41,8 +41,8 @@ export default {
 	Nav: {
 		title: 'Nav',
 		items: [
-			{id: 'link-list.home', slug: '', title: 'Home'},
-			{id: 'link-list.doc', slug: 'doc', title: 'Doc'},
+			{id: 'link-list.home', slug: '', label: 'Home'},
+			{id: 'link-list.doc', slug: 'doc', label: 'Doc'},
 		],
 	},
 	DetailsNav: {
@@ -55,18 +55,18 @@ export default {
 		items: [
 			{
 				slug: 'recipes',
-				title: 'Recipes',
+				label: 'Recipes',
 				items: [
-					{slug: 'nav', title: 'Nav'},
-					{slug: 'reveal-nav', title: 'RevealNav'},
+					{slug: 'nav', label: 'Nav'},
+					{slug: 'reveal-nav', label: 'RevealNav'},
 				],
 			},
 			{
 				slug: 'layouts',
-				title: 'Layouts',
+				label: 'Layouts',
 				items: [
-					{slug: 'burrito', title: 'Burrito'},
-					{slug: 'stack', title: 'Stack'},
+					{slug: 'burrito', label: 'Burrito'},
+					{slug: 'stack', label: 'Stack'},
 				],
 			},
 		],

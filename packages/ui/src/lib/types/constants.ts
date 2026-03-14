@@ -125,14 +125,14 @@ const DEFAULT_STYLES /*: StyleTree */ = {
 	},
 }
 
-const APP_LINKS: NavItem[] = [{slug: 'about', title: 'About'}]
+const APP_LINKS: NavItem[] = [{slug: 'about', label: 'About'}]
 
 const APP_SETTINGS: AppContextItems = {
 	display: [
 		{
 			id: 'brightness',
 			name: 'brightness',
-			title: 'Brightness',
+			label: 'Brightness',
 			variant: 'outline',
 			shape: 'round',
 			color: 'primary',
@@ -140,11 +140,13 @@ const APP_SETTINGS: AppContextItems = {
 			states: {
 				active: {
 					...SWITCH_MACHINE.active,
+					label: 'Night',
 					value: 'night',
 					asset: 'night',
 				},
 				inactive: {
 					...SWITCH_MACHINE.inactive,
+					label: 'Day',
 					value: 'day',
 					asset: 'day',
 				},
@@ -153,7 +155,7 @@ const APP_SETTINGS: AppContextItems = {
 		{
 			id: 'contrast',
 			name: 'contrast',
-			title: 'Contrast',
+			label: 'Contrast',
 			variant: 'outline',
 			shape: 'round',
 			color: 'primary',
@@ -161,11 +163,13 @@ const APP_SETTINGS: AppContextItems = {
 			states: {
 				active: {
 					...SWITCH_MACHINE.active,
+					label: 'Contrast',
 					value: 'contrast',
 					asset: 'contrast',
 				},
 				inactive: {
 					...SWITCH_MACHINE.inactive,
+					label: 'Blend',
 					value: 'blend',
 					asset: 'blend',
 				},

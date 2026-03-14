@@ -27,13 +27,20 @@ class SwitchActor implements FuzzyActor {
 		initial,
 		onclick,
 		machine,
+		label,
 	}: {
 		initial?: string
 		onclick?: (payload: FuzzyPayload) => void
 		machine?: SwitchMachine
+		label?: string
 	}) {
 		if (initial) this.state = initial as UiStateSwitch
-		if (machine) this.machine = machine
+		if (machine) {
+			this.machine = machine
+		} else if (label) {
+			this.machine.active.label = label
+			this.machine.inactive.label = label
+		}
 		if (onclick) {
 			this.machine.active.action = onclick
 			this.machine.inactive.action = onclick

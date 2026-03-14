@@ -20,9 +20,7 @@ function getCategoryMarkdowns(category: string, markdowns: Markdowns) {
 }
 
 function getElementMeta(name: string, markdowns: Markdown[]) {
-	const markdown = markdowns.find(({meta}) => {
-		meta.title === name
-	})
+	const markdown = markdowns.find(({meta}) => meta.title === name)
 	const meta = markdown
 		? markdown.meta
 		: {...DEFAULT_META, title: name, slug: name.toLowerCase()}
@@ -30,7 +28,9 @@ function getElementMeta(name: string, markdowns: Markdown[]) {
 }
 
 function getElementStyleProps(props_style: StyleProps | undefined) {
+	// eslint-disable-next-line
 	const props: any = {
+		// TODO: fix type
 		style: {},
 	}
 
@@ -49,7 +49,8 @@ function getElementStyleProps(props_style: StyleProps | undefined) {
 }
 
 function getElementDoc(props_style: StyleProps | undefined) {
-	const props: any = []
+	// eslint-disable-next-line
+	const props: any = [] // TODO: fix type
 	let currentCategory: string[] = []
 
 	if (props_style) {

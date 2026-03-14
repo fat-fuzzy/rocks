@@ -147,7 +147,7 @@
 			<Button
 				id="update-geometry"
 				name="update-geometry"
-				title="Update geometry"
+				label="Update geometry"
 				size="xl"
 				color="highlight"
 				variant="outline"

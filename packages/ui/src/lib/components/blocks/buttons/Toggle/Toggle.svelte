@@ -7,7 +7,6 @@
 		id = 'toggle',
 		name = 'toggle',
 		label,
-		title,
 		initial = 'inactive',
 		value,
 		states,
@@ -34,13 +33,19 @@
 	let actor = new Actor()
 
 	let payload = $derived({
-		id: name, // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value
+		id,
 		name,
 		value,
 		group,
 		state: actor.state,
 		action: actor.update.bind(actor),
 	})
+
+	let currentAsset = $derived(actor.currentState.asset || asset)
+
+	let isIconButton = $derived(
+		(shape === 'round' || shape === 'square') && currentAsset,
+	)
 
 	let buttonClasses = $derived(
 		actor.getStyles({
@@ -59,7 +64,7 @@
 		}),
 	)
 
-	function handleClick(event: MouseEvent) {
+	function handleClick() {
 		if (actor.currentState.event) {
 			actor.update(actor.currentState.event)
 		}
@@ -71,6 +76,7 @@
 			initial,
 			onclick,
 			machine: states,
+			label,
 		})
 
 		if (init) init(payload as FuzzyPayload)
@@ -81,21 +87,19 @@
 	{id}
 	{type}
 	{name}
-	{title}
 	{disabled}
 	{formaction}
 	{value}
 	class={buttonClasses}
 	data-key={name}
+	aria-label={isIconButton ? (actor.currentState.label ?? label) : name}
 	aria-pressed={actor.pressed}
 	onclick={handleClick}
 	data-testid={id}
 >
 	{#if children}
 		{@render children()}
-	{:else if shape}
-		<span class="sr-only">{title}</span>
-	{:else}
-		{label ?? title}
+	{:else if !isIconButton}
+		<span aria-hidden={true}>{actor.currentState.label ?? label}</span>
 	{/if}
 </button>
