@@ -23,7 +23,6 @@ rf-popover,
 
 /* The [popover] element, in its open state */
 :popover-open {
-	position: fixed;
 	display: block;
 	inset: unset;
 	inline-size: fit-content;

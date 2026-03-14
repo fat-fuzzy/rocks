@@ -105,15 +105,14 @@
 			<Button
 				id="update-geometry"
 				name="update-geometry"
+				label="Update geometry"
 				size="xl"
 				color="highlight"
 				variant="outline"
 				shape="round"
 				asset="nojs"
 				{disabled}
-			>
-				Update geometry
-			</Button>
+			/>
 		</div>
 	{:then}
 		{#if children}

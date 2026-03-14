@@ -8,6 +8,7 @@ const TOGGLE_PROPS = [
 		props: {
 			id: 'toggle-1',
 			name: 'toggle-1',
+			label: 'Toggle 1',
 			initial: 'inactive',
 			states: TOGGLE_MACHINE,
 			action: () => {},
@@ -17,6 +18,7 @@ const TOGGLE_PROPS = [
 			selected: {
 				id: 'toggle-1',
 				name: 'toggle-1',
+				label: 'Toggle 1',
 				state: 'active',
 				action: () => {},
 			},
@@ -26,6 +28,7 @@ const TOGGLE_PROPS = [
 		props: {
 			id: 'toggle-2',
 			name: 'toggle-2',
+			label: 'Toggle 2',
 			initial: 'active',
 			states: TOGGLE_MACHINE,
 			action: () => {},
@@ -34,6 +37,7 @@ const TOGGLE_PROPS = [
 			selected: {
 				id: 'toggle-2',
 				name: 'toggle-2',
+				label: 'Toggle 2',
 				state: 'active',
 			},
 		},
@@ -42,6 +46,7 @@ const TOGGLE_PROPS = [
 		props: {
 			id: 'toggle-3',
 			name: 'toggle-3',
+			label: 'Toggle 3',
 			initial: 'inactive',
 			states: TOGGLE_MACHINE,
 		},
@@ -53,6 +58,7 @@ const TOGGLE_GROUP_PROPS = [
 		props: {
 			id: 'toggle-1',
 			name: 'toggle-1',
+			label: 'Toggle 1',
 			group: 'group-1',
 			state: 'inactive',
 			states: TOGGLE_MACHINE,
@@ -63,9 +69,8 @@ const TOGGLE_GROUP_PROPS = [
 			state: {
 				group: 'group-1',
 				id: 'toggle-1',
-				label: undefined,
+				label: 'Toggle 1',
 				name: 'toggle-1',
-				title: '',
 				value: 'toggle-1',
 			},
 		},
@@ -74,6 +79,7 @@ const TOGGLE_GROUP_PROPS = [
 		props: {
 			id: 'toggle-2',
 			name: 'toggle-2',
+			label: 'Toggle 2',
 			group: 'group-1',
 			state: 'active',
 			action: () => {},
@@ -83,9 +89,8 @@ const TOGGLE_GROUP_PROPS = [
 			state: {
 				group: 'group-1',
 				id: 'toggle-2',
-				label: undefined,
+				label: 'Toggle 2',
 				name: 'toggle-2',
-				title: '',
 				value: 'toggle-2',
 			},
 		},
@@ -94,6 +99,7 @@ const TOGGLE_GROUP_PROPS = [
 		props: {
 			id: 'toggle-3',
 			name: 'toggle-3',
+			label: 'Toggle 3',
 			group: 'group-1',
 			states: TOGGLE_MACHINE,
 			action: () => {},
@@ -104,6 +110,7 @@ const TOGGLE_GROUP_PROPS = [
 		props: {
 			id: 'toggle-4',
 			name: 'toggle-4',
+			label: 'Toggle 4',
 			initial: 'active',
 			action: () => {},
 			states: TOGGLE_MACHINE,
@@ -120,6 +127,7 @@ const TOGGLE_GROUP_PROPS = [
 		props: {
 			id: 'toggle-5',
 			name: 'toggle-5',
+			label: 'Toggle 5',
 			value: 'inactive',
 			states: TOGGLE_MACHINE,
 			action: () => {},
@@ -130,6 +138,7 @@ const TOGGLE_GROUP_PROPS = [
 		props: {
 			id: 'toggle-6',
 			name: 'toggle-6',
+			label: 'Toggle 6',
 			value: 'inactive',
 			action: () => {},
 			states: TOGGLE_MACHINE,
@@ -193,8 +202,10 @@ const POPOVER_PROPS = [
 			id: 'test-popover-1',
 			role: 'dialog',
 			title: 'Test Popover 1',
+			label: 'Test Popover 1',
 			fixed: 'true',
-			place: 'bottom',
+			place: 'bottom-right',
+			position: 'top',
 			asset: 'cookie',
 			layer: '1',
 			invoke: 'auto' as AriaInvoke, // will light dismiss
@@ -209,7 +220,9 @@ const POPOVER_PROPS = [
 			id: 'test-popover-2',
 			role: 'dialog',
 			title: 'Test Popover 2',
-			place: 'top',
+			label: 'Test Popover 2',
+			place: 'top-left',
+			position: 'bottom',
 			asset: 'cookie',
 			invoke: 'manual' as AriaInvoke, // won't light dismiss
 		},

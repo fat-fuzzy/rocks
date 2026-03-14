@@ -52,7 +52,6 @@ class ToggleSystem implements FuzzySystem<ToggleProps> {
 			label,
 			name: id,
 			group: groupLabel,
-			title: '',
 			value: id,
 		})
 

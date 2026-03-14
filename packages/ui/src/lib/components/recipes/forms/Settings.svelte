@@ -38,11 +38,11 @@
 	class={`menu:${name} ${formClasses}`}
 	onsubmit={() => onupdate}
 >
-	{#each items as { id, name, title, initial, variant, shape, color, size, value, states } (id)}
+	{#each items as { id, name, label, initial, variant, shape, color, size, value, states } (id)}
 		<Switch
 			id={`${settingsId}-${id}`}
 			{name}
-			{title}
+			{label}
 			{variant}
 			{shape}
 			{color}

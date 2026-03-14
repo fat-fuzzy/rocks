@@ -14,27 +14,29 @@ const rawNames = Object.keys(ui.raw).sort(sortAsc)
 const {DEFAULT_SIDEBAR_REVEAL_STATE} = ui.constants
 
 export const links = [
-	{slug: 'about', title: 'About', layout: 'sidebar'},
-	{slug: 'ui', title: 'UI', layout: 'sidebar'},
-	{slug: 'blog', title: 'Blog', layout: 'sidebar'},
-	{slug: 'play', title: 'Play', layout: 'sidebar'},
+	{slug: 'about', label: 'About', layout: 'sidebar'},
+	{slug: 'ui', label: 'UI', layout: 'sidebar'},
+	{slug: 'blog', label: 'Blog', layout: 'sidebar'},
+	{slug: 'play', label: 'Play', layout: 'sidebar'},
 ]
 
 export const linksSocials = [
 	{
 		id: 'link-github',
-		title: 'GitHub',
+		label: 'GitHub',
 		url: 'https://github.com/fat-fuzzy/rocks',
-		asset: 'svg:github',
+		asset: 'github',
+		assetType: 'svg',
 		shape: 'round',
 		size: 'sm',
 		color: 'primary',
 	},
 	{
 		id: 'link-rss',
-		title: 'RSS',
+		label: 'RSS',
 		url: 'https://rocks.pages.dev/blog/rss.xml',
-		asset: 'svg:rss',
+		asset: 'rss',
+		assetType: 'svg',
 		shape: 'square',
 		size: 'sm',
 		color: 'primary',
@@ -57,9 +59,10 @@ const navBase = {
 export const pages: {[key: string]: NavItem} = {
 	blog: {
 		slug: 'blog',
+		title: 'Blog',
 		label: 'Blog',
-		title: 'Posts',
 		asset: 'pencil',
+		assetType: 'emoji',
 		layout: 'metro',
 		items: [],
 	},
@@ -68,12 +71,15 @@ export const pages: {[key: string]: NavItem} = {
 		label: 'About',
 		title: 'Doc',
 		asset: 'doc',
+		assetType: 'emoji',
 		layout: 'voyager',
 		items: [
 			{
 				slug: 'usage',
 				title: 'Usage',
+				label: 'Usage',
 				asset: 'usage',
+				assetType: 'emoji',
 				formaction: 'toggleUsage',
 				actionPath: '/about/usage',
 				items: [],
@@ -81,7 +87,9 @@ export const pages: {[key: string]: NavItem} = {
 			{
 				slug: 'decisions',
 				title: 'Decisions',
+				label: 'Decisions',
 				asset: 'decisions',
+				assetType: 'emoji',
 				formaction: 'toggleDecisions',
 				actionPath: '/about/decisions',
 				items: [],
@@ -91,6 +99,7 @@ export const pages: {[key: string]: NavItem} = {
 				title: 'Speaking',
 				label: 'Speaking',
 				asset: 'speaking',
+				assetType: 'emoji',
 				layout: 'steam',
 				formaction: 'toggleSpeaking',
 				actionPath: '/about/speaking',
@@ -103,12 +112,15 @@ export const pages: {[key: string]: NavItem} = {
 		label: 'Play',
 		title: 'Sketches',
 		asset: 'rainbow',
+		assetType: 'emoji',
 		layout: 'metro',
 		items: [
 			{
 				slug: 'projects',
 				title: 'Projects',
+				label: 'Projects',
 				asset: 'projects',
+				assetType: 'emoji',
 				formaction: 'toggleProjects',
 				actionPath: '/play/projects',
 				items: [],
@@ -116,7 +128,9 @@ export const pages: {[key: string]: NavItem} = {
 			{
 				slug: 'learning',
 				title: 'Learning',
+				label: 'Learning',
 				asset: 'learning',
+				assetType: 'emoji',
 				formaction: 'toggleLearning',
 				actionPath: '/play/learning',
 				items: [],
@@ -127,13 +141,16 @@ export const pages: {[key: string]: NavItem} = {
 		slug: 'ui', // root path of the Playbook
 		title: 'UI Library',
 		asset: 'playbook',
+		assetType: 'emoji',
 		label: 'UI',
 		layout: 'voyager',
 		items: [
 			{
 				slug: 'tokens',
 				title: 'Tokens',
+				label: 'Tokens',
 				asset: 'tokens',
+				assetType: 'emoji',
 				layout: 'tram',
 				formaction: 'toggleTokens',
 				actionPath: '/ui/tokens',
@@ -142,7 +159,9 @@ export const pages: {[key: string]: NavItem} = {
 			{
 				slug: 'blocks',
 				title: 'Blocks',
+				label: 'Blocks',
 				asset: 'blocks',
+				assetType: 'emoji',
 				layout: 'tram',
 				formaction: 'toggleBlocks',
 				actionPath: '/ui/blocks',
@@ -151,7 +170,9 @@ export const pages: {[key: string]: NavItem} = {
 			{
 				slug: 'layouts',
 				title: 'Layouts',
+				label: 'Layouts',
 				asset: 'layouts',
+				assetType: 'emoji',
 				layout: 'tram',
 				formaction: 'toggleLayouts',
 				actionPath: '/ui/layouts',
@@ -160,7 +181,9 @@ export const pages: {[key: string]: NavItem} = {
 			{
 				slug: 'recipes',
 				title: 'Recipes',
+				label: 'Recipes',
 				asset: 'recipes',
+				assetType: 'emoji',
 				layout: 'tram',
 				formaction: 'toggleRecipes',
 				actionPath: '/ui/recipes',
@@ -169,7 +192,9 @@ export const pages: {[key: string]: NavItem} = {
 			{
 				slug: 'raw',
 				title: 'Raw',
+				label: 'Raw',
 				asset: 'raw',
+				assetType: 'emoji',
 				layout: 'tram',
 				formaction: 'toggleRaw',
 				actionPath: '/ui/raw',
@@ -182,6 +207,7 @@ export const pages: {[key: string]: NavItem} = {
 		label: 'Media',
 		title: 'Collections',
 		asset: 'pencil',
+		assetType: 'emoji',
 		layout: 'sidebar',
 		items: [],
 	},
@@ -198,26 +224,31 @@ export function buildNav(page: string) {
 				item.items = tokenNames.map((c) => ({
 					slug: c,
 					title: c,
+					label: c,
 				}))
 			} else if (item.slug === 'blocks') {
 				item.items = blockNames.map((c) => ({
 					slug: c,
 					title: c,
+					label: c,
 				}))
 			} else if (item.slug === 'layouts') {
 				item.items = layoutNames.map((c) => ({
 					slug: c,
 					title: c,
+					label: c,
 				}))
 			} else if (item.slug === 'recipes') {
 				item.items = recipeNames.map((c) => ({
 					slug: c,
 					title: c,
+					label: c,
 				}))
 			} else if (item.slug === 'raw') {
 				item.items = rawNames.map((c) => ({
 					slug: c,
 					title: c,
+					label: c,
 				}))
 			}
 			return item
@@ -241,6 +272,7 @@ export function buildSubnav(path: string, markdowns: Markdown[]) {
 									slug: item.meta.slug,
 									talk: item.meta.talk,
 									title: item.meta.series?.title,
+									label: item.meta.series?.title,
 									itemPath: `${path}/${meta.talk}`,
 								}
 							}

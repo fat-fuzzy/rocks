@@ -35,7 +35,7 @@
 	}
 
 	.click-outside {
-		background-color: steelblue;
+		background-color: deeppink;
 	}
 
 	.outside {
@@ -43,10 +43,10 @@
 	}
 
 	.outside-ignore {
-		background-color: orange;
+		background-color: rebeccapurple;
 	}
 
 	output {
-		background-color: deeppink;
+		background-color: steelblue;
 	}
 </style>

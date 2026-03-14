@@ -14,7 +14,7 @@
 		path,
 	}: BreadcrumbsProps = $props()
 
-	let items: {slug: string; title: string; path: string}[] = $derived.by(() => {
+	let items: {slug: string; label: string; path: string}[] = $derived.by(() => {
 		let links: string[] = path.split('/').filter((link: string) => link !== '')
 		let hashed = links.length ? links[links.length - 1].split('#') : []
 		if (hashed.length > 1) {
@@ -29,7 +29,7 @@
 					? link.toUpperCase()
 					: `${link.charAt(0).toUpperCase()}${link.slice(1)}`
 
-			return {slug: link, title: linkTitle, path: linkPath}
+			return {slug: link, label: linkTitle, path: linkPath}
 		})
 	})
 
@@ -60,19 +60,19 @@
 		data-testid={`${id}-breadcrumbs`}
 	>
 		<ol class={`l:flex size:${size} align:center unstyled`}>
-			{#each items as item, i}
+			{#each items as item, i (i)}
 				{@const font = i === items.length - 1 ? '' : 'font:xs'}
 				{#if i < items.length - 1}
 					<li
 						aria-current={path === item.slug ? 'page' : undefined}
-						class={`l:flex nowrap align:center`}
+						class="l:flex nowrap align:center"
 					>
 						<a
 							data-sveltekit-preload-data
 							href={item.path}
 							class={`l:flex align:center ${font}`}
 						>
-							{item.title}
+							{item.label}
 						</a>
 					</li>
 				{/if}
