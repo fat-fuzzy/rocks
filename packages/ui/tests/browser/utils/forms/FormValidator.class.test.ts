@@ -4,8 +4,8 @@ import validations from '@fat-fuzzy/validation'
 import FormValidator from '$lib/utils/browser/FormValidator.svelte'
 import {
 	INPUTS,
-	getInputFields,
-	initFormDataWithInputs,
+	getSampleInputFields,
+	initFormDataWithSampleInputs,
 } from '$tests/fixtures/form-inputs'
 
 const {sanitize, validate} = validations
@@ -48,7 +48,7 @@ describe('FormValidator - a class that validates form inputs using validation fu
 	describe('init', () => {
 		it('should initialize form fields with inputTypes', async () => {
 			const formData = new FormData()
-			const fields = getInputFields()
+			const fields = getSampleInputFields()
 
 			await validator.init(formData, fields)
 
@@ -66,7 +66,7 @@ describe('FormValidator - a class that validates form inputs using validation fu
 		})
 
 		it('should initialize field values from FormData', async () => {
-			await initFormDataWithInputs(validator, 'valid')
+			await initFormDataWithSampleInputs(validator, 'valid')
 
 			Object.keys(INPUTS).forEach((key) => {
 				const input = INPUTS[key]
@@ -77,7 +77,7 @@ describe('FormValidator - a class that validates form inputs using validation fu
 		})
 
 		it('should sanitize values when setting', async () => {
-			await initFormDataWithInputs(validator, 'unsanitized')
+			await initFormDataWithSampleInputs(validator, 'unsanitized')
 
 			expect(mockSanitize).toHaveBeenCalledWith(
 				'email',
@@ -185,7 +185,7 @@ describe('FormValidator - a class that validates form inputs using validation fu
 
 	describe('validate', () => {
 		beforeEach(async () => {
-			await initFormDataWithInputs(validator, 'invalid')
+			await initFormDataWithSampleInputs(validator, 'invalid')
 
 			Object.keys(INPUTS).forEach((key) => {
 				validator.form[key].changed = true

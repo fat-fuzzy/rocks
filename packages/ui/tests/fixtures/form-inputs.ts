@@ -9,6 +9,7 @@ const INPUTS: {
 		legend?: string
 		label: string
 		type: string
+		name: string
 		dependsOn?: string
 		value: {
 			valid: string
@@ -21,6 +22,7 @@ const INPUTS: {
 } = {
 	sample_name: {
 		label: 'Username',
+		name: 'sample_name',
 		type: 'text',
 		value: {valid: 'Fat Fuzzy', invalid: 'F'},
 		errors: [
@@ -31,12 +33,14 @@ const INPUTS: {
 	},
 	sample_phone: {
 		label: 'Phone',
+		name: 'sample_phone',
 		type: 'tel',
 		value: {valid: '+380123456789', invalid: '123-456-7890'},
 		errors: [messages.getErrorMessage('FORMAT_PHONE')],
 	},
 	sample_email: {
 		label: 'Email',
+		name: 'sample_email',
 		type: 'email',
 		value: {
 			valid: 'bird@fat-fuzzy.rocks',
@@ -48,6 +52,7 @@ const INPUTS: {
 	},
 	sample_postcode: {
 		label: 'Postcode',
+		name: 'sample_postcode',
 		type: 'text',
 		value: {valid: '75001', invalid: 'ABC'},
 		errors: [messages.getErrorMessage('FORMAT_TEXT_MIN', 5)],
@@ -62,6 +67,7 @@ const INPUTS: {
 	// },
 	sample_checkbox: {
 		label: 'Checkbox',
+		name: 'sample_checkbox',
 		type: 'checkbox',
 		value: {valid: 'on'},
 		errors: [messages.getErrorMessage('CHECKBOX_MIN', 1)],
@@ -75,6 +81,7 @@ const INPUTS: {
 	// },
 	sample_disabled_field: {
 		label: 'Disabled Field',
+		name: 'sample_disabled_field',
 		type: 'text',
 		value: {valid: 'disabled'},
 		errors: [],
@@ -82,6 +89,7 @@ const INPUTS: {
 	sample_radio_group: {
 		legend: 'Radio Group',
 		label: 'Unique Choice 1',
+		name: 'sample_radio_group',
 		type: 'radio',
 		value: {valid: 'on'},
 		errors: [messages.getErrorMessage('RADIO_PATTERN')],
@@ -89,12 +97,14 @@ const INPUTS: {
 	sample_checkbox_group: {
 		legend: 'Checkbox Group',
 		label: 'Multiple Choice 1',
+		name: 'sample_checkbox_group',
 		type: 'checkbox',
 		value: {valid: 'on'},
 		errors: [messages.getErrorMessage('CHECKBOX_PATTERN')],
 	},
 	sample_password: {
 		label: 'Password',
+		name: 'sample_password',
 		type: 'password',
 		value: {valid: 'ThisIsNotSecure!!!123', invalid: 'pwd'},
 		errors: [
@@ -105,6 +115,7 @@ const INPUTS: {
 	},
 	confirm_password: {
 		label: 'Confirm Pwd',
+		name: 'confirm_password',
 		type: 'password',
 		dependsOn: 'sample_password',
 		value: {valid: 'ThisIsNotSecure!!!123', invalid: 'ThisIsNotSecure'},
@@ -174,26 +185,33 @@ function getInputFields() {
 		.reduce((acc, curr) => ({...acc, ...curr}), {})
 }
 
-async function initFormDataWithInputs(
+function getBasicInputFields() {
+	const INPUT_PROPS = Object.values(INPUTS)
+	const inputTypes = ['text', 'tel', 'email', 'password']
+
+	return INPUT_PROPS.filter((i) => inputTypes.find((t) => t === i.type))
+}
+
+async function initFormDataWithSampleInputs(
 	validator: FormValidator,
-	type: 'valid' | 'invalid' | 'sanitized' | 'unsanitized',
+	state: 'valid' | 'invalid' | 'sanitized' | 'unsanitized',
 ) {
 	const formData = new FormData()
 
 	Object.keys(INPUTS).forEach((key) => {
 		const input = INPUTS[key]
-		if (type === 'valid' && input.value.valid) {
+		if (state === 'valid' && input.value.valid) {
 			formData.append(key, input.value.valid)
-		} else if (type === 'invalid' && input.value.invalid) {
+		} else if (state === 'invalid' && input.value.invalid) {
 			formData.append(key, input.value.invalid)
 		}
-		if (type === 'sanitized') {
+		if (state === 'sanitized') {
 			if (input.value.sanitized) {
 				formData.append(key, input.value.sanitized)
 			} else {
 				formData.append(key, input.value.valid)
 			}
-		} else if (type === 'unsanitized') {
+		} else if (state === 'unsanitized') {
 			if (input.value.unsanitized) {
 				formData.append(key, input.value.unsanitized)
 			} else {
@@ -204,4 +222,10 @@ async function initFormDataWithInputs(
 	await validator.init(formData, getInputFields())
 }
 
-export {INPUTS, SIGNUP_INPUTS, getInputFields, initFormDataWithInputs}
+export {
+	INPUTS,
+	SIGNUP_INPUTS,
+	getSampleInputFields,
+	initFormDataWithSampleInputs,
+	getBasicInputFields,
+}
