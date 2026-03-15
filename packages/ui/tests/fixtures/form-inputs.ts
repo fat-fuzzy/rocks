@@ -6,6 +6,7 @@ const messages = new L10nFormatter('en')
 
 const INPUTS: {
 	[name: string]: {
+		legend?: string
 		label: string
 		type: string
 		dependsOn?: string
@@ -79,12 +80,14 @@ const INPUTS: {
 		errors: [],
 	},
 	sample_radio_group: {
+		legend: 'Radio Group',
 		label: 'Unique Choice 1',
 		type: 'radio',
 		value: {valid: 'on'},
 		errors: [messages.getErrorMessage('RADIO_PATTERN')],
 	},
 	sample_checkbox_group: {
+		legend: 'Checkbox Group',
 		label: 'Multiple Choice 1',
 		type: 'checkbox',
 		value: {valid: 'on'},
