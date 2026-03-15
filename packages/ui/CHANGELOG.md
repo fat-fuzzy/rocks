@@ -1,5 +1,11 @@
 # @fat-fuzzy/ui
 
+## 0.1.79
+
+### Patch Changes
+
+- 336d726: Add input tests, fix select all
+
 ## 0.1.78
 
 ### Patch Changes
