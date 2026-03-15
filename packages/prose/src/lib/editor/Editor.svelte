@@ -35,6 +35,8 @@
 	} = $props()
 
 	let element: Element
+
+	// TODO: watch this: https://developer.mozilla.org/en-US/docs/Web/API/Element/setHTML
 	let purify
 	let escaped = ''
 	// @ts-expect-error editor is not defined at this point but will be on mount

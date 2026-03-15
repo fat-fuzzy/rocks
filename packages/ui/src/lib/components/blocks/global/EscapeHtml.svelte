@@ -20,6 +20,8 @@
 		margin?: string
 		element?: string
 	} = $props()
+
+	// TODO: watch this: https://developer.mozilla.org/en-US/docs/Web/API/Element/setHTML
 	let purify
 	let escaped = $derived(html)
 	let containerTag = $derived(element || 'div')
