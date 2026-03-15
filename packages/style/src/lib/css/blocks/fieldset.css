@@ -62,7 +62,7 @@ fieldset.checkbox {
 	legend {
 		inline-size: auto;
 		margin-inline-start: 0;
-		margin-block-end: var(--border-width-xl);
+		margin-block-end: var(--ui-size);
 		padding-inline: var(--border-width-xl);
 		font-weight: var(--font-weight-semibold);
 
@@ -73,6 +73,10 @@ fieldset.checkbox {
 		> label > span {
 			font-weight: var(--font-weight-semibold);
 		}
+	}
+
+	legend:has(label) {
+		margin-block-end: var(--border-width-xl);
 	}
 
 	label > span {
