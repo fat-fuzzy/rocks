@@ -3,6 +3,43 @@ import type {AriaInvoke, FuzzyEvent, UiState} from '$types'
 import {TOGGLE_MACHINE} from '$lib/components/blocks/buttons/Toggle/definitions'
 import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/definitions'
 
+const BUTTON_PROPS = [
+	{
+		props: {
+			id: 'button-1',
+			name: 'button-1',
+			onclick: () => {},
+		},
+		expected: {
+			selected: {
+				id: 'button-1',
+				name: 'button-1',
+				onclick: () => {},
+			},
+		},
+	},
+	{
+		props: {
+			id: 'button-2',
+			name: 'button-2',
+			onclick: () => {},
+		},
+		expected: {
+			selected: {
+				id: 'button-2',
+				name: 'button-2',
+			},
+		},
+	},
+	{
+		props: {
+			id: 'button-3',
+			name: 'button-3',
+			onclick: () => {},
+		},
+	},
+]
+
 const TOGGLE_PROPS = [
 	{
 		props: {
@@ -231,6 +268,7 @@ const POPOVER_PROPS = [
 ]
 
 export {
+	BUTTON_PROPS,
 	TOGGLE_PROPS,
 	TOGGLE_GROUP_PROPS,
 	TOGGLE_CHANGE_PROPS,

@@ -106,9 +106,9 @@
 	{#if enableSelectAll}
 		<legend>
 			<InputCheck
-				name={`select-all-${name}`}
+				{name}
 				label={legend ?? name}
-				value={items.map((item) => item.value).join(',')}
+				value={`all-${name}`}
 				checked={allSelected}
 				{asset}
 				{assetType}
