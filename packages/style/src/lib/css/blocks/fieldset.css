@@ -35,8 +35,9 @@ fieldset.checkbox {
 		display: flex;
 		align-items: var(--align, center);
 		justify-content: var(--justify, space-between);
-		padding: var(--outline-offset-lg);
-		gap: var(--ui-size);
+		padding-block: var(--outline-offset-lg);
+		padding-inline: var(--border-width-xl) var(--outline-offset-lg);
+		gap: var(--ui-size-sm);
 		margin: 0;
 		inline-size: 100%;
 		color: var(--ink);
