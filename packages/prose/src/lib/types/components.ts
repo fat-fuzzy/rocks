@@ -1,6 +1,5 @@
 export interface Editor {
-	TiptapBasic: typeof import('$lib/editor/basic/Tiptap.svelte').default
-	TiptapFull: typeof import('$lib/editor/full/Tiptap.svelte').default
+	Editor: typeof import('$lib/editor/Editor.svelte').default
 }
 
 export interface FatFuzzyProse {
