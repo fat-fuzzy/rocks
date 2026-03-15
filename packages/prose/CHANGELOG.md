@@ -1,5 +1,11 @@
 # @fat-fuzzy/prose
 
+## 0.1.33
+
+### Patch Changes
+
+- 53ea789: InputGroup & Editor improvements, style fixes
+
 ## 0.1.32
 
 ### Patch Changes
