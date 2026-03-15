@@ -7,8 +7,8 @@
 	"license": "MIT",
 	"scripts": {
 		"dev": "vite dev",
-		"build": "vite build && pnpm package",
 		"preview": "vite preview",
+		"build": "vite build && pnpm package",
 		"package": "svelte-kit sync && svelte-package && publint",
 		"test": "pnpm test:e2e",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",

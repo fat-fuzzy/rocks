@@ -8,6 +8,7 @@
 	"browser": "package/index.umd.min.js",
 	"scripts": {
 		"build": "rollup -c",
+		"package": "pnpm build",
 		"dev": "rollup -c -w",
 		"pretest": "pnpm build",
 		"test": "echo \"@fat-fuzzy/gfx: no tests specified\""
