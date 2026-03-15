@@ -16,34 +16,53 @@
 		size = 'sm',
 		variant,
 		color,
+		asset,
+		assetType,
 		breakpoint,
 		background,
 		threshold,
 		children,
 	}: FieldsetProps = $props()
 
-	let sizeClass = $derived(size ? `size:${size}` : '')
-	let fontClass = $derived(font ? `font:${font}` : '')
 	let typeClass = $derived(type || '')
-	let classes = $derived(
+
+	let legendClasses = $derived(
 		styleHelper.getStyles({
 			size,
 			font,
-			align,
 			justify,
-			variant,
-			color,
-			background,
-			layout,
-			breakpoint,
-			threshold,
-			container,
+			asset,
+			assetType,
+			layout: 'flex',
 		}),
+	)
+
+	let fieldsetClasses = $derived(
+		styleHelper
+			.getStyles({
+				size,
+				font,
+				align,
+				justify,
+				variant,
+				color,
+				background,
+				layout,
+				breakpoint,
+				threshold,
+				container,
+			})
+			.trim(),
 	)
 </script>
 
-<fieldset {name} data-key={id} class={`${classes} ${typeClass}`} {disabled}>
-	{#if legend}<legend class={`${fontClass} ${sizeClass}`}>{legend}</legend>{/if}
+<fieldset
+	{name}
+	data-key={id}
+	class={`${fieldsetClasses} ${typeClass}`}
+	{disabled}
+>
+	{#if legend}<legend class={legendClasses}>{legend}</legend>{/if}
 	{#if children}
 		{@render children()}
 	{/if}
