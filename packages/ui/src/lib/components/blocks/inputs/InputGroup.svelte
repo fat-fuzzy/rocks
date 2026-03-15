@@ -34,6 +34,8 @@
 	let selected: string[] = $state(payload.value?.split(','))
 	let allSelected = $derived(selected.length === items.length)
 
+	let enableSelectAll = $derived(type === 'checkbox' && items.length > 5)
+
 	const COMPONENT_IMPORTS: {
 		[input: string]: Component<InputProps, object, ''>
 	} = {
@@ -88,7 +90,7 @@
 	{id}
 	{name}
 	{type}
-	legend={type === 'radio' ? (legend ?? name) : undefined}
+	legend={!enableSelectAll ? (legend ?? name) : undefined}
 	{layout}
 	{size}
 	{font}
@@ -101,7 +103,7 @@
 >
 	{@const InputComponent = COMPONENT_IMPORTS[type]}
 
-	{#if type === 'checkbox'}
+	{#if enableSelectAll}
 		<legend>
 			<InputCheck
 				name={`select-all-${name}`}

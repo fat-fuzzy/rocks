@@ -60,6 +60,7 @@ export default {
 	InputRadio: {label: 'A radio choice'},
 	InputGroup: {
 		legend: 'InputGroup',
+		// type: 'radio',
 		type: 'checkbox',
 		id: 'input-group',
 		name: 'input-group',
@@ -70,6 +71,8 @@ export default {
 			{label: 'Checkbox 2', id: 'input-group.check-2', value: 'check-2'},
 			{label: 'Checkbox 3', id: 'input-group.check-3', value: 'check-3'},
 			{label: 'Checkbox 4', id: 'input-group.check-4', value: 'check-4'},
+			{label: 'Checkbox 5', id: 'input-group.check-5', value: 'check-5'},
+			{label: 'Checkbox 6', id: 'input-group.check-6', value: 'check-6'},
 		],
 	},
 	InputRange: {label: 'A range of ordered choices'},
