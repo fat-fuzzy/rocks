@@ -116,6 +116,7 @@ class StatesApi {
 	}
 
 	getValue(styles: StyleTree, id: string): string {
+		// eslint-disable-next-line
 		const [category, family, style, _] = id.split('.')
 		let result = ''
 		if (
