@@ -172,6 +172,14 @@ const shape = {
 	size: '2xs',
 	items: [
 		{
+			id: 'shape.none',
+			label: 'default',
+			value: 'none',
+			shape: 'none',
+			asset: 'none',
+			size: '3xs',
+		},
+		{
 			id: 'shape.round',
 			label: 'round',
 			value: 'round',
@@ -191,6 +199,7 @@ const shape = {
 			value: 'pill',
 			shape: 'pill',
 			asset: 'pill',
+			size: '3xs',
 		},
 		{
 			id: 'shape.soft',
@@ -198,6 +207,7 @@ const shape = {
 			value: 'soft',
 			shape: 'soft',
 			asset: 'soft',
+			size: '3xs',
 		},
 		{
 			id: 'shape.mellow',
@@ -205,13 +215,7 @@ const shape = {
 			value: 'mellow',
 			shape: 'mellow',
 			asset: 'mellow',
-		},
-		{
-			id: 'shape.none',
-			label: 'default',
-			value: 'none',
-			shape: 'none',
-			asset: 'none',
+			size: '3xs',
 		},
 	],
 }
@@ -303,6 +307,13 @@ const asset = {
 	size: '2xs',
 	mode: 'radio',
 	items: [
+		{
+			id: 'asset.none',
+			label: 'none',
+			value: 'none',
+			asset: 'none',
+			size: '3xs',
+		},
 		{
 			id: 'asset.profile',
 			label: 'profile',
@@ -501,7 +512,7 @@ const content = {
 	size: '2xs',
 	variant: 'bare',
 	items: [
-		{id: 'content.ravioli', label: 'ravioli', value: 'ravioli'},
+		{id: 'content.raviolo', label: 'raviolo', value: 'raviolo'},
 		{id: 'content.form', label: 'form', value: 'form'},
 		{id: 'content.text', label: 'text', value: 'text'},
 	],
