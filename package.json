@@ -9,6 +9,7 @@
 	"license": "MIT",
 	"scripts": {
 		"build": "turbo run build",
+		"package": "turbo run package",
 		"clean": "turbo run clean",
 		"dev": "turbo run dev --parallel",
 		"lint": "turbo run lint",

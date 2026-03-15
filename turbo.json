@@ -42,6 +42,14 @@
 				"tests/e2e/test-results/**"
 			]
 		},
+		"package": {
+			"dependsOn": [
+				"^package"
+			],
+			"outputs": [
+				"dist/**"
+			]
+		},
 		"lint": {
 			"outputs": []
 		},

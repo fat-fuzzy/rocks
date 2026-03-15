@@ -6,6 +6,7 @@
 	"main": "./dist/index.js",
 	"scripts": {
 		"build": "pnpm build:ajv && rollup -c",
+		"package": "pnpm build",
 		"build:ts": "pnpm tsc && pnpm build:ajv && rollup -c",
 		"build:schemas": "node ./src/ajv/esm/ajv.js ",
 		"build:ajv": "pnpm build:schemas && rollup --config rollup.config.ajv.js",
