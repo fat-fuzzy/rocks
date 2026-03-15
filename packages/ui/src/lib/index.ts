@@ -23,6 +23,7 @@ import EscapeHtml from '$lib/components/blocks/global/EscapeHtml.svelte'
 import Popover from '$lib/components/blocks/overlays/Popover/Popover.svelte'
 import InputCheck from '$lib/components/blocks/inputs/InputCheck.svelte'
 import InputRadio from '$lib/components/blocks/inputs/InputRadio.svelte'
+import InputGroup from '$lib/components/blocks/inputs/InputGroup.svelte'
 import InputRange from '$lib/components/blocks/inputs/InputRange.svelte'
 import InputFile from '$lib/components/blocks/inputs/InputFile.svelte'
 
@@ -74,7 +75,6 @@ import CSSUrbanist from '$lib/components/raw/css-grid-urbanist.svelte'
  * Draft components
  */
 import Fieldset from '$lib/components/blocks/inputs/Fieldset.svelte'
-import InputGroup from '$lib/components/blocks/inputs/InputGroup.svelte'
 import Magic from '$lib/components/blocks/global/Magic.svelte'
 import Image from '$lib/components/blocks/media/Image.svelte'
 import Picture from '$lib/components/blocks/media/Picture.svelte'
@@ -145,6 +145,7 @@ const blocks = {
 	Magic,
 	InputCheck,
 	InputRadio,
+	InputGroup,
 	InputRange,
 	InputFile,
 }
@@ -191,7 +192,6 @@ const drafts = {
 	// InputPassword,
 	// InputFeedback,
 	ExpandLink,
-	InputGroup,
 	Image,
 	Picture,
 	Scrolly,

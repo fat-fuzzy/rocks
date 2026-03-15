@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type {Component} from 'svelte'
 
-	import type {FieldsetProps, InputProps} from '$types'
+	import type {FieldsetProps, ValidationProps, InputProps} from '$types'
 	import Fieldset from '$lib/components/blocks/inputs/Fieldset.svelte'
 	import InputRadio from '$lib/components/blocks/inputs/InputRadio.svelte'
 	import InputCheck from '$lib/components/blocks/inputs/InputCheck.svelte'
@@ -19,9 +19,20 @@
 		size,
 		color,
 		variant,
+		asset,
+		assetType,
 		oninput,
 		children,
-	}: FieldsetProps & Partial<InputProps> = $props()
+		validator,
+	}: FieldsetProps & ValidationProps & Partial<InputProps> = $props()
+
+	let payload = $derived({
+		id,
+		name,
+		value: value ?? '',
+	})
+	let selected: string[] = $state(payload.value?.split(','))
+	let allSelected = $derived(selected.length === items.length)
 
 	const COMPONENT_IMPORTS: {
 		[input: string]: Component<InputProps, object, ''>
@@ -30,13 +41,43 @@
 		checkbox: InputCheck,
 	}
 
-	function handleInput(event: Event, name: string) {
+	function handleInput(event: Event) {
 		let target = event.target as HTMLInputElement
-		let payload = {
-			id,
-			name,
-			value: target.value,
+
+		switch (type) {
+			case 'radio':
+				payload.value = target.value
+				break
+			case 'checkbox':
+				if (target.checked === true) {
+					selected.push(target.value)
+					payload.value = selected.join(',')
+				} else {
+					selected = selected.filter((i) => i !== target.value)
+					payload.value = selected.join(',')
+				}
+				break
+			default:
+				break
 		}
+
+		if (oninput) {
+			oninput(event, payload)
+		}
+	}
+
+	function handleSelectAll(event: Event) {
+		let target = event.target as HTMLInputElement
+		if (target.checked === true) {
+			selected = items.map((item: InputProps) => String(item.value) || '')
+			payload.value = selected.join(',')
+			allSelected = true
+		} else {
+			selected = []
+			payload.value = ''
+			allSelected = false
+		}
+
 		if (oninput) {
 			oninput(event, payload)
 		}
@@ -47,19 +88,43 @@
 	{id}
 	{name}
 	{type}
-	{legend}
+	legend={type === 'radio' ? (legend ?? name) : undefined}
 	{layout}
 	{size}
 	{font}
 	{variant}
 	{container}
 	{color}
+	{asset}
+	{assetType}
+	{justify}
 >
 	{@const InputComponent = COMPONENT_IMPORTS[type]}
+
+	{#if type === 'checkbox'}
+		<legend>
+			<InputCheck
+				name={`select-all-${name}`}
+				label={legend ?? name}
+				value={items.map((item) => item.value).join(',')}
+				checked={allSelected}
+				{asset}
+				{assetType}
+				{color}
+				{justify}
+				{container}
+				{id}
+				oninput={(event: Event) => handleSelectAll(event)}
+				{validator}
+			/>
+		</legend>
+	{/if}
 	{#each items as input, index (index)}
 		{@const checked =
-			input.value && value
-				? input.value === value || value.includes(String(input.value))
+			allSelected ||
+			input.value === payload.value ||
+			payload.value.includes(String(input.value))
+				? true
 				: false}
 		<InputComponent
 			{...input}
@@ -69,9 +134,9 @@
 			{justify}
 			{container}
 			{size}
-			name={id}
+			{name}
 			id={`${name}.${input.value}`}
-			oninput={(event: Event) => handleInput(event, name)}
+			oninput={(event: Event) => handleInput(event)}
 		/>
 	{/each}
 	{#if children}

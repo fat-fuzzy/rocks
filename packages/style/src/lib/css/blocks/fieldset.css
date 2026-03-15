@@ -8,7 +8,7 @@ fieldset {
 
 	legend {
 		font-size: var(--font-size-ui);
-		font-weight: var(--font-weight-ui);
+		font-weight: var(--font-weight-semibold);
 		line-height: var(--ui-size);
 	}
 
@@ -35,8 +35,8 @@ fieldset.checkbox {
 		display: flex;
 		align-items: var(--align, center);
 		justify-content: var(--justify, space-between);
-		padding-block: var(--outline-offset-lg);
-		padding-inline: var(--border-width-xl) var(--outline-offset-lg);
+		padding-block: var(--border-width-xl);
+		padding-inline: var(--border-width-xl);
 		gap: var(--ui-size-sm);
 		margin: 0;
 		inline-size: 100%;
@@ -63,6 +63,12 @@ fieldset.checkbox {
 		inline-size: auto;
 		margin-inline-start: 0;
 		margin-block-end: var(--border-width-xl);
+		padding-inline: var(--border-width-xl);
+		font-weight: var(--font-weight-semibold);
+
+		> label {
+			padding-inline: 0;
+		}
 
 		> label > span {
 			font-weight: var(--font-weight-semibold);
