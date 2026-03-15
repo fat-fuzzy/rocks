@@ -1,18 +1,22 @@
 <script lang="ts">
-	import type {IStyleInputGroup, IStyleFamily} from '$types'
+	import type {IPlaybookInputGroup, IPlaybookFamily} from '$types'
+	import type {
+		FuzzyPayload,
+		UiColor,
+		UiLayout,
+		UiSize,
+		UiVariant,
+	} from '@fat-fuzzy/ui'
 
-	import type {FuzzyPayload, UiSize} from '@fat-fuzzy/ui'
 	import fatFuzzyUi from '@fat-fuzzy/ui'
-	const {InputRange} = fatFuzzyUi.blocks
-	const {InputGroup} = fatFuzzyUi.drafts
+	const {InputRange, InputGroup} = fatFuzzyUi.blocks
 	const {ToggleMenu} = fatFuzzyUi.recipes
 	const {Fieldset} = fatFuzzyUi.drafts
 
 	type Props = {
-		styleInput: IStyleInputGroup
-		family: IStyleFamily
+		styleInput: IPlaybookInputGroup
+		family: IPlaybookFamily
 		familyName: string
-		categoryName: string
 		formaction?: string
 		onupdate: (payload: {
 			name: string
@@ -31,7 +35,7 @@
 	let {id, input, name, value, assetType, items} = $derived(styleInput)
 	let currentValue = $derived(value)
 
-	let updatedItems = $derived(
+	let updatedItems: FuzzyPayload[] = $derived(
 		items.map((i) => {
 			const state = i.value === currentValue ? 'active' : 'inactive'
 			return {
@@ -41,6 +45,7 @@
 				initial: state,
 				name: i.id,
 				id: i.id,
+				value: i.value,
 			}
 		}),
 	)
@@ -61,18 +66,19 @@
 		toggle: ToggleMenu,
 	}
 
-	function handleInput(event) {
-		const payload = {
+	function handleInput(event: Event, payload: FuzzyPayload) {
+		const target = event.target as HTMLInputElement
+		const updated = {
 			name: familyName.toLowerCase(),
 			items: [
 				{
-					id: event.id,
-					name: event.name.toLowerCase(),
-					value: event.value,
+					id: payload.id,
+					name: payload.name.toLowerCase(),
+					value: String(payload.value ?? target.value),
 				},
 			],
 		}
-		onupdate(payload)
+		onupdate(updated)
 	}
 
 	function handleSelect(
@@ -97,13 +103,7 @@
 		onupdate(payload)
 	}
 
-	function handleToggle(
-		selected: {
-			name: string
-			value?: string | number
-			state: string
-		}[],
-	) {
+	function handleToggle(selected: FuzzyPayload[]) {
 		let items: {id: string; name: string; value: string}[] = []
 		let payload = {
 			id,
@@ -117,6 +117,7 @@
 					name: item.name.toLowerCase(),
 					label: item.name.toLowerCase(),
 					value: String(item.value),
+					state: String(item.value),
 				}
 			})
 		} else {
@@ -153,10 +154,10 @@
 			{id}
 			title={styleInput.name}
 			items={updatedItems}
-			layout={styleInput.layout ?? ''}
+			layout={styleInput.layout as UiLayout}
 			size={apiSize}
-			color={apiColor}
-			variant={apiVariant}
+			color={apiColor as UiColor}
+			variant={apiVariant as UiVariant}
 			container={styleInput.container}
 			mode={styleInput.mode ?? 'radio'}
 			{assetType}
@@ -182,7 +183,8 @@
 			color={apiColor}
 			font={apiFont}
 			variant={styleInput.variant}
-			oninput={(event) => handleInput(event)}
+			oninput={(event: Event, payload: FuzzyPayload) =>
+				handleInput(event, payload)}
 		/>
 	{/if}
 	{#if input == 'range'}
@@ -206,7 +208,8 @@
 				color={apiColor}
 				font={apiFont}
 				variant={styleInput.variant}
-				oninput={(event: Event) => handleInput(event)}
+				oninput={(event: Event, payload: FuzzyPayload) =>
+					handleInput(event, payload)}
 			/>
 		</Fieldset>
 	{/if}

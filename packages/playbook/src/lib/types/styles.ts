@@ -7,6 +7,7 @@ import type {
 	UiVariant,
 } from '@fat-fuzzy/ui'
 
+import type {IPlaybookFamily} from '$types'
 // TODO: figure out if I can extract this info from Svelte component
 interface IStyleInputOptions {
 	id: string
@@ -59,30 +60,30 @@ export type StyleTreeFlat = {
 
 export interface StyleCategory {
 	name: string
-	families: {[key: string]: IStyleFamily}
+	families: {[key: string]: IPlaybookFamily}
 }
 
 export interface AppStyles extends StyleCategory {
 	name: 'app'
-	families: {settings: IStyleFamily}
+	families: {settings: IPlaybookFamily}
 }
 
 export interface TokenStyles extends StyleCategory {
 	name: 'tokens'
-	families: {token: IStyleFamily}
+	families: {token: IPlaybookFamily}
 }
 
 export interface BlockStyles extends StyleCategory {
 	name: 'blocks'
-	families: {block: IStyleFamily}
+	families: {block: IPlaybookFamily}
 }
 
 export interface LayoutStyles extends StyleCategory {
 	name: 'layouts'
 	families: {
-		layout: IStyleFamily
-		container: IStyleFamily
-		content: IStyleFamily
+		layout: IPlaybookFamily
+		container: IPlaybookFamily
+		content: IPlaybookFamily
 	}
 }
 
@@ -121,14 +122,6 @@ export interface IStyleInputGroup extends IStylesSet {
 
 	getValue: () => string
 	setValue: (value: string) => void
-}
-
-export interface IStyleFamily extends IStylesSet {
-	/**
-	 * A StyleFamily provides form inputs for related styles that apply to a single StyleCategory
-	 */
-	items: Array<IStyleInputGroup>
-	itemsMap: Map<string, IStyleInputGroup>
 }
 
 export type StylesSetOptions = {

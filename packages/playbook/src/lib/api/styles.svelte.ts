@@ -1,6 +1,6 @@
 import type {
 	Meta,
-	StyleProps,
+	PlaybookInputProps,
 	AppStyles,
 	TokenStyles,
 	BlockStyles,
@@ -8,6 +8,7 @@ import type {
 	StyleOptions,
 	StyleTree,
 	StyleCategory,
+	IPlaybookFamily,
 } from '$types'
 import StyleInputGroup from './styles.input-group'
 import StyleFamily from './styles.family'
@@ -61,7 +62,7 @@ class StylesApi {
 		return options ? options : []
 	}
 
-	filterFormOptions(styleProps: StyleProps): StyleCategory[] {
+	filterFormOptions(styleProps: PlaybookInputProps): StyleCategory[] {
 		const catNames = Object.keys(styleProps)
 		let families
 		const options = catNames.map((category) => {
@@ -118,7 +119,7 @@ class StylesApi {
 	getFamilyOptions(
 		family: string,
 		category: StyleCategory,
-	): StyleFamily | undefined {
+	): IPlaybookFamily | undefined {
 		switch (family) {
 			case 'settings':
 				return category.families.settings
@@ -160,7 +161,7 @@ class StylesApi {
 	}
 
 	getValue(styles: StyleTree, id: string): string {
-		let [category, family, style, _] = id.split('.')
+		const [category, family, style, _] = id.split('.')
 		let result = ''
 		if (
 			styles[category] &&

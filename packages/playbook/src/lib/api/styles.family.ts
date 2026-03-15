@@ -1,8 +1,8 @@
-import type {StyleNode, IStyleFamily, StyleFamilyOptions} from '$types'
+import type {StyleNode, IPlaybookFamily, StyleFamilyOptions} from '$types'
 import type {UiContainer, UiLayout, UiSize, UiVariant} from '@fat-fuzzy/ui'
 import StyleInputGroup from './styles.input-group'
 
-class StyleFamily implements IStyleFamily {
+class StyleFamily implements IPlaybookFamily {
 	id: string
 	name: string
 	title: string

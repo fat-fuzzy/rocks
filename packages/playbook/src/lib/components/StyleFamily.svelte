@@ -5,7 +5,7 @@
 
 	import StylesApi from '$lib/api/styles.svelte'
 	import {PlaybookActor} from '$lib/api/actor.svelte'
-	import StyleInput from './StyleInput.svelte'
+	import PlaybookInput from './PlaybookInput.svelte'
 
 	type Props = {
 		category?: string
@@ -29,6 +29,7 @@
 	}) {
 		let updatedStyles: StyleTree = playbookContext.getStyleTree()
 		payload.items.forEach(({id, value}) => {
+			// eslint-disable-next-line
 			const [category, family, style, name] = id.split('.')
 			const styleValue = {[style]: value}
 
@@ -70,7 +71,7 @@
 			{@const families = Object.keys(categoryOptions.families)}
 			{#each families as familyName (familyName)}
 				{@const family = categoryOptions.families[familyName]}
-				<details class="surface:1:neutral l:stack:2xs shape:soft" open>
+				<details class="surface:1:neutral l:stack size:xs shape:soft" open>
 					<summary
 						class="color:neutral font:sm font:heading ravioli:3xs shape:soft"
 						data-testid={`details-summary-${familyName}`}
@@ -78,15 +79,14 @@
 						{familyName}
 					</summary>
 					<div
-						class="l:flex:2xs justify:stretch align:start ravioli:xs shape:soft"
+						class="l:flex size:sm justify:stretch align:start ravioli:xs shape:soft"
 						data-testid={`details-content-${familyName}`}
 					>
 						{#each family.items as styleInputGroup (styleInputGroup.id)}
-							<StyleInput
+							<PlaybookInput
 								{family}
 								styleInput={styleInputGroup}
 								{familyName}
-								categoryName={categoryOptions.name}
 								{formaction}
 								onupdate={updateStyles}
 							/>

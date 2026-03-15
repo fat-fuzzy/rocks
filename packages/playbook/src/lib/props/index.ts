@@ -1,4 +1,10 @@
-import type {Meta, Markdown, Markdowns, PlaybookProps, StyleProps} from '$types'
+import type {
+	Meta,
+	Markdown,
+	Markdowns,
+	PlaybookProps,
+	PlaybookInputProps,
+} from '$types'
 import constants from '$lib/types/constants'
 import {getFamily} from '$lib/props/props-style'
 
@@ -27,7 +33,9 @@ function getElementMeta(name: string, markdowns: Markdown[]) {
 	return meta
 }
 
-function getElementStyleProps(props_style: StyleProps | undefined) {
+function getElementPlaybookInputProps(
+	props_style: PlaybookInputProps | undefined,
+) {
 	// eslint-disable-next-line
 	const props: any = {
 		// TODO: fix type
@@ -48,7 +56,7 @@ function getElementStyleProps(props_style: StyleProps | undefined) {
 	return props
 }
 
-function getElementDoc(props_style: StyleProps | undefined) {
+function getElementDoc(props_style: PlaybookInputProps | undefined) {
 	// eslint-disable-next-line
 	const props: any = [] // TODO: fix type
 	let currentCategory: string[] = []
@@ -77,7 +85,7 @@ function getElementProps(meta: Meta): PlaybookProps {
 	const {props_style, props_state, content_types} = meta
 
 	const props: PlaybookProps = {
-		style: getElementStyleProps(props_style),
+		style: getElementPlaybookInputProps(props_style),
 		doc: content_types ?? getElementDoc(content_types),
 		state: props_state,
 	}
@@ -96,6 +104,7 @@ export {
 	getCategoryMarkdowns,
 	getElementMeta,
 	getElementProps,
+	getElementDoc,
 	getPlaybookTab,
 	getDocTab,
 }

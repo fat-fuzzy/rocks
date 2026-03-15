@@ -2,11 +2,11 @@ export type DocProps = string[]
 
 export type StateProps = string[]
 
-export type StyleProps = {[key: string]: {[key: string]: string[]}}
+export type PlaybookInputProps = {[key: string]: {[key: string]: string[]}}
 
 export type PlaybookProps = {
 	doc?: DocProps
-	style?: StyleProps
+	style?: PlaybookInputProps
 	state?: StateProps
 }
 
@@ -15,7 +15,7 @@ export type Meta = {
 	slug: string
 	category?: string
 	group?: string
-	props_style?: StyleProps
+	props_style?: PlaybookInputProps
 	props_state?: StateProps
 	content_types?: string[]
 	context: string[]

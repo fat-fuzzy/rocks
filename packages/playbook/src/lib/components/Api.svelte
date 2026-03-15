@@ -35,8 +35,11 @@
 	let apiSize = '2xs'
 	let apiBreakpoint = '2xs'
 
-	let action =
-		formaction && redirect ? `${formaction}&redirectTo=${redirect}` : formaction
+	let action = $derived(
+		formaction && redirect
+			? `${formaction}&redirectTo=${redirect}`
+			: formaction,
+	)
 	let frameClass = $derived(
 		categories && categories[0] === 'app' ? 'l:frame:round' : 'l:frame:twin',
 	)
