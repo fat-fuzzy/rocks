@@ -1,5 +1,11 @@
 # @fat-fuzzy/style
 
+## 0.1.26
+
+### Patch Changes
+
+- 53ea789: InputGroup & Editor improvements, style fixes
+
 ## 0.1.25
 
 ### Patch Changes
