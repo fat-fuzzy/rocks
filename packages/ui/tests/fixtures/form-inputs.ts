@@ -177,7 +177,7 @@ const SIGNUP_INPUTS: {
 	},
 }
 
-function getInputFields() {
+function getSampleInputFields() {
 	return Object.keys(INPUTS)
 		.map((key) => ({
 			[key]: INPUTS[key].type,
@@ -219,7 +219,7 @@ async function initFormDataWithSampleInputs(
 			}
 		}
 	})
-	await validator.init(formData, getInputFields())
+	await validator.init(formData, getSampleInputFields())
 }
 
 export {
