@@ -172,46 +172,50 @@ const shape = {
 	size: '2xs',
 	items: [
 		{
+			id: 'shape.none',
+			label: 'default',
+			value: 'none',
+			shape: 'none',
+			asset: 'none',
+			size: '3xs',
+		},
+		{
 			id: 'shape.round',
-			title: 'round',
+			label: 'round',
 			value: 'round',
 			shape: 'round',
 			asset: 'round',
 		},
 		{
 			id: 'shape.square',
-			title: 'square',
+			label: 'square',
 			value: 'square',
 			shape: 'square',
 			asset: 'square',
 		},
 		{
 			id: 'shape.pill',
-			title: 'pill',
+			label: 'pill',
 			value: 'pill',
 			shape: 'pill',
 			asset: 'pill',
-		},
-		{
-			id: 'shape.mellow',
-			title: 'mellow',
-			value: 'mellow',
-			shape: 'mellow',
-			asset: 'mellow',
+			size: '3xs',
 		},
 		{
 			id: 'shape.soft',
-			title: 'soft',
+			label: 'soft',
 			value: 'soft',
 			shape: 'soft',
 			asset: 'soft',
+			size: '3xs',
 		},
 		{
-			id: 'shape.none',
-			label: 'none',
-			value: '',
-			shape: '',
-			asset: '',
+			id: 'shape.mellow',
+			label: 'mellow',
+			value: 'mellow',
+			shape: 'mellow',
+			asset: 'mellow',
+			size: '3xs',
 		},
 	],
 }
@@ -304,29 +308,36 @@ const asset = {
 	mode: 'radio',
 	items: [
 		{
+			id: 'asset.none',
+			label: 'none',
+			value: 'none',
+			asset: 'none',
+			size: '3xs',
+		},
+		{
 			id: 'asset.profile',
-			title: 'profile',
+			label: 'profile',
 			value: 'profile',
 			asset: 'profile',
 			shape: 'square',
 		},
 		{
 			id: 'asset.favorite',
-			title: 'favorite',
+			label: 'favorite',
 			value: 'favorite',
 			asset: 'favorite',
 			shape: 'square',
 		},
 		{
 			id: 'asset.idea',
-			title: 'idea',
+			label: 'idea',
 			value: 'idea',
 			asset: 'idea',
 			shape: 'square',
 		},
 		{
 			id: 'asset.default',
-			title: 'default',
+			label: 'default',
 			value: 'default',
 			asset: 'default',
 			shape: 'square',
@@ -386,7 +397,7 @@ const uno = {
 	items: [
 		{
 			id: 'uno.tsunami',
-			title: 'tsunami',
+			label: 'tsunami',
 			value: 'tsunami',
 			color: 'highlight',
 			shape: 'square',
@@ -395,7 +406,7 @@ const uno = {
 		},
 		{
 			id: 'uno.water',
-			title: 'water',
+			label: 'water',
 			value: 'water',
 			color: 'highlight',
 			shape: 'square',
@@ -404,7 +415,7 @@ const uno = {
 		},
 		{
 			id: 'uno.sparkles',
-			title: 'sparkles',
+			label: 'sparkles',
 			value: 'sparkles',
 			color: 'highlight',
 			shape: 'square',
@@ -413,7 +424,7 @@ const uno = {
 		},
 		{
 			id: 'uno.egg',
-			title: 'egg',
+			label: 'egg',
 			value: 'egg',
 			color: 'highlight',
 			shape: 'square',
@@ -422,7 +433,7 @@ const uno = {
 		},
 		{
 			id: 'uno.magic',
-			title: 'magic',
+			label: 'magic',
 			value: 'magic',
 			color: 'highlight',
 			shape: 'square',
@@ -442,7 +453,7 @@ const due = {
 	items: [
 		{
 			id: 'due.tsunami',
-			title: 'tsunami',
+			label: 'tsunami',
 			value: 'tsunami',
 			shape: 'square',
 			color: 'accent',
@@ -451,7 +462,7 @@ const due = {
 		},
 		{
 			id: 'due.water',
-			title: 'water',
+			label: 'water',
 			value: 'water',
 			color: 'accent',
 			shape: 'square',
@@ -460,7 +471,7 @@ const due = {
 		},
 		{
 			id: 'due.sparkles',
-			title: 'sparkles',
+			label: 'sparkles',
 			value: 'sparkles',
 			color: 'accent',
 			shape: 'square',
@@ -469,7 +480,7 @@ const due = {
 		},
 		{
 			id: 'due.egg',
-			title: 'egg',
+			label: 'egg',
 			value: 'egg',
 			color: 'accent',
 			shape: 'square',
@@ -478,7 +489,7 @@ const due = {
 		},
 		{
 			id: 'due.magic',
-			title: 'magic',
+			label: 'magic',
 			value: 'magic',
 			color: 'accent',
 			shape: 'square',
@@ -501,7 +512,7 @@ const content = {
 	size: '2xs',
 	variant: 'bare',
 	items: [
-		{id: 'content.ravioli', label: 'ravioli', value: 'ravioli'},
+		{id: 'content.raviolo', label: 'raviolo', value: 'raviolo'},
 		{id: 'content.form', label: 'form', value: 'form'},
 		{id: 'content.text', label: 'text', value: 'text'},
 	],
@@ -590,7 +601,9 @@ const contentFamily = {
 	props: ['content', 'side', 'main'],
 }
 
+// eslint-disable-next-line
 const FAMILIES: {[key: string]: any} = {
+	// TODO: fix type
 	settings: settingsFamily,
 	block: blockFamily,
 	container: containerFamily,
@@ -599,7 +612,9 @@ const FAMILIES: {[key: string]: any} = {
 	content: contentFamily,
 }
 
+// eslint-disable-next-line
 const CATEGORIES: {[key: string]: any} = {
+	// TODO: fix type
 	app: {
 		name: 'app',
 		families: {
@@ -627,7 +642,9 @@ const CATEGORIES: {[key: string]: any} = {
 	},
 }
 
+// eslint-disable-next-line
 const PROPS_STYLE: {[key: string]: any} = {
+	// TODO: fix type
 	brightness,
 	contrast,
 	container,

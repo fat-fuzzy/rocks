@@ -1,3 +1,8 @@
+.ProseMirror {
+	margin-inline: 1.15em 0.5em;
+	margin-block: 1.15em;
+}
+
 .editor-menu {
 	max-inline-size: unset;
 }
@@ -52,21 +57,24 @@
 	line-height: 0.925;
 }
 
-.l\:frame\:prose {
-	aspect-ratio: 15 / 8;
+.prose-editor {
+	inline-size: 100%;
+	overflow: auto;
+	max-inline-size: unset;
 }
 
-.l\:frame\:prose.h\:xs {
-	aspect-ratio: 15 / 3;
+.prose-editor.h\:xs {
+	block-size: 8rem;
 }
 
-.l\:frame\:prose.h\:sm {
-	aspect-ratio: 15 / 5;
+.prose-editor.h\:sm {
+	block-size: 14rem;
 }
 
-.l\:frame\:prose.h\:md {
-	aspect-ratio: 15 / 8;
+.prose-editor.h\:md {
+	block-size: 18rem;
 }
-.l\:frame\:prose.h\:lg {
-	aspect-ratio: 15 / 10;
+
+.prose-editor.h\:lg {
+	block-size: 24rem;
 }

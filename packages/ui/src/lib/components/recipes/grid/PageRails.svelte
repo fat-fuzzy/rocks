@@ -58,11 +58,11 @@
 	}
 
 	const contextInnerClasses: {[key: string]: string} = {
-		metro: 'ravioli:3xs bg:inherit',
-		railway: 'ravioli:3xs bg:inherit',
-		steam: 'ravioli:3xs ff:callout magic:feather shape:soft',
+		metro: 'bg:inherit',
+		railway: 'bg:inherit',
+		steam: 'ff:callout magic:feather shape:soft',
 		tgv: '',
-		tram: 'ravioli:3xs ff:callout shape:soft',
+		tram: 'ff:callout shape:soft',
 		voyager: 'bg:inherit',
 		urbanist: 'bg:inherit',
 	}

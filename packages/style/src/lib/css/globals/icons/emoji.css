@@ -19,10 +19,12 @@
 	margin-inline: var(--icon-gap, var(--ui-size-sm));
 }
 
-[class*='emoji:'].justify\:start::before {
+[class*='emoji:'].justify\:start::before,
+[class*='emoji:']:not(.shape\:round, .shape\:square).justify\:center::before {
 	margin-inline-end: var(--icon-gap, var(--ui-size-sm));
 }
 
-[class*='emoji:'].justify\:end::after {
+[class*='emoji:'].justify\:end::after,
+[class*='emoji:']:not(.shape\:round, .shape\:square).justify\:center::after {
 	margin-inline-start: var(--icon-gap, var(--ui-size-sm));
 }

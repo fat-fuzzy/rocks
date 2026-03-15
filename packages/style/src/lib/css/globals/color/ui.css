@@ -3,6 +3,7 @@
  - chroma
  - hue
 */
+
 [class*=':primary'] {
 	--hue: var(--color-theme-primary);
 	--shadow: oklch(
@@ -83,7 +84,13 @@
 	--shadow-inset-md: var(--shadow-md);
 }
 
-[class*='color:'] :is(input, textarea, select) {
+[class*='color:']:not([class*=':neutral']):is(
+		input,
+		textarea,
+		select,
+		fieldset,
+		label
+	) {
 	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
 	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
 	--accent: oklch(var(--lightness-accent) var(--chroma-accent-base) var(--hue));

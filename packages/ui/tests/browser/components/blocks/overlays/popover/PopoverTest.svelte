@@ -1,4 +1,5 @@
 <script lang="ts">
+	import TestContext from '$tests/browser/TestContext.svelte'
 	import {onMount} from 'svelte'
 	import Popover from '$lib/components/blocks/overlays/Popover/Popover.svelte'
 	import {POPOVER_PROPS} from '$tests/fixtures/block-props'
@@ -33,27 +34,29 @@
 	})
 </script>
 
-<Popover {...popover1.props}>
-	<p>{popover1.expected.content}</p>
-</Popover>
-
-{#if count === 2}
-	<Popover {...popover2.props}>
-		<p>{popover2.expected.content}</p>
+<TestContext>
+	<Popover {...popover1.props}>
+		<p>{popover1.expected.content}</p>
 	</Popover>
-{/if}
 
-{#if externalEvent}
-	<form onsubmit={handleSubmit}>
-		<label>
-			Enter the popoverId
-			<input name="popover-id" type="text" />
-			<button>Save and close</button>
-		</label>
-	</form>
-{/if}
+	{#if count === 2}
+		<Popover {...popover2.props}>
+			<p>{popover2.expected.content}</p>
+		</Popover>
+	{/if}
 
-<p class="click-outside">Click outside</p>
+	{#if externalEvent}
+		<form onsubmit={handleSubmit}>
+			<label>
+				Enter the popoverId
+				<input name="popover-id" type="text" />
+				<button>Save and close</button>
+			</label>
+		</form>
+	{/if}
+
+	<p class="click-outside">Click outside</p>
+</TestContext>
 
 <style>
 	.click-outside {

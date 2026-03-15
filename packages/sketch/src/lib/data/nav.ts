@@ -6,6 +6,7 @@ export const links = {
 		{
 			slug: 'projects',
 			title: 'Projects',
+			label: 'Projects',
 			asset: 'projects',
 			formaction: 'toggleProjects',
 			items: [],
@@ -13,6 +14,7 @@ export const links = {
 		{
 			slug: 'learning',
 			title: 'Learning',
+			label: 'Learning',
 			asset: 'learning',
 			formaction: 'toggleLearning',
 			items: [],

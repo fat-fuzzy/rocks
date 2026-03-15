@@ -23,13 +23,13 @@
 		preload,
 	}: LinkTreeProps = $props()
 
-	let layoutClass = layout ? `l:${layout}:${size} l:${container}` : ''
-	let colorClass = color ? `surface:1:${color}` : 'bg:inherit'
-	let alignClass = align ? `align:${align}` : ''
+	let layoutClass = $derived(layout ? `l:${layout}:${size} l:${container}` : '')
+	let colorClass = $derived(color ? `surface:1:${color}` : 'bg:inherit')
+	let alignClass = $derived(align ? `align:${align}` : '')
 	let shapeClass = $derived(shape ? `shape:${shape}` : `shape:mellow`)
-	let depthClass = `depth-${depth}`
-	let gridClass = depth === 1 ? `l:grid:auto size:xs` : layoutClass
-	let linkClass = depth === 0 ? 'font:md maki:inline:2xs' : 'font:md'
+	let depthClass = $derived(`depth-${depth}`)
+	let gridClass = $derived(depth === 1 ? `l:grid:auto size:xs` : layoutClass)
+	let linkClass = $derived(depth === 0 ? 'font:md maki:inline:2xs' : 'font:md')
 </script>
 
 {#snippet nestedLinkTree(subItems: NavItem[], slug: string, itemPath?: string)}
@@ -51,7 +51,7 @@
 	data-sveltekit-preload-data={preload ? preload : undefined}
 >
 	{#each items as item (item.slug)}
-		{@const {slug, title, asset, reveal, itemPath} = item}
+		{@const {slug, label, asset, reveal, itemPath} = item}
 		{@const subItems = item.items}
 		{@const buttonAssetClass = subItems && asset ? asset : ''}
 		{@const linkAssetClass = !subItems && asset ? `emoji:${asset}` : ''}
@@ -69,12 +69,12 @@
 		>
 			{#if subItems && depth > 0}
 				<ExpandLink
-					{title}
+					{label}
 					{reveal}
 					{slug}
 					asset={buttonAssetClass}
 					href={format.formatHref(path, slug)}
-					size={'2xs'}
+					size="2xs"
 					font="sm"
 					actionPath={item.actionPath}
 					formaction={item.formaction}
@@ -89,7 +89,7 @@
 					href={format.formatHref(itemPath ?? path, slug)}
 					class={`${linkClass} ${linkAssetClass}`}
 				>
-					{title}
+					{label}
 				</a>
 				{#if subItems}
 					{@render nestedLinkTree(subItems, slug, itemPath)}

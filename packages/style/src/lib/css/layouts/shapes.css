@@ -48,7 +48,10 @@ button[class*='shape:'] {
 	inline-size: auto;
 }
 
-button.shape\:pill {
+button.shape\:pill,
+button.shape\:soft,
+button.shape\:mellow,
+button.shape\:none {
 	inline-size: 100%;
 	min-inline-size: 6ch; /* TODO: fix magic number */
 }
@@ -56,15 +59,4 @@ button.shape\:pill {
 .shape\:round[class*='l:stack']:only-child::before,
 .shape\:square[class*='l:stack']:only-child::before {
 	margin-inline: 0;
-}
-
-/* TODO: clean this */
-button[class*='shape:'][class*='l:stack']::before,
-.feedback\:code[class*='shape:'][class*='l:stack']:only-child::before {
-	margin-block-end: var(--ui-size-lg);
-}
-
-/* TODO: clean this */
-button[class*='shape:'][class*='l:stack']:has(.sr-only)::before {
-	margin-block-end: 0;
 }

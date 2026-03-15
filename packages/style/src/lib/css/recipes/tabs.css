@@ -3,8 +3,8 @@
 }
 
 [class*='fixed:top']:has([role='tablist']) {
-	--inset-size-top: calc(var(--ui-header-height) - var(--ui-size-sm));
-	--inset-size-right: 0;
+	--inset-top: calc(var(--ui-header-height) - var(--ui-size-sm));
+	--inset-right: 0;
 }
 
 [role='tablist'],

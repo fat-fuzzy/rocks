@@ -1,5 +1,11 @@
 # @fat-fuzzy/playbook
 
+## 0.1.30
+
+### Patch Changes
+
+- 53ea789: InputGroup & Editor improvements, style fixes
+
 ## 0.1.29
 
 ### Patch Changes

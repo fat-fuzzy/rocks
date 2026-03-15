@@ -9,7 +9,7 @@
 		--lightness-base: var(--color-lightness-light-base);
 		--lightness-accent-base: var(--color-lightness-400);
 		--lightness-contrast-base: var(--color-lightness-600);
-		--chroma-base: var(--color-chroma-neutral);
+		--chroma-base: var(--color-chroma-600);
 		--chroma-contrast-base: var(--color-chroma-600);
 		--lightness: var(--color-lightness-light-base);
 		--lightness-accent: var(--color-lightness-300);
@@ -31,7 +31,7 @@
 		--lightness-surface-4-contrast: var(--color-lightness-100);
 		--lightness-surface-5: var(--color-lightness-500);
 		--lightness-surface-5-contrast: var(--color-lightness-000);
-		--chroma: var(--color-chroma-neutral);
+		--chroma: var(--color-chroma-base);
 		--chroma-accent-base: var(--color-chroma-300);
 		--chroma-ink: var(--color-chroma-600);
 		--chroma-contrast: var(--color-chroma-600);
@@ -50,7 +50,7 @@
 
 		--shade: oklch(var(--lightness-base) var(--chroma) var(--hue));
 		--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
-		--accent: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
+		--accent: oklch(var(--lightness-accent) var(--chroma-contrast) var(--hue));
 		--shadow: oklch(
 			var(--lightness-accent-base) var(--chroma-accent-base) var(--hue)
 		);
@@ -71,7 +71,7 @@ html:has([class*='settings:day:']),
 	--lightness-base: var(--color-lightness-light-base);
 	--lightness-accent-base: var(--color-lightness-400);
 	--lightness-contrast-base: var(--color-lightness-600);
-	--chroma-base: var(--color-chroma-neutral);
+	--chroma-base: var(--color-chroma-600);
 	--chroma-contrast-base: var(--color-chroma-600);
 	--lightness: var(--color-lightness-light-base);
 	--lightness-accent: var(--color-lightness-300);
@@ -111,7 +111,7 @@ html:has([class*='settings:day:']),
 	--chroma-surface-5-contrast: var(--color-chroma-100);
 	--shade: oklch(var(--lightness-base) var(--chroma) var(--hue));
 	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
-	--accent: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
+	--accent: oklch(var(--lightness-accent) var(--chroma-contrast) var(--hue));
 	--shadow: oklch(
 		var(--lightness-accent-base) var(--chroma-accent-base) var(--hue)
 	);
@@ -133,7 +133,7 @@ html:has([class*='settings:day:']),
 		--lightness-base: var(--color-lightness-dark-base);
 		--lightness-accent-base: var(--color-lightness-200);
 		--lightness-contrast-base: var(--color-lightness-000);
-		--chroma-base: var(--color-chroma-neutral);
+		--chroma-base: var(--color-chroma-100);
 		--chroma-contrast-base: var(--color-chroma-100);
 		--lightness: var(--color-lightness-dark-base);
 		--lightness-accent: var(--color-lightness-400);
@@ -174,7 +174,9 @@ html:has([class*='settings:day:']),
 
 		--shade: oklch(var(--lightness-base) var(--chroma) var(--hue));
 		--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
-		--accent: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
+		--accent: oklch(
+			var(--lightness-accent) var(--chroma-accent-base) var(--hue)
+		);
 		--shadow: oklch(
 			var(--lightness-accent-base) var(--chroma-accent-base) var(--hue)
 		);
@@ -196,7 +198,7 @@ html:has([class*='settings:night:']),
 	--lightness-base: var(--color-lightness-dark-base);
 	--lightness-accent-base: var(--color-lightness-200);
 	--lightness-contrast-base: var(--color-lightness-000);
-	--chroma-base: var(--color-chroma-neutral);
+	--chroma-base: var(--color-chroma-100);
 	--chroma-contrast-base: var(--color-chroma-100);
 	--lightness: var(--color-lightness-dark-base);
 	--lightness-accent: var(--color-lightness-400);
@@ -237,7 +239,7 @@ html:has([class*='settings:night:']),
 
 	--shade: oklch(var(--lightness-base) var(--chroma) var(--hue));
 	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
-	--accent: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
+	--accent: oklch(var(--lightness-accent) var(--chroma-accent-base) var(--hue));
 	--shadow: oklch(
 		var(--lightness-accent-base) var(--chroma-accent-base) var(--hue)
 	);

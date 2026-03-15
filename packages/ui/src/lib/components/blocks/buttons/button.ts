@@ -6,11 +6,12 @@ export type ButtonType = 'button' | 'submit' | 'reset' | null | undefined
 export type ButtonProps = UiBlockProps & {
 	/**
 	 * State props
+	 * update on title attribute : https://youtu.be/Kc7ErlPIOLY?list=PL_xTCNiMz8sCVFjddUb1tLyl3Eet7Exg5&t=1414
 	 */
+	ref?: HTMLElement
 	id: string
 	name: string
-	label?: string
-	title?: string
+	label?: string // Always set either a label or children (with text) See
 	value?: string | number
 	disabled?: boolean
 	popovertarget?: string
@@ -30,7 +31,6 @@ export type ButtonStateProps = UiBlockProps & {
 	 */
 	id: string // Use for machine id
 	name: string
-	title?: string
 	label?: string
 	disabled?: boolean
 	formaction?: string
