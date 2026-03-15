@@ -4,7 +4,7 @@ form {
 	--chroma-accent: var(--color-chroma-400);
 	--lightness-contrast: var(--color-lightness-base);
 	--chroma-contrast: var(--color-chroma-base);
-	--accent: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
+	--accent: oklch(var(--lightness-accent) var(--chroma-accent-base) var(--hue));
 	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
 	--color-accent: var(--accent);
 	color: var(--ink);
