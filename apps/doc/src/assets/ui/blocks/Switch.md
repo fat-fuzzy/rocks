@@ -4,7 +4,8 @@ slug: Switch
 category: 'blocks'
 group: 'buttons'
 props_state: ['title', 'text', 'formaction', 'value', 'states']
-props_style: {'blocks': {'block': ['color', 'variant', 'size', 'shape']}}
+props_style:
+  {'blocks': {'block': ['color', 'variant', 'size', 'asset', 'shape']}}
 ---
 
 ## Usage
