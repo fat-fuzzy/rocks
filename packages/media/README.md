@@ -22,7 +22,7 @@ Then run:
 
 The output will contain the optimized image source set with a json file of image source data.
 
-Move the json file to `apps/doc/src/assets/${path-to-image}` and the generated images to  `apps/doc/static/${path-to-image}`.
+Move the json file to `apps/doc/src/assets/${path-to-image}` and the generated images to `apps/doc/static/${path-to-image}`.
 
 You can augment the generated json with the following data, and it will be used in the rendering of the image if you use an `Image` of `Picture` component from the `@fat-fuzzy/ui` library:
 
