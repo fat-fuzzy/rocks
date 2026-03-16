@@ -1,5 +1,5 @@
 import path from 'path'
-import adapter from '@sveltejs/adapter-cloudflare'
+import adapter from '@sveltejs/adapter-auto'
 import {mdsvex} from 'mdsvex'
 import mdsvexConfig from './mdsvex.config.js'
 import {vitePreprocess} from '@sveltejs/vite-plugin-svelte'
