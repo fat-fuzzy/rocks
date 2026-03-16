@@ -4,7 +4,22 @@ import {defineConfig} from 'vitest/config'
 export default defineConfig({
 	plugins: [sveltekit()],
 	test: {
-		include: ['tests/**/*.{test,spec}.{js,ts}'],
+		reporters: ['html'],
+		include: ['tests/unit/**/*.{test,spec}.{js,ts}'],
+		coverage: {
+			enabled: true,
+			provider: 'v8',
+			include: ['src/**/*.{js,ts}'],
+			exclude: [
+				'src/app.d.ts',
+				'src/**/browser/*.{js,ts}',
+				'src/**/definitions.{js,ts}',
+				'src/lib/types/*.{js,ts}',
+				'src/lib/**/*.browser.ts',
+				'src/lib/index.ts',
+				'src/lib/components/',
+			],
+		},
 	},
 	build: {
 		commonjsOptions: {

@@ -24,6 +24,7 @@ export default defineConfig({
 	},
 	test: {
 		...TEST_CONFIG_BASE,
+		reporters: ['html'],
 		name: 'browser',
 		browser: {
 			enabled: true,
