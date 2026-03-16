@@ -51,8 +51,8 @@ $f-slope: map.get($modular-scale, 'slope');
 $f-size-min-0: map.get($modular-scale, 'size-max');
 $f-size-max-0: map.get($modular-scale, 'size-min');
 $fluid-0: clamp(
-	map.get($modular-scale, 'size-min') * 1rem,
-	map.get($modular-scale, 'y-axis') * 1rem + map.get($modular-scale, 'slope') *
-		100vw,
-	map.get($modular-scale, 'size-max') * 1rem
+	#{map.get($modular-scale, 'size-min')} * 1rem,
+	#{map.get($modular-scale, 'y-axis')} * 1rem +
+		#{map.get($modular-scale, 'slope')} * 100vw,
+	#{map.get($modular-scale, 'size-max')} * 1rem
 );

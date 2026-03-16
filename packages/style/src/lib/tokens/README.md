@@ -26,3 +26,7 @@ Shadow and gradient colors are based on the main color base, converted to hsl:
 	}
 }
 ```
+
+## TODO
+
+Fix font scales: `--fluid-0`. is broken in scss (remove scss ?!)
