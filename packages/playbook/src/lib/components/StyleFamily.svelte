@@ -78,7 +78,7 @@
 						{familyName}
 					</summary>
 					<div
-						class="l:flex:2xs justify:stretch align:start ravioli:xs shape:soft"
+						class="l:flex size:md justify:stretch align:start ravioli:xs shape:soft"
 						data-testid={`details-content-${familyName}`}
 					>
 						{#each family.items as styleInputGroup (styleInputGroup.id)}
