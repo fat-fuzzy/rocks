@@ -86,7 +86,6 @@
 								{family}
 								styleInput={styleInputGroup}
 								{familyName}
-								categoryName={categoryOptions.name}
 								{formaction}
 								onupdate={updateStyles}
 							/>

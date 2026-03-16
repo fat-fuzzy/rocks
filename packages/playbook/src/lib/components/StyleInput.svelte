@@ -1,10 +1,17 @@
 <script lang="ts">
 	import type {IStyleInputGroup, IStyleFamily} from '$types'
 
-	import type {FuzzyPayload, UiSize} from '@fat-fuzzy/ui'
+	import type {
+		FuzzyPayload,
+		UiColor,
+		UiContainer,
+		UiLayout,
+		UiSize,
+		UiState,
+		UiVariant,
+	} from '@fat-fuzzy/ui'
 	import fatFuzzyUi from '@fat-fuzzy/ui'
-	const {InputRange} = fatFuzzyUi.blocks
-	const {InputGroup} = fatFuzzyUi.drafts
+	const {InputRange, InputGroup} = fatFuzzyUi.blocks
 	const {ToggleMenu} = fatFuzzyUi.recipes
 	const {Fieldset} = fatFuzzyUi.drafts
 
@@ -12,11 +19,10 @@
 		styleInput: IStyleInputGroup
 		family: IStyleFamily
 		familyName: string
-		categoryName: string
 		formaction?: string
 		onupdate: (payload: {
 			name: string
-			items: {id: string; value: string}[]
+			items: {id: string; label: string; value: string}[]
 		}) => void
 	}
 
@@ -24,8 +30,8 @@
 
 	let apiSize: UiSize = '2xs'
 	let apiFont: UiSize = 'xs'
-	let apiColor = 'primary'
-	let apiVariant = 'outline'
+	let apiColor: UiColor = 'primary'
+	let apiVariant: UiVariant = 'outline'
 	let apiJustify = 'stretch'
 
 	let {id, input, name, value, assetType, items} = $derived(styleInput)
@@ -38,9 +44,10 @@
 				...i,
 				label: i.label ?? i.asset ?? i.name ?? i.id,
 				asset: i.asset ?? '',
-				initial: state,
+				initial: state as UiState,
 				name: i.id,
 				id: i.id,
+				state: i.state,
 			}
 		}),
 	)
@@ -54,14 +61,23 @@
 		xl: '100',
 	}
 
-	const COMPONENT_IMPORTS: {[input: string]: any} = {
-		radio: InputGroup,
-		range: InputRange,
-		checkbox: InputGroup,
-		toggle: ToggleMenu,
+	function handleInput(event: Event) {
+		const target = event.target as HTMLInputElement
+		const updated = {
+			name: familyName.toLowerCase(),
+			items: [
+				{
+					id: target.id,
+					label: target.name.toLowerCase(),
+					name: target.name.toLowerCase(),
+					value: target.value,
+				},
+			],
+		}
+		onupdate(updated)
 	}
 
-	function handleInput(event) {
+	function handleRangeInput(event) {
 		const payload = {
 			name: familyName.toLowerCase(),
 			items: [
@@ -101,10 +117,10 @@
 		selected: {
 			name: string
 			value?: string | number
-			state: string
+			state?: string
 		}[],
 	) {
-		let items: {id: string; name: string; value: string}[] = []
+		let items: {id: string; name: string; label: string; value: string}[] = []
 		let payload = {
 			id,
 			name: familyName.toLowerCase(),
@@ -153,7 +169,8 @@
 			{id}
 			title={styleInput.name}
 			items={updatedItems}
-			layout={styleInput.layout ?? ''}
+			layout={(styleInput.layout as UiLayout) ?? ''}
+			font={(styleInput.font as UiSize) ?? apiFont}
 			size={apiSize}
 			color={apiColor}
 			variant={apiVariant}
@@ -167,8 +184,7 @@
 	</Fieldset>
 {:else}
 	{#if input === 'radio' || input === 'checkbox'}
-		{@const InputComponent = COMPONENT_IMPORTS[input]}
-		<InputComponent
+		<InputGroup
 			{id}
 			{items}
 			name={id}
@@ -176,7 +192,7 @@
 			value={currentValue}
 			legend={name}
 			layout={styleInput.layout ?? 'switcher'}
-			container={styleInput.container ?? ''}
+			container={(styleInput.container as UiContainer) ?? ''}
 			threshold={apiSize}
 			size={styleInput.size ?? apiSize}
 			color={apiColor}
@@ -186,7 +202,6 @@
 		/>
 	{/if}
 	{#if input == 'range'}
-		{@const InputComponent = COMPONENT_IMPORTS[input]}
 		<Fieldset
 			id={family.name}
 			layout={family.layout}
@@ -195,18 +210,18 @@
 			name={familyName}
 			justify={apiJustify}
 		>
-			<InputComponent
+			<InputRange
 				{id}
 				label={styleInput.name}
 				{items}
 				value={classToNumber[currentValue] ?? currentValue}
 				name={id}
-				layout={styleInput.layout ?? ''}
+				layout={(styleInput.layout as UiLayout) ?? ''}
 				size={apiSize}
 				color={apiColor}
 				font={apiFont}
 				variant={styleInput.variant}
-				oninput={(event: Event) => handleInput(event)}
+				oninput={handleRangeInput}
 			/>
 		</Fieldset>
 	{/if}
