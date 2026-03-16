@@ -7,9 +7,12 @@ fieldset {
 	margin: 0;
 
 	legend {
-		font-size: var(--font-size-ui);
 		font-weight: var(--font-weight-semibold);
 		line-height: var(--ui-size);
+	}
+
+	legend[class*='font:'] {
+		--font-size: var(--font-size-plus);
 	}
 
 	> p {

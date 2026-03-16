@@ -124,6 +124,11 @@ label:has([type='range']) {
 	padding-inline: var(--outline-offset-md);
 }
 
+label:has([type='range']) span {
+	font-size: var(--font-size-plus);
+	font-weight: var(--font-weight-semibold);
+}
+
 [type='range'][list='markers'] + datalist {
 	display: flex;
 	justify-content: var(--justify, space-between);
