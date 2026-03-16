@@ -1,5 +1,11 @@
 # @fat-fuzzy/doc
 
+## 0.1.67
+
+### Patch Changes
+
+- 419be5d: Bug fixes test improvements, test updates
+
 ## 0.1.66
 
 ### Patch Changes

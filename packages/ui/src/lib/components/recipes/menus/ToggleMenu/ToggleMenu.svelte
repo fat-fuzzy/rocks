@@ -14,6 +14,7 @@
 		assetType,
 		color,
 		size,
+		font,
 		shape,
 		variant,
 		container,
@@ -31,6 +32,7 @@
 
 	let system = new ToggleSystem()
 	let type: ButtonType = $derived(formaction ? 'submit' : 'button')
+	let fontClass = $derived(font ? `font:${font}` : '')
 
 	let menuClasses = $derived(
 		styleHelper.getStyles({
@@ -108,7 +110,7 @@
 
 {#if title}
 	<div class="menu">
-		<p>{title}</p>
+		<p class={fontClass}>{title}</p>
 		{@render menuContent()}
 	</div>
 {:else}

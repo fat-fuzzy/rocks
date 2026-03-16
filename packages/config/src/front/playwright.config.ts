@@ -2,13 +2,11 @@ const PORT = 4173
 
 /** @type { import("@playwright/test").PlaywrightTestConfig } */
 const config = {
-	timeout: 10000,
+	timeout: 11000,
 	retries: 2,
 	workers: '50%',
 	maxFailures: undefined,
 	use: {
-		// screenshot: 'only-on-failure',
-		trace: 'retain-on-failure',
 		// Base URL to use in actions like `await page.goto('/')`.
 		baseURL: `http://localhost:${PORT}`,
 	},

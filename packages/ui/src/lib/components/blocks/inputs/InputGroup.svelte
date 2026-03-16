@@ -115,7 +115,7 @@
 				{color}
 				{justify}
 				{container}
-				{id}
+				id={`all-${id}`}
 				oninput={(event: Event) => handleSelectAll(event)}
 				{validator}
 			/>

@@ -1,5 +1,12 @@
 # @fat-fuzzy/git-poule
 
+## 0.1.17
+
+### Patch Changes
+
+- Updated dependencies [419be5d]
+  - @fat-fuzzy/config@0.1.21
+
 ## 0.1.16
 
 ### Patch Changes

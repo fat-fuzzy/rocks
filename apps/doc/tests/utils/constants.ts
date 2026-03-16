@@ -1,22 +1,30 @@
 const pages = [
-	{path: '/', slug: '', title: 'Home'},
+	{path: '/', slug: '', title: 'Home', label: 'Home'},
 	{
 		path: '/about',
 		slug: 'about',
 		title: 'About',
+		label: 'About',
 		items: [
-			{path: '/about/usage', slug: 'usage', title: 'Usage', linkTitle: 'Usage'},
+			{
+				path: '/about/usage',
+				slug: 'usage',
+				title: 'Usage',
+				label: 'Usage',
+				linkTitle: 'Usage',
+			},
 			{
 				path: '/about/decisions',
 				slug: 'decisions',
-				title: 'Decisions Log',
-				linkTitle: 'Usage',
+				title: 'Decisions',
+				label: 'Decisions',
+				linkTitle: 'Decisions',
 			},
 		],
 	},
-	{path: '/ui', slug: 'ui', title: 'UI'},
-	{path: '/play', slug: 'play', title: 'Play'},
-	{path: '/blog', slug: 'blog', title: 'Blog'},
+	{path: '/ui', slug: 'ui', title: 'UI', label: 'UI'},
+	{path: '/play', slug: 'play', title: 'Play', label: 'Play'},
+	{path: '/blog', slug: 'blog', title: 'Blog', label: 'Blog'},
 ]
 
 const categories = {
@@ -39,11 +47,12 @@ const blocks = {
 		'Feedback',
 		'InputCheck',
 		'InputRadio',
+		'InputGroup',
 		'InputRange',
 		'InputFile',
 		'Magic',
 	],
-	draft: ['Fieldset', 'InputGroup', 'Picture'],
+	draft: ['Fieldset', 'Picture'],
 }
 
 const layouts = {

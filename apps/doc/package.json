@@ -1,6 +1,6 @@
 {
 	"name": "@fat-fuzzy/doc",
-	"version": "0.1.66",
+	"version": "0.1.67",
 	"description": "Fat Fuzzy Doc",
 	"main": "index.js",
 	"author": "Patricia Boh",
@@ -41,7 +41,7 @@
 		"@fat-fuzzy/style": "workspace:*",
 		"@fat-fuzzy/ui": "workspace:*",
 		"@fat-fuzzy/validation": "workspace:*",
-		"@playwright/test": "1.57.0",
+		"@playwright/test": "1.58.2",
 		"@sveltejs/adapter-cloudflare": "7.2.8",
 		"@sveltejs/kit": "2.53.4",
 		"@sveltejs/vite-plugin-svelte": "6.2.4",

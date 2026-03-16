@@ -1,10 +1,15 @@
-import {defineConfig} from '@playwright/test'
+import {defineConfig, devices} from '@playwright/test'
+import playwright from '@fat-fuzzy/config/playwright'
 
+/** @type { import("@playwright/test").PlaywrightTestConfig } */
 export default defineConfig({
-	webServer: {
-		command: 'pnpm build && pnpm preview',
-		port: 4173,
-	},
-
-	testDir: 'e2e',
+	...playwright,
+	timeout: 1000,
+	projects: [
+		{
+			name: 'Desktop',
+			...devices['Desktop Chrome'],
+			testMatch: /(.+\.)?(test|spec)\.[jt]s/,
+		},
+	],
 })

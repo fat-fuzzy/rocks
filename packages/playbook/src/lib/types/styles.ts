@@ -10,16 +10,18 @@ import type {
 // TODO: figure out if I can extract this info from Svelte component
 interface IStyleInputOptions {
 	id: string
+	label: string
 	value: string
 	[key: string]: string
 }
 
 export type StyleInputOptions = {
 	id: string
+	label: string
 	asset?: string
 	assetType?: string
 	size?: UiSize
-	label?: string
+	font?: UiSize
 	text?: string
 	value: string
 	brightness?: string
@@ -27,6 +29,7 @@ export type StyleInputOptions = {
 	app?: string
 	container?: UiContainer
 	content?: string
+	context?: string
 	breakpoint?: UiSize
 	threshold?: UiSize
 	variant?: UiVariant
@@ -105,6 +108,7 @@ export interface IStylesSet {
 	breakpoint?: UiSize
 	threshold?: UiSize
 	size?: UiSize
+	font?: UiSize
 	variant?: UiVariant
 	mode?: string
 	assetType?: string
@@ -139,6 +143,7 @@ export type StylesSetOptions = {
 	breakpoint?: UiSize
 	threshold?: UiSize
 	size?: UiSize
+	font?: UiSize
 	variant?: UiVariant
 	mode?: string
 	assetType?: string

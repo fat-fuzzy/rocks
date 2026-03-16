@@ -6,6 +6,7 @@ const brightness = {
 	input: 'toggle',
 	layout: 'stack',
 	size: '2xs',
+	font: 'xs',
 	variant: 'bare',
 	items: [
 		{id: 'brightness.day', label: 'day', asset: 'day', value: 'day'},
@@ -23,6 +24,7 @@ const contrast = {
 	input: 'toggle',
 	layout: 'stack',
 	size: '2xs',
+	font: 'xs',
 	variant: 'bare',
 	items: [
 		{
@@ -45,6 +47,7 @@ const container = {
 	input: 'toggle',
 	layout: 'flex grow ',
 	size: '2xs',
+	font: 'xs',
 	container: 'ravioli',
 	items: [
 		{id: 'container.taco', label: 'taco', value: 'taco', asset: 'taco'},
@@ -77,6 +80,7 @@ const layout = {
 	input: 'toggle',
 	layout: 'flex grow ',
 	size: '2xs',
+	font: 'xs',
 	container: 'ravioli',
 	items: [
 		{id: 'layout.stack', label: 'stack', value: 'stack'},
@@ -123,6 +127,7 @@ const color = {
 	input: 'toggle',
 	layout: 'stack',
 	size: '2xs',
+	font: 'xs',
 	items: [
 		{
 			id: 'color.primary',
@@ -153,6 +158,7 @@ const variant = {
 	input: 'toggle',
 	layout: 'stack',
 	size: '2xs',
+	font: 'xs',
 	items: [
 		{id: 'variant.fill', label: 'fill', value: 'fill', variant: 'fill'},
 		{
@@ -170,6 +176,7 @@ const shape = {
 	input: 'toggle',
 	layout: 'flex',
 	size: '2xs',
+	font: 'xs',
 	items: [
 		{
 			id: 'shape.none',
@@ -305,6 +312,7 @@ const asset = {
 	input: 'toggle',
 	layout: 'flex',
 	size: '2xs',
+	font: 'xs',
 	mode: 'radio',
 	items: [
 		{
@@ -351,6 +359,7 @@ const spell = {
 	input: 'toggle',
 	layout: 'stack',
 	size: '2xs',
+	font: 'xs',
 	variant: 'bare',
 	items: [
 		{id: 'spell.bleu', label: 'bleu', value: 'bleu'},
@@ -365,6 +374,7 @@ const level = {
 	input: 'toggle',
 	layout: 'stack',
 	size: '2xs',
+	font: 'xs',
 	variant: 'bare',
 	items: [
 		{
@@ -393,6 +403,7 @@ const uno = {
 	input: 'toggle',
 	layout: 'flex grow',
 	size: '2xs',
+	font: 'xs',
 	variant: 'bare',
 	items: [
 		{
@@ -449,6 +460,7 @@ const due = {
 	input: 'toggle',
 	layout: 'flex grow',
 	size: '2xs',
+	font: 'xs',
 	variant: 'bare',
 	items: [
 		{

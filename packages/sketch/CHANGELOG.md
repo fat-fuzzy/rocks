@@ -1,5 +1,11 @@
 # @fat-fuzzy/sketch
 
+## 0.1.32
+
+### Patch Changes
+
+- 419be5d: Bug fixes test improvements, test updates
+
 ## 0.1.31
 
 ### Patch Changes

@@ -35,8 +35,6 @@ install:
 all:publish
 
 publish:
-	pnpm build
-
 	@for package in $(PACKAGES); do \
 		echo "Publishing $$package"; \
 		cd $$package && pnpm publish --registry http://localhost:4873; \

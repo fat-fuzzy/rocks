@@ -87,8 +87,8 @@ button.variant\:bare:active {
 
 [aria-pressed='true'] {
 	&.variant\:fill {
-		--lightness: var(--lightness-surface-2-contrast);
-		--lightness-contrast: var(--lightness-surface-1);
+		--lightness: var(--lightness-surface-2);
+		--lightness-contrast: var(--lightness-surface-2-contrast);
 
 		&:active {
 			--lightness: var(--lightness-surface-6);
@@ -131,7 +131,10 @@ button[class*='bg:'].color\:neutral.variant\:outline:hover {
 }
 
 button.variant\:fill:not([disabled]):hover {
-	--lightness: var(--lightness-surface-4);
+	--chroma: var(--chroma-surface-3);
+	--chroma-contrast: var(--chroma-surface-3-contrast);
+	--lightness: var(--lightness-surface-3);
+	--lightness-contrast: var(--lightness-surface-3-contrast);
 }
 
 button[class*='bg:']:not([class*=':neutral']) {

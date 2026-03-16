@@ -12,7 +12,6 @@ export const ALIAS_BASE = {
 }
 
 export const TEST_CONFIG_BASE = {
-	reporters: ['html'],
 	setupFiles: ['vitest-browser-svelte'],
 	include: ['tests/browser/**/*.{test,spec}.ts'],
 }
@@ -24,6 +23,7 @@ export default defineConfig({
 	},
 	test: {
 		...TEST_CONFIG_BASE,
+		reporters: ['dot'],
 		name: 'browser',
 		browser: {
 			enabled: true,

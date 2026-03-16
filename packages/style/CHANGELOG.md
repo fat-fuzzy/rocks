@@ -1,5 +1,11 @@
 # @fat-fuzzy/style
 
+## 0.1.27
+
+### Patch Changes
+
+- 419be5d: Bug fixes test improvements, test updates
+
 ## 0.1.26
 
 ### Patch Changes
