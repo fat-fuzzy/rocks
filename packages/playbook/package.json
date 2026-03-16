@@ -10,15 +10,12 @@
 		"preview": "vite preview",
 		"build": "vite build && pnpm package",
 		"package": "svelte-kit sync && svelte-package && publint",
-		"test": "pnpm test:e2e",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --check . && eslint .",
 		"format": "prettier --write .",
-		"test:ui": "NODE_ENV=test playwright test --ui",
-		"test:e2e": "NODE_ENV=test playwright test",
-		"test:report": "NODE_ENV=test playwright test --reporter=html",
-		"test:unit": "vitest run"
+		"test:unit": "vitest run",
+		"test": "pnpm test:unit"
 	},
 	"main": "./dist/index.js",
 	"files": [
