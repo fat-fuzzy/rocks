@@ -61,6 +61,7 @@
 	data-key={id}
 	class={`${fieldsetClasses} ${typeClass}`}
 	{disabled}
+	data-testid={id}
 >
 	{#if legend}<legend class={legendClasses}>{legend}</legend>{/if}
 	{#if children}
