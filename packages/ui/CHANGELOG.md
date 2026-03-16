@@ -1,5 +1,11 @@
 # @fat-fuzzy/ui
 
+## 0.1.80
+
+### Patch Changes
+
+- 419be5d: Bug fixes test improvements, test updates
+
 ## 0.1.79
 
 ### Patch Changes
