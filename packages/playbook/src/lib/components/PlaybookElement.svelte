@@ -163,7 +163,7 @@
 							shape="mellow"
 						>
 							<h2 class="w:full text:center">
-								{category === 'raw' ? 'template' : 'playbook'}
+								{category === 'raw' ? 'Template' : 'Playbook'}
 							</h2>
 						</Magic>
 					</div>
