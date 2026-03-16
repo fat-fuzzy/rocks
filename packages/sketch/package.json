@@ -16,6 +16,9 @@
 		"lint:scss": "./node_modules/@fat-fuzzy/config/node_modules/.bin/stylelint ./src/lib/styles/scss/**/*.scss &> ./logs/stylelint-scss.log",
 		"format": "prettier --write .",
 		"test": "pnpm test:e2e",
+		"test:unit": "vitest run",
+		"test:types": "vitest run --typecheck",
+		"test:coverage": "vitest --ui",
 		"test:ui": "NODE_ENV=test playwright test --ui",
 		"test:e2e": "NODE_ENV=test playwright test",
 		"test:report": "NODE_ENV=test playwright test --reporter=html"
