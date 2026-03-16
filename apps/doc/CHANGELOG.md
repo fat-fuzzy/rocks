@@ -1,5 +1,11 @@
 # @fat-fuzzy/doc
 
+## 0.1.68
+
+### Patch Changes
+
+- Fix sidebar labels
+
 ## 0.1.67
 
 ### Patch Changes
