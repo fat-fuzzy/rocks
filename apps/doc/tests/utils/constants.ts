@@ -47,11 +47,12 @@ const blocks = {
 		'Feedback',
 		'InputCheck',
 		'InputRadio',
+		'InputGroup',
 		'InputRange',
 		'InputFile',
 		'Magic',
 	],
-	draft: ['Fieldset', 'InputGroup', 'Picture'],
+	draft: ['Fieldset', 'Picture'],
 }
 
 const layouts = {
