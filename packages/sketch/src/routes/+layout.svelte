@@ -15,7 +15,7 @@
 
 	let appContext = $derived(page.data.appContext)
 
-	let sketches = $state(page.data.sketches)
+	let sketches = $state(page.data.sketches.map((s) => ({...s, label: s.title})))
 
 	let path = ''
 
