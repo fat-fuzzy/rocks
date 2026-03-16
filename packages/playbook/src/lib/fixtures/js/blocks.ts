@@ -58,7 +58,7 @@ export default {
 		legend: 'InputGroup',
 		// type: 'radio',
 		type: 'checkbox',
-		id: 'input-group',
+		title: 'InputGroup',
 		name: 'input-group',
 		value: 'input-group',
 		variant: 'outline',
