@@ -33,16 +33,23 @@ export const load = async ({locals, url, params}) => {
 
 	sidebar.items[0].items = (sidebar.items[0].items ?? []).map((item) => {
 		if (item.slug === 'usage') {
-			item.items = usagesMarkdowns.map(({meta}) => meta)
+			item.items = usagesMarkdowns.map(({meta}) => ({
+				...meta,
+				label: meta.title,
+			}))
 			item.reveal = locals.navUsage
 		} else if (item.slug === 'decisions') {
-			item.items = decisionsMarkdowns.map(({meta}) => meta)
+			item.items = decisionsMarkdowns.map(({meta}) => ({
+				...meta,
+				label: meta.title,
+			}))
 			item.reveal = locals.navDecisions
 		} else if (item.slug === 'speaking') {
 			item.reveal = locals.navSpeaking
 			if (!params.talk) {
 				item.items = talks.map(({meta}) => ({
 					...meta,
+					label: meta.title,
 					formaction: `toggleTalk-${meta.slug}`, // TODO: : generate toggleReveal actions per talk
 				}))
 			} else {

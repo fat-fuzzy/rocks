@@ -24,16 +24,17 @@ export const load = async ({locals, url}) => {
 											slug: item.meta.slug,
 											title: item.meta?.series?.title,
 											itemPath: '/blog',
+											label: item.meta?.series?.title,
 										}
 									}
 								}
 							})
 							.filter((i) => i !== undefined) as NavItem[]
 						meta.title = meta.series.title
-						links.push(meta)
+						links.push({...meta, label: meta.title})
 					}
 				} else {
-					links.push(meta)
+					links.push({...meta, label: meta.title})
 				}
 				return links
 			}, [])
