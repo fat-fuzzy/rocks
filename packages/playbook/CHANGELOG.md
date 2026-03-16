@@ -1,5 +1,11 @@
 # @fat-fuzzy/playbook
 
+## 0.1.31
+
+### Patch Changes
+
+- 419be5d: Bug fixes test improvements, test updates
+
 ## 0.1.30
 
 ### Patch Changes
