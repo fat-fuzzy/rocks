@@ -38,8 +38,8 @@ testInputs.forEach((toTest) => {
 			})
 		})
 
-		describe('behaviour', () => {
-			it(`should handle inputs without errors`, async () => {
+		describe.skip('behaviour - tested in utils/forms for now', () => {
+			it.skip(`should handle inputs without errors`, async () => {
 				const {getByRole} = render(InputTest)
 
 				const locator = getByRole('textbox', {name: toTest.label})
