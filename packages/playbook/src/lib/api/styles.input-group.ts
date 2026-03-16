@@ -20,6 +20,7 @@ class StyleInputGroup implements IStyleInputGroup {
 	breakpoint?: UiSize
 	threshold?: UiSize
 	size?: UiSize
+	font?: UiSize
 	variant?: UiVariant
 	mode?: string
 	assetType?: string
