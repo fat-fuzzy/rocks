@@ -417,8 +417,8 @@ importers:
         specifier: 3.20.1
         version: 3.20.1(@tiptap/core@3.20.1(@tiptap/pm@3.20.1))(@tiptap/pm@3.20.1)
       '@tiptap/extension-text-style':
-        specifier: 3.20.1
-        version: 3.20.1(@tiptap/core@3.20.1(@tiptap/pm@3.20.1))
+        specifier: 3.20.4
+        version: 3.20.4(@tiptap/core@3.20.1(@tiptap/pm@3.20.1))
       '@tiptap/extension-typography':
         specifier: ^3.20.1
         version: 3.20.1(@tiptap/core@3.20.1(@tiptap/pm@3.20.1))
@@ -2312,10 +2312,10 @@ packages:
     peerDependencies:
       '@tiptap/core': ^3.20.1
 
-  '@tiptap/extension-text-style@3.20.1':
-    resolution: {integrity: sha512-3LQU92zX6tzl47EBskkAKeJXd6EWwYmBDE7jbd7InJqnt9NMAcj4DtXtXpI+e6Un5+8yzNjVA+fI5+5cFS3dSg==}
+  '@tiptap/extension-text-style@3.20.4':
+    resolution: {integrity: sha512-PvW0Ja7ahWpo4bRuR8YCCVv4PH8lXjzhzlBAa4bMbsumOg+GbhX8Su7fwqd+IIPrHqfPXz9HTBMApSfzP6/08A==}
     peerDependencies:
-      '@tiptap/core': ^3.20.1
+      '@tiptap/core': ^3.20.4
 
   '@tiptap/extension-text@3.20.1':
     resolution: {integrity: sha512-7PlIbYW8UenV6NPOXHmv8IcmPGlGx6HFq66RmkJAOJRPXPkTLAiX0N8rQtzUJ6jDEHqoJpaHFEHJw0xzW1yF+A==}
@@ -3606,6 +3606,7 @@ packages:
 
   glob@10.5.0:
     resolution: {integrity: sha512-DfXN8DfhJ7NH3Oe7cFmu3NCu1wKbkReJ8TorzSAFbSKrlNaQSKfIzqYqVY8zlbs2NLBbWpRiU52GX2PbaBVNkg==}
+    deprecated: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
     hasBin: true
 
   glob@13.0.6:
@@ -7918,7 +7919,7 @@ snapshots:
     dependencies:
       '@tiptap/core': 3.20.1(@tiptap/pm@3.20.1)
 
-  '@tiptap/extension-text-style@3.20.1(@tiptap/core@3.20.1(@tiptap/pm@3.20.1))':
+  '@tiptap/extension-text-style@3.20.4(@tiptap/core@3.20.1(@tiptap/pm@3.20.1))':
     dependencies:
       '@tiptap/core': 3.20.1(@tiptap/pm@3.20.1)
 
