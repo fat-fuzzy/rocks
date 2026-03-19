@@ -1,5 +1,29 @@
 # @fat-fuzzy/prose
 
+## 0.1.34
+
+### Patch Changes
+
+- 419be5d: Bug fixes test improvements, test updates
+
+## 0.1.33
+
+### Patch Changes
+
+- 53ea789: InputGroup & Editor improvements, style fixes
+
+## 0.1.32
+
+### Patch Changes
+
+- 888dce0: Improve editor menus and text style utilities
+
+## 0.1.31
+
+### Patch Changes
+
+- fbbbb80: Add editors with menu presets
+
 ## 0.1.30
 
 ### Patch Changes

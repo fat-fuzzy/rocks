@@ -21,7 +21,6 @@
 			id: c,
 			label: c,
 			name: c,
-			title: '',
 			value: c,
 		})) || [],
 	)
@@ -31,7 +30,6 @@
 			id: String(b),
 			label: `blur ${b}`,
 			name: String(b),
-			title: '',
 			value: b,
 		})) || [],
 	)
@@ -41,7 +39,6 @@
 			id: b,
 			label: b,
 			name: b,
-			title: '',
 			value: b,
 		})) || [],
 	)

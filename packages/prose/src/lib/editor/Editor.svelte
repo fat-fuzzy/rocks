@@ -1,32 +1,50 @@
 <script lang="ts">
+	import type {JSONContent} from '@tiptap/core'
 	import type {UiColor, UiSize, UiVariant} from '@fat-fuzzy/ui'
 
+	import '$lib/styles/css/editor.css'
+	import DOMPurify from 'dompurify'
+	import {browser} from '$app/environment'
 	import {onMount, onDestroy} from 'svelte'
 	import {Editor} from '@tiptap/core'
-	import StarterKit from '@tiptap/starter-kit'
-	import {TextStyleKit} from '@tiptap/extension-text-style'
-
+	import settings from '$lib/editor/editor-settings'
 	import EditorMenu from '$lib/editor/EditorMenu.svelte'
 
-	let element: Element
-
-	// @ts-expect-error editor is not defined at this point but will be on mount
-	let editor: Editor = $state()
 	let {
 		html,
+		id = 'editor',
+		type,
+		tags,
+		preset = 'basic',
 		color = 'primary',
 		variant = 'outline',
-		height = 'md',
+		height = 'sm',
+		onupdate,
+		onblur,
 	}: {
 		html: string
+		id?: string
+		type?: string
+		tags?: string[]
+		preset?: string
 		color?: UiColor
 		variant?: UiVariant
 		height?: UiSize
+		onupdate?: (content: JSONContent) => void
+		onblur?: (content: JSONContent) => void
 	} = $props()
 
+	let element: Element
+
+	// TODO: watch this: https://developer.mozilla.org/en-US/docs/Web/API/Element/setHTML
+	let purify
+	let escaped = ''
+	// @ts-expect-error editor is not defined at this point but will be on mount
+	let editor: Editor = $state()
 	let heighClass = $derived(height ? `h:${height}` : '')
 	let commands = $state({
 		bold: false,
+		semibold: false,
 		italic: false,
 		strike: false,
 		marks: false,
@@ -36,18 +54,20 @@
 		h3: false,
 		h4: false,
 		h5: false,
-		h6: false,
 		p: false,
 		ol: false,
 		ul: false,
 		hr: false,
 		hb: false,
+		link: false,
+		isLink: false,
 		undo: false,
 		redo: false,
 	})
 
 	function setActiveElement() {
 		commands.bold = editor.isActive('bold')
+		commands.semibold = editor.isActive('semibold')
 		commands.italic = editor.isActive('italic')
 		commands.strike = editor.isActive('strike')
 		commands.marks = editor.isActive('marks')
@@ -57,8 +77,8 @@
 		commands.h3 = editor.isActive('heading', {level: 3})
 		commands.h4 = editor.isActive('heading', {level: 4})
 		commands.h5 = editor.isActive('heading', {level: 5})
-		commands.h6 = editor.isActive('heading', {level: 6})
 		commands.p = editor.isActive('paragraph')
+		commands.link = editor.isActive('link')
 		commands.ol = editor.isActive('orderedList')
 		commands.ul = editor.isActive('bulletList')
 		commands.hr = editor.isActive('horizontalRule')
@@ -68,18 +88,30 @@
 	function setDisabledElement() {
 		commands.undo = editor.can().chain().focus().undo().run()
 		commands.redo = editor.can().chain().focus().redo().run()
+		commands.isLink = editor.can().chain().focus().unsetLink().run()
 	}
 
 	onMount(() => {
+		if (browser) {
+			purify = DOMPurify(window)
+			escaped = purify.sanitize(html)
+		}
+
 		editor = new Editor({
 			element: element,
-			extensions: [StarterKit, TextStyleKit],
-			content: html,
+			extensions: settings.extensions,
+			content: escaped,
 			onTransaction: () => {
 				// force re-render so `editor.isActive` works as expected
 				setActiveElement()
 				setDisabledElement()
 			},
+			onUpdate: onupdate
+				? ({editor}: {editor: Editor}) => onupdate(editor.getJSON())
+				: undefined,
+			onBlur: onblur
+				? ({editor}: {editor: Editor}) => onblur(editor.getJSON())
+				: undefined,
 		})
 	})
 
@@ -90,34 +122,16 @@
 	})
 </script>
 
-<div class="l:text:lg">
+<ff-prose
+	id={id ?? `${id}-${preset}`}
+	class="l:text:lg"
+	data-type={type}
+	data-tags={tags?.join(':')}
+>
 	{#if editor}
-		<EditorMenu {editor} {commands} {color} {variant} />
+		<EditorMenu {editor} {commands} {color} {variant} {preset} />
 	{/if}
-	<div
-		class={`l:frame:prose ${heighClass} maki:block:lg ravioli:md variant:bare dotted`}
-	>
+	<div class={`prose-editor ${heighClass} variant:bare dotted`}>
 		<div class="content scroll:y" bind:this={element}></div>
 	</div>
-</div>
-
-<style nonce="%sveltekit.nonce%">
-	.l\:frame\:prose {
-		aspect-ratio: 15 / 8;
-	}
-
-	.l\:frame\:prose.h\:xs {
-		aspect-ratio: 15 / 3;
-	}
-
-	.l\:frame\:prose.h\:sm {
-		aspect-ratio: 15 / 5;
-	}
-
-	.l\:frame\:prose.h\:md {
-		aspect-ratio: 15 / 8;
-	}
-	.l\:frame\:prose.h\:lg {
-		aspect-ratio: 15 / 10;
-	}
-</style>
+</ff-prose>

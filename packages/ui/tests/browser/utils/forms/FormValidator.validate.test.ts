@@ -97,7 +97,9 @@ describe('FormValidator - Svelte Integration Tests', () => {
 
 		await Promise.all(
 			Object.keys(INPUTS).map(async (key) => {
-				await expect.element(getByText(INPUTS[key].label)).toBeInTheDocument()
+				await expect
+					.element(getByText(INPUTS[key].label, {exact: true}))
+					.toBeInTheDocument()
 			}),
 		)
 

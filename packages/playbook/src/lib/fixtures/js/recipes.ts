@@ -1,28 +1,73 @@
 import ui from '@fat-fuzzy/ui'
 const {APP_SETTINGS} = ui.constants
 
-export const links = [{id: 'link-list.doc', slug: 'doc', title: 'Doc'}]
+export const links = [{id: 'link-list.doc', slug: 'doc', label: 'Doc'}]
 
 export default {
 	ButtonMenu: {
 		items: [
-			{id: 'menu.button.vader', label: 'Vader', asset: 'vader'},
-			{id: 'menu.button.ollie', label: 'Ollie', asset: 'ollie'},
-			{id: 'menu.button.moby', label: 'Moby', asset: 'moby'},
+			{
+				id: 'menu.button.vader',
+				name: 'menu.button.vader',
+				label: 'Vader',
+				asset: 'vader',
+			},
+			{
+				id: 'menu.button.ollie',
+				name: 'menu.button.ollie',
+				label: 'Ollie',
+				asset: 'ollie',
+			},
+			{
+				id: 'menu.button.moby',
+				name: 'menu.button.moby',
+				label: 'Moby',
+				asset: 'moby',
+			},
 		],
 	},
 	ToggleMenu: {
 		items: [
-			{id: 'menu.toggle.idea', label: 'Idea', asset: 'idea'},
-			{id: 'menu.toggle.profile', label: 'Profile', asset: 'profile'},
-			{id: 'menu.toggle.favorite', label: 'Favorite', asset: 'favorite'},
+			{
+				id: 'menu.toggle.idea',
+				name: 'menu.toggle.idea',
+				label: 'Idea',
+				asset: 'idea',
+			},
+			{
+				id: 'menu.toggle.profile',
+				name: 'menu.toggle.profile',
+				label: 'Profile',
+				asset: 'profile',
+			},
+			{
+				id: 'menu.toggle.favorite',
+				name: 'menu.toggle.favorite',
+				label: 'Favorite',
+				asset: 'favorite',
+			},
 		],
 	},
 	RevealMenu: {
 		items: [
-			{id: 'reveal-menu.button.idea', label: 'Idea', asset: 'idea'},
-			{id: 'reveal-menu.button.profile', label: 'Profile', asset: 'profile'},
-			{id: 'reveal-menu.button.favorite', label: 'Favorite', asset: 'favorite'},
+			{
+				id: 'reveal-menu.button.idea',
+				name: 'reveal-menu.button.idea',
+				label: 'Idea',
+				asset: 'idea',
+			},
+			{
+				id: 'reveal-menu.button.profile',
+				name: 'reveal-menu.button.profile',
+				label: 'Profile',
+				asset: 'profile',
+			},
+			{
+				id: 'reveal-menu.button.favorite',
+				name: 'reveal-menu.button.favorite',
+				label: 'Favorite',
+				asset: 'favorite',
+			},
 		],
 	},
 	RadioGroup: [
@@ -41,8 +86,8 @@ export default {
 	Nav: {
 		title: 'Nav',
 		items: [
-			{id: 'link-list.home', slug: '', title: 'Home'},
-			{id: 'link-list.doc', slug: 'doc', title: 'Doc'},
+			{id: 'link-list.home', slug: '', label: 'Home'},
+			{id: 'link-list.doc', slug: 'doc', label: 'Doc'},
 		],
 	},
 	DetailsNav: {
@@ -55,18 +100,18 @@ export default {
 		items: [
 			{
 				slug: 'recipes',
-				title: 'Recipes',
+				label: 'Recipes',
 				items: [
-					{slug: 'nav', title: 'Nav'},
-					{slug: 'reveal-nav', title: 'RevealNav'},
+					{slug: 'nav', label: 'Nav'},
+					{slug: 'reveal-nav', label: 'RevealNav'},
 				],
 			},
 			{
 				slug: 'layouts',
-				title: 'Layouts',
+				label: 'Layouts',
 				items: [
-					{slug: 'burrito', title: 'Burrito'},
-					{slug: 'stack', title: 'Stack'},
+					{slug: 'burrito', label: 'Burrito'},
+					{slug: 'stack', label: 'Stack'},
 				],
 			},
 		],

@@ -27,13 +27,20 @@ class ExpandActor implements FuzzyActor {
 		initial,
 		onclick,
 		machine,
+		label,
 	}: {
 		initial?: UiState
 		onclick?: (payload: FuzzyPayload) => void
 		machine?: ExpandMachine
+		label?: string
 	}) {
 		if (initial) this.state = initial as UiStateExpand
-		if (machine) this.machine = machine
+		if (machine) {
+			this.machine = machine
+		} else if (label) {
+			this.machine.expanded.label = label
+			this.machine.collapsed.label = label
+		}
 		if (onclick) {
 			this.machine.expanded.action = onclick
 			this.machine.collapsed.action = onclick

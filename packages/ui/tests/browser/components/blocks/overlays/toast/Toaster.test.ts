@@ -11,7 +11,7 @@ const toast = {
 	status: 'info' as UiStatus,
 }
 
-describe.only(`Toaster - a class to manage Toasts`, () => {
+describe(`Toaster - a class to manage Toasts`, () => {
 	beforeEach(() => {
 		actor.reset()
 	})
@@ -45,7 +45,7 @@ describe.only(`Toaster - a class to manage Toasts`, () => {
 	})
 
 	describe('eatToast', () => {
-		it.only(`should eat a toast once it's done`, async () => {
+		it(`should eat a toast once it's done`, async () => {
 			page.render(ToastTest)
 			actor.addToast(toast)
 

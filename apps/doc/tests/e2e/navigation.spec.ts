@@ -56,16 +56,16 @@ pages.forEach((item) => {
 
 test(`Settings menu works as expected`, async ({page}) => {
 	await page.goto('/')
-	await expect(page.getByRole('button', {name: 'Brightness'})).toBeVisible()
-	await expect(page.getByRole('button', {name: 'Contrast'})).toBeVisible()
+	await expect(page.getByRole('button', {name: 'Day'})).toBeVisible()
+	await expect(page.getByRole('button', {name: 'Blend'})).toBeVisible()
 	await page.goto('/about')
-	await expect(page.getByRole('button', {name: 'Brightness'})).toBeVisible()
-	await expect(page.getByRole('button', {name: 'Contrast'})).toBeVisible()
+	await expect(page.getByRole('button', {name: 'Day'})).toBeVisible()
+	await expect(page.getByRole('button', {name: 'Blend'})).toBeVisible()
 })
 
 pages.forEach((item) => {
 	errorCodes.forEach((code) => {
-		let error = errors[code]
+		const error = errors[code]
 		test(`Returns ${code} error if ${error.condition}: page ${item.title}`, async ({
 			page,
 		}) => {

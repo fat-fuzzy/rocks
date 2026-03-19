@@ -7,7 +7,7 @@
 		id = 'expand',
 		name = 'expand',
 		controls,
-		title,
+		label,
 		initial = 'expanded',
 		value,
 		disabled,
@@ -33,14 +33,21 @@
 	const actor = new Actor()
 
 	let payload = $derived({
-		id: name, // the name is used as the key in FormData: to make this also work in JS, we use the name as the id of the returned value
+		id,
 		name,
 		value,
-		event: actor.event,
 		expanded: actor.expanded,
 		state: actor.state,
 		action: actor.update.bind(actor),
 	})
+
+	let currentAsset = $derived(actor.currentState.asset || asset)
+	let isIconButton = $derived(
+		(shape === 'round' || shape === 'square') && currentAsset,
+	)
+	let ariaLabel = $derived(
+		isIconButton ? (actor.currentState.label ?? label ?? name) : undefined,
+	)
 
 	let buttonClasses = $derived(
 		actor.getStyles({
@@ -54,7 +61,7 @@
 			asset,
 			assetType,
 			variant,
-			layout: shape && shape !== 'pill' ? undefined : 'switcher',
+			layout: shape ? 'flex' : 'switcher',
 			dimensions,
 		}),
 	)
@@ -73,6 +80,7 @@
 			initial,
 			onclick,
 			machine: states,
+			label,
 		})
 	})
 </script>
@@ -81,12 +89,12 @@
 	{id}
 	{type}
 	{name}
-	{title}
 	{disabled}
 	{formaction}
 	value={actor.value}
 	class={buttonClasses}
 	data-key={name}
+	aria-label={ariaLabel}
 	aria-expanded={actor.expanded}
 	aria-controls={controls}
 	onclick={handleClick}
@@ -94,10 +102,7 @@
 >
 	{#if children}
 		{@render children()}
-	{:else if shape}
-		<span class="sr-only">{title}</span>
-	{:else}
-		<span class="sr-only">{title}</span>
-		<span class="viz-only">{actor.label}</span>
+	{:else if !isIconButton}
+		<span>{actor.currentState.label ?? label}</span>
 	{/if}
 </button>

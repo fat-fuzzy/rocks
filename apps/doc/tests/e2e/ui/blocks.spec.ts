@@ -31,7 +31,9 @@ ready.forEach((component) => {
 		test(`Playbook page is accessible`, async ({page}) => {
 			await page.goto(`${path}/${component}`)
 			await page.getByRole('link', {name: 'Playbook'}).click()
-			page.getByRole('heading', {level: 2, name: 'Playbook'}).isVisible()
+			await expect(
+				page.getByRole('heading', {level: 2, name: 'Playbook'}),
+			).toBeVisible()
 		})
 
 		test(`Playbook has working size input`, async ({page}) => {
@@ -66,6 +68,7 @@ ready.forEach((component) => {
 			component !== 'Expand' &&
 			component !== 'Switch' &&
 			component !== 'InputRange' &&
+			component !== 'InputGroup' &&
 			component !== 'InputFile' &&
 			component !== 'Magic' &&
 			component !== 'Feedback'

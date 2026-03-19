@@ -9,13 +9,14 @@ import type {
 	UiVariant,
 	UiSize,
 	UiColor,
+	SettingsProps,
 } from '$types'
 
 import type {Snippet} from 'svelte'
 
 export type NavItem = {
 	slug: string
-	title: string
+	label: string
 	asset?: string
 	color?: UiColor
 	size?: UiSize
@@ -54,7 +55,7 @@ export type PageNavProps = UiBlockProps & {
 export type BreadcrumbsProps = UiBlockProps & {
 	level: number
 	id: string
-	title?: string
+	label?: string
 	path: string
 	layout?: string
 	background?: string
@@ -79,7 +80,7 @@ export type LinkTreeProps = UiBlockProps & {
 export type ExpandLinkProps = UiBlockProps & {
 	href: string
 	slug: string
-	title: string
+	label: string
 	children: Snippet
 	reveal: UiState
 	depth: number
@@ -94,7 +95,7 @@ export type RevealNavProps = NavProps &
 	FormCommonProps & {
 		type?: string
 		validator?: string
-		settings?: any
+		settings?: SettingsProps
 		preload?: string
 		onclick?: (payload: FuzzyPayload) => void
 	}

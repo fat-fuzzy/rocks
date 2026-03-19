@@ -27,6 +27,7 @@ export interface Blocks {
 	Feedback: typeof import('$lib/components/blocks/global/Feedback.svelte').default
 	InputCheck: typeof import('$lib/components/blocks/inputs/InputCheck.svelte').default
 	InputRadio: typeof import('$lib/components/blocks/inputs/InputRadio.svelte').default
+	InputGroup: typeof import('$lib/components/blocks/inputs/InputGroup.svelte').default
 	InputRange: typeof import('$lib/components/blocks/inputs/InputRange.svelte').default
 	InputFile: typeof import('$lib/components/blocks/inputs/InputFile.svelte').default
 	Magic: typeof import('$lib/components/blocks/global/Magic.svelte').default
@@ -71,7 +72,6 @@ export interface Content {
 export interface Drafts {
 	Fieldset: typeof import('$lib/components/blocks/inputs/Fieldset.svelte').default
 	Popover: typeof import('$lib/components/blocks/overlays/Popover/Popover.svelte').default
-	InputGroup: typeof import('$lib/components/blocks/inputs/InputGroup.svelte').default
 	Image: typeof import('$lib/components/blocks/media/Image.svelte').default
 	Picture: typeof import('$lib/components/blocks/media/Picture.svelte').default
 	Scrolly: typeof import('$lib/components/recipes/animations/scroll/Scrolly.svelte').default

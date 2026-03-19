@@ -4,7 +4,8 @@ slug: Expand
 category: 'blocks'
 group: 'buttons'
 props_state: ['title', 'text', 'formaction', 'value', 'controls', 'states']
-props_style: {'blocks': {'block': ['color', 'variant', 'size', 'shape']}}
+props_style:
+  {'blocks': {'block': ['color', 'variant', 'size', 'asset', 'shape']}}
 ---
 
 ## Usage

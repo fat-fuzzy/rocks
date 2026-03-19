@@ -115,7 +115,7 @@
 <Popover
 	id={popoverId}
 	role="dialog"
-	title="Cookies"
+	label="Cookies"
 	asset="cookie"
 	container="burrito"
 	{containerSize}

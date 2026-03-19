@@ -1,7 +1,7 @@
 {
 	"name": "@fat-fuzzy/intl",
 	"package": "@fat-fuzzy/intl",
-	"version": "0.1.11",
+	"version": "0.1.12",
 	"description": "Basic i18n / L10n services library",
 	"author": "Patricia Boh",
 	"keywords": [],
@@ -16,6 +16,7 @@
 	"scripts": {
 		"dev": "vite",
 		"build": "vite build",
+		"package": "pnpm build",
 		"test": "echo \"@fat-fuzzy/intl: no tests specified\""
 	},
 	"devDependencies": {

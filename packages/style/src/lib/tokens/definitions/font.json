@@ -156,6 +156,10 @@
 		},
 		"size": {
 			"$type": "derived",
+			"fluid-0": {
+				"$type": "dimension",
+				"$value": "1rem"
+			},
 			"2xs": {
 				"$value": "var(--fluid--3)"
 			},
@@ -166,7 +170,8 @@
 				"$value": "var(--fluid--1)"
 			},
 			"md": {
-				"$value": "var(--fluid-0)"
+				"$type": "dimension",
+				"$value": "{font.size.fluid-0}"
 			},
 			"lg": {
 				"$value": "var(--fluid-1)"
@@ -190,16 +195,20 @@
 				"$value": "var(--fluid-1)"
 			},
 			"h5": {
-				"$value": "var(--fluid-0)"
+				"$type": "dimension",
+				"$value": "{font.size.fluid-0}"
 			},
 			"body": {
-				"$value": "var(--fluid-0)"
+				"$type": "dimension",
+				"$value": "{font.size.fluid-0}"
 			},
 			"code": {
-				"$value": "var(--fluid-0)"
+				"$type": "dimension",
+				"$value": "{font.size.fluid-0}"
 			},
 			"ui": {
-				"$value": "var(--fluid-0)"
+				"$type": "dimension",
+				"$value": "{font.size.fluid-0}"
 			},
 			"small": {
 				"$value": "var(--fluid--1)"

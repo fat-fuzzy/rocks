@@ -1,5 +1,11 @@
 # @fat-fuzzy/lib
 
+## 0.1.11
+
+### Patch Changes
+
+- 419be5d: Bug fixes test improvements, test updates
+
 ## 0.1.10
 
 ### Patch Changes

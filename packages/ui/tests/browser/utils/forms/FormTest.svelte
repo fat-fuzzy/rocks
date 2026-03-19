@@ -2,6 +2,7 @@
 	import type {FormProps} from '$types'
 	import {onMount} from 'svelte'
 	import {enhance} from '$app/forms'
+
 	import Button from '$lib/components/blocks/buttons/Button.svelte'
 	import Feedback from '$lib/components/blocks/global/Feedback.svelte'
 	import Input from '$lib/components/blocks/inputs/Input.svelte'
@@ -10,6 +11,8 @@
 	import InputGroup from '$lib/components/blocks/inputs/InputGroup.svelte'
 	import InputPassword from '$lib/components/blocks/inputs/InputPassword.svelte'
 	import FormValidator from '$lib/utils/browser/FormValidator.svelte'
+
+	import TestContext from '$tests/browser/TestContext.svelte'
 
 	let {
 		id = 'test-form',
@@ -99,81 +102,82 @@
 	})
 </script>
 
-<div class={`ravioli:${size} ${background} l:${container}:${size}`}>
-	{#if successPlaceholder}
-		<Feedback status="success" context="form">Form submitted!</Feedback>
-	{:else}
-		<form
-			{id}
-			method="POST"
-			class={`l:stack:${size} ravioli:${size}`}
-			action={action && actionPath ? `${actionPath}?/${action}` : undefined}
-			use:enhance
-			bind:this={boundForm}
-			onsubmit={handleSubmit}
-		>
-			{#key validator}
-				<header class={`l:stack:${size} text:${align} ${asset}`}>
-					<svelte:element this={`h${depth}`}>{title}</svelte:element>
-					<p class={`font:${size}`}>{description}</p>
-				</header>
-				<Input
-					id="name"
-					type="text"
-					name="sample_name"
-					label="Username"
-					required
-					{size}
-					{variant}
-					onfocus={handleFocus}
-					onblur={handleBlur}
-					oninput={handleInput}
-					{validator}
-					autocomplete="username"
-				/>
-				<Input
-					id="phone"
-					type="phone"
-					name="sample_phone"
-					label="Phone"
-					required
-					{size}
-					{color}
-					{variant}
-					onfocus={handleFocus}
-					onblur={handleBlur}
-					oninput={handleInput}
-					{validator}
-				/>
-				<Input
-					id="email"
-					type="email"
-					name="sample_email"
-					label="Email"
-					required
-					{size}
-					{color}
-					{variant}
-					onfocus={handleFocus}
-					onblur={handleBlur}
-					oninput={handleInput}
-					{validator}
-				/>
-				<Input
-					id="postcode"
-					type="text"
-					name="sample_postcode"
-					label="Postcode"
-					required
-					{size}
-					{color}
-					{variant}
-					onfocus={handleFocus}
-					onblur={handleBlur}
-					oninput={handleInput}
-					{validator}
-				/>
-				<!-- Input
+<TestContext>
+	<div class={`ravioli:${size} ${background} l:${container}:${size}`}>
+		{#if successPlaceholder}
+			<Feedback status="success" context="form">Form submitted!</Feedback>
+		{:else}
+			<form
+				{id}
+				method="POST"
+				class={`l:stack:${size} ravioli:${size}`}
+				action={action && actionPath ? `${actionPath}?/${action}` : undefined}
+				use:enhance
+				bind:this={boundForm}
+				onsubmit={handleSubmit}
+			>
+				{#key validator}
+					<header class={`l:stack:${size} text:${align} ${asset}`}>
+						<svelte:element this={`h${depth}`}>{title}</svelte:element>
+						<p class={`font:${size}`}>{description}</p>
+					</header>
+					<Input
+						id="name"
+						type="text"
+						name="sample_name"
+						label="Username"
+						required
+						{size}
+						{variant}
+						onfocus={handleFocus}
+						onblur={handleBlur}
+						oninput={handleInput}
+						{validator}
+						autocomplete="username"
+					/>
+					<Input
+						id="phone"
+						type="phone"
+						name="sample_phone"
+						label="Phone"
+						required
+						{size}
+						{color}
+						{variant}
+						onfocus={handleFocus}
+						onblur={handleBlur}
+						oninput={handleInput}
+						{validator}
+					/>
+					<Input
+						id="email"
+						type="email"
+						name="sample_email"
+						label="Email"
+						required
+						{size}
+						{color}
+						{variant}
+						onfocus={handleFocus}
+						onblur={handleBlur}
+						oninput={handleInput}
+						{validator}
+					/>
+					<Input
+						id="postcode"
+						type="text"
+						name="sample_postcode"
+						label="Postcode"
+						required
+						{size}
+						{color}
+						{variant}
+						onfocus={handleFocus}
+						onblur={handleBlur}
+						oninput={handleInput}
+						{validator}
+					/>
+					<!-- Input
 					id="description"
 					type="description"
 					name="sample_description"
@@ -187,21 +191,21 @@
 					oninput={handleInput}
 					{validator}
 				/ -->
-				<InputCheck
-					id="checkbox"
-					name="sample_checkbox"
-					label="Checkbox"
-					required
-					{size}
-					{color}
-					{variant}
-					onfocus={handleFocus}
-					onblur={handleBlur}
-					oninput={handleInput}
-					checked={false}
-					{validator}
-				/>
-				<!-- Input
+					<InputCheck
+						id="checkbox"
+						name="sample_checkbox"
+						label="Checkbox"
+						required
+						{size}
+						{color}
+						{variant}
+						onfocus={handleFocus}
+						onblur={handleBlur}
+						oninput={handleInput}
+						checked={false}
+						{validator}
+					/>
+					<!-- Input
 					id="select"
 					type="select"
 					name="sample_select"
@@ -215,155 +219,148 @@
 					oninput={handleInput}
 					{validator}
 				/ -->
-				<Input
-					id="disabled_text"
-					type="text"
-					name="sample_disabled"
-					label="Disabled Field"
-					value="Disabled Value"
-					{size}
-					{color}
-					{variant}
-					onfocus={handleFocus}
-					onblur={handleBlur}
-					oninput={handleInput}
-					disabled
-					{validator}
-				/>
-				<InputGroup
-					id="checkbox_group"
-					type="check"
-					name="sample_checkbox_group"
-					{size}
-					{color}
-					{variant}
-					onfocus={handleFocus}
-					onblur={handleBlur}
-					oninput={handleInput}
-					{validator}
-					justify="between"
-				>
-					<InputCheck
-						id="unique_choice_1"
-						name="choice_1"
-						label="Multiple Choice 1"
+					<Input
+						id="disabled_text"
+						type="text"
+						name="sample_disabled"
+						label="Disabled Field"
+						value="Disabled Value"
 						{size}
 						{color}
 						{variant}
-						justify="between"
+						onfocus={handleFocus}
+						onblur={handleBlur}
+						oninput={handleInput}
+						disabled
+						{validator}
+					/>
+					<InputGroup
+						id="checkbox_group"
+						type="check"
+						name="sample_checkbox_group"
+						{size}
+						{color}
+						{variant}
 						onfocus={handleFocus}
 						onblur={handleBlur}
 						oninput={handleInput}
 						{validator}
-					/>
-					<br />
-					<InputCheck
-						id="choice_2"
-						name="choice_2"
-						label="Multiple Choice 2"
+						justify="between"
+					>
+						<InputCheck
+							id="unique_choice_1"
+							name="choice_1"
+							label="Multiple Choice 1"
+							{size}
+							{color}
+							{variant}
+							justify="between"
+							onfocus={handleFocus}
+							onblur={handleBlur}
+							oninput={handleInput}
+							{validator}
+						/>
+						<br />
+						<InputCheck
+							id="choice_2"
+							name="choice_2"
+							label="Multiple Choice 2"
+							{size}
+							{color}
+							{variant}
+							justify="between"
+							onfocus={handleFocus}
+							onblur={handleBlur}
+							oninput={handleInput}
+							{validator}
+						/>
+					</InputGroup>
+					<InputGroup
+						id="radio_group"
+						type="radio"
+						name="sample_radio_group"
 						{size}
 						{color}
 						{variant}
-						justify="between"
 						onfocus={handleFocus}
 						onblur={handleBlur}
 						oninput={handleInput}
 						{validator}
-					/>
-				</InputGroup>
-				<InputGroup
-					id="radio_group"
-					type="radio"
-					name="sample_radio_group"
-					{size}
-					{color}
-					{variant}
-					onfocus={handleFocus}
-					onblur={handleBlur}
-					oninput={handleInput}
-					{validator}
-					justify="between"
-				>
-					<InputRadio
-						id="unique_choice_1"
-						name="unique_choice_1"
-						label="Unique Choice 1"
+						justify="between"
+					>
+						<InputRadio
+							id="unique_choice_1"
+							name="unique_choice_1"
+							label="Unique Choice 1"
+							{size}
+							{color}
+							{variant}
+							justify="between"
+							onfocus={handleFocus}
+							onblur={handleBlur}
+							oninput={handleInput}
+							{validator}
+						/>
+						<br />
+						<InputRadio
+							id="unique_choice_2"
+							name="unique_choice_2"
+							label="Unique Choice 2"
+							{size}
+							{color}
+							{variant}
+							justify="between"
+							onfocus={handleFocus}
+							onblur={handleBlur}
+							oninput={handleInput}
+							{validator}
+						/>
+					</InputGroup>
+					<InputPassword
+						type="password"
+						id="password"
+						name="sample_password"
+						label="Password"
+						required
 						{size}
 						{color}
 						{variant}
-						justify="between"
 						onfocus={handleFocus}
 						onblur={handleBlur}
 						oninput={handleInput}
 						{validator}
+						autocomplete="new-password"
 					/>
-					<br />
-					<InputRadio
-						id="unique_choice_2"
-						name="unique_choice_2"
-						label="Unique Choice 2"
+					<InputPassword
+						id="confirm_password"
+						type="password"
+						name="confirm_password"
+						label="Confirm Pwd"
+						required
 						{size}
 						{color}
 						{variant}
-						justify="between"
+						disabled={validator.getFieldErrors('sample_password')
+							? true
+							: undefined}
 						onfocus={handleFocus}
 						onblur={handleBlur}
 						oninput={handleInput}
 						{validator}
+						autocomplete="new-password"
 					/>
-				</InputGroup>
-				<InputPassword
-					type="password"
-					id="password"
-					name="sample_password"
-					label="Password"
-					required
-					{size}
-					{color}
-					{variant}
-					onfocus={handleFocus}
-					onblur={handleBlur}
-					oninput={handleInput}
-					{validator}
-					autocomplete="new-password"
-				/>
-				<InputPassword
-					id="confirm_password"
-					type="password"
-					name="confirm_password"
-					label="Confirm Pwd"
-					required
-					{size}
-					{color}
-					{variant}
-					disabled={validator.getFieldErrors('sample_password')
-						? true
-						: undefined}
-					onfocus={handleFocus}
-					onblur={handleBlur}
-					oninput={handleInput}
-					{validator}
-					autocomplete="new-password"
-				/>
-				<Button
-					id="button-submit-signup"
-					{size}
-					{color}
-					{variant}
-					name="submit"
-					{disabled}
-				>
-					Submit
-				</Button>
-			{/key}
-		</form>
-	{/if}
-</div>
-
-<style>
-	form {
-		display: flex;
-		flex-direction: column;
-		gap: 1rem;
-	}
-</style>
+					<Button
+						id="button-submit-signup"
+						{size}
+						{color}
+						{variant}
+						name="submit"
+						{disabled}
+					>
+						Submit
+					</Button>
+				{/key}
+			</form>
+		{/if}
+	</div>
+</TestContext>

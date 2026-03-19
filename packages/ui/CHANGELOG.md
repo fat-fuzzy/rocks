@@ -1,5 +1,35 @@
 # @fat-fuzzy/ui
 
+## 0.1.82
+
+### Patch Changes
+
+- d4dff51: Fix bare accent color
+
+## 0.1.81
+
+### Patch Changes
+
+- 361cf4b: Fix input group selection, hover color
+
+## 0.1.80
+
+### Patch Changes
+
+- 419be5d: Bug fixes test improvements, test updates
+
+## 0.1.79
+
+### Patch Changes
+
+- 336d726: Add input tests, fix select all
+
+## 0.1.78
+
+### Patch Changes
+
+- 53ea789: InputGroup & Editor improvements, style fixes
+
 ## 0.1.77
 
 ### Patch Changes

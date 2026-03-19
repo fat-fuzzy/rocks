@@ -1,13 +1,14 @@
 {
 	"package": "@fat-fuzzy/style",
 	"name": "@fat-fuzzy/style",
-	"version": "0.1.24",
+	"version": "0.1.29",
 	"description": "Fat Fuzzy CSS",
 	"author": "Patricia Boh",
 	"license": "MIT",
 	"scripts": {
 		"clean": "node ./clean-dist.js",
 		"prebuild": "pnpm clean",
+		"package": "pnpm build",
 		"build": "pnpm build:tokens && pnpm build:scss && pnpm build:css",
 		"build:css": "rollup -c rollup.config.js",
 		"build:lib": "rollup -c rollup.config.lib.js",

@@ -7,9 +7,12 @@ fieldset {
 	margin: 0;
 
 	legend {
-		font-size: var(--font-size-ui);
-		font-weight: var(--font-weight-ui);
+		font-weight: var(--font-weight-semibold);
 		line-height: var(--ui-size);
+	}
+
+	legend[class*='font:'] {
+		--font-size: var(--font-size-plus);
 	}
 
 	> p {
@@ -28,21 +31,19 @@ fieldset {
 fieldset.radio,
 fieldset.checkbox {
 	font-size: var(--font-size);
+	padding-inline: var(--ui-size) var(--ui-size-sm);
+	padding-block: 0 var(--ui-size-sm);
 
 	label {
-		--hue: var(--hue-semantic, var(--color-theme-primary));
-		--shade: oklch(var(--lightness) var(--chroma) var(--hue));
-		--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
-		--color-bg: var(--shade);
-		--color-ink: var(--ink);
 		display: flex;
 		align-items: var(--align, center);
 		justify-content: var(--justify, space-between);
-		padding: var(--outline-offset-lg);
-		gap: var(--ui-size);
+		padding-block: var(--border-width-xl);
+		padding-inline: var(--border-width-xl);
+		gap: var(--ui-size-sm);
 		margin: 0;
 		inline-size: 100%;
-		color: var(--color-ink);
+		color: var(--ink);
 		line-height: 1;
 
 		> span {
@@ -52,14 +53,12 @@ fieldset.checkbox {
 	}
 
 	input {
-		--accent: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
-		--color-accent: var(--accent-semantic, var(--accent));
 		aspect-ratio: 1/1;
 		flex-grow: 0;
 		flex-basis: auto;
 		block-size: calc(var(--ui-size-lg) + var(--outline-offset-lg));
 		inline-size: auto;
-		accent-color: var(--color-accent);
+		accent-color: var(--accent);
 		padding: var(--outline-offset-lg);
 	}
 
@@ -67,7 +66,20 @@ fieldset.checkbox {
 		inline-size: auto;
 		margin-inline-start: 0;
 		margin-block-end: var(--ui-size);
-		padding-inline: var(--ui-size-sm);
+		padding-inline: var(--border-width-xl);
+		font-weight: var(--font-weight-semibold);
+
+		> label {
+			padding-inline: 0;
+		}
+
+		> label > span {
+			font-weight: var(--font-weight-semibold);
+		}
+	}
+
+	legend:has(label) {
+		margin-block-end: var(--border-width-xl);
 	}
 
 	label > span {
@@ -76,30 +88,23 @@ fieldset.checkbox {
 	}
 
 	input:checked {
-		--lightness: var(--color-lightness-000);
-		--lightness-accent: var(--color-lightness-200);
-		--lightness-contrast: var(--color-lightness-400);
-		--chroma: var(--color-chroma-000);
-		--chroma-contrast: var(--color-chroma-400);
-		--chroma-accent: var(--color-lightness-200);
+		--lightness: var(--lightness-surface-1);
+		--lightness-accent: var(--lightness-surface-3);
+		--lightness-contrast: var(--lightness-surface-4);
+		--chroma: var(--chroma-contrast-focus);
+		--chroma-contrast: var(--chroma-surface-4);
+		--chroma-accent: var(--lightness-surface-3);
 		background-color: var(--shade);
 	}
 
 	label:hover {
-		--lightness: var(--color-lightness-000);
-		--lightness-contrast: var(--color-lightness-400);
-		--chroma: var(--color-chroma-000);
-		--chroma-contrast: var(--color-chroma-400);
+		--lightness: var(--lightness-surface-1);
+		--lightness-contrast: var(--lightness-surface-4);
 		background-color: var(--shade);
 	}
-}
 
-fieldset:has([type='radio']) {
-	padding-inline: var(--ui-size) var(--ui-size-sm);
-	padding-block: 0 var(--ui-size);
-}
-
-fieldset:has([type='checkbox']) {
-	padding-inline: var(--ui-size) var(--ui-size-sm);
-	padding-block: 0;
+	label:not([class*=':neutral']):hover {
+		--chroma: var(--chroma-contrast-focus);
+		--chroma-contrast: var(--chroma-surface-4);
+	}
 }

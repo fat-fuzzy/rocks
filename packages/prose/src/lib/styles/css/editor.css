@@ -1,0 +1,80 @@
+.ProseMirror {
+	margin-inline: 1.15em 0.5em;
+	margin-block: 1.15em;
+}
+
+.editor-menu {
+	max-inline-size: unset;
+}
+
+.button-group {
+	--gap: 0;
+
+	button {
+		border-radius: 0;
+		border-right: 0;
+		padding-inline: var(--ui-size-sm);
+		block-size: 100%;
+	}
+
+	button:first-child {
+		border-top-left-radius: var(--border-radius-base);
+		border-bottom-left-radius: var(--border-radius-base);
+	}
+
+	button:last-child {
+		border-top-right-radius: var(--border-radius-base);
+		border-bottom-right-radius: var(--border-radius-base);
+		border-right: var(--border-width-md) solid var(--accent);
+	}
+
+	.font\:italic,
+	.singleton {
+		padding-inline: var(--ui-size);
+	}
+
+	.singleton,
+	.text {
+		font-size: 1rem;
+		line-height: 0.925;
+	}
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5 {
+	font-size: 1rem;
+	padding-inline: var(--ui-size-sm);
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5 {
+	line-height: 0.925;
+}
+
+.prose-editor {
+	inline-size: 100%;
+	overflow: auto;
+	max-inline-size: unset;
+}
+
+.prose-editor.h\:xs {
+	block-size: 8rem;
+}
+
+.prose-editor.h\:sm {
+	block-size: 14rem;
+}
+
+.prose-editor.h\:md {
+	block-size: 18rem;
+}
+
+.prose-editor.h\:lg {
+	block-size: 24rem;
+}

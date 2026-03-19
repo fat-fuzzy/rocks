@@ -1,13 +1,14 @@
 import type {Page} from '@playwright/test'
-import test, {expect} from '@playwright/test'
+import {expect} from '@playwright/test'
 
-const sizes = [
-	{name: 'xl', value: '100'},
-	{name: 'lg', value: '75'},
-	{name: 'md', value: '50'},
-	{name: 'sm', value: '25'},
-	{name: 'xs', value: '0'},
-]
+// const sizes = [
+// 	{name: 'xl', value: '100'},
+// 	{name: 'lg', value: '75'},
+// 	{name: 'md', value: '50'},
+// 	{name: 'sm', value: '25'},
+// 	{name: 'xs', value: '0'},
+// ]
+
 async function testSize(page: Page, title: string) {
 	await page.getByTestId('blocks.block.size').fill('100')
 	await expect(page.getByLabel('size: xl')).toBeVisible()
@@ -82,7 +83,7 @@ async function testAsset(page: Page, title: string) {
 	)
 	await expect(page.getByTestId(title)).toHaveClass(/emoji:default/)
 
-	await page.getByTestId(`blocks.block.asset.default`).click({force: true})
+	await page.getByTestId(`blocks.block.asset.none`).click({force: true})
 	await expect(page.getByTestId('blocks.block.asset.default')).toHaveAttribute(
 		'aria-pressed',
 		'false',

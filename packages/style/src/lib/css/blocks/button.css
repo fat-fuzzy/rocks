@@ -1,14 +1,14 @@
 button {
 	--hue: var(--color-theme-primary);
-	--chroma: var(--color-chroma-neutral);
+	--chroma: var(--chroma-base);
 	--lightness: var(--lightness-ui-base);
 	--lightness-accent: var(--lightness-ui-base);
 	--lightness-contrast: var(--lightness-ui-contrast-base);
 	--chroma-contrast: var(--chroma-base);
-	--chroma-accent: var(--color-chroma-400);
+	--chroma-accent: var(--chroma-surface-4);
 	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
 	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
-	--accent: oklch(var(--lightness-accent) var(--chroma-accent) var(--hue));
+	--accent: oklch(var(--lightness-accent) var(--chroma-contrast) var(--hue));
 
 	color: var(--ink);
 	background-color: var(--shade);
@@ -42,7 +42,7 @@ button.variant\:fill {
 }
 
 button.variant\:outline {
-	--lightness: var(--color-lightness-600);
+	--lightness: var(--lightness-surface-6);
 	--lightness-accent: var(--lightness-ui-base);
 	--lightness-contrast: var(--lightness-accent-base);
 	background-color: inherit;
@@ -50,8 +50,8 @@ button.variant\:outline {
 }
 
 button.variant\:bare {
-	--lightness: var(--color-lightness-100);
-	--lightness-accent: var(--lightness-base);
+	--lightness: var(--lightness-surface-4);
+	--lightness-accent: var(--lightness-accent-base);
 	--lightness-contrast: var(--lightness-contrast-base);
 	background-color: inherit;
 	border: var(--border-width-md) solid var(--accent);
@@ -59,87 +59,93 @@ button.variant\:bare {
 
 button.variant\:outline:hover {
 	--lightness: var(--lightness-base);
-	--contrast: var(--contrast-base);
-	--lightness-contrast: var(--contrast-base);
+	--chroma: var(--chroma-base);
+	--lightness-contrast: var(--chroma-base);
 	--chroma-contrast: var(--chroma-contrast-base);
 	background-color: var(--shade);
 }
 
 button.variant\:bare:hover {
 	--lightness: var(--lightness-base);
-	--contrast: var(--contrast-base);
+	--chroma: var(--chroma-base);
 	--lightness-contrast: var(--lightness-contrast-base);
 	--chroma-contrast: var(--chroma-contrast-base);
 	background-color: var(--shade);
 }
 
 button.variant\:outline:active {
-	--lightness: var(--color-lightness-200);
-	--lightness-contrast: var(--color-lightness-600);
+	--lightness: var(---lightness-surface-3);
+	--lightness-contrast: var(--lightness-surface-6);
 	background-color: var(--shade);
 }
 
 button.variant\:bare:active {
-	--lightness: var(--color-lightness-100);
-	--lightness-contrast: var(--color-lightness-600);
+	--lightness: var(--lightness-surface-2);
+	--lightness-contrast: var(--lightness-surface-6);
 	background-color: var(--shade);
 }
 
 [aria-pressed='true'] {
 	&.variant\:fill {
-		--lightness: var(--color-lightness-500);
-		--lightness-contrast: var(--color-lightness-000);
+		--lightness: var(--lightness-surface-2);
+		--lightness-contrast: var(--lightness-surface-2-contrast);
 
 		&:active {
-			--lightness: var(--color-lightness-600);
-			--lightness-contrast: var(--color-lightness-100);
+			--lightness: var(--lightness-surface-6);
+			--lightness-contrast: var(--lightness-surface-2);
 		}
 
 		&:hover {
 			--lightness: var(--lightness-ui-base-pressed-hover);
-			--lightness-contrast: var(--color-lightness-000);
+			--lightness-contrast: var(--lightness-surface-1);
 		}
 	}
 }
 
 button[class*='bg:']:not([class*=':neutral']) {
 	&.variant\:fill {
-		--chroma: var(--color-chroma-400);
-		--chroma-contrast: var(--color-chroma-000);
+		--chroma: var(--chroma-surface-4);
+		--chroma-contrast: var(--chroma-surface-1);
 	}
 
 	&.variant\:outline {
-		--chroma: var(--color-chroma-400);
+		--chroma: var(--chroma-surface-4);
 	}
 
 	&.variant\:bare {
-		--chroma: var(--color-chroma-100);
+		--chroma: var(--chroma-surface-2);
 	}
 
 	&.variant\:outline:active,
 	&.variant\:bare:active {
-		--chroma: var(--color-chroma-200);
+		--chroma: var(--chroma-surface-3);
 	}
 }
 
 button[class*='bg:'].color\:neutral.variant\:bare:hover,
 button[class*='bg:'].color\:neutral.variant\:outline:hover {
 	--color-bg: oklch(
-		var(--lightness-surface-1) var(--color-chroma-neutral) var(--hue)
+		var(--lightness-surface-2) var(--color-chroma-neutral) var(--hue)
 	);
 	background-color: var(--color-bg);
 }
 
 button.variant\:fill:not([disabled]):hover {
-	--lightness: var(--lightness-surface-4);
+	--lightness: var(--lightness-surface-3);
+	--lightness-contrast: var(--lightness-surface-3-contrast);
+}
+
+button.variant\:fill:not([disabled], [class*=':neutral']):hover {
+	--chroma: var(--chroma-surface-3);
+	--chroma-contrast: var(--chroma-surface-3-contrast);
 }
 
 button[class*='bg:']:not([class*=':neutral']) {
 	&.variant\:outline:hover,
 	&.variant\:bare:hover {
-		--lightness: var(--lightness-surface-1);
+		--lightness: var(--lightness-surface-2);
 		--chroma: var(--chroma-surface-1);
-		--lightness-contrast: var(--lightness-surface-1-contrast);
+		--lightness-contrast: var(--lightness-surface-2-contrast);
 		--chroma-contrast: var(--chroma-surface-1-contrast);
 		background-color: var(--shade);
 		color: var(--ink);

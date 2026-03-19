@@ -11,7 +11,7 @@ export type OverlayProps = UiBlockProps &
 	UiLayoutProps & {
 		id: string
 		role?: AriaRole // See: https://hidde.blog/popover-semantics/
-		title: string
+		label: string
 		invoke?: AriaInvoke
 		open?: boolean
 		fixed?: string

@@ -82,7 +82,7 @@
 				<Button
 					id={`submit.${path}-${categories[0]}`}
 					name={`submit.${path}-${categories[0]}`}
-					title="Apply styles"
+					label="Apply styles"
 					type="submit"
 					size="lg"
 					color="highlight"
