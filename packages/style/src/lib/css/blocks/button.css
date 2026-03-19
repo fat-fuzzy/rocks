@@ -51,7 +51,7 @@ button.variant\:outline {
 
 button.variant\:bare {
 	--lightness: var(--lightness-surface-4);
-	--lightness-accent: var(--lightness-base);
+	--lightness-accent: var(--lightness-accent-base);
 	--lightness-contrast: var(--lightness-contrast-base);
 	background-color: inherit;
 	border: var(--border-width-md) solid var(--accent);
