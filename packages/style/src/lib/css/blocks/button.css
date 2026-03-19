@@ -131,10 +131,13 @@ button[class*='bg:'].color\:neutral.variant\:outline:hover {
 }
 
 button.variant\:fill:not([disabled]):hover {
-	--chroma: var(--chroma-surface-3);
-	--chroma-contrast: var(--chroma-surface-3-contrast);
 	--lightness: var(--lightness-surface-3);
 	--lightness-contrast: var(--lightness-surface-3-contrast);
+}
+
+button.variant\:fill:not([disabled], [class*=':neutral']):hover {
+	--chroma: var(--chroma-surface-3);
+	--chroma-contrast: var(--chroma-surface-3-contrast);
 }
 
 button[class*='bg:']:not([class*=':neutral']) {
