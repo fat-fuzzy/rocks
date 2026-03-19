@@ -31,7 +31,11 @@
 		name,
 		value: value ?? '',
 	})
-	let selected: string[] = $state(payload.value?.split(','))
+
+	let selected: string[] = $state(
+		payload.value?.split(',').filter((v) => v !== name),
+	)
+
 	let allSelected = $derived(selected.length === items.length)
 
 	let enableSelectAll = $derived(type === 'checkbox' && items.length > 5)
@@ -70,6 +74,7 @@
 
 	function handleSelectAll(event: Event) {
 		let target = event.target as HTMLInputElement
+
 		if (target.checked === true) {
 			selected = items.map((item: InputProps) => String(item.value) || '')
 			payload.value = selected.join(',')

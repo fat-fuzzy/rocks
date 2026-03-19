@@ -51,7 +51,7 @@ button.variant\:outline {
 
 button.variant\:bare {
 	--lightness: var(--lightness-surface-4);
-	--lightness-accent: var(--lightness-base);
+	--lightness-accent: var(--lightness-accent-base);
 	--lightness-contrast: var(--lightness-contrast-base);
 	background-color: inherit;
 	border: var(--border-width-md) solid var(--accent);
@@ -131,10 +131,13 @@ button[class*='bg:'].color\:neutral.variant\:outline:hover {
 }
 
 button.variant\:fill:not([disabled]):hover {
-	--chroma: var(--chroma-surface-3);
-	--chroma-contrast: var(--chroma-surface-3-contrast);
 	--lightness: var(--lightness-surface-3);
 	--lightness-contrast: var(--lightness-surface-3-contrast);
+}
+
+button.variant\:fill:not([disabled], [class*=':neutral']):hover {
+	--chroma: var(--chroma-surface-3);
+	--chroma-contrast: var(--chroma-surface-3-contrast);
 }
 
 button[class*='bg:']:not([class*=':neutral']) {
