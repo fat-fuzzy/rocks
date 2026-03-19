@@ -1,5 +1,11 @@
 # @fat-fuzzy/style
 
+## 0.1.28
+
+### Patch Changes
+
+- 361cf4b: Fix input group selection, hover color
+
 ## 0.1.27
 
 ### Patch Changes
