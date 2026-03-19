@@ -57,7 +57,7 @@
 		"@vitest/browser-playwright": "4.0.18",
 		"@vitest/coverage-v8": "4.0.18",
 		"@vitest/ui": "4.0.18",
-		"mdsvex": "0.12.6",
+		"mdsvex": "0.12.7",
 		"postcss": "8.5.8",
 		"publint": "0.3.18",
 		"svelte": "5.53.7",
