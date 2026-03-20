@@ -90,7 +90,7 @@ Object.keys(INPUTS).forEach((key) => {
 				if (input.value.valid !== 'disabled') {
 					await userEvent.fill(inputLocator, input.value.valid)
 					await expect.element(labelLocator).toHaveClass('color:primary')
-					await expect.element(labelLocator).not.toHaveClass('color:danger')
+					await expect.element(labelLocator).not.toHaveClass('color:error')
 				}
 			})
 
@@ -103,7 +103,7 @@ Object.keys(INPUTS).forEach((key) => {
 
 				if (input.value.invalid) {
 					await userEvent.fill(inputLocator, input.value.invalid)
-					await expect.element(labelLocator).toHaveClass('color:danger')
+					await expect.element(labelLocator).toHaveClass('color:error')
 				}
 			})
 		})

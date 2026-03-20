@@ -1,4 +1,6 @@
 <script lang="ts">
+	import type {UiColor} from '$types'
+
 	import FormValidator from '$lib/utils/browser/FormValidator.svelte'
 
 	import Input from '$lib/components/blocks/inputs/Input.svelte'
@@ -12,8 +14,8 @@
 	let inputProps = $derived(INPUTS[id])
 
 	let isDisabled = $derived(inputProps.value.valid === 'disabled')
-	let color = $derived(
-		validator.getFieldErrors(inputProps.name)?.length ? 'danger' : 'primary',
+	let color: UiColor = $derived(
+		validator.getFieldErrors(inputProps.name)?.length ? 'error' : 'primary',
 	)
 
 	function handleFocus(event: Event) {
