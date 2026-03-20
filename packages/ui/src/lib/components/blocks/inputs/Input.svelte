@@ -10,6 +10,7 @@
 		label,
 		value = $bindable(),
 		required,
+		pattern,
 		font,
 		size,
 		color,
@@ -45,6 +46,7 @@
 		{name}
 		bind:value
 		{required}
+		{pattern}
 		{onfocus}
 		{onblur}
 		{oninput}
