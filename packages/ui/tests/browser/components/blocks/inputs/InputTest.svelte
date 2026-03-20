@@ -3,11 +3,18 @@
 
 	import Input from '$lib/components/blocks/inputs/Input.svelte'
 	import TestContext from '$tests/browser/TestContext.svelte'
-	import {getBasicInputFields} from '$tests/fixtures/form-inputs'
+	import {INPUTS} from '$tests/fixtures/form-inputs'
 	import {page} from '$app/state'
 
-	const validator = new FormValidator('TestFormValidationFunction')
-	const testInputs = getBasicInputFields()
+	let {id}: {id: string} = $props()
+
+	let validator = new FormValidator('TestFormValidationFunction')
+	let inputProps = $derived(INPUTS[id])
+
+	let isDisabled = $derived(inputProps.value.valid === 'disabled')
+	let color = $derived(
+		validator.getFieldErrors(inputProps.name)?.length ? 'danger' : 'primary',
+	)
 
 	function handleFocus(event: Event) {
 		validator.touchInput(event)
@@ -25,19 +32,16 @@
 
 <TestContext>
 	<form data-testid="test-form" action={page.url.pathname}>
-		<p class="font:bold">Valid Inputs</p>
-		{#each testInputs as props, i (i)}
-			{@const isDisabled = props.value.valid === 'disabled'}
-			<Input
-				id={props.name}
-				{...props}
-				value={props.value.valid}
-				{validator}
-				disabled={isDisabled}
-				onfocus={handleFocus}
-				onblur={handleBlur}
-				oninput={handleInput}
-			/>
-		{/each}
+		<Input
+			{...inputProps}
+			id={inputProps.name}
+			value=""
+			{validator}
+			disabled={isDisabled}
+			onfocus={handleFocus}
+			onblur={handleBlur}
+			oninput={handleInput}
+			{color}
+		/>
 	</form>
 </TestContext>
