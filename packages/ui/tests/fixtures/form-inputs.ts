@@ -4,13 +4,21 @@ import FormValidator from '$lib/utils/browser/FormValidator.svelte'
 const {L10nFormatter} = fatFuzzyIntl
 const messages = new L10nFormatter('en')
 
-const INPUTS: {
+type InputItem = {
+	label: string
+	id: string
+	value?: string
+	disabled?: boolean
+}
+
+type InputProps = {
 	[name: string]: {
 		legend?: string
 		label: string
 		type: string
 		name: string
 		dependsOn?: string
+		items?: InputItem[]
 		value: {
 			valid: string
 			invalid?: string
@@ -19,7 +27,9 @@ const INPUTS: {
 		}
 		errors: string[]
 	}
-} = {
+}
+
+const INPUTS: InputProps = {
 	sample_name: {
 		label: 'Username',
 		name: 'sample_name',
@@ -99,14 +109,38 @@ const INPUTS: {
 		name: 'sample_radio_group',
 		type: 'radio',
 		value: {valid: 'on'},
+		items: [
+			{label: 'Radio 1', id: 'input-group.radio-1', value: 'radio-1'},
+			{label: 'Radio 2', id: 'input-group.radio-2', value: 'radio-2'},
+			{label: 'Radio 3', id: 'input-group.radio-3', value: 'radio-3'},
+			{
+				label: 'Radio 4',
+				id: 'input-group.radio-4',
+				value: 'radio-4',
+				disabled: true,
+			},
+			{label: 'Radio 5', id: 'input-group.radio-5', value: 'radio-5'},
+			{label: 'Radio 6', id: 'input-group.radio-6', value: 'radio-6'},
+		],
 		errors: [messages.getErrorMessage('RADIO_PATTERN')],
 	},
+
+	// TODO: make @fat-fuzzy/validation schemas configurable from consumer
 	sample_checkbox_group: {
 		legend: 'Checkbox Group',
 		label: 'Multiple Choice 1',
 		name: 'sample_checkbox_group',
 		type: 'checkbox',
-		value: {valid: 'on'},
+		items: [
+			{label: 'Checkbox 1', id: 'check-1', value: 'check-1'},
+			{label: 'Checkbox 2', id: 'check-2'},
+			{
+				label: 'Checkbox 3',
+				id: 'input-group.check-3',
+				value: 'check-3',
+				disabled: true,
+			},
+		],
 		errors: [messages.getErrorMessage('CHECKBOX_PATTERN')],
 	},
 	sample_password: {
@@ -130,23 +164,11 @@ const INPUTS: {
 	},
 }
 
-const SIGNUP_INPUTS: {
-	[name: string]: {
-		label: string
-		type: string
-		dependsOn?: string
-		value: {
-			valid: string
-			invalid?: string
-			unsanitized?: string
-			sanitized?: string
-		}
-		errors: string[]
-	}
-} = {
+const SIGNUP_INPUTS: InputProps = {
 	sample_username: {
 		label: 'Username',
 		type: 'text',
+		name: 'sample_username',
 		value: {valid: 'FatTheFuzzy', invalid: 'F'},
 		errors: [
 			messages.getErrorMessage('FORMAT_TEXT_MIN', 3),
@@ -154,34 +176,9 @@ const SIGNUP_INPUTS: {
 			// messages.getErrorMessage('FORMAT_USERNAME'),
 		],
 	},
-	sample_email: {
-		label: 'Email',
-		type: 'email',
-		value: {
-			valid: 'bird@fat-fuzzy.rocks',
-			invalid: 'bird@fat-fuzzy',
-			unsanitized: '<script>bird@fat-fuzzy.rocks',
-			sanitized: '&lt;script&gt;bird@fat-fuzzy.rocks',
-		},
-		errors: [messages.getErrorMessage('FORMAT_EMAIL')],
-	},
-	sample_password: {
-		label: 'Password',
-		type: 'password',
-		value: {valid: 'ThisIsNotSecure!!!123', invalid: 'pwd'},
-		errors: [
-			messages.getErrorMessage('FORMAT_TEXT_MIN', 12),
-			messages.getErrorMessage('FORMAT_PATTERN', 3),
-			messages.getErrorMessage('FORMAT_PATTERN', 3, 'digit'),
-		],
-	},
-	confirm_password: {
-		label: 'Confirm Pwd',
-		type: 'password',
-		dependsOn: 'sample_password',
-		value: {valid: 'ThisIsNotSecure!!!123', invalid: 'ThisIsNotSecure'},
-		errors: [messages.getErrorMessage('MATCH_PASSWORD')],
-	},
+	sample_email: INPUTS.sample_email,
+	sample_password: INPUTS.sample_password,
+	confirm_password: INPUTS.confirm_password,
 }
 
 function getSampleInputFields() {
