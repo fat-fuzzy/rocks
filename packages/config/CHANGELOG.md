@@ -1,5 +1,11 @@
 # @fat-fuzzy/config
 
+## 0.1.22
+
+### Patch Changes
+
+- dffd5d9: Bugfixes, tests, dep updates
+
 ## 0.1.21
 
 ### Patch Changes
