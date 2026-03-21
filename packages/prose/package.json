@@ -71,7 +71,7 @@
 		"@vitest/coverage-v8": "4.0.18",
 		"@vitest/ui": "4.0.18",
 		"globals": "17.4.0",
-		"mdsvex": "0.12.6",
+		"mdsvex": "0.12.7",
 		"publint": "0.3.18",
 		"svelte": "5.53.7",
 		"svelte-check": "4.4.5",
