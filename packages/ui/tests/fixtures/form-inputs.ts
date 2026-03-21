@@ -65,11 +65,18 @@ const INPUTS: {
 	// 	value: {valid: 'Sample description'},
 	// 	errors: [messages.getErrorMessage('FORMAT_TEXT_MAX', 200)],
 	// },
+	sample_radio: {
+		label: 'Radio',
+		name: 'sample_radio',
+		type: 'radio',
+		value: {valid: 'true'},
+		errors: [messages.getErrorMessage('CHECKBOX_MIN', 1)],
+	},
 	sample_checkbox: {
 		label: 'Checkbox',
 		name: 'sample_checkbox',
 		type: 'checkbox',
-		value: {valid: 'on'},
+		value: {valid: 'true'},
 		errors: [messages.getErrorMessage('CHECKBOX_MIN', 1)],
 	},
 	// TODO: enable select test after creating Select component
