@@ -40,14 +40,17 @@ pages.forEach((item) => {
 				page,
 			}) => {
 				await page.goto('/')
-				await page.getByRole('link', {name: item.title}).nth(0).click()
+				await page
+					.getByRole('link', {name: item.title, exact: false})
+					.nth(0)
+					.click()
 				await page
 					.getByTestId(sidebarTestId)
 					.getByRole('button', {name: item.title})
 					.click()
 				await page.getByTestId(`button-reveal-${subpage.slug}`).click()
 				await expect(
-					page.getByRole('link', {name: subpage.linkTitle}),
+					page.getByRole('link', {name: subpage.linkTitle, exact: true}),
 				).toBeVisible()
 			})
 		})

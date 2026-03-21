@@ -135,7 +135,7 @@ class FormValidator implements IFormValidator {
 	}
 
 	public getFieldErrors(name: string): string[] | undefined {
-		return this.form[name]?.feedback.error
+		return this.form[name]?.feedback?.error
 	}
 
 	public validateInput(event: Event) {

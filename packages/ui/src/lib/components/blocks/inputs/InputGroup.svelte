@@ -26,13 +26,18 @@
 		validator,
 	}: FieldsetProps & ValidationProps & Partial<InputProps> = $props()
 
-	let payload = $derived({
+	let payload = $state({
 		id,
 		name,
 		value: value ?? '',
 	})
-	let selected: string[] = $state(payload.value?.split(','))
+	let selected: string[] = $derived(
+		payload.value ? payload.value?.split(',') : [],
+	)
 	let allSelected = $derived(selected.length === items.length)
+	let isIndeterminate = $derived(
+		selected.length > 0 && selected.length < items.length,
+	)
 
 	let enableSelectAll = $derived(type === 'checkbox' && items.length > 5)
 
@@ -51,16 +56,19 @@
 				payload.value = target.value
 				break
 			case 'checkbox':
-				if (target.checked === true) {
+				if (!selected.includes(target.value)) {
 					selected.push(target.value)
-					payload.value = selected.join(',')
 				} else {
 					selected = selected.filter((i) => i !== target.value)
-					payload.value = selected.join(',')
 				}
 				break
 			default:
 				break
+		}
+		if (selected.length) {
+			payload.value = selected.length > 1 ? selected.join(',') : selected[0]
+		} else {
+			payload.value = ''
 		}
 
 		if (oninput) {
@@ -70,14 +78,17 @@
 
 	function handleSelectAll(event: Event) {
 		let target = event.target as HTMLInputElement
+
 		if (target.checked === true) {
 			selected = items.map((item: InputProps) => String(item.value) || '')
-			payload.value = selected.join(',')
-			allSelected = true
 		} else {
 			selected = []
+		}
+
+		if (selected.length) {
+			payload.value = selected.length > 1 ? selected.join(',') : selected[0]
+		} else {
 			payload.value = ''
-			allSelected = false
 		}
 
 		if (oninput) {
@@ -110,6 +121,7 @@
 				label={legend ?? name}
 				value={`all-${name}`}
 				checked={allSelected}
+				indeterminate={isIndeterminate}
 				{asset}
 				{assetType}
 				{color}
@@ -123,11 +135,11 @@
 	{/if}
 	{#each items as input, index (index)}
 		{@const checked =
-			allSelected ||
-			input.value === payload.value ||
-			payload.value.includes(String(input.value))
+			type === 'checkbox' &&
+			(allSelected ||
+				(input.value && payload.value.includes(String(input.value))))
 				? true
-				: false}
+				: undefined}
 		<InputComponent
 			{...input}
 			value={input.value}
