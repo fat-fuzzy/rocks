@@ -37,6 +37,7 @@
 		<InputGroup
 			{...inputProps}
 			name={inputProps.name}
+			value=""
 			id={inputProps.name}
 			checked={false}
 			{validator}

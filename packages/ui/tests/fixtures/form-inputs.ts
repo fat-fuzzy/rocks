@@ -80,7 +80,7 @@ const INPUTS: InputProps = {
 		name: 'sample_radio',
 		type: 'radio',
 		value: {valid: 'true'},
-		errors: [messages.getErrorMessage('CHECKBOX_MIN', 1)],
+		errors: [messages.getErrorMessage('RADIO_MIN', 1)],
 	},
 	sample_checkbox: {
 		label: 'Checkbox',
@@ -108,7 +108,7 @@ const INPUTS: InputProps = {
 		label: 'Unique Choice 1',
 		name: 'sample_radio_group',
 		type: 'radio',
-		value: {valid: 'on'},
+		value: {valid: 'radio-2'},
 		items: [
 			{label: 'Radio 1', id: 'input-group.radio-1', value: 'radio-1'},
 			{label: 'Radio 2', id: 'input-group.radio-2', value: 'radio-2'},
@@ -124,16 +124,15 @@ const INPUTS: InputProps = {
 		],
 		errors: [messages.getErrorMessage('RADIO_PATTERN')],
 	},
-
-	// TODO: make @fat-fuzzy/validation schemas configurable from consumer
 	sample_checkbox_group: {
 		legend: 'Checkbox Group',
 		label: 'Multiple Choice 1',
 		name: 'sample_checkbox_group',
 		type: 'checkbox',
+		value: {valid: 'check-2'},
 		items: [
 			{label: 'Checkbox 1', id: 'check-1', value: 'check-1'},
-			{label: 'Checkbox 2', id: 'check-2'},
+			{label: 'Checkbox 2', id: 'check-2', value: 'check-2'},
 			{
 				label: 'Checkbox 3',
 				id: 'input-group.check-3',

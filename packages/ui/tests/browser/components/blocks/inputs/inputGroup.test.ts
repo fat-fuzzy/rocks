@@ -83,11 +83,10 @@ describe(`InputGroup - a component group of radio or checkbox inputs`, () => {
 				if (firstInput) {
 					const locator = getByRole('checkbox', {name: firstInput.label})
 
-					// TODO: make @fat-fuzzy/validation schemas configurable from consumer
-					const labelLocator = getByTestId(`${input.name}.undefined`)
+					// TODO: make @fat-fuzzy/validation schemas configurable from
+					const labelLocator = getByTestId(`${input.name}.${firstInput.value}`)
 
 					await userEvent.click(locator)
-
 					await expect.element(labelLocator).toHaveClass('color:primary')
 					await expect.element(labelLocator).not.toHaveClass('color:error')
 				}
