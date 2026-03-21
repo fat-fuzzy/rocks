@@ -10,6 +10,7 @@
 		label,
 		value = $bindable(),
 		required,
+		pattern,
 		font,
 		size,
 		color,
@@ -21,6 +22,9 @@
 		validator,
 		autocomplete,
 	}: InputProps = $props()
+
+	// TODO: map errors to Constraint Validation API
+	// https://developer.mozilla.org/en-US/docs/Web/HTML/Guides/Constraint_validation
 
 	let errors = $derived(validator.getFieldErrors(name))
 	let inputClasses = $derived(
@@ -42,12 +46,14 @@
 		{name}
 		bind:value
 		{required}
+		{pattern}
 		{onfocus}
 		{onblur}
 		{oninput}
 		{disabled}
 		{autocomplete}
 		aria-describedby={errors ? `input-feedback-${id}` : undefined}
+		aria-invalid={errors && errors.length > 0}
 	/>
 </label>
 

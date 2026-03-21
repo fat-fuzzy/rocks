@@ -28,7 +28,19 @@ export type UiSize =
 	| '2xl'
 	| '3xl'
 
-export type UiColor = 'primary' | 'accent' | 'highlight' | 'neutral'
+export type UiPalette =
+	| 'banana'
+	| 'blueberry'
+	| 'framboise'
+	| 'grape'
+	| 'lime'
+	| 'litchee'
+	| 'mora'
+	| 'tangerine'
+
+export type UiTheme = 'primary' | 'accent' | 'highlight' | 'neutral'
+
+export type UiColor = UiStatus | UiPalette | UiTheme
 
 export type UiAssetType = 'emoji' | 'svg' | 'none'
 

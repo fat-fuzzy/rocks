@@ -1,5 +1,11 @@
 # @fat-fuzzy/validation
 
+## 0.1.15
+
+### Patch Changes
+
+- dffd5d9: Bugfixes, tests, dep updates
+
 ## 0.1.14
 
 ### Patch Changes

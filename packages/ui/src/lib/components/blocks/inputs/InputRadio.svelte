@@ -7,7 +7,6 @@
 		id,
 		name,
 		label = 'Radio input',
-		checked = false,
 		disabled,
 		value,
 		required,
@@ -55,9 +54,9 @@
 	<input
 		{id}
 		type="radio"
-		bind:value
+		{value}
 		{name}
-		{checked}
+		bind:group={name}
 		{required}
 		oninput={handleInput}
 		{disabled}

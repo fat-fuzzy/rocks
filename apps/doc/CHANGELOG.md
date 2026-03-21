@@ -1,5 +1,11 @@
 # @fat-fuzzy/doc
 
+## 0.1.69
+
+### Patch Changes
+
+- dffd5d9: Bugfixes, tests, dep updates
+
 ## 0.1.68
 
 ### Patch Changes

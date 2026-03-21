@@ -8,6 +8,7 @@
 		name,
 		label = 'Checkbox input',
 		checked = false,
+		indeterminate,
 		disabled,
 		value,
 		required,
@@ -27,7 +28,7 @@
 		container,
 
 		oninput,
-	}: InputProps = $props()
+	}: InputProps & {indeterminate?: boolean} = $props()
 
 	function handleInput(event: Event) {
 		if (oninput) oninput(event)
@@ -58,6 +59,7 @@
 		{value}
 		type="checkbox"
 		bind:checked
+		{indeterminate}
 		{required}
 		oninput={handleInput}
 		{disabled}

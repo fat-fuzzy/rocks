@@ -1,5 +1,11 @@
 # @fat-fuzzy/prose
 
+## 0.1.35
+
+### Patch Changes
+
+- dffd5d9: Bugfixes, tests, dep updates
+
 ## 0.1.34
 
 ### Patch Changes
