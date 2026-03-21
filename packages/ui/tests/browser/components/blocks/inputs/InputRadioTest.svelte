@@ -36,8 +36,9 @@
 	<form data-testid="test-form" action={page.url.pathname}>
 		<InputRadio
 			{...inputProps}
-			id={inputProps.name}
-			value=""
+			name={inputProps.name}
+			id={`${inputProps.name}.${inputProps.value.valid}`}
+			value={inputProps.value.valid}
 			checked={false}
 			{validator}
 			disabled={isDisabled}

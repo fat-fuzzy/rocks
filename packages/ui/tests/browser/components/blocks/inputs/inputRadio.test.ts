@@ -64,7 +64,7 @@ describe(`InputRadio - a radio input component`, () => {
 				props: {id: key},
 			})
 			const inputLocator = getByRole('radio', {name: input.label})
-			const labelLocator = getByTestId(key)
+			const labelLocator = getByTestId(`${input.name}.${input.value.valid}`)
 
 			if (input.value.valid !== 'disabled') {
 				await userEvent.click(inputLocator)
