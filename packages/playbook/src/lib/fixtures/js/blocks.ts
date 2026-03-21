@@ -60,7 +60,7 @@ export default {
 		type: 'checkbox',
 		title: 'InputGroup',
 		name: 'input-group',
-		value: 'input-group',
+		value: 'check-1',
 		variant: 'outline',
 		items: [
 			{label: 'Checkbox 1', id: 'input-group.check-1', value: 'check-1'},

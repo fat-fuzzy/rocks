@@ -3,7 +3,7 @@
 
 	import FormValidator from '$lib/utils/browser/FormValidator.svelte'
 
-	import Input from '$lib/components/blocks/inputs/Input.svelte'
+	import InputRadio from '$lib/components/blocks/inputs/InputRadio.svelte'
 	import TestContext from '$tests/browser/TestContext.svelte'
 	import {INPUTS} from '$tests/fixtures/form-inputs'
 	import {page} from '$app/state'
@@ -34,10 +34,12 @@
 
 <TestContext>
 	<form data-testid="test-form" action={page.url.pathname}>
-		<Input
+		<InputRadio
 			{...inputProps}
-			id={inputProps.name}
-			value=""
+			name={inputProps.name}
+			id={`${inputProps.name}.${inputProps.value.valid}`}
+			value={inputProps.value.valid}
+			checked={false}
 			{validator}
 			disabled={isDisabled}
 			onfocus={handleFocus}
