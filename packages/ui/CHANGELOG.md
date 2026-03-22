@@ -1,5 +1,11 @@
 # @fat-fuzzy/ui
 
+## 0.1.85
+
+### Patch Changes
+
+- ff56d26: Fix InputGrop radio initial value
+
 ## 0.1.84
 
 ### Patch Changes
