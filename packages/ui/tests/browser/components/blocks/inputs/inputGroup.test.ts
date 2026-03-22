@@ -181,6 +181,63 @@ describe(`InputGroup - a component group of radio or checkbox inputs`, () => {
 
 				expect(locator).toBeDisabled()
 			})
+
+			it('should pre-check items that are pre-selected in the value prop', () => {
+				const preSelected = [
+					String(input.items?.[0]?.value),
+					String(input.items?.[2]?.value),
+				]
+
+				const {getByRole} = render(InputGroupTest, {
+					props: {id: key, value: preSelected},
+				})
+
+				const input1 = input.items ? input.items[0] : undefined
+				const input2 = input.items ? input.items[1] : undefined
+				const input3 = input.items ? input.items[2] : undefined
+
+				expect(input1).toBeDefined()
+				expect(input2).toBeDefined()
+				expect(input3).toBeDefined()
+
+				const locator1 = getByRole('checkbox', {name: input1?.label})
+				const locator2 = getByRole('checkbox', {name: input2?.label})
+				const locator3 = getByRole('checkbox', {name: input3?.label})
+
+				expect(locator1).toBeChecked()
+				expect(locator2).not.toBeChecked()
+				expect(locator3).toBeChecked()
+			})
+
+			it('should check select-all when all values are pre-selected', async ({
+				expect,
+			}) => {
+				const allValues = input.items?.map((i) => String(i.value)) ?? []
+
+				const {getByRole} = render(InputGroupTest, {
+					props: {id: key, value: allValues},
+				})
+
+				expect(getByRole('checkbox', {name: input.legend})).toBeChecked()
+
+				for (const item of input.items ?? []) {
+					const locator = getByRole('checkbox', {name: item.label})
+
+					expect(locator).toBeChecked()
+				}
+			})
+			it('should show indeterminate select-all whens values are partially selected', async ({
+				expect,
+			}) => {
+				const partialValues = [String(input.items?.[0]?.value)]
+
+				const {getByRole} = render(InputGroupTest, {
+					props: {id: key, value: partialValues},
+				})
+				const locatorSelectAll = getByRole('checkbox', {name: input.legend})
+
+				expect(locatorSelectAll).toBePartiallyChecked()
+			})
 		})
 
 		describe('accessibility', () => {
