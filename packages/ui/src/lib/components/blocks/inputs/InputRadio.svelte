@@ -56,7 +56,6 @@
 		type="radio"
 		{value}
 		{name}
-		bind:group={name}
 		{required}
 		oninput={handleInput}
 		{disabled}
