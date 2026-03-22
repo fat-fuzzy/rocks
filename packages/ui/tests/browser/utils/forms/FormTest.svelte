@@ -238,6 +238,7 @@
 						id="checkbox_group"
 						type="check"
 						name="sample_checkbox_group"
+						legend="Checkbox Group"
 						{size}
 						{color}
 						{variant}
@@ -250,7 +251,7 @@
 						<InputCheck
 							id="unique_choice_1"
 							name="choice_1"
-							label="Multiple Choice 1"
+							label="Checkbox 1"
 							{size}
 							{color}
 							{variant}
@@ -264,7 +265,7 @@
 						<InputCheck
 							id="choice_2"
 							name="choice_2"
-							label="Multiple Choice 2"
+							label="Checkbox 2"
 							{size}
 							{color}
 							{variant}
@@ -279,6 +280,7 @@
 						id="radio_group"
 						type="radio"
 						name="sample_radio_group"
+						legend="Radio Group"
 						{size}
 						{color}
 						{variant}
@@ -291,7 +293,7 @@
 						<InputRadio
 							id="unique_choice_1"
 							name="unique_choice_1"
-							label="Unique Choice 1"
+							label="Radio 1"
 							{size}
 							{color}
 							{variant}
@@ -305,7 +307,7 @@
 						<InputRadio
 							id="unique_choice_2"
 							name="unique_choice_2"
-							label="Unique Choice 2"
+							label="Radio 2"
 							{size}
 							{color}
 							{variant}

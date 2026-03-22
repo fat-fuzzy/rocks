@@ -105,7 +105,7 @@ const INPUTS: InputProps = {
 	},
 	sample_radio_group: {
 		legend: 'Radio Group',
-		label: '',
+		label: 'Radio Group',
 		name: 'sample_radio_group',
 		type: 'radio',
 		value: {valid: 'radio-2'},
@@ -126,7 +126,7 @@ const INPUTS: InputProps = {
 	},
 	sample_checkbox_group: {
 		legend: 'Checkbox Group',
-		label: '',
+		label: 'Checkbox Group',
 		name: 'sample_checkbox_group',
 		type: 'checkbox',
 		value: {valid: 'check-2'},
@@ -144,7 +144,7 @@ const INPUTS: InputProps = {
 	},
 	sample_checkbox_group_select_all: {
 		legend: 'Checkbox Group - Select All',
-		label: '',
+		label: 'Checkbox Group - Select All',
 		name: 'sample_checkbox_group_select_all',
 		type: 'checkbox',
 		value: {valid: 'check-2'},

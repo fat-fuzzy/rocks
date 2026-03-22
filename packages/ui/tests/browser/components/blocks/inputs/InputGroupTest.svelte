@@ -7,14 +7,20 @@
 	import TestContext from '$tests/browser/TestContext.svelte'
 	import {INPUTS} from '$tests/fixtures/form-inputs'
 	import {page} from '$app/state'
-	import {onMount} from 'svelte'
 
 	let {id, skipDisabled}: {id: string; skipDisabled?: boolean} = $props()
 
 	let validator = new FormValidator('TestFormValidationFunction')
 	let inputProps = $derived(INPUTS[id])
 
-	let items = $derived(INPUTS[id].items)
+	let items = $derived(
+		(INPUTS[id].items || []).map((i) => ({
+			...i,
+			name: inputProps.name,
+			disabled: skipDisabled ? false : i.disabled,
+			validator,
+		})),
+	)
 
 	let color: UiColor = $derived(
 		validator.getFieldErrors(inputProps.name)?.length ? 'error' : 'primary',
@@ -32,12 +38,6 @@
 		validator.changeInput(event)
 		validator.validateInput(event)
 	}
-
-	onMount(() => {
-		if (skipDisabled) {
-			items = items?.map((i) => ({...i, disabled: false}))
-		}
-	})
 </script>
 
 <TestContext>

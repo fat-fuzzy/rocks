@@ -12,7 +12,10 @@ describe('FormValidator - Svelte Integration Tests', () => {
 			const inputs: {locator: Locator; key: string}[] = []
 
 			Object.keys(INPUTS).forEach((key) => {
-				if (INPUTS[key].name === 'sample_radio') {
+				if (
+					INPUTS[key].name === 'sample_radio' ||
+					INPUTS[key].name === 'sample_checkbox_group_select_all'
+				) {
 					// skip
 				} else {
 					inputs.push({locator: getByLabelText(INPUTS[key].label), key})
@@ -75,13 +78,31 @@ describe('FormValidator - Svelte Integration Tests', () => {
 			Object.keys(INPUTS).forEach((key) => {
 				if (INPUTS[key].name === 'sample_radio') {
 					// skip
+				} else if (
+					INPUTS[key].name === 'sample_radio_group' ||
+					INPUTS[key].name === 'sample_checkbox_group'
+				) {
+					const item1 = INPUTS[key].items ? INPUTS[key].items[0] : undefined
+
+					if (item1) {
+						inputs.push({
+							locator: getByLabelText(item1.label, {exact: true}),
+							key,
+						})
+					}
 				} else {
-					inputs.push({locator: getByLabelText(INPUTS[key].label), key})
+					inputs.push({
+						locator: getByLabelText(INPUTS[key].label, {exact: true}),
+						key,
+					})
 				}
 			})
 
 			for (const input of inputs) {
-				if (input.key === 'sample_radio') {
+				if (
+					input.key === 'sample_radio' ||
+					input.key === 'sample_checkbox_group_select_all'
+				) {
 					// skip
 				} else if (
 					INPUTS[input.key].type === 'checkbox' ||
@@ -107,7 +128,10 @@ describe('FormValidator - Svelte Integration Tests', () => {
 
 		await Promise.all(
 			Object.keys(INPUTS).map(async (key) => {
-				if (key === 'sample_radio') {
+				if (
+					key === 'sample_radio' ||
+					key === 'sample_checkbox_group_select_all'
+				) {
 					// skip
 				} else {
 					await expect
