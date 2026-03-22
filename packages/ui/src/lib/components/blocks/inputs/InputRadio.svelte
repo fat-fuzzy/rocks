@@ -7,6 +7,7 @@
 		id,
 		name,
 		label = 'Radio input',
+		checked = false,
 		disabled,
 		value,
 		required,
@@ -54,6 +55,7 @@
 	<input
 		{id}
 		type="radio"
+		{checked}
 		{value}
 		{name}
 		{required}

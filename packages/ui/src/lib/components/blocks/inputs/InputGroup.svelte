@@ -121,11 +121,7 @@
 	{/if}
 	{#each items as input, index (index)}
 		{@const checked =
-			type === 'checkbox' &&
-			input.value &&
-			selected.includes(String(input.value))
-				? true
-				: undefined}
+			input.value && selected.includes(String(input.value)) ? true : undefined}
 		<InputComponent
 			{...input}
 			value={input.value}
