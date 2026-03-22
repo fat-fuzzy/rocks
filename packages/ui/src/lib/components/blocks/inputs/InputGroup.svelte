@@ -71,12 +71,12 @@
 		let target = event.target as HTMLInputElement
 
 		if (target.checked === true) {
-			selected = items.map((item: InputProps) => String(item.value) || '')
+			selected = items.map(
+				(item: InputCheckProps | InputRadioProps) => String(item.value) || '',
+			)
 		} else {
 			selected = []
 		}
-
-		selected = selected
 
 		if (oninput) {
 			oninput(event)
