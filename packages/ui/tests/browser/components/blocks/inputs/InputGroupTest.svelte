@@ -8,7 +8,11 @@
 	import {INPUTS} from '$tests/fixtures/form-inputs'
 	import {page} from '$app/state'
 
-	let {id, skipDisabled}: {id: string; skipDisabled?: boolean} = $props()
+	let {
+		id,
+		skipDisabled,
+		value,
+	}: {id: string; skipDisabled?: boolean; value?: string[]} = $props()
 
 	let validator = new FormValidator('TestFormValidationFunction')
 	let inputProps = $derived(INPUTS[id])
@@ -46,9 +50,8 @@
 			{...inputProps}
 			name={inputProps.name}
 			{items}
-			value=""
+			{value}
 			id={inputProps.name}
-			checked={false}
 			{validator}
 			onfocus={handleFocus}
 			onblur={handleBlur}

@@ -176,11 +176,10 @@ describe(`InputGroup - a component group of radio or checkbox inputs`, () => {
 
 				const disabledInput = input.items?.find((i) => i.disabled)
 
-				if (disabledInput) {
-					const locator = getByRole('checkbox', {name: disabledInput.label})
+				expect(disabledInput).toBeDefined()
+				const locator = getByRole('checkbox', {name: disabledInput?.label})
 
-					expect(locator).toBeDisabled()
-				}
+				expect(locator).toBeDisabled()
 			})
 		})
 
@@ -193,11 +192,11 @@ describe(`InputGroup - a component group of radio or checkbox inputs`, () => {
 
 				const input1 = input.items ? input.items[0] : undefined
 
-				if (input1) {
-					const locator = getByRole('checkbox', {name: input1.label})
+				expect(input1).toBeDefined()
 
-					expect(locator).toBeInTheDocument()
-				}
+				const locator = getByRole('checkbox', {name: input1?.label})
+
+				expect(locator).toBeInTheDocument()
 			})
 		})
 
@@ -209,12 +208,12 @@ describe(`InputGroup - a component group of radio or checkbox inputs`, () => {
 
 				const input1 = input.items ? input.items[0] : undefined
 
-				if (input1) {
-					const locator = getByRole('checkbox', {name: input1.label})
+				expect(input1).toBeDefined()
 
-					await userEvent.click(locator)
-					expect(locator).toBeValid()
-				}
+				const locator = getByRole('checkbox', {name: input1?.label})
+
+				await userEvent.click(locator)
+				expect(locator).toBeValid()
 			})
 
 			test(`a group item should check a single input at a time`, async ({
@@ -227,14 +226,15 @@ describe(`InputGroup - a component group of radio or checkbox inputs`, () => {
 				const input1 = input.items ? input.items[0] : undefined
 				const input2 = input.items ? input.items[1] : undefined
 
-				if (input1 && input2) {
-					const locator1 = getByRole('checkbox', {name: input1.label})
-					const locator2 = getByRole('checkbox', {name: input2.label})
+				expect(input1).toBeDefined()
+				expect(input2).toBeDefined()
 
-					await userEvent.click(locator1)
-					expect(locator1).toBeChecked()
-					expect(locator2).not.toBeChecked()
-				}
+				const locator1 = getByRole('checkbox', {name: input1?.label})
+				const locator2 = getByRole('checkbox', {name: input2?.label})
+
+				await userEvent.click(locator1)
+				expect(locator1).toBeChecked()
+				expect(locator2).not.toBeChecked()
 			})
 
 			test(`a group item should uncheck a single input at a time`, async ({
@@ -247,30 +247,31 @@ describe(`InputGroup - a component group of radio or checkbox inputs`, () => {
 				const input1 = input.items ? input.items[0] : undefined
 				const input2 = input.items ? input.items[1] : undefined
 
-				if (input1 && input2) {
-					const locator1 = getByRole('checkbox', {name: input1.label})
-					const locator2 = getByRole('checkbox', {name: input2.label})
+				expect(input1).toBeDefined()
+				expect(input2).toBeDefined()
 
-					await userEvent.click(locator1)
+				const locator1 = getByRole('checkbox', {name: input1?.label})
+				const locator2 = getByRole('checkbox', {name: input2?.label})
 
-					expect(locator1).toBeChecked()
-					expect(locator2).not.toBeChecked()
+				await userEvent.click(locator1)
 
-					await userEvent.click(locator2)
+				expect(locator1).toBeChecked()
+				expect(locator2).not.toBeChecked()
 
-					expect(locator1).toBeChecked()
-					expect(locator2).toBeChecked()
+				await userEvent.click(locator2)
 
-					await userEvent.click(locator1)
+				expect(locator1).toBeChecked()
+				expect(locator2).toBeChecked()
 
-					expect(locator1).not.toBeChecked()
-					expect(locator2).toBeChecked()
+				await userEvent.click(locator1)
 
-					await userEvent.click(locator2)
+				expect(locator1).not.toBeChecked()
+				expect(locator2).toBeChecked()
 
-					expect(locator1).not.toBeChecked()
-					expect(locator2).not.toBeChecked()
-				}
+				await userEvent.click(locator2)
+
+				expect(locator1).not.toBeChecked()
+				expect(locator2).not.toBeChecked()
 			})
 
 			test(`select-all item should check all inputs`, async ({expect}) => {
@@ -285,25 +286,30 @@ describe(`InputGroup - a component group of radio or checkbox inputs`, () => {
 				const input5 = input.items ? input.items[4] : undefined
 				const input6 = input.items ? input.items[5] : undefined
 
-				if (input1 && input2 && input3 && input4 && input5 && input6) {
-					const locatorSelectAll = getByRole('checkbox', {name: input.legend})
-					const locator1 = getByRole('checkbox', {name: input1.label})
-					const locator2 = getByRole('checkbox', {name: input2.label})
-					const locator3 = getByRole('checkbox', {name: input3.label})
-					const locator4 = getByRole('checkbox', {name: input4.label})
-					const locator5 = getByRole('checkbox', {name: input5.label})
-					const locator6 = getByRole('checkbox', {name: input6.label})
+				expect(input1).toBeDefined()
+				expect(input2).toBeDefined()
+				expect(input3).toBeDefined()
+				expect(input4).toBeDefined()
+				expect(input5).toBeDefined()
+				expect(input6).toBeDefined()
 
-					await userEvent.click(locatorSelectAll)
+				const locatorSelectAll = getByRole('checkbox', {name: input.legend})
+				const locator1 = getByRole('checkbox', {name: input1?.label})
+				const locator2 = getByRole('checkbox', {name: input2?.label})
+				const locator3 = getByRole('checkbox', {name: input3?.label})
+				const locator4 = getByRole('checkbox', {name: input4?.label})
+				const locator5 = getByRole('checkbox', {name: input5?.label})
+				const locator6 = getByRole('checkbox', {name: input6?.label})
 
-					expect(locator1).toBeChecked()
-					expect(locator2).toBeChecked()
-					expect(locator3).toBeChecked()
-					expect(locator4).toBeChecked()
-					expect(locator5).toBeChecked()
-					expect(locator6).toBeChecked()
-					expect(locatorSelectAll).toBeChecked()
-				}
+				await userEvent.click(locatorSelectAll)
+
+				expect(locator1).toBeChecked()
+				expect(locator2).toBeChecked()
+				expect(locator3).toBeChecked()
+				expect(locator4).toBeChecked()
+				expect(locator5).toBeChecked()
+				expect(locator6).toBeChecked()
+				expect(locatorSelectAll).toBeChecked()
 			})
 
 			test(`select-all item should uncheck all inputs`, async ({expect}) => {
@@ -318,38 +324,43 @@ describe(`InputGroup - a component group of radio or checkbox inputs`, () => {
 				const input5 = input.items ? input.items[4] : undefined
 				const input6 = input.items ? input.items[5] : undefined
 
-				if (input1 && input2 && input3 && input4 && input5 && input6) {
-					const locatorSelectAll = getByRole('checkbox', {name: input.legend})
-					const locator1 = getByRole('checkbox', {name: input1.label})
-					const locator2 = getByRole('checkbox', {name: input2.label})
-					const locator3 = getByRole('checkbox', {name: input3.label})
-					const locator4 = getByRole('checkbox', {name: input4.label})
-					const locator5 = getByRole('checkbox', {name: input5.label})
-					const locator6 = getByRole('checkbox', {name: input6.label})
+				expect(input1).toBeDefined()
+				expect(input2).toBeDefined()
+				expect(input3).toBeDefined()
+				expect(input4).toBeDefined()
+				expect(input5).toBeDefined()
+				expect(input6).toBeDefined()
 
-					await userEvent.click(locatorSelectAll)
+				const locatorSelectAll = getByRole('checkbox', {name: input.legend})
+				const locator1 = getByRole('checkbox', {name: input1?.label})
+				const locator2 = getByRole('checkbox', {name: input2?.label})
+				const locator3 = getByRole('checkbox', {name: input3?.label})
+				const locator4 = getByRole('checkbox', {name: input4?.label})
+				const locator5 = getByRole('checkbox', {name: input5?.label})
+				const locator6 = getByRole('checkbox', {name: input6?.label})
 
-					expect(locator1).toBeChecked()
-					expect(locator2).toBeChecked()
-					expect(locator3).toBeChecked()
-					expect(locator4).toBeChecked()
-					expect(locator5).toBeChecked()
-					expect(locator6).toBeChecked()
-					expect(locatorSelectAll).toBeChecked()
+				await userEvent.click(locatorSelectAll)
 
-					await userEvent.click(locatorSelectAll)
+				expect(locator1).toBeChecked()
+				expect(locator2).toBeChecked()
+				expect(locator3).toBeChecked()
+				expect(locator4).toBeChecked()
+				expect(locator5).toBeChecked()
+				expect(locator6).toBeChecked()
+				expect(locatorSelectAll).toBeChecked()
 
-					expect(locator1).not.toBeChecked()
-					expect(locator2).not.toBeChecked()
-					expect(locator3).not.toBeChecked()
-					expect(locator4).not.toBeChecked()
-					expect(locator5).not.toBeChecked()
-					expect(locator6).not.toBeChecked()
-					expect(locatorSelectAll).not.toBeChecked()
-				}
+				await userEvent.click(locatorSelectAll)
+
+				expect(locator1).not.toBeChecked()
+				expect(locator2).not.toBeChecked()
+				expect(locator3).not.toBeChecked()
+				expect(locator4).not.toBeChecked()
+				expect(locator5).not.toBeChecked()
+				expect(locator6).not.toBeChecked()
+				expect(locatorSelectAll).not.toBeChecked()
 			})
 
-			test(`select-all item should have indeterminate state if some but not all inputs are selected`, async ({
+			test(`should show indeterminate select-all when inputs are partially selected`, async ({
 				expect,
 			}) => {
 				const {getByRole} = render(InputGroupTest, {
@@ -362,18 +373,22 @@ describe(`InputGroup - a component group of radio or checkbox inputs`, () => {
 				const input5 = input.items ? input.items[4] : undefined
 				const input6 = input.items ? input.items[5] : undefined
 
-				if (input1 && input2 && input4 && input5 && input6) {
-					const locatorSelectAll = getByRole('checkbox', {name: input.legend})
-					const locator1 = getByRole('checkbox', {name: input1.label})
+				expect(input1).toBeDefined()
+				expect(input2).toBeDefined()
+				expect(input4).toBeDefined()
+				expect(input5).toBeDefined()
+				expect(input6).toBeDefined()
 
-					await userEvent.click(locatorSelectAll)
+				const locatorSelectAll = getByRole('checkbox', {name: input.legend})
+				const locator1 = getByRole('checkbox', {name: input1?.label})
 
-					expect(locatorSelectAll).toBeChecked()
+				await userEvent.click(locatorSelectAll)
 
-					await userEvent.click(locator1)
+				expect(locatorSelectAll).toBeChecked()
 
-					expect(locatorSelectAll).toBePartiallyChecked()
-				}
+				await userEvent.click(locator1)
+
+				expect(locatorSelectAll).toBePartiallyChecked()
 			})
 
 			test(`checking all items individually should check select-all input`, async ({
@@ -390,24 +405,29 @@ describe(`InputGroup - a component group of radio or checkbox inputs`, () => {
 				const input5 = input.items ? input.items[4] : undefined
 				const input6 = input.items ? input.items[5] : undefined
 
-				if (input1 && input2 && input3 && input4 && input5 && input6) {
-					const locatorSelectAll = getByRole('checkbox', {name: input.legend})
-					const locator1 = getByRole('checkbox', {name: input1.label})
-					const locator2 = getByRole('checkbox', {name: input2.label})
-					const locator3 = getByRole('checkbox', {name: input3.label})
-					const locator4 = getByRole('checkbox', {name: input4.label})
-					const locator5 = getByRole('checkbox', {name: input5.label})
-					const locator6 = getByRole('checkbox', {name: input6.label})
+				expect(input1).toBeDefined()
+				expect(input2).toBeDefined()
+				expect(input3).toBeDefined()
+				expect(input4).toBeDefined()
+				expect(input5).toBeDefined()
+				expect(input6).toBeDefined()
 
-					await userEvent.click(locator1)
-					await userEvent.click(locator2)
-					await userEvent.click(locator3)
-					await userEvent.click(locator4)
-					await userEvent.click(locator5)
-					await userEvent.click(locator6)
+				const locatorSelectAll = getByRole('checkbox', {name: input.legend})
+				const locator1 = getByRole('checkbox', {name: input1?.label})
+				const locator2 = getByRole('checkbox', {name: input2?.label})
+				const locator3 = getByRole('checkbox', {name: input3?.label})
+				const locator4 = getByRole('checkbox', {name: input4?.label})
+				const locator5 = getByRole('checkbox', {name: input5?.label})
+				const locator6 = getByRole('checkbox', {name: input6?.label})
 
-					expect(locatorSelectAll).toBeChecked()
-				}
+				await userEvent.click(locator1)
+				await userEvent.click(locator2)
+				await userEvent.click(locator3)
+				await userEvent.click(locator4)
+				await userEvent.click(locator5)
+				await userEvent.click(locator6)
+
+				expect(locatorSelectAll).toBeChecked()
 			})
 
 			test(`unchecking all items individually should uncheck select-all input`, async ({
@@ -424,27 +444,32 @@ describe(`InputGroup - a component group of radio or checkbox inputs`, () => {
 				const input5 = input.items ? input.items[4] : undefined
 				const input6 = input.items ? input.items[5] : undefined
 
-				if (input1 && input2 && input3 && input4 && input5 && input6) {
-					const locatorSelectAll = getByRole('checkbox', {name: input.legend})
-					const locator1 = getByRole('checkbox', {name: input1.label})
-					const locator2 = getByRole('checkbox', {name: input2.label})
-					const locator3 = getByRole('checkbox', {name: input3.label})
-					const locator4 = getByRole('checkbox', {name: input4.label})
-					const locator5 = getByRole('checkbox', {name: input5.label})
-					const locator6 = getByRole('checkbox', {name: input6.label})
+				expect(input1).toBeDefined()
+				expect(input2).toBeDefined()
+				expect(input3).toBeDefined()
+				expect(input4).toBeDefined()
+				expect(input5).toBeDefined()
+				expect(input6).toBeDefined()
 
-					await userEvent.click(locatorSelectAll)
-					expect(locatorSelectAll).toBeChecked()
+				const locatorSelectAll = getByRole('checkbox', {name: input.legend})
+				const locator1 = getByRole('checkbox', {name: input1?.label})
+				const locator2 = getByRole('checkbox', {name: input2?.label})
+				const locator3 = getByRole('checkbox', {name: input3?.label})
+				const locator4 = getByRole('checkbox', {name: input4?.label})
+				const locator5 = getByRole('checkbox', {name: input5?.label})
+				const locator6 = getByRole('checkbox', {name: input6?.label})
 
-					await userEvent.click(locator1)
-					await userEvent.click(locator2)
-					await userEvent.click(locator3)
-					await userEvent.click(locator4)
-					await userEvent.click(locator5)
-					await userEvent.click(locator6)
+				await userEvent.click(locatorSelectAll)
+				expect(locatorSelectAll).toBeChecked()
 
-					expect(locatorSelectAll).not.toBeChecked()
-				}
+				await userEvent.click(locator1)
+				await userEvent.click(locator2)
+				await userEvent.click(locator3)
+				await userEvent.click(locator4)
+				await userEvent.click(locator5)
+				await userEvent.click(locator6)
+
+				expect(locatorSelectAll).not.toBeChecked()
 			})
 		})
 
@@ -469,6 +494,7 @@ describe(`InputGroup - a component group of radio or checkbox inputs`, () => {
 	describe('radio', () => {
 		const key = 'sample_radio_group'
 		const input = INPUTS[key]
+
 		describe('state', () => {
 			it(`should render component correctly`, () => {
 				const {getByText} = render(InputGroupTest, {
