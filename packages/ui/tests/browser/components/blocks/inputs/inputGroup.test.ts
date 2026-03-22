@@ -6,7 +6,7 @@ import InputGroupTest from './InputGroupTest.svelte'
 import {INPUTS} from '$tests/fixtures/form-inputs'
 
 describe(`InputGroup - a component group of radio or checkbox inputs`, () => {
-	describe(`checkbox`, () => {
+	describe('checkbox', () => {
 		const key = 'sample_checkbox_group'
 		const input = INPUTS[key]
 
@@ -71,7 +71,9 @@ describe(`InputGroup - a component group of radio or checkbox inputs`, () => {
 				}
 			})
 
-			it(`should check a single input at a time`, async ({expect}) => {
+			it(`should check a single input on each click - multiple checks allowed`, async ({
+				expect,
+			}) => {
 				const {getByRole} = render(InputGroupTest, {
 					props: {id: key},
 				})
@@ -84,12 +86,20 @@ describe(`InputGroup - a component group of radio or checkbox inputs`, () => {
 					const locator2 = getByRole('checkbox', {name: input2.label})
 
 					await userEvent.click(locator1)
+
 					expect(locator1).toBeChecked()
 					expect(locator2).not.toBeChecked()
+
+					await userEvent.click(locator2)
+
+					expect(locator1).toBeChecked()
+					expect(locator2).toBeChecked()
 				}
 			})
 
-			it(`should uncheck a single input at a time`, async ({expect}) => {
+			it(`should uncheck a single input on each click - multiple checks allowed`, async ({
+				expect,
+			}) => {
 				const {getByRole} = render(InputGroupTest, {
 					props: {id: key},
 				})
@@ -434,6 +444,146 @@ describe(`InputGroup - a component group of radio or checkbox inputs`, () => {
 					await userEvent.click(locator6)
 
 					expect(locatorSelectAll).not.toBeChecked()
+				}
+			})
+		})
+
+		describe('style', () => {
+			it(`should apply valid component styles correctly`, async () => {
+				const {getByTestId} = render(InputGroupTest, {
+					props: {id: key},
+				})
+
+				const input1 = input.items ? input.items[1] : undefined
+
+				if (input1) {
+					const labelLocator = getByTestId(`${input.name}.${input1.value}`)
+
+					await expect.element(labelLocator).toHaveClass('color:primary')
+					await expect.element(labelLocator).not.toHaveClass('color:error')
+				}
+			})
+		})
+	})
+
+	describe('radio', () => {
+		const key = 'sample_radio_group'
+		const input = INPUTS[key]
+		describe('state', () => {
+			it(`should render component correctly`, () => {
+				const {getByText} = render(InputGroupTest, {
+					props: {id: key},
+				})
+
+				if (input.legend) {
+					const locator = getByText(input.legend)
+
+					expect(locator).toBeInTheDocument()
+				}
+			})
+
+			it(`should render a disabled field correctly`, () => {
+				const {getByRole} = render(InputGroupTest, {
+					props: {id: key},
+				})
+
+				const disabledInput = input.items?.find((i) => i.disabled)
+
+				if (disabledInput) {
+					const locator = getByRole('radio', {name: disabledInput.label})
+
+					expect(locator).toBeDisabled()
+				}
+			})
+		})
+
+		describe('accessibility', () => {
+			it(`should have an accessible label`, async () => {
+				const {getByRole} = render(InputGroupTest, {
+					props: {id: key},
+				})
+				// Input group legend tested in 'state' test
+
+				const input1 = input.items ? input.items[0] : undefined
+
+				if (input1) {
+					const locator = getByRole('radio', {name: input1.label})
+
+					expect(locator).toBeInTheDocument()
+				}
+			})
+		})
+
+		describe('behaviour', () => {
+			it(`should handle events without errors`, async ({expect}) => {
+				const {getByRole} = render(InputGroupTest, {
+					props: {id: key},
+				})
+
+				const input1 = input.items ? input.items[0] : undefined
+
+				if (input1) {
+					const locator = getByRole('radio', {name: input1.label})
+
+					await userEvent.click(locator)
+					expect(locator).toBeValid()
+				}
+			})
+
+			it(`should check a single input on each click - multiple checks not allowed`, async ({
+				expect,
+			}) => {
+				const {getByRole} = render(InputGroupTest, {
+					props: {id: key},
+				})
+
+				const input1 = input.items ? input.items[0] : undefined
+				const input2 = input.items ? input.items[1] : undefined
+
+				if (input1 && input2) {
+					const locator1 = getByRole('radio', {name: input1.label})
+					const locator2 = getByRole('radio', {name: input2.label})
+
+					await userEvent.click(locator1)
+
+					expect(locator1).toBeChecked()
+					expect(locator2).not.toBeChecked()
+
+					await userEvent.click(locator2)
+
+					expect(locator1).not.toBeChecked()
+					expect(locator2).toBeChecked()
+				}
+			})
+
+			it(`should uncheck a single input on each click - multiple checks not allowed`, async ({
+				expect,
+			}) => {
+				const {getByRole} = render(InputGroupTest, {
+					props: {id: key},
+				})
+
+				const input1 = input.items ? input.items[0] : undefined
+				const input2 = input.items ? input.items[1] : undefined
+
+				if (input1 && input2) {
+					const locator1 = getByRole('radio', {name: input1.label})
+					const locator2 = getByRole('radio', {name: input2.label})
+
+					await userEvent.click(locator1)
+
+					expect(locator1).toBeChecked()
+					expect(locator2).not.toBeChecked()
+
+					await userEvent.click(locator2)
+
+					expect(locator1).not.toBeChecked()
+					expect(locator2).toBeChecked()
+
+					await userEvent.click(locator1)
+
+					expect(locator1).toBeChecked()
+					expect(locator2).not.toBeChecked()
 				}
 			})
 		})
