@@ -530,6 +530,36 @@ describe(`InputGroup - a component group of radio or checkbox inputs`, () => {
 			})
 		})
 
+		describe('form submission', () => {
+			it(`submits only group items' checked values`, async () => {
+				const {getByRole, getByTestId} = render(InputGroupTest, {
+					props: {id: key},
+				})
+
+				const input1 = input.items?.[0]
+				const input2 = input.items?.[1]
+				const input4 = input.items?.[3]
+
+				expect(input1).toBeDefined()
+				expect(input2).toBeDefined()
+				expect(input4).toBeDefined()
+
+				await userEvent.click(getByRole('checkbox', {name: input1?.label}))
+				await userEvent.click(getByRole('checkbox', {name: input2?.label}))
+
+				// Query the DOM after interactions to prevent async
+				const formElement = getByTestId(
+					'test-form',
+				).element() as HTMLFormElement
+				const submitted = new FormData(formElement).getAll(input.name)
+
+				expect(submitted).toContain(String(input1?.value))
+				expect(submitted).toContain(String(input2?.value))
+				expect(submitted).not.toContain(String(input4?.value))
+				expect(submitted).not.toContain(`all-${input.name}`)
+			})
+		})
+
 		describe('style', () => {
 			it(`should apply valid component styles correctly`, async () => {
 				const {getByTestId} = render(InputGroupTest, {
