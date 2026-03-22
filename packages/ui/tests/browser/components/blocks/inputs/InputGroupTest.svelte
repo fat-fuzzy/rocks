@@ -7,13 +7,15 @@
 	import TestContext from '$tests/browser/TestContext.svelte'
 	import {INPUTS} from '$tests/fixtures/form-inputs'
 	import {page} from '$app/state'
+	import {onMount} from 'svelte'
 
-	let {id}: {id: string} = $props()
+	let {id, skipDisabled}: {id: string; skipDisabled?: boolean} = $props()
 
 	let validator = new FormValidator('TestFormValidationFunction')
 	let inputProps = $derived(INPUTS[id])
 
-	let isDisabled = $derived(inputProps.value.valid === 'disabled')
+	let items = $derived(INPUTS[id].items)
+
 	let color: UiColor = $derived(
 		validator.getFieldErrors(inputProps.name)?.length ? 'error' : 'primary',
 	)
@@ -30,6 +32,12 @@
 		validator.changeInput(event)
 		validator.validateInput(event)
 	}
+
+	onMount(() => {
+		if (skipDisabled) {
+			items = items?.map((i) => ({...i, disabled: false}))
+		}
+	})
 </script>
 
 <TestContext>
@@ -37,11 +45,11 @@
 		<InputGroup
 			{...inputProps}
 			name={inputProps.name}
+			{items}
 			value=""
 			id={inputProps.name}
 			checked={false}
 			{validator}
-			disabled={isDisabled}
 			onfocus={handleFocus}
 			onblur={handleBlur}
 			oninput={handleInput}
