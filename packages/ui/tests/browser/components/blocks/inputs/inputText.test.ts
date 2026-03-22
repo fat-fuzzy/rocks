@@ -2,7 +2,7 @@ import {describe, it, expect} from 'vitest'
 import {userEvent} from 'vitest/browser'
 import {render} from 'vitest-browser-svelte'
 
-import InputTest from './InputTest.svelte'
+import InputTextTest from './InputTextTest.svelte'
 import {INPUTS} from '$tests/fixtures/form-inputs'
 
 const inputTypes = ['text', 'tel', 'email', 'password']
@@ -17,10 +17,10 @@ Object.keys(INPUTS).forEach((key) => {
 		return
 	}
 
-	describe(`Input ${input.type} - an typed input component`, () => {
+	describe(`Input ${input.type} - a textbox input component`, () => {
 		describe('state', () => {
 			it(`should render component correctly`, () => {
-				const {getByRole} = render(InputTest, {
+				const {getByRole} = render(InputTextTest, {
 					props: {id: key},
 				})
 				const locator = getByRole('textbox', {name: input.label})
@@ -29,7 +29,7 @@ Object.keys(INPUTS).forEach((key) => {
 			})
 
 			it(`should render a disabled field correctly`, () => {
-				const {getByRole} = render(InputTest, {
+				const {getByRole} = render(InputTextTest, {
 					props: {id: key},
 				})
 				const locator = getByRole('textbox', {name: input.label})
@@ -44,7 +44,7 @@ Object.keys(INPUTS).forEach((key) => {
 
 		describe('accessibility', () => {
 			it(`should have an accessible label`, async () => {
-				const {getByLabelText} = render(InputTest, {
+				const {getByLabelText} = render(InputTextTest, {
 					props: {id: key},
 				})
 				const locator = getByLabelText(input.label)
@@ -55,7 +55,7 @@ Object.keys(INPUTS).forEach((key) => {
 
 		describe('behaviour', () => {
 			it(`should handle inputs without errors`, async ({expect}) => {
-				const {getByRole} = render(InputTest, {
+				const {getByRole} = render(InputTextTest, {
 					props: {id: key},
 				})
 				const locator = getByRole('textbox', {name: input.label})
@@ -67,7 +67,7 @@ Object.keys(INPUTS).forEach((key) => {
 			})
 
 			it(`should handle inputs with errors`, async () => {
-				const {getByRole} = render(InputTest, {
+				const {getByRole} = render(InputTextTest, {
 					props: {id: key},
 				})
 				const locator = getByRole('textbox', {name: input.label})
@@ -81,7 +81,7 @@ Object.keys(INPUTS).forEach((key) => {
 
 		describe('style', () => {
 			it(`should apply valid component styles correctly`, async () => {
-				const {getByRole, getByText} = render(InputTest, {
+				const {getByRole, getByText} = render(InputTextTest, {
 					props: {id: key},
 				})
 				const inputLocator = getByRole('textbox', {name: input.label})
@@ -95,7 +95,7 @@ Object.keys(INPUTS).forEach((key) => {
 			})
 
 			it(`should apply invalid component styles correctly`, async () => {
-				const {getByRole, getByText} = render(InputTest, {
+				const {getByRole, getByText} = render(InputTextTest, {
 					props: {id: key},
 				})
 				const inputLocator = getByRole('textbox', {name: input.label})

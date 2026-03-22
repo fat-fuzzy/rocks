@@ -45,15 +45,6 @@
 button[class*='shape:'] {
 	padding: var(--ui-size-sm);
 	block-size: 100%;
-	inline-size: auto;
-}
-
-button.shape\:pill,
-button.shape\:soft,
-button.shape\:mellow,
-button.shape\:none {
-	inline-size: 100%;
-	min-inline-size: 6ch; /* TODO: fix magic number */
 }
 
 .shape\:round[class*='l:stack']:only-child::before,

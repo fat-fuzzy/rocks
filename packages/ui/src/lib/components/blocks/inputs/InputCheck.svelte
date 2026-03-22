@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {InputProps} from '$types'
+	import type {InputCheckProps} from '$types'
 	import styleHelper from '$lib/utils/styles.js'
 	import Feedback from '$lib/components/blocks/global/Feedback.svelte'
 
@@ -28,7 +28,7 @@
 		container,
 
 		oninput,
-	}: InputProps & {indeterminate?: boolean} = $props()
+	}: InputCheckProps = $props()
 
 	function handleInput(event: Event) {
 		if (oninput) oninput(event)
@@ -55,7 +55,7 @@
 	<span>{label}</span>
 	<input
 		{id}
-		{name}
+		name={name ?? undefined}
 		{value}
 		type="checkbox"
 		bind:checked

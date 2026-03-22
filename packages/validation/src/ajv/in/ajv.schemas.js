@@ -132,23 +132,30 @@ const schemaInputs = {
 	},
 	checkbox: {
 		type: 'string',
-		pattern: 'on|true',
+		pattern: 'on|true|([a-zA-Z]|-|[0-9])+',
 		errorMessage: {
 			minLength: messages.getErrorMessage('CHECKBOX_MIN', 1),
+		},
+	},
+	radio: {
+		type: 'string',
+		pattern: 'on|true|([a-zA-Z]|-|[0-9])+',
+		errorMessage: {
+			minLength: messages.getErrorMessage('RADIO_PATTERN', 1),
 		},
 	},
 	select: {type: 'string'},
 	disabled_field: {type: 'string'},
 	radio_group: {
 		type: 'string',
-		pattern: 'on|true',
+		pattern: 'on|true|([a-zA-Z]|-|[0-9])+',
 		errorMessage: {
 			pattern: messages.getErrorMessage('RADIO_PATTERN', 200),
 		},
 	},
 	checkbox_group: {
 		type: 'string',
-		pattern: 'on|true',
+		pattern: 'on|true|([a-zA-Z]|-|[0-9])+',
 		errorMessage: {
 			pattern: messages.getErrorMessage('CHECKBOX_PATTERN', 200),
 		},

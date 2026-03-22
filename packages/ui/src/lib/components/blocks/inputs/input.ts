@@ -38,7 +38,6 @@ export type ValidationProps = {
 
 export type InputCommonProps = {
 	id: string
-	name: string
 	label: string
 	placeholder?: string
 	autocomplete?: AutoComplete
@@ -56,6 +55,9 @@ export type InputCommonProps = {
 	required?: boolean
 
 	children?: Snippet
+}
+
+export type InputCallbackProps = {
 	onfocus?: (event: Event, payload?: FuzzyPayload) => void
 	onblur?: (event: Event, payload?: FuzzyPayload) => void
 	oninput?: (event: Event, payload?: FuzzyPayload) => void
@@ -64,22 +66,39 @@ export type InputCommonProps = {
 	onchange?: (event: Event, payload?: FuzzyPayload) => void
 }
 
-export type InputProps = UiBlockProps & ValidationProps & InputCommonProps
+export type InputProps = UiBlockProps &
+	ValidationProps &
+	InputCommonProps &
+	InputCallbackProps & {
+		name: string
+	}
 
-export type FieldsetProps = UiBlockProps & {
-	/**
-	 * State props
-	 */
-	id: string
-	name: string
-	value?: string
-	legend?: string
-	disabled?: boolean
+export type InputRadioProps = UiBlockProps &
+	ValidationProps &
+	InputCommonProps &
+	InputCallbackProps & {
+		name?: string
+	}
 
-	type?: HTMLInputTypeAttribute
-	items?: InputProps[] // 1. EITHER Use items for InputGroups
-	children?: Snippet // 2. OR use children
+export type InputCheckProps = InputRadioProps & {
+	indeterminate?: boolean
 }
+
+export type FieldsetProps = UiBlockProps &
+	InputCallbackProps & {
+		/**
+		 * State props
+		 */
+		id: string
+		name?: string
+		value?: string[]
+		legend?: string
+		disabled?: boolean
+
+		type?: HTMLInputTypeAttribute
+		items?: InputProps[] // 1. EITHER Use items for InputGroups
+		children?: Snippet // 2. OR use children
+	}
 
 export type InputRangeProps = InputProps & {
 	min?: number

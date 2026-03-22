@@ -62,7 +62,7 @@ function sanitizeDate(input) {
 function sanitizeForm(type, value) {
 	// Sanitize input based on its type
 
-	let sanitized = ''
+	let sanitized
 
 	switch (type) {
 		case 'password':
@@ -108,9 +108,8 @@ function sanitizeForm(type, value) {
 			console.warn(
 				`Unknown input type "${type}", defaulting to text sanitization`,
 			)
-			return typeof value === 'string'
-				? (sanitized = sanitizePlainText(value))
-				: ''
+			sanitized = typeof value === 'string' ? sanitizePlainText(value) : ''
+			break
 	}
 
 	return sanitized
