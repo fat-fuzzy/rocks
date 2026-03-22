@@ -134,6 +134,70 @@ describe(`InputGroup - a component group of radio or checkbox inputs`, () => {
 			})
 		})
 
+		describe('form submission', () => {
+			it(`submits items' checked values`, async () => {
+				const {getByRole, getByTestId} = render(InputGroupTest, {
+					props: {id: key},
+				})
+
+				const input1 = input.items?.[0]
+				const input2 = input.items?.[1]
+				const input3 = input.items?.[2]
+
+				expect(input1).toBeDefined()
+				expect(input2).toBeDefined()
+				expect(input3).toBeDefined()
+
+				await userEvent.click(getByRole('checkbox', {name: input2?.label}))
+
+				// Query the DOM after interactions to prevent async DOM mismatch
+				const formElement = getByTestId(
+					'test-form',
+				).element() as HTMLFormElement
+				const submitted = new FormData(formElement).getAll(input.name)
+
+				expect(submitted).toContain(String(input2?.value))
+				expect(submitted).not.toContain(String(input1?.value))
+				expect(submitted).not.toContain(String(input3?.value))
+			})
+
+			it('submits no values for the group if no items are selected', async () => {
+				const {getByTestId} = render(InputGroupTest, {
+					props: {id: key},
+				})
+
+				// Query the DOM after interactions to prevent async DOM mismatch
+				const formElement = getByTestId(
+					'test-form',
+				).element() as HTMLFormElement
+				const submitted = new FormData(formElement).getAll(input.name)
+
+				expect(submitted).toHaveLength(0)
+			})
+
+			it('initializes FormData from pre-selected values on mount', async () => {
+				const input1 = input.items?.[0]
+				const input2 = input.items?.[1]
+
+				expect(input1).toBeDefined()
+				expect(input2).toBeDefined()
+
+				const preSelected = [String(input1?.value), String(input2?.value)]
+
+				const {getByTestId} = render(InputGroupTest, {
+					props: {id: key, value: preSelected},
+				})
+
+				// Query the DOM after interactions to prevent async DOM mismatch
+				const formElement = getByTestId(
+					'test-form',
+				).element() as HTMLFormElement
+				const submitted = new FormData(formElement).getAll(input.name)
+
+				expect(submitted.sort()).toEqual(preSelected.sort())
+			})
+		})
+
 		describe('style', () => {
 			it(`should apply valid component styles correctly`, async () => {
 				const {getByTestId} = render(InputGroupTest, {
