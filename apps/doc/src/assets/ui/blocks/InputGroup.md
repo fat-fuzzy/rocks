@@ -11,7 +11,7 @@ props_style: {'blocks': {'block': ['color', 'variant', 'size', 'asset']}}
 
 Use this component within a `<form>`element to allow the user to choose from a group of options.
 
-- To force a unique choice: set the `type` prop to `radio`
+- To enforce a unique choice: set the `type` prop to `radio`
 - To enable multiple choices: set the `type` prop to `checkbox`
 
 ### Related Components

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {InputProps} from '$types'
+	import type {InputRadioProps} from '$types'
 	import styleHelper from '$lib/utils/styles.js'
 	import Feedback from '$lib/components/blocks/global/Feedback.svelte'
 
@@ -26,7 +26,7 @@
 		container,
 
 		oninput,
-	}: InputProps = $props()
+	}: InputRadioProps = $props()
 
 	function handleInput(event: Event) {
 		if (oninput) oninput(event)
@@ -56,7 +56,6 @@
 		type="radio"
 		{value}
 		{name}
-		bind:group={name}
 		{required}
 		oninput={handleInput}
 		{disabled}

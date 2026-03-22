@@ -1,5 +1,11 @@
 # @fat-fuzzy/validation
 
+## 0.1.16
+
+### Patch Changes
+
+- e485e30: Fix input bind & style isues, add tests
+
 ## 0.1.15
 
 ### Patch Changes

@@ -1,7 +1,12 @@
 <script lang="ts">
 	import type {Component} from 'svelte'
 
-	import type {FieldsetProps, ValidationProps, InputProps} from '$types'
+	import type {
+		FieldsetProps,
+		ValidationProps,
+		InputCheckProps,
+		InputRadioProps,
+	} from '$types'
 	import Fieldset from '$lib/components/blocks/inputs/Fieldset.svelte'
 	import InputRadio from '$lib/components/blocks/inputs/InputRadio.svelte'
 	import InputCheck from '$lib/components/blocks/inputs/InputCheck.svelte'
@@ -24,16 +29,9 @@
 		oninput,
 		children,
 		validator,
-	}: FieldsetProps & ValidationProps & Partial<InputProps> = $props()
+	}: FieldsetProps & ValidationProps = $props()
 
-	let payload = $state({
-		id,
-		name,
-		value: value ?? '',
-	})
-	let selected: string[] = $derived(
-		payload.value ? payload.value?.split(',') : [],
-	)
+	let selected: string[] = $derived(value ?? [])
 	let allSelected = $derived(selected.length === items.length)
 	let isIndeterminate = $derived(
 		selected.length > 0 && selected.length < items.length,
@@ -42,7 +40,7 @@
 	let enableSelectAll = $derived(type === 'checkbox' && items.length > 5)
 
 	const COMPONENT_IMPORTS: {
-		[input: string]: Component<InputProps, object, ''>
+		[input: string]: Component<InputCheckProps | InputRadioProps, object, ''>
 	} = {
 		radio: InputRadio,
 		checkbox: InputCheck,
@@ -53,26 +51,19 @@
 
 		switch (type) {
 			case 'radio':
-				payload.value = target.value
+				selected = [target.value]
 				break
 			case 'checkbox':
-				if (!selected.includes(target.value)) {
-					selected.push(target.value)
-				} else {
-					selected = selected.filter((i) => i !== target.value)
-				}
+				selected = selected.includes(target.value)
+					? selected.filter((i) => i !== target.value)
+					: [...selected, target.value]
 				break
 			default:
 				break
 		}
-		if (selected.length) {
-			payload.value = selected.length > 1 ? selected.join(',') : selected[0]
-		} else {
-			payload.value = ''
-		}
 
 		if (oninput) {
-			oninput(event, payload)
+			oninput(event)
 		}
 	}
 
@@ -80,19 +71,15 @@
 		let target = event.target as HTMLInputElement
 
 		if (target.checked === true) {
-			selected = items.map((item: InputProps) => String(item.value) || '')
+			selected = items.map(
+				(item: InputCheckProps | InputRadioProps) => String(item.value) || '',
+			)
 		} else {
 			selected = []
 		}
 
-		if (selected.length) {
-			payload.value = selected.length > 1 ? selected.join(',') : selected[0]
-		} else {
-			payload.value = ''
-		}
-
 		if (oninput) {
-			oninput(event, payload)
+			oninput(event)
 		}
 	}
 </script>
@@ -117,8 +104,7 @@
 	{#if enableSelectAll}
 		<legend>
 			<InputCheck
-				{name}
-				label={legend ?? name}
+				label={legend ?? name ?? ''}
 				value={`all-${name}`}
 				checked={allSelected}
 				indeterminate={isIndeterminate}
@@ -136,8 +122,8 @@
 	{#each items as input, index (index)}
 		{@const checked =
 			type === 'checkbox' &&
-			(allSelected ||
-				(input.value && payload.value.includes(String(input.value))))
+			input.value &&
+			selected.includes(String(input.value))
 				? true
 				: undefined}
 		<InputComponent
