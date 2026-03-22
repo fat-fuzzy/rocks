@@ -547,7 +547,7 @@ describe(`InputGroup - a component group of radio or checkbox inputs`, () => {
 				await userEvent.click(getByRole('checkbox', {name: input1?.label}))
 				await userEvent.click(getByRole('checkbox', {name: input2?.label}))
 
-				// Query the DOM after interactions to prevent async
+				// Query the DOM after interactions to prevent async DOM mismatch
 				const formElement = getByTestId(
 					'test-form',
 				).element() as HTMLFormElement
@@ -557,6 +557,63 @@ describe(`InputGroup - a component group of radio or checkbox inputs`, () => {
 				expect(submitted).toContain(String(input2?.value))
 				expect(submitted).not.toContain(String(input4?.value))
 				expect(submitted).not.toContain(`all-${input.name}`)
+			})
+
+			it(`submits individual values, except the value of select-all`, async () => {
+				const {getByRole, getByTestId} = render(InputGroupTest, {
+					props: {id: key, skipDisabled: true},
+				})
+
+				const locatorSelectAll = getByRole('checkbox', {name: input.legend})
+
+				await userEvent.click(locatorSelectAll)
+
+				// Query the DOM after interactions to prevent async DOM mismatch
+				const formElement = getByTestId(
+					'test-form',
+				).element() as HTMLFormElement
+				const submitted = new FormData(formElement).getAll(input.name)
+
+				const allValues = input.items?.map((i) => String(i.value)) ?? []
+
+				expect(submitted.sort()).toEqual(allValues.sort())
+				expect(submitted).not.toContain(`all-${input.name}`)
+			})
+
+			it('submits no values for the group if no items are selected', async () => {
+				const {getByTestId} = render(InputGroupTest, {
+					props: {id: key},
+				})
+
+				// Query the DOM after interactions to prevent async DOM mismatch
+				const formElement = getByTestId(
+					'test-form',
+				).element() as HTMLFormElement
+				const submitted = new FormData(formElement).getAll(input.name)
+
+				expect(submitted).toHaveLength(0)
+			})
+
+			it('initializes FormData from pre-selected values on mount', async () => {
+				const input1 = input.items?.[0]
+				const input2 = input.items?.[1]
+
+				expect(input1).toBeDefined()
+				expect(input2).toBeDefined()
+
+				const preSelected = [String(input1?.value), String(input2?.value)]
+
+				const {getByTestId} = render(InputGroupTest, {
+					props: {id: key, value: preSelected},
+				})
+
+				// Query the DOM after interactions to prevent async DOM mismatch
+				const formElement = getByTestId(
+					'test-form',
+				).element() as HTMLFormElement
+				const submitted = new FormData(formElement).getAll(input.name)
+
+				expect(submitted.sort()).toEqual(preSelected.sort())
 			})
 		})
 
