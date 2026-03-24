@@ -111,6 +111,7 @@ import PopoverActor from '$lib/components/blocks/overlays/Popover/actor.svelte.j
 import constants from '$lib/types/constants.js'
 import * as clickOutside from '$lib/utils/browser/click-outside.js'
 import format from '$lib/utils/format.js'
+import FormValidator from '$lib/utils/browser/FormValidator.svelte'
 
 /***************************************************
  * Prepare Exports
@@ -118,6 +119,7 @@ import format from '$lib/utils/format.js'
 const utils = {
 	format,
 	clickOutside,
+	FormValidator,
 }
 
 const actors = {
