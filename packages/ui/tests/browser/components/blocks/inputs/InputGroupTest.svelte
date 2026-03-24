@@ -1,7 +1,6 @@
 <script lang="ts">
 	import type {UiColor} from '$types'
 
-	import {tick} from 'svelte'
 	import {page} from '$app/state'
 
 	import FormValidator from '$lib/utils/browser/FormValidator.svelte'
