@@ -30,10 +30,6 @@
 		oninput,
 	}: InputCheckProps = $props()
 
-	function handleInput(event: Event) {
-		if (oninput) oninput(event)
-	}
-
 	let classes = $derived(
 		styleHelper.getStyles({
 			color,
@@ -61,7 +57,7 @@
 		bind:checked
 		{indeterminate}
 		{required}
-		oninput={handleInput}
+		{oninput}
 		{disabled}
 		aria-describedby={hint ? `input-feedback-${id}` : undefined}
 	/>
