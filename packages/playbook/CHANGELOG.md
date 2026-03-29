@@ -1,5 +1,11 @@
 # @fat-fuzzy/playbook
 
+## 0.1.33
+
+### Patch Changes
+
+- 7e37bbd: Ally, style, and type fixes
+
 ## 0.1.32
 
 ### Patch Changes
