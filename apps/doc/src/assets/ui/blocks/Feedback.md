@@ -5,7 +5,10 @@ category: 'blocks'
 group: 'global'
 props_state: ['title', 'text']
 props_style:
-  {'blocks': {'block': ['variant', 'size', 'context', 'asset', 'status']}}
+  {
+    'blocks':
+      {'block': ['variant', 'size', 'context', 'asset', 'shape', 'status']},
+  }
 ---
 
 ## Usage

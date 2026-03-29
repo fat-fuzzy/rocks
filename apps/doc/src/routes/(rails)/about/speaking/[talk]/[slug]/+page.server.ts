@@ -23,7 +23,7 @@ export const load = async ({params, parent}) => {
 	// Load image data if an image is specified in the frontmatter
 	if (content.meta.image) {
 		try {
-			let imageData = await images.getImageData('media', content.meta.image)
+			const imageData = await images.getImageData('media', content.meta.image)
 
 			if (!imageData?.json.sources) {
 				throw Error(`Image not found: ${JSON.stringify(content.meta.image)}:`)
