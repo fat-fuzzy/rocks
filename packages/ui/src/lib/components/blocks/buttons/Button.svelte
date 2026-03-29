@@ -53,7 +53,7 @@
 	})
 
 	let isIconButton = $derived(
-		(shape === 'round' || shape === 'square') && asset,
+		asset && asset !== 'none' && (shape === 'round' || shape === 'square'),
 	)
 </script>
 
