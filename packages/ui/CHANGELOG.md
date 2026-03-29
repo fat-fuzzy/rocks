@@ -1,5 +1,11 @@
 # @fat-fuzzy/ui
 
+## 0.1.86
+
+### Patch Changes
+
+- 7e37bbd: Ally, style, and type fixes
+
 ## 0.1.85
 
 ### Patch Changes

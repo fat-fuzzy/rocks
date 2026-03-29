@@ -65,12 +65,14 @@
 	}
 
 	function handleBlur(event: Event) {
-		validator.validateInput(event)
+		const target = event.target as HTMLInputElement
+		if (validator.fieldHasChanged(target.name)) {
+			validator.validateInput(event)
+		}
 	}
 
 	function handleInput(event: Event) {
 		validator.changeInput(event)
-		validator.validateInput(event)
 	}
 
 	onMount(() => {

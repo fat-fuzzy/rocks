@@ -199,12 +199,23 @@ function getFeedbackStyles(
 	status: UiStatus,
 	context: string,
 ): string {
-	const {asset, assetType, container, font, size, containerSize, variant} =
-		props
-
-	const layoutStyles = getLayoutStyles(props)
-	const blockStyles = getBlockStyles({
+	const {
+		asset,
+		assetType,
+		container,
 		font,
+		size,
+		shape,
+		containerSize,
+		variant,
+	} = props
+
+	const layoutStyles = getLayoutStyles({
+		...props,
+		justify: shape === 'pill' ? 'center' : props.justify,
+	})
+	const blockStyles = getBlockStyles({
+		font: font ?? size,
 		asset,
 		assetType,
 		variant,

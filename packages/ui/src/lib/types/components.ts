@@ -1,6 +1,7 @@
 export interface Utils {
 	format: typeof import('$lib/utils/format.js').default
 	clickOutside: typeof import('$lib/utils/browser/click-outside.js')
+	FormValidator: typeof import('$lib/utils/browser/FormValidator.svelte').default
 }
 
 export interface Forms {

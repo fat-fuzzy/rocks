@@ -412,6 +412,12 @@
 			"switch-inactive": {
 				"$value": "{emoji.base.hat}"
 			},
+			"expand-active": {
+				"$value": "{emoji.base.point-down}"
+			},
+			"expand-inactive": {
+				"$value": "{emoji.base.point-right}"
+			},
 			"doc": {
 				"$value": "{emoji.base.memo}"
 			},

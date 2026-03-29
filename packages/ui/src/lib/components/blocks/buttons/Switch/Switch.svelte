@@ -39,9 +39,11 @@
 		action: actor.update.bind(actor),
 	})
 
-	let currentAsset = $derived(actor.currentState.asset || asset)
+	let currentAsset = $derived(actor.currentState.asset ?? asset)
 	let isIconButton = $derived(
-		(shape === 'round' || shape === 'square') && currentAsset,
+		currentAsset &&
+			currentAsset !== 'none' &&
+			(shape === 'round' || shape === 'square'),
 	)
 	let ariaLabel = $derived(
 		isIconButton ? (actor.currentState.label ?? label ?? name) : undefined,

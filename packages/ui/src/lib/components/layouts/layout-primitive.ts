@@ -23,4 +23,6 @@ export type DetailsLayoutProps = LayoutPrimitiveProps & {
 export type SidebarLayoutProps = LayoutPrimitiveProps & {
 	main: Snippet
 	side: Snippet
+	reverse?: boolean
+	wrap?: string
 }

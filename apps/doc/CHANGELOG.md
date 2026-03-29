@@ -1,5 +1,11 @@
 # @fat-fuzzy/doc
 
+## 0.1.71
+
+### Patch Changes
+
+- 7e37bbd: Ally, style, and type fixes
+
 ## 0.1.70
 
 ### Patch Changes
