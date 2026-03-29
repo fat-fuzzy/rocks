@@ -1,17 +1,16 @@
 <script lang="ts">
 	import type {InputFileProps} from '$types'
 	import styleHelper from '$lib/utils/styles.js'
-	import Feedback from '$lib/components/blocks/global/Feedback.svelte'
+	import Feedback from '$lib/components/blocks/inputs/InputFeedback.svelte'
 	import Fieldset from '$lib/components/blocks/inputs/Fieldset.svelte'
 
 	let {
-		id = 'upload-image',
-		name = 'upload-image',
+		id = 'input-upload',
+		name = 'input-upload',
 		label = 'Upload image',
 		hint = 'File types accepted: png, jpeg',
 		disabled,
 		multiple = true,
-		status = 'default',
 		fileType = 'image/png, image/jpeg',
 
 		layout = 'stack',
@@ -25,7 +24,14 @@
 		variant,
 		background,
 		breakpoint,
+		validator,
 	}: InputFileProps = $props()
+
+	let errors = $derived(
+		validator && validator?.fieldHasChanged(name)
+			? validator?.getFieldErrors(name)
+			: [],
+	)
 
 	let inputClasses = $derived(
 		styleHelper.getStyles({
@@ -56,7 +62,9 @@
 			{id}
 			{name}
 			accept={fileType}
-			aria-describedby={hint ? `input-feedback-${id}` : undefined}
+			aria-describedby={hint || errors?.length
+				? `input-feedback-${id}`
+				: undefined}
 			{multiple}
 			{required}
 			{disabled}
@@ -74,15 +82,15 @@
 		{color}
 	>
 		{@render input()}
+
 		<Feedback
 			id={`input-feedback-${id}`}
-			{status}
-			context="form"
+			{hint}
+			{errors}
 			{size}
 			{variant}
-		>
-			<p>{hint}</p>
-		</Feedback>
+			{font}
+		/>
 	</Fieldset>
 {:else}
 	{@render input()}

@@ -8,6 +8,7 @@
 		name,
 		type,
 		label,
+		hint,
 		value = $bindable(),
 		required,
 		pattern,
@@ -26,7 +27,12 @@
 	// TODO: map errors to Constraint Validation API
 	// https://developer.mozilla.org/en-US/docs/Web/HTML/Guides/Constraint_validation
 
-	let errors = $derived(validator.getFieldErrors(name))
+	let errors = $derived(
+		validator && validator?.fieldHasChanged(name)
+			? validator?.getFieldErrors(name)
+			: [],
+	)
+
 	let inputClasses = $derived(
 		styleHelper.getStyles({
 			font,
@@ -57,4 +63,4 @@
 	/>
 </label>
 
-<Feedback id={`input-feedback-${id}`} {errors} {size} {variant} {font} />
+<Feedback id={`input-feedback-${id}`} {hint} {errors} {size} {variant} {font} />

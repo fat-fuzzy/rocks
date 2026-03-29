@@ -7,6 +7,7 @@
 		id,
 		name,
 		label,
+		hint,
 		value = $bindable(),
 		size,
 		font,
@@ -19,7 +20,11 @@
 		autocomplete,
 	}: InputProps = $props()
 
-	let errors = $derived(validator.getFieldErrors(name))
+	let errors = $derived(
+		validator && validator?.fieldHasChanged(name)
+			? validator?.getFieldErrors(name)
+			: [],
+	)
 
 	let inputClasses = $derived(
 		styleHelper.getStyles({
@@ -44,8 +49,10 @@
 		{oninput}
 		{disabled}
 		{autocomplete}
-		aria-describedby={errors ? `input-feedback-${id}` : undefined}
+		aria-describedby={hint || errors?.length
+			? `input-feedback-${id}`
+			: undefined}
 	/>
 </label>
 
-<Feedback id={`input-feedback-${id}`} {errors} {size} {variant} {font} />
+<Feedback id={`input-feedback-${id}`} {hint} {errors} {size} {variant} {font} />

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type {InputRangeProps} from '$types'
 	import styleHelper from '$lib/utils/styles.js'
-	import Feedback from '$lib/components/blocks/global/Feedback.svelte'
+	import Feedback from '$lib/components/blocks/inputs/InputFeedback.svelte'
 
 	let {
 		id,
@@ -14,9 +14,7 @@
 		step = 1,
 		disabled,
 		items = [],
-		status = 'default',
 		hint,
-
 		layout = 'stack',
 		container,
 		justify,
@@ -27,8 +25,8 @@
 		background,
 		breakpoint,
 		threshold,
-
 		oninput,
+		validator,
 	}: InputRangeProps = $props()
 
 	const numberToClass: {[key: string]: string} = {
@@ -70,7 +68,7 @@
 		})
 	}
 
-	function handleInput(event) {
+	function handleInput() {
 		if (items.length) {
 			let selectedMarker = markers.find((m) => m.value === value)
 			if (selectedMarker) {
@@ -139,25 +137,17 @@
 		oninput={handleInput}
 		list={items?.length ? `${id}-markers` : undefined}
 		{disabled}
-		aria-describedby={hint ? `input-feedback-${id}` : undefined}
+		aria-describedby={hint || errors?.length
+			? `input-feedback-${id}`
+			: undefined}
 	/>
 	{#if items.length}
 		<datalist id={`${id}-markers`} class="l:flex justify:between">
-			{#each markers as { id, label, value }}
+			{#each markers as { id, label, value } (id)}
 				<option {id} {label} {value}></option>
 			{/each}
 		</datalist>
 	{/if}
 </label>
-{#if hint}
-	<Feedback
-		id={`input-feedback-${id}`}
-		{status}
-		context="form"
-		{size}
-		{font}
-		{variant}
-	>
-		<p>{hint}</p>
-	</Feedback>
-{/if}
+
+<Feedback id={`input-feedback-${id}`} {hint} {errors} {size} {variant} {font} />

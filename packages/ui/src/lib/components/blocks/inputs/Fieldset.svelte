@@ -6,6 +6,7 @@
 		id,
 		name,
 		legend,
+		ariaDescribedby,
 		type, // input group if any
 		disabled,
 		align,
@@ -62,6 +63,7 @@
 	class={`${fieldsetClasses} ${typeClass}`}
 	{disabled}
 	data-testid={id}
+	aria-describedby={ariaDescribedby}
 >
 	{#if legend}<legend class={legendClasses}>{legend}</legend>{/if}
 	{#if children}

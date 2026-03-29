@@ -10,10 +10,13 @@
 	import Fieldset from '$lib/components/blocks/inputs/Fieldset.svelte'
 	import InputRadio from '$lib/components/blocks/inputs/InputRadio.svelte'
 	import InputCheck from '$lib/components/blocks/inputs/InputCheck.svelte'
+	import Feedback from '$lib/components/blocks/inputs/InputFeedback.svelte'
+
 	let {
 		id,
 		name,
 		legend,
+		hint,
 		value,
 		type = 'radio', // checkbox, radio
 		items = [],
@@ -35,6 +38,12 @@
 	let allSelected = $derived(selected.length === items.length)
 	let isIndeterminate = $derived(
 		selected.length > 0 && selected.length < items.length,
+	)
+
+	let errors = $derived(
+		validator && validator?.fieldHasChanged(name)
+			? validator?.getFieldErrors(name)
+			: [],
 	)
 
 	let enableSelectAll = $derived(type === 'checkbox' && items.length > 5)
@@ -98,6 +107,7 @@
 	{asset}
 	{assetType}
 	{justify}
+	ariaDescribedby={hint || errors?.length ? `input-feedback-${id}` : undefined}
 >
 	{@const InputComponent = COMPONENT_IMPORTS[type]}
 
@@ -114,7 +124,7 @@
 				{justify}
 				{container}
 				id={`all-${id}`}
-				oninput={(event: Event) => handleSelectAll(event)}
+				oninput={handleSelectAll}
 				{validator}
 			/>
 		</legend>
@@ -132,10 +142,20 @@
 			{size}
 			{name}
 			id={`${name}.${input.value}`}
-			oninput={(event: Event) => handleInput(event)}
+			oninput={handleInput}
 		/>
 	{/each}
+
 	{#if children}
 		{@render children()}
 	{/if}
+
+	<Feedback
+		id={`input-feedback-${id}`}
+		{hint}
+		{errors}
+		{size}
+		{variant}
+		{font}
+	/>
 </Fieldset>

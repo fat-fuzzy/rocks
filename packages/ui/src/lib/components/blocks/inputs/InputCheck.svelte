@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type {InputCheckProps} from '$types'
 	import styleHelper from '$lib/utils/styles.js'
-	import Feedback from '$lib/components/blocks/global/Feedback.svelte'
+	import Feedback from '$lib/components/blocks/inputs/InputFeedback.svelte'
 
 	let {
 		id,
@@ -12,7 +12,6 @@
 		disabled,
 		value,
 		required,
-		status = 'default',
 		hint,
 
 		layout = 'switcher',
@@ -26,9 +25,15 @@
 		variant,
 		background,
 		container,
-
 		oninput,
+		validator,
 	}: InputCheckProps = $props()
+
+	let errors = $derived(
+		name && validator && validator?.fieldHasChanged(name)
+			? validator?.getFieldErrors(name)
+			: [],
+	)
 
 	let classes = $derived(
 		styleHelper.getStyles({
@@ -59,19 +64,10 @@
 		{required}
 		{oninput}
 		{disabled}
-		aria-describedby={hint ? `input-feedback-${id}` : undefined}
+		aria-describedby={hint || errors?.length
+			? `input-feedback-${id}`
+			: undefined}
 	/>
 </label>
-{#if hint}
-	<Feedback
-		id={`input-feedback-${id}`}
-		{asset}
-		{status}
-		context="form"
-		{font}
-		{size}
-		{variant}
-	>
-		<p>{hint}</p>
-	</Feedback>
-{/if}
+
+<Feedback id={`input-feedback-${id}`} {hint} {errors} {size} {variant} {font} />
