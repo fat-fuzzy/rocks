@@ -48,4 +48,15 @@ export type UiVariant = 'fill' | 'outline' | 'bare'
 
 export type UiShape = 'round' | 'square' | 'pill' | 'soft' | 'mellow' | 'none'
 
-export type UiDimension = 'video' | 'twin' | 'square'
+export type UiDimension =
+	| 'video'
+	| 'twin'
+	| 'square'
+	| 'full'
+	| '30'
+	| '40'
+	| '50'
+	| '60'
+	| '70'
+	| '80'
+	| '90'

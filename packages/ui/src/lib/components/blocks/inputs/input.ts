@@ -5,6 +5,9 @@ import type {
 	FuzzyPayload,
 	UiBlockProps,
 	IFormValidator,
+	UiSize,
+	UiVariant,
+	UiAssetType,
 } from '$types'
 import type {HTMLInputTypeAttribute} from 'svelte/elements'
 
@@ -24,10 +27,13 @@ export type FeedbackMessage = {
 
 export type InputFeedbackProps = {
 	id: string
-	size?: string
-	font?: string
-	variant?: string
+	size?: UiSize
+	font?: UiSize
+	assetType?: UiAssetType
+	asset?: UiSize
+	variant?: UiVariant
 	errors?: string[]
+	hint?: string
 }
 
 export type ValidationProps = {
@@ -85,14 +91,16 @@ export type InputCheckProps = InputRadioProps & {
 }
 
 export type FieldsetProps = UiBlockProps &
-	InputCallbackProps & {
+	InputCallbackProps &
+	InputFeedbackProps & {
 		/**
 		 * State props
 		 */
 		id: string
-		name?: string
+		name: string
 		value?: string[]
 		legend?: string
+		ariaDescribedby?: string
 		disabled?: boolean
 
 		type?: HTMLInputTypeAttribute

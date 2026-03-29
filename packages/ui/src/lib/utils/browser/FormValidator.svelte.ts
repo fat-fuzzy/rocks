@@ -42,6 +42,7 @@ class FormValidator implements IFormValidator {
 		// Initialize all fields
 		for (const name in this.inputTypes) {
 			this.form[name] = {
+				type: this.inputTypes[name],
 				feedback: {},
 				touched: false,
 				changed: false,
@@ -134,6 +135,11 @@ class FormValidator implements IFormValidator {
 		return field?.changed && !field.is_valid
 	}
 
+	public fieldHasChanged(fieldName: string) {
+		const field = this.form[fieldName]
+		return field?.changed
+	}
+
 	public getFieldErrors(name: string): string[] | undefined {
 		return this.form[name]?.feedback?.error
 	}
@@ -157,7 +163,7 @@ class FormValidator implements IFormValidator {
 		}
 	}
 
-	public changeInput(event: Event) {
+	public changeInput(event: Event, validate = false) {
 		const target = event.target as HTMLInputElement
 		const name = target.name
 
@@ -168,7 +174,9 @@ class FormValidator implements IFormValidator {
 		// validate the field when it changes:
 		// - remove this if you want to validate the form only on `blur` or `submit` events
 		// - use a debounce mechanism for slow/complex/async validations (e.g. API calls)
-		this.validateInput(event)
+		if (validate) {
+			this.validateInput(event)
+		}
 	}
 }
 

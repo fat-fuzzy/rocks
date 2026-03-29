@@ -122,6 +122,9 @@ input[type='range'] {
 label:has([type='range']) {
 	line-height: 1;
 	padding-inline: var(--outline-offset-md);
+	inline-size: 100%;
+	min-inline-size: max-content;
+	max-inline-size: 100%;
 }
 
 label:has([type='range']) span {
