@@ -41,9 +41,22 @@
 	}
 
 	let valueLabel = $state(numberToClass[value])
-	let markers: {id: string; label: string; value: number}[] = [
+	let markers: {id: string; label: string; value: number}[] = $derived([
 		{id: '', label: '', value: min},
-	]
+	])
+
+	let errors = $derived(
+		validator && validator?.fieldHasChanged(name)
+			? validator?.getFieldErrors(name)
+			: [],
+	)
+
+	// This assignment not work inside a rune
+	// svelte-ignore state_referenced_locally
+	if (items.length) {
+		step = (max - min) / (items.length - 1)
+		generateStepsFromItems(items)
+	}
 
 	function generateStepsFromItems(
 		items: {id: string; label: string; value: string}[],
@@ -75,11 +88,6 @@
 				oninput({id, name, value})
 			}
 		}
-	}
-
-	if (items.length) {
-		step = (max - min) / (items.length - 1)
-		generateStepsFromItems(items)
 	}
 
 	let inputClasses = $derived(
@@ -117,7 +125,7 @@
 <label for={id} class={inputClasses} data-testid={id}>
 	<span class={`font:${font ? font : size}`}>
 		{label}:
-		{valueLabel}
+		{items.length ? valueLabel : value}
 	</span>
 	<input
 		{id}
