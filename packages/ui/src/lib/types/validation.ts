@@ -30,6 +30,7 @@ export interface IFormValidator {
 	init(formData: FormData, fields: InputTypes): void
 	destroy(): void
 	formHasErrors(): boolean
+	fieldHasChanged(name: string): boolean
 	fieldHasError(name: string): boolean
 	getFieldErrors(name: string): string[] | undefined
 	validateInput(event: Event): void
