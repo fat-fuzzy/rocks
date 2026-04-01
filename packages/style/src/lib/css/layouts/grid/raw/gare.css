@@ -3,11 +3,6 @@
  * Expand / Collapse content
  */
 
-.gare-control {
-	display: grid;
-	border-radius: 0;
-}
-
 [class*='gare:'][open] > ff-reveal {
 	position: absolute;
 	top: calc(var(--ui-header-height) + var(--grid-gap));

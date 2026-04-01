@@ -22,4 +22,5 @@ body:has(.l\:grid\:urbanist) {
 	position: relative;
 	grid-gap: 0; /* Override gap only in parent grid */
 	min-inline-size: 100%;
+	overflow: hidden auto;
 }

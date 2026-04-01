@@ -9,6 +9,12 @@
 	grid-template-columns: subgrid;
 	z-index: var(--layout-z-index-layer);
 	justify-items: end;
+
+	ff-toggle-reveal {
+		grid-column-start: 1;
+		grid-column-end: 4;
+		inline-size: 100%;
+	}
 }
 
 .app-context ff-reveal {
@@ -49,7 +55,7 @@
 
 @media screen and (min-width: 38.75rem) {
 	.exchange > .context {
-		grid-column-start: 7;
+		grid-column-start: 5;
 	}
 
 	/* This form contains the actual settings */
@@ -69,6 +75,6 @@
 
 @media screen and (min-width: 58.75rem) {
 	.exchange > .context {
-		grid-column-start: 7;
+		grid-column-start: 5;
 	}
 }

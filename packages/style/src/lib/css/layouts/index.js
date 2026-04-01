@@ -21,7 +21,7 @@ import './ravioli.css' /* Use for all-round padding  */
 /* Use for displaying hidden content with a button action */
 import './reveal.css'
 import './reveal-sticky.css'
-import './details.css' /* Use to style <details> and <summary> elements */
+import './toggle-reveal.css'
 
 /* == Layout spices  == */
 import './breakpoint.css' /* Breakpoint utilities */

@@ -9,7 +9,8 @@
 }
 
 @media screen and (min-width: 68.75rem) {
-	.sidebar > details {
+	.sidebar > [class*='gare:'] {
 		grid-column: span 3;
+		position: relative;
 	}
 }

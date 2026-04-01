@@ -1,0 +1,142 @@
+ff-toggle-reveal {
+	position: relative;
+
+	ff-control > label {
+		z-index: calc(var(--z-index-overlay) + 1);
+	}
+
+	ff-control + ff-reveal {
+		--x-axis: 0;
+		--y-axis: 0;
+
+		position: absolute;
+		display: block;
+		transition:
+			transform 250ms ease-in 100ms,
+			opacity 150ms ease-in,
+			block-size 250ms ease-in,
+			inline-size 250ms ease-in;
+		transform: translate(var(--x-axis), var(--y-axis));
+		opacity: 0;
+		z-index: var(--z-index-overlay);
+	}
+
+	ff-control:has(input:checked) + ff-reveal {
+		--x-axis: 0;
+		--y-axis: 0;
+		opacity: 1;
+	}
+}
+
+ff-toggle-reveal.ouest {
+	ff-icon::before {
+		transform: rotate(0deg);
+		transition: transform 200ms ease-in;
+	}
+
+	label:has(input:checked) ff-icon::before {
+		transform: rotate(90deg);
+		transition: transform 200ms ease-out;
+	}
+}
+
+ff-toggle-reveal.est {
+	ff-icon::before {
+		transform: rotate(180deg);
+		transition: transform 200ms ease-in;
+	}
+
+	label:has(input:checked) ff-icon::before {
+		transform: rotate(90deg);
+		transition: transform 200ms ease-out;
+	}
+}
+
+ff-toggle-reveal.ouest {
+	ff-control + ff-reveal {
+		--x-axis: -100%;
+		--y-axis: 0;
+		block-size: var(--overlay-block-size);
+		inline-size: var(--overlay-inline-size);
+		transition:
+			transform 200ms ease-in,
+			opacity 150ms ease-in 50ms;
+	}
+}
+
+ff-toggle-reveal.est {
+	ff-control + ff-reveal {
+		--x-axis: 100%;
+		--y-axis: 0;
+		block-size: var(--overlay-block-size);
+		inline-size: var(--overlay-inline-size);
+		transition:
+			transform 200ms ease-in,
+			opacity 150ms ease-in 50ms;
+	}
+
+	ff-control:has(input:checked) + ff-reveal {
+		--x-axis: calc(-1 * var(--outline-offset-sm) - 50%);
+	}
+}
+
+ff-toggle-reveal.nord {
+	ff-control + ff-reveal {
+		--x-axis: 0;
+		--y-axis: -100%;
+		inline-size: var(--overlay-inline-size);
+		block-size: 0;
+	}
+}
+
+ff-toggle-reveal.sud {
+	ff-control + ff-reveal {
+		--x-axis: 0;
+		--y-axis: 100%;
+		inline-size: var(--overlay-inline-size);
+		block-size: 0;
+	}
+}
+
+ff-toggle-reveal.ouest {
+	ff-control:has(input:checked) + ff-reveal {
+		block-size: var(--overlay-block-size);
+		inline-size: var(--overlay-inline-size);
+
+		transition:
+			transform 200ms ease-out,
+			block-size 250ms ease-out,
+			inline-size 250ms ease-out;
+	}
+}
+
+ff-toggle-reveal.est {
+	ff-control:has(input:checked) + ff-reveal {
+		transition:
+			transform 200ms ease-out,
+			opacity 150ms ease-out 50ms;
+	}
+}
+
+ff-toggle-reveal.nord,
+ff-toggle-reveal.sud {
+	ff-control:has(input:checked) + ff-reveal,
+	ff-control:has(input:checked) + ff-reveal {
+		transition:
+			transform 250ms ease-out,
+			opacity 150ms ease-out 200ms,
+			block-size 250ms ease-out,
+			inline-size 250ms ease-out;
+		block-size: fit-content;
+		inline-size: var(--overlay-inline-size);
+		opacity: 1;
+	}
+}
+
+@media screen and (min-width: 68.75rem) {
+	ff-toggle-reveal.est {
+		ff-control:has(input:checked) + ff-reveal {
+			--x-axis: calc(-1 * var(--outline-offset-sm));
+		}
+	}
+}

@@ -5,9 +5,14 @@
 
 .sidebar {
 	grid-area: sidebar;
-	grid-template-rows: subgrid;
 	z-index: var(--layout-z-index-layer);
 	align-items: end;
+
+	ff-toggle-reveal {
+		grid-column-start: 1;
+		grid-column-end: 3;
+		inline-size: 100%;
+	}
 }
 
 .sidebar > .app-name p {

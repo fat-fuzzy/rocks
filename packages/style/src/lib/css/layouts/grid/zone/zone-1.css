@@ -10,13 +10,9 @@
 	grid-template-rows: subgrid;
 	grid-auto-flow: row;
 	z-index: var(--layout-z-index-reveal);
-	padding-inline: var(--grid-gap);
+	/* padding-inline: var(--grid-gap); */
 	align-items: end;
 	grid-gap: calc(var(--grid-gap) / 2);
-
-	details > summary {
-		display: block;
-	}
 }
 
 .swap.exchange {
@@ -35,7 +31,7 @@
 
 @media screen and (min-width: 58.45rem) {
 	.zone\:1.exchange {
-		padding-inline: var(--grid-gap);
+		/* padding-inline: var(--grid-gap); */
 		align-items: start;
 	}
 }
@@ -44,7 +40,7 @@
 	.zone\:1.exchange,
 	.swap.exchange {
 		overflow: unset;
-		padding-inline: calc(2 * var(--grid-gap)) 0;
+		/* padding-inline: calc(2 * var(--grid-gap)) 0; */
 		grid-template-areas: 'sidebar sidebar sidebar navbar context context context';
 	}
 }
