@@ -1,0 +1,68 @@
+/**
+ * GARES
+ * Expand / Collapse content
+ */
+
+.gare\:ouest {
+	ff-toggle-reveal label:has(input:checked) + ff-reveal {
+		transform: translateX(-100%);
+		transition: transform 150ms ease-out;
+	}
+}
+
+.gare\:est {
+	ff-toggle-reveal label:has(input:checked) + ff-reveal {
+		transform: translateX(100%);
+		transition: transform 150ms ease-out;
+	}
+}
+
+.gare\:nord {
+	ff-toggle-reveal label:has(input:checked) + ff-reveal {
+		transform: translateY(-100%);
+		transition: transform 150ms ease-out;
+	}
+}
+
+.gare\:sud {
+	ff-toggle-reveal label:has(input:checked) + ff-reveal {
+		transform: translateY(100%);
+		transition: transform 150ms ease-out;
+	}
+}
+
+[class*='gare:'] > ff-toggle-reveal + ff-reveal {
+	position: absolute;
+	top: calc(var(--ui-header-height) + var(--grid-gap));
+	block-size: fit-content;
+	inline-size: 100%;
+	max-block-size: var(--overlay-block-size);
+	max-inline-size: var(--overlay-inline-size);
+}
+
+/* OUEST styles */
+
+.gare\:ouest > f-toggle-reveal + ff-reveal {
+	left: var(--grid-gap);
+}
+
+/* EST styles */
+.gare\:est > f-toggle-reveal + ff-reveal {
+	right: calc(var(--grid-gap) + var(--outline-offset-lg));
+}
+
+@media screen and (min-width: 58.45rem) {
+	.gare\:est > ff-reveal {
+		box-shadow: unset;
+	}
+}
+
+@media screen and (min-width: 68.75rem) {
+	.gare\:ouest > ff-reveal {
+		box-shadow: unset;
+	}
+
+	[class*='gare:'] > ff-toggle-reveal + ff-reveal {
+		max-block-size: var(--max-block-size);
+	}
+}
