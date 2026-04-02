@@ -27,7 +27,7 @@
 		area,
 		width,
 		height,
-		place = 'top',
+		place = 'nord',
 		position,
 		container,
 		background,

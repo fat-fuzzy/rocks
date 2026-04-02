@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type {RevealContextProps} from '$types'
+	import type {ToggleRevealProps, RevealContextProps} from '$types'
 
 	import constants from '$lib/types/constants.js'
-	import Reveal from '$lib/components/layouts/reveal/Reveal.svelte'
+	import ToggleReveal from '$lib/components/recipes/toggle-reveal/ToggleReveal.svelte'
 	import Settings from '$lib/components/recipes/forms/Settings.svelte'
 
 	let {
@@ -21,10 +21,8 @@
 		text,
 		formaction,
 		actionPath,
-		redirect,
-		reveal,
 		context,
-	}: RevealContextProps = $props()
+	}: ToggleRevealProps & RevealContextProps = $props()
 
 	let brightness = $derived(context.brightness)
 	let contrast = $derived(context.contrast)
@@ -38,13 +36,10 @@
 	})
 </script>
 
-<Reveal
+<ToggleReveal
 	{id}
-	name={id}
 	label="Settings"
 	auto={true}
-	element="div.app-context"
-	{reveal}
 	{breakpoint}
 	{background}
 	{layout}
@@ -57,16 +52,13 @@
 	{align}
 	{justify}
 	{text}
-	formaction="toggleAppContext"
-	{actionPath}
 >
 	<Settings
 		id={`${id}-menu`}
-		name={`${id}-menu`}
 		label=""
 		items={preferences.display}
 		{formaction}
-		{redirect}
+		{actionPath}
 		onupdate={preferences.onupdate}
 	/>
-</Reveal>
+</ToggleReveal>

@@ -11,6 +11,7 @@ export type ToggleRevealProps = UiBlockProps &
 	UiLayoutProps & {
 		id: string
 		label: string
+		auto?: boolean // Auto collapse in small viewports
 		checked?: boolean // Initial state
 		area?: string
 		nav?: Snippet

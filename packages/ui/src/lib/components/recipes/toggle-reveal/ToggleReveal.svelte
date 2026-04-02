@@ -3,8 +3,8 @@
 	import styleHelper from '$lib/utils/styles'
 
 	let {
-		id = 'reveal-toggle',
-		label = 'RevealToggle',
+		id = 'toggle-reveal',
+		label = 'ToggleReveal',
 		checked,
 		asset,
 		assetType,
