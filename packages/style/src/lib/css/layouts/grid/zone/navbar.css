@@ -1,6 +1,5 @@
 .exchange > .navbar {
 	grid-area: navbar;
-	grid-template-columns: subgrid;
 }
 
 .navbar > nav > form:has([aria-expanded='true']) + ff-reveal {
@@ -22,10 +21,6 @@
 }
 
 @media screen and (min-width: 38.75rem) {
-	.navbar {
-		grid-column: span 1;
-	}
-
 	.navbar > nav {
 		justify-content: flex-start;
 	}
@@ -48,6 +43,5 @@
 @media screen and (min-width: 68.75rem) {
 	.exchange > .navbar {
 		grid-column-start: 4;
-		padding-inline: calc(3 * var(--grid-gap)) 0;
 	}
 }
