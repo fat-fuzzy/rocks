@@ -92,6 +92,12 @@ import ToastGroup from '$lib/components/blocks/overlays/Toast/ToastGroup.svelte'
 // import InputPassword from '$lib/components/blocks/inputs/InputPassword.svelte'
 // import InputFeedback from '$lib/components/blocks/inputs/InputFeedback.svelte'
 
+// New: replace Reveal mechanisms
+import ToggleReveal from '$lib/components/recipes/toggle-reveal/ToggleReveal.svelte'
+import ToggleLink from '$lib/components/recipes/toggle-reveal/ToggleLink.svelte'
+import ToggleTree from '$lib/components/recipes/toggle-reveal/ToggleTree.svelte'
+import ToggleNav from '$lib/components/recipes/toggle-reveal/ToggleNav.svelte'
+
 /**
  * Forms
  */
@@ -108,9 +114,10 @@ import PopoverActor from '$lib/components/blocks/overlays/Popover/actor.svelte.j
 /**
  * Utilities
  */
-import constants from '$lib/types/constants.js'
-import * as clickOutside from '$lib/utils/browser/click-outside.js'
-import format from '$lib/utils/format.js'
+import constants from '$lib/types/constants'
+import * as clickOutside from '$lib/utils/browser/click-outside'
+import format from '$lib/utils/format'
+import styles from '$lib/utils/styles'
 import FormValidator from '$lib/utils/browser/FormValidator.svelte'
 
 /***************************************************
@@ -118,6 +125,7 @@ import FormValidator from '$lib/utils/browser/FormValidator.svelte'
  **************************************************/
 const utils = {
 	format,
+	styles,
 	clickOutside,
 	FormValidator,
 }
@@ -209,6 +217,12 @@ const drafts = {
 	Cookies,
 	Toast,
 	ToastGroup,
+
+	// New: replace Reveal mechanisms
+	ToggleReveal,
+	ToggleTree,
+	ToggleLink,
+	ToggleNav,
 }
 
 const headless = {

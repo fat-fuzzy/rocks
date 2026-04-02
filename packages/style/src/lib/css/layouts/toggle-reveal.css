@@ -131,6 +131,7 @@ ff-toggle-reveal.nord,
 ff-toggle-reveal.sud {
 	ff-control:has(input:checked) + ff-reveal,
 	ff-control:has(input:checked) + ff-reveal {
+		position: relative;
 		transition:
 			transform 250ms ease-out,
 			opacity 150ms ease-out 200ms,

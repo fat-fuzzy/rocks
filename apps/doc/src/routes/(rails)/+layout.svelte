@@ -8,8 +8,7 @@
 	import Socials from '$lib/ui/Socials.svelte'
 	import NavSlides from '$lib/ui/NavSlides.svelte'
 
-	const {Cookies, HeaderNav, RevealContext} = ui.drafts
-	const {RevealNav} = ui.recipes
+	const {Cookies, HeaderNav, RevealContext, ToggleNav} = ui.drafts
 	const {LayoutGrid} = ui.content
 	const {Magic} = ui.blocks
 	import {linksSocials} from '$data/nav'
@@ -96,7 +95,7 @@
 		/>
 	</div>
 	<div
-		class={`${sidenav.reveal ?? ''} sidebar surface:0:neutral l:grid size:3xs align:center width:lg height:sm`}
+		class={`sidebar surface:0:neutral l:grid size:3xs align:center width:lg height:sm`}
 	>
 		{#if sidenav.layout === 'tgv'}
 			<div class="app-name">
@@ -108,7 +107,7 @@
 				</Magic>
 			</div>
 		{:else}
-			<RevealNav
+			<ToggleNav
 				{...sidenav}
 				position={false}
 				area="gare"

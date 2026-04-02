@@ -1,5 +1,6 @@
 export interface Utils {
 	format: typeof import('$lib/utils/format.js').default
+	styles: typeof import('$lib/utils/styles.js').default
 	clickOutside: typeof import('$lib/utils/browser/click-outside.js')
 	FormValidator: typeof import('$lib/utils/browser/FormValidator.svelte').default
 }
@@ -87,9 +88,13 @@ export interface Drafts {
 	RevealContext: typeof import('$lib/components/recipes/forms/RevealContext.svelte').default
 	Zoomer: typeof import('$lib/components/blocks/overlays/Zoomer.svelte').default
 	Tabs: typeof import('$lib/components/recipes/tabs/Tabs.svelte').default
-	CSSTheme: typeof import('$lib/components/raw/css-theme.svelte').default
 	Toast: typeof import('$lib/components/blocks/overlays/Toast/Toast.svelte').default
-	ToastGroup: typeof import('$lib/components/blocks/overlays/Toast/ToastGroup.svelte').default
+
+	// New: replace Reveal mechanisms
+	ToggleReveal: typeof import('$lib/components/recipes/toggle-reveal/ToggleReveal.svelte').default
+	ToggleLink: typeof import('$lib/components/recipes/toggle-reveal/ToggleLink.svelte').default
+	ToggleTree: typeof import('$lib/components/recipes/toggle-reveal/ToggleTree.svelte').default
+	ToggleNav: typeof import('$lib/components/recipes/toggle-reveal/ToggleNav.svelte').default
 }
 
 export interface Headless {
@@ -110,6 +115,6 @@ export interface FatFuzzyUi {
 	// Tools
 	actors: Actors
 	forms: Forms
-	constants: typeof import('$lib/types/constants.js').default
+	constants: typeof import('$lib/types/constants').default
 	utils: Utils
 }

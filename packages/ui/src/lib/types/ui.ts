@@ -56,6 +56,7 @@ export type UiBlockProps = UiLayoutProps & {
 	assetType?: string // the `svg` or `emoji` part of emoji:value or svg:value  TODO: check / harmonize STYLE_MODIFIER
 	color?: UiColor
 	font?: string
+	text?: string
 	variant?: UiVariant
 	width?: string // TODO: check / harmonize  STYLE_MODIFIER + (height/width classes)
 }
