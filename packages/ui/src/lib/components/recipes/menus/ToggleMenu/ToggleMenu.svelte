@@ -3,7 +3,7 @@
 
 	import {onMount} from 'svelte'
 
-	import styleHelper from '$lib/utils/styles.js'
+	import styleHelper from '$lib/utils/styles'
 	import Toggle from '$lib/components/blocks/buttons/Toggle/Toggle.svelte'
 	import ToggleSystem from './system.svelte.js'
 

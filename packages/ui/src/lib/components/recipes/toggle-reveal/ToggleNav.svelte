@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {ToggleNavProps} from '$types'
-	import styleHelper from '$lib/utils/styles.js'
+	import styleHelper from '$lib/utils/styles'
 
 	import ToggleReveal from '$lib/components/recipes/toggle-reveal/ToggleReveal.svelte'
 	import SkipLinks from '$lib/components/recipes/navs/SkipLinks.svelte'

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {RevealNavProps} from '$types'
-	import styleHelper from '$lib/utils/styles.js'
+	import styleHelper from '$lib/utils/styles'
 	import Reveal from '$lib/components/layouts/reveal/Reveal.svelte'
 	import SkipLinks from '$lib/components/recipes/navs/SkipLinks.svelte'
 	import LinkTree from '$lib/components/recipes/navs/LinkTree.svelte'

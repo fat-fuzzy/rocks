@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {InputFileProps} from '$types'
-	import styleHelper from '$lib/utils/styles.js'
+	import styleHelper from '$lib/utils/styles'
 	import Feedback from '$lib/components/blocks/inputs/InputFeedback.svelte'
 	import Fieldset from '$lib/components/blocks/inputs/Fieldset.svelte'
 

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type {RevealMenuProps, UiVariant} from '$types'
 
-	import styleHelper from '$lib/utils/styles.js'
+	import styleHelper from '$lib/utils/styles'
 	import Reveal from '$lib/components/layouts/reveal/Reveal.svelte'
 	import Button from '$lib/components/blocks/buttons/Button.svelte'
 	const VARIANT_MATCH: {[key: string]: UiVariant} = {

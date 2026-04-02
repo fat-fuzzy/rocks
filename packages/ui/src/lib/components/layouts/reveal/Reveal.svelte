@@ -1,8 +1,8 @@
 <script lang="ts">
 	import type {FuzzyPayload, RevealLayoutProps} from '$types'
 
-	import constants from '$lib/types/constants.js'
-	import styleHelper from '$lib/utils/styles.js'
+	import constants from '$lib/types/constants'
+	import styleHelper from '$lib/utils/styles'
 	import system from '$lib/components/layouts/reveal/system.svelte'
 	import RevealForm from '$lib/components/layouts/reveal/RevealForm.svelte'
 	import RevealContent from '$lib/components/layouts/reveal/RevealContent.svelte'
