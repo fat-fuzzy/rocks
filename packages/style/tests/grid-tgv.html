@@ -28,7 +28,7 @@
 				<div class="navbar surface:4:neutral l:grid align:center nowrap">
 					<nav
 						id="nav-1"
-						class="l:flex align:center nowrap"
+						class="l:flex ravioli:3xs font:md"
 						aria-label="Main navigation"
 					>
 						<p class="maki:inline">Nav 1</p>
@@ -37,47 +37,52 @@
 				</div>
 				<div class="sidebar l:grid size:3xs align:center surface:1:neutral">
 					<div class="app-name size:3xs ravioli:3xs">
-						<p class="font:md text:center font:heading">Grid Tgv</p>
+						<p class="font:md text:center font:heading font:bold">Grid Tgv</p>
 					</div>
 				</div>
 				<aside class="context l:grid size:3xs align:center surface:3:neutral">
-					<details
-						class="app-context gare:est width:md height:sm surface:3:neutral"
+					<ff-toggle-reveal
+						class="gare:est est width:md height:lg surface:3:neutral"
 					>
-						<summary id="nav-2-label" class="gare-control ravioli:3xs">
-							Zone 3
-						</summary>
-						<ff-reveal class="gare-depot scroll:y layer:1 surface:3:neutral">
-							<nav
-								id="nav-2"
-								class="l:flex surface:3:neutral"
-								aria-labelledby="#nav-2-label"
+						<ff-control class="gare-control">
+							<label
+								for="train-est"
+								class="ellipsis ravioli:3xs text:center font:md"
 							>
+								<div class="l:flex align:center justify:between">
+									<span>Zone 2 </span>
+									<ff-icon class="svg:chevron-right size:xs"></ff-icon>
+								</div>
+								<input type="checkbox" id="train-est" class="sr-only" />
+							</label>
+						</ff-control>
+						<ff-reveal class="gare-depot scroll:y rtl layer:1">
+							<nav id="nav-2" class="l:flex" aria-labelledby="#nav-2-label">
 								<ol class="unstyled">
-									<li class="raviolink">Item</li>
-									<li class="raviolink">Item</li>
-									<li class="raviolink">Item</li>
-									<li class="raviolink">Item</li>
-									<li class="raviolink">Item</li>
-									<li class="raviolink">Item</li>
-									<li class="raviolink">Item</li>
-									<li class="raviolink">Item</li>
-									<li class="raviolink">Item</li>
-									<li class="raviolink">Item</li>
-									<li class="raviolink">Item</li>
-									<li class="raviolink">Item</li>
-									<li class="raviolink">Item</li>
-									<li class="raviolink">Item</li>
-									<li class="raviolink">Item</li>
-									<li class="raviolink">Item</li>
-									<li class="raviolink">Item</li>
-									<li class="raviolink">Item</li>
-									<li class="raviolink">Item</li>
-									<li class="raviolink">Item</li>
+									<li class="raviolink">Item 1</li>
+									<li class="raviolink">Item 2</li>
+									<li class="raviolink">Item 3</li>
+									<li class="raviolink">Item 4</li>
+									<li class="raviolink">Item 5</li>
+									<li class="raviolink">Item 6</li>
+									<li class="raviolink">Item 7</li>
+									<li class="raviolink">Item 8</li>
+									<li class="raviolink">Item 9</li>
+									<li class="raviolink">Item 10</li>
+									<li class="raviolink">Item 11</li>
+									<li class="raviolink">Item 12</li>
+									<li class="raviolink">Item 13</li>
+									<li class="raviolink">Item 14</li>
+									<li class="raviolink">Item 15</li>
+									<li class="raviolink">Item 16</li>
+									<li class="raviolink">Item 17</li>
+									<li class="raviolink">Item 18</li>
+									<li class="raviolink">Item 19</li>
+									<li class="raviolink">Item 20</li>
 								</ol>
 							</nav>
 						</ff-reveal>
-					</details>
+					</ff-toggle-reveal>
 				</aside>
 			</header>
 			<div class="zone:2 hug l:grid tgv scroll:y">
@@ -98,21 +103,21 @@
 								class="l:frame:video surface:0:neutral dotted font:xl ravioli:xl"
 							>
 								<p class="ll:stack:2xl emoji:pause align:center">
-									Enjoy a fast and pleasant viewing journey
+									Enjoy a fast and pleasant journey
 								</p>
 							</li>
 							<li
 								class="l:frame:video surface:0:neutral dotted font:xl ravioli:xl"
 							>
 								<p class="ll:stack:2xl emoji:magic align:center">
-									Structure media content on wide sections
+									Structured around media content on wide sections
 								</p>
 							</li>
 							<li
 								class="l:frame:video surface:0:neutral dotted font:xl ravioli:xl"
 							>
 								<p class="ll:stack:2xl emoji:wave align:center justify:end">
-									Keep it optimized and simple
+									Keeping it optimized and simple
 								</p>
 							</li>
 							<li
@@ -126,13 +131,11 @@
 					</article>
 				</main>
 			</div>
-			<div class="zone:3 tgv l:grid size:3xs surface:4:neutral">
-				<footer class="l:grid size:3xs">
-					<details class="footer-content l:grid size:3xs gare:nord height:md">
-						<summary class="gare-control ravioli:3xs surface:4:neutral">
-							Footer
-						</summary>
-						<ff-reveal class="scroll:y layer:1">
+			<div class="zone:3 tgv l:grid">
+				<footer class="l:grid surface:4:neutral">
+					<details class="footer-content l:grid gare:nord height:md">
+						<summary class="gare-control ravioli:3xs">Footer</summary>
+						<ff-content class="scroll:y layer:1">
 							<ol class="unstyled">
 								<li class="raviolink">Item</li>
 								<li class="raviolink">Item</li>
@@ -141,21 +144,8 @@
 								<li class="raviolink">Item</li>
 								<li class="raviolink">Item</li>
 								<li class="raviolink">Item</li>
-								<li class="raviolink">Item</li>
-								<li class="raviolink">Item</li>
-								<li class="raviolink">Item</li>
-								<li class="raviolink">Item</li>
-								<li class="raviolink">Item</li>
-								<li class="raviolink">Item</li>
-								<li class="raviolink">Item</li>
-								<li class="raviolink">Item</li>
-								<li class="raviolink">Item</li>
-								<li class="raviolink">Item</li>
-								<li class="raviolink">Item</li>
-								<li class="raviolink">Item</li>
-								<li class="raviolink">Item</li>
 							</ol>
-						</ff-reveal>
+						</ff-content>
 					</details>
 				</footer>
 			</div>
