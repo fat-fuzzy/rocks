@@ -50,8 +50,6 @@ import Nav from '$lib/components/recipes/navs/Nav.svelte'
 import RevealNav from '$lib/components/recipes/navs/RevealNav.svelte'
 import Breadcrumbs from '$lib/components/recipes/navs/Breadcrumbs.svelte'
 
-import HeaderNav from '$lib/components/recipes/header/HeaderNav.svelte'
-
 /**
  * Recipes - Content
  */
@@ -95,7 +93,8 @@ import ToastGroup from '$lib/components/blocks/overlays/Toast/ToastGroup.svelte'
 import ToggleReveal from '$lib/components/recipes/toggle-reveal/ToggleReveal.svelte'
 import ToggleLink from '$lib/components/recipes/toggle-reveal/ToggleLink.svelte'
 import ToggleTree from '$lib/components/recipes/toggle-reveal/ToggleTree.svelte'
-import ToggleSidenav from '$lib/components/recipes/toggle-reveal/ToggleSidenav.svelte'
+import ToggleSideNav from '$lib/components/recipes/toggle-reveal/ToggleSideNav.svelte'
+import ToggleMainNav from '$lib/components/recipes/toggle-reveal/ToggleMainNav.svelte'
 
 /**
  * Forms
@@ -206,7 +205,6 @@ const drafts = {
 	Scrolly,
 	ScrollyItem,
 	Breadcrumbs,
-	HeaderNav,
 	Settings,
 	PageNav,
 	PageHeader,
@@ -221,7 +219,8 @@ const drafts = {
 	ToggleReveal,
 	ToggleTree,
 	ToggleLink,
-	ToggleSidenav,
+	ToggleSideNav,
+	ToggleMainNav,
 }
 
 const headless = {

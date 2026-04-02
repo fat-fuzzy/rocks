@@ -78,7 +78,6 @@ export interface Drafts {
 	Picture: typeof import('$lib/components/blocks/media/Picture.svelte').default
 	Scrolly: typeof import('$lib/components/recipes/animations/scroll/Scrolly.svelte').default
 	ScrollyItem: typeof import('$lib/components/recipes/animations/scroll/ScrollyItem.svelte').default
-	HeaderNav: typeof import('$lib/components/recipes/header/HeaderNav.svelte').default
 	Cookies: typeof import('$lib/components/recipes/forms/Cookies.svelte').default
 	Breadcrumbs: typeof import('$lib/components/recipes/navs/Breadcrumbs.svelte').default
 	PageNav: typeof import('$lib/components/recipes/navs/PageNav.svelte').default
@@ -94,7 +93,8 @@ export interface Drafts {
 	ToggleReveal: typeof import('$lib/components/recipes/toggle-reveal/ToggleReveal.svelte').default
 	ToggleLink: typeof import('$lib/components/recipes/toggle-reveal/ToggleLink.svelte').default
 	ToggleTree: typeof import('$lib/components/recipes/toggle-reveal/ToggleTree.svelte').default
-	ToggleSidenav: typeof import('$lib/components/recipes/toggle-reveal/ToggleSidenav.svelte').default
+	ToggleSideNav: typeof import('$lib/components/recipes/toggle-reveal/ToggleSideNav.svelte').default
+	ToggleMainNav: typeof import('$lib/components/recipes/toggle-reveal/ToggleMainNav.svelte').default
 }
 
 export interface Headless {

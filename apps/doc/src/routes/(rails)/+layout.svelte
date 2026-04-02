@@ -9,7 +9,7 @@
 	import Socials from '$lib/ui/Socials.svelte'
 	import NavSlides from '$lib/ui/NavSlides.svelte'
 
-	const {Cookies, HeaderNav, ToggleContext, ToggleSidenav} = ui.drafts
+	const {ToggleSideNav, ToggleMainNav, Cookies, ToggleContext} = ui.drafts
 	const {LayoutGrid} = ui.content
 	const {Magic} = ui.blocks
 	import {linksSocials} from '$data/nav'
@@ -19,7 +19,6 @@
 	}
 	let {children}: Props = $props()
 
-	let mainNav = $derived(page.data.nav)
 	let sidenav = $derived(page.data.sidebar)
 	let layout = $derived(page.data.layout ?? sidenav.layout)
 	let appContext = $derived(page.data.appContext)
@@ -63,7 +62,7 @@
 
 {#snippet zoneHeader()}
 	<div class="navbar l:grid size:3xs align:center bg:inherit">
-		<HeaderNav
+		<ToggleMainNav
 			id="nav"
 			name="nav"
 			title="Menu"
@@ -96,7 +95,7 @@
 				</Magic>
 			</div>
 		{:else}
-			<ToggleSidenav
+			<ToggleSideNav
 				{...sidenav}
 				position={false}
 				area="gare"

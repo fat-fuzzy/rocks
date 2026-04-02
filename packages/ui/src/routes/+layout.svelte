@@ -1,7 +1,7 @@
 <script lang="ts">
 	import '@fat-fuzzy/style/css'
 	import constants from '$lib/types/constants.js'
-	import HeaderNav from '$lib/components/recipes/header/HeaderNav.svelte'
+	import ToggleMainNav from '$lib/components/recipes/toggle-reveal/ToggleMainNav.svelte'
 	import type {Snippet} from 'svelte'
 
 	const {APP_SETTINGS, APP_LINKS} = constants
@@ -17,7 +17,7 @@
 	let footerClass = 'font:sm ravioli:2xl color:primary'
 </script>
 
-<HeaderNav
+<ToggleMainNav
 	id="header-nav"
 	name="header-nav"
 	label=""
@@ -27,7 +27,7 @@
 	<h1 class="l:flex ravioli:md icon:svg:egg size:xl font:xl align:center">
 		Fat Fuzzy Style
 	</h1>
-</HeaderNav>
+</ToggleMainNav>
 <main class={mainClass}>
 	{#if children}
 		{@render children()}
