@@ -1,9 +1,5 @@
 .steam.zone\:main {
 	grid-column: span 3;
-	grid-template-areas:
-		page-header page-header page-header
-		page-main page-main page-main
-		page-main page-main page-main;
 	min-block-size: unset;
 	align-content: start;
 	max-block-size: var(--overlay-height-md);

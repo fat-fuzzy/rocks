@@ -27,26 +27,16 @@
 
 @media screen and (min-width: 68.75rem) {
 	.metro.zone\:main {
-		grid-column-start: 4;
+		grid-column-start: 1;
 		grid-column-end: 5;
 		padding-inline: calc(3.5 * var(--grid-gap)) 0;
 		max-block-size: var(--max-block-size);
 	}
 
-	.exchange ~ .metro.zone\:2.hug .page-context:not(.empty) {
+	.exchange:has(.gare\:ouest input.ouest:checked)
+		~ .zone\:2.hug
+		.page-context:not(.empty) {
 		grid-column-start: 5;
 		grid-column-end: -1;
-	}
-
-	.exchange:has(.gare\:ouest input.ouest:checked) {
-		~ .hug .metro.zone\:main {
-			grid-column-start: 1;
-			grid-column-end: 2;
-			padding-inline: 0;
-		}
-
-		~ .hug .page-context:not(.empty) {
-			grid-column-start: 2;
-		}
 	}
 }
