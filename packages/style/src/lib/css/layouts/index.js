@@ -57,7 +57,6 @@ import './grid/urbanist/zone-main.css'
 import './grid/metro/zone-2.css'
 import './grid/metro/zone-main.css'
 
-import './grid/railway/context.css'
 import './grid/railway/zone-2.css'
 import './grid/railway/zone-main.css'
 

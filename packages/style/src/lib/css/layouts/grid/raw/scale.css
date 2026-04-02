@@ -28,6 +28,6 @@
 	}
 
 	.gare\:ouest[open].width\:full > ff-reveal {
-		--overlay-block-size: var(--max-block-size);
+		--overlay-block-size: var(--max-overlay-size);
 	}
 }

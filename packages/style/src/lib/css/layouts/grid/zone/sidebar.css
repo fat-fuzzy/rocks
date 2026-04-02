@@ -95,7 +95,7 @@
 	}
 
 	.sidebar {
-		--overlay-block-size: var(--max-block-size);
+		--overlay-block-size: var(--max-overlay-size);
 	}
 
 	.sidebar.width\:full {

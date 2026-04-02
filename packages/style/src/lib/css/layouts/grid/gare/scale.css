@@ -61,7 +61,7 @@
 	[class*='gare:'].width\:lg,
 	[class*='gare:'].width\:lg > ff-reveal {
 		--overlay-inline-size: var(--layout-sidebar-md);
-		--overlay-block-size: var(--max-block-size);
+		--overlay-block-size: var(--max-overlay-size);
 	}
 
 	[class*='gare:']:is(.width\:xl, .width\:full),
@@ -85,6 +85,6 @@
 
 	[class*='gare:'] > ff-reveal,
 	[class*='gare:'][class*='height:']:not(.width\:full) {
-		--overlay-block-size: var(--max-block-size);
+		--overlay-block-size: var(--max-overlay-size);
 	}
 }

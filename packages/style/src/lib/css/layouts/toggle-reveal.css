@@ -55,7 +55,7 @@ ff-toggle-reveal.est {
 ff-toggle-reveal.ouest {
 	ff-control + ff-reveal {
 		--x-axis: -100%;
-		--y-axis: var(--grid-gap);
+		--y-axis: 0;
 
 		block-size: var(--overlay-block-size);
 		inline-size: var(--overlay-inline-size);
@@ -102,7 +102,7 @@ ff-toggle-reveal.sud {
 
 ff-toggle-reveal.ouest {
 	ff-control:has(input:checked) + ff-reveal {
-		--y-axis: var(--grid-gap);
+		--y-axis: var(--outline-offset-sm);
 
 		block-size: var(--overlay-block-size);
 		inline-size: var(--overlay-inline-size);
@@ -114,6 +114,7 @@ ff-toggle-reveal.ouest {
 }
 
 ff-toggle-reveal.est {
+	--y-axis: var(--outline-offset-sm);
 	ff-control:has(input:checked) + ff-reveal {
 		transition:
 			transform 200ms ease-out,

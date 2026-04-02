@@ -4,7 +4,6 @@
  */
 
 .exchange > .context {
-	--max-block-size: calc(100vh - 2 * var(--ui-header-height) - var(--grid-gap));
 	grid-area: context;
 	grid-template-columns: subgrid;
 	z-index: var(--layout-z-index-layer);
