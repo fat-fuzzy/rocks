@@ -9,7 +9,7 @@
 	import Socials from '$lib/ui/Socials.svelte'
 	import NavSlides from '$lib/ui/NavSlides.svelte'
 
-	const {Cookies, HeaderNav, ToggleContext, ToggleNav} = ui.drafts
+	const {Cookies, HeaderNav, ToggleContext, ToggleSidenav} = ui.drafts
 	const {LayoutGrid} = ui.content
 	const {Magic} = ui.blocks
 	import {linksSocials} from '$data/nav'
@@ -96,7 +96,7 @@
 				</Magic>
 			</div>
 		{:else}
-			<ToggleNav
+			<ToggleSidenav
 				{...sidenav}
 				position={false}
 				area="gare"

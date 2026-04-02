@@ -94,7 +94,7 @@ export interface Drafts {
 	ToggleReveal: typeof import('$lib/components/recipes/toggle-reveal/ToggleReveal.svelte').default
 	ToggleLink: typeof import('$lib/components/recipes/toggle-reveal/ToggleLink.svelte').default
 	ToggleTree: typeof import('$lib/components/recipes/toggle-reveal/ToggleTree.svelte').default
-	ToggleNav: typeof import('$lib/components/recipes/toggle-reveal/ToggleNav.svelte').default
+	ToggleSidenav: typeof import('$lib/components/recipes/toggle-reveal/ToggleSidenav.svelte').default
 }
 
 export interface Headless {

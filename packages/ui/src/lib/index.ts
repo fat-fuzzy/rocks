@@ -95,7 +95,7 @@ import ToastGroup from '$lib/components/blocks/overlays/Toast/ToastGroup.svelte'
 import ToggleReveal from '$lib/components/recipes/toggle-reveal/ToggleReveal.svelte'
 import ToggleLink from '$lib/components/recipes/toggle-reveal/ToggleLink.svelte'
 import ToggleTree from '$lib/components/recipes/toggle-reveal/ToggleTree.svelte'
-import ToggleNav from '$lib/components/recipes/toggle-reveal/ToggleNav.svelte'
+import ToggleSidenav from '$lib/components/recipes/toggle-reveal/ToggleSidenav.svelte'
 
 /**
  * Forms
@@ -221,7 +221,7 @@ const drafts = {
 	ToggleReveal,
 	ToggleTree,
 	ToggleLink,
-	ToggleNav,
+	ToggleSidenav,
 }
 
 const headless = {
