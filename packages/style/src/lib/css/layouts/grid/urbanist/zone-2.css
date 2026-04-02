@@ -15,7 +15,7 @@
 		grid-column-start: 1;
 	}
 
-	.exchange:has(.gare\:ouest[open], .gare\:ouest.expanded) ~ .urbanist.hug {
+	.exchange:has(.gare\:ouest input.ouest:checked) ~ .urbanist.hug {
 		grid-column-start: 4;
 	}
 }

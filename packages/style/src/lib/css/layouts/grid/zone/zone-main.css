@@ -3,13 +3,11 @@
 	grid-template-areas:
 		'page-header'
 		'page-main';
-	grid-template-rows: auto 1fr;
 	max-block-size: unset;
 
 	> .page-header {
 		grid-area: page-header;
 		block-size: fit-content;
-		padding-inline: calc(2 * var(--grid-gap));
 		padding-block-start: calc(
 			var(--ui-header-height) + 2 * var(--size-base-3xs)
 		);
@@ -17,7 +15,6 @@
 
 	> .page-main {
 		grid-area: page-main;
-		padding-inline: calc(2 * var(--grid-gap));
 	}
 }
 

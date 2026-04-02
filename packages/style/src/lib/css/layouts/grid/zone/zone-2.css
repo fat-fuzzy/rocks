@@ -14,10 +14,6 @@
 	block-size: fit-content;
 	max-block-size: unset;
 	padding-block-start: var(--grid-gap);
-	/*
-	TODO: rows for overlapping main on header (use w/ bg:blur)
-	grid-row-start: 1;
-	grid-row-end: 3; */
 
 	&.scroll\:y {
 		scrollbar-gutter: auto;
@@ -51,20 +47,11 @@
 
 		> .page-context:not(.empty) {
 			scrollbar-width: thin;
-			padding-inline: 0 var(--grid-gap);
 		}
 
 		> .page-context {
 			box-shadow: unset;
 			max-block-size: var(--max-block-size);
-		}
-
-		> .page-context > nav > ul > li.ellipsis {
-			max-inline-size: 100%;
-		}
-
-		> .page-context > details {
-			--max-inline-size: calc(var(--layout-sidebar-md) - 3 * var(--grid-gap));
 		}
 	}
 }
@@ -90,7 +77,7 @@
 		grid-column-end: -1;
 	}
 
-	.exchange:has(.gare\:ouest[open], .gare\:ouest.expanded) ~ .hug {
+	.exchange:has(.gare\:ouest input.ouest:checked) ~ .hug {
 		grid-column-start: 4;
 		grid-column-end: -1;
 	}
