@@ -76,14 +76,9 @@
 		z-index: initial;
 	}
 
-	.sidebar > nav,
-	.sidebar > nav > form {
+	.sidebar > nav {
 		inline-size: 100%;
 		max-inline-size: var(--overlay-inline-size);
-	}
-
-	.sidebar > nav > ff-reveal {
-		padding-inline-start: calc(var(--grid-gap) - var(--outline-offset-md));
 	}
 
 	.sidebar > .app-name {

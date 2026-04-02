@@ -30,13 +30,6 @@
 	border-radius: 0;
 }
 
-.l\:grid\:urbanist [class*='zone:2'] > nav > form > [aria-expanded],
-.l\:grid\:urbanist .navbar > nav > form > [aria-expanded],
-.l\:grid\:urbanist .app-context > form > [aria-expanded] {
-	margin: 0;
-	font-family: var(--font-family-heading);
-}
-
 @media screen and (min-width: 38.75rem) {
 	.l\:grid\:urbanist {
 		--sidebar-width: var(--layout-sidebar-md);

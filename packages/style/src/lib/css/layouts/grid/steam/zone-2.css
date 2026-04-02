@@ -10,10 +10,6 @@
 		max-block-size: var(--overlay-height-xs);
 	}
 
-	> .page-context > summary {
-		max-inline-size: var(--sidebar-width);
-	}
-
 	> .page-context.media\:video {
 		block-size: var(--overlay-height-xs);
 	}
