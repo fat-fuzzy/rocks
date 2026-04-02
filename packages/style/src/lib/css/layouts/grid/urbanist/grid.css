@@ -38,12 +38,6 @@
 	.l\:grid\:urbanist {
 		--sidebar-width: var(--layout-sidebar-md);
 	}
-
-	.l\:grid\:urbanist.voyager {
-		--max-block-size: calc(
-			100vh - 2 * var(--ui-header-height) - 4.35 * var(--grid-gap)
-		);
-	}
 }
 
 @media screen and (min-width: 43.125rem) {

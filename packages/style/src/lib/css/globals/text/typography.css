@@ -156,6 +156,13 @@ blockquote {
 	margin-block: var(--ui-size-lg);
 }
 
+span:has(.ellipsis),
+ul:has(.ellipsis),
+li:has(.ellipsis) {
+	--max-inline-size: var(--sidebar-width, 100%);
+	max-inline-size: var(--max-inline-size);
+}
+
 .ellipsis {
 	white-space: nowrap;
 	overflow: hidden;

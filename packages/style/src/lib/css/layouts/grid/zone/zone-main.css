@@ -17,7 +17,6 @@
 
 	> .page-main {
 		grid-area: page-main;
-		padding-block-end: var(--grid-gap);
 		padding-inline: calc(2 * var(--grid-gap));
 	}
 }
@@ -26,7 +25,8 @@
 	.zone\:main {
 		padding-block-start: var(--ui-size-lg);
 
-		> .page-header {
+		> .page-header,
+		> .page-main {
 			padding-block-start: calc(2 * var(--size-base-3xs));
 		}
 	}
@@ -36,14 +36,5 @@
 	.zone\:main {
 		grid-column-start: 1;
 		grid-column-end: 3;
-	}
-
-	.exchange:has(.gare\:ouest[open], .gare\:ouest.expanded)
-		~ .hug
-		.steam.zone\:main,
-	.exchange:has(.gare\:ouest[open], .gare\:ouest.expanded)
-		~ .hug
-		.tram.zone\:main {
-		grid-column-start: 1;
 	}
 }
