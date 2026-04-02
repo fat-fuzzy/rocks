@@ -9,7 +9,7 @@
 	import Socials from '$lib/ui/Socials.svelte'
 	import NavSlides from '$lib/ui/NavSlides.svelte'
 
-	const {Cookies, HeaderNav, RevealContext, ToggleNav} = ui.drafts
+	const {Cookies, HeaderNav, ToggleContext, ToggleNav} = ui.drafts
 	const {LayoutGrid} = ui.content
 	const {Magic} = ui.blocks
 	import {linksSocials} from '$data/nav'
@@ -118,7 +118,7 @@
 	</div>
 
 	<div class="context l:grid size:3xs bg:inherit">
-		<RevealContext
+		<ToggleContext
 			id="appContext"
 			name="appContext"
 			label="Settings"

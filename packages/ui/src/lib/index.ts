@@ -43,8 +43,7 @@ import RevealMenu from '$lib/components/recipes/menus/RevealMenu.svelte'
 import ButtonMenu from '$lib/components/recipes/menus/ButtonMenu.svelte'
 import ToggleMenu from '$lib/components/recipes/menus/ToggleMenu/ToggleMenu.svelte'
 import Settings from '$lib/components/recipes/forms/Settings.svelte'
-import RevealContext from '$lib/components/recipes/forms/RevealContext.svelte'
-
+import ToggleContext from '$lib/components/recipes/toggle-reveal/ToggleContext.svelte'
 import SignUp from '$lib/components/recipes/forms/SignUp.svelte'
 
 import Nav from '$lib/components/recipes/navs/Nav.svelte'
@@ -211,7 +210,7 @@ const drafts = {
 	Settings,
 	PageNav,
 	PageHeader,
-	RevealContext,
+	ToggleContext,
 	Zoomer,
 	Tabs,
 	Cookies,

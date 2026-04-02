@@ -85,7 +85,7 @@ export interface Drafts {
 	PageHeader: typeof import('$lib/components/recipes/content/PageHeader.svelte').default
 	ExpandLink: typeof import('$lib/components/recipes/navs/ExpandLink.svelte').default
 	Settings: typeof import('$lib/components/recipes/forms/Settings.svelte').default
-	RevealContext: typeof import('$lib/components/recipes/forms/RevealContext.svelte').default
+	ToggleContext: typeof import('$lib/components/recipes/toggle-reveal/ToggleContext.svelte').default
 	Zoomer: typeof import('$lib/components/blocks/overlays/Zoomer.svelte').default
 	Tabs: typeof import('$lib/components/recipes/tabs/Tabs.svelte').default
 	Toast: typeof import('$lib/components/blocks/overlays/Toast/Toast.svelte').default
