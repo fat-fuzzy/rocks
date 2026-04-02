@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {NavProps} from '$types'
-	import LinkTree from '$lib/components/recipes/navs/LinkTree.svelte'
+	import ToggleTree from '$lib/components/recipes/toggle-reveal/ToggleTree.svelte'
 
 	let {
 		id,
@@ -15,13 +15,15 @@
 		items = [],
 	}: NavProps = $props()
 
-	let backgroundClass = background ? `bg:${background}` : ''
-	let colorClass = color ? `color:${color}` : ''
-	let navClasses = `${colorClass} ${container}:${size} ${backgroundClass}`
+	let backgroundClass = $state(background ? `bg:${background}` : '')
+	let colorClass = $state(color ? `color:${color}` : '')
+	let navClasses = $state(
+		`${colorClass} ${container}:${size} ${backgroundClass}`,
+	)
 </script>
 
 <nav {id} class={navClasses} aria-label={title}>
-	<LinkTree
+	<ToggleTree
 		id={`${id}-${path}`}
 		{items}
 		{path}

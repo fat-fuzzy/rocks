@@ -76,17 +76,15 @@
 			justify="center"
 			dismiss="outside"
 			auto={true}
-			{links}
+			place="nord"
+			items={links}
 			path={page.url.pathname}
-			reveal={mainNav.reveal}
-			actionPath={page.url.pathname}
 			breakpoint="sm"
 			background="inherit"
-			formaction="toggleNav"
 		/>
 	</div>
 	<div
-		class={`sidebar surface:0:neutral l:grid size:3xs align:center width:lg height:sm`}
+		class="sidebar surface:0:neutral l:grid size:3xs align:center width:lg height:sm"
 	>
 		{#if sidenav.layout === 'tgv'}
 			<div class="app-name">

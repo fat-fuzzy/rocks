@@ -1,37 +1,46 @@
 <script lang="ts">
-	import type {HeaderProps} from '$types'
-	import Reveal from '$lib/components/layouts/reveal/Reveal.svelte'
+	import type {ToggleNavProps, NavProps} from '$types'
+
+	import ToggleReveal from '$lib/components/recipes/toggle-reveal/ToggleReveal.svelte'
+	import styles from '$lib/utils/styles'
 
 	let {
-		id = 'ui-header-nav-app',
+		id = 'header-app',
 		label,
-		breakpoint = 'xs',
 		size,
 		font,
 		variant,
 		shape,
 		color,
-		background,
 		asset,
+		assetType,
+		background,
+		layout,
+		breakpoint = 'xs',
+		threshold,
+		align,
 		justify,
 		dismiss,
+		place,
+		items,
 		auto,
-		title,
 		path,
-		reveal,
-		actionPath,
-		formaction,
-		redirect,
-		links,
-	}: HeaderProps = $props()
+	}: ToggleNavProps & NavProps = $props()
+
+	let navClasses = $derived(
+		styles.getStyles({
+			align,
+			breakpoint,
+			justify,
+			layout,
+			threshold,
+		}),
+	)
 </script>
 
-<Reveal
+<ToggleReveal
 	{id}
-	name={id}
 	{label}
-	element="nav"
-	{title}
 	{size}
 	{shape}
 	{color}
@@ -39,14 +48,11 @@
 	{variant}
 	{background}
 	{asset}
-	{justify}
-	{dismiss}
+	{assetType}
 	{auto}
-	reveal={reveal ?? 'collapsed'}
+	{dismiss}
+	{place}
 	{breakpoint}
-	{formaction}
-	{actionPath}
-	{redirect}
 >
 	<ul
 		class="header-nav l:switcher:2xs size:md unstyled color:primary align:center justify:evenly w:full bg:inherit"
@@ -54,7 +60,7 @@
 		<li aria-current={path === '/' ? 'page' : undefined}>
 			<a data-sveltekit-preload-data href="/">Home</a>
 		</li>
-		{#each links as { slug, label }, i (i)}
+		{#each items as { slug, label }, i (i)}
 			<li aria-current={path?.startsWith(`/${slug}`) ? 'page' : undefined}>
 				<a data-sveltekit-preload-data href={`/${slug}`}>
 					{label}
@@ -62,4 +68,4 @@
 			</li>
 		{/each}
 	</ul>
-</Reveal>
+</ToggleReveal>
