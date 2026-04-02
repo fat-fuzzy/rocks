@@ -5,6 +5,11 @@ ff-toggle-reveal {
 		z-index: calc(var(--z-index-overlay) + 1);
 	}
 
+	ff-control > label:has(input[type='checkbox']:focus) {
+		outline: var(--border-width-lg) dotted var(--accent);
+		outline-offset: var(--outline-offset-md);
+	}
+
 	ff-control + ff-reveal {
 		--x-axis: 0;
 		--y-axis: 0;
@@ -71,7 +76,7 @@ ff-toggle-reveal.est {
 		--y-axis: 0;
 
 		block-size: var(--overlay-block-size);
-		inline-size: var(--overlay-inline-size);
+		inline-size: 0;
 		transition:
 			transform 200ms ease-in,
 			opacity 150ms ease-in 50ms;
@@ -79,6 +84,7 @@ ff-toggle-reveal.est {
 
 	ff-control:has(input:checked) + ff-reveal {
 		--x-axis: calc(-1 * var(--outline-offset-sm) - 50%);
+		inline-size: var(--overlay-inline-size);
 	}
 }
 
