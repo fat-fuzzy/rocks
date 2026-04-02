@@ -75,7 +75,7 @@
 	}
 
 	.exchange:has(.gare\:ouest input.ouest:checked) ~ .hug {
-		grid-column-start: 4;
+		grid-column-start: 1;
 		grid-column-end: -1;
 	}
 }
