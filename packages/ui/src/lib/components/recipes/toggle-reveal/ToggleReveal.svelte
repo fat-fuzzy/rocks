@@ -79,7 +79,7 @@
 				<span>{label}</span>
 				<ff-icon class={iconClasses}></ff-icon>
 			</div>
-			<input type="checkbox" {id} class="sr-only" {checked} />
+			<input type="checkbox" {id} class="{`sr-only ${place}`} {checked}" />
 		</label>
 	</ff-control>
 

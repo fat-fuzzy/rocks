@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type {Snippet} from 'svelte'
+	import type {AreaProps} from '@fat-fuzzy/ui'
 
 	import ui from '@fat-fuzzy/ui'
 	import {page} from '$app/state'
@@ -32,17 +33,7 @@
 			: null,
 	)
 
-	type AreaZone = {
-		zone: Snippet
-		grid?: boolean
-		gare?: string
-		scroll?: string
-		exchange?: boolean
-		hug?: boolean
-		tag?: string
-	}
-
-	const areas: AreaZone[] = $derived([
+	const areas: AreaProps[] = $derived([
 		{
 			zone: zoneHeader,
 			grid: true,
@@ -51,7 +42,7 @@
 		},
 		{
 			zone: zoneContent,
-			// hug: layout === 'steam' || layout === 'tram' || layout === 'urbanist',
+			hug: layout === 'steam' || layout === 'tram' || layout === 'urbanist',
 			grid: true,
 		},
 		{

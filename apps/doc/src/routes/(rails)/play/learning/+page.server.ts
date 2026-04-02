@@ -5,21 +5,21 @@ import {actions as parentActions} from '../+page.server'
 const page = 'learning'
 
 export const load = async () => {
-	let content = await pages.fetchMarkdowns(page)
+	const markdowns = await pages.fetchMarkdowns(page)
 
-	if (!content?.length) {
+	if (!markdowns?.length) {
 		error(404, {message: 'Not found'})
 	}
-	content = content[0]
+	const content = markdowns[0]
 
 	if (!content?.meta) {
 		error(404, {message: 'Not found'})
 	}
-	const data = {
-		content,
-	}
 
-	return data
+	return {
+		content,
+		layout: 'tram',
+	}
 }
 
 export const actions = parentActions
