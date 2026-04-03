@@ -27,8 +27,7 @@
 
 @media screen and (min-width: 68.75rem) {
 	.metro.zone\:main {
-		grid-column-start: 1;
-		grid-column-end: 2;
+		grid-column-end: 5;
 		padding-inline: calc(3.5 * var(--grid-gap)) 0;
 		max-block-size: var(--max-block-size);
 	}
@@ -38,5 +37,9 @@
 		.page-context:not(.empty) {
 		grid-column-start: 5;
 		grid-column-end: -1;
+	}
+
+	.exchange:has(.gare\:ouest input.ouest:checked) ~ .hug > .metro.zone\:main {
+		grid-column-end: 2;
 	}
 }
