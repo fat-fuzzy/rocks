@@ -82,11 +82,11 @@ export interface Drafts {
 	Breadcrumbs: typeof import('$lib/components/recipes/navs/Breadcrumbs.svelte').default
 	PageNav: typeof import('$lib/components/recipes/navs/PageNav.svelte').default
 	PageHeader: typeof import('$lib/components/recipes/content/PageHeader.svelte').default
-	ExpandLink: typeof import('$lib/components/recipes/navs/ExpandLink.svelte').default
 	Settings: typeof import('$lib/components/recipes/forms/Settings.svelte').default
 	Zoomer: typeof import('$lib/components/blocks/overlays/Zoomer.svelte').default
 	Tabs: typeof import('$lib/components/recipes/tabs/Tabs.svelte').default
 	Toast: typeof import('$lib/components/blocks/overlays/Toast/Toast.svelte').default
+	ToastGroup: typeof import('$lib/components/blocks/overlays/Toast/ToastGroup.svelte').default
 
 	// New: replace Reveal mechanisms
 	ToggleReveal: typeof import('$lib/components/recipes/toggle-reveal/ToggleReveal.svelte').default

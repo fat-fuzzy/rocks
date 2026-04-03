@@ -81,7 +81,6 @@ import Zoomer from '$lib/components/blocks/overlays/Zoomer.svelte'
 import Scrolly from '$lib/components/recipes/animations/scroll/Scrolly.svelte'
 import ScrollyItem from '$lib/components/recipes/animations/scroll/ScrollyItem.svelte'
 import Tabs from '$lib/components/recipes/tabs/Tabs.svelte'
-import ExpandLink from '$lib/components/recipes/navs/ExpandLink.svelte'
 import Cookies from '$lib/components/recipes/forms/Cookies.svelte'
 import Toast from '$lib/components/blocks/overlays/Toast/Toast.svelte'
 import ToastGroup from '$lib/components/blocks/overlays/Toast/ToastGroup.svelte'
@@ -196,7 +195,6 @@ const drafts = {
 	Popover,
 	// InputPassword,
 	// InputFeedback,
-	ExpandLink,
 	Image,
 	Picture,
 	Scrolly,

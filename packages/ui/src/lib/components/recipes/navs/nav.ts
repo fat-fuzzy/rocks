@@ -50,27 +50,3 @@ export type BreadcrumbsProps = UiBlockProps & {
 	path: string
 	breadcrumbTabs?: Snippet // TODO: deprecate with tabs
 }
-
-export type LinkTreeProps = UiBlockProps & {
-	id: string
-	depth: number
-	path: string
-	pathname: string
-	preload?: string
-	items: NavItem[]
-	redirect?: string
-	oninput?: (payload: FuzzyPayload) => void
-}
-
-export type ExpandLinkProps = UiBlockProps & {
-	href: string
-	slug: string
-	label: string
-	children: Snippet
-	reveal: UiState
-	depth: number
-	formaction?: string
-	actionParams?: string
-	actionPath?: string
-	onclick?: (payload: FuzzyPayload) => void
-}
