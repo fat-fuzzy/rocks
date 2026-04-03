@@ -4,7 +4,6 @@ import type {
 	UiLayoutProps,
 	NavProps,
 	NavItem,
-	FuzzyPayload,
 	ViewingPreferences,
 } from '$types'
 
@@ -35,7 +34,6 @@ export type ToggleTreeProps = UiBlockProps & {
 	container?: string
 	preload?: boolean
 	items: NavItem[]
-	oninput?: (payload: FuzzyPayload) => void
 }
 
 export type ToggleLinkProps = UiBlockProps & {
