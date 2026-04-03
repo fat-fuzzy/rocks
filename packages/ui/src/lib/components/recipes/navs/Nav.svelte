@@ -1,32 +1,40 @@
 <script lang="ts">
 	import type {NavProps} from '$types'
+
+	import styleHelper from '$lib/utils/styles'
 	import ToggleTree from '$lib/components/recipes/toggle-reveal/ToggleTree.svelte'
 
 	let {
 		id,
 		layout,
 		title = 'Nav',
+		pathname,
 		size,
-		path,
 		color,
 		background,
 		container,
+		containerSize,
 		align,
 		items = [],
 	}: NavProps = $props()
 
-	let backgroundClass = $state(background ? `bg:${background}` : '')
-	let colorClass = $state(color ? `color:${color}` : '')
-	let navClasses = $state(
-		`${colorClass} ${container}:${size} ${backgroundClass}`,
+	let navClasses = $derived(
+		styleHelper.getStyles({
+			size,
+			color,
+			background,
+			container,
+			containerSize,
+			align,
+		}),
 	)
 </script>
 
 <nav {id} class={navClasses} aria-label={title}>
 	<ToggleTree
-		id={`${id}-${path}`}
+		id={`${id}-${pathname}`}
 		{items}
-		{path}
+		{pathname}
 		depth={0}
 		{layout}
 		{size}

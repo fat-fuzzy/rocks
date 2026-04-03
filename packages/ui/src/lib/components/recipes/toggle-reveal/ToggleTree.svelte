@@ -6,7 +6,7 @@
 	import format from '$lib/utils/format'
 
 	let {
-		path = '',
+		pathname,
 		layout,
 		size = '2xs',
 		color = 'primary',
@@ -45,11 +45,10 @@
 			? `${buttonAssetClass} ${alignClass}`
 			: alignClass}
 		<li
-			aria-current={$page.url.pathname ===
-			format.formatHref(itemPath ?? path, slug)
+			aria-current={pathname === format.formatHref(itemPath ?? pathname, slug)
 				? 'page'
 				: undefined}
-			class={$page.url.pathname === format.formatHref(itemPath ?? path, slug)
+			class={pathname === format.formatHref(itemPath ?? pathname, slug)
 				? `${itemClass} ${colorClass} ${shapeClass}`
 				: `${itemClass} ${shapeClass}`}
 		>
@@ -59,7 +58,7 @@
 					{slug}
 					{area}
 					asset={buttonAssetClass}
-					href={format.formatHref(path, slug)}
+					href={format.formatHref(pathname, slug)}
 					size="2xs"
 					font="sm"
 					place="nord"
@@ -71,7 +70,7 @@
 			{:else}
 				<a
 					data-sveltekit-preload-data
-					href={format.formatHref(itemPath ?? path, slug)}
+					href={format.formatHref(itemPath ?? pathname, slug)}
 					class={`${linkClass} ${linkAssetClass}`}
 				>
 					{label}
@@ -87,7 +86,7 @@
 {#snippet nestedLinkTree(subItems: NavItem[], slug: string, itemPath?: string)}
 	<ToggleTree
 		items={subItems}
-		path={format.formatHref(itemPath ?? path, slug)}
+		pathname={format.formatHref(itemPath ?? pathname, slug)}
 		id={`${id}-${slug}`}
 		{layout}
 		{size}

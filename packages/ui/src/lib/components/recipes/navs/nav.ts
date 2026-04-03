@@ -34,6 +34,7 @@ export type NavProps = UiBlockProps & {
 	id: string
 	title: string
 	path: string
+	pathname: string
 	align?: string
 	items: NavItem[]
 }
@@ -57,6 +58,7 @@ export type LinkTreeProps = UiBlockProps & {
 	id: string
 	depth: number
 	path: string
+	pathname: string
 	preload?: string
 	items: NavItem[]
 	redirect?: string

@@ -1,11 +1,13 @@
 <script lang="ts">
 	import type {ToggleRevealProps} from '$types'
 	import styleHelper from '$lib/utils/styles'
+	import {clickOutside} from '$lib/utils/browser/click-outside'
 
 	let {
 		id = 'toggle-reveal',
 		label = 'ToggleReveal',
 		checked,
+		dismiss,
 		asset,
 		assetType,
 		layout,
@@ -72,7 +74,7 @@
 	)
 </script>
 
-<ff-toggle-reveal class={containerClasses}>
+{#snippet control()}
 	<ff-control class="gare-control">
 		<label for={id} class={`ellipsis ravioli:3xs ${labelClasses}`}>
 			<div class="l:flex align:center justify:between">
@@ -82,8 +84,20 @@
 			<input type="checkbox" {id} class="{`sr-only ${place}`} {checked}" />
 		</label>
 	</ff-control>
+{/snippet}
 
-	<ff-reveal class={contentClasses}>
-		{@render children()}
-	</ff-reveal>
-</ff-toggle-reveal>
+{#if dismiss === 'outside'}
+	<ff-toggle-reveal class={containerClasses} {@attach clickOutside}>
+		{@render control()}
+		<ff-reveal class={contentClasses}>
+			{@render children()}
+		</ff-reveal>
+	</ff-toggle-reveal>
+{:else}
+	<ff-toggle-reveal class={containerClasses}>
+		{@render control()}
+		<ff-reveal class={contentClasses}>
+			{@render children()}
+		</ff-reveal>
+	</ff-toggle-reveal>
+{/if}

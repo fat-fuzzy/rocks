@@ -9,7 +9,7 @@
 	let {
 		id = 'toggle-nav',
 		label = 'ToggleNav',
-		path = '',
+		pathname = '',
 		asset,
 		preload,
 		layout,
@@ -90,8 +90,8 @@
 			<SkipLinks id={`sidebar-${id}`} text="Skip to content" href="#main" />
 		{/if}
 		<ToggleTree
-			id={`${id}-${path}`}
-			{path}
+			id={`${id}-${pathname}`}
+			{pathname}
 			{items}
 			{size}
 			{align}

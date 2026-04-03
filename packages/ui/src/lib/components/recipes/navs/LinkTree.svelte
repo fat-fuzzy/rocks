@@ -1,15 +1,13 @@
 <script lang="ts">
 	import type {LinkTreeProps, NavItem} from '$types'
 	import format from '$lib/utils/format.js'
-	import {getStores} from '$app/stores'
 
 	import ExpandLink from './ExpandLink.svelte'
 	import LinkTree from './LinkTree.svelte'
 
-	let page = getStores().page
-
 	let {
 		path = '',
+		pathname,
 		layout,
 		size = '2xs',
 		color = 'primary',
@@ -59,11 +57,10 @@
 			? `${buttonAssetClass} ${alignClass}`
 			: alignClass}
 		<li
-			aria-current={$page.url.pathname ===
-			format.formatHref(itemPath ?? path, slug)
+			aria-current={pathname === format.formatHref(itemPath ?? path, slug)
 				? 'page'
 				: undefined}
-			class={$page.url.pathname === format.formatHref(itemPath ?? path, slug)
+			class={pathname === format.formatHref(itemPath ?? path, slug)
 				? `${itemClass} ${colorClass} ${shapeClass}`
 				: `${itemClass} ${shapeClass}`}
 		>

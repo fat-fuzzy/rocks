@@ -5,6 +5,7 @@ import type {
 	NavProps,
 	NavItem,
 	FuzzyPayload,
+	ViewingPreferences,
 } from '$types'
 
 export type ToggleRevealProps = UiBlockProps &
@@ -12,6 +13,7 @@ export type ToggleRevealProps = UiBlockProps &
 		id: string
 		label: string
 		auto?: boolean // Auto collapse in small viewports
+		dismiss?: boolean
 		checked?: boolean // Initial state
 		area?: string
 		nav?: Snippet
@@ -26,7 +28,7 @@ export type ToggleNavProps = NavProps &
 export type ToggleTreeProps = UiBlockProps & {
 	id: string
 	depth: number
-	path: string
+	pathname: string // Current page url.pathname
 	layout?: string
 	align?: string
 	area?: string
@@ -45,4 +47,10 @@ export type ToggleLinkProps = UiBlockProps & {
 	place?: string
 	children: Snippet
 	depth: number
+}
+
+export type ToggleContextProps = UiBlockProps & {
+	path?: string
+	actionPath?: string
+	context: ViewingPreferences
 }
