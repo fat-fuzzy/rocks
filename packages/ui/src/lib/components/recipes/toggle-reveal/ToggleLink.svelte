@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type {ToggleLinkProps} from '$types'
 
+	import {resolve} from '$app/paths'
 	import ToggleReveal from '$lib/components/recipes/toggle-reveal/ToggleReveal.svelte'
 
 	let {
@@ -20,7 +21,7 @@
 </script>
 
 {#snippet link()}
-	<a data-sveltekit-preload-data {href} class="font:md">
+	<a data-sveltekit-preload-data href={resolve(href)} class="font:md">
 		{label}
 	</a>
 {/snippet}

@@ -1,10 +1,10 @@
 <script lang="ts">
 	import type {ToggleTreeProps, NavItem} from '$types'
 
+	import {resolve} from '$app/paths'
 	import ToggleLink from './ToggleLink.svelte'
 	import ToggleTree from './ToggleTree.svelte'
 	import format from '$lib/utils/format'
-	import {resolve} from '$app/paths'
 
 	let {
 		pathname,
@@ -38,7 +38,7 @@
 	data-sveltekit-preload-data={preload ? preload : undefined}
 >
 	{#each items as item (item.slug)}
-		{@const {slug, label, asset, itemPath} = item}
+		{@const {slug, label, asset, actionPath} = item}
 		{@const subItems = item.items}
 		{@const buttonAssetClass = subItems && asset ? asset : ''}
 		{@const linkAssetClass = !subItems && asset ? `emoji:${asset}` : ''}
@@ -46,10 +46,8 @@
 			? `${buttonAssetClass} ${alignClass}`
 			: alignClass}
 		<li
-			aria-current={pathname === format.formatHref(itemPath ?? pathname, slug)
-				? 'page'
-				: undefined}
-			class={pathname === format.formatHref(itemPath ?? pathname, slug)
+			aria-current={pathname === actionPath ? 'page' : undefined}
+			class={pathname === format.formatHref(actionPath ?? pathname, slug)
 				? `${itemClass} ${colorClass} ${shapeClass}`
 				: `${itemClass} ${shapeClass}`}
 		>
@@ -59,7 +57,7 @@
 					{slug}
 					{area}
 					asset={buttonAssetClass}
-					href={format.formatHref(pathname, slug)}
+					href={resolve(`${pathname}/${item.slug}`)}
 					size="2xs"
 					font="sm"
 					place="nord"
@@ -71,24 +69,26 @@
 			{:else}
 				<a
 					data-sveltekit-preload-data
-					href={resolve(`${pathname}/${slug}`)}
+					href={resolve(
+						actionPath ? `.${actionPath}/${item.slug}` : `./${item.slug}`,
+					)}
 					class={`${linkClass} ${linkAssetClass}`}
 				>
 					{label}
 				</a>
 				{#if subItems}
-					{@render nestedLinkTree(subItems, slug, itemPath)}
+					{@render nestedLinkTree(subItems, slug)}
 				{/if}
 			{/if}
 		</li>
 	{/each}
 </ul>
 
-{#snippet nestedLinkTree(subItems: NavItem[], slug: string, itemPath?: string)}
+{#snippet nestedLinkTree(subItems: NavItem[], slug: string)}
 	<ToggleTree
+		id={slug}
 		items={subItems}
-		pathname={format.formatHref(itemPath ?? pathname, slug)}
-		id={`${id}-${slug}`}
+		pathname={`./${slug}`}
 		{layout}
 		{size}
 		{align}
