@@ -13,20 +13,6 @@
 	}
 }
 
-@media screen and (min-width: 58.45rem) {
-	.metro.zone\:2 {
-		> .page-context {
-			position: unset;
-			box-shadow: unset;
-			grid-column-start: 2;
-		}
-
-		> .page-context > nav > ul > li.ellipsis {
-			max-inline-size: 100%;
-		}
-	}
-}
-
 @media screen and (min-width: 68.75rem) {
 	.metro.zone\:2 {
 		grid-template-columns: subgrid;

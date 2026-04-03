@@ -5,19 +5,17 @@
 		'page-main';
 	grid-column: span 3;
 	min-block-size: unset;
+	grid-column-start: 1;
+	grid-column-end: -1;
 }
 
 @media screen and (min-width: 68.75rem) {
 	.voyager.zone\:main {
 		grid-column-start: 1;
 		grid-column-end: -1;
-		max-block-size: var(--max-block-size);
-		padding-inline: calc(3.5 * var(--grid-gap)) 0;
 	}
 
-	.exchange:has(.gare\:ouest input.ouest:checked)
-		~ .zone\:2.hug
-		.voyager.zone\:main {
+	.exchange:has(.gare\:ouest input.ouest:checked) ~ .hug .voyager.zone\:main {
 		grid-column-start: 4;
 		grid-column-end: -1;
 		padding-inline: 0;
