@@ -61,14 +61,13 @@
 />
 
 {#snippet zoneHeader()}
-	<div class="navbar l:grid size:3xs align:center bg:inherit">
+	<div class="navbar l:grid size:3xs align:center bg:inherit raviolink">
 		<ToggleMainNav
 			id="nav"
 			name="nav"
 			title="Menu"
 			label="Menu"
-			size="3xs"
-			font="xs"
+			font="md"
 			variant="outline"
 			color="primary"
 			asset="home"
@@ -83,7 +82,7 @@
 		/>
 	</div>
 	<div
-		class="sidebar surface:0:neutral l:grid size:3xs align:center width:lg height:sm"
+		class="sidebar surface:0:neutral l:grid size:3xs align:center width:lg height:sm raviolink"
 	>
 		{#if sidenav.layout === 'tgv'}
 			<div class="app-name">
@@ -104,8 +103,8 @@
 				scroll="y"
 				layer={1}
 				justify="evenly"
-				size="3xs"
-				font="xs"
+				variant="bare"
+				font="md"
 				width="md"
 				height="lg"
 				background="neutral"
@@ -114,7 +113,7 @@
 		{/if}
 	</div>
 
-	<div class="context l:grid size:3xs bg:inherit">
+	<div class="context l:grid size:3xs bg:inherit raviolink">
 		<ToggleContext
 			id="appContext"
 			name="appContext"
@@ -122,15 +121,15 @@
 			path={page.url.pathname}
 			actionPath={page.url.pathname}
 			breakpoint="xs"
-			size="3xs"
-			font="xs"
+			font="md"
 			layout="grid"
 			formaction="updateSettings"
 			justify="center"
 			text="start"
+			place="est"
+			variant="bare"
 			background="inherit"
 			context={appContext}
-			reveal={appContext.reveal}
 		/>
 	</div>
 {/snippet}
