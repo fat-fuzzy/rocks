@@ -1,15 +1,12 @@
 import type {
 	UiBlockProps,
-	RevealLayoutProps,
 	FuzzyPayload,
-	FormCommonProps,
 	UiRevealState,
 	UiState,
 	UiShape,
 	UiVariant,
 	UiSize,
 	UiColor,
-	SettingsProps,
 } from '$types'
 
 import type {Snippet} from 'svelte'
@@ -33,6 +30,7 @@ export type NavItem = {
 export type NavProps = UiBlockProps & {
 	id: string
 	title: string
+	label?: string
 	pathname: string
 	align?: string
 	items: NavItem[]
@@ -76,13 +74,3 @@ export type ExpandLinkProps = UiBlockProps & {
 	actionPath?: string
 	onclick?: (payload: FuzzyPayload) => void
 }
-
-export type RevealNavProps = NavProps &
-	RevealLayoutProps &
-	FormCommonProps & {
-		type?: string
-		validator?: string
-		settings?: SettingsProps
-		preload?: string
-		onclick?: (payload: FuzzyPayload) => void
-	}

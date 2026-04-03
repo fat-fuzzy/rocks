@@ -47,7 +47,6 @@ import SignUp from '$lib/components/recipes/forms/SignUp.svelte'
 
 import Nav from '$lib/components/recipes/navs/Nav.svelte'
 import SkipLinks from '$lib/components/recipes/navs/SkipLinks.svelte'
-import RevealNav from '$lib/components/recipes/navs/RevealNav.svelte'
 import Breadcrumbs from '$lib/components/recipes/navs/Breadcrumbs.svelte'
 
 /**
@@ -171,7 +170,6 @@ const recipes = {
 	SignUp,
 	SkipLinks,
 	Nav,
-	RevealNav,
 }
 
 const raw = {

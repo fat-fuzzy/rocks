@@ -50,7 +50,6 @@ export interface Recipes {
 	SignUp: typeof import('$lib/components/recipes/forms/SignUp.svelte').default
 	SkipLinks: typeof import('$lib/components/recipes/navs/SkipLinks.svelte').default
 	Nav: typeof import('$lib/components/recipes/navs/Nav.svelte').default
-	RevealNav: typeof import('$lib/components/recipes/navs/RevealNav.svelte').default
 }
 
 export interface Raw {

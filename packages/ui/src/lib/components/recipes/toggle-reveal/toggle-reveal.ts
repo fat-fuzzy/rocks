@@ -33,9 +33,8 @@ export type ToggleTreeProps = UiBlockProps & {
 	align?: string
 	area?: string
 	container?: string
-	preload?: string
+	preload?: boolean
 	items: NavItem[]
-	redirect?: string
 	oninput?: (payload: FuzzyPayload) => void
 }
 

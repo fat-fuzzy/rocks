@@ -81,7 +81,7 @@
 />
 
 {#snippet zoneHeader()}
-	<div class="navbar l:grid size:3xs align:center bg:inherit raviolink">
+	<div class="navbar align:center bg:inherit raviolink">
 		<ToggleReveal
 			id="nav"
 			label="Menu"
@@ -117,7 +117,7 @@
 	</div>
 
 	<div
-		class="sidebar surface:0:neutral l:grid size:3xs align:center width:lg height:sm raviolink"
+		class="sidebar surface:0:neutral align:center width:lg height:sm raviolink"
 	>
 		{#if sidenav.layout === 'tgv'}
 			<div class="app-name">
@@ -168,7 +168,7 @@
 		{/if}
 	</div>
 
-	<div class="context l:grid size:3xs bg:inherit raviolink">
+	<div class="context bg:inherit raviolink">
 		<ToggleReveal
 			id="appContext"
 			label="Settings"

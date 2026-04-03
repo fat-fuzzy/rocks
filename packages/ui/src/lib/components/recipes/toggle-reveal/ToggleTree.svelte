@@ -4,6 +4,7 @@
 	import ToggleLink from './ToggleLink.svelte'
 	import ToggleTree from './ToggleTree.svelte'
 	import format from '$lib/utils/format'
+	import {resolve} from '$app/paths'
 
 	let {
 		pathname,
@@ -70,7 +71,7 @@
 			{:else}
 				<a
 					data-sveltekit-preload-data
-					href={format.formatHref(itemPath ?? pathname, slug)}
+					href={resolve(`${pathname}/${slug}`)}
 					class={`${linkClass} ${linkAssetClass}`}
 				>
 					{label}
