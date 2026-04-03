@@ -5,7 +5,7 @@ import type {
 	NavProps,
 	NavItem,
 	FuzzyPayload,
-} from '@fat-fuzzy/ui'
+} from '$types'
 
 export type ToggleRevealProps = UiBlockProps &
 	UiLayoutProps & {

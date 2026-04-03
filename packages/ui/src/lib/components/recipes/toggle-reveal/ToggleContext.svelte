@@ -18,6 +18,7 @@
 		asset = 'settings',
 		align = 'end',
 		justify,
+		reverse,
 		text,
 		formaction,
 		actionPath,
@@ -52,6 +53,7 @@
 	{align}
 	{justify}
 	{text}
+	{reverse}
 >
 	<Settings
 		id={`${id}-menu`}

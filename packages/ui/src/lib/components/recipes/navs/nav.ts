@@ -34,9 +34,6 @@ export type NavProps = UiBlockProps & {
 	id: string
 	title: string
 	path: string
-	layout?: string
-	background?: string
-	container?: string
 	align?: string
 	items: NavItem[]
 }
@@ -45,10 +42,6 @@ export type PageNavProps = UiBlockProps & {
 	id: string
 	label?: string
 	hash?: string
-	layout?: string
-	background?: string
-	container?: string
-	align?: string
 	items: NavItem[]
 }
 
@@ -57,10 +50,6 @@ export type BreadcrumbsProps = UiBlockProps & {
 	id: string
 	label?: string
 	path: string
-	layout?: string
-	background?: string
-	container?: string
-	align?: string
 	breadcrumbTabs?: Snippet // TODO: deprecate with tabs
 }
 
@@ -68,9 +57,6 @@ export type LinkTreeProps = UiBlockProps & {
 	id: string
 	depth: number
 	path: string
-	layout?: string
-	align?: string
-	container?: string
 	preload?: string
 	items: NavItem[]
 	redirect?: string

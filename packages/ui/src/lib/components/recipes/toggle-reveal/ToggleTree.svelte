@@ -1,13 +1,9 @@
 <script lang="ts">
 	import type {ToggleTreeProps, NavItem} from '$types'
-	import ui from '@fat-fuzzy/ui'
-	import {getStores} from '$app/stores'
 
 	import ToggleLink from './ToggleLink.svelte'
 	import ToggleTree from './ToggleTree.svelte'
-
-	let page = getStores().page
-	const {format} = ui.utils
+	import format from '$lib/utils/format'
 
 	let {
 		path = '',
