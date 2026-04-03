@@ -28,13 +28,13 @@
 @media screen and (min-width: 68.75rem) {
 	.metro.zone\:main {
 		grid-column-start: 1;
-		grid-column-end: 5;
+		grid-column-end: 2;
 		padding-inline: calc(3.5 * var(--grid-gap)) 0;
 		max-block-size: var(--max-block-size);
 	}
 
 	.exchange:has(.gare\:ouest input.ouest:checked)
-		~ .zone\:2.hug
+		~ .metro.hug
 		.page-context:not(.empty) {
 		grid-column-start: 5;
 		grid-column-end: -1;

@@ -18,6 +18,7 @@
 		> .page-context {
 			position: unset;
 			box-shadow: unset;
+			grid-column-start: 2;
 		}
 
 		> .page-context > nav > ul > li.ellipsis {
