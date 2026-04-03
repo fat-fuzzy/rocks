@@ -9,4 +9,5 @@ export type NavItem = {
 	actionPath?: string
 	layout?: string
 	items?: NavItem[]
+	url?: URL
 }

@@ -11,7 +11,7 @@ const usagesMarkdowns = usages.markdowns
 	.reverse()
 
 export const load = async ({locals, url, params}) => {
-	const sidebar = buildNav('about')
+	const sidebar = buildNav('about', url)
 	let talks
 	let speakerNotes
 
@@ -36,12 +36,14 @@ export const load = async ({locals, url, params}) => {
 			item.items = usagesMarkdowns.map(({meta}) => ({
 				...meta,
 				label: meta.title,
+				url,
 			}))
 			item.reveal = locals.navUsage
 		} else if (item.slug === 'decisions') {
 			item.items = decisionsMarkdowns.map(({meta}) => ({
 				...meta,
 				label: meta.title,
+				url,
 			}))
 			item.reveal = locals.navDecisions
 		} else if (item.slug === 'speaking') {
@@ -50,10 +52,10 @@ export const load = async ({locals, url, params}) => {
 				item.items = talks.map(({meta}) => ({
 					...meta,
 					label: meta.title,
-					formaction: `toggleTalk-${meta.slug}`, // TODO: : generate toggleReveal actions per talk
+					url,
 				}))
 			} else {
-				item.items = buildSubnav('/about/speaking', talks)
+				item.items = buildSubnav('/about/speaking', talks, url)
 			}
 		}
 		return item

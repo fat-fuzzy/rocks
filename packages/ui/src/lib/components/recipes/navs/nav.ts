@@ -1,13 +1,4 @@
-import type {
-	UiBlockProps,
-	FuzzyPayload,
-	UiRevealState,
-	UiState,
-	UiShape,
-	UiVariant,
-	UiSize,
-	UiColor,
-} from '$types'
+import type {UiBlockProps, UiShape, UiVariant, UiSize, UiColor} from '$types'
 
 import type {Snippet} from 'svelte'
 
@@ -19,12 +10,12 @@ export type NavItem = {
 	size?: UiSize
 	variant?: UiVariant
 	shape?: UiShape
-	reveal?: UiRevealState
 	formaction?: string
 	actionPath?: string
 	itemPath?: string
 	preload?: string
 	items?: NavItem[]
+	url?: URL
 }
 
 export type NavProps = UiBlockProps & {

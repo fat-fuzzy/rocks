@@ -65,6 +65,7 @@ export const pages: {[key: string]: NavItem} = {
 		assetType: 'emoji',
 		layout: 'metro',
 		items: [],
+		actionPath: '/blog',
 	},
 	about: {
 		slug: 'about',
@@ -73,6 +74,7 @@ export const pages: {[key: string]: NavItem} = {
 		asset: 'doc',
 		assetType: 'emoji',
 		layout: 'voyager',
+		actionPath: '/about',
 		items: [
 			{
 				slug: 'usage',
@@ -214,7 +216,7 @@ export const pages: {[key: string]: NavItem} = {
 	},
 }
 
-export function buildNav(page: string) {
+export function buildNav(page: string, url: URL) {
 	const nav = {...navBase, ...pages[page]}
 	nav.label = pages[page].label ?? page
 	nav.items = [pages[page]]
@@ -226,30 +228,35 @@ export function buildNav(page: string) {
 					slug: c,
 					title: c,
 					label: c,
+					url,
 				}))
 			} else if (item.slug === 'blocks') {
 				item.items = blockNames.map((c) => ({
 					slug: c,
 					title: c,
 					label: c,
+					url,
 				}))
 			} else if (item.slug === 'layouts') {
 				item.items = layoutNames.map((c) => ({
 					slug: c,
 					title: c,
 					label: c,
+					url,
 				}))
 			} else if (item.slug === 'recipes') {
 				item.items = recipeNames.map((c) => ({
 					slug: c,
 					title: c,
 					label: c,
+					url,
 				}))
 			} else if (item.slug === 'raw') {
 				item.items = rawNames.map((c) => ({
 					slug: c,
 					title: c,
 					label: c,
+					url,
 				}))
 			}
 			return item
@@ -290,7 +297,7 @@ export function getLabel(pathname: string, pages: {[key: string]: NavItem}) {
 	}
 }
 
-export function buildSubnav(path: string, markdowns: Markdown[]) {
+export function buildSubnav(path: string, markdowns: Markdown[], url: URL) {
 	const subnav: NavItem[] = markdowns.reduce((links: NavItem[], {meta}) => {
 		if (meta.series) {
 			if (meta.index === 0) {
@@ -306,6 +313,7 @@ export function buildSubnav(path: string, markdowns: Markdown[]) {
 									title: item.meta.series?.title,
 									label: item.meta.series?.title,
 									itemPath: `${path}/${meta.talk}`,
+									url,
 								}
 							}
 						}
@@ -322,7 +330,8 @@ export function buildSubnav(path: string, markdowns: Markdown[]) {
 				talk: meta.talk,
 				title: meta.title,
 				label: getLabel(meta.slug, pages),
-				itemPath: `${path}/${meta.talk}`,
+				actionPath: `${path}/${meta.slug}`,
+				url,
 			}
 			links.push(link)
 		}

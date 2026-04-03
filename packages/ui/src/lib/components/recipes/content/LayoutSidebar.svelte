@@ -4,7 +4,7 @@
 	import ToggleReveal from '$lib/components/recipes/toggle-reveal/ToggleReveal.svelte'
 	import ToggleTree from '$lib/components/recipes/toggle-reveal/ToggleTree.svelte'
 
-	let {size = 'md', sidenav, app, children}: LayoutProps = $props()
+	let {size = 'md', sidenav, url, app, children}: LayoutProps = $props()
 	let pathname = $derived(sidenav?.pathname || '/')
 	let brightness = $derived(app?.settings?.brightness)
 	let contrast = $derived(app?.settings?.contrast)
@@ -49,6 +49,7 @@
 						{pathname}
 						preload={true}
 						depth={0}
+						{url}
 					/>
 				</ToggleReveal>
 			</nav>

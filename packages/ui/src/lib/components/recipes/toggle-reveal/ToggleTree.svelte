@@ -20,6 +20,7 @@
 		container,
 		items = [],
 		preload,
+		url,
 	}: ToggleTreeProps = $props()
 
 	let layoutClass = $derived(layout ? `l:${layout}:${size} l:${container}` : '')
@@ -57,7 +58,7 @@
 					{slug}
 					{area}
 					asset={buttonAssetClass}
-					href={resolve(`${pathname}/${item.slug}`)}
+					href={`${pathname}/${slug}`}
 					size="2xs"
 					font="sm"
 					place="nord"
@@ -69,9 +70,9 @@
 			{:else}
 				<a
 					data-sveltekit-preload-data
-					href={resolve(
-						actionPath ? `.${actionPath}/${item.slug}` : `./${item.slug}`,
-					)}
+					href={url?.pathname
+						? `${url?.pathname}/${item.slug}`
+						: `${pathname}/${item.slug}`}
 					class={`${linkClass} ${linkAssetClass}`}
 				>
 					{label}
@@ -88,7 +89,8 @@
 	<ToggleTree
 		id={slug}
 		items={subItems}
-		pathname={`./${slug}`}
+		pathname={`/${slug}`}
+		{url}
 		{layout}
 		{size}
 		{align}

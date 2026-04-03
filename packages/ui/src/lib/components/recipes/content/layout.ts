@@ -7,5 +7,6 @@ export type LayoutProps = {
 	sidenav?: NavProps
 	main?: Snippet
 	app?: {settings: {[key: string]: string}}
+	url?: URL
 	children?: Snippet
 }

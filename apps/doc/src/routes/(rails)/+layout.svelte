@@ -162,6 +162,7 @@
 						{pathname}
 						preload={true}
 						depth={0}
+						url={page.url}
 					/>
 				</ToggleReveal>
 			</nav>
