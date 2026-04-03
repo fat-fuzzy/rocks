@@ -48,6 +48,7 @@ export interface Recipes {
 	ToggleMenu: typeof import('$lib/components/recipes/menus/ToggleMenu/ToggleMenu.svelte').default
 	RevealMenu: typeof import('$lib/components/recipes/menus/RevealMenu.svelte').default
 	SignUp: typeof import('$lib/components/recipes/forms/SignUp.svelte').default
+	SkipLinks: typeof import('$lib/components/recipes/navs/SkipLinks.svelte').default
 	Nav: typeof import('$lib/components/recipes/navs/Nav.svelte').default
 	RevealNav: typeof import('$lib/components/recipes/navs/RevealNav.svelte').default
 }
@@ -84,7 +85,6 @@ export interface Drafts {
 	PageHeader: typeof import('$lib/components/recipes/content/PageHeader.svelte').default
 	ExpandLink: typeof import('$lib/components/recipes/navs/ExpandLink.svelte').default
 	Settings: typeof import('$lib/components/recipes/forms/Settings.svelte').default
-	ToggleContext: typeof import('$lib/components/recipes/toggle-reveal/ToggleContext.svelte').default
 	Zoomer: typeof import('$lib/components/blocks/overlays/Zoomer.svelte').default
 	Tabs: typeof import('$lib/components/recipes/tabs/Tabs.svelte').default
 	Toast: typeof import('$lib/components/blocks/overlays/Toast/Toast.svelte').default
@@ -93,8 +93,6 @@ export interface Drafts {
 	ToggleReveal: typeof import('$lib/components/recipes/toggle-reveal/ToggleReveal.svelte').default
 	ToggleLink: typeof import('$lib/components/recipes/toggle-reveal/ToggleLink.svelte').default
 	ToggleTree: typeof import('$lib/components/recipes/toggle-reveal/ToggleTree.svelte').default
-	ToggleSideNav: typeof import('$lib/components/recipes/toggle-reveal/ToggleSideNav.svelte').default
-	ToggleMainNav: typeof import('$lib/components/recipes/toggle-reveal/ToggleMainNav.svelte').default
 }
 
 export interface Headless {

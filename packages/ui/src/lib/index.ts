@@ -43,10 +43,10 @@ import RevealMenu from '$lib/components/recipes/menus/RevealMenu.svelte'
 import ButtonMenu from '$lib/components/recipes/menus/ButtonMenu.svelte'
 import ToggleMenu from '$lib/components/recipes/menus/ToggleMenu/ToggleMenu.svelte'
 import Settings from '$lib/components/recipes/forms/Settings.svelte'
-import ToggleContext from '$lib/components/recipes/toggle-reveal/ToggleContext.svelte'
 import SignUp from '$lib/components/recipes/forms/SignUp.svelte'
 
 import Nav from '$lib/components/recipes/navs/Nav.svelte'
+import SkipLinks from '$lib/components/recipes/navs/SkipLinks.svelte'
 import RevealNav from '$lib/components/recipes/navs/RevealNav.svelte'
 import Breadcrumbs from '$lib/components/recipes/navs/Breadcrumbs.svelte'
 
@@ -93,8 +93,6 @@ import ToastGroup from '$lib/components/blocks/overlays/Toast/ToastGroup.svelte'
 import ToggleReveal from '$lib/components/recipes/toggle-reveal/ToggleReveal.svelte'
 import ToggleLink from '$lib/components/recipes/toggle-reveal/ToggleLink.svelte'
 import ToggleTree from '$lib/components/recipes/toggle-reveal/ToggleTree.svelte'
-import ToggleSideNav from '$lib/components/recipes/toggle-reveal/ToggleSideNav.svelte'
-import ToggleMainNav from '$lib/components/recipes/toggle-reveal/ToggleMainNav.svelte'
 
 /**
  * Forms
@@ -171,6 +169,7 @@ const recipes = {
 	ToggleMenu,
 	RevealMenu,
 	SignUp,
+	SkipLinks,
 	Nav,
 	RevealNav,
 }
@@ -208,7 +207,6 @@ const drafts = {
 	Settings,
 	PageNav,
 	PageHeader,
-	ToggleContext,
 	Zoomer,
 	Tabs,
 	Cookies,
@@ -219,8 +217,6 @@ const drafts = {
 	ToggleReveal,
 	ToggleTree,
 	ToggleLink,
-	ToggleSideNav,
-	ToggleMainNav,
 }
 
 const headless = {

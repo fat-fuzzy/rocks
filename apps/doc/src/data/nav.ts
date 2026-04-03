@@ -259,6 +259,37 @@ export function buildNav(page: string) {
 	return nav
 }
 
+export function searchLabelInItems(label: string, items?: NavItem[]) {
+	if (!items) {
+		return
+	}
+	for (let i = 0; i++; i < items.length) {
+		const itemLabel = items[i].label
+		if (itemLabel === label) {
+			return itemLabel
+		} else if (items[i].items !== undefined) {
+			return searchLabelInItems(label, items[i].items)
+		}
+	}
+}
+
+export function getLabel(pathname: string, pages: {[key: string]: NavItem}) {
+	const label = pathname
+	const pageEntries = Object.entries(pages)
+	for (const entry of pageEntries) {
+		const items = entry[1].items || []
+		if (entry[0] === label) {
+			return entry[1].label
+		} else if (items) {
+			const itemLabel = searchLabelInItems(label, items)
+			if (!itemLabel) {
+				return label
+			}
+			return itemLabel
+		}
+	}
+}
+
 export function buildSubnav(path: string, markdowns: Markdown[]) {
 	const subnav: NavItem[] = markdowns.reduce((links: NavItem[], {meta}) => {
 		if (meta.series) {
@@ -290,6 +321,7 @@ export function buildSubnav(path: string, markdowns: Markdown[]) {
 				slug: meta.slug,
 				talk: meta.talk,
 				title: meta.title,
+				label: getLabel(meta.slug, pages),
 				itemPath: `${path}/${meta.talk}`,
 			}
 			links.push(link)

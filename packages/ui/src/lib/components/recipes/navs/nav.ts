@@ -33,7 +33,6 @@ export type NavItem = {
 export type NavProps = UiBlockProps & {
 	id: string
 	title: string
-	path: string
 	pathname: string
 	align?: string
 	items: NavItem[]

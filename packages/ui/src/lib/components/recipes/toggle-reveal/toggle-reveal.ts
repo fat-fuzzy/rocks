@@ -13,7 +13,7 @@ export type ToggleRevealProps = UiBlockProps &
 		id: string
 		label: string
 		auto?: boolean // Auto collapse in small viewports
-		dismiss?: boolean
+		dismiss?: string
 		checked?: boolean // Initial state
 		area?: string
 		nav?: Snippet
