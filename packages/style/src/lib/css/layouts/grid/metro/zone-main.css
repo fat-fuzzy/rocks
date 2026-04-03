@@ -39,7 +39,9 @@
 		grid-column-end: -1;
 	}
 
-	.exchange:has(.gare\:ouest input.ouest:checked) ~ .metro.hug > .zone\:main {
-		grid-column-end: 2;
+	.exchange:has(.gare\:ouest input.ouest:checked) ~ .hug .metro.zone\:main {
+		grid-column-start: 4;
+		grid-column-end: 4;
+		padding-inline: 0;
 	}
 }
