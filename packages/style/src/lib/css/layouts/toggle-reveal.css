@@ -1,6 +1,10 @@
 ff-toggle-reveal {
 	position: relative;
 
+	ff-control + ff-reveal {
+		max-block-size: var(--max-overlay-size);
+	}
+
 	ff-control > label {
 		z-index: calc(var(--z-index-overlay) + 1);
 	}
@@ -34,30 +38,18 @@ ff-toggle-reveal {
 }
 
 ff-toggle-reveal.ouest {
-	ff-icon::before {
+	--y-axis: var(--outline-offset-sm);
+
+	ff-icon.svg\:chevron-right::before {
 		transform: rotate(0deg);
 		transition: transform 200ms ease-in;
 	}
 
-	label:has(input:checked) ff-icon::before {
+	label:has(input:checked) ff-icon.svg\:chevron-right::before {
 		transform: rotate(90deg);
 		transition: transform 200ms ease-out;
 	}
-}
 
-ff-toggle-reveal.est {
-	ff-icon::before {
-		transform: rotate(180deg);
-		transition: transform 200ms ease-in;
-	}
-
-	label:has(input:checked) ff-icon::before {
-		transform: rotate(90deg);
-		transition: transform 200ms ease-out;
-	}
-}
-
-ff-toggle-reveal.ouest {
 	ff-control + ff-reveal {
 		--x-axis: -100%;
 		--y-axis: 0;
@@ -68,9 +60,30 @@ ff-toggle-reveal.ouest {
 			transform 200ms ease-in,
 			opacity 150ms ease-in 50ms;
 	}
+
+	ff-control:has(input:checked) + ff-reveal {
+		block-size: var(--overlay-block-size);
+		inline-size: var(--overlay-inline-size);
+		transition:
+			transform 200ms ease-out,
+			block-size 250ms ease-out,
+			inline-size 250ms ease-out;
+	}
 }
 
 ff-toggle-reveal.est {
+	--y-axis: var(--outline-offset-sm);
+
+	ff-icon::before {
+		transform: rotate(180deg);
+		transition: transform 200ms ease-in;
+	}
+
+	label:has(input:checked) ff-icon::before {
+		transform: rotate(90deg);
+		transition: transform 200ms ease-out;
+	}
+
 	ff-control + ff-reveal {
 		--x-axis: 100%;
 		--y-axis: 0;
@@ -85,13 +98,14 @@ ff-toggle-reveal.est {
 	ff-control:has(input:checked) + ff-reveal {
 		--x-axis: calc(-1 * var(--outline-offset-sm) - 50%);
 		inline-size: var(--overlay-inline-size);
+		transition:
+			transform 200ms ease-out,
+			opacity 150ms ease-out 50ms;
 	}
 }
 
 ff-toggle-reveal.nord {
 	ff-control + ff-reveal {
-		--x-axis: 0;
-		--y-axis: -100%;
 		inline-size: var(--overlay-inline-size);
 		block-size: 0;
 	}
@@ -99,31 +113,23 @@ ff-toggle-reveal.nord {
 
 ff-toggle-reveal.sud {
 	ff-control + ff-reveal {
-		--x-axis: 0;
-		--y-axis: 100%;
 		inline-size: var(--overlay-inline-size);
 		block-size: 0;
 	}
 }
 
-ff-toggle-reveal.ouest {
-	--y-axis: var(--outline-offset-sm);
-	ff-control:has(input:checked) + ff-reveal {
-		block-size: var(--overlay-block-size);
-		inline-size: var(--overlay-inline-size);
-		transition:
-			transform 200ms ease-out,
-			block-size 250ms ease-out,
-			inline-size 250ms ease-out;
-	}
-}
+ff-toggle-reveal.nord,
+ff-toggle-reveal.sud {
+	position: relative;
+	transform: unset;
 
-ff-toggle-reveal.est {
-	--y-axis: var(--outline-offset-sm);
-	ff-control:has(input:checked) + ff-reveal {
+	ff-control + ff-reveal {
+		inline-size: var(--overlay-inline-size);
+		block-size: 0;
+
 		transition:
-			transform 200ms ease-out,
-			opacity 150ms ease-out 50ms;
+			opacity 150ms ease-out 200ms,
+			block-size 250ms ease-out;
 	}
 }
 
@@ -132,13 +138,12 @@ ff-toggle-reveal.sud {
 	ff-control:has(input:checked) + ff-reveal,
 	ff-control:has(input:checked) + ff-reveal {
 		position: relative;
+
 		transition:
-			transform 250ms ease-out,
 			opacity 150ms ease-out 200ms,
-			block-size 250ms ease-out,
-			inline-size 250ms ease-out;
+			block-size 250ms ease-out;
 		block-size: fit-content;
-		inline-size: var(--overlay-inline-size);
+
 		opacity: 1;
 	}
 }
