@@ -59,8 +59,8 @@ const navBase = {
 const pages: {[key: string]: NavItem} = {
 	blog: {
 		slug: 'blog',
-		title: 'Blog',
 		label: 'Blog',
+		title: 'Content',
 		asset: 'pencil',
 		assetType: 'emoji',
 		layout: 'metro',
@@ -82,7 +82,6 @@ const pages: {[key: string]: NavItem} = {
 				label: 'Usage',
 				asset: 'usage',
 				assetType: 'emoji',
-				formaction: 'toggleUsage',
 				actionPath: '/about/usage',
 				items: [],
 			},
@@ -92,7 +91,6 @@ const pages: {[key: string]: NavItem} = {
 				label: 'Decisions',
 				asset: 'decisions',
 				assetType: 'emoji',
-				formaction: 'toggleDecisions',
 				actionPath: '/about/decisions',
 				items: [],
 			},
@@ -103,7 +101,6 @@ const pages: {[key: string]: NavItem} = {
 				asset: 'speaking',
 				assetType: 'emoji',
 				layout: 'steam',
-				formaction: 'toggleSpeaking',
 				actionPath: '/about/speaking',
 				items: [],
 			},
@@ -124,7 +121,6 @@ const pages: {[key: string]: NavItem} = {
 				asset: 'projects',
 				assetType: 'emoji',
 				layout: 'tram',
-				formaction: 'toggleProjects',
 				actionPath: '/play/projects',
 				items: [],
 			},
@@ -134,7 +130,6 @@ const pages: {[key: string]: NavItem} = {
 				label: 'Learning',
 				asset: 'learning',
 				layout: 'tram',
-				formaction: 'toggleLearning',
 				actionPath: '/play/learning',
 				items: [],
 			},
@@ -155,7 +150,6 @@ const pages: {[key: string]: NavItem} = {
 				asset: 'tokens',
 				assetType: 'emoji',
 				layout: 'tram',
-				formaction: 'toggleTokens',
 				actionPath: '/ui/tokens',
 				items: [],
 			},
@@ -166,7 +160,6 @@ const pages: {[key: string]: NavItem} = {
 				asset: 'blocks',
 				assetType: 'emoji',
 				layout: 'tram',
-				formaction: 'toggleBlocks',
 				actionPath: '/ui/blocks',
 				items: [],
 			},
@@ -177,7 +170,6 @@ const pages: {[key: string]: NavItem} = {
 				asset: 'layouts',
 				assetType: 'emoji',
 				layout: 'tram',
-				formaction: 'toggleLayouts',
 				actionPath: '/ui/layouts',
 				items: [],
 			},
@@ -188,7 +180,6 @@ const pages: {[key: string]: NavItem} = {
 				asset: 'recipes',
 				assetType: 'emoji',
 				layout: 'tram',
-				formaction: 'toggleRecipes',
 				actionPath: '/ui/recipes',
 				items: [],
 			},
@@ -199,7 +190,6 @@ const pages: {[key: string]: NavItem} = {
 				asset: 'raw',
 				assetType: 'emoji',
 				layout: 'tram',
-				formaction: 'toggleRaw',
 				actionPath: '/ui/raw',
 				items: [],
 			},
@@ -218,7 +208,7 @@ const pages: {[key: string]: NavItem} = {
 
 export function buildNav(page: string) {
 	const nav = {...navBase, ...pages[page]}
-	nav.label = pages[page].label ?? page
+	nav.label = pages[page].title ?? pages[page].label ?? page
 	nav.items = [structuredClone(pages[page])]
 
 	if (page === 'ui') {

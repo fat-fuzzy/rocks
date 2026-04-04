@@ -27,6 +27,7 @@
 	label="Menu"
 	font="md"
 	variant="outline"
+	shape="square"
 	color="primary"
 	asset="home"
 	justify="center"
@@ -37,7 +38,7 @@
 	background="inherit"
 >
 	<ul
-		class="header-nav l:switcher:2xs size:md unstyled color:primary align:center justify:evenly w:full bg:inherit"
+		class="header-nav l:switcher:2xs size:md unstyled color:primary align:start justify:evenly w:full bg:inherit"
 	>
 		<!-- <ul class={`header-nav unstyled ${navClasses}`}> -->
 		<li aria-current={page.url.pathname === '/' ? 'page' : undefined}>

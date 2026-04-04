@@ -41,6 +41,7 @@
 					font="md"
 					width="md"
 					height="lg"
+					shape="square"
 					dismiss="outside"
 				>
 					<ToggleTree

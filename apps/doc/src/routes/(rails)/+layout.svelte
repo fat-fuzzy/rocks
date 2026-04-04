@@ -86,19 +86,18 @@
 />
 
 {#snippet zoneHeader()}
-	<div class="navbar align:center bg:inherit raviolink">
+	<div class="navbar align:center bg:inherit">
 		<ToggleReveal
 			id="nav"
 			label="Menu"
-			font="md"
-			variant="outline"
+			font="sm"
+			variant="bare"
 			color="primary"
 			asset="home"
 			justify="center"
-			dismiss="outside"
 			auto={true}
-			place="nord"
 			breakpoint="sm"
+			shape="square"
 			background="inherit"
 		>
 			<ul
@@ -150,13 +149,14 @@
 					asset={sidenav.asset}
 					color={sidenav.color}
 					background={sidenav.background}
-					variant={sidenav.variant}
+					variant="bare"
 					checked={true}
 					area="gare"
 					place="ouest"
+					shape="square"
 					scroll="y"
 					justify="evenly"
-					font="md"
+					font="sm"
 					width="md"
 					height="lg"
 					dismiss="outside"
@@ -167,6 +167,7 @@
 						{pathname}
 						preload={true}
 						depth={0}
+						shape="square"
 					/>
 				</ToggleReveal>
 			</nav>
@@ -180,12 +181,13 @@
 			auto={true}
 			breakpoint="xs"
 			asset="settings"
-			font="md"
+			font="sm"
 			layout="grid"
 			justify="center"
 			text="start"
 			place="est"
 			variant="bare"
+			shape="square"
 			background="inherit"
 		>
 			<Settings

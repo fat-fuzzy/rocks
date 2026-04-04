@@ -1,16 +1,16 @@
 <script lang="ts">
 	import type {ToggleRevealProps} from '$types'
 	import styleHelper from '$lib/utils/styles'
-	import {clickOutside} from '$lib/utils/browser/click-outside'
+	// import {clickOutside} from '$lib/utils/browser/click-outside'
 
 	let {
 		id = 'toggle-reveal',
 		label = 'ToggleReveal',
 		checked,
-		dismiss,
+		// dismiss,
+		auto,
 		asset,
 		assetType,
-		layout,
 		scroll,
 		layer,
 		color,
@@ -26,7 +26,7 @@
 		area,
 		width,
 		height,
-		place = 'top',
+		place = 'nord',
 		container,
 		background,
 		nav,
@@ -37,13 +37,9 @@
 		styleHelper.getStyles({
 			font,
 			text,
-			color,
-			shape,
 			size,
-			variant,
-			layout,
-			breakpoint,
-			threshold,
+			color,
+			variant: 'bare',
 		}),
 	)
 
@@ -52,14 +48,9 @@
 			asset,
 			assetType,
 			size,
-		}),
-	)
-
-	let controlClasses = $derived(
-		styleHelper.getStyles({
-			align: '',
-			layout: 'flex',
-			justify: 'between',
+			color,
+			shape,
+			variant,
 		}),
 	)
 
@@ -74,7 +65,12 @@
 		}),
 	)
 	let areaClass = $derived(area ? `${area}:${place} ${place}` : place)
-	let containerClasses = $derived(`${areaClass} ${layoutClasses}`)
+	let autoClasses = $derived(
+		auto ? `auto bp:${breakpoint} th:${threshold}` : '',
+	)
+	let containerClasses = $derived(
+		`${autoClasses} ${areaClass} ${layoutClasses}`,
+	)
 
 	let scrollClass = $derived(scroll ? `scroll:${scroll}` : '')
 	let layerClass = $derived(layer ? `layer:${layer}` : '')
@@ -85,9 +81,9 @@
 </script>
 
 {#snippet control()}
-	<ff-control class={`gare-control ${controlClasses}`}>
-		<label for={id} class={`ellipsis ravioli:3xs ${labelClasses}`}>
-			<div class="l:flex align:center justify:between">
+	<ff-control class="gare-control">
+		<label for={id} class={`ellipsis ${labelClasses}`}>
+			<ff-label class="l:flex w:full align:center justify:between">
 				{#if nav}
 					{@render nav()}
 				{:else}
@@ -96,13 +92,13 @@
 					</span>
 				{/if}
 				<ff-icon class={iconClasses}></ff-icon>
-			</div>
+			</ff-label>
 			<input type="checkbox" {id} class="{`sr-only ${place}`} {checked}" />
 		</label>
 	</ff-control>
 {/snippet}
 
-{#if dismiss === 'outside'}
+<!-- {#if dismiss === 'outside'}
 	<ff-toggle-reveal class={containerClasses} {@attach clickOutside}>
 		{@render control()}
 		<ff-reveal class={contentClasses}>
@@ -116,4 +112,11 @@
 			{@render children()}
 		</ff-reveal>
 	</ff-toggle-reveal>
-{/if}
+{/if} -->
+
+<ff-toggle-reveal class={containerClasses}>
+	{@render control()}
+	<ff-reveal class={contentClasses}>
+		{@render children()}
+	</ff-reveal>
+</ff-toggle-reveal>

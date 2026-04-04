@@ -8,6 +8,8 @@
 		slug,
 		color,
 		size,
+		shape,
+		layer,
 		variant = 'bare',
 		label,
 		asset,
@@ -20,40 +22,27 @@
 </script>
 
 {#snippet link()}
-	<a data-sveltekit-preload-data href={resolve(href)} class="font:md">
+	<a data-sveltekit-preload-data {href} class="font:md">
 		{label}
 	</a>
 {/snippet}
 
-{#snippet expander(embedLink?: boolean)}
-	<ToggleReveal
-		id={`toggle-${slug}`}
-		label={` Toggle ${slug}`}
-		{asset}
-		{assetType}
-		{color}
-		{size}
-		{variant}
-		{area}
-		{place}
-		nav={embedLink ? link : undefined}
-	>
-		{#if children}
-			{@render children()}
-		{/if}
-	</ToggleReveal>
-{/snippet}
-
-<ff-control
-	class={`l:flex column size:3xs justify:between align:center ${area}:${area}`}
+<ToggleReveal
+	id={`toggle-${slug}`}
+	label={` Toggle ${slug}`}
+	{asset}
+	{assetType}
+	{color}
+	{size}
+	{shape}
+	{variant}
+	{area}
+	{place}
+	{layer}
+	layout="flex"
+	nav={depth <= 1 ? link : undefined}
 >
-	{#if depth > 1}
-		{@render expander(true)}
-	{:else}
-		{@render link()}
+	{#if children}
+		{@render children()}
 	{/if}
-</ff-control>
-
-{#if depth === 1}
-	{@render expander()}
-{/if}
+</ToggleReveal>
