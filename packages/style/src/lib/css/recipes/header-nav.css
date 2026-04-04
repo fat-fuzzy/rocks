@@ -61,8 +61,10 @@
 
 @media screen and (min-width: 38.75rem) {
 	.header-nav {
+		inline-size: auto;
 		li {
-			padding-inline: var(--outline-offset-sm);
+			padding-inline: var(--outline-offset-lg);
+			padding-block: var(--outline-offset-lg);
 		}
 	}
 }

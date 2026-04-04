@@ -40,8 +40,8 @@
 	}
 
 	.exchange:has(.gare\:ouest input.ouest:checked) ~ .hug .metro.zone\:main {
-		grid-column-start: 1;
-		grid-column-end: 1;
+		grid-column-start: 4;
+		grid-column-end: 4;
 		padding-inline: 0;
 	}
 }

@@ -19,8 +19,8 @@ import './ravioli.css' /* Use for all-round padding  */
 /* == Layout recipes == */
 
 /* Use for displaying hidden content with a button action */
-import './reveal.css'
-import './reveal-sticky.css'
+// import './reveal.css'
+// import './reveal-sticky.css'
 
 /* == Layout spices  == */
 import './breakpoint.css' /* Breakpoint utilities */
