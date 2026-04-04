@@ -3,7 +3,6 @@
 	grid-template-areas:
 		'page-header'
 		'page-main';
-	grid-column: span 3;
 	min-block-size: unset;
 	grid-column-start: 1;
 	grid-column-end: -1;
@@ -13,11 +12,31 @@
 	.voyager.zone\:main {
 		grid-column-start: 1;
 		grid-column-end: -1;
+
+		> .page-context:not(.empty) {
+			padding-inline: var(--grid-gap);
+		}
+
+		> .page-main {
+			padding-inline: var(--grid-gap);
+		}
 	}
 
 	.exchange:has(.gare\:ouest input.ouest:checked) ~ .hug .voyager.zone\:main {
 		grid-column-start: 4;
-		grid-column-end: -1;
+		grid-column-end: 4;
 		padding-inline: 0;
 	}
+
+	.exchange:has(.gare\:ouest input.ouest:checked) ~ .hug .voyager.zone\:main {
+		grid-column-start: 4;
+		grid-column-end: 4;
+		padding-inline: 0;
+	}
+
+	/* .zone\:2 > .page-context.empty {
+
+		grid-column-end: -1;
+
+	} */
 }

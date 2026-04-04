@@ -10,6 +10,7 @@ ff-control > label {
 	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
 	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
 	--accent: oklch(var(--lightness-accent) var(--chroma-contrast) var(--hue));
+	--border-color: var(--accent);
 
 	color: var(--ink);
 	background-color: var(--shade);
@@ -26,7 +27,7 @@ ff-control > label {
 	line-height: var(--font-leading-ui);
 	padding: var(--ui-size-sm) var(--ui-size);
 	border-radius: var(--border-radius-base);
-	border: var(--border-width-md) solid var(--accent);
+	border: var(--border-width-md) solid var(--border-color);
 
 	/* Enables breaking out of switcher for ellipsis in nav  */
 	&.nowrap {
@@ -172,4 +173,8 @@ ff-control > label[class*='bg:']:not([class*=':neutral']) {
 	&.variant\:bare:active {
 		--lightness-contrast: var(--chroma-surface-2-contrast);
 	}
+}
+
+ff-control > label.variant\:bare {
+	border: var(--border-width-md) solid transparent;
 }

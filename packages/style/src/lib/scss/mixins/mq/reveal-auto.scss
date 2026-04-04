@@ -2,6 +2,21 @@
 
 @mixin switchToRowStyles_RevealAuto($breakpoint, $size) {
 	@media screen and (min-width: #{$breakpoint}) {
+		ff-toggle-reveal.auto.bp\:#{$size} {
+			ff-control {
+				display: none;
+			}
+			> ff-reveal {
+				position: unset;
+				inline-size: fit-content;
+				block-size: fit-content;
+				opacity: 1;
+				transition:
+					opacity 150ms ease-out 50ms,
+					block-size 250ms ease-out;
+			}
+		}
+
 		.l\:reveal\:auto.bp\:#{$size} {
 			position: unset;
 			inline-size: fit-content;
