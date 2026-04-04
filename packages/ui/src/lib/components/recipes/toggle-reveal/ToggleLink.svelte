@@ -1,7 +1,6 @@
 <script lang="ts">
 	import type {ToggleLinkProps} from '$types'
 
-	import {resolve} from '$app/paths'
 	import ToggleReveal from '$lib/components/recipes/toggle-reveal/ToggleReveal.svelte'
 
 	let {

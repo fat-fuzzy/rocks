@@ -4,7 +4,8 @@
 	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
 
-	const {RevealNav} = ui.recipes
+	const {ToggleTree, ToggleReveal} = ui.drafts
+	const {SkipLinks} = ui.recipes
 	const {LayoutGrid} = ui.content
 
 	type Props = {
@@ -72,23 +73,39 @@
 />
 
 {#snippet zoneHeader()}
-	<RevealNav
-		{...nav}
-		position={false}
-		area="gare"
-		place="ouest"
-		layout="rails"
-		scroll="y"
-		layer="1"
-		justify="evenly"
-		size="sm"
-		font="xs"
-		width="lg"
-		height="sm"
-		breakpoint="sm"
-		background="inherit"
-		dismiss="outside"
-	/>
+	<nav
+		id="sidenav"
+		class="font:md width:md height:lg"
+		data-testid={`sidenav-${path}`}
+	>
+		<SkipLinks id={`skiplinks-${path}`} text="Skip to content" href="#main" />
+		<ToggleReveal
+			id="sidenav-reveal"
+			label={nav.label}
+			asset={nav.asset}
+			color={nav.color}
+			background={nav.background}
+			variant={nav.variant}
+			checked={true}
+			area="gare"
+			place="ouest"
+			scroll="y"
+			justify="evenly"
+			font="md"
+			width="md"
+			height="lg"
+			dismiss="outside"
+		>
+			<ToggleTree
+				{...nav}
+				id={`sidenav-${path}`}
+				pathname={path}
+				preload={true}
+				depth={0}
+				url={page.url}
+			/>
+		</ToggleReveal>
+	</nav>
 {/snippet}
 
 {#snippet zoneContent()}

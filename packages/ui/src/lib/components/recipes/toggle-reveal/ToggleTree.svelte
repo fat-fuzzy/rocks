@@ -1,10 +1,8 @@
 <script lang="ts">
 	import type {ToggleTreeProps, NavItem} from '$types'
 
-	import {resolve} from '$app/paths'
 	import ToggleLink from './ToggleLink.svelte'
 	import ToggleTree from './ToggleTree.svelte'
-	import format from '$lib/utils/format'
 
 	let {
 		pathname,
@@ -20,7 +18,6 @@
 		container,
 		items = [],
 		preload,
-		url,
 	}: ToggleTreeProps = $props()
 
 	let layoutClass = $derived(layout ? `l:${layout}:${size} l:${container}` : '')
@@ -40,15 +37,16 @@
 >
 	{#each items as item (item.slug)}
 		{@const {slug, label, asset, actionPath} = item}
+		{@const href = actionPath ?? `${pathname}/${slug}`}
 		{@const subItems = item.items}
 		{@const buttonAssetClass = subItems && asset ? asset : ''}
 		{@const linkAssetClass = !subItems && asset ? `emoji:${asset}` : ''}
 		{@const itemClass = !subItems
 			? `${buttonAssetClass} ${alignClass}`
-			: alignClass}
+			: `l:flex align:center justify:between ${alignClass}`}
 		<li
-			aria-current={pathname === actionPath ? 'page' : undefined}
-			class={pathname === format.formatHref(actionPath ?? pathname, slug)
+			aria-current={pathname === href ? 'page' : undefined}
+			class={pathname === href
 				? `${itemClass} ${colorClass} ${shapeClass}`
 				: `${itemClass} ${shapeClass}`}
 		>
@@ -58,7 +56,7 @@
 					{slug}
 					{area}
 					asset={buttonAssetClass}
-					href={`${pathname}/${slug}`}
+					{href}
 					size="2xs"
 					font="sm"
 					place="nord"
@@ -70,9 +68,7 @@
 			{:else}
 				<a
 					data-sveltekit-preload-data
-					href={url?.pathname
-						? `${url?.pathname}/${item.slug}`
-						: `${pathname}/${item.slug}`}
+					{href}
 					class={`${linkClass} ${linkAssetClass}`}
 				>
 					{label}
@@ -89,8 +85,7 @@
 	<ToggleTree
 		id={slug}
 		items={subItems}
-		pathname={`/${slug}`}
-		{url}
+		{pathname}
 		{layout}
 		{size}
 		{align}

@@ -29,16 +29,21 @@
 		place = 'top',
 		container,
 		background,
+		nav,
 		children,
 	}: ToggleRevealProps = $props()
 
 	let labelClasses = $derived(
 		styleHelper.getStyles({
-			color,
-			shape,
 			font,
 			text,
+			color,
+			shape,
+			size,
 			variant,
+			layout,
+			breakpoint,
+			threshold,
 		}),
 	)
 
@@ -50,6 +55,14 @@
 		}),
 	)
 
+	let controlClasses = $derived(
+		styleHelper.getStyles({
+			align: '',
+			layout: 'flex',
+			justify: 'between',
+		}),
+	)
+
 	let layoutClasses = $derived(
 		styleHelper.getStyles({
 			size,
@@ -57,9 +70,6 @@
 			align,
 			height,
 			width,
-			layout,
-			breakpoint,
-			threshold,
 			container,
 		}),
 	)
@@ -75,10 +85,16 @@
 </script>
 
 {#snippet control()}
-	<ff-control class="gare-control">
+	<ff-control class={`gare-control ${controlClasses}`}>
 		<label for={id} class={`ellipsis ravioli:3xs ${labelClasses}`}>
 			<div class="l:flex align:center justify:between">
-				<span>{label}</span>
+				{#if nav}
+					{@render nav()}
+				{:else}
+					<span class="toggle-label">
+						{label}
+					</span>
+				{/if}
 				<ff-icon class={iconClasses}></ff-icon>
 			</div>
 			<input type="checkbox" {id} class="{`sr-only ${place}`} {checked}" />

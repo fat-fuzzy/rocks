@@ -56,7 +56,7 @@ const navBase = {
 	items: [] as NavItem[],
 }
 
-export const pages: {[key: string]: NavItem} = {
+const pages: {[key: string]: NavItem} = {
 	blog: {
 		slug: 'blog',
 		title: 'Blog',
@@ -216,47 +216,48 @@ export const pages: {[key: string]: NavItem} = {
 	},
 }
 
-export function buildNav(page: string, url: URL) {
+export function buildNav(page: string) {
 	const nav = {...navBase, ...pages[page]}
 	nav.label = pages[page].label ?? page
-	nav.items = [pages[page]]
+	nav.items = [structuredClone(pages[page])]
 
 	if (page === 'ui') {
 		nav.items[0].items = (nav.items[0].items ?? []).map((item) => {
-			if (item.slug === 'tokens') {
+			const subnav = item.slug
+			if (subnav === 'tokens') {
 				item.items = tokenNames.map((c) => ({
 					slug: c,
 					title: c,
 					label: c,
-					url,
+					actionPath: `/${page}/${subnav}/${c}`,
 				}))
-			} else if (item.slug === 'blocks') {
+			} else if (subnav === 'blocks') {
 				item.items = blockNames.map((c) => ({
 					slug: c,
 					title: c,
 					label: c,
-					url,
+					actionPath: `/${page}/${subnav}/${c}`,
 				}))
-			} else if (item.slug === 'layouts') {
+			} else if (subnav === 'layouts') {
 				item.items = layoutNames.map((c) => ({
 					slug: c,
 					title: c,
 					label: c,
-					url,
+					actionPath: `/${page}/${subnav}/${c}`,
 				}))
-			} else if (item.slug === 'recipes') {
+			} else if (subnav === 'recipes') {
 				item.items = recipeNames.map((c) => ({
 					slug: c,
 					title: c,
 					label: c,
-					url,
+					actionPath: `/${page}/${subnav}/${c}`,
 				}))
-			} else if (item.slug === 'raw') {
+			} else if (subnav === 'raw') {
 				item.items = rawNames.map((c) => ({
 					slug: c,
 					title: c,
 					label: c,
-					url,
+					actionPath: `/${page}/${subnav}/${c}`,
 				}))
 			}
 			return item
@@ -264,6 +265,14 @@ export function buildNav(page: string, url: URL) {
 	}
 
 	return nav
+}
+
+export function buildNavItems(markdowns: Markdown[], parent?: NavItem) {
+	return markdowns.map(({meta}) => ({
+		...meta,
+		label: meta.title,
+		actionPath: parent?.actionPath ? `${parent.actionPath}/${meta.slug}` : '/',
+	}))
 }
 
 export function searchLabelInItems(label: string, items?: NavItem[]) {
@@ -297,7 +306,7 @@ export function getLabel(pathname: string, pages: {[key: string]: NavItem}) {
 	}
 }
 
-export function buildSubnav(path: string, markdowns: Markdown[], url: URL) {
+export function buildSubnav(path: string, markdowns: Markdown[]) {
 	const subnav: NavItem[] = markdowns.reduce((links: NavItem[], {meta}) => {
 		if (meta.series) {
 			if (meta.index === 0) {
@@ -312,8 +321,7 @@ export function buildSubnav(path: string, markdowns: Markdown[], url: URL) {
 									talk: item.meta.talk,
 									title: item.meta.series?.title,
 									label: item.meta.series?.title,
-									itemPath: `${path}/${meta.talk}`,
-									url,
+									actionPath: `${path}/${item.meta.slug}`,
 								}
 							}
 						}
@@ -321,17 +329,15 @@ export function buildSubnav(path: string, markdowns: Markdown[], url: URL) {
 					.filter((item) => item !== undefined) as NavItem[]
 
 				meta.title = meta.series.title
-				links.push(meta)
+				links.push({...meta, label: meta.title})
 			}
 		} else {
 			// Not a series, just add the link
-			const link = {
+			const link: NavItem = {
 				slug: meta.slug,
-				talk: meta.talk,
 				title: meta.title,
-				label: getLabel(meta.slug, pages),
+				label: getLabel(meta.slug, pages) || meta.slug,
 				actionPath: `${path}/${meta.slug}`,
-				url,
 			}
 			links.push(link)
 		}

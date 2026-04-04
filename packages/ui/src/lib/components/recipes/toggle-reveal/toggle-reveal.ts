@@ -34,11 +34,10 @@ export type ToggleTreeProps = UiBlockProps & {
 	container?: string
 	preload?: boolean
 	items: NavItem[]
-	url?: URL
 }
 
 export type ToggleLinkProps = UiBlockProps & {
-	href: string
+	pathname: string
 	slug: string
 	label: string
 	area?: string
