@@ -96,7 +96,7 @@
 			asset="home"
 			justify="center"
 			auto={true}
-			breakpoint="sm"
+			breakpoint="xs"
 			shape="square"
 			background="inherit"
 		>

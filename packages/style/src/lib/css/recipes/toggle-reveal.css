@@ -21,7 +21,7 @@ ff-toggle-reveal {
 		--y-axis: 0;
 
 		position: absolute;
-		display: block;
+		display: flex;
 		transition:
 			transform 250ms ease-in 100ms,
 			opacity 250ms ease-out 50ms,
@@ -125,8 +125,9 @@ ff-toggle-reveal.nord,
 ff-toggle-reveal.sud {
 	ff-control + ff-reveal {
 		position: relative;
-		inline-size: var(--overlay-inline-size);
 		block-size: 0;
+		inline-size: 0;
+		opacity: 0;
 		transition:
 			opacity 150ms ease-in 50ms,
 			block-size 250ms ease-in;
@@ -135,6 +136,7 @@ ff-toggle-reveal.sud {
 	ff-control:has(input:checked) + ff-reveal,
 	ff-control:has(input:checked) + ff-reveal {
 		block-size: fit-content;
+		inline-size: var(--overlay-inline-size);
 		opacity: 1;
 		transition:
 			opacity 150ms ease-out 50ms,
