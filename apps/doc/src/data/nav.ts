@@ -113,6 +113,7 @@ const pages: {[key: string]: NavItem} = {
 		asset: 'rainbow',
 		assetType: 'emoji',
 		layout: 'metro',
+		actionPath: '/play',
 		items: [
 			{
 				slug: 'projects',

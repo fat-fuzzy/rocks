@@ -86,7 +86,7 @@
 />
 
 {#snippet zoneHeader()}
-	<div class="navbar align:center bg:inherit">
+	<div class="navbar align:start bg:inherit">
 		<ToggleReveal
 			id="nav"
 			label="Menu"
@@ -101,7 +101,7 @@
 			background="inherit"
 		>
 			<ul
-				class="header-nav l:switcher:2xs size:md unstyled color:primary align:center justify:evenly w:full bg:inherit"
+				class="header-nav l:flex size:md unstyled color:primary justify:between w:full bg:inherit"
 			>
 				<!-- <ul class={`header-nav unstyled ${navClasses}`}> -->
 				<li aria-current={pathname === '/' ? 'page' : undefined}>
