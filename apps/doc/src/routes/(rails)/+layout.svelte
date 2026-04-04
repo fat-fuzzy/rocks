@@ -91,17 +91,19 @@
 			id="nav"
 			label="Menu"
 			font="sm"
+			size="3xs"
 			variant="bare"
 			color="primary"
 			asset="home"
 			justify="center"
+			align="start"
 			auto={true}
-			breakpoint="xs"
+			breakpoint="sm"
 			shape="square"
 			background="inherit"
 		>
 			<ul
-				class="header-nav l:flex size:xs unstyled color:primary justify:between w:full bg:inherit"
+				class="header-nav l:flex size:2xs unstyled color:primary justify:between w:full bg:inherit"
 			>
 				<!-- <ul class={`header-nav unstyled ${navClasses}`}> -->
 				<li aria-current={pathname === '/' ? 'page' : undefined}>
@@ -155,7 +157,6 @@
 					place="ouest"
 					shape="square"
 					scroll="y"
-					justify="evenly"
 					font="sm"
 					width="md"
 					height="lg"

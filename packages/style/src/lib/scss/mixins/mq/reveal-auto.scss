@@ -5,17 +5,25 @@
 			ff-control {
 				display: none;
 			}
-			> ff-reveal {
+
+			> ff-reveal,
+			> ff-control:has(input:checked) + ff-reveal {
 				position: unset;
 				transform: unset;
 				inset: unset;
+				inset-inline: unset;
 				inline-size: auto;
 				block-size: auto;
 				opacity: 1;
+
 				transition:
 					opacity 150ms ease-out 50ms,
 					block-size 250ms ease-out;
 			}
+		}
+
+		ff-toggle-reveal.auto.bp\:#{$size}.est > ff-reveal {
+			justify-content: end;
 		}
 	}
 }

@@ -24,19 +24,7 @@
 
 	.exchange:has(.gare\:ouest input.ouest:checked) ~ .hug .voyager.zone\:main {
 		grid-column-start: 4;
-		grid-column-end: 4;
-		padding-inline: 0;
-	}
-
-	.exchange:has(.gare\:ouest input.ouest:checked) ~ .hug .voyager.zone\:main {
-		grid-column-start: 4;
-		grid-column-end: 4;
-		padding-inline: 0;
-	}
-
-	/* .zone\:2 > .page-context.empty {
-
 		grid-column-end: -1;
-
-	} */
+		padding-inline: 0;
+	}
 }

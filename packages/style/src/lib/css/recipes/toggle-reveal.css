@@ -205,3 +205,9 @@ ff-toggle-reveal.auto {
 		inset-inline: var(--grid-gap);
 	}
 }
+
+.sidebar > nav > ff-toggle-reveal > ff-control > label.variant\:bare,
+.navbar > ff-toggle-reveal > ff-control > label.variant\:bare,
+.context > ff-toggle-reveal > ff-control > label.variant\:bare {
+	border: var(--border-width-md) solid var(--accent);
+}

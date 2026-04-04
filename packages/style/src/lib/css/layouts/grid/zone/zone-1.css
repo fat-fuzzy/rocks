@@ -10,7 +10,7 @@
 	grid-template-rows: subgrid;
 	grid-auto-flow: row;
 	z-index: var(--layout-z-index-reveal);
-	align-items: end;
+	align-items: center;
 	grid-gap: calc(var(--grid-gap) / 2);
 }
 
