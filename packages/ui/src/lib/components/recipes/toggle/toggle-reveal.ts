@@ -1,5 +1,10 @@
 import type {Snippet} from 'svelte'
-import type {UiBlockProps, UiLayoutProps, NavItem} from '$types'
+import type {
+	UiBlockProps,
+	UiLayoutProps,
+	NavItem,
+	ViewingPreferences,
+} from '$types'
 
 export type ToggleRevealProps = UiBlockProps &
 	UiLayoutProps & {
@@ -36,8 +41,9 @@ export type ToggleLinkProps = UiBlockProps & {
 	depth: number
 }
 
-export type ToggleContextProps = UiBlockProps & {
-	path?: string
-	actionPath?: string
-	context: ViewingPreferences
+export type ToggleSettingsProps = UiBlockProps & {
+	id: string
+	name: string
+	label: string
+	selected: ViewingPreferences
 }

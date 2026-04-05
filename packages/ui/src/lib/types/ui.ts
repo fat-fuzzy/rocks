@@ -7,6 +7,7 @@ import type {
 	UiVariant,
 	UiSize,
 	UiDimension,
+	UiAssetType,
 } from '$types'
 
 export type AriaLive = 'polite' | 'off' | 'assertive' | null | undefined
@@ -50,7 +51,7 @@ export type UiLayoutProps = UiContainerProps & {
 
 export type UiBlockProps = UiLayoutProps & {
 	asset?: string // the `value` part of emoji:value or svg:value
-	assetType?: string // the `svg` or `emoji` part of emoji:value or svg:value  TODO: check / harmonize STYLE_MODIFIER
+	assetType?: UiAssetType // the `svg` or `emoji` part of emoji:value or svg:value  TODO: check / harmonize STYLE_MODIFIER
 	color?: UiColor
 	font?: string
 	text?: string
