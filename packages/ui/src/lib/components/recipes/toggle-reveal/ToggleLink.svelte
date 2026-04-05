@@ -31,8 +31,8 @@
 <ToggleReveal
 	id={`toggle-${slug}`}
 	label={` Toggle ${slug}`}
-	asset={depth > 1 ? 'chevron-right' : asset}
-	assetType={depth > 1 ? 'svg' : assetType}
+	asset={depth === 2 ? 'chevron-right' : asset}
+	assetType={depth === 2 ? 'svg' : assetType}
 	{color}
 	{size}
 	{shape}

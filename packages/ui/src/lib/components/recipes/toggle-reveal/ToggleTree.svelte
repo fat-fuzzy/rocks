@@ -48,7 +48,8 @@
 		{@const href = actionPath ?? `${pathname}/${slug}`}
 		{@const subItems = item.items}
 		{@const buttonAssetClass = subItems && asset ? asset : ''}
-		{@const linkAssetClass = !subItems && asset ? `${assetType}:${asset}` : ''}
+		{@const linkAssetClass =
+			!subItems && asset ? `${assetType ? assetType : 'emoji'}:${asset}` : ''}
 		{@const itemClass = !subItems
 			? `${buttonAssetClass} ${alignClass}`
 			: alignClass}

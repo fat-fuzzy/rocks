@@ -74,21 +74,21 @@ ul.depth-1 {
 ul.depth-2 {
 	inline-size: 100%;
 	max-inline-size: unset;
-	padding-inline: var(--outline-offset-sm);
-	padding-block: var(--ui-size);
+	padding-inline: var(--outline-offset-lg) var(--outline-offset-sm);
+	padding-block: var(--outline-offset-sm) var(--ui-size);
 }
 
 ul.depth-3 {
 	inline-size: 100%;
 	max-inline-size: unset;
-	padding-inline: var(--outline-offset-sm);
+	padding-inline: var(--outline-offset-lg) var(--outline-offset-sm);
 }
 
 /* Avoid this level of nesting */
 ul.depth-4 {
 	inline-size: 100%;
 	max-inline-size: unset;
-	padding-inline: var(--outline-offset-sm);
+	padding-inline: var(--outline-offset-lg) var(--outline-offset-sm);
 }
 
 /* override Active Link styles for top level link */
@@ -109,6 +109,7 @@ ul.depth-2 > li,
 ul.depth-3 > li,
 ul.depth-4 > li {
 	max-inline-size: unset;
+	padding-block: var(--outline-offset-lg);
 }
 
 /* override Active Link styles for top level link */
