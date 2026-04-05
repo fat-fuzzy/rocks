@@ -86,9 +86,10 @@ import ToastGroup from '$lib/components/blocks/overlays/Toast/ToastGroup.svelte'
 // import InputFeedback from '$lib/components/blocks/inputs/InputFeedback.svelte'
 
 // New: replace Reveal mechanisms
-import ToggleReveal from '$lib/components/recipes/toggle-reveal/ToggleReveal.svelte'
-import ToggleLink from '$lib/components/recipes/toggle-reveal/ToggleLink.svelte'
-import ToggleTree from '$lib/components/recipes/toggle-reveal/ToggleTree.svelte'
+import ToggleReveal from '$lib/components/recipes/toggle/ToggleReveal.svelte'
+import ToggleLink from '$lib/components/recipes/toggle/ToggleLink.svelte'
+import ToggleTree from '$lib/components/recipes/toggle/ToggleTree.svelte'
+import ToggleSettings from '$lib/components/recipes/toggle/ToggleSettings.svelte'
 
 /**
  * Forms
@@ -207,6 +208,7 @@ const drafts = {
 	ToggleReveal,
 	ToggleTree,
 	ToggleLink,
+	ToggleSettings,
 }
 
 const headless = {

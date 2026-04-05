@@ -1,4 +1,3 @@
-import type {Snippet} from 'svelte'
 import type {
 	UiState,
 	UiSettings,
@@ -30,10 +29,9 @@ export type ViewingPreferences = {
 export type SettingsProps = UiBlockProps &
 	FormCommonProps & {
 		id: string
+		name: string
 		path?: string
 		items: SwitchProps[]
-		children?: Snippet
-		onupdate?: (payload: FuzzyPayload) => void
 	}
 
 export type RevealContextProps = UiBlockProps &

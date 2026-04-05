@@ -86,9 +86,11 @@ export interface Drafts {
 	ToastGroup: typeof import('$lib/components/blocks/overlays/Toast/ToastGroup.svelte').default
 
 	// New: replace Reveal mechanisms
-	ToggleReveal: typeof import('$lib/components/recipes/toggle-reveal/ToggleReveal.svelte').default
-	ToggleLink: typeof import('$lib/components/recipes/toggle-reveal/ToggleLink.svelte').default
-	ToggleTree: typeof import('$lib/components/recipes/toggle-reveal/ToggleTree.svelte').default
+	ToggleReveal: typeof import('$lib/components/recipes/toggle/ToggleReveal.svelte').default
+	ToggleLink: typeof import('$lib/components/recipes/toggle/ToggleLink.svelte').default
+	ToggleTree: typeof import('$lib/components/recipes/toggle/ToggleTree.svelte').default
+	// New: replace Settings actions
+	ToggleSettings: typeof import('$lib/components/recipes/toggle/ToggleSettings.svelte').default
 }
 
 export interface Headless {

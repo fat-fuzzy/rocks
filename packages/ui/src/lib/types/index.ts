@@ -18,7 +18,6 @@ export type * from '$lib/components/blocks/media/media'
 export type * from '$lib/components/blocks/overlays/overlay'
 
 export type * from '$lib/components/layouts/layout-primitive'
-export type * from '$lib/components/layouts/reveal/reveal'
 
 export type * from '$lib/components/recipes/animations/scroll/scrolly'
 export type * from '$lib/components/recipes/content/content'
@@ -33,4 +32,4 @@ export type * from '$lib/components/recipes/menus/menu'
 export type * from '$lib/components/recipes/menus/ToggleMenu/toggleMenu'
 export type * from '$lib/components/recipes/navs/nav'
 export type * from '$lib/components/recipes/tabs/tabs'
-export type * from '$lib/components/recipes/toggle-reveal/toggle-reveal'
+export type * from '$lib/components/recipes/toggle/toggle-reveal'
