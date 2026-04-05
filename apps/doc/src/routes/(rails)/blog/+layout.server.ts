@@ -21,19 +21,28 @@ export const load = async ({locals, url}) => {
 									if (item) {
 										return {
 											slug: item.meta.slug,
-											title: item.meta?.series?.title,
-											itemPath: '/blog',
-											label: item.meta?.series?.title,
+											talk: item.meta.talk,
+											title: item.meta.series?.title,
+											label: item.meta.series?.title,
+											actionPath: item.meta.slug,
 										}
 									}
 								}
 							})
 							.filter((i) => i !== undefined) as NavItem[]
+
 						meta.title = meta.series.title
-						links.push({...meta, label: meta.title})
+						links.push({...meta, label: meta.title, actionPath: url.pathname})
 					}
 				} else {
-					links.push({...meta, label: meta.title})
+					// Not a series, just add the link
+					const link: NavItem = {
+						slug: meta.slug,
+						title: meta.title,
+						label: meta.title || meta.slug,
+						actionPath: meta.slug,
+					}
+					links.push(link)
 				}
 				return links
 			}, [])
