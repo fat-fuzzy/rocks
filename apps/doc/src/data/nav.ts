@@ -320,7 +320,11 @@ export function buildSubnav(path: string, markdowns: Markdown[]) {
 					.filter((item) => item !== undefined) as NavItem[]
 
 				meta.title = meta.series.title
-				links.push({...meta, label: meta.title})
+				links.push({
+					...meta,
+					label: meta.title,
+					actionPath: path,
+				})
 			}
 		} else {
 			// Not a series, just add the link

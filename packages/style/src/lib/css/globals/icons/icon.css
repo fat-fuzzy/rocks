@@ -50,6 +50,17 @@ summary[class*='icon'].align\:start {
 	margin-inline: 0 var(--ui-size-sm);
 }
 
-ff-icon[class*='svg']::before {
+ff-icon[class*='svg'].justify\:end::before {
 	margin-inline: var(--ui-size-sm) 0;
+}
+
+ff-icon {
+	padding-block: var(--ui-size-sm);
+	padding-inline: var(--ui-size-sm);
+	margin: 0;
+}
+
+ff-icon::before {
+	--ink: #000;
+	margin: 0;
 }

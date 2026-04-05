@@ -76,7 +76,7 @@ ff-toggle-reveal.ouest {
 
 	ff-control:has(input:checked) + ff-reveal {
 		block-size: var(--overlay-block-size);
-		inline-size: var(--overlay-inline-size);
+		inline-size: 100%;
 		transition:
 			transform 350ms ease-out,
 			opacity 350ms ease-out 50ms,

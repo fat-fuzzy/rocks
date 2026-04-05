@@ -42,7 +42,7 @@ export const load = async ({locals, url, params}) => {
 			if (!params.talk) {
 				item.items = buildNavItems(talks, item)
 			} else {
-				item.items = buildSubnav('/about/speaking', talks)
+				item.items = buildSubnav(`/about/speaking/${params.talk}`, talks)
 			}
 		}
 		return item

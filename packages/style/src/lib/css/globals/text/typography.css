@@ -157,7 +157,6 @@ blockquote {
 }
 
 span:has(.ellipsis),
-ul:has(.ellipsis),
 li:has(.ellipsis) {
 	--max-inline-size: var(--sidebar-width, 100%);
 	max-inline-size: var(--max-inline-size);

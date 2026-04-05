@@ -1,5 +1,6 @@
 button,
-ff-control > label {
+ff-control > label,
+ff-icon {
 	--hue: var(--color-theme-primary);
 	--chroma: var(--chroma-base);
 	--lightness: var(--lightness-ui-base);
@@ -18,14 +19,13 @@ ff-control > label {
 	display: flex;
 	align-items: center;
 	justify-content: var(--justify, center);
-	flex-wrap: nowrap;
+	flex-wrap: wrap;
 	block-size: fit-content;
 	min-block-size: max-content;
 	font-size: var(--font-size);
 	font-family: var(--font-family-ui);
 	font-weight: var(--font-weight-ui);
 	line-height: var(--font-leading-ui);
-	padding: var(--ui-size-sm) var(--ui-size);
 	border-radius: var(--border-radius-base);
 	border: var(--border-width-md) solid var(--border-color);
 
@@ -33,6 +33,12 @@ ff-control > label {
 	&.nowrap {
 		flex-wrap: nowrap;
 	}
+}
+
+button,
+ff-control > label {
+	padding-block: var(--ui-size-sm);
+	padding-inline: var(--ui-size);
 }
 
 button.variant\:fill,
