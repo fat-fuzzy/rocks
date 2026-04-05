@@ -25,7 +25,7 @@
 		padding-inline-end: calc(2 * var(--grid-gap));
 	}
 
-	.exchange:has(.gare\:ouest[open], .gare\:ouest.expanded)
+	.exchange:has(.gare\:ouest input.ouest:checked)
 		~ .zone\:2.hug
 		.tram.zone\:main {
 		grid-column-start: 1;

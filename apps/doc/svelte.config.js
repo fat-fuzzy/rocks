@@ -4,15 +4,15 @@ import mdsvexConfig from './mdsvex.config.js'
 import adapter from '@sveltejs/adapter-cloudflare'
 import {vitePreprocess} from '@sveltejs/vite-plugin-svelte'
 
-function isWebComponentSvelte(code) {
-	const svelteOptionsIdx = code.indexOf('<svelte:options ')
-	if (svelteOptionsIdx < 0) {
-		return false
-	}
-	const tagOptionIdx = code.indexOf('tag=', svelteOptionsIdx)
-	const svelteOptionsEndIdx = code.indexOf('>', svelteOptionsIdx)
-	return tagOptionIdx > svelteOptionsIdx && tagOptionIdx < svelteOptionsEndIdx
-}
+// function isWebComponentSvelte(code) {
+// 	const svelteOptionsIdx = code.indexOf('<svelte:options ')
+// 	if (svelteOptionsIdx < 0) {
+// 		return false
+// 	}
+// 	const tagOptionIdx = code.indexOf('tag=', svelteOptionsIdx)
+// 	const svelteOptionsEndIdx = code.indexOf('>', svelteOptionsIdx)
+// 	return tagOptionIdx > svelteOptionsIdx && tagOptionIdx < svelteOptionsEndIdx
+// }
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -25,7 +25,7 @@ const config = {
 	kit: {
 		adapter: adapter(),
 		prerender: {
-			handleHttpError: ({path, referrer, status, message}) => {
+			handleHttpError: ({status, message}) => {
 				// ignore deliberate link to shiny 404 page
 				if (status === 404) {
 					return
@@ -81,6 +81,7 @@ const config = {
 			},
 		},
 		alias: {
+			$config: path.resolve('./src/config'),
 			$utils: path.resolve('./src/utils'),
 			$data: path.resolve('./src/data'),
 			$assets: path.resolve('./src/assets'),

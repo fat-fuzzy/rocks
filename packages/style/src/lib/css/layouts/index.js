@@ -19,9 +19,8 @@ import './ravioli.css' /* Use for all-round padding  */
 /* == Layout recipes == */
 
 /* Use for displaying hidden content with a button action */
-import './reveal.css'
-import './reveal-sticky.css'
-import './details.css' /* Use to style <details> and <summary> elements */
+// import './reveal.css'
+// import './reveal-sticky.css'
 
 /* == Layout spices  == */
 import './breakpoint.css' /* Breakpoint utilities */
@@ -57,7 +56,6 @@ import './grid/urbanist/zone-main.css'
 import './grid/metro/zone-2.css'
 import './grid/metro/zone-main.css'
 
-import './grid/railway/context.css'
 import './grid/railway/zone-2.css'
 import './grid/railway/zone-main.css'
 
@@ -72,9 +70,3 @@ import './grid/tram/zone-main.css'
 
 import './grid/voyager/zone-2.css'
 import './grid/voyager/zone-main.css'
-
-/* Grid Demo specific code */
-import './grid/raw/scale.css'
-import './grid/raw/gare.css'
-import './grid/raw/sidebar.css'
-import './grid/raw/context.css'

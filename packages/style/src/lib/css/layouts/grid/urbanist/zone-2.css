@@ -7,15 +7,11 @@
 }
 
 @media screen and (min-width: 68.75rem) {
-	.zone\:2 {
-		grid-column-start: 4;
-	}
-
 	.urbanist.hug {
 		grid-column-start: 1;
 	}
 
-	.exchange:has(.gare\:ouest[open], .gare\:ouest.expanded) ~ .urbanist.hug {
+	.exchange:has(.gare\:ouest input.ouest:checked) ~ .urbanist.hug .zone\:main {
 		grid-column-start: 4;
 	}
 }

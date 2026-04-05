@@ -45,7 +45,6 @@
 	flex-grow: 999;
 	/* ~ min-width in horizontal\:tb writing mode: if (width < 70%) -> wrap */
 	--main-width: 70%;
-	min-inline-size: var(--main-width);
 
 	> main {
 		block-size: 100%;

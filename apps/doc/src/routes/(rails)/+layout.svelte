@@ -1,26 +1,34 @@
 <script lang="ts">
 	import type {Snippet} from 'svelte'
+	import type {AreaProps} from '@fat-fuzzy/ui'
 
 	import ui from '@fat-fuzzy/ui'
+
+	import {resolve} from '$app/paths'
 	import {page} from '$app/state'
 	import {links} from '$data/nav'
+
+	import {linksSocials} from '$data/nav'
+	import config from '$config/app'
+
 	import Footer from '$lib/ui/Footer.svelte'
 	import Socials from '$lib/ui/Socials.svelte'
 	import NavSlides from '$lib/ui/NavSlides.svelte'
 
-	const {Cookies, HeaderNav, RevealContext} = ui.drafts
-	const {RevealNav} = ui.recipes
+	const {ToggleTree, ToggleReveal, Cookies, Settings} = ui.drafts
+	const {SkipLinks} = ui.recipes
 	const {LayoutGrid} = ui.content
 	const {Magic} = ui.blocks
-	import {linksSocials} from '$data/nav'
+
+	const {APP_SETTINGS} = config
 
 	type Props = {
 		children: Snippet
 	}
 	let {children}: Props = $props()
 
-	let mainNav = $derived(page.data.nav)
 	let sidenav = $derived(page.data.sidebar)
+	let pathname = $derived(page.url.pathname)
 	let layout = $derived(page.data.layout ?? sidenav.layout)
 	let appContext = $derived(page.data.appContext)
 	let talk = $derived(page.params.talk)
@@ -33,17 +41,7 @@
 			: null,
 	)
 
-	type AreaZone = {
-		zone: Snippet
-		grid?: boolean
-		gare?: string
-		scroll?: string
-		exchange?: boolean
-		hug?: boolean
-		tag?: string
-	}
-
-	const areas: AreaZone[] = $derived([
+	const areas: AreaProps[] = $derived([
 		{
 			zone: zoneHeader,
 			grid: true,
@@ -52,7 +50,7 @@
 		},
 		{
 			zone: zoneContent,
-			// hug: layout === 'steam' || layout === 'tram' || layout === 'urbanist',
+			hug: layout === 'steam' || layout === 'tram' || layout === 'urbanist',
 			grid: true,
 		},
 		{
@@ -60,6 +58,17 @@
 			grid: true,
 		},
 	])
+
+	let brightness = $derived(appContext.brightness)
+	let contrast = $derived(appContext.contrast)
+	let preferences = $derived.by(() => {
+		let preferences = APP_SETTINGS
+		preferences.display[0].initial =
+			brightness === 'night' ? 'active' : 'inactive'
+		preferences.display[1].initial =
+			contrast === 'blend' ? 'active' : 'inactive'
+		return preferences
+	})
 </script>
 
 <LayoutGrid
@@ -68,35 +77,50 @@
 	{sidenav}
 	size="3xs"
 	app={appContext}
-	path={page.url.pathname}
+	path={pathname}
 />
 
 {#snippet zoneHeader()}
-	<div class="navbar l:grid size:3xs align:center bg:inherit">
-		<HeaderNav
+	<div class="navbar align:start">
+		<ToggleReveal
 			id="nav"
-			name="nav"
-			title="Menu"
 			label="Menu"
+			font="sm"
 			size="3xs"
-			font="xs"
-			variant="outline"
+			variant="bare"
 			color="primary"
 			asset="home"
 			justify="center"
-			dismiss="outside"
+			align="start"
+			layer="1"
 			auto={true}
-			{links}
-			path={page.url.pathname}
-			reveal={mainNav.reveal}
-			actionPath={page.url.pathname}
+			depth={0}
 			breakpoint="sm"
+			shape="square"
 			background="inherit"
-			formaction="toggleNav"
-		/>
+		>
+			<ul
+				class="header-nav l:flex size:2xs unstyled color:primary justify:between w:full bg:inherit"
+			>
+				<!-- <ul class={`header-nav unstyled ${navClasses}`}> -->
+				<li aria-current={pathname === '/' ? 'page' : undefined}>
+					<a data-sveltekit-preload-data href={resolve('/')}>Home</a>
+				</li>
+				{#each links as { slug, label }, i (i)}
+					<li
+						aria-current={pathname?.startsWith(`/${slug}`) ? 'page' : undefined}
+					>
+						<a data-sveltekit-preload-data href={resolve(`/${slug}`)}>
+							{label}
+						</a>
+					</li>
+				{/each}
+			</ul>
+		</ToggleReveal>
 	</div>
+
 	<div
-		class={`${sidenav.reveal ?? ''} sidebar surface:0:neutral l:grid size:3xs align:center width:lg height:sm`}
+		class="sidebar surface:0:neutral align:center width:lg height:sm raviolink"
 	>
 		{#if sidenav.layout === 'tgv'}
 			<div class="app-name">
@@ -108,43 +132,76 @@
 				</Magic>
 			</div>
 		{:else}
-			<RevealNav
-				{...sidenav}
-				position={false}
-				area="gare"
-				place="ouest"
-				layout="rails"
-				scroll="y"
-				layer={1}
-				justify="evenly"
-				size="3xs"
-				font="xs"
-				width="md"
-				height="lg"
-				background="neutral"
-				dismiss="outside"
-			/>
+			<nav
+				id="sidenav"
+				class="font:md width:md height:lg"
+				data-testid={`sidenav-${pathname}`}
+			>
+				<SkipLinks
+					id={`skiplinks-${pathname}`}
+					text="Skip to content"
+					href="#main"
+				/>
+				<ToggleReveal
+					id="sidenav-reveal"
+					label={sidenav.label}
+					asset={sidenav.asset}
+					color={sidenav.color}
+					background={sidenav.background}
+					variant="bare"
+					checked={true}
+					area="gare"
+					place="ouest"
+					shape="square"
+					scroll="y"
+					layer="1"
+					depth={0}
+					font="sm"
+					width="md"
+					height="lg"
+					dismiss="outside"
+				>
+					<ToggleTree
+						{...sidenav}
+						id={`sidenav-${pathname}`}
+						{pathname}
+						preload={true}
+						depth={0}
+						shape="square"
+						width="full"
+					/>
+				</ToggleReveal>
+			</nav>
 		{/if}
 	</div>
 
-	<div class="context l:grid size:3xs bg:inherit">
-		<RevealContext
+	<div class="context bg:inherit raviolink">
+		<ToggleReveal
 			id="appContext"
-			name="appContext"
 			label="Settings"
-			path={page.url.pathname}
-			actionPath={page.url.pathname}
+			auto={true}
 			breakpoint="xs"
-			size="3xs"
-			font="xs"
+			asset="settings"
+			font="sm"
 			layout="grid"
-			formaction="updateSettings"
 			justify="center"
 			text="start"
+			place="est"
+			depth={0}
+			layer="1"
+			variant="bare"
+			shape="square"
 			background="inherit"
-			context={appContext}
-			reveal={appContext.reveal}
-		/>
+		>
+			<Settings
+				id="appContext-menu"
+				label=""
+				items={preferences.display}
+				formaction="updateSettings"
+				actionPath={page.url.pathname}
+				onupdate={preferences.onupdate}
+			/>
+		</ToggleReveal>
 	</div>
 {/snippet}
 

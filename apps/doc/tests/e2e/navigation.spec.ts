@@ -48,7 +48,7 @@ pages.forEach((item) => {
 					.getByTestId(sidebarTestId)
 					.getByRole('button', {name: item.title})
 					.click()
-				await page.getByTestId(`button-reveal-${subpage.slug}`).click()
+				await page.getByText(`Toggle ${subpage.slug}`).click()
 				await expect(
 					page.getByRole('link', {name: subpage.linkTitle, exact: true}),
 				).toBeVisible()

@@ -37,7 +37,7 @@
 		grid-column-end: -1;
 	}
 
-	.exchange:has(.gare\:ouest[open], .gare\:ouest.expanded) {
+	.exchange:has(.gare\:ouest input.ouest:checked) {
 		~ .tram.hug {
 			grid-column-start: 4;
 			grid-column-end: -1;

@@ -51,3 +51,7 @@ button[class*='shape:'] {
 .shape\:square[class*='l:stack']:only-child::before {
 	margin-inline: 0;
 }
+
+ff-icon.shape\:square {
+	border-radius: var(--border-radius-base);
+}

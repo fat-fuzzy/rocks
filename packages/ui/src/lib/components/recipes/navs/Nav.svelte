@@ -1,30 +1,40 @@
 <script lang="ts">
 	import type {NavProps} from '$types'
-	import LinkTree from '$lib/components/recipes/navs/LinkTree.svelte'
+
+	import styleHelper from '$lib/utils/styles'
+	import ToggleTree from '$lib/components/recipes/toggle-reveal/ToggleTree.svelte'
 
 	let {
 		id,
 		layout,
 		title = 'Nav',
+		pathname,
 		size,
-		path,
 		color,
 		background,
 		container,
+		containerSize,
 		align,
 		items = [],
 	}: NavProps = $props()
 
-	let backgroundClass = background ? `bg:${background}` : ''
-	let colorClass = color ? `color:${color}` : ''
-	let navClasses = `${colorClass} ${container}:${size} ${backgroundClass}`
+	let navClasses = $derived(
+		styleHelper.getStyles({
+			size,
+			color,
+			background,
+			container,
+			containerSize,
+			align,
+		}),
+	)
 </script>
 
 <nav {id} class={navClasses} aria-label={title}>
-	<LinkTree
-		id={`${id}-${path}`}
+	<ToggleTree
+		id={`${id}-${pathname}`}
 		{items}
-		{path}
+		{pathname}
 		depth={0}
 		{layout}
 		{size}

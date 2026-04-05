@@ -71,14 +71,7 @@ const recipes = {
 		if (parent) return `${parent}/recipes`
 		return '/ui/recipes'
 	},
-	ready: [
-		'ButtonMenu',
-		'RevealMenu',
-		'RevealNav',
-		'ToggleMenu',
-		'Nav',
-		'SignUp',
-	],
+	ready: ['ButtonMenu', 'ToggleMenu', 'Nav', 'SignUp'],
 	draft: [],
 }
 

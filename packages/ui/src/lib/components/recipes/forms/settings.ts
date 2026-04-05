@@ -38,11 +38,7 @@ export type SettingsProps = UiBlockProps &
 
 export type RevealContextProps = UiBlockProps &
 	FormCommonProps & {
-		breakpoint: string
 		path?: string
-		text?: string
-		reveal: UiState
 		actionPath?: string
 		context: ViewingPreferences
-		children?: Snippet
 	}

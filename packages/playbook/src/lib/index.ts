@@ -18,8 +18,6 @@ import * as props from '$lib/props'
  * Forms
  */
 import DsStylesUpdate from '$lib/forms/ds-styles-update'
-import DsContextReveal from '$lib/forms/ds-context-reveal'
-import DsStateUpdate from '$lib/forms/ds-state-update'
 
 /**
  * Stores
@@ -36,8 +34,6 @@ import {PlaybookActor} from '$lib/api/actor.svelte'
  **************************************************/
 
 const actions = {
-	DsContextReveal,
-	DsStateUpdate,
 	DsStylesUpdate,
 }
 

@@ -13,10 +13,6 @@ export type AriaLive = 'polite' | 'off' | 'assertive' | null | undefined
 
 export type AutoComplete = AutoFill | null | undefined
 
-export type UiRevealState = {
-	reveal: string
-}
-
 export type InputPayload = {
 	id: string
 	name: string
@@ -41,6 +37,7 @@ export type UiLayoutProps = UiContainerProps & {
 	height?: string // TODO: check / harmonize (height/width classes)
 	width?: string
 	justify?: string
+	reverse?: string
 	layout?: UiLayout
 	place?: string // TODO: check / harmonize STYLE_MODIFIER
 	fixed?: string
@@ -56,6 +53,7 @@ export type UiBlockProps = UiLayoutProps & {
 	assetType?: string // the `svg` or `emoji` part of emoji:value or svg:value  TODO: check / harmonize STYLE_MODIFIER
 	color?: UiColor
 	font?: string
+	text?: string
 	variant?: UiVariant
 	width?: string // TODO: check / harmonize  STYLE_MODIFIER + (height/width classes)
 }

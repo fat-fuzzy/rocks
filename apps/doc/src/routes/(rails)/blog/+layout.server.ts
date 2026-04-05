@@ -8,7 +8,6 @@ const posts = blog.markdowns.filter(({meta}) => meta.status !== 'draft')
 export const load = async ({locals, url}) => {
 	const sidebar = buildNav('blog')
 	sidebar.actionPath = url.pathname
-	sidebar.reveal = locals.sidebar.reveal ?? sidebar.reveal
 	sidebar.items = sidebar.items.map((item) => {
 		if (item.slug === 'blog') {
 			// Build posts navbar with nested links for series

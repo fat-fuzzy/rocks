@@ -5,9 +5,14 @@
 
 .sidebar {
 	grid-area: sidebar;
-	grid-template-rows: subgrid;
 	z-index: var(--layout-z-index-layer);
 	align-items: end;
+
+	ff-toggle-reveal {
+		grid-column-start: 1;
+		grid-column-end: 3;
+		inline-size: calc(100% - 2 * var(--grid-gap));
+	}
 }
 
 .sidebar > .app-name p {
@@ -71,14 +76,9 @@
 		z-index: initial;
 	}
 
-	.sidebar > nav,
-	.sidebar > nav > form {
+	.sidebar > nav {
 		inline-size: 100%;
 		max-inline-size: var(--overlay-inline-size);
-	}
-
-	.sidebar > nav > ff-reveal {
-		padding-inline-start: calc(var(--grid-gap) - var(--outline-offset-md));
 	}
 
 	.sidebar > .app-name {
@@ -90,7 +90,7 @@
 	}
 
 	.sidebar {
-		--overlay-block-size: var(--max-block-size);
+		--overlay-block-size: var(--max-overlay-size);
 	}
 
 	.sidebar.width\:full {

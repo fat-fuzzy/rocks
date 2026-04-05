@@ -27,7 +27,7 @@
 	size="sm"
 	path={$page.url.pathname}
 	nav={$page.data.pageNav}
-	layout="metro"
+	layout="tram"
 >
 	{#snippet main()}
 		<EscapeHtml id={slug} {html} size="xl" />

@@ -14,7 +14,7 @@ export const load = async ({parent, params}) => {
 	let image
 	if (content.meta.image) {
 		try {
-			let imageData = await images.getImageData('media', content.meta.image)
+			const imageData = await images.getImageData('media', content.meta.image)
 
 			if (!imageData?.json.sources) {
 				throw Error(`Image not found: ${JSON.stringify(content.meta.image)}:`)
