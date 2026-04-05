@@ -1,6 +1,5 @@
 import type {
 	AppContextItems,
-	UiRevealState,
 	CookiePreferences,
 	ViewingPreferences,
 	NavItem,
@@ -16,12 +15,6 @@ const DEFAULT_COOKIES_CONSENT: CookiePreferences = {
 	legitimateInterest: true,
 	analytics: false,
 }
-
-const DEFAULT_REVEAL_STATE: UiRevealState = {reveal: 'collapsed'}
-
-const DEFAULT_SIDEBAR_REVEAL_STATE: UiRevealState = {reveal: 'collapsed'}
-
-const DEFAULT_NAV_REVEAL_STATE: UiRevealState = {reveal: 'collapsed'}
 
 const DEFAULT_PREFERENCES: ViewingPreferences = {
 	reveal: 'collapsed',
@@ -183,9 +176,6 @@ export default {
 	UI_STATE,
 	STATE_SWITCHER,
 	DEFAULT_STYLES,
-	DEFAULT_REVEAL_STATE,
-	DEFAULT_NAV_REVEAL_STATE,
-	DEFAULT_SIDEBAR_REVEAL_STATE,
 	DEFAULT_PREFERENCES,
 	DEFAULT_SCENE_ID,
 	TRANSITION_REVEAL,

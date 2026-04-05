@@ -31,7 +31,6 @@ import InputFile from '$lib/components/blocks/inputs/InputFile.svelte'
  * Layout components
  */
 import Burrito from '$lib/components/layouts/Burrito.svelte'
-import Reveal from '$lib/components/layouts/reveal/Reveal.svelte'
 import Sidebar from '$lib/components/layouts/Sidebar.svelte'
 import Stack from '$lib/components/layouts/Stack.svelte'
 import Switcher from '$lib/components/layouts/Switcher.svelte'
@@ -39,7 +38,6 @@ import Switcher from '$lib/components/layouts/Switcher.svelte'
 /**
  * Recipes - Base
  */
-import RevealMenu from '$lib/components/recipes/menus/RevealMenu.svelte'
 import ButtonMenu from '$lib/components/recipes/menus/ButtonMenu.svelte'
 import ToggleMenu from '$lib/components/recipes/menus/ToggleMenu/ToggleMenu.svelte'
 import Settings from '$lib/components/recipes/forms/Settings.svelte'
@@ -95,7 +93,6 @@ import ToggleTree from '$lib/components/recipes/toggle-reveal/ToggleTree.svelte'
 /**
  * Forms
  */
-import UiReveal from '$lib/forms/UiReveal'
 import SignUpUser from '$lib/forms/SignUpUser'
 import AppContext from '$lib/forms/AppContext'
 
@@ -130,7 +127,6 @@ const actors = {
 }
 
 const forms = {
-	UiReveal,
 	AppContext,
 	SignUpUser,
 }
@@ -156,7 +152,6 @@ const blocks = {
 
 const layouts = {
 	Burrito,
-	Reveal,
 	Stack,
 	Switcher,
 	Sidebar,
@@ -165,7 +160,6 @@ const layouts = {
 const recipes = {
 	ButtonMenu,
 	ToggleMenu,
-	RevealMenu,
 	SignUp,
 	SkipLinks,
 	Nav,

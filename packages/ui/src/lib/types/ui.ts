@@ -13,10 +13,6 @@ export type AriaLive = 'polite' | 'off' | 'assertive' | null | undefined
 
 export type AutoComplete = AutoFill | null | undefined
 
-export type UiRevealState = {
-	reveal: string
-}
-
 export type InputPayload = {
 	id: string
 	name: string

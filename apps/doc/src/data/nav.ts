@@ -11,8 +11,6 @@ const layoutNames = Object.keys(ui.layouts).sort(sortAsc)
 const recipeNames = Object.keys(ui.recipes).sort(sortAsc)
 const rawNames = Object.keys(ui.raw).sort(sortAsc)
 
-const {DEFAULT_SIDEBAR_REVEAL_STATE} = ui.constants
-
 export const links = [
 	{slug: 'about', label: 'About', layout: 'sidebar'},
 	{slug: 'ui', label: 'UI', layout: 'sidebar'},
@@ -46,7 +44,6 @@ export const linksSocials = [
 const navBase = {
 	id: 'sidebar',
 	label: 'Secondary Navigation',
-	reveal: DEFAULT_SIDEBAR_REVEAL_STATE.reveal,
 	breakpoint: 'sm',
 	size: 'sm',
 	variant: 'outline',

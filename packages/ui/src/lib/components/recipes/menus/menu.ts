@@ -1,9 +1,4 @@
-import type {
-	UiBlockProps,
-	ButtonProps,
-	RevealLayoutProps,
-	FuzzyPayload,
-} from '$types'
+import type {UiBlockProps, ButtonProps, FuzzyPayload} from '$types'
 
 export type ButtonMenuProps = UiBlockProps & {
 	/**
@@ -16,9 +11,4 @@ export type ButtonMenuProps = UiBlockProps & {
 	formaction?: string
 	items: ButtonProps[]
 	onupdate?: (payload: FuzzyPayload) => void
-}
-
-export type RevealMenuProps = RevealLayoutProps & {
-	items: ButtonProps[]
-	onclick?: (payload: FuzzyPayload) => void // TODO: type this
 }

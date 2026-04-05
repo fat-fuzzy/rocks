@@ -29,7 +29,6 @@
 				contrast?: string
 			}
 			page?: {
-				reveal: string
 				title?: string
 			}
 		}

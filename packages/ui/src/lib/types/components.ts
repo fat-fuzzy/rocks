@@ -6,7 +6,6 @@ export interface Utils {
 }
 
 export interface Forms {
-	UiReveal: typeof import('$lib/forms/UiReveal.js').default
 	AppContext: typeof import('$lib/forms/AppContext.js').default
 	SignUpUser: typeof import('$lib/forms/SignUpUser.js').default
 }
@@ -37,7 +36,6 @@ export interface Blocks {
 
 export interface Layouts {
 	Burrito: typeof import('$lib/components/layouts/Burrito.svelte').default
-	Reveal: typeof import('$lib/components/layouts/reveal/Reveal.svelte').default
 	Stack: typeof import('$lib/components/layouts/Stack.svelte').default
 	Switcher: typeof import('$lib/components/layouts/Switcher.svelte').default
 	Sidebar: typeof import('$lib/components/layouts/Sidebar.svelte').default
@@ -46,7 +44,6 @@ export interface Layouts {
 export interface Recipes {
 	ButtonMenu: typeof import('$lib/components/recipes/menus/ButtonMenu.svelte').default
 	ToggleMenu: typeof import('$lib/components/recipes/menus/ToggleMenu/ToggleMenu.svelte').default
-	RevealMenu: typeof import('$lib/components/recipes/menus/RevealMenu.svelte').default
 	SignUp: typeof import('$lib/components/recipes/forms/SignUp.svelte').default
 	SkipLinks: typeof import('$lib/components/recipes/navs/SkipLinks.svelte').default
 	Nav: typeof import('$lib/components/recipes/navs/Nav.svelte').default

@@ -1,27 +1,4 @@
-import type {Settings, StyleTree, Meta} from '$types'
-
-const DEFAULT_REVEAL_STATE: Settings = {reveal: 'minimize'}
-
-const DEFAULT_NAV_REVEAL_STATE: Settings = {reveal: 'expanded'}
-
-const DEFAULT_DS_STATE: {
-	Reveal: Settings
-	RevealMenu: Settings
-	RevealNav: Settings
-	HeaderRevealNav: Settings
-	HeaderRevealContext: Settings
-} = {
-	Reveal: {reveal: 'collapsed'},
-	RevealMenu: {reveal: 'collapsed'},
-	RevealNav: {reveal: 'collapsed'},
-	HeaderRevealNav: {reveal: 'collapsed'},
-	HeaderRevealContext: {reveal: 'collapsed'},
-}
-
-const TRANSITION_REVEAL: {[key: string]: string} = {
-	expanded: 'collapsed',
-	collapsed: 'expanded',
-}
+import type {StyleTree, Meta} from '$types'
 
 const NUMBER_TO_SIZE: {[key: string]: string} = {
 	// TODO: figure out a better way to map range number values to class strings
@@ -99,10 +76,6 @@ const TABS = [
 ]
 export default {
 	DEFAULT_STYLES,
-	DEFAULT_REVEAL_STATE,
-	DEFAULT_NAV_REVEAL_STATE,
-	DEFAULT_DS_STATE,
-	TRANSITION_REVEAL,
 	NUMBER_TO_SIZE,
 	DEFAULT_META,
 	TABS,
