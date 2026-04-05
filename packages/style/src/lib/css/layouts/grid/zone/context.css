@@ -16,14 +16,14 @@
 	}
 }
 
-.app-context ff-reveal {
+.exchange > .context ff-reveal {
 	display: flex;
 	align-items: center;
 	justify-content: end;
 	border-radius: var(--border-radius-lg);
 }
 
-.app-context {
+.exchange > .context {
 	inline-size: 100%;
 }
 
@@ -32,7 +32,7 @@
 		grid-column-start: 5;
 	}
 
-	.app-context > ff-reveal {
+	.exchange > .context > ff-reveal {
 		box-shadow: unset;
 		position: unset;
 		inline-size: max-content;

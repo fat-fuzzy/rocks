@@ -27,21 +27,8 @@
 
 @media screen and (min-width: 68.75rem) {
 	.metro.zone\:main {
-		grid-column-start: 1;
-		grid-column-end: 5;
-		max-block-size: var(--max-block-size);
-	}
-
-	.exchange:has(.gare\:ouest input.ouest:checked)
-		~ .metro.hug
-		.page-context:not(.empty) {
-		grid-column-start: 5;
-		grid-column-end: -1;
-	}
-
-	.exchange:has(.gare\:ouest input.ouest:checked) ~ .hug .metro.zone\:main {
 		grid-column-start: 4;
 		grid-column-end: 4;
-		padding-inline: 0;
+		max-block-size: var(--max-block-size);
 	}
 }
