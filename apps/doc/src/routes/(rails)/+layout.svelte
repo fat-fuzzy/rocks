@@ -100,7 +100,7 @@
 			background="inherit"
 		>
 			<ul
-				class="header-nav l:flex size:2xs unstyled color:primary justify:between w:full bg:inherit"
+				class="header-nav l:flex size:md unstyled color:primary justify:between bg:inherit"
 			>
 				<!-- <ul class={`header-nav unstyled ${navClasses}`}> -->
 				<li aria-current={pathname === '/' ? 'page' : undefined}>
@@ -124,7 +124,7 @@
 	>
 		{#if sidenav.layout === 'tgv'}
 			<div class="app-name">
-				<Magic spell="fuzzy" size="3xs" mask="text">
+				<Magic spell="fuzzy" mask="text">
 					<div class="l:flex align:center justify:center">
 						<ff-icon class="emoji:home font:lg"></ff-icon>
 						<p class="font:h1 font:lg">Fat Fuzzy</p>

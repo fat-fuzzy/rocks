@@ -209,6 +209,10 @@ ff-toggle-reveal.auto {
 	}
 }
 
+.sidebar > nav > ff-toggle-reveal > ff-control ff-icon {
+	--border-color: transparent;
+}
+
 .sidebar > nav > ff-toggle-reveal > ff-control > label.variant\:bare,
 .navbar > ff-toggle-reveal > ff-control > label.variant\:bare,
 .context > ff-toggle-reveal > ff-control > label.variant\:bare {

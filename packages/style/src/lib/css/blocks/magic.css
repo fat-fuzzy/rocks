@@ -123,7 +123,7 @@ ff-callout[class*='magic'].shape\:round {
 		--magic-gradient: radial-gradient(
 			farthest-corner at 50% 95%,
 			/* var(--color-gradient-000-start) 40% 40%, */
-				var(--color-gradient-001-end) 40% 40%,
+			var(--color-gradient-001-end) 40% 40%,
 			var(--color-gradient-001-middle) 70% 70%,
 			var(--color-gradient-001-start) 88% 88%
 		);
@@ -283,5 +283,13 @@ ff-callout[class*='magic'].shape\:round {
 	.magic\:feather {
 		--lightness-contrast-magic-feather: var(--color-lightness-light-base);
 		--chroma-contrast-magic-feather: var(--color-chroma-100);
+	}
+}
+
+.ff\:magic,
+ff-magic {
+	ff-icon {
+		--border-color: transparent;
+		background-color: inherit;
 	}
 }

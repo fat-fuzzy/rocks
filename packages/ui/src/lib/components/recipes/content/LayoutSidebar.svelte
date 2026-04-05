@@ -32,16 +32,17 @@
 					asset={sidenav.asset}
 					color={sidenav.color}
 					background={sidenav.background}
-					variant={sidenav.variant}
+					variant="bare"
 					checked={true}
 					area="gare"
 					place="ouest"
+					shape="square"
 					scroll="y"
-					justify="evenly"
-					font="md"
+					layer="1"
+					depth={0}
+					font="sm"
 					width="md"
 					height="lg"
-					shape="square"
 					dismiss="outside"
 				>
 					<ToggleTree

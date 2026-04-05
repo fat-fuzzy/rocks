@@ -23,6 +23,7 @@
 	let shapeClass = $derived(shape ? `shape:${shape}` : '')
 	let growClass = $derived(grow ? 'w:full' : '')
 	let maskClass = $derived(mask ? `mask:${mask}` : '')
+	let ravioliClass = $derived(size ? `ravioli:${size}` : '')
 	let fontClass = $derived(font ? `font:${font}` : size ? `font:${size}` : '')
 </script>
 
@@ -31,7 +32,7 @@
 	data-testid={id}
 >
 	<ff-callout
-		class={`magic:${spell} ${shapeClass} ${levelClass} ${fontClass} ravioli:${size} ${grow ? 'grow:1 l:flex align:center justify:center' : ''}`}
+		class={`magic:${spell} ${shapeClass} ${levelClass} ${fontClass} ${ravioliClass} ${grow ? 'grow:1 l:flex align:center justify:center' : ''}`}
 	>
 		{#if text}
 			{text}

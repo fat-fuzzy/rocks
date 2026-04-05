@@ -17,7 +17,6 @@ const DEFAULT_COOKIES_CONSENT: CookiePreferences = {
 }
 
 const DEFAULT_PREFERENCES: ViewingPreferences = {
-	reveal: 'collapsed',
 	brightness: 'day',
 	contrast: 'contrast',
 	consent: DEFAULT_COOKIES_CONSENT,
