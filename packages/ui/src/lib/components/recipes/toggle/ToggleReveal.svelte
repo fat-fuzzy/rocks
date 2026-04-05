@@ -69,16 +69,14 @@
 	let autoClasses = $derived(
 		auto ? `auto bp:${breakpoint} th:${threshold}` : '',
 	)
+	let surfaceClass1 = $derived(background ? `surface:1:${background}` : '')
 	let containerClasses = $derived(
 		`${autoClasses} ${areaClass} ${layoutClasses}`,
 	)
 
 	let scrollClass = $derived(scroll ? `scroll:${scroll}` : '')
 	let layerClass = $derived(layer ? `layer:${layer}` : '')
-	let backgroundClass = $derived(background ? `bg:${background}` : '')
-	let contentClasses = $derived(
-		`w:full ${scrollClass} ${layerClass} ${backgroundClass}`,
-	)
+	let contentClasses = $derived(`w:full ${scrollClass} ${layerClass}`)
 
 	let ff_labelClasses = 'l:flex w:full align:center justify:between'
 	let ff_labelReverse = $derived(depth > 1 && nav ? 'reverse nowrap' : '')
@@ -86,7 +84,7 @@
 
 {#snippet control()}
 	<ff-control class="gare-control">
-		<label for={id} class={`ellipsis ${labelClasses}`}>
+		<label for={id} class={`ellipsis ${labelClasses} ${surfaceClass1}`}>
 			<ff-label class={`${ff_labelClasses} ${ff_labelReverse}`}>
 				{#if nav}
 					{@render nav()}
