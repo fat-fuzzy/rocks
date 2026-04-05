@@ -50,19 +50,14 @@ export const load = async ({locals, params, parent}) => {
 	}
 
 	let styles
-	let ui
 
 	if (locals.dsStyles) {
 		styles = locals.dsStyles
-	}
-	if (locals.dsState) {
-		ui = locals.dsState
 	}
 
 	return {
 		markdowns,
 		content,
 		styles,
-		ui,
 	}
 }

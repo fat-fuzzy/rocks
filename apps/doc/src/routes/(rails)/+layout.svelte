@@ -144,7 +144,7 @@
 				/>
 				<ToggleReveal
 					id="sidenav-reveal"
-					label={sidenav.label}
+					label={sidenav.label ?? sidenav.title}
 					asset={sidenav.asset}
 					color={sidenav.color}
 					background={sidenav.background}

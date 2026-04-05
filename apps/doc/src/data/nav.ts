@@ -140,6 +140,7 @@ const pages: {[key: string]: NavItem} = {
 		assetType: 'emoji',
 		label: 'UI',
 		layout: 'voyager',
+		actionPath: '/ui',
 		items: [
 			{
 				slug: 'tokens',
