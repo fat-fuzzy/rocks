@@ -10,17 +10,12 @@
 
 @media screen and (min-width: 68.75rem) {
 	.voyager.zone\:main {
-		grid-column-start: 1;
+		grid-column-start: 4;
 		grid-column-end: -1;
+		padding-inline: 0;
 
 		> .page-context:not(.empty) {
 			padding-inline: var(--grid-gap);
 		}
-	}
-
-	.exchange:has(.gare\:ouest input.ouest:checked) ~ .hug .voyager.zone\:main {
-		grid-column-start: 4;
-		grid-column-end: -1;
-		padding-inline: 0;
 	}
 }
