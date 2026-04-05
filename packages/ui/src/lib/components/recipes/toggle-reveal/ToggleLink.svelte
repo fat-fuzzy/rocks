@@ -31,8 +31,8 @@
 <ToggleReveal
 	id={`toggle-${slug}`}
 	label={` Toggle ${slug}`}
-	{asset}
-	{assetType}
+	asset={depth > 1 ? 'chevron-right' : asset}
+	assetType={depth > 1 ? 'svg' : assetType}
 	{color}
 	{size}
 	{shape}
@@ -42,7 +42,8 @@
 	{layer}
 	width="full"
 	layout="flex"
-	nav={depth <= 1 ? link : undefined}
+	{depth}
+	nav={depth <= 1 || depth > 1 ? link : undefined}
 >
 	{#if children}
 		{@render children()}

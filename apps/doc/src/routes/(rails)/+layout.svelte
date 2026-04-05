@@ -94,6 +94,7 @@
 			align="start"
 			layer="1"
 			auto={true}
+			depth={0}
 			breakpoint="sm"
 			shape="square"
 			background="inherit"
@@ -154,6 +155,7 @@
 					shape="square"
 					scroll="y"
 					layer="1"
+					depth={0}
 					font="sm"
 					width="md"
 					height="lg"
@@ -185,6 +187,7 @@
 			justify="center"
 			text="start"
 			place="est"
+			depth={0}
 			layer="1"
 			variant="bare"
 			shape="square"

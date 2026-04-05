@@ -17,6 +17,7 @@ export type ToggleRevealProps = UiBlockProps &
 		area?: string
 		nav?: Snippet
 		children: Snippet
+		depth: number
 	}
 export type ToggleNavProps = NavProps &
 	ToggleRevealProps & {

@@ -30,6 +30,7 @@
 		container,
 		background,
 		nav,
+		depth,
 		children,
 	}: ToggleRevealProps = $props()
 
@@ -78,12 +79,15 @@
 	let contentClasses = $derived(
 		`w:full ${scrollClass} ${layerClass} ${backgroundClass}`,
 	)
+
+	let ff_labelClasses = 'l:flex w:full align:center justify:between'
+	let ff_labelReverse = $derived(depth > 1 && nav ? 'reverse nowrap' : '')
 </script>
 
 {#snippet control()}
 	<ff-control class="gare-control">
 		<label for={id} class={`ellipsis ${labelClasses}`}>
-			<ff-label class="l:flex w:full align:center justify:between">
+			<ff-label class={`${ff_labelClasses} ${ff_labelReverse}`}>
 				{#if nav}
 					{@render nav()}
 				{:else}
@@ -93,7 +97,12 @@
 				{/if}
 				<ff-icon class={iconClasses}></ff-icon>
 			</ff-label>
-			<input type="checkbox" {id} class="{`sr-only ${place}`} {checked}" />
+			<input
+				type="checkbox"
+				{id}
+				class={`sr-only ${place} size:${size}`}
+				{checked}
+			/>
 		</label>
 	</ff-control>
 {/snippet}

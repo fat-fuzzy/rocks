@@ -21,12 +21,19 @@
 		preload,
 	}: ToggleTreeProps = $props()
 
-	let layoutClass = $derived(layout ? `l:${layout}:${size} l:${container}` : '')
+	let containerClass = $derived(
+		container ? `l:${container}:${size} l:${container}` : '',
+	)
+	let layoutClass = $derived(layout ? `l:${layout}:${size}` : '')
 	let colorClass = $derived(color ? `surface:1:${color}` : 'bg:inherit')
 	let alignClass = $derived(align ? `align:${align}` : '')
 	let shapeClass = $derived(`shape:mellow`)
 	let depthClass = $derived(`depth-${depth}`)
-	let gridClass = $derived(depth === 1 ? `l:grid:auto size:xs` : layoutClass)
+	let gridClass = $derived(
+		depth === 1
+			? `l:grid:auto size:xs`
+			: `${layoutClass} ${containerClass}`.trim(),
+	)
 	let linkClass = $derived(depth === 0 ? 'font:md maki:inline:2xs' : 'font:md')
 </script>
 
@@ -41,7 +48,7 @@
 		{@const href = actionPath ?? `${pathname}/${slug}`}
 		{@const subItems = item.items}
 		{@const buttonAssetClass = subItems && asset ? asset : ''}
-		{@const linkAssetClass = !subItems && asset ? `emoji:${asset}` : ''}
+		{@const linkAssetClass = !subItems && asset ? `${assetType}:${asset}` : ''}
 		{@const itemClass = !subItems
 			? `${buttonAssetClass} ${alignClass}`
 			: alignClass}
@@ -58,7 +65,7 @@
 					{area}
 					asset={buttonAssetClass}
 					{href}
-					size="2xs"
+					size="xs"
 					font="sm"
 					place="nord"
 					{shape}
