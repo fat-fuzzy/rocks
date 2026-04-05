@@ -16,5 +16,6 @@
 @media screen and (min-width: 68.75rem) {
 	.exchange > .navbar {
 		grid-column-start: 4;
+		padding-inline: calc(2 * var(--grid-gap));
 	}
 }

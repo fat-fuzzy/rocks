@@ -72,27 +72,45 @@ ul.depth-1 {
 }
 
 ul.depth-2 {
+	inline-size: 100%;
+	max-inline-size: unset;
 	padding-inline: var(--outline-offset-sm);
+	padding-block: var(--ui-size);
 }
 
 ul.depth-3 {
-	padding-inline-start: calc(2 * var(--ui-size) + var(--outline-offset-lg));
+	inline-size: 100%;
+	max-inline-size: unset;
+	padding-inline: var(--outline-offset-sm);
 }
 
 /* Avoid this level of nesting */
 ul.depth-4 {
-	padding-inline-start: calc(4 * var(--ui-size) + var(--outline-offset-lg));
+	inline-size: 100%;
+	max-inline-size: unset;
+	padding-inline: var(--outline-offset-sm);
 }
 
 /* override Active Link styles for top level link */
 ul.depth-0 {
+	inline-size: 100%;
+	max-inline-size: unset;
 	scrollbar-gutter: stable;
 	scrollbar-width: thin;
 }
 
 ul.depth-0 > li {
-	padding-block-end: calc(var(--ui-size-sm) - var(--outline-offset-sm));
+	padding-block-end: var(--ui-size);
 }
+
+ul.depth-0 > li,
+ul.depth-1 > li,
+ul.depth-2 > li,
+ul.depth-3 > li,
+ul.depth-4 > li {
+	max-inline-size: unset;
+}
+
 /* override Active Link styles for top level link */
 ul.depth-0 > li > a {
 	font-family: var(--font-family-heading);

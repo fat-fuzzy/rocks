@@ -27,9 +27,11 @@ export const load = async ({locals, url, params}) => {
 	sidebar.layout =
 		url.pathname === '/about/decisions' || url.pathname === '/about/usage'
 			? 'tram'
-			: url.pathname.startsWith('/about/speaking')
-				? 'steam'
-				: 'voyager'
+			: url.pathname === '/about/speaking'
+				? 'metro'
+				: url.pathname.startsWith('/about/speaking')
+					? 'steam'
+					: 'voyager'
 
 	sidebar.items[0].items = (sidebar.items[0].items ?? []).map((item) => {
 		if (item.slug === 'usage') {

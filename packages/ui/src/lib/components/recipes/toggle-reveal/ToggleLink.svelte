@@ -15,6 +15,7 @@
 		asset,
 		children,
 		depth,
+		width,
 		area,
 		place,
 		assetType,
@@ -39,6 +40,7 @@
 	{area}
 	{place}
 	{layer}
+	width="full"
 	layout="flex"
 	nav={depth <= 1 ? link : undefined}
 >

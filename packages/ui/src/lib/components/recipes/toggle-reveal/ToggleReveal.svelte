@@ -76,7 +76,7 @@
 	let layerClass = $derived(layer ? `layer:${layer}` : '')
 	let backgroundClass = $derived(background ? `bg:${background}` : '')
 	let contentClasses = $derived(
-		`${scrollClass} ${layerClass} ${backgroundClass}`,
+		`w:full ${scrollClass} ${layerClass} ${backgroundClass}`,
 	)
 </script>
 

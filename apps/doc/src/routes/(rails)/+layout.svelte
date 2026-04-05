@@ -54,7 +54,6 @@
 				layout === 'steam' ||
 				layout === 'tram' ||
 				layout === 'urbanist' ||
-				layout === 'metro' ||
 				layout === 'voyager',
 			grid: true,
 		},
@@ -86,7 +85,7 @@
 />
 
 {#snippet zoneHeader()}
-	<div class="navbar align:start bg:inherit">
+	<div class="navbar align:start">
 		<ToggleReveal
 			id="nav"
 			label="Menu"
@@ -97,6 +96,7 @@
 			asset="home"
 			justify="center"
 			align="start"
+			layer="1"
 			auto={true}
 			breakpoint="sm"
 			shape="square"
@@ -157,6 +157,7 @@
 					place="ouest"
 					shape="square"
 					scroll="y"
+					layer="1"
 					font="sm"
 					width="md"
 					height="lg"
@@ -169,6 +170,7 @@
 						preload={true}
 						depth={0}
 						shape="square"
+						width="full"
 					/>
 				</ToggleReveal>
 			</nav>
@@ -187,6 +189,7 @@
 			justify="center"
 			text="start"
 			place="est"
+			layer="1"
 			variant="bare"
 			shape="square"
 			background="inherit"

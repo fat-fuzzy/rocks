@@ -100,7 +100,7 @@ const pages: {[key: string]: NavItem} = {
 				label: 'Speaking',
 				asset: 'speaking',
 				assetType: 'emoji',
-				layout: 'steam',
+				layout: 'metro',
 				actionPath: '/about/speaking',
 				items: [],
 			},

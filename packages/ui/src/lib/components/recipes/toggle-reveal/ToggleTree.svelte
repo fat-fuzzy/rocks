@@ -32,7 +32,7 @@
 
 <ul
 	{id}
-	class={`${gridClass} ${depthClass} bg:inherit ff-reveal`}
+	class={`${gridClass} ${depthClass} bg:inherit w:full`}
 	data-testid={id}
 	data-sveltekit-preload-data={preload ? preload : undefined}
 >
@@ -64,6 +64,7 @@
 					{shape}
 					{layer}
 					{depth}
+					width="full"
 					assetType={depth === 2 ? 'svg' : assetType ? assetType : 'emoji'}
 				>
 					{@render nestedLinkTree(subItems, slug)}
@@ -95,5 +96,6 @@
 		{layer}
 		depth={depth + 1}
 		{shape}
+		width="full"
 	/>
 {/snippet}

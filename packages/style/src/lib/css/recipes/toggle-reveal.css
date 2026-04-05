@@ -39,6 +39,7 @@ ff-toggle-reveal {
 		--x-axis: 0;
 		--y-axis: 0;
 		opacity: 1;
+		background-color: var(--shade);
 		display: flex;
 		flex-direction: column;
 		inline-size: var(--x-size);
@@ -54,12 +55,12 @@ ff-toggle-reveal.ouest {
 
 	ff-icon.svg\:chevron-right::before {
 		transform: rotate(0deg);
-		transition: transform 200ms ease-in;
+		transition: transform 300ms ease-in;
 	}
 
 	label:has(input:checked) ff-icon.svg\:chevron-right::before {
 		transform: rotate(90deg);
-		transition: transform 200ms ease-out;
+		transition: transform 300ms ease-out;
 	}
 
 	ff-control + ff-reveal {
@@ -77,8 +78,8 @@ ff-toggle-reveal.ouest {
 		block-size: var(--overlay-block-size);
 		inline-size: var(--overlay-inline-size);
 		transition:
-			transform 250ms ease-out,
-			opacity 250ms ease-out 50ms,
+			transform 350ms ease-out,
+			opacity 350ms ease-out 50ms,
 			block-size 300ms ease-out,
 			inline-size 300ms ease-out;
 	}
@@ -112,8 +113,8 @@ ff-toggle-reveal.est {
 		--x-axis: calc(-1 * var(--outline-offset-sm) - 50%);
 		inline-size: var(--overlay-inline-size);
 		transition:
-			transform 250ms ease-out,
-			opacity 200ms ease-out 50ms;
+			transform 350ms ease-out,
+			opacity 300ms ease-out 50ms;
 	}
 }
 
@@ -144,11 +145,12 @@ ff-toggle-reveal.sud {
 
 	ff-control:has(input:checked) + ff-reveal,
 	ff-control:has(input:checked) + ff-reveal {
+		position: static;
 		block-size: fit-content;
-		inline-size: var(--overlay-inline-size);
+		max-inline-size: unset;
 		transition:
-			opacity 250ms ease-out 50ms,
-			block-size 250ms ease-out;
+			opacity 350ms ease-out 50ms,
+			block-size 350ms ease-out;
 	}
 }
 
@@ -185,18 +187,19 @@ ff-control > label > ff-label > a {
 
 ul.depth-1 ff-toggle-reveal:first-of-type > ff-control > label {
 	padding: var(--border-width-xl);
+	margin-block-end: var(--border-width-xl);
 }
 
 ff-toggle-reveal.auto {
-	position: unset;
-
 	ff-control:has(input:checked) + ff-reveal,
 	ff-control:has(input:checked) + ff-reveal {
 		block-size: fit-content;
 		position: absolute;
 		opacity: 1;
+		padding: var(--border-width-xl);
 		transition:
 			opacity 150ms ease-out 50ms,
+			padding 150ms ease-out 50ms,
 			block-size 250ms ease-out;
 	}
 
@@ -210,4 +213,20 @@ ff-toggle-reveal.auto {
 .navbar > ff-toggle-reveal > ff-control > label.variant\:bare,
 .context > ff-toggle-reveal > ff-control > label.variant\:bare {
 	border: var(--border-width-md) solid var(--accent);
+}
+
+.navbar > ff-toggle-reveal > ff-control:has(input:checked) + ff-reveal {
+	--y-axis: var(--ui-size);
+	border-radius: var(--border-radius-base);
+}
+
+.context > ff-toggle-reveal > ff-control:has(input:checked) + ff-reveal {
+	--x-axis: calc(-1 * var(--outline-offset-lg) + 50%);
+	--y-axis: var(--ui-size);
+	padding-block: var(--ui-size-sm);
+	padding-inline: var(--ui-size);
+}
+
+.sidebar > nav > ff-toggle-reveal > ff-control:has(input:checked) + ff-reveal {
+	--y-axis: var(--ui-size);
 }

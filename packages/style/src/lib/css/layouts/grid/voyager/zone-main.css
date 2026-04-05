@@ -16,10 +16,6 @@
 		> .page-context:not(.empty) {
 			padding-inline: var(--grid-gap);
 		}
-
-		> .page-main {
-			padding-inline: var(--grid-gap);
-		}
 	}
 
 	.exchange:has(.gare\:ouest input.ouest:checked) ~ .hug .voyager.zone\:main {
