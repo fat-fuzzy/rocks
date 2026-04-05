@@ -40,7 +40,6 @@ import Switcher from '$lib/components/layouts/Switcher.svelte'
  */
 import ButtonMenu from '$lib/components/recipes/menus/ButtonMenu.svelte'
 import ToggleMenu from '$lib/components/recipes/menus/ToggleMenu/ToggleMenu.svelte'
-import Settings from '$lib/components/recipes/forms/Settings.svelte'
 import SignUp from '$lib/components/recipes/forms/SignUp.svelte'
 
 import Nav from '$lib/components/recipes/navs/Nav.svelte'
@@ -195,7 +194,6 @@ const drafts = {
 	Scrolly,
 	ScrollyItem,
 	Breadcrumbs,
-	Settings,
 	PageNav,
 	PageHeader,
 	Zoomer,

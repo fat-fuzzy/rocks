@@ -2,11 +2,18 @@
 // it so that it gets served as a static asset in production
 export const prerender = false
 export const ssr = true
+import type {ViewingPreferences} from '@fat-fuzzy/ui'
 
 export const load = async ({locals}) => {
 	// Main header nav
 	const nav = locals.nav
-	const appContext = locals.appContext
+	const appContext: ViewingPreferences = {
+		brightness: 'system',
+		contrast: 'contrast',
+		consent: {
+			functional: true,
+		},
+	}
 
 	return {
 		nav,

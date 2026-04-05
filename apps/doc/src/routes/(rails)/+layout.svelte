@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {Snippet} from 'svelte'
-	import type {AreaProps} from '@fat-fuzzy/ui'
+	import type {AreaProps, ViewingPreferences} from '@fat-fuzzy/ui'
 
 	import ui from '@fat-fuzzy/ui'
 
@@ -9,18 +9,15 @@
 	import {links} from '$data/nav'
 
 	import {linksSocials} from '$data/nav'
-	import config from '$config/app'
 
 	import Footer from '$lib/ui/Footer.svelte'
 	import Socials from '$lib/ui/Socials.svelte'
 	import NavSlides from '$lib/ui/NavSlides.svelte'
 
-	const {ToggleTree, ToggleReveal, Cookies, Settings} = ui.drafts
+	const {ToggleTree, ToggleReveal, Cookies, ToggleSettings} = ui.drafts
 	const {SkipLinks} = ui.recipes
 	const {LayoutGrid} = ui.content
 	const {Magic} = ui.blocks
-
-	const {APP_SETTINGS} = config
 
 	type Props = {
 		children: Snippet
@@ -30,7 +27,13 @@
 	let sidenav = $derived(page.data.sidebar)
 	let pathname = $derived(page.url.pathname)
 	let layout = $derived(page.data.layout ?? sidenav.layout)
-	let appContext = $derived(page.data.appContext)
+	let appContext: ViewingPreferences = $state({
+		brightness: 'system',
+		contrast: 'contrast',
+		consent: {
+			functional: true,
+		},
+	})
 	let talk = $derived(page.params.talk)
 	let slide = $derived(page.data.content)
 	let series = $derived(
@@ -59,16 +62,10 @@
 		},
 	])
 
-	let brightness = $derived(appContext.brightness)
-	let contrast = $derived(appContext.contrast)
-	let preferences = $derived.by(() => {
-		let preferences = APP_SETTINGS
-		preferences.display[0].initial =
-			brightness === 'night' ? 'active' : 'inactive'
-		preferences.display[1].initial =
-			contrast === 'blend' ? 'active' : 'inactive'
-		return preferences
-	})
+	function updateSettings(event: Event) {
+		const target = event.target as HTMLInputElement
+		appContext[target.name] = target.value
+	}
 </script>
 
 <LayoutGrid
@@ -179,27 +176,22 @@
 		<ToggleReveal
 			id="appContext"
 			label="Settings"
-			auto={true}
-			breakpoint="xs"
+			color="neutral"
 			asset="settings"
 			font="sm"
 			layout="grid"
 			justify="center"
-			text="start"
 			place="est"
 			depth={0}
-			layer="1"
 			variant="bare"
 			shape="square"
-			background="inherit"
 		>
-			<Settings
+			<ToggleSettings
 				id="appContext-menu"
-				label=""
-				items={preferences.display}
-				formaction="updateSettings"
-				actionPath={page.url.pathname}
-				onupdate={preferences.onupdate}
+				name="app-settings"
+				label="Settings"
+				selected={appContext}
+				oninput={updateSettings}
 			/>
 		</ToggleReveal>
 	</div>

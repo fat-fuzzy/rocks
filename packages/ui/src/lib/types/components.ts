@@ -79,7 +79,6 @@ export interface Drafts {
 	Breadcrumbs: typeof import('$lib/components/recipes/navs/Breadcrumbs.svelte').default
 	PageNav: typeof import('$lib/components/recipes/navs/PageNav.svelte').default
 	PageHeader: typeof import('$lib/components/recipes/content/PageHeader.svelte').default
-	Settings: typeof import('$lib/components/recipes/forms/Settings.svelte').default
 	Zoomer: typeof import('$lib/components/blocks/overlays/Zoomer.svelte').default
 	Tabs: typeof import('$lib/components/recipes/tabs/Tabs.svelte').default
 	Toast: typeof import('$lib/components/blocks/overlays/Toast/Toast.svelte').default

@@ -1,12 +1,4 @@
-ff-toggle-reveal:not(.auto) {
-	position: relative;
-}
-
 ff-toggle-reveal {
-	ff-control + ff-reveal {
-		max-block-size: var(--max-overlay-size);
-	}
-
 	ff-control > label {
 		z-index: calc(var(--z-index-overlay) + 1);
 	}
@@ -38,6 +30,7 @@ ff-toggle-reveal {
 	ff-control:has(input:checked) + ff-reveal {
 		--x-axis: 0;
 		--y-axis: 0;
+
 		opacity: 1;
 		background-color: var(--shade);
 		display: flex;
@@ -51,8 +44,6 @@ ff-toggle-reveal {
 }
 
 ff-toggle-reveal.ouest {
-	--y-axis: var(--outline-offset-sm);
-
 	ff-icon.svg\:chevron-right::before {
 		transform: rotate(0deg);
 		transition: transform 300ms ease-in;
@@ -65,7 +56,7 @@ ff-toggle-reveal.ouest {
 
 	ff-control + ff-reveal {
 		--x-axis: -100%;
-		--y-axis: 0;
+		--y-axis: var(--ui-size);
 
 		block-size: var(--overlay-block-size);
 		inline-size: var(--overlay-inline-size);
@@ -86,8 +77,6 @@ ff-toggle-reveal.ouest {
 }
 
 ff-toggle-reveal.est {
-	--y-axis: var(--outline-offset-sm);
-
 	ff-icon::before {
 		transform: rotate(180deg);
 		transition: transform 200ms ease-in;
@@ -99,22 +88,27 @@ ff-toggle-reveal.est {
 	}
 
 	ff-control + ff-reveal {
+		--y-axis: var(--ui-size);
 		--x-axis: 100%;
-		--y-axis: 0;
 
-		block-size: var(--overlay-block-size);
-		inline-size: 0;
+		inline-size: calc(var(--overlay-inline-size) - 2 * var(--ui-size));
 		transition:
-			transform 250ms ease-in 50ms,
-			opacity 200ms ease-in;
+			transform 250ms ease-in,
+			opacity 200ms ease-in 50ms,
+			block-size 300ms ease-in,
+			inline-size 300ms ease-in;
 	}
 
 	ff-control:has(input:checked) + ff-reveal {
-		--x-axis: calc(-1 * var(--outline-offset-sm) - 50%);
-		inline-size: var(--overlay-inline-size);
+		--y-axis: var(--ui-size);
+		--x-axis: calc(-1 * var(--ui-size));
+		inline-size: calc(var(--overlay-inline-size) - 2 * var(--ui-size));
+
 		transition:
 			transform 350ms ease-out,
-			opacity 300ms ease-out 50ms;
+			opacity 350ms ease-out 50ms,
+			block-size 300ms ease-out,
+			inline-size 300ms ease-out;
 	}
 }
 
@@ -213,24 +207,36 @@ ff-toggle-reveal.auto {
 	--border-color: transparent;
 }
 
-.sidebar > nav > ff-toggle-reveal > ff-control > label.variant\:bare,
-.navbar > ff-toggle-reveal > ff-control > label.variant\:bare,
-.context > ff-toggle-reveal > ff-control > label.variant\:bare {
-	border: var(--border-width-md) solid var(--accent);
+.sidebar > nav > ff-toggle-reveal > ff-control > label,
+.navbar > ff-toggle-reveal > ff-control > label,
+.context > ff-toggle-reveal > ff-control > label {
+	border: var(--border-width-md) solid transparent;
+	max-inline-size: calc(
+		var(--overlay-inline-size) + 4 * var(--grid-gap) + 2 *
+			var(--outline-offset-lg)
+	);
+}
+
+.sidebar > nav > ff-toggle-reveal > ff-control > label,
+.navbar > ff-toggle-reveal > ff-control > label,
+.context > ff-toggle-reveal > ff-control > label {
+	--lightness: var(--lightness-surface-1);
+	--lightness-contrast: var(--lightness-surface-1-contrast);
+	background-color: var(--shade);
 }
 
 .navbar > ff-toggle-reveal > ff-control:has(input:checked) + ff-reveal {
 	--y-axis: var(--ui-size);
-	border-radius: var(--border-radius-base);
-}
 
-.context > ff-toggle-reveal > ff-control:has(input:checked) + ff-reveal {
-	--x-axis: calc(-1 * var(--outline-offset-lg) + 50%);
-	--y-axis: var(--ui-size);
-	padding-block: var(--ui-size-sm);
-	padding-inline: var(--ui-size);
+	border-radius: var(--border-radius-base);
 }
 
 .sidebar > nav > ff-toggle-reveal > ff-control:has(input:checked) + ff-reveal {
 	--y-axis: var(--ui-size);
+}
+
+@media screen and (min-width: 58.75rem) {
+	.context > ff-toggle-reveal > ff-control:has(input:checked) + ff-reveal {
+		--x-axis: 0;
+	}
 }

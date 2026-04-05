@@ -6,11 +6,6 @@ import settingsActions from '$lib/server/actions/settings-actions'
 const {APP_PREFIX} = ui.constants
 
 export const commonActions = {
-	updateSettings: async (event: RequestEvent) => {
-		const updated = await settingsActions.handleUpdateAppSettings(event)
-		event.locals.appContext.brightness = updated.state.brightness
-		event.locals.appContext.contrast = updated.state.contrast
-	},
 	saveCookiePreferences: async (event: RequestEvent) => {
 		const updated = await settingsActions.handleUpdateAppSettings(event)
 		event.locals.appContext.consent = updated.state?.consent || undefined
