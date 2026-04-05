@@ -18,8 +18,8 @@ pre {
 	padding-block: var(--ui-size-lg);
 	border: var(--border-width-xl) solid var(--color-accent);
 	inline-size: auto;
+	max-inline-size: calc(100% - var(--ui-size-lg));
 	overflow: auto;
-	margin-inline-start: var(--ui-size);
 }
 
 kbd {
