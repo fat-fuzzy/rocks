@@ -1,7 +1,7 @@
 <script lang="ts">
 	import '@fat-fuzzy/style/css'
 	import constants from '$lib/types/constants.js'
-	import ToggleReveal from '$lib/components/recipes/toggle-reveal/ToggleReveal.svelte'
+	import ToggleReveal from '$lib/components/recipes/toggle/ToggleReveal.svelte'
 	import type {Snippet} from 'svelte'
 
 	import {resolve} from '$app/paths'

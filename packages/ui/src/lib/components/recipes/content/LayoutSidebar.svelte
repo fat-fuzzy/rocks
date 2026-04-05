@@ -1,8 +1,8 @@
 <script lang="ts">
 	import type {LayoutProps} from '$types'
 	import SkipLinks from '$lib/components/recipes/navs/SkipLinks.svelte'
-	import ToggleReveal from '$lib/components/recipes/toggle-reveal/ToggleReveal.svelte'
-	import ToggleTree from '$lib/components/recipes/toggle-reveal/ToggleTree.svelte'
+	import ToggleReveal from '$lib/components/recipes/toggle/ToggleReveal.svelte'
+	import ToggleTree from '$lib/components/recipes/toggle/ToggleTree.svelte'
 
 	let {size = 'md', sidenav, url, app, children}: LayoutProps = $props()
 	let pathname = $derived(sidenav?.pathname || '/')

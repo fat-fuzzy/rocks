@@ -2,7 +2,7 @@
 	import type {NavProps} from '$types'
 
 	import styleHelper from '$lib/utils/styles'
-	import ToggleTree from '$lib/components/recipes/toggle-reveal/ToggleTree.svelte'
+	import ToggleTree from '$lib/components/recipes/toggle/ToggleTree.svelte'
 
 	let {
 		id,

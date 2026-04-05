@@ -19,7 +19,7 @@ Use a `ToggleReveal` component to toggle associated content on click.
 
 ### Related Components
 
-- `toggle-reveal` components in `recipes`
+- `toggle` components in `recipes`
 
 ## Resources
 
