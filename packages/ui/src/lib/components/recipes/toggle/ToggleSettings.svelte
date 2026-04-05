@@ -53,6 +53,7 @@
 			<input
 				type="radio"
 				{id}
+				{name}
 				class={`sr-only  size:${size}`}
 				checked={String(value).includes(id)}
 			/>
