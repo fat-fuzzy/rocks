@@ -5,7 +5,7 @@ ff-icon {
 	--chroma: var(--chroma-base);
 	--lightness: var(--lightness-ui-base);
 	--lightness-accent: var(--lightness-ui-base);
-	--lightness-contrast: var(--lightness-ui-contrast-base);
+	--lightness-contrast: var(--lightness-contrast-base);
 	--chroma-contrast: var(--chroma-base);
 	--chroma-accent: var(--chroma-surface-4);
 	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
@@ -45,7 +45,7 @@ button.variant\:fill,
 ff-control > label.variant\:fill {
 	--lightness: var(--lightness-ui-base);
 	--lightness-accent: var(--lightness-ui-base);
-	--lightness-contrast: var(--lightness-ui-contrast-base);
+	--lightness-contrast: var(--lightness-base);
 	background-color: var(--shade);
 	border-color: var(--accent);
 }
@@ -53,7 +53,7 @@ ff-control > label.variant\:fill {
 button.variant\:outline,
 ff-control > label.variant\:outline {
 	--lightness: var(--lightness-surface-6);
-	--lightness-accent: var(--lightness-ui-base);
+	--lightness-accent: var(--lightness-surface-4);
 	--lightness-contrast: var(--lightness-accent-base);
 	background-color: inherit;
 	border-color: var(--accent);
@@ -62,7 +62,7 @@ ff-control > label.variant\:outline {
 button.variant\:bare,
 ff-control > label.variant\:bare {
 	--lightness: var(--lightness-surface-4);
-	--lightness-accent: var(--lightness-accent-base);
+	--lightness-accent: var(--lightness-surface-3);
 	--lightness-contrast: var(--lightness-contrast-base);
 	background-color: inherit;
 	border: var(--border-width-md) solid var(--accent);
