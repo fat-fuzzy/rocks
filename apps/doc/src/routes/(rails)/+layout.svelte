@@ -183,7 +183,6 @@
 			justify="end"
 			place="est"
 			depth={0}
-			layer={1}
 			variant="bare"
 			shape="square"
 			background="blur"
