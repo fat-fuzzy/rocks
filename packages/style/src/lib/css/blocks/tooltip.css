@@ -4,8 +4,8 @@
 */
 
 [role='tooltip'] {
-	--x-axis: var(--ui-size);
-	--y-axis: var(--ui-size);
+	--x-axis: var(--ui-size-sm);
+	--y-axis: var(--ui-size-sm);
 	--x-transform: 0;
 	--y-transform: 0;
 	--tooltip-bg: oklch(var(--lightness-base) var(--chroma-base) var(--hue));
@@ -53,12 +53,12 @@ label:focus > [role='tooltip'] {
 
 [role='tooltip'].est {
 	inset-block-start: var(--y-axis);
-	inset-inline-start: 45%;
+	inset-inline-start: 50%;
 }
 
 [role='tooltip'].ouest {
 	inset-block-start: var(--y-axis);
-	inset-inline-end: 45%;
+	inset-inline-end: 50%;
 }
 
 [role='tooltip'].nord {

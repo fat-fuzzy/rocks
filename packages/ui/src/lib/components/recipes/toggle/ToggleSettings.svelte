@@ -5,6 +5,8 @@
 
 	let {selected, oninput}: ToggleSettingsProps & InputCallbackProps = $props()
 
+	let values = $derived(Object.entries(selected).map(([key, value]) => value))
+
 	const options = $derived([
 		{
 			label: 'Brightness',
@@ -15,6 +17,10 @@
 			justify: 'start',
 			id: 'brightness',
 			background: 'inherit',
+			value: Object.entries(selected).map(([key, value]) => {
+				if (key) return value
+				return ''
+			}),
 			items: [
 				{
 					label: 'System',
@@ -26,10 +32,6 @@
 					color: 'primary',
 					place: 'est',
 					variant: 'outline',
-					checked:
-						!selected.brightness || selected.brightness === 'system'
-							? true
-							: undefined,
 				},
 				{
 					label: 'Day',
@@ -41,7 +43,6 @@
 					color: 'primary',
 					place: 'est',
 					variant: 'outline',
-					checked: selected.brightness === 'day' ? true : undefined,
 				},
 				{
 					label: 'Night',
@@ -53,7 +54,6 @@
 					place: 'est',
 					color: 'primary',
 					variant: 'outline',
-					checked: selected.brightness === 'night' ? true : undefined,
 				},
 			],
 		},
@@ -66,6 +66,10 @@
 			justify: 'start',
 			id: 'contrast',
 			background: 'inherit',
+			value: Object.entries(selected).map(([key, value]) => {
+				if (key) return value
+				return ''
+			}),
 			items: [
 				{
 					label: 'Default',
@@ -77,10 +81,6 @@
 					place: 'est',
 					color: 'accent',
 					variant: 'outline',
-					checked:
-						!selected.contrast || selected.contrast === 'contrast'
-							? true
-							: undefined,
 				},
 				{
 					label: 'Blend',
@@ -92,7 +92,6 @@
 					place: 'est',
 					color: 'accent',
 					variant: 'outline',
-					checked: selected.contrast === 'blend' ? true : undefined,
 				},
 			],
 		},
@@ -101,6 +100,6 @@
 
 <div class="l:flex maki:block:sm align:start">
 	{#each options as item, i (i)}
-		<InputGroup {...item} {oninput} />
+		<InputGroup {...item} {oninput} value={values} />
 	{/each}
 </div>

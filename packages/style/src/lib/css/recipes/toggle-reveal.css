@@ -28,6 +28,12 @@ ff-toggle-reveal {
 		z-index: var(--z-index-overlay);
 	}
 
+	ff-control > label:has(input:checked) ff-icon {
+		--lightness: var(--lightness-surface-2);
+		--chroma: var(--chroma-surface-2);
+		background-color: var(--shade);
+	}
+
 	ff-control:has(input:checked) + ff-reveal[class*='bg:blur'] {
 		--color-bg: transparent;
 	}
@@ -35,7 +41,7 @@ ff-toggle-reveal {
 	ff-control:has(input:checked) + ff-reveal {
 		--x-axis: 0;
 		--y-axis: 0;
-		--max-inline-size: calc(var(--sidebar-width) - var(--grid-gap));
+		--max-inline-size: max-content;
 
 		opacity: 1;
 		background-color: var(--color-bg);
@@ -240,8 +246,13 @@ ff-toggle-reveal.auto {
 	--y-axis: var(--ui-size);
 }
 
-@media screen and (min-width: 58.75rem) {
+.context > ff-toggle-reveal > ff-control:has(input:checked) + ff-reveal {
+	--x-axis: calc(-50% + 2 * var(--ui-size));
+}
+
+@media screen and (min-width: 68.75rem) {
 	.context > ff-toggle-reveal > ff-control:has(input:checked) + ff-reveal {
 		--x-axis: 0;
+		--max-inline-size: calc(var(--sidebar-width) - var(--grid-gap));
 	}
 }
