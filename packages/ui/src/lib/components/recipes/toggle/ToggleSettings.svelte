@@ -22,9 +22,10 @@
 					value: 'system',
 					asset: 'home',
 					shape: 'round',
+					size: 'xs',
 					color: 'primary',
 					place: 'est',
-					variant: 'fill',
+					variant: 'outline',
 					checked:
 						!selected.brightness || selected.brightness === 'system'
 							? true
@@ -36,9 +37,10 @@
 					value: 'day',
 					asset: 'day',
 					shape: 'round',
+					size: 'xs',
 					color: 'primary',
 					place: 'est',
-					variant: 'fill',
+					variant: 'outline',
 					checked: selected.brightness === 'day' ? true : undefined,
 				},
 				{
@@ -47,9 +49,10 @@
 					value: 'night',
 					asset: 'night',
 					shape: 'round',
+					size: 'xs',
 					place: 'est',
 					color: 'primary',
-					variant: 'fill',
+					variant: 'outline',
 					checked: selected.brightness === 'night' ? true : undefined,
 				},
 			],
@@ -70,9 +73,10 @@
 					value: 'contrast',
 					asset: 'contrast',
 					shape: 'round',
+					size: 'xs',
 					place: 'est',
 					color: 'accent',
-					variant: 'fill',
+					variant: 'outline',
 					checked:
 						!selected.contrast || selected.contrast === 'contrast'
 							? true
@@ -84,9 +88,10 @@
 					value: 'blend',
 					asset: 'blend',
 					shape: 'round',
+					size: 'xs',
 					place: 'est',
 					color: 'accent',
-					variant: 'fill',
+					variant: 'outline',
 					checked: selected.contrast === 'blend' ? true : undefined,
 				},
 			],
