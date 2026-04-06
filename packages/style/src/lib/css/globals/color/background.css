@@ -20,6 +20,7 @@
 	--border-color: transparent;
 	backdrop-filter: blur(var(--blur-strength));
 	background-color: var(--blur-bk);
+	transition: blur 150ms;
 }
 
 .bg\:blur\:lg {
@@ -27,7 +28,7 @@
 }
 
 [class*='bg:blur']:hover {
-	--blur-strength: calc(2 * var(--size-base-2xl));
+	--blur-strength: var(--size-base-2xl);
 }
 
 /* Set current color LIGHTNESS and CHROMA according to a 7 point scale */

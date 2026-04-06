@@ -11,8 +11,8 @@
 			name: 'brightness',
 			type: 'radio',
 			color: 'primary',
-			size: '2xs',
-			justify: 'end',
+			size: 'xs',
+			justify: 'start',
 			id: 'brightness',
 			background: 'inherit',
 			items: [
@@ -24,7 +24,7 @@
 					shape: 'round',
 					color: 'primary',
 					place: 'est',
-					variant: 'bare',
+					variant: 'fill',
 					checked:
 						!selected.brightness || selected.brightness === 'system'
 							? true
@@ -38,7 +38,7 @@
 					shape: 'round',
 					color: 'primary',
 					place: 'est',
-					variant: 'bare',
+					variant: 'fill',
 					checked: selected.brightness === 'day' ? true : undefined,
 				},
 				{
@@ -49,7 +49,7 @@
 					shape: 'round',
 					place: 'est',
 					color: 'primary',
-					variant: 'bare',
+					variant: 'fill',
 					checked: selected.brightness === 'night' ? true : undefined,
 				},
 			],
@@ -59,8 +59,8 @@
 			name: 'contrast',
 			type: 'radio',
 			color: 'primary',
-			size: '2xs',
-			justify: 'end',
+			size: 'xs',
+			justify: 'start',
 			id: 'contrast',
 			background: 'inherit',
 			items: [
@@ -72,7 +72,7 @@
 					shape: 'round',
 					place: 'est',
 					color: 'accent',
-					variant: 'bare',
+					variant: 'fill',
 					checked:
 						!selected.contrast || selected.contrast === 'contrast'
 							? true
@@ -86,7 +86,7 @@
 					shape: 'round',
 					place: 'est',
 					color: 'accent',
-					variant: 'bare',
+					variant: 'fill',
 					checked: selected.contrast === 'blend' ? true : undefined,
 				},
 			],

@@ -25,7 +25,7 @@
 
 ff-control:has([role='tooltip']) {
 	position: relative;
-	min-inline-size: calc(var(--layout-sidebar-collapsed) + 2 * var(--ui-size));
+	min-inline-size: var(--layout-sidebar-collapsed);
 }
 
 label:has([role='tooltip']) {
