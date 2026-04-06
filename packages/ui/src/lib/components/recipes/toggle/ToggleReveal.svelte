@@ -29,6 +29,8 @@
 		place = 'nord',
 		container,
 		background,
+		surface,
+		surfaceLightness,
 		nav,
 		depth,
 		children,
@@ -65,26 +67,47 @@
 			container,
 		}),
 	)
+
+	// Container styles
 	let areaClass = $derived(area ? `${area}:${place} ${place}` : place)
 	let autoClasses = $derived(
 		auto ? `auto bp:${breakpoint} th:${threshold}` : '',
 	)
-	let surfaceClass1 = $derived(background ? `surface:1:${background}` : '')
 	let containerClasses = $derived(
 		`${autoClasses} ${areaClass} ${layoutClasses}`,
 	)
 
+	// Label & Icon styles
+	let justifyClass = $derived(
+		justify ? `justify:${justify}` : 'justify:between',
+	)
+	let ff_labelClasses = $derived(`l:flex w:full align:center ${justifyClass}`)
+	let ff_labelReverse = $derived(depth > 1 && nav ? 'reverse nowrap' : '')
+
+	// Content styles
+	let bgLabelClass = $derived(background ? `bg:${background}` : '')
+	let bgContentClass = $derived(
+		surface
+			? surfaceLightness
+				? `surface:${surfaceLightness}:${surface}`
+				: `surface:1:${surface}`
+			: '',
+	)
 	let scrollClass = $derived(scroll ? `scroll:${scroll}` : '')
 	let layerClass = $derived(layer ? `layer:${layer}` : '')
-	let contentClasses = $derived(`w:full ${scrollClass} ${layerClass}`)
-
-	let ff_labelClasses = 'l:flex w:full align:center justify:between'
-	let ff_labelReverse = $derived(depth > 1 && nav ? 'reverse nowrap' : '')
+	let shapeClass = $derived(
+		shape && shape !== 'square' && shape !== 'round' && shape !== 'pill'
+			? `shape:${shape}`
+			: 'shape:mellow',
+	)
+	let contentClasses = $derived(
+		`w:full ${shapeClass} ${scrollClass} ${layerClass} ${bgContentClass} ${bgLabelClass} ${bgContentClass}`,
+	)
 </script>
 
 {#snippet control()}
 	<ff-control class="gare-control">
-		<label for={id} class={`ellipsis ${labelClasses} ${surfaceClass1}`}>
+		<label for={id} class={`ellipsis ${labelClasses}`}>
 			<ff-label class={`${ff_labelClasses} ${ff_labelReverse}`}>
 				{#if nav}
 					{@render nav()}

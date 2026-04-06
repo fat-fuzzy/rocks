@@ -42,6 +42,12 @@ export type UiTheme = 'primary' | 'accent' | 'highlight' | 'neutral'
 
 export type UiColor = UiStatus | UiPalette | UiTheme
 
+export type UiBrightness = 'day' | 'night' | 'system'
+
+export type UiContrast = 'contrast' | 'blend'
+
+export type UiSurface = 'blur' | 'inherit' | 'light' | 'dark' | UiTheme
+
 export type UiAssetType = 'emoji' | 'svg' | 'none'
 
 export type UiVariant = 'fill' | 'outline' | 'bare'

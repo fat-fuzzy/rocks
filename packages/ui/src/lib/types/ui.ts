@@ -3,6 +3,7 @@ import type {
 	UiContainer,
 	UiLayout,
 	UiColor,
+	UiSurface,
 	UiShape,
 	UiVariant,
 	UiSize,
@@ -31,7 +32,9 @@ export type UiContainerProps = {
 export type UiLayoutProps = UiContainerProps & {
 	align?: string
 	alignSelf?: string
-	background?: string
+	background?: UiSurface
+	surface?: UiSurface
+	surfaceLightness?: number
 	breakpoint?: UiSize
 	direction?: string // TODO: check / harmonize STYLE_MODIFIER
 	font?: UiSize
