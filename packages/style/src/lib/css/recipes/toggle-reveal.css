@@ -30,7 +30,6 @@ ff-toggle-reveal {
 
 	ff-control > label:has(input:checked) ff-icon {
 		--lightness: var(--lightness-surface-2);
-		--chroma: var(--chroma-surface-2);
 		background-color: var(--shade);
 	}
 
