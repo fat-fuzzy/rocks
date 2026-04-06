@@ -5,8 +5,4 @@ export const load = async () => {
 	error(404, 'Not found')
 }
 
-export const actions = {
-	toggleNav: commonActions.toggleNav,
-	toggleAppContext: commonActions.toggleAppContext,
-	updateSettings: commonActions.updateSettings,
-}
+export const actions = commonActions

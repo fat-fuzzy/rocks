@@ -6,7 +6,6 @@
 		id?: string
 		name?: string
 		title: string
-		isPage?: boolean
 		SpecifiedElement: any // TODO: fix types
 		props: any
 		formaction?: string
@@ -27,7 +26,6 @@
 
 	let playbookActor: PlaybookActor = getContext('playbookActor')
 	let styles = $derived(playbookActor.styles)
-	let reveal = $derived(playbookActor.context[title]?.reveal || '')
 
 	let blockStyles = $derived(styles.blocks?.families?.block || '')
 	let layoutStyles = $derived(styles.layouts?.families?.layout || '')
@@ -48,11 +46,11 @@
 
 {#snippet children(props, contentType: string)}
 	{#if contentType === 'text'}
-		<p class={`ravioli:md surface:1:neutral`}>
+		<p class="ravioli:md surface:1:neutral">
 			{props.text}
 		</p>
 	{:else if contentType === 'ravioli'}
-		{#each props[content] as item}
+		{#each props[content] as item, i (i)}
 			<div class={layoutContent}>{item}</div>
 		{/each}
 	{/if}
@@ -85,7 +83,6 @@
 		{actionPath}
 		{redirect}
 		{formaction}
-		{reveal}
 	>
 		{@render children(fixtures, content)}
 	</SpecifiedElement>

@@ -4,7 +4,7 @@
  == */
 a {
 	color: var(--color-ink, var(--ink));
-	background-color: var(--color-bg);
+	background-color: inherit;
 	border-color: var(--ink);
 	text-decoration-color: var(--ink);
 }

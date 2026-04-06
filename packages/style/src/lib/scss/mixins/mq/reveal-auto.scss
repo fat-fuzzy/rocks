@@ -1,24 +1,30 @@
 /*  reveal-auto media queries */
-
 @mixin switchToRowStyles_RevealAuto($breakpoint, $size) {
 	@media screen and (min-width: #{$breakpoint}) {
-		.l\:reveal\:auto.bp\:#{$size} {
-			position: unset;
-			inline-size: fit-content;
+		ff-toggle-reveal.auto.bp\:#{$size} {
+			ff-control {
+				display: none;
+			}
+
+			> ff-reveal,
+			> ff-control:has(input:checked) + ff-reveal {
+				position: unset;
+				transform: unset;
+				inset: unset;
+				inset-inline: unset;
+				inline-size: auto;
+				block-size: auto;
+				opacity: 1;
+				box-shadow: unset;
+
+				transition:
+					opacity 150ms ease-out 50ms,
+					block-size 250ms ease-out;
+			}
 		}
 
-		.l\:reveal\:auto.bp\:#{$size} > ff-reveal {
-			block-size: auto;
-			overflow: hidden;
-			position: unset;
-			white-space: normal;
-			max-block-size: unset;
-			border-radius: unset;
-			box-shadow: unset;
-		}
-
-		.l\:reveal\:auto.bp\:#{$size} > form:has([aria-expanded]) {
-			display: none;
+		ff-toggle-reveal.auto.bp\:#{$size}.est > ff-reveal {
+			justify-content: end;
 		}
 	}
 }

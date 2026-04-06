@@ -1,5 +1,6 @@
 /* Compositions */
 
+@import './toggle-reveal.css';
 @import './nav.css'; /* Use for navigation (navigation = links = hrefs = <a>) */
 @import './breadcrumbs.css'; /* Use for breadcrumbs navigation */
 @import './menu.css'; /* Use for menus (menus = actions -> use forms [for no-js] -> buttons = <button>) and derived elements */

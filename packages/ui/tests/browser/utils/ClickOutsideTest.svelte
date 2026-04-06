@@ -9,6 +9,9 @@
 </script>
 
 <div>
+	<!-- 
+// TODO: update : use {@attach clickOutside}
+  -->
 	<p
 		use:clickOutside={{callback: handleClickOutside, ignore: ['ignored']}}
 		class="click-outside"

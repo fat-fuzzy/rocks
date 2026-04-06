@@ -21,4 +21,4 @@ export type AriaInvoke = 'manual' | 'auto'
 
 export type Preferences = 'brightness' | 'contrast' | 'locale' | 'consent'
 
-export type UiSettings = 'day' | 'night' | 'blend' | 'contrast'
+export type UiSettings = 'day' | 'night' | 'system' | 'blend' | 'contrast'

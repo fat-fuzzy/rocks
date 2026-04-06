@@ -48,28 +48,6 @@ export default {
 			},
 		],
 	},
-	RevealMenu: {
-		items: [
-			{
-				id: 'reveal-menu.button.idea',
-				name: 'reveal-menu.button.idea',
-				label: 'Idea',
-				asset: 'idea',
-			},
-			{
-				id: 'reveal-menu.button.profile',
-				name: 'reveal-menu.button.profile',
-				label: 'Profile',
-				asset: 'profile',
-			},
-			{
-				id: 'reveal-menu.button.favorite',
-				name: 'reveal-menu.button.favorite',
-				label: 'Favorite',
-				asset: 'favorite',
-			},
-		],
-	},
 	RadioGroup: [
 		{id: 'radio-1', label: 'Radio 1'},
 		{id: 'radio-2', label: 'Radio 2'},
@@ -94,27 +72,6 @@ export default {
 		slug: 'ui',
 		title: 'DetailsNav',
 		items: links,
-	},
-	RevealNav: {
-		place: 'top',
-		items: [
-			{
-				slug: 'recipes',
-				label: 'Recipes',
-				items: [
-					{slug: 'nav', label: 'Nav'},
-					{slug: 'reveal-nav', label: 'RevealNav'},
-				],
-			},
-			{
-				slug: 'layouts',
-				label: 'Layouts',
-				items: [
-					{slug: 'burrito', label: 'Burrito'},
-					{slug: 'stack', label: 'Stack'},
-				],
-			},
-		],
 	},
 	SignUp: {
 		title: 'SignUp',

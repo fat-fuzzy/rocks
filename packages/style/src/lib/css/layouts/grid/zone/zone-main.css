@@ -3,13 +3,11 @@
 	grid-template-areas:
 		'page-header'
 		'page-main';
-	grid-template-rows: auto 1fr;
 	max-block-size: unset;
 
 	> .page-header {
 		grid-area: page-header;
 		block-size: fit-content;
-		padding-inline: calc(2 * var(--grid-gap));
 		padding-block-start: calc(
 			var(--ui-header-height) + 2 * var(--size-base-3xs)
 		);
@@ -17,8 +15,6 @@
 
 	> .page-main {
 		grid-area: page-main;
-		padding-block-end: var(--grid-gap);
-		padding-inline: calc(2 * var(--grid-gap));
 	}
 }
 
@@ -26,7 +22,8 @@
 	.zone\:main {
 		padding-block-start: var(--ui-size-lg);
 
-		> .page-header {
+		> .page-header,
+		> .page-main {
 			padding-block-start: calc(2 * var(--size-base-3xs));
 		}
 	}
@@ -34,16 +31,15 @@
 
 @media screen and (min-width: 58.45rem) {
 	.zone\:main {
+		> .page-header {
+			padding-inline: calc(4 * var(--grid-gap)) calc(2 * var(--grid-gap));
+		}
+
+		> .page-main {
+			padding-inline: calc(4 * var(--grid-gap)) calc(2 * var(--grid-gap));
+		}
+
 		grid-column-start: 1;
 		grid-column-end: 3;
-	}
-
-	.exchange:has(.gare\:ouest[open], .gare\:ouest.expanded)
-		~ .hug
-		.steam.zone\:main,
-	.exchange:has(.gare\:ouest[open], .gare\:ouest.expanded)
-		~ .hug
-		.tram.zone\:main {
-		grid-column-start: 1;
 	}
 }

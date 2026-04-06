@@ -23,6 +23,7 @@
 		layout = 'stack',
 		justify = 'between',
 		container,
+		background,
 		font,
 		size,
 		color,
@@ -103,6 +104,7 @@
 	{font}
 	{variant}
 	{container}
+	{background}
 	{color}
 	{asset}
 	{assetType}

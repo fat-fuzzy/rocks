@@ -4,14 +4,10 @@
  */
 
 .steam.zone\:2 {
-	grid-template-rows: 1fr auto;
+	grid-template-rows: subgrid;
 
 	> .page-context:not(.empty) {
 		max-block-size: var(--overlay-height-xs);
-	}
-
-	> .page-context > summary {
-		max-inline-size: var(--sidebar-width);
 	}
 
 	> .page-context.media\:video {
@@ -57,7 +53,7 @@
 		grid-column-end: -1;
 	}
 
-	.exchange:has(.gare\:ouest[open], .gare\:ouest.expanded) {
+	.exchange:has(.gare\:ouest input.ouest:checked) {
 		~ .steam.hug {
 			grid-column-start: 4;
 			grid-column-end: -1;

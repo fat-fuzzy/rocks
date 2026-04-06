@@ -23,10 +23,6 @@ details > summary::before {
 	margin-inline-end: var(--ui-size-lg);
 }
 
-details > summary::before {
-	content: '👉';
-}
-
 /* Chrome etc */
 details > summary::marker,
 /* Safari */
@@ -36,10 +32,6 @@ details > summary::-webkit-details-marker {
 	block-size: 0;
 	margin: 0;
 	padding: 0;
-}
-
-details[open] > summary::before {
-	content: '👇';
 }
 
 details > summary:hover {

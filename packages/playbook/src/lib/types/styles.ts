@@ -1,4 +1,5 @@
 import type {
+	UiAssetType,
 	UiColor,
 	UiContainer,
 	UiLayout,
@@ -19,7 +20,7 @@ export type StyleInputOptions = {
 	id: string
 	label: string
 	asset?: string
-	assetType?: string
+	assetType?: UiAssetType
 	size?: UiSize
 	font?: UiSize
 	text?: string
@@ -111,7 +112,7 @@ export interface IStylesSet {
 	font?: UiSize
 	variant?: UiVariant
 	mode?: string
-	assetType?: string
+	assetType?: UiAssetType
 
 	getStyleTree: () => StyleNode | StyleBranch
 	getStyleTreeFlat: () => StyleTreeFlat
@@ -146,7 +147,7 @@ export type StylesSetOptions = {
 	font?: UiSize
 	variant?: UiVariant
 	mode?: string
-	assetType?: string
+	assetType?: UiAssetType
 }
 
 export type StyleInputGroupOptions = StylesSetOptions & {

@@ -1,4 +1,6 @@
 <script lang="ts">
+	import type {UiAssetType} from '@fat-fuzzy/ui'
+
 	type Props = {
 		color?: string
 		variant?: string
@@ -10,7 +12,7 @@
 			variant?: string
 			size: string
 			asset: string
-			assetType: string
+			assetType: UiAssetType
 		}[]
 	}
 

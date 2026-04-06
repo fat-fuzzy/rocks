@@ -17,7 +17,7 @@ export const load = async ({parent, params, locals}) => {
 		error(404, {message: 'Sketch not found'})
 	}
 
-	const pageContext = locals.pageContext
+	const pageContext = locals.pageContext ?? {}
 
 	return {html: content?.html, meta, pageContext, layout: 'steam'}
 }

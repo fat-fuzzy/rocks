@@ -1,7 +1,6 @@
 /**
  * Forms
  */
-import UiReveal from '$lib/forms/UiReveal.js'
 import SignUpUser from '$lib/forms/SignUpUser.js'
 import AppContext from '$lib/forms/AppContext.js'
 
@@ -21,7 +20,6 @@ export interface Utils {
 }
 
 export interface Forms {
-	UiReveal: typeof UiReveal
 	AppContext: typeof AppContext
 	SignUpUser: typeof SignUpUser
 }

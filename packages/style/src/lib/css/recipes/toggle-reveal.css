@@ -1,0 +1,257 @@
+ff-toggle-reveal {
+	ff-control > label {
+		z-index: calc(var(--z-index-overlay) + 1);
+	}
+
+	ff-control > label:has(input[type='checkbox']:focus) {
+		outline: var(--border-width-lg) dotted var(--accent);
+		outline-offset: var(--outline-offset-md);
+	}
+
+	ff-control + ff-reveal {
+		--x-axis: 0;
+		--y-axis: 0;
+		--color-bg: var(--shade);
+
+		position: absolute;
+		overflow: hidden;
+		position: absolute;
+		white-space: nowrap;
+		display: flex;
+		transition:
+			transform 250ms ease-in 100ms,
+			opacity 250ms ease-out 50ms,
+			block-size 250ms ease-in,
+			inline-size 250ms ease-in;
+		transform: translate(var(--x-axis), var(--y-axis));
+		opacity: 0;
+		z-index: var(--z-index-overlay);
+	}
+
+	ff-control > label:has(input:checked) ff-icon {
+		--lightness: var(--lightness-surface-2);
+		background-color: var(--shade);
+	}
+
+	ff-control:has(input:checked) + ff-reveal[class*='bg:blur'] {
+		--color-bg: transparent;
+	}
+
+	ff-control:has(input:checked) + ff-reveal {
+		--x-axis: 0;
+		--y-axis: 0;
+		--max-inline-size: max-content;
+
+		opacity: 1;
+		background-color: var(--color-bg);
+		display: flex;
+		flex-direction: column;
+		inline-size: var(--x-size);
+		block-size: var(--y-size);
+		max-inline-size: var(--overlay-inline-size, var(--max-inline-size));
+		color: var(--ink);
+		z-index: var(--layout-z-index-layer);
+	}
+}
+
+ff-toggle-reveal.ouest {
+	ff-icon.svg\:chevron-right::before {
+		transform: rotate(0deg);
+		transition: transform 300ms ease-in;
+	}
+
+	label:has(input:checked) ff-icon.svg\:chevron-right::before {
+		transform: rotate(90deg);
+		transition: transform 300ms ease-out;
+	}
+
+	ff-control + ff-reveal {
+		--x-axis: -100%;
+		--y-axis: var(--ui-size);
+
+		block-size: var(--overlay-block-size);
+		inline-size: var(--overlay-inline-size);
+		transition:
+			transform 200ms ease-in,
+			opacity 200ms ease-in 50ms;
+	}
+
+	ff-control:has(input:checked) + ff-reveal {
+		block-size: var(--overlay-block-size);
+		inline-size: 100%;
+		transition:
+			transform 350ms ease-out,
+			opacity 350ms ease-out 50ms,
+			block-size 300ms ease-out,
+			inline-size 300ms ease-out;
+	}
+}
+
+ff-toggle-reveal.est {
+	ff-icon::before {
+		transform: rotate(180deg);
+		transition: transform 200ms ease-in;
+	}
+
+	label:has(input:checked) ff-icon.svg\:chevron-right::before {
+		transform: rotate(90deg);
+		transition: transform 200ms ease-out;
+	}
+
+	ff-control + ff-reveal {
+		--y-axis: var(--ui-size);
+		--x-axis: 100%;
+
+		inline-size: var(--max-inline-size);
+		transition:
+			transform 250ms ease-in,
+			opacity 200ms ease-in 50ms,
+			block-size 300ms ease-in,
+			inline-size 300ms ease-in;
+	}
+
+	ff-control:has(input:checked) + ff-reveal {
+		--y-axis: var(--ui-size);
+		--x-axis: calc(-1 * var(--ui-size));
+		inline-size: var(--max-inline-size);
+
+		transition:
+			transform 350ms ease-out,
+			opacity 350ms ease-out 50ms,
+			block-size 300ms ease-out,
+			inline-size 300ms ease-out;
+	}
+}
+
+ff-toggle-reveal.nord {
+	ff-control + ff-reveal {
+		inline-size: var(--overlay-inline-size);
+		block-size: 0;
+	}
+}
+
+ff-toggle-reveal.sud {
+	ff-control + ff-reveal {
+		inline-size: var(--overlay-inline-size);
+		block-size: 0;
+	}
+}
+
+ff-toggle-reveal.nord,
+ff-toggle-reveal.sud {
+	ff-control + ff-reveal {
+		position: relative;
+		block-size: 0;
+		inline-size: 0;
+		transition:
+			opacity 250ms ease-in 50ms,
+			block-size 250ms ease-in;
+	}
+
+	ff-control:has(input:checked) + ff-reveal,
+	ff-control:has(input:checked) + ff-reveal {
+		position: static;
+		block-size: fit-content;
+		max-inline-size: unset;
+		transition:
+			opacity 350ms ease-out 50ms,
+			block-size 350ms ease-out;
+	}
+}
+
+ff-control > label {
+	color: inherit;
+	accent-color: var(--accent);
+	background-color: inherit;
+}
+
+ff-control > label ff-icon {
+	line-height: 1;
+}
+
+ff-control > label.toggle-label {
+	inline-size: 100%;
+}
+
+ff-control > label,
+ff-control > label > ff-label > a {
+	line-height: 1;
+}
+
+ff-control > label > ff-label > a {
+	inline-size: fit-content;
+}
+
+@media screen and (min-width: 68.75rem) {
+	ff-toggle-reveal.est {
+		ff-control:has(input:checked) + ff-reveal {
+			--x-axis: calc(-3 * var(--outline-offset-lg));
+		}
+	}
+}
+
+ul.depth-1 ff-toggle-reveal:first-of-type > ff-control > label {
+	padding: var(--border-width-xl);
+	margin-block-end: var(--border-width-xl);
+}
+
+ff-toggle-reveal.auto {
+	ff-control:has(input:checked) + ff-reveal,
+	ff-control:has(input:checked) + ff-reveal {
+		block-size: fit-content;
+		position: absolute;
+		opacity: 1;
+		padding: var(--border-width-xl);
+		transition:
+			opacity 150ms ease-out 50ms,
+			padding 150ms ease-out 50ms,
+			block-size 250ms ease-out;
+	}
+
+	ff-control:has(input.nord:checked) + ff-reveal,
+	ff-control:has(input.sud:checked) + ff-reveal {
+		inset-inline: var(--grid-gap);
+	}
+}
+
+.sidebar > nav > ff-toggle-reveal > ff-control ff-icon {
+	--border-color: transparent;
+}
+
+.sidebar > nav > ff-toggle-reveal > ff-control > label,
+.navbar > ff-toggle-reveal > ff-control > label,
+.context > ff-toggle-reveal > ff-control > label {
+	border: var(--border-width-md) solid transparent;
+	max-inline-size: calc(
+		var(--overlay-inline-size) + 4 * var(--grid-gap) + 2 *
+			var(--outline-offset-lg)
+	);
+}
+
+.sidebar > nav > ff-toggle-reveal > ff-control > label,
+.navbar > ff-toggle-reveal > ff-control > label {
+	--lightness: var(--lightness-surface-1);
+	--lightness-contrast: var(--lightness-surface-1-contrast);
+	background-color: var(--shade);
+}
+
+.navbar > ff-toggle-reveal > ff-control:has(input:checked) + ff-reveal {
+	--y-axis: var(--ui-size);
+
+	border-radius: var(--border-radius-base);
+}
+
+.sidebar > nav > ff-toggle-reveal > ff-control:has(input:checked) + ff-reveal {
+	--y-axis: var(--ui-size);
+}
+
+.context > ff-toggle-reveal > ff-control:has(input:checked) + ff-reveal {
+	--x-axis: calc(-50% + 2 * var(--ui-size));
+}
+
+@media screen and (min-width: 68.75rem) {
+	.context > ff-toggle-reveal > ff-control:has(input:checked) + ff-reveal {
+		--x-axis: 0;
+		--max-inline-size: calc(var(--sidebar-width) - var(--grid-gap));
+	}
+}

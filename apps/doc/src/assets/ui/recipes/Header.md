@@ -15,7 +15,6 @@ Use a `Header` component to provide main app navigation and settings controls to
 
 ### Related Components
 
-- `RevealAuto` component in `layouts`
 - `Nav` component in `composition/navs`
 - `Settings` component in `recipes/forms`
 
