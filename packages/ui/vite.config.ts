@@ -28,13 +28,7 @@ export default defineConfig({
 	build: {
 		target: 'esnext',
 		rollupOptions: {
-			external: [
-				'dompurify',
-				'@sveltejs/kit',
-				'$app/stores',
-				'$app/navigation',
-				'$app/paths',
-			],
+			external: ['dompurify'],
 		},
 	},
 })
