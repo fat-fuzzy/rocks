@@ -1,5 +1,11 @@
 # @fat-fuzzy/ui
 
+## 0.1.87
+
+### Patch Changes
+
+- 4357878: Enable InputRadio toggle, use ToggleSettings
+
 ## 0.1.86
 
 ### Patch Changes
