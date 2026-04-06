@@ -24,6 +24,7 @@
 		align-content: start;
 		align-items: start;
 		z-index: var(--layout-z-index-layer);
+		background-color: var(--shade);
 	}
 
 	> .page-context.empty {
