@@ -17,14 +17,14 @@ export const load = async ({locals, url}) => {
 						meta.items = meta.series.items
 							.map((id, index) => {
 								if (index > 0) {
-									const item = posts.find((p) => p.meta.id === id)
-									if (item) {
+									const post = posts.find((p) => p.meta.id === id)
+									if (post) {
 										return {
-											slug: item.meta.slug,
-											talk: item.meta.talk,
-											title: item.meta.series?.title,
-											label: item.meta.series?.title,
-											actionPath: item.meta.slug,
+											slug: post.meta.slug,
+											talk: post.meta.talk,
+											title: post.meta.series?.title,
+											label: post.meta.series?.title,
+											actionPath: `/${url.pathname}/${item.slug}`,
 										}
 									}
 								}
@@ -32,7 +32,11 @@ export const load = async ({locals, url}) => {
 							.filter((i) => i !== undefined) as NavItem[]
 
 						meta.title = meta.series.title
-						links.push({...meta, label: meta.title, actionPath: url.pathname})
+						links.push({
+							...meta,
+							label: meta.title,
+							actionPath: `${url.pathname}/${item.slug}`,
+						})
 					}
 				} else {
 					// Not a series, just add the link
@@ -40,7 +44,7 @@ export const load = async ({locals, url}) => {
 						slug: meta.slug,
 						title: meta.title,
 						label: meta.title || meta.slug,
-						actionPath: meta.slug,
+						actionPath: `/${item.slug}/${meta.slug}`,
 					}
 					links.push(link)
 				}
