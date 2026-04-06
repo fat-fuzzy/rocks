@@ -11,6 +11,7 @@ ff-toggle-reveal {
 	ff-control + ff-reveal {
 		--x-axis: 0;
 		--y-axis: 0;
+		--color-bg: var(--shade);
 
 		position: absolute;
 		overflow: hidden;
@@ -27,17 +28,22 @@ ff-toggle-reveal {
 		z-index: var(--z-index-overlay);
 	}
 
+	ff-control:has(input:checked) + ff-reveal[class*='bg:blur'] {
+		--color-bg: transparent;
+	}
+
 	ff-control:has(input:checked) + ff-reveal {
 		--x-axis: 0;
 		--y-axis: 0;
+		--max-inline-size: calc(var(--sidebar-width) - var(--grid-gap));
 
 		opacity: 1;
-		background-color: var(--shade);
+		background-color: var(--color-bg);
 		display: flex;
 		flex-direction: column;
 		inline-size: var(--x-size);
 		block-size: var(--y-size);
-		max-inline-size: var(--overlay-inline-size);
+		max-inline-size: var(--overlay-inline-size, var(--max-inline-size));
 		color: var(--ink);
 		z-index: var(--layout-z-index-layer);
 	}
@@ -91,7 +97,7 @@ ff-toggle-reveal.est {
 		--y-axis: var(--ui-size);
 		--x-axis: 100%;
 
-		inline-size: calc(var(--overlay-inline-size) - 2 * var(--ui-size));
+		inline-size: var(--max-inline-size);
 		transition:
 			transform 250ms ease-in,
 			opacity 200ms ease-in 50ms,
@@ -102,7 +108,7 @@ ff-toggle-reveal.est {
 	ff-control:has(input:checked) + ff-reveal {
 		--y-axis: var(--ui-size);
 		--x-axis: calc(-1 * var(--ui-size));
-		inline-size: calc(var(--overlay-inline-size) - 2 * var(--ui-size));
+		inline-size: var(--max-inline-size);
 
 		transition:
 			transform 350ms ease-out,
@@ -218,8 +224,7 @@ ff-toggle-reveal.auto {
 }
 
 .sidebar > nav > ff-toggle-reveal > ff-control > label,
-.navbar > ff-toggle-reveal > ff-control > label,
-.context > ff-toggle-reveal > ff-control > label {
+.navbar > ff-toggle-reveal > ff-control > label {
 	--lightness: var(--lightness-surface-1);
 	--lightness-contrast: var(--lightness-surface-1-contrast);
 	background-color: var(--shade);

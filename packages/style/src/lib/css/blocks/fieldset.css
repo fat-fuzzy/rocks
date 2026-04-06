@@ -52,6 +52,10 @@ fieldset.checkbox {
 		}
 	}
 
+	label:has(ff-icon) {
+		inline-size: fit-content;
+	}
+
 	input {
 		aspect-ratio: 1/1;
 		flex-grow: 0;
@@ -99,7 +103,7 @@ fieldset.checkbox {
 
 	label:hover {
 		--lightness: var(--lightness-surface-1);
-		--lightness-contrast: var(--lightness-surface-4);
+		--lightness-contrast: var(--lightness-contrast);
 		background-color: var(--shade);
 	}
 

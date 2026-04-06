@@ -3,6 +3,8 @@
  - Links in navs have specific styles (except for hover), see: * styles/core/blocks/nav.scss`
  == */
 a {
+	--color-bg: inherit;
+
 	color: var(--color-ink, var(--ink));
 	background-color: var(--color-bg);
 	border-color: var(--ink);

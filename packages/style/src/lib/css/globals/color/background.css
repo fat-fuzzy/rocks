@@ -14,9 +14,20 @@
 	background-color: inherit;
 }
 
-.bg\:blur {
-	--shade: transparent;
-	backdrop-filter: blur(var(--size-base-md));
+[class*='bg:blur'] {
+	--blur-bk: transparent;
+	--blur-strength: var(--size-base-md);
+	--border-color: transparent;
+	backdrop-filter: blur(var(--blur-strength));
+	background-color: var(--blur-bk);
+}
+
+.bg\:blur\:lg {
+	--blur-strength: var(--size-base-lg);
+}
+
+[class*='bg:blur']:hover {
+	--blur-strength: calc(2 * var(--size-base-2xl));
 }
 
 /* Set current color LIGHTNESS and CHROMA according to a 7 point scale */

@@ -23,15 +23,17 @@
 		transition 150ms ease-out;
 }
 
-ff-control:has([aria-labelledby]) {
+ff-control:has([role='tooltip']) {
 	position: relative;
 	min-inline-size: calc(var(--layout-sidebar-collapsed) + 2 * var(--ui-size));
 }
 
-ff-control:hover > [role='tooltip'],
-ff-control:focus > [role='tooltip'],
-[role='tooltip']:hover,
-[role='tooltip']:focus {
+label:has([role='tooltip']) {
+	position: unset;
+}
+
+label:hover > [role='tooltip'],
+label:focus > [role='tooltip'] {
 	opacity: 1;
 	background: var(--tooltip-bg);
 	padding-block: var(--ui-size-sm);
@@ -50,63 +52,41 @@ ff-control:focus > [role='tooltip'],
 /** BASE positioning **/
 
 [role='tooltip'].est {
-	--x-transform: 15%;
-	--y-transform: 30%;
-	inset-block-end: var(--y-axis);
-	inset-inline-end: var(--x-axis);
+	inset-block-start: var(--y-axis);
+	inset-inline-start: 45%;
 }
 
 [role='tooltip'].ouest {
-	--x-transform: -15%;
-	--y-transform: -30%;
 	inset-block-start: var(--y-axis);
-	inset-inline-start: var(--x-axis);
+	inset-inline-end: 45%;
 }
 
 [role='tooltip'].nord {
-	--x-transform: 15%;
-	--y-transform: -115%;
-	inset-block-start: var(--y-axis);
-	inset-inline-start: var(--x-axis);
+	inset-block-end: 100%;
 }
 
 [role='tooltip'].sud {
-	--x-transform: 15%;
-	--y-transform: 115%;
-	inset-block-end: var(--y-axis);
-	inset-inline-start: var(--x-axis);
+	inset-block-end: -100%;
 }
 
 /** HOVER positioning **/
 
-ff-control:hover > [role='tooltip'].est,
-ff-control:focus > [role='tooltip'].est,
-[role='tooltip'].est:hover,
-[role='tooltip'].est:focus {
-	--x-transform: 15%;
-	--y-transform: 30%;
+label:hover > [role='tooltip'].est,
+label:focus > [role='tooltip'].est,
+label:hover > [role='tooltip'].ouest,
+label:focus > [role='tooltip'].ouest {
+	--x-transform: 0;
+	--y-transform: -50%;
 }
 
-ff-control:hover > [role='tooltip'].ouest,
-ff-control:focus > [role='tooltip'].ouest,
-[role='tooltip'].ouest:hover,
-[role='tooltip'].ouest:focus {
-	--x-transform: -15%;
-	--y-transform: -30%;
+label:hover > [role='tooltip'].nord,
+label:focus > [role='tooltip'].nord {
+	--x-transform: 0;
+	--y-transform: 0;
 }
 
-ff-control:hover > [role='tooltip'].nord,
-ff-control:focus > [role='tooltip'].nord,
-[role='tooltip'].nord:hover,
-[role='tooltip'].nord:focus {
-	--x-transform: 15%;
-	--y-transform: -115%;
-}
-
-ff-control:hover > [role='tooltip'].sud,
-ff-control:focus > [role='tooltip'].sud,
-[role='tooltip'].sud:hover,
-[role='tooltip'].sud:focus {
-	--x-transform: 15%;
-	--y-transform: 115%;
+label:hover > [role='tooltip'].sud,
+label:focus > [role='tooltip'].sud {
+	--x-transform: 0;
+	--y-transform: 0;
 }
