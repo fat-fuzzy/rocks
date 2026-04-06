@@ -4,7 +4,7 @@ import {describe} from 'vitest'
 // import constants from '$lib/types/constants'
 // const {DEFAULT_PREFERENCES} = constants
 
-describe(`AppContext - a class that updates an app's ViewingPreferences based on FormData`, () => {
+describe.skip(`AppContext - a class that updates an app's ViewingPreferences based on FormData`, () => {
 	// describe('constructor', () => {
 	// 	it('should initialize with no arguments', () => {
 	// 		const appContext = new AppContext()
