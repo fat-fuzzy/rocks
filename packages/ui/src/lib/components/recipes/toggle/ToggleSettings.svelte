@@ -7,21 +7,24 @@
 
 	const options = $derived([
 		{
-			legend: 'Brightness',
 			label: 'Brightness',
 			name: 'brightness',
 			type: 'radio',
 			color: 'primary',
 			size: '2xs',
-			variant: 'bare',
+			justify: 'end',
 			id: 'brightness',
+			background: 'inherit',
 			items: [
 				{
 					label: 'System',
 					id: 'brightness.system',
 					value: 'system',
-					shape: 'round',
 					asset: 'home',
+					shape: 'round',
+					color: 'primary',
+					place: 'est',
+					variant: 'bare',
 					checked:
 						!selected.brightness || selected.brightness === 'system'
 							? true
@@ -31,35 +34,45 @@
 					label: 'Day',
 					id: 'brightness.primary',
 					value: 'day',
-					shape: 'round',
 					asset: 'day',
+					shape: 'round',
+					color: 'primary',
+					place: 'est',
+					variant: 'bare',
 					checked: selected.brightness === 'day' ? true : undefined,
 				},
 				{
 					label: 'Night',
 					id: 'brightness.primary',
 					value: 'night',
-					shape: 'round',
 					asset: 'night',
+					shape: 'round',
+					place: 'est',
+					color: 'primary',
+					variant: 'bare',
 					checked: selected.brightness === 'night' ? true : undefined,
 				},
 			],
 		},
 		{
-			legend: 'Contrast',
 			label: 'Contrast',
 			name: 'contrast',
 			type: 'radio',
-			color: 'accent',
+			color: 'primary',
 			size: '2xs',
-			variant: 'bare',
+			justify: 'end',
 			id: 'contrast',
+			background: 'inherit',
 			items: [
 				{
 					label: 'Default',
 					id: 'contrast.contrast',
 					value: 'contrast',
 					asset: 'contrast',
+					shape: 'round',
+					place: 'est',
+					color: 'accent',
+					variant: 'bare',
 					checked:
 						!selected.contrast || selected.contrast === 'contrast'
 							? true
@@ -70,6 +83,10 @@
 					id: 'contrast.blend',
 					value: 'blend',
 					asset: 'blend',
+					shape: 'round',
+					place: 'est',
+					color: 'accent',
+					variant: 'bare',
 					checked: selected.contrast === 'blend' ? true : undefined,
 				},
 			],
