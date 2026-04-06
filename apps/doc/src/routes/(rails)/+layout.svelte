@@ -172,7 +172,7 @@
 		{/if}
 	</div>
 
-	<div class="context bg:inherit raviolink">
+	<div class="context raviolink">
 		<ToggleReveal
 			id="appContext"
 			label="Settings"
@@ -180,11 +180,13 @@
 			asset="settings"
 			font="sm"
 			layout="grid"
-			justify="center"
+			justify="end"
 			place="est"
 			depth={0}
+			layer={1}
 			variant="bare"
 			shape="square"
+			background="blur"
 		>
 			<ToggleSettings
 				id="appContext-menu"

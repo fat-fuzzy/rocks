@@ -36,25 +36,63 @@
 			: [],
 	)
 
-	let classes = $derived(
+	let labelClasses = $derived(
 		styleHelper.getStyles({
-			color,
+			color: shape ? undefined : color,
 			font,
 			size,
 			align,
 			justify,
-			asset,
-			variant,
+			asset: shape ? undefined : asset,
+			shape,
+			assetType,
 			layout,
 			threshold,
 			container,
 			background: background ? background : 'inherit',
 		}),
 	)
+
+	let iconClasses = $derived(
+		styleHelper.getStyles({
+			asset,
+			assetType,
+			size,
+			color,
+			variant,
+			shape,
+		}),
+	)
+
+	let inputClasses = $derived(shape ? 'sr-only' : '')
+
+	// Container styles
+	let placeClass = $derived(place ? place : '')
+	let controlClasses = 'l:flex align:center w:full'
+	let reverseClass = $derived(
+		place === 'ouest'
+			? 'reverse'
+			: place === 'nord' || place === 'sud'
+				? 'justify:center'
+				: '',
+	)
 </script>
 
-<label for={id} class={`ravioli:${size} ${classes} nowrap`} data-testid={id}>
-	<span>{label}</span>
+{#snippet tooltip()}
+	<ff-tooltip id={`${id}-tip`} role="tooltip" class={placeClass}>
+		<p>{label}</p>
+		<Feedback
+			id={`input-feedback-${id}`}
+			{hint}
+			{errors}
+			{size}
+			{variant}
+			{font}
+		/>
+	</ff-tooltip>
+{/snippet}
+
+{#snippet input()}
 	<input
 		{id}
 		type="radio"
@@ -64,10 +102,39 @@
 		{required}
 		{oninput}
 		{disabled}
+		class={inputClasses}
+		aria-labelledby={shape ? `${id}-tip` : undefined}
 		aria-describedby={hint || errors?.length
 			? `input-feedback-${id}`
 			: undefined}
 	/>
-</label>
+{/snippet}
 
-<Feedback id={`input-feedback-${id}`} {hint} {errors} {size} {variant} {font} />
+{#if shape}
+	<ff-control class={`${controlClasses} ${reverseClass}`}>
+		<label for={id} class={labelClasses}>
+			<ff-icon class={iconClasses}></ff-icon>
+			{@render input()}
+			{@render tooltip()}
+		</label>
+	</ff-control>
+{:else}
+	<label for={id} class={`ellipsis nowrap ${labelClasses}`} data-testid={id}>
+		<span>{label} </span>
+		{@render input()}
+	</label>
+	<Feedback
+		id={`input-feedback-${id}`}
+		{hint}
+		{errors}
+		{size}
+		{variant}
+		{font}
+	/>
+{/if}
+
+<style>
+	ff-control label {
+		--border-color: transparent;
+	}
+</style>
