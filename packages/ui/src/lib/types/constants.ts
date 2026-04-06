@@ -2,6 +2,7 @@ import type {
 	AppContextItems,
 	CookiePreferences,
 	ViewingPreferences,
+	PrivacyPreferences,
 	NavItem,
 } from '$types'
 
@@ -19,6 +20,9 @@ const DEFAULT_COOKIES_CONSENT: CookiePreferences = {
 const DEFAULT_PREFERENCES: ViewingPreferences = {
 	brightness: 'day',
 	contrast: 'contrast',
+}
+
+const DEFAULT_COOKIES_PREFERENCES: PrivacyPreferences = {
 	consent: DEFAULT_COOKIES_CONSENT,
 }
 
@@ -176,6 +180,7 @@ export default {
 	STATE_SWITCHER,
 	DEFAULT_STYLES,
 	DEFAULT_PREFERENCES,
+	DEFAULT_COOKIES_PREFERENCES,
 	DEFAULT_SCENE_ID,
 	TRANSITION_REVEAL,
 	TRANSITION_BRIGHTNESS,

@@ -15,5 +15,8 @@ export type CookiePreferences = {
 export type ViewingPreferences = {
 	brightness: UiSettings
 	contrast?: UiSettings
+}
+
+export type PrivacyPreferences = {
 	consent: CookiePreferences
 }

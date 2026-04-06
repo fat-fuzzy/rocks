@@ -1,16 +1,15 @@
-import type {UiSettings, ViewingPreferences} from '$types'
+import type {PrivacyPreferences} from '$types'
 import constants from '$lib/types/constants.js'
 
-const {DEFAULT_PREFERENCES, TRANSITION_BRIGHTNESS, TRANSITION_CONTRAST} =
-	constants
+const {DEFAULT_COOKIES_PREFERENCES} = constants
 
 class AppContext {
-	state: ViewingPreferences = DEFAULT_PREFERENCES
+	state: PrivacyPreferences = DEFAULT_COOKIES_PREFERENCES
 	/**
 	 * Initialize default Settings object or from the user's cookie values, if any
 	 */
-	constructor(preferences: ViewingPreferences | null = null) {
-		if (preferences && preferences.brightness) {
+	constructor(preferences: PrivacyPreferences | null = null) {
+		if (preferences) {
 			this.state = preferences
 		}
 
@@ -28,36 +27,6 @@ class AppContext {
 	 */
 	update(data: FormData) {
 		let updated = false
-
-		if (data.has('brightness')) {
-			const brightness = String(data.get('brightness'))
-			// This sets the inital brightness value and enables the sync of JS toggles
-			if (!this.state.brightness || this.state.brightness !== brightness) {
-				this.state.brightness = brightness as UiSettings
-			} else {
-				// This enables the sync of no-JS toggles
-				// TODO: Fix nojs init
-				this.state.brightness = TRANSITION_BRIGHTNESS[
-					String(brightness)
-				] as UiSettings
-			}
-			updated = true
-		}
-
-		if (data.has('contrast')) {
-			const contrast = String(data.get('contrast'))
-			// This sets the initial contrast value and enables the sync of JS toggles
-			if (!this.state.contrast || this.state.contrast !== contrast) {
-				this.state.contrast = contrast as UiSettings
-			} else {
-				// This enables the sync of no-JS toggles
-				// TODO: Fix nojs init
-				this.state.contrast = TRANSITION_CONTRAST[
-					String(contrast)
-				] as UiSettings
-			}
-			updated = true
-		}
 
 		if (data.has('consent-submit')) {
 			const legitimateInterest = data.get('legitimateInterest')
