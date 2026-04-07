@@ -1,0 +1,10 @@
+/* == Toggle with button default == */
+
+.toggle[aria-pressed='true'] {
+	box-shadow: inset var(--shadow-inset-md);
+}
+
+/* == Toggle with input default == */
+ff-control:has(input:checked) {
+	box-shadow: inset var(--shadow-inset-md);
+}

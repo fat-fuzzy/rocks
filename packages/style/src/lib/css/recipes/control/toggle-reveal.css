@@ -3,11 +3,6 @@ ff-toggle-reveal {
 		z-index: calc(var(--z-index-overlay) + 1);
 	}
 
-	ff-control > label:has(input[type='checkbox']:focus) {
-		outline: var(--border-width-lg) dotted var(--accent);
-		outline-offset: var(--outline-offset-md);
-	}
-
 	ff-control + ff-reveal {
 		--x-axis: 0;
 		--y-axis: 0;
@@ -28,11 +23,6 @@ ff-toggle-reveal {
 		z-index: var(--z-index-overlay);
 	}
 
-	ff-control > label:has(input:checked) ff-icon {
-		--lightness: var(--lightness-surface-3);
-		background-color: var(--shade);
-	}
-
 	ff-control:has(input:checked) + ff-reveal[class*='bg:blur'] {
 		--color-bg: transparent;
 	}
@@ -51,6 +41,26 @@ ff-toggle-reveal {
 		max-inline-size: var(--overlay-inline-size, var(--max-inline-size));
 		color: var(--ink);
 		z-index: var(--layout-z-index-layer);
+	}
+}
+
+ff-control > label {
+	line-height: 1;
+	color: inherit;
+	accent-color: var(--accent);
+	background-color: inherit;
+
+	ff-icon {
+		line-height: 1;
+	}
+
+	&.toggle-label {
+		inline-size: 100%;
+	}
+
+	> ff-label > a {
+		line-height: 1;
+		inline-size: fit-content;
 	}
 }
 
@@ -149,29 +159,6 @@ ff-toggle-reveal.sud {
 	}
 }
 
-ff-control > label {
-	line-height: 1;
-	color: inherit;
-	accent-color: var(--accent);
-	background-color: inherit;
-
-	ff-icon {
-		line-height: 1;
-	}
-
-	&.toggle-label {
-		inline-size: 100%;
-	}
-
-	&.bare {
-		--border-color: transparent;
-	}
-	> ff-label > a {
-		line-height: 1;
-		inline-size: fit-content;
-	}
-}
-
 ff-toggle-reveal.auto {
 	ff-control:has(input:checked) + ff-reveal {
 		block-size: fit-content;
@@ -187,58 +174,5 @@ ff-toggle-reveal.auto {
 	ff-control:has(input.nord:checked) + ff-reveal,
 	ff-control:has(input.sud:checked) + ff-reveal {
 		inset-inline: var(--grid-gap);
-	}
-}
-
-ul.depth-1 ff-toggle-reveal:first-of-type > ff-control > label {
-	padding: var(--border-width-xl);
-	margin-block-end: var(--border-width-xl);
-}
-
-.sidebar > nav > ff-toggle-reveal > ff-control ff-icon {
-	--border-color: transparent;
-}
-
-.sidebar > nav > ff-toggle-reveal > ff-control > label,
-.navbar > ff-toggle-reveal > ff-control > label,
-.context > ff-toggle-reveal > ff-control > label {
-	border: var(--border-width-md) solid transparent;
-	max-inline-size: calc(
-		var(--overlay-inline-size) + 4 * var(--grid-gap) + 2 *
-			var(--outline-offset-lg)
-	);
-}
-
-.sidebar > nav > ff-toggle-reveal > ff-control > label,
-.navbar > ff-toggle-reveal > ff-control > label {
-	--lightness: var(--lightness-surface-1);
-	--lightness-contrast: var(--lightness-surface-1-contrast);
-	background-color: var(--shade);
-}
-
-.navbar > ff-toggle-reveal > ff-control:has(input:checked) + ff-reveal {
-	--y-axis: var(--ui-size);
-
-	border-radius: var(--border-radius-base);
-}
-
-.sidebar > nav > ff-toggle-reveal > ff-control:has(input:checked) + ff-reveal {
-	--y-axis: var(--ui-size);
-}
-
-.context > ff-toggle-reveal > ff-control:has(input:checked) + ff-reveal {
-	--x-axis: calc(-50% + 2 * var(--ui-size));
-}
-
-@media screen and (min-width: 68.75rem) {
-	ff-toggle-reveal.est {
-		ff-control:has(input:checked) + ff-reveal {
-			--x-axis: calc(-3 * var(--outline-offset-lg));
-		}
-	}
-
-	.context > ff-toggle-reveal > ff-control:has(input:checked) + ff-reveal {
-		--x-axis: 0;
-		--max-inline-size: calc(var(--sidebar-width) - var(--grid-gap));
 	}
 }

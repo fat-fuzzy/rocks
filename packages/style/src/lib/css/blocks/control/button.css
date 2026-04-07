@@ -1,21 +1,20 @@
 button,
+.ff-control,
 ff-control > label,
 ff-icon {
-	--hue: var(--color-theme-primary);
-	--chroma: var(--chroma-base);
+	--chroma: var(--color-chroma-neutral);
+	--chroma-contrast: var(--color-chroma-neutral);
+	--chroma-accent: var(--color-chroma-neutral);
 	--lightness: var(--lightness-ui-base);
 	--lightness-accent: var(--lightness-ui-base);
 	--lightness-contrast: var(--lightness-contrast-base);
-	--chroma-contrast: var(--chroma-base);
-	--chroma-accent: var(--chroma-surface-4);
 	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
 	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
 	--accent: oklch(var(--lightness-accent) var(--chroma-contrast) var(--hue));
 	--border-color: var(--accent);
 
 	color: var(--ink);
-	background-color: var(--shade);
-	border-color: var(--accent);
+	border-color: var(--border-color);
 	display: flex;
 	align-items: center;
 	justify-content: var(--justify, center);
@@ -37,56 +36,71 @@ ff-icon {
 
 button,
 ff-control > label {
+	background-color: var(--shade);
+	border: var(--border-width-md) solid var(--border-color);
+}
+
+.ff-control,
+ff-icon {
+	--shade: inherit;
+	--border-color: transparent;
+}
+
+button,
+.ff-control,
+ff-control > label {
 	padding-block: var(--ui-size-sm);
 	padding-inline: var(--ui-size);
 }
 
 button.variant\:fill,
+.ff-control.variant\:fill,
 ff-control > label.variant\:fill {
+	--border-color: var(--accent);
 	--lightness: var(--lightness-ui-base);
 	--lightness-accent: var(--lightness-ui-base);
-	--lightness-contrast: var(--lightness-base);
+	--lightness-contrast: var(--lightness-ui-contrast-base);
 	background-color: var(--shade);
-	border-color: var(--accent);
 }
 
 button.variant\:outline,
+.ff-control.variant\:outline,
 ff-control > label.variant\:outline {
+	--border-color: var(--accent);
 	--lightness: var(--lightness-surface-6);
 	--lightness-accent: var(--lightness-surface-4);
 	--lightness-contrast: var(--lightness-accent-base);
 	background-color: inherit;
-	border-color: var(--accent);
 }
 
 button.variant\:bare,
+.ff-control.variant\:bare,
 ff-control > label.variant\:bare {
+	--border-color: var(--accent);
 	--lightness: var(--lightness-surface-4);
 	--lightness-accent: var(--lightness-surface-3);
 	--lightness-contrast: var(--lightness-contrast-base);
 	background-color: inherit;
-	border: var(--border-width-md) solid var(--accent);
 }
 
 button.variant\:outline:hover,
+.ff-control.variant\:outline:hover,
 ff-control > label.variant\:outline:hover {
 	--lightness: var(--lightness-base);
-	--chroma: var(--chroma-base);
-	--lightness-contrast: var(--chroma-base);
-	--chroma-contrast: var(--chroma-contrast-base);
+	--lightness-contrast: var(--lightness-contrast-base);
 	background-color: var(--shade);
 }
 
 button.variant\:bare:hover,
+.ff-control.variant\:bare:hover,
 ff-control > label.variant\:bare:hover {
 	--lightness: var(--lightness-base);
-	--chroma: var(--chroma-base);
 	--lightness-contrast: var(--lightness-contrast-base);
-	--chroma-contrast: var(--chroma-contrast-base);
 	background-color: var(--shade);
 }
 
 button.variant\:outline:active,
+.ff-control.variant\:outline:active,
 ff-control > label.variant\:outline:active {
 	--lightness: var(---lightness-surface-3);
 	--lightness-contrast: var(--lightness-surface-6);
@@ -94,7 +108,15 @@ ff-control > label.variant\:outline:active {
 }
 
 button.variant\:bare:active,
-ff-control > label.variant\:bare:active {
+.ff-control.variant\:bare:active,
+ff-control > label.variant\:bare:active,
+.ff-control.variant\:bare:has(input:checked) {
+	--lightness: var(--lightness-surface-2);
+	--lightness-contrast: var(--lightness-surface-6);
+	background-color: var(--shade);
+}
+
+ff-control > label.variant\:bare:has(input:checked) {
 	--lightness: var(--lightness-surface-2);
 	--lightness-contrast: var(--lightness-surface-6);
 	background-color: var(--shade);
@@ -118,6 +140,7 @@ ff-control > label.variant\:bare:active {
 }
 
 button[class*='bg:']:not([class*=':neutral']),
+.ff-control[class*='bg:']:not([class*=':neutral']),
 ff-control > label[class*='bg:']:not([class*=':neutral']) {
 	&.variant\:fill {
 		--chroma: var(--chroma-surface-4);
@@ -133,13 +156,18 @@ ff-control > label[class*='bg:']:not([class*=':neutral']) {
 	}
 
 	&.variant\:outline:active,
-	&.variant\:bare:active {
+	&.variant\:bare:active,
+	&.variant\:outline.variant\:bare:has(input:checked:not([disabled])),
+	&.variant\:bare:has(input:checked:not([disabled])),
+	&.variant\:bare:checked {
 		--chroma: var(--chroma-surface-3);
 	}
 }
 
 button[class*='bg:'].color\:neutral.variant\:bare:hover,
 button[class*='bg:'].color\:neutral.variant\:outline:hover,
+.ff-control[class*='bg:'].color\:neutral.variant\:bare:hover,
+.ff-control[class*='bg:'].color\:neutral.variant\:outline:hover,
 ff-control > label[class*='bg:'].color\:neutral.variant\:bare:hover,
 ff-control > label[class*='bg:'].color\:neutral.variant\:outline:hover {
 	--color-bg: oklch(
@@ -149,18 +177,23 @@ ff-control > label[class*='bg:'].color\:neutral.variant\:outline:hover {
 }
 
 button.variant\:fill:not([disabled]):hover,
-ff-control > label.variant\:fill:not([disabled]):hover {
+.ff-control.variant\:fill:has(input:not([disabled], [class*=':neutral'])):hover,
+ff-control
+	> label.variant\:fill:has(input:not([disabled], [class*=':neutral'])):hover {
 	--lightness: var(--lightness-surface-3);
 	--lightness-contrast: var(--lightness-surface-3-contrast);
 }
 
 button.variant\:fill:not([disabled], [class*=':neutral']):hover,
-ff-control > label.variant\:fill:not([disabled], [class*=':neutral']):hover {
+.ff-control.variant\:fill:has(input:not([disabled], [class*=':neutral'])):hover,
+ff-control
+	> label.variant\:fill:has(input:not([disabled], [class*=':neutral'])):hover {
 	--chroma: var(--chroma-surface-3);
 	--chroma-contrast: var(--chroma-surface-3-contrast);
 }
 
 button[class*='bg:']:not([class*=':neutral']),
+.ff-control[class*='bg:']:not([class*=':neutral']),
 ff-control > label[class*='bg:']:not([class*=':neutral']) {
 	&.variant\:outline:hover,
 	&.variant\:bare:hover {
@@ -171,16 +204,11 @@ ff-control > label[class*='bg:']:not([class*=':neutral']) {
 		background-color: var(--shade);
 		color: var(--ink);
 	}
-}
 
-button[class*='bg:']:not([class*=':neutral']),
-ff-control > label[class*='bg:']:not([class*=':neutral']) {
 	&.variant\:outline:active,
-	&.variant\:bare:active {
-		--lightness-contrast: var(--chroma-surface-2-contrast);
+	&.variant\:bare:active,
+	&.variant\:outline:checked {
+		--lightness: var(--lightness-surface-2);
+		--lightness-contrast: var(--lightness-contrast-4);
 	}
-}
-
-ff-control > label.variant\:bare {
-	border: var(--border-width-md) solid transparent;
 }

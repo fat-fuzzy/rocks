@@ -1,5 +1,0 @@
-/* == Toggle  default == */
-
-.toggle[aria-pressed='true'] {
-	box-shadow: inset var(--shadow-inset-md);
-}
