@@ -28,8 +28,11 @@ ul.depth-1 ff-toggle-reveal:first-of-type > ff-control > label {
 
 .navbar > ff-toggle-reveal > ff-control:has(input:checked) + ff-reveal {
 	--y-axis: var(--ui-size);
-
 	border-radius: var(--border-radius-base);
+}
+
+.navbar > ff-toggle-reveal > ff-control:has(input:checked) + ff-reveal > * {
+	border-radius: initial;
 }
 
 .sidebar > nav > ff-toggle-reveal > ff-control:has(input:checked) + ff-reveal {

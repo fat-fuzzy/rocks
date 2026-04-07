@@ -164,7 +164,6 @@ ff-toggle-reveal.auto {
 		block-size: fit-content;
 		position: absolute;
 		opacity: 1;
-		padding: var(--border-width-xl);
 		transition:
 			opacity 150ms ease-out 50ms,
 			padding 150ms ease-out 50ms,

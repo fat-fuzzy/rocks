@@ -97,7 +97,7 @@
 			background="inherit"
 		>
 			<ul
-				class="header-nav l:flex size:md unstyled color:primary justify:between bg:inherit"
+				class="header-nav l:flex size:xs w:full unstyled color:primary align:center justify:between bg:inherit"
 			>
 				<!-- <ul class={`header-nav unstyled ${navClasses}`}> -->
 				<li aria-current={pathname === '/' ? 'page' : undefined}>

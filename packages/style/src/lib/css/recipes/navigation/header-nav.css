@@ -10,7 +10,6 @@
 }
 
 .header-nav {
-	--justify: between;
 	--gap: var(--grid-gap, var(--size-base-2xs));
 	gap: var(--grid-gap, 0);
 	padding-inline: var(--outline-offset-md);
