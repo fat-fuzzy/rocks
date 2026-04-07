@@ -37,11 +37,11 @@ ff-icon {
 button,
 ff-control > label {
 	background-color: var(--shade);
-	border: var(--border-width-md) solid var(--border-color);
 }
 
 .ff-control,
-ff-icon {
+ff-icon,
+ff-control > label {
 	--shade: inherit;
 	--border-color: transparent;
 }
@@ -81,6 +81,10 @@ ff-control > label.variant\:bare {
 	--lightness-accent: var(--lightness-surface-3);
 	--lightness-contrast: var(--lightness-contrast-base);
 	background-color: inherit;
+}
+
+ff-control > label.variant\:bare {
+	--border-color: transparent;
 }
 
 button.variant\:outline:hover,

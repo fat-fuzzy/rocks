@@ -1,6 +1,4 @@
 ul.depth-1 ff-toggle-reveal:first-of-type > ff-control > label {
-	--border-color: transparent;
-
 	padding: var(--border-width-xl);
 	margin-block-end: var(--border-width-xl);
 }
