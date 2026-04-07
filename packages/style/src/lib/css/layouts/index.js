@@ -1,36 +1,37 @@
-/* == Layout staples == */
-import './text.css' /* Use for text content width */
-import './stack.css' /* Use for stacked column content */
-import './sidebar.css' /* Use for sidebar layouts = layouts containing two children: "main" and "side" */
-import './switcher.css' /* Use for items that switch between column and row layout when the container reaches a threshold width  */
-import './frame.css' /* Use for displaying content with a given aspect ratio */
+/* ========================================= */
+/* ==  Flex-based containers and layouts  == */
+/* ========================================= */
 
+import './flow/flex.css' /* Use for flex layouts */
+import './flow/stack.css' /* Use for stacked column content */
+import './flow/switcher.css' /* Use for items that switch between column and row layout when the container reaches a threshold width  */
+import './flow/sidebar.css' /* Use for sidebar layouts = layouts containing two children: "main" and "side" */
+import './flow/frame.css' /* Use for displaying content with a given aspect ratio */
 /* Tortillas are for Wrapping */
-import './taco.css' /* Use for main content centering (wide columns with max-width set using: percentage - margin (in  em units))*/
-import './burrito.css' /* Use for side content centering (narrow columns with max-width set using sidebar width variables  (in ch units))*/
+import './flow/taco.css' /* Use for main content centering (wide columns with max-width set using: percentage - margin (in  em units))*/
+import './flow/burrito.css' /* Use for side content centering (narrow columns with max-width set using sidebar width variables  (in ch units))*/
 
-/* Maki is for Margin */
-import './maki.css' /* Use for side content centering without any max-width */
+/* ========================================= */
+/*  Display utilities (scale, spacing etc.)  */
+/* ========================================= */
 
+import './display/align.css' /* Use for aligning items inside containers */
+import './display/layers.css' /* Use to define layers content (uses shadows.css) */
+import './display/text.css' /* Use for text content width */
 /* Pasta is for Padding */
-import './cannelloni.css' /* Use single axis padding  */
-import './ravioli.css' /* Use for all-round padding  */
+import './display/cannelloni.css' /* Use single axis padding  */
+import './display/ravioli.css' /* Use for all-round padding  */
+/* Maki is for Margin */
+import './display/maki.css' /* Use for side content centering without any max-width */
+import './display/breakpoint.css' /* Breakpoint utilities */
 
-/* == Layout recipes == */
+import './display/position.css' /* Use for to position elements */
+import './display/shapes.css' /* Use to style geometric shapes */
 
-/* Use for displaying hidden content with a button action */
-// import './reveal.css'
-// import './reveal-sticky.css'
+/* ========================================= */
+/* == Grid - based containers and layouts == */
+/* ========================================= */
 
-/* == Layout spices  == */
-import './breakpoint.css' /* Breakpoint utilities */
-import './shapes.css' /* Use to style geometric shapes */
-import './flex.css' /* Use for flex layouts */
-import './align.css' /* Use for aligning items inside containers */
-import './position.css' /* Use for to position elements */
-import './layers.css' /* Use to define layers content (uses shadows.css) */
-
-/* == Grids == */
 import './grid/base.css'
 import './grid/items.css'
 import './grid/auto.css' /* Gallery grid layout with equal sized areas */

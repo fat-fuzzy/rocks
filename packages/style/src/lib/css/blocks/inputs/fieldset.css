@@ -92,7 +92,7 @@ fieldset.checkbox {
 	}
 
 	input:checked {
-		--lightness: var(--lightness-surface-1);
+		--lightness: var(--lightness-surface-2);
 		--lightness-accent: var(--lightness-surface-3);
 		--lightness-contrast: var(--lightness-surface-4);
 		--chroma: var(--chroma-contrast-focus);
