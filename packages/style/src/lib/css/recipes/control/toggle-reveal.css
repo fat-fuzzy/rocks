@@ -80,8 +80,8 @@ ff-toggle-reveal.ouest {
 	ff-control + ff-reveal {
 		--x-axis: -100%;
 		--y-axis: var(--ui-size);
-		--x-size: var(--overlay-inline-size);
-		--y-size: var(--overlay-block-size);
+		--y-size: 0;
+		--size-y: 0; /* Override scroll:y */
 
 		transition:
 			transform 200ms ease-in,
@@ -90,6 +90,9 @@ ff-toggle-reveal.ouest {
 
 	ff-control:has(input:checked) + ff-reveal {
 		--y-size: var(--overlay-block-size);
+		--x-size: var(--overlay-inline-size);
+		--y-size: var(--overlay-block-size);
+		--size-y: var(--overlay-block-size); /* Override scroll:y */
 
 		inline-size: 100%;
 		transition:

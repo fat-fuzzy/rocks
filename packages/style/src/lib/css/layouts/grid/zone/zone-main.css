@@ -13,8 +13,17 @@
 		);
 	}
 
+	> .page-header .l\:side:empty {
+		flex-basis: 0;
+	}
+
 	> .page-main {
 		grid-area: page-main;
+	}
+
+	> .page-header,
+	> .page-main {
+		padding-inline: calc(2 * var(--grid-gap));
 	}
 }
 
