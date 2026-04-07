@@ -1,4 +1,9 @@
-import {buildNav, buildSubnav, buildNavItems} from '$data/nav'
+import {
+	buildNav,
+	buildSubnav,
+	buildNavItems,
+} from '$lib/server/services/navigation/setup'
+import {pages} from '$config/navigation'
 import decisions from '$data/decisions'
 import usages from '$data/usages'
 import speaking from '$data/speaking'
@@ -12,7 +17,7 @@ const usagesMarkdowns = usages.markdowns
 const page = 'about'
 
 export const load = async ({locals, url, params}) => {
-	const sidebar = buildNav(page)
+	const sidebar = buildNav(page, pages)
 	let talks
 	let speakerNotes
 
@@ -42,7 +47,7 @@ export const load = async ({locals, url, params}) => {
 			if (!params.talk) {
 				item.items = buildNavItems(talks, item)
 			} else {
-				item.items = buildSubnav(`/about/speaking/${params.talk}`, talks)
+				item.items = buildSubnav(`/about/speaking/${params.talk}`, talks, pages)
 			}
 		}
 		return item

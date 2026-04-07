@@ -14,7 +14,7 @@ const STYLE_BASE_CLASS: Record<string, string> = {
 	container: 'l', // TODO: use `c:` prefix
 	font: 'font',
 	justify: 'justify',
-	height: 'h',
+	height: 'height',
 	width: 'width',
 	layer: 'layer',
 	layout: 'l',
@@ -115,7 +115,9 @@ function getLayoutStyles(props: UiLayoutProps): string {
 	const positionClass = position ? position : ''
 
 	const layoutBase =
-		shape === 'round' || shape === 'square' ? 'stack' : (layout as string)
+		(shape === 'round' || shape === 'square') && !layout
+			? 'stack'
+			: (layout as string)
 
 	if (layoutBase) {
 		// TODO: fix this later

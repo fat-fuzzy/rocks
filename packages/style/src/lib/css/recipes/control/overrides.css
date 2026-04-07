@@ -1,0 +1,25 @@
+ul.depth-1 ff-toggle-reveal:first-of-type > ff-control > label {
+	--border-color: transparent;
+
+	padding: var(--border-width-xl);
+	margin-block-end: var(--border-width-xl);
+}
+
+.sidebar > nav > ff-toggle-reveal > ff-control > label {
+	--lightness: var(--lightness-surface-1);
+	--lightness-contrast: var(--lightness-surface-1-contrast);
+	background-color: var(--shade);
+}
+
+.navbar > ff-toggle-reveal > ff-control:has(input:checked) + ff-reveal {
+	--y-axis: var(--ui-size);
+	border-radius: var(--border-radius-base);
+}
+
+.navbar > ff-toggle-reveal > ff-control:has(input:checked) + ff-reveal > * {
+	border-radius: initial;
+}
+
+.sidebar > nav > ff-toggle-reveal > ff-control:has(input:checked) + ff-reveal {
+	--y-axis: var(--ui-size);
+}

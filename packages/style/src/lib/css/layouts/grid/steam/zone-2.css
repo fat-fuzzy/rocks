@@ -4,8 +4,6 @@
  */
 
 .steam.zone\:2 {
-	grid-template-rows: subgrid;
-
 	> .page-context:not(.empty) {
 		max-block-size: var(--overlay-height-xs);
 	}

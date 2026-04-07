@@ -1,5 +1,5 @@
 import type {Markdown} from '$types'
-import assetsUtils from './assets'
+import assetsUtils from '$lib/server/services/markdowns/assets'
 
 const categoryPrefix = '/src/assets/ui/'
 const tokensPathPrefix = '/src/assets/ui/tokens/'

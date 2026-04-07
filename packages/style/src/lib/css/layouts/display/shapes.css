@@ -22,7 +22,6 @@
 }
 
 .shape\:round > * {
-	line-height: 1;
 	border-radius: 100vmax;
 }
 

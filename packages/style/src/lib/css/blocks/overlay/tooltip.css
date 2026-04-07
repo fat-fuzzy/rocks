@@ -4,8 +4,8 @@
 */
 
 [role='tooltip'] {
-	--x-axis: var(--ui-size-sm);
-	--y-axis: var(--ui-size-sm);
+	--x-axis: var(--outline-offset-md);
+	--y-axis: var(--outline-offset-md);
 	--x-transform: 0;
 	--y-transform: 0;
 	--tooltip-bg: oklch(var(--lightness-base) var(--chroma-base) var(--hue));
@@ -76,7 +76,7 @@ label:focus > [role='tooltip'].est,
 label:hover > [role='tooltip'].ouest,
 label:focus > [role='tooltip'].ouest {
 	--x-transform: 0;
-	--y-transform: -50%;
+	--y-transform: 0;
 }
 
 label:hover > [role='tooltip'].nord,

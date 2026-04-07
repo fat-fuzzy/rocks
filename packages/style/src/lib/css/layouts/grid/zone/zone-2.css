@@ -13,6 +13,7 @@
 	z-index: var(--layout-z-index-layer);
 	block-size: fit-content;
 	max-block-size: unset;
+	background-color: inherit;
 
 	&.scroll\:y {
 		scrollbar-gutter: auto;
@@ -24,7 +25,6 @@
 		align-content: start;
 		align-items: start;
 		z-index: var(--layout-z-index-layer);
-		background-color: var(--shade);
 	}
 
 	> .page-context.empty {

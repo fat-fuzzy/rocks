@@ -18,3 +18,9 @@ export type OverlayProps = UiBlockProps &
 		children?: Snippet
 		onbeforetoggle?: (event: Event, payload?: FuzzyPayload) => void
 	}
+
+export type TooltipProps = UiBlockProps & {
+	id: string
+	label: string
+	children?: Snippet
+}

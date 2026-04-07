@@ -6,9 +6,9 @@
 
 	import {resolve} from '$app/paths'
 	import {page} from '$app/state'
-	import {links} from '$data/nav'
 
-	import {linksSocials} from '$data/nav'
+	import {links} from '$config/navigation'
+	import {linksSocials} from '$config/navigation'
 
 	import Footer from '$lib/ui/Footer.svelte'
 	import Socials from '$lib/ui/Socials.svelte'
@@ -84,8 +84,6 @@
 			label="Menu"
 			font="sm"
 			size="3xs"
-			variant="bare"
-			color="primary"
 			asset="home"
 			justify="center"
 			align="start"
@@ -97,7 +95,7 @@
 			background="inherit"
 		>
 			<ul
-				class="header-nav l:flex size:md unstyled color:primary justify:between bg:inherit"
+				class="header-nav l:flex size:xs w:full unstyled color:primary align:center justify:around bg:inherit"
 			>
 				<!-- <ul class={`header-nav unstyled ${navClasses}`}> -->
 				<li aria-current={pathname === '/' ? 'page' : undefined}>
