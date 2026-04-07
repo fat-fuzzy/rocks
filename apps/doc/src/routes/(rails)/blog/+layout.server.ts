@@ -1,12 +1,12 @@
 import type {NavItem} from '$types'
-
+import {buildNav} from '$lib/server/services/navigation/setup'
+import {pages} from '$config/navigation'
 import blog from '$data/blog'
-import {buildNav} from '$data/nav'
 
 const posts = blog.markdowns.filter(({meta}) => meta.status !== 'draft')
 
 export const load = async ({locals, url}) => {
-	const sidebar = buildNav('blog')
+	const sidebar = buildNav('blog', pages)
 	sidebar.actionPath = url.pathname
 	sidebar.items = sidebar.items.map((item) => {
 		if (item.slug === 'blog') {

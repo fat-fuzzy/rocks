@@ -3,6 +3,7 @@ export type UiContainer = 'burrito' | 'taco' | 'frame' | 'ravioli' | 'raviolink'
 export type UiLayout =
 	| 'stack'
 	| 'switcher'
+	| 'sidebar'
 	| 'grid'
 	| 'flex'
 	| 'reveal'

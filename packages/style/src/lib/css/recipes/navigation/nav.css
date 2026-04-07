@@ -74,7 +74,6 @@ ul.depth-1 {
 ul.depth-2 {
 	inline-size: 100%;
 	max-inline-size: unset;
-	padding-inline: var(--outline-offset-lg) var(--outline-offset-sm);
 	padding-block: var(--outline-offset-sm) var(--ui-size);
 }
 
@@ -128,8 +127,6 @@ nav li[aria-current='page'] {
 	ul.depth-1 {
 		--lightness: var(--lightness-base);
 		--lightness-contrast: var(--lightness-contrast-base);
-		--chroma: var(--color-chroma-neutral);
-		--chroma-contrast: var(--chroma-contrast-base);
 		--shade: oklch(var(--lightness) var(--chroma) var(--hue));
 		--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
 		--accent: oklch(

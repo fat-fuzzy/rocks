@@ -41,7 +41,6 @@ fieldset.checkbox {
 		padding-block: var(--border-width-xl);
 		padding-inline: var(--border-width-xl);
 		gap: var(--ui-size-sm);
-		margin: 0;
 		inline-size: 100%;
 		color: var(--ink);
 		line-height: 1;
@@ -92,7 +91,7 @@ fieldset.checkbox {
 	}
 
 	input:checked {
-		--lightness: var(--lightness-surface-1);
+		--lightness: var(--lightness-surface-2);
 		--lightness-accent: var(--lightness-surface-3);
 		--lightness-contrast: var(--lightness-surface-4);
 		--chroma: var(--chroma-contrast-focus);

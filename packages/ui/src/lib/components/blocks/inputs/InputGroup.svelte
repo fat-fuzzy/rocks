@@ -20,7 +20,7 @@
 		value,
 		type = 'radio', // checkbox, radio
 		items = [],
-		layout = 'stack',
+		layout,
 		justify = 'between',
 		container,
 		background,
@@ -139,6 +139,7 @@
 			value={input.value}
 			{checked}
 			color={input.color || color}
+			background={undefined}
 			{justify}
 			{container}
 			{size}

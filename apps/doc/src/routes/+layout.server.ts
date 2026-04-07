@@ -10,9 +10,6 @@ export const load = async ({locals}) => {
 	const appContext: ViewingPreferences = {
 		brightness: 'system',
 		contrast: 'contrast',
-		consent: {
-			functional: true,
-		},
 	}
 
 	return {

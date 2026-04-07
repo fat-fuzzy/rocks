@@ -6,13 +6,14 @@ import {render} from 'svelte/server'
  * @param imports markdown default imports
  * @returns frontmatter metadata and path of markdown files to load
  */
-const fetchJson = async (pathPrefix: string, imports: any) => {
+const fetchJson = async (pathPrefix: string, imports: object) => {
 	if (!imports) return []
 	const mdImports = Object.entries(imports)
 
 	const logs = await Promise.all(
 		mdImports.map(async ([path, resolver]) => {
-			const result: any = await (resolver as () => Promise<any>)()
+			// eslint-disable-next-line
+			const result: any = await (resolver as () => Promise<any>)() // TODO: figure out types
 			const filePath = path.slice(pathPrefix.length, -5) // removes pathPrefix and '.json'
 
 			return {
@@ -30,13 +31,14 @@ const fetchJson = async (pathPrefix: string, imports: any) => {
  * @param imports markdown default imports
  * @returns  frontmatter metadata and path of markdown files to load
  */
-const fetchMarkdowns = async (pathPrefix: string, imports: any) => {
+const fetchMarkdowns = async (pathPrefix: string, imports: object) => {
 	if (!imports) return []
 	const mdImports = Object.entries(imports)
 
 	const logs = await Promise.all(
 		mdImports.map(async ([path, resolver]) => {
-			const result: any = await (resolver as () => Promise<any>)()
+			// eslint-disable-next-line
+			const result: any = await (resolver as () => Promise<any>)() // TODO: figure out types
 			const filePath = path.slice(pathPrefix.length, -3) // removes pathPrefix and '.md'
 			const html = result
 				? render(result.default, {...result.metadata}).body
@@ -64,4 +66,11 @@ function sortByIdAsc(a, b) {
 function sortByIdDesc(a, b) {
 	return a.meta.id > b.meta.id ? -1 : b.meta.id > a.meta.id ? 1 : 0
 }
-export default {fetchMarkdowns, fetchJson, sortByTitleDesc, sortByIdDesc}
+export default {
+	fetchMarkdowns,
+	fetchJson,
+	sortByTitleDesc,
+	sortByIdDesc,
+	sortByTitleAsc,
+	sortByIdAsc,
+}

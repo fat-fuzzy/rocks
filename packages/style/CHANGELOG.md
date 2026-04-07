@@ -1,5 +1,11 @@
 # @fat-fuzzy/style
 
+## 0.1.33
+
+### Patch Changes
+
+- 3d097c7: Layout, color, spacing fixes
+
 ## 0.1.32
 
 ### Patch Changes
