@@ -123,22 +123,13 @@ ff-toggle-reveal.est {
 	}
 }
 
-ff-toggle-reveal.nord {
-	ff-control + ff-reveal {
-		inline-size: var(--overlay-inline-size);
-		block-size: 0;
-	}
-}
-
-ff-toggle-reveal.sud {
-	ff-control + ff-reveal {
-		inline-size: var(--overlay-inline-size);
-		block-size: 0;
-	}
-}
-
 ff-toggle-reveal.nord,
 ff-toggle-reveal.sud {
+	ff-control + ff-reveal {
+		inline-size: var(--overlay-inline-size);
+		block-size: 0;
+	}
+
 	ff-control + ff-reveal {
 		position: relative;
 		block-size: 0;
@@ -148,7 +139,6 @@ ff-toggle-reveal.sud {
 			block-size 250ms ease-in;
 	}
 
-	ff-control:has(input:checked) + ff-reveal,
 	ff-control:has(input:checked) + ff-reveal {
 		position: static;
 		block-size: fit-content;
@@ -160,43 +150,29 @@ ff-toggle-reveal.sud {
 }
 
 ff-control > label {
+	line-height: 1;
 	color: inherit;
 	accent-color: var(--accent);
 	background-color: inherit;
-}
 
-ff-control > label ff-icon {
-	line-height: 1;
-}
+	ff-icon {
+		line-height: 1;
+	}
 
-ff-control > label.toggle-label {
-	inline-size: 100%;
-}
+	&.toggle-label {
+		inline-size: 100%;
+	}
 
-ff-control > label,
-ff-control > label > ff-label > a {
-	line-height: 1;
-}
-
-ff-control > label > ff-label > a {
-	inline-size: fit-content;
-}
-
-@media screen and (min-width: 68.75rem) {
-	ff-toggle-reveal.est {
-		ff-control:has(input:checked) + ff-reveal {
-			--x-axis: calc(-3 * var(--outline-offset-lg));
-		}
+	&.bare {
+		--border-color: transparent;
+	}
+	> ff-label > a {
+		line-height: 1;
+		inline-size: fit-content;
 	}
 }
 
-ul.depth-1 ff-toggle-reveal:first-of-type > ff-control > label {
-	padding: var(--border-width-xl);
-	margin-block-end: var(--border-width-xl);
-}
-
 ff-toggle-reveal.auto {
-	ff-control:has(input:checked) + ff-reveal,
 	ff-control:has(input:checked) + ff-reveal {
 		block-size: fit-content;
 		position: absolute;
@@ -212,6 +188,11 @@ ff-toggle-reveal.auto {
 	ff-control:has(input.sud:checked) + ff-reveal {
 		inset-inline: var(--grid-gap);
 	}
+}
+
+ul.depth-1 ff-toggle-reveal:first-of-type > ff-control > label {
+	padding: var(--border-width-xl);
+	margin-block-end: var(--border-width-xl);
 }
 
 .sidebar > nav > ff-toggle-reveal > ff-control ff-icon {
@@ -250,6 +231,12 @@ ff-toggle-reveal.auto {
 }
 
 @media screen and (min-width: 68.75rem) {
+	ff-toggle-reveal.est {
+		ff-control:has(input:checked) + ff-reveal {
+			--x-axis: calc(-3 * var(--outline-offset-lg));
+		}
+	}
+
 	.context > ff-toggle-reveal > ff-control:has(input:checked) + ff-reveal {
 		--x-axis: 0;
 		--max-inline-size: calc(var(--sidebar-width) - var(--grid-gap));

@@ -9,7 +9,6 @@
 @import './navigation/page-nav.css'; /* Use for page content nav specifics */
 
 /* ============  Content display ==================*/
-@import './presentation/toggle-reveal.css';
 @import './presentation/tabs.css'; /* Use for tabs */
 @import './presentation/scrolly.css'; /* Use with ScrollReveal component  */
 @import './presentation/article.css'; /* Use for articles (header + section(s) + optional footer) */
@@ -20,5 +19,6 @@
 @import './presentation/fullscreen.css'; /* Full screen styles (layout steam: slides, sketch) */
 
 /* ============  GUI Controls and widgets ==================*/
+@import './control/toggle-reveal.css'; /* Toggle visibility of content or ui areas */
 @import './control/menu.css'; /* Use for menus (menus = actions -> use forms [for no-js] -> buttons = <button>) and derived elements */
 @import './control/settings.css'; /* A Settings menu component (for user input to adjust brightness, contrast, language, ...) */
