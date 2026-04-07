@@ -6,9 +6,9 @@
 
 	import {resolve} from '$app/paths'
 	import {page} from '$app/state'
-	import {links} from '$data/nav'
 
-	import {linksSocials} from '$data/nav'
+	import {links} from '$config/navigation'
+	import {linksSocials} from '$config/navigation'
 
 	import Footer from '$lib/ui/Footer.svelte'
 	import Socials from '$lib/ui/Socials.svelte'
