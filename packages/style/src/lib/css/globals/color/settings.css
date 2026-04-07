@@ -18,7 +18,7 @@
 		--lightness-contrast-focus: var(--color-lightness-000);
 		--lightness-ui-base: var(--color-lightness-300);
 		--lightness-ui-base-pressed-hover: var(--color-lightness-400);
-		--lightness-ui-contrast-base: var(--lightness-contrast-base);
+		--lightness-ui-contrast-base: var(--color-lightness-light-base);
 		--lightness-ui-hover-base: var(--color-lightness-400);
 		--lightness-ui-hover-contrast-base: var(--color-lightness-light-base);
 		--lightness-surface-1: var(--color-lightness-000);
