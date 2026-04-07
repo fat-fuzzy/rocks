@@ -1,4 +1,4 @@
-import type {NavItem} from '$types'
+import type {NavItem} from '@fat-fuzzy/ui'
 
 export const links = [
 	{slug: 'about', label: 'About', layout: 'sidebar'},

@@ -12,7 +12,6 @@
 			label: 'Brightness',
 			name: 'brightness',
 			type: 'radio',
-			color: 'primary',
 			size: 'xs',
 			justify: 'start',
 			id: 'brightness',
@@ -27,9 +26,9 @@
 					id: 'brightness.system',
 					value: 'system',
 					asset: 'home',
-					shape: 'round',
+					shape: 'pill',
 					size: 'xs',
-					justify: 'start',
+					justify: 'between',
 					color: 'primary',
 					place: 'est',
 					variant: 'bare',
@@ -39,9 +38,9 @@
 					id: 'brightness.primary',
 					value: 'day',
 					asset: 'day',
-					shape: 'round',
+					shape: 'pill',
 					size: 'xs',
-					justify: 'start',
+					justify: 'between',
 					color: 'primary',
 					place: 'est',
 					variant: 'bare',
@@ -51,9 +50,9 @@
 					id: 'brightness.primary',
 					value: 'night',
 					asset: 'night',
-					shape: 'round',
+					shape: 'pill',
 					size: 'xs',
-					justify: 'start',
+					justify: 'between',
 					place: 'est',
 					color: 'primary',
 					variant: 'bare',
@@ -64,9 +63,9 @@
 			label: 'Contrast',
 			name: 'contrast',
 			type: 'radio',
-			color: 'primary',
 			size: 'xs',
 			justify: 'start',
+			layout: 'stack',
 			id: 'contrast',
 			background: 'inherit',
 			value: Object.entries(selected).map(([key, value]) => {
@@ -79,24 +78,31 @@
 					id: 'contrast.contrast',
 					value: 'contrast',
 					asset: 'contrast',
-					shape: 'round',
+					shape: 'pill',
 					size: 'xs',
-					justify: 'start',
+					justify: 'between',
 					place: 'est',
 					color: 'accent',
 					variant: 'bare',
+					disabled: selected.brightness === 'system',
+					checked:
+						selected.brightness === 'system' ||
+						selected.contrast === 'contrast',
 				},
 				{
 					label: 'Blend',
 					id: 'contrast.blend',
 					value: 'blend',
 					asset: 'blend',
-					shape: 'round',
+					shape: 'pill',
 					size: 'xs',
-					justify: 'start',
+					justify: 'between',
 					place: 'est',
 					color: 'accent',
 					variant: 'bare',
+					disabled: selected.brightness === 'system',
+					checked:
+						selected.brightness !== 'system' && selected.contrast === 'blend',
 				},
 			],
 		},
@@ -105,6 +111,6 @@
 
 <div class="l:flex maki:block:sm align:start">
 	{#each options as item, i (i)}
-		<InputGroup {...item} {oninput} value={values} />
+		<InputGroup {...item} {oninput} value={values} background="inherit" />
 	{/each}
 </div>
