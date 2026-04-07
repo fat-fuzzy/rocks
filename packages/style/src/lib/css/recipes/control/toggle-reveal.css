@@ -31,13 +31,15 @@ ff-toggle-reveal {
 		--x-axis: 0;
 		--y-axis: 0;
 		--max-inline-size: max-content;
+		--x-size: var(--overlay-inline-size, var(--max-inline-size));
 
 		opacity: 1;
 		background-color: var(--color-bg);
 		display: flex;
 		flex-direction: column;
 		inline-size: var(--x-size);
-		block-size: var(--y-size);
+		block-size: fit-content;
+		max-block-size: var(--overlay-block-size);
 		max-inline-size: var(--overlay-inline-size, var(--max-inline-size));
 		color: var(--ink);
 		z-index: var(--layout-z-index-layer);
@@ -78,16 +80,17 @@ ff-toggle-reveal.ouest {
 	ff-control + ff-reveal {
 		--x-axis: -100%;
 		--y-axis: var(--ui-size);
+		--x-size: var(--overlay-inline-size);
+		--y-size: var(--overlay-block-size);
 
-		block-size: var(--overlay-block-size);
-		inline-size: var(--overlay-inline-size);
 		transition:
 			transform 200ms ease-in,
 			opacity 200ms ease-in 50ms;
 	}
 
 	ff-control:has(input:checked) + ff-reveal {
-		block-size: var(--overlay-block-size);
+		--y-size: var(--overlay-block-size);
+
 		inline-size: 100%;
 		transition:
 			transform 350ms ease-out,
@@ -111,8 +114,8 @@ ff-toggle-reveal.est {
 	ff-control + ff-reveal {
 		--y-axis: var(--ui-size);
 		--x-axis: 100%;
+		--y-size: var(--max-inline-size);
 
-		inline-size: var(--max-inline-size);
 		transition:
 			transform 250ms ease-in,
 			opacity 200ms ease-in 50ms,
@@ -122,14 +125,22 @@ ff-toggle-reveal.est {
 
 	ff-control:has(input:checked) + ff-reveal {
 		--y-axis: var(--ui-size);
-		--x-axis: calc(-1 * var(--ui-size));
-		inline-size: var(--max-inline-size);
+		--x-axis: -50%;
+		--y-size: var(--max-inline-size);
 
 		transition:
 			transform 350ms ease-out,
 			opacity 350ms ease-out 50ms,
 			block-size 300ms ease-out,
 			inline-size 300ms ease-out;
+	}
+}
+
+@media screen and (min-width: 68.75rem) {
+	ff-toggle-reveal.est {
+		ff-control:has(input:checked) + ff-reveal {
+			--x-axis: var(--ui-size-lg);
+		}
 	}
 }
 
@@ -172,6 +183,6 @@ ff-toggle-reveal.auto {
 
 	ff-control:has(input.nord:checked) + ff-reveal,
 	ff-control:has(input.sud:checked) + ff-reveal {
-		inset-inline: var(--grid-gap);
+		inset-inline: var(--outline-offset-lg);
 	}
 }

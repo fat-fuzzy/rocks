@@ -14,7 +14,7 @@ const STYLE_BASE_CLASS: Record<string, string> = {
 	container: 'l', // TODO: use `c:` prefix
 	font: 'font',
 	justify: 'justify',
-	height: 'h',
+	height: 'height',
 	width: 'width',
 	layer: 'layer',
 	layout: 'l',

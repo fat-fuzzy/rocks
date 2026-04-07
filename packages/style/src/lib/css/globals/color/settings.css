@@ -278,6 +278,14 @@ html:has([class*='settings:night:']),
 	--lightness-base: var(--color-lightness-dark-blend);
 }
 
+.settings\:day\:contrast {
+	--lightness-base: var(--color-lightness-light-contrast);
+}
+
+.settings\:day\:blend {
+	--lightness-base: var(--color-lightness-light-blend);
+}
+
 @media (prefers-color-scheme: dark) {
 	.emoji\:blend::before {
 		content: var(--emoji-icon-blend-night);

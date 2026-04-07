@@ -24,3 +24,7 @@ body:has(.l\:grid\:urbanist) {
 	min-inline-size: 100%;
 	overflow: hidden auto;
 }
+
+.l\:grid\:urbanist {
+	background-color: var(--shade);
+}

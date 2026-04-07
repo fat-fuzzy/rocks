@@ -22,18 +22,8 @@
 		background-color: inherit;
 		border-block-start: var(--border-width-xl) solid transparent;
 		inline-size: fit-content;
-		padding-block: var(--outline-offset-md);
+		padding-block: var(--outline-offset-md) var(--outline-offset-lg);
 		padding-inline: var(--outline-offset-xs);
-
-		&:first-child {
-			border-top-left-radius: inherit;
-			border-bottom-left-radius: inherit;
-		}
-
-		&:last-child {
-			border-top-right-radius: inherit;
-			border-bottom-right-radius: inherit;
-		}
 
 		a {
 			display: flex;
@@ -62,8 +52,8 @@
 	.header-nav {
 		inline-size: auto;
 		li {
+			padding-block: var(--ui-size-sm) var(--ui-size);
 			padding-inline: var(--outline-offset-lg);
-			padding-block: var(--outline-offset-lg);
 		}
 	}
 }
