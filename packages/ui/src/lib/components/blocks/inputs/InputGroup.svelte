@@ -139,6 +139,7 @@
 			value={input.value}
 			{checked}
 			color={input.color || color}
+			background={undefined}
 			{justify}
 			{container}
 			{size}

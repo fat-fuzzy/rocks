@@ -67,7 +67,7 @@ button.variant\:outline,
 .ff-control.variant\:outline,
 ff-control > label.variant\:outline {
 	--border-color: var(--accent);
-	--lightness: var(--lightness-surface-6);
+	--lightness: var(--lightness-surface-5);
 	--lightness-accent: var(--lightness-surface-4);
 	--lightness-contrast: var(--lightness-accent-base);
 	background-color: inherit;
@@ -107,7 +107,7 @@ button.variant\:outline:active,
 .ff-control.variant\:outline:active,
 ff-control > label.variant\:outline:active {
 	--lightness: var(---lightness-surface-3);
-	--lightness-contrast: var(--lightness-surface-6);
+	--lightness-contrast: var(--lightness-surface-5);
 	background-color: var(--shade);
 }
 
@@ -116,13 +116,7 @@ button.variant\:bare:active,
 ff-control > label.variant\:bare:active,
 .ff-control.variant\:bare:has(input:checked) {
 	--lightness: var(--lightness-surface-2);
-	--lightness-contrast: var(--lightness-surface-6);
-	background-color: var(--shade);
-}
-
-ff-control > label.variant\:bare:has(input:checked) {
-	--lightness: var(--lightness-surface-2);
-	--lightness-contrast: var(--lightness-surface-6);
+	--lightness-contrast: var(--lightness-surface-5);
 	background-color: var(--shade);
 }
 
@@ -132,7 +126,7 @@ ff-control > label.variant\:bare:has(input:checked) {
 		--lightness-contrast: var(--lightness-surface-2-contrast);
 
 		&:active {
-			--lightness: var(--lightness-surface-6);
+			--lightness: var(--lightness-surface-5);
 			--lightness-contrast: var(--lightness-surface-2);
 		}
 

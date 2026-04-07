@@ -51,7 +51,7 @@
 			layout,
 			threshold,
 			container,
-			background,
+			background: background ? background : 'inherit',
 		}),
 	)
 

@@ -16,15 +16,8 @@ ff-control > label:not([class*=':neutral']) ff-icon {
 	--chroma-accent: var(--chroma-accent-base);
 }
 
-ff-control > label.variant\:bare:has(input:checked) {
-	--lightness: var(--lightness-surface-1);
-	background-color: var(--shade);
-}
-
-ff-control > label.variant\:bare:has(input:checked):hover {
-	--lightness: var(--lightness-surface-2);
-	--lightness-contrast: var(--lightness-surface-6);
-	background-color: var(--shade);
+ff-control > label.variant\:bare {
+	--border-color: transparent;
 }
 
 /* == Toggle with input default == */
