@@ -4,16 +4,23 @@
  - hue
 */
 
-[disabled] {
+[disabled],
+[disabled]:checked,
+[disabled]:hover,
+[disabled]:focus,
+[disabled]:active,
+[disabled][class*='variant:'],
+[class*='variant:']:has([disabled]),
+[class*='variant:']:has([disabled]:checked) {
 	--chroma: var(--color-chroma-neutral);
 	--lightness: var(--color-lightness-100);
 	--chroma-contrast: var(--color-chroma-neutral);
 	--lightness-contrast: var(--color-lightness-300);
+	--chroma-accent: var(--color-chroma-neutral);
+	cursor: not-allowed;
 }
 
 :visited {
-	--chroma: var(--color-chroma-200);
 	--lightness: var(--color-lightness-200);
-	--chroma-contrast: var(--color-chroma-600);
 	--lightness-contrast: var(--color-lightness-600);
 }

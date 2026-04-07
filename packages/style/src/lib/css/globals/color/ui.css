@@ -99,6 +99,40 @@
 	accent-color: var(--accent);
 }
 
+[class*=':neutral'] {
+	--hue: var(--color-theme-neutral);
+	--chroma: var(--color-chroma-neutral);
+	--chroma-accent: var(--color-chroma-neutral);
+	--chroma-contrast: var(--color-chroma-neutral);
+
+	--ink: oklch(
+		var(--lightness-contrast) var(--color-chroma-neutral) var(--hue)
+	);
+	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
+	--accent: oklch(
+		var(--lightness-accent) var(--color-chroma-neutral) var(--hue)
+	);
+	--thumb: oklch(
+		var(--lightness-surface-3) var(--color-chroma-neutral) var(--hue)
+	);
+	--shadow: oklch(
+		var(--lightness-accent-base) var(--color-chroma-neutral) var(--hue)
+	);
+	--accent: oklch(
+		var(--lightness-accent) var(--color-chroma-neutral) var(--hue)
+	);
+
+	--shadow-sm: var(--shadow-base-sm-offset-x) var(--shadow-base-sm-offset-y)
+		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
+	--shadow-md: var(--shadow-base-md-offset-x) var(--shadow-base-md-offset-y)
+		var(--shadow-base-sm-blur) var(--shadow-base-sm-spread) var(--shadow);
+	--shadow-lg: var(--shadow-base-lg-offset-x) var(--shadow-base-lg-offset-y)
+		var(--shadow-base-md-blur) var(--shadow-base-md-spread) var(--shadow);
+
+	--shadow-inset-sm: var(--shadow-sm);
+	--shadow-inset-md: var(--shadow-md);
+}
+
 [class*='bg:'].variant\:fill:focus {
 	--shade-focus: oklch(var(--lightness-focus) var(--chroma-focus) var(--hue));
 	--ink-focus: oklch(
