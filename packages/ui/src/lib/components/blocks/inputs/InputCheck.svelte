@@ -2,6 +2,7 @@
 	import type {InputCheckProps} from '$types'
 	import styleHelper from '$lib/utils/styles'
 	import Feedback from '$lib/components/blocks/inputs/InputFeedback.svelte'
+	import Tooltip from '$lib/components/blocks/overlays/Tooltip.svelte'
 
 	let {
 		id,
@@ -13,10 +14,12 @@
 		value,
 		required,
 		hint,
-
 		layout = 'switcher',
 		threshold = '2xs',
 		asset,
+		assetType,
+		shape,
+		place,
 		align,
 		justify,
 		color,
@@ -35,25 +38,49 @@
 			: [],
 	)
 
-	let classes = $derived(
+	let labelClasses = $derived(
 		styleHelper.getStyles({
 			color,
 			font,
 			size,
 			align,
-			justify,
-			asset,
-			variant,
+			justify: shape ? undefined : justify,
+			asset: shape ? undefined : asset,
+			shape,
+			assetType,
 			layout,
 			threshold,
 			container,
-			background: background ? background : 'inherit',
+			background,
 		}),
+	)
+
+	let iconClasses = $derived(
+		styleHelper.getStyles({
+			asset,
+			assetType,
+			size,
+			layout: 'flex',
+			color,
+			variant,
+			shape: shape === 'square' || shape === 'round' ? undefined : shape,
+		}),
+	)
+
+	let inputClasses = $derived(shape ? 'sr-only' : '')
+
+	// Container styles
+	let controlClasses = 'l:flex align:center w:full'
+	let reverseClass = $derived(
+		place === 'ouest'
+			? 'reverse'
+			: place === 'nord' || place === 'sud'
+				? 'justify:center'
+				: '',
 	)
 </script>
 
-<label for={id} class={`ravioli:${size} ${classes} nowrap`} data-testid={id}>
-	<span>{label}</span>
+{#snippet input()}
 	<input
 		{id}
 		name={name ?? undefined}
@@ -64,10 +91,46 @@
 		{required}
 		{oninput}
 		{disabled}
+		class={inputClasses}
+		aria-labelledby={shape ? `${id}-tip` : undefined}
 		aria-describedby={hint || errors?.length
 			? `input-feedback-${id}`
 			: undefined}
 	/>
-</label>
+{/snippet}
 
-<Feedback id={`input-feedback-${id}`} {hint} {errors} {size} {variant} {font} />
+{#if shape === 'square' || shape === 'round'}
+	<ff-control class={`${controlClasses} ${reverseClass}`}>
+		<label for={id} class={labelClasses}>
+			<ff-icon class={iconClasses}></ff-icon>
+			{@render input()}
+			<Tooltip id={`describes-${id}`} {label} {size} {variant} {font}>
+				<Feedback
+					id={`feedback-${id}`}
+					{hint}
+					{errors}
+					{size}
+					{variant}
+					{font}
+				/>
+			</Tooltip>
+		</label>
+	</ff-control>
+{:else}
+	<label
+		for={id}
+		class={`ff-control ellipsis nowrap ${labelClasses} ${iconClasses}`}
+		data-testid={id}
+	>
+		<span>{label}</span>
+		{@render input()}
+	</label>
+	<Feedback
+		id={`input-feedback-${id}`}
+		{hint}
+		{errors}
+		{size}
+		{variant}
+		{font}
+	/>
+{/if}
