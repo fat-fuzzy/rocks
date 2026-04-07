@@ -20,7 +20,7 @@
 		value,
 		type = 'radio', // checkbox, radio
 		items = [],
-		layout = 'stack',
+		layout,
 		justify = 'between',
 		container,
 		background,

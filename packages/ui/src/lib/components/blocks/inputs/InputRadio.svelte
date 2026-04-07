@@ -42,7 +42,7 @@
 			font,
 			size,
 			align,
-			justify,
+			justify: shape ? undefined : asset,
 			asset: shape ? undefined : asset,
 			shape,
 			assetType,
@@ -58,6 +58,7 @@
 			asset,
 			assetType,
 			size,
+			layout: 'flex',
 			color,
 			variant,
 			shape,
@@ -134,7 +135,7 @@
 {/if}
 
 <style>
-	ff-control label {
+	ff-control label.bare {
 		--border-color: transparent;
 	}
 </style>
