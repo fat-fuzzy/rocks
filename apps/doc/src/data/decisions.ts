@@ -1,5 +1,5 @@
 import type {Markdown} from '$types'
-import assetsUtils from './assets'
+import assetsUtils from '$lib/server/services/markdowns/assets'
 
 const pathPrefix = '/src/assets/decisions/'
 
