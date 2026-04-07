@@ -1,5 +1,11 @@
 # @fat-fuzzy/ui
 
+## 0.1.88
+
+### Patch Changes
+
+- 3d097c7: Layout, color, spacing fixes
+
 ## 0.1.87
 
 ### Patch Changes
