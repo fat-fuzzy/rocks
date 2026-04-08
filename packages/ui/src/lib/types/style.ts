@@ -19,6 +19,7 @@ export type UiStatus = 'default' | 'info' | 'success' | 'warning' | 'error'
 export type UiTextContext = 'form' | 'prose' | 'code'
 
 export type UiSize =
+	| '4xs'
 	| '3xs'
 	| '2xs'
 	| 'xs'
@@ -28,6 +29,7 @@ export type UiSize =
 	| 'xl'
 	| '2xl'
 	| '3xl'
+	| '4xl'
 
 export type UiPalette =
 	| 'banana'
