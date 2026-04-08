@@ -27,6 +27,7 @@
 		variant,
 		background,
 		container,
+		containerSize,
 		oninput,
 		validator,
 	}: InputRadioProps = $props()
@@ -50,6 +51,7 @@
 			layout,
 			threshold,
 			container,
+			containerSize,
 			background: background ? background : 'inherit',
 		}),
 	)

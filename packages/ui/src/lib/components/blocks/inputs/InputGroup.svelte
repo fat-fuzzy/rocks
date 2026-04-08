@@ -1,12 +1,14 @@
 <script lang="ts">
 	import type {Component} from 'svelte'
-
 	import type {
 		FieldsetProps,
 		ValidationProps,
 		InputCheckProps,
 		InputRadioProps,
+		UiSize,
 	} from '$types'
+
+	import styleHelper from '$lib/utils/styles'
 	import Fieldset from '$lib/components/blocks/inputs/Fieldset.svelte'
 	import InputRadio from '$lib/components/blocks/inputs/InputRadio.svelte'
 	import InputCheck from '$lib/components/blocks/inputs/InputCheck.svelte'
@@ -56,6 +58,10 @@
 		checkbox: InputCheck,
 	}
 
+	let innerLayoutSize = $derived(
+		size ? styleHelper.SCALES.DECREASE_2[size] : size,
+	)
+
 	function handleInput(event: Event) {
 		let target = event.target as HTMLInputElement
 
@@ -104,6 +110,7 @@
 	{font}
 	{variant}
 	{container}
+	containerSize={innerLayoutSize as UiSize}
 	{background}
 	{color}
 	{asset}
@@ -125,9 +132,11 @@
 				{color}
 				{justify}
 				{container}
+				containerSize={innerLayoutSize as UiSize}
 				id={`all-${id}`}
 				oninput={handleSelectAll}
 				{validator}
+				{isUiControl}
 			/>
 		</legend>
 	{/if}
@@ -142,10 +151,12 @@
 			background={undefined}
 			{justify}
 			{container}
+			containerSize={innerLayoutSize as UiSize}
 			{size}
 			{name}
 			id={`${name}.${input.value}`}
 			oninput={handleInput}
+			{isUiControl}
 		/>
 	{/each}
 

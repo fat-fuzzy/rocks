@@ -28,6 +28,7 @@
 		variant,
 		background,
 		container,
+		containerSize,
 		oninput,
 		validator,
 	}: InputCheckProps = $props()
@@ -51,6 +52,7 @@
 			layout,
 			threshold,
 			container,
+			containerSize,
 			background: background ? background : 'inherit',
 		}),
 	)
