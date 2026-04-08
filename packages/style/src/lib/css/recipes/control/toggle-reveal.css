@@ -6,6 +6,7 @@ ff-toggle-reveal {
 	ff-control + ff-reveal {
 		--x-axis: 0;
 		--y-axis: 0;
+		--x-size: 0;
 		--color-bg: var(--shade);
 
 		position: absolute;
@@ -80,21 +81,21 @@ ff-toggle-reveal.ouest {
 	ff-control + ff-reveal {
 		--x-axis: -100%;
 		--y-axis: var(--ui-size);
-		--y-size: 0;
-		--size-y: 0; /* Override scroll:y */
+		--y-size: var(--max-inline-size);
 
+		inline-size: var(--x-size);
+		max-block-size: var(--overlay-block-size);
 		transition:
-			transform 200ms ease-in,
-			opacity 200ms ease-in 50ms;
+			transform 250ms ease-in,
+			opacity 200ms ease-in 50ms,
+			block-size 300ms ease-in,
+			inline-size 300ms ease-in;
 	}
 
 	ff-control:has(input:checked) + ff-reveal {
 		--y-size: var(--overlay-block-size);
 		--x-size: var(--overlay-inline-size);
-		--y-size: var(--overlay-block-size);
-		--size-y: var(--overlay-block-size); /* Override scroll:y */
 
-		inline-size: 100%;
 		transition:
 			transform 350ms ease-out,
 			opacity 350ms ease-out 50ms,
@@ -104,7 +105,7 @@ ff-toggle-reveal.ouest {
 }
 
 ff-toggle-reveal.est {
-	ff-icon::before {
+	ff-icon.svg\:chevron-right::before {
 		transform: rotate(180deg);
 		transition: transform 200ms ease-in;
 	}
@@ -119,6 +120,7 @@ ff-toggle-reveal.est {
 		--x-axis: 100%;
 		--y-size: var(--max-inline-size);
 
+		max-block-size: var(--overlay-block-size);
 		transition:
 			transform 250ms ease-in,
 			opacity 200ms ease-in 50ms,
@@ -128,8 +130,7 @@ ff-toggle-reveal.est {
 
 	ff-control:has(input:checked) + ff-reveal {
 		--y-axis: var(--ui-size);
-		--x-axis: -50%;
-		--y-size: var(--max-inline-size);
+		--x-axis: calc(-50% + var(--ui-size-xl) + var(--outline-offset-lg));
 
 		transition:
 			transform 350ms ease-out,
@@ -139,10 +140,18 @@ ff-toggle-reveal.est {
 	}
 }
 
+@media screen and (min-width: 38.75rem) {
+	ff-toggle-reveal.est {
+		ff-control:has(input:checked) + ff-reveal {
+			--x-axis: calc(-50% + var(--ui-size-xl) + var(--outline-offset-lg));
+		}
+	}
+}
+
 @media screen and (min-width: 68.75rem) {
 	ff-toggle-reveal.est {
 		ff-control:has(input:checked) + ff-reveal {
-			--x-axis: var(--ui-size-lg);
+			--x-axis: 0;
 		}
 	}
 }

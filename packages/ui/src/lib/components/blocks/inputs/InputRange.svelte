@@ -88,6 +88,13 @@
 		}
 	}
 
+	let labelClasses = $derived(
+		styleHelper.getStyles({
+			size,
+			font,
+		}),
+	)
+
 	let inputClasses = $derived(
 		styleHelper.getStyles({
 			color,
@@ -121,7 +128,7 @@
 </script>
 
 <label for={id} class={inputClasses} data-testid={id}>
-	<span class={`font:${font ? font : size}`}>
+	<span class={labelClasses}>
 		{label}:
 		{items.length ? valueLabel : value}
 	</span>

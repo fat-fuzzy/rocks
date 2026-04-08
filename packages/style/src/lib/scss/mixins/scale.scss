@@ -8,13 +8,13 @@
  *  TODO: Doc + link to mixin generate-modular-scale
  */
 
-$modular-scale-steps-plus: 1, 2, 3, 4;
+$modular-scale-steps-plus: 1, 2, 3, 4, 5;
 
 // prettier-ignore
-$modular-scale-steps-minus: -1, -2, -3;
+$modular-scale-steps-minus: -1, -2, -3, -4, -5;
 $modular-scale: (
 	fluid-min-width: 320,
-	fluid-max-width: 1240,
+	fluid-max-width: 3960,
 
 	// min size of base font
 	fluid-min-size: 16,

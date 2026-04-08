@@ -51,8 +51,9 @@
 @media screen and (min-width: 38.75rem) {
 	.header-nav {
 		inline-size: auto;
+		background-color: inherit;
 		li {
-			padding-block: var(--ui-size-sm) var(--ui-size);
+			padding-block: var(--outline-offset-lg);
 			padding-inline: var(--outline-offset-lg);
 		}
 	}

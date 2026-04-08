@@ -27,32 +27,48 @@
 	flex-wrap: nowrap;
 }
 
+.l\:switcher\:4xs {
+	--gap: var(--layout-gap-4xs);
+}
+
+.l\:switcher\:3xs {
+	--gap: var(--layout-gap-3xs);
+}
+
 .l\:switcher\:2xs {
-	--gap: var(--size-base-2xs);
+	--gap: var(--layout-gap-2xs);
 }
 
 .l\:switcher\:xs {
-	--gap: var(--size-base-xs);
+	--gap: var(--layout-gap-xs);
 }
 
 .l\:switcher\:sm {
-	--gap: var(--size-base-sm);
+	--gap: var(--layout-gap-sm);
 }
 
 .l\:switcher\:md {
-	--gap: var(--size-base-md);
+	--gap: var(--layout-gap-md);
 }
 
 .l\:switcher\:lg {
-	--gap: var(--size-base-lg);
+	--gap: var(--layout-gap-lg);
 }
 
 .l\:switcher\:xl {
-	--gap: var(--size-base-xl);
+	--gap: var(--layout-gap-xl);
 }
 
 .l\:switcher\:2xl {
-	--gap: var(--size-base-2xl);
+	--gap: var(--layout-gap-2xl);
+}
+
+.l\:switcher\:3xl {
+	--gap: var(--layout-gap-3xl);
+}
+
+.th\:3xs {
+	--threshold: var(--layout-threshold-3xs);
 }
 
 .th\:2xs {

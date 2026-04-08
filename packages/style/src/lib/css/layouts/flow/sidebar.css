@@ -65,66 +65,76 @@
 }
 
 /* Scale Sidebar */
+
 .l\:sidebar.size\:2xs {
-	--gap: var(--size-base-sm);
+	--gap: var(--layout-gap-sm);
 	--sidebar-width: var(--layout-sidebar-2xs);
 	> [class*='l:main'] {
-		--gap: var(--size-base-sm);
+		--gap: var(--layout-gap-sm);
 		--sidebar-width: var(--layout-sidebar-2xs);
 	}
 }
 
 .l\:sidebar.size\:xs {
-	--gap: var(--size-base-sm);
+	--gap: var(--layout-gap-sm);
 	--sidebar-width: var(--layout-sidebar-xs);
 	> [class*='l:main'] {
-		--gap: var(--size-base-sm);
+		--gap: var(--layout-gap-sm);
 		--sidebar-width: var(--layout-sidebar-xs);
 	}
 }
 
 .l\:sidebar.size\:sm {
-	--gap: var(--size-base-md);
+	--gap: var(--layout-gap-md);
 	--sidebar-width: var(--layout-sidebar-sm);
 	> [class*='l:main'] {
-		--gap: var(--size-base-md);
+		--gap: var(--layout-gap-md);
 		--sidebar-width: var(--layout-sidebar-sm);
 	}
 }
 
 .l\:sidebar.size\:md {
-	--gap: var(--size-base-md);
+	--gap: var(--layout-gap-md);
 	--sidebar-width: var(--layout-sidebar-md);
 	> [class*='l:main'] {
-		--gap: var(--size-base-md);
+		--gap: var(--layout-gap-md);
 		--sidebar-width: var(--layout-sidebar-md);
 	}
 }
 
 .l\:sidebar.size\:lg {
-	--gap: var(--size-base-lg);
+	--gap: var(--layout-gap-lg);
 	--sidebar-width: var(--layout-sidebar-lg);
 	> [class*='l:main'] {
-		--gap: var(--size-base-lg);
+		--gap: var(--layout-gap-lg);
 		--sidebar-width: var(--layout-sidebar-lg);
 	}
 }
 
 .l\:sidebar.size\:xl {
-	--gap: var(--size-base-lg);
+	--gap: var(--layout-gap-lg);
 	--sidebar-width: var(--layout-sidebar-xl);
 	> [class*='l:main'] {
-		--gap: var(--size-base-lg);
+		--gap: var(--layout-gap-lg);
 		--sidebar-width: var(--layout-sidebar-xl);
 	}
 }
 
 .l\:sidebar.size\:2xl {
-	--gap: var(--size-base-lg);
+	--gap: var(--layout-gap-lg);
 	--sidebar-width: var(--layout-sidebar-2xl);
 	> [class*='l:main'] {
-		--gap: var(--size-base-lg);
+		--gap: var(--layout-gap-lg);
 		--sidebar-width: var(--layout-sidebar-2xl);
+	}
+}
+
+.l\:sidebar.size\:3xl {
+	--gap: var(--layout-gap-xl);
+	--sidebar-width: var(--layout-sidebar-3xl);
+	> [class*='l:main'] {
+		--gap: var(--layout-gap-xl);
+		--sidebar-width: var(--layout-sidebar-3xl);
 	}
 }
 

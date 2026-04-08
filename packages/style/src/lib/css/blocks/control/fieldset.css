@@ -35,12 +35,12 @@ fieldset.checkbox {
 	padding-block: 0 var(--ui-size-sm);
 
 	label {
-		display: flex;
+		--gap: calc(var(--ui-size-xs) / var(--size-ratio-md));
+
 		align-items: var(--align, center);
 		justify-content: var(--justify, space-between);
 		padding-block: var(--border-width-xl);
 		padding-inline: var(--border-width-xl);
-		gap: var(--ui-size-sm);
 		inline-size: 100%;
 		color: var(--ink);
 		line-height: 1;
