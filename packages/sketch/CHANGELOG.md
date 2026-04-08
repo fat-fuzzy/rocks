@@ -1,5 +1,11 @@
 # @fat-fuzzy/sketch
 
+## 0.1.34
+
+### Patch Changes
+
+- 95d74db: Style fixes & improvements, dep updates
+
 ## 0.1.33
 
 ### Patch Changes
