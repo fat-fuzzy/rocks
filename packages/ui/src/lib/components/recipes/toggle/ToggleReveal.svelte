@@ -109,7 +109,7 @@
 
 {#snippet control()}
 	<ff-control class="gare-control">
-		<label for={id} class={`ellipsis  ${labelClasses}`}>
+		<label for={id} class={`ellipsis  ${labelClasses} ${hugClasses}`}>
 			<ff-label class={`${ff_labelClasses} ${ff_labelReverse}`}>
 				{#if nav}
 					{@render nav()}

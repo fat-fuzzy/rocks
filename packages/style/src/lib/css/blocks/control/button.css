@@ -105,15 +105,16 @@ ff-control > label.variant\:bare:hover {
 
 button.variant\:outline:active,
 .ff-control.variant\:outline:active,
-ff-control > label.variant\:outline:active {
-	--lightness: var(---lightness-surface-3);
+ff-control > label.variant\:outline:has(input:checked),
+.ff-control.variant\:outline:has(input:checked) {
+	--lightness: var(---lightness-surface-2);
 	--lightness-contrast: var(--lightness-surface-5);
 	background-color: var(--shade);
 }
 
 button.variant\:bare:active,
 .ff-control.variant\:bare:active,
-ff-control > label.variant\:bare:active,
+ff-control > label.variant\:bare:has(input:checked),
 .ff-control.variant\:bare:has(input:checked) {
 	--lightness: var(--lightness-surface-2);
 	--lightness-contrast: var(--lightness-surface-5);
@@ -171,7 +172,6 @@ ff-control > label[class*='bg:'].color\:neutral.variant\:outline:hover {
 	--color-bg: oklch(
 		var(--lightness-surface-2) var(--color-chroma-neutral) var(--hue)
 	);
-	background-color: var(--color-bg);
 }
 
 button.variant\:fill:not([disabled]):hover,

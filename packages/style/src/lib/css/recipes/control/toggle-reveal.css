@@ -151,7 +151,7 @@ ff-toggle-reveal.est {
 @media screen and (min-width: 68.75rem) {
 	ff-toggle-reveal.est {
 		ff-control:has(input:checked) + ff-reveal {
-			--x-axis: calc(-1 * var(--ui-size-xl) + var(--outline-offset-lg));
+			--x-axis: 0;
 		}
 	}
 }
