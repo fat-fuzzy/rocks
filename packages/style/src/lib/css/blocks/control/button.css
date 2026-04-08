@@ -77,10 +77,10 @@ button.variant\:bare,
 .ff-control.variant\:bare,
 ff-control > label.variant\:bare {
 	--border-color: var(--accent);
-	--lightness: var(--lightness-surface-4);
+	--lightness: var(--lightness-base);
 	--lightness-accent: var(--lightness-surface-3);
 	--lightness-contrast: var(--lightness-contrast-base);
-	background-color: inherit;
+	background-color: var(--shade);
 }
 
 ff-control > label.variant\:bare {
@@ -90,34 +90,42 @@ ff-control > label.variant\:bare {
 button.variant\:outline:hover,
 .ff-control.variant\:outline:hover,
 ff-control > label.variant\:outline:hover {
+	--border-color: var(--accent);
 	--lightness: var(--lightness-base);
-	--lightness-contrast: var(--lightness-contrast-base);
+	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
 	background-color: var(--shade);
 }
 
 button.variant\:bare:hover,
 .ff-control.variant\:bare:hover,
-ff-control > label.variant\:bare:hover {
-	--lightness: var(--lightness-base);
-	--lightness-contrast: var(--lightness-contrast-base);
+ff-control:hover > label.variant\:bare {
+	--border-color: var(--accent);
+	--lightness: var(---lightness-surface-1);
+	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
 	background-color: var(--shade);
 }
 
 button.variant\:outline:active,
-.ff-control.variant\:outline:active,
 ff-control > label.variant\:outline:has(input:checked),
 .ff-control.variant\:outline:has(input:checked) {
-	--lightness: var(---lightness-surface-2);
-	--lightness-contrast: var(--lightness-surface-5);
+	--lightness: var(---lightness-surface-1);
+	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
 	background-color: var(--shade);
 }
 
 button.variant\:bare:active,
-.ff-control.variant\:bare:active,
 ff-control > label.variant\:bare:has(input:checked),
 .ff-control.variant\:bare:has(input:checked) {
 	--lightness: var(--lightness-surface-2);
-	--lightness-contrast: var(--lightness-surface-5);
+	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
+	background-color: var(--shade);
+}
+
+button.variant\:bare:active:hover,
+ff-control:hover > label.variant\:bare:has(input:checked),
+.ff-control.variant\:bare:has(input:checked):hover {
+	--lightness: var(--lightness-surface-2);
+	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
 	background-color: var(--shade);
 }
 
