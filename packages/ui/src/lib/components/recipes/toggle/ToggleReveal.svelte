@@ -23,6 +23,7 @@
 		variant,
 		align,
 		justify,
+		hug,
 		area,
 		width,
 		height,
@@ -73,6 +74,7 @@
 	let autoClasses = $derived(
 		auto ? `auto bp:${breakpoint} th:${threshold}` : '',
 	)
+	let hugClasses = $derived(hug ? 'hug' : '')
 	let containerClasses = $derived(
 		`${autoClasses} ${areaClass} ${layoutClasses}`,
 	)
@@ -107,7 +109,7 @@
 
 {#snippet control()}
 	<ff-control class="gare-control">
-		<label for={id} class={`ellipsis ${labelClasses}`}>
+		<label for={id} class={`ellipsis  ${labelClasses}`}>
 			<ff-label class={`${ff_labelClasses} ${ff_labelReverse}`}>
 				{#if nav}
 					{@render nav()}

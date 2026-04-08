@@ -27,6 +27,7 @@ export type UiContainerProps = {
 	dimensions?: UiDimension // TODO: check / harmonize STYLE_MODIFIER
 	layer?: string
 	size?: UiSize
+	hug?: boolean
 }
 
 export type UiLayoutProps = UiContainerProps & {

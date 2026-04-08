@@ -55,6 +55,7 @@ select,
 textarea {
 	--padding-block: calc(var(--ui-size-sm) - 2 * var(--border-width-md));
 	--padding-inline: var(--ui-size);
+	--input-inline-size: 100%;
 	border: 1px solid var(--accent);
 	border-radius: var(--border-radius-base);
 	color: var(--ink);
@@ -68,9 +69,13 @@ label > input {
 	max-inline-size: 100%;
 }
 
+label.hug {
+	--input-inline-size: fit-content;
+}
+
 label:has(input[type='radio']),
 label:has(input[type='checkbox']) {
-	inline-size: 100%;
+	inline-size: var(--input-inline-size);
 }
 
 label:has(input[type='radio']) span,
@@ -122,7 +127,7 @@ input[type='range'] {
 label:has([type='range']) {
 	line-height: 1;
 	padding-inline: var(--outline-offset-md);
-	inline-size: 100%;
+	inline-size: var(--input-inline-size);
 	min-inline-size: max-content;
 	max-inline-size: 100%;
 }
