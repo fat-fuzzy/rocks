@@ -128,8 +128,7 @@ ff-toggle-reveal.est {
 
 	ff-control:has(input:checked) + ff-reveal {
 		--y-axis: var(--ui-size);
-		--x-axis: -50%;
-		--y-size: var(--max-inline-size);
+		--x-axis: calc(-50% + -1 * var(--ui-size-xl) - var(--outline-offset-lg));
 
 		transition:
 			transform 350ms ease-out,
@@ -139,10 +138,18 @@ ff-toggle-reveal.est {
 	}
 }
 
+@media screen and (min-width: 38.75rem) {
+	ff-toggle-reveal.est {
+		ff-control:has(input:checked) + ff-reveal {
+			--x-axis: calc(-50% + -1 * var(--ui-size-xl) - var(--outline-offset-lg));
+		}
+	}
+}
+
 @media screen and (min-width: 68.75rem) {
 	ff-toggle-reveal.est {
 		ff-control:has(input:checked) + ff-reveal {
-			--x-axis: var(--ui-size-lg);
+			--x-axis: calc(-1 * var(--ui-size-xl) + var(--outline-offset-lg));
 		}
 	}
 }

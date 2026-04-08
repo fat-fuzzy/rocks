@@ -128,7 +128,7 @@ label:has([type='range']) {
 }
 
 label:has([type='range']) span {
-	font-size: var(--font-size-plus);
+	font-size: var(--font-size);
 	font-weight: var(--font-weight-semibold);
 }
 

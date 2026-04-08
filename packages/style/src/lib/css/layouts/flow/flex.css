@@ -1,5 +1,5 @@
 [class*='l:flex'] {
-	--gap: var(--ui-size);
+	--gap: var(--layout-gap-md);
 	display: flex;
 	flex-wrap: wrap;
 	align-items: var(--align-items, center);
