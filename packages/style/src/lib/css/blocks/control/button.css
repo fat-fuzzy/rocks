@@ -92,6 +92,7 @@ button.variant\:outline:hover,
 ff-control > label.variant\:outline:hover {
 	--border-color: var(--accent);
 	--lightness: var(--lightness-base);
+	--lightness-accent: var(--lightness-surface-2);
 	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
 	background-color: var(--shade);
 }
@@ -101,6 +102,7 @@ button.variant\:bare:hover,
 ff-control:hover > label.variant\:bare {
 	--border-color: var(--accent);
 	--lightness: var(---lightness-surface-1);
+	--lightness-accent: var(--lightness-surface-2);
 	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
 	background-color: var(--shade);
 }
