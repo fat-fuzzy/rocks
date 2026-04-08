@@ -1,5 +1,11 @@
 # @fat-fuzzy/playbook
 
+## 0.1.36
+
+### Patch Changes
+
+- 95d74db: Style fixes & improvements, dep updates
+
 ## 0.1.35
 
 ### Patch Changes
