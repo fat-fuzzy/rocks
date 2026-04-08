@@ -2,7 +2,6 @@ import {error} from '@sveltejs/kit'
 
 import images from '$data/images'
 import pages from '$data/pages'
-import uiActions from '$lib/server/actions/ui-actions'
 import {commonActions} from '$lib/server/actions/page-actions'
 
 const page = 'doc'
@@ -45,23 +44,9 @@ export const load = async ({parent}) => {
 			content,
 			pageContext,
 		}
-	} catch (e) {
+	} catch {
 		error(500, 'Error loading image data')
 	}
 }
 
-export const actions = {
-	...commonActions,
-	toggleUsage: async (event) => {
-		const updated = await uiActions.handleToggleUsage(event)
-		event.locals.navUsage = updated.state
-	},
-	toggleDecisions: async (event) => {
-		const updated = await uiActions.handleToggleDecisions(event)
-		event.locals.navDecisions = updated.state
-	},
-	toggleSpeaking: async (event) => {
-		const updated = await uiActions.handleToggleSpeaking(event)
-		event.locals.navSpeaking = updated.state
-	},
-}
+export const actions = commonActions

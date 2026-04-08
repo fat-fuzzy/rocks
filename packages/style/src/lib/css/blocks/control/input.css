@@ -1,0 +1,46 @@
+ff-control > label:has(input[type='checkbox']:focus) {
+	outline: var(--border-width-lg) dotted var(--accent);
+	outline-offset: var(--outline-offset-md);
+}
+
+ff-control > label:has(input:checked) ff-icon {
+	--lightness: var(--lightness-surface-1);
+	background-color: var(--shade);
+}
+
+.ff-control:not([class*=':neutral']),
+ff-control:not([class*=':neutral']),
+ff-control > label:not([class*=':neutral']) ff-icon {
+	--chroma: var(--chroma-base);
+	--chroma-contrast: var(--chroma-contrast-base);
+	--chroma-accent: var(--chroma-accent-base);
+}
+
+ff-control > label.variant\:bare {
+	--border-color: transparent;
+}
+
+/* == Toggle with input default == */
+.ff-control[class*='variant:']:has([disabled]),
+ff-control[class*='variant:']:has([disabled]),
+.ff-control[class*='variant:']:has([disabled]):hover,
+ff-control[class*='variant:']:has([disabled]):hover,
+.ff-control[class*='variant:']:has([disabled]:checked),
+ff-control[class*='variant:']:has([disabled]:checked),
+.ff-control[class*='variant:']:has([disabled]:checked):hover,
+ff-control[class*='variant:']:has([disabled]:checked):hover {
+	--lightness: var(--lightness-surface-1);
+	--lightness-contrast: var(--lightness-surface-1-contrast);
+	--chroma: var(--color-chroma-neutral);
+	--chroma-contrast: var(--color-chroma-neutral);
+	--chroma-accent: var(--color-chroma-neutral);
+	--border-color: var(--ink);
+}
+
+.ff-control:not([class*=':neutral']),
+ff-control:not([class*=':neutral']),
+ff-control > label:not([class*=':neutral']) ff-icon {
+	--chroma: var(--chroma-base);
+	--chroma-contrast: var(--chroma-contrast-base);
+	--chroma-accent: var(--chroma-accent-base);
+}

@@ -1,25 +1,32 @@
 <script lang="ts">
 	import type {Component} from 'svelte'
-
 	import type {
 		FieldsetProps,
 		ValidationProps,
 		InputCheckProps,
 		InputRadioProps,
+		UiSize,
 	} from '$types'
+
+	import styleHelper from '$lib/utils/styles'
 	import Fieldset from '$lib/components/blocks/inputs/Fieldset.svelte'
 	import InputRadio from '$lib/components/blocks/inputs/InputRadio.svelte'
 	import InputCheck from '$lib/components/blocks/inputs/InputCheck.svelte'
+	import Feedback from '$lib/components/blocks/inputs/InputFeedback.svelte'
+
 	let {
 		id,
 		name,
 		legend,
+		hint,
 		value,
+		isUiControl,
 		type = 'radio', // checkbox, radio
 		items = [],
-		layout = 'stack',
+		layout,
 		justify = 'between',
 		container,
+		background,
 		font,
 		size,
 		color,
@@ -37,6 +44,12 @@
 		selected.length > 0 && selected.length < items.length,
 	)
 
+	let errors = $derived(
+		validator && validator?.fieldHasChanged(name)
+			? validator?.getFieldErrors(name)
+			: [],
+	)
+
 	let enableSelectAll = $derived(type === 'checkbox' && items.length > 5)
 
 	const COMPONENT_IMPORTS: {
@@ -45,6 +58,10 @@
 		radio: InputRadio,
 		checkbox: InputCheck,
 	}
+
+	let innerLayoutSize = $derived(
+		size ? styleHelper.SCALES.DECREASE_2[size] : size,
+	)
 
 	function handleInput(event: Event) {
 		let target = event.target as HTMLInputElement
@@ -94,10 +111,13 @@
 	{font}
 	{variant}
 	{container}
+	containerSize={innerLayoutSize as UiSize}
+	{background}
 	{color}
 	{asset}
 	{assetType}
 	{justify}
+	ariaDescribedby={hint || errors?.length ? `input-feedback-${id}` : undefined}
 >
 	{@const InputComponent = COMPONENT_IMPORTS[type]}
 
@@ -113,9 +133,11 @@
 				{color}
 				{justify}
 				{container}
+				containerSize={innerLayoutSize as UiSize}
 				id={`all-${id}`}
-				oninput={(event: Event) => handleSelectAll(event)}
+				oninput={handleSelectAll}
 				{validator}
+				{isUiControl}
 			/>
 		</legend>
 	{/if}
@@ -127,15 +149,28 @@
 			value={input.value}
 			{checked}
 			color={input.color || color}
+			background={undefined}
 			{justify}
 			{container}
+			containerSize={innerLayoutSize as UiSize}
 			{size}
 			{name}
 			id={`${name}.${input.value}`}
-			oninput={(event: Event) => handleInput(event)}
+			oninput={handleInput}
+			{isUiControl}
 		/>
 	{/each}
+
 	{#if children}
 		{@render children()}
 	{/if}
+
+	<Feedback
+		id={`input-feedback-${id}`}
+		{hint}
+		{errors}
+		{size}
+		{variant}
+		{font}
+	/>
 </Fieldset>

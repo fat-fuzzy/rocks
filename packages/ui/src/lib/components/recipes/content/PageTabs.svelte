@@ -3,7 +3,7 @@
 	import Head from '$lib/components/blocks/global/Head.svelte'
 	import PageHeader from '$lib/components/recipes/content/PageHeader.svelte'
 	import Breadcrumbs from '$lib/components/recipes/navs/Breadcrumbs.svelte'
-	import styleHelper from '$lib/utils/styles.js'
+	import styleHelper from '$lib/utils/styles'
 	import {onMount} from 'svelte'
 
 	let {

@@ -14,7 +14,7 @@ const STYLE_BASE_CLASS: Record<string, string> = {
 	container: 'l', // TODO: use `c:` prefix
 	font: 'font',
 	justify: 'justify',
-	height: 'h',
+	height: 'height',
 	width: 'width',
 	layer: 'layer',
 	layout: 'l',
@@ -36,6 +36,55 @@ const STYLE_MODIFIER: Record<string, string> = {
 	place: 'place',
 	position: 'position',
 	width: 'width',
+}
+
+const SCALES: Record<string, Record<string, string>> = {
+	INCREASE_1: {
+		'4xs': '3xs',
+		'3xs': '2xs',
+		'2xs': 'xs',
+		xs: 'sm',
+		sm: 'md',
+		md: 'lg',
+		lg: 'xl',
+		xl: '2xl',
+		'2xl': '3xl',
+		'3xl': '4xl',
+	},
+	INCREASE_2: {
+		'4xs': '2xs',
+		'3xs': 'xs',
+		'2xs': 'sm',
+		xs: 'md',
+		sm: 'lg',
+		md: 'xl',
+		lg: '2xl',
+		xl: '3xl',
+		'2xl': '4xl',
+	},
+	DECREASE_1: {
+		'3xs': '4xs',
+		'2xs': '3xs',
+		xs: '2xs',
+		sm: 'xs',
+		md: 'sm',
+		lg: 'md',
+		xl: 'lg',
+		'2xl': 'xl',
+		'3xl': '2xl',
+		'4xl': '3xl',
+	},
+	DECREASE_2: {
+		'2xs': '4xs',
+		xs: '3xs',
+		sm: '2xs',
+		md: 'xs',
+		lg: 'sm',
+		xl: 'md',
+		'2xl': 'lg',
+		'3xl': 'xl',
+		'4xl': '2xl',
+	},
 }
 
 function appendModifier(base: string, modifier: string | undefined): string {
@@ -115,7 +164,9 @@ function getLayoutStyles(props: UiLayoutProps): string {
 	const positionClass = position ? position : ''
 
 	const layoutBase =
-		shape === 'round' || shape === 'square' ? 'stack' : (layout as string)
+		(shape === 'round' || shape === 'square') && !layout
+			? 'stack'
+			: (layout as string)
 
 	if (layoutBase) {
 		// TODO: fix this later
@@ -199,12 +250,23 @@ function getFeedbackStyles(
 	status: UiStatus,
 	context: string,
 ): string {
-	const {asset, assetType, container, font, size, containerSize, variant} =
-		props
-
-	const layoutStyles = getLayoutStyles(props)
-	const blockStyles = getBlockStyles({
+	const {
+		asset,
+		assetType,
+		container,
 		font,
+		size,
+		shape,
+		containerSize,
+		variant,
+	} = props
+
+	const layoutStyles = getLayoutStyles({
+		...props,
+		justify: shape === 'pill' ? 'center' : props.justify,
+	})
+	const blockStyles = getBlockStyles({
+		font: font ?? size,
 		asset,
 		assetType,
 		variant,
@@ -257,6 +319,7 @@ function getStyles(props: UiBlockProps): string {
 		layout,
 		scroll,
 		container,
+		containerSize,
 		dimensions,
 		threshold,
 		breakpoint,
@@ -278,7 +341,7 @@ function getStyles(props: UiBlockProps): string {
 		justify,
 		width,
 		height,
-		size,
+		size: containerSize ?? size,
 		shape,
 		layout,
 		scroll,
@@ -287,7 +350,11 @@ function getStyles(props: UiBlockProps): string {
 		background,
 	})
 
-	const containerClasses = getContainerStyles({size, container, dimensions})
+	const containerClasses = getContainerStyles({
+		size: containerSize ?? size,
+		container,
+		dimensions,
+	})
 
 	const classes = `${containerClasses} ${layoutClasses} ${blockClasses}`
 
@@ -300,4 +367,5 @@ export default {
 	getLayoutStyles,
 	getBlockStyles,
 	getFeedbackStyles,
+	SCALES,
 }

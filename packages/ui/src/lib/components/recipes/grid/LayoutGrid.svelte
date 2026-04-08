@@ -2,7 +2,7 @@
 	import type {LayoutGridProps} from '$types'
 
 	import {onMount} from 'svelte'
-	import format from '$lib/utils/format.js'
+	import format from '$lib/utils/format'
 
 	let {areas, size, layout, app, path}: LayoutGridProps = $props()
 
@@ -52,11 +52,11 @@
 	bind:this={zoneFullScreen}
 	class={`rails l:grid:urbanist ${containClass} ${layout} ${themeClass} ${sizeClass}`}
 >
-	{#each areas as { zone, grid, gare, exchange, scroll, tag }, i (i)}
+	{#each areas as { zone, grid, gare, exchange, scroll, tag, hug }, i (i)}
 		{@const gridClass = grid ? `l:grid ${sizeClass}` : ''}
 		{@const gareClass = gare ? gare : ''}
 		{@const exchangeClass = exchange ? 'exchange bg:inherit' : 'bg:inherit'}
-		{@const hugClass = i === 1 ? 'hug' : ''}
+		{@const hugClass = hug ? 'hug' : ''}
 		{@const scrollClass = scroll ? `scroll:${scroll}` : ''}
 		{@const element = tag ? tag : 'div'}
 

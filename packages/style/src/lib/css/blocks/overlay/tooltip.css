@@ -1,0 +1,92 @@
+/**
+* role=tooltip
+* src: https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/tooltip_role
+*/
+
+[role='tooltip'] {
+	--x-axis: var(--outline-offset-md);
+	--y-axis: var(--outline-offset-md);
+	--x-transform: 0;
+	--y-transform: 0;
+	--tooltip-bg: oklch(var(--lightness-base) var(--chroma-base) var(--hue));
+
+	opacity: 0;
+	position: absolute;
+	background: var(--tooltip-bg);
+	padding-block: 0;
+	padding-inline: 0;
+	inline-size: auto;
+	block-size: 0;
+	transform: translate(var(--x-transform), var(--y-transform));
+	transition:
+		opacity 0ms,
+		transition 150ms ease-out;
+}
+
+ff-control:has([role='tooltip']) {
+	position: relative;
+	min-inline-size: var(--layout-sidebar-collapsed);
+}
+
+label:has([role='tooltip']) {
+	position: unset;
+}
+
+label:hover > [role='tooltip'],
+label:focus > [role='tooltip'] {
+	opacity: 1;
+	background: var(--tooltip-bg);
+	padding-block: var(--ui-size-sm);
+	padding-inline: var(--ui-size);
+	block-size: auto;
+	inline-size: auto;
+	max-inline-size: var(--layout-sidebar-collapsed);
+	border-radius: var(--border-radius-base);
+	border: var(--border-width-lg) dotted var(--accent);
+	transform: translate(var(--x-transform), var(--y-transform));
+	transition:
+		opacity 150ms ease-out 50ms,
+		transition 150ms ease-out;
+}
+
+/** BASE positioning **/
+
+[role='tooltip'].est {
+	inset-block-start: var(--y-axis);
+	inset-inline-start: 50%;
+}
+
+[role='tooltip'].ouest {
+	inset-block-start: var(--y-axis);
+	inset-inline-end: 50%;
+}
+
+[role='tooltip'].nord {
+	inset-block-end: 100%;
+}
+
+[role='tooltip'].sud {
+	inset-block-end: -100%;
+}
+
+/** HOVER positioning **/
+
+label:hover > [role='tooltip'].est,
+label:focus > [role='tooltip'].est,
+label:hover > [role='tooltip'].ouest,
+label:focus > [role='tooltip'].ouest {
+	--x-transform: 0;
+	--y-transform: 0;
+}
+
+label:hover > [role='tooltip'].nord,
+label:focus > [role='tooltip'].nord {
+	--x-transform: 0;
+	--y-transform: 0;
+}
+
+label:hover > [role='tooltip'].sud,
+label:focus > [role='tooltip'].sud {
+	--x-transform: 0;
+	--y-transform: 0;
+}

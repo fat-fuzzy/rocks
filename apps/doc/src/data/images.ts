@@ -1,4 +1,4 @@
-import assetsUtils from './assets'
+import assetsUtils from '$lib/server/services/markdowns/assets'
 
 // Assets are only generated in client build, but the current markdown pipeline
 // only references the assets in the server build. So no assets are emitted.
@@ -27,13 +27,13 @@ const [day, night, media, home] = await Promise.all([
 export async function getImageData(folder: string, slug: string) {
 	switch (folder) {
 		case 'day':
-			return day.find((image: any) => image.path === slug)
+			return day.find((image: {path: string}) => image.path === slug)
 		case 'night':
-			return night.find((image: any) => image.path === slug)
+			return night.find((image: {path: string}) => image.path === slug)
 		case 'media':
-			return media.find((image: any) => image.path === slug)
+			return media.find((image: {path: string}) => image.path === slug)
 		case 'home':
-			return home.find((image: any) => image.path === slug)
+			return home.find((image: {path: string}) => image.path === slug)
 		default:
 			return null
 	}

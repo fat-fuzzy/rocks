@@ -5,17 +5,9 @@ import tokenFixtures from '$lib/fixtures/js/tokens'
 import layoutsFixtures from '$lib/fixtures/js/layouts'
 import recipesFixtures from '$lib/fixtures/js/recipes'
 
-const {DEFAULT_REVEAL_STATE, DEFAULT_PREFERENCES, DEFAULT_STYLES} = ui.constants
+const {DEFAULT_PREFERENCES, DEFAULT_STYLES} = ui.constants
 
-const DEFAULT_STATE: any = {
-	Reveal: DEFAULT_REVEAL_STATE,
-	RevealMenu: DEFAULT_REVEAL_STATE,
-	RevealNav: DEFAULT_REVEAL_STATE,
-	HeaderRevealNav: DEFAULT_REVEAL_STATE,
-	// graphics: graphicsFixtures,
-	HeaderRevealContext: DEFAULT_REVEAL_STATE,
-}
-
+// eslint-disable-next-line
 const COMPONENT_FIXTURES: any = $state({
 	tokens: tokenFixtures,
 	blocks: buttonFixtures,
@@ -27,7 +19,6 @@ export class PlaybookActor {
 	api = $state()
 	styles = $state<StyleTree>(DEFAULT_STYLES)
 	preferences = $state(DEFAULT_PREFERENCES)
-	context = $state(DEFAULT_STATE)
 
 	constructor() {}
 
@@ -48,14 +39,6 @@ export class PlaybookActor {
 			COMPONENT_FIXTURES.layouts[component] ??
 			COMPONENT_FIXTURES.layouts.content
 		)
-	}
-
-	setRevealState(component: string, reveal: any) {
-		this.context[component] = reveal.reveal
-	}
-
-	getRevealState(component: string) {
-		return this.context[component]
 	}
 }
 

@@ -1,8 +1,9 @@
 import type {Markdown} from '$types'
-import assetsUtils from './assets'
+import assetsUtils from '$lib/server/services/markdowns/assets'
 
 const pathPrefix = '/src/assets/speaking/'
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const talks: {[page: string]: any} = {
 	'pp-code': {
 		slides: import.meta.glob('/src/assets/speaking/pp-code/*.md'),
@@ -20,7 +21,7 @@ async function fetchMarkdowns(talk: string): Promise<Markdown[]> {
 
 async function fetchTalks(): Promise<Markdown[]> {
 	const imports = import.meta.glob('/src/assets/speaking/**/abstract.md')
-	let markdowns = await assetsUtils.fetchMarkdowns(pathPrefix, imports)
+	const markdowns = await assetsUtils.fetchMarkdowns(pathPrefix, imports)
 	return markdowns.sort(assetsUtils.sortByIdDesc)
 }
 

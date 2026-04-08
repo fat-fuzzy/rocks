@@ -8,13 +8,13 @@ export default {
 				id: 'button-expand',
 				label: 'Expand',
 				event: 'collapse',
-				asset: 'point-down',
+				asset: 'expand-active',
 			},
 			collapsed: {
 				id: 'button-expand',
 				label: 'Expand',
 				event: 'expand',
-				asset: 'point-right',
+				asset: 'expand-inactive',
 			},
 		},
 	},
@@ -27,11 +27,13 @@ export default {
 				id: 'button-switch',
 				label: 'Rabbit',
 				event: 'switch',
+				asset: 'switch-active',
 			},
 			inactive: {
 				id: 'button-switch',
 				label: 'Hat',
 				event: 'switch',
+				asset: 'switch-inactive',
 			},
 		},
 	},
@@ -71,7 +73,7 @@ export default {
 			{label: 'Checkbox 6', id: 'input-group.check-6', value: 'check-6'},
 		],
 	},
-	InputRange: {label: 'A range of ordered choices'},
+	InputRange: {label: 'Value'},
 	Feedback: {
 		status: [
 			{

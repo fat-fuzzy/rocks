@@ -1,53 +1,21 @@
 .exchange > .navbar {
 	grid-area: navbar;
-	grid-template-columns: subgrid;
 }
 
-.navbar > nav > form:has([aria-expanded='true']) + ff-reveal {
-	position: absolute;
-	top: calc(var(--ui-header-height) + var(--grid-gap));
-	left: calc(var(--outline-offset-sm) + var(--grid-gap));
-	right: var(--grid-gap);
-}
-
-.navbar > nav,
-.navbar > nav form,
-.navbar > nav [aria-expanded] {
+.navbar > nav {
 	inline-size: 100%;
 	max-inline-size: unset;
 }
 
-.navbar > nav [aria-expanded] span {
-	text-align: center;
-}
-
 @media screen and (min-width: 38.75rem) {
-	.navbar {
-		grid-column: span 1;
-	}
-
 	.navbar > nav {
 		justify-content: flex-start;
-	}
-
-	.navbar > nav > form {
-		display: none;
-	}
-
-	.navbar > nav > form:has([aria-expanded]) + ff-reveal {
-		--x-size: fit-content;
-		--y-size: fit-content;
-		position: unset;
-		margin: 0 auto;
-		z-index: var(--layout-z-index-reveal);
-		box-shadow: unset;
-		border-radius: unset;
 	}
 }
 
 @media screen and (min-width: 68.75rem) {
 	.exchange > .navbar {
 		grid-column-start: 4;
-		padding-inline: calc(3 * var(--grid-gap)) 0;
+		padding-inline: calc(2 * var(--grid-gap));
 	}
 }

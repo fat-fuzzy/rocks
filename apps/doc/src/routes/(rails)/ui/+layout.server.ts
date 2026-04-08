@@ -16,21 +16,6 @@ export const load = async ({locals, params, parent}) => {
 	const {sidebar} = await parent()
 	sidebar.layout = slug ? 'tram' : sidebar.layout
 
-	sidebar.items[0].items = (sidebar.items[0].items ?? []).map((item) => {
-		if (item.slug === 'tokens') {
-			item.reveal = locals.navTokens
-		} else if (item.slug === 'blocks') {
-			item.reveal = locals.navBlocks
-		} else if (item.slug === 'layouts') {
-			item.reveal = locals.navLayouts
-		} else if (item.slug === 'recipes') {
-			item.reveal = locals.navRecipes
-		} else if (item.slug === 'raw') {
-			item.reveal = locals.navRaw
-		}
-		return item
-	})
-
 	if (!slug) {
 		content = await pages.fetchMarkdowns(page)
 		if (!content?.length) {
@@ -65,19 +50,14 @@ export const load = async ({locals, params, parent}) => {
 	}
 
 	let styles
-	let ui
 
 	if (locals.dsStyles) {
 		styles = locals.dsStyles
-	}
-	if (locals.dsState) {
-		ui = locals.dsState
 	}
 
 	return {
 		markdowns,
 		content,
 		styles,
-		ui,
 	}
 }

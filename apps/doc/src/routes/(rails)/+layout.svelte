@@ -1,28 +1,39 @@
 <script lang="ts">
 	import type {Snippet} from 'svelte'
+	import type {AreaProps, ViewingPreferences} from '@fat-fuzzy/ui'
 
 	import ui from '@fat-fuzzy/ui'
+
+	import {resolve} from '$app/paths'
 	import {page} from '$app/state'
-	import {links} from '$data/nav'
+
+	import {links} from '$config/navigation'
+	import {linksSocials} from '$config/navigation'
+
 	import Footer from '$lib/ui/Footer.svelte'
 	import Socials from '$lib/ui/Socials.svelte'
 	import NavSlides from '$lib/ui/NavSlides.svelte'
 
-	const {Cookies, HeaderNav, RevealContext} = ui.drafts
-	const {RevealNav} = ui.recipes
+	const {ToggleTree, ToggleReveal, Cookies, ToggleSettings} = ui.drafts
+	const {SkipLinks} = ui.recipes
 	const {LayoutGrid} = ui.content
 	const {Magic} = ui.blocks
-	import {linksSocials} from '$data/nav'
 
 	type Props = {
 		children: Snippet
 	}
 	let {children}: Props = $props()
 
-	let mainNav = $derived(page.data.nav)
 	let sidenav = $derived(page.data.sidebar)
+	let pathname = $derived(page.url.pathname)
 	let layout = $derived(page.data.layout ?? sidenav.layout)
-	let appContext = $derived(page.data.appContext)
+	let appContext: ViewingPreferences = $state({
+		brightness: 'system',
+		contrast: 'contrast',
+		consent: {
+			functional: true,
+		},
+	})
 	let talk = $derived(page.params.talk)
 	let slide = $derived(page.data.content)
 	let series = $derived(
@@ -33,17 +44,7 @@
 			: null,
 	)
 
-	type AreaZone = {
-		zone: Snippet
-		grid?: boolean
-		gare?: string
-		scroll?: string
-		exchange?: boolean
-		hug?: boolean
-		tag?: string
-	}
-
-	const areas: AreaZone[] = $derived([
+	const areas: AreaProps[] = $derived([
 		{
 			zone: zoneHeader,
 			grid: true,
@@ -52,7 +53,7 @@
 		},
 		{
 			zone: zoneContent,
-			// hug: layout === 'steam' || layout === 'tram' || layout === 'urbanist',
+			hug: layout === 'steam' || layout === 'tram' || layout === 'urbanist',
 			grid: true,
 		},
 		{
@@ -60,6 +61,11 @@
 			grid: true,
 		},
 	])
+
+	function updateSettings(event: Event) {
+		const target = event.target as HTMLInputElement
+		appContext[target.name] = target.value
+	}
 </script>
 
 <LayoutGrid
@@ -68,39 +74,52 @@
 	{sidenav}
 	size="3xs"
 	app={appContext}
-	path={page.url.pathname}
+	path={pathname}
 />
 
 {#snippet zoneHeader()}
-	<div class="navbar l:grid size:3xs align:center bg:inherit">
-		<HeaderNav
+	<div class="navbar align:start">
+		<ToggleReveal
 			id="nav"
-			name="nav"
-			title="Menu"
 			label="Menu"
+			font="sm"
 			size="3xs"
-			font="xs"
-			variant="outline"
-			color="primary"
 			asset="home"
 			justify="center"
-			dismiss="outside"
+			align="start"
+			layer="1"
 			auto={true}
-			{links}
-			path={page.url.pathname}
-			reveal={mainNav.reveal}
-			actionPath={page.url.pathname}
+			depth={0}
 			breakpoint="sm"
+			shape="square"
 			background="inherit"
-			formaction="toggleNav"
-		/>
+		>
+			<ul
+				class="header-nav l:flex size:xs w:full unstyled color:primary align:center justify:around bg:inherit"
+			>
+				<!-- <ul class={`header-nav unstyled ${navClasses}`}> -->
+				<li aria-current={pathname === '/' ? 'page' : undefined}>
+					<a data-sveltekit-preload-data href={resolve('/')}>Home</a>
+				</li>
+				{#each links as { slug, label }, i (i)}
+					<li
+						aria-current={pathname?.startsWith(`/${slug}`) ? 'page' : undefined}
+					>
+						<a data-sveltekit-preload-data href={resolve(`/${slug}`)}>
+							{label}
+						</a>
+					</li>
+				{/each}
+			</ul>
+		</ToggleReveal>
 	</div>
+
 	<div
-		class={`${sidenav.reveal ?? ''} sidebar surface:0:neutral l:grid size:3xs align:center width:lg height:sm`}
+		class="sidebar surface:0:neutral align:center width:lg height:sm raviolink"
 	>
 		{#if sidenav.layout === 'tgv'}
 			<div class="app-name">
-				<Magic spell="fuzzy" size="3xs" mask="text">
+				<Magic spell="fuzzy" mask="text">
 					<div class="l:flex align:center justify:center">
 						<ff-icon class="emoji:home font:lg"></ff-icon>
 						<p class="font:h1 font:lg">Fat Fuzzy</p>
@@ -108,43 +127,73 @@
 				</Magic>
 			</div>
 		{:else}
-			<RevealNav
-				{...sidenav}
-				position={false}
-				area="gare"
-				place="ouest"
-				layout="rails"
-				scroll="y"
-				layer={1}
-				justify="evenly"
-				size="3xs"
-				font="xs"
-				width="md"
-				height="lg"
-				background="neutral"
-				dismiss="outside"
-			/>
+			<nav
+				id="sidenav"
+				class="font:md width:md height:lg"
+				data-testid={`sidenav-${pathname}`}
+			>
+				<SkipLinks
+					id={`skiplinks-${pathname}`}
+					text="Skip to content"
+					href="#main"
+				/>
+				<ToggleReveal
+					id="sidenav-reveal"
+					label={sidenav.label ?? sidenav.title}
+					asset={sidenav.asset}
+					color={sidenav.color}
+					background={sidenav.background}
+					variant="bare"
+					checked={true}
+					area="gare"
+					place="ouest"
+					shape="square"
+					scroll="y"
+					layer="1"
+					depth={0}
+					font="sm"
+					width="md"
+					height="lg"
+					dismiss="outside"
+				>
+					<ToggleTree
+						{...sidenav}
+						id={`sidenav-${pathname}`}
+						{pathname}
+						preload={true}
+						depth={0}
+						shape="square"
+						width="full"
+					/>
+				</ToggleReveal>
+			</nav>
 		{/if}
 	</div>
 
-	<div class="context l:grid size:3xs bg:inherit">
-		<RevealContext
+	<div class="context raviolink">
+		<ToggleReveal
 			id="appContext"
-			name="appContext"
 			label="Settings"
-			path={page.url.pathname}
-			actionPath={page.url.pathname}
-			breakpoint="xs"
-			size="3xs"
-			font="xs"
+			color="neutral"
+			asset="settings"
+			font="sm"
 			layout="grid"
-			formaction="updateSettings"
-			justify="center"
-			text="start"
-			background="inherit"
-			context={appContext}
-			reveal={appContext.reveal}
-		/>
+			justify="end"
+			place="est"
+			depth={0}
+			layer="1"
+			variant="bare"
+			shape="square"
+			background="blur"
+		>
+			<ToggleSettings
+				id="appContext-menu"
+				name="app-settings"
+				label="Settings"
+				selected={appContext}
+				oninput={updateSettings}
+			/>
+		</ToggleReveal>
 	</div>
 {/snippet}
 

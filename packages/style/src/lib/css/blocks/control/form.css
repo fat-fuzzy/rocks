@@ -1,0 +1,159 @@
+form {
+	--hue: var(--color-theme-primary);
+	--lightness-accent: var(--color-lightness-400);
+	--chroma-accent: var(--color-chroma-400);
+	--lightness-contrast: var(--color-lightness-base);
+	--chroma-contrast: var(--color-chroma-base);
+	--accent: oklch(var(--lightness-accent) var(--chroma-accent-base) var(--hue));
+	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
+	--color-accent: var(--accent);
+	color: var(--ink);
+	max-height: fit-content;
+}
+
+/*
+
+TODO: Use native CSS form styling when available
+
+form:has(:invalid:not(:placeholder-shown)) {
+	--hue-semantic: var(--color-semantic-danger);
+}
+
+form:has(:valid) {
+	--hue-semantic: var(--color-semantic-success);
+} */
+
+form * {
+	font-family: var(--font-family-ui);
+}
+
+label,
+.feedback {
+	display: block;
+}
+
+label,
+legend,
+.form\:element {
+	color: var(--ink);
+	font-weight: var(--font-weight-ui);
+	padding-inline: 0;
+	background-color: inherit;
+}
+
+label {
+	font-size: var(--font-size);
+}
+
+legend {
+	font-size: var(--font-size);
+	margin-block-end: var(--ui-size);
+}
+
+input,
+select,
+textarea {
+	--padding-block: calc(var(--ui-size-sm) - 2 * var(--border-width-md));
+	--padding-inline: var(--ui-size);
+	--input-inline-size: 100%;
+	border: 1px solid var(--accent);
+	border-radius: var(--border-radius-base);
+	color: var(--ink);
+	accent-color: var(--accent);
+	border-color: var(--accent);
+	font-size: var(--font-size);
+	padding: var(--ui-size-sm) var(--ui-size);
+}
+
+label > input {
+	max-inline-size: 100%;
+}
+
+label.hug {
+	--input-inline-size: fit-content;
+}
+
+label:has(input[type='radio']),
+label:has(input[type='checkbox']) {
+	inline-size: var(--input-inline-size);
+}
+
+label:has(input[type='radio']) span,
+label:has(input[type='checkbox'])span {
+	min-inline-size: max-content;
+}
+
+label > input[type='radio'],
+label > input[type='checkbox'] {
+	padding: 0;
+	outline-offset: 0;
+	max-inline-size: 1.6em; /* local relative size that improves alignment in switcher layouts : TODO: fix magic number */
+}
+
+/* TODO : cleanup - use "current" size values */
+
+[type='file'] {
+	display: flex;
+	align-items: center;
+	font-size: var(--font-size-sm);
+	padding: var(--ui-size) var(--ui-size) var(--ui-size-sm);
+}
+
+[type='file']:hover {
+	--lightness: var(--color-lightness-000);
+}
+
+[type='file']:active {
+	--lightness: var(--lightness-base);
+}
+
+input:hover,
+label:hover > [type='file'] {
+	--lightness: var(--color-lightness-100); /* TODO: use themeable color var */
+	--lightness-contrast: var(--color-contrast-200);
+}
+
+[disabled] {
+	filter: grayscale(50%) opacity(50%);
+	cursor: not-allowed;
+}
+
+/* Display range input step labels */
+
+input[type='range'] {
+	padding-inline: 0;
+}
+
+label:has([type='range']) {
+	line-height: 1;
+	padding-inline: var(--outline-offset-md);
+	inline-size: var(--input-inline-size);
+	min-inline-size: max-content;
+	max-inline-size: 100%;
+}
+
+label:has([type='range']) span {
+	font-size: var(--font-size);
+	font-weight: var(--font-weight-semibold);
+}
+
+[type='range'][list='markers'] + datalist {
+	display: flex;
+	justify-content: var(--justify, space-between);
+	padding: 0 var(--ui-size);
+	margin-block-start: var(--ui-size-sm);
+}
+
+[type='range'][list='markers'] + datalist > option {
+	font-size: var(--font-size-sm);
+	font-weight: var(--font-weight-body);
+	padding: 0;
+}
+
+[type='range']:not([list]) + datalist > option {
+	display: none;
+}
+
+label[class*='l:stack'] > [type='range'] {
+	margin-block-start: var(--ui-size-sm);
+}

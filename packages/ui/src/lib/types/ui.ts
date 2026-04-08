@@ -3,19 +3,17 @@ import type {
 	UiContainer,
 	UiLayout,
 	UiColor,
+	UiSurface,
 	UiShape,
 	UiVariant,
 	UiSize,
 	UiDimension,
+	UiAssetType,
 } from '$types'
 
 export type AriaLive = 'polite' | 'off' | 'assertive' | null | undefined
 
 export type AutoComplete = AutoFill | null | undefined
-
-export type UiRevealState = {
-	reveal: string
-}
 
 export type InputPayload = {
 	id: string
@@ -29,18 +27,22 @@ export type UiContainerProps = {
 	dimensions?: UiDimension // TODO: check / harmonize STYLE_MODIFIER
 	layer?: string
 	size?: UiSize
+	hug?: boolean
 }
 
 export type UiLayoutProps = UiContainerProps & {
 	align?: string
 	alignSelf?: string
-	background?: string
+	background?: UiSurface
+	surface?: UiSurface
+	surfaceLightness?: number
 	breakpoint?: UiSize
 	direction?: string // TODO: check / harmonize STYLE_MODIFIER
 	font?: UiSize
 	height?: string // TODO: check / harmonize (height/width classes)
 	width?: string
 	justify?: string
+	reverse?: string
 	layout?: UiLayout
 	place?: string // TODO: check / harmonize STYLE_MODIFIER
 	fixed?: string
@@ -53,9 +55,10 @@ export type UiLayoutProps = UiContainerProps & {
 
 export type UiBlockProps = UiLayoutProps & {
 	asset?: string // the `value` part of emoji:value or svg:value
-	assetType?: string // the `svg` or `emoji` part of emoji:value or svg:value  TODO: check / harmonize STYLE_MODIFIER
+	assetType?: UiAssetType // the `svg` or `emoji` part of emoji:value or svg:value  TODO: check / harmonize STYLE_MODIFIER
 	color?: UiColor
 	font?: string
+	text?: string
 	variant?: UiVariant
 	width?: string // TODO: check / harmonize  STYLE_MODIFIER + (height/width classes)
 }

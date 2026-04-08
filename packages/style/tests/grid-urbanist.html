@@ -25,85 +25,105 @@
 	<body class="surface:0:accent">
 		<div class="l:grid:urbanist urbanist size:3xs">
 			<header class="zone:1 urbanist exchange l:grid size:3xs">
-				<div class="navbar surface:4:accent l:flex align:center">
-					<nav id="nav-1" class="l:flex" aria-label="Main navigation">
-						<p class="maki:inline">Zone 1</p>
+				<div class="navbar l:flex align:center raviolink">
+					<nav
+						id="nav-1"
+						class="l:flex ravioli:3xs text:center font:md surface:2:accent"
+						aria-labelledby="main-nav"
+					>
+						<p id="main-nav" lass="maki:inline">Nav 1</p>
 						<a href="./" title="CSS Tests">🧪</a>
 					</nav>
 				</div>
 
-				<div class="sidebar l:grid size:3xs align:center surface:3:accent">
-					<details class="gare:ouest width:md height:lg surface:3:accent">
-						<summary id="nav-2-label" class="gare-control ravioli:3xs">
-							Zone 2
-						</summary>
+				<div class="sidebar l:grid size:3xs align:center raviolink">
+					<ff-toggle-reveal
+						class="gare:ouest ouest width:md height:lg surface:3:accent"
+					>
+						<ff-control class="gare-control">
+							<label
+								for="train-ouest"
+								class="ellipsis ravioli:xs text:center font:sm surface:3:accent variant:fill"
+							>
+								<div class="l:flex align:center justify:between">
+									<ff-icon class="svg:chevron-right size:xs"></ff-icon>
+									<span>Zone 1 </span>
+								</div>
+								<input type="checkbox" id="train-ouest" class="sr-only ouest" />
+							</label>
+						</ff-control>
 						<ff-reveal class="gare-depot scroll:y layer:1">
 							<nav id="nav-2" class="l:flex" aria-labelledby="#nav-2-label">
 								<ol class="unstyled">
-									<li class="raviolink">Item</li>
-									<li class="raviolink">Item</li>
-									<li class="raviolink">Item</li>
-									<li class="raviolink">Item</li>
-									<li class="raviolink">Item</li>
-									<li class="raviolink">Item</li>
-									<li class="raviolink">Item</li>
-									<li class="raviolink">Item</li>
-									<li class="raviolink">Item</li>
-									<li class="raviolink">Item</li>
-									<li class="raviolink">Item</li>
-									<li class="raviolink">Item</li>
-									<li class="raviolink">Item</li>
-									<li class="raviolink">Item</li>
-									<li class="raviolink">Item</li>
-									<li class="raviolink">Item</li>
-									<li class="raviolink">Item</li>
-									<li class="raviolink">Item</li>
-									<li class="raviolink">Item</li>
-									<li class="raviolink">Item</li>
+									<li class="raviolink">Item 1</li>
+									<li class="raviolink">Item 2</li>
+									<li class="raviolink">Item 3</li>
+									<li class="raviolink">Item 4</li>
+									<li class="raviolink">Item 5</li>
+									<li class="raviolink">Item 6</li>
+									<li class="raviolink">Item 7</li>
+									<li class="raviolink">Item 8</li>
+									<li class="raviolink">Item 9</li>
+									<li class="raviolink">Item 10</li>
+									<li class="raviolink">Item 11</li>
+									<li class="raviolink">Item 12</li>
+									<li class="raviolink">Item 13</li>
+									<li class="raviolink">Item 14</li>
+									<li class="raviolink">Item 15</li>
+									<li class="raviolink">Item 16</li>
+									<li class="raviolink">Item 17</li>
+									<li class="raviolink">Item 18</li>
+									<li class="raviolink">Item 19</li>
+									<li class="raviolink">Item 20</li>
 								</ol>
 							</nav>
 						</ff-reveal>
-					</details>
+					</ff-toggle-reveal>
 				</div>
 
-				<aside class="context l:grid size:3xs align:center surface:3:accent">
-					<details
-						class="app-context gare:est l:grid size:3xs width:md height:sm surface:3:accent"
+				<aside class="context l:grid size:3xs align:center raviolink">
+					<ff-toggle-reveal
+						class="gare:est est width:md height:lg surface:3:accent"
 					>
-						<summary id="nav-2-label" class="gare-control ravioli:3xs">
-							Zone 3
-						</summary>
-						<ff-reveal class="gare-depot scroll:y layer:1 surface:3:accent">
-							<nav
-								id="nav-2"
-								class="l:flex surface:3:accent"
-								aria-labelledby="#nav-2-label"
+						<ff-control class="gare-control">
+							<label
+								for="train-est"
+								class="ellipsis ravioli:xs text:center font:sm surface:3:accent variant:fill"
 							>
+								<div class="l:flex align:center justify:between">
+									<span>Zone 2 </span>
+									<ff-icon class="svg:chevron-right size:xs"></ff-icon>
+								</div>
+								<input type="checkbox" id="train-est" class="sr-only est" />
+							</label>
+						</ff-control>
+						<ff-reveal class="gare-depot scroll:y rtl layer:1">
+							<nav id="nav-2" class="l:flex" aria-labelledby="#nav-2-label">
 								<ol class="unstyled">
-									<li class="raviolink">Item</li>
-									<li class="raviolink">Item</li>
-									<li class="raviolink">Item</li>
-									<li class="raviolink">Item</li>
-									<li class="raviolink">Item</li>
-									<li class="raviolink">Item</li>
-									<li class="raviolink">Item</li>
-									<li class="raviolink">Item</li>
-									<li class="raviolink">Item</li>
-									<li class="raviolink">Item</li>
-									<li class="raviolink">Item</li>
-									<li class="raviolink">Item</li>
-									<li class="raviolink">Item</li>
-									<li class="raviolink">Item</li>
-									<li class="raviolink">Item</li>
-									<li class="raviolink">Item</li>
-									<li class="raviolink">Item</li>
-									<li class="raviolink">Item</li>
-									<li class="raviolink">Item</li>
-									<li class="raviolink">Item</li>
+									<li class="raviolink">Item 1</li>
+									<li class="raviolink">Item 2</li>
+									<li class="raviolink">Item 3</li>
+									<li class="raviolink">Item 4</li>
+									<li class="raviolink">Item 5</li>
+									<li class="raviolink">Item 6</li>
+									<li class="raviolink">Item 7</li>
+									<li class="raviolink">Item 8</li>
+									<li class="raviolink">Item 9</li>
+									<li class="raviolink">Item 10</li>
+									<li class="raviolink">Item 11</li>
+									<li class="raviolink">Item 12</li>
+									<li class="raviolink">Item 13</li>
+									<li class="raviolink">Item 14</li>
+									<li class="raviolink">Item 15</li>
+									<li class="raviolink">Item 16</li>
+									<li class="raviolink">Item 17</li>
+									<li class="raviolink">Item 18</li>
+									<li class="raviolink">Item 19</li>
+									<li class="raviolink">Item 20</li>
 								</ol>
 							</nav>
 						</ff-reveal>
-					</details>
+					</ff-toggle-reveal>
 				</aside>
 			</header>
 			<div class="zone:2 hug urbanist size:3xs l:grid hug">
@@ -217,10 +237,8 @@
 									</p>
 								</article>
 								<details class="l:grid size:3xs gare:nord surface:1:accent">
-									<summary class="gare-control ravioli:3xs">
-										Article Context
-									</summary>
-									<ff-reveal class="scroll:y layer:1">
+									<summary class="ravioli:3xs">Article Context</summary>
+									<ff-content class="scroll:y layer:1">
 										<ol class="unstyled">
 											<li class="raviolink">Item</li>
 											<li class="raviolink">Item</li>
@@ -233,7 +251,7 @@
 											<li class="raviolink">Item</li>
 											<li class="raviolink">Item</li>
 										</ol>
-									</ff-reveal>
+									</ff-content>
 								</details>
 							</div>
 						</div>
@@ -285,9 +303,9 @@
 									</li>
 								</ul>
 							</nav>
-							<details class="l:grid gare:nord surface:0:accent">
-								<summary class="gare-control ravioli:3xs">Page Context</summary>
-								<ff-reveal class="scroll:y layer:1 scroll:y snap:start">
+							<details class="l:grid gare:nord surface:1:neutral">
+								<summary class="ravioli:3xs">Page Context</summary>
+								<ff-content class="layer:1 scroll:y snap:start">
 									<ol class="unstyled">
 										<li class="raviolink">Item</li>
 										<li class="raviolink">Item</li>
@@ -300,20 +318,18 @@
 										<li class="raviolink">Item</li>
 										<li class="raviolink">Item</li>
 									</ol>
-								</ff-reveal>
+								</ff-content>
 							</details>
 						</aside>
 					</div>
 				</main>
 			</div>
 
-			<div class="zone:3 urbanist l:grid size:3xs surface:4:accent">
-				<footer class="l:grid size:3xs">
-					<details class="footer-content l:grid size:3xs gare:nord height:md">
-						<summary class="gare-control ravioli:3xs surface:4:accent">
-							Footer
-						</summary>
-						<ff-reveal class="scroll:y layer:1">
+			<div class="zone:3 urbanist l:grid">
+				<footer class="l:grid surface:4:accent">
+					<details class="footer-content l:grid gare:nord height:md">
+						<summary class="ravioli:3xs">Footer</summary>
+						<ff-content class="scroll:y layer:1">
 							<ol class="unstyled">
 								<li class="raviolink">Item</li>
 								<li class="raviolink">Item</li>
@@ -322,21 +338,8 @@
 								<li class="raviolink">Item</li>
 								<li class="raviolink">Item</li>
 								<li class="raviolink">Item</li>
-								<li class="raviolink">Item</li>
-								<li class="raviolink">Item</li>
-								<li class="raviolink">Item</li>
-								<li class="raviolink">Item</li>
-								<li class="raviolink">Item</li>
-								<li class="raviolink">Item</li>
-								<li class="raviolink">Item</li>
-								<li class="raviolink">Item</li>
-								<li class="raviolink">Item</li>
-								<li class="raviolink">Item</li>
-								<li class="raviolink">Item</li>
-								<li class="raviolink">Item</li>
-								<li class="raviolink">Item</li>
 							</ol>
-						</ff-reveal>
+						</ff-content>
 					</details>
 				</footer>
 			</div>

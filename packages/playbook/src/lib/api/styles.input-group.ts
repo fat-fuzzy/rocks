@@ -3,7 +3,13 @@ import type {
 	StyleInputOptions,
 	StyleInputGroupOptions,
 } from '$types'
-import type {UiContainer, UiLayout, UiSize, UiVariant} from '@fat-fuzzy/ui'
+import type {
+	UiAssetType,
+	UiContainer,
+	UiLayout,
+	UiSize,
+	UiVariant,
+} from '@fat-fuzzy/ui'
 
 /**
  * Class Implementations to use
@@ -23,7 +29,7 @@ class StyleInputGroup implements IStyleInputGroup {
 	font?: UiSize
 	variant?: UiVariant
 	mode?: string
-	assetType?: string
+	assetType?: UiAssetType
 
 	constructor({
 		id,

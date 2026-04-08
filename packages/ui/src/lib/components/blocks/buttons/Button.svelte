@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {ButtonProps} from '$types'
-	import styleHelper from '$lib/utils/styles.js'
+	import styleHelper from '$lib/utils/styles'
 
 	let {
 		id = 'button',
@@ -53,7 +53,7 @@
 	})
 
 	let isIconButton = $derived(
-		(shape === 'round' || shape === 'square') && asset,
+		asset && asset !== 'none' && (shape === 'round' || shape === 'square'),
 	)
 </script>
 

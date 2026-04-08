@@ -1,6 +1,6 @@
 {
 	"name": "@fat-fuzzy/doc",
-	"version": "0.1.70",
+	"version": "0.1.73",
 	"description": "Fat Fuzzy Doc",
 	"main": "index.js",
 	"author": "Patricia Boh",
@@ -60,7 +60,7 @@
 		"svelte-preprocess": "6.0.3",
 		"tslib": "2.8.1",
 		"typescript": "5.9.3",
-		"vite": "7.3.1",
+		"vite": "7.3.2",
 		"vitest": "4.0.18",
 		"wrangler": "4.71.0"
 	},

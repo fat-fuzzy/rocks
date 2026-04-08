@@ -37,16 +37,16 @@ Adapted from : [InVision Guide - Building an MVP Design System] (InVision is no 
 
 ### UI Library
 
-| Foundations    | Layouts  | Blocks   |
-| -------------- | -------- | -------- |
-| Colors         | Burrito  | Buttons  |
-| Typography     | Reveal   | Cards    |
-| Icons (assets) | Icon     | Forms    |
-| Spacing        | Sidebar  | Graphics |
-| Motion         | Stack    | Media    |
-| Layers         | Switcher | Navs     |
-| ...            | ...      | (Tables) |
-| ...            | ...      | ...      |
+| Foundations    | Layouts      | Blocks   |
+| -------------- | ------------ | -------- |
+| Colors         | Burrito      | Buttons  |
+| Typography     | ToggleReveal | Cards    |
+| Icons (assets) | Icon         | Forms    |
+| Spacing        | Sidebar      | Graphics |
+| Motion         | Stack        | Media    |
+| Layers         | Switcher.    | Navs     |
+| ...            | ...          | (Tables) |
+| ...            | ...          | ...      |
 
 ### 🚧 Users
 

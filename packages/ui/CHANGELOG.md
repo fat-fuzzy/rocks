@@ -1,5 +1,23 @@
 # @fat-fuzzy/ui
 
+## 0.1.88
+
+### Patch Changes
+
+- 3d097c7: Layout, color, spacing fixes
+
+## 0.1.87
+
+### Patch Changes
+
+- 4357878: Enable InputRadio toggle, use ToggleSettings
+
+## 0.1.86
+
+### Patch Changes
+
+- 7e37bbd: Ally, style, and type fixes
+
 ## 0.1.85
 
 ### Patch Changes

@@ -1,0 +1,250 @@
+nav ul {
+	list-style: none;
+	padding-inline: 0;
+	margin-inline: 0;
+}
+
+nav > ul {
+	padding-block: var(--ui-size);
+}
+
+/* == Keep nav links to one line with ellipsis == */
+nav li {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	padding-block: var(--outline-offset-lg);
+	padding-inline: var(--size-base-3xs);
+	margin-block: 0;
+	line-height: var(--font-leading-nav);
+}
+
+nav > ul ul li:has(ul) {
+	padding-inline-start: var(--outline-offset-settings);
+	padding-block-end: var(--outline-offset-settings);
+}
+
+nav li a {
+	font-weight: var(--font-weight-link);
+	font-size: var(--font-size-ui);
+	text-overflow: ellipsis; /* TODO: find out why I need to repeat ellipsis in <li> and <a> */
+	overflow: hidden;
+	text-decoration: none;
+	margin-inline: var(--size-base-2xs);
+	min-width: 1em;
+	margin: var(--outline-offset-sm);
+	inline-size: 100%;
+	max-inline-size: 100%;
+}
+
+.reveal-nav {
+	container-type: inline-size;
+	inline-size: 100%;
+	padding-block-start: var(--outline-offset-lg);
+}
+
+nav a:hover {
+	--lightness: var(--color-lightness-300);
+	--lightness-contrast: var(--color-lightness-400);
+}
+
+nav a[class*='surface:0']:hover {
+	--lightness: var(--lightness-surface-2);
+	--lightness-contrast: var(--lightness-surface-2-contrast);
+	--chroma: var(--chroma-surface-2);
+	--chroma-contrast: var(--chroma-surface-2-contrast);
+}
+
+nav a:focus {
+	outline-offset: var(--outline-offset-sm);
+}
+
+nav li a:visited {
+	--lightness: var(--color-lightness-500);
+	--lightness-contrast: var(--color-lightness-500);
+	font-weight: var(--font-weight-semibold);
+}
+
+/* == RevealNav (tree-like navigation menus) == */
+ul.depth-1 {
+	--grid-gap: var(--outline-offset-lg);
+	padding-inline-start: 0;
+}
+
+ul.depth-2 {
+	inline-size: 100%;
+	max-inline-size: unset;
+	padding-block: var(--outline-offset-sm) var(--ui-size);
+}
+
+ul.depth-3 {
+	inline-size: 100%;
+	max-inline-size: unset;
+	padding-inline: var(--outline-offset-lg) var(--outline-offset-sm);
+}
+
+/* Avoid this level of nesting */
+ul.depth-4 {
+	inline-size: 100%;
+	max-inline-size: unset;
+	padding-inline: var(--outline-offset-lg) var(--outline-offset-sm);
+}
+
+/* override Active Link styles for top level link */
+ul.depth-0 {
+	inline-size: 100%;
+	max-inline-size: unset;
+	scrollbar-gutter: stable;
+	scrollbar-width: thin;
+}
+
+ul.depth-0 > li {
+	padding-block-end: var(--ui-size);
+}
+
+ul.depth-0 > li,
+ul.depth-1 > li,
+ul.depth-2 > li,
+ul.depth-3 > li,
+ul.depth-4 > li {
+	max-inline-size: unset;
+	padding-block: var(--outline-offset-lg);
+}
+
+/* override Active Link styles for top level link */
+ul.depth-0 > li > a {
+	font-family: var(--font-family-heading);
+	font-weight: var(--font-weight-semibold);
+	padding-inline: 0;
+}
+
+/* == Link Overrides == */
+
+/* Active Link */
+nav li[aria-current='page'] {
+	/* Active Link */
+
+	ul.depth-1 {
+		--lightness: var(--lightness-base);
+		--lightness-contrast: var(--lightness-contrast-base);
+		--shade: oklch(var(--lightness) var(--chroma) var(--hue));
+		--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
+		--accent: oklch(
+			var(--lightness-accent) var(--chroma-accent-base) var(--hue)
+		);
+		color: var(--ink);
+		background-color: var(--shade);
+	}
+
+	> a {
+		text-decoration-color: var(--accent);
+	}
+	> ul a {
+		text-decoration-color: var(--accent);
+	}
+}
+
+/* == Override heading styles for headings inside links == */
+a[class*='ravioli'] {
+	text-decoration: none;
+	margin-inline-end: 0;
+}
+
+/* == Override heading styles for headings inside links == */
+a[class*='ravioli']:hover {
+	text-decoration: underline;
+}
+
+.reveal-nav,
+.reveal-nav.expanded {
+	flex-basis: var(--sidebar-width);
+}
+
+.reveal-nav > nav {
+	max-inline-size: calc(100% - 2 * var(--size-base-3xs));
+}
+
+.reveal-nav > nav {
+	margin: 0 auto;
+}
+
+.reveal-nav > form {
+	[aria-expanded='true'] ff-reveal {
+		margin: 0;
+		padding: 0;
+		inline-size: fit-content;
+	}
+
+	[aria-expanded='false'] ff-reveal {
+		inline-size: 0;
+		overflow: hidden;
+	}
+}
+
+@media screen and (min-width: 64rem) {
+	.reveal-nav .form\:expanded,
+	.reveal-nav .form\:collapsed {
+		max-inline-size: calc(100% - var(--ui-size-sm));
+	}
+
+	.reveal-nav {
+		&.collapsed {
+			--sidebar-width: calc(
+				var(--layout-sidebar-collapsed) + var(--ui-size-lg)
+			);
+		}
+
+		.form\:expanded > [aria-expanded] {
+			inline-size: 100%;
+		}
+	}
+
+	[class*='l:reveal'].sticky {
+		ul.depth-0 {
+			block-size: var(--y-size-sticky);
+			overflow: hidden auto;
+		}
+
+		ul:not(.depth-0) {
+			block-size: max-content;
+		}
+
+		> .expanded {
+			--x-size: var(--sidebar-width);
+			transition: inline-size 250ms ease-in-out;
+			/* transition: transform 250ms ease-in-out; */
+
+			> ff-reveal {
+				inline-size: 100%;
+				transform: translateX(var(--size-base-3xs));
+				transition: transform 250ms ease-in;
+				transition: inline-size 250ms ease-in-out;
+			}
+
+			> ff-reveal > * {
+				inline-size: 100%;
+				transition: inline-size 250ms ease-in-out;
+			}
+		}
+		> .collapsed {
+			--y-size: var(--ui-header-height);
+			--x-size: calc(--sidebar-width);
+
+			> ff-reveal {
+				--x-axis: calc(var(--x-size) * -1);
+				inline-size: 100%;
+				block-size: var(--y-size);
+			}
+
+			ul {
+				> * {
+					block-size: fit-content;
+					inline-size: 100%;
+					padding: calc(var(--ui-size-sm) / var(--size-ratio-lg));
+					margin: 0;
+					margin-block-start: var(--outline-offset-lg);
+				}
+			}
+		}
+	}
+}

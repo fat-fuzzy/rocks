@@ -55,13 +55,19 @@ describe('FormValidator - a class that validates form inputs using validation fu
 			expect(validator.inputTypes).toEqual(fields)
 			expect(validator.form.sample_email).toEqual({
 				feedback: {},
+				is_valid: undefined,
 				touched: false,
 				changed: false,
+				type: 'email',
+				value: undefined,
 			})
 			expect(validator.form.sample_name).toEqual({
 				feedback: {},
+				is_valid: undefined,
 				touched: false,
 				changed: false,
+				type: 'text',
+				value: undefined,
 			})
 		})
 
@@ -323,7 +329,7 @@ describe('FormValidator - a class that validates form inputs using validation fu
 			mockValidate.mockReturnValue(true)
 		})
 
-		it('should mark field as changed and validate', () => {
+		it('should mark field as changed', () => {
 			const mockInput = document.createElement('input')
 			mockInput.name = 'email'
 			mockInput.value = 'new@example.com'
@@ -331,6 +337,19 @@ describe('FormValidator - a class that validates form inputs using validation fu
 			Object.defineProperty(event, 'target', {value: mockInput})
 
 			validator.changeInput(event)
+
+			expect(validator.form.email.changed).toBe(true)
+			expect(mockValidate).not.toHaveBeenCalled()
+		})
+
+		it('should mark field as changed and validate', () => {
+			const mockInput = document.createElement('input')
+			mockInput.name = 'email'
+			mockInput.value = 'new@example.com'
+			const event = new Event('change')
+			Object.defineProperty(event, 'target', {value: mockInput})
+
+			validator.changeInput(event, true)
 
 			expect(validator.form.email.changed).toBe(true)
 			expect(validator.form.email.value).toBe('new@example.com')

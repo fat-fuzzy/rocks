@@ -1,0 +1,56 @@
+.shape\:round,
+.shape\:square {
+	display: flex;
+	align-items: var(--align, center);
+	justify-content: var(--justify, center);
+	aspect-ratio: 1/1;
+	block-size: fit-content;
+	inline-size: auto;
+	object-fit: contain;
+}
+
+.shape\:round {
+	line-height: 0;
+	border-radius: 100vmax;
+}
+
+.shape\:round.index {
+	block-size: 2em;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.shape\:round > * {
+	border-radius: 100vmax;
+}
+
+.shape\:pill {
+	border-radius: 100vmax;
+}
+
+.shape\:mellow {
+	border-radius: var(--border-radius-lg);
+}
+
+.shape\:soft {
+	border-radius: var(--border-radius-xl);
+}
+
+.shape\:square > * {
+	border-radius: var(--border-radius-base);
+}
+
+button[class*='shape:'] {
+	padding: var(--ui-size-sm);
+	block-size: 100%;
+}
+
+.shape\:round[class*='l:stack']:only-child::before,
+.shape\:square[class*='l:stack']:only-child::before {
+	margin-inline: 0;
+}
+
+ff-icon.shape\:square {
+	border-radius: var(--border-radius-base);
+}

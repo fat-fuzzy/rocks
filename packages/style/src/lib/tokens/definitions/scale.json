@@ -6,6 +6,9 @@
 		},
 		"base": {
 			"$type": "derived",
+			"4xs": {
+				"$value": "{scale.base.05}"
+			},
 			"3xs": {
 				"$value": "{scale.base.04}"
 			},
@@ -29,10 +32,19 @@
 			},
 			"2xl": {
 				"$value": "{scale.base.30}"
+			},
+			"3xl": {
+				"$value": "{scale.base.40}"
+			},
+			"4xl": {
+				"$value": "{scale.base.50}"
 			}
 		},
 		"inverse": {
 			"$type": "derived",
+			"3xs": {
+				"$value": "{size.base.3xl}"
+			},
 			"2xs": {
 				"$value": "{size.base.2xl}"
 			},
@@ -53,6 +65,156 @@
 			},
 			"2xl": {
 				"$value": "{size.base.2xs}"
+			},
+			"3xl": {
+				"$value": "{size.base.3xs}"
+			},
+			"4xl": {
+				"$value": "{size.base.4xs}"
+			}
+		},
+		"increase-1": {
+			"$type": "derived",
+			"4xs": {
+				"$value": "{size.base.3xs}"
+			},
+			"3xs": {
+				"$value": "{size.base.2xs}"
+			},
+			"2xs": {
+				"$value": "{size.base.xs}"
+			},
+			"xs": {
+				"$value": "{size.base.sm}"
+			},
+			"sm": {
+				"$value": "{size.base.md}"
+			},
+			"md": {
+				"$value": "{size.base.lg}"
+			},
+			"lg": {
+				"$value": "{size.base.xl}"
+			},
+			"xl": {
+				"$value": "{size.base.2xl}"
+			},
+			"2xl": {
+				"$value": "{size.base.3xl}"
+			},
+			"3xl": {
+				"$value": "{size.base.4xl}"
+			},
+			"4xl": {
+				"$value": "calc(var(--size-base-4xl) * var(--size-ratio-md))"
+			}
+		},
+		"increase-2": {
+			"$type": "derived",
+			"4xs": {
+				"$value": "{size.base.2xs}"
+			},
+			"3xs": {
+				"$value": "{size.base.xs}"
+			},
+			"2xs": {
+				"$value": "{size.base.sm}"
+			},
+			"xs": {
+				"$value": "{size.base.md}"
+			},
+			"sm": {
+				"$value": "{size.base.lg}"
+			},
+			"md": {
+				"$value": "{size.base.xl}"
+			},
+			"lg": {
+				"$value": "{size.base.2xl}"
+			},
+			"xl": {
+				"$value": "{size.base.3xl}"
+			},
+			"2xl": {
+				"$value": "{size.base.4xl}"
+			},
+			"3xl": {
+				"$value": "calc(var(--size-base-4xl) * var(--size-ratio-md))"
+			},
+			"4xl": {
+				"$value": "calc(var(--size-base-4xl) * var(--size-ratio-md) * var(--size-ratio-md))"
+			}
+		},
+		"decrease-1": {
+			"$type": "derived",
+			"4xs": {
+				"$value": "calc(var(--size-base-4xs) / var(--size-ratio-sm))"
+			},
+			"3xs": {
+				"$value": "{size.base.4xs}"
+			},
+			"2xs": {
+				"$value": "{size.base.3xs}"
+			},
+			"xs": {
+				"$value": "{size.base.2xs}"
+			},
+			"sm": {
+				"$value": "{size.base.xs}"
+			},
+			"md": {
+				"$value": "{size.base.sm}"
+			},
+			"lg": {
+				"$value": "{size.base.md}"
+			},
+			"xl": {
+				"$value": "{size.base.lg}"
+			},
+			"2xl": {
+				"$value": "{size.base.xl}"
+			},
+			"3xl": {
+				"$value": "{size.base.2xl}"
+			},
+			"4xl": {
+				"$value": "{size.base.3xl}"
+			}
+		},
+		"decrease-2": {
+			"$type": "derived",
+			"4xs": {
+				"$value": "calc(var(--size-base-4xs) / var(--size-ratio-sm) / var(--size-ratio-sm))"
+			},
+			"3xs": {
+				"$value": "calc(var(--size-base-4xs) / var(--size-ratio-sm))"
+			},
+			"2xs": {
+				"$value": "{size.base.4xs}"
+			},
+			"xs": {
+				"$value": "{size.base.3xs}"
+			},
+			"sm": {
+				"$value": "{size.base.2xs}"
+			},
+			"md": {
+				"$value": "{size.base.xs}"
+			},
+			"lg": {
+				"$value": "{size.base.sm}"
+			},
+			"xl": {
+				"$value": "{size.base.md}"
+			},
+			"2xl": {
+				"$value": "{size.base.lg}"
+			},
+			"3xl": {
+				"$value": "{size.base.xl}"
+			},
+			"4xl": {
+				"$value": "{size.base.2xl}"
 			}
 		},
 		"ratio": {
@@ -74,6 +236,9 @@
 	"scale": {
 		"$type": "derived",
 		"base": {
+			"06": {
+				"$value": "calc(var(--scale-base-05) / var(--size-ratio-sm))"
+			},
 			"05": {
 				"$value": "calc(var(--scale-base-04) / var(--size-ratio-sm))"
 			},
@@ -106,6 +271,9 @@
 			},
 			"50": {
 				"$value": "calc(var(--scale-base-40) * var(--size-ratio-sm))"
+			},
+			"60": {
+				"$value": "calc(var(--scale-base-50) * var(--size-ratio-sm))"
 			}
 		},
 		"major-third": {

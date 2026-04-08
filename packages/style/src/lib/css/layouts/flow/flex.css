@@ -1,0 +1,75 @@
+[class*='l:flex'] {
+	--gap: var(--layout-gap-md);
+	display: flex;
+	flex-wrap: wrap;
+	align-items: var(--align-items, center);
+	gap: var(--gap);
+}
+
+.l\:flex.reverse {
+	flex-direction: row-reverse;
+}
+
+.l\:flex.nowrap {
+	flex-wrap: nowrap;
+}
+
+.l\:flex.grow > * {
+	flex-grow: 1;
+}
+
+.grow\:0 {
+	flex-grow: 0;
+}
+
+.grow\:1 {
+	flex-grow: 1;
+}
+
+.wrap\:reverse {
+	flex-wrap: wrap-reverse;
+}
+
+.l\:flex\:4xs {
+	--gap: var(--layout-gap-4xs);
+}
+
+.l\:flex\:3xs {
+	--gap: var(--layout-gap-3xs);
+}
+
+.l\:flex\:2xs {
+	--gap: var(--layout-gap-2xs);
+}
+
+.l\:flex\:xs {
+	--gap: var(--layout-gap-xs);
+}
+
+.l\:flex\:sm {
+	--gap: var(--layout-gap-sm);
+}
+
+.l\:flex\:md {
+	--gap: var(--layout-gap-md);
+}
+
+.l\:flex\:lg {
+	--gap: var(--layout-gap-lg);
+}
+
+.l\:flex\:xl {
+	--gap: var(--layout-gap-xl);
+}
+
+.l\:flex\:2xl {
+	--gap: var(--layout-gap-2xl);
+}
+
+.l\:flex\:3xl {
+	--gap: var(--layout-gap-3xl);
+}
+
+.l\:flex\:4xl {
+	--gap: var(--layout-gap-2xl);
+}

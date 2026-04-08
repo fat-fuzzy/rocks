@@ -31,7 +31,6 @@ import InputFile from '$lib/components/blocks/inputs/InputFile.svelte'
  * Layout components
  */
 import Burrito from '$lib/components/layouts/Burrito.svelte'
-import Reveal from '$lib/components/layouts/reveal/Reveal.svelte'
 import Sidebar from '$lib/components/layouts/Sidebar.svelte'
 import Stack from '$lib/components/layouts/Stack.svelte'
 import Switcher from '$lib/components/layouts/Switcher.svelte'
@@ -39,19 +38,13 @@ import Switcher from '$lib/components/layouts/Switcher.svelte'
 /**
  * Recipes - Base
  */
-import RevealMenu from '$lib/components/recipes/menus/RevealMenu.svelte'
 import ButtonMenu from '$lib/components/recipes/menus/ButtonMenu.svelte'
 import ToggleMenu from '$lib/components/recipes/menus/ToggleMenu/ToggleMenu.svelte'
-import Settings from '$lib/components/recipes/forms/Settings.svelte'
-import RevealContext from '$lib/components/recipes/forms/RevealContext.svelte'
-
 import SignUp from '$lib/components/recipes/forms/SignUp.svelte'
 
 import Nav from '$lib/components/recipes/navs/Nav.svelte'
-import RevealNav from '$lib/components/recipes/navs/RevealNav.svelte'
+import SkipLinks from '$lib/components/recipes/navs/SkipLinks.svelte'
 import Breadcrumbs from '$lib/components/recipes/navs/Breadcrumbs.svelte'
-
-import HeaderNav from '$lib/components/recipes/header/HeaderNav.svelte'
 
 /**
  * Recipes - Content
@@ -85,17 +78,21 @@ import Zoomer from '$lib/components/blocks/overlays/Zoomer.svelte'
 import Scrolly from '$lib/components/recipes/animations/scroll/Scrolly.svelte'
 import ScrollyItem from '$lib/components/recipes/animations/scroll/ScrollyItem.svelte'
 import Tabs from '$lib/components/recipes/tabs/Tabs.svelte'
-import ExpandLink from '$lib/components/recipes/navs/ExpandLink.svelte'
 import Cookies from '$lib/components/recipes/forms/Cookies.svelte'
 import Toast from '$lib/components/blocks/overlays/Toast/Toast.svelte'
 import ToastGroup from '$lib/components/blocks/overlays/Toast/ToastGroup.svelte'
 // import InputPassword from '$lib/components/blocks/inputs/InputPassword.svelte'
 // import InputFeedback from '$lib/components/blocks/inputs/InputFeedback.svelte'
 
+// New: replace Reveal mechanisms
+import ToggleReveal from '$lib/components/recipes/toggle/ToggleReveal.svelte'
+import ToggleLink from '$lib/components/recipes/toggle/ToggleLink.svelte'
+import ToggleTree from '$lib/components/recipes/toggle/ToggleTree.svelte'
+import ToggleSettings from '$lib/components/recipes/toggle/ToggleSettings.svelte'
+
 /**
  * Forms
  */
-import UiReveal from '$lib/forms/UiReveal'
 import SignUpUser from '$lib/forms/SignUpUser'
 import AppContext from '$lib/forms/AppContext'
 
@@ -108,16 +105,20 @@ import PopoverActor from '$lib/components/blocks/overlays/Popover/actor.svelte.j
 /**
  * Utilities
  */
-import constants from '$lib/types/constants.js'
-import * as clickOutside from '$lib/utils/browser/click-outside.js'
-import format from '$lib/utils/format.js'
+import constants from '$lib/types/constants'
+import * as clickOutside from '$lib/utils/browser/click-outside'
+import format from '$lib/utils/format'
+import styles from '$lib/utils/styles'
+import FormValidator from '$lib/utils/browser/FormValidator.svelte'
 
 /***************************************************
  * Prepare Exports
  **************************************************/
 const utils = {
 	format,
+	styles,
 	clickOutside,
+	FormValidator,
 }
 
 const actors = {
@@ -126,7 +127,6 @@ const actors = {
 }
 
 const forms = {
-	UiReveal,
 	AppContext,
 	SignUpUser,
 }
@@ -152,7 +152,6 @@ const blocks = {
 
 const layouts = {
 	Burrito,
-	Reveal,
 	Stack,
 	Switcher,
 	Sidebar,
@@ -161,10 +160,9 @@ const layouts = {
 const recipes = {
 	ButtonMenu,
 	ToggleMenu,
-	RevealMenu,
 	SignUp,
+	SkipLinks,
 	Nav,
-	RevealNav,
 }
 
 const raw = {
@@ -191,22 +189,24 @@ const drafts = {
 	Popover,
 	// InputPassword,
 	// InputFeedback,
-	ExpandLink,
 	Image,
 	Picture,
 	Scrolly,
 	ScrollyItem,
 	Breadcrumbs,
-	HeaderNav,
-	Settings,
 	PageNav,
 	PageHeader,
-	RevealContext,
 	Zoomer,
 	Tabs,
 	Cookies,
 	Toast,
 	ToastGroup,
+
+	// New: replace Reveal mechanisms
+	ToggleReveal,
+	ToggleTree,
+	ToggleLink,
+	ToggleSettings,
 }
 
 const headless = {

@@ -1,0 +1,74 @@
+[class*='feedback:'][class*='status:']:where(
+		.feedback\:form,
+		.feedback\:prose
+	) {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--ui-size-sm);
+}
+
+p + [class*='feedback:'] {
+	margin-block-start: var(--ui-size-sm);
+}
+
+:where(label, input) + [class*='feedback:'] {
+	--gap: var(--ui-size-sm);
+}
+
+[class*='feedback:']:not(.feedback\:code) {
+	--color-accent: var(--accent-semantic, var(--accent));
+	--color-bg: var(--shade-semantic, var(--shade));
+	--color-ink: var(--ink-semantic, var(--ink));
+	--icon-size: var(--font-size-minus);
+	color: var(--color-ink);
+	font-size: var(--font-size);
+	padding-inline: var(--ui-size-sm);
+	padding-block: var(--ui-size-sm);
+	border: var(--border-width-xl) solid var(--color-accent);
+	background-color: var(--color-bg);
+
+	.status {
+		font-family: var(--font-family-heading);
+		font-size: var(--font-size-minus);
+		font-weight: var(--font-weight-ui);
+	}
+
+	.message {
+		max-inline-size: 100%;
+		block-size: fit-content;
+		margin-inline-start: 0;
+		font-size: var(--font-size);
+	}
+
+	p {
+		text-wrap: wrap;
+		text-wrap: pretty;
+		max-inline-size: 100%;
+		font-size: inherit;
+	}
+}
+
+[class*='feedback:']:not(.feedback\:code).variant\:fill {
+	border: var(--border-width-xl) solid var(--color-accent);
+}
+
+[class*='feedback:']:not(.feedback\:code).variant\:outline {
+	background-color: var(--color-bg);
+}
+
+[class*='feedback:']:not(.feedback\:code).variant\:bare {
+	background-color: var(--color-bg);
+	border-color: var(--color-bg);
+}
+
+[class*='feedback:'][class*='emoji:'].shape\:round[class*='l:stack']::before,
+[class*='feedback:'][class*='emoji:'].shape\:square[class*='l:stack']::before {
+	margin-block-end: var(--ui-size);
+	line-height: 1;
+}
+
+[class*='feedback:'][class*='emoji:'].shape\:round[class*='l:stack']:only-child::before,
+[class*='feedback:'][class*='emoji:'].shape\:pill[class*='l:stack']:only-child::before,
+[class*='feedback:'][class*='emoji:'].shape\:square[class*='l:stack']:only-child::before {
+	font-size: calc(2 * var(--font-size-plus));
+}

@@ -1,0 +1,60 @@
+/**
+ * App header - Main Nav
+ */
+
+.expanded > ff-reveal:has(.header-nav) {
+	display: flex;
+	left: var(--x-axis);
+	right: var(--x-axis);
+	box-shadow: var(--shadow-md);
+}
+
+.header-nav {
+	--gap: var(--grid-gap, var(--size-base-2xs));
+	gap: var(--grid-gap, 0);
+	padding-inline: var(--outline-offset-md);
+	border-radius: inherit;
+
+	li {
+		display: flex;
+		align-items: var(--align, center);
+		justify-content: var(--justify, center);
+		background-color: inherit;
+		border-block-start: var(--border-width-xl) solid transparent;
+		inline-size: fit-content;
+		padding-block: var(--outline-offset-md) var(--outline-offset-lg);
+		padding-inline: var(--outline-offset-xs);
+
+		a {
+			display: flex;
+			block-size: calc(100% - 2 * var(--border-width-xl));
+			align-items: var(--align, center);
+			justify-content: var(--justify, center);
+			inline-size: fit-content;
+			text-transform: uppercase;
+			padding-block: calc(var(--size-base-3xs) + var(--border-width-md));
+			padding-inline: var(--gap, var(--size-base-2xs));
+			line-height: var(--font-leading-ui);
+		}
+
+		&[aria-current='page'] {
+			border-color: var(--accent);
+
+			a {
+				text-decoration: none;
+				background-color: inherit;
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 38.75rem) {
+	.header-nav {
+		inline-size: auto;
+		background-color: inherit;
+		li {
+			padding-block: var(--outline-offset-lg);
+			padding-inline: var(--outline-offset-lg);
+		}
+	}
+}

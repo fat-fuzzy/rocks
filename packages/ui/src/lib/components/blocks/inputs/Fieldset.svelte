@@ -1,15 +1,17 @@
 <script lang="ts">
 	import type {FieldsetProps} from '$types'
-	import styleHelper from '$lib/utils/styles.js'
+	import styleHelper from '$lib/utils/styles'
 
 	let {
 		id,
 		name,
 		legend,
+		ariaDescribedby,
 		type, // input group if any
 		disabled,
 		align,
 		container,
+		containerSize,
 		layout = 'stack',
 		justify,
 		font,
@@ -48,6 +50,7 @@
 				color,
 				background,
 				layout,
+				containerSize,
 				breakpoint,
 				threshold,
 				container,
@@ -62,6 +65,7 @@
 	class={`${fieldsetClasses} ${typeClass}`}
 	{disabled}
 	data-testid={id}
+	aria-describedby={ariaDescribedby}
 >
 	{#if legend}<legend class={legendClasses}>{legend}</legend>{/if}
 	{#if children}

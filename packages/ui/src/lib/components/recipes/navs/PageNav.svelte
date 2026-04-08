@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {PageNavProps} from '$types'
-	import styleHelper from '$lib/utils/styles.js'
+	import styleHelper from '$lib/utils/styles'
 
 	let {
 		id = 'page-nav',
@@ -12,26 +12,32 @@
 		items,
 	}: PageNavProps = $props()
 
-	let currentHash = $state(hash ?? '')
-	let linkLayoutClasses = styleHelper.getStyles({
-		size,
-		layout: 'flex',
-		align: 'center',
-	})
-	let layoutClasses = styleHelper.getStyles({
-		size,
-		layout,
-		align,
-	})
+	let currentHash = $derived(hash ?? '')
+
+	let linkLayoutClasses = $derived(
+		styleHelper.getStyles({
+			size,
+			layout: 'flex',
+			align: 'center',
+		}),
+	)
+
+	let layoutClasses = $derived(
+		styleHelper.getStyles({
+			size,
+			layout,
+			align,
+		}),
+	)
 </script>
 
 <nav aria-label={label} {id} class={id}>
 	<ul class={`${layoutClasses} unstyled`}>
-		{#each items as { title, slug, color, size, variant, shape, asset }}
+		{#each items as { title, slug, color, size, variant, shape, asset }, i (i)}
 			{@const iconClasses = styleHelper.getStyles({
 				color,
 				size,
-				variant,
+				variant: 'bare',
 				shape,
 				asset,
 				assetType: 'emoji',

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {TabsProps, Tab} from '$types'
-	import styleHelper from '$lib/utils/styles.js'
+	import styleHelper from '$lib/utils/styles'
 	import {onMount} from 'svelte'
 
 	let {
@@ -12,8 +12,8 @@
 		container,
 	}: TabsProps = $props()
 
-	let currentHash = $state(path.split('#')[1])
-	let indexedTabs = $state(
+	let currentHash = $derived(path ? path.split('#')[1] : '')
+	let indexedTabs = $derived(
 		tabs.map((tab: Tab, index: number) => ({...tab, index})),
 	)
 
@@ -21,14 +21,17 @@
 		indexedTabs.find((tab: Tab) => tab.slug === currentHash) ?? indexedTabs[0],
 	)
 
-	let layoutClasses = styleHelper.getLayoutStyles({
-		layout,
-		background,
-		container,
-	})
+	let layoutClasses = $derived(
+		styleHelper.getLayoutStyles({
+			layout,
+			background,
+			container,
+		}),
+	)
 
 	let presentationClasses = styleHelper.getStyles({
-		layout: 'switcher:xs',
+		layout: 'switcher',
+		size: 'xs',
 		align: 'center',
 		justify: 'between',
 	})
@@ -49,7 +52,7 @@
 	<header class="l:sidebar size:lg">
 		<nav {id} class="l:main:50">
 			<ul role="tablist" class="unstyled l:switcher:xs">
-				{#each tabs as { title, slug, color, size, variant, shape, asset }}
+				{#each tabs as { title, slug, color, size, variant, shape, asset }, i (i)}
 					{@const iconClasses = styleHelper.getStyles({
 						color,
 						size,
@@ -87,7 +90,7 @@
 		</nav>
 	</header>
 	<section class="tab-content">
-		{#each tabs as { slug, content, labelledBy }}
+		{#each tabs as { slug, content, labelledBy }, i (i)}
 			<!-- The article tag receives focus when the corresponding tab is active -->
 			<!-- svelte-ignore a11y_no_noninteractive_element_to_interactive_role -->
 			<article
@@ -96,7 +99,9 @@
 				role="tabpanel"
 				tabindex={selectedTab.slug === slug ? 0 : undefined}
 			>
-				{@render content()}
+				{#if content}
+					{@render content()}
+				{/if}
 			</article>
 		{/each}
 	</section>

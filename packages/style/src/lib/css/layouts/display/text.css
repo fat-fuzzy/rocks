@@ -1,0 +1,83 @@
+/**
+ * Set inline-size for text:
+ * - improve readability by using ch units to adapt to user zoom settings
+ */
+
+[class*='l:text'] {
+	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
+	--text-inline-size: 71ch;
+	color: var(--ink);
+	background-color: inherit;
+	inline-size: 100%;
+	max-inline-size: var(--text-inline-size);
+
+	ol,
+	ul {
+		margin-block: var(--ui-size);
+	}
+}
+
+[class*='l:text'] > *:not(pre) {
+	--gap: var(--grid-gap, var(--ui-size));
+	inline-size: 100%;
+	max-inline-size: calc(100% - var(--gap));
+}
+
+[class^='l:text'] > * + h1,
+[class^='l:text'] > * + h2,
+[class^='l:text'] > * + h3,
+[class^='l:text'] > * + h4,
+[class^='l:text'] > * + h5 {
+	margin-block-start: var(--ui-size-lg);
+}
+
+[class^='l:text'] > h1 + *,
+[class^='l:text'] > h2 + *,
+[class^='l:text'] > h3 + *,
+[class^='l:text'] > h4 + *,
+[class^='l:text'] > h5 + * {
+	margin-block-start: var(--ui-size);
+}
+
+ul[class*='l:text'] {
+	margin-block: var(--ui-size-sm);
+}
+
+ol.unstyled,
+ul.unstyled {
+	margin: 0;
+	padding: 0;
+}
+
+[class*='l:text'] > ol,
+[class*='l:text'] > ul {
+	padding-inline-start: calc(2 * var(--ui-size-lg));
+}
+
+.l\:text\:2xs {
+	--text-inline-size: 20ch;
+}
+
+.l\:text\:xs {
+	--text-inline-size: 35ch;
+}
+
+.l\:text\:sm {
+	--text-inline-size: 50ch;
+}
+
+.l\:text\:md {
+	--text-inline-size: 60ch;
+}
+
+.l\:text\:lg {
+	--text-inline-size: 70ch;
+}
+
+.l\:text\:xl {
+	--text-inline-size: 80ch;
+}
+
+.l\:text\:2xl {
+	--text-inline-size: 90ch;
+}

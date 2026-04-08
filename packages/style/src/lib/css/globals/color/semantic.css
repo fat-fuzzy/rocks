@@ -129,7 +129,8 @@
 	--shadow-inset-md: var(--shadow-md);
 }
 
-[class*=':danger'] {
+[class*=':danger'],
+.color\:error {
 	--hue: var(--color-semantic-danger);
 	--shadow: oklch(
 		var(--lightness-accent-base) var(--chroma-accent-base) var(--hue)

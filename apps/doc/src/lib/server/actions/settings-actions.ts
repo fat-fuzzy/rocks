@@ -5,7 +5,7 @@ import ui from '@fat-fuzzy/ui'
 import uiStateService from '$lib/server/services/session.js'
 const {AppContext} = ui.forms
 
-const {APP_PREFIX, DEFAULT_PREFERENCES} = ui.constants
+const {APP_PREFIX, DEFAULT_COOKIES_PREFERENCES} = ui.constants
 
 async function handleUpdateAppSettings(
 	event: RequestEvent,
@@ -25,7 +25,7 @@ async function handleUpdateAppSettings(
 		let updatedState
 
 		if (!newState.update(data).success) {
-			updatedState = DEFAULT_PREFERENCES
+			updatedState = DEFAULT_COOKIES_PREFERENCES
 		} else {
 			updatedState = newState.state
 		}
@@ -49,7 +49,7 @@ async function handleUpdateAppSettings(
 			success: false,
 			key,
 			message: `Failed to update ${key}`,
-			state: DEFAULT_PREFERENCES,
+			state: DEFAULT_COOKIES_PREFERENCES,
 		}
 	}
 }

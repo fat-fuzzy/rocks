@@ -3,15 +3,18 @@ import type {LayoutProps, UiLayoutProps, UiContentProps} from '$types'
 
 export type LayoutPrimitiveProps = LayoutProps & UiLayoutProps & UiContentProps
 
+export type AreaProps = {
+	zone: Snippet
+	grid?: boolean
+	gare?: string
+	scroll?: string
+	exchange?: boolean
+	tag?: string
+	hug?: boolean
+}
+
 export type GridProps = LayoutPrimitiveProps & {
-	areas?: {
-		zone: Snippet
-		grid?: boolean
-		gare?: string
-		scroll?: string
-		exchange?: boolean
-		tag?: string
-	}[]
+	areas?: AreaProps[]
 }
 
 export type DetailsLayoutProps = LayoutPrimitiveProps & {
@@ -23,4 +26,6 @@ export type DetailsLayoutProps = LayoutPrimitiveProps & {
 export type SidebarLayoutProps = LayoutPrimitiveProps & {
 	main: Snippet
 	side: Snippet
+	reverse?: boolean
+	wrap?: string
 }

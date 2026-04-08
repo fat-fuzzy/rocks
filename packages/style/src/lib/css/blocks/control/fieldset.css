@@ -1,0 +1,113 @@
+fieldset {
+	border: none;
+	border-radius: var(--border-radius-base);
+	max-inline-size: 100%;
+	flex-grow: 1;
+	padding: 0;
+	margin: 0;
+
+	legend {
+		font-weight: var(--font-weight-semibold);
+		line-height: var(--ui-size);
+	}
+
+	legend[class*='font:'] {
+		--font-size: var(--font-size-plus);
+	}
+
+	> p {
+		font-size: var(--font-size-small);
+		font-weight: var(--font-weight-ui);
+	}
+
+	> label,
+	> .feedback,
+	> .menu {
+		inline-size: 100%;
+		max-inline-size: 100%;
+	}
+}
+
+fieldset.radio,
+fieldset.checkbox {
+	font-size: var(--font-size);
+	padding-inline: var(--ui-size) var(--ui-size-sm);
+	padding-block: 0 var(--ui-size-sm);
+
+	label {
+		--gap: calc(var(--ui-size-xs) / var(--size-ratio-md));
+
+		align-items: var(--align, center);
+		justify-content: var(--justify, space-between);
+		padding-block: var(--border-width-xl);
+		padding-inline: var(--border-width-xl);
+		inline-size: 100%;
+		color: var(--ink);
+		line-height: 1;
+
+		> span {
+			min-inline-size: max-content;
+			overflow-wrap: break-word;
+		}
+	}
+
+	label:has(ff-icon) {
+		inline-size: fit-content;
+	}
+
+	input {
+		aspect-ratio: 1/1;
+		flex-grow: 0;
+		flex-basis: auto;
+		block-size: calc(var(--ui-size-lg) + var(--outline-offset-lg));
+		inline-size: auto;
+		accent-color: var(--accent);
+		padding: var(--outline-offset-lg);
+	}
+
+	legend {
+		inline-size: auto;
+		margin-inline-start: 0;
+		margin-block-end: var(--ui-size);
+		padding-inline: var(--border-width-xl);
+		font-weight: var(--font-weight-semibold);
+
+		> label {
+			padding-inline: 0;
+		}
+
+		> label > span {
+			font-weight: var(--font-weight-semibold);
+		}
+	}
+
+	legend:has(label) {
+		margin-block-end: var(--border-width-xl);
+	}
+
+	label > span {
+		flex-grow: 1;
+		font-size: var(--font-size);
+	}
+
+	input:checked {
+		--lightness: var(--lightness-surface-2);
+		--lightness-accent: var(--lightness-surface-3);
+		--lightness-contrast: var(--lightness-surface-4);
+		--chroma: var(--chroma-contrast-focus);
+		--chroma-contrast: var(--chroma-surface-4);
+		--chroma-accent: var(--lightness-surface-3);
+		background-color: var(--shade);
+	}
+
+	label:hover {
+		--lightness: var(--lightness-surface-1);
+		--lightness-contrast: var(--lightness-contrast);
+		background-color: var(--shade);
+	}
+
+	label:not([class*=':neutral']):hover {
+		--chroma: var(--chroma-contrast-focus);
+		--chroma-contrast: var(--chroma-surface-4);
+	}
+}
