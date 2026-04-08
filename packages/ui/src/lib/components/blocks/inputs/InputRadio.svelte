@@ -10,6 +10,7 @@
 		label = 'Radio input',
 		checked = false,
 		disabled,
+		isUiControl = false,
 		value,
 		required,
 		hint,
@@ -68,7 +69,12 @@
 		}),
 	)
 
-	let inputClasses = $derived(shape ? 'sr-only' : '')
+	let inputClasses = $derived(
+		isUiControl || shape === 'square' || shape === 'round' ? 'sr-only' : '',
+	)
+	let ffClasses = $derived(
+		isUiControl || shape === 'square' || shape === 'round' ? 'ff-control' : '',
+	)
 
 	// Container styles
 	let controlClasses = 'l:flex align:center w:full'
@@ -92,19 +98,17 @@
 		{oninput}
 		{disabled}
 		class={inputClasses}
-		aria-labelledby={shape ? `${id}-tip` : undefined}
-		aria-describedby={hint || errors?.length
-			? `input-feedback-${id}`
-			: undefined}
+		aria-labelledby={shape ? `labels-${id}` : undefined}
+		aria-describedby={hint || errors?.length ? `feedback-${id}` : undefined}
 	/>
 {/snippet}
 
 {#if shape === 'square' || shape === 'round'}
 	<ff-control class={`${controlClasses} ${reverseClass}`}>
-		<label for={id} class={labelClasses}>
+		<label class={labelClasses}>
 			<ff-icon class={iconClasses}></ff-icon>
 			{@render input()}
-			<Tooltip id={`describes-${id}`} {label} {size} {variant} {font}>
+			<Tooltip id={`labels-${id}`} {label} {size} {variant} {font}>
 				<Feedback
 					id={`feedback-${id}`}
 					{hint}
@@ -119,18 +123,11 @@
 {:else}
 	<label
 		for={id}
-		class={`ff-control ellipsis nowrap ${labelClasses} ${iconClasses}`}
+		class={`${ffClasses} ellipsis nowrap ${labelClasses} ${iconClasses}`}
 		data-testid={id}
 	>
 		<span>{label}</span>
 		{@render input()}
 	</label>
-	<Feedback
-		id={`input-feedback-${id}`}
-		{hint}
-		{errors}
-		{size}
-		{variant}
-		{font}
-	/>
+	<Feedback id={`feedback-${id}`} {hint} {errors} {size} {variant} {font} />
 {/if}

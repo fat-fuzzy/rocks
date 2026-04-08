@@ -20,6 +20,7 @@
 		legend,
 		hint,
 		value,
+		isUiControl,
 		type = 'radio', // checkbox, radio
 		items = [],
 		layout,
