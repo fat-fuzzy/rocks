@@ -1,5 +1,11 @@
 # @fat-fuzzy/validation
 
+## 0.1.17
+
+### Patch Changes
+
+- 95d74db: Style fixes & improvements, dep updates
+
 ## 0.1.16
 
 ### Patch Changes
