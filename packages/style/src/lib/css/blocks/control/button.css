@@ -80,7 +80,7 @@ ff-control > label.variant\:bare {
 	--lightness: var(--lightness-base);
 	--lightness-accent: var(--lightness-surface-3);
 	--lightness-contrast: var(--lightness-contrast-base);
-	background-color: var(--shade);
+	background-color: inherit;
 }
 
 ff-control > label.variant\:bare {
@@ -100,9 +100,7 @@ ff-control > label.variant\:outline:hover {
 button.variant\:bare:hover,
 .ff-control.variant\:bare:hover,
 ff-control:hover > label.variant\:bare {
-	--border-color: var(--accent);
-	--lightness: var(---lightness-surface-1);
-	--lightness-accent: var(--lightness-surface-2);
+	--lightness: var(--lightness-surface-2);
 	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
 	background-color: var(--shade);
 }
@@ -115,10 +113,19 @@ ff-control > label.variant\:outline:has(input:checked),
 	background-color: var(--shade);
 }
 
-button.variant\:bare:active,
+button.variant\:bare:active {
+	--border-color: var(--accent);
+	--lightness: var(--lightness-surface-1);
+	--lightness-accent: var(--lightness-surface-1);
+	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
+	background-color: var(--shade);
+}
+
 ff-control > label.variant\:bare:has(input:checked),
 .ff-control.variant\:bare:has(input:checked) {
-	--lightness: var(--lightness-surface-2);
+	--border-color: var(--accent);
+	--lightness: var(--lightness-surface-1);
+	--lightness-accent: var(--lightness-surface-1);
 	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
 	background-color: var(--shade);
 }
@@ -126,7 +133,9 @@ ff-control > label.variant\:bare:has(input:checked),
 button.variant\:bare:active:hover,
 ff-control:hover > label.variant\:bare:has(input:checked),
 .ff-control.variant\:bare:has(input:checked):hover {
+	--border-color: var(--accent);
 	--lightness: var(--lightness-surface-2);
+	--lightness-accent: var(--lightness-surface-3);
 	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
 	background-color: var(--shade);
 }
@@ -209,7 +218,7 @@ ff-control > label[class*='bg:']:not([class*=':neutral']) {
 		--chroma: var(--chroma-surface-1);
 		--lightness-contrast: var(--lightness-surface-2-contrast);
 		--chroma-contrast: var(--chroma-surface-1-contrast);
-		background-color: var(--shade);
+		--shade: oklch(var(--lightness) var(--chroma) var(--hue));
 		color: var(--ink);
 	}
 
