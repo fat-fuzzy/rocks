@@ -1,5 +1,11 @@
 # @fat-fuzzy/doc
 
+## 0.1.74
+
+### Patch Changes
+
+- 95d74db: Style fixes & improvements, dep updates
+
 ## 0.1.73
 
 ### Patch Changes
