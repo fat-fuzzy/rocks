@@ -1,5 +1,11 @@
 # @fat-fuzzy/ui
 
+## 0.1.89
+
+### Patch Changes
+
+- 95d74db: Style fixes & improvements, dep updates
+
 ## 0.1.88
 
 ### Patch Changes
