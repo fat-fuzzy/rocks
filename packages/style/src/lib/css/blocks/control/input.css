@@ -4,7 +4,7 @@ ff-control > label:has(input[type='checkbox']:focus) {
 }
 
 ff-control > label:has(input:checked) ff-icon {
-	--lightness: var(--lightness-surface-3);
+	--lightness: var(--lightness-surface-1);
 	background-color: var(--shade);
 }
 
@@ -29,8 +29,8 @@ ff-control[class*='variant:']:has([disabled]):hover,
 ff-control[class*='variant:']:has([disabled]:checked),
 .ff-control[class*='variant:']:has([disabled]:checked):hover,
 ff-control[class*='variant:']:has([disabled]:checked):hover {
-	--lightness: var(--color-lightness-100);
-	--lightness-contrast: var(--color-lightness-300);
+	--lightness: var(--lightness-surface-1);
+	--lightness-contrast: var(--lightness-surface-1-contrast);
 	--chroma: var(--color-chroma-neutral);
 	--chroma-contrast: var(--color-chroma-neutral);
 	--chroma-accent: var(--color-chroma-neutral);

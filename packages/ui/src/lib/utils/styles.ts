@@ -38,6 +38,55 @@ const STYLE_MODIFIER: Record<string, string> = {
 	width: 'width',
 }
 
+const SCALES: Record<string, Record<string, string>> = {
+	INCREASE_1: {
+		'4xs': '3xs',
+		'3xs': '2xs',
+		'2xs': 'xs',
+		xs: 'sm',
+		sm: 'md',
+		md: 'lg',
+		lg: 'xl',
+		xl: '2xl',
+		'2xl': '3xl',
+		'3xl': '4xl',
+	},
+	INCREASE_2: {
+		'4xs': '2xs',
+		'3xs': 'xs',
+		'2xs': 'sm',
+		xs: 'md',
+		sm: 'lg',
+		md: 'xl',
+		lg: '2xl',
+		xl: '3xl',
+		'2xl': '4xl',
+	},
+	DECREASE_1: {
+		'3xs': '4xs',
+		'2xs': '3xs',
+		xs: '2xs',
+		sm: 'xs',
+		md: 'sm',
+		lg: 'md',
+		xl: 'lg',
+		'2xl': 'xl',
+		'3xl': '2xl',
+		'4xl': '3xl',
+	},
+	DECREASE_2: {
+		'2xs': '4xs',
+		xs: '3xs',
+		sm: '2xs',
+		md: 'xs',
+		lg: 'sm',
+		xl: 'md',
+		'2xl': 'lg',
+		'3xl': 'xl',
+		'4xl': '2xl',
+	},
+}
+
 function appendModifier(base: string, modifier: string | undefined): string {
 	if (modifier === undefined) {
 		return ''
@@ -270,6 +319,7 @@ function getStyles(props: UiBlockProps): string {
 		layout,
 		scroll,
 		container,
+		containerSize,
 		dimensions,
 		threshold,
 		breakpoint,
@@ -291,7 +341,7 @@ function getStyles(props: UiBlockProps): string {
 		justify,
 		width,
 		height,
-		size,
+		size: containerSize ?? size,
 		shape,
 		layout,
 		scroll,
@@ -300,7 +350,11 @@ function getStyles(props: UiBlockProps): string {
 		background,
 	})
 
-	const containerClasses = getContainerStyles({size, container, dimensions})
+	const containerClasses = getContainerStyles({
+		size: containerSize ?? size,
+		container,
+		dimensions,
+	})
 
 	const classes = `${containerClasses} ${layoutClasses} ${blockClasses}`
 
@@ -313,4 +367,5 @@ export default {
 	getLayoutStyles,
 	getBlockStyles,
 	getFeedbackStyles,
+	SCALES,
 }

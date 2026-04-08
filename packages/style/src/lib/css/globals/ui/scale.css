@@ -17,52 +17,116 @@
 	--ratio: var(--size-ratio-lg);
 }
 
+.size\:4xs {
+	--ui-size-xs: var(--size-decrease-2-4xs);
+	--ui-size-sm: var(--size-decrease-1-4xs);
+	/* Base size */
+	--ui-size: var(--size-base-4xs);
+	--ui-size-lg: var(--size-increase-1-4xs);
+	--ui-size-xl: var(--size-increase-2-4xs);
+	--font-size: var(--font-size-3xs) / var(--fluid-min-ratio);
+}
+
 .size\:3xs {
+	--ui-size-xs: var(--size-decrease-2-3xs);
+	--ui-size-sm: var(--size-decrease-1-3xs);
 	/* Base size */
 	--ui-size: var(--size-base-3xs);
+	--ui-size-lg: var(--size-increase-1-3xs);
+	--ui-size-xl: var(--size-increase-2-3xs);
 	--font-size: var(--font-size-2xs) / var(--fluid-min-ratio);
 }
 
 .size\:2xs {
+	--ui-size-xs: var(--size-decrease-2-2xs);
+	--ui-size-sm: var(--size-decrease-1-2xs);
 	/* Base size */
 	--ui-size: var(--size-base-2xs);
+	--ui-size-lg: var(--size-increase-1-2xs);
+	--ui-size-xl: var(--size-increase-2-2xs);
 	--font-size: var(--font-size-xs) / var(--fluid-min-ratio);
 }
 
 .size\:xs {
+	--ui-size-xs: var(--size-decrease-2-xs);
+	--ui-size-sm: var(--size-decrease-1-xs);
 	/* Base size */
 	--ui-size: var(--size-base-xs);
+	--ui-size-lg: var(--size-increase-1-xs);
+	--ui-size-xl: var(--size-increase-2-xs);
 	--font-size: var(--font-size-xs);
 }
 
 .size\:sm {
+	--ui-size-xs: var(--size-decrease-2-sm);
+	--ui-size-sm: var(--size-decrease-1-sm);
 	/* Base size */
 	--ui-size: var(--size-base-sm);
+	--ui-size-lg: var(--size-increase-1-sm);
+	--ui-size-xl: var(--size-increase-2-sm);
 	--font-size: var(--font-size-sm);
 }
 
 .size\:md {
 	/* Base size */
 	--ui-size: var(--size-base-md);
+	--ui-size-xs: var(--size-decrease-2-md);
+	--ui-size-sm: var(--size-decrease-1-md);
+	/* Base size */
+	--ui-size: var(--size-base-md);
+	--ui-size-lg: var(--size-increase-1-md);
+	--ui-size-xl: var(--size-increase-2-md);
 	--font-size: var(--font-size-md);
 }
 
 .size\:lg {
+	--ui-size-xs: var(--size-decrease-2-lg);
+	--ui-size-sm: var(--size-decrease-1-lg);
 	/* Base size */
 	--ui-size: var(--size-base-lg);
+	--ui-size-lg: var(--size-increase-1-lg);
+	--ui-size-xl: var(--size-increase-2-lg);
 	--font-size: var(--font-size-lg);
 }
 
 .size\:xl {
-	/* Base size */
+	--ui-size-xs: var(--size-decrease-2-xl);
+	--ui-size-sm: var(--size-decrease-1-xl);
+	/* Base sm */
 	--ui-size: var(--size-base-xl);
+	--ui-size-lg: var(--size-increase-1-xl);
+	--ui-size-xl: var(--size-increase-2-xl);
 	--font-size: var(--font-size-xl);
 }
 
 .size\:2xl {
-	/* Base size */
-	--ui-size: var(--size-base-2xl);
+	--ui-size-xs: var(--size-decrease-2-2xl);
+	--ui-size-sm: var(--size-decrease-1-2xl);
+	/* Base sm */
+	--ui-size: var(--size-base-xl);
+	--ui-size-lg: var(--size-increase-1-2xl);
+	--ui-size-xl: var(--size-increase-2-2xl);
 	--font-size: var(--font-size-2xl);
+}
+
+.size\:3xl {
+	--ui-size-xs: var(--size-decrease-2-3xl);
+	--ui-size-sm: var(--size-decrease-1-3xl);
+	/* Base sm */
+	--ui-size: var(--size-base-xl);
+	--ui-size-lg: var(--size-increase-1-3xl);
+	--ui-size-xl: var(--size-increase-2-3xl);
+	--font-size: var(--font-size-3xl);
+}
+
+.size\:4xl {
+	--ui-size-xs: var(--size-decrease-2-4xl);
+	--ui-size-sm: var(--size-decrease-1-4xl);
+	/* Base sm */
+	--ui-size: var(--size-base-xl);
+	--ui-size-lg: var(--size-increase-1-4xl);
+	--ui-size-xl: var(--size-increase-2-4xl);
+	--font-size: var(--font-size-4xl);
 }
 
 .width\:full {

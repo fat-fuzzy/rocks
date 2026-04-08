@@ -111,6 +111,12 @@
 
 <div class="l:flex maki:block:sm align:start">
 	{#each options as item, i (i)}
-		<InputGroup {...item} {oninput} value={values} background="inherit" />
+		<InputGroup
+			{...item}
+			{oninput}
+			value={values}
+			isUiControl={true}
+			background="inherit"
+		/>
 	{/each}
 </div>

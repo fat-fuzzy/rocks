@@ -73,9 +73,8 @@ export default {
 			{label: 'Checkbox 6', id: 'input-group.check-6', value: 'check-6'},
 		],
 	},
-	InputRange: {label: 'Value', font: 'sm'},
+	InputRange: {label: 'Value'},
 	Feedback: {
-		font: 'md',
 		status: [
 			{
 				text: 'Too swift arrives as tardy as too slow.',
