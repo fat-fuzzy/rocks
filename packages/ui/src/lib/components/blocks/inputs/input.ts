@@ -34,6 +34,7 @@ export type InputFeedbackProps = {
 	variant?: UiVariant
 	errors?: string[]
 	hint?: string
+	isUiControl?: boolean
 }
 
 export type ValidationProps = {
@@ -84,6 +85,7 @@ export type InputRadioProps = UiBlockProps &
 	InputCommonProps &
 	InputCallbackProps & {
 		name?: string
+		isUiControl?: boolean
 	}
 
 export type InputCheckProps = InputRadioProps & {

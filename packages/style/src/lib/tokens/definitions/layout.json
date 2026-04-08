@@ -6,62 +6,74 @@
 		},
 		"gap": {
 			"$type": "derived",
+			"4xs": {
+				"$value": "{size.base.4xs}"
+			},
+			"3xs": {
+				"$value": "{size.base.3xs}"
+			},
 			"2xs": {
-				"$value": "{scale.base.03}"
+				"$value": "{size.base.2xs}"
 			},
 			"xs": {
-				"$value": "{scale.base.02}"
+				"$value": "{size.base.xs}"
 			},
 			"sm": {
-				"$value": "{scale.base.01}"
+				"$value": "{size.base.sm}"
 			},
 			"md": {
-				"$value": "{scale.base.00}"
+				"$value": "{size.base.md}"
 			},
 			"lg": {
-				"$value": "{scale.base.10}"
+				"$value": "{size.base.lg}"
 			},
 			"xl": {
-				"$value": "{scale.base.20}"
+				"$value": "{size.base.xl}"
 			},
 			"2xl": {
-				"$value": "{scale.base.30}"
+				"$value": "{size.base.2xl}"
+			},
+			"3xl": {
+				"$value": "{size.base.3xl}"
+			},
+			"4xl": {
+				"$value": "{size.base.4xl}"
 			}
 		},
 		"sidebar": {
 			"$type": "char",
 			"base": {
-				"$value": "24ch"
+				"$value": "16rem"
 			},
 			"hidden": {
 				"$value": "0em"
 			},
 			"collapsed": {
-				"$value": "6.5em"
+				"$value": "6.5rem"
 			},
 			"2xs": {
-				"$value": "10ch"
+				"$value": "8rem"
 			},
 			"xs": {
-				"$value": "12ch"
+				"$value": "12rem"
 			},
 			"sm": {
-				"$value": "18ch"
+				"$value": "14rem"
 			},
 			"md": {
 				"$value": "{layout.sidebar.base}"
 			},
 			"lg": {
-				"$value": "30ch"
+				"$value": "22rem"
 			},
 			"xl": {
-				"$value": "36ch"
+				"$value": "24rem"
 			},
 			"2xl": {
-				"$value": "46ch"
+				"$value": "28rem"
 			},
 			"3xl": {
-				"$value": "60ch"
+				"$value": "36rem"
 			}
 		},
 		"grid": {
