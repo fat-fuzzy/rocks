@@ -35,13 +35,13 @@ details > summary::-webkit-details-marker {
 }
 
 details > summary:hover {
-	--lightness: var(--lightness-surface-4);
-	--lightness-contrast: var(--lightness-surface-1);
+	--lightness: var(--lightness-surface-2);
+	--lightness-contrast: var(--lightness-contrast-surface-2);
 	box-shadow: var(--shadow-md);
 }
 
 details > summary.variant\:outline {
-	--lightness: var(--lightness-surface-5);
+	--lightness: var(--lightness-surface-1);
 	--lightness-accent: var(--lightness-ui-base);
 	--lightness-contrast: var(--lightness-accent-base);
 	background-color: inherit;
@@ -49,7 +49,7 @@ details > summary.variant\:outline {
 }
 
 details > summary.variant\:bare {
-	--lightness: var(--lightness-surface-2);
+	--lightness: var(--lightness-surface-1);
 	--lightness-accent: var(--lightness-base);
 	--lightness-contrast: var(--lightness-contrast-base);
 	background-color: inherit;
@@ -57,30 +57,24 @@ details > summary.variant\:bare {
 }
 
 details > summary.variant\:outline:hover {
-	--lightness: var(--lightness-base);
-	--chroma: var(--chroma-base);
-	--lightness-contrast: var(--chroma-base);
-	--chroma-contrast: var(--chroma-contrast-base);
+	--lightness: var(--lightness-surface-2);
+	--lightness-contrast: var(--lightness-contrast-surface-2);
 	background-color: var(--shade);
 }
 
 details > summary.variant\:bare:hover {
 	--lightness: var(--lightness-base);
-	--chroma: var(--chroma-base);
 	--lightness-contrast: var(--lightness-contrast-base);
-	--chroma-contrast: var(--chroma-contrast-base);
 	background-color: var(--shade);
 }
 
 details > summary.variant\:outline:active {
-	--lightness: var(--lightness-surface-3);
-	--lightness-contrast: var(--lightness-surface-5);
+	--lightness-accent: var(--lightness-contrast-surface-3);
 	background-color: var(--shade);
 }
 
 details > summary.variant\:bare:active {
-	--lightness: var(--lightness-surface-2);
-	--lightness-contrast: var(--lightness-surface-5);
+	--lightness-accent: var(--lightness-contrast-surface-3);
 	background-color: var(--shade);
 }
 
