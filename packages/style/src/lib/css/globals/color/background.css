@@ -28,11 +28,11 @@
 }
 
 [class*='bg:blur']:hover {
-	--blur-strength: var(--size-base-xl);
+	--blur-strength: var(--size-base-2xl);
 }
 
-.settings\:dark\:contrast,
-.settings\:light\:contrast,
+.settings\:night\:contrast,
+.settings\:day\:contrast,
 .settings\:system\:contrast {
 	[class*='bg:blur'] {
 		backdrop-filter: unset;
