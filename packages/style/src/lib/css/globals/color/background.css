@@ -31,6 +31,15 @@
 	--blur-strength: var(--size-base-2xl);
 }
 
+.settings\:night\:contrast,
+.settings\:day\:contrast,
+.settings\:system\:contrast {
+	[class*='bg:blur'] {
+		backdrop-filter: unset;
+		background-color: var(--shade);
+	}
+}
+
 /* Set current color LIGHTNESS and CHROMA according to a 7 point scale */
 [class*='bg:'][class*=':light'],
 [class*='bg:'][class*=':dark'] [class*='bg:'][class*=':light'] {

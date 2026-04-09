@@ -383,7 +383,7 @@
 	{/snippet}
 
 	{#snippet aside()}
-		<div class="maki:block l:stack:xs w:full raviolink">
+		<div class="maki:block l:stack:xs w:full ravioli:2xs">
 			{#if canvas}
 				<Player
 					{canvas}

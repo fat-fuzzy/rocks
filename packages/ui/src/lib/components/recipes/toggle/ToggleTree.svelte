@@ -25,7 +25,6 @@
 		container ? `l:${container}:${size} l:${container}` : '',
 	)
 	let layoutClass = $derived(layout ? `l:${layout}:${size}` : '')
-	let colorClass = $derived(color ? `surface:1:${color}` : 'bg:inherit')
 	let alignClass = $derived(align ? `align:${align}` : '')
 	let shapeClass = $derived(`shape:mellow`)
 	let depthClass = $derived(`depth-${depth}`)
@@ -35,11 +34,14 @@
 			: `${layoutClass} ${containerClass}`.trim(),
 	)
 	let linkClass = $derived(depth === 0 ? 'font:md maki:inline:2xs' : 'font:md')
+	let backgroundClass = $derived(
+		depth === 1 ? `surface:0:neutral` : 'bg:inherit',
+	)
 </script>
 
 <ul
 	{id}
-	class={`${gridClass} ${depthClass} bg:inherit w:full`}
+	class={`${gridClass} ${depthClass} w:full ${backgroundClass}`}
 	data-testid={id}
 	data-sveltekit-preload-data={preload ? preload : undefined}
 >
@@ -48,6 +50,9 @@
 		{@const href = actionPath ?? `${pathname}/${slug}`}
 		{@const subItems = item.items}
 		{@const buttonAssetClass = subItems && asset ? asset : ''}
+		{@const surfaceLevel = pathname === href ? 1 : 0}
+		{@const surfaceColor = pathname === href ? color : 'neutral'}
+		{@const surfaceClass = `surface:${surfaceLevel}:${surfaceColor}`}
 		{@const linkAssetClass =
 			!subItems && asset ? `${assetType ? assetType : 'emoji'}:${asset}` : ''}
 		{@const itemClass = !subItems
@@ -56,7 +61,7 @@
 		<li
 			aria-current={pathname === href ? 'page' : undefined}
 			class={pathname === href
-				? `${itemClass} ${colorClass} ${shapeClass}`
+				? `${itemClass} ${surfaceClass} ${shapeClass}`
 				: `${itemClass} ${shapeClass}`}
 		>
 			{#if subItems && depth > 0}
@@ -81,7 +86,7 @@
 				<a
 					data-sveltekit-preload-data
 					{href}
-					class={`${linkClass} ${linkAssetClass}`}
+					class={`ellipsis ${linkClass} ${linkAssetClass}`}
 				>
 					{label}
 				</a>

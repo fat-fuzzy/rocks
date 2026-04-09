@@ -1,31 +1,30 @@
 /*   Closed state of the dialog   */
 .zoomer {
-	transform: translateY(-150%);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transform: translate(0, -150%);
 	block-size: fit-content;
 	inline-size: fit-content;
 	transition:
-		opacity 0.3s ease-out,
-		transform 0.3s ease-out,
-		block-size 0.3s ease-out,
-		overlay 0.5s ease-out allow-discrete,
-		display 0.5s ease-out allow-discrete;
+		opacity 300ms ease-out,
+		transform 300ms ease-out,
+		block-size 500ms ease-out 10ms,
+		inline-size 500ms ease-out 10ms;
 }
 
 /*   Open state of the dialog  */
 .zoomer[open] {
-	position: fixed;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	transform: translateY(0);
-	transform: scaleY(1);
+	inset: 0;
+	transform: translate(0, 0);
 	inline-size: 100%;
 	block-size: 100%;
 	overflow: auto;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	transition:
+		opacity 500ms ease-in 15ms /* Hide ugly transitions under the rug */,
+		transform 10ms ease-in,
+		block-size 10ms ease-in,
+		inline-size 10ms ease-in;
 }
 
 html:has(.zoomer[open]) {

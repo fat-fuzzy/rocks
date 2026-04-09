@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {ToggleSettingsProps, InputCallbackProps} from '$types'
+	import type {ToggleSettingsProps, InputCallbackProps, NavItem} from '$types'
 
 	import InputGroup from '$lib/components/blocks/inputs/InputGroup.svelte'
 
@@ -7,10 +7,11 @@
 
 	let values = $derived(Object.entries(selected).map(([key, value]) => value))
 
-	const options = $derived([
+	const options: NavItem[] = $derived([
 		{
 			label: 'Brightness',
 			name: 'brightness',
+			slug: 'brightness',
 			type: 'radio',
 			size: 'xs',
 			justify: 'start',
@@ -24,6 +25,7 @@
 				{
 					label: 'System',
 					id: 'brightness.system',
+					slug: 'brightness.system',
 					value: 'system',
 					asset: 'home',
 					shape: 'pill',
@@ -35,7 +37,8 @@
 				},
 				{
 					label: 'Day',
-					id: 'brightness.primary',
+					id: 'brightness.day',
+					slug: 'brightness.day',
 					value: 'day',
 					asset: 'day',
 					shape: 'pill',
@@ -47,7 +50,8 @@
 				},
 				{
 					label: 'Night',
-					id: 'brightness.primary',
+					id: 'brightness.night',
+					slug: 'brightness.night',
 					value: 'night',
 					asset: 'night',
 					shape: 'pill',
@@ -67,6 +71,7 @@
 			justify: 'start',
 			layout: 'stack',
 			id: 'contrast',
+			slug: 'contrast',
 			background: 'inherit',
 			value: Object.entries(selected).map(([key, value]) => {
 				if (key) return value
@@ -76,6 +81,7 @@
 				{
 					label: 'Default',
 					id: 'contrast.contrast',
+					slug: 'contrast.contrast',
 					value: 'contrast',
 					asset: 'contrast',
 					shape: 'pill',
@@ -84,7 +90,6 @@
 					place: 'est',
 					color: 'accent',
 					variant: 'bare',
-					disabled: selected.brightness === 'system',
 					checked:
 						selected.brightness === 'system' ||
 						selected.contrast === 'contrast',
@@ -92,6 +97,7 @@
 				{
 					label: 'Blend',
 					id: 'contrast.blend',
+					slug: 'contrast.blend',
 					value: 'blend',
 					asset: 'blend',
 					shape: 'pill',
@@ -100,7 +106,6 @@
 					place: 'est',
 					color: 'accent',
 					variant: 'bare',
-					disabled: selected.brightness === 'system',
 					checked:
 						selected.brightness !== 'system' && selected.contrast === 'blend',
 				},

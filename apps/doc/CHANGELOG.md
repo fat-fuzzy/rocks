@@ -1,5 +1,11 @@
 # @fat-fuzzy/doc
 
+## 0.1.75
+
+### Patch Changes
+
+- 77a306e: Style fixes: color, layout
+
 ## 0.1.74
 
 ### Patch Changes

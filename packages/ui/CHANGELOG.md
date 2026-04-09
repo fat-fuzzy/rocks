@@ -1,5 +1,11 @@
 # @fat-fuzzy/ui
 
+## 0.1.90
+
+### Patch Changes
+
+- 77a306e: Style fixes: color, layout
+
 ## 0.1.89
 
 ### Patch Changes
