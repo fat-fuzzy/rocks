@@ -55,6 +55,8 @@
 			zone: zoneContent,
 			hug: layout === 'steam' || layout === 'tram' || layout === 'urbanist',
 			grid: true,
+			container: 'text',
+			containerSize: '2xl',
 		},
 		{
 			zone: zoneFooter,
