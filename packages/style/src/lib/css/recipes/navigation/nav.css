@@ -125,7 +125,6 @@ nav li[aria-current='page'] {
 	/* Active Link */
 
 	ul.depth-1 {
-		--lightness: var(--lightness-base);
 		--lightness-contrast: var(--lightness-contrast-base);
 		--shade: oklch(var(--lightness) var(--chroma) var(--hue));
 		--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
