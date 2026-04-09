@@ -53,7 +53,11 @@
 		},
 		{
 			zone: zoneContent,
-			hug: layout === 'steam' || layout === 'tram' || layout === 'urbanist',
+			hug:
+				layout === 'steam' ||
+				layout === 'tram' ||
+				layout === 'urbanist' ||
+				layout === 'voyager',
 			grid: true,
 			container: 'text',
 			containerSize: '2xl',
