@@ -28,7 +28,16 @@
 }
 
 [class*='bg:blur']:hover {
-	--blur-strength: var(--size-base-2xl);
+	--blur-strength: var(--size-base-xl);
+}
+
+.settings\:dark\:contrast,
+.settings\:light\:contrast,
+.settings\:system\:contrast {
+	[class*='bg:blur'] {
+		backdrop-filter: unset;
+		background-color: var(--shade);
+	}
 }
 
 /* Set current color LIGHTNESS and CHROMA according to a 7 point scale */

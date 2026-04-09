@@ -25,7 +25,8 @@
 		container ? `l:${container}:${size} l:${container}` : '',
 	)
 	let layoutClass = $derived(layout ? `l:${layout}:${size}` : '')
-	let colorClass = $derived(color ? `surface:1:${color}` : 'bg:inherit')
+	let surfaceLevel = $derived(depth === 0 ? 1 : 0)
+	let colorClass = $derived(`surface:${surfaceLevel}:neutral`)
 	let alignClass = $derived(align ? `align:${align}` : '')
 	let shapeClass = $derived(`shape:mellow`)
 	let depthClass = $derived(`depth-${depth}`)
@@ -39,7 +40,7 @@
 
 <ul
 	{id}
-	class={`${gridClass} ${depthClass} bg:inherit w:full`}
+	class={`${gridClass} ${depthClass} w:full ${colorClass}`}
 	data-testid={id}
 	data-sveltekit-preload-data={preload ? preload : undefined}
 >

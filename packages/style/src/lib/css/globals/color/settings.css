@@ -261,6 +261,14 @@ html:has([class*='settings:night:']),
 	.emoji\:blend::before {
 		content: var(--emoji-icon-blend-day);
 	}
+
+	.settings\:system\:contrast {
+		--lightness-base: var(--color-lightness-light-contrast);
+	}
+
+	.settings\:system\:blend {
+		--lightness-base: var(--color-lightness-light-blend);
+	}
 }
 
 [class*='settings:day'],
@@ -278,17 +286,19 @@ html:has([class*='settings:night:']),
 	--lightness-base: var(--color-lightness-dark-blend);
 }
 
-.settings\:day\:contrast {
-	--lightness-base: var(--color-lightness-light-contrast);
-}
-
-.settings\:day\:blend {
-	--lightness-base: var(--color-lightness-light-blend);
-}
-
 @media (prefers-color-scheme: dark) {
 	.emoji\:blend::before {
 		content: var(--emoji-icon-blend-night);
+	}
+
+	.settings\:system\:contrast {
+		--hue: var(--color-theme-primary);
+		--lightness-base: var(--color-lightness-dark-contrast);
+	}
+
+	.settings\:system\:blend {
+		--hue: var(--color-theme-primary);
+		--lightness-base: var(--color-lightness-dark-blend);
 	}
 }
 
