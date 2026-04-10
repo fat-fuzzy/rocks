@@ -5,6 +5,7 @@
 	display: flex;
 	flex-wrap: wrap;
 	gap: var(--ui-size-sm);
+	cursor: default;
 }
 
 p + [class*='feedback:'] {
