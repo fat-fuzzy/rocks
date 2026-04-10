@@ -22,7 +22,7 @@
 		size = 'xs',
 		color,
 		variant,
-		menus,
+		children,
 	}: {
 		id: string
 		editor: Editor
@@ -31,7 +31,7 @@
 		size?: UiSize
 		color: UiColor
 		variant?: UiVariant
-		menus?: Snippet[]
+		children?: Snippet
 	} = $props()
 </script>
 
@@ -48,7 +48,7 @@
 
 	<FlowControl {editor} {commands} {size} {color} {variant} />
 
-	{#if preset === 'full' || menus}
+	{#if preset === 'full' || children}
 		<ToggleReveal
 			id={`toggle-options-${id}`}
 			label="More"
@@ -74,13 +74,11 @@
 						{size}
 						{color}
 						{variant}
-						layout={menus ? 'flex' : undefined}
+						layout={children ? 'flex' : undefined}
 					/>
 				{/if}
-				{#if menus}
-					{#each menus as children, i (i)}
-						{@render children()}
-					{/each}
+				{#if children}
+					{@render children()}
 				{/if}
 			</div>
 		</ToggleReveal>

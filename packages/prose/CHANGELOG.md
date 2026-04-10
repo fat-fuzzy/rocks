@@ -1,5 +1,11 @@
 # @fat-fuzzy/prose
 
+## 0.1.38
+
+### Patch Changes
+
+- 5eabfce: Cleanup
+
 ## 0.1.37
 
 ### Patch Changes
