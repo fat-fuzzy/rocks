@@ -54,6 +54,10 @@ ul.unstyled {
 	padding-inline-start: calc(2 * var(--ui-size-lg));
 }
 
+.l\:text\:3xs {
+	--text-inline-size: 15ch;
+}
+
 .l\:text\:2xs {
 	--text-inline-size: 20ch;
 }
@@ -80,4 +84,8 @@ ul.unstyled {
 
 .l\:text\:2xl {
 	--text-inline-size: 90ch;
+}
+
+.l\:text\:3xl {
+	--text-inline-size: 110ch;
 }

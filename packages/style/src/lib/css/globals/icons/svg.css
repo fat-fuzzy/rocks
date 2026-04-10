@@ -21,6 +21,10 @@
 	}
 }
 
+[class*='svg'].size\:3xs::before {
+	--icon-size: var(--icon-svg-3xs);
+}
+
 [class*='svg'].size\:2xs::before {
 	--icon-size: var(--icon-svg-2xs);
 }
@@ -47,4 +51,8 @@
 
 [class*='svg'].size\:2xl::before {
 	--icon-size: var(--icon-svg-2xl);
+}
+
+[class*='svg'].size\:3xl::before {
+	--icon-size: var(--icon-svg-3xl);
 }
