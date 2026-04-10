@@ -47,6 +47,7 @@ const SemiBold = Mark.create({
 
 	addCommands() {
 		return {
+			name: 'semibold',
 			toggleSemiBold:
 				() =>
 				({commands}) => {
@@ -61,6 +62,7 @@ const SemiBold = Mark.create({
 const CustomBold = Bold.extend({
 	addCommands() {
 		return {
+			name: 'custom-bold',
 			toggleBold:
 				() =>
 				({commands}) => {
