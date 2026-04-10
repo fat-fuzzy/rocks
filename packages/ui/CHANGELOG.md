@@ -1,5 +1,11 @@
 # @fat-fuzzy/ui
 
+## 0.1.92
+
+### Patch Changes
+
+- 02a3fda: Fix sidenav current color
+
 ## 0.1.91
 
 ### Patch Changes
