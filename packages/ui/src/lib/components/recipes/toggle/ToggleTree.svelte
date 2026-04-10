@@ -77,7 +77,6 @@
 					{shape}
 					{layer}
 					{depth}
-					{color}
 					width="full"
 					assetType={depth === 2 ? 'svg' : assetType ? assetType : 'emoji'}
 				>
@@ -108,7 +107,6 @@
 		size="2xs"
 		{align}
 		{layer}
-		{color}
 		depth={depth + 1}
 		{shape}
 		width="full"
