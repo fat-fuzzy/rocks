@@ -28,6 +28,7 @@
 		width,
 		height,
 		place = 'nord',
+		position,
 		container,
 		background,
 		surface,
@@ -74,7 +75,10 @@
 	let autoClasses = $derived(
 		auto ? `auto bp:${breakpoint} th:${threshold}` : '',
 	)
-	let hugClasses = $derived(hug ? 'hug' : '')
+	let hugClass = $derived(hug ? 'hug' : '')
+	let positionClass = $derived(
+		!area && position && place ? `${position}:${place}` : '',
+	)
 	let containerClasses = $derived(
 		`${autoClasses} ${areaClass} ${layoutClasses}`,
 	)
@@ -103,13 +107,13 @@
 			: 'shape:mellow',
 	)
 	let contentClasses = $derived(
-		`w:full ${shapeClass} ${scrollClass} ${layerClass} ${bgContentClass} ${bgLabelClass} ${bgContentClass}`,
+		`w:full ${shapeClass} ${scrollClass} ${layerClass} ${bgContentClass} ${bgLabelClass} ${bgContentClass} ${positionClass}`,
 	)
 </script>
 
 {#snippet control()}
 	<ff-control class="gare-control">
-		<label for={id} class={`ellipsis  ${labelClasses} ${hugClasses}`}>
+		<label for={id} class={`ellipsis  ${labelClasses} ${hugClass}`}>
 			<ff-label class={`${ff_labelClasses} ${ff_labelReverse}`}>
 				{#if nav}
 					{@render nav()}
@@ -131,14 +135,14 @@
 {/snippet}
 
 <!-- {#if dismiss === 'outside'}
-	<ff-toggle-reveal class={containerClasses} {@attach clickOutside}>
+	<ff-toggle-reveal class={revalClasses} {@attach clickOutside}>
 		{@render control()}
 		<ff-reveal class={contentClasses}>
 			{@render children()}
 		</ff-reveal>
 	</ff-toggle-reveal>
 {:else}
-	<ff-toggle-reveal class={containerClasses}>
+	<ff-toggle-reveal class={revalClasses}>
 		{@render control()}
 		<ff-reveal class={contentClasses}>
 			{@render children()}
