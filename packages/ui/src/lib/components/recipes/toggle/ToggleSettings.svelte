@@ -32,7 +32,6 @@
 					size: 'xs',
 					justify: 'between',
 					color: 'primary',
-					place: 'est',
 					variant: 'bare',
 				},
 				{
@@ -45,7 +44,6 @@
 					size: 'xs',
 					justify: 'between',
 					color: 'primary',
-					place: 'est',
 					variant: 'bare',
 				},
 				{
@@ -57,7 +55,6 @@
 					shape: 'pill',
 					size: 'xs',
 					justify: 'between',
-					place: 'est',
 					color: 'primary',
 					variant: 'bare',
 				},
@@ -87,7 +84,6 @@
 					shape: 'pill',
 					size: 'xs',
 					justify: 'between',
-					place: 'est',
 					color: 'accent',
 					variant: 'bare',
 					checked:
@@ -103,7 +99,6 @@
 					shape: 'pill',
 					size: 'xs',
 					justify: 'between',
-					place: 'est',
 					color: 'accent',
 					variant: 'bare',
 					checked:
