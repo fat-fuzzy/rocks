@@ -1,32 +1,8 @@
-import type {
-	UiBlockProps,
-	UiShape,
-	UiVariant,
-	UiSize,
-	UiColor,
-	UiAssetType,
-	UiLayout,
-} from '$types'
+import type {UiBlockProps, UiControl} from '$types'
 
 import type {Snippet} from 'svelte'
 
-export type NavItem = {
-	slug: string
-	label: string
-	title?: string
-	asset?: string
-	assetType?: UiAssetType
-	color?: UiColor
-	size?: UiSize
-	variant?: UiVariant
-	shape?: UiShape
-	layout?: UiLayout
-	actionPath?: string
-	itemPath?: string
-	preload?: string
-	items?: NavItem[]
-	url?: URL
-}
+export type NavItem = UiControl
 
 export type NavProps = UiBlockProps & {
 	id: string

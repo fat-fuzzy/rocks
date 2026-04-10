@@ -4,6 +4,7 @@ import type {
 	UiLayoutProps,
 	NavItem,
 	ViewingPreferences,
+	UiControl,
 } from '$types'
 
 export type ToggleRevealProps = UiBlockProps &
@@ -39,6 +40,14 @@ export type ToggleLinkProps = UiBlockProps & {
 	place?: string
 	children: Snippet
 	depth: number
+}
+
+export type ToggleGroupsProps = UiBlockProps & {
+	id: string
+	name: string
+	label: string
+	selected: {name: string; value: string[]}[]
+	options: UiControl[]
 }
 
 export type ToggleSettingsProps = UiBlockProps & {
