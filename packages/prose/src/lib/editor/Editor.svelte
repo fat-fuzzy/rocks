@@ -69,7 +69,7 @@
 	})
 
 	function setActiveElement() {
-		commands.bold = editor.isActive('bold')
+		commands.bold = editor.isActive('customBold')
 		commands.semibold = editor.isActive('semibold')
 		commands.italic = editor.isActive('italic')
 		commands.strike = editor.isActive('strike')
