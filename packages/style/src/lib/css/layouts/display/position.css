@@ -1,6 +1,6 @@
 [class*='fixed'],
 [class*='place'] {
-	--inset-size: var(--size-base-2xs);
+	--inset-size: var(--ui-size-xs, var(--outline-offset-lg));
 	max-inline-size: 100%;
 	max-block-size: 100%;
 }
@@ -10,15 +10,26 @@
 	z-index: var(--layout-z-index-fixed);
 }
 
-[class*='fixed:'],
-[class*='place:'],
-[class*='pop:'] {
-	--inset-size-top: calc(var(--inset-top) + var(--size-base-2xs));
-	--inset-size-bottom: calc(var(--inset-bottom) + var(--size-base-2xs));
-	--inset-size-right: calc(var(--inset-right) + var(--size-base-2xs));
-	--inset-size-left: calc(var(--inset-left) + var(--size-base-2xs));
+[class*='absolute:'] {
+	position: absolute;
 }
 
+[class*='relative'] {
+	position: relative;
+}
+
+[class*='fixed:'],
+[class*='place:'],
+[class*='relative:'],
+[class*='absolute:'],
+[class*='pop:'] {
+	--inset-size-top: calc(var(--inset-top) + var(--ui-size));
+	--inset-size-bottom: calc(var(--inset-bottom) + var(--ui-size));
+	--inset-size-right: calc(var(--inset-right) + var(--ui-size));
+	--inset-size-left: calc(var(--inset-left) + var(--ui-size));
+}
+
+[class*='absolute:'],
 [class*='place:'] {
 	&[class*=':top-left'] {
 		top: var(--inset-size-top, var(--inset-size));
@@ -38,6 +49,12 @@
 	&[class*=':bottom-right'] {
 		bottom: var(--inset-size-bottom, var(--inset-size));
 		left: var(--inset-size-right, var(--inset-size));
+	}
+}
+
+[class*='absolute:'] {
+	&[class*=':nord'] {
+		top: var(--inset-size-top, var(--inset-size));
 	}
 }
 

@@ -69,4 +69,20 @@ export type UiContentProps = {
 	title?: string
 }
 
+export type UiControl = {
+	slug: string
+	label: string
+	title?: string
+	asset?: string
+	assetType?: UiAssetType
+	color?: UiColor
+	size?: UiSize
+	variant?: UiVariant
+	shape?: UiShape
+	layout?: UiLayout
+	actionPath?: string
+	preload?: string
+	items?: UiControl[]
+}
+
 export type UiAnimationEvent = MouseEvent | TouchEvent

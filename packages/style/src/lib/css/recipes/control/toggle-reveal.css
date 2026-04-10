@@ -161,8 +161,11 @@ ff-toggle-reveal.sud {
 		block-size: 0;
 	}
 
-	ff-control + ff-reveal {
+	ff-control + ff-reveal:not([class*='absolute:']) {
 		position: relative;
+	}
+
+	ff-control + ff-reveal {
 		block-size: 0;
 		inline-size: 0;
 		transition:
@@ -170,13 +173,40 @@ ff-toggle-reveal.sud {
 			block-size 250ms ease-in;
 	}
 
-	ff-control:has(input:checked) + ff-reveal {
+	ff-control:has(input:checked) + ff-reveal:not([class*='absolute:']) {
 		position: static;
+	}
+
+	ff-control:has(input:checked) + ff-reveal {
 		block-size: fit-content;
 		max-inline-size: unset;
 		transition:
 			opacity 350ms ease-out 50ms,
 			block-size 350ms ease-out;
+	}
+}
+
+ff-toggle-reveal.nord {
+	ff-icon.svg\:chevron-down::before {
+		transform: rotate(0deg);
+		transition: transform 300ms ease-in;
+	}
+
+	label:has(input:checked) ff-icon.svg\:chevron-down::before {
+		transform: rotate(-180deg);
+		transition: transform 300ms ease-out;
+	}
+}
+
+ff-toggle-reveal.sud {
+	ff-icon.svg\:chevron-down::before {
+		transform: rotate(180deg);
+		transition: transform 300ms ease-in;
+	}
+
+	label:has(input:checked) ff-icon.svg\:chevron-down::before {
+		transform: rotate(0deg);
+		transition: transform 300ms ease-out;
 	}
 }
 

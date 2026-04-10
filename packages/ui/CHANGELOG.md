@@ -1,5 +1,11 @@
 # @fat-fuzzy/ui
 
+## 0.1.91
+
+### Patch Changes
+
+- 9f120f0: Style fixes, editor menu improvements, cleanup
+
 ## 0.1.90
 
 ### Patch Changes

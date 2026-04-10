@@ -83,10 +83,6 @@ ff-control > label.variant\:bare {
 	background-color: inherit;
 }
 
-ff-control > label.variant\:bare {
-	--border-color: transparent;
-}
-
 button.variant\:outline:hover,
 .ff-control.variant\:outline:hover,
 ff-control > label.variant\:outline:hover {
@@ -117,25 +113,6 @@ button.variant\:bare:active {
 	--border-color: var(--accent);
 	--lightness: var(--lightness-surface-1);
 	--lightness-accent: var(--lightness-surface-1);
-	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
-	background-color: var(--shade);
-}
-
-ff-control > label.variant\:bare:has(input:checked),
-.ff-control.variant\:bare:has(input:checked) {
-	--border-color: var(--accent);
-	--lightness: var(--lightness-surface-1);
-	--lightness-accent: var(--lightness-surface-1);
-	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
-	background-color: var(--shade);
-}
-
-button.variant\:bare:active:hover,
-ff-control:hover > label.variant\:bare:has(input:checked),
-.ff-control.variant\:bare:has(input:checked):hover {
-	--border-color: var(--accent);
-	--lightness: var(--lightness-surface-2);
-	--lightness-accent: var(--lightness-surface-3);
 	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
 	background-color: var(--shade);
 }
@@ -193,31 +170,21 @@ ff-control > label[class*='bg:'].color\:neutral.variant\:outline:hover {
 	);
 }
 
-button.variant\:fill:not([disabled]):hover,
-.ff-control.variant\:fill:has(input:not([disabled], [class*=':neutral'])):hover,
-ff-control
-	> label.variant\:fill:has(input:not([disabled], [class*=':neutral'])):hover {
+button.variant\:fill:not([disabled], [class*=':neutral']):hover {
 	--lightness: var(--lightness-surface-3);
 	--lightness-contrast: var(--lightness-surface-3-contrast);
 }
 
-button.variant\:fill:not([disabled], [class*=':neutral']):hover,
-.ff-control.variant\:fill:has(input:not([disabled], [class*=':neutral'])):hover,
-ff-control
-	> label.variant\:fill:has(input:not([disabled], [class*=':neutral'])):hover {
+button.variant\:fill:not([disabled], [class*=':neutral']):hover {
 	--chroma: var(--chroma-surface-3);
 	--chroma-contrast: var(--chroma-surface-3-contrast);
 }
 
-button[class*='bg:']:not([class*=':neutral']),
-.ff-control[class*='bg:']:not([class*=':neutral']),
-ff-control > label[class*='bg:']:not([class*=':neutral']) {
+button[class*='bg:']:not([class*=':neutral']) {
 	&.variant\:outline:hover,
 	&.variant\:bare:hover {
 		--lightness: var(--lightness-surface-2);
 		--chroma: var(--chroma-surface-1);
-		--lightness-contrast: var(--lightness-surface-2-contrast);
-		--chroma-contrast: var(--chroma-surface-1-contrast);
 		--shade: oklch(var(--lightness) var(--chroma) var(--hue));
 		color: var(--ink);
 	}
@@ -226,6 +193,5 @@ ff-control > label[class*='bg:']:not([class*=':neutral']) {
 	&.variant\:bare:active,
 	&.variant\:outline:checked {
 		--lightness: var(--lightness-surface-2);
-		--lightness-contrast: var(--lightness-contrast-4);
 	}
 }

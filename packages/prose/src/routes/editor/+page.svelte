@@ -12,19 +12,13 @@
 <PageMain title="" {description}>
 	<div class="l:stack:md maki:block:2xl">
 		<h1>{title}</h1>
-		<Editor
-			{html}
-			preset="basic"
-			id="a-quick-message"
-			tags={['short', 'sweet']}
-			height="xs"
-		/>
+		<Editor {html} preset="basic" id="a-quick-message" height="xs" width="md" />
 		<Editor
 			{html}
 			preset="full"
 			id="an-elaborate-argument"
-			tags={['draw', 'conclusion']}
 			height="md"
+			width="3xl"
 		/>
 	</div>
 </PageMain>

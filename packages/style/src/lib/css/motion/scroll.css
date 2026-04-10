@@ -28,6 +28,18 @@
 	overflow: auto hidden;
 }
 
+.scroll\:container.contain\:sm:has(.scroll\:y) {
+	max-block-size: var(--overlay-height-sm);
+}
+
+.scroll\:container.contain\:md:has(.scroll\:y) {
+	max-block-size: var(--overlay-height-md);
+}
+
+.scroll\:container:has(.scroll\:x) {
+	overflow: auto hidden;
+}
+
 .scroll\:y.snap {
 	scroll-snap-type: y;
 }

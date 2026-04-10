@@ -1,11 +1,12 @@
 /**
  * Set inline-size for text:
- * - improve readability by using ch units to adapt to user zoom settings
+ * - improve readability by using ch units to adapt to user zoom  settings
  */
 
 [class*='l:text'] {
 	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
 	--text-inline-size: 71ch;
+
 	color: var(--ink);
 	background-color: inherit;
 	inline-size: 100%;
@@ -18,9 +19,8 @@
 }
 
 [class*='l:text'] > *:not(pre) {
-	--gap: var(--grid-gap, var(--ui-size));
 	inline-size: 100%;
-	max-inline-size: calc(100% - var(--gap));
+	max-inline-size: 100%;
 }
 
 [class^='l:text'] > * + h1,
@@ -54,6 +54,10 @@ ul.unstyled {
 	padding-inline-start: calc(2 * var(--ui-size-lg));
 }
 
+.l\:text\:3xs {
+	--text-inline-size: 15ch;
+}
+
 .l\:text\:2xs {
 	--text-inline-size: 20ch;
 }
@@ -80,4 +84,8 @@ ul.unstyled {
 
 .l\:text\:2xl {
 	--text-inline-size: 90ch;
+}
+
+.l\:text\:3xl {
+	--text-inline-size: 110ch;
 }

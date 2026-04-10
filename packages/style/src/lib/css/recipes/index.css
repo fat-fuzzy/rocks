@@ -22,6 +22,7 @@
 @import './control/toggle-reveal.css'; /* Toggle visibility of content or ui areas */
 @import './control/menu.css'; /* Use for menus (menus = actions -> use forms [for no-js] -> buttons = <button>) and derived elements */
 @import './control/settings.css'; /* A Settings menu component (for user input to adjust brightness, contrast, language, ...) */
+@import './control/button-group.css'; /* Use to style groups of related buttons */
 
 /* ========= HERE be CASCADE: Order is important =============*/
 @import './control/overrides.css'; /* Overrides (TODO: clean) */

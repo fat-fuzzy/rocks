@@ -51,7 +51,7 @@ const SemiBold = Mark.create({
 				() =>
 				({commands}) => {
 					// Remove bold before toggling semibold
-					commands.unsetMark('bold')
+					commands.unsetMark('customBold')
 					return commands.toggleMark(this.name)
 				},
 		}
@@ -59,6 +59,7 @@ const SemiBold = Mark.create({
 })
 
 const CustomBold = Bold.extend({
+	name: 'customBold',
 	addCommands() {
 		return {
 			toggleBold:

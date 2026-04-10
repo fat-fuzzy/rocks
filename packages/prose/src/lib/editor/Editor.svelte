@@ -1,4 +1,5 @@
 <script lang="ts">
+	import type {Snippet} from 'svelte'
 	import type {JSONContent} from '@tiptap/core'
 	import type {UiColor, UiSize, UiVariant} from '@fat-fuzzy/ui'
 
@@ -14,22 +15,24 @@
 		html,
 		id = 'editor',
 		type,
-		tags,
+		menus,
 		preset = 'basic',
 		color = 'primary',
 		variant = 'outline',
-		height = 'sm',
+		height = 'sm', // Editor total width
+		width = 'xl', // Editor height with scroll overflow
 		onupdate,
 		onblur,
 	}: {
 		html: string
 		id?: string
 		type?: string
-		tags?: string[]
+		menus?: Snippet[]
 		preset?: string
 		color?: UiColor
 		variant?: UiVariant
 		height?: UiSize
+		width?: UiSize
 		onupdate?: (content: JSONContent) => void
 		onblur?: (content: JSONContent) => void
 	} = $props()
@@ -66,7 +69,7 @@
 	})
 
 	function setActiveElement() {
-		commands.bold = editor.isActive('bold')
+		commands.bold = editor.isActive('customBold')
 		commands.semibold = editor.isActive('semibold')
 		commands.italic = editor.isActive('italic')
 		commands.strike = editor.isActive('strike')
@@ -108,10 +111,10 @@
 			},
 			onUpdate: onupdate
 				? ({editor}: {editor: Editor}) => onupdate(editor.getJSON())
-				: undefined,
+				: () => {},
 			onBlur: onblur
 				? ({editor}: {editor: Editor}) => onblur(editor.getJSON())
-				: undefined,
+				: () => {},
 		})
 	})
 
@@ -124,12 +127,19 @@
 
 <ff-prose
 	id={id ?? `${id}-${preset}`}
-	class="l:text:lg"
+	class={`l:text:${width}`}
 	data-type={type}
-	data-tags={tags?.join(':')}
 >
 	{#if editor}
-		<EditorMenu {editor} {commands} {color} {variant} {preset} />
+		<EditorMenu
+			id={id ? `menu-${id}` : `menu-${id}-${preset}`}
+			{editor}
+			{commands}
+			{color}
+			{variant}
+			{preset}
+			{menus}
+		/>
 	{/if}
 	<div class={`prose-editor ${heighClass} variant:bare dotted`}>
 		<div class="content scroll:y" bind:this={element}></div>

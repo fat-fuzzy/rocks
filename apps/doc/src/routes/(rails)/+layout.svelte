@@ -222,13 +222,7 @@
 				<Socials links={linksSocials} />
 			{/snippet}
 			{#snippet actions()}
-				{#if appContext.consent}
-					<Cookies
-						consent={appContext.consent}
-						actionPath={appContext.actionPath}
-						font="lg"
-					/>
-				{/if}
+				<Cookies actionPath={page.url.pathname} font="lg" />
 			{/snippet}
 		</Footer>
 	{/if}

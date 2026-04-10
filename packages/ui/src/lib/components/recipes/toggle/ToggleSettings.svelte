@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {ToggleSettingsProps, InputCallbackProps, NavItem} from '$types'
+	import type {ToggleSettingsProps, InputCallbackProps, UiControl} from '$types'
 
 	import InputGroup from '$lib/components/blocks/inputs/InputGroup.svelte'
 
@@ -7,7 +7,7 @@
 
 	let values = $derived(Object.entries(selected).map(([key, value]) => value))
 
-	const options: NavItem[] = $derived([
+	const options: UiControl[] = $derived([
 		{
 			label: 'Brightness',
 			name: 'brightness',
@@ -32,7 +32,6 @@
 					size: 'xs',
 					justify: 'between',
 					color: 'primary',
-					place: 'est',
 					variant: 'bare',
 				},
 				{
@@ -45,7 +44,6 @@
 					size: 'xs',
 					justify: 'between',
 					color: 'primary',
-					place: 'est',
 					variant: 'bare',
 				},
 				{
@@ -57,7 +55,6 @@
 					shape: 'pill',
 					size: 'xs',
 					justify: 'between',
-					place: 'est',
 					color: 'primary',
 					variant: 'bare',
 				},
@@ -87,7 +84,6 @@
 					shape: 'pill',
 					size: 'xs',
 					justify: 'between',
-					place: 'est',
 					color: 'accent',
 					variant: 'bare',
 					checked:
@@ -103,7 +99,6 @@
 					shape: 'pill',
 					size: 'xs',
 					justify: 'between',
-					place: 'est',
 					color: 'accent',
 					variant: 'bare',
 					checked:

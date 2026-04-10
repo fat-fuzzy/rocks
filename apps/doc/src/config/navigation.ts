@@ -1,4 +1,4 @@
-import type {NavItem} from '@fat-fuzzy/ui'
+import type {NavItem, UiAssetType} from '@fat-fuzzy/ui'
 
 export const links = [
 	{slug: 'about', label: 'About', layout: 'sidebar'},
@@ -13,7 +13,7 @@ export const linksSocials = [
 		label: 'GitHub',
 		url: 'https://github.com/fat-fuzzy/rocks',
 		asset: 'github',
-		assetType: 'svg',
+		assetType: 'svg' as UiAssetType,
 		shape: 'round',
 		size: 'sm',
 		color: 'primary',
@@ -23,7 +23,7 @@ export const linksSocials = [
 		label: 'RSS',
 		url: 'https://rocks.pages.dev/blog/rss.xml',
 		asset: 'rss',
-		assetType: 'svg',
+		assetType: 'svg' as UiAssetType,
 		shape: 'square',
 		size: 'sm',
 		color: 'primary',
