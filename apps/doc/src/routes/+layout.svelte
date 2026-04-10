@@ -8,7 +8,7 @@
 	import Beacon from '$lib/ui/Beacon.svelte'
 	import '$lib/styles/css/main.css'
 
-	const {Cookies, ToastGroup} = ui.drafts
+	const {ToastGroup} = ui.drafts
 
 	type Props = {
 		children?: Snippet
@@ -43,14 +43,6 @@
 	{@render children()}
 {:else}
 	<p>Nothing to see here</p>
-{/if}
-
-{#if !appContext.consent}
-	<Cookies
-		consent={appContext.consent}
-		actionPath={appContext.actionPath}
-		font="lg"
-	/>
 {/if}
 
 <ToastGroup />
