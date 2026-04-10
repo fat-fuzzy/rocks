@@ -34,7 +34,7 @@
 	asset={depth === 2 ? 'chevron-right' : asset}
 	assetType={depth === 2 ? 'svg' : assetType}
 	{color}
-	{size}
+	size={depth > 1 ? '3xs' : size}
 	{shape}
 	{variant}
 	{area}
@@ -43,7 +43,7 @@
 	width="full"
 	layout="flex"
 	{depth}
-	nav={depth <= 1 || depth > 1 ? link : undefined}
+	nav={link}
 >
 	{#if children}
 		{@render children()}

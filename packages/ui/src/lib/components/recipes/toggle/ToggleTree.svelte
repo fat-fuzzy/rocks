@@ -71,12 +71,13 @@
 					{area}
 					asset={buttonAssetClass}
 					{href}
-					size="xs"
+					size="2xs"
 					font="sm"
 					place="nord"
 					{shape}
 					{layer}
 					{depth}
+					{color}
 					width="full"
 					assetType={depth === 2 ? 'svg' : assetType ? assetType : 'emoji'}
 				>
@@ -104,9 +105,10 @@
 		items={subItems}
 		{pathname}
 		{layout}
-		{size}
+		size="2xs"
 		{align}
 		{layer}
+		{color}
 		depth={depth + 1}
 		{shape}
 		width="full"
