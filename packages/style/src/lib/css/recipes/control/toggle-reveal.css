@@ -162,6 +162,7 @@ ff-toggle-reveal.sud {
 	}
 
 	ff-control + ff-reveal:not([class*='absolute:']) {
+		max-inline-size: 100%;
 		position: relative;
 	}
 
@@ -174,6 +175,7 @@ ff-toggle-reveal.sud {
 	}
 
 	ff-control:has(input:checked) + ff-reveal:not([class*='absolute:']) {
+		max-inline-size: 100%;
 		position: static;
 	}
 
