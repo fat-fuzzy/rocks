@@ -1,5 +1,11 @@
 # @fat-fuzzy/style
 
+## 0.1.36
+
+### Patch Changes
+
+- 9f120f0: Style fixes, editor menu improvements, cleanup
+
 ## 0.1.35
 
 ### Patch Changes
