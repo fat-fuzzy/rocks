@@ -1,5 +1,11 @@
 # @fat-fuzzy/style
 
+## 0.1.37
+
+### Patch Changes
+
+- 4bcb14d: Fix ellipsis
+
 ## 0.1.36
 
 ### Patch Changes
