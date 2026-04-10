@@ -20,3 +20,5 @@ yarn.lock
 **/playwright/.cache
 **/playwright_report
 **/out/
+
+packages/style/src/lib/css/variables/
