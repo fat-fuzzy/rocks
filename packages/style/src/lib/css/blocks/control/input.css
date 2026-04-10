@@ -20,6 +20,39 @@ ff-control > label.variant\:bare {
 	--border-color: transparent;
 }
 
+ff-control > label.variant\:bare:has(input:checked),
+.ff-control.variant\:bare:has(input:checked) {
+	--border-color: var(--accent);
+	--lightness: var(--lightness-surface-1);
+	--lightness-accent: var(--lightness-surface-1);
+	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
+	background-color: var(--shade);
+}
+
+button.variant\:bare:active:hover,
+ff-control:hover > label.variant\:bare:has(input:checked),
+.ff-control.variant\:bare:has(input:checked):hover {
+	--border-color: var(--accent);
+	--lightness: var(--lightness-surface-2);
+	--lightness-accent: var(--lightness-surface-3);
+	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
+	background-color: var(--shade);
+}
+
+ff-control > label.variant\:outline:has(input:checked),
+.ff-control.variant\:outline:has(input:checked) {
+	--lightness: var(--lightness-surface-1);
+	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
+	background-color: var(--shade);
+}
+
+ff-control:hover > label.variant\:outline:has(input:checked),
+.ff-control.variant\:outline:has(input:checked):hover {
+	--lightness: var(--lightness-surface-2);
+	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
+	background-color: var(--shade);
+}
+
 /* == Toggle with input default == */
 .ff-control[class*='variant:']:has([disabled]),
 ff-control[class*='variant:']:has([disabled]),
@@ -43,4 +76,27 @@ ff-control > label:not([class*=':neutral']) ff-icon {
 	--chroma: var(--chroma-base);
 	--chroma-contrast: var(--chroma-contrast-base);
 	--chroma-accent: var(--chroma-accent-base);
+}
+
+.ff-control:not([class*=':neutral']):has(input:not([disabled])):hover,
+ff-control > label:not([class*=':neutral']):has(input:not([disabled])):hover {
+	--lightness: var(--lightness-surface-1);
+}
+
+.ff-control[class*='bg:']:not([class*=':neutral']),
+ff-control > label[class*='bg:']:not([class*=':neutral']) {
+	&.variant\:bare:hover,
+	&.variant\:outline:hover {
+		--lightness: var(--lightness-surface-1);
+		--shade: oklch(var(--lightness) var(--chroma) var(--hue));
+		color: var(--ink);
+	}
+
+	&.variant\:outline:active,
+	&.variant\:bare:active,
+	&.variant\:outline:has(input:checked) {
+		--lightness: var(--lightness-surface-2);
+		--shade: oklch(var(--lightness) var(--chroma) var(--hue));
+		color: var(--ink);
+	}
 }
