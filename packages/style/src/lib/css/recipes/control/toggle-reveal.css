@@ -186,6 +186,30 @@ ff-toggle-reveal.sud {
 	}
 }
 
+ff-toggle-reveal.nord {
+	ff-icon.svg\:chevron-down::before {
+		transform: rotate(0deg);
+		transition: transform 300ms ease-in;
+	}
+
+	label:has(input:checked) ff-icon.svg\:chevron-down::before {
+		transform: rotate(-180deg);
+		transition: transform 300ms ease-out;
+	}
+}
+
+ff-toggle-reveal.sud {
+	ff-icon.svg\:chevron-down::before {
+		transform: rotate(180deg);
+		transition: transform 300ms ease-in;
+	}
+
+	label:has(input:checked) ff-icon.svg\:chevron-down::before {
+		transform: rotate(0deg);
+		transition: transform 300ms ease-out;
+	}
+}
+
 ff-toggle-reveal.auto {
 	ff-control:has(input:checked) + ff-reveal {
 		block-size: fit-content;
