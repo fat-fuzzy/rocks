@@ -27,7 +27,7 @@
 		html: string
 		id?: string
 		type?: string
-		menus?: Snippet[]
+		menus?: Snippet
 		preset?: string
 		color?: UiColor
 		variant?: UiVariant
@@ -138,7 +138,7 @@
 			{color}
 			{variant}
 			{preset}
-			{menus}
+			children={menus}
 		/>
 	{/if}
 	<div class={`prose-editor ${heighClass} variant:bare dotted`}>
