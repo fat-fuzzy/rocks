@@ -37,7 +37,7 @@
 		"./api": "./dist/index.js"
 	},
 	"peerDependencies": {
-		"@sveltejs/kit": "2.53.4",
+		"@sveltejs/kit": "2.57.1",
 		"svelte": "5.53.5"
 	},
 	"devDependencies": {
@@ -47,11 +47,11 @@
 		"@fat-fuzzy/ui": "workspace:*",
 		"@playwright/test": "1.58.2",
 		"@sveltejs/adapter-cloudflare": "7.2.8",
-		"@sveltejs/kit": "2.53.4",
+		"@sveltejs/kit": "2.57.1",
 		"@sveltejs/package": "2.5.7",
 		"@sveltejs/vite-plugin-svelte": "6.2.4",
 		"@vitest/coverage-v8": "4.1.3",
-		"@vitest/ui": "4.0.18",
+		"@vitest/ui": "4.1.3",
 		"publint": "0.3.18",
 		"svelte": "5.53.7",
 		"svelte-check": "4.4.5",
