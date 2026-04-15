@@ -74,7 +74,7 @@ const config = {
 				'frame-src': ["'none'"],
 				'img-src': ["'self'", 'data:'],
 				'media-src': ["'self'", 'data:'],
-				'object-src': ["'self'"],
+				'object-src': ["'none'"],
 				// 'require-trusted-types-for': ["'script'"], // See SvelteKit Issues above
 				'upgrade-insecure-requests': true,
 				'worker-src': ["'self'", 'blob:'],
