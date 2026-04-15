@@ -1,5 +1,11 @@
 # @fat-fuzzy/prose
 
+## 0.1.39
+
+### Patch Changes
+
+- 977fd1b: Enable Editor export type, ui adjustements
+
 ## 0.1.38
 
 ### Patch Changes

@@ -121,7 +121,7 @@
 	</div>
 
 	<div
-		class="sidebar surface:0:neutral align:center width:lg height:sm raviolink"
+		class="sidebar hug surface:0:neutral align:center width:lg height:sm raviolink"
 	>
 		{#if sidenav.layout === 'tgv'}
 			<div class="app-name">
@@ -176,14 +176,14 @@
 		{/if}
 	</div>
 
-	<div class="context raviolink">
+	<div class="context hug raviolink">
 		<ToggleReveal
 			id="appContext"
 			label="Settings"
 			color="neutral"
 			asset="settings"
 			font="sm"
-			layout="grid"
+			layout="flex"
 			justify="end"
 			place="est"
 			depth={0}

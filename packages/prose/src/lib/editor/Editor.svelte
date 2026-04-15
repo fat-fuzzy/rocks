@@ -23,6 +23,7 @@
 		width = 'xl', // Editor height with scroll overflow
 		onupdate,
 		onblur,
+		init,
 	}: {
 		html: string
 		id?: string
@@ -33,8 +34,9 @@
 		variant?: UiVariant
 		height?: UiSize
 		width?: UiSize
-		onupdate?: (content: JSONContent) => void
-		onblur?: (content: JSONContent) => void
+		onupdate?: (content: JSONContent | string) => void
+		onblur?: (content: JSONContent | string) => void
+		init?: (content: JSONContent | string) => void
 	} = $props()
 
 	let element: Element
@@ -94,6 +96,45 @@
 		commands.isLink = editor.can().chain().focus().unsetLink().run()
 	}
 
+	function handleUpdate({editor}: {editor: Editor}) {
+		if (onupdate) {
+			if (type === 'json') {
+				return onupdate(editor.getJSON())
+			}
+			if (type === 'html') {
+				return onupdate(editor.getHTML())
+			}
+		}
+
+		return () => {}
+	}
+
+	function handleBlur({editor}: {editor: Editor}) {
+		if (onblur) {
+			if (type === 'json') {
+				return onblur(editor.getJSON())
+			}
+			if (type === 'html') {
+				return onblur(editor.getHTML())
+			}
+		}
+
+		return () => {}
+	}
+
+	function onInit({editor}: {editor: Editor}) {
+		if (init) {
+			if (type === 'json') {
+				return init(editor.getJSON())
+			}
+			if (type === 'html') {
+				return init(editor.getHTML())
+			}
+		}
+
+		return () => {}
+	}
+
 	onMount(() => {
 		if (browser) {
 			purify = DOMPurify(window)
@@ -109,13 +150,11 @@
 				setActiveElement()
 				setDisabledElement()
 			},
-			onUpdate: onupdate
-				? ({editor}: {editor: Editor}) => onupdate(editor.getJSON())
-				: () => {},
-			onBlur: onblur
-				? ({editor}: {editor: Editor}) => onblur(editor.getJSON())
-				: () => {},
+			onUpdate: handleUpdate,
+			onBlur: handleBlur,
 		})
+
+		onInit({editor})
 	})
 
 	onDestroy(() => {
