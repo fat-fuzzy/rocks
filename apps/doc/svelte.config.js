@@ -54,17 +54,18 @@ const config = {
 		 * - https://github.com/sveltejs/svelte/issues/14438
 		 * - Svelte announcer has inline style that violates CSP
 		 * Plus:
-		 * - tests fail
-		 * - safari has issues in dev environment
+		 * - tests fail (fixed ?)
+		 * - safari has issues in dev environment (fixed ?)
 		 */
 		csp: {
 			mode: 'auto',
 			directives: {
 				'default-src': ["'self'"],
 				'script-src': ["'self'", 'https://gc.zgo.at'],
-				'style-src': ["'self'", 'data:'],
+				// 'unsafe-inline' here for TipTap/ProseMirror and the SvelteKit announcer
+				'style-src': ["'self'", "'unsafe-inline'"],
 				'style-src-elem': ["'self'"],
-				'style-src-attr': ["'self'"],
+				'style-src-attr': ["'self'", "'unsafe-inline'"],
 				'base-uri': ["'self'"],
 				'child-src': ["'self'"],
 				'connect-src': ["'self'", 'https://fat-fuzzy.goatcounter.com/count'],
