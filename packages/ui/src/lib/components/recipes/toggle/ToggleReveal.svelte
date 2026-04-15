@@ -21,6 +21,7 @@
 		breakpoint,
 		threshold,
 		variant,
+		layout,
 		align,
 		justify,
 		hug,
@@ -29,7 +30,6 @@
 		height,
 		place = 'nord',
 		position,
-		container,
 		background,
 		surface,
 		surfaceLightness,
@@ -59,14 +59,21 @@
 		}),
 	)
 
-	let layoutClasses = $derived(
+	let containerClasses = $derived(
 		styleHelper.getStyles({
 			size,
 			justify,
 			align,
 			height,
 			width,
-			container,
+		}),
+	)
+
+	let layoutClasses = $derived(
+		styleHelper.getStyles({
+			layout,
+			justify,
+			align,
 		}),
 	)
 
@@ -79,8 +86,8 @@
 	let positionClass = $derived(
 		!area && position && place ? `${position}:${place}` : '',
 	)
-	let containerClasses = $derived(
-		`${autoClasses} ${areaClass} ${layoutClasses}`,
+	let ff_containerClasses = $derived(
+		`${autoClasses} ${areaClass} ${containerClasses}`,
 	)
 
 	// Label & Icon styles
@@ -112,7 +119,7 @@
 </script>
 
 {#snippet control()}
-	<ff-control class="gare-control">
+	<ff-control class={`gare-control ${layoutClasses} ${justifyClass}`}>
 		<label for={id} class={`ellipsis  ${labelClasses} ${hugClass}`}>
 			<ff-label class={`${ff_labelClasses} ${ff_labelReverse}`}>
 				{#if nav}
@@ -150,7 +157,7 @@
 	</ff-toggle-reveal>
 {/if} -->
 
-<ff-toggle-reveal class={containerClasses}>
+<ff-toggle-reveal class={ff_containerClasses}>
 	{@render control()}
 	<ff-reveal class={contentClasses}>
 		{@render children()}
