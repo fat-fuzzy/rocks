@@ -1,5 +1,6 @@
 ff-toggle-reveal {
 	ff-control > label {
+		--input-inline-size: 100%;
 		z-index: calc(var(--z-index-overlay) + 1);
 	}
 
@@ -100,8 +101,8 @@ ff-toggle-reveal.ouest {
 		/* inherits --x-axis & --y-axis from default */
 
 		transition:
-			transform 350ms ease-out,
-			opacity 350ms ease-out 50ms,
+			transform 300ms ease-out,
+			opacity 300ms ease-out 50ms,
 			inline-size 300ms ease-out;
 	}
 }
@@ -136,8 +137,8 @@ ff-toggle-reveal.est {
 		--x-axis: calc(-50% + var(--ui-size-xl) + var(--outline-offset-lg));
 
 		transition:
-			transform 350ms ease-out,
-			opacity 350ms ease-out 50ms,
+			transform 300ms ease-out,
+			opacity 300ms ease-out 50ms,
 			inline-size 300ms ease-out;
 	}
 }
@@ -187,8 +188,8 @@ ff-toggle-reveal.sud {
 		block-size: fit-content;
 		max-inline-size: unset;
 		transition:
-			opacity 350ms ease-out 50ms,
-			block-size 350ms ease-out;
+			opacity 300ms ease-out 50ms,
+			block-size 300ms ease-out;
 	}
 }
 

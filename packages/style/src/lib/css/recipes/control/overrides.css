@@ -11,13 +11,13 @@ ul.depth-1 ff-toggle-reveal:first-of-type > ff-control > label {
 
 .context.hug > ff-toggle-reveal > ff-control > label:has(input),
 .sidebar.hug > nav > ff-toggle-reveal > ff-control > label:has(input) {
-	inline-size: fit-content;
+	--input-inline-size: fit-content;
 	transition: inline-size 200ms ease-out;
 }
 
 .context.hug > ff-toggle-reveal > ff-control > label:has(input:checked),
 .sidebar.hug > nav > ff-toggle-reveal > ff-control > label:has(input:checked) {
-	inline-size: 100%;
+	--input-inline-size: 100%;
 	transition: inline-size 250ms ease-in;
 }
 
