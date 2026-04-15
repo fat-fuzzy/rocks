@@ -1,5 +1,11 @@
 # @fat-fuzzy/ui
 
+## 0.1.93
+
+### Patch Changes
+
+- 977fd1b: Enable Editor export type, ui adjustements
+
 ## 0.1.92
 
 ### Patch Changes
