@@ -104,40 +104,38 @@
 		commands.isLink = editor.can().chain().focus().unsetLink().run()
 	}
 
+	export function getContent(editor: Editor) {
+		updateContent(editor)
+
+		return snapshot
+	}
+
 	function updateContent(editor: Editor) {
 		escaped = purify.sanitize(editor.getHTML())
 		jsonContent = editor.getJSON()
 	}
 
 	function handleUpdate({editor}: {editor: Editor}) {
-		updateContent(editor)
-
 		if (onupdate) {
-			onupdate(snapshot)
+			onupdate(getContent(editor))
 		}
 	}
 
 	function handleBlur({editor}: {editor: Editor}) {
-		updateContent(editor)
-
 		if (onblur) {
-			onblur(snapshot)
+			onblur(getContent(editor))
 		}
 	}
 
 	function onInit({editor}: {editor: Editor}) {
-		updateContent(editor)
-
 		if (init) {
-			init(snapshot)
+			init(getContent(editor))
 		}
 	}
 
-	function onExport() {
-		updateContent(editor)
-
+	function handleExport() {
 		if (exportFn) {
-			exportFn(snapshot)
+			exportFn(getContent(editor))
 		}
 	}
 
@@ -184,7 +182,7 @@
 			{variant}
 			{preset}
 			children={menus}
-			onExport={exportFn ? onExport : undefined}
+			onExport={exportFn ? handleExport : undefined}
 		/>
 	{/if}
 	<div class={`prose-editor ${heighClass} variant:bare dotted`}>
