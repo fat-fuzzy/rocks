@@ -26,7 +26,7 @@
 		"format": "prettier --plugin-search-dir . --write ."
 	},
 	"dependencies": {
-		"dompurify": "3.3.2"
+		"dompurify": "3.4.0"
 	},
 	"peerDependencies": {
 		"@sveltejs/kit": "2.57.1",
