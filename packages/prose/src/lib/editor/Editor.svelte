@@ -24,6 +24,7 @@
 		onupdate,
 		onblur,
 		init,
+		exportFn,
 	}: {
 		html: string
 		id?: string
@@ -37,13 +38,20 @@
 		onupdate?: (content: JSONContent | string) => void
 		onblur?: (content: JSONContent | string) => void
 		init?: (content: JSONContent | string) => void
+		exportFn?: (content: {json: JSONContent; html: string}) => void
 	} = $props()
 
 	let element: Element
 
 	// TODO: watch this: https://developer.mozilla.org/en-US/docs/Web/API/Element/setHTML
-	let purify
-	let escaped = ''
+	let purify: typeof DOMPurify
+	let escaped = $state('')
+	let jsonContent: JSONContent = $state({})
+	let snapshot = $derived({
+		html: escaped,
+		json: jsonContent,
+	})
+
 	// @ts-expect-error editor is not defined at this point but will be on mount
 	let editor: Editor = $state()
 	let heighClass = $derived(height ? `h:${height}` : '')
@@ -96,43 +104,41 @@
 		commands.isLink = editor.can().chain().focus().unsetLink().run()
 	}
 
-	function handleUpdate({editor}: {editor: Editor}) {
-		if (onupdate) {
-			if (type === 'json') {
-				return onupdate(editor.getJSON())
-			}
-			if (type === 'html') {
-				return onupdate(editor.getHTML())
-			}
-		}
+	function updateContent(editor: Editor) {
+		escaped = purify.sanitize(editor.getHTML())
+		jsonContent = editor.getJSON()
+	}
 
-		return () => {}
+	function handleUpdate({editor}: {editor: Editor}) {
+		updateContent(editor)
+
+		if (onupdate) {
+			onupdate(snapshot)
+		}
 	}
 
 	function handleBlur({editor}: {editor: Editor}) {
-		if (onblur) {
-			if (type === 'json') {
-				return onblur(editor.getJSON())
-			}
-			if (type === 'html') {
-				return onblur(editor.getHTML())
-			}
-		}
+		updateContent(editor)
 
-		return () => {}
+		if (onblur) {
+			onblur(snapshot)
+		}
 	}
 
 	function onInit({editor}: {editor: Editor}) {
-		if (init) {
-			if (type === 'json') {
-				return init(editor.getJSON())
-			}
-			if (type === 'html') {
-				return init(editor.getHTML())
-			}
-		}
+		updateContent(editor)
 
-		return () => {}
+		if (init) {
+			init(snapshot)
+		}
+	}
+
+	function onExport() {
+		updateContent(editor)
+
+		if (exportFn) {
+			exportFn(snapshot)
+		}
 	}
 
 	onMount(() => {
@@ -178,9 +184,10 @@
 			{variant}
 			{preset}
 			children={menus}
+			onExport={exportFn ? onExport : undefined}
 		/>
 	{/if}
 	<div class={`prose-editor ${heighClass} variant:bare dotted`}>
-		<div class="content scroll:y" bind:this={element}></div>
+		<div class="content scroll:container" bind:this={element}></div>
 	</div>
 </ff-prose>

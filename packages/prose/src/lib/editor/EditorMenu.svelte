@@ -23,6 +23,7 @@
 		color,
 		variant,
 		children,
+		onExport,
 	}: {
 		id: string
 		editor: Editor
@@ -32,6 +33,7 @@
 		color: UiColor
 		variant?: UiVariant
 		children?: Snippet
+		onExport?: () => void
 	} = $props()
 </script>
 
@@ -47,6 +49,15 @@
 	<Links {editor} {commands} {size} {color} {variant} />
 
 	<FlowControl {editor} {commands} {size} {color} {variant} />
+
+	{#if onExport}
+		<button
+			onclick={onExport}
+			class={`toggle color:${color} variant:${variant} size:${size}`}
+		>
+			Export
+		</button>
+	{/if}
 
 	{#if preset === 'full' || children}
 		<ToggleReveal
