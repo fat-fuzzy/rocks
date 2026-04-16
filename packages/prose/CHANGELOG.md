@@ -1,5 +1,11 @@
 # @fat-fuzzy/prose
 
+## 0.1.40
+
+### Patch Changes
+
+- e06ba5f: Enable editor content exports, cleanup
+
 ## 0.1.39
 
 ### Patch Changes
