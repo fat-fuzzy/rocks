@@ -1,5 +1,11 @@
 # @fat-fuzzy/prose
 
+## 0.1.42
+
+### Patch Changes
+
+- 5e7f269: Adjust export fn, add example
+
 ## 0.1.41
 
 ### Patch Changes
