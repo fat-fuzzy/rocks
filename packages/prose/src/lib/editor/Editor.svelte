@@ -24,7 +24,7 @@
 		onupdate,
 		onblur,
 		init,
-		exportFn,
+		onExport, // Custom event
 	}: {
 		html: string
 		id?: string
@@ -38,7 +38,7 @@
 		onupdate?: (content: {json: JSONContent; html: string}) => void
 		onblur?: (content: {json: JSONContent; html: string}) => void
 		init?: (content: {json: JSONContent; html: string}) => void
-		exportFn?: (content: {json: JSONContent; html: string}) => void
+		onExport?: (content: {json: JSONContent; html: string}) => void
 	} = $props()
 
 	let element: Element
@@ -104,8 +104,10 @@
 		commands.isLink = editor.can().chain().focus().unsetLink().run()
 	}
 
-	export function getContent(editor: Editor) {
-		updateContent(editor)
+	export function getContent() {
+		if (editor) {
+			updateContent(editor)
+		}
 
 		return snapshot
 	}
@@ -113,29 +115,31 @@
 	function updateContent(editor: Editor) {
 		escaped = purify.sanitize(editor.getHTML())
 		jsonContent = editor.getJSON()
+
+		return snapshot
 	}
 
 	function handleUpdate({editor}: {editor: Editor}) {
 		if (onupdate) {
-			onupdate(getContent(editor))
+			onupdate(updateContent(editor))
 		}
 	}
 
 	function handleBlur({editor}: {editor: Editor}) {
 		if (onblur) {
-			onblur(getContent(editor))
+			onblur(updateContent(editor))
 		}
 	}
 
 	function onInit({editor}: {editor: Editor}) {
 		if (init) {
-			init(getContent(editor))
+			init(updateContent(editor))
 		}
 	}
 
 	function handleExport() {
-		if (exportFn) {
-			exportFn(getContent(editor))
+		if (onExport) {
+			onExport(updateContent(editor))
 		}
 	}
 
@@ -182,7 +186,7 @@
 			{variant}
 			{preset}
 			children={menus}
-			onExport={exportFn ? handleExport : undefined}
+			onExport={onExport ? handleExport : undefined}
 		/>
 	{/if}
 	<div class={`prose-editor ${heighClass} variant:bare dotted`}>

@@ -9,9 +9,16 @@
 	let description = 'A rich text editor for the web.'
 	let html = '<p>Hello World!</p>'
 	let content = $state({html, json: {}})
+	let editor: Editor
 
 	function onExport(editorContent: {html: string; json: JSONContent}) {
 		content = editorContent
+	}
+
+	function onPageExport() {
+		if (editor) {
+			content = editor.getContent()
+		}
 	}
 </script>
 
@@ -20,16 +27,26 @@
 		<h1>{title}</h1>
 		<Editor {html} preset="basic" id="a-quick-message" height="xs" width="xl" />
 		<Editor
+			bind:this={editor}
 			{html}
 			preset="full"
 			id="an-elaborate-argument"
 			height="md"
 			width="3xl"
-			exportFn={onExport}
+			{onExport}
 		/>
-		<output>
-			<pre class="color:primary">{content.html}</pre>
-			<pre class="color:accent">{JSON.stringify(content.json, null, 2)}</pre>
-		</output>
+
+		<form>
+			<button
+				onclick={onPageExport}
+				class="variant:outline color:primary size:sm"
+			>
+				Export from Page
+			</button>
+			<output>
+				<pre class="color:primary">{content.html}</pre>
+				<pre class="color:accent">{JSON.stringify(content.json, null, 2)}</pre>
+			</output>
+		</form>
 	</div>
 </PageMain>
