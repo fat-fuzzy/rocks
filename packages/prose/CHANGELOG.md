@@ -1,5 +1,11 @@
 # @fat-fuzzy/prose
 
+## 0.1.41
+
+### Patch Changes
+
+- d16adb9: Update fn params
+
 ## 0.1.40
 
 ### Patch Changes
