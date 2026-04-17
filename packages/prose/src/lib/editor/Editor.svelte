@@ -35,9 +35,9 @@
 		variant?: UiVariant
 		height?: UiSize
 		width?: UiSize
-		onupdate?: (content: JSONContent | string) => void
-		onblur?: (content: JSONContent | string) => void
-		init?: (content: JSONContent | string) => void
+		onupdate?: (content: {json: JSONContent; html: string}) => void
+		onblur?: (content: {json: JSONContent; html: string}) => void
+		init?: (content: {json: JSONContent; html: string}) => void
 		exportFn?: (content: {json: JSONContent; html: string}) => void
 	} = $props()
 
