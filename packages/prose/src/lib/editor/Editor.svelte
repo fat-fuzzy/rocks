@@ -180,6 +180,7 @@
 	{#if editor}
 		<EditorMenu
 			id={id ? `menu-${id}` : `menu-${id}-${preset}`}
+			skipTo={`#content-${id}`}
 			{editor}
 			{commands}
 			{color}
@@ -190,6 +191,10 @@
 		/>
 	{/if}
 	<div class={`prose-editor ${heighClass} variant:bare dotted`}>
-		<div class="content scroll:container" bind:this={element}></div>
+		<div
+			id={`content-${id}`}
+			class="content scroll:container"
+			bind:this={element}
+		></div>
 	</div>
 </ff-prose>
