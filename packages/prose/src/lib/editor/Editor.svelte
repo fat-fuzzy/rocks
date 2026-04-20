@@ -12,7 +12,7 @@
 	import EditorMenu from '$lib/editor/EditorMenu.svelte'
 
 	let {
-		html,
+		content,
 		id = 'editor',
 		type,
 		menus,
@@ -26,7 +26,7 @@
 		init,
 		onExport, // Custom event
 	}: {
-		html: string
+		content: {html: string; json: any}
 		id?: string
 		type?: string
 		menus?: Snippet
@@ -146,13 +146,13 @@
 	onMount(() => {
 		if (browser) {
 			purify = DOMPurify(window)
-			escaped = purify.sanitize(html)
+			escaped = purify.sanitize(content.html)
 		}
 
 		editor = new Editor({
 			element: element,
 			extensions: settings.extensions,
-			content: escaped,
+			content: type === 'html' ? escaped : content.json,
 			onTransaction: () => {
 				// force re-render so `editor.isActive` works as expected
 				setActiveElement()

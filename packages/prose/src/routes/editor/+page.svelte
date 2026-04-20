@@ -25,10 +25,16 @@
 <PageMain title="" {description}>
 	<div class="l:stack:md maki:block:2xl">
 		<h1>{title}</h1>
-		<Editor {html} preset="basic" id="a-quick-message" height="xs" width="xl" />
+		<Editor
+			content={{html, json: {}}}
+			preset="basic"
+			id="a-quick-message"
+			height="xs"
+			width="xl"
+		/>
 		<Editor
 			bind:this={editor}
-			{html}
+			content={{html, json: {}}}
 			preset="full"
 			id="an-elaborate-argument"
 			height="md"
