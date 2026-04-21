@@ -1,76 +1,47 @@
 <script lang="ts">
-	import {tick} from 'svelte'
 	import {page} from '$app/state'
 
-	import FormValidator from '$lib/utils/browser/FormValidator.svelte'
-	import InputGroup from '$lib/components/blocks/inputs/InputGroup.svelte'
-	import {INPUTS} from '$tests/fixtures/form-inputs'
+	import Tabs from '$lib/components/recipes/tabs/Tabs.svelte'
 
-	let validator = new FormValidator('TestFormValidationFunction')
-	let form: HTMLFormElement
-
-	const id = 'sample_checkbox_group_select_all'
-	const id2 = 'sample_checkbox_group'
-	let inputProps = $derived(INPUTS[id])
-	let inputProps2 = $derived(INPUTS[id2])
-
-	let items = $derived(
-		(INPUTS[id].items || []).map((i) => ({
-			...i,
-			name: inputProps.name,
-			disabled: false,
-			validator,
-		})),
-	)
-
-	let items2 = $derived(
-		(INPUTS[id2].items || []).map((i) => ({
-			...i,
-			name: inputProps2.name,
-			label: `${i.label} Bis`,
-			disabled: false,
-			validator,
-		})),
-	)
-
-	async function handleInput() {
-		await tick()
-		form.requestSubmit()
-	}
+	const TABS = [
+		{
+			slug: 'tab-1',
+			id: 'tab-1',
+			title: 'Tab 1',
+			initial: true,
+			header: header1,
+			content: content1,
+		},
+		{
+			slug: 'tab-2',
+			id: 'tab-2',
+			title: 'Tab 2',
+			initial: true,
+			header: header2,
+			content: content2,
+		},
+	]
 </script>
 
-<form action={page.url.pathname} bind:this={form} class="l:stack:md">
-	<section class="l:stack align:start justify:between">
-		<div class="l:flex w:full size:2xs align:baseline justify:between">
-			<h3>Main Blocks</h3>
-		</div>
-		<div class="l:flex size:2xs align:start justify:between">
-			<InputGroup
-				id={INPUTS[id].name}
-				name={INPUTS[id].name}
-				legend={INPUTS[id].legend}
-				type="checkbox"
-				value={page.url.searchParams.getAll(INPUTS[id].name)}
-				size="2xs"
-				color="primary"
-				variant="outline"
-				{items}
-				oninput={handleInput}
-				{validator}
-			/>
-			<InputGroup
-				id={INPUTS[id2].name}
-				name={INPUTS[id2].name}
-				legend={INPUTS[id2].legend}
-				type="checkbox"
-				value={page.url.searchParams.getAll(INPUTS[id2].name)}
-				size="2xs"
-				color="primary"
-				variant="outline"
-				items={items2}
-				oninput={handleInput}
-				{validator}
-			/>
-		</div>
-	</section>
-</form>
+{#snippet header1()}
+	<p class="l:frame:twin ravioli:2xl font:heading surface:1:primary">
+		Header 1
+	</p>
+{/snippet}
+
+{#snippet content1()}
+	<p class="l:frame:twin ravioli:2xl font:heading surface:1:primary">
+		Content 1
+	</p>
+{/snippet}
+
+{#snippet header2()}
+	<p class="l:frame:twin ravioli:2xl font:heading surface:1:accent">Header 1</p>
+{/snippet}
+
+{#snippet content2()}
+	<p class="l:frame:twin ravioli:2xl font:heading surface:1:accent">
+		Content 2
+	</p>
+{/snippet}
+<Tabs id="test-tabs" path={page.url.pathname} tabs={TABS} />
