@@ -12,9 +12,9 @@
 	import EditorMenu from '$lib/editor/EditorMenu.svelte'
 
 	let {
-		html,
+		content,
 		id = 'editor',
-		type,
+		type = 'html',
 		menus,
 		preset = 'basic',
 		color = 'primary',
@@ -26,7 +26,7 @@
 		init,
 		onExport, // Custom event
 	}: {
-		html: string
+		content: {html: string; json: JSONContent}
 		id?: string
 		type?: string
 		menus?: Snippet
@@ -146,13 +146,13 @@
 	onMount(() => {
 		if (browser) {
 			purify = DOMPurify(window)
-			escaped = purify.sanitize(html)
+			escaped = purify.sanitize(content.html)
 		}
 
 		editor = new Editor({
 			element: element,
 			extensions: settings.extensions,
-			content: escaped,
+			content: type === 'html' ? escaped : content.json,
 			onTransaction: () => {
 				// force re-render so `editor.isActive` works as expected
 				setActiveElement()
@@ -180,6 +180,7 @@
 	{#if editor}
 		<EditorMenu
 			id={id ? `menu-${id}` : `menu-${id}-${preset}`}
+			skipTo={`#content-${id}`}
 			{editor}
 			{commands}
 			{color}
@@ -190,6 +191,10 @@
 		/>
 	{/if}
 	<div class={`prose-editor ${heighClass} variant:bare dotted`}>
-		<div class="content scroll:container" bind:this={element}></div>
+		<div
+			id={`content-${id}`}
+			class="content scroll:container"
+			bind:this={element}
+		></div>
 	</div>
 </ff-prose>
