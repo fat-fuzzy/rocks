@@ -14,7 +14,7 @@
 	let {
 		content,
 		id = 'editor',
-		type,
+		type = 'html',
 		menus,
 		preset = 'basic',
 		color = 'primary',
@@ -26,7 +26,7 @@
 		init,
 		onExport, // Custom event
 	}: {
-		content: {html: string; json: any}
+		content: {html: string; json: JSONContent}
 		id?: string
 		type?: string
 		menus?: Snippet
