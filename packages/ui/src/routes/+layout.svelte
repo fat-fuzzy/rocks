@@ -1,24 +1,22 @@
 <script lang="ts">
 	import '@fat-fuzzy/style/css'
-	import constants from '$lib/types/constants.js'
 	import ToggleReveal from '$lib/components/recipes/toggle/ToggleReveal.svelte'
 	import type {Snippet} from 'svelte'
 
 	import {resolve} from '$app/paths'
 	import {page} from '$app/state'
 
-	const {APP_SETTINGS, APP_LINKS} = constants
+	import navConfig from '$config/navigation'
+	const {links} = navConfig
 
 	type Props = {children: Snippet}
 
 	let {children}: Props = $props()
-	let headerData = $state({links: APP_LINKS, settings: APP_SETTINGS})
 
-	let links = $derived(headerData.links)
 	let layout = 'taco'
 	let brightness = 'day'
 	let contrast = 'contrast'
-	let mainClass = `${brightness} l:${layout} l:stack:lg bg:${contrast}`
+	let mainClass = `${brightness} l:${layout} maki:inline l:stack:lg bg:${contrast}`
 	let footerClass = 'font:sm ravioli:2xl color:primary'
 </script>
 
@@ -33,6 +31,7 @@
 	justify="center"
 	dismiss="outside"
 	auto={true}
+	depth={1}
 	place="nord"
 	breakpoint="sm"
 	background="inherit"
