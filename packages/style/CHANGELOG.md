@@ -1,5 +1,11 @@
 # @fat-fuzzy/style
 
+## 0.1.40
+
+### Patch Changes
+
+- 0cc5d42: Cleanup
+
 ## 0.1.39
 
 ### Patch Changes
