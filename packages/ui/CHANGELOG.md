@@ -1,5 +1,11 @@
 # @fat-fuzzy/ui
 
+## 0.1.94
+
+### Patch Changes
+
+- de26f31: Fix Tabs and add example, clean tests page
+
 ## 0.1.93
 
 ### Patch Changes

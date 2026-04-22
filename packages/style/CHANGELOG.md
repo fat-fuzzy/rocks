@@ -1,5 +1,11 @@
 # @fat-fuzzy/style
 
+## 0.1.39
+
+### Patch Changes
+
+- de26f31: Fix Tabs and add example, clean tests page
+
 ## 0.1.38
 
 ### Patch Changes

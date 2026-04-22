@@ -1,5 +1,11 @@
 # @fat-fuzzy/prose
 
+## 0.1.43
+
+### Patch Changes
+
+- d94e749: Editor improvements and example, husky config fix
+
 ## 0.1.42
 
 ### Patch Changes

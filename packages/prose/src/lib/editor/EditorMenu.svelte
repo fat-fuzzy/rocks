@@ -13,9 +13,11 @@
 	import FlowControl from '$lib/editor/menus/FlowControl.svelte'
 
 	const {ToggleReveal} = ui.drafts
+	const {SkipLinks} = ui.recipes
 
 	let {
 		id,
+		skipTo,
 		editor,
 		commands,
 		preset,
@@ -26,6 +28,7 @@
 		onExport,
 	}: {
 		id: string
+		skipTo: string
 		editor: Editor
 		commands: {[key: string]: boolean}
 		preset?: string
@@ -40,6 +43,7 @@
 <menu
 	class={`editor-menu l:flex:3xs ravioli:3xs surface:1:${color} align:start relative`}
 >
+	<SkipLinks id={`skip-links-${id}`} text="Skip to content" href={skipTo} />
 	<FontLevel {editor} {commands} {size} {color} {variant} />
 
 	<FontStyle {editor} {commands} {size} {color} {variant} />

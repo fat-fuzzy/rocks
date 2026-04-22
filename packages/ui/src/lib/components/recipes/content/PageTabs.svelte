@@ -19,11 +19,12 @@
 	}: PageTabsProps = $props()
 
 	let currentPage = $derived(pageName ?? title)
-	let currentHash = $state(path.split('#')[1] ?? tabs[0].slug)
+	let currentHash = $derived(path.split('#')[1] ?? tabs[0].slug)
 	let noJsClass = $state('nojs')
 
 	let presentationClasses = styleHelper.getStyles({
-		layout: 'switcher:2xs',
+		layout: 'switcher',
+		size: '2xs',
 		align: 'center',
 		justify: 'between',
 	})
@@ -44,7 +45,7 @@
 {#snippet breadcrumbTabs()}
 	<div class="ravioli:xs">
 		<ul role="tablist" class="l:switcher:2xs unstyled">
-			{#each tabs as { title, slug, color, size, variant, shape, asset }}
+			{#each tabs as { title, slug, color, size, variant, shape, asset }, i (i)}
 				{@const iconClasses = styleHelper.getStyles({
 					color,
 					size,
@@ -84,7 +85,7 @@
 {/snippet}
 
 {#snippet headerMain()}
-	<Breadcrumbs {id} {title} {path} level={1} {breadcrumbTabs} size="2xs" />
+	<Breadcrumbs {id} {path} level={1} {breadcrumbTabs} size="2xs" />
 {/snippet}
 {#snippet headerSide()}
 	{#if breadcrumbTabs}
@@ -95,7 +96,7 @@
 	<PageHeader text={text as UiSize} {layout} {justify} {...header} />
 
 	<section class={`tab-content ${noJsClass}`}>
-		{#each tabs as { slug, content }}
+		{#each tabs as { slug, content }, i (i)}
 			<!-- The article tag receives focus when the corresponding tab is active -->
 			<!-- aria-labelledby inside Breadcrumb -->
 
@@ -106,7 +107,9 @@
 				tabindex={currentHash === slug ? 0 : undefined}
 				role="tabpanel"
 			>
-				{@render content()}
+				{#if content}
+					{@render content()}
+				{/if}
 			</article>
 		{/each}
 	</section>
