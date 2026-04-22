@@ -1,157 +1,165 @@
 {
 	"layout": {
 		"$type": "dimension",
+		"unit": "rem",
 		"base": {
-			"$value": "1rem"
+			"value": 1
 		},
 		"gap": {
-			"$type": "derived",
+			"$type": "dimension",
+			"unit": "rem",
 			"4xs": {
-				"$value": "{size.base.4xs}"
+				"value": "{size.base.4xs}"
 			},
 			"3xs": {
-				"$value": "{size.base.3xs}"
+				"value": "{size.base.3xs}"
 			},
 			"2xs": {
-				"$value": "{size.base.2xs}"
+				"value": "{size.base.2xs}"
 			},
 			"xs": {
-				"$value": "{size.base.xs}"
+				"value": "{size.base.xs}"
 			},
 			"sm": {
-				"$value": "{size.base.sm}"
+				"value": "{size.base.sm}"
 			},
 			"md": {
-				"$value": "{size.base.md}"
+				"value": "{size.base.md}"
 			},
 			"lg": {
-				"$value": "{size.base.lg}"
+				"value": "{size.base.lg}"
 			},
 			"xl": {
-				"$value": "{size.base.xl}"
+				"value": "{size.base.xl}"
 			},
 			"2xl": {
-				"$value": "{size.base.2xl}"
+				"value": "{size.base.2xl}"
 			},
 			"3xl": {
-				"$value": "{size.base.3xl}"
+				"value": "{size.base.3xl}"
 			},
 			"4xl": {
-				"$value": "{size.base.4xl}"
+				"value": "{size.base.4xl}"
 			}
 		},
 		"sidebar": {
-			"$type": "char",
+			"$type": "dimension",
+			"unit": "rem",
 			"base": {
-				"$value": "16rem"
+				"value": "16"
 			},
 			"hidden": {
-				"$value": "0em"
+				"value": "0"
 			},
 			"collapsed": {
-				"$value": "6.5rem"
+				"value": "6.5"
 			},
 			"2xs": {
-				"$value": "8rem"
+				"value": "8"
 			},
 			"xs": {
-				"$value": "12rem"
+				"value": "12"
 			},
 			"sm": {
-				"$value": "14rem"
+				"value": "14"
 			},
 			"md": {
-				"$value": "{layout.sidebar.base}"
+				"value": "{layout.sidebar.base.value}"
 			},
 			"lg": {
-				"$value": "22rem"
+				"value": "22"
 			},
 			"xl": {
-				"$value": "24rem"
+				"value": "24"
 			},
 			"2xl": {
-				"$value": "28rem"
+				"value": "28"
 			},
 			"3xl": {
-				"$value": "36rem"
+				"value": "36"
 			}
 		},
 		"grid": {
+			"$type": "dimension",
+			"unit": "rem",
 			"item": {
 				"3xs": {
-					"$value": "5rem"
+					"value": "5"
 				},
 				"2xs": {
-					"$value": "7rem"
+					"value": "7"
 				},
 				"xs": {
-					"$value": "10rem"
+					"value": "10"
 				},
 				"sm": {
-					"$value": "15rem"
+					"value": "15"
 				},
 				"md": {
-					"$value": "20rem"
+					"value": "20"
 				},
 				"lg": {
-					"$value": "25rem"
+					"value": "25"
 				},
 				"xl": {
-					"$value": "30rem"
+					"value": "30"
 				},
 				"2xl": {
-					"$value": "35rem"
+					"value": "35"
 				}
 			}
 		},
 		"breakpoint": {
+			"$type": "dimension",
+			"unit": "rem",
 			"2xs": {
-				"$value": "20rem"
+				"value": "20"
 			},
 			"xs": {
-				"$value": "38.75rem"
+				"value": "38.75"
 			},
 			"sm": {
-				"$value": "58.45rem"
+				"value": "58.45"
 			},
 			"md": {
-				"$value": "85rem"
+				"value": "85"
 			},
 			"lg": {
-				"$value": "101.25rem"
+				"value": "101.25"
 			},
 			"xl": {
-				"$value": "128rem"
+				"value": "128"
 			},
 			"2xl": {
-				"$value": "190.5rem"
+				"value": "190.5"
 			}
 		},
 		"threshold": {
+			"$type": "dimension",
+			"unit": "rem",
 			"3xs": {
-				"$type": "char",
-				"$value": "{layout.sidebar.collapsed}"
+				"value": "{layout.sidebar.collapsed}"
 			},
 			"2xs": {
-				"$value": "{layout.breakpoint.2xs}"
+				"value": "{layout.breakpoint.2xs}"
 			},
 			"xs": {
-				"$value": "{layout.breakpoint.xs}"
+				"value": "{layout.breakpoint.xs}"
 			},
 			"sm": {
-				"$value": "{layout.breakpoint.sm}"
+				"value": "{layout.breakpoint.sm}"
 			},
 			"md": {
-				"$value": "{layout.breakpoint.md}"
+				"value": "{layout.breakpoint.md}"
 			},
 			"lg": {
-				"$value": "{layout.breakpoint.lg}"
+				"value": "{layout.breakpoint.lg}"
 			},
 			"xl": {
-				"$value": "{layout.breakpoint.xl}"
+				"value": "{layout.breakpoint.xl}"
 			},
 			"2xl": {
-				"$value": "{layout.breakpoint.2xl}"
+				"value": "{layout.breakpoint.2xl}"
 			}
 		},
 		"z-index": {

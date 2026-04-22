@@ -158,7 +158,10 @@
 			"$type": "derived",
 			"fluid-0": {
 				"$type": "dimension",
-				"$value": "1rem"
+				"$value": {
+					"value": 1,
+					"unit": "rem"
+				}
 			},
 			"2xs": {
 				"$value": "var(--fluid--3)"
