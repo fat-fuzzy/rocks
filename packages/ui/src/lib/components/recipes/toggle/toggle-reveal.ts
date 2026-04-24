@@ -23,6 +23,7 @@ export type ToggleRevealProps = UiBlockProps &
 export type ToggleTreeProps = UiBlockProps & {
 	id: string
 	depth: number
+	title?: string // Root node label
 	pathname: string // Current page url.pathname
 	layout?: string
 	align?: string
@@ -33,6 +34,7 @@ export type ToggleTreeProps = UiBlockProps & {
 }
 
 export type ToggleLinkProps = UiBlockProps & {
+	href: string
 	pathname: string
 	slug: string
 	label: string
