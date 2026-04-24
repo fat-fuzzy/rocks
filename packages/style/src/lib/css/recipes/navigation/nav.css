@@ -239,7 +239,7 @@ a[class*='ravioli']:hover {
 				> * {
 					block-size: fit-content;
 					inline-size: 100%;
-					padding: calc(var(--ui-size-sm) / var(--size-ratio-lg));
+					padding: calc(var(--ui-size-sm) / var(--ratio-lg));
 					margin: 0;
 					margin-block-start: var(--outline-offset-lg);
 				}

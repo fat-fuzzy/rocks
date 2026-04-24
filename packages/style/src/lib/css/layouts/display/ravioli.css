@@ -7,7 +7,7 @@
 }
 
 [class*='ravioli'] {
-	--ratio: var(--size-ratio-md);
+	--ratio: var(--ratio-md);
 	/* Default range */
 	--ravioli-size-sm: calc(var(--ravioli-size) / var(--ratio));
 	--ravioli-size-lg: calc(var(--ravioli-size) * var(--ratio));
@@ -15,12 +15,12 @@
 
 /* Minor range */
 [class*='ravioli:'].scale\:minor {
-	--ratio: var(--size-ratio-sm);
+	--ratio: var(--ratio-sm);
 }
 
 /* Major range */
 [class*='ravioli:'].scale\:major {
-	--ratio: var(--size-ratio-lg);
+	--ratio: var(--ratio-lg);
 }
 
 .raviolink {

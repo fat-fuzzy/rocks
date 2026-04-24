@@ -7,7 +7,7 @@
 }
 
 [class*='cannelloni:'] {
-	--ratio: var(--size-ratio-md);
+	--ratio: var(--ratio-md);
 	/* Default range */
 	--ui-size-sm: calc(var(--ui-size) / var(--ratio));
 	--ui-size-lg: calc(var(--ui-size) * var(--ratio));
@@ -15,12 +15,12 @@
 
 /* Minor range */
 [class*='cannelloni:'].scale\:minor {
-	--ratio: var(--size-ratio-sm);
+	--ratio: var(--ratio-sm);
 }
 
 /* Major range */
 [class*='cannelloni:'].scale\:major {
-	--ratio: var(--size-ratio-lg);
+	--ratio: var(--ratio-lg);
 }
 
 [class*='cannelloni:'].size\:3xs {

@@ -1,5 +1,5 @@
 .ui\:menu {
-	gap: calc(var(--gap) / var(--size-ratio-md));
+	gap: calc(var(--gap) / var(--ratio-md));
 }
 
 .page-header .ui\:menu {
