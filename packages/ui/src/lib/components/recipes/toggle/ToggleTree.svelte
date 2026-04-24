@@ -1,10 +1,12 @@
 <script lang="ts">
+	import {resolve} from '$app/paths'
 	import type {ToggleTreeProps, NavItem} from '$types'
 
 	import ToggleLink from './ToggleLink.svelte'
 	import ToggleTree from './ToggleTree.svelte'
 
 	let {
+		title,
 		pathname,
 		layout,
 		size = '2xs',
@@ -85,10 +87,10 @@
 			{:else}
 				<a
 					data-sveltekit-preload-data
-					{href}
+					href={resolve(href)}
 					class={`ellipsis ${linkClass} ${linkAssetClass}`}
 				>
-					{label}
+					{title ?? label}
 				</a>
 				{#if subItems}
 					{@render nestedLinkTree(subItems, slug)}

@@ -1,8 +1,11 @@
 <script lang="ts">
 	import type {Snippet} from 'svelte'
+	import type {UiColor, UiSize, UiSurface} from '@fat-fuzzy/ui'
+
 	import '@fat-fuzzy/style/css'
-	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
+
+	import {page} from '$app/state'
 
 	const {ToggleTree, ToggleReveal} = ui.drafts
 	const {SkipLinks} = ui.recipes
@@ -28,10 +31,10 @@
 		label: 'Sketches',
 		items: sketches,
 		reveal: 'expanded',
-		background: 'inherit',
-		breakpoint: 'sm',
-		size: 'sm',
-		color: 'primary',
+		background: 'inherit' as UiSurface,
+		breakpoint: 'sm' as UiSize,
+		size: 'sm' as UiSize,
+		color: 'primary' as UiColor,
 		place: 'left',
 		formaction: 'toggleSidebar',
 	}
@@ -82,10 +85,9 @@
 		<ToggleReveal
 			id="sidenav-reveal"
 			label={nav.label}
-			asset={nav.asset}
 			color={nav.color}
 			background={nav.background}
-			variant={nav.variant}
+			variant="bare"
 			checked={true}
 			area="gare"
 			place="ouest"
@@ -94,6 +96,7 @@
 			font="md"
 			width="md"
 			height="lg"
+			depth={0}
 			dismiss="outside"
 		>
 			<ToggleTree
@@ -102,7 +105,6 @@
 				pathname={path}
 				preload={true}
 				depth={0}
-				url={page.url}
 			/>
 		</ToggleReveal>
 	</nav>
