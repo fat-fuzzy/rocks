@@ -17,28 +17,18 @@
 					]
 				},
 				"mono": {
-					"$value": [
-						"Courier New",
-						"Courier",
-						"monospace"
-					]
+					"$value": ["Courier New", "Courier", "monospace"]
 				}
 			},
 			"vendor": {
 				"sans": {
-					"$value": [
-						"Montserrat"
-					]
+					"$value": ["Montserrat"]
 				},
 				"heading": {
-					"$value": [
-						"Encode Sans SC"
-					]
+					"$value": ["Encode Sans SC"]
 				},
 				"mono": {
-					"$value": [
-						"Anonymous Pro"
-					]
+					"$value": ["Anonymous Pro"]
 				}
 			},
 			"sans": {
@@ -155,7 +145,7 @@
 			}
 		},
 		"size": {
-			"$type": "derived",
+			"$type": "string",
 			"fluid-0": {
 				"$type": "dimension",
 				"$value": {
@@ -220,7 +210,7 @@
 		"leading": {
 			"$type": "number",
 			"heading": {
-				"$value": 1.30
+				"$value": 1.3
 			},
 			"ui": {
 				"$value": 1.32

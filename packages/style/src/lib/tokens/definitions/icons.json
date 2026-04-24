@@ -4,57 +4,57 @@
 		"unit": "rem",
 		"emoji": {
 			"3xs": {
-				"value": "{size.base.3xs}"
+				"value": "{size.base.3xs.value}"
 			},
 			"2xs": {
-				"value": "{size.base.2xs}"
+				"value": "{size.base.2xs.value}"
 			},
 			"xs": {
-				"value": "{size.base.xs}"
+				"value": "{size.base.xs.value}"
 			},
 			"sm": {
-				"value": "{size.base.sm}"
+				"value": "{size.base.sm.value}"
 			},
 			"md": {
-				"value": "{size.base.md}"
+				"value": "{size.base.md.value}"
 			},
 			"lg": {
-				"value": "{size.base.lg}"
+				"value": "{size.base.lg.value}"
 			},
 			"xl": {
-				"value": "{size.base.xl}"
+				"value": "{size.base.xl.value}"
 			},
 			"2xl": {
-				"value": "{size.base.2xl}"
+				"value": "{size.base.2xl.value}"
 			},
 			"3xl": {
-				"value": "{size.base.3xl}"
+				"value": "{size.base.3xl.value}"
 			}
 		},
 		"svg": {
 			"3xs": {
-				"value": "{size.base.2xs}"
+				"value": "{size.base.2xs.value}"
 			},
 			"2xs": {
-				"value": "{size.base.xs}"
+				"value": "{size.base.xs.value}"
 			},
 			"xs": {
-				"value": "{size.base.sm}"
+				"value": "{size.base.sm.value}"
 			},
 			"sm": {
-				"value": "{size.base.md}"
+				"value": "{size.base.md.value}"
 			},
 			"md": {
-				"value": "{size.base.lg}"
+				"value": "{size.base.lg.value}"
 			},
 			"lg": {
-				"value": "{size.base.xl}"
+				"value": "{size.base.xl.value}"
 			},
 			"xl": {
-				"value": "{size.base.2xl}"
+				"value": "{size.base.2xl.value}"
 			},
 			"2xl": {
-				"value": "{size.base.3xl}"
+				"value": "{size.base.3xl.value}"
 			}
 		}
 	}
