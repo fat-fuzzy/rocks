@@ -26,15 +26,9 @@ export default defineConfig({
 	tokens: files.map((file) => `${paths.in}${file}`),
 	plugins: [
 		pluginCSS({
-			transform(token, mode) {
+			transform(token) {
 				switch (token.$type) {
-					case 'derived': {
-						return String(token.$value)
-					}
-					case 'percentage': {
-						return `${String(token.$value)}%`
-					}
-					case 'char': {
+					case 'string': {
 						return token.$value
 					}
 					default:
@@ -43,14 +37,10 @@ export default defineConfig({
 			},
 		}),
 		pluginJS({
-			js: 'variables.js',
+			filename: 'variables.js',
 		}),
-		pluginAssetsEmoji({
-			js: 'assets-emoji.js',
-		}),
-		pluginAssetsSvg({
-			js: 'assets-svg.js',
-		}),
+		pluginAssetsEmoji(),
+		pluginAssetsSvg(),
 	],
 	outDir: paths.out,
 	lint: {
