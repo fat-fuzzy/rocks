@@ -8,9 +8,10 @@
 
 	let brightness = $derived(app.brightness)
 	let contrast = $derived(app.contrast)
+	let surfaceBrightness = $derived(contrast === 'blend' ? '1' : '0')
 	let pageClass = $derived(format.getClassNameFromPathname(path))
 	let themeClass = $derived(
-		`${pageClass} settings:${brightness}:${contrast} surface:0:neutral`,
+		`${pageClass} settings:${brightness}:${contrast} surface:${surfaceBrightness}:neutral`,
 	)
 
 	let containClass = $derived(
