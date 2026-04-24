@@ -64,7 +64,7 @@ html:has([class*='settings:day:']) .scrolly.scroll\:container,
 	z-index: 2;
 	transform: translate(52%, 32%) scale(1.3);
 	transition: transform 300ms ease-in-out;
-	min-inline-size: calc(var(--layout-sidebar-collapsed) / var(--size-ratio-md));
+	min-inline-size: calc(var(--layout-sidebar-collapsed) / var(--ratio-md));
 }
 
 @media screen and (min-height: 25rem) {
@@ -101,7 +101,7 @@ html:has([class*='settings:day:']) .scrolly.scroll\:container,
 	.scroll\:item .item-link {
 		transform: translate(53%, -15%) scale(1.15);
 		min-inline-size: calc(
-			var(--layout-sidebar-collapsed) / var(--size-ratio-md) - 2 *
+			var(--layout-sidebar-collapsed) / var(--ratio-md) - 2 *
 				var(--outline-offset-lg)
 		);
 	}
@@ -110,9 +110,7 @@ html:has([class*='settings:day:']) .scrolly.scroll\:container,
 @media screen and (min-width: 37.5rem) and (max-height: 37.5rem) {
 	.scroll\:item .item-link {
 		transform: translate(53%, -30%) scale(1.1);
-		min-inline-size: calc(
-			var(--layout-sidebar-collapsed) / var(--size-ratio-md)
-		);
+		min-inline-size: calc(var(--layout-sidebar-collapsed) / var(--ratio-md));
 	}
 }
 
@@ -129,17 +127,14 @@ html:has([class*='settings:day:']) .scrolly.scroll\:container,
 @media screen and (min-width: 50rem) and (max-height: 25rem) {
 	.scroll\:item .item-link {
 		min-inline-size: calc(
-			var(--layout-sidebar-collapsed) / var(--size-ratio-md) - 2 *
-				var(--ui-size)
+			var(--layout-sidebar-collapsed) / var(--ratio-md) - 2 * var(--ui-size)
 		);
 	}
 }
 
 @media screen and (min-width: 50rem) and (min-height: 31.25rem) {
 	.scroll\:item .item-link {
-		min-inline-size: calc(
-			var(--layout-sidebar-collapsed) / var(--size-ratio-sm)
-		);
+		min-inline-size: calc(var(--layout-sidebar-collapsed) / var(--ratio-sm));
 	}
 }
 

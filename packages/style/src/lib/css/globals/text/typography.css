@@ -139,8 +139,8 @@ code {
 }
 
 hr {
-	margin-block-start: calc(var(--ui-size-lg) * var(--size-ratio-lg));
-	margin-block-end: calc(var(--ui-size) * var(--size-ratio-md));
+	margin-block-start: calc(var(--ui-size-lg) * var(--ratio-lg));
+	margin-block-end: calc(var(--ui-size) * var(--ratio-md));
 }
 
 blockquote {

@@ -1,5 +1,5 @@
 .menu\:settings {
-	gap: calc(var(--gap) / var(--size-ratio-md));
+	gap: calc(var(--gap) / var(--ratio-md));
 	height: fit-content;
 	justify-content: var(--justify, flex-end);
 	padding-block: var(--outline-offset-md);
@@ -10,7 +10,7 @@
 }
 
 .links\:settings {
-	gap: calc(var(--gap) / var(--size-ratio-md));
+	gap: calc(var(--gap) / var(--ratio-md));
 	height: fit-content;
 	justify-content: var(--justify, flex-end);
 }

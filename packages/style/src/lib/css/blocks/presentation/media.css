@@ -29,5 +29,5 @@ ff-media {
 	z-index: 2;
 	transform: translate(55%, 120%);
 	transition: transform 300ms ease-in-out;
-	min-inline-size: calc(var(--layout-sidebar-collapsed) / var(--size-ratio-sm));
+	min-inline-size: calc(var(--layout-sidebar-collapsed) / var(--ratio-sm));
 }

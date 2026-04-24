@@ -104,8 +104,8 @@
 		--font-family-ui: var(--font-family-body);
 
 		--ui-size: var(--scale-base-00);
-		--ui-size-sm: calc(var(--ui-size) / var(--size-ratio-md));
-		--ui-size-lg: calc(var(--ui-size) * var(--size-ratio-md));
+		--ui-size-sm: calc(var(--ui-size) / var(--ratio-md));
+		--ui-size-lg: calc(var(--ui-size) * var(--ratio-md));
 		--font-size: var(--font-size-md);
 		--font-size-ui: var(--font-size-md);
 		--sidebar-width: var(--overlay-inline-size);
