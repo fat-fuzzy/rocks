@@ -31,21 +31,21 @@
 	"exports": {
 		".": "./dist/index.js",
 		"./css": "./dist/main.css",
+		"./css/base/*": "./dist/lib/css/base/*",
 		"./css/blocks/*": "./dist/lib/css/blocks/*",
-		"./css/config/*": "./dist/lib/css/config/*",
 		"./css/globals/*": "./dist/lib/css/globals/*",
 		"./css/layouts/*": "./dist/lib/css/layouts/*",
 		"./css/mixins/*": "./dist/lib/css/mixins/*",
 		"./css/motion/*": "./dist/lib/css/motion/*",
 		"./css/recipes/*": "./dist/lib/css/recipes/*",
-		"./css/tokens/*": "./dist/lib/css/tokens/*"
+		"./css/tokens/*": "./dist/lib/css/variables/*"
 	},
 	"devDependencies": {
 		"@fat-fuzzy/config": "workspace:*",
 		"@rollup/plugin-terser": "1.0.0",
-		"@terrazzo/cli": "2.0.0",
-		"@terrazzo/plugin-css": "2.0.0",
-		"@terrazzo/plugin-js": "2.0.0",
+		"@terrazzo/cli": "2.0.3",
+		"@terrazzo/plugin-css": "2.0.3",
+		"@terrazzo/plugin-js": "2.0.3",
 		"autoprefixer": "10.4.27",
 		"cssnano": "7.1.3",
 		"glob": "13.0.6",
