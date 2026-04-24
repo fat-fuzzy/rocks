@@ -1,49 +1,49 @@
 {
 	"color": {
 		"lightness": {
-			"$type": "percentage",
+			"$type": "string",
 			"light": {
 				"base": {
-					"$value": 99
+					"$value": "99%"
 				},
 				"contrast": {
-					"$value": 99
+					"$value": "99%"
 				},
 				"blend": {
-					"$value": 96
+					"$value": "96%"
 				}
 			},
 			"dark": {
 				"base": {
-					"$value": 25
+					"$value": "25%"
 				},
 				"contrast": {
-					"$value": 25
+					"$value": "25%"
 				},
 				"blend": {
-					"$value": 29
+					"$value": "29%"
 				}
 			},
 			"000": {
-				"$value": 95
+				"$value": "95%"
 			},
 			"100": {
-				"$value": 90
+				"$value": "90%"
 			},
 			"200": {
-				"$value": 80
+				"$value": "80%"
 			},
 			"300": {
-				"$value": 58
+				"$value": "58%"
 			},
 			"400": {
-				"$value": 52
+				"$value": "52%"
 			},
 			"500": {
-				"$value": 42
+				"$value": "42%"
 			},
 			"600": {
-				"$value": 32
+				"$value": "32%"
 			}
 		},
 		"chroma": {
@@ -181,8 +181,8 @@
 		"state": {
 			"default": {
 				"lightness": {
-					"$type": "percentage",
-					"$value": "{color.lightness.300}"
+					"$type": "string",
+					"value": "{color.lightness.300}"
 				},
 				"chroma": {
 					"$type": "number",
@@ -191,8 +191,8 @@
 			},
 			"active": {
 				"lightness": {
-					"$type": "percentage",
-					"$value": "{color.lightness.500}"
+					"$type": "string",
+					"value": "{color.lightness.500}"
 				},
 				"chroma": {
 					"$type": "number",
@@ -201,8 +201,8 @@
 			},
 			"hover": {
 				"lightness": {
-					"$type": "percentage",
-					"$value": "{color.lightness.400}"
+					"$type": "string",
+					"value": "{color.lightness.400}"
 				},
 				"chroma": {
 					"$type": "number",
@@ -211,8 +211,8 @@
 			},
 			"focus": {
 				"lightness": {
-					"$type": "percentage",
-					"$value": "{color.lightness.500}"
+					"$type": "string",
+					"value": "{color.lightness.500}"
 				},
 				"chroma": {
 					"$type": "number",
@@ -221,8 +221,8 @@
 			},
 			"disabled": {
 				"lightness": {
-					"$type": "percentage",
-					"$value": "{color.lightness.100}"
+					"$type": "string",
+					"value": "{color.lightness.100}"
 				},
 				"chroma": {
 					"$type": "number",
@@ -231,8 +231,8 @@
 			},
 			"visited": {
 				"lightness": {
-					"$type": "percentage",
-					"$value": "{color.lightness.200}"
+					"$type": "string",
+					"value": "{color.lightness.200}"
 				},
 				"chroma": {
 					"$type": "number",
@@ -582,44 +582,56 @@
 			"$type": "dimension",
 			"sm": {
 				"offsetX": {
-					"$value": "0px"
+					"value": 0,
+					"unit": "px"
 				},
 				"offsetY": {
-					"$value": "0.5px"
+					"value": 0.5,
+					"unit": "px"
 				},
 				"blur": {
-					"$value": "4px"
+					"value": 4,
+					"unit": "px"
 				},
 				"spread": {
-					"$value": "0px"
+					"value": 0,
+					"unit": "px"
 				}
 			},
 			"md": {
 				"offsetX": {
-					"$value": "0px"
+					"value": 0,
+					"unit": "px"
 				},
 				"offsetY": {
-					"$value": "1px"
+					"value": 1,
+					"unit": "px"
 				},
 				"blur": {
-					"$value": "6px"
+					"value": 6,
+					"unit": "px"
 				},
 				"spread": {
-					"$value": "0px"
+					"value": 0,
+					"unit": "px"
 				}
 			},
 			"lg": {
 				"offsetX": {
-					"$value": "0px"
+					"value": 0,
+					"unit": "px"
 				},
 				"offsetY": {
-					"$value": "1px"
+					"value": 1,
+					"unit": "px"
 				},
 				"blur": {
-					"$value": "8px"
+					"value": 8,
+					"unit": "px"
 				},
 				"spread": {
-					"$value": "0px"
+					"value": 0,
+					"unit": "px"
 				}
 			}
 		}

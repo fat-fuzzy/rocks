@@ -1,52 +1,55 @@
 {
 	"border": {
 		"$type": "dimension",
+		"unit": "rem",
 		"radius": {
 			"null": {
-				"$value": "0px"
+				"value": 0
 			},
 			"sm": {
-				"$value": "0.16rem"
+				"value": 0.16
 			},
 			"md": {
-				"$value": "0.26rem"
+				"value": 0.26
 			},
 			"lg": {
-				"$value": "0.34rem"
+				"value": 0.34
 			},
 			"xl": {
-				"$value": "0.66rem"
+				"value": 0.66
 			},
 			"base": {
-				"$value": "{border.radius.md}"
+				"value": "{border.radius.md.value}"
 			}
 		},
 		"width": {
+			"unit": "px",
 			"md": {
-				"$value": "1px"
+				"value": 1
 			},
 			"lg": {
-				"$value": "2px"
+				"value": 2
 			},
 			"xl": {
-				"$value": "4px"
+				"value": 4
 			}
 		}
 	},
 	"outline": {
 		"$type": "dimension",
+		"unit": "px",
 		"offset": {
 			"xs": {
-				"$value": "1.5px"
+				"value": 1.5
 			},
 			"sm": {
-				"$value": "1.75px"
+				"value": 1.75
 			},
 			"md": {
-				"$value": "2px"
+				"value": 2
 			},
 			"lg": {
-				"$value": "3px"
+				"value": 3
 			}
 		}
 	}
