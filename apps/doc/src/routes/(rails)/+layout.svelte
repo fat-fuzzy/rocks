@@ -120,9 +120,7 @@
 		</ToggleReveal>
 	</div>
 
-	<div
-		class="sidebar hug surface:0:neutral align:center width:lg height:sm raviolink"
-	>
+	<div class="sidebar hug align:center width:lg height:sm raviolink">
 		{#if sidenav.layout === 'tgv'}
 			<div class="app-name">
 				<Magic spell="fuzzy" mask="text">
