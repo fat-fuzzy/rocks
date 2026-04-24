@@ -15,26 +15,30 @@
 	}
 
 	let {children}: Props = $props()
-	let useDarkScheme = $derived(page.data.appContext.brightness === 'night')
+	let prefersDarkScheme: MediaQueryList | undefined = $state()
+
+	let useDarkScheme = $derived(
+		!prefersDarkScheme || page.data.appContext.brightness === 'night',
+	)
 	let appContext = $derived({
 		...page.data.appContext,
 		brightness: useDarkScheme ? 'night' : 'day',
 	})
 
 	function handleThemeChange(event: MediaQueryListEvent | MediaQueryList) {
-		if (!page.data.appContext.brightness) {
+		if (page.data.appContext.brightness === 'system') {
 			useDarkScheme = event.matches ? true : false
 		}
 	}
 
 	onMount(() => {
-		const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)')
+		prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)')
 		handleThemeChange(prefersDarkScheme)
 		// Listen for changes (but only apply if no saved preference)
 		prefersDarkScheme.addEventListener('change', handleThemeChange)
 
 		return () => {
-			prefersDarkScheme.removeEventListener('change', handleThemeChange)
+			prefersDarkScheme?.removeEventListener('change', handleThemeChange)
 		}
 	})
 </script>

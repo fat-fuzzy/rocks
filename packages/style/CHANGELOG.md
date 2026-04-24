@@ -1,5 +1,11 @@
 # @fat-fuzzy/style
 
+## 0.1.41
+
+### Patch Changes
+
+- 8b65d59: Fix sidebar label/title, fix contrast & system settings
+
 ## 0.1.40
 
 ### Patch Changes
