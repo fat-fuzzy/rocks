@@ -1,5 +1,11 @@
 # @fat-fuzzy/doc
 
+## 0.1.79
+
+### Patch Changes
+
+- 260a5f5: Export Input component
+
 ## 0.1.78
 
 ### Patch Changes
