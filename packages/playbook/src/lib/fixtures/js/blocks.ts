@@ -54,6 +54,7 @@ export default {
 			},
 		},
 	},
+	Input: {label: 'A text-based input'},
 	InputCheck: {label: 'A checkbox choice'},
 	InputRadio: {label: 'A radio choice'},
 	InputGroup: {

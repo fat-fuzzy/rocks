@@ -26,6 +26,7 @@ export interface Blocks {
 	Switch: typeof import('$lib/components/blocks/buttons/Switch/Switch.svelte').default
 	Toggle: typeof import('$lib/components/blocks/buttons/Toggle/Toggle.svelte').default
 	Feedback: typeof import('$lib/components/blocks/global/Feedback.svelte').default
+	Input: typeof import('$lib/components/blocks/inputs/Input.svelte').default
 	InputCheck: typeof import('$lib/components/blocks/inputs/InputCheck.svelte').default
 	InputRadio: typeof import('$lib/components/blocks/inputs/InputRadio.svelte').default
 	InputGroup: typeof import('$lib/components/blocks/inputs/InputGroup.svelte').default
