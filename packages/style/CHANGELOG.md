@@ -1,5 +1,11 @@
 # @fat-fuzzy/style
 
+## 0.1.42
+
+### Patch Changes
+
+- 07d2066: Style niceties
+
 ## 0.1.41
 
 ### Patch Changes
