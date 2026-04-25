@@ -34,6 +34,12 @@ ff-callout[class*='magic'] {
 		a,
 		p,
 		span,
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6,
 		svg {
 			background: var(--magic-gradient);
 			background: var(--webkit-magic-gradient);
@@ -142,6 +148,42 @@ ff-callout[class*='magic'].shape\:round {
 			var(--color-gradient-001-start) 80%
 		);
 		font-weight: var(--font-weight-semibold);
+	}
+}
+
+.magic\:chlorophyll {
+	--color-gradient-002-start: oklch(0.87 0.21 96.64);
+	--color-gradient-001-start: oklch(0.92 0.23 110.48);
+	--color-gradient-001-middle: oklch(0.91 0.23 116.61);
+	--color-gradient-001-end: hsl(189.64deg 92.28% 48.8%);
+	--color-gradient-002-end: hsl(273.67deg 90.7% 50.3%);
+	--magic-gradient: radial-gradient(
+		closest-side,
+		var(--color-gradient-002-start) 30%,
+		var(--color-gradient-001-start) 55%,
+		var(--color-gradient-001-middle) 60%,
+		var(--color-gradient-001-end),
+		var(--color-gradient-002-end)
+	);
+	--webkit-magic-gradient: -webkit-linear-gradient(
+		148deg,
+		var(--color-gradient-001-start),
+		var(--color-gradient-001-middle),
+		var(--color-gradient-001-end)
+	);
+	--lightness-contrast: var(--color-lightness-600);
+	--chroma-contrast: var(--color-chroma-600);
+	--hue: var(--color-theme-primary);
+
+	&[class*='svg'] {
+		--magic-gradient: radial-gradient(
+			closest-side,
+			var(--color-gradient-002-start) 20%,
+			var(--color-gradient-001-start) 45%,
+			var(--color-gradient-001-middle) 50%,
+			var(--color-gradient-001-end),
+			var(--color-gradient-002-end)
+		);
 	}
 }
 
