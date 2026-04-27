@@ -3,6 +3,7 @@
 	import {onMount} from 'svelte'
 	import {enhance} from '$app/forms'
 
+	import * as validators from '$lib/generated/ajv/validate.ajv.mjs'
 	import styleHelper from '$lib/utils/styles'
 	import popoverActor from '$lib/components/blocks/overlays/Popover/actor.svelte'
 	import FormValidator from '$lib/utils/browser/FormValidator.svelte'
@@ -36,8 +37,8 @@
 	let formData: FormData | undefined = $state()
 	let validator: FormValidator = new FormValidator(
 		'CookiePreferencesValidationFunction',
+		validators,
 	)
-
 	let cookiesPartial = $derived(
 		consent && consent.functional && !consent.legitimateInterest,
 	)

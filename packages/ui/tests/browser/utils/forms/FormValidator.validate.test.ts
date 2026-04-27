@@ -13,8 +13,8 @@ describe('FormValidator - Svelte Integration Tests', () => {
 
 			Object.keys(INPUTS).forEach((key) => {
 				if (
-					INPUTS[key].name === 'sample_radio' ||
-					INPUTS[key].name === 'sample_checkbox_group_select_all'
+					INPUTS[key].name === 'radio' ||
+					INPUTS[key].name === 'checkbox_group_select_all'
 				) {
 					// skip
 				} else {
@@ -33,7 +33,7 @@ describe('FormValidator - Svelte Integration Tests', () => {
 				) {
 					// Leave unchecked to trigger validation error
 				} else {
-					if (input.key === 'sample_disabled_field') {
+					if (input.key === 'disabled_field') {
 						expect(loc).toBeDisabled()
 					} else if (input.key === 'confirm_password') {
 						expect(loc).toBeDisabled()
@@ -76,11 +76,11 @@ describe('FormValidator - Svelte Integration Tests', () => {
 			const inputs: {locator: Locator; key: string}[] = []
 
 			Object.keys(INPUTS).forEach((key) => {
-				if (INPUTS[key].name === 'sample_radio') {
+				if (INPUTS[key].name === 'radio') {
 					// skip
 				} else if (
-					INPUTS[key].name === 'sample_radio_group' ||
-					INPUTS[key].name === 'sample_checkbox_group'
+					INPUTS[key].name === 'radio_group' ||
+					INPUTS[key].name === 'checkbox_group'
 				) {
 					const item1 = INPUTS[key].items ? INPUTS[key].items[0] : undefined
 
@@ -100,8 +100,8 @@ describe('FormValidator - Svelte Integration Tests', () => {
 
 			for (const input of inputs) {
 				if (
-					input.key === 'sample_radio' ||
-					input.key === 'sample_checkbox_group_select_all'
+					input.key === 'radio' ||
+					input.key === 'checkbox_group_select_all'
 				) {
 					// skip
 				} else if (
@@ -110,7 +110,7 @@ describe('FormValidator - Svelte Integration Tests', () => {
 				) {
 					await input.locator.click()
 				} else {
-					if (input.key === 'sample_disabled_field') {
+					if (input.key === 'disabled_field') {
 						expect(input.locator).toBeDisabled()
 					} else {
 						await input.locator.fill(INPUTS[input.key].value.valid)
@@ -128,10 +128,7 @@ describe('FormValidator - Svelte Integration Tests', () => {
 
 		await Promise.all(
 			Object.keys(INPUTS).map(async (key) => {
-				if (
-					key === 'sample_radio' ||
-					key === 'sample_checkbox_group_select_all'
-				) {
+				if (key === 'radio' || key === 'checkbox_group_select_all') {
 					// skip
 				} else {
 					await expect
@@ -141,13 +138,13 @@ describe('FormValidator - Svelte Integration Tests', () => {
 			}),
 		)
 
-		let input = getByText(INPUTS['sample_name'].label)
+		let input = getByText(INPUTS['name'].label)
 		expect(input).toBeInTheDocument()
 
 		// Unmount the component to trigger destroy
 		unmount()
 
-		input = getByText(INPUTS['sample_name'].label)
+		input = getByText(INPUTS['name'].label)
 		expect(input).not.toBeInTheDocument()
 	})
 })

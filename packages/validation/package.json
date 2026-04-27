@@ -2,14 +2,20 @@
 	"package": "@fat-fuzzy/validation",
 	"name": "@fat-fuzzy/validation",
 	"author": "Patricia Boh",
-	"version": "0.1.17",
+	"version": "0.1.18",
 	"main": "./dist/index.js",
+	"bin": {
+		"ff-validation": "./src/ajv/generate.js"
+	},
 	"scripts": {
 		"build": "pnpm build:ajv && rollup -c",
 		"package": "pnpm build",
 		"build:ts": "pnpm tsc && pnpm build:ajv && rollup -c",
-		"build:schemas": "node ./src/ajv/esm/ajv.js ",
+		"build:schemas": "node src/ajv/esm/ajv.js ",
 		"build:ajv": "pnpm build:schemas && rollup --config rollup.config.ajv.js",
+		"generate:config-validator": "node src/ajv/config/generateConfigValidator.js",
+		"lint": "prettier --check . && eslint .",
+		"format": "prettier --write .",
 		"dev": "rollup -c -w",
 		"dev:ajv": "rollup --config rollup.config.ajv.js -w",
 		"test": "pnpm test:unit && pnpm test:integrity",

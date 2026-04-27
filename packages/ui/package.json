@@ -1,12 +1,14 @@
 {
 	"package": "@fat-fuzzy/ui",
 	"name": "@fat-fuzzy/ui",
-	"version": "0.1.96",
+	"version": "0.1.97",
 	"author": "Patricia Boh",
 	"license": "MIT",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build && pnpm package",
+		"generate:validators": "ff-validation",
+		"prebuild": "ff-validation",
 		"preview": "vite preview",
 		"package": "svelte-kit sync && svelte-package && publint",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",

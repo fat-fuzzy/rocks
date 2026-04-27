@@ -5,7 +5,7 @@ import {render} from 'vitest-browser-svelte'
 import InputRadioTest from './InputRadioTest.svelte'
 import {INPUTS} from '$tests/fixtures/form-inputs'
 
-const key = 'sample_radio'
+const key = 'radio'
 const input = INPUTS[key]
 
 describe(`InputRadio - a radio input component`, () => {

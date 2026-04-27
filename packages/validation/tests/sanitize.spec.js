@@ -214,6 +214,18 @@ describe('sanitizeForm', () => {
 			const maliciousPath = '../../../etc/passwd'
 			const result = sanitizeForm('file', maliciousPath)
 			expect(result).not.toContain('..')
+			expect(result).toBe('passwd') // only the filename survives
+		})
+
+		it('should sanitize special characters in filename', () => {
+			// Realistic: angle brackets but no slashes in the filename itself
+			const result = sanitizeForm('file', '../<script>evil</script>.pdf')
+			expect(result).toBe('script&gt;.pdf') // last segment after split on '/'
+		})
+
+		it('should escape HTML characters in filename', () => {
+			const result = sanitizeForm('file', '<evil>.pdf')
+			expect(result).toBe('&lt;evil&gt;.pdf')
 		})
 
 		it('should handle Windows paths', () => {

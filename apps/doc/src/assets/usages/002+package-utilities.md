@@ -165,6 +165,11 @@ The script's instructions can be found here on the package's [README](https://gi
 
 ## Validation
 
+This package provides utilities:
+
+- for data validation data using [JSON Schema](https://json-schema.org/) and [AJV](https://ajv.js.org/)
+- to sanitize strings
+
 ### Requirements
 
 - [AJV](https://ajv.js.org/)
@@ -172,10 +177,62 @@ The script's instructions can be found here on the package's [README](https://gi
 
 ### Usage
 
-In order to adapt validation functions to a particular usage, you have to define the data structure using JSON Schema.
-Once this is setup, you can generate standalone code to validate data according to the schema during runtime.
+### Sanitization utilities
 
-[TODO]
+This package contains basic sanitization utilities
 
-- make validation generation configurable from consumer
-- document usage in more detail, add examples & resources
+1. define the data structure you want to validate using JSON Schema
+1. generate standalone code to validate data using the schema during runtime
+
+Please refer to [JSON Schema](https://json-schema.org/) for more in depth documentation about defining schema.
+
+To generate a new validation function:
+
+- Declare the schemas and generation options in a `fat-fuzzy.config.js` file (see `@fat-fuzzy/validation/src/examples/fat-fuzzy.config.example.js`)
+- Add a scrip to generate custom validation functions from schema using the `ff-validate` command before build:
+
+  ```json
+  "generate:validators": "ff-validation", // standalone command
+  "prebuild": "ff-validation", // always run before build
+  ```
+
+- THe generated validation functions can then be used as local imports:
+- import \* as validators from './generated/validate.ajv.mjs'
+
+```js
+import {sanitize} from '@fat-fuzzy/validation'
+```
+
+### Validation Functions
+
+This package allows you to generate validation functions for your data
+
+1. define the data structure you want to validate using JSON Schema
+1. generate standalone code to validate data using the schema during runtime
+
+Please refer to [JSON Schema](https://json-schema.org/) for more in depth documentation about defining schema.
+
+To generate a new validation function:
+
+- Declare the schemas and generation options in a `fat-fuzzy.config.js` file (see `@fat-fuzzy/validation/src/examples/fat-fuzzy.config.example.js`)
+- Add a scrip to generate custom validation functions from schema using the `ff-validate` command before build:
+
+  ```json
+  "generate:validators": "ff-validation", // standalone command
+  "prebuild": "ff-validation", // always run before build
+  ```
+
+- THe generated validation functions can then be used as local imports:
+
+  ```js
+  import * as validators from './generated/validate.ajv.mjs'
+  ```
+
+### Examples
+
+- Configuration: `@fat-fuzzy/validation/src/examples/fat-fuzzy.config.example.js`
+- FormValidator (framework agnostic, TypeScript): `@fat-fuzzy/validation/src/examples/FormValidator.ts`
+- FormValidator (Svelte, TypeScript): `@fat-fuzzy/ui/src/lib/utils/browser/FormValidator.svelte.ts`
+- SignUp example (Svelte, TypeScript):
+  - file: `@fat-fuzzy/ui/src/lib/components/recipes/forms/SignUp.svelte`
+  - demo: [Fat Fuzzy UI - SignUp](https://rocks.pages.dev/ui/recipes/SignUp)

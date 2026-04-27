@@ -16,8 +16,13 @@ sketches.map((sketch) => {
 		// Click the get started link.
 		await page.goto('/')
 		await page
-			.getByLabel('Sketches')
+			.getByRole('navigation', {name: 'Sketches', exact: false})
 			.getByRole('link', {name: sketch.title, exact: false})
+			.click()
+
+		await page
+			.getByRole('navigation', {name: 'Sketches', exact: false})
+			.getByText('Sketches')
 			.click()
 
 		// Expects page to have a heading with the name of Installation.

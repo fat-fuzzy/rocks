@@ -7,7 +7,7 @@ import {INPUTS} from '$tests/fixtures/form-inputs'
 
 describe(`InputGroup - a component group of radio or checkbox inputs`, () => {
 	describe('checkbox', () => {
-		const key = 'sample_checkbox_group'
+		const key = 'checkbox_group'
 		const input = INPUTS[key]
 
 		describe('state', () => {
@@ -217,7 +217,7 @@ describe(`InputGroup - a component group of radio or checkbox inputs`, () => {
 	})
 
 	describe(`checkbox select-all`, () => {
-		const key = 'sample_checkbox_group_select_all'
+		const key = 'checkbox_group_select_all'
 		const input = INPUTS[key]
 
 		describe('state', () => {
@@ -700,7 +700,7 @@ describe(`InputGroup - a component group of radio or checkbox inputs`, () => {
 	})
 
 	describe('radio', () => {
-		const key = 'sample_radio_group'
+		const key = 'radio_group'
 		const input = INPUTS[key]
 
 		describe('state', () => {

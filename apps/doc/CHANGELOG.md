@@ -1,5 +1,11 @@
 # @fat-fuzzy/doc
 
+## 0.1.80
+
+### Patch Changes
+
+- 31bde65: Make validation functions configurable
+
 ## 0.1.79
 
 ### Patch Changes
