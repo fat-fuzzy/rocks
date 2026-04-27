@@ -1,4 +1,4 @@
-# Style
+# UI
 
 You can read the documentation for this package here: [Fat Fuzzy Usage | Style](https://rocks.pages.dev/about/usage/ui)
 
