@@ -30,9 +30,9 @@ type InputProps = {
 }
 
 const INPUTS: InputProps = {
-	sample_name: {
+	name: {
 		label: 'Username',
-		name: 'sample_name',
+		name: 'name',
 		type: 'text',
 		value: {valid: 'Fat Fuzzy', invalid: 'F'},
 		errors: [
@@ -41,16 +41,16 @@ const INPUTS: InputProps = {
 			// messages.getErrorMessage('FORMAT_USERNAME'),
 		],
 	},
-	sample_phone: {
+	phone: {
 		label: 'Phone',
-		name: 'sample_phone',
+		name: 'phone',
 		type: 'tel',
 		value: {valid: '+380123456789', invalid: '123-456-7890'},
 		errors: [messages.getErrorMessage('FORMAT_PHONE')],
 	},
-	sample_email: {
+	email: {
 		label: 'Email',
-		name: 'sample_email',
+		name: 'email',
 		type: 'email',
 		value: {
 			valid: 'bird@fat-fuzzy.rocks',
@@ -60,53 +60,53 @@ const INPUTS: InputProps = {
 		},
 		errors: [messages.getErrorMessage('FORMAT_EMAIL')],
 	},
-	sample_postcode: {
+	postcode: {
 		label: 'Postcode',
-		name: 'sample_postcode',
+		name: 'postcode',
 		type: 'text',
 		value: {valid: '75001', invalid: 'ABC'},
 		errors: [messages.getErrorMessage('FORMAT_TEXT_MIN', 5)],
 	},
 
 	// TODO: enable textarea test after creating Textarea component
-	// sample_description: {
+	// description: {
 	// 	label: 'Description',
 	// 	type: 'textarea',
 	// 	value: {valid: 'Sample description'},
 	// 	errors: [messages.getErrorMessage('FORMAT_TEXT_MAX', 200)],
 	// },
-	sample_radio: {
+	radio: {
 		label: 'Radio',
-		name: 'sample_radio',
+		name: 'radio',
 		type: 'radio',
 		value: {valid: 'true'},
 		errors: [messages.getErrorMessage('RADIO_MIN', 1)],
 	},
-	sample_checkbox: {
+	checkbox: {
 		label: 'Checkbox',
-		name: 'sample_checkbox',
+		name: 'checkbox',
 		type: 'checkbox',
 		value: {valid: 'true'},
 		errors: [messages.getErrorMessage('CHECKBOX_MIN', 1)],
 	},
 	// TODO: enable select test after creating Select component
-	// sample_select: {
+	// select: {
 	// 	label: 'Select',
 	// 	type: 'select',
 	// 	value: {valid: 'Option 1'},
 	// 	errors: [],
 	// },
-	sample_disabled_field: {
+	disabled_field: {
 		label: 'Disabled Field',
-		name: 'sample_disabled_field',
+		name: 'disabled_field',
 		type: 'text',
 		value: {valid: 'disabled'},
 		errors: [],
 	},
-	sample_radio_group: {
+	radio_group: {
 		legend: 'Radio Group',
 		label: 'Radio Group',
-		name: 'sample_radio_group',
+		name: 'radio_group',
 		type: 'radio',
 		value: {valid: 'radio-2'},
 		items: [
@@ -124,10 +124,10 @@ const INPUTS: InputProps = {
 		],
 		errors: [messages.getErrorMessage('RADIO_PATTERN')],
 	},
-	sample_checkbox_group: {
+	checkbox_group: {
 		legend: 'Checkbox Group',
 		label: 'Checkbox Group',
-		name: 'sample_checkbox_group',
+		name: 'checkbox_group',
 		type: 'checkbox',
 		value: {valid: 'check-2'},
 		items: [
@@ -142,10 +142,10 @@ const INPUTS: InputProps = {
 		],
 		errors: [messages.getErrorMessage('CHECKBOX_PATTERN')],
 	},
-	sample_checkbox_group_select_all: {
+	checkbox_group_select_all: {
 		legend: 'Checkbox Group - Select All',
 		label: 'Checkbox Group - Select All',
-		name: 'sample_checkbox_group_select_all',
+		name: 'checkbox_group_select_all',
 		type: 'checkbox',
 		value: {valid: 'check-2'},
 		items: [
@@ -163,9 +163,9 @@ const INPUTS: InputProps = {
 		],
 		errors: [messages.getErrorMessage('CHECKBOX_PATTERN')],
 	},
-	sample_password: {
+	password: {
 		label: 'Password',
-		name: 'sample_password',
+		name: 'password',
 		type: 'password',
 		value: {valid: 'ThisIsNotSecure!!!123', invalid: 'pwd'},
 		errors: [
@@ -178,17 +178,17 @@ const INPUTS: InputProps = {
 		label: 'Confirm Pwd',
 		name: 'confirm_password',
 		type: 'password',
-		dependsOn: 'sample_password',
+		dependsOn: 'password',
 		value: {valid: 'ThisIsNotSecure!!!123', invalid: 'ThisIsNotSecure'},
 		errors: [messages.getErrorMessage('MATCH_PASSWORD')],
 	},
 }
 
 const SIGNUP_INPUTS: InputProps = {
-	sample_username: {
+	username: {
 		label: 'Username',
 		type: 'text',
-		name: 'sample_username',
+		name: 'username',
 		value: {valid: 'FatTheFuzzy', invalid: 'F'},
 		errors: [
 			messages.getErrorMessage('FORMAT_TEXT_MIN', 3),
@@ -196,8 +196,8 @@ const SIGNUP_INPUTS: InputProps = {
 			// messages.getErrorMessage('FORMAT_USERNAME'),
 		],
 	},
-	sample_email: INPUTS.sample_email,
-	sample_password: INPUTS.sample_password,
+	email: INPUTS.email,
+	password: INPUTS.password,
 	confirm_password: INPUTS.confirm_password,
 }
 
