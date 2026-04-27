@@ -1,8 +1,8 @@
 import {error} from '@sveltejs/kit'
 
 export const load = async ({parent, params}) => {
-	let {sketches} = await parent()
-	let meta = sketches.find((s) => {
+	const {sketches} = await parent()
+	const meta = sketches.find((s) => {
 		return s.slug === params.slug
 	})
 

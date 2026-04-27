@@ -1,30 +1,6 @@
 import gfx from '@fat-fuzzy/gfx'
 
-const learning = gfx.gl.sketches.learning
-	.filter((sketch) => !sketch.meta.draft)
-	.map((sketch) => sketch.meta)
-
-const links = {
-	title: 'Sketches',
-	id: 'nav-sketches',
-	layout: 'steam',
-	items: [
-		{
-			slug: 'projects',
-			title: 'Projects',
-			asset: 'projects',
-			formaction: 'toggleProjects',
-			items: [],
-		},
-		{
-			slug: 'learning',
-			title: 'Learning',
-			asset: 'learning',
-			formaction: 'toggleLearning',
-			items: [],
-		},
-	],
-}
+const learning = gfx.gl.sketches.learning.filter((sketch) => !sketch.meta.draft)
 
 // since there's no dynamic data here, we can prerender
 // it so that it gets served as a static asset in production
@@ -33,7 +9,7 @@ export const ssr = true
 
 export const load = async ({locals, url}) => {
 	// Main header nav
-	const nav = locals.nav || links
+	const nav = locals.nav || []
 	nav.actionPath = url.pathname
 	nav.reveal = nav.reveal ?? 'expanded'
 
@@ -47,7 +23,6 @@ export const load = async ({locals, url}) => {
 	return {
 		nav,
 		appContext,
-		sketches: learning,
-		sidenav: links,
+		sketches: learning.map((sketch) => sketch.meta),
 	}
 }

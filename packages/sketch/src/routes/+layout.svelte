@@ -36,7 +36,6 @@
 		size: 'sm' as UiSize,
 		color: 'primary' as UiColor,
 		place: 'left',
-		formaction: 'toggleSidebar',
 	}
 
 	type AreaZone = {
@@ -80,6 +79,7 @@
 		id="sidenav"
 		class="font:md width:md height:lg"
 		data-testid={`sidenav-${path}`}
+		aria-label={nav.label}
 	>
 		<SkipLinks id={`skiplinks-${path}`} text="Skip to content" href="#main" />
 		<ToggleReveal
@@ -100,7 +100,7 @@
 			dismiss="outside"
 		>
 			<ToggleTree
-				{...nav}
+				items={sketches}
 				id={`sidenav-${path}`}
 				pathname={path}
 				preload={true}
