@@ -34,20 +34,10 @@ const AJV_OPTIONS = {
 }
 
 // Add your Schemas here
-const FormInputs = schemas.schemaInputs
-const SignUpSchema = schemas.schemaSignUp
-const TestForm = schemas.schemaTestForm
-const UiStateSchema = schemas.schemaUiState
-const CookiePreferencesSchema = schemas.schemaCookiePreferences
+const Form = schemas.schemaForm
 const ajv = new Ajv({
 	...AJV_OPTIONS,
-	schemas: [
-		FormInputs,
-		TestForm,
-		SignUpSchema,
-		UiStateSchema,
-		CookiePreferencesSchema,
-	],
+	schemas: [Form],
 })
 
 addFormats(ajv)
@@ -57,10 +47,7 @@ addErrors(ajv)
  * Generate validation functions for each schema
  */
 let moduleCode = standaloneCode(ajv, {
-	TestFormValidationFunction: '#/definitions/TestFormSchema',
-	SignUpValidationFunction: '#/definitions/SignUpSchema',
-	UiStateValidationFunction: '#/definitions/UiStateSchema',
-	CookiePreferencesValidationFunction: '#/definitions/CookiePreferencesSchema',
+	FormValidationFunction: '#/definitions/FormSchema',
 })
 
 /**
@@ -88,12 +75,12 @@ for (const {search, replace} of replacements) {
 	moduleCode = moduleCode.replace(search, replace)
 }
 
-// Write the module code to file
-fs.writeFileSync(modulePath, moduleCode)
-
 if (moduleCode.indexOf('require(') !== -1) {
 	throw new Error('Unreplaced require() statement in compiled validator code')
 }
+
+// Write the module code to file
+fs.writeFileSync(modulePath, moduleCode)
 
 // Calculate hash of the module code for integrity check
 const computedHash = crypto

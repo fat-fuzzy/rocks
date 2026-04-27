@@ -1,0 +1,81 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$id": "#/definitions/FatFuzzyConfigSchema",
+	"title": "FatFuzzyConfigSchema",
+	"description": "Configuration schema for fat-fuzzy.config.js",
+	"type": "object",
+	"additionalProperties": false,
+	"properties": {
+		"validation": {
+			"$ref": "#/definitions/ValidationConfig"
+		},
+		"style": {
+			"description": "Reserved for the future @fat-fuzzy/style package. Shape is not yet defined.",
+			"type": "object"
+		}
+	},
+	"definitions": {
+		"ValidationConfig": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["schemasDir", "outDir", "schemas"],
+			"properties": {
+				"schemasDir": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 260,
+					"description": "Path to the directory containing consumer JSON Schema files. Relative to the config file."
+				},
+				"outDir": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 260,
+					"description": "Path where generated validator files will be written. Relative to the config file. Will be created if it does not exist."
+				},
+				"schemas": {
+					"type": "object",
+					"description": "Per-schema configuration keyed by schema name. Names matching built-ins (FormInputs, SignUp, TestForm, UiState, CookiePreferences) may use mode 'extend' or 'replace'. New names are always additive.",
+					"additionalProperties": {
+						"$ref": "#/definitions/SchemaEntry"
+					},
+					"propertyNames": {
+						"pattern": "^[A-Za-z_$][A-Za-z0-9_$]*$",
+						"maxLength": 64
+					}
+				}
+			}
+		},
+		"SchemaEntry": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["file", "exportName", "$id", "mode"],
+			"properties": {
+				"file": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 260,
+					"description": "Filename of the JSON Schema, relative to schemasDir. Supports .json, .js, and .mjs."
+				},
+				"exportName": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 64,
+					"pattern": "^[A-Za-z_$][A-Za-z0-9_$]*$",
+					"description": "Valid JS identifier used as the named export in the generated module, e.g. 'MyFormValidationFunction'."
+				},
+				"$id": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 128,
+					"pattern": "^#/definitions/[A-Za-z_$][A-Za-z0-9_$]*$",
+					"description": "The $id used by AJV to reference this schema, e.g. '#/definitions/MyFormSchema'."
+				},
+				"mode": {
+					"type": "string",
+					"enum": ["extend", "replace"],
+					"description": "'replace' substitutes the built-in schema entirely. 'extend' deep-merges consumer fields on top of the built-in. For greenfield schema names, use 'replace'."
+				}
+			}
+		}
+	}
+}
