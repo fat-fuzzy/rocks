@@ -22,3 +22,4 @@ yarn.lock
 **/out/
 
 packages/style/src/lib/css/variables/
+packages/validation/src/ajv/out
