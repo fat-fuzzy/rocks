@@ -34,7 +34,7 @@
 				},
 				"schemas": {
 					"type": "object",
-					"description": "Per-schema configuration keyed by schema name. Names matching built-ins (FormInputs, SignUp, TestForm, UiState, CookiePreferences) may use mode 'extend' or 'replace'. New names are always additive.",
+					"description": "Per-schema configuration keyed by schema name. Names matching built-ins (Form) may use mode 'extend' or 'replace'. New names are always additive.",
 					"additionalProperties": {
 						"$ref": "#/definitions/SchemaEntry"
 					},
