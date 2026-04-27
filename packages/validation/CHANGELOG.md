@@ -1,5 +1,11 @@
 # @fat-fuzzy/validation
 
+## 0.1.19
+
+### Patch Changes
+
+- 605e8f4: Fix validation package exports, doc
+
 ## 0.1.18
 
 ### Patch Changes

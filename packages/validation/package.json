@@ -2,7 +2,7 @@
 	"package": "@fat-fuzzy/validation",
 	"name": "@fat-fuzzy/validation",
 	"author": "Patricia Boh",
-	"version": "0.1.18",
+	"version": "0.1.19",
 	"main": "./dist/index.js",
 	"bin": {
 		"ff-validation": "./src/ajv/generate.js"
@@ -30,7 +30,10 @@
 	"files": [
 		"dist",
 		"!dist/**/*.test.*",
-		"!dist/**/*.spec.*"
+		"!dist/**/*.spec.*",
+		"src/ajv/config",
+		"src/ajv/out",
+		"src/utils"
 	],
 	"devDependencies": {
 		"@fat-fuzzy/config": "workspace:*",

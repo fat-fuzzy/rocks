@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 /**
  * This file is used to generate the standalone code used for validation in the browser with Ajv.
  */

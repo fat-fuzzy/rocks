@@ -1,5 +1,11 @@
 # @fat-fuzzy/doc
 
+## 0.1.81
+
+### Patch Changes
+
+- 605e8f4: Fix validation package exports, doc
+
 ## 0.1.80
 
 ### Patch Changes
