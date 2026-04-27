@@ -10,6 +10,7 @@
 	"scripts": {
 		"build": "pnpm build:ajv && rollup -c",
 		"package": "pnpm build",
+		"prepublishOnly": "npm pack --dry-run",
 		"build:ts": "pnpm tsc && pnpm build:ajv && rollup -c",
 		"build:schemas": "node src/ajv/esm/ajv.js ",
 		"build:ajv": "pnpm build:schemas && rollup --config rollup.config.ajv.js",
@@ -32,6 +33,7 @@
 		"!dist/**/*.test.*",
 		"!dist/**/*.spec.*",
 		"src/ajv/config",
+		"src/ajv/in",
 		"src/ajv/out",
 		"src/utils"
 	],
