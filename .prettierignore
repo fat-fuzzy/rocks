@@ -21,5 +21,7 @@ yarn.lock
 **/playwright_report
 **/out/
 
+## Generated code
 packages/style/src/lib/css/variables/
 packages/validation/src/ajv/out
+packages/ui/src/lib/generated/
