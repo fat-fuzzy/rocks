@@ -1,4 +1,9 @@
-import type {InputCommonProps, InputProps, ViewingPreferences} from '$types'
+import type {
+	InputCommonProps,
+	InputProps,
+	ViewingPreferences,
+	PrivacyPreferences,
+} from '$types'
 import FormValidator from '$lib/utils/browser/FormValidator.svelte'
 
 export type FormCommonProps = InputCommonProps & {
@@ -26,6 +31,7 @@ export type FormProps = InputProps & {
 
 export type CookiesPreferencesProps = InputProps &
 	FormCommonProps &
-	ViewingPreferences & {
+	ViewingPreferences &
+	PrivacyPreferences & {
 		level?: number
 	}

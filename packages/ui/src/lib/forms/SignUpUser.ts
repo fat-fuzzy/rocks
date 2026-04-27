@@ -1,10 +1,11 @@
+import * as validators from '$lib/generated/ajv/validate.ajv.mjs'
 import FormValidator from '$lib/utils/browser/FormValidator.svelte'
 
 class SignUpUser {
 	inputTypes: {[name: string]: string} = {
-		sample_username: 'text',
-		sample_email: 'email',
-		sample_password: 'password',
+		username: 'text',
+		email: 'email',
+		password: 'password',
 		confirm_password: 'password',
 	}
 	/**
@@ -16,7 +17,7 @@ class SignUpUser {
 	 * Update SignUp based on inputs
 	 */
 	signup(formData: FormData) {
-		const validator = new FormValidator('SignUpValidationFunction')
+		const validator = new FormValidator('SignUpValidationFunction', validators)
 
 		validator.init(formData, this.inputTypes)
 		validator.validate()
