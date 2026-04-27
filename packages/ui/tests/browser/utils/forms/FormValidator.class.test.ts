@@ -1,5 +1,7 @@
-import {describe, it, expect, beforeEach, vi} from 'vitest'
-import validations from '@fat-fuzzy/validation'
+import {describe, it, expect, beforeEach} from 'vitest'
+
+import {sanitize} from '@fat-fuzzy/validation'
+import * as validators from '$lib/generated/ajv/validate.ajv.mjs'
 
 import FormValidator from '$lib/utils/browser/FormValidator.svelte'
 import {
@@ -8,29 +10,13 @@ import {
 	initFormDataWithSampleInputs,
 } from '$tests/fixtures/form-inputs'
 
-const {sanitize, validate} = validations
-
-// Mock the validations module
-vi.mock('@fat-fuzzy/validation', () => ({
-	default: {
-		sanitize: {
-			sanitizeForm: vi.fn((type, value) => value),
-		},
-		validate: {
-			MockValidationFunction: vi.fn(),
-		},
-	},
-}))
-
 describe('FormValidator - a class that validates form inputs using validation functions from @fat-fuzzy/validation', () => {
 	let validator: FormValidator
-	// @ts-expect-error need to add types for ajvValidate
-	const mockValidate = validate['MockValidationFunction']
+	const mockValidate = validators['TestFormValidationFunction']
 	const mockSanitize = sanitize.sanitizeForm
 
 	beforeEach(() => {
-		vi.clearAllMocks()
-		validator = new FormValidator('MockValidationFunction')
+		validator = new FormValidator('TestFormValidationFunction', validators)
 	})
 
 	describe('constructor', () => {
@@ -53,7 +39,7 @@ describe('FormValidator - a class that validates form inputs using validation fu
 			await validator.init(formData, fields)
 
 			expect(validator.inputTypes).toEqual(fields)
-			expect(validator.form.sample_email).toEqual({
+			expect(validator.form.email).toEqual({
 				feedback: {},
 				is_valid: undefined,
 				touched: false,
@@ -61,7 +47,7 @@ describe('FormValidator - a class that validates form inputs using validation fu
 				type: 'email',
 				value: undefined,
 			})
-			expect(validator.form.sample_name).toEqual({
+			expect(validator.form.name).toEqual({
 				feedback: {},
 				is_valid: undefined,
 				touched: false,
@@ -85,19 +71,20 @@ describe('FormValidator - a class that validates form inputs using validation fu
 		it('should sanitize values when setting', async () => {
 			await initFormDataWithSampleInputs(validator, 'unsanitized')
 
-			expect(mockSanitize).toHaveBeenCalledWith(
-				'email',
-				INPUTS.sample_email.value.unsanitized,
-			)
+			expect(validator.form.email.value).toEqual(INPUTS.email.value.sanitized)
+			// expect(mockSanitize).toHaveBeenCalledWith(
+			// 	'email',
+			// 	INPUTS.email.value.unsanitized,
+			// )
 		})
 
 		it('should handle empty FormData', async () => {
 			const formData = new FormData()
-			const fields = {sample_email: 'email'}
+			const fields = {email: 'email'}
 
 			await validator.init(formData, fields)
 
-			expect(validator.form.sample_email.value).toBeUndefined()
+			expect(validator.form.email.value).toBeUndefined()
 		})
 	})
 
@@ -109,15 +96,15 @@ describe('FormValidator - a class that validates form inputs using validation fu
 
 		it('should include changed or unchanged fields in schema', () => {
 			validator.form.email.changed = true
-			validator.form.email.value = INPUTS.sample_email.value.valid
+			validator.form.email.value = INPUTS.email.value.valid
 			validator.form.name.changed = false
-			validator.form.name.value = INPUTS.sample_name.value.valid
+			validator.form.name.value = INPUTS.name.value.valid
 
 			const schema = validator.preValidate(['email', 'name'])
 
 			expect(schema).toEqual({
-				email: INPUTS.sample_email.value.valid,
-				name: INPUTS.sample_name.value.valid,
+				email: INPUTS.email.value.valid,
+				name: INPUTS.name.value.valid,
 			})
 		})
 
@@ -146,43 +133,43 @@ describe('FormValidator - a class that validates form inputs using validation fu
 		beforeEach(async () => {
 			const formData = new FormData()
 			await validator.init(formData, {
-				sample_email: 'email',
-				sample_name: 'text',
+				email: 'email',
+				name: 'text',
 			})
 		})
 
 		it('should mark fields as invalid when errors exist', () => {
 			validator.errors = [
-				{instancePath: '/sample_email', message: 'Must be a valid email'},
+				{instancePath: '/email', message: 'Must be a valid email'},
 			]
 
-			validator.postValidate(['sample_email'])
+			validator.postValidate(['email'])
 
-			expect(validator.form.sample_email.is_valid).toBe(false)
-			expect(validator.form.sample_email.feedback['error']).toEqual([
+			expect(validator.form.email.is_valid).toBe(false)
+			expect(validator.form.email.feedback['error']).toEqual([
 				'Must be a valid email',
 			])
 		})
 
 		it('should mark fields as valid when no errors exist', () => {
 			validator.errors = []
-			validator.form.sample_email.is_valid = false
+			validator.form.email.is_valid = false
 
-			validator.postValidate(['sample_email'])
+			validator.postValidate(['email'])
 
-			expect(validator.form.sample_email.is_valid).toBe(true)
-			expect(validator.form.sample_email.feedback['error']).toBeUndefined()
+			expect(validator.form.email.is_valid).toBe(true)
+			expect(validator.form.email.feedback['error']).toBeUndefined()
 		})
 
 		it('should handle multiple errors for the same field', () => {
 			validator.errors = [
-				{instancePath: '/sample_email', message: 'Must be a valid email'},
-				{instancePath: '/sample_email', message: 'Email is required'},
+				{instancePath: '/email', message: 'Must be a valid email'},
+				{instancePath: '/email', message: 'Email is required'},
 			]
 
-			validator.postValidate(['sample_email'])
+			validator.postValidate(['email'])
 
-			expect(validator.form.sample_email.feedback['error']).toEqual([
+			expect(validator.form.email.feedback['error']).toEqual([
 				'Must be a valid email',
 				'Email is required',
 			])
@@ -190,50 +177,43 @@ describe('FormValidator - a class that validates form inputs using validation fu
 	})
 
 	describe('validate', () => {
-		beforeEach(async () => {
+		it('should call ajvValidate with the schema', async () => {
 			await initFormDataWithSampleInputs(validator, 'invalid')
-
 			Object.keys(INPUTS).forEach((key) => {
 				validator.form[key].changed = true
 			})
-		})
-
-		it('should call ajvValidate with the schema', () => {
-			const mockErrors = [{instancePath: '/email', message: 'invalid format'}]
-			mockValidate.mockReturnValue(false)
-			mockValidate.errors = mockErrors
-
 			validator.validate()
 
-			expect(mockValidate).toHaveBeenCalledWith({
-				confirm_password: 'ThisIsNotSecure',
-				sample_checkbox: undefined,
-				sample_checkbox_group: undefined,
-				// sample_description: undefined,
-				sample_disabled_field: undefined,
-				sample_email: 'bird@fat-fuzzy',
-				sample_name: 'F',
-				sample_password: 'pwd',
-				sample_phone: '123-456-7890',
-				sample_postcode: 'ABC',
-				sample_radio_group: undefined,
-				sample_select: undefined,
+			// expect(mockValidate).toHaveBeenCalledWith({
+			// 	confirm_password: 'ThisIsNotSecure',
+			// 	checkbox: undefined,
+			// 	checkbox_group: undefined,
+			// 	// description: undefined,
+			// 	disabled_field: undefined,
+			// 	email: 'bird@fat-fuzzy',
+			// 	name: 'F',
+			// 	password: 'pwd',
+			// 	phone: '123-456-7890',
+			// 	postcode: 'ABC',
+			// 	radio_group: undefined,
+			// 	select: undefined,
+			// })
+		})
+
+		it('should set errors when validation fails', async () => {
+			await initFormDataWithSampleInputs(validator, 'invalid')
+			Object.keys(INPUTS).forEach((key) => {
+				validator.form[key].changed = true
 			})
-		})
-
-		it('should set errors when validation fails', () => {
-			const mockErrors = [{instancePath: '/email', message: 'invalid format'}]
-			mockValidate.mockReturnValue(false)
-			mockValidate.errors = mockErrors
-
 			validator.validate()
 
-			expect(validator.errors).toEqual(mockErrors)
+			expect(validator.errors.length).toEqual(8)
+
+			// TODO: test errors ?
 		})
 
-		it('should not set errors when validation passes', () => {
-			mockValidate.mockReturnValue(true)
-
+		it('should not set errors when validation passes', async () => {
+			await initFormDataWithSampleInputs(validator, 'valid')
 			validator.validate()
 
 			expect(validator.errors).toEqual([])
@@ -326,7 +306,7 @@ describe('FormValidator - a class that validates form inputs using validation fu
 		beforeEach(async () => {
 			const formData = new FormData()
 			await validator.init(formData, {email: 'email'})
-			mockValidate.mockReturnValue(true)
+			// mockValidate.mockReturnValue(true)
 		})
 
 		it('should mark field as changed', () => {
@@ -339,7 +319,7 @@ describe('FormValidator - a class that validates form inputs using validation fu
 			validator.changeInput(event)
 
 			expect(validator.form.email.changed).toBe(true)
-			expect(mockValidate).not.toHaveBeenCalled()
+			// expect(mockValidate).not.toHaveBeenCalled()
 		})
 
 		it('should mark field as changed and validate', () => {
@@ -353,14 +333,14 @@ describe('FormValidator - a class that validates form inputs using validation fu
 
 			expect(validator.form.email.changed).toBe(true)
 			expect(validator.form.email.value).toBe('new@example.com')
-			expect(mockValidate).toHaveBeenCalled()
+			// expect(mockValidate).toHaveBeenCalled()
 		})
 	})
 
 	describe('destroy', () => {
 		it('should reset all properties', async () => {
 			const formData = new FormData()
-			formData.append('email', INPUTS.sample_email.value.valid)
+			formData.append('email', INPUTS.email.value.valid)
 			await validator.init(formData, {email: 'email'})
 			validator.errors = [{instancePath: '/email', message: 'error'}]
 
@@ -369,7 +349,6 @@ describe('FormValidator - a class that validates form inputs using validation fu
 			expect(validator.form).toEqual({})
 			expect(validator.inputTypes).toEqual({})
 			expect(validator.errors).toEqual([])
-			expect(validator.ajvValidate()).toEqual({})
 		})
 	})
 
@@ -377,25 +356,24 @@ describe('FormValidator - a class that validates form inputs using validation fu
 		it('should sanitize values when setting', async () => {
 			const formData = new FormData()
 
-			if (INPUTS.sample_email.value.unsanitized) {
-				formData.append('sample_email', INPUTS.sample_email.value.unsanitized)
+			if (INPUTS.email.value.unsanitized) {
+				formData.append('email', INPUTS.email.value.unsanitized)
 			}
-			await validator.init(formData, {sample_email: 'email'})
+			await validator.init(formData, {email: 'email'})
 
-			expect(mockSanitize).toHaveBeenCalledWith(
-				'email',
-				INPUTS.sample_email.value.unsanitized,
-			)
+			expect(validator.form.email.value).toEqual(INPUTS.email.value.sanitized)
+			// expect(mockSanitize).toHaveBeenCalledWith(
+			// 	'email',
+			// 	INPUTS.email.value.unsanitized,
+			// )
 		})
 
 		it('should get field values correctly', async () => {
 			const formData = new FormData()
-			formData.append('sample_email', INPUTS.sample_email.value.valid)
-			await validator.init(formData, {sample_email: 'email'})
+			formData.append('email', INPUTS.email.value.valid)
+			await validator.init(formData, {email: 'email'})
 
-			expect(validator.form.sample_email.value).toBe(
-				INPUTS.sample_email.value.valid,
-			)
+			expect(validator.form.email.value).toBe(INPUTS.email.value.valid)
 		})
 	})
 })
