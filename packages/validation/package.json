@@ -30,7 +30,10 @@
 	"files": [
 		"dist",
 		"!dist/**/*.test.*",
-		"!dist/**/*.spec.*"
+		"!dist/**/*.spec.*",
+		"src/ajv/config",
+		"src/ajv/out",
+		"src/utils"
 	],
 	"devDependencies": {
 		"@fat-fuzzy/config": "workspace:*",
