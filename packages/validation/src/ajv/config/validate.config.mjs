@@ -1,0 +1,899 @@
+'use strict'
+export const ValidateFatFuzzyConfig = validate14
+const schema32 = {
+	$schema: 'http://json-schema.org/draft-07/schema#',
+	$id: '#/definitions/FatFuzzyConfigSchema',
+	title: 'FatFuzzyConfigSchema',
+	description: 'Configuration schema for fat-fuzzy.config.js',
+	type: 'object',
+	additionalProperties: false,
+	properties: {
+		validation: {$ref: '#/definitions/ValidationConfig'},
+		style: {
+			description:
+				'Reserved for the future @fat-fuzzy/style package. Shape is not yet defined.',
+			type: 'object',
+		},
+	},
+	definitions: {
+		ValidationConfig: {
+			type: 'object',
+			additionalProperties: false,
+			required: ['schemasDir', 'outDir', 'schemas'],
+			properties: {
+				schemasDir: {
+					type: 'string',
+					minLength: 1,
+					maxLength: 260,
+					description:
+						'Path to the directory containing consumer JSON Schema files. Relative to the config file.',
+				},
+				outDir: {
+					type: 'string',
+					minLength: 1,
+					maxLength: 260,
+					description:
+						'Path where generated validator files will be written. Relative to the config file. Will be created if it does not exist.',
+				},
+				schemas: {
+					type: 'object',
+					description:
+						"Per-schema configuration keyed by schema name. Names matching built-ins (FormInputs, SignUp, TestForm, UiState, CookiePreferences) may use mode 'extend' or 'replace'. New names are always additive.",
+					additionalProperties: {$ref: '#/definitions/SchemaEntry'},
+					propertyNames: {pattern: '^[A-Za-z_$][A-Za-z0-9_$]*$', maxLength: 64},
+				},
+			},
+		},
+		SchemaEntry: {
+			type: 'object',
+			additionalProperties: false,
+			required: ['file', 'exportName', '$id', 'mode'],
+			properties: {
+				file: {
+					type: 'string',
+					minLength: 1,
+					maxLength: 260,
+					description:
+						'Filename of the JSON Schema, relative to schemasDir. Supports .json, .js, and .mjs.',
+				},
+				exportName: {
+					type: 'string',
+					minLength: 1,
+					maxLength: 64,
+					pattern: '^[A-Za-z_$][A-Za-z0-9_$]*$',
+					description:
+						"Valid JS identifier used as the named export in the generated module, e.g. 'MyFormValidationFunction'.",
+				},
+				$id: {
+					type: 'string',
+					minLength: 1,
+					maxLength: 128,
+					pattern: '^#/definitions/[A-Za-z_$][A-Za-z0-9_$]*$',
+					description:
+						"The $id used by AJV to reference this schema, e.g. '#/definitions/MyFormSchema'.",
+				},
+				mode: {
+					type: 'string',
+					enum: ['extend', 'replace'],
+					description:
+						"'replace' substitutes the built-in schema entirely. 'extend' deep-merges consumer fields on top of the built-in. For greenfield schema names, use 'replace'.",
+				},
+			},
+		},
+	},
+}
+const schema33 = {
+	type: 'object',
+	additionalProperties: false,
+	required: ['schemasDir', 'outDir', 'schemas'],
+	properties: {
+		schemasDir: {
+			type: 'string',
+			minLength: 1,
+			maxLength: 260,
+			description:
+				'Path to the directory containing consumer JSON Schema files. Relative to the config file.',
+		},
+		outDir: {
+			type: 'string',
+			minLength: 1,
+			maxLength: 260,
+			description:
+				'Path where generated validator files will be written. Relative to the config file. Will be created if it does not exist.',
+		},
+		schemas: {
+			type: 'object',
+			description:
+				"Per-schema configuration keyed by schema name. Names matching built-ins (FormInputs, SignUp, TestForm, UiState, CookiePreferences) may use mode 'extend' or 'replace'. New names are always additive.",
+			additionalProperties: {$ref: '#/definitions/SchemaEntry'},
+			propertyNames: {pattern: '^[A-Za-z_$][A-Za-z0-9_$]*$', maxLength: 64},
+		},
+	},
+}
+const schema34 = {
+	type: 'object',
+	additionalProperties: false,
+	required: ['file', 'exportName', '$id', 'mode'],
+	properties: {
+		file: {
+			type: 'string',
+			minLength: 1,
+			maxLength: 260,
+			description:
+				'Filename of the JSON Schema, relative to schemasDir. Supports .json, .js, and .mjs.',
+		},
+		exportName: {
+			type: 'string',
+			minLength: 1,
+			maxLength: 64,
+			pattern: '^[A-Za-z_$][A-Za-z0-9_$]*$',
+			description:
+				"Valid JS identifier used as the named export in the generated module, e.g. 'MyFormValidationFunction'.",
+		},
+		$id: {
+			type: 'string',
+			minLength: 1,
+			maxLength: 128,
+			pattern: '^#/definitions/[A-Za-z_$][A-Za-z0-9_$]*$',
+			description:
+				"The $id used by AJV to reference this schema, e.g. '#/definitions/MyFormSchema'.",
+		},
+		mode: {
+			type: 'string',
+			enum: ['extend', 'replace'],
+			description:
+				"'replace' substitutes the built-in schema entirely. 'extend' deep-merges consumer fields on top of the built-in. For greenfield schema names, use 'replace'.",
+		},
+	},
+}
+const func2 = function (str) {
+	const len = str.length
+	let length = 0
+	let pos = 0
+	let value
+	while (pos < len) {
+		length++
+		value = str.charCodeAt(pos++)
+		if (value >= 0xd800 && value <= 0xdbff && pos < len) {
+			value = str.charCodeAt(pos)
+			if ((value & 0xfc00) === 0xdc00) pos++
+		}
+	}
+	return length
+}
+const pattern0 = new RegExp('^[A-Za-z_$][A-Za-z0-9_$]*$', 'u')
+const pattern2 = new RegExp('^#/definitions/[A-Za-z_$][A-Za-z0-9_$]*$', 'u')
+function validate15(
+	data,
+	{instancePath = '', parentData, parentDataProperty, rootData = data} = {},
+) {
+	let vErrors = null
+	let errors = 0
+	if (data && typeof data == 'object' && !Array.isArray(data)) {
+		if (data.schemasDir === undefined) {
+			const err0 = {
+				instancePath,
+				schemaPath: '#/required',
+				keyword: 'required',
+				params: {missingProperty: 'schemasDir'},
+				message: "must have required property '" + 'schemasDir' + "'",
+			}
+			if (vErrors === null) {
+				vErrors = [err0]
+			} else {
+				vErrors.push(err0)
+			}
+			errors++
+		}
+		if (data.outDir === undefined) {
+			const err1 = {
+				instancePath,
+				schemaPath: '#/required',
+				keyword: 'required',
+				params: {missingProperty: 'outDir'},
+				message: "must have required property '" + 'outDir' + "'",
+			}
+			if (vErrors === null) {
+				vErrors = [err1]
+			} else {
+				vErrors.push(err1)
+			}
+			errors++
+		}
+		if (data.schemas === undefined) {
+			const err2 = {
+				instancePath,
+				schemaPath: '#/required',
+				keyword: 'required',
+				params: {missingProperty: 'schemas'},
+				message: "must have required property '" + 'schemas' + "'",
+			}
+			if (vErrors === null) {
+				vErrors = [err2]
+			} else {
+				vErrors.push(err2)
+			}
+			errors++
+		}
+		for (const key0 in data) {
+			if (!(key0 === 'schemasDir' || key0 === 'outDir' || key0 === 'schemas')) {
+				const err3 = {
+					instancePath,
+					schemaPath: '#/additionalProperties',
+					keyword: 'additionalProperties',
+					params: {additionalProperty: key0},
+					message: 'must NOT have additional properties',
+				}
+				if (vErrors === null) {
+					vErrors = [err3]
+				} else {
+					vErrors.push(err3)
+				}
+				errors++
+			}
+		}
+		if (data.schemasDir !== undefined) {
+			let data0 = data.schemasDir
+			if (typeof data0 === 'string') {
+				if (func2(data0) > 260) {
+					const err4 = {
+						instancePath: instancePath + '/schemasDir',
+						schemaPath: '#/properties/schemasDir/maxLength',
+						keyword: 'maxLength',
+						params: {limit: 260},
+						message: 'must NOT have more than 260 characters',
+					}
+					if (vErrors === null) {
+						vErrors = [err4]
+					} else {
+						vErrors.push(err4)
+					}
+					errors++
+				}
+				if (func2(data0) < 1) {
+					const err5 = {
+						instancePath: instancePath + '/schemasDir',
+						schemaPath: '#/properties/schemasDir/minLength',
+						keyword: 'minLength',
+						params: {limit: 1},
+						message: 'must NOT have fewer than 1 characters',
+					}
+					if (vErrors === null) {
+						vErrors = [err5]
+					} else {
+						vErrors.push(err5)
+					}
+					errors++
+				}
+			} else {
+				const err6 = {
+					instancePath: instancePath + '/schemasDir',
+					schemaPath: '#/properties/schemasDir/type',
+					keyword: 'type',
+					params: {type: 'string'},
+					message: 'must be string',
+				}
+				if (vErrors === null) {
+					vErrors = [err6]
+				} else {
+					vErrors.push(err6)
+				}
+				errors++
+			}
+		}
+		if (data.outDir !== undefined) {
+			let data1 = data.outDir
+			if (typeof data1 === 'string') {
+				if (func2(data1) > 260) {
+					const err7 = {
+						instancePath: instancePath + '/outDir',
+						schemaPath: '#/properties/outDir/maxLength',
+						keyword: 'maxLength',
+						params: {limit: 260},
+						message: 'must NOT have more than 260 characters',
+					}
+					if (vErrors === null) {
+						vErrors = [err7]
+					} else {
+						vErrors.push(err7)
+					}
+					errors++
+				}
+				if (func2(data1) < 1) {
+					const err8 = {
+						instancePath: instancePath + '/outDir',
+						schemaPath: '#/properties/outDir/minLength',
+						keyword: 'minLength',
+						params: {limit: 1},
+						message: 'must NOT have fewer than 1 characters',
+					}
+					if (vErrors === null) {
+						vErrors = [err8]
+					} else {
+						vErrors.push(err8)
+					}
+					errors++
+				}
+			} else {
+				const err9 = {
+					instancePath: instancePath + '/outDir',
+					schemaPath: '#/properties/outDir/type',
+					keyword: 'type',
+					params: {type: 'string'},
+					message: 'must be string',
+				}
+				if (vErrors === null) {
+					vErrors = [err9]
+				} else {
+					vErrors.push(err9)
+				}
+				errors++
+			}
+		}
+		if (data.schemas !== undefined) {
+			let data2 = data.schemas
+			if (data2 && typeof data2 == 'object' && !Array.isArray(data2)) {
+				for (const key1 in data2) {
+					const _errs8 = errors
+					if (typeof key1 === 'string') {
+						if (func2(key1) > 64) {
+							const err10 = {
+								instancePath: instancePath + '/schemas',
+								schemaPath: '#/properties/schemas/propertyNames/maxLength',
+								keyword: 'maxLength',
+								params: {limit: 64},
+								message: 'must NOT have more than 64 characters',
+								propertyName: key1,
+							}
+							if (vErrors === null) {
+								vErrors = [err10]
+							} else {
+								vErrors.push(err10)
+							}
+							errors++
+						}
+						if (!pattern0.test(key1)) {
+							const err11 = {
+								instancePath: instancePath + '/schemas',
+								schemaPath: '#/properties/schemas/propertyNames/pattern',
+								keyword: 'pattern',
+								params: {pattern: '^[A-Za-z_$][A-Za-z0-9_$]*$'},
+								message:
+									'must match pattern "' + '^[A-Za-z_$][A-Za-z0-9_$]*$' + '"',
+								propertyName: key1,
+							}
+							if (vErrors === null) {
+								vErrors = [err11]
+							} else {
+								vErrors.push(err11)
+							}
+							errors++
+						}
+					}
+					var valid1 = _errs8 === errors
+					if (!valid1) {
+						const err12 = {
+							instancePath: instancePath + '/schemas',
+							schemaPath: '#/properties/schemas/propertyNames',
+							keyword: 'propertyNames',
+							params: {propertyName: key1},
+							message: 'property name must be valid',
+						}
+						if (vErrors === null) {
+							vErrors = [err12]
+						} else {
+							vErrors.push(err12)
+						}
+						errors++
+					}
+				}
+				for (const key2 in data2) {
+					let data3 = data2[key2]
+					if (data3 && typeof data3 == 'object' && !Array.isArray(data3)) {
+						if (data3.file === undefined) {
+							const err13 = {
+								instancePath:
+									instancePath +
+									'/schemas/' +
+									key2.replace(/~/g, '~0').replace(/\//g, '~1'),
+								schemaPath: '#/definitions/SchemaEntry/required',
+								keyword: 'required',
+								params: {missingProperty: 'file'},
+								message: "must have required property '" + 'file' + "'",
+							}
+							if (vErrors === null) {
+								vErrors = [err13]
+							} else {
+								vErrors.push(err13)
+							}
+							errors++
+						}
+						if (data3.exportName === undefined) {
+							const err14 = {
+								instancePath:
+									instancePath +
+									'/schemas/' +
+									key2.replace(/~/g, '~0').replace(/\//g, '~1'),
+								schemaPath: '#/definitions/SchemaEntry/required',
+								keyword: 'required',
+								params: {missingProperty: 'exportName'},
+								message: "must have required property '" + 'exportName' + "'",
+							}
+							if (vErrors === null) {
+								vErrors = [err14]
+							} else {
+								vErrors.push(err14)
+							}
+							errors++
+						}
+						if (data3.$id === undefined) {
+							const err15 = {
+								instancePath:
+									instancePath +
+									'/schemas/' +
+									key2.replace(/~/g, '~0').replace(/\//g, '~1'),
+								schemaPath: '#/definitions/SchemaEntry/required',
+								keyword: 'required',
+								params: {missingProperty: '$id'},
+								message: "must have required property '" + '$id' + "'",
+							}
+							if (vErrors === null) {
+								vErrors = [err15]
+							} else {
+								vErrors.push(err15)
+							}
+							errors++
+						}
+						if (data3.mode === undefined) {
+							const err16 = {
+								instancePath:
+									instancePath +
+									'/schemas/' +
+									key2.replace(/~/g, '~0').replace(/\//g, '~1'),
+								schemaPath: '#/definitions/SchemaEntry/required',
+								keyword: 'required',
+								params: {missingProperty: 'mode'},
+								message: "must have required property '" + 'mode' + "'",
+							}
+							if (vErrors === null) {
+								vErrors = [err16]
+							} else {
+								vErrors.push(err16)
+							}
+							errors++
+						}
+						for (const key3 in data3) {
+							if (
+								!(
+									key3 === 'file' ||
+									key3 === 'exportName' ||
+									key3 === '$id' ||
+									key3 === 'mode'
+								)
+							) {
+								const err17 = {
+									instancePath:
+										instancePath +
+										'/schemas/' +
+										key2.replace(/~/g, '~0').replace(/\//g, '~1'),
+									schemaPath: '#/definitions/SchemaEntry/additionalProperties',
+									keyword: 'additionalProperties',
+									params: {additionalProperty: key3},
+									message: 'must NOT have additional properties',
+								}
+								if (vErrors === null) {
+									vErrors = [err17]
+								} else {
+									vErrors.push(err17)
+								}
+								errors++
+							}
+						}
+						if (data3.file !== undefined) {
+							let data4 = data3.file
+							if (typeof data4 === 'string') {
+								if (func2(data4) > 260) {
+									const err18 = {
+										instancePath:
+											instancePath +
+											'/schemas/' +
+											key2.replace(/~/g, '~0').replace(/\//g, '~1') +
+											'/file',
+										schemaPath:
+											'#/definitions/SchemaEntry/properties/file/maxLength',
+										keyword: 'maxLength',
+										params: {limit: 260},
+										message: 'must NOT have more than 260 characters',
+									}
+									if (vErrors === null) {
+										vErrors = [err18]
+									} else {
+										vErrors.push(err18)
+									}
+									errors++
+								}
+								if (func2(data4) < 1) {
+									const err19 = {
+										instancePath:
+											instancePath +
+											'/schemas/' +
+											key2.replace(/~/g, '~0').replace(/\//g, '~1') +
+											'/file',
+										schemaPath:
+											'#/definitions/SchemaEntry/properties/file/minLength',
+										keyword: 'minLength',
+										params: {limit: 1},
+										message: 'must NOT have fewer than 1 characters',
+									}
+									if (vErrors === null) {
+										vErrors = [err19]
+									} else {
+										vErrors.push(err19)
+									}
+									errors++
+								}
+							} else {
+								const err20 = {
+									instancePath:
+										instancePath +
+										'/schemas/' +
+										key2.replace(/~/g, '~0').replace(/\//g, '~1') +
+										'/file',
+									schemaPath: '#/definitions/SchemaEntry/properties/file/type',
+									keyword: 'type',
+									params: {type: 'string'},
+									message: 'must be string',
+								}
+								if (vErrors === null) {
+									vErrors = [err20]
+								} else {
+									vErrors.push(err20)
+								}
+								errors++
+							}
+						}
+						if (data3.exportName !== undefined) {
+							let data5 = data3.exportName
+							if (typeof data5 === 'string') {
+								if (func2(data5) > 64) {
+									const err21 = {
+										instancePath:
+											instancePath +
+											'/schemas/' +
+											key2.replace(/~/g, '~0').replace(/\//g, '~1') +
+											'/exportName',
+										schemaPath:
+											'#/definitions/SchemaEntry/properties/exportName/maxLength',
+										keyword: 'maxLength',
+										params: {limit: 64},
+										message: 'must NOT have more than 64 characters',
+									}
+									if (vErrors === null) {
+										vErrors = [err21]
+									} else {
+										vErrors.push(err21)
+									}
+									errors++
+								}
+								if (func2(data5) < 1) {
+									const err22 = {
+										instancePath:
+											instancePath +
+											'/schemas/' +
+											key2.replace(/~/g, '~0').replace(/\//g, '~1') +
+											'/exportName',
+										schemaPath:
+											'#/definitions/SchemaEntry/properties/exportName/minLength',
+										keyword: 'minLength',
+										params: {limit: 1},
+										message: 'must NOT have fewer than 1 characters',
+									}
+									if (vErrors === null) {
+										vErrors = [err22]
+									} else {
+										vErrors.push(err22)
+									}
+									errors++
+								}
+								if (!pattern0.test(data5)) {
+									const err23 = {
+										instancePath:
+											instancePath +
+											'/schemas/' +
+											key2.replace(/~/g, '~0').replace(/\//g, '~1') +
+											'/exportName',
+										schemaPath:
+											'#/definitions/SchemaEntry/properties/exportName/pattern',
+										keyword: 'pattern',
+										params: {pattern: '^[A-Za-z_$][A-Za-z0-9_$]*$'},
+										message:
+											'must match pattern "' +
+											'^[A-Za-z_$][A-Za-z0-9_$]*$' +
+											'"',
+									}
+									if (vErrors === null) {
+										vErrors = [err23]
+									} else {
+										vErrors.push(err23)
+									}
+									errors++
+								}
+							} else {
+								const err24 = {
+									instancePath:
+										instancePath +
+										'/schemas/' +
+										key2.replace(/~/g, '~0').replace(/\//g, '~1') +
+										'/exportName',
+									schemaPath:
+										'#/definitions/SchemaEntry/properties/exportName/type',
+									keyword: 'type',
+									params: {type: 'string'},
+									message: 'must be string',
+								}
+								if (vErrors === null) {
+									vErrors = [err24]
+								} else {
+									vErrors.push(err24)
+								}
+								errors++
+							}
+						}
+						if (data3.$id !== undefined) {
+							let data6 = data3.$id
+							if (typeof data6 === 'string') {
+								if (func2(data6) > 128) {
+									const err25 = {
+										instancePath:
+											instancePath +
+											'/schemas/' +
+											key2.replace(/~/g, '~0').replace(/\//g, '~1') +
+											'/$id',
+										schemaPath:
+											'#/definitions/SchemaEntry/properties/%24id/maxLength',
+										keyword: 'maxLength',
+										params: {limit: 128},
+										message: 'must NOT have more than 128 characters',
+									}
+									if (vErrors === null) {
+										vErrors = [err25]
+									} else {
+										vErrors.push(err25)
+									}
+									errors++
+								}
+								if (func2(data6) < 1) {
+									const err26 = {
+										instancePath:
+											instancePath +
+											'/schemas/' +
+											key2.replace(/~/g, '~0').replace(/\//g, '~1') +
+											'/$id',
+										schemaPath:
+											'#/definitions/SchemaEntry/properties/%24id/minLength',
+										keyword: 'minLength',
+										params: {limit: 1},
+										message: 'must NOT have fewer than 1 characters',
+									}
+									if (vErrors === null) {
+										vErrors = [err26]
+									} else {
+										vErrors.push(err26)
+									}
+									errors++
+								}
+								if (!pattern2.test(data6)) {
+									const err27 = {
+										instancePath:
+											instancePath +
+											'/schemas/' +
+											key2.replace(/~/g, '~0').replace(/\//g, '~1') +
+											'/$id',
+										schemaPath:
+											'#/definitions/SchemaEntry/properties/%24id/pattern',
+										keyword: 'pattern',
+										params: {
+											pattern: '^#/definitions/[A-Za-z_$][A-Za-z0-9_$]*$',
+										},
+										message:
+											'must match pattern "' +
+											'^#/definitions/[A-Za-z_$][A-Za-z0-9_$]*$' +
+											'"',
+									}
+									if (vErrors === null) {
+										vErrors = [err27]
+									} else {
+										vErrors.push(err27)
+									}
+									errors++
+								}
+							} else {
+								const err28 = {
+									instancePath:
+										instancePath +
+										'/schemas/' +
+										key2.replace(/~/g, '~0').replace(/\//g, '~1') +
+										'/$id',
+									schemaPath: '#/definitions/SchemaEntry/properties/%24id/type',
+									keyword: 'type',
+									params: {type: 'string'},
+									message: 'must be string',
+								}
+								if (vErrors === null) {
+									vErrors = [err28]
+								} else {
+									vErrors.push(err28)
+								}
+								errors++
+							}
+						}
+						if (data3.mode !== undefined) {
+							let data7 = data3.mode
+							if (typeof data7 !== 'string') {
+								const err29 = {
+									instancePath:
+										instancePath +
+										'/schemas/' +
+										key2.replace(/~/g, '~0').replace(/\//g, '~1') +
+										'/mode',
+									schemaPath: '#/definitions/SchemaEntry/properties/mode/type',
+									keyword: 'type',
+									params: {type: 'string'},
+									message: 'must be string',
+								}
+								if (vErrors === null) {
+									vErrors = [err29]
+								} else {
+									vErrors.push(err29)
+								}
+								errors++
+							}
+							if (!(data7 === 'extend' || data7 === 'replace')) {
+								const err30 = {
+									instancePath:
+										instancePath +
+										'/schemas/' +
+										key2.replace(/~/g, '~0').replace(/\//g, '~1') +
+										'/mode',
+									schemaPath: '#/definitions/SchemaEntry/properties/mode/enum',
+									keyword: 'enum',
+									params: {allowedValues: schema34.properties.mode.enum},
+									message: 'must be equal to one of the allowed values',
+								}
+								if (vErrors === null) {
+									vErrors = [err30]
+								} else {
+									vErrors.push(err30)
+								}
+								errors++
+							}
+						}
+					} else {
+						const err31 = {
+							instancePath:
+								instancePath +
+								'/schemas/' +
+								key2.replace(/~/g, '~0').replace(/\//g, '~1'),
+							schemaPath: '#/definitions/SchemaEntry/type',
+							keyword: 'type',
+							params: {type: 'object'},
+							message: 'must be object',
+						}
+						if (vErrors === null) {
+							vErrors = [err31]
+						} else {
+							vErrors.push(err31)
+						}
+						errors++
+					}
+				}
+			} else {
+				const err32 = {
+					instancePath: instancePath + '/schemas',
+					schemaPath: '#/properties/schemas/type',
+					keyword: 'type',
+					params: {type: 'object'},
+					message: 'must be object',
+				}
+				if (vErrors === null) {
+					vErrors = [err32]
+				} else {
+					vErrors.push(err32)
+				}
+				errors++
+			}
+		}
+	} else {
+		const err33 = {
+			instancePath,
+			schemaPath: '#/type',
+			keyword: 'type',
+			params: {type: 'object'},
+			message: 'must be object',
+		}
+		if (vErrors === null) {
+			vErrors = [err33]
+		} else {
+			vErrors.push(err33)
+		}
+		errors++
+	}
+	validate15.errors = vErrors
+	return errors === 0
+}
+function validate14(
+	data,
+	{instancePath = '', parentData, parentDataProperty, rootData = data} = {},
+) {
+	/*# sourceURL="#/definitions/FatFuzzyConfigSchema" */ let vErrors = null
+	let errors = 0
+	if (data && typeof data == 'object' && !Array.isArray(data)) {
+		for (const key0 in data) {
+			if (!(key0 === 'validation' || key0 === 'style')) {
+				const err0 = {
+					instancePath,
+					schemaPath: '#/additionalProperties',
+					keyword: 'additionalProperties',
+					params: {additionalProperty: key0},
+					message: 'must NOT have additional properties',
+				}
+				if (vErrors === null) {
+					vErrors = [err0]
+				} else {
+					vErrors.push(err0)
+				}
+				errors++
+			}
+		}
+		if (data.validation !== undefined) {
+			if (
+				!validate15(data.validation, {
+					instancePath: instancePath + '/validation',
+					parentData: data,
+					parentDataProperty: 'validation',
+					rootData,
+				})
+			) {
+				vErrors =
+					vErrors === null
+						? validate15.errors
+						: vErrors.concat(validate15.errors)
+				errors = vErrors.length
+			}
+		}
+		if (data.style !== undefined) {
+			let data1 = data.style
+			if (!(data1 && typeof data1 == 'object' && !Array.isArray(data1))) {
+				const err1 = {
+					instancePath: instancePath + '/style',
+					schemaPath: '#/properties/style/type',
+					keyword: 'type',
+					params: {type: 'object'},
+					message: 'must be object',
+				}
+				if (vErrors === null) {
+					vErrors = [err1]
+				} else {
+					vErrors.push(err1)
+				}
+				errors++
+			}
+		}
+	} else {
+		const err2 = {
+			instancePath,
+			schemaPath: '#/type',
+			keyword: 'type',
+			params: {type: 'object'},
+			message: 'must be object',
+		}
+		if (vErrors === null) {
+			vErrors = [err2]
+		} else {
+			vErrors.push(err2)
+		}
+		errors++
+	}
+	validate14.errors = vErrors
+	return errors === 0
+}

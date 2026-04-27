@@ -103,7 +103,7 @@ const PROPS_LAYOUT: {props: UiLayoutProps; expected: string}[] = [
 			shape: 'round',
 			threshold: 'md',
 		},
-		expected: 'l:stack:md align:center justify:center shape:round',
+		expected: 'l:switcher:md th:md align:center justify:center shape:round',
 	},
 	{
 		props: {
@@ -161,7 +161,7 @@ const PROPS_LAYOUT: {props: UiLayoutProps; expected: string}[] = [
 			scroll: 'y',
 			height: 'md',
 		},
-		expected: 'h:md scroll:y',
+		expected: 'height:md scroll:y',
 	},
 ]
 
