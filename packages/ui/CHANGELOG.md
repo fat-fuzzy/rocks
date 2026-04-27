@@ -1,5 +1,11 @@
 # @fat-fuzzy/ui
 
+## 0.1.98
+
+### Patch Changes
+
+- 605e8f4: Fix validation package exports, doc
+
 ## 0.1.97
 
 ### Patch Changes
