@@ -1,5 +1,11 @@
 # @fat-fuzzy/validation
 
+## 0.1.20
+
+### Patch Changes
+
+- a35da92: Fix schema exports
+
 ## 0.1.19
 
 ### Patch Changes
