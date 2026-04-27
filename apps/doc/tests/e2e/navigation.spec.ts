@@ -44,10 +44,7 @@ pages.forEach((item) => {
 					.getByRole('link', {name: item.title, exact: false})
 					.nth(0)
 					.click()
-				await page
-					.getByTestId(sidebarTestId)
-					.getByRole('button', {name: item.title})
-					.click()
+				await page.getByTestId(sidebarTestId).getByText(item.title).click()
 				await page.getByText(`Toggle ${subpage.slug}`).click()
 				await expect(
 					page.getByRole('link', {name: subpage.linkTitle, exact: true}),
@@ -59,11 +56,11 @@ pages.forEach((item) => {
 
 test(`Settings menu works as expected`, async ({page}) => {
 	await page.goto('/')
-	await expect(page.getByRole('button', {name: 'Day'})).toBeVisible()
-	await expect(page.getByRole('button', {name: 'Blend'})).toBeVisible()
+	await expect(page.getByRole('radio', {name: 'Day'})).toBeVisible()
+	await expect(page.getByRole('radio', {name: 'Blend'})).toBeVisible()
 	await page.goto('/about')
-	await expect(page.getByRole('button', {name: 'Day'})).toBeVisible()
-	await expect(page.getByRole('button', {name: 'Blend'})).toBeVisible()
+	await expect(page.getByRole('radio', {name: 'Day'})).toBeVisible()
+	await expect(page.getByRole('radio', {name: 'Blend'})).toBeVisible()
 })
 
 pages.forEach((item) => {
