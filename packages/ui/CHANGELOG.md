@@ -1,5 +1,11 @@
 # @fat-fuzzy/ui
 
+## 0.1.97
+
+### Patch Changes
+
+- 31bde65: Make validation functions configurable
+
 ## 0.1.96
 
 ### Patch Changes
