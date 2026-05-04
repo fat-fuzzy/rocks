@@ -1,5 +1,11 @@
 # @fat-fuzzy/validation
 
+## 0.1.23
+
+### Patch Changes
+
+- bef09d3: Fix ajv options schema definitions
+
 ## 0.1.22
 
 ### Patch Changes
