@@ -184,7 +184,7 @@ button[class*='bg:']:not([class*=':neutral']) {
 	&.variant\:outline:hover,
 	&.variant\:bare:hover {
 		--lightness: var(--lightness-surface-2);
-		--chroma: var(--chroma-surface-1);
+		--chroma: var(--chroma-surface-2);
 		--shade: oklch(var(--lightness) var(--chroma) var(--hue));
 		color: var(--ink);
 	}

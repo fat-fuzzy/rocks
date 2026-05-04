@@ -1,5 +1,11 @@
 # @fat-fuzzy/validation
 
+## 0.1.21
+
+### Patch Changes
+
+- 67c7f21: Improve base schemas, config AJV options, a11y fixes
+
 ## 0.1.20
 
 ### Patch Changes

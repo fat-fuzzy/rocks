@@ -34,7 +34,7 @@ const AJV_OPTIONS = {
 }
 
 // Add your Schemas here
-const Form = schemas.schemaForm
+const Form = schemas.FormSchema
 const ajv = new Ajv({
 	...AJV_OPTIONS,
 	schemas: [Form],

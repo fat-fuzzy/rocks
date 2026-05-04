@@ -30,7 +30,7 @@ import fs from 'fs'
 /** @type {Record<string, BuiltInDescriptor>} */
 const BUILT_INS = {
 	Form: {
-		load: async () => (await import('../in/ajv.schemas.js')).default.schemaForm,
+		load: async () => (await import('../in/ajv.schemas.js')).default.FormSchema,
 		exportName: 'FormValidationFunction',
 		$id: '#/definitions/FormSchema',
 	},
@@ -168,13 +168,14 @@ export async function mergeSchemas(validationConfig) {
 	}
 
 	const allEntries = [...builtInEntries, ...consumerExtras]
+	const ajvOptions = validationConfig?.ajvOptions
 
 	const schemas = allEntries.map((e) => e.schema)
 	const exportMap = Object.fromEntries(
 		allEntries.map((e) => [e.exportName, e.$id]),
 	)
 
-	return {schemas, exportMap}
+	return {schemas, exportMap, ajvOptions}
 }
 
 /**

@@ -19,7 +19,7 @@ const {PATTERNS} = constants
 // TODO: File inputs
 // https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html#file-upload-validation
 
-const schemaInputs = {
+const BaseSchema = {
 	text: {
 		allOf: [
 			{
@@ -33,6 +33,23 @@ const schemaInputs = {
 				errorMessage: messages.getErrorMessage('FORMAT_TEXT_MAX', 100),
 			},
 		],
+	},
+	uuid: {
+		type: 'string',
+		pattern:
+			'^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$',
+		errorMessage: messages.getErrorMessage('FORMAT_PATTERN'),
+	},
+	readonly: {
+		type: 'boolean',
+	},
+	date: {
+		type: 'string',
+		format: 'date',
+	},
+	date_time: {
+		type: 'string',
+		format: 'date-time',
 	},
 	username: {
 		allOf: [
@@ -97,7 +114,7 @@ const schemaInputs = {
 				type: 'string',
 				format: 'password',
 				pattern: PATTERNS.PASSWORD_SPECIAL_CHARS,
-				errorMessage: messages.getErrorMessage('FORMAT_PATTERN', 3),
+				errorMessage: messages.getErrorMessage('FORMAT_PATTERN_MIN', 3),
 			},
 			{
 				type: 'string',
@@ -165,7 +182,7 @@ const schemaInputs = {
 /**
  * Validation schema for the form: TestForm
  */
-const schemaForm = {
+const FormSchema = {
 	$id: '#/definitions/FormSchema',
 	$schema: 'http://json-schema.org/draft-07/schema#',
 	type: 'object',
@@ -191,10 +208,10 @@ const schemaForm = {
 		radio_group: {$ref: '#/definitions/radio_group'},
 		checkbox_group: {$ref: '#/definitions/checkbox_group'},
 	},
-	definitions: schemaInputs,
+	definitions: BaseSchema,
 }
 
 export default {
-	schemaInputs,
-	schemaForm,
+	BaseSchema,
+	FormSchema,
 }
