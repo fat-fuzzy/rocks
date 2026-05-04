@@ -1,5 +1,11 @@
 # @fat-fuzzy/validation
 
+## 0.1.22
+
+### Patch Changes
+
+- 595e6de: Fix config validation
+
 ## 0.1.21
 
 ### Patch Changes
