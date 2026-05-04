@@ -30,7 +30,7 @@ import fs from 'fs'
 /** @type {Record<string, BuiltInDescriptor>} */
 const BUILT_INS = {
 	Form: {
-		load: async () => (await import('../in/ajv.schemas.js')).default.schemaForm,
+		load: async () => (await import('../in/ajv.schemas.js')).default.FormSchema,
 		exportName: 'FormValidationFunction',
 		$id: '#/definitions/FormSchema',
 	},

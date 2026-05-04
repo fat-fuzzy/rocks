@@ -32,7 +32,7 @@ const schemaTestForm = {
 		checkbox_group: {$ref: '#/definitions/checkbox_group'},
 	},
 	required: ['name', 'email', 'password'],
-	definitions: schemas.schemaInputs,
+	definitions: schemas.BaseSchema,
 }
 
 export default schemaTestForm

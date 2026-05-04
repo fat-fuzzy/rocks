@@ -44,7 +44,7 @@ const INPUTS: InputProps = {
 	phone: {
 		label: 'Phone',
 		name: 'phone',
-		type: 'tel',
+		type: 'phone',
 		value: {valid: '+380123456789', invalid: '123-456-7890'},
 		errors: [messages.getErrorMessage('FORMAT_PHONE')],
 	},
@@ -211,7 +211,7 @@ function getSampleInputFields() {
 
 function getBasicInputFields() {
 	const INPUT_PROPS = Object.values(INPUTS)
-	const inputTypes = ['text', 'tel', 'email', 'password']
+	const inputTypes = ['text', 'phone', 'email', 'password']
 
 	return INPUT_PROPS.filter((i) => inputTypes.find((t) => t === i.type))
 }
