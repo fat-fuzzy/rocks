@@ -168,13 +168,14 @@ export async function mergeSchemas(validationConfig) {
 	}
 
 	const allEntries = [...builtInEntries, ...consumerExtras]
+	const ajvOptions = validationConfig?.ajvOptions
 
 	const schemas = allEntries.map((e) => e.schema)
 	const exportMap = Object.fromEntries(
 		allEntries.map((e) => [e.exportName, e.$id]),
 	)
 
-	return {schemas, exportMap}
+	return {schemas, exportMap, ajvOptions}
 }
 
 /**

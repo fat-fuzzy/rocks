@@ -82,7 +82,9 @@ async function generate() {
 	}
 
 	// 2. Merge built-ins with consumer schemas
-	const {schemas, exportMap} = await mergeSchemas(config?.validation ?? null)
+	const {schemas, exportMap, ajvOptions} = await mergeSchemas(
+		config?.validation ?? null,
+	)
 
 	console.log(
 		`[@fat-fuzzy/validation] Generating validators for: ${Object.keys(exportMap).join(', ')}`,
@@ -91,6 +93,7 @@ async function generate() {
 	// 3. Compile with AJV
 	const ajv = new Ajv({
 		...AJV_OPTIONS,
+		...ajvOptions,
 		schemas,
 	})
 

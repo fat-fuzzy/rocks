@@ -42,6 +42,20 @@
 						"pattern": "^[A-Za-z_$][A-Za-z0-9_$]*$",
 						"maxLength": 64
 					}
+				},
+				"ajvOptions": {
+					"removeAdditional": {
+						"type": "boolean",
+						"description": "If true: strip unknown fields from user imports."
+					},
+					"coerceTypes": {
+						"type": "boolean",
+						"description": "If true: '123' becomes 123, 'true' becomes true."
+					},
+					"useDefaults": {
+						"type": "boolean",
+						"description": "If true: fill in schema `default` values automatically."
+					}
 				}
 			}
 		},
