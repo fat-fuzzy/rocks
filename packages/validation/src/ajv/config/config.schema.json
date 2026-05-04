@@ -46,28 +46,20 @@
 				"ajvOptions": {
 					"type": "object",
 					"description": "AJV init options.",
-					"additionalProperties": {
-						"$ref": "#/definitions/AJVOptions"
+					"properties": {
+						"removeAdditional": {
+							"type": "boolean",
+							"description": "If true: strip unknown fields from user imports."
+						},
+						"coerceTypes": {
+							"type": "boolean",
+							"description": "If true: '123' becomes 123, 'true' becomes true."
+						},
+						"useDefaults": {
+							"type": "boolean",
+							"description": "If true: fill in schema `default` values automatically."
+						}
 					}
-				}
-			}
-		},
-		"AJVOptions": {
-			"type": "object",
-			"additionalProperties": false,
-			"description": "AJV init options.",
-			"properties": {
-				"removeAdditional": {
-					"type": "boolean",
-					"description": "If true: strip unknown fields from user imports."
-				},
-				"coerceTypes": {
-					"type": "boolean",
-					"description": "If true: '123' becomes 123, 'true' becomes true."
-				},
-				"useDefaults": {
-					"type": "boolean",
-					"description": "If true: fill in schema `default` values automatically."
 				}
 			}
 		},
