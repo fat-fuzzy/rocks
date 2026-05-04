@@ -5,7 +5,7 @@ import {render} from 'vitest-browser-svelte'
 import InputTextTest from './InputTextTest.svelte'
 import {INPUTS} from '$tests/fixtures/form-inputs'
 
-const inputTypes = ['text', 'tel', 'email', 'password']
+const inputTypes = ['text', 'phone', 'email', 'password']
 
 Object.keys(INPUTS).forEach((key) => {
 	if (key === 'confirm_password') {
