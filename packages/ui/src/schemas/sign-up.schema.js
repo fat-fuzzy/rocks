@@ -23,7 +23,7 @@ const schemaSignUp = {
 		},
 	},
 	required: ['username', 'email', 'password'],
-	definitions: schemas.schemaInputs,
+	definitions: schemas.BaseSchema,
 }
 
 export default schemaSignUp

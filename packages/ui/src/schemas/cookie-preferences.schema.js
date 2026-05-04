@@ -11,7 +11,7 @@ const schemaCookiePreferences = {
 		functional: {$ref: '#/definitions/checkbox'},
 		legitimateInterest: {$ref: '#/definitions/checkbox'},
 	},
-	definitions: schemas.schemaInputs,
+	definitions: schemas.BaseSchema,
 }
 
 export default schemaCookiePreferences
