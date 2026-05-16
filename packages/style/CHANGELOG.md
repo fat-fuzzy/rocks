@@ -1,5 +1,11 @@
 # @fat-fuzzy/style
 
+## 0.1.44
+
+### Patch Changes
+
+- Fix schema id validation pattern, style fixes
+
 ## 0.1.43
 
 ### Patch Changes
