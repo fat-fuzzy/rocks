@@ -120,7 +120,11 @@ const BaseSchema = {
 				type: 'string',
 				format: 'password',
 				pattern: PATTERNS.PASSWORD_DIGITS,
-				errorMessage: messages.getErrorMessage('FORMAT_PATTERN', 3, 'digit'),
+				errorMessage: messages.getErrorMessage(
+					'FORMAT_PATTERN_MIN',
+					3,
+					'digit',
+				),
 			},
 		],
 	},
