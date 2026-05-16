@@ -85,7 +85,7 @@
 					"type": "string",
 					"minLength": 1,
 					"maxLength": 128,
-					"pattern": "^#/definitions/[A-Za-z_$][A-Za-z0-9_$]*$",
+					"pattern": "^(#/definitions/){0,1}[A-Za-z_$][A-Za-z0-9_$]*$",
 					"description": "The $id used by AJV to reference this schema, e.g. '#/definitions/MyFormSchema'."
 				},
 				"mode": {
