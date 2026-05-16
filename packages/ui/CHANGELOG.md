@@ -1,5 +1,11 @@
 # @fat-fuzzy/ui
 
+## 0.1.100
+
+### Patch Changes
+
+- f36b85d: Update gen validation fn
+
 ## 0.1.99
 
 ### Patch Changes
