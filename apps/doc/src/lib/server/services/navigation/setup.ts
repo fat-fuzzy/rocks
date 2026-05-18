@@ -26,7 +26,8 @@ const navBase = {
 
 export function buildNav(page: string, pages: {[key: string]: NavItem}) {
 	const nav = {...navBase, ...pages[page]}
-	nav.label = pages[page].title ?? pages[page].label ?? page
+	nav.label = pages[page].label ?? pages[page].title ?? page
+	nav.title = pages[page].title ?? pages[page].label ?? page
 	nav.items = [structuredClone(pages[page])]
 
 	if (page === 'ui') {

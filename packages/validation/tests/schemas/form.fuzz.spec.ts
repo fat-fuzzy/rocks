@@ -9,7 +9,7 @@ const {schemas} = constants
 
 schemas.forEach((schema) => {
 	test(`should validate ${schema.name} for string inputs`, () => {
-		let ajvValidate = validations[schema.fn]
+		const ajvValidate = validations[schema.fn]
 		fc.assert(
 			fc.property(
 				fc.string(),
@@ -19,9 +19,9 @@ schemas.forEach((schema) => {
 				fc.boolean(),
 				(username, email, password, confirm_password, match) => {
 					const validateMap = {
-						sample_username: username,
-						sample_email: email,
-						sample_password: password,
+						username: username,
+						email: email,
+						password: password,
 						confirm_password: match ? password : confirm_password,
 					}
 					ajvValidate(validateMap)
@@ -38,7 +38,7 @@ schemas.forEach((schema) => {
 	})
 
 	test(`should validate ${schema.name}`, () => {
-		let ajvValidate = validations[schema.fn]
+		const ajvValidate = validations[schema.fn]
 		fc.assert(
 			fc.property(
 				fc.string(),
@@ -48,9 +48,9 @@ schemas.forEach((schema) => {
 				fc.boolean(),
 				(username, email, password, confirm_password, match) => {
 					const validateMap = {
-						sample_username: username,
-						sample_email: email,
-						sample_password: password,
+						username: username,
+						email: email,
+						password: password,
 						confirm_password: match ? password : confirm_password,
 					}
 					ajvValidate(validateMap)

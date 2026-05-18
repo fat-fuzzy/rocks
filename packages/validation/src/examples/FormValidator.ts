@@ -1,4 +1,4 @@
-import validations from '@fat-fuzzy/validation'
+import {sanitize} from '@fat-fuzzy/validation'
 import type {
 	IFormValidator,
 	InputTypes,
@@ -6,8 +6,8 @@ import type {
 	FieldToValidate,
 	SchemaToValidate,
 	ValidationError,
+	AjvValidateFunction,
 } from './validation'
-const {sanitize, validate} = validations
 
 /**
  * Use this Class to provide frontend validation capabilities to a form rendered by the server.
@@ -20,14 +20,23 @@ class FormValidator implements IFormValidator {
 	form: FormToValidate = {}
 	inputTypes: InputTypes = {} // Map of input names to their types
 	errors: ValidationError[] = []
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	ajvValidate: any = () => ({})
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	sanitize: any = sanitize.sanitizeForm
+	ajvValidate: AjvValidateFunction = () => false
+	sanitize = sanitize.sanitizeForm
 
-	constructor(validationFunctionName: string) {
-		// @ts-expect-error need to add types for ajvValidate
-		this.ajvValidate = validate[validationFunctionName]
+	constructor(
+		validationFunctionName: string,
+		validators: Record<string, (data: unknown) => boolean>,
+	) {
+		const validateFn = validators[validationFunctionName]
+
+		if (!validateFn) {
+			throw new Error(
+				`FormValidator: no validator found for '${validationFunctionName}'. ` +
+					`Available validators: ${Object.keys(validators).join(', ')}`,
+			)
+		}
+
+		this.ajvValidate = validateFn
 	}
 
 	validationHandler(fieldName: string) {
@@ -131,7 +140,7 @@ class FormValidator implements IFormValidator {
 
 		const valid = this.ajvValidate(schema)
 		if (!valid) {
-			this.errors = this.ajvValidate.errors
+			this.errors = this.ajvValidate.errors ?? []
 		}
 
 		this.postValidate(fields)

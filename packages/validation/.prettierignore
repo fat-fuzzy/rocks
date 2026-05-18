@@ -1,0 +1,4 @@
+## Generated code
+src/ajv/out/
+src/ajv/out/validate.ajv.mjs
+src/ajv/config/validate.config.mjs

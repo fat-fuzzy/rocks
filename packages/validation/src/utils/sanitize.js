@@ -1,7 +1,6 @@
 /**
  *  Basic sanitization functions to use before validation
  */
-import path from 'node:path'
 
 function replaceChar(s) {
 	return (
@@ -37,8 +36,27 @@ function sanitizeEmail(input) {
 }
 
 function sanitizeFilePath(input) {
-	const sanitized = path.normalize(input).replace(/^(\.\.(\/|\\|$))+/, '')
-	return sanitized
+	if (typeof input !== 'string') {
+		return ''
+	}
+	const trimmed = input.trim()
+
+	if (trimmed === '') {
+		return trimmed
+	}
+
+	// Strip path traversal segments and directory components.
+	// Note: OPFS and other browser file APIs sandbox the root,
+	// but we sanitize defensively here
+	return (
+		trimmed
+			.split(/[/\\]/)
+			.filter(
+				(segment) => segment !== '..' && segment !== '.' && segment !== '',
+			)
+			.map((segment) => sanitizePlainText(segment))
+			.pop() ?? ''
+	)
 }
 
 function sanitizeURL(input) {

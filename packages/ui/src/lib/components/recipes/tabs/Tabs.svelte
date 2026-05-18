@@ -89,20 +89,20 @@
 			</ul>
 		</nav>
 	</header>
-	<section class="tab-content">
+	<div class="tab-content scroll:container">
 		{#each tabs as { slug, content, labelledBy }, i (i)}
 			<!-- The article tag receives focus when the corresponding tab is active -->
 			<!-- svelte-ignore a11y_no_noninteractive_element_to_interactive_role -->
-			<article
+			<section
 				id={slug}
 				aria-labelledby={labelledBy ? labelledBy : `tab-${slug}`}
 				role="tabpanel"
-				tabindex={selectedTab.slug === slug ? 0 : undefined}
+				tabindex={0}
 			>
 				{#if content}
 					{@render content()}
 				{/if}
-			</article>
+			</section>
 		{/each}
-	</section>
+	</div>
 </ff-tabs>

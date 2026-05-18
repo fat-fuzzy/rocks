@@ -55,14 +55,12 @@ export type PageRailsProps = UiLayoutProps &
 		aside?: Snippet
 		useHeader?: boolean
 		app?: {
-			reveal: string
 			brightness: string
 			contrast: string
 			language?: string
 			consent?: CookiePreferences
 		}
 		context?: {
-			reveal: string
 			title?: string
 		}
 		footer?: Snippet

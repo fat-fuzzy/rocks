@@ -1,5 +1,47 @@
 # @fat-fuzzy/style
 
+## 0.1.44
+
+### Patch Changes
+
+- Fix schema id validation pattern, style fixes
+
+## 0.1.43
+
+### Patch Changes
+
+- 67c7f21: Improve base schemas, config AJV options, a11y fixes
+
+## 0.1.42
+
+### Patch Changes
+
+- 07d2066: Style niceties
+
+## 0.1.41
+
+### Patch Changes
+
+- 8b65d59: Fix sidebar label/title, fix contrast & system settings
+
+## 0.1.40
+
+### Patch Changes
+
+- 0cc5d42: Cleanup
+
+## 0.1.39
+
+### Patch Changes
+
+- de26f31: Fix Tabs and add example, clean tests page
+
+## 0.1.38
+
+### Patch Changes
+
+- 977fd1b: Enable Editor export type, ui adjustements
+
 ## 0.1.37
 
 ### Patch Changes

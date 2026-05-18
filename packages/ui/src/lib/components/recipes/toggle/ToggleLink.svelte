@@ -2,6 +2,7 @@
 	import type {ToggleLinkProps} from '$types'
 
 	import ToggleReveal from '$lib/components/recipes/toggle/ToggleReveal.svelte'
+	import {resolve} from '$app/paths'
 
 	let {
 		href,
@@ -15,7 +16,7 @@
 		asset,
 		children,
 		depth,
-		width,
+		width = 'full',
 		area,
 		place,
 		assetType,
@@ -23,7 +24,7 @@
 </script>
 
 {#snippet link()}
-	<a data-sveltekit-preload-data {href} class="font:md">
+	<a data-sveltekit-preload-data href={resolve(href)} class="font:md">
 		{label}
 	</a>
 {/snippet}
@@ -40,7 +41,7 @@
 	{area}
 	{place}
 	{layer}
-	width="full"
+	{width}
 	layout="flex"
 	{depth}
 	nav={link}

@@ -12,13 +12,13 @@ export default [
 		output: [
 			{
 				name: 'ajv.validate',
-				file: 'dist/ajv/ajv.validate.cjs.js',
+				file: 'dist/ajv/ajv.validate.cjs',
 				format: 'cjs',
 				plugins: [terser()],
 			},
 			{
 				name: 'ajv.validate',
-				file: 'dist/ajv/ajv.validate.esm.js',
+				file: 'dist/ajv/ajv.validate.mjs',
 				format: 'es',
 				plugins: [commonjs({transformMixedEsModules: true}), terser()],
 			},

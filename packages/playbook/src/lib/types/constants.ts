@@ -1,4 +1,5 @@
 import type {StyleTree, Meta} from '$types'
+import type {UiColor, UiShape, UiSize, UiVariant} from '@fat-fuzzy/ui'
 
 const NUMBER_TO_SIZE: {[key: string]: string} = {
 	// TODO: figure out a better way to map range number values to class strings
@@ -55,22 +56,24 @@ const DEFAULT_META: Meta = {
 const TABS = [
 	{
 		slug: 'doc',
+		label: 'Doc',
 		title: 'Doc',
 		initial: true,
-		variant: 'link',
-		color: 'primary',
-		size: 'xs',
-		shape: 'round',
+		variant: 'link' as UiVariant,
+		color: 'primary' as UiColor,
+		size: 'xs' as UiSize,
+		shape: 'round' as UiShape,
 		asset: 'doc',
 	},
 	{
 		slug: 'playbook',
+		label: 'playbook',
 		title: 'Playbook',
 		initial: false,
-		variant: 'link',
-		color: 'accent',
-		size: 'xs',
-		shape: 'round',
+		variant: 'link' as UiVariant,
+		color: 'accent' as UiColor,
+		size: 'xs' as UiSize,
+		shape: 'round' as UiShape,
 		asset: 'playbook',
 	},
 ]

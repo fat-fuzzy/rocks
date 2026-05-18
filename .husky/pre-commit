@@ -13,7 +13,7 @@ if [ -n "$STAGED_FILES" ]; then
   PRETTIER_EXIT=$?
 
   # Check ESLint only on JS/TS files (without fixing)
-  JS_FILES=$(echo "$STAGED_FILES" | grep -E '\.(js|jsx|ts|tsx)$' || true )
+  JS_FILES=$(echo "$STAGED_FILES" | grep -E '\.(js|jsx|ts|svelte)$' || true )
   ESLINT_EXIT=0
 
   if [ -n "$JS_FILES" ]; then

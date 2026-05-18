@@ -34,6 +34,12 @@ ff-callout[class*='magic'] {
 		a,
 		p,
 		span,
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6,
 		svg {
 			background: var(--magic-gradient);
 			background: var(--webkit-magic-gradient);
@@ -145,56 +151,38 @@ ff-callout[class*='magic'].shape\:round {
 	}
 }
 
-.magic\:dawn {
-	--magic-gradient: linear-gradient(
-		148deg,
-		color(display-p3 0.92 0.64 0.77) 12% 12%,
-		color(display-p3 0.71 0.65 0.96) 49% 49%,
-		color(display-p3 0.63 0.82 0.83) 88% 88%
+.magic\:chlorophyll {
+	--color-gradient-002-start: oklch(0.87 0.21 96.64);
+	--color-gradient-001-start: oklch(0.92 0.23 110.48);
+	--color-gradient-001-middle: oklch(0.91 0.23 116.61);
+	--color-gradient-001-end: hsl(189.64deg 92.28% 48.8%);
+	--color-gradient-002-end: hsl(273.67deg 90.7% 50.3%);
+	--magic-gradient: radial-gradient(
+		closest-side,
+		var(--color-gradient-002-start) 30%,
+		var(--color-gradient-001-start) 55%,
+		var(--color-gradient-001-middle) 60%,
+		var(--color-gradient-001-end),
+		var(--color-gradient-002-end)
 	);
 	--webkit-magic-gradient: -webkit-linear-gradient(
 		148deg,
-		color(display-p3 0.92 0.64 0.77) 12% 12%,
-		color(display-p3 0.71 0.65 0.96) 49% 49%,
-		color(display-p3 0.63 0.82 0.83) 88% 88%
+		var(--color-gradient-001-start),
+		var(--color-gradient-001-middle),
+		var(--color-gradient-001-end)
 	);
 	--lightness-contrast: var(--color-lightness-600);
 	--chroma-contrast: var(--color-chroma-600);
 	--hue: var(--color-theme-primary);
 
 	&[class*='svg'] {
-		--magic-gradient: linear-gradient(
-			148deg,
-			color(display-p3 0.92 0.64 0.77) 22% 22%,
-			color(display-p3 0.71 0.65 0.96) 49% 49%,
-			color(display-p3 0.63 0.82 0.83) 88% 88%
-		);
-	}
-}
-
-.magic\:dusk {
-	--magic-gradient: linear-gradient(
-		148deg,
-		color(display-p3 0.75 0.16 0.41) 12% 12%,
-		color(display-p3 0.21 0.14 0.51) 49% 49%,
-		color(display-p3 0.24 0.54 0.55) 88% 88%
-	);
-	--webkit-magic-gradient: -webkit-linear-gradient(
-		148deg,
-		color(display-p3 0.75 0.16 0.41) 12% 12%,
-		color(display-p3 0.21 0.14 0.51) 49% 49%,
-		color(display-p3 0.24 0.54 0.55) 88% 88%
-	);
-	--lightness-contrast: var(--color-lightness-000);
-	--chroma-contrast: var(--color-chroma-000);
-	--hue: var(--color-theme-primary);
-
-	&[class*='svg'] {
-		--magic-gradient: linear-gradient(
-			148deg,
-			color(display-p3 0.75 0.16 0.41) 22% 22%,
-			color(display-p3 0.21 0.14 0.51) 49% 49%,
-			color(display-p3 0.24 0.54 0.55) 88% 88%
+		--magic-gradient: radial-gradient(
+			closest-side,
+			var(--color-gradient-002-start) 20%,
+			var(--color-gradient-001-start) 45%,
+			var(--color-gradient-001-middle) 50%,
+			var(--color-gradient-001-end),
+			var(--color-gradient-002-end)
 		);
 	}
 }
@@ -256,33 +244,175 @@ ff-callout[class*='magic'].shape\:round {
 	}
 }
 
+@media (prefers-color-scheme: light) {
+	.magic\:feather {
+		--lightness-contrast-magic-feather: var(--color-lightness-light-base);
+		--chroma-contrast-magic-feather: var(--color-chroma-100);
+	}
+
+	.magic\:twilight {
+		--magic-gradient: linear-gradient(
+			148deg,
+			color(display-p3 0.92 0.64 0.77) 12% 12%,
+			color(display-p3 0.71 0.65 0.96) 49% 49%,
+			color(display-p3 0.63 0.82 0.83) 88% 88%
+		);
+		--webkit-magic-gradient: -webkit-linear-gradient(
+			148deg,
+			color(display-p3 0.92 0.64 0.77) 12% 12%,
+			color(display-p3 0.71 0.65 0.96) 49% 49%,
+			color(display-p3 0.63 0.82 0.83) 88% 88%
+		);
+		--lightness-contrast: var(--color-lightness-600);
+		--chroma-contrast: var(--color-chroma-600);
+		--hue: var(--color-theme-primary);
+
+		&[class*='svg'] {
+			--magic-gradient: linear-gradient(
+				148deg,
+				color(display-p3 0.92 0.64 0.77) 22% 22%,
+				color(display-p3 0.71 0.65 0.96) 49% 49%,
+				color(display-p3 0.63 0.82 0.83) 88% 88%
+			);
+		}
+	}
+
+	.magic\:chlorophyll {
+		--color-gradient-002-start: oklch(0.87 0.21 96.64);
+		--color-gradient-001-start: oklch(0.92 0.23 110.48);
+		--color-gradient-001-middle: oklch(0.91 0.23 116.61);
+		--color-gradient-001-end: hsl(189.64deg 92.28% 48.8%);
+		--color-gradient-002-end: hsl(273.67deg 90.7% 50.3%);
+	}
+}
+
+html:has([class*='settings:day:']),
+[class*='settings:day'],
+[color-scheme='light'] {
+	.magic\:feather {
+		--lightness-contrast-magic-feather: var(--color-lightness-light-base);
+		--chroma-contrast-magic-feather: var(--color-chroma-100);
+	}
+
+	.magic\:twilight {
+		--magic-gradient: linear-gradient(
+			148deg,
+			color(display-p3 0.92 0.64 0.77) 12% 12%,
+			color(display-p3 0.71 0.65 0.96) 49% 49%,
+			color(display-p3 0.63 0.82 0.83) 88% 88%
+		);
+		--webkit-magic-gradient: -webkit-linear-gradient(
+			148deg,
+			color(display-p3 0.92 0.64 0.77) 12% 12%,
+			color(display-p3 0.71 0.65 0.96) 49% 49%,
+			color(display-p3 0.63 0.82 0.83) 88% 88%
+		);
+		--lightness-contrast: var(--color-lightness-600);
+		--chroma-contrast: var(--color-chroma-600);
+		--hue: var(--color-theme-primary);
+
+		&[class*='svg'] {
+			--magic-gradient: linear-gradient(
+				148deg,
+				color(display-p3 0.92 0.64 0.77) 22% 22%,
+				color(display-p3 0.71 0.65 0.96) 49% 49%,
+				color(display-p3 0.63 0.82 0.83) 88% 88%
+			);
+		}
+	}
+
+	.magic\:chlorophyll {
+		--color-gradient-002-start: oklch(0.87 0.21 96.64);
+		--color-gradient-001-start: oklch(0.92 0.23 110.48);
+		--color-gradient-001-middle: oklch(0.91 0.23 116.61);
+		--color-gradient-001-end: hsl(189.64deg 92.28% 48.8%);
+		--color-gradient-002-end: hsl(273.67deg 90.7% 50.3%);
+	}
+}
+
 @media (prefers-color-scheme: dark) {
 	.magic\:feather {
 		--lightness-contrast-magic-feather: var(--color-lightness-dark-base);
 		--chroma-contrast-magic-feather: var(--color-chroma-100);
 	}
+
+	.magic\:twilight {
+		--magic-gradient: linear-gradient(
+			148deg,
+			color(display-p3 0.75 0.16 0.41) 12% 12%,
+			color(display-p3 0.21 0.14 0.51) 49% 49%,
+			color(display-p3 0.24 0.54 0.55) 88% 88%
+		);
+		--webkit-magic-gradient: -webkit-linear-gradient(
+			148deg,
+			color(display-p3 0.75 0.16 0.41) 12% 12%,
+			color(display-p3 0.21 0.14 0.51) 49% 49%,
+			color(display-p3 0.24 0.54 0.55) 88% 88%
+		);
+		--lightness-contrast: var(--color-lightness-000);
+		--chroma-contrast: var(--color-chroma-000);
+		--hue: var(--color-theme-primary);
+
+		&[class*='svg'] {
+			--magic-gradient: linear-gradient(
+				148deg,
+				color(display-p3 0.75 0.16 0.41) 22% 22%,
+				color(display-p3 0.21 0.14 0.51) 49% 49%,
+				color(display-p3 0.24 0.54 0.55) 88% 88%
+			);
+		}
+	}
+
+	.magic\:chlorophyll {
+		--color-gradient-002-start: oklch(0.87 0.21 96.64);
+		--color-gradient-001-start: oklch(0.89 0.22 110.5);
+		--color-gradient-001-middle: oklch(0.86 0.22 116.58);
+		--color-gradient-001-end: hsl(189.64deg 90.52% 36.04%);
+		--color-gradient-002-end: hsl(273.67deg 88.22% 36.72%);
+	}
 }
 
+html:has([class*='settings:night:']),
 [class*='settings:night'],
 [color-scheme='dark'] {
 	.magic\:feather {
 		--lightness-contrast-magic-feather: var(--color-lightness-dark-base);
 		--chroma-contrast-magic-feather: var(--color-chroma-100);
 	}
-}
 
-@media (prefers-color-scheme: light) {
-	.magic\:feather {
-		--lightness-contrast-magic-feather: var(--color-lightness-light-base);
-		--chroma-contrast-magic-feather: var(--color-chroma-100);
+	.magic\:twilight {
+		--magic-gradient: linear-gradient(
+			148deg,
+			color(display-p3 0.75 0.16 0.41) 12% 12%,
+			color(display-p3 0.21 0.14 0.51) 49% 49%,
+			color(display-p3 0.24 0.54 0.55) 88% 88%
+		);
+		--webkit-magic-gradient: -webkit-linear-gradient(
+			148deg,
+			color(display-p3 0.75 0.16 0.41) 12% 12%,
+			color(display-p3 0.21 0.14 0.51) 49% 49%,
+			color(display-p3 0.24 0.54 0.55) 88% 88%
+		);
+		--lightness-contrast: var(--color-lightness-000);
+		--chroma-contrast: var(--color-chroma-000);
+		--hue: var(--color-theme-primary);
+
+		&[class*='svg'] {
+			--magic-gradient: linear-gradient(
+				148deg,
+				color(display-p3 0.75 0.16 0.41) 22% 22%,
+				color(display-p3 0.21 0.14 0.51) 49% 49%,
+				color(display-p3 0.24 0.54 0.55) 88% 88%
+			);
+		}
 	}
-}
 
-[class*='settings:day'],
-[color-scheme='light'] {
-	.magic\:feather {
-		--lightness-contrast-magic-feather: var(--color-lightness-light-base);
-		--chroma-contrast-magic-feather: var(--color-chroma-100);
+	.magic\:chlorophyll {
+		--color-gradient-002-start: oklch(0.87 0.21 96.64);
+		--color-gradient-001-start: oklch(0.89 0.22 110.5);
+		--color-gradient-001-middle: oklch(0.86 0.22 116.58);
+		--color-gradient-001-end: hsl(189.64deg 90.52% 36.04%);
+		--color-gradient-002-end: hsl(273.67deg 88.22% 36.72%);
 	}
 }
 

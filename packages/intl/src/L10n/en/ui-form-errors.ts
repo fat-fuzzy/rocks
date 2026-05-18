@@ -8,7 +8,7 @@ const minLengthErrorMessage: MessageFunction = (minLength) => {
 	return `${minLength} character${Number(minLength) > 1 ? 's' : ''} minimum`
 }
 
-const patternErrorMessage: MessageFunction = (minChars, charType) => {
+const patternMinErrorMessage: MessageFunction = (minChars, charType) => {
 	let testType = charType
 	if (!testType) {
 		testType = 'special character'
@@ -21,6 +21,7 @@ const minChoiceErrorMessage: MessageFunction = (minLength) => {
 }
 
 const ERRORS: Record<string, Message> = {
+	FORMAT_PATTERN: 'Data does not match required pattern',
 	FORMAT_EMAIL: 'Please enter a valid email',
 	FORMAT_PHONE: 'Please enter a valid phone number',
 	FORMAT_POSTCODE: 'Please enter a valid postcode',
@@ -32,7 +33,7 @@ const ERRORS: Record<string, Message> = {
 }
 
 const ERRORS_FUNCTIONS: Record<string, MessageFunction> = {
-	FORMAT_PATTERN: patternErrorMessage,
+	FORMAT_PATTERN_MIN: patternMinErrorMessage,
 	FORMAT_TEXT_MIN: minLengthErrorMessage,
 	FORMAT_TEXT_MAX: maxLengthErrorMessage,
 	CHECKBOX_MIN: minChoiceErrorMessage,

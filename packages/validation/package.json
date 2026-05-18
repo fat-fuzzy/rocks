@@ -2,14 +2,21 @@
 	"package": "@fat-fuzzy/validation",
 	"name": "@fat-fuzzy/validation",
 	"author": "Patricia Boh",
-	"version": "0.1.17",
+	"version": "0.1.24",
 	"main": "./dist/index.js",
+	"bin": {
+		"ff-validation": "./src/ajv/generate.js"
+	},
 	"scripts": {
 		"build": "pnpm build:ajv && rollup -c",
 		"package": "pnpm build",
+		"prepublishOnly": "npm pack --dry-run",
 		"build:ts": "pnpm tsc && pnpm build:ajv && rollup -c",
-		"build:schemas": "node ./src/ajv/esm/ajv.js ",
+		"build:schemas": "node src/ajv/esm/ajv.js ",
 		"build:ajv": "pnpm build:schemas && rollup --config rollup.config.ajv.js",
+		"gen:config-validator": "node src/ajv/config/generateConfigValidator.js",
+		"lint": "prettier --check . && eslint .",
+		"format": "prettier --write .",
 		"dev": "rollup -c -w",
 		"dev:ajv": "rollup --config rollup.config.ajv.js -w",
 		"test": "pnpm test:unit && pnpm test:integrity",
@@ -24,7 +31,11 @@
 	"files": [
 		"dist",
 		"!dist/**/*.test.*",
-		"!dist/**/*.spec.*"
+		"!dist/**/*.spec.*",
+		"src/ajv/config",
+		"src/ajv/in",
+		"src/ajv/out",
+		"src/utils"
 	],
 	"devDependencies": {
 		"@fat-fuzzy/config": "workspace:*",
@@ -32,7 +43,7 @@
 		"@rollup/plugin-commonjs": "29.0.2",
 		"@rollup/plugin-terser": "1.0.0",
 		"@vitest/coverage-v8": "4.1.3",
-		"@vitest/ui": "4.1.3",
+		"@vitest/ui": "4.1.4",
 		"ajv": "8.18.0",
 		"ajv-errors": "3.0.0",
 		"ajv-formats": "3.0.1",
