@@ -4,3 +4,9 @@ packages:
 onlyBuiltDependencies:
   - svelte-preprocess
 registry: 'http://localhost:4873/'
+allowBuilds:
+  '@parcel/watcher': false
+  sharp: false
+  svelte-preprocess: false
+  workerd: false
+  esbuild: false
