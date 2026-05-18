@@ -34,7 +34,7 @@
 	},
 	"packageManager": "pnpm@11.1.2",
 	"engines": {
-		"node": ">=22.0.0",
+		"node": ">=24.13.1",
 		"npm": ">=9.6.4"
 	},
 	"prettier": "./packages/config/dist/prettier.config.js"
