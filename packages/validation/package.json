@@ -2,7 +2,7 @@
 	"package": "@fat-fuzzy/validation",
 	"name": "@fat-fuzzy/validation",
 	"author": "Patricia Boh",
-	"version": "0.1.24",
+	"version": "0.1.25",
 	"main": "./dist/index.js",
 	"bin": {
 		"ff-validation": "./src/ajv/generate.js"
@@ -43,7 +43,7 @@
 		"@rollup/plugin-commonjs": "29.0.2",
 		"@rollup/plugin-terser": "1.0.0",
 		"@vitest/coverage-v8": "4.1.3",
-		"@vitest/ui": "4.1.3",
+		"@vitest/ui": "4.1.4",
 		"ajv": "8.18.0",
 		"ajv-errors": "3.0.0",
 		"ajv-formats": "3.0.1",

@@ -1,5 +1,11 @@
 # @fat-fuzzy/config
 
+## 0.1.23
+
+### Patch Changes
+
+- 0ca6eea: Updte dependencies
+
 ## 0.1.22
 
 ### Patch Changes

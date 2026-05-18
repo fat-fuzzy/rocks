@@ -1,5 +1,11 @@
 # @fat-fuzzy/ui
 
+## 0.1.101
+
+### Patch Changes
+
+- 0ca6eea: Updte dependencies
+
 ## 0.1.100
 
 ### Patch Changes

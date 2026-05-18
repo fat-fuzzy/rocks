@@ -1,6 +1,6 @@
 {
 	"name": "@fat-fuzzy/config",
-	"version": "0.1.22",
+	"version": "0.1.23",
 	"type": "module",
 	"description": "",
 	"main": "./dist/index.js",
@@ -47,7 +47,7 @@
 		"eslint": "10.0.3",
 		"eslint-config-prettier": "10.1.8",
 		"eslint-config-turbo": "2.8.14",
-		"eslint-plugin-svelte": "3.15.2",
+		"eslint-plugin-svelte": "3.17.1",
 		"globals": "17.4.0",
 		"prettier": "3.8.1",
 		"prettier-plugin-svelte": "3.5.1",
@@ -57,6 +57,6 @@
 		"stylelint-config-standard-scss": "17.0.0",
 		"tslib": "2.8.1",
 		"typescript": "5.9.3",
-		"typescript-eslint": "8.56.1"
+		"typescript-eslint": "8.58.2"
 	}
 }

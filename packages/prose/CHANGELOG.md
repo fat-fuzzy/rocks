@@ -1,5 +1,11 @@
 # @fat-fuzzy/prose
 
+## 0.1.44
+
+### Patch Changes
+
+- 0ca6eea: Updte dependencies
+
 ## 0.1.43
 
 ### Patch Changes
