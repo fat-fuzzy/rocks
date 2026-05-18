@@ -1,12 +1,18 @@
 ff-toggle-reveal {
 	ff-control > label {
+		--input-inline-size: 100%;
 		z-index: calc(var(--z-index-overlay) + 1);
+	}
+
+	ff-control:has(input:checked) {
+		box-shadow: unset;
 	}
 
 	ff-control + ff-reveal {
 		--x-axis: 0;
 		--y-axis: 0;
 		--x-size: 0;
+		--max-inline-size: max-content;
 		--color-bg: var(--shade);
 
 		position: absolute;
@@ -30,8 +36,6 @@ ff-toggle-reveal {
 
 	ff-control:has(input:checked) + ff-reveal {
 		--x-axis: 0;
-		--y-axis: 0;
-		--max-inline-size: max-content;
 		--x-size: var(--overlay-inline-size, var(--max-inline-size));
 
 		opacity: 1;
@@ -87,18 +91,18 @@ ff-toggle-reveal.ouest {
 		block-size: fit-content;
 		max-block-size: var(--overlay-block-size);
 		transition:
-			transform 250ms ease-in,
-			opacity 200ms ease-in 50ms,
-			inline-size 300ms ease-in;
+			transform 250ms ease-out,
+			opacity 200ms ease-out 50ms,
+			inline-size 100ms ease-out 250ms;
 	}
 
 	ff-control:has(input:checked) + ff-reveal {
 		/* inherits --x-axis & --y-axis from default */
 
 		transition:
-			transform 350ms ease-out,
-			opacity 350ms ease-out 50ms,
-			inline-size 300ms ease-out;
+			transform 150ms ease-in 100ms,
+			opacity 300ms ease-in 50ms,
+			inline-size 100ms ease-in;
 	}
 }
 
@@ -116,25 +120,26 @@ ff-toggle-reveal.est {
 	ff-control + ff-reveal {
 		--y-axis: var(--ui-size);
 		--x-axis: 100%;
-		--x-size: var(--max-inline-size);
+		--x-size: 0;
 
 		inline-size: var(--x-size);
 		block-size: fit-content;
 		max-block-size: var(--overlay-block-size);
 		transition:
-			transform 250ms ease-in,
-			opacity 200ms ease-in 50ms,
-			inline-size 300ms ease-in;
+			transform 250ms ease-out,
+			opacity 200ms ease-out 50ms,
+			inline-size 100ms ease-out 250ms;
 	}
 
 	ff-control:has(input:checked) + ff-reveal {
 		--y-axis: var(--ui-size);
 		--x-axis: calc(-50% + var(--ui-size-xl) + var(--outline-offset-lg));
+		--x-size: var(--max-inline-size);
 
 		transition:
-			transform 350ms ease-out,
-			opacity 350ms ease-out 50ms,
-			inline-size 300ms ease-out;
+			transform 150ms ease-in 100ms,
+			opacity 300ms ease-in 50ms,
+			inline-size 100ms ease-in;
 	}
 }
 
@@ -183,8 +188,8 @@ ff-toggle-reveal.sud {
 		block-size: fit-content;
 		max-inline-size: unset;
 		transition:
-			opacity 350ms ease-out 50ms,
-			block-size 350ms ease-out;
+			opacity 300ms ease-out 50ms,
+			block-size 300ms ease-out;
 	}
 }
 

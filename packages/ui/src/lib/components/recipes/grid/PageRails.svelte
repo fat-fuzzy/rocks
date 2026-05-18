@@ -43,7 +43,7 @@
 		steam: 'l:flex justify:center align:start',
 		tgv: '',
 		tram: 'l:grid size:3xs align:start',
-		voyager: 'l:flex align:start size:lg',
+		voyager: 'l:flex:lg align:start size:lg font:md',
 		urbanist: 'l:flex align:start',
 	}
 

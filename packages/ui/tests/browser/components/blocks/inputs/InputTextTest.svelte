@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type {UiColor} from '$types'
 
+	import * as validators from '$lib/generated/ajv/validate.ajv.mjs'
 	import FormValidator from '$lib/utils/browser/FormValidator.svelte'
 
 	import Input from '$lib/components/blocks/inputs/Input.svelte'
@@ -10,7 +11,7 @@
 
 	let {id}: {id: string} = $props()
 
-	let validator = new FormValidator('TestFormValidationFunction')
+	let validator = new FormValidator('TestFormValidationFunction', validators)
 	let inputProps = $derived(INPUTS[id])
 
 	let isDisabled = $derived(inputProps.value.valid === 'disabled')

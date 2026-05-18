@@ -1,5 +1,47 @@
 # @fat-fuzzy/validation
 
+## 0.1.24
+
+### Patch Changes
+
+- Fix schema id validation pattern, style fixes
+
+## 0.1.23
+
+### Patch Changes
+
+- bef09d3: Fix ajv options schema definitions
+
+## 0.1.22
+
+### Patch Changes
+
+- 595e6de: Fix config validation
+
+## 0.1.21
+
+### Patch Changes
+
+- 67c7f21: Improve base schemas, config AJV options, a11y fixes
+
+## 0.1.20
+
+### Patch Changes
+
+- a35da92: Fix schema exports
+
+## 0.1.19
+
+### Patch Changes
+
+- 605e8f4: Fix validation package exports, doc
+
+## 0.1.18
+
+### Patch Changes
+
+- 31bde65: Make validation functions configurable
+
 ## 0.1.17
 
 ### Patch Changes

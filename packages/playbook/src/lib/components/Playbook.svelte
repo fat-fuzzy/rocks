@@ -14,13 +14,11 @@
 	let {children, app}: Props = $props()
 	let playbookContext: StylesApi = getContext('playbookContext')
 	setContext('playbookActor', playbookActor)
-	let {styles, ui} = $derived(page.data)
+	let {styles} = $derived(page.data)
 
 	$effect(() => {
 		// This need to be updated every time the user interacts with a UI component demo (the component itself)
-		if (ui) {
-			playbookActor.context = ui
-		}
+
 		playbookActor.preferences = app
 		if (styles) {
 			playbookContext.applyStyles(styles)

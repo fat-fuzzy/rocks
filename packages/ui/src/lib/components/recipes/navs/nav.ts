@@ -7,7 +7,7 @@ export type NavItem = UiControl
 export type NavProps = UiBlockProps & {
 	id: string
 	title: string
-	label?: string
+	label: string
 	pathname: string
 	align?: string
 	items: NavItem[]

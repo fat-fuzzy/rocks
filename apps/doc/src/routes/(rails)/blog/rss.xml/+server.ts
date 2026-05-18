@@ -4,10 +4,9 @@
  * - https://www.davidwparker.com/posts/how-to-make-an-rss-feed-in-sveltekit
  */
 import blog from '$data/blog'
-import validation from '@fat-fuzzy/validation'
+import {sanitize} from '@fat-fuzzy/validation'
 export const prerender = true
 
-const {sanitizePlainText} = validation.sanitize
 const months = ',Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec'.split(',')
 
 function formatPubdate(str: string) {
@@ -39,10 +38,10 @@ const get_rss = (posts) =>
 		.map(
 			(post) => `
 		<item>
-			<title>${sanitizePlainText(post.meta.title)}</title>
-			<guid isPermaLink="false">fat-fuzzy:blog:${sanitizePlainText(post.meta.id)}:${sanitizePlainText(post.meta.slug)}</guid>
+			<title>${sanitize.sanitizePlainText(post.meta.title)}</title>
+			<guid isPermaLink="false">fat-fuzzy:blog:${sanitize.sanitizePlainText(post.meta.id)}:${sanitize.sanitizePlainText(post.meta.slug)}</guid>
 			<link>https://rocks.pages.dev/blog/${post.meta.slug}</link>
-			<description>${sanitizePlainText(post.meta.description)}</description>
+			<description>${sanitize.sanitizePlainText(post.meta.description)}</description>
 			<pubDate>${formatPubdate(post.meta.date_created)}</pubDate>
 		</item>
 	`,

@@ -48,7 +48,6 @@ nav li a[role='tab'] {
 	scroll-margin-block: 18em; /* TODO: fix magic number */
 }
 
-[role='tabpanel'][tabindex='0'],
 [role='tabpanel']:target {
 	display: block;
 	scroll-margin-block: 4.5em; /* TODO: fix magic number */

@@ -2,15 +2,16 @@
 	import {tick} from 'svelte'
 	import {page} from '$app/state'
 
+	import * as validators from '$lib/generated/ajv/validate.ajv.mjs'
 	import FormValidator from '$lib/utils/browser/FormValidator.svelte'
 	import InputGroup from '$lib/components/blocks/inputs/InputGroup.svelte'
 	import {INPUTS} from '$tests/fixtures/form-inputs'
 
-	let validator = new FormValidator('TestFormValidationFunction')
+	let validator = new FormValidator('TestFormValidationFunction', validators)
 	let form: HTMLFormElement
 
-	const id = 'sample_checkbox_group_select_all'
-	const id2 = 'sample_checkbox_group'
+	const id = 'checkbox_group_select_all'
+	const id2 = 'checkbox_group'
 	let inputProps = $derived(INPUTS[id])
 	let inputProps2 = $derived(INPUTS[id2])
 

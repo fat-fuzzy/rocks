@@ -19,7 +19,7 @@ const {PATTERNS} = constants
 // TODO: File inputs
 // https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html#file-upload-validation
 
-const schemaInputs = {
+const BaseSchema = {
 	text: {
 		allOf: [
 			{
@@ -33,6 +33,23 @@ const schemaInputs = {
 				errorMessage: messages.getErrorMessage('FORMAT_TEXT_MAX', 100),
 			},
 		],
+	},
+	uuid: {
+		type: 'string',
+		pattern:
+			'^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$',
+		errorMessage: messages.getErrorMessage('FORMAT_PATTERN'),
+	},
+	readonly: {
+		type: 'boolean',
+	},
+	date: {
+		type: 'string',
+		format: 'date',
+	},
+	date_time: {
+		type: 'string',
+		format: 'date-time',
 	},
 	username: {
 		allOf: [
@@ -97,13 +114,17 @@ const schemaInputs = {
 				type: 'string',
 				format: 'password',
 				pattern: PATTERNS.PASSWORD_SPECIAL_CHARS,
-				errorMessage: messages.getErrorMessage('FORMAT_PATTERN', 3),
+				errorMessage: messages.getErrorMessage('FORMAT_PATTERN_MIN', 3),
 			},
 			{
 				type: 'string',
 				format: 'password',
 				pattern: PATTERNS.PASSWORD_DIGITS,
-				errorMessage: messages.getErrorMessage('FORMAT_PATTERN', 3, 'digit'),
+				errorMessage: messages.getErrorMessage(
+					'FORMAT_PATTERN_MIN',
+					3,
+					'digit',
+				),
 			},
 		],
 	},
@@ -165,90 +186,36 @@ const schemaInputs = {
 /**
  * Validation schema for the form: TestForm
  */
-const schemaTestForm = {
-	$id: '#/definitions/TestFormSchema',
+const FormSchema = {
+	$id: '#/definitions/FormSchema',
 	$schema: 'http://json-schema.org/draft-07/schema#',
 	type: 'object',
 	properties: {
-		sample_name: {$ref: '#/definitions/text'},
-		sample_phone: {$ref: '#/definitions/phone'},
-		sample_email: {$ref: '#/definitions/email'},
-		sample_password: {$ref: '#/definitions/password'},
+		text: {$ref: '#/definitions/text'},
+		username: {$ref: '#/definitions/username'},
+		phone: {$ref: '#/definitions/phone'},
+		email: {$ref: '#/definitions/email'},
+		password: {$ref: '#/definitions/password'},
 		confirm_password: {
 			type: 'string',
-			const: {$data: '1/sample_password'},
+			const: {$data: '1/password'},
 			errorMessage: {
 				const: messages.getErrorMessage('MATCH_PASSWORD'),
 			},
 		},
-		sample_postcode: {$ref: '#/definitions/postcode'},
-		sample_description: {$ref: '#/definitions/textarea'},
-		sample_checkbox: {$ref: '#/definitions/checkbox'},
-		sample_select: {$ref: '#/definitions/select'},
-		sample_disabled_field: {$ref: '#/definitions/disabled_field'},
-		sample_radio_group: {$ref: '#/definitions/radio_group'},
-		sample_checkbox_group: {$ref: '#/definitions/checkbox_group'},
+		postcode: {$ref: '#/definitions/postcode'},
+		textarea: {$ref: '#/definitions/textarea'},
+		checkbox: {$ref: '#/definitions/checkbox'},
+		radio: {$ref: '#/definitions/radio'},
+		select: {$ref: '#/definitions/select'},
+		disabled_field: {$ref: '#/definitions/disabled_field'},
+		radio_group: {$ref: '#/definitions/radio_group'},
+		checkbox_group: {$ref: '#/definitions/checkbox_group'},
 	},
-	required: ['sample_name', 'sample_email', 'sample_password'],
-	definitions: schemaInputs,
-}
-
-/**
- * Validation schema for the form: SignUpSchema
- */
-const schemaSignUp = {
-	$id: '#/definitions/SignUpSchema',
-	$schema: 'http://json-schema.org/draft-07/schema#',
-	type: 'object',
-	properties: {
-		sample_username: {$ref: '#/definitions/username'},
-		sample_email: {$ref: '#/definitions/email'},
-		sample_password: {$ref: '#/definitions/password'},
-		confirm_password: {
-			type: 'string',
-			const: {$data: '1/sample_password'},
-			errorMessage: {
-				const: messages.getErrorMessage('MATCH_PASSWORD'),
-			},
-		},
-	},
-	required: ['sample_username', 'sample_email', 'sample_password'],
-	definitions: schemaInputs,
-}
-
-/**
- * Validation schema for UI states.
- */
-const schemaUiState = {
-	$id: '#/definitions/UiStateSchema',
-	$schema: 'http://json-schema.org/draft-07/schema#',
-	type: 'object',
-	properties: {
-		formId: {$ref: '#/definitions/text'},
-		state: {$ref: '#/definitions/text'},
-	},
-	required: ['formId', 'state'],
-	definitions: schemaInputs,
-}
-
-/**
- * Validation schema for Cookie Preferences.
- */
-const schemaCookiePreferences = {
-	$id: '#/definitions/CookiePreferencesSchema',
-	$schema: 'http://json-schema.org/draft-07/schema#',
-	type: 'object',
-	properties: {
-		functional: {$ref: '#/definitions/checkbox'},
-		legitimateInterest: {$ref: '#/definitions/checkbox'},
-	},
-	definitions: schemaInputs,
+	definitions: BaseSchema,
 }
 
 export default {
-	schemaInputs,
-	schemaSignUp,
-	schemaUiState,
-	schemaCookiePreferences,
-	schemaTestForm,
+	BaseSchema,
+	FormSchema,
 }

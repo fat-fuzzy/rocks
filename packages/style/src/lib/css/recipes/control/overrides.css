@@ -9,6 +9,18 @@ ul.depth-1 ff-toggle-reveal:first-of-type > ff-control > label {
 	background-color: var(--shade);
 }
 
+.context.hug > ff-toggle-reveal > ff-control > label:has(input),
+.sidebar.hug > nav > ff-toggle-reveal > ff-control > label:has(input) {
+	--input-inline-size: fit-content;
+	transition: inline-size 200ms ease-out;
+}
+
+.context.hug > ff-toggle-reveal > ff-control > label:has(input:checked),
+.sidebar.hug > nav > ff-toggle-reveal > ff-control > label:has(input:checked) {
+	--input-inline-size: 100%;
+	transition: inline-size 250ms ease-in;
+}
+
 .navbar > ff-toggle-reveal > ff-control:has(input:checked) + ff-reveal {
 	--y-axis: var(--ui-size);
 	border-radius: var(--border-radius-base);

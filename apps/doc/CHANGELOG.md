@@ -1,5 +1,35 @@
 # @fat-fuzzy/doc
 
+## 0.1.81
+
+### Patch Changes
+
+- 605e8f4: Fix validation package exports, doc
+
+## 0.1.80
+
+### Patch Changes
+
+- 31bde65: Make validation functions configurable
+
+## 0.1.79
+
+### Patch Changes
+
+- 260a5f5: Export Input component
+
+## 0.1.78
+
+### Patch Changes
+
+- 8b65d59: Fix sidebar label/title, fix contrast & system settings
+
+## 0.1.77
+
+### Patch Changes
+
+- 977fd1b: Enable Editor export type, ui adjustements
+
 ## 0.1.76
 
 ### Patch Changes

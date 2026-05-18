@@ -3,6 +3,8 @@
 	import {onMount} from 'svelte'
 	import {enhance} from '$app/forms'
 
+	import * as validators from '$lib/generated/ajv/validate.ajv.mjs'
+
 	import Button from '$lib/components/blocks/buttons/Button.svelte'
 	import Feedback from '$lib/components/blocks/global/Feedback.svelte'
 	import Input from '$lib/components/blocks/inputs/Input.svelte'
@@ -28,12 +30,15 @@
 		variant = 'fill',
 		asset = 'log',
 		align = 'center',
-		background = 'contrast',
+		background,
 	}: FormProps = $props()
 
 	let boundForm: HTMLFormElement | undefined = $state()
 	let formData: FormData | undefined = $state()
-	let validator: FormValidator = new FormValidator('TestFormValidationFunction')
+	let validator: FormValidator = new FormValidator(
+		'TestFormValidationFunction',
+		validators,
+	)
 	let disabled: boolean | undefined = $derived(undefined)
 
 	$effect(() => {
@@ -44,18 +49,18 @@
 
 	// TODO: Generate this mapping from the schema definition
 	const inputTypes: {[name: string]: string} = {
-		sample_name: 'text',
-		sample_phone: 'phone',
-		sample_email: 'email',
-		sample_password: 'password',
+		name: 'text',
+		phone: 'phone',
+		email: 'email',
+		password: 'password',
 		confirm_password: 'password',
-		sample_postcode: 'postcode',
-		// sample_description: 'textarea',
-		sample_checkbox: 'checkbox',
-		// sample_select: 'select',
-		sample_disabled_field: 'disabled_field',
-		sample_radio_group: 'radio_group',
-		sample_checkbox_group: 'checkbox_group',
+		postcode: 'postcode',
+		// description: 'textarea',
+		checkbox: 'checkbox',
+		// select: 'select',
+		disabled_field: 'disabled_field',
+		radio_group: 'radio_group',
+		checkbox_group: 'checkbox_group',
 	}
 
 	/**
@@ -124,7 +129,7 @@
 					<Input
 						id="name"
 						type="text"
-						name="sample_name"
+						name="name"
 						label="Username"
 						required
 						{size}
@@ -138,7 +143,7 @@
 					<Input
 						id="phone"
 						type="phone"
-						name="sample_phone"
+						name="phone"
 						label="Phone"
 						required
 						{size}
@@ -152,7 +157,7 @@
 					<Input
 						id="email"
 						type="email"
-						name="sample_email"
+						name="email"
 						label="Email"
 						required
 						{size}
@@ -166,7 +171,7 @@
 					<Input
 						id="postcode"
 						type="text"
-						name="sample_postcode"
+						name="postcode"
 						label="Postcode"
 						required
 						{size}
@@ -180,7 +185,7 @@
 					<!-- Input
 					id="description"
 					type="description"
-					name="sample_description"
+					name="description"
 					label="Description"
 					required
 					{size}
@@ -193,7 +198,7 @@
 				/ -->
 					<InputCheck
 						id="checkbox"
-						name="sample_checkbox"
+						name="checkbox"
 						label="Checkbox"
 						required
 						{size}
@@ -208,7 +213,7 @@
 					<!-- Input
 					id="select"
 					type="select"
-					name="sample_select"
+					name="select"
 					label="Select"
 					required
 					{size}
@@ -222,7 +227,7 @@
 					<Input
 						id="disabled_text"
 						type="text"
-						name="sample_disabled"
+						name="disabled"
 						label="Disabled Field"
 						value="Disabled Value"
 						{size}
@@ -237,7 +242,7 @@
 					<InputGroup
 						id="checkbox_group"
 						type="check"
-						name="sample_checkbox_group"
+						name="checkbox_group"
 						legend="Checkbox Group"
 						{size}
 						{color}
@@ -279,7 +284,7 @@
 					<InputGroup
 						id="radio_group"
 						type="radio"
-						name="sample_radio_group"
+						name="radio_group"
 						legend="Radio Group"
 						{size}
 						{color}
@@ -321,7 +326,7 @@
 					<InputPassword
 						type="password"
 						id="password"
-						name="sample_password"
+						name="password"
 						label="Password"
 						required
 						{size}
@@ -342,9 +347,7 @@
 						{size}
 						{color}
 						{variant}
-						disabled={validator.getFieldErrors('sample_password')
-							? true
-							: undefined}
+						disabled={validator.getFieldErrors('password') ? true : undefined}
 						onfocus={handleFocus}
 						onblur={handleBlur}
 						oninput={handleInput}

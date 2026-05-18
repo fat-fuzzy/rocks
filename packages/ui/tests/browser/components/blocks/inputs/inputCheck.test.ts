@@ -5,7 +5,7 @@ import {render} from 'vitest-browser-svelte'
 import InputCheckTest from './InputCheckTest.svelte'
 import {INPUTS} from '$tests/fixtures/form-inputs'
 
-const key = 'sample_checkbox'
+const key = 'checkbox'
 const input = INPUTS[key]
 
 describe(`InputCheck - a checkbox input component`, () => {

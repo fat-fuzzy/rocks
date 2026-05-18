@@ -36,3 +36,13 @@ export interface IFormValidator {
 	touchInput(event: Event): void
 	changeInput(event: Event): void
 }
+
+/****************************************
+ * AJV: Types for generated functions
+ ****************************************/
+export interface AjvValidateFunction {
+	(data: unknown): boolean
+	errors?: ValidationError[]
+}
+
+export type ValidatorMap = Record<string, AjvValidateFunction>

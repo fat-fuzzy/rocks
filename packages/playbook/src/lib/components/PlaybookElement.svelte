@@ -1,7 +1,10 @@
 <script lang="ts">
+	import type {Component} from 'svelte'
 	import type {Meta} from '$types'
-	import {onMount, getContext} from 'svelte'
+
+	import {getContext} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
+
 	import {PlaybookActor} from '$lib/api/actor.svelte'
 	import {getPlaybookTab, getDocTab} from '$lib/props'
 
@@ -12,6 +15,7 @@
 	import Raw from './Raw.svelte'
 	import PropsDemo from './PropsDemo.svelte'
 	import PropsDoc from './PropsDoc.svelte'
+	import {resolve} from '$app/paths'
 
 	const {PageRails} = ui.content
 	const {Magic} = ui.blocks
@@ -24,10 +28,6 @@
 		title: string
 		path: string
 		context: {
-			app: {
-				brightness?: string
-				contrast?: string
-			}
 			page?: {
 				title?: string
 			}
@@ -48,7 +48,7 @@
 	}: Props = $props()
 
 	let description = $derived(`${title} | Doc`)
-	let pageNav = [
+	let pageNav = $derived([
 		{
 			...getDocTab(),
 			labelledBy: category,
@@ -57,7 +57,9 @@
 			...getPlaybookTab(),
 			labelledBy: category,
 		},
-	]
+	])
+
+	// eslint-disable-next-line
 	let categoryItems: {[name: string]: any} = {
 		tokens: ui.tokens,
 		blocks: ui.blocks,
@@ -66,7 +68,7 @@
 		raw: ui.raw,
 	}
 
-	// TODO: fix types
+	// eslint-disable-next-line
 	let ApiElement: {[category: string]: any} = {
 		tokens: Token,
 		blocks: Block,
@@ -74,20 +76,14 @@
 		recipes: Recipe,
 		raw: Raw,
 	}
+
 	let playbookActor: PlaybookActor = getContext('playbookActor')
 	let styles = $derived(playbookActor.styles)
 	let blockStyles = $derived(styles.blocks?.families?.block || '')
 	let containerStyles = $derived(styles.layouts?.families?.container || '')
 
 	//== App settings (user controlled)
-	let useDarkScheme = $state(context.app.brightness === 'night')
-	let spell = $derived.by(() => {
-		if (!context.app.brightness) {
-			return useDarkScheme ? 'dusk' : 'dawn'
-		} else {
-			return context.app.brightness === 'day' ? 'dawn' : 'dusk'
-		}
-	})
+
 	//== Layout settings (user controlled)
 	// Container options
 	// - [container + size] work together
@@ -112,28 +108,11 @@
 	)
 	let currentProps = $derived(fixtures?.status ? statusFixures : fixtures)
 
-	let SpecifiedElement = $derived(categoryItems[category][title])
+	let SpecifiedElement: Component = $derived(categoryItems[category][title])
 
 	let link = $derived(
 		path.substring(0, path.indexOf(category) + category.length),
 	)
-
-	function handleThemeChange(event: MediaQueryListEvent | MediaQueryList) {
-		if (!context.app.brightness) {
-			useDarkScheme = event.matches ? true : false
-		}
-	}
-
-	onMount(() => {
-		const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)')
-		handleThemeChange(prefersDarkScheme)
-		// Listen for changes (but only apply if no saved preference)
-		prefersDarkScheme.addEventListener('change', handleThemeChange)
-
-		return () => {
-			prefersDarkScheme.removeEventListener('change', handleThemeChange)
-		}
-	})
 </script>
 
 <PageRails
@@ -154,7 +133,7 @@
 					<div class="l:text:lg">
 						<Magic
 							id="playbook-heading"
-							{spell}
+							spell="twilight"
 							uno="magic"
 							due="sparkles"
 							size="md"
@@ -171,7 +150,7 @@
 					<div class="l:center size:sm col:center">
 						<svelte:element this={`h3`} class="link font:sm">
 							<a
-								href={`${link}/${title}/template`}
+								href={resolve(`${link}/${title}/template`)}
 								class="ravioli:xs size:xs l:flex emoji:link surface:1:primary align:center"
 							>
 								Open {title} template

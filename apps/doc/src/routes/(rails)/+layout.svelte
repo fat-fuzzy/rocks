@@ -120,9 +120,7 @@
 		</ToggleReveal>
 	</div>
 
-	<div
-		class="sidebar surface:0:neutral align:center width:lg height:sm raviolink"
-	>
+	<div class="sidebar hug align:center width:lg height:sm raviolink">
 		{#if sidenav.layout === 'tgv'}
 			<div class="app-name">
 				<Magic spell="fuzzy" mask="text">
@@ -145,7 +143,7 @@
 				/>
 				<ToggleReveal
 					id="sidenav-reveal"
-					label={sidenav.label ?? sidenav.title}
+					label={sidenav.label}
 					asset={sidenav.asset}
 					color={sidenav.color}
 					background={sidenav.background}
@@ -176,14 +174,14 @@
 		{/if}
 	</div>
 
-	<div class="context raviolink">
+	<div class="context hug raviolink">
 		<ToggleReveal
 			id="appContext"
 			label="Settings"
 			color="neutral"
 			asset="settings"
 			font="sm"
-			layout="grid"
+			layout="flex"
 			justify="end"
 			place="est"
 			depth={0}

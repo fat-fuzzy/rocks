@@ -1,5 +1,35 @@
 # @fat-fuzzy/prose
 
+## 0.1.43
+
+### Patch Changes
+
+- d94e749: Editor improvements and example, husky config fix
+
+## 0.1.42
+
+### Patch Changes
+
+- 5e7f269: Adjust export fn, add example
+
+## 0.1.41
+
+### Patch Changes
+
+- d16adb9: Update fn params
+
+## 0.1.40
+
+### Patch Changes
+
+- e06ba5f: Enable editor content exports, cleanup
+
+## 0.1.39
+
+### Patch Changes
+
+- 977fd1b: Enable Editor export type, ui adjustements
+
 ## 0.1.38
 
 ### Patch Changes

@@ -13,9 +13,11 @@
 	import FlowControl from '$lib/editor/menus/FlowControl.svelte'
 
 	const {ToggleReveal} = ui.drafts
+	const {SkipLinks} = ui.recipes
 
 	let {
 		id,
+		skipTo,
 		editor,
 		commands,
 		preset,
@@ -23,8 +25,10 @@
 		color,
 		variant,
 		children,
+		onExport,
 	}: {
 		id: string
+		skipTo: string
 		editor: Editor
 		commands: {[key: string]: boolean}
 		preset?: string
@@ -32,12 +36,14 @@
 		color: UiColor
 		variant?: UiVariant
 		children?: Snippet
+		onExport?: () => void
 	} = $props()
 </script>
 
 <menu
 	class={`editor-menu l:flex:3xs ravioli:3xs surface:1:${color} align:start relative`}
 >
+	<SkipLinks id={`skip-links-${id}`} text="Skip to content" href={skipTo} />
 	<FontLevel {editor} {commands} {size} {color} {variant} />
 
 	<FontStyle {editor} {commands} {size} {color} {variant} />
@@ -47,6 +53,15 @@
 	<Links {editor} {commands} {size} {color} {variant} />
 
 	<FlowControl {editor} {commands} {size} {color} {variant} />
+
+	{#if onExport}
+		<button
+			onclick={onExport}
+			class={`toggle color:${color} variant:${variant} size:${size}`}
+		>
+			Export
+		</button>
+	{/if}
 
 	{#if preset === 'full' || children}
 		<ToggleReveal

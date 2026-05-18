@@ -1,5 +1,17 @@
 # @fat-fuzzy/playbook
 
+## 0.1.38
+
+### Patch Changes
+
+- 260a5f5: Export Input component
+
+## 0.1.37
+
+### Patch Changes
+
+- 8b65d59: Fix sidebar label/title, fix contrast & system settings
+
 ## 0.1.36
 
 ### Patch Changes

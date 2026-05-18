@@ -21,6 +21,7 @@ import Toggle from '$lib/components/blocks/buttons/Toggle/Toggle.svelte'
 import Feedback from '$lib/components/blocks/global/Feedback.svelte'
 import EscapeHtml from '$lib/components/blocks/global/EscapeHtml.svelte'
 import Popover from '$lib/components/blocks/overlays/Popover/Popover.svelte'
+import Input from '$lib/components/blocks/inputs/Input.svelte'
 import InputCheck from '$lib/components/blocks/inputs/InputCheck.svelte'
 import InputRadio from '$lib/components/blocks/inputs/InputRadio.svelte'
 import InputGroup from '$lib/components/blocks/inputs/InputGroup.svelte'
@@ -143,6 +144,7 @@ const blocks = {
 	Toggle,
 	Feedback,
 	Magic,
+	Input,
 	InputCheck,
 	InputRadio,
 	InputGroup,

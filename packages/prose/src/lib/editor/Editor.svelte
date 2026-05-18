@@ -12,9 +12,9 @@
 	import EditorMenu from '$lib/editor/EditorMenu.svelte'
 
 	let {
-		html,
+		content,
 		id = 'editor',
-		type,
+		type = 'html',
 		menus,
 		preset = 'basic',
 		color = 'primary',
@@ -23,8 +23,10 @@
 		width = 'xl', // Editor height with scroll overflow
 		onupdate,
 		onblur,
+		init,
+		onExport, // Custom event
 	}: {
-		html: string
+		content: {html: string; json: JSONContent}
 		id?: string
 		type?: string
 		menus?: Snippet
@@ -33,15 +35,23 @@
 		variant?: UiVariant
 		height?: UiSize
 		width?: UiSize
-		onupdate?: (content: JSONContent) => void
-		onblur?: (content: JSONContent) => void
+		onupdate?: (content: {json: JSONContent; html: string}) => void
+		onblur?: (content: {json: JSONContent; html: string}) => void
+		init?: (content: {json: JSONContent; html: string}) => void
+		onExport?: (content: {json: JSONContent; html: string}) => void
 	} = $props()
 
 	let element: Element
 
 	// TODO: watch this: https://developer.mozilla.org/en-US/docs/Web/API/Element/setHTML
-	let purify
-	let escaped = ''
+	let purify: typeof DOMPurify
+	let escaped = $state('')
+	let jsonContent: JSONContent = $state({})
+	let snapshot = $derived({
+		html: escaped,
+		json: jsonContent,
+	})
+
 	// @ts-expect-error editor is not defined at this point but will be on mount
 	let editor: Editor = $state()
 	let heighClass = $derived(height ? `h:${height}` : '')
@@ -94,28 +104,65 @@
 		commands.isLink = editor.can().chain().focus().unsetLink().run()
 	}
 
+	export function getContent() {
+		if (editor) {
+			updateContent(editor)
+		}
+
+		return snapshot
+	}
+
+	function updateContent(editor: Editor) {
+		escaped = purify.sanitize(editor.getHTML())
+		jsonContent = editor.getJSON()
+
+		return snapshot
+	}
+
+	function handleUpdate({editor}: {editor: Editor}) {
+		if (onupdate) {
+			onupdate(updateContent(editor))
+		}
+	}
+
+	function handleBlur({editor}: {editor: Editor}) {
+		if (onblur) {
+			onblur(updateContent(editor))
+		}
+	}
+
+	function onInit({editor}: {editor: Editor}) {
+		if (init) {
+			init(updateContent(editor))
+		}
+	}
+
+	function handleExport() {
+		if (onExport) {
+			onExport(updateContent(editor))
+		}
+	}
+
 	onMount(() => {
 		if (browser) {
 			purify = DOMPurify(window)
-			escaped = purify.sanitize(html)
+			escaped = purify.sanitize(content.html)
 		}
 
 		editor = new Editor({
 			element: element,
 			extensions: settings.extensions,
-			content: escaped,
+			content: type === 'html' ? escaped : content.json,
 			onTransaction: () => {
 				// force re-render so `editor.isActive` works as expected
 				setActiveElement()
 				setDisabledElement()
 			},
-			onUpdate: onupdate
-				? ({editor}: {editor: Editor}) => onupdate(editor.getJSON())
-				: () => {},
-			onBlur: onblur
-				? ({editor}: {editor: Editor}) => onblur(editor.getJSON())
-				: () => {},
+			onUpdate: handleUpdate,
+			onBlur: handleBlur,
 		})
+
+		onInit({editor})
 	})
 
 	onDestroy(() => {
@@ -133,15 +180,21 @@
 	{#if editor}
 		<EditorMenu
 			id={id ? `menu-${id}` : `menu-${id}-${preset}`}
+			skipTo={`#content-${id}`}
 			{editor}
 			{commands}
 			{color}
 			{variant}
 			{preset}
 			children={menus}
+			onExport={onExport ? handleExport : undefined}
 		/>
 	{/if}
 	<div class={`prose-editor ${heighClass} variant:bare dotted`}>
-		<div class="content scroll:y" bind:this={element}></div>
+		<div
+			id={`content-${id}`}
+			class="content scroll:container"
+			bind:this={element}
+		></div>
 	</div>
 </ff-prose>

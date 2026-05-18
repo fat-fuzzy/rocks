@@ -1,5 +1,53 @@
 # @fat-fuzzy/ui
 
+## 0.1.100
+
+### Patch Changes
+
+- f36b85d: Update gen validation fn
+
+## 0.1.99
+
+### Patch Changes
+
+- 67c7f21: Improve base schemas, config AJV options, a11y fixes
+
+## 0.1.98
+
+### Patch Changes
+
+- 605e8f4: Fix validation package exports, doc
+
+## 0.1.97
+
+### Patch Changes
+
+- 31bde65: Make validation functions configurable
+
+## 0.1.96
+
+### Patch Changes
+
+- 260a5f5: Export Input component
+
+## 0.1.95
+
+### Patch Changes
+
+- 8b65d59: Fix sidebar label/title, fix contrast & system settings
+
+## 0.1.94
+
+### Patch Changes
+
+- de26f31: Fix Tabs and add example, clean tests page
+
+## 0.1.93
+
+### Patch Changes
+
+- 977fd1b: Enable Editor export type, ui adjustements
+
 ## 0.1.92
 
 ### Patch Changes

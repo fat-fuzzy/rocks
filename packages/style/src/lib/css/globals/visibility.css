@@ -25,17 +25,13 @@
 .sr-only,
 .hide\:sr-always,
 .hide\:viz-only {
-	clip-path: rect(0 0 0 0);
-	border: 0;
-	height: auto;
-	margin: 0;
-	overflow: hidden;
-	padding: 0;
 	position: absolute;
-	width: 0;
-	height: 0;
-	inline-size: 0;
-	block-size: 0;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	opacity: 0;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
 	white-space: nowrap;
 }
 
@@ -43,11 +39,11 @@
 .unhide {
 	border: unset;
 	clip-path: unset;
-	height: auto;
 	margin: initial;
 	overflow: hidden;
 	padding: var(--ui-size);
 	position: unset;
+	height: auto;
 	width: initial;
 	white-space: normal;
 }

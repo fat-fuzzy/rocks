@@ -13,14 +13,8 @@ categories.forEach(async (category) => {
 		await page.goto(utils.categories.path())
 		await expect(page.getByTestId(sidebarTestId)).toBeVisible()
 		// TODO: Enable open sidebar by default on > 1100px breakpoints
-		await page
-			.getByTestId(sidebarTestId)
-			.getByRole('button', {name: 'UI'})
-			.click()
-		await page
-			.getByTestId(sidebarTestId)
-			.getByRole('link', {name: category})
-			.click()
+		await page.getByTestId(sidebarTestId).getByText('UI').click()
+		await page.getByTestId(sidebarTestId).getByText(category).click()
 		await expect(
 			page.getByRole('heading', {level: 1, name: category}),
 		).toBeVisible()
@@ -32,10 +26,7 @@ utils.blocks.ready.forEach(async (block) => {
 		page,
 	}) => {
 		await page.goto(utils.blocks.path())
-		await page
-			.getByTestId(sidebarTestId)
-			.getByRole('button', {name: 'UI'})
-			.click()
+		await page.getByTestId(sidebarTestId).getByText('UI').click()
 		await expect(page.getByTestId(`${uiNavTestId}-blocks`)).toBeVisible()
 		// Subnav is open by default: close and open again to ensure consistent state
 		await page
