@@ -46,7 +46,7 @@
 		"@typescript-eslint/parser": "8.56.1",
 		"eslint": "10.0.3",
 		"eslint-config-prettier": "10.1.8",
-		"eslint-config-turbo": "2.8.14",
+		"eslint-config-turbo": "2.9.14",
 		"eslint-plugin-svelte": "3.17.1",
 		"globals": "17.4.0",
 		"prettier": "3.8.1",
