@@ -41,7 +41,7 @@
 		"dompurify": "3.4.0"
 	},
 	"peerDependencies": {
-		"@sveltejs/kit": "2.57.1",
+		"@sveltejs/kit": "2.60.1",
 		"svelte": "5.53.5"
 	},
 	"devDependencies": {
@@ -52,7 +52,7 @@
 		"@fat-fuzzy/validation": "workspace:*",
 		"@playwright/test": "1.58.2",
 		"@sveltejs/adapter-auto": "7.0.1",
-		"@sveltejs/kit": "2.57.1",
+		"@sveltejs/kit": "2.60.1",
 		"@sveltejs/package": "2.5.7",
 		"@sveltejs/vite-plugin-svelte": "6.2.4",
 		"@vitest/browser": "4.1.3",
