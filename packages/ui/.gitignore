@@ -18,3 +18,4 @@ dist
 tests/e2e/test-results
 __screenshots__
 html
+.vitest-attachment
