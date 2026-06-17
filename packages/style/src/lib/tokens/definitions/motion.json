@@ -1,6 +1,7 @@
 {
 	"animation": {
-		"$type": "dimension",
+		"$type": "number",
+		"$description": "Duration value in milliseconds",
 		"unit": "ms",
 		"duration": {
 			"null": {
