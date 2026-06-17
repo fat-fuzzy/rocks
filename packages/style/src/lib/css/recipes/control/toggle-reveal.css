@@ -181,17 +181,19 @@ ff-toggle-reveal.sud {
 			block-size 250ms ease-in;
 	}
 
-	ff-control:has(input:checked) + ff-reveal:not([class*='absolute:']) {
-		max-inline-size: 100%;
-		position: static;
-	}
-
 	ff-control:has(input:checked) + ff-reveal {
 		block-size: fit-content;
 		max-inline-size: unset;
 		transition:
 			opacity 300ms ease-out 50ms,
 			block-size 300ms ease-out;
+	}
+}
+
+@media screen and (min-width: 38.75rem) {
+	ff-control:has(input:checked) + ff-reveal:not([class*='absolute:']) {
+		max-inline-size: 100%;
+		position: static;
 	}
 }
 
@@ -232,6 +234,7 @@ ff-toggle-reveal.auto {
 
 	ff-control:has(input.nord:checked) + ff-reveal,
 	ff-control:has(input.sud:checked) + ff-reveal {
-		inset-inline: var(--outline-offset-lg);
+		inline-size: calc(100 - 2 * var(--ui-size));
+		inset-inline: var(--ui-size-lg) var(--outline-offset-sm);
 	}
 }
