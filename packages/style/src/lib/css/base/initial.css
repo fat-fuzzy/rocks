@@ -126,7 +126,6 @@
 
 	main {
 		background-color: var(--shade);
-		min-block-size: calc(100vh - var(--ui-header-height));
 	}
 
 	a {

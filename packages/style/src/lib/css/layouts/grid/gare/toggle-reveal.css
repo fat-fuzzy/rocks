@@ -32,13 +32,14 @@
 }
 
 [class*='gare:'] > ff-toggle-reveal + ff-reveal {
-	--reveal-block-size: var(--max-block-size, var(--overlay-block-xl));
+	--overlay-block-size: var(--max-block-size, var(--overlay-block-xl));
+	--overlay-inline-size: var(--sidebar-width, fit-content);
 
 	position: absolute;
 	top: calc(var(--ui-header-height) + var(--grid-gap));
 	block-size: fit-content;
 	inline-size: 100%;
-	max-block-size: var(--reveal-block-size);
+	max-block-size: var(--overlay-block-size);
 	max-inline-size: var(--overlay-inline-size);
 }
 
