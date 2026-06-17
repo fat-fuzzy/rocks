@@ -1,0 +1,85 @@
+{
+	"shadow": {
+		"base": {
+			"$type": "dimension",
+			"sm": {
+				"offsetX": {
+					"$value": {
+						"value": 0,
+						"unit": "px"
+					}
+				},
+				"offsetY": {
+					"$value": {
+						"value": 0.5,
+						"unit": "px"
+					}
+				},
+				"blur": {
+					"$value": {
+						"value": 4,
+						"unit": "px"
+					}
+				},
+				"spread": {
+					"$value": {
+						"value": 0,
+						"unit": "px"
+					}
+				}
+			},
+			"md": {
+				"offsetX": {
+					"$value": {
+						"value": 0,
+						"unit": "px"
+					}
+				},
+				"offsetY": {
+					"$value": {
+						"value": 1,
+						"unit": "px"
+					}
+				},
+				"blur": {
+					"$value": {
+						"value": 6,
+						"unit": "px"
+					}
+				},
+				"spread": {
+					"$value": {
+						"value": 0,
+						"unit": "px"
+					}
+				}
+			},
+			"lg": {
+				"offsetX": {
+					"$value": {
+						"value": 0,
+						"unit": "px"
+					}
+				},
+				"offsetY": {
+					"$value": {
+						"value": 1,
+						"unit": "px"
+					}
+				},
+				"blur": {
+					"$value": {
+						"value": 8,
+						"unit": "px"
+					}
+				},
+				"spread": {
+					"$value": {
+						"value": 0,
+						"unit": "px"
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,5 +1,4 @@
 <script lang="ts">
-	import {resolve} from '$app/paths'
 	import type {ToggleTreeProps, NavItem} from '$types'
 
 	import ToggleLink from './ToggleLink.svelte'
@@ -85,9 +84,12 @@
 					{@render nestedLinkTree(subItems, slug)}
 				</ToggleLink>
 			{:else}
+				<!-- FIXME: https://github.com/sveltejs/eslint-plugin-svelte/issues/1327 --->
+				<!-- https://sveltejs.github.io/eslint-plugin-svelte/rules/no-navigation-without-resolve/ -->
 				<a
 					data-sveltekit-preload-data
-					href={resolve(href)}
+					// svelte-ignore svelte/no-navigation-without-resolve
+					{href}
 					class={`ellipsis ${linkClass} ${linkAssetClass}`}
 				>
 					{title ?? label}

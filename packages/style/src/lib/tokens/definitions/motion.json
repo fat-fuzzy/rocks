@@ -1,18 +1,20 @@
 {
 	"animation": {
-		"$type": "dimension",
+		"$type": "number",
+		"$description": "Duration value in milliseconds",
+		"unit": "ms",
 		"duration": {
 			"null": {
-				"$value": "0ms"
+				"value": 0
 			},
 			"sm": {
-				"$value": "500ms"
+				"value": 500
 			},
 			"md": {
-				"$value": "1000ms"
+				"value": 1000
 			},
 			"lg": {
-				"$value": "5000ms"
+				"value": 5000
 			}
 		}
 	}

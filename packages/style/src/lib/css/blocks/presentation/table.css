@@ -20,8 +20,8 @@ th {
 }
 
 td {
-	padding: calc(var(--ui-size) / var(--size-ratio-md))
-		calc(var(--ui-size-lg) / var(--size-ratio-md));
+	padding: calc(var(--ui-size) / var(--ratio-md))
+		calc(var(--ui-size-lg) / var(--ratio-md));
 	border: 1px solid var(--accent);
 	color: var(--ink);
 }

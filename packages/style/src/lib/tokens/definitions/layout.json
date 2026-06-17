@@ -2,10 +2,9 @@
 	"layout": {
 		"$type": "dimension",
 		"base": {
-			"$value": "1rem"
+			"$value": "{size.base.md}"
 		},
 		"gap": {
-			"$type": "derived",
 			"4xs": {
 				"$value": "{size.base.4xs}"
 			},
@@ -41,95 +40,175 @@
 			}
 		},
 		"sidebar": {
-			"$type": "char",
 			"base": {
-				"$value": "16rem"
+				"$value": {
+					"value": 16,
+					"unit": "rem"
+				}
 			},
 			"hidden": {
-				"$value": "0em"
+				"$value": {
+					"value": 0,
+					"unit": "rem"
+				}
 			},
 			"collapsed": {
-				"$value": "6.5rem"
+				"$value": {
+					"value": 6.5,
+					"unit": "rem"
+				}
 			},
 			"2xs": {
-				"$value": "8rem"
+				"$value": {
+					"value": 8,
+					"unit": "rem"
+				}
 			},
 			"xs": {
-				"$value": "12rem"
+				"$value": {
+					"value": 12,
+					"unit": "rem"
+				}
 			},
 			"sm": {
-				"$value": "14rem"
+				"$value": {
+					"value": 14,
+					"unit": "rem"
+				}
 			},
 			"md": {
-				"$value": "{layout.sidebar.base}"
+				"$value": {
+					"value": 16,
+					"unit": "rem"
+				}
 			},
 			"lg": {
-				"$value": "22rem"
+				"$value": {
+					"value": 22,
+					"unit": "rem"
+				}
 			},
 			"xl": {
-				"$value": "24rem"
+				"$value": {
+					"value": 24,
+					"unit": "rem"
+				}
 			},
 			"2xl": {
-				"$value": "28rem"
+				"$value": {
+					"value": 28,
+					"unit": "rem"
+				}
 			},
 			"3xl": {
-				"$value": "36rem"
+				"$value": {
+					"value": 36,
+					"unit": "rem"
+				}
 			}
 		},
 		"grid": {
+			"$type": "dimension",
 			"item": {
 				"3xs": {
-					"$value": "5rem"
+					"$value": {
+						"value": 5,
+						"unit": "rem"
+					}
 				},
 				"2xs": {
-					"$value": "7rem"
+					"$value": {
+						"value": 7,
+						"unit": "rem"
+					}
 				},
 				"xs": {
-					"$value": "10rem"
+					"$value": {
+						"value": 10,
+						"unit": "rem"
+					}
 				},
 				"sm": {
-					"$value": "15rem"
+					"$value": {
+						"value": 15,
+						"unit": "rem"
+					}
 				},
 				"md": {
-					"$value": "20rem"
+					"$value": {
+						"value": 20,
+						"unit": "rem"
+					}
 				},
 				"lg": {
-					"$value": "25rem"
+					"$value": {
+						"value": 25,
+						"unit": "rem"
+					}
 				},
 				"xl": {
-					"$value": "30rem"
+					"$value": {
+						"value": 30,
+						"unit": "rem"
+					}
 				},
 				"2xl": {
-					"$value": "35rem"
+					"$value": {
+						"value": 35,
+						"unit": "rem"
+					}
 				}
 			}
 		},
 		"breakpoint": {
+			"$type": "dimension",
 			"2xs": {
-				"$value": "20rem"
+				"$value": {
+					"value": 20,
+					"unit": "rem"
+				}
 			},
 			"xs": {
-				"$value": "38.75rem"
+				"$value": {
+					"value": 38.75,
+					"unit": "rem"
+				}
 			},
 			"sm": {
-				"$value": "58.45rem"
+				"$value": {
+					"value": 58.45,
+					"unit": "rem"
+				}
 			},
 			"md": {
-				"$value": "85rem"
+				"$value": {
+					"value": 85,
+					"unit": "rem"
+				}
 			},
 			"lg": {
-				"$value": "101.25rem"
+				"$value": {
+					"value": 101.25,
+					"unit": "rem"
+				}
 			},
 			"xl": {
-				"$value": "128rem"
+				"$value": {
+					"value": 128,
+					"unit": "rem"
+				}
 			},
 			"2xl": {
-				"$value": "190.5rem"
+				"$value": {
+					"value": 190.5,
+					"unit": "rem"
+				}
 			}
 		},
 		"threshold": {
+			"$type": "dimension",
+			"unit": "rem",
 			"3xs": {
-				"$type": "char",
 				"$value": "{layout.sidebar.collapsed}"
 			},
 			"2xs": {
@@ -195,28 +274,29 @@
 		}
 	},
 	"overlay": {
-		"$type": "derived",
+		"$type": "number",
+		"$description": "Heigh value in viewport height (vh)",
 		"height": {
 			"3xs": {
-				"$value": "calc(14vh - 2 * var(--ui-size))"
+				"$value": 14
 			},
 			"2xs": {
-				"$value": "calc(20vh - 2 * var(--ui-size))"
+				"$value": 20
 			},
 			"xs": {
-				"$value": "calc(30vh - 2 * var(--ui-size))"
+				"$value": 30
 			},
 			"sm": {
-				"$value": "calc(40vh - 2 * var(--ui-size))"
+				"$value": 40
 			},
 			"md": {
-				"$value": "calc(64vh - 2 * var(--ui-size))"
+				"$value": 64
 			},
 			"lg": {
-				"$value": "calc(76vh - 2 * var(--ui-size))"
+				"$value": 76
 			},
 			"xl": {
-				"$value": "calc(100vh - var(--ui-header-height) - 2 * var(--ui-size) - var(--outline-offset-lg))"
+				"$value": 100
 			}
 		}
 	}

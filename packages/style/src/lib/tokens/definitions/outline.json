@@ -1,0 +1,31 @@
+{
+	"outline": {
+		"$type": "dimension",
+		"offset": {
+			"xs": {
+				"$value": {
+					"value": 1.5,
+					"unit": "px"
+				}
+			},
+			"sm": {
+				"$value": {
+					"value": 1.75,
+					"unit": "px"
+				}
+			},
+			"md": {
+				"$value": {
+					"value": 2,
+					"unit": "px"
+				}
+			},
+			"lg": {
+				"$value": {
+					"value": 3,
+					"unit": "px"
+				}
+			}
+		}
+	}
+}

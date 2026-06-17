@@ -38,13 +38,14 @@ export default function emojiAsset() {
 
 			output.push('const tokens = {')
 
-			const Tokens = getTransforms({
+			const emojiTokens = getTransforms({
 				format: 'js',
 				id: 'emoji.icon.*',
 			})
-			for (const token of Tokens) {
+
+			for (const token of emojiTokens) {
 				if (token.localID) {
-					output.push(`${token.localID}: ${token.value},`)
+					output.push(`"${token.localID}": ${token.value},`)
 				}
 			}
 			output.push('};', '', 'export default tokens;', '')

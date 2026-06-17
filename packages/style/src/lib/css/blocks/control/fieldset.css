@@ -35,7 +35,7 @@ fieldset.checkbox {
 	padding-block: 0 var(--ui-size-sm);
 
 	label {
-		--gap: calc(var(--ui-size-xs) / var(--size-ratio-md));
+		--gap: calc(var(--ui-size-xs) / var(--ratio-md));
 
 		align-items: var(--align, center);
 		justify-content: var(--justify, space-between);
