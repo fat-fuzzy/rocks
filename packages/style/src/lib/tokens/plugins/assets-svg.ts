@@ -34,27 +34,6 @@ export default function svgAsset() {
 			this.buildCssTokens({getTransforms, outputFile})
 		},
 
-		buildTokenObject(
-			token: string,
-			key: string,
-			value: string,
-			prefix: string,
-			object: unknown,
-		): unknown {
-			const path = token.split('.')
-
-			if (path.length === 0) {
-				return object
-			}
-
-			const output = []
-			output.push(`${prefix}{`)
-			output.push(`${key}: ${value},`)
-			output.push('}')
-
-			return output
-		},
-
 		buildJsTokens({getTransforms, outputFile}) {
 			const output = []
 
