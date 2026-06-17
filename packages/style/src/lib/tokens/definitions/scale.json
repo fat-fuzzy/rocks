@@ -15,48 +15,98 @@
 		}
 	},
 	"scale": {
-		"$type": "string",
+		"$type": "dimension",
+		"$description": "Base scale centered on base token = 00 of dimension 1rem. Decrease by dividing the next token down (00 + 0n) by {ratio.sm}. Increase by multiplying the next token up (00 + n0) by {ratio.sm}",
 		"base": {
+			"07": {
+				"$value": {
+					"value": 0.262144,
+					"unit": "rem"
+				}
+			},
 			"06": {
-				"$value": "calc(var(--scale-base-05) / var(-ratio-sm))"
+				"$value": {
+					"value": 0.262144,
+					"unit": "rem"
+				}
 			},
 			"05": {
-				"$value": "calc(var(--scale-base-04) / var(-ratio-sm))"
+				"$value": {
+					"value": 0.32768,
+					"unit": "rem"
+				}
 			},
 			"04": {
-				"$value": "calc(var(--scale-base-03) / var(-ratio-sm))"
+				"$value": {
+					"value": 0.4096,
+					"unit": "rem"
+				}
 			},
 			"03": {
-				"$value": "calc(var(--scale-base-02) / var(-ratio-sm))"
+				"$value": {
+					"value": 0.512,
+					"unit": "rem"
+				}
 			},
 			"02": {
-				"$value": "calc(var(--scale-base-01) / var(-ratio-sm))"
+				"$value": {
+					"value": 0.64,
+					"unit": "rem"
+				}
 			},
 			"01": {
-				"$value": "calc(var(--scale-base-00) / var(-ratio-xs))"
+				"$value": {
+					"value": 0.8,
+					"unit": "rem"
+				}
 			},
 			"00": {
-				"$type": "dimension",
-				"value": 1,
-				"unit": "rem"
+				"$value": {
+					"value": 1,
+					"unit": "rem"
+				}
 			},
 			"10": {
-				"$value": "calc(var(--scale-base-00) * var(-ratio-sm))"
+				"$value": {
+					"value": 1.25,
+					"unit": "rem"
+				}
 			},
 			"20": {
-				"$value": "calc(var(--scale-base-10) * var(-ratio-sm))"
+				"$value": {
+					"value": 1.5625,
+					"unit": "rem"
+				}
 			},
 			"30": {
-				"$value": "calc(var(--scale-base-20) * var(-ratio-sm))"
+				"$value": {
+					"value": 1.953125,
+					"unit": "rem"
+				}
 			},
 			"40": {
-				"$value": "calc(var(--scale-base-30) * var(-ratio-sm))"
+				"$value": {
+					"value": 2.44140625,
+					"unit": "rem"
+				}
 			},
 			"50": {
-				"$value": "calc(var(--scale-base-40) * var(-ratio-sm))"
+				"$value": {
+					"value": 3.05175781,
+					"unit": "rem"
+				}
 			},
 			"60": {
-				"$value": "calc(var(--scale-base-50) * var(-ratio-sm))"
+				"$value": {
+					"value": 3.81469727,
+					"unit": "rem"
+				}
+			},
+			"70": {
+				"$value": {
+					"value": 4.76837159,
+					"unit": "rem"
+				}
 			}
 		},
 		"major-third": {
@@ -87,11 +137,20 @@
 	"size": {
 		"nul": {
 			"$type": "dimension",
-			"unit": "px",
-			"value": 0
+			"$value": {
+				"value": 0,
+				"unit": "px"
+			}
 		},
 		"base": {
-			"$type": "string",
+			"$type": "dimension",
+			"unit": "rem",
+			"6xs": {
+				"$value": "{scale.base.07}"
+			},
+			"5xs": {
+				"$value": "{scale.base.06}"
+			},
 			"4xs": {
 				"$value": "{scale.base.05}"
 			},
@@ -107,10 +166,8 @@
 			"sm": {
 				"$value": "{scale.base.01}"
 			},
-			"00": {
-				"$type": "dimension",
-				"value": 1,
-				"unit": "rem"
+			"md": {
+				"$value": "{scale.base.00}"
 			},
 			"lg": {
 				"$value": "{scale.base.10}"
@@ -126,10 +183,16 @@
 			},
 			"4xl": {
 				"$value": "{scale.base.50}"
+			},
+			"5xl": {
+				"$value": "{scale.base.60}"
+			},
+			"6xl": {
+				"$value": "{scale.base.70}"
 			}
 		},
 		"inverse": {
-			"$type": "string",
+			"$type": "dimension",
 			"3xs": {
 				"$value": "{size.base.3xl}"
 			},
@@ -143,9 +206,7 @@
 				"$value": "{size.base.lg}"
 			},
 			"md": {
-				"$type": "dimension",
-				"value": 1,
-				"unit": "rem"
+				"$value": "{size.base.md}"
 			},
 			"lg": {
 				"$value": "{size.base.sm}"
@@ -164,7 +225,7 @@
 			}
 		},
 		"increase-1": {
-			"$type": "string",
+			"$type": "dimension",
 			"4xs": {
 				"$value": "{size.base.3xs}"
 			},
@@ -178,9 +239,7 @@
 				"$value": "{size.base.sm}"
 			},
 			"sm": {
-				"$type": "dimension",
-				"value": 1,
-				"unit": "rem"
+				"$value": "{size.base.md}"
 			},
 			"md": {
 				"$value": "{size.base.lg}"
@@ -198,11 +257,11 @@
 				"$value": "{size.base.4xl}"
 			},
 			"4xl": {
-				"$value": "calc(var(--size-base-4xl) * var(-ratio-md))"
+				"$value": "{size.base.5xl}"
 			}
 		},
 		"increase-2": {
-			"$type": "string",
+			"$type": "dimension",
 			"4xs": {
 				"$value": "{size.base.2xs}"
 			},
@@ -213,9 +272,7 @@
 				"$value": "{size.base.sm}"
 			},
 			"xs": {
-				"$type": "dimension",
-				"value": 1,
-				"unit": "rem"
+				"$value": "{size.base.md}"
 			},
 			"sm": {
 				"$value": "{size.base.lg}"
@@ -233,16 +290,16 @@
 				"$value": "{size.base.4xl}"
 			},
 			"3xl": {
-				"$value": "calc(var(--size-base-4xl) * var(-ratio-md))"
+				"$value": "{size.base.5xl}"
 			},
 			"4xl": {
-				"$value": "calc(var(--size-base-4xl) * var(-ratio-md) * var(-ratio-md))"
+				"$value": "{size.base.6xl}"
 			}
 		},
 		"decrease-1": {
-			"$type": "string",
+			"$type": "dimension",
 			"4xs": {
-				"$value": "calc(var(--size-base-4xs) / var(-ratio-sm))"
+				"$value": "{size.base.5xs}"
 			},
 			"3xs": {
 				"$value": "{size.base.4xs}"
@@ -260,9 +317,7 @@
 				"$value": "{size.base.sm}"
 			},
 			"lg": {
-				"$type": "dimension",
-				"value": 1,
-				"unit": "rem"
+				"$value": "{size.base.md}"
 			},
 			"xl": {
 				"$value": "{size.base.lg}"
@@ -278,12 +333,12 @@
 			}
 		},
 		"decrease-2": {
-			"$type": "string",
+			"$type": "dimension",
 			"4xs": {
-				"$value": "calc(var(--size-base-4xs) / var(-ratio-sm) / var(-ratio-sm))"
+				"$value": "{size.base.6xs}"
 			},
 			"3xs": {
-				"$value": "calc(var(--size-base-4xs) / var(-ratio-sm))"
+				"$value": "{size.base.5xs}"
 			},
 			"2xs": {
 				"$value": "{size.base.4xs}"
@@ -301,9 +356,7 @@
 				"$value": "{size.base.sm}"
 			},
 			"xl": {
-				"$type": "dimension",
-				"value": 1,
-				"unit": "rem"
+				"$value": "{size.base.md}"
 			},
 			"2xl": {
 				"$value": "{size.base.lg}"
@@ -325,9 +378,10 @@
 			}
 		},
 		"footer": {
-			"$type": "string",
+			"$type": "dimension",
 			"height": {
-				"$value": "var(--font-size-body)"
+				"value": 1,
+				"unit": "rem"
 			}
 		}
 	}
