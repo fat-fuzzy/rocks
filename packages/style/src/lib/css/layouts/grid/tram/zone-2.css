@@ -4,11 +4,11 @@
  */
 .tram.zone\:2 {
 	> .zone\:main {
-		max-block-size: calc(var(--overlay-height-md) - var(--grid-gap, --gap));
+		max-block-size: calc(var(--overlay-block-md) - var(--grid-gap, --gap));
 	}
 
 	> .page-context:not(.empty) {
-		max-block-size: var(--overlay-height-xs);
+		max-block-size: var(--overlay-block-xs);
 	}
 }
 

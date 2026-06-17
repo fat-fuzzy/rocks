@@ -2,7 +2,7 @@
 	grid-column: span 3;
 	grid-template-rows: auto 1fr;
 	min-block-size: unset;
-	max-block-size: var(--overlay-height-md);
+	max-block-size: var(--overlay-block-md);
 	overscroll-behavior-y: contain;
 	scrollbar-width: none;
 }

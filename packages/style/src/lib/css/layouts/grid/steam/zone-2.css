@@ -5,15 +5,15 @@
 
 .steam.zone\:2 {
 	> .page-context:not(.empty) {
-		max-block-size: var(--overlay-height-xs);
+		max-block-size: var(--overlay-block-xs);
 	}
 
 	> .page-context.media\:video {
-		block-size: var(--overlay-height-xs);
+		block-size: var(--overlay-block-xs);
 	}
 
 	> .page-context.media\:square {
-		block-size: var(--overlay-height-2xs);
+		block-size: var(--overlay-block-2xs);
 	}
 }
 
