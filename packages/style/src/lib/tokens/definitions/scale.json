@@ -1,11 +1,156 @@
 {
-	"size": {
+	"ratio": {
+		"$type": "number",
+		"xs": {
+			"$value": 1.15
+		},
+		"sm": {
+			"$value": 1.25
+		},
+		"md": {
+			"$value": 1.5
+		},
+		"lg": {
+			"$value": 2.75
+		}
+	},
+	"scale": {
 		"$type": "dimension",
+		"$description": "Base scale centered on base token = 00 of dimension 1rem. Decrease by dividing the next token down (00 + 0n) by {ratio.sm}. Increase by multiplying the next token up (00 + n0) by {ratio.sm}",
+		"base": {
+			"07": {
+				"$value": {
+					"value": 0.262144,
+					"unit": "rem"
+				}
+			},
+			"06": {
+				"$value": {
+					"value": 0.262144,
+					"unit": "rem"
+				}
+			},
+			"05": {
+				"$value": {
+					"value": 0.32768,
+					"unit": "rem"
+				}
+			},
+			"04": {
+				"$value": {
+					"value": 0.4096,
+					"unit": "rem"
+				}
+			},
+			"03": {
+				"$value": {
+					"value": 0.512,
+					"unit": "rem"
+				}
+			},
+			"02": {
+				"$value": {
+					"value": 0.64,
+					"unit": "rem"
+				}
+			},
+			"01": {
+				"$value": {
+					"value": 0.8,
+					"unit": "rem"
+				}
+			},
+			"00": {
+				"$value": {
+					"value": 1,
+					"unit": "rem"
+				}
+			},
+			"10": {
+				"$value": {
+					"value": 1.25,
+					"unit": "rem"
+				}
+			},
+			"20": {
+				"$value": {
+					"value": 1.5625,
+					"unit": "rem"
+				}
+			},
+			"30": {
+				"$value": {
+					"value": 1.953125,
+					"unit": "rem"
+				}
+			},
+			"40": {
+				"$value": {
+					"value": 2.44140625,
+					"unit": "rem"
+				}
+			},
+			"50": {
+				"$value": {
+					"value": 3.05175781,
+					"unit": "rem"
+				}
+			},
+			"60": {
+				"$value": {
+					"value": 3.81469727,
+					"unit": "rem"
+				}
+			},
+			"70": {
+				"$value": {
+					"value": 4.76837159,
+					"unit": "rem"
+				}
+			}
+		},
+		"major-third": {
+			"$type": "number",
+			"03": {
+				"$value": 0.6
+			},
+			"02": {
+				"$value": 0.7
+			},
+			"01": {
+				"$value": 0.8
+			},
+			"00": {
+				"$value": 1
+			},
+			"10": {
+				"$value": 1.25
+			},
+			"20": {
+				"$value": 1.6
+			},
+			"30": {
+				"$value": 2
+			}
+		}
+	},
+	"size": {
 		"nul": {
-			"$value": "0px"
+			"$type": "dimension",
+			"$value": {
+				"value": 0,
+				"unit": "px"
+			}
 		},
 		"base": {
-			"$type": "derived",
+			"$type": "dimension",
+			"unit": "rem",
+			"6xs": {
+				"$value": "{scale.base.07}"
+			},
+			"5xs": {
+				"$value": "{scale.base.06}"
+			},
 			"4xs": {
 				"$value": "{scale.base.05}"
 			},
@@ -38,10 +183,16 @@
 			},
 			"4xl": {
 				"$value": "{scale.base.50}"
+			},
+			"5xl": {
+				"$value": "{scale.base.60}"
+			},
+			"6xl": {
+				"$value": "{scale.base.70}"
 			}
 		},
 		"inverse": {
-			"$type": "derived",
+			"$type": "dimension",
 			"3xs": {
 				"$value": "{size.base.3xl}"
 			},
@@ -74,7 +225,7 @@
 			}
 		},
 		"increase-1": {
-			"$type": "derived",
+			"$type": "dimension",
 			"4xs": {
 				"$value": "{size.base.3xs}"
 			},
@@ -106,11 +257,11 @@
 				"$value": "{size.base.4xl}"
 			},
 			"4xl": {
-				"$value": "calc(var(--size-base-4xl) * var(--size-ratio-md))"
+				"$value": "{size.base.5xl}"
 			}
 		},
 		"increase-2": {
-			"$type": "derived",
+			"$type": "dimension",
 			"4xs": {
 				"$value": "{size.base.2xs}"
 			},
@@ -139,16 +290,16 @@
 				"$value": "{size.base.4xl}"
 			},
 			"3xl": {
-				"$value": "calc(var(--size-base-4xl) * var(--size-ratio-md))"
+				"$value": "{size.base.5xl}"
 			},
 			"4xl": {
-				"$value": "calc(var(--size-base-4xl) * var(--size-ratio-md) * var(--size-ratio-md))"
+				"$value": "{size.base.6xl}"
 			}
 		},
 		"decrease-1": {
-			"$type": "derived",
+			"$type": "dimension",
 			"4xs": {
-				"$value": "calc(var(--size-base-4xs) / var(--size-ratio-sm))"
+				"$value": "{size.base.5xs}"
 			},
 			"3xs": {
 				"$value": "{size.base.4xs}"
@@ -182,12 +333,12 @@
 			}
 		},
 		"decrease-2": {
-			"$type": "derived",
+			"$type": "dimension",
 			"4xs": {
-				"$value": "calc(var(--size-base-4xs) / var(--size-ratio-sm) / var(--size-ratio-sm))"
+				"$value": "{size.base.6xs}"
 			},
 			"3xs": {
-				"$value": "calc(var(--size-base-4xs) / var(--size-ratio-sm))"
+				"$value": "{size.base.5xs}"
 			},
 			"2xs": {
 				"$value": "{size.base.4xs}"
@@ -216,102 +367,25 @@
 			"4xl": {
 				"$value": "{size.base.2xl}"
 			}
-		},
-		"ratio": {
-			"$type": "number",
-			"xs": {
-				"$value": 1.15
-			},
-			"sm": {
-				"$value": 1.25
-			},
-			"md": {
-				"$value": 1.5
-			},
-			"lg": {
-				"$value": 2.75
-			}
-		}
-	},
-	"scale": {
-		"$type": "derived",
-		"base": {
-			"06": {
-				"$value": "calc(var(--scale-base-05) / var(--size-ratio-sm))"
-			},
-			"05": {
-				"$value": "calc(var(--scale-base-04) / var(--size-ratio-sm))"
-			},
-			"04": {
-				"$value": "calc(var(--scale-base-03) / var(--size-ratio-sm))"
-			},
-			"03": {
-				"$value": "calc(var(--scale-base-02) / var(--size-ratio-sm))"
-			},
-			"02": {
-				"$value": "calc(var(--scale-base-01) / var(--size-ratio-sm))"
-			},
-			"01": {
-				"$value": "calc(var(--scale-base-00) / var(--size-ratio-xs))"
-			},
-			"00": {
-				"$value": "1rem"
-			},
-			"10": {
-				"$value": "calc(var(--scale-base-00) * var(--size-ratio-sm))"
-			},
-			"20": {
-				"$value": "calc(var(--scale-base-10) * var(--size-ratio-sm))"
-			},
-			"30": {
-				"$value": "calc(var(--scale-base-20) * var(--size-ratio-sm))"
-			},
-			"40": {
-				"$value": "calc(var(--scale-base-30) * var(--size-ratio-sm))"
-			},
-			"50": {
-				"$value": "calc(var(--scale-base-40) * var(--size-ratio-sm))"
-			},
-			"60": {
-				"$value": "calc(var(--scale-base-50) * var(--size-ratio-sm))"
-			}
-		},
-		"major-third": {
-			"$type": "number",
-			"03": {
-				"$value": 0.6
-			},
-			"02": {
-				"$value": 0.7
-			},
-			"01": {
-				"$value": 0.8
-			},
-			"00": {
-				"$value": 1
-			},
-			"10": {
-				"$value": 1.25
-			},
-			"20": {
-				"$value": 1.6
-			},
-			"30": {
-				"$value": 2
-			}
 		}
 	},
 	"ui": {
 		"$type": "dimension",
 		"header": {
 			"height": {
-				"$value": "3rem"
+				"$value": {
+					"value": 3,
+					"unit": "rem"
+				}
 			}
 		},
 		"footer": {
-			"$type": "derived",
+			"$type": "dimension",
 			"height": {
-				"$value": "var(--font-size-body)"
+				"$value": {
+					"value": 1,
+					"unit": "rem"
+				}
 			}
 		}
 	}

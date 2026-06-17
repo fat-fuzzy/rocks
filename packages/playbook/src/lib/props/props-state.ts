@@ -1,7 +1,7 @@
 const DEFAULT_CONTENT_TYPES = {
 	ravioli: ['Raviolo 1', 'Raviolo 2', 'Raviolo 3'],
 	form: ['Form input 1', 'Form input 2', 'Form input 3'],
-	label: `This is some text that shows you how text content will adapt inside a chosen Layout. Layouts are components that are used to organize how content is displayed on the screen, and designed to work in harmony with the browser's built-in layout algorithms.`,
+	label: `This paragraph shows how text content will adapt inside a chosen Layout. Layouts are components that help to organize how content is displayed on the screen. They are versatile, efficient, and designed to work in harmony with the browser's built-in layout algorithms.`,
 }
 
 const states = {
@@ -31,7 +31,7 @@ const content = {
 	content: DEFAULT_CONTENT_TYPES,
 }
 
-const PROPS_STATE: {[key: string]: any} = {
+const PROPS_STATE: {[key: string]: unknown} = {
 	states,
 	content,
 }

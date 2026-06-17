@@ -37,17 +37,15 @@ export default function svgAsset() {
 		buildJsTokens({getTransforms, outputFile}) {
 			const output = []
 
-			output.push('const tokens = {')
+			output.push('const tokens = { value:')
 
 			const svgTokens = getTransforms({
 				format: 'js',
 				id: 'svg.*',
 			})
-			for (const token of svgTokens) {
-				if (token.localID) {
-					output.push(`${token.localID}: ${token.value},`)
-				}
-			}
+
+			output.push(svgTokens[1].value)
+
 			output.push('};', '', 'export default tokens;', '')
 			outputFile('assets-svg.js', output.join('\n'))
 		},
@@ -74,7 +72,7 @@ export default function svgAsset() {
 			const svgTokens = getTransforms({
 				format: 'css',
 				id: 'svg.*',
-				mode: '.',
+				context: '.',
 			})
 			for (const token of svgTokens) {
 				if (token.localID) {

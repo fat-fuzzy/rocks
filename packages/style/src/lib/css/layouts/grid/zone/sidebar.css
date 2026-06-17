@@ -67,7 +67,7 @@
 
 @media screen and (min-width: 58.45rem) {
 	.sidebar [class*='gare:'].width\:xl {
-		--overlay-block-size: var(--overlay-height-sm);
+		--overlay-block-size: var(--overlay-block-sm);
 	}
 }
 
@@ -90,7 +90,7 @@
 	}
 
 	.sidebar {
-		--overlay-block-size: var(--max-overlay-size);
+		--overlay-block-size: var(--max-block-size);
 	}
 
 	.sidebar.width\:full {
@@ -99,6 +99,6 @@
 				var(--outline-offset-lg)
 		);
 		--overlay-inline-size: var(--sidebar-lg);
-		--overlay-block-size: var(--overlay-height-sm);
+		--overlay-block-size: var(--overlay-block-sm);
 	}
 }

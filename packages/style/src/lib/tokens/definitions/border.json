@@ -3,50 +3,57 @@
 		"$type": "dimension",
 		"radius": {
 			"null": {
-				"$value": "0px"
+				"$value": {
+					"value": 0,
+					"unit": "rem"
+				}
 			},
 			"sm": {
-				"$value": "0.16rem"
+				"$value": {
+					"value": 0.16,
+					"unit": "rem"
+				}
 			},
 			"md": {
-				"$value": "0.26rem"
+				"$value": {
+					"value": 0.26,
+					"unit": "rem"
+				}
 			},
 			"lg": {
-				"$value": "0.34rem"
+				"$value": {
+					"value": 0.34,
+					"unit": "rem"
+				}
 			},
 			"xl": {
-				"$value": "0.66rem"
+				"$value": {
+					"value": 0.66,
+					"unit": "rem"
+				}
 			},
 			"base": {
-				"$value": "{border.radius.md}"
+				"value": "{border.radius.md}"
 			}
 		},
 		"width": {
 			"md": {
-				"$value": "1px"
+				"$value": {
+					"value": 1,
+					"unit": "px"
+				}
 			},
 			"lg": {
-				"$value": "2px"
+				"$value": {
+					"value": 2,
+					"unit": "px"
+				}
 			},
 			"xl": {
-				"$value": "4px"
-			}
-		}
-	},
-	"outline": {
-		"$type": "dimension",
-		"offset": {
-			"xs": {
-				"$value": "1.5px"
-			},
-			"sm": {
-				"$value": "1.75px"
-			},
-			"md": {
-				"$value": "2px"
-			},
-			"lg": {
-				"$value": "3px"
+				"$value": {
+					"value": 4,
+					"unit": "px"
+				}
 			}
 		}
 	}

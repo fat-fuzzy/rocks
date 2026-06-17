@@ -29,11 +29,11 @@
 }
 
 .scroll\:container.contain\:sm:has(.scroll\:y) {
-	max-block-size: var(--overlay-height-sm);
+	max-block-size: var(--overlay-block-sm);
 }
 
 .scroll\:container.contain\:md:has(.scroll\:y) {
-	max-block-size: var(--overlay-height-md);
+	max-block-size: var(--overlay-block-md);
 }
 
 .scroll\:container:has(.scroll\:x) {

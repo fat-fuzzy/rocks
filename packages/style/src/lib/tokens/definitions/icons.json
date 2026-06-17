@@ -1,6 +1,6 @@
 {
 	"icon": {
-		"$type": "derived",
+		"$type": "dimension",
 		"emoji": {
 			"3xs": {
 				"$value": "{size.base.3xs}"
