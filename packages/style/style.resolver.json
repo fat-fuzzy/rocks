@@ -1,0 +1,82 @@
+{
+	"name": "Fat Fuzzy Style Token Sets",
+	"version": "2025.10",
+	"sets": {
+		"base": {
+			"description": "Base tokens",
+			"sources": [
+				{
+					"$ref": "src/lib/tokens/definitions/scale.json"
+				},
+				{
+					"$ref": "src/lib/tokens/definitions/border.json"
+				}
+			]
+		},
+		"layout": {
+			"description": "Layout tokens",
+			"sources": [
+				{
+					"$ref": "src/lib/tokens/definitions/layout.json"
+				}
+			]
+		},
+		"typography": {
+			"sources": [
+				{
+					"$ref": "src/lib/tokens/definitions/font.json"
+				}
+			]
+		},
+		"colors": {
+			"description": "Colors and gradients",
+			"sources": [
+				{
+					"$ref": "src/lib/tokens/definitions/color.json"
+				}
+			]
+		},
+		"assets": {
+			"description": "Icon tokens (svg, emoji), image tokens",
+			"sources": [
+				{
+					"$ref": "src/lib/tokens/definitions/icons.json"
+				},
+				{
+					"$ref": "src/lib/tokens/definitions/assets-emoji.json"
+				},
+				{
+					"$ref": "src/lib/tokens/definitions/assets-svg.json"
+				}
+			]
+		},
+		"motion": {
+			"description": "Colors and gradients",
+			"sources": [
+				{
+					"$ref": "src/lib/tokens/definitions/motion.json"
+				}
+			]
+		}
+	},
+	"resolutionOrder": [
+		{
+			"$ref": "#/sets/base"
+		},
+		{
+			"$ref": "#/sets/layout"
+		},
+		{
+			"$ref": "#/sets/typography"
+		},
+		{
+			"$ref": "#/sets/colors"
+		},
+		{
+			"$ref": "#/sets/assets"
+		},
+		{
+			"$ref": "#/sets/motion"
+		}
+	]
+}

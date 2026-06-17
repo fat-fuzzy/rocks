@@ -13,12 +13,12 @@ const files = [
 	'assets-emoji.json',
 	'assets-svg.json',
 	'scale.json',
+	'layout.json',
 	'settings.json',
 	'font.json',
 	'border.json',
 	'color.json',
 	'icons.json',
-	'layout.json',
 	'pages.json',
 	'motion.json',
 ]
@@ -28,17 +28,7 @@ const tokens = files.map((file) => `${paths.in}/${file}`)
 export default defineConfig({
 	tokens: tokens,
 	plugins: [
-		pluginCSS({
-			transform(token) {
-				switch (token.$type) {
-					case 'string': {
-						return token.$value
-					}
-					default:
-						break
-				}
-			},
-		}),
+		pluginCSS(),
 		pluginJS({
 			filename: 'variables.js',
 		}),
