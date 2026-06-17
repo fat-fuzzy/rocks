@@ -126,7 +126,9 @@ nav li[aria-current='page'] {
 
 	ul.depth-1 {
 		--lightness-contrast: var(--lightness-contrast-base);
-		--shade: oklch(var(--lightness) var(--chroma) var(--hue));
+		--shade: oklch(
+			var(--lightness) var(--chroma, var(--chroma-base)) var(--hue)
+		);
 		--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
 		--accent: oklch(
 			var(--lightness-accent) var(--chroma-accent-base) var(--hue)
