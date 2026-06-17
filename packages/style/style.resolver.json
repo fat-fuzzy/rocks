@@ -10,6 +10,9 @@
 				},
 				{
 					"$ref": "src/lib/tokens/definitions/border.json"
+				},
+				{
+					"$ref": "src/lib/tokens/definitions/outline.json"
 				}
 			]
 		},
@@ -33,6 +36,9 @@
 			"sources": [
 				{
 					"$ref": "src/lib/tokens/definitions/color.json"
+				},
+				{
+					"$ref": "src/lib/tokens/definitions/shadow.json"
 				}
 			]
 		},

@@ -373,15 +373,19 @@
 		"$type": "dimension",
 		"header": {
 			"height": {
-				"value": 3,
-				"unit": "rem"
+				"$value": {
+					"value": 3,
+					"unit": "rem"
+				}
 			}
 		},
 		"footer": {
 			"$type": "dimension",
 			"height": {
-				"value": 1,
-				"unit": "rem"
+				"$value": {
+					"value": 1,
+					"unit": "rem"
+				}
 			}
 		}
 	}
