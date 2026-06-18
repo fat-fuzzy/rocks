@@ -47,7 +47,7 @@
 		"@terrazzo/cli": "2.3.0",
 		"@terrazzo/plugin-css": "2.3.0",
 		"@terrazzo/plugin-js": "2.3.0",
-		"autoprefixer": "10.4.27",
+		"autoprefixer": "10.5.0",
 		"cssnano": "7.1.3",
 		"glob": "13.0.6",
 		"postcss": "8.5.10",
