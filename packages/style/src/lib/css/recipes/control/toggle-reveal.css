@@ -37,7 +37,7 @@ ff-toggle-reveal {
 	ff-control:has(input:checked) + ff-reveal {
 		--x-axis: 0;
 		--x-size: var(--overlay-inline-size, var(--max-inline-size));
-		--overlay-block-size: var(--max-block-size, var(--overlay-block-xl));
+		--overlay-block-size: var(--overlay-block-xl);
 
 		opacity: 1;
 		background-color: var(--color-bg);
@@ -122,7 +122,7 @@ ff-toggle-reveal.est {
 		--y-axis: var(--ui-size);
 		--x-axis: 100%;
 		--x-size: 0;
-		--overlay-block-size: var(--max-block-size, var(--overlay-block-xl));
+		--overlay-block-size: var(--overlay-block-xl);
 
 		inline-size: var(--x-size);
 		block-size: fit-content;
@@ -190,7 +190,7 @@ ff-toggle-reveal.sud {
 	}
 }
 
-@media screen and (min-width: 38.75rem) {
+@media screen and (min-width: 68.75rem) {
 	ff-control:has(input:checked) + ff-reveal:not([class*='absolute:']) {
 		max-inline-size: 100%;
 		position: static;
