@@ -1,5 +1,11 @@
 # @fat-fuzzy/doc
 
+## 0.1.83
+
+### Patch Changes
+
+- d3c7352: Accessibility fixes, test updates & fixes
+
 ## 0.1.82
 
 ### Patch Changes
