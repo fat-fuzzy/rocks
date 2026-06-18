@@ -42,7 +42,7 @@
 		}
 	},
 	"peerDependencies": {
-		"@sveltejs/kit": "2.65.0",
+		"@sveltejs/kit": "2.65.1",
 		"svelte": "5.56.3"
 	},
 	"dependencies": {
@@ -55,7 +55,7 @@
 		"@tiptap/pm": "3.20.4",
 		"@tiptap/starter-kit": "3.23.4",
 		"@tiptap/static-renderer": "3.20.4",
-		"dompurify": "3.4.9"
+		"dompurify": "3.4.11"
 	},
 	"devDependencies": {
 		"@eslint/compat": "2.0.3",
@@ -64,7 +64,7 @@
 		"@fat-fuzzy/ui": "workspace:*",
 		"@playwright/test": "1.58.2",
 		"@sveltejs/adapter-auto": "7.0.1",
-		"@sveltejs/kit": "2.65.0",
+		"@sveltejs/kit": "2.65.1",
 		"@sveltejs/package": "2.5.8",
 		"@sveltejs/vite-plugin-svelte": "6.2.4",
 		"@types/eslint": "9.6.1",
