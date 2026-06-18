@@ -5,7 +5,6 @@ import errorUtils from '../utils/errors'
 const pages = utils.pages
 const errors = errorUtils.httpErrors
 const errorCodes = Object.keys(errors)
-const sidebarTestId = 'nav-sidebar'
 
 test('has title', async ({page}) => {
 	await page.goto('/')
@@ -39,15 +38,19 @@ pages.forEach((item) => {
 			test(`Sub navigation works as expected: ${subpage.title}`, async ({
 				page,
 			}) => {
+				const subnavId = `sidenav-${item.slug}`
 				await page.goto('/')
 				await page
 					.getByRole('link', {name: item.title, exact: false})
 					.nth(0)
 					.click()
-				await page.getByTestId(sidebarTestId).getByText(item.title).click()
-				await page.getByText(`Toggle ${subpage.slug}`).click()
+				await page
+					.getByTestId(subnavId)
+					.getByTestId(`label-toggle-${subpage.slug}`)
+					.click()
+				await page.getByRole('link', {name: subpage.label, exact: true}).click()
 				await expect(
-					page.getByRole('link', {name: subpage.linkTitle, exact: true}),
+					page.getByRole('heading', {name: subpage.title}),
 				).toBeVisible()
 			})
 		})

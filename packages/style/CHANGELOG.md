@@ -1,5 +1,11 @@
 # @fat-fuzzy/style
 
+## 0.1.45
+
+### Patch Changes
+
+- d3c7352: Accessibility fixes, test updates & fixes
+
 ## 0.1.44
 
 ### Patch Changes

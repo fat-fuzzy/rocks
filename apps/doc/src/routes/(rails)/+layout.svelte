@@ -34,6 +34,7 @@
 			functional: true,
 		},
 	})
+	let pageName = $derived(pathname.substring(1, pathname.length))
 	let talk = $derived(page.params.talk)
 	let slide = $derived(page.data.content)
 	let series = $derived(
@@ -134,10 +135,10 @@
 			<nav
 				id="sidenav"
 				class="font:md width:md height:lg"
-				data-testid={`sidenav-${pathname}`}
+				data-testid="nav-sidebar"
 			>
 				<SkipLinks
-					id={`skiplinks-${pathname}`}
+					id={`skiplinks-${pageName}`}
 					text="Skip to content"
 					href="#main"
 				/>
@@ -162,7 +163,7 @@
 				>
 					<ToggleTree
 						{...sidenav}
-						id={`sidenav-${pathname}`}
+						id="sidenav"
 						{pathname}
 						preload={true}
 						depth={0}

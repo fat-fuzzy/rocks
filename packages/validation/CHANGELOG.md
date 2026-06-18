@@ -1,5 +1,11 @@
 # @fat-fuzzy/validation
 
+## 0.1.26
+
+### Patch Changes
+
+- d3c7352: Accessibility fixes, test updates & fixes
+
 ## 0.1.25
 
 ### Patch Changes

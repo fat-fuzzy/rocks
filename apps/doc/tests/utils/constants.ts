@@ -16,7 +16,7 @@ const pages = [
 			{
 				path: '/about/decisions',
 				slug: 'decisions',
-				title: 'Decisions',
+				title: 'Decision Log',
 				label: 'Decisions',
 				linkTitle: 'Decisions',
 			},
@@ -61,7 +61,7 @@ const layouts = {
 		if (parent) return `${parent}/layouts`
 		return '/ui/layouts'
 	},
-	ready: ['Burrito', 'Reveal', 'Sidebar', 'Stack', 'Switcher'],
+	ready: ['Burrito', 'Sidebar', 'Stack', 'Switcher'],
 	draft: [],
 }
 
