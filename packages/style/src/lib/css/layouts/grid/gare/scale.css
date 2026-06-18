@@ -11,7 +11,7 @@
 }
 
 [class*='gare:'] {
-	--overlay-inline-size: var(--sidebar-width, fit-content);
+	--overlay-inline-size: var(--layout-sidebar-sm, fit-content);
 	--overlay-block-size: fit-content;
 }
 
@@ -79,8 +79,7 @@
 	}
 
 	[class*='gare:'][class*='width:']:not(.width\:full, .width\:xl) > ff-reveal {
-		--sidebar-width: var(--layout-sidebar-md);
-		--overlay-inline-size: var(--sidebar-width);
+		--overlay-inline-size: var(--layout-sidebar-md);
 	}
 
 	[class*='gare:'] > ff-reveal,
