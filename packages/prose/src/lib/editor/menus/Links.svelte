@@ -42,14 +42,14 @@
 	<button
 		onclick={setLink}
 		aria-pressed={commands.link ? 'true' : undefined}
-		class={`toggle color:${color} variant:${variant} size:${size} justify:center `}
+		class={`toggle color:${color} variant:${variant} size:${size} justify:center text`}
 	>
 		Link
 	</button>
 	<button
 		onclick={() => editor.chain().focus().unsetLink().run()}
 		disabled={!commands.isLink ? true : undefined}
-		class={`toggle color:${color} variant:${variant} size:${size}`}
+		class={`toggle color:${color} variant:${variant} size:${size} text`}
 	>
 		Unlink
 	</button>
