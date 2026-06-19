@@ -1,5 +1,11 @@
 # @fat-fuzzy/style
 
+## 0.1.47
+
+### Patch Changes
+
+- f3e025f: Fix layotu overflow
+
 ## 0.1.46
 
 ### Patch Changes
