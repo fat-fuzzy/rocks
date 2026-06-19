@@ -1,5 +1,11 @@
 # @fat-fuzzy/style
 
+## 0.1.48
+
+### Patch Changes
+
+- f83b2bd: Update icon set
+
 ## 0.1.47
 
 ### Patch Changes
