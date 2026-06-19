@@ -1,5 +1,11 @@
 # @fat-fuzzy/prose
 
+## 0.1.45
+
+### Patch Changes
+
+- 6716c04: Dependency updates, style fix
+
 ## 0.1.44
 
 ### Patch Changes
