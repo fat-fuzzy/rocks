@@ -1,5 +1,11 @@
 # @fat-fuzzy/style
 
+## 0.1.46
+
+### Patch Changes
+
+- 6716c04: Dependency updates, style fix
+
 ## 0.1.45
 
 ### Patch Changes
