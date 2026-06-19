@@ -55,12 +55,14 @@
 	<FlowControl {editor} {commands} {size} {color} {variant} />
 
 	{#if onExport}
-		<button
-			onclick={onExport}
-			class={`toggle color:${color} variant:${variant} size:${size}`}
-		>
-			Export
-		</button>
+		<div class="button-group">
+			<button
+				onclick={onExport}
+				class={`toggle color:${color} variant:${variant} size:${size} text`}
+			>
+				Export
+			</button>
+		</div>
 	{/if}
 
 	{#if preset === 'full' || children}

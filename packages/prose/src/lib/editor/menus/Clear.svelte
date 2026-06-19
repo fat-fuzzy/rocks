@@ -25,14 +25,14 @@
 		<button
 			onclick={() => editor.chain().focus().unsetAllMarks().run()}
 			aria-pressed={commands.marks ? 'true' : undefined}
-			class={`toggle color:${color} variant:${variant} size:${size}`}
+			class={`toggle color:${color} variant:${variant} size:${size} text`}
 		>
 			Clear Marks
 		</button>
 		<button
 			onclick={() => editor.chain().focus().clearNodes().run()}
 			aria-pressed={commands.nodes ? 'true' : undefined}
-			class={`toggle color:${color} variant:${variant} size:${size}`}
+			class={`toggle color:${color} variant:${variant} size:${size} text`}
 		>
 			Clear Nodes
 		</button>

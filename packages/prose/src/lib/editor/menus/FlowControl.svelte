@@ -22,7 +22,7 @@
 	<button
 		onclick={() => editor.chain().focus().undo().run()}
 		disabled={!commands.undo}
-		class={`toggle color:${color} variant:${variant} size:${size}`}
+		class={`toggle color:${color} variant:${variant} size:${size} text`}
 	>
 		Undo
 	</button>
@@ -30,7 +30,7 @@
 		<button
 			onclick={() => editor.chain().focus().redo().run()}
 			disabled={!commands.redo}
-			class={`toggle color:${color} variant:${variant} size:${size}`}
+			class={`toggle color:${color} variant:${variant} size:${size} text`}
 		>
 			Redo
 		</button>
