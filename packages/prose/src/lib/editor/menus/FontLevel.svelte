@@ -22,43 +22,43 @@
 	<button
 		onclick={() => editor.chain().focus().toggleHeading({level: 1}).run()}
 		aria-pressed={commands.h1 ? 'true' : undefined}
-		class={`toggle color:${color} variant:${variant} size:${size} h1`}
+		class={`toggle color:${color} variant:${variant} size:${size} svg:type-h1`}
 	>
-		H1
+		<span class="sr-only">Heading Level 1</span>
 	</button>
 	<button
 		onclick={() => editor.chain().focus().toggleHeading({level: 2}).run()}
 		aria-pressed={commands.h2 ? 'true' : undefined}
-		class={`toggle color:${color} variant:${variant} size:${size} h2`}
+		class={`toggle color:${color} variant:${variant} size:${size} svg:type-h2`}
 	>
-		H2
+		<span class="sr-only">Heading Level 2</span>
 	</button>
 
 	<button
 		onclick={() => editor.chain().focus().toggleHeading({level: 3}).run()}
 		aria-pressed={commands.h3 ? 'true' : undefined}
-		class={`toggle color:${color} variant:${variant} size:${size} h3`}
+		class={`toggle color:${color} variant:${variant} size:${size} svg:type-h3`}
 	>
-		H3
+		<span class="sr-only">Heading Level 3</span>
 	</button>
 	<button
 		onclick={() => editor.chain().focus().toggleHeading({level: 4}).run()}
 		aria-pressed={commands.h4 ? 'true' : undefined}
-		class={`toggle color:${color} variant:${variant} size:${size} h4`}
+		class={`toggle color:${color} variant:${variant} size:${size} svg:type-h4`}
 	>
-		H4
+		<span class="sr-only">Heading Level 4</span>
 	</button>
 	<button
 		onclick={() => editor.chain().focus().toggleHeading({level: 5}).run()}
 		aria-pressed={commands.h5 ? 'true' : undefined}
-		class={`toggle color:${color} variant:${variant} size:${size} h5`}
+		class={`toggle color:${color} variant:${variant} size:${size} svg:type-h5`}
 	>
-		H5
+		<span class="sr-only">Heading Level 5</span>
 	</button>
 	<button
 		onclick={() => editor.chain().focus().setParagraph().run()}
 		aria-pressed={commands.p ? 'true' : undefined}
-		class={`toggle color:${color} variant:${variant} size:${size} singleton`}
+		class={`toggle color:${color} variant:${variant} size:${size} font:3xs singleton`}
 	>
 		P
 	</button>
