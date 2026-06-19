@@ -1,5 +1,11 @@
 # @fat-fuzzy/validation
 
+## 0.1.27
+
+### Patch Changes
+
+- 6716c04: Dependency updates, style fix
+
 ## 0.1.26
 
 ### Patch Changes
