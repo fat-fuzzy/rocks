@@ -1,5 +1,11 @@
 # @fat-fuzzy/ui
 
+## 0.1.102
+
+### Patch Changes
+
+- d3c7352: Accessibility fixes, test updates & fixes
+
 ## 0.1.101
 
 ### Patch Changes

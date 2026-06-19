@@ -104,7 +104,7 @@
 
 {#snippet nestedLinkTree(subItems: NavItem[], slug: string)}
 	<ToggleTree
-		id={slug}
+		id={`${id}-${slug}`}
 		items={subItems}
 		{pathname}
 		{layout}

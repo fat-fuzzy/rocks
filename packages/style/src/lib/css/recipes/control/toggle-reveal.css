@@ -8,6 +8,10 @@ ff-toggle-reveal {
 		box-shadow: unset;
 	}
 
+	ff-control label [type='checkbox'] {
+		right: var(--ui-size-xl);
+	}
+
 	ff-control + ff-reveal {
 		--x-axis: 0;
 		--y-axis: 0;
@@ -183,7 +187,6 @@ ff-toggle-reveal.sud {
 
 	ff-control:has(input:checked) + ff-reveal {
 		block-size: fit-content;
-		max-inline-size: unset;
 		transition:
 			opacity 300ms ease-out 50ms,
 			block-size 300ms ease-out;
