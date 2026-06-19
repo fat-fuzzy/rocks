@@ -1,5 +1,11 @@
 # @fat-fuzzy/ui
 
+## 0.1.103
+
+### Patch Changes
+
+- 6716c04: Dependency updates, style fix
+
 ## 0.1.102
 
 ### Patch Changes
