@@ -1,5 +1,11 @@
 # @fat-fuzzy/lib
 
+## 0.1.15
+
+### Patch Changes
+
+- d3c7352: Accessibility fixes, test updates & fixes
+
 ## 0.1.14
 
 ### Patch Changes

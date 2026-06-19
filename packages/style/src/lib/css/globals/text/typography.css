@@ -156,6 +156,7 @@ blockquote {
 	margin-block: var(--ui-size-lg);
 }
 
+ff-control:has(.ellipsis),
 span:has(.ellipsis),
 li:has(.ellipsis) {
 	--max-inline-size: var(--sidebar-width, 100%);

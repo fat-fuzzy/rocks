@@ -170,8 +170,8 @@ const INPUTS: InputProps = {
 		value: {valid: 'ThisIsNotSecure!!!123', invalid: 'pwd'},
 		errors: [
 			messages.getErrorMessage('FORMAT_TEXT_MIN', 12),
-			messages.getErrorMessage('FORMAT_PATTERN', 3),
-			messages.getErrorMessage('FORMAT_PATTERN', 3, 'digit'),
+			messages.getErrorMessage('FORMAT_PATTERN_MIN', 3),
+			messages.getErrorMessage('FORMAT_PATTERN_MIN', 3, 'digit'),
 		],
 	},
 	confirm_password: {
