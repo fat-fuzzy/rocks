@@ -1,5 +1,11 @@
 # @fat-fuzzy/prose
 
+## 0.1.46
+
+### Patch Changes
+
+- f83b2bd: Update icon set
+
 ## 0.1.45
 
 ### Patch Changes
