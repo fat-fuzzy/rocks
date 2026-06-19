@@ -1,9 +1,23 @@
 :root {
-	--overlay-block-3xs: calc(var(--overlay-height-3xs) * 1vh);
-	--overlay-block-2xs: calc(var(--overlay-height-2xs) * 1vh);
-	--overlay-block-xs: calc(var(--overlay-height-xs) * 1vh);
-	--overlay-block-sm: calc(var(--overlay-height-sm) * 1vh);
-	--overlay-block-md: calc(var(--overlay-height-md) * 1vh);
-	--overlay-block-lg: calc(var(--overlay-height-lg) * 1vh);
-	--overlay-block-xl: calc(var(--overlay-height-xl) * 1vh);
+	--overlay-block-3xs: calc(
+		var(--overlay-height-3xs) * 1vh - 2 * var(--outline-offset-lg)
+	);
+	--overlay-block-2xs: calc(
+		var(--overlay-height-2xs) * 1vh - 2 * var(--outline-offset-lg)
+	);
+	--overlay-block-xs: calc(
+		var(--overlay-height-xs) * 1vh - 2 * var(--outline-offset-lg)
+	);
+	--overlay-block-sm: calc(
+		var(--overlay-height-sm) * 1vh - 2 * var(--outline-offset-lg)
+	);
+	--overlay-block-md: calc(
+		var(--overlay-height-md) * 1vh - 2 * var(--outline-offset-lg)
+	);
+	--overlay-block-lg: calc(
+		var(--overlay-height-lg) * 1vh - 2 * var(--outline-offset-lg)
+	);
+	--overlay-block-xl: calc(
+		var(--overlay-height-xl) * 1vh - 2 * var(--outline-offset-lg)
+	);
 }
