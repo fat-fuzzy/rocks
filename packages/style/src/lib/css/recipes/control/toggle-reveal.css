@@ -187,7 +187,6 @@ ff-toggle-reveal.sud {
 
 	ff-control:has(input:checked) + ff-reveal {
 		block-size: fit-content;
-		max-inline-size: unset;
 		transition:
 			opacity 300ms ease-out 50ms,
 			block-size 300ms ease-out;
