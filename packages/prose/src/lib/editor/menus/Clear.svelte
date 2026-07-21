@@ -23,6 +23,7 @@
 <div>
 	<div class={`l:${layout}:${size} button-group`}>
 		<button
+			type="button"
 			onclick={() => editor.chain().focus().unsetAllMarks().run()}
 			aria-pressed={commands.marks ? 'true' : undefined}
 			class={`toggle color:${color} variant:${variant} size:${size} text`}
@@ -30,6 +31,7 @@
 			Clear Marks
 		</button>
 		<button
+			type="button"
 			onclick={() => editor.chain().focus().clearNodes().run()}
 			aria-pressed={commands.nodes ? 'true' : undefined}
 			class={`toggle color:${color} variant:${variant} size:${size} text`}

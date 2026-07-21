@@ -57,6 +57,7 @@
 	{#if onExport}
 		<div class="button-group">
 			<button
+				type="button"
 				onclick={onExport}
 				class={`toggle color:${color} variant:${variant} size:${size} text`}
 			>

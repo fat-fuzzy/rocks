@@ -20,6 +20,7 @@
 
 <div class="l:flex button-group">
 	<button
+		type="button"
 		onclick={() => editor.chain().focus().toggleHeading({level: 1}).run()}
 		aria-pressed={commands.h1 ? 'true' : undefined}
 		class={`toggle color:${color} variant:${variant} size:${size} svg:type-h1`}
@@ -27,6 +28,7 @@
 		<span class="sr-only">Heading Level 1</span>
 	</button>
 	<button
+		type="button"
 		onclick={() => editor.chain().focus().toggleHeading({level: 2}).run()}
 		aria-pressed={commands.h2 ? 'true' : undefined}
 		class={`toggle color:${color} variant:${variant} size:${size} svg:type-h2`}
@@ -35,6 +37,7 @@
 	</button>
 
 	<button
+		type="button"
 		onclick={() => editor.chain().focus().toggleHeading({level: 3}).run()}
 		aria-pressed={commands.h3 ? 'true' : undefined}
 		class={`toggle color:${color} variant:${variant} size:${size} svg:type-h3`}
@@ -42,6 +45,7 @@
 		<span class="sr-only">Heading Level 3</span>
 	</button>
 	<button
+		type="button"
 		onclick={() => editor.chain().focus().toggleHeading({level: 4}).run()}
 		aria-pressed={commands.h4 ? 'true' : undefined}
 		class={`toggle color:${color} variant:${variant} size:${size} svg:type-h4`}
@@ -49,6 +53,7 @@
 		<span class="sr-only">Heading Level 4</span>
 	</button>
 	<button
+		type="button"
 		onclick={() => editor.chain().focus().toggleHeading({level: 5}).run()}
 		aria-pressed={commands.h5 ? 'true' : undefined}
 		class={`toggle color:${color} variant:${variant} size:${size} svg:type-h5`}
@@ -56,6 +61,7 @@
 		<span class="sr-only">Heading Level 5</span>
 	</button>
 	<button
+		type="button"
 		onclick={() => editor.chain().focus().setParagraph().run()}
 		aria-pressed={commands.p ? 'true' : undefined}
 		class={`toggle color:${color} variant:${variant} size:${size} font:3xs singleton`}
