@@ -66,6 +66,7 @@ textarea {
 }
 
 label > input {
+	--input-inline-size: max-content;
 	max-inline-size: 100%;
 }
 

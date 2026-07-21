@@ -26,6 +26,7 @@
 }
 
 .shape\:pill {
+	--border-radius: var(100vmax);
 	border-radius: 100vmax;
 }
 

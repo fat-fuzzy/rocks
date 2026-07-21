@@ -25,7 +25,7 @@ ff-icon {
 	font-family: var(--font-family-ui);
 	font-weight: var(--font-weight-ui);
 	line-height: var(--font-leading-ui);
-	border-radius: var(--border-radius-base);
+	border-radius: var(--border-radius, var(--border-radius-base));
 	border: var(--border-width-md) solid var(--border-color);
 
 	/* Enables breaking out of switcher for ellipsis in nav  */

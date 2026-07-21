@@ -33,7 +33,7 @@
 				}
 			},
 			"base": {
-				"value": "{border.radius.md}"
+				"$value": "{border.radius.md}"
 			}
 		},
 		"width": {
