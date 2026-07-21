@@ -21,6 +21,7 @@
 
 <div class="l:flex button-group">
 	<button
+		type="button"
 		onclick={() => editor.chain().focus().toggleBulletList().run()}
 		aria-pressed={commands.ul ? 'true' : undefined}
 		class={`toggle color:${color} variant:${variant} size:${size} svg:list-ul`}
@@ -28,6 +29,7 @@
 		<span class="sr-only">Bullet List</span>
 	</button>
 	<button
+		type="button"
 		onclick={() => editor.chain().focus().toggleOrderedList().run()}
 		aria-pressed={commands.ol ? 'true' : undefined}
 		class={`toggle color:${color} variant:${variant} size:${size} svg:list-ol`}
@@ -36,6 +38,7 @@
 	</button>
 
 	<button
+		type="button"
 		onclick={() => editor.chain().focus().setHorizontalRule().run()}
 		class={`toggle color:${color} variant:${variant} size:${size} duo text`}
 	>
@@ -45,6 +48,7 @@
 
 	{#if preset === 'full'}
 		<button
+			type="button"
 			onclick={() => editor.chain().focus().setHardBreak().run()}
 			class={`toggle color:${color} variant:${variant} size:${size} duo text`}
 		>

@@ -1,5 +1,11 @@
 # @fat-fuzzy/prose
 
+## 0.1.47
+
+### Patch Changes
+
+- 9b8f743: Update tiptap deps, update input types
+
 ## 0.1.46
 
 ### Patch Changes

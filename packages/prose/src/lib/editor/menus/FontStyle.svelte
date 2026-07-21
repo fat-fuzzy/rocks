@@ -20,6 +20,7 @@
 
 <div class="l:flex button-group">
 	<button
+		type="button"
 		onclick={() => editor.chain().focus().toggleBold().run()}
 		disabled={!editor.can().chain().focus().toggleBold().run()}
 		aria-pressed={commands.bold ? 'true' : undefined}
@@ -28,6 +29,7 @@
 		<span class="sr-only">Bold</span>
 	</button>
 	<button
+		type="button"
 		onclick={() => editor.chain().focus().toggleSemiBold().run()}
 		disabled={!editor.can().chain().focus().toggleSemiBold().run()}
 		aria-pressed={commands.semibold ? 'true' : undefined}
@@ -37,6 +39,7 @@
 		<span class="sr-only">Semi-Bold</span>
 	</button>
 	<button
+		type="button"
 		onclick={() => editor.chain().focus().toggleItalic().run()}
 		disabled={!editor.can().chain().focus().toggleItalic().run()}
 		aria-pressed={commands.italic ? 'true' : undefined}
@@ -46,6 +49,7 @@
 	</button>
 
 	<button
+		type="button"
 		onclick={() => editor.chain().focus().toggleStrike().run()}
 		disabled={!editor.can().chain().focus().toggleStrike().run()}
 		aria-pressed={commands.strike ? 'true' : undefined}

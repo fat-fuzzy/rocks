@@ -47,6 +47,7 @@
 		Link
 	</button>
 	<button
+		type="button"
 		onclick={() => editor.chain().focus().unsetLink().run()}
 		disabled={!commands.isLink ? true : undefined}
 		class={`toggle color:${color} variant:${variant} size:${size} text`}

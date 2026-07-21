@@ -20,6 +20,7 @@
 
 <div class="l:flex button-group">
 	<button
+		type="button"
 		onclick={() => editor.chain().focus().undo().run()}
 		disabled={!commands.undo}
 		class={`toggle color:${color} variant:${variant} size:${size} text`}
@@ -28,6 +29,7 @@
 	</button>
 	{#key editor.can().chain().focus().redo().run()}
 		<button
+			type="button"
 			onclick={() => editor.chain().focus().redo().run()}
 			disabled={!commands.redo}
 			class={`toggle color:${color} variant:${variant} size:${size} text`}
