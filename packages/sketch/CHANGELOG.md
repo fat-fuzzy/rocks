@@ -1,5 +1,11 @@
 # @fat-fuzzy/sketch
 
+## 0.1.39
+
+### Patch Changes
+
+- 6716c04: Dependency updates, style fix
+
 ## 0.1.38
 
 ### Patch Changes

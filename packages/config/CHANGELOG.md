@@ -1,5 +1,11 @@
 # @fat-fuzzy/config
 
+## 0.1.24
+
+### Patch Changes
+
+- 6716c04: Dependency updates, style fix
+
 ## 0.1.23
 
 ### Patch Changes

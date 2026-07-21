@@ -23,41 +23,33 @@
 	<button
 		onclick={() => editor.chain().focus().toggleBulletList().run()}
 		aria-pressed={commands.ul ? 'true' : undefined}
-		class={`toggle color:${color} variant:${variant} size:${size}`}
+		class={`toggle color:${color} variant:${variant} size:${size} svg:list-ul`}
 	>
 		<span class="sr-only">Bullet List</span>
-		<span aria-hidden={true} class="line:tiny l:stack">
-			<span>· —</span>
-			<span>· —</span>
-			<span>· —</span>
-		</span>
 	</button>
 	<button
 		onclick={() => editor.chain().focus().toggleOrderedList().run()}
 		aria-pressed={commands.ol ? 'true' : undefined}
-		class={`toggle color:${color} variant:${variant} size:${size}`}
+		class={`toggle color:${color} variant:${variant} size:${size} svg:list-ol`}
 	>
 		<span class="sr-only">Numbered List</span>
-		<span aria-hidden={true} class="line:tiny l:stack justify:between">
-			<span><span class="font:tiny">1</span> —</span>
-			<span><span class="font:tiny">2</span> —</span>
-			<span><span class="font:tiny">3</span> —</span>
-		</span>
 	</button>
 
 	<button
 		onclick={() => editor.chain().focus().setHorizontalRule().run()}
-		class={`toggle color:${color} variant:${variant} size:${size} duo`}
+		class={`toggle color:${color} variant:${variant} size:${size} duo text`}
 	>
 		HR
+		<span class="sr-only">Horizontal Ruler</span>
 	</button>
 
 	{#if preset === 'full'}
 		<button
 			onclick={() => editor.chain().focus().setHardBreak().run()}
-			class={`toggle color:${color} variant:${variant} size:${size} duo`}
+			class={`toggle color:${color} variant:${variant} size:${size} duo text`}
 		>
 			Bk
+			<span class="sr-only">Hard Break</span>
 		</button>
 	{/if}
 </div>

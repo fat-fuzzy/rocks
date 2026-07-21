@@ -1,5 +1,23 @@
 # @fat-fuzzy/style
 
+## 0.1.48
+
+### Patch Changes
+
+- f83b2bd: Update icon set
+
+## 0.1.47
+
+### Patch Changes
+
+- f3e025f: Fix layotu overflow
+
+## 0.1.46
+
+### Patch Changes
+
+- 6716c04: Dependency updates, style fix
+
 ## 0.1.45
 
 ### Patch Changes
