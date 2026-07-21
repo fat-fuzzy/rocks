@@ -5,8 +5,21 @@
 
 version: 2
 updates:
-  - package-ecosystem: "npm" # See documentation for possible values
-    directory: "/" # Location of package manifests
+  - package-ecosystem: 'npm' # See documentation for possible values
+    directory: '/' # Location of package manifests
     schedule:
-      interval: "daily"
-    target-branch: "dev" 
+      interval: 'daily'
+    cooldown:
+      default-days: 7
+      semver-major-days: 30
+      semver-minor-days: 7
+      semver-patch-days: 3
+    target-branch: 'dev'
+    groups:
+      svelte:
+        patterns:
+          - 'svelte*'
+          - '@svelte*'
+      tiptap:
+        patterns:
+          - '@tiptap*'
