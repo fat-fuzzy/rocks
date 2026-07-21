@@ -1,5 +1,11 @@
 # @fat-fuzzy/style
 
+## 0.1.49
+
+### Patch Changes
+
+- 263b2b0: CSS token definition fixes
+
 ## 0.1.48
 
 ### Patch Changes

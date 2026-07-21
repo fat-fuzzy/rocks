@@ -181,61 +181,49 @@
 		"state": {
 			"default": {
 				"lightness": {
-					"$type": "string",
-					"value": "{color.lightness.300}"
+					"$value": "{color.lightness.300}"
 				},
 				"chroma": {
-					"$type": "number",
 					"$value": "{color.chroma.300}"
 				}
 			},
 			"active": {
 				"lightness": {
-					"$type": "string",
-					"value": "{color.lightness.500}"
+					"$value": "{color.lightness.500}"
 				},
 				"chroma": {
-					"$type": "number",
 					"$value": "{color.chroma.500}"
 				}
 			},
 			"hover": {
 				"lightness": {
-					"$type": "string",
-					"value": "{color.lightness.400}"
+					"$value": "{color.lightness.400}"
 				},
 				"chroma": {
-					"$type": "number",
 					"$value": "{color.chroma.400}"
 				}
 			},
 			"focus": {
 				"lightness": {
-					"$type": "string",
-					"value": "{color.lightness.500}"
+					"$value": "{color.lightness.500}"
 				},
 				"chroma": {
-					"$type": "number",
 					"$value": "{color.chroma.500}"
 				}
 			},
 			"disabled": {
 				"lightness": {
-					"$type": "string",
-					"value": "{color.lightness.100}"
+					"$value": "{color.lightness.100}"
 				},
 				"chroma": {
-					"$type": "number",
 					"$value": "{color.chroma.100}"
 				}
 			},
 			"visited": {
 				"lightness": {
-					"$type": "string",
-					"value": "{color.lightness.200}"
+					"$value": "{color.lightness.200}"
 				},
 				"chroma": {
-					"$type": "number",
 					"$value": "{color.chroma.200}"
 				}
 			}
