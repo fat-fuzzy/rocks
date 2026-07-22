@@ -46,15 +46,15 @@
 		"svelte": "5.56.3"
 	},
 	"dependencies": {
-		"@tiptap/core": "3.27.1",
-		"@tiptap/extension-bold": "3.27.1",
-		"@tiptap/extension-link": "3.27.1",
-		"@tiptap/extension-list": "3.27.1",
-		"@tiptap/extension-text-style": "3.27.1",
-		"@tiptap/extension-typography": "3.27.1",
-		"@tiptap/pm": "3.27.1",
-		"@tiptap/starter-kit": "3.27.1",
-		"@tiptap/static-renderer": "3.27.1",
+		"@tiptap/core": "3.27.4",
+		"@tiptap/extension-bold": "3.27.4",
+		"@tiptap/extension-link": "3.27.4",
+		"@tiptap/extension-list": "3.27.4",
+		"@tiptap/extension-text-style": "3.27.4",
+		"@tiptap/extension-typography": "3.27.4",
+		"@tiptap/pm": "3.27.4",
+		"@tiptap/starter-kit": "3.27.4",
+		"@tiptap/static-renderer": "3.27.4",
 		"dompurify": "3.4.11"
 	},
 	"devDependencies": {
