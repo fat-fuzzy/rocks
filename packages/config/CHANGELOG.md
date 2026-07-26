@@ -1,5 +1,11 @@
 # @fat-fuzzy/config
 
+## 0.1.26
+
+### Patch Changes
+
+- 295772c: Update postcss, cssnano, stylelint
+
 ## 0.1.25
 
 ### Patch Changes
