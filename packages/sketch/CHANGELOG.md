@@ -1,5 +1,11 @@
 # @fat-fuzzy/sketch
 
+## 0.1.40
+
+### Patch Changes
+
+- d5e4764: Fix validation patterns, update deps
+
 ## 0.1.39
 
 ### Patch Changes

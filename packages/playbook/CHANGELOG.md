@@ -1,5 +1,11 @@
 # @fat-fuzzy/playbook
 
+## 0.1.41
+
+### Patch Changes
+
+- d5e4764: Fix validation patterns, update deps
+
 ## 0.1.40
 
 ### Patch Changes
