@@ -10,8 +10,9 @@
 }
 
 .shape\:round {
+	--border-radius: 100vmax;
 	line-height: 0;
-	border-radius: 100vmax;
+	border-radius: var(--border-radius);
 }
 
 .shape\:round.index {
@@ -26,8 +27,8 @@
 }
 
 .shape\:pill {
-	--border-radius: var(100vmax);
-	border-radius: 100vmax;
+	--border-radius: 100vmax;
+	border-radius: var(--border-radius);
 }
 
 .shape\:mellow {
