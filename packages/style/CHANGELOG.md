@@ -1,5 +1,11 @@
 # @fat-fuzzy/style
 
+## 0.1.52
+
+### Patch Changes
+
+- bc8c4c0: Fix css var
+
 ## 0.1.51
 
 ### Patch Changes
