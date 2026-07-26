@@ -1,7 +1,7 @@
 {
 	"package": "@fat-fuzzy/playbook",
 	"name": "@fat-fuzzy/playbook",
-	"version": "0.1.40",
+	"version": "0.1.41",
 	"description": "A UI library explorer and demo",
 	"author": "Patricia Boh",
 	"license": "MIT",
@@ -37,7 +37,7 @@
 		"./api": "./dist/index.js"
 	},
 	"peerDependencies": {
-		"@sveltejs/kit": "2.65.1",
+		"@sveltejs/kit": "2.70.1",
 		"svelte": "5.56.3"
 	},
 	"devDependencies": {
@@ -47,7 +47,7 @@
 		"@fat-fuzzy/ui": "workspace:*",
 		"@playwright/test": "1.58.2",
 		"@sveltejs/adapter-cloudflare": "7.2.8",
-		"@sveltejs/kit": "2.65.1",
+		"@sveltejs/kit": "2.70.1",
 		"@sveltejs/package": "2.5.8",
 		"@vitest/coverage-v8": "4.1.8",
 		"@vitest/ui": "4.1.8",
@@ -58,7 +58,7 @@
 		"tslib": "2.8.1",
 		"typescript": "5.9.3",
 		"vite": "7.3.5",
-		"vitest": "4.1.8"
+		"vitest": "4.1.10"
 	},
 	"type": "module"
 }

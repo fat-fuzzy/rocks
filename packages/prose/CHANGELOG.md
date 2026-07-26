@@ -1,5 +1,11 @@
 # @fat-fuzzy/prose
 
+## 0.1.48
+
+### Patch Changes
+
+- d5e4764: Fix validation patterns, update deps
+
 ## 0.1.47
 
 ### Patch Changes
