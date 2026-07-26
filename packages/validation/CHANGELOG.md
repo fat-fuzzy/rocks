@@ -1,5 +1,11 @@
 # @fat-fuzzy/validation
 
+## 0.1.28
+
+### Patch Changes
+
+- d5e4764: Fix validation patterns, update deps
+
 ## 0.1.27
 
 ### Patch Changes
