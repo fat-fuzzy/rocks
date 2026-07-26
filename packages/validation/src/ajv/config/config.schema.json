@@ -39,7 +39,7 @@
 						"$ref": "#/definitions/SchemaEntry"
 					},
 					"propertyNames": {
-						"pattern": "^[A-Za-z_$][A-Za-z0-9_$]*$",
+						"pattern": "^[A-Za-z_][A-Za-z0-9_]*$",
 						"maxLength": 64
 					}
 				},
@@ -78,7 +78,7 @@
 					"type": "string",
 					"minLength": 1,
 					"maxLength": 64,
-					"pattern": "^[A-Za-z_$][A-Za-z0-9_$]*$",
+					"pattern": "^[A-Za-z_][A-Za-z0-9_]*$",
 					"description": "Valid JS identifier used as the named export in the generated module, e.g. 'MyFormValidationFunction'."
 				},
 				"$id": {
