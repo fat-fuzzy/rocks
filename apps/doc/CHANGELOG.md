@@ -1,5 +1,11 @@
 # @fat-fuzzy/doc
 
+## 0.1.87
+
+### Patch Changes
+
+- 295772c: Update postcss, cssnano, stylelint
+
 ## 0.1.86
 
 ### Patch Changes
