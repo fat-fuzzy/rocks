@@ -11,7 +11,7 @@ const REVEAL_PROPS = [
 			// redirect,
 			// layout,
 			reveal: 'collapsed',
-			place: 'top',
+			coords: 'top',
 			element: 'div', // HTML tag or tag.class
 			// position,
 			// color,

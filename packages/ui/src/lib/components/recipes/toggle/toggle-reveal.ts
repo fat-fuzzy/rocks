@@ -38,7 +38,6 @@ export type ToggleLinkProps = UiBlockProps & {
 	slug: string
 	label: string
 	area?: string
-	place?: string
 	children: Snippet
 	depth: number
 }

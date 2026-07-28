@@ -18,7 +18,7 @@
 		depth,
 		width = 'full',
 		area,
-		place,
+		coords,
 		assetType,
 	}: ToggleLinkProps = $props()
 </script>
@@ -39,7 +39,7 @@
 	{shape}
 	{variant}
 	{area}
-	{place}
+	{coords}
 	{layer}
 	{width}
 	layout="flex"

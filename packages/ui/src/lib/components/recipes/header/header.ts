@@ -6,8 +6,6 @@ export type HeaderProps = UiBlockProps &
 		id?: string
 		title?: string
 		path?: string
-		position?: string
-		place?: string
 		reveal?: string
 		auto?: boolean
 		dismiss?: string

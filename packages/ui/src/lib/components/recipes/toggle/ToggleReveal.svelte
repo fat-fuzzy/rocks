@@ -28,7 +28,7 @@
 		area,
 		width,
 		height,
-		place = 'nord',
+		coords = 'nord',
 		position,
 		background,
 		surface,
@@ -78,13 +78,13 @@
 	)
 
 	// Container styles
-	let areaClass = $derived(area ? `${area}:${place} ${place}` : place)
+	let areaClass = $derived(area ? `${area}:${coords} ${coords}` : coords)
 	let autoClasses = $derived(
 		auto ? `auto bp:${breakpoint} th:${threshold}` : '',
 	)
 	let hugClass = $derived(hug ? 'hug' : '')
 	let positionClass = $derived(
-		!area && position && place ? `${position}:${place}` : '',
+		!area && position && coords ? `${position}:${coords}` : '',
 	)
 	let ff_containerClasses = $derived(
 		`${autoClasses} ${areaClass} ${containerClasses}`,
@@ -138,7 +138,7 @@
 			<input
 				type="checkbox"
 				{id}
-				class={`sr-only ${place} size:${size}`}
+				class={`sr-only ${coords} size:${size}`}
 				{checked}
 			/>
 		</label>

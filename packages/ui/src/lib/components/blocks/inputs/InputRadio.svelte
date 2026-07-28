@@ -19,7 +19,7 @@
 		asset,
 		assetType,
 		shape,
-		place,
+		coords,
 		align,
 		justify,
 		color,
@@ -79,9 +79,9 @@
 	// Container styles
 	let controlClasses = 'l:flex align:center w:full'
 	let reverseClass = $derived(
-		place === 'ouest'
+		coords === 'ouest'
 			? 'reverse'
-			: place === 'nord' || place === 'sud'
+			: coords === 'nord' || coords === 'sud'
 				? 'justify:center'
 				: '',
 	)

@@ -74,7 +74,7 @@
 					{href}
 					size="2xs"
 					font="sm"
-					place="nord"
+					coords="nord"
 					{shape}
 					{layer}
 					{depth}

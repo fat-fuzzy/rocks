@@ -1,13 +1,13 @@
 <script lang="ts">
 	import type {TooltipProps} from '$types'
 
-	let {id, label = 'Tooltip', place, children}: TooltipProps = $props()
+	let {id, label = 'Tooltip', coords, children}: TooltipProps = $props()
 
 	// Container styles
-	let placeClass = $derived(place ? place : '')
+	let coordsClass = $derived(coords ? coords : '')
 </script>
 
-<ff-tooltip {id} role="tooltip" class={placeClass}>
+<ff-tooltip {id} role="tooltip" class={coordsClass}>
 	<p>{label}</p>
 	{#if children}
 		{@render children()}

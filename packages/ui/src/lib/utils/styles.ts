@@ -33,7 +33,7 @@ const STYLE_MODIFIER: Record<string, string> = {
 	assetType: 'assetType',
 	dimensions: 'dimensions',
 	direction: 'direction',
-	place: 'place',
+	coords: 'coords',
 	position: 'position',
 	width: 'width',
 }

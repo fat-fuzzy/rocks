@@ -75,3 +75,35 @@ export type UiDimension =
 	| '70'
 	| '80'
 	| '90'
+
+export type UiPosition =
+	| 'absolute'
+	| 'anchored'
+	| 'fixed'
+	| 'relative'
+	| 'static'
+
+export type UiLayoutCoords =
+	| 'nord'
+	| 'sud'
+	| 'ouest'
+	| 'est'
+	| 'nord-ouest'
+	| 'nord-est'
+	| 'sud-ouest'
+	| 'sud-est'
+
+export type UiCoords =
+	| UiLayoutCoords
+	| 'top'
+	| 'bottom'
+	| 'left'
+	| 'right'
+	| 'top-left'
+	| 'top-right'
+	| 'top-center'
+	| 'bottom-left'
+	| 'bottom-right'
+	| 'bottom-center'
+	| 'left-center'
+	| 'right-center'

@@ -84,12 +84,12 @@ export default function emojiAsset() {
 
 					output.push(
 						`
-.emoji\\:${token.name}:not(.justify\\:end, .place\\:end)::before,
+.emoji\\:${token.name}:not(.justify\\:end, .coords\\:end)::before,
 .emoji\\:${token.name}.justify\\:start::before {
 	content: var(${token.localID});
 }
 
-.emoji\\:${token.name}.place\\:end::after,
+.emoji\\:${token.name}.coords\\:end::after,
 .emoji\\:${token.name}.justify\\:end::after {
 	content: var(${token.localID});
 }
