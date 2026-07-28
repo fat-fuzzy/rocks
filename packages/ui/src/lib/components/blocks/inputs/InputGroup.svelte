@@ -20,6 +20,7 @@
 		legend,
 		hint,
 		value,
+		selectAll,
 		isUiControl,
 		type = 'radio', // checkbox, radio
 		items = [],
@@ -50,7 +51,9 @@
 			: [],
 	)
 
-	let enableSelectAll = $derived(type === 'checkbox' && items.length > 5)
+	let enableSelectAll = $derived(
+		type === 'checkbox' && (selectAll || items.length > 5),
+	)
 
 	const COMPONENT_IMPORTS: {
 		[input: string]: Component<InputCheckProps | InputRadioProps, object, ''>

@@ -102,6 +102,7 @@ export type FieldsetProps = UiBlockProps &
 		name: string
 		value?: string[]
 		legend?: string
+		selectAll?: boolean // Use to enable selectAll in checkbox InputGroups
 		ariaDescribedby?: string
 		disabled?: boolean
 
