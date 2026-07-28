@@ -43,7 +43,7 @@
 	},
 	"peerDependencies": {
 		"@sveltejs/kit": "2.70.1",
-		"svelte": "5.56.3"
+		"svelte": "5.56.7"
 	},
 	"dependencies": {
 		"@tiptap/core": "3.27.1",
@@ -73,8 +73,8 @@
 		"globals": "17.4.0",
 		"mdsvex": "0.12.7",
 		"publint": "0.3.18",
-		"svelte": "5.56.3",
-		"svelte-check": "4.6.0",
+		"svelte": "5.56.7",
+		"svelte-check": "4.7.3",
 		"typescript": "5.9.3",
 		"vite": "7.3.5",
 		"vitest": "4.1.10"
