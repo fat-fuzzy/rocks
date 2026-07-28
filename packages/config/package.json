@@ -48,7 +48,7 @@
 		"eslint-config-prettier": "10.1.8",
 		"eslint-config-turbo": "2.9.14",
 		"eslint-plugin-svelte": "3.17.1",
-		"globals": "17.4.0",
+		"globals": "17.7.0",
 		"prettier": "3.8.1",
 		"prettier-plugin-svelte": "3.5.1",
 		"publint": "0.3.18",
