@@ -1,5 +1,11 @@
 # @fat-fuzzy/doc
 
+## 0.1.88
+
+### Patch Changes
+
+- a101f6b: Popover fixes, class/prop rename, dep updates
+
 ## 0.1.87
 
 ### Patch Changes
