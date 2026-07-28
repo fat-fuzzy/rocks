@@ -471,9 +471,6 @@ importers:
       '@vitest/ui':
         specifier: 4.1.8
         version: 4.1.8(vitest@4.1.10)
-      globals:
-        specifier: 17.7.0
-        version: 17.7.0
       mdsvex:
         specifier: 0.12.7
         version: 0.12.7(svelte@5.56.7(@typescript-eslint/types@8.58.2))
