@@ -1,5 +1,11 @@
 # @fat-fuzzy/ui
 
+## 0.1.107
+
+### Patch Changes
+
+- 7387023: Expose selectAll prop
+
 ## 0.1.106
 
 ### Patch Changes
