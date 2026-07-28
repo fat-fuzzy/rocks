@@ -1,5 +1,11 @@
 # @fat-fuzzy/style
 
+## 0.1.53
+
+### Patch Changes
+
+- a101f6b: Popover fixes, class/prop rename, dep updates
+
 ## 0.1.52
 
 ### Patch Changes
