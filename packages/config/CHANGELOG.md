@@ -1,5 +1,11 @@
 # @fat-fuzzy/config
 
+## 0.1.27
+
+### Patch Changes
+
+- a101f6b: Popover fixes, class/prop rename, dep updates
+
 ## 0.1.26
 
 ### Patch Changes
