@@ -16,6 +16,7 @@
 		id = 'editor',
 		type = 'html',
 		menus,
+		popoverLabel,
 		preset = 'basic',
 		color = 'primary',
 		variant = 'outline',
@@ -30,6 +31,7 @@
 		id?: string
 		type?: string
 		menus?: Snippet
+		popoverLabel?: string
 		preset?: string
 		color?: UiColor
 		variant?: UiVariant
@@ -186,6 +188,7 @@
 			{color}
 			{variant}
 			{preset}
+			{popoverLabel}
 			children={menus}
 			onExport={onExport ? handleExport : undefined}
 		/>

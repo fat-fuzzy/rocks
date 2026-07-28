@@ -45,3 +45,6 @@
 .prose-editor.h\:lg {
 	block-size: 24rem;
 }
+.editor-menu ff-popover > .anchor > button {
+	line-height: 1.45;
+}

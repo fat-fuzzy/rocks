@@ -1,5 +1,5 @@
 [class*='fixed'],
-[class*='place'] {
+[class*='coords'] {
 	--inset-size: var(--ui-size-xs, var(--outline-offset-lg));
 	max-inline-size: 100%;
 	max-block-size: 100%;
@@ -19,7 +19,7 @@
 }
 
 [class*='fixed:'],
-[class*='place:'],
+[class*='coords:'],
 [class*='relative:'],
 [class*='absolute:'],
 [class*='pop:'] {
@@ -30,7 +30,7 @@
 }
 
 [class*='absolute:'],
-[class*='place:'] {
+[class*='coords:'] {
 	&[class*=':top-left'] {
 		top: var(--inset-size-top, var(--inset-size));
 		right: var(--inset-size-left, var(--inset-size));

@@ -35,7 +35,7 @@
 					variant="bare"
 					checked={true}
 					area="gare"
-					place="ouest"
+					coords="ouest"
 					shape="square"
 					scroll="y"
 					layer="1"

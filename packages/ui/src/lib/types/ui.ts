@@ -9,6 +9,8 @@ import type {
 	UiSize,
 	UiDimension,
 	UiAssetType,
+	UiPosition,
+	UiCoords,
 } from '$types'
 
 export type AriaLive = 'polite' | 'off' | 'assertive' | null | undefined
@@ -44,9 +46,9 @@ export type UiLayoutProps = UiContainerProps & {
 	justify?: string
 	reverse?: string
 	layout?: UiLayout
-	place?: string // TODO: check / harmonize STYLE_MODIFIER
+	coords?: UiCoords // TODO: check / harmonize STYLE_MODIFIER
 	fixed?: string
-	position?: string // TODO: check / harmonize STYLE_MODIFIER
+	position?: UiPosition // TODO: check / harmonize STYLE_MODIFIER
 	scroll?: string
 	shape?: UiShape
 	theme?: UiColor // TODO: check / harmonize

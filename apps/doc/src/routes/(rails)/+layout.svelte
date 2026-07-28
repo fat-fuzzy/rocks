@@ -151,7 +151,7 @@
 					variant="bare"
 					checked={true}
 					area="gare"
-					place="ouest"
+					coords="ouest"
 					shape="square"
 					scroll="y"
 					layer="1"
@@ -184,7 +184,7 @@
 			font="sm"
 			layout="flex"
 			justify="end"
-			place="est"
+			coords="est"
 			depth={0}
 			layer="1"
 			variant="bare"

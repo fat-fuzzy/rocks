@@ -14,7 +14,6 @@ export type OverlayProps = UiBlockProps &
 		label: string
 		invoke?: AriaInvoke
 		open?: boolean
-		fixed?: string
 		children?: Snippet
 		onbeforetoggle?: (event: Event, payload?: FuzzyPayload) => void
 	}

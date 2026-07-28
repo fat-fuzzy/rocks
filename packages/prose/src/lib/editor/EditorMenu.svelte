@@ -12,7 +12,7 @@
 	import Clear from '$lib/editor/menus/Clear.svelte'
 	import FlowControl from '$lib/editor/menus/FlowControl.svelte'
 
-	const {ToggleReveal} = ui.drafts
+	const {Popover} = ui.drafts
 	const {SkipLinks} = ui.recipes
 
 	let {
@@ -24,6 +24,7 @@
 		size = 'xs',
 		color,
 		variant,
+		popoverLabel = 'More',
 		children,
 		onExport,
 	}: {
@@ -35,6 +36,7 @@
 		size?: UiSize
 		color: UiColor
 		variant?: UiVariant
+		popoverLabel?: string
 		children?: Snippet
 		onExport?: () => void
 	} = $props()
@@ -59,7 +61,7 @@
 			<button
 				type="button"
 				onclick={onExport}
-				class={`toggle color:${color} variant:${variant} size:${size} text`}
+				class={`l:switcher:2xs align:center toggle color:${color} variant:${variant} size:${size} text`}
 			>
 				Export
 			</button>
@@ -67,20 +69,19 @@
 	{/if}
 
 	{#if preset === 'full' || children}
-		<ToggleReveal
+		<Popover
 			id={`toggle-options-${id}`}
-			label="More"
+			label={popoverLabel}
 			asset="chevron-down"
 			assetType="svg"
 			{color}
-			size="3xs"
-			variant="bare"
-			shape="square"
+			size="2xs"
+			font="xs"
+			variant="outline"
 			layer="1"
-			layout="flex"
-			depth={0}
-			place="nord"
-			position="absolute"
+			layout="switcher"
+			position="anchored"
+			coords="bottom-right"
 			align="center"
 			justify="end"
 		>
@@ -99,6 +100,6 @@
 					{@render children()}
 				{/if}
 			</div>
-		</ToggleReveal>
+		</Popover>
 	{/if}
 </menu>

@@ -27,7 +27,7 @@
 		size: 'md',
 		color: 'primary:600',
 		position: 'sticky',
-		place: 'left',
+		coords: 'left',
 		formaction: 'toggleSidebar',
 	}
 </script>

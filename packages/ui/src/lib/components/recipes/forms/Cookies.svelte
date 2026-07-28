@@ -118,12 +118,13 @@
 	role="dialog"
 	label="Cookies"
 	asset="cookie"
+	shape="round"
 	container="burrito"
 	{containerSize}
 	variant="fill"
 	layer="3"
 	color={cookiesPartial ? 'accent' : 'primary'}
-	place="bottom-right"
+	coords="bottom-right"
 	{fixed}
 >
 	<Feedback

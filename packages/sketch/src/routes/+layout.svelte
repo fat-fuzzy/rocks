@@ -35,7 +35,7 @@
 		breakpoint: 'sm' as UiSize,
 		size: 'sm' as UiSize,
 		color: 'primary' as UiColor,
-		place: 'left',
+		coords: 'left',
 	}
 
 	type AreaZone = {
@@ -90,7 +90,7 @@
 			variant="bare"
 			checked={true}
 			area="gare"
-			place="ouest"
+			coords="ouest"
 			scroll="y"
 			justify="evenly"
 			font="md"

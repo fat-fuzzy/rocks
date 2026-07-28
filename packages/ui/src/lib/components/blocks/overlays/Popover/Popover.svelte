@@ -13,54 +13,32 @@
 		role,
 		label,
 		color,
+		font,
 		size,
 		variant = 'fill',
-		shape = 'round',
+		shape,
 		children,
-		fixed,
-		place = 'bottom-right',
+		coords = 'bottom-right',
+		position = 'anchored',
 		asset,
+		assetType,
+		align,
+		justify,
 		layer,
 		invoke = 'auto',
 		onbeforetoggle,
 	}: OverlayProps = $props()
 
 	let popover: HTMLElement
-	let invoker: HTMLElement | undefined = $state()
 	let reveal: UiState | undefined = $derived(actor.getPopoverState(id))
 
-	let positionClass = $derived(fixed ? `fixed:${place}` : `place:${place}`)
+	let positionClass = $derived(position ? `${position}:${coords}` : '')
 	let layerClass = $derived(layer ? `layer:${layer}` : '')
-	let revealClasses = $derived(`fixed:${place} ${layerClass}`)
-	let positionStyles = $derived(
-		invoker ? getPopoverPositionStyles(invoker, place) : '',
-	)
+	let revealClasses = $derived(`${positionClass} ${layerClass}`)
 
 	function toggleReveal(payload: FuzzyPayload) {
 		const updatedValue = TRANSITION_REVEAL[String(payload.value)] as UiState
 		actor.updatePopoverState(id, updatedValue)
-	}
-
-	/**
-	 * Return popover positioning relative to its invoker
-	 * @param invoker
-	 * @param place
-	 */
-	function getPopoverPositionStyles(
-		invoker: HTMLElement,
-		place: string,
-	): string {
-		const rect = invoker.getBoundingClientRect()
-		const vh = window.innerHeight
-
-		const placeCoords = place.split('-')
-
-		const insetBottom = placeCoords[0] === 'top' ? rect.bottom : vh - rect.top
-		const insetTop = placeCoords[0] === 'bottom' ? rect.top : 0
-		const insetLeft = placeCoords[1] === 'left' ? 0 : rect.left
-		const insetRight = placeCoords[1] === 'right' ? 0 : rect.right
-		let styles = `--inset-bottom: ${insetBottom}px; --inset-right: ${insetRight}px; --inset-top: ${insetTop}px; --inset-left: ${insetLeft}px`
-		return styles
 	}
 
 	onMount(() => {
@@ -78,21 +56,21 @@
 	})
 </script>
 
-<ff-popover {id} data-testid={id} class="anchor">
-	<span
-		class={positionClass}
-		data-anchorid={`popover-anchor-${id}`}
-		bind:this={invoker}
-	>
+<ff-popover {id} data-testid={id} data-anchor={`--popover-anchor-${id}`}>
+	<span class="anchor">
 		<Button
-			{asset}
 			id={`button-popover-${id}`}
 			type="button"
 			{label}
+			{font}
 			{size}
 			{color}
 			{variant}
+			{asset}
+			{assetType}
 			{shape}
+			{align}
+			{justify}
 			name={`button-popover-${id}`}
 			popovertarget={`${id}-popover`}
 			onclick={toggleReveal}
@@ -107,7 +85,6 @@
 		aria-live="polite"
 		class={revealClasses}
 		data-testid={`${id}-popover`}
-		style={positionStyles}
 	>
 		{#if children}
 			{@render children()}

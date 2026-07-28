@@ -32,7 +32,7 @@
 	dismiss="outside"
 	auto={true}
 	depth={1}
-	place="nord"
+	coords="nord"
 	breakpoint="sm"
 	background="inherit"
 >
