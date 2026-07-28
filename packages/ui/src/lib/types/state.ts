@@ -17,7 +17,7 @@ export type ButtonEvent =
 	| 'click'
 	| 'outside'
 
-export type AriaInvoke = 'manual' | 'auto'
+export type AriaInvoke = 'manual' | 'auto' | 'hint'
 
 export type Preferences = 'brightness' | 'contrast' | 'locale' | 'consent'
 
