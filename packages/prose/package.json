@@ -70,7 +70,6 @@
 		"@types/eslint": "9.6.1",
 		"@vitest/coverage-v8": "4.1.8",
 		"@vitest/ui": "4.1.8",
-		"globals": "17.7.0",
 		"mdsvex": "0.12.7",
 		"publint": "0.3.18",
 		"svelte": "5.56.7",
