@@ -1,5 +1,11 @@
 # @fat-fuzzy/sketch
 
+## 0.1.41
+
+### Patch Changes
+
+- a101f6b: Popover fixes, class/prop rename, dep updates
+
 ## 0.1.40
 
 ### Patch Changes
