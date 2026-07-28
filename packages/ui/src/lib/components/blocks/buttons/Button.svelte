@@ -5,7 +5,7 @@
 	let {
 		id = 'button',
 		name = 'button',
-		ref,
+		ref = $bindable(),
 		label,
 		value,
 		disabled,
