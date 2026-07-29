@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type {Snippet} from 'svelte'
 	import type {JSONContent} from '@tiptap/core'
-	import type {UiColor, UiSize, UiVariant} from '@fat-fuzzy/ui'
+	import type {OverlayProps, UiColor, UiSize, UiVariant} from '@fat-fuzzy/ui'
 
 	import '$lib/styles/css/editor.css'
 	import DOMPurify from 'dompurify'
@@ -16,7 +16,6 @@
 		id = 'editor',
 		type = 'html',
 		menus,
-		popoverLabel,
 		preset = 'basic',
 		color = 'primary',
 		variant = 'outline',
@@ -30,8 +29,7 @@
 		content: {html: string; json: JSONContent}
 		id?: string
 		type?: string
-		menus?: Snippet
-		popoverLabel?: string
+		menus?: {options: OverlayProps; menu: Snippet}[]
 		preset?: string
 		color?: UiColor
 		variant?: UiVariant
@@ -188,8 +186,7 @@
 			{color}
 			{variant}
 			{preset}
-			{popoverLabel}
-			children={menus}
+			{menus}
 			onExport={onExport ? handleExport : undefined}
 		/>
 	{/if}
