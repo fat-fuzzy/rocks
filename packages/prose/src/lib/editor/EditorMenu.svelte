@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {UiColor, UiSize, UiVariant} from '@fat-fuzzy/ui'
+	import type {OverlayProps, UiColor, UiSize, UiVariant} from '@fat-fuzzy/ui'
 	import type {Snippet} from 'svelte'
 
 	import {Editor} from '@tiptap/core'
@@ -24,8 +24,7 @@
 		size = 'xs',
 		color,
 		variant,
-		popoverLabel = 'More',
-		children,
+		menus,
 		onExport,
 	}: {
 		id: string
@@ -36,10 +35,26 @@
 		size?: UiSize
 		color: UiColor
 		variant?: UiVariant
-		popoverLabel?: string
-		children?: Snippet
+		menus?: {options: OverlayProps; menu: Snippet}[]
 		onExport?: () => void
 	} = $props()
+
+	const defaultOverlayProps: OverlayProps = $derived({
+		id,
+		label: 'More',
+		asset: 'chevron-down',
+		assetType: 'svg',
+		color,
+		size: '3xs',
+		font: 'xs',
+		variant: 'outline',
+		layer: '1',
+		layout: 'switcher',
+		position: 'anchored',
+		coords: 'bottom-right',
+		align: 'center',
+		justify: 'end',
+	})
 </script>
 
 <menu
@@ -68,38 +83,22 @@
 		</div>
 	{/if}
 
-	{#if preset === 'full' || children}
-		<Popover
-			id={`toggle-options-${id}`}
-			label={popoverLabel}
-			asset="chevron-down"
-			assetType="svg"
-			{color}
-			size="2xs"
-			font="xs"
-			variant="outline"
-			layer="1"
-			layout="switcher"
-			position="anchored"
-			coords="bottom-right"
-			align="center"
-			justify="end"
-		>
-			<div class="ravioli:3xs l:stack:3xs">
-				{#if preset === 'full'}
-					<Clear
-						{editor}
-						{commands}
-						{size}
-						{color}
-						{variant}
-						layout={children ? 'flex' : undefined}
-					/>
-				{/if}
-				{#if children}
-					{@render children()}
-				{/if}
-			</div>
-		</Popover>
+	{#if preset === 'full'}
+		<Clear {editor} {commands} {size} {color} {variant} layout="flex" />
+	{/if}
+
+	{#if menus}
+		{#each menus as { options, menu }, i (i)}
+			{@const popoverProps = {
+				...defaultOverlayProps,
+				...options,
+				id: `toggle-options-${options.id}`,
+			}}
+			<Popover {...popoverProps}>
+				<div class="ravioli:3xs l:stack:3xs">
+					{@render menu()}
+				</div>
+			</Popover>
+		{/each}
 	{/if}
 </menu>

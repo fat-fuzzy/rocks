@@ -1,5 +1,11 @@
 # @fat-fuzzy/prose
 
+## 0.1.50
+
+### Patch Changes
+
+- 87c5555: Improve custom actions & options
+
 ## 0.1.49
 
 ### Patch Changes

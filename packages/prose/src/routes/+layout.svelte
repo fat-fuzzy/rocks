@@ -7,29 +7,6 @@
 	// import { i18n } from '$lib/i18n';
 	// import { ParaglideJS } from '@inlang/paraglide-sveltekit';
 	let {children} = $props()
-	let path = ''
-	let items = [
-		{
-			slug: 'entries',
-			title: 'Entries',
-			items: [],
-		},
-	]
-
-	let nav = {
-		path,
-		title: 'Content',
-		id: 'nav-blog',
-		items,
-		reveal: 'expanded',
-		background: 'inherit',
-		breakpoint: 'sm',
-		size: 'md',
-		color: 'primary:600',
-		position: 'sticky',
-		coords: 'left',
-		formaction: 'toggleSidebar',
-	}
 </script>
 
 <!-- 
@@ -37,6 +14,6 @@
 	{@render children()}
 </ParaglideJS> -->
 
-<LayoutSidebar {nav}>
+<LayoutSidebar>
 	{@render children()}
 </LayoutSidebar>
