@@ -1,3 +1,7 @@
+<script>
+	import {resolve} from '$app/paths'
+</script>
+
 <h1>Welcome to your library project</h1>
 <p>
 	Create your package using @sveltejs/package and preview/showcase your work
@@ -8,5 +12,5 @@
 	documentation
 </p>
 
-<a href="./editor">Go to the editor</a>
-<a href="/demo/paraglide">paraglide</a>
+<a href={resolve('/editor')}>Go to the editor</a>
+<a href={resolve('/demo/paraglide')}>paraglide</a>
