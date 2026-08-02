@@ -72,8 +72,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/ui
       '@fat-fuzzy/validation':
-        specifier: 0.1.28
-        version: 0.1.28
+        specifier: workspace:*
+        version: link:../../packages/validation
       '@playwright/test':
         specifier: 1.61.1
         version: 1.61.1
@@ -1735,11 +1735,6 @@ packages:
   '@eslint/plugin-kit@0.7.2':
     resolution: {integrity: sha512-+CNAzxglkrpNf/kKywqQfk74QjtceuOE7Qm+AF8miRvPF/wmmK5+OJOgVh3AVTT3RP2mH3+FOaxlE5v72owk0A==}
     engines: {node: ^20.19.0 || ^22.13.0 || >=24}
-
-  '@fat-fuzzy/validation@0.1.28':
-    resolution: {integrity: sha512-UP+AuOLiEjzfd1AL8c8xDNI4+05Nb08QPCvBcw2UAUXCykRoSdSBMXEY3dXSZJosXMh+3ieXUdDZoSshJ/Mwow==}
-    engines: {node: '>= 22'}
-    hasBin: true
 
   '@humanfs/core@0.19.2':
     resolution: {integrity: sha512-UhXNm+CFMWcbChXywFwkmhqjs3PRCmcSa/hfBgLIb7oQ5HNb1wS0icWsGtSAUNgefHeI+eBrA8I1fxmbHsGdvA==}
@@ -8134,8 +8129,6 @@ snapshots:
     dependencies:
       '@eslint/core': 1.2.1
       levn: 0.4.1
-
-  '@fat-fuzzy/validation@0.1.28': {}
 
   '@humanfs/core@0.19.2':
     dependencies:
