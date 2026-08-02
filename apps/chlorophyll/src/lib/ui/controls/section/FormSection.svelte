@@ -9,7 +9,10 @@
 
 	import StorageService from '$lib/common/services/storage.svelte'
 	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
-	import {DOCUMENT_FORMAT, DOCUMENT_LANGUAGE} from '$app/env/public'
+	import {
+		PUBLIC_DOCUMENT_FORMAT,
+		PUBLIC_DOCUMENT_LANGUAGE,
+	} from '$app/env/public'
 	import {page} from '$app/state'
 
 	const {Button, Input, InputGroup, Feedback} = ui.blocks
@@ -127,8 +130,8 @@
 
 	function checkSectionExists(sectionName: string): Section | undefined {
 		return storageService.getSectionByName({
-			language: DOCUMENT_LANGUAGE as DocLanguage,
-			format: DOCUMENT_FORMAT as DocFormat,
+			language: PUBLIC_DOCUMENT_LANGUAGE as DocLanguage,
+			format: PUBLIC_DOCUMENT_FORMAT as DocFormat,
 			name: sectionName,
 		})
 	}

@@ -11,6 +11,16 @@ declare global {
 			sidebar
 			appContext
 		}
+		interface Platform {
+			env: {
+				COUNTER: DurableObjectNamespace
+			}
+			context: {
+				// eslint-disable-next-line
+				waitUntil(promise: Promise<any>): void
+			}
+			caches: CacheStorage & {default: Cache}
+		}
 		// interface PageData {}
 		// interface PageState {}
 		// interface Platform {}

@@ -7,7 +7,7 @@
 
 	import {page} from '$app/state'
 	import StorageService from '$lib/common/services/storage.svelte'
-	import {DOCUMENT_FORMAT} from '$app/env/public'
+	import {PUBLIC_DOCUMENT_FORMAT} from '$app/env/public'
 
 	const {InputGroup} = ui.blocks
 
@@ -17,7 +17,8 @@
 	let storageService: StorageService = getContext('storageService')
 
 	let format = $derived(
-		(page.url.searchParams.get('format') || DOCUMENT_FORMAT) as DocFormat,
+		(page.url.searchParams.get('format') ||
+			PUBLIC_DOCUMENT_FORMAT) as DocFormat,
 	)
 
 	let structure = $derived(

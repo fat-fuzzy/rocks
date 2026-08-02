@@ -11,7 +11,10 @@
 	import ui from '@fat-fuzzy/ui'
 
 	import {page} from '$app/state'
-	import {DOCUMENT_LANGUAGE, DOCUMENT_FORMAT} from '$app/env/public'
+	import {
+		PUBLIC_DOCUMENT_LANGUAGE,
+		PUBLIC_DOCUMENT_FORMAT,
+	} from '$app/env/public'
 
 	import StorageService from '$lib/common/services/storage.svelte'
 	import DocumentEditor from '$lib/ui/editor/DocumentEditor.svelte'
@@ -34,10 +37,12 @@
 	let editing = $derived(cta === 'build' || cta === 'edit')
 
 	let language = $derived(
-		(page.url.searchParams.get('language') || DOCUMENT_LANGUAGE) as DocLanguage,
+		(page.url.searchParams.get('language') ||
+			PUBLIC_DOCUMENT_LANGUAGE) as DocLanguage,
 	)
 	let format = $derived(
-		(page.url.searchParams.get('format') || DOCUMENT_FORMAT) as DocFormat,
+		(page.url.searchParams.get('format') ||
+			PUBLIC_DOCUMENT_FORMAT) as DocFormat,
 	)
 
 	let preset: string | undefined = $derived(
