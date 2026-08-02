@@ -1,0 +1,155 @@
+/**
+ * PRINT styles
+ *
+ * Resources
+ * - basic stylesheet: https://github.com/basher/Web-UI-Boilerplate/blob/master/ui/src/css/print.css
+ * - in-depth guide:  https://css-tricks.com/almanac/rules/p/page
+ */
+
+/* 
+ * Basic reset for printed media
+ */
+
+.doc-print :where(h1, h2) {
+	margin-block: 0;
+	line-height: 1.25;
+}
+
+.doc-print h2,
+.doc-print h3 {
+	margin-block: 0.75em 0.25em;
+}
+
+.doc-print section:first-of-type {
+	margin-block-end: 0.5em;
+
+	h1,
+	h2,
+	h3 {
+		margin-block: 0.75em 0.25em;
+	}
+}
+
+@media print {
+	body {
+		color: black; /* Prints faster */
+	}
+
+	html,
+	body {
+		background: #fff;
+		overflow: visible;
+		margin: 0;
+		padding: 0;
+	}
+
+	h1 {
+		font-size: 14pt;
+	}
+
+	h2 {
+		font-size: 12pt;
+	}
+
+	h3 {
+		font-size: 11pt;
+	}
+
+	h4 {
+		font-size: 10pt;
+	}
+
+	h5 {
+		font-size: 9pt;
+	}
+
+	h6 {
+		font-size: 8pt;
+	}
+
+	p,
+	li {
+		font-size: 9pt;
+		margin: 0;
+	}
+
+	:where(th, td) {
+		font-size: 9pt;
+		padding: 3pt;
+		text-align: initial;
+	}
+
+	a {
+		font-size: 9pt;
+		font-weight: var(--font-wight-semibold);
+		color: inherit;
+		text-decoration: underline;
+	}
+
+	/* [href]::after {
+		content: '(' attr(href) ')';
+	}
+
+	:where([href='/'], [href='#'], [href^='mailto'], [href^='tel'])::after {
+		content: '';
+	} */
+
+	:where(table, figure, pre, li) {
+		break-inside: avoid;
+	}
+
+	:where(h1, h2, h3, h4, h5, h6) {
+		break-inside: avoid;
+		break-after: avoid;
+	}
+
+	p {
+		text-wrap: pretty;
+		orphans: 3;
+		widows: 3;
+	}
+
+	thead {
+		display: table-header-group;
+	}
+
+	/*
+  * Layout styles
+  */
+
+	[class*='l:grid'] {
+		display: flex;
+		flex-flow: column;
+		width: 100%;
+		list-style: none;
+		padding: 0;
+		overflow: visible;
+	}
+
+	.zone\:main {
+		max-block-size: unset;
+	}
+
+	.l\:text\:lg {
+		max-inline-size: 0;
+		width: 100%;
+		margin: 0;
+		padding: 0;
+	}
+
+	/* 
+  * Hidden elements
+  */
+	:where(img, button, .icon, .skiplinks) {
+		display: none;
+	}
+
+	.exchange,
+	.page-header,
+	.noprint,
+	.context-main,
+	.zone\:3,
+	footer {
+		display: none;
+	}
+}

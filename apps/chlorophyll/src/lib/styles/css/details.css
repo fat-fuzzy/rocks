@@ -1,0 +1,53 @@
+/* Chrome etc */
+details > summary::marker,
+/* Safari */
+details > summary::-webkit-details-marker {
+	color: transparent;
+	inline-size: 0;
+	block-size: 0;
+	margin: 0;
+	padding: 0;
+}
+
+details {
+	padding-block: var(--outline-offset-md);
+	padding-inline: var(--outline-offset-lg);
+}
+
+details > summary:focus-visible {
+	outline: var(--border-width-lg) dotted var(--accent);
+	outline-offset: var(--outline-offset-sm);
+}
+
+details > summary::before {
+	--icon-url: url('/icons/chevron-right.svg');
+	--icon-size: var(--ui-size-lg);
+	display: inline-block;
+	content: '';
+	background-image: var(--icon-url);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: 100% auto;
+	margin-inline: var(--ui-size-sm) var(--ui-size);
+	block-size: var(--icon-size);
+	inline-size: var(--icon-size);
+}
+
+details[open] > summary::before {
+	--icon-url: url('/icons/chevron-down.svg');
+	content: '';
+	background-image: var(--icon-url);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: 100% auto;
+}
+
+/* TODO: port back to fat-fuzzy/style */
+summary.color\:neutral.variant\:bare {
+	border: var(--border-width-md) solid var(--border-color);
+}
+
+/* TODO: port back to fat-fuzzy/style */
+details > summary::before {
+	margin-inline-end: var(--ui-size-lg);
+}

@@ -1,0 +1,97 @@
+h1 {
+	font-size: calc(var(--font-size-h2) / 1.15);
+	margin-block: var(--ui-size-sm) 0;
+}
+
+h2 {
+	font-size: calc(var(--font-size-h3) / 1.25);
+	margin-block: var(--ui-size-sm) 0;
+}
+
+h3 {
+	font-size: calc(var(--font-size-h4) / 1.35);
+	margin-block: var(--ui-size-sm) 0;
+}
+
+h4 {
+	font-family: var(--font-family-body);
+	font-weight: var(--font-weight-medium);
+	font-size: calc(var(--font-size-h4) / 1.45);
+}
+
+h5,
+h6 {
+	font-family: var(--font-family-body);
+	font-weight: var(--font-weight-medium);
+	margin-block: var(--ui-size-sm) 0;
+}
+
+.h4 {
+	font-size: calc(var(--font-size-h4) / 1.45);
+}
+
+.h5,
+h3.h5 {
+	font-size: calc(var(--font-size-h4) / 1.65);
+}
+
+.h1 {
+	font-family: var(--font-family-heading);
+	font-weight: var(--font-weight-bold);
+}
+
+a,
+a span {
+	color: inherit;
+}
+
+.l\:frame\:prose {
+	ul > li::marker {
+		display: block;
+		content: '•';
+		font-weight: bold;
+	}
+
+	ul > li > * {
+		margin-inline-start: 0.5em;
+	}
+}
+
+.doc-editor,
+.doc-builder,
+.doc-preview,
+.doc-print {
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
+	p,
+	li,
+	a {
+		font-family:
+			-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, Roboto,
+			Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+		color: currentColor;
+	}
+}
+
+[class*='feedback'] {
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
+	p,
+	li,
+	a {
+		font-family: var(--font-family);
+	}
+
+	.font\:heading {
+		font-family: var(--font-family-heading);
+		color: var(--accent);
+	}
+}

@@ -1,0 +1,186 @@
+/* TODO: port back to fat-fuzzy/style > raw/railway (?) */
+html:has(.l\:grid\:urbanist) {
+	scrollbar-gutter: auto;
+}
+
+.navbar
+	> ff-toggle-reveal.nord
+	ff-control
+	+ ff-reveal:not([class*='absolute:']),
+.navbar
+	> ff-toggle-reveal.nord
+	ff-control:has(input:checked)
+	+ ff-reveal:not([class*='absolute:']) {
+	position: absolute;
+	inset-inline: 50% 0;
+	inline-size: fit-content;
+	transform: translate(-50%, var(--ui-size));
+}
+
+.l\:grid\:urbanist.railway {
+	.sidebar {
+		grid-area: unset;
+	}
+}
+
+.railway.zone\:2 {
+	padding-inline: var(--gap);
+}
+
+@media screen and (min-width: 38.75rem) {
+	.railway.zone\:2 {
+		padding-inline: unset;
+	}
+
+	.l\:grid\:urbanist.railway {
+		max-block-size: var(--max-block-size);
+	}
+
+	.l\:grid\:urbanist.railway {
+		--sidebar-track-sm: var(--layout-sidebar-sm);
+
+		.zone\:1.exchange {
+			--sidebar-track-sm: var(--layout-sidebar-3xs);
+			grid-template-columns: var(--layout-sidebar-sm) 1fr var(
+					--layout-sidebar-sm
+				);
+		}
+
+		ff-toggle-reveal.est ff-control:has(input:checked) + ff-reveal {
+			--x-axis: calc(-2 * var(--ui-size-xl) - 2 * var(--outline-offset-lg));
+		}
+	}
+
+	.exchange > .context {
+		grid-column-start: 3;
+	}
+
+	.railway.zone\:2 > .page-context {
+		max-block-size: var(--max-block-size);
+	}
+
+	.railway.zone\:main {
+		--overlay-block-size: var(--max-block-size);
+		max-block-size: var(--max-block-size);
+	}
+
+	.zone\:2 .voyager.zone\:main {
+		justify-content: center;
+	}
+}
+
+@media screen and (min-width: 58.75rem) {
+	.exchange > .context {
+		grid-column-start: 3;
+	}
+
+	.l\:grid\:urbanist.railway {
+		ff-toggle-reveal.est ff-control:has(input:checked) + ff-reveal {
+			max-inline-size: var(--max-inline-size);
+		}
+	}
+
+	.navbar
+		> ff-toggle-reveal.nord
+		ff-control
+		+ ff-reveal:not([class*='absolute:']),
+	.navbar
+		> ff-toggle-reveal.nord
+		ff-control:has(input:checked)
+		+ ff-reveal:not([class*='absolute:']) {
+		inset-inline: var(--sidebar-width) 0;
+		transform: unset;
+	}
+}
+
+@media screen and (min-width: 68.75rem) {
+	.l\:grid\:urbanist.railway {
+		.zone\:1.exchange {
+			grid-template-columns: subgrid;
+		}
+
+		ff-toggle-reveal.est ff-control:has(input:checked) + ff-reveal {
+			--x-axis: calc(10 * var(--ui-size-xl));
+		}
+	}
+
+	.l\:grid\:urbanist.railway {
+		max-block-size: var(--max-block-size);
+	}
+
+	.l\:grid\:urbanist.railway {
+		ff-toggle-reveal.ouest ff-control:has(input:checked) + ff-reveal {
+			--overlay-inline-size: calc(var(--sidebar-width) - 2 * var(--ui-size-sm));
+		}
+		ff-toggle-reveal.est ff-control:has(input:checked) + ff-reveal {
+			--overlay-inline-size: calc(var(--sidebar-width));
+		}
+	}
+
+	.exchange > .context {
+		grid-column-start: 5;
+	}
+
+	.exchange > .sidebar .layer\:1 {
+		box-shadow: var(--shadow-sm);
+	}
+
+	.zone\:2 .voyager.zone\:main {
+		grid-column-start: 4;
+		grid-column-end: 5;
+	}
+
+	.navbar
+		> ff-toggle-reveal.nord
+		ff-control
+		+ ff-reveal:not([class*='absolute:']),
+	.navbar
+		> ff-toggle-reveal.nord
+		ff-control:has(input:checked)
+		+ ff-reveal:not([class*='absolute:']) {
+		position: unset;
+	}
+}
+
+.scroll\:container.contain\:2xs {
+	block-size: 10rem; /* fallback */
+	block-size: 15rcap;
+}
+
+.scroll\:container.contain\:xs {
+	block-size: 14rem; /* fallback */
+	block-size: 18rcap;
+}
+
+.scroll\:container {
+	scrollbar-gutter: unset;
+	padding-block: var(--ui-size);
+}
+
+.prose-editor {
+	scrollbar-width: thin;
+}
+
+.presets > .scroll\:container {
+	padding-inline-start: var(--ui-size-lg);
+	padding-block: var(--ui-size-lg);
+}
+
+.scroll\:y {
+	block-size: fit-content;
+	max-block-size: 100%;
+}
+
+@media screen and (min-width: 58.75rem) {
+	.l\:grid\:urbanist.railway {
+		ff-toggle-reveal.est ff-control:has(input:checked) + ff-reveal {
+			max-inline-size: unset;
+		}
+	}
+}
+
+@media screen and (min-width: 68.75rem) {
+	ff-toggle-reveal.est ff-control:has(input:checked) + ff-reveal {
+		--x-axis: var(--ui-size);
+	}
+}

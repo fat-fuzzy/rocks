@@ -1,0 +1,64 @@
+.svg\:arrow-bar-up {
+	--icon-url: url('/icons/arrow-bar-up.svg');
+}
+
+.svg\:arrow-bar-down {
+	--icon-url: url('/icons/arrow-bar-down.svg');
+}
+
+.svg\:check {
+	--icon-url: url('/icons/check.svg');
+}
+
+.svg\:copy {
+	--icon-url: url('/icons/copy.svg');
+}
+
+.svg\:cross {
+	--icon-url: url('/icons/cross.svg');
+}
+
+.svg\:dash {
+	--icon-url: url('/icons/dash.svg');
+}
+
+.svg\:herb {
+	--icon-url: url('/icons/herb.svg');
+}
+
+.svg\:memo {
+	--icon-url: url('/icons/memo.svg');
+}
+
+.svg\:lock {
+	--icon-url: url('/icons/lock.svg');
+}
+
+.svg\:lotus {
+	--icon-url: url('/icons/lotus.svg');
+}
+
+.svg\:plus {
+	--icon-url: url('/icons/plus.svg');
+}
+
+.svg\:save {
+	--icon-url: url('/icons/save.svg');
+}
+
+.svg\:unlock {
+	--icon-url: url('/icons/unlock.svg');
+}
+
+ff-magic[class*='svg']::before {
+	--icon-size: calc(1.35 * var(--size-base-2xl));
+}
+
+button.variant\:fill:not([disabled]):hover {
+	--lightness: var(--lightness-surface-2);
+	--lightness-contrast: var(--lightness-surface-2-contrast);
+}
+
+button.variant\:fill:not([disabled]):focus {
+	--lightness-contrast: var(--lightness-surface-5-contrast);
+}

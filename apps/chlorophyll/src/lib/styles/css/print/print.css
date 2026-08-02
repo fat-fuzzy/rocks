@@ -1,0 +1,6 @@
+@page {
+	size: A4 portrait;
+
+	/* Chrome sets own margins, we change these printer settings */
+	margin: 12mm;
+}

@@ -1,0 +1,130 @@
+ul.input-group li {
+	padding-inline: 0;
+	padding-block: 0;
+
+	> a {
+		padding-block: var(--outline-offset-lg);
+		padding-inline: var(--size-base-3xs);
+	}
+}
+
+label.variant\:bare:has(input),
+ff-control > label.variant\:bare:has(input),
+.ff-control.variant\:bare:has(input) {
+	--lightness-accent: var(--lightness-surface-2);
+	--border-color: var(--shade);
+}
+
+label:has(input:checked),
+ff-control > label.variant\:bare:has(input:checked),
+.ff-control.variant\:bare:has(input:checked) {
+	--lightness-contrast: var(--lightness-surface-4);
+	--lightness-accent: var(--lightness-surface-4);
+	--border-color: var(--accent);
+}
+
+label:has(input:checked) {
+	background-color: inherit;
+}
+
+label:has(input):hover,
+ff-control > label.variant\:bare:has(input):hover,
+.ff-control.variant\:bare:has(input):hover {
+	--border-color: var(--accent);
+}
+
+label:has(input):active,
+ff-control > label.variant\:bare:has(input):active,
+.ff-control.variant\:bare:has(input):active {
+	--lightness-accent: var(--lightness-surface-4);
+}
+
+label[class*='bg:'] {
+	background-color: inherit;
+}
+
+.ff-control.variant\:bare:has([disabled]),
+.ff-control.variant\:bare:has([disabled]:checked),
+.ff-control.variant\:bare:has([disabled]):hover,
+.ff-control.variant\:bare:has([disabled]:checked):hover {
+	background-color: unset;
+	opacity: 0.75;
+}
+
+[class*='color:']:not([class*=':neutral']):is(
+		input,
+		textarea,
+		select,
+		fieldset,
+		label
+	) {
+	--chroma-contrast: var(--color-chroma-neutral);
+	--lightness-contrast: var(--lightness-surface-5);
+	--lightness-accent: var(--lightness-surface-4);
+}
+
+[disabled],
+[disabled][class*='variant:'] {
+	--lightness: var(--lightness-surface-2);
+	--lightness-contrast: var(--lightness-surface-5);
+	--border-color: var(--shade);
+}
+
+[readonly] {
+	--hue: var(--color-theme-neutral);
+	--accent: oklch(
+		var(--lightness-accent) var(--color-chroma-neutral) var(--hue)
+	);
+	background-color: var(--shade);
+}
+
+[readonly]:focus {
+	outline: none;
+	--lightness-accent: var(--lightness-surface-4);
+	--border-color: var(--accent);
+}
+
+fieldset.radio input:checked:focus,
+fieldset.checkbox input:checked:focus {
+	--lightness-accent: var(--lightness-surface-5);
+}
+
+ff-control:has(input[name='preset']) {
+	inline-size: auto;
+	min-inline-size: unset;
+}
+
+input[name='preset'] {
+	box-shadow: unset;
+}
+
+input[name='rank'] {
+	max-inline-size: 5rem;
+}
+
+.l\:flex > .feedback\:form {
+	margin-block: 0;
+	border-top: none;
+	border-bottom: var(--border-width-md) solid var(--shade);
+	padding: var(--ui-size-xs);
+}
+
+.form\:wide .feedback\:form::before {
+	content: '';
+	margin: 0;
+	padding: 0;
+}
+
+.form\:wide .l\:flex > label {
+	flex-basis: 100%;
+}
+
+@media screen and (min-width: 58rem) {
+	.form\:wide .l\:flex > label {
+		flex-basis: 31%;
+	}
+}
+
+fieldset:has(label > [type='radio']) {
+	margin-block-start: var(--ui-size);
+}
