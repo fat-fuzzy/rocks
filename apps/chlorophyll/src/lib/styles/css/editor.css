@@ -1,0 +1,134 @@
+.prose-editor[class*=':bare']:not(label, pre) {
+	--border-color: var(--shade);
+}
+
+.editor-menu {
+	--shade: var(--ink-light);
+	margin-block-start: var(--ui-size-sm);
+}
+
+.editor-menu .button-group button {
+	padding: var(--ui-size-sm);
+}
+
+.editor-menu .button-group button:first-child {
+	border-top-left-radius: var(--border-radius-md);
+	border-bottom-left-radius: var(--border-radius-md);
+}
+
+.editor-menu .button-group button:last-child {
+	border-top-right-radius: var(--border-radius-md);
+	border-bottom-right-radius: var(--border-radius-md);
+}
+
+ff-prose .prose-editor {
+	inline-size: unset;
+	margin-inline-end: var(--ui-size-xl);
+}
+
+ff-prose .prose-editor.h\:xs {
+	max-block-size: 8rem; /* fallback */
+	max-block-size: 16rcap;
+}
+
+ff-prose .prose-editor.h\:sm {
+	max-block-size: 10rem; /* fallback */
+	max-block-size: 20rcap;
+}
+
+ff-prose .prose-editor.h\:md {
+	max-block-size: 12rem; /* fallback */
+	max-block-size: 22rcap;
+}
+
+ff-prose .prose-editor.h\:lg {
+	max-block-size: 16rem; /* fallback */
+	max-block-size: 30rcap;
+}
+
+ff-prose .prose-editor[class*='h:'] {
+	block-size: fit-content;
+}
+
+ff-prose .editor-menu,
+ff-prose .editor-menu button {
+	padding: var(--size-base-4xs);
+}
+
+.prose-editor .ProseMirror {
+	--ink: inherit;
+	border-radius: var(--border-radius-sm);
+	margin-inline: var(--size-base-xs);
+	margin-block: 0;
+}
+
+.doc-builder,
+.doc-editor {
+	margin-block-end: calc(4 * var(--size-base-2xl));
+}
+
+.cv-section h1,
+.ProseMirror h1 {
+	--ink: inherit;
+}
+
+ff-prose.l\:text\:lg {
+	max-inline-size: unset;
+}
+
+ff-prose .editor-menu {
+	opacity: 0;
+	transition:
+		opacity 100ms ease-out,
+		padding-block 350ms ease-out 50ms;
+}
+
+ff-prose .editor-menu:hover,
+ff-prose:has(.ProseMirror:hover) .editor-menu {
+	opacity: 1;
+	transition:
+		opacity 100ms ease-in 100ms,
+		padding-block 400ms ease-in;
+}
+
+ff-prose .editor-menu:focus-within,
+ff-prose:has(.ProseMirror-focused) .editor-menu,
+ff-prose:has(.ProseMirror-focused:hover) .editor-menu {
+	opacity: 1;
+	pointer-events: unset;
+	transition:
+		opacity 100ms ease-in,
+		padding-block 400ms ease-in;
+}
+
+ff-prose .prose-editor {
+	--border-color: var(--shade);
+
+	border-block: var(--border-width-md) dotted var(--border-color);
+	border-inline-start: var(--border-width-md) dotted var(--border-color);
+	border-radius: var(--border-radius-md);
+	margin-block: var(--ui-size-sm);
+	margin-inline: var(--ui-size-sm);
+}
+
+ff-prose .prose-editor:has(.ProseMirror:hover) {
+	--lightness-accent: var(--lightness-surface-4-contrast);
+	--accent: oklch(var(--lightness-accent) var(--chroma-contrast) var(--hue));
+	--border-color: var(--accent);
+}
+
+ff-prose .prose-editor:has(.ProseMirror:focus) {
+	--lightness-accent: var(--lightness-surface-3-contrast);
+	--accent: oklch(var(--lightness-accent) var(--chroma-contrast) var(--hue));
+	--border-color: var(--shade);
+}
+
+ff-prose .prose-editor:has(.ProseMirror:focus) {
+	--hue: var(--color-theme-primary);
+	--accent: oklch(var(--lightness-accent) var(--chroma-accent-base) var(--hue));
+	outline: var(--border-width-md) dotted var(--accent);
+}
+
+.ProseMirror:focus {
+	outline: none;
+}

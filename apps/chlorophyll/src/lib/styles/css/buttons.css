@@ -1,0 +1,27 @@
+button[class*='bg:']:not([class*=':neutral']).variant\:outline:hover,
+button[class*='bg:']:not([class*=':neutral']).variant\:bare:hover {
+	--lightness: var(--lightness-surface-1);
+	--lightness-contrast: var(--lightness-surface-1-contrast);
+	--chroma: var(--chroma-surface-2);
+	--chroma-contrast: var(--chroma-surface-1);
+	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
+	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
+	color: var(--ink);
+}
+
+button[class*='bg:']:not(
+		[class*=':neutral'],
+		[class*=':accent']
+	).variant\:outline:hover,
+button[class*='bg:']:not(
+		[class*=':neutral'],
+		[class*=':accent']
+	).variant\:bare:hover {
+	--lightness: var(--lightness-surface-1);
+	--lightness-contrast: var(--lightness-surface-1-contrast);
+	--chroma: var(--chroma-surface-2);
+	--chroma-contrast: var(--chroma-surface-1);
+	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
+	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
+	color: var(--ink);
+}

@@ -1,0 +1,46 @@
+{
+	"name": "Chlorophyll",
+	"id": "/",
+	"start_url": "/",
+	"display": "standalone",
+	"theme_color": "hsl(244.37 100% 85%)",
+	"background_color": "hsl(240.03 100% 96%)",
+	"categories": [
+		"utilities",
+		"productivity",
+		"personalization"
+	],
+	"description": "Chlorophyll is Vital for photosynthesis, which allows one to absorb energy from our experiences' light, while producing oxygen for our peers in the process.",
+	"icons": [
+		{
+			"src": "/pwa/icons/192.png",
+			"type": "image/png",
+			"sizes": "192x192"
+		},
+		{
+			"src": "/pwa/icons/512.png",
+			"type": "image/png",
+			"sizes": "512x512"
+		},
+		{
+			"src": "/pwa/icons/1024.png",
+			"type": "image/png",
+			"sizes": "1024x1024"
+		}
+	],
+	"screenshots": [
+		{
+			"src": "/pwa/images/edit-800-440.png",
+			"sizes": "800x440",
+			"form_factor": "wide",
+			"platform": "macos",
+			"label": "Chlorophyll is Vital"
+		},
+		{
+			"src": "/pwa/images/edit-600-1000.png",
+			"sizes": "600x1000",
+			"platform": "macos",
+			"label": "Chlorophyll is Vital"
+		}
+	]
+}

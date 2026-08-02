@@ -1,0 +1,78 @@
+<script lang="ts">
+	import type {DocContentType, Slug} from '$types'
+
+	import ui from '@fat-fuzzy/ui'
+
+	const {Feedback} = ui.blocks
+
+	let {
+		content_type,
+		name,
+		tags,
+		isHidden,
+		isEmpty,
+		isError,
+	}: {
+		content_type: DocContentType
+		name: Slug
+		tags?: string[]
+		isHidden?: boolean
+		isEmpty?: boolean
+		isError?: boolean
+	} = $props()
+</script>
+
+<div class="maki:block">
+	<Feedback
+		status="default"
+		context="prose"
+		variant="bare"
+		asset="default"
+		size="md"
+	>
+		{#if isError}
+			<p>Failed to load content for {name}.</p>
+		{:else if isEmpty}
+			<p class="font:bold">No content found for {name}</p>
+			<div class="ravioli:md">
+				<p>To fix this:</p>
+				<ul>
+					<li>Unselect and re-select all sections to remove this message</li>
+					<li>
+						If you have saved this content to a backup, you can import it (this
+						will delete the current document)
+					</li>
+					<li>
+						If this is a default section: you can re-seed content from markdown
+						defaults
+					</li>
+				</ul>
+			</div>
+		{:else if isHidden}
+			<p>
+				Hidden {content_type}:
+				<span class="font:bold">
+					{name}
+				</span>
+			</p>
+		{:else}
+			<p class="font:bold">{name}</p>
+			{#if tags?.length}
+				<div class="l:stack:xs">
+					<p>Available Tags:</p>
+					<div>
+						<ul class="tags unstyled l:flex:xs">
+							{#each tags as tag, i (i)}
+								<li class="variant:outline raviolink shape:pill font:xs">
+									<span class="maki:inline"> {tag}</span>
+								</li>
+							{/each}
+						</ul>
+					</div>
+				</div>
+			{:else}
+				<p>Add a Block to get started</p>
+			{/if}
+		{/if}
+	</Feedback>
+</div>

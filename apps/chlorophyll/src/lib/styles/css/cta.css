@@ -1,0 +1,16 @@
+.cta {
+	border: 1px solid var(--shade);
+}
+
+.cta[aria-current='true'] {
+	--lightness-contrast: var(--lightness-surface-4-contrast);
+	background-color: var(--accent);
+	border: var(--border-width-md) solid var(--accent);
+}
+
+.cta[aria-current='true']:hover {
+	--lightness: var(--lightness-surface-2);
+	--lightness-contrast: var(--lightness-surface-2-contrast);
+	background-color: var(--shade);
+	border: var(--border-width-md) solid var(--accent);
+}
