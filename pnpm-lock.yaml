@@ -56,9 +56,6 @@ importers:
       '@fat-fuzzy/config':
         specifier: workspace:*
         version: link:../../packages/config
-      '@fat-fuzzy/cz-changelog':
-        specifier: workspace:*
-        version: link:../../packages/cz-changelog
       '@fat-fuzzy/intl':
         specifier: workspace:*
         version: link:../../packages/intl

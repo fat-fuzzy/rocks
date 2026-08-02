@@ -30,7 +30,6 @@
 		"@changesets/cli": "2.30.0",
 		"@eslint/compat": "2.1.0",
 		"@fat-fuzzy/config": "workspace:*",
-		"@fat-fuzzy/cz-changelog": "workspace:*",
 		"@fat-fuzzy/intl": "workspace:*",
 		"@fat-fuzzy/prose": "workspace:*",
 		"@fat-fuzzy/style": "workspace:*",
