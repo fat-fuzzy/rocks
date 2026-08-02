@@ -1,0 +1,112 @@
+/* Aligns height for Chrome,  Firefox, Safari, and Edge */
+dialog:modal {
+	block-size: fit-content;
+	max-block-size: calc(100vh - 2 * var(--margin-2xl));
+	max-inline-size: calc(100vw - 2 * var(--margin-2xl));
+}
+
+dialog:not([open]) {
+	pointer-events: none;
+	opacity: 0;
+	inline-size: 0;
+	block-size: 0;
+	padding: 0;
+	margin: 0;
+}
+
+body:has(dialog:modal[open]) {
+	overflow: hidden;
+}
+
+dialog[open] {
+	--dialog-inline-size: var(--overlay-inline-size);
+	--dialog-padding: var(--ui-size-sm);
+	inline-size: calc(100vw - 2 * var(--ui-size));
+	block-size: fit-content;
+	max-inline-size: var(--dialog-inline-size);
+	max-block-size: calc(100vh - 2 * var(--ui-size));
+	overflow: auto;
+	scrollbar-width: thin;
+	border: none;
+	border: var(--border-width-md) dotted var(--accent);
+}
+
+dialog[open] {
+	--y-axis: 8.25rem;
+
+	top: var(--y-axis);
+}
+
+dialog:modal[open] {
+	--y-axis: 0;
+
+	scrollbar-gutter: stable;
+	padding-inline-end: var(--ui-size-xs);
+}
+
+dialog[open].coords\:nord-est {
+	margin-block-start: var(--outline-offset-lg);
+	margin-inline-end: var(--ui-size-xs);
+	inline-size: var(--dialog-inline-size);
+	transition: opacity 300ms ease-in;
+}
+
+dialog[open] > .dialog-content {
+	block-size: fit-content;
+	max-block-size: 100%;
+	overscroll-behavior-y: contain;
+}
+
+dialog:modal::backdrop {
+	backdrop-filter: blur(var(--size-base-xs));
+	transition: backdrop-filter 50ms ease-in-out;
+}
+
+dialog[open]:not(:modal) {
+	max-block-size: calc(100vh - var(--y-axis) - var(--gap));
+	max-inline-size: calc(100vw - 3 * var(--gap));
+}
+
+/** Modal dialog sizes */
+dialog[open]:modal.size\:sm {
+	--dialog-inline-size: var(--layout-sidebar-sm);
+}
+dialog[open]:modal.size\:md {
+	--dialog-inline-size: var(--layout-sidebar-md);
+}
+dialog[open]:modal.size\:lg {
+	--dialog-inline-size: var(--layout-sidebar-lg);
+}
+dialog[open]:modal.size\:xl {
+	--dialog-inline-size: calc(
+		var(--ratio) * var(--ratio) * var(--layout-sidebar-lg)
+	);
+}
+dialog[open]:modal.size\:2xl {
+	--dialog-inline-size: calc(
+		var(--ratio) * var(--ratio) * var(--ratio) * var(--ratio) *
+			var(--layout-sidebar-sm)
+	);
+}
+
+/** Non-modal dialog sizes */
+dialog[open]:not(:modal).size\:sm {
+	--dialog-inline-size: calc(
+		var(--sidebar-width, var(--layout-sidebar-md)) - var(--ui-size)
+	);
+}
+dialog[open]:not(:modal).size\:md {
+	--dialog-inline-size: calc(
+		2 * var(--sidebar-width, var(--layout-sidebar-md)) - var(--ui-size)
+	);
+}
+dialog[open]:not(:modal).size\:lg {
+	--dialog-inline-size: calc(
+		3 * var(--sidebar-width, var(--layout-sidebar-md)) - var(--ui-size)
+	);
+}
+dialog[open]:not(:modal).size\:xl {
+	--dialog-inline-size: calc(
+		5 * var(--sidebar-width, var(--layout-sidebar-md)) - var(--ui-size)
+	);
+}

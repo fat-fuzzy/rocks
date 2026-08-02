@@ -1,0 +1,15 @@
+.l\:grid\:urbanist {
+	ff-toggle-reveal.ouest ff-control,
+	ff-toggle-reveal.est ff-control {
+		--overlay-inline-size: calc(
+			var(--layout-sidebar-md) - 2 * var(--ui-size-lg)
+		);
+
+		inline-size: 100%;
+		max-inline-size: var(--overlay-inline-size);
+	}
+
+	ff-toggle-reveal.est ff-control {
+		justify-self: end;
+	}
+}

@@ -1,0 +1,38 @@
+.page\:home > .zone\:2 {
+	grid-template-rows: subgrid;
+}
+
+.page\:home > .zone\:2 .page-main {
+	grid-template-rows: subgrid;
+	align-items: center;
+}
+
+.page\:home > .zone\:2 .page-header {
+	display: none;
+}
+
+.page\:home .l\:frame {
+	block-size: 80%;
+	max-inline-size: 100%;
+}
+
+.page\:home ff-magic.shape\:round {
+	block-size: 100%;
+	max-inline-size: 60vw;
+
+	[class*='svg:'] {
+		scale: 1.05;
+	}
+
+	[class*='svg:']::before {
+		--ink: oklch(
+			var(--lightness-surface-4) var(--chroma-accent-base) var(--hue)
+		);
+		scale: 3;
+		background: var(--ink);
+	}
+}
+
+.l\:inline {
+	display: inline;
+}
