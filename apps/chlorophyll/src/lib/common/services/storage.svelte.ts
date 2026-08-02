@@ -28,7 +28,7 @@ import type {
 	FileExt,
 } from '$types'
 
-import {DOCUMENT_LANGUAGE, DOCUMENT_FORMAT} from '$app/env/public'
+import {PUBLIC_DOCUMENT_LANGUAGE, PUBLIC_DOCUMENT_FORMAT} from '$app/env/public'
 
 import WorkerBridge from '$lib/workers/worker-bridge'
 import StorageWorker from '$lib/workers/storage.worker?worker'
@@ -65,8 +65,8 @@ export default class StorageService {
 	error = $state(false)
 	base: FrontmatterBase = $state({
 		schema_version: '0.1',
-		languages: [DOCUMENT_LANGUAGE as DocLanguage],
-		formats: [DOCUMENT_FORMAT as DocFormat],
+		languages: [PUBLIC_DOCUMENT_LANGUAGE as DocLanguage],
+		formats: [PUBLIC_DOCUMENT_FORMAT as DocFormat],
 		tags: [],
 		settings: [],
 	})
@@ -127,8 +127,8 @@ export default class StorageService {
 		this.seeded = {}
 		this.base = {
 			schema_version: '0.1',
-			languages: [DOCUMENT_LANGUAGE as DocLanguage],
-			formats: [DOCUMENT_FORMAT as DocFormat],
+			languages: [PUBLIC_DOCUMENT_LANGUAGE as DocLanguage],
+			formats: [PUBLIC_DOCUMENT_FORMAT as DocFormat],
 			tags: [],
 			settings: [],
 		}
