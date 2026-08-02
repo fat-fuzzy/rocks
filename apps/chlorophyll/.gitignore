@@ -1,0 +1,45 @@
+node_modules
+
+# Output
+.output
+.vercel
+.netlify
+.wrangler
+/.svelte-kit
+/build
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
+.env
+.env.*
+!.env.example
+!.env.test
+
+# Vite
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+# Playwright
+test-results
+
+
+# Env
+.envrc
+.tool-versions
+.npmrc
+
+**/*/**-anon.md
+**/*/**-review.md
+
+_data/
+
+# Generated
+src/lib/generated/diagrams
+src/lib/generated/types
+src/lib/generated/ajv/schemas
+src/lib/generated/ajv/validation/validate.ajv.mjs
+!src/lib/generated/ajv/validation/validate.ajv.mjs.hash
+
+ajv/out
