@@ -13,6 +13,7 @@
 		"gen:validators": "ff-validation",
 		"gen:types": "node scripts/schemas-to-ts.js",
 		"generate": "pnpm gen:schemas && pnpm gen:validators && pnpm gen:types",
+		"prebuild": "pnpm generate",
 		"build": "vite build",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
