@@ -53,6 +53,7 @@ fs.readFile(COMMIT_HISTORY_FILE, 'utf8', (err, data) => {
 		'all',
 		'apps',
 		'client',
+		'chlorophyll',
 		'config',
 		'cz-changelog',
 		'design',
