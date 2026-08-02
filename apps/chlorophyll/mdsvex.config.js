@@ -1,12 +1,11 @@
 import {defineMDSveXConfig as defineConfig} from 'mdsvex'
-import extractComments from './src/data/remark/extract-comments.js'
 
 const config = defineConfig({
 	extensions: ['.md', '.svx'],
 	smartypants: {
 		dashes: 'oldschool',
 	},
-	remarkPlugins: [extractComments],
+	remarkPlugins: [],
 	rehypePlugins: [],
 })
 
