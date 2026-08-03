@@ -45,6 +45,12 @@ export async function getPresetsData(): Promise<{data: OPFSPresetTree}> {
 
 	try {
 		parentHandle = await opfsRoot.getDirectoryHandle('presets')
+
+		const data = await readDirectoryRecursive(parentHandle)
+
+		return {
+			data: data as OPFSPresetTree,
+		}
 	} catch (error) {
 		const notFound = String(error).startsWith('NotFoundError:')
 		if (notFound) {
@@ -53,13 +59,7 @@ export async function getPresetsData(): Promise<{data: OPFSPresetTree}> {
 			}
 		}
 
-		throw new Error('Load all content failed', {cause: error})
-	}
-
-	const data = await readDirectoryRecursive(parentHandle)
-
-	return {
-		data: data as OPFSPresetTree,
+		throw new Error('Load all presets failed', {cause: error})
 	}
 }
 
@@ -102,13 +102,13 @@ export async function savePreset(options: {
 
 		await writable.write(serialized)
 		await writable.close()
+
+		return {
+			id: meta.id,
+		}
 	} catch (error) {
 		await writable?.abort()
 		throw new Error('Save preset failed', {cause: error})
-	}
-
-	return {
-		id: meta.id,
 	}
 }
 

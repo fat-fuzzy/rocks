@@ -112,9 +112,15 @@ self.addEventListener('fetch', (event) => {
 		 */
 		try {
 			const response = await fetch(event.request)
+			const isCacheable =
+				response.status === 200 &&
+				(url.protocol === 'http:' || url.protocol === 'https:') &&
+				response.url.startsWith('http')
 
-			if (response.status === 200) {
-				cache.put(event.request, response.clone())
+			if (isCacheable) {
+				cache.put(event.request, response.clone()).catch((err) => {
+					console.warn('Skipping cache.put for', event.request.url, err)
+				})
 			}
 
 			return response
