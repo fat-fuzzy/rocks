@@ -331,6 +331,12 @@ export async function getContentData(): Promise<{data: OPFSDocumentTree}> {
 
 	try {
 		parentHandle = await opfsRoot.getDirectoryHandle('content')
+
+		const data = await readDirectoryRecursive(parentHandle)
+
+		return {
+			data: data as OPFSDocumentTree,
+		}
 	} catch (error) {
 		const notFound = String(error).startsWith('NotFoundError:')
 		if (notFound) {
@@ -340,11 +346,5 @@ export async function getContentData(): Promise<{data: OPFSDocumentTree}> {
 		}
 
 		throw new Error('Load all content failed', {cause: error})
-	}
-
-	const data = await readDirectoryRecursive(parentHandle)
-
-	return {
-		data: data as OPFSDocumentTree,
 	}
 }
