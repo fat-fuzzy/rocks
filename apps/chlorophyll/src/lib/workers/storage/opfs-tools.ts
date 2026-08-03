@@ -416,15 +416,23 @@ export async function readDirectoryRecursive(
 	const result: Record<string, unknown> = {}
 
 	for await (const [name, entry] of directoryHandle.entries()) {
+		const filename = sanitizeFileName(name)
+
 		if (entry.kind === 'file') {
 			const file = await entry.getFile()
 			const serialized = await file.text()
-			const key = name.replace(/\.json$/, '')
+			const key = filename.replace(/\.json$/, '')
 
 			// Parse here — we're crossing the OPFS boundary inward
-			result[key] = JSON.parse(serialized)
+			if (key && serialized) {
+				try {
+					result[key] = JSON.parse(serialized)
+				} catch (error) {
+					console.warn(`Skipping unparseable file: ${filename}`, error)
+				}
+			}
 		} else if (entry.kind === 'directory') {
-			result[name] = await readDirectoryRecursive(
+			result[filename] = await readDirectoryRecursive(
 				entry as FileSystemDirectoryHandle,
 			)
 		}
