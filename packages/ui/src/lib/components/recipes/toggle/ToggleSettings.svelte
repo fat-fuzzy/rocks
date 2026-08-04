@@ -5,7 +5,7 @@
 
 	let {selected, oninput}: ToggleSettingsProps & InputCallbackProps = $props()
 
-	let values = $derived(Object.entries(selected).map(([key, value]) => value))
+	let values = $derived(Object.entries(selected).map(([, value]) => value))
 
 	const options: UiControl[] = $derived([
 		{
@@ -109,7 +109,7 @@
 	])
 </script>
 
-<div class="l:flex maki:block:sm align:start">
+<div class="l:flex nowrap maki:block:sm align:start">
 	{#each options as item, i (i)}
 		<InputGroup
 			{...item}
