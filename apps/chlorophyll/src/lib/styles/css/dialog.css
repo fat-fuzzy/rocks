@@ -35,6 +35,7 @@ dialog[open] {
 	--y-axis: 8.25rem;
 
 	top: var(--y-axis);
+	block-size: -webkit-fill-available; /* Safari workaround FIXME: dialog content visible, but not done */
 }
 
 dialog:modal[open] {
