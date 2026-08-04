@@ -23,6 +23,10 @@ html:has(.l\:grid\:urbanist) {
 	}
 }
 
+.zone\:main {
+	block-size: 100%;
+}
+
 .zone\:1.exchange {
 	grid-template-columns:
 		calc(var(--sidebar-track-sm) + 3 * var(--grid-gap))
