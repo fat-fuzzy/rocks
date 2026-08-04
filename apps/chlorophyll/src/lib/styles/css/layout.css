@@ -23,6 +23,12 @@ html:has(.l\:grid\:urbanist) {
 	}
 }
 
+.zone\:1.exchange {
+	grid-template-columns:
+		calc(var(--sidebar-track-sm) + 3 * var(--grid-gap))
+		1fr calc(var(--sidebar-track-sm) + 3 * var(--grid-gap));
+}
+
 .railway.zone\:2 {
 	padding-inline: var(--gap);
 }
@@ -70,6 +76,9 @@ html:has(.l\:grid\:urbanist) {
 }
 
 @media screen and (min-width: 58.75rem) {
+	.zone\:1.exchange {
+		grid-template-columns: subgrid;
+	}
 	.exchange > .context {
 		grid-column-start: 3;
 	}
