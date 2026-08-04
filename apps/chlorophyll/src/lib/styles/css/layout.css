@@ -153,6 +153,10 @@ html:has(.l\:grid\:urbanist) {
 		+ ff-reveal:not([class*='absolute:']) {
 		position: unset;
 	}
+
+	.railway .exchange > .context {
+		grid-column-start: 7;
+	}
 }
 
 .scroll\:container.contain\:2xs {
@@ -187,6 +191,14 @@ html:has(.l\:grid\:urbanist) {
 @media screen and (min-width: 58.75rem) {
 	.l\:grid\:urbanist.railway {
 		ff-toggle-reveal.est ff-control:has(input:checked) + ff-reveal {
+			--x-axis: calc(-4 * var(--ui-size-lg));
+		}
+	}
+}
+
+@media screen and (min-width: 58.75rem) {
+	.l\:grid\:urbanist.railway {
+		ff-toggle-reveal.est ff-control:has(input:checked) + ff-reveal {
 			max-inline-size: unset;
 		}
 	}
@@ -194,6 +206,6 @@ html:has(.l\:grid\:urbanist) {
 
 @media screen and (min-width: 68.75rem) {
 	ff-toggle-reveal.est ff-control:has(input:checked) + ff-reveal {
-		--x-axis: var(--ui-size);
+		--x-axis: 0;
 	}
 }
