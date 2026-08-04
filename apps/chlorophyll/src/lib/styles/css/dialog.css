@@ -32,7 +32,7 @@ dialog[open] {
 }
 
 dialog[open] {
-	--y-axis: 8.25rem;
+	--y-axis: var(--ui-header-height);
 
 	top: var(--y-axis);
 	block-size: -webkit-fill-available; /* Safari workaround FIXME: dialog content visible, but not done */
@@ -64,6 +64,7 @@ dialog:modal::backdrop {
 }
 
 dialog[open]:not(:modal) {
+	block-size: fit-content;
 	max-block-size: calc(100vh - var(--y-axis) - var(--gap));
 	max-inline-size: calc(100vw - 3 * var(--gap));
 }
@@ -110,4 +111,10 @@ dialog[open]:not(:modal).size\:xl {
 	--dialog-inline-size: calc(
 		5 * var(--sidebar-width, var(--layout-sidebar-md)) - var(--ui-size)
 	);
+}
+
+@media screen and (min-width: 38.75rem) {
+	dialog[open] {
+		--y-axis: 8.25rem;
+	}
 }
