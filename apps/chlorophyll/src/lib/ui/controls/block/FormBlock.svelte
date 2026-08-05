@@ -191,7 +191,7 @@
 			value,
 			name: String(target.name),
 			type,
-			id: 'new',
+			id: 'tags',
 			currentTags: toUpdate.tags,
 			tagGroups: storageService.tags,
 		})
@@ -400,7 +400,7 @@
 				<div class="l:flex scroll:container contain:sm">
 					<div class="scroll:y">
 						<SelectTags
-							id="new"
+							id="tags"
 							cta="save"
 							oninput={updateTags}
 							value={[]}

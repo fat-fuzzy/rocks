@@ -42,7 +42,7 @@ const FormBlockSchema = /** @type {const} */ {
 		},
 	},
 	required: ['parent', 'name', 'rank'],
-	additionalProperties: false,
+	// additionalProperties: false, FIXME: tag groups generate additional properties per group (guard: Block will be checked on save)
 	definitions: FormBaseSchema,
 }
 
