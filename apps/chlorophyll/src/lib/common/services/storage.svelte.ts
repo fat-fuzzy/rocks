@@ -730,7 +730,7 @@ export default class StorageService {
 								toUpdate = block
 							}
 
-							toUpdate.tags = [...toUpdate.tags.filter((t) => t !== tag)]
+							toUpdate.tags = toUpdate.tags.filter((t) => t !== tag)
 
 							blocksToUpdate.set(toUpdate.id, toUpdate)
 						}
