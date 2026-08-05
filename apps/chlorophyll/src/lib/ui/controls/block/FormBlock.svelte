@@ -15,6 +15,7 @@
 	import {getContext, onDestroy, onMount} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
 
+	import {applyTags} from '$lib/utils/tags'
 	import StorageService from '$lib/common/services/storage.svelte'
 	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
 	import SelectTags from '$lib/ui/controls/tags/SelectTags.svelte'
@@ -176,15 +177,24 @@
 		handleChange(event)
 
 		const target = event.target as HTMLInputElement
+		const value = String(target.value)
 
-		if (target?.value) {
-			const tag = String(target.value)
-			if (!toUpdate.tags.includes(tag)) {
-				toUpdate.tags.push(tag)
-			} else {
-				toUpdate.tags = toUpdate.tags.filter((t) => t !== tag)
-			}
+		// The actual tag name to update
+		if (!value) {
+			return
 		}
+
+		const type = String(target.type) as InputCheckedTypes
+
+		toUpdate.tags = applyTags({
+			cta,
+			value,
+			name: String(target.name),
+			type,
+			id: 'new',
+			currentTags: toUpdate.tags,
+			tagGroups: storageService.tags,
+		})
 	}
 
 	function checkBlockExists(
