@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {Preset} from '$types'
+	import type {ActionCrud, Preset} from '$types'
 	import type {UiColor} from '@fat-fuzzy/ui'
 	import * as validators from '$lib/generated/ajv/validation/validate.ajv.mjs'
 
@@ -15,7 +15,7 @@
 	const {FormValidator} = ui.utils
 
 	interface Props {
-		cta: 'save' | 'delete' | 'update' | 'copy'
+		cta: ActionCrud
 		preset: Preset
 		color?: UiColor
 	}

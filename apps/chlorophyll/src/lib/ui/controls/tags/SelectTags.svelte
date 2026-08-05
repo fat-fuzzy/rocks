@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {UiColor, UiContainer, UiLayout, UiSize} from '@fat-fuzzy/ui'
-	import type {TagGroup, InputGroupMenus} from '$types'
+	import type {TagGroup, InputGroupMenus, ActionCrud} from '$types'
 
 	import ui from '@fat-fuzzy/ui'
 
@@ -19,7 +19,7 @@
 		tagGroups,
 	}: {
 		id: string
-		cta: 'save' | 'delete'
+		cta: ActionCrud
 		value: string[]
 		color?: UiColor
 		size?: UiSize
