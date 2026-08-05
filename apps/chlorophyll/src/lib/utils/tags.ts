@@ -46,15 +46,14 @@ export function applyTags(options: {
 		throw Error('Input group selection is missing group name')
 	}
 
-	console.log(name)
-
 	const groupName = parseGroupFromTargetData(
-		'save',
+		cta,
 		isSelectAll ? value : name || value,
 		type,
 		isSelectAll,
 		id,
 	)
+
 	const tagGroup = tagGroups.find((g) => g.name === groupName)
 	if (!tagGroup) {
 		throw Error(`Cannot find tag group ${groupName}`)
