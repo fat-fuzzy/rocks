@@ -1,6 +1,14 @@
 <script lang="ts">
 	import type {UiColor} from '@fat-fuzzy/ui'
-	import type {Block, Path, Subsection, BlockProps, Uuid} from '$types'
+	import type {
+		Block,
+		Path,
+		Subsection,
+		BlockProps,
+		Uuid,
+		ActionCrud,
+		InputCheckedTypes,
+	} from '$types'
 
 	import * as validators from '$lib/generated/ajv/validation/validate.ajv.mjs'
 
@@ -18,7 +26,7 @@
 		block?: Block
 		parent: Path
 		subsections?: Subsection[]
-		cta: 'save' | 'delete' | 'update' | 'copy'
+		cta: ActionCrud
 		color?: UiColor
 	}
 	let {block, parent, subsections, cta, color = 'primary'}: Props = $props()

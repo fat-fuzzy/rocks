@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {UiColor} from '@fat-fuzzy/ui'
-	import type {DocFormat, DocLanguage, Section} from '$types'
+	import type {ActionCrud, DocFormat, DocLanguage, Section} from '$types'
 
 	import * as validators from '$lib/generated/ajv/validation/validate.ajv.mjs'
 
@@ -20,7 +20,7 @@
 
 	interface Props {
 		formats: DocFormat[]
-		cta: 'save' | 'delete' | 'update' | 'copy'
+		cta: ActionCrud
 		color?: UiColor
 	}
 	let {formats, cta, color = 'primary'}: Props = $props()

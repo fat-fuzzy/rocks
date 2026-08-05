@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {Preset} from '$types'
+	import type {ActionDoc, Preset} from '$types'
 
 	import {getContext} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
@@ -12,7 +12,7 @@
 		preset,
 		query,
 	}: {
-		cta: 'edit' | 'build' | 'preview' | 'print'
+		cta: ActionDoc
 		preset: Preset
 		query: string
 	} = $props()
