@@ -1,12 +1,21 @@
 <script lang="ts">
 	import type {UiColor} from '@fat-fuzzy/ui'
-	import type {Block, Path, Subsection, BlockProps, Uuid} from '$types'
+	import type {
+		Block,
+		Path,
+		Subsection,
+		BlockProps,
+		Uuid,
+		ActionCrud,
+		InputCheckedTypes,
+	} from '$types'
 
 	import * as validators from '$lib/generated/ajv/validation/validate.ajv.mjs'
 
 	import {getContext, onDestroy, onMount} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
 
+	import {applyTags} from '$lib/utils/tags'
 	import StorageService from '$lib/common/services/storage.svelte'
 	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
 	import SelectTags from '$lib/ui/controls/tags/SelectTags.svelte'
@@ -18,7 +27,7 @@
 		block?: Block
 		parent: Path
 		subsections?: Subsection[]
-		cta: 'save' | 'delete' | 'update' | 'copy'
+		cta: ActionCrud
 		color?: UiColor
 	}
 	let {block, parent, subsections, cta, color = 'primary'}: Props = $props()
@@ -168,15 +177,24 @@
 		handleChange(event)
 
 		const target = event.target as HTMLInputElement
+		const value = String(target.value)
 
-		if (target?.value) {
-			const tag = String(target.value)
-			if (!toUpdate.tags.includes(tag)) {
-				toUpdate.tags.push(tag)
-			} else {
-				toUpdate.tags = toUpdate.tags.filter((t) => t !== tag)
-			}
+		// The actual tag name to update
+		if (!value) {
+			return
 		}
+
+		const type = String(target.type) as InputCheckedTypes
+
+		toUpdate.tags = applyTags({
+			cta,
+			value,
+			name: String(target.name),
+			type,
+			id: 'tags',
+			currentTags: toUpdate.tags,
+			tagGroups: storageService.tags,
+		})
 	}
 
 	function checkBlockExists(
@@ -382,7 +400,7 @@
 				<div class="l:flex scroll:container contain:sm">
 					<div class="scroll:y">
 						<SelectTags
-							id="new"
+							id="tags"
 							cta="save"
 							oninput={updateTags}
 							value={[]}

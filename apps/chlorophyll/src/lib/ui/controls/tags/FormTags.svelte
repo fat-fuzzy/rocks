@@ -1,12 +1,23 @@
 <script lang="ts">
 	import type {UiColor} from '@fat-fuzzy/ui'
-	import type {Slug, TagGroup, TagProps} from '$types'
+	import type {
+		ActionCrud,
+		InputCheckedTypes,
+		Slug,
+		TagGroup,
+		TagProps,
+	} from '$types'
 
 	import * as validators from '$lib/generated/ajv/validation/validate.ajv.mjs'
 
 	import {getContext, onDestroy, onMount} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
 
+	import {
+		checkSelectAll,
+		parseGroupFromTargetData,
+		applyTags,
+	} from '$lib/utils/tags'
 	import StorageService from '$lib/common/services/storage.svelte'
 	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
 	import SelectTags from '$lib/ui/controls/tags/SelectTags.svelte'
@@ -16,7 +27,7 @@
 
 	interface Props {
 		groups: TagGroup[]
-		cta: 'save' | 'delete' | 'update' | 'copy'
+		cta: ActionCrud
 		color?: UiColor
 	}
 	let {groups, cta, color = 'primary'}: Props = $props()
@@ -167,36 +178,33 @@
 		const target = event.target as HTMLInputElement
 		const value = String(target.value)
 
-		if (value) {
-			const groupSelectAll = value.indexOf('all-delete-')
-
-			if (groupSelectAll === -1) {
-				const group = String(target.name).substring('delete-'.length)
-				if (!tagsToDelete[group]) {
-					tagsToDelete[group] = [value]
-				} else {
-					tagsToDelete[group].push(value)
-				}
-			} else {
-				const group = String(value).substring('all-delete-'.length)
-				const groupItems = groups.find((g) => g.name === group)?.items
-				if (!groupItems || groupItems.length === 0) {
-					errorGroupHasNoItems = group
-					return
-				} else {
-					errorGroupHasNoItems = undefined
-				}
-
-				if (
-					!tagsToDelete[group] ||
-					tagsToDelete[group].length < groupItems.length
-				) {
-					tagsToDelete[group] = groupItems
-				} else {
-					tagsToDelete[group] = []
-				}
-			}
+		// The actual tag name to update
+		if (!value) {
+			return
 		}
+
+		const type = String(target.type) as InputCheckedTypes
+
+		const isSelectAll = checkSelectAll('delete', type, value)
+		const groupName = parseGroupFromTargetData(
+			cta,
+			isSelectAll ? value : String(target.name) || value,
+			type,
+			isSelectAll,
+			'delete-tags',
+		)
+
+		const updatedTags = applyTags({
+			cta,
+			value,
+			name: String(target.name),
+			type,
+			id: 'delete-tags',
+			currentTags: tagsToDelete[groupName] ?? [],
+			tagGroups: storageService.tags,
+		})
+
+		tagsToDelete[groupName] = updatedTags
 	}
 
 	function deleteTags() {

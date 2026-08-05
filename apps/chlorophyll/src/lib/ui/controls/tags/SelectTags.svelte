@@ -1,8 +1,10 @@
 <script lang="ts">
 	import type {UiColor, UiContainer, UiLayout, UiSize} from '@fat-fuzzy/ui'
-	import type {TagGroup, InputGroupMenus} from '$types'
+	import type {TagGroup, InputGroupMenus, ActionCrud} from '$types'
 
 	import ui from '@fat-fuzzy/ui'
+
+	import {getTagGroupName} from '$lib/utils/tags'
 
 	const {InputGroup} = ui.blocks
 	const {styles} = ui.utils
@@ -19,7 +21,7 @@
 		tagGroups,
 	}: {
 		id: string
-		cta: 'save' | 'delete'
+		cta: ActionCrud
 		value: string[]
 		color?: UiColor
 		size?: UiSize
@@ -81,22 +83,19 @@
 </script>
 
 <div class={layoutClasses}>
-	{#each groups as group, i (i)}
+	{#each groups as { name, title, type, items }, i (i)}
+		{@const groupId = getTagGroupName(cta, name, id)}
 		<InputGroup
-			id={cta === 'delete'
-				? `${cta}-${group.name}`
-				: `${cta}-${id}-${group.name}`}
-			name={cta === 'delete'
-				? `${cta}-${group.name}`
-				: `${cta}-${id}-${group.name}`}
-			legend={group.title}
-			type={cta === 'delete' || !group.type ? 'checkbox' : group.type}
-			value={value.filter((t) => group.items.includes(t))}
+			id={groupId}
+			name={groupId}
+			legend={title}
+			type={cta === 'delete' || !type ? 'checkbox' : type}
+			value={value.filter((t) => items.includes(t))}
 			size="2xs"
 			{color}
 			variant="bare"
 			selectAll={true}
-			items={tags[group.name]}
+			items={tags[name]}
 			{oninput}
 		/>
 	{/each}

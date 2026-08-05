@@ -28,6 +28,8 @@ import type {
 	FileExt,
 } from '$types'
 
+import {SvelteMap} from 'svelte/reactivity'
+
 import {PUBLIC_DOCUMENT_LANGUAGE, PUBLIC_DOCUMENT_FORMAT} from '$app/env/public'
 
 import WorkerBridge from '$lib/workers/worker-bridge'
@@ -698,14 +700,14 @@ export default class StorageService {
 			return !options.groups.some((g) => g.name === tg.name)
 		})
 
+		const blocksToUpdate = new SvelteMap<string, Block>()
+
 		for (const group of options.groups) {
 			const groupToUpdate = this.base.tags.find((tg) => tg.name === group.name)
 
 			if (!groupToUpdate) {
 				throw Error(`No tag group found with name ${group.name}`)
 			} else {
-				// TODO: clean this up
-				// Update tag groups
 				const tagsToKeep = []
 
 				for (const tag of groupToUpdate.items) {
@@ -714,42 +716,32 @@ export default class StorageService {
 					}
 				}
 
-				if (tagsToKeep.length > 0) {
-					groupToUpdate.items = tagsToKeep
-					tagGroupsToKeep.push(groupToUpdate)
-				}
-
-				// Remove deleted tags from tagged blocks
-				const blocksToUpdate = []
-
 				for (const tag of group.items) {
 					const tagKey = getTagKey(group.name, tag)
 
+					// 1. Gather blocks to update
 					const taggedBlocks = this.tagIndex.taggedBlocks[tagKey]
 
 					if (taggedBlocks) {
 						for (const block of taggedBlocks) {
-							const tagsInBlock = []
+							let toUpdate = blocksToUpdate.get(block.id)
 
-							for (const tag of tagsToKeep) {
-								if (block.tags.includes(tag)) {
-									tagsInBlock.push(tag)
-								}
+							if (!toUpdate) {
+								toUpdate = block
 							}
 
-							block.tags = block.tags.filter((t) => !group.items.includes(t))
-							block.tags = [...block.tags, ...tagsInBlock]
+							toUpdate.tags = toUpdate.tags.filter((t) => t !== tag)
 
-							blocksToUpdate.push(block)
+							blocksToUpdate.set(toUpdate.id, toUpdate)
 						}
 					}
 				}
 
 				const {languages, formats} = this.base
-
-				for (const block of blocksToUpdate) {
-					for (const language of languages) {
-						for (const format of formats) {
+				for (const language of languages) {
+					for (const format of formats) {
+						// 2. Update blocks
+						for (const block of blocksToUpdate.values()) {
 							const section = this.getSectionById(block.parentId)
 
 							await this.saveBlock({
@@ -763,7 +755,53 @@ export default class StorageService {
 								},
 							})
 						}
+
+						// 3. Update sections (TODO: create tagged sections index)
+						const doc = this.content[language]?.[format]
+
+						if (!doc) {
+							continue
+						}
+
+						for (const section of doc.sections) {
+							if (section.tags) {
+								section.tags = section.tags.filter(
+									(t) => !group.items.includes(t),
+								)
+								await this.bridge.saveSection({
+									language,
+									format,
+									// FIXME: shouldn't have to do this
+									section: JSON.parse(JSON.stringify(section)),
+								})
+							} else if (section.subsections) {
+								const defaultGroup = section.subsections.find(
+									(sub) => sub.name === section.name,
+								)
+
+								if (defaultGroup) {
+									for (const block of defaultGroup.blocks) {
+										block.tags = block.tags.filter(
+											(t) => !group.items.includes(t),
+										)
+									}
+
+									await this.bridge.saveSection({
+										language,
+										format,
+										// FIXME: shouldn't have to do this
+										section: JSON.parse(JSON.stringify(section)),
+									})
+								}
+							}
+						}
 					}
+				}
+
+				// 4. Update tag groups
+				if (tagsToKeep.length > 0) {
+					groupToUpdate.items = tagsToKeep
+					tagGroupsToKeep.push(groupToUpdate)
 				}
 			}
 		}
