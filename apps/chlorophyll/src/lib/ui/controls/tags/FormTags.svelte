@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {UiColor} from '@fat-fuzzy/ui'
-	import type {Slug, TagGroup, TagProps} from '$types'
+	import type {ActionCrud, Slug, TagGroup, TagProps} from '$types'
 
 	import * as validators from '$lib/generated/ajv/validation/validate.ajv.mjs'
 
@@ -16,7 +16,7 @@
 
 	interface Props {
 		groups: TagGroup[]
-		cta: 'save' | 'delete' | 'update' | 'copy'
+		cta: ActionCrud
 		color?: UiColor
 	}
 	let {groups, cta, color = 'primary'}: Props = $props()

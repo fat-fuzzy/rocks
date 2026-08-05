@@ -10,6 +10,8 @@ export type MenuItem = {
 	title: string // page title
 }
 
+export type InputCheckedTypes = 'radio' | 'checkbox'
+
 export type InputGroupMenus = {[name: string]: MenuItem[]}
 
 export type DialogState =
