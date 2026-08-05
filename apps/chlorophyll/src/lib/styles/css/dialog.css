@@ -35,7 +35,8 @@ dialog[open] {
 	--y-axis: var(--ui-header-height);
 
 	top: var(--y-axis);
-	block-size: -webkit-fill-available; /* Safari workaround FIXME: dialog content visible, but not done */
+	block-size: fit-content;
+	max-block-size: -webkit-fill-available;
 }
 
 dialog:modal[open] {
@@ -54,7 +55,6 @@ dialog[open].coords\:nord-est {
 
 dialog[open] > .dialog-content {
 	block-size: fit-content;
-	max-block-size: 100%;
 	overscroll-behavior-y: contain;
 }
 
