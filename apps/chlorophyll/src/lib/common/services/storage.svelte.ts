@@ -722,6 +722,7 @@ export default class StorageService {
 				for (const tag of group.items) {
 					const tagKey = getTagKey(group.name, tag)
 
+					// 1. Gather blocks to update
 					const taggedBlocks = this.tagIndex.taggedBlocks[tagKey]
 
 					if (taggedBlocks) {
@@ -740,10 +741,10 @@ export default class StorageService {
 				}
 
 				const {languages, formats} = this.base
-
-				for (const block of blocksToUpdate.values()) {
-					for (const language of languages) {
-						for (const format of formats) {
+				for (const language of languages) {
+					for (const format of formats) {
+						// 1. Update blocks
+						for (const block of blocksToUpdate.values()) {
 							const section = this.getSectionById(block.parentId)
 
 							await this.saveBlock({
@@ -756,6 +757,46 @@ export default class StorageService {
 									parent: section.name,
 								},
 							})
+						}
+
+						// 2. Update sections (TODO: create tagged sections index)
+						const doc = this.content[language]?.[format]
+
+						if (!doc) {
+							continue
+						}
+
+						for (const section of doc.sections) {
+							if (section.tags) {
+								section.tags = section.tags.filter(
+									(t) => !group.items.includes(t),
+								)
+								await this.bridge.saveSection({
+									language,
+									format,
+									// FIXME: shouldn't have to do this
+									section: JSON.parse(JSON.stringify(section)),
+								})
+							} else if (section.subsections) {
+								const defaultGroup = section.subsections.find(
+									(sub) => sub.name === section.name,
+								)
+
+								if (defaultGroup) {
+									for (const block of defaultGroup.blocks) {
+										block.tags = block.tags.filter(
+											(t) => !group.items.includes(t),
+										)
+									}
+
+									await this.bridge.saveSection({
+										language,
+										format,
+										// FIXME: shouldn't have to do this
+										section: JSON.parse(JSON.stringify(section)),
+									})
+								}
+							}
 						}
 					}
 				}
