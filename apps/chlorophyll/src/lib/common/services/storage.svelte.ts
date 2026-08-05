@@ -700,7 +700,6 @@ export default class StorageService {
 			return !options.groups.some((g) => g.name === tg.name)
 		})
 
-		// Remove deleted tags from tagged blocks
 		const blocksToUpdate = new SvelteMap<string, Block>()
 
 		for (const group of options.groups) {
@@ -709,8 +708,6 @@ export default class StorageService {
 			if (!groupToUpdate) {
 				throw Error(`No tag group found with name ${group.name}`)
 			} else {
-				// TODO: clean this up
-				// Update tag groups
 				const tagsToKeep = []
 
 				for (const tag of groupToUpdate.items) {
@@ -743,7 +740,7 @@ export default class StorageService {
 				const {languages, formats} = this.base
 				for (const language of languages) {
 					for (const format of formats) {
-						// 1. Update blocks
+						// 2. Update blocks
 						for (const block of blocksToUpdate.values()) {
 							const section = this.getSectionById(block.parentId)
 
@@ -759,7 +756,7 @@ export default class StorageService {
 							})
 						}
 
-						// 2. Update sections (TODO: create tagged sections index)
+						// 3. Update sections (TODO: create tagged sections index)
 						const doc = this.content[language]?.[format]
 
 						if (!doc) {
@@ -801,6 +798,7 @@ export default class StorageService {
 					}
 				}
 
+				// 4. Update tag groups
 				if (tagsToKeep.length > 0) {
 					groupToUpdate.items = tagsToKeep
 					tagGroupsToKeep.push(groupToUpdate)
