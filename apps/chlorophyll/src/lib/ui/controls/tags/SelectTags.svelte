@@ -84,10 +84,7 @@
 
 <div class={layoutClasses}>
 	{#each groups as { name, title, type, items }, i (i)}
-		{@const groupId =
-			cta === 'delete'
-				? getTagGroupName(cta, name)
-				: getTagGroupName(cta, name, id)}
+		{@const groupId = getTagGroupName(cta, name, id)}
 		<InputGroup
 			id={groupId}
 			name={groupId}
