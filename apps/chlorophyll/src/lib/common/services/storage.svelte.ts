@@ -28,6 +28,8 @@ import type {
 	FileExt,
 } from '$types'
 
+import {SvelteMap} from 'svelte/reactivity'
+
 import {PUBLIC_DOCUMENT_LANGUAGE, PUBLIC_DOCUMENT_FORMAT} from '$app/env/public'
 
 import WorkerBridge from '$lib/workers/worker-bridge'
@@ -698,6 +700,9 @@ export default class StorageService {
 			return !options.groups.some((g) => g.name === tg.name)
 		})
 
+		// Remove deleted tags from tagged blocks
+		const blocksToUpdate = new SvelteMap<string, Block>()
+
 		for (const group of options.groups) {
 			const groupToUpdate = this.base.tags.find((tg) => tg.name === group.name)
 
@@ -714,14 +719,6 @@ export default class StorageService {
 					}
 				}
 
-				if (tagsToKeep.length > 0) {
-					groupToUpdate.items = tagsToKeep
-					tagGroupsToKeep.push(groupToUpdate)
-				}
-
-				// Remove deleted tags from tagged blocks
-				const blocksToUpdate = []
-
 				for (const tag of group.items) {
 					const tagKey = getTagKey(group.name, tag)
 
@@ -729,25 +726,22 @@ export default class StorageService {
 
 					if (taggedBlocks) {
 						for (const block of taggedBlocks) {
-							const tagsInBlock = []
+							let toUpdate = blocksToUpdate.get(block.id)
 
-							for (const tag of tagsToKeep) {
-								if (block.tags.includes(tag)) {
-									tagsInBlock.push(tag)
-								}
+							if (!toUpdate) {
+								toUpdate = block
 							}
 
-							block.tags = block.tags.filter((t) => !group.items.includes(t))
-							block.tags = [...block.tags, ...tagsInBlock]
+							toUpdate.tags = [...toUpdate.tags.filter((t) => t !== tag)]
 
-							blocksToUpdate.push(block)
+							blocksToUpdate.set(toUpdate.id, toUpdate)
 						}
 					}
 				}
 
 				const {languages, formats} = this.base
 
-				for (const block of blocksToUpdate) {
+				for (const block of blocksToUpdate.values()) {
 					for (const language of languages) {
 						for (const format of formats) {
 							const section = this.getSectionById(block.parentId)
@@ -764,6 +758,11 @@ export default class StorageService {
 							})
 						}
 					}
+				}
+
+				if (tagsToKeep.length > 0) {
+					groupToUpdate.items = tagsToKeep
+					tagGroupsToKeep.push(groupToUpdate)
 				}
 			}
 		}
