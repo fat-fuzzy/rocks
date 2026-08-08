@@ -1,11 +1,12 @@
 <script lang="ts">
+	import type {UiColor} from '@fat-fuzzy/ui'
 	import type {TagGroup, InputGroupMenus} from '$types'
 
 	import {getContext} from 'svelte'
 	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
 
-	import StorageService from '$lib/common/services/storage.svelte'
+	import StorageService from '$lib/services/storage/storage.svelte'
 	import DialogSaveTag from '$lib/ui/controls/tags/DialogSaveTag.svelte'
 	import DialogDeleteTags from '$lib/ui/controls/tags/DialogDeleteTags.svelte'
 	import Loading from '$lib/ui/Loading.svelte'
@@ -35,10 +36,12 @@
 						value: i,
 						checked: selected ? true : undefined,
 						label: i,
-						color: type ? 'accent' : 'primary',
+						color: (type ? 'accent' : 'primary') as UiColor,
 						title: title ?? name,
 					}
 				})
+
+				// @ts-expect-error FIXME: create validator
 				menus[name] = menuItems
 				return menus
 			},

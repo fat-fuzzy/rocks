@@ -3,7 +3,7 @@
 
 	import {getContext} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
-	import StorageService from '$lib/common/services/storage.svelte'
+	import StorageService from '$lib/services/storage/storage.svelte'
 
 	const {Button} = ui.blocks
 

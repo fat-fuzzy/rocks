@@ -6,8 +6,8 @@
 	import ui from '@fat-fuzzy/ui'
 
 	import {guardedExport} from '$lib/utils/download'
-	import StorageService from '$lib/common/services/storage.svelte'
-	import ExportService from '$lib/common/services/export'
+	import StorageService from '$lib/services/storage/storage.svelte'
+	import ExportService from '$lib/services/export'
 	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
 
 	const {Button, Feedback} = ui.blocks

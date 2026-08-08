@@ -33,7 +33,7 @@ import {SvelteMap} from 'svelte/reactivity'
 import {PUBLIC_DOCUMENT_LANGUAGE, PUBLIC_DOCUMENT_FORMAT} from '$app/env/public'
 
 import WorkerBridge from '$lib/workers/worker-bridge'
-import {getBridge} from '$lib/common/services/bridge'
+import {getBridge} from '$lib/services/storage/bridge'
 
 import {
 	getSectionKey,

@@ -6,9 +6,9 @@
 
 	import {buildNav} from '$data/nav'
 
-	import {initBridge, destroyBridge} from '$lib/common/services/bridge'
-	import StorageService from '$lib/common/services/storage.svelte'
-	import ExportService from '$lib/common/services/export'
+	import {initBridge, destroyBridge} from '$lib/services/storage/bridge'
+	import StorageService from '$lib/services/storage/storage.svelte'
+	import ExportService from '$lib/services/export'
 	import Dialog from '$lib/ui/overlays/dialog/Dialog.svelte'
 
 	// @ts-expect-error types not used for css
