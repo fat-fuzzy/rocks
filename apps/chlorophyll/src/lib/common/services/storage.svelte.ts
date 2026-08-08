@@ -33,7 +33,7 @@ import {SvelteMap} from 'svelte/reactivity'
 import {PUBLIC_DOCUMENT_LANGUAGE, PUBLIC_DOCUMENT_FORMAT} from '$app/env/public'
 
 import WorkerBridge from '$lib/workers/worker-bridge'
-import StorageWorker from '$lib/workers/storage.worker?worker'
+import {getBridge} from '$lib/common/services/bridge'
 
 import {
 	getSectionKey,
@@ -99,9 +99,7 @@ export default class StorageService {
 		frontmatter: FrontmatterSeed,
 		seed: {content: SeedDocument[]; structures: FrontmatterStructure[]},
 	) {
-		const worker = new StorageWorker()
-		this.bridge = new WorkerBridge(worker)
-
+		this.bridge = getBridge()
 		try {
 			this.loading = true
 			const seeded = await this.checkSeed()
