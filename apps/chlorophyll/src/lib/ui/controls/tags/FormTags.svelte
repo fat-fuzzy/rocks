@@ -18,7 +18,7 @@
 		parseGroupFromTargetData,
 		applyTags,
 	} from '$lib/utils/tags'
-	import StorageService from '$lib/common/services/storage.svelte'
+	import StorageService from '$lib/services/storage/storage.svelte'
 	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
 	import SelectTags from '$lib/ui/controls/tags/SelectTags.svelte'
 
