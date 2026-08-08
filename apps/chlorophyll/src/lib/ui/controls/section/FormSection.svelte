@@ -7,7 +7,7 @@
 	import {getContext, onDestroy, onMount} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
 
-	import StorageService from '$lib/common/services/storage.svelte'
+	import StorageService from '$lib/services/storage/storage.svelte'
 	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
 	import {
 		PUBLIC_DOCUMENT_FORMAT,

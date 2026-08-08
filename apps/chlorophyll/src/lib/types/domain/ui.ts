@@ -1,18 +1,16 @@
 import type {Snippet} from 'svelte'
-import type {UiSize, UiColor, UiVariant, UiShape} from '@fat-fuzzy/ui'
+import type {
+	UiSize,
+	UiColor,
+	UiVariant,
+	UiShape,
+	InputProps,
+} from '@fat-fuzzy/ui'
 import type {Slug, Uuid} from '$types'
-
-export type MenuItem = {
-	id: Slug
-	name: Slug
-	value: Slug
-	label: string // menu item label
-	title: string // page title
-}
 
 export type InputCheckedTypes = 'radio' | 'checkbox'
 
-export type InputGroupMenus = {[name: string]: MenuItem[]}
+export type InputGroupMenus = {[name: string]: InputProps[]}
 
 export type DialogState =
 	| 'idle'
