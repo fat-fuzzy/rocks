@@ -157,6 +157,7 @@ packages/sketch/static/images/
 packages/ui/static/fonts
 packages/prose/static/fonts/
 packages/playbook/static/fonts
+packages/playbook/static/icons
 apps/doc/static/fonts/*/*/demo.html
 apps/doc/static/fonts/*/*/stylesheet.css
 apps/doc/tests/e2e/test-results
