@@ -10,7 +10,7 @@ import type {
 } from '$types'
 
 import assetsUtils from '$data/markdown-in'
-import sort from '$lib/utils/sort'
+import sort from '$lib/common/sort'
 
 import {
 	PATHS_CV_L10N_FORMATS,

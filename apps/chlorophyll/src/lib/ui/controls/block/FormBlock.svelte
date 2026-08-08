@@ -15,7 +15,7 @@
 	import {getContext, onDestroy, onMount} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
 
-	import {applyTags} from '$lib/utils/tags'
+	import {applyTags} from '$lib/common/tags'
 	import StorageService from '$lib/services/storage/storage.svelte'
 	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
 	import SelectTags from '$lib/ui/controls/tags/SelectTags.svelte'

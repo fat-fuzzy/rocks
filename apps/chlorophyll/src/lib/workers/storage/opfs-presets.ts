@@ -8,7 +8,7 @@ import type {
 	OPFSPresetTree,
 	Preset,
 } from '$types'
-import {sanitizeFileName} from '$lib/utils/sanitize'
+import {sanitizeFileName} from '$lib/common/sanitize'
 import {parsePreset} from '$lib/common/transform/parse-or-throw'
 
 import {

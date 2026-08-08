@@ -11,7 +11,7 @@
 	import {getContext} from 'svelte'
 	import prose from '@fat-fuzzy/prose'
 
-	import {applyTags} from '$lib/utils/tags'
+	import {applyTags} from '$lib/common/tags'
 	import StorageService from '$lib/services/storage/storage.svelte'
 	import DialogDeleteBlock from '$lib/ui/controls/block/DialogDeleteBlock.svelte'
 	import SelectTags from '$lib/ui/controls/tags/SelectTags.svelte'
