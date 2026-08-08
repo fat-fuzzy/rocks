@@ -5,6 +5,8 @@
 	import {setContext, onMount, onDestroy} from 'svelte'
 
 	import {buildNav} from '$data/nav'
+
+	import {initBridge, destroyBridge} from '$lib/common/services/bridge'
 	import StorageService from '$lib/common/services/storage.svelte'
 	import ExportService from '$lib/common/services/export'
 	import Dialog from '$lib/ui/overlays/dialog/Dialog.svelte'
@@ -104,10 +106,11 @@
 			console.log("Your browser doesn't support web workers.")
 		}
 
+		initBridge()
 		await storageService.init({base, structures}, seed)
 	})
 
-	onDestroy(() => storageService.destroy())
+	onDestroy(() => destroyBridge())
 </script>
 
 <LayoutGrid
