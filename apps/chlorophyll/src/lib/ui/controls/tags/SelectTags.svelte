@@ -4,7 +4,7 @@
 
 	import ui from '@fat-fuzzy/ui'
 
-	import {getTagGroupName} from '$lib/utils/tags'
+	import {getTagGroupName} from '$lib/common/tags'
 
 	const {InputGroup} = ui.blocks
 	const {styles} = ui.utils
