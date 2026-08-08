@@ -14,7 +14,7 @@ import type {
 	Rank,
 } from '$types'
 
-import {sanitizeFileName} from '$lib/utils/sanitize'
+import {sanitizeFileName} from '$lib/common/sanitize'
 import {parseBlock, parseSection} from '$lib/common/transform/parse-or-throw'
 import {
 	getDocsHandle,

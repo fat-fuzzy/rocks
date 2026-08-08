@@ -40,7 +40,7 @@ import {
 	getBlockKey,
 	getPresetKey,
 	getTagKey,
-} from '$lib/utils/format'
+} from '$lib/common/format'
 
 import {
 	opfsBaseTreeToFrontmatterBase,

@@ -105,11 +105,6 @@
 	}
 
 	onMount(async () => {
-		if (!window.Worker) {
-			// FIXME: add user feedback
-			console.log("Your browser doesn't support web workers.")
-		}
-
 		initBridge()
 		await storageService.init({base, structures}, seed)
 	})
