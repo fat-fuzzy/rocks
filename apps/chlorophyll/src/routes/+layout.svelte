@@ -23,9 +23,11 @@
 	const {LayoutGrid} = ui.content
 	const {Magic} = ui.blocks
 
-	type Props = {
+	let {
+		children,
+	}: {
 		children: Snippet
-	}
+	} = $props()
 
 	/**
 	 * Register Contexts
@@ -36,16 +38,15 @@
 	setContext('storageService', storageService)
 	setContext('exportService', exportService)
 
-	let {children}: Props = $props()
-
 	/**
-	 * Retrieve loaded data
+	 * Setup page data (loaded / generated)
 	 */
 	const sidenav = buildNav('chlorophyll')
 
 	let pathname = $derived(page.url.pathname)
 	let layout: UiLayout = $derived.by(() => {
 		const _page = page.params.page ? page.params.page : page.url.pathname
+
 		switch (_page) {
 			case 'build':
 			case 'edit':
@@ -76,12 +77,9 @@
 		},
 	})
 
-	function updateSettings(event: Event) {
-		const target = event.target as HTMLInputElement
-		// @ts-expect-error expect target name  to be brightness sor contrast
-		appContext[target.name] = target.value
-	}
-
+	/**
+	 * Setup UI layout
+	 */
 	const areas: AreaProps[] = $derived([
 		{
 			zone: zoneHeader,
@@ -99,6 +97,12 @@
 			grid: true,
 		},
 	])
+
+	function updateSettings(event: Event) {
+		const target = event.target as HTMLInputElement
+		// @ts-expect-error expect target name to be brightness or contrast
+		appContext[target.name] = target.value
+	}
 
 	onMount(async () => {
 		if (!window.Worker) {
