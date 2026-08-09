@@ -18,7 +18,7 @@
 		parseGroupFromTargetData,
 		applyTags,
 	} from '$lib/common/tags'
-	import StorageService from '$lib/services/storage/storage.svelte'
+	import DocumentService from '$lib/services/storage/document-service.svelte'
 	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
 	import SelectTags from '$lib/ui/controls/tags/SelectTags.svelte'
 
@@ -32,7 +32,8 @@
 	}
 	let {groups, cta, color = 'primary'}: Props = $props()
 
-	let storageService: StorageService = getContext('storageService')
+	let documentService: DocumentService = getContext('documentService')
+
 	const validator = new FormValidator('FormTagValidationFunction', validators)
 
 	const inputTypes: {[name: string]: string} = {
@@ -167,7 +168,7 @@
 			group,
 		}
 
-		storageService.createTag(newTag)
+		documentService.createTag(newTag)
 
 		dialogActor.close()
 	}
@@ -201,7 +202,7 @@
 			type,
 			id: 'delete-tags',
 			currentTags: tagsToDelete[groupName] ?? [],
-			tagGroups: storageService.tags,
+			tagGroups: documentService.tags,
 		})
 
 		tagsToDelete[groupName] = updatedTags
@@ -216,7 +217,7 @@
 			return groups
 		}, [])
 
-		storageService.deleteTags({groups})
+		documentService.deleteTags({groups})
 
 		dialogActor.close()
 	}
@@ -243,7 +244,7 @@
 			{color}
 			value={[]}
 			oninput={updateTags}
-			tagGroups={storageService.tags}
+			tagGroups={documentService.tags}
 		/>
 		<Feedback
 			status="default"

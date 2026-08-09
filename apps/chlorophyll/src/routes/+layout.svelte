@@ -7,7 +7,7 @@
 	import {buildNav} from '$data/nav'
 
 	import {initBridge, destroyBridge} from '$lib/services/storage/bridge'
-	import StorageService from '$lib/services/storage/storage.svelte'
+	import DocumentService from '$lib/services/storage/document-service.svelte'
 	import ExportService from '$lib/services/export'
 	import Dialog from '$lib/ui/overlays/dialog/Dialog.svelte'
 
@@ -32,10 +32,10 @@
 	/**
 	 * Register Contexts
 	 */
-	const storageService = new StorageService()
+	const documentService = new DocumentService()
 	const exportService = new ExportService()
 
-	setContext('storageService', storageService)
+	setContext('documentService', documentService)
 	setContext('exportService', exportService)
 
 	/**
@@ -106,7 +106,7 @@
 
 	onMount(async () => {
 		initBridge()
-		await storageService.init({base, structures}, seed)
+		await documentService.init({base, structures}, seed)
 	})
 
 	onDestroy(() => destroyBridge())

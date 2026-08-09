@@ -6,7 +6,7 @@
 	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
 
-	import StorageService from '$lib/services/storage/storage.svelte'
+	import DocumentService from '$lib/services/storage/document-service.svelte'
 	import DialogSaveTag from '$lib/ui/controls/tags/DialogSaveTag.svelte'
 	import DialogDeleteTags from '$lib/ui/controls/tags/DialogDeleteTags.svelte'
 	import Loading from '$lib/ui/Loading.svelte'
@@ -15,12 +15,12 @@
 
 	const {oninput}: {oninput: (e: Event) => void} = $props()
 
-	let storageService: StorageService = getContext('storageService')
+	let documentService: DocumentService = getContext('documentService')
 
 	let cta = $derived(page.params.page)
-	let base = $derived(storageService.base)
-	let loading = $derived(storageService.loading)
-	let error = $derived(storageService.error)
+	let base = $derived(documentService.base)
+	let loading = $derived(documentService.loading)
+	let error = $derived(documentService.error)
 
 	let tags = $derived.by(() => {
 		const menuItems = base.tags.reduce(
@@ -67,7 +67,7 @@
 					color="highlight"
 					label="Delete Tags"
 					cta="delete"
-					groups={storageService.tags}
+					groups={documentService.tags}
 				/>
 				<DialogSaveTag
 					id="dialog-create-tags"
@@ -76,7 +76,7 @@
 					cta="save"
 					asset="plus"
 					assetType="svg"
-					groups={storageService.tags}
+					groups={documentService.tags}
 				/>
 			</menu>
 		{/if}
@@ -87,31 +87,29 @@
 		<Feedback status="error" context="prose" variant="bare" asset="default">
 			<p>Failed to load Tags.</p>
 		</Feedback>
+	{:else if base.tags.length === 0}
+		<div class="scroll:container font:sm shape:mellow surface:1:neutral">
+			<p class="font:heading font:semibold text:center">No tags found</p>
+		</div>
 	{:else}
-		{#if base.tags.length === 0}
-			<div class="scroll:container font:sm shape:mellow surface:1:neutral">
-				<p class="font:heading font:semibold text:center">No tags found</p>
-			</div>
-		{:else}
-			<div class="l:flex:2xs align:start justify:between">
-				{#each base.tags as group, i (i)}
-					<InputGroup
-						id={group.name}
-						name={group.name}
-						legend={group.title}
-						type={group.type ?? 'checkbox'}
-						value={page.url.searchParams.getAll(group.name)}
-						size="2xs"
-						color={group.type ? 'accent' : 'primary'}
-						variant={group.name === 'twilight-z' || group.name === 'version'
-							? 'outline'
-							: 'bare'}
-						selectAll={true}
-						items={tags[group.name]}
-						{oninput}
-					/>
-				{/each}
-			</div>
-		{/if}
+		<div class="l:flex:2xs align:start justify:between">
+			{#each base.tags as group, i (i)}
+				<InputGroup
+					id={group.name}
+					name={group.name}
+					legend={group.title}
+					type={group.type ?? 'checkbox'}
+					value={page.url.searchParams.getAll(group.name)}
+					size="2xs"
+					color={group.type ? 'accent' : 'primary'}
+					variant={group.name === 'twilight-z' || group.name === 'version'
+						? 'outline'
+						: 'bare'}
+					selectAll={true}
+					items={tags[group.name]}
+					{oninput}
+				/>
+			{/each}
+		</div>
 	{/if}
 </div>

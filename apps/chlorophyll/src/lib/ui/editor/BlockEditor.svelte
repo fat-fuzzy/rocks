@@ -12,13 +12,13 @@
 	import prose from '@fat-fuzzy/prose'
 
 	import {applyTags} from '$lib/common/tags'
-	import StorageService from '$lib/services/storage/storage.svelte'
+	import DocumentService from '$lib/services/storage/document-service.svelte'
 	import DialogDeleteBlock from '$lib/ui/controls/block/DialogDeleteBlock.svelte'
 	import SelectTags from '$lib/ui/controls/tags/SelectTags.svelte'
 
 	const {Editor} = prose.editor
 
-	let storageService: StorageService = getContext('storageService')
+	let documentService: DocumentService = getContext('documentService')
 
 	let {
 		id,
@@ -92,7 +92,7 @@
 			block,
 		}
 
-		storageService.saveBlock(updated)
+		documentService.saveBlock(updated)
 	}
 
 	function updateTags(event: Event) {
@@ -113,7 +113,7 @@
 			type,
 			id,
 			currentTags: block.tags,
-			tagGroups: storageService.tags,
+			tagGroups: documentService.tags,
 		})
 
 		block.tags = updatedTags
@@ -129,7 +129,7 @@
 			block,
 		}
 
-		storageService.saveBlock(updated)
+		documentService.saveBlock(updated)
 	}
 
 	$effect(() => {
@@ -148,7 +148,7 @@
 		size="sm"
 		oninput={updateTags}
 		value={block.tags}
-		tagGroups={storageService.tags}
+		tagGroups={documentService.tags}
 	/>
 {/snippet}
 
