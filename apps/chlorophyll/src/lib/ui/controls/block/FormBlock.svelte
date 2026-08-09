@@ -16,7 +16,7 @@
 	import ui from '@fat-fuzzy/ui'
 
 	import {applyTags} from '$lib/common/tags'
-	import StorageService from '$lib/services/storage/storage.svelte'
+	import DocumentService from '$lib/services/storage/document-service.svelte'
 	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
 	import SelectTags from '$lib/ui/controls/tags/SelectTags.svelte'
 
@@ -32,7 +32,7 @@
 	}
 	let {block, parent, subsections, cta, color = 'primary'}: Props = $props()
 
-	let storageService: StorageService = getContext('storageService')
+	let documentService: DocumentService = getContext('documentService')
 	const validator = new FormValidator('FormBlockValidationFunction', validators)
 
 	const inputTypes: {[name: string]: string} = {
@@ -193,7 +193,7 @@
 			type,
 			id: 'tags',
 			currentTags: toUpdate.tags,
-			tagGroups: storageService.tags,
+			tagGroups: documentService.tags,
 		})
 	}
 
@@ -227,7 +227,7 @@
 			tags: toUpdate.tags,
 		}
 
-		storageService.createBlock(newBlock)
+		documentService.createBlock(newBlock)
 
 		dialogActor.close()
 	}
@@ -238,7 +238,7 @@
 		} else {
 			errorBlockNotFound = false
 
-			storageService.deleteBlock({
+			documentService.deleteBlock({
 				name: block.name as Uuid,
 				content_type: block.content_type,
 				group: block.group,
@@ -404,7 +404,7 @@
 							cta="save"
 							oninput={updateTags}
 							value={[]}
-							tagGroups={storageService.tags}
+							tagGroups={documentService.tags}
 						/>
 					</div>
 				</div>

@@ -6,7 +6,7 @@
 	import {resolve} from '$app/paths'
 	import ui from '@fat-fuzzy/ui'
 
-	import StorageService from '$lib/services/storage/storage.svelte'
+	import DocumentService from '$lib/services/storage/document-service.svelte'
 	import DialogSavePreset from '$lib/ui/controls/preset/DialogSavePreset.svelte'
 	import DialogDeletePreset from '$lib/ui/controls/preset/DialogDeletePreset.svelte'
 	import Loading from '$lib/ui/Loading.svelte'
@@ -21,18 +21,18 @@
 	let cta = $derived(page.params.page)
 	let query = $derived(page.url.search)
 
-	let storageService: StorageService = getContext('storageService')
+	let documentService: DocumentService = getContext('documentService')
 
 	let presetIndex: Record<string, Preset> = $derived(
-		storageService.loadPresets(),
+		documentService.loadPresets(),
 	)
 	let presets = $derived(Object.values(presetIndex))
 
-	let loading = $derived(storageService.loading)
-	let error = $derived(storageService.error)
+	let loading = $derived(documentService.loading)
+	let error = $derived(documentService.error)
 
 	function savePreset(preset: Preset) {
-		storageService.savePreset({
+		documentService.savePreset({
 			path: {
 				filename: preset.name,
 				filetype: 'json',
@@ -51,7 +51,7 @@
 	}
 
 	function toggleLock(preset: Preset) {
-		storageService.togglePresetLock({
+		documentService.togglePresetLock({
 			path: {
 				filename: preset.name,
 				filetype: 'json',
