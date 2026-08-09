@@ -6,7 +6,7 @@
 	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
 
-	import DocumentService from '$lib/services/storage/document-service.svelte'
+	import TagService from '$lib/services/storage/tag-service.svelte'
 	import DialogSaveTag from '$lib/ui/controls/tags/DialogSaveTag.svelte'
 	import DialogDeleteTags from '$lib/ui/controls/tags/DialogDeleteTags.svelte'
 	import Loading from '$lib/ui/Loading.svelte'
@@ -15,15 +15,15 @@
 
 	const {oninput}: {oninput: (e: Event) => void} = $props()
 
-	let documentService: DocumentService = getContext('documentService')
+	let tagService: TagService = getContext('tagService')
 
 	let cta = $derived(page.params.page)
-	let base = $derived(documentService.base)
-	let loading = $derived(documentService.loading)
-	let error = $derived(documentService.error)
+	let baseTags = $derived(tagService.tags)
+	let loading = $derived(tagService.loading)
+	let error = $derived(tagService.error)
 
 	let tags = $derived.by(() => {
-		const menuItems = base.tags.reduce(
+		const menuItems = baseTags.reduce(
 			(
 				menus: InputGroupMenus,
 				{title, name, type, items}: TagGroup,
@@ -67,7 +67,7 @@
 					color="highlight"
 					label="Delete Tags"
 					cta="delete"
-					groups={documentService.tags}
+					groups={tagService.tags}
 				/>
 				<DialogSaveTag
 					id="dialog-create-tags"
@@ -76,7 +76,7 @@
 					cta="save"
 					asset="plus"
 					assetType="svg"
-					groups={documentService.tags}
+					groups={tagService.tags}
 				/>
 			</menu>
 		{/if}
@@ -87,13 +87,13 @@
 		<Feedback status="error" context="prose" variant="bare" asset="default">
 			<p>Failed to load Tags.</p>
 		</Feedback>
-	{:else if base.tags.length === 0}
+	{:else if baseTags.length === 0}
 		<div class="scroll:container font:sm shape:mellow surface:1:neutral">
 			<p class="font:heading font:semibold text:center">No tags found</p>
 		</div>
 	{:else}
 		<div class="l:flex:2xs align:start justify:between">
-			{#each base.tags as group, i (i)}
+			{#each baseTags as group, i (i)}
 				<InputGroup
 					id={group.name}
 					name={group.name}
