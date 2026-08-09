@@ -12,7 +12,7 @@
 		"package": "svelte-kit sync && svelte-package && publint",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-		"format": "prettier --write .",
+		"format": "prettier --write --ignore-path=../../.prettierignore .",
 		"lint": "prettier --check . && eslint .",
 		"test": "pnpm test:unit",
 		"test:unit": "vitest run",
