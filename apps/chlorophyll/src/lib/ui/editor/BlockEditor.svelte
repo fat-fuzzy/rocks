@@ -13,12 +13,14 @@
 
 	import {applyTags} from '$lib/common/tags'
 	import DocumentService from '$lib/services/storage/document-service.svelte'
+	import TagService from '$lib/services/storage/tag-service.svelte'
 	import DialogDeleteBlock from '$lib/ui/controls/block/DialogDeleteBlock.svelte'
 	import SelectTags from '$lib/ui/controls/tags/SelectTags.svelte'
 
 	const {Editor} = prose.editor
 
 	let documentService: DocumentService = getContext('documentService')
+	let tagService: TagService = getContext('tagService')
 
 	let {
 		id,
@@ -113,7 +115,7 @@
 			type,
 			id,
 			currentTags: block.tags,
-			tagGroups: documentService.tags,
+			tagGroups: tagService.tags,
 		})
 
 		block.tags = updatedTags
@@ -148,7 +150,7 @@
 		size="sm"
 		oninput={updateTags}
 		value={block.tags}
-		tagGroups={documentService.tags}
+		tagGroups={tagService.tags}
 	/>
 {/snippet}
 

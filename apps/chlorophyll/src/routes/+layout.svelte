@@ -7,8 +7,7 @@
 	import {buildNav} from '$data/nav'
 
 	import {initBridge, destroyBridge} from '$lib/services/storage/bridge'
-	import DocumentService from '$lib/services/storage/document-service.svelte'
-	import ExportService from '$lib/services/export'
+	import {createServices} from '$lib/services/container'
 	import Dialog from '$lib/ui/overlays/dialog/Dialog.svelte'
 
 	// @ts-expect-error types not used for css
@@ -32,10 +31,11 @@
 	/**
 	 * Register Contexts
 	 */
-	const documentService = new DocumentService()
-	const exportService = new ExportService()
+	const {seedService, documentService, tagService, exportService} =
+		createServices()
 
 	setContext('documentService', documentService)
+	setContext('tagService', tagService)
 	setContext('exportService', exportService)
 
 	/**
@@ -106,7 +106,10 @@
 
 	onMount(async () => {
 		initBridge()
-		await documentService.init({base, structures}, seed)
+
+		await seedService.init({base, structures}, seed)
+		await documentService.init()
+		await tagService.init()
 	})
 
 	onDestroy(() => destroyBridge())

@@ -17,6 +17,7 @@
 	} from '$app/env/public'
 
 	import DocumentService from '$lib/services/storage/document-service.svelte'
+	import TagService from '$lib/services/storage/tag-service.svelte'
 	import DocumentEditor from '$lib/ui/editor/DocumentEditor.svelte'
 	import DocumentBuilder from '$lib/ui/builder/DocumentBuilder.svelte'
 	import ContentActions from '$lib/ui/controls/ContentActions.svelte'
@@ -27,6 +28,7 @@
 	const {PageRails} = ui.content
 
 	let documentService: DocumentService = getContext('documentService')
+	let tagService: TagService = getContext('tagService')
 
 	let boundForm: HTMLFormElement | undefined = $state()
 	let pageContext = $derived({...page.data.pageContext, label: 'On this Page'})
@@ -62,7 +64,7 @@
 	)
 
 	let selectedTags: string[] = $derived(
-		documentService.tags.reduce((selected: string[], menu: TagGroup) => {
+		tagService.tags.reduce((selected: string[], menu: TagGroup) => {
 			return selected.concat(page.url.searchParams.getAll(menu.name) || [])
 		}, []),
 	)
