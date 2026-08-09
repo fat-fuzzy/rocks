@@ -8,7 +8,7 @@
 		"commit": "git-cz",
 		"test:tofix": "mocha *.test.js",
 		"test": "echo \"@fat-fuzzy/cz-changelog: no tests specified\"",
-		"format": "prettier --write *.js",
+		"format": "prettier --write --ignore-path=../../.prettierignore .",
 		"semantic-release": "semantic-release"
 	},
 	"homepage": "https://github.com/fat-fuzzy/rocks/tree/main/packages/cz-changelog",
