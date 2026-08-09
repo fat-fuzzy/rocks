@@ -4,7 +4,7 @@
 
 import type {FileExt, DocPath, Section, Block, SeedType} from '$types'
 
-import {sanitizeFileName} from '$lib/utils/sanitize'
+import {sanitizeFileName} from '$lib/common/sanitize'
 
 const SEED_TYPES: SeedType[] = ['root', 'backup', 'base', 'structure']
 

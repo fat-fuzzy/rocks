@@ -1,13 +1,13 @@
 <script lang="ts">
 	import type {UiColor} from '@fat-fuzzy/ui'
-	import type {DocFormat, DocLanguage, Section} from '$types'
+	import type {ActionCrud, DocFormat, DocLanguage, Section} from '$types'
 
 	import * as validators from '$lib/generated/ajv/validation/validate.ajv.mjs'
 
 	import {getContext, onDestroy, onMount} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
 
-	import StorageService from '$lib/common/services/storage.svelte'
+	import DocumentService from '$lib/services/storage/document-service.svelte'
 	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
 	import {
 		PUBLIC_DOCUMENT_FORMAT,
@@ -20,12 +20,13 @@
 
 	interface Props {
 		formats: DocFormat[]
-		cta: 'save' | 'delete' | 'update' | 'copy'
+		cta: ActionCrud
 		color?: UiColor
 	}
 	let {formats, cta, color = 'primary'}: Props = $props()
 
-	let storageService: StorageService = getContext('storageService')
+	let documentService: DocumentService = getContext('documentService')
+
 	const validator = new FormValidator(
 		'FormSectionValidationFunction',
 		validators,
@@ -129,7 +130,7 @@
 	}
 
 	function checkSectionExists(sectionName: string): Section | undefined {
-		return storageService.getSectionByName({
+		return documentService.getSectionByName({
 			language: PUBLIC_DOCUMENT_LANGUAGE as DocLanguage,
 			format: PUBLIC_DOCUMENT_FORMAT as DocFormat,
 			name: sectionName,
@@ -149,7 +150,7 @@
 			formats,
 		}
 
-		storageService.createSection(newSection)
+		documentService.createSection(newSection)
 
 		dialogActor.close()
 
@@ -162,7 +163,7 @@
 
 	function deleteSection() {
 		// TODO
-		// storageService.deleteSection({
+		// documentService.deleteSection({
 		// 	path: {
 		// 		filename: sectionName,
 		// 		filetype: 'json',

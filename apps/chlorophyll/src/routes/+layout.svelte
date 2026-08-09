@@ -5,8 +5,9 @@
 	import {setContext, onMount, onDestroy} from 'svelte'
 
 	import {buildNav} from '$data/nav'
-	import StorageService from '$lib/common/services/storage.svelte'
-	import ExportService from '$lib/common/services/export'
+
+	import {initBridge, destroyBridge} from '$lib/services/storage/bridge'
+	import {createServices} from '$lib/services/container'
 	import Dialog from '$lib/ui/overlays/dialog/Dialog.svelte'
 
 	// @ts-expect-error types not used for css
@@ -21,29 +22,37 @@
 	const {LayoutGrid} = ui.content
 	const {Magic} = ui.blocks
 
-	type Props = {
+	let {
+		children,
+	}: {
 		children: Snippet
-	}
+	} = $props()
 
 	/**
 	 * Register Contexts
 	 */
-	const storageService = new StorageService()
-	const exportService = new ExportService()
+	const {
+		seedService,
+		documentService,
+		tagService,
+		presetService,
+		exportService,
+	} = createServices()
 
-	setContext('storageService', storageService)
+	setContext('documentService', documentService)
+	setContext('tagService', tagService)
+	setContext('presetService', presetService)
 	setContext('exportService', exportService)
 
-	let {children}: Props = $props()
-
 	/**
-	 * Retrieve loaded data
+	 * Setup page data (loaded / generated)
 	 */
 	const sidenav = buildNav('chlorophyll')
 
 	let pathname = $derived(page.url.pathname)
 	let layout: UiLayout = $derived.by(() => {
 		const _page = page.params.page ? page.params.page : page.url.pathname
+
 		switch (_page) {
 			case 'build':
 			case 'edit':
@@ -74,12 +83,9 @@
 		},
 	})
 
-	function updateSettings(event: Event) {
-		const target = event.target as HTMLInputElement
-		// @ts-expect-error expect target name  to be brightness sor contrast
-		appContext[target.name] = target.value
-	}
-
+	/**
+	 * Setup UI layout
+	 */
 	const areas: AreaProps[] = $derived([
 		{
 			zone: zoneHeader,
@@ -98,16 +104,22 @@
 		},
 	])
 
-	onMount(async () => {
-		if (!window.Worker) {
-			// FIXME: add user feedback
-			console.log("Your browser doesn't support web workers.")
-		}
+	function updateSettings(event: Event) {
+		const target = event.target as HTMLInputElement
+		// @ts-expect-error expect target name to be brightness or contrast
+		appContext[target.name] = target.value
+	}
 
-		await storageService.init({base, structures}, seed)
+	onMount(async () => {
+		initBridge()
+
+		await seedService.init({base, structures}, seed)
+		await documentService.init()
+		await tagService.init()
+		await presetService.init()
 	})
 
-	onDestroy(() => storageService.destroy())
+	onDestroy(() => destroyBridge())
 </script>
 
 <LayoutGrid

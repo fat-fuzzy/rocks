@@ -1,16 +1,26 @@
 <script lang="ts">
-	import type {FileExt, Prose, Block, DocLanguage, DocFormat} from '$types'
+	import type {
+		FileExt,
+		Prose,
+		Block,
+		DocLanguage,
+		DocFormat,
+		InputCheckedTypes,
+	} from '$types'
 
 	import {getContext} from 'svelte'
 	import prose from '@fat-fuzzy/prose'
 
-	import StorageService from '$lib/common/services/storage.svelte'
+	import {applyTags} from '$lib/common/tags'
+	import DocumentService from '$lib/services/storage/document-service.svelte'
+	import TagService from '$lib/services/storage/tag-service.svelte'
 	import DialogDeleteBlock from '$lib/ui/controls/block/DialogDeleteBlock.svelte'
 	import SelectTags from '$lib/ui/controls/tags/SelectTags.svelte'
 
 	const {Editor} = prose.editor
 
-	let storageService: StorageService = getContext('storageService')
+	let documentService: DocumentService = getContext('documentService')
+	let tagService: TagService = getContext('tagService')
 
 	let {
 		id,
@@ -49,14 +59,20 @@
 			html: content.html, // FIXME: sanitize
 			json: {},
 		},
-		tags: [...tags],
+		tags,
 	})
 
 	let menus = $derived.by(() => {
 		const _menus = [
-			{options: {id: `tags-${id}`, label: 'Tags'}, menu: blockTags},
 			{
-				options: {id: `delete-block-${id}`, label: 'Delete'},
+				options: {id: `tags-${id}`, label: 'Tags'},
+				menu: blockTags,
+			},
+			{
+				options: {
+					id: `delete-block-${id}`,
+					label: 'Delete',
+				},
 				menu: deleteBlock,
 			},
 		]
@@ -78,80 +94,44 @@
 			block,
 		}
 
-		storageService.saveBlock(updated)
+		documentService.saveBlock(updated)
 	}
 
 	function updateTags(event: Event) {
 		const target = event.target as HTMLInputElement
 		const value = String(target.value)
-		const type = String(target.type)
 
-		if (value) {
-			const groupSelectAll = value.indexOf('all-save-')
-
-			if (type === 'radio') {
-				block.tags = block.tags.filter((t) => !group?.includes(t))
-				block.tags.push(value)
-			} else {
-				if (groupSelectAll === -1) {
-					if (!block.tags.includes(value)) {
-						block.tags.push(value)
-					} else {
-						block.tags = block.tags.filter((t) => t !== value)
-					}
-				} else {
-					// TODO: clean this up
-					const group = String(value).substring(`'all-save-${id}`.length)
-
-					const groupItems = storageService.tags.find(
-						(g) => g.name === group,
-					)?.items
-
-					if (!groupItems || groupItems.length === 0) {
-						return
-					} else {
-						const tagsInBlock = []
-
-						for (const tag of groupItems) {
-							if (block.tags.includes(tag)) {
-								tagsInBlock.push(tag)
-							}
-						}
-
-						// Retain all tags not in this group (doing this to avoid duplicates later)
-						// TODO: use Set
-						block.tags = block.tags.filter((t) => !groupItems.includes(t))
-
-						// If Block contains all tags already, selectAll will remove them all
-						if (tagsInBlock.length === groupItems.length) {
-							// Do nothing
-						} else {
-							// Else it will add them all
-							block.tags = [...block.tags, ...groupItems]
-						}
-					}
-				}
-			}
-
-			if (block.tags.length === 0) {
-				block.tags = ['untagged']
-			} else if (block.tags.length > 1 && block.tags.includes('untagged')) {
-				block.tags = block.tags.filter((t) => t !== 'untagged')
-			}
-
-			let updated = {
-				language,
-				format,
-				path: {
-					filename: name,
-					filetype: 'json' as FileExt,
-					parent: isMainContentBlock ? undefined : sectionName,
-				},
-				block,
-			}
-
-			storageService.saveBlock(updated)
+		// The actual tag name to update
+		if (!value) {
+			return
 		}
+
+		const type = String(target.type) as InputCheckedTypes
+
+		const updatedTags = applyTags({
+			cta: 'save',
+			value,
+			name: String(target.name),
+			type,
+			id,
+			currentTags: block.tags,
+			tagGroups: tagService.tags,
+		})
+
+		block.tags = updatedTags
+
+		let updated = {
+			language,
+			format,
+			path: {
+				filename: name,
+				filetype: 'json' as FileExt,
+				parent: isMainContentBlock ? undefined : sectionName,
+			},
+			block,
+		}
+
+		documentService.saveBlock(updated)
 	}
 
 	$effect(() => {
@@ -170,7 +150,7 @@
 		size="sm"
 		oninput={updateTags}
 		value={block.tags}
-		tagGroups={storageService.tags}
+		tagGroups={tagService.tags}
 	/>
 {/snippet}
 

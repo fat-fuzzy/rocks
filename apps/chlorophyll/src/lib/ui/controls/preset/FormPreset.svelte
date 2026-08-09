@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {Preset} from '$types'
+	import type {ActionCrud, Preset} from '$types'
 	import type {UiColor} from '@fat-fuzzy/ui'
 	import * as validators from '$lib/generated/ajv/validation/validate.ajv.mjs'
 
@@ -8,20 +8,22 @@
 	import ui from '@fat-fuzzy/ui'
 
 	import {page} from '$app/state'
-	import StorageService from '$lib/common/services/storage.svelte'
+
+	import PresetService from '$lib/services/storage/preset-service.svelte'
 	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
 
 	const {Button, Input, Feedback} = ui.blocks
 	const {FormValidator} = ui.utils
 
 	interface Props {
-		cta: 'save' | 'delete' | 'update' | 'copy'
+		cta: ActionCrud
 		preset: Preset
 		color?: UiColor
 	}
 	let {cta, preset, color = 'primary'}: Props = $props()
 
-	let storageService: StorageService = getContext('storageService')
+	let presetService: PresetService = getContext('presetService')
+
 	const validator = new FormValidator(
 		'FormPresetValidationFunction',
 		validators,
@@ -83,7 +85,7 @@
 	}
 
 	function checkPresetExists(presetName: string): Preset | undefined {
-		return storageService.getPreset(presetName)
+		return presetService.getPreset(presetName)
 	}
 
 	function savePreset() {
@@ -97,7 +99,7 @@
 		url.searchParams.delete('preset')
 		url.searchParams.append('preset', presetName)
 
-		storageService.savePreset({
+		presetService.savePreset({
 			path: {
 				filename: presetName,
 				filetype: 'json',
@@ -123,7 +125,7 @@
 	function deletePreset() {
 		const presetName = String(toUpdate.name)
 
-		storageService.deletePreset({
+		presetService.deletePreset({
 			path: {
 				filename: presetName,
 				filetype: 'json',

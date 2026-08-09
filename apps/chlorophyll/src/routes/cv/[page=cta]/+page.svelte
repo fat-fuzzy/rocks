@@ -16,7 +16,8 @@
 		PUBLIC_DOCUMENT_FORMAT,
 	} from '$app/env/public'
 
-	import StorageService from '$lib/common/services/storage.svelte'
+	import DocumentService from '$lib/services/storage/document-service.svelte'
+	import TagService from '$lib/services/storage/tag-service.svelte'
 	import DocumentEditor from '$lib/ui/editor/DocumentEditor.svelte'
 	import DocumentBuilder from '$lib/ui/builder/DocumentBuilder.svelte'
 	import ContentActions from '$lib/ui/controls/ContentActions.svelte'
@@ -26,7 +27,8 @@
 
 	const {PageRails} = ui.content
 
-	let storageService: StorageService = getContext('storageService')
+	let documentService: DocumentService = getContext('documentService')
+	let tagService: TagService = getContext('tagService')
 
 	let boundForm: HTMLFormElement | undefined = $state()
 	let pageContext = $derived({...page.data.pageContext, label: 'On this Page'})
@@ -50,7 +52,7 @@
 	)
 
 	let structure = $derived(
-		storageService.structures.find(
+		documentService.structures.find(
 			(s: FrontmatterStructure) => s.format === format,
 		),
 	)
@@ -62,7 +64,7 @@
 	)
 
 	let selectedTags: string[] = $derived(
-		storageService.tags.reduce((selected: string[], menu: TagGroup) => {
+		tagService.tags.reduce((selected: string[], menu: TagGroup) => {
 			return selected.concat(page.url.searchParams.getAll(menu.name) || [])
 		}, []),
 	)
@@ -100,7 +102,7 @@
 	layout="railway"
 >
 	{#snippet main()}
-		{#if storageService.loading}
+		{#if documentService.loading}
 			<div class="w:full col:center">
 				<div class="l:frame:round">
 					<Loading

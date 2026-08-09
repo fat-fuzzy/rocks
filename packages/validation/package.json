@@ -16,7 +16,7 @@
 		"build:ajv": "pnpm build:schemas && rollup --config rollup.config.ajv.js",
 		"gen:config-validator": "node src/ajv/config/generateConfigValidator.js",
 		"lint": "prettier --check . && eslint .",
-		"format": "prettier --write .",
+		"format": "prettier --write --ignore-path=../../.prettierignore .",
 		"dev": "rollup -c -w",
 		"dev:ajv": "rollup --config rollup.config.ajv.js -w",
 		"test": "pnpm test:unit && pnpm test:integrity",

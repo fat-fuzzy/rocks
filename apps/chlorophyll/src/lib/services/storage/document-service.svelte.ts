@@ -9,58 +9,38 @@ import type {
 	Section,
 	Block,
 	Prose,
-	Preset,
 	DocumentStore,
-	PresetStore,
 	DocumentIndex,
-	PresetIndex,
 	OPFSDocumentTree,
-	OPFSPresetTree,
-	SeedDocument,
-	TagIndex,
-	FrontmatterSeed,
 	FrontmatterStructure,
 	FrontmatterBase,
 	OPFSBaseTree,
 	OPFSStructureTree,
 	DocContentType,
-	TagGroup,
-	FileExt,
 } from '$types'
 
 import {PUBLIC_DOCUMENT_LANGUAGE, PUBLIC_DOCUMENT_FORMAT} from '$app/env/public'
 
 import WorkerBridge from '$lib/workers/worker-bridge'
-import StorageWorker from '$lib/workers/storage.worker?worker'
+import {getBridge} from '$lib/services/storage/bridge'
 
-import {
-	getSectionKey,
-	getBlockKey,
-	getPresetKey,
-	getTagKey,
-} from '$lib/utils/format'
+import {getSectionKey, getBlockKey} from '$lib/common/format'
 
 import {
 	opfsBaseTreeToFrontmatterBase,
 	opfsDocumentTreeToDocumentStore,
-	opfsPresetTreeToPresetStore,
 	opfsStructureTreeToFrontmatterStructures,
 } from '$lib/common/transform/opfs-to-document'
 
-import {
-	buildDocumentIndex,
-	buildPresetIndex,
-	buildTagIndex,
-} from '$lib/common/transform/store-to-index'
+import {buildDocumentIndex} from '$lib/common/transform/store-to-index'
 
 /**
  * StorageService class to manage access to stored content
  * Maintains a cache of data in memory
  * Sends/receive messages via worker bridge
  */
-export default class StorageService {
+export default class DocumentService {
 	bridge: WorkerBridge | undefined = $state()
-	seeded: {date_seed?: string; source?: string} = $state({})
 	loading = $state(false)
 	error = $state(false)
 	base: FrontmatterBase = $state({
@@ -72,48 +52,22 @@ export default class StorageService {
 	})
 	structures: FrontmatterStructure[] = $state([])
 	content: DocumentStore = $state({})
-	presets: PresetStore = $state({})
-	tags: TagGroup[] = $derived(this.base.tags ?? [])
 	documentIndex: DocumentIndex = $derived(buildDocumentIndex(this.content))
-	presetIndex: PresetIndex = $derived(buildPresetIndex(this.presets))
-	tagIndex: TagIndex = $derived(
-		buildTagIndex(this.tags, Object.values(this.documentIndex.blocks)),
-	)
 	blockEditorsLoaded: {[name: string]: Block} = $state({})
 	sectionEditorsLoaded: {[name: string]: Section} = $state({})
-
-	export = $state({
-		type: 'doc-root',
-		meta: {},
-		data: '',
-	})
-	import = $state('')
 
 	constructor() {
 		this.loading = true
 	}
 
-	async init(
-		frontmatter: FrontmatterSeed,
-		seed: {content: SeedDocument[]; structures: FrontmatterStructure[]},
-	) {
-		const worker = new StorageWorker()
-		this.bridge = new WorkerBridge(worker)
-
+	async init() {
+		this.bridge = getBridge()
 		try {
 			this.loading = true
-			const seeded = await this.checkSeed()
 
-			if (seeded) {
-				this.seeded = seeded
-				// TODO: only seed if seed timestamp > local date_seed && seed source !== backup
-				await this.getAllDocuments()
-				await this.getAllPresets()
-				await this.getDocumentBase()
-				await this.getDocumentStructure()
-			} else if (seed.content.length) {
-				await this.initSeed(frontmatter, seed.content)
-			}
+			await this.getAllDocuments()
+			await this.getDocumentBase()
+			await this.getDocumentStructure()
 		} catch {
 			this.error = true
 		} finally {
@@ -123,8 +77,6 @@ export default class StorageService {
 
 	reset() {
 		this.content = {}
-		this.presets = {}
-		this.seeded = {}
 		this.base = {
 			schema_version: '0.1',
 			languages: [PUBLIC_DOCUMENT_LANGUAGE as DocLanguage],
@@ -133,91 +85,6 @@ export default class StorageService {
 			settings: [],
 		}
 		this.structures = []
-	}
-
-	/**
-	 * Retrieve seed-flag if any
-	 * @param meta metadata to retrieve file
-	 * @returns a Promise that will update when the worker message arrives
-	 */
-	async checkSeed() {
-		if (!this.bridge) {
-			return
-		}
-
-		// FIXME: this is fragile
-		const base = (await this.bridge.checkSeed('base')) as {
-			seeded: {date_seed?: string; source?: string}
-		}
-
-		const structure = (await this.bridge.checkSeed('structure')) as {
-			seeded: {date_seed?: string; source?: string}
-		}
-
-		let content = (await this.bridge.checkSeed('root')) as {
-			seeded: {date_seed?: string; source?: string}
-		}
-
-		if (!content.seeded) {
-			content = (await this.bridge.checkSeed('backup')) as {
-				seeded: {date_seed?: string; source?: string}
-			}
-		}
-
-		if (!content.seeded) {
-			return content.seeded
-		}
-
-		return base.seeded && structure.seeded
-	}
-
-	/**
-	 * Initialize OPFS storage from seed markdown data
-	 * @param seed: parsed markdown data as JSON
-	 * @returns a Promise that will update when the worker message arrives
-	 */
-	async initSeed(frontmatter: FrontmatterSeed, seed: SeedDocument[]) {
-		if (!this.bridge) {
-			return
-		}
-
-		const documents = (await this.bridge.seedDocuments({seed})) as {
-			seeded: number
-		}
-		const base = (await this.bridge.seedBase({
-			base: frontmatter.base,
-		})) as {
-			seeded: number
-		}
-
-		const structure = (await this.bridge.seedStructure({
-			structures: frontmatter.structures,
-		})) as {
-			seeded: number
-		}
-
-		await this.getAllDocuments()
-		await this.getAllPresets()
-		await this.getDocumentBase()
-		await this.getDocumentStructure()
-
-		// FIXME: adjust and make use of this data or remove it
-		return {documents, base, structure}
-	}
-
-	async importFromJSON(jsonString: string) {
-		if (!this.bridge) {
-			return
-		}
-
-		this.loading = true
-
-		const {content, presets, base} = JSON.parse(jsonString)
-		await this.bridge.restoreFromBackup({content, presets, base})
-		await this.getAllDocuments()
-		await this.getAllPresets()
-
-		this.loading = false
 	}
 
 	/**
@@ -639,141 +506,6 @@ export default class StorageService {
 	}
 
 	/**
-	 * Get selected presets for given [language*format]
-	 * @param options section selection to load, blocks to load within presets
-	 * @returns filtered presets array with filtered blocks
-	 */
-	getIndexedPresets(options: {
-		presets: string[]
-	}): {name: string; preset: Preset}[] {
-		const {presets} = options
-
-		const selected = presets.map((name) => ({
-			name: name,
-			preset: this.presetIndex.presets[getPresetKey(name)],
-		}))
-
-		return selected
-	}
-
-	/**
-	 * @param options tag data
-	 */
-	async createTag(options: {
-		name: Slug
-		group: {name: Slug; title: string; type?: string}
-	}): Promise<{id: string} | void> {
-		if (!this.bridge) {
-			return
-		}
-
-		const group = this.base.tags.find((tg) => tg.name === options.group.name)
-
-		if (!group) {
-			this.base.tags.push({...options.group, items: [options.name]})
-		} else {
-			if (group.items.some((i) => i === options.name)) {
-				throw Error(
-					`A tag named ${options.name} already exists in group ${options.group.title}`,
-				)
-			} else {
-				group.items.push(options.name)
-			}
-		}
-
-		await this.bridge.saveBase({base: JSON.parse(JSON.stringify(this.base))})
-	}
-
-	/**
-	 * @param options tags to delete
-	 */
-	async deleteTags(options: {
-		groups: {name: Slug; items: string[]}[]
-	}): Promise<{id: string} | void> {
-		if (!this.bridge) {
-			return
-		}
-
-		const tagGroupsToKeep = this.base.tags.filter((tg) => {
-			return !options.groups.some((g) => g.name === tg.name)
-		})
-
-		for (const group of options.groups) {
-			const groupToUpdate = this.base.tags.find((tg) => tg.name === group.name)
-
-			if (!groupToUpdate) {
-				throw Error(`No tag group found with name ${group.name}`)
-			} else {
-				// TODO: clean this up
-				// Update tag groups
-				const tagsToKeep = []
-
-				for (const tag of groupToUpdate.items) {
-					if (!group.items.includes(tag)) {
-						tagsToKeep.push(tag)
-					}
-				}
-
-				if (tagsToKeep.length > 0) {
-					groupToUpdate.items = tagsToKeep
-					tagGroupsToKeep.push(groupToUpdate)
-				}
-
-				// Remove deleted tags from tagged blocks
-				const blocksToUpdate = []
-
-				for (const tag of group.items) {
-					const tagKey = getTagKey(group.name, tag)
-
-					const taggedBlocks = this.tagIndex.taggedBlocks[tagKey]
-
-					if (taggedBlocks) {
-						for (const block of taggedBlocks) {
-							const tagsInBlock = []
-
-							for (const tag of tagsToKeep) {
-								if (block.tags.includes(tag)) {
-									tagsInBlock.push(tag)
-								}
-							}
-
-							block.tags = block.tags.filter((t) => !group.items.includes(t))
-							block.tags = [...block.tags, ...tagsInBlock]
-
-							blocksToUpdate.push(block)
-						}
-					}
-				}
-
-				const {languages, formats} = this.base
-
-				for (const block of blocksToUpdate) {
-					for (const language of languages) {
-						for (const format of formats) {
-							const section = this.getSectionById(block.parentId)
-
-							await this.saveBlock({
-								language,
-								format,
-								block,
-								path: {
-									filename: block.name,
-									filetype: 'json' as FileExt,
-									parent: section.name,
-								},
-							})
-						}
-					}
-				}
-			}
-		}
-
-		this.base.tags = tagGroupsToKeep
-
-		await this.bridge.saveBase({base: JSON.parse(JSON.stringify(this.base))})
-	}
-
-	/**
 	 * Load full document tree from storage
 	 */
 	async getDocumentBase() {
@@ -829,113 +561,5 @@ export default class StorageService {
 
 		await this.bridge.deleteAll()
 		this.reset()
-	}
-
-	/**
-	 * Get preset by name
-	 * @param name
-	 */
-	getPreset(name: string): Preset {
-		return this.presetIndex.presets[getPresetKey(name)]
-	}
-
-	/**
-	 * Save preset
-	 * @param meta preset metadata to update (save or create)
-	 * @param content { query: string } preset query
-	 */
-	async savePreset(options: {
-		path: DocPath
-		meta: DocMeta
-		preset: {id?: Uuid; name: string; query: string}
-	}) {
-		if (!this.bridge) {
-			return
-		}
-
-		const {path, meta, preset} = options
-
-		const toUpdate: Preset = {...preset, id: preset.id ?? crypto.randomUUID()}
-
-		await this.bridge.savePreset({
-			path,
-			meta,
-			preset: toUpdate,
-		})
-
-		this.presets[options.preset.name] = toUpdate
-		this.presetIndex.presets[getPresetKey(toUpdate.name)] = toUpdate
-	}
-
-	/**
-	 * Delete preset
-	 * @param meta metadata of preset to delete
-	 */
-	async deletePreset(options: {path: DocPath; meta: DocMeta}) {
-		if (!this.bridge) {
-			return
-		}
-
-		const raw = (await this.bridge.deletePreset(options)) as {deleted: boolean}
-
-		if (raw.deleted) {
-			delete this.presets[options.meta.name]
-			delete this.presetIndex.presets[getPresetKey(options.meta.name)]
-		}
-	}
-
-	/**
-	 * Load all presets for nav display
-	 */
-	async getAllPresets() {
-		if (!this.bridge) {
-			return
-		}
-
-		const raw = (await this.bridge.getAllPresets()) as OPFSPresetTree
-		this.presets = opfsPresetTreeToPresetStore(raw)
-	}
-
-	/**
-	 * Load all presets for nav display
-	 */
-	loadPresets(): Record<string, Preset> {
-		return this.presetIndex.presets
-	}
-
-	/**
-	 * Lock preset to prevent accidental editing / deleting
-	 * @param meta preset metadata to update (save or create)
-	 * @param content { query: string } preset query
-	 */
-	async togglePresetLock(options: {
-		path: DocPath
-		meta: DocMeta
-		preset: {id?: Uuid; name: string; query: string}
-	}) {
-		if (!this.bridge) {
-			return
-		}
-
-		const {path, meta, preset} = options
-
-		const toUpdate: Preset = {...preset, id: preset.id ?? crypto.randomUUID()}
-
-		toUpdate.locked = !toUpdate.locked
-
-		await this.bridge.savePreset({
-			path,
-			meta,
-			preset: toUpdate,
-		})
-
-		this.presets[options.preset.name] = toUpdate
-		this.presetIndex.presets[getPresetKey(toUpdate.name)] = toUpdate
-	}
-
-	destroy() {
-		if (this.bridge) {
-			this.bridge.destroy()
-		}
 	}
 }

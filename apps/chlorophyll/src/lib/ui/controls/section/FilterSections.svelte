@@ -6,7 +6,7 @@
 	import ui from '@fat-fuzzy/ui'
 
 	import {page} from '$app/state'
-	import StorageService from '$lib/common/services/storage.svelte'
+	import DocumentService from '$lib/services/storage/document-service.svelte'
 	import {PUBLIC_DOCUMENT_FORMAT} from '$app/env/public'
 
 	const {InputGroup} = ui.blocks
@@ -14,7 +14,7 @@
 	const {color, oninput}: {color?: UiColor; oninput: (e: Event) => void} =
 		$props()
 
-	let storageService: StorageService = getContext('storageService')
+	let documentService: DocumentService = getContext('documentService')
 
 	let format = $derived(
 		(page.url.searchParams.get('format') ||
@@ -22,7 +22,7 @@
 	)
 
 	let structure = $derived(
-		storageService.structures.find(
+		documentService.structures.find(
 			(s: FrontmatterStructure) => s.format === format,
 		),
 	)

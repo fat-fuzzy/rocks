@@ -5,9 +5,9 @@
 	import {getContext} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
 
-	import {guardedExport} from '$lib/utils/download'
-	import StorageService from '$lib/common/services/storage.svelte'
-	import ExportService from '$lib/common/services/export'
+	import {guardedExport} from '$lib/common/download'
+	import DocumentService from '$lib/services/storage/document-service.svelte'
+	import ExportService from '$lib/services/export-service'
 	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
 
 	const {Button, Feedback} = ui.blocks
@@ -29,7 +29,7 @@
 		onImported,
 	}: Props = $props()
 
-	let storageService: StorageService = getContext('storageService')
+	let documentService: DocumentService = getContext('documentService')
 	let exportService: ExportService = getContext('exportService')
 
 	const statusLabel: Record<ImportStatus, string> = {
@@ -63,7 +63,7 @@
 
 			// 2. Import and write data
 			status = 'importing'
-			await storageService.importFromJSON(serialized)
+			await documentService.importFromJSON(serialized)
 
 			status = 'done'
 
@@ -109,7 +109,7 @@
 		status = 'deleting'
 
 		// 2. Delete existing storage: the import replaces OPFS content
-		await storageService.deleteAllContent()
+		await documentService.deleteAllContent()
 
 		status = 'ready'
 	}

@@ -1,9 +1,10 @@
 <script lang="ts">
-	import type {Preset} from '$types'
+	import type {ActionDoc, Preset} from '$types'
 
 	import {getContext} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
-	import StorageService from '$lib/common/services/storage.svelte'
+
+	import PresetService from '$lib/services/storage/preset-service.svelte'
 
 	const {Button} = ui.blocks
 
@@ -12,15 +13,15 @@
 		preset,
 		query,
 	}: {
-		cta: 'edit' | 'build' | 'preview' | 'print'
+		cta: ActionDoc
 		preset: Preset
 		query: string
 	} = $props()
 
-	let storageService: StorageService = getContext('storageService')
+	let presetService: PresetService = getContext('presetService')
 
 	function savePreset(preset: Preset) {
-		storageService.savePreset({
+		presetService.savePreset({
 			path: {
 				filename: preset.name,
 				filetype: 'json',

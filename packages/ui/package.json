@@ -14,7 +14,7 @@
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --check . && eslint .",
-		"format": "prettier --write .",
+		"format": "prettier --write --ignore-path=../../.prettierignore .",
 		"test": "pnpm test:unit && pnpm test:browser && pnpm test:e2e",
 		"test:unit": "vitest run",
 		"test:types": "vitest run --typecheck",

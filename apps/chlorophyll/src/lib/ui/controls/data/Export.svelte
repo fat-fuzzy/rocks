@@ -4,8 +4,8 @@
 	import ui from '@fat-fuzzy/ui'
 	import {getContext} from 'svelte'
 
-	import ExportService from '$lib/common/services/export'
-	import {generateDownload} from '$lib/utils/download'
+	import ExportService from '$lib/services/export-service'
+	import {generateDownload} from '$lib/common/download'
 
 	let exportService: ExportService = getContext('exportService')
 
