@@ -86,9 +86,18 @@ importers:
       '@types/node':
         specifier: '26'
         version: 26.1.2
+      '@vitest/browser':
+        specifier: 4.1.10
+        version: 4.1.10(vite@8.1.5(@types/node@26.1.2)(esbuild@0.27.7)(jiti@2.6.1)(sass@1.98.0)(terser@5.49.0)(yaml@2.9.0))(vitest@4.1.10)
       '@vitest/browser-playwright':
         specifier: 4.1.10
         version: 4.1.10(playwright@1.61.1)(vite@8.1.5(@types/node@26.1.2)(esbuild@0.27.7)(jiti@2.6.1)(sass@1.98.0)(terser@5.49.0)(yaml@2.9.0))(vitest@4.1.10)
+      '@vitest/coverage-v8':
+        specifier: 4.1.10
+        version: 4.1.10(@vitest/browser@4.1.10)(vitest@4.1.10)
+      '@vitest/ui':
+        specifier: 4.1.10
+        version: 4.1.10(vitest@4.1.10)
       ajv-errors:
         specifier: 3.0.0
         version: 3.0.0(ajv@8.18.0)
