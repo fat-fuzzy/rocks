@@ -17,6 +17,7 @@
 
 	import {applyTags} from '$lib/common/tags'
 	import DocumentService from '$lib/services/storage/document-service.svelte'
+	import TagService from '$lib/services/storage/tag-service.svelte'
 	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
 	import SelectTags from '$lib/ui/controls/tags/SelectTags.svelte'
 
@@ -33,6 +34,8 @@
 	let {block, parent, subsections, cta, color = 'primary'}: Props = $props()
 
 	let documentService: DocumentService = getContext('documentService')
+	let tagService: TagService = getContext('tagService')
+
 	const validator = new FormValidator('FormBlockValidationFunction', validators)
 
 	const inputTypes: {[name: string]: string} = {
@@ -193,7 +196,7 @@
 			type,
 			id: 'tags',
 			currentTags: toUpdate.tags,
-			tagGroups: documentService.tags,
+			tagGroups: tagService.tags,
 		})
 	}
 
@@ -404,7 +407,7 @@
 							cta="save"
 							oninput={updateTags}
 							value={[]}
-							tagGroups={documentService.tags}
+							tagGroups={tagService.tags}
 						/>
 					</div>
 				</div>
