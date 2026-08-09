@@ -39,6 +39,7 @@
 		exportService,
 	} = createServices()
 
+	setContext('seedService', seedService)
 	setContext('documentService', documentService)
 	setContext('tagService', tagService)
 	setContext('presetService', presetService)

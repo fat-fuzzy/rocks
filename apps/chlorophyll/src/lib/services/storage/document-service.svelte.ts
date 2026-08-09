@@ -549,17 +549,4 @@ export default class DocumentService {
 
 		this.content = opfsDocumentTreeToDocumentStore(raw)
 	}
-
-	/**
-	 * Delete all content and presets from OPFS storage
-	 * @returns void
-	 */
-	async deleteAllContent(): Promise<void> {
-		if (!this.bridge) {
-			return
-		}
-
-		await this.bridge.deleteAll()
-		this.reset()
-	}
 }

@@ -22,9 +22,8 @@
 		"format": "prettier --write --ignore-path=../../.prettierignore .",
 		"prepare": "svelte-kit sync || echo '' && husky",
 		"cz": "cz",
-		"test:unit": "vitest",
-		"test": "npm run test:unit -- --run && npm run test:e2e",
-		"test:e2e": "playwright test"
+		"test": "pnpm test:unit",
+		"test:unit": "vitest run"
 	},
 	"devDependencies": {
 		"@changesets/cli": "2.30.0",
@@ -40,7 +39,10 @@
 		"@sveltejs/kit": "2.70.2",
 		"@sveltejs/vite-plugin-svelte": "7.2.0",
 		"@types/node": "26",
+		"@vitest/browser": "4.1.10",
 		"@vitest/browser-playwright": "4.1.10",
+		"@vitest/coverage-v8": "4.1.10",
+		"@vitest/ui": "4.1.10",
 		"ajv-errors": "3.0.0",
 		"ajv-formats": "3.0.1",
 		"commitizen": "4.3.1",
