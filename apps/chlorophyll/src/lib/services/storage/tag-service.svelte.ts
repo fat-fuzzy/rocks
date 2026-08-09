@@ -61,10 +61,15 @@ export default class TagService {
 			return
 		}
 
-		const group = this.tags.find((tg) => tg.name === options.group.name)
+		const group = this.documentService.base.tags.find(
+			(tg) => tg.name === options.group.name,
+		)
 
 		if (!group) {
-			this.tags.push({...options.group, items: [options.name]})
+			this.documentService.base.tags.push({
+				...options.group,
+				items: [options.name],
+			})
 		} else {
 			if (group.items.some((i) => i === options.name)) {
 				throw Error(
@@ -74,7 +79,6 @@ export default class TagService {
 				group.items.push(options.name)
 			}
 		}
-		this.documentService.base.tags = this.tags
 
 		await this.bridge.saveBase({
 			base: JSON.parse(JSON.stringify(this.documentService.base)),
@@ -203,8 +207,7 @@ export default class TagService {
 			}
 		}
 
-		this.tags = tagGroupsToKeep
-		this.documentService.base.tags = this.tags
+		this.documentService.base.tags = tagGroupsToKeep
 
 		await this.bridge.saveBase({
 			base: JSON.parse(JSON.stringify(this.documentService.base)),
