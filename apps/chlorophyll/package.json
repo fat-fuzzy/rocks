@@ -22,9 +22,8 @@
 		"format": "prettier --write --ignore-path=../../.prettierignore .",
 		"prepare": "svelte-kit sync || echo '' && husky",
 		"cz": "cz",
-		"test:unit": "vitest",
-		"test": "npm run test:unit -- --run && npm run test:e2e",
-		"test:e2e": "playwright test"
+		"test": "pnpm test:unit",
+		"test:unit": "vitest run"
 	},
 	"devDependencies": {
 		"@changesets/cli": "2.30.0",

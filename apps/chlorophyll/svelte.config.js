@@ -20,10 +20,8 @@ const config = {
 			explicitEnvironmentVariables: true,
 		},
 		alias: {
-			$utils: path.resolve('./src/utils'),
 			$data: path.resolve('./src/data'),
-			$assets: path.resolve('./src/assets'),
-			$types: path.resolve('./src/lib/types/index'),
+			$types: path.resolve('./src/lib/types/index.ts'),
 			$schemas: path.resolve('./src/schemas'),
 		},
 		/**
