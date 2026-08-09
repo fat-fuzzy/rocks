@@ -13,7 +13,7 @@ Test [Lightning CSS](https://lightningcss.dev/docs.html#with-vite)
     - color: `color(display-p3 0.16 0.13 0.34)`
     - oklch: `oklch(0.29 0.1 286.67)`
     - Hex: `#2a215a`
-  -light:
+  - light:
     - color: `color(display-p3 0.94 0.94 0.99)`
     - oklch: `oklch(0.96 0.02 286.04)`
     - Hex: `#efefff`
