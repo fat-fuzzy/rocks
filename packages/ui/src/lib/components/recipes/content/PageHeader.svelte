@@ -3,7 +3,7 @@
 	import styleHelper from '$lib/utils/styles'
 
 	let {
-		title = 'PageHeder',
+		title = 'PageHeader',
 		text,
 		layout,
 		justify,

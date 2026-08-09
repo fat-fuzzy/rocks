@@ -7,6 +7,7 @@ import type {
 	NavItem,
 	UiLayoutProps,
 	CookiePreferences,
+	UiLayout,
 } from '$types'
 
 export type ProseProps = {
@@ -18,7 +19,7 @@ export type ProseProps = {
 
 export type PageHeaderProps = {
 	title: string
-	layout?: string
+	layout?: UiLayout
 	justify?: string
 	text?: UiSize
 	media?: boolean

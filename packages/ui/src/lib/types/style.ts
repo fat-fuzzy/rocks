@@ -10,6 +10,7 @@ export type UiLayout =
 	| 'stack'
 	| 'switcher'
 	| 'sidebar'
+	| 'center'
 	| 'grid'
 	| 'flex'
 	| 'reveal'
