@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {UiSize, PageRailsProps} from '$types'
+	import type {UiSize, PageRailsProps, UiLayout} from '$types'
 	import Head from '$lib/components/blocks/global/Head.svelte'
 	import PageHeader from '$lib/components/recipes/content/PageHeader.svelte'
 	import PageNav from '$lib/components/recipes/navs/PageNav.svelte'
@@ -90,7 +90,12 @@
 			<PageHeader {title} text={text as UiSize} layout="center" />
 		{/if}
 	{:else}
-		<PageHeader {title} text={text as UiSize} {justify} layout={headerLayout}>
+		<PageHeader
+			{title}
+			text={text as UiSize}
+			{justify}
+			layout={headerLayout as UiLayout}
+		>
 			{#snippet main()}
 				<Breadcrumbs
 					id={`${id}-header-content`}

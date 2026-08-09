@@ -27,7 +27,7 @@
 {#snippet headerMain()}
 	{#if main}
 		{@render main()}
-	{:else}
+	{:else if title}
 		<h1>{title}</h1>
 	{/if}
 {/snippet}

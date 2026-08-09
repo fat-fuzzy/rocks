@@ -36,7 +36,6 @@ export type PageProps = {
 	pageName?: string
 	text?: string
 	header?: SidebarLayoutProps
-	layout?: string
 	justify?: string
 	children?: Snippet
 }
