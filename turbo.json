@@ -2,53 +2,29 @@
 	"$schema": "https://turbo.build/schema.json",
 	"tasks": {
 		"build": {
-			"dependsOn": [
-				"^build"
-			],
-			"outputs": [
-				".svelte-kit/**",
-				"dist/**",
-				"package/**"
-			]
+			"dependsOn": ["^build"],
+			"outputs": [".svelte-kit/**", "dist/**", "package/**"]
 		},
 		"@fat-fuzzy/style#build:scss": {
-			"outputs": [
-				"src/lib/css/mixins/**"
-			],
+			"outputs": ["src/lib/css/mixins/**"],
 			"cache": false
 		},
 		"@fat-fuzzy/style#build:main": {
-			"dependsOn": [
-				"^@fat-fuzzy/style#build:scss"
-			],
-			"outputs": [
-				"dist/**"
-			],
+			"dependsOn": ["^@fat-fuzzy/style#build:scss"],
+			"outputs": ["dist/**"],
 			"cache": false
 		},
 		"@fat-fuzzy/style#build:lib": {
-			"dependsOn": [
-				"^@fat-fuzzy/style#build:scss"
-			],
-			"outputs": [
-				"dist/lib/**"
-			]
+			"dependsOn": ["^@fat-fuzzy/style#build:scss"],
+			"outputs": ["dist/lib/**"]
 		},
 		"test": {
-			"dependsOn": [
-				"^test"
-			],
-			"outputs": [
-				"tests/e2e/test-results/**"
-			]
+			"dependsOn": ["^test"],
+			"outputs": ["tests/e2e/test-results/**"]
 		},
 		"package": {
-			"dependsOn": [
-				"^package"
-			],
-			"outputs": [
-				"dist/**"
-			]
+			"dependsOn": ["^package"],
+			"outputs": ["dist/**"]
 		},
 		"lint": {
 			"outputs": []

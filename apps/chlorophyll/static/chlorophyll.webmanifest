@@ -5,11 +5,7 @@
 	"display": "standalone",
 	"theme_color": "hsl(244.37 100% 85%)",
 	"background_color": "hsl(240.03 100% 96%)",
-	"categories": [
-		"utilities",
-		"productivity",
-		"personalization"
-	],
+	"categories": ["utilities", "productivity", "personalization"],
 	"description": "Chlorophyll is Vital for photosynthesis, which allows one to absorb energy from our experiences' light, while producing oxygen for our peers in the process.",
 	"icons": [
 		{
