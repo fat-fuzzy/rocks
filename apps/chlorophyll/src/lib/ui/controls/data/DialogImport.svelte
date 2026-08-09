@@ -7,7 +7,7 @@
 
 	import {guardedExport} from '$lib/common/download'
 	import DocumentService from '$lib/services/storage/document-service.svelte'
-	import ExportService from '$lib/services/export'
+	import ExportService from '$lib/services/export-service'
 	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
 
 	const {Button, Feedback} = ui.blocks
