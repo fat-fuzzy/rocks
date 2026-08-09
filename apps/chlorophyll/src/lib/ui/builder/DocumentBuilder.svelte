@@ -4,7 +4,7 @@
 	import {getContext} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
 
-	import StorageService from '$lib/services/storage/storage.svelte'
+	import DocumentService from '$lib/services/storage/document-service.svelte'
 	import SectionBuilder from '$lib/ui/builder/SectionBuilder.svelte'
 	import PresetHeading from '$lib/ui/controls/preset/PresetHeading.svelte'
 
@@ -28,10 +28,10 @@
 		selectedTags: string[]
 	} = $props()
 
-	let storageService: StorageService = getContext('storageService')
+	let documentService: DocumentService = getContext('documentService')
 
 	let currentPreset = $derived(
-		preset ? storageService.getPreset(preset) : undefined,
+		preset ? documentService.getPreset(preset) : undefined,
 	)
 	let contentClass = $derived(
 		selectedSections.length === 0 ? '' : 'doc-builder l:stack:3xl',

@@ -3,7 +3,7 @@
 
 	import {getContext} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
-	import StorageService from '$lib/services/storage/storage.svelte'
+	import DocumentService from '$lib/services/storage/document-service.svelte'
 
 	const {Button} = ui.blocks
 
@@ -17,10 +17,10 @@
 		query: string
 	} = $props()
 
-	let storageService: StorageService = getContext('storageService')
+	let documentService: DocumentService = getContext('documentService')
 
 	function savePreset(preset: Preset) {
-		storageService.savePreset({
+		documentService.savePreset({
 			path: {
 				filename: preset.name,
 				filetype: 'json',

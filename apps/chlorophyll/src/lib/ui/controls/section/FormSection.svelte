@@ -7,7 +7,7 @@
 	import {getContext, onDestroy, onMount} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
 
-	import StorageService from '$lib/services/storage/storage.svelte'
+	import DocumentService from '$lib/services/storage/document-service.svelte'
 	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
 	import {
 		PUBLIC_DOCUMENT_FORMAT,
@@ -25,7 +25,8 @@
 	}
 	let {formats, cta, color = 'primary'}: Props = $props()
 
-	let storageService: StorageService = getContext('storageService')
+	let documentService: DocumentService = getContext('documentService')
+
 	const validator = new FormValidator(
 		'FormSectionValidationFunction',
 		validators,
@@ -129,7 +130,7 @@
 	}
 
 	function checkSectionExists(sectionName: string): Section | undefined {
-		return storageService.getSectionByName({
+		return documentService.getSectionByName({
 			language: PUBLIC_DOCUMENT_LANGUAGE as DocLanguage,
 			format: PUBLIC_DOCUMENT_FORMAT as DocFormat,
 			name: sectionName,
@@ -149,7 +150,7 @@
 			formats,
 		}
 
-		storageService.createSection(newSection)
+		documentService.createSection(newSection)
 
 		dialogActor.close()
 
@@ -162,7 +163,7 @@
 
 	function deleteSection() {
 		// TODO
-		// storageService.deleteSection({
+		// documentService.deleteSection({
 		// 	path: {
 		// 		filename: sectionName,
 		// 		filetype: 'json',
