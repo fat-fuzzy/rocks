@@ -37,7 +37,7 @@
 		"@fat-fuzzy/validation": "workspace:*",
 		"@playwright/test": "1.61.1",
 		"@sveltejs/adapter-cloudflare": "7.2.9",
-		"@sveltejs/kit": "2.70.1",
+		"@sveltejs/kit": "2.70.2",
 		"@sveltejs/vite-plugin-svelte": "7.2.0",
 		"@types/node": "26",
 		"@vitest/browser-playwright": "4.1.10",
