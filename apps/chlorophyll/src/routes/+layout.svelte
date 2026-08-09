@@ -31,11 +31,17 @@
 	/**
 	 * Register Contexts
 	 */
-	const {seedService, documentService, tagService, exportService} =
-		createServices()
+	const {
+		seedService,
+		documentService,
+		tagService,
+		presetService,
+		exportService,
+	} = createServices()
 
 	setContext('documentService', documentService)
 	setContext('tagService', tagService)
+	setContext('presetService', presetService)
 	setContext('exportService', exportService)
 
 	/**
@@ -110,6 +116,7 @@
 		await seedService.init({base, structures}, seed)
 		await documentService.init()
 		await tagService.init()
+		await presetService.init()
 	})
 
 	onDestroy(() => destroyBridge())

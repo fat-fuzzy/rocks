@@ -8,7 +8,8 @@
 	import ui from '@fat-fuzzy/ui'
 
 	import {page} from '$app/state'
-	import DocumentService from '$lib/services/storage/document-service.svelte'
+
+	import PresetService from '$lib/services/storage/preset-service.svelte'
 	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
 
 	const {Button, Input, Feedback} = ui.blocks
@@ -21,7 +22,8 @@
 	}
 	let {cta, preset, color = 'primary'}: Props = $props()
 
-	let documentService: DocumentService = getContext('documentService')
+	let presetService: PresetService = getContext('presetService')
+
 	const validator = new FormValidator(
 		'FormPresetValidationFunction',
 		validators,
@@ -83,7 +85,7 @@
 	}
 
 	function checkPresetExists(presetName: string): Preset | undefined {
-		return documentService.getPreset(presetName)
+		return presetService.getPreset(presetName)
 	}
 
 	function savePreset() {
@@ -97,7 +99,7 @@
 		url.searchParams.delete('preset')
 		url.searchParams.append('preset', presetName)
 
-		documentService.savePreset({
+		presetService.savePreset({
 			path: {
 				filename: presetName,
 				filetype: 'json',
@@ -123,7 +125,7 @@
 	function deletePreset() {
 		const presetName = String(toUpdate.name)
 
-		documentService.deletePreset({
+		presetService.deletePreset({
 			path: {
 				filename: presetName,
 				filetype: 'json',

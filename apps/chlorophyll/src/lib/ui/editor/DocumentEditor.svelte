@@ -6,7 +6,7 @@
 
 	import {page} from '$app/state'
 
-	import DocumentService from '$lib/services/storage/document-service.svelte'
+	import PresetService from '$lib/services/storage/preset-service.svelte'
 	import SectionEditor from '$lib/ui/editor/SectionEditor.svelte'
 	import DialogSaveSection from '$lib/ui/controls/section/DialogSaveSection.svelte'
 	import PresetHeading from '$lib/ui/controls/preset/PresetHeading.svelte'
@@ -29,10 +29,10 @@
 		selectedTags: string[]
 	} = $props()
 
-	let documentService: DocumentService = getContext('documentService')
+	let presetService: PresetService = getContext('presetService')
 
 	let currentPreset = $derived(
-		preset ? documentService.getPreset(preset) : undefined,
+		preset ? presetService.getPreset(preset) : undefined,
 	)
 	let contentClass = $derived(selectedSections.length === 0 ? '' : 'doc-editor')
 </script>
