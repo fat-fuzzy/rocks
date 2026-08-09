@@ -26,7 +26,7 @@
 		"format": "prettier --plugin-search-dir . --write ."
 	},
 	"dependencies": {
-		"dompurify": "3.4.12"
+		"dompurify": "3.4.13"
 	},
 	"peerDependencies": {
 		"@sveltejs/kit": "2.70.2",
@@ -48,7 +48,7 @@
 		"autoprefixer": "10.5.0",
 		"cssnano": "8.0.2",
 		"mdsvex": "0.12.7",
-		"postcss": "8.5.22",
+		"postcss": "8.5.23",
 		"postcss-import": "16.1.1",
 		"postcss-preset-env": "11.2.0",
 		"rollup": "4.62.0",
