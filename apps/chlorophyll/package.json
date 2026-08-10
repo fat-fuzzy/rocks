@@ -22,8 +22,16 @@
 		"format": "prettier --write --ignore-path=../../.prettierignore .",
 		"prepare": "svelte-kit sync || echo '' && husky",
 		"cz": "cz",
-		"test": "pnpm test:unit",
-		"test:unit": "vitest run"
+		"test": "pnpm test:unit && pnpm test:browser && pnpm test:e2e",
+		"test:unit": "vitest run",
+		"test:types": "vitest run --typecheck",
+		"test:coverage": "vitest --ui",
+		"test:browser": "vitest run --config=vitest.browser.config.ts",
+		"test:browser:ui": "vitest --config=vitest.browser.ui.config.ts",
+		"test:e2e": "NODE_ENV=test playwright test",
+		"test:ui": "NODE_ENV=test playwright test --ui",
+		"test:dev:unit": "vitest",
+		"test:report": "NODE_ENV=test playwright test --reporter=html"
 	},
 	"devDependencies": {
 		"@changesets/cli": "2.30.0",
