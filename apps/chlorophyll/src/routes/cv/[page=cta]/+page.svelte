@@ -35,6 +35,9 @@
 
 	let cta = $derived(page.params.page)
 	let query = $derived(page.url.search)
+	let tags = $derived(tagService.tags)
+	let tagsLoading = $derived(tagService.loading)
+	let tagsError = $derived(tagService.error)
 
 	let editing = $derived(cta === 'build' || cta === 'edit')
 
@@ -148,7 +151,13 @@
 					<Presets oninput={updateFilters} currentPreset={preset} />
 
 					{#if editing}
-						<Tags oninput={updateFilters} />
+						<Tags
+							{cta}
+							{tags}
+							loading={tagsLoading}
+							error={tagsError}
+							oninput={updateFilters}
+						/>
 					{/if}
 				</form>
 			</div>
