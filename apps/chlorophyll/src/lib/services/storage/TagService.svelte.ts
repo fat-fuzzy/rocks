@@ -5,6 +5,7 @@ import type {
 	TagGroup,
 	FileExt,
 	IDocumentService,
+	ITagService,
 } from '$types'
 
 import {SvelteMap} from 'svelte/reactivity'
@@ -20,7 +21,7 @@ import {buildTagIndex} from '$lib/common/transform/store-to-index'
  * Maintains a cache of data in memory
  * Sends/receive messages via worker bridge
  */
-export default class TagService {
+export default class TagService implements ITagService {
 	bridge: WorkerBridge | undefined = $state()
 	documentService: IDocumentService | undefined = $state()
 	loading = $state(false)
@@ -50,10 +51,6 @@ export default class TagService {
 
 	reset() {
 		this.tags = []
-		this.tagIndex = {
-			tags: {},
-			taggedBlocks: {},
-		}
 	}
 
 	/**

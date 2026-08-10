@@ -7,20 +7,20 @@
 		DocFormat,
 		InputCheckedTypes,
 		IDocumentService,
+		ITagService,
 	} from '$types'
 
 	import {getContext} from 'svelte'
 	import prose from '@fat-fuzzy/prose'
 
 	import {applyTags} from '$lib/common/tags'
-	import TagService from '$lib/services/storage/TagService.svelte'
 	import DialogDeleteBlock from '$lib/ui/controls/block/DialogDeleteBlock.svelte'
 	import SelectTags from '$lib/ui/controls/tags/SelectTags.svelte'
 
 	const {Editor} = prose.editor
 
 	let documentService: IDocumentService = getContext('documentService')
-	let tagService: TagService = getContext('tagService')
+	let tagService: ITagService = getContext('tagService')
 
 	let {
 		id,

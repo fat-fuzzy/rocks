@@ -6,6 +6,7 @@
 		TagGroup,
 		FrontmatterStructure,
 		IDocumentService,
+		ITagService,
 	} from '$types'
 
 	import {getContext, tick} from 'svelte'
@@ -17,7 +18,6 @@
 		PUBLIC_DOCUMENT_FORMAT,
 	} from '$app/env/public'
 
-	import TagService from '$lib/services/storage/TagService.svelte'
 	import DocumentEditor from '$lib/ui/editor/DocumentEditor.svelte'
 	import DocumentBuilder from '$lib/ui/builder/DocumentBuilder.svelte'
 	import ContentActions from '$lib/ui/controls/ContentActions.svelte'
@@ -28,7 +28,7 @@
 	const {PageRails} = ui.content
 
 	let documentService: IDocumentService = getContext('documentService')
-	let tagService: TagService = getContext('tagService')
+	let tagService: ITagService = getContext('tagService')
 
 	let boundForm: HTMLFormElement | undefined = $state()
 	let pageContext = $derived({...page.data.pageContext, label: 'On this Page'})
