@@ -23,6 +23,7 @@ const config = {
 			$data: path.resolve('./src/data'),
 			$types: path.resolve('./src/lib/types/index.ts'),
 			$schemas: path.resolve('./src/schemas'),
+			$tests: path.resolve('./tests'),
 		},
 		/**
 		 * This includes Content Security Policy (CSP) and other security-related headers.
