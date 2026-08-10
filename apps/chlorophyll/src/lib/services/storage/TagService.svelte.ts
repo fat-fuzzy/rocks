@@ -7,10 +7,10 @@ import {getBridge} from '$lib/services/storage/bridge'
 
 import {getTagKey} from '$lib/common/format'
 import {buildTagIndex} from '$lib/common/transform/store-to-index'
-import type DocumentService from './document-service.svelte'
+import type DocumentService from '$lib/services/storage/DocumentService.svelte'
 
 /**
- * StorageService class to manage access to stored content
+ * TagService class to manage access to document tags
  * Maintains a cache of data in memory
  * Sends/receive messages via worker bridge
  */
