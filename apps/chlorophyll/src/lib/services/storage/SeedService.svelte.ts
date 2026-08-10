@@ -1,4 +1,10 @@
-import type {SeedDocument, FrontmatterSeed, FrontmatterStructure} from '$types'
+export * from '$lib/types/services/seed'
+import type {
+	SeedDocument,
+	FrontmatterSeed,
+	FrontmatterStructure,
+	ISeedService,
+} from '$types'
 
 import WorkerBridge from '$lib/workers/worker-bridge'
 import {getBridge} from '$lib/services/storage/bridge'
@@ -8,7 +14,7 @@ import {getBridge} from '$lib/services/storage/bridge'
  * Maintains a cache of data in memory
  * Sends/receive messages via worker bridge
  */
-export default class SeedService {
+export default class SeedService implements ISeedService {
 	bridge: WorkerBridge | undefined = $state()
 	seeded: {date_seed?: string; source?: string} = $state({})
 	loading = $state(false)
@@ -136,11 +142,5 @@ export default class SeedService {
 
 		await this.bridge.deleteAll()
 		this.reset()
-	}
-
-	destroy() {
-		if (this.bridge) {
-			this.bridge.destroy()
-		}
 	}
 }

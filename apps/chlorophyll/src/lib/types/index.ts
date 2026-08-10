@@ -8,6 +8,7 @@ export * from '$lib/types/transfer/messages'
 export * from '$lib/types/intl'
 
 // Service Interfaces
+export * from '$lib/types/services/seed'
 export * from '$lib/types/services/document'
 export * from '$lib/types/services/preset'
 export * from '$lib/types/services/tag'
