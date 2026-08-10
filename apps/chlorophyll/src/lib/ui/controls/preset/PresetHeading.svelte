@@ -4,7 +4,7 @@
 	import {getContext} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
 
-	import PresetService from '$lib/services/storage/preset-service.svelte'
+	import PresetService from '$lib/services/storage/PresetService.svelte'
 
 	const {Button} = ui.blocks
 

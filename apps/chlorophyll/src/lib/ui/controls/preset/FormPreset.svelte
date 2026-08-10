@@ -9,7 +9,7 @@
 
 	import {page} from '$app/state'
 
-	import PresetService from '$lib/services/storage/preset-service.svelte'
+	import PresetService from '$lib/services/storage/PresetService.svelte'
 	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
 
 	const {Button, Input, Feedback} = ui.blocks
