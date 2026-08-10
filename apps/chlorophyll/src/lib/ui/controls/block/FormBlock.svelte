@@ -8,6 +8,7 @@
 		Uuid,
 		ActionCrud,
 		InputCheckedTypes,
+		IDocumentService,
 	} from '$types'
 
 	import * as validators from '$lib/generated/ajv/validation/validate.ajv.mjs'
@@ -16,7 +17,6 @@
 	import ui from '@fat-fuzzy/ui'
 
 	import {applyTags} from '$lib/common/tags'
-	import DocumentService from '$lib/services/storage/DocumentService.svelte'
 	import TagService from '$lib/services/storage/TagService.svelte'
 	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
 	import SelectTags from '$lib/ui/controls/tags/SelectTags.svelte'
@@ -33,7 +33,7 @@
 	}
 	let {block, parent, subsections, cta, color = 'primary'}: Props = $props()
 
-	let documentService: DocumentService = getContext('documentService')
+	let documentService: IDocumentService = getContext('documentService')
 	let tagService: TagService = getContext('tagService')
 
 	const validator = new FormValidator('FormBlockValidationFunction', validators)

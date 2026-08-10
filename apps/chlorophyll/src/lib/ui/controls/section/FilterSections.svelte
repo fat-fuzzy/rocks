@@ -1,12 +1,11 @@
 <script lang="ts">
 	import type {UiColor} from '@fat-fuzzy/ui'
-	import type {DocFormat, FrontmatterStructure} from '$types'
+	import type {DocFormat, FrontmatterStructure, IDocumentService} from '$types'
 
 	import {getContext} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
 
 	import {page} from '$app/state'
-	import DocumentService from '$lib/services/storage/DocumentService.svelte'
 	import {PUBLIC_DOCUMENT_FORMAT} from '$app/env/public'
 
 	const {InputGroup} = ui.blocks
@@ -14,7 +13,7 @@
 	const {color, oninput}: {color?: UiColor; oninput: (e: Event) => void} =
 		$props()
 
-	let documentService: DocumentService = getContext('documentService')
+	let documentService: IDocumentService = getContext('documentService')
 
 	let format = $derived(
 		(page.url.searchParams.get('format') ||

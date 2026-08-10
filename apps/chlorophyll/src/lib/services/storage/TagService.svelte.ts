@@ -1,4 +1,11 @@
-import type {Slug, Block, TagIndex, TagGroup, FileExt} from '$types'
+import type {
+	Slug,
+	Block,
+	TagIndex,
+	TagGroup,
+	FileExt,
+	IDocumentService,
+} from '$types'
 
 import {SvelteMap} from 'svelte/reactivity'
 
@@ -7,7 +14,6 @@ import {getBridge} from '$lib/services/storage/bridge'
 
 import {getTagKey} from '$lib/common/format'
 import {buildTagIndex} from '$lib/common/transform/store-to-index'
-import type DocumentService from '$lib/services/storage/DocumentService.svelte'
 
 /**
  * TagService class to manage access to document tags
@@ -16,7 +22,7 @@ import type DocumentService from '$lib/services/storage/DocumentService.svelte'
  */
 export default class TagService {
 	bridge: WorkerBridge | undefined = $state()
-	documentService: DocumentService | undefined = $state()
+	documentService: IDocumentService | undefined = $state()
 	loading = $state(false)
 	error = $state(false)
 	tags: TagGroup[] = $derived(this.documentService?.base.tags ?? [])
@@ -32,7 +38,7 @@ export default class TagService {
 				},
 	)
 
-	constructor(documentService: DocumentService) {
+	constructor(documentService: IDocumentService) {
 		this.loading = true
 		this.documentService = documentService
 	}
