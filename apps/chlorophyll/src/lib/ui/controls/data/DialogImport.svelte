@@ -6,7 +6,7 @@
 	import ui from '@fat-fuzzy/ui'
 
 	import {guardedExport} from '$lib/common/download'
-	import SeedService from '$lib/services/storage/seed-service.svelte'
+	import SeedService from '$lib/services/storage/SeedService.svelte'
 	import ExportService from '$lib/services/export-service'
 	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
 
