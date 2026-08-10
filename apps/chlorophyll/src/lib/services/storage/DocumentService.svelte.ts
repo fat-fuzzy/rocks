@@ -35,7 +35,7 @@ import {
 import {buildDocumentIndex} from '$lib/common/transform/store-to-index'
 
 /**
- * StorageService class to manage access to stored content
+ * DocumentService class to manage access to stored documents
  * Maintains a cache of data in memory
  * Sends/receive messages via worker bridge
  */

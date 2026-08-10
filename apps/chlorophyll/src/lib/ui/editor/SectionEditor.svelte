@@ -6,7 +6,7 @@
 	import {isHidden, checkTags} from '$data/cv/cv-display'
 	import {LOCALIZATIONS} from '$lib/intl/l10n'
 
-	import DocumentService from '$lib/services/storage/document-service.svelte'
+	import DocumentService from '$lib/services/storage/DocumentService.svelte'
 	import BlockPlaceholder from '$lib/ui/editor/BlockPlaceholder.svelte'
 	import BlockEditor from '$lib/ui/editor/BlockEditor.svelte'
 	import DialogSaveBlock from '$lib/ui/controls/block/DialogSaveBlock.svelte'
