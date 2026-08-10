@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {ActionCrud, Preset} from '$types'
+	import type {ActionCrud, Preset, IPresetService} from '$types'
 	import type {UiColor} from '@fat-fuzzy/ui'
 	import * as validators from '$lib/generated/ajv/validation/validate.ajv.mjs'
 
@@ -9,7 +9,6 @@
 
 	import {page} from '$app/state'
 
-	import PresetService from '$lib/services/storage/PresetService.svelte'
 	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
 
 	const {Button, Input, Feedback} = ui.blocks
@@ -22,7 +21,7 @@
 	}
 	let {cta, preset, color = 'primary'}: Props = $props()
 
-	let presetService: PresetService = getContext('presetService')
+	let presetService: IPresetService = getContext('presetService')
 
 	const validator = new FormValidator(
 		'FormPresetValidationFunction',
