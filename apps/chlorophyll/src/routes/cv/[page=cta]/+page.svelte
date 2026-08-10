@@ -17,7 +17,7 @@
 	} from '$app/env/public'
 
 	import DocumentService from '$lib/services/storage/DocumentService.svelte'
-	import TagService from '$lib/services/storage/tag-service.svelte'
+	import TagService from '$lib/services/storage/TagService.svelte'
 	import DocumentEditor from '$lib/ui/editor/DocumentEditor.svelte'
 	import DocumentBuilder from '$lib/ui/builder/DocumentBuilder.svelte'
 	import ContentActions from '$lib/ui/controls/ContentActions.svelte'

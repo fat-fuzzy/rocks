@@ -1,6 +1,6 @@
 import SeedService from '$lib/services/storage/seed-service.svelte'
 import DocumentService from '$lib/services/storage/DocumentService.svelte'
-import TagService from '$lib/services/storage/tag-service.svelte'
+import TagService from '$lib/services/storage/TagService.svelte'
 import ExportService from '$lib/services/export-service'
 import PresetService from '$lib/services/storage/PresetService.svelte'
 
