@@ -6,6 +6,7 @@
 		Slug,
 		TagGroup,
 		TagProps,
+		ITagService,
 	} from '$types'
 
 	import * as validators from '$lib/generated/ajv/validation/validate.ajv.mjs'
@@ -18,7 +19,6 @@
 		parseGroupFromTargetData,
 		applyTags,
 	} from '$lib/common/tags'
-	import TagService from '$lib/services/storage/TagService.svelte'
 	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
 	import SelectTags from '$lib/ui/controls/tags/SelectTags.svelte'
 
@@ -32,7 +32,7 @@
 	}
 	let {groups, cta, color = 'primary'}: Props = $props()
 
-	let tagService: TagService = getContext('tagService')
+	let tagService: ITagService = getContext('tagService')
 
 	const validator = new FormValidator('FormTagValidationFunction', validators)
 
