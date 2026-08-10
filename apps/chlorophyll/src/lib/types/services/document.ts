@@ -32,7 +32,6 @@ export interface DocumentIndex {
 			blocks: Block[]
 		}
 	> // keyed by name
-	blocks: Record<string, Block> // keyed by id
 }
 
 export interface IDocumentService {
@@ -42,6 +41,8 @@ export interface IDocumentService {
 	readonly structures: FrontmatterStructure[]
 	readonly content: DocumentStore
 	readonly documentIndex: DocumentIndex
+	readonly blockEditorsLoaded: {[name: string]: Block}
+	readonly sectionEditorsLoaded: {[name: string]: Section}
 
 	init(): Promise<void>
 
@@ -111,7 +112,7 @@ export interface IDocumentService {
 		subsection?: string
 	}): Block
 
-	loadBlock(
+	lazyLoadBlock(
 		dataset: {block?: string; section?: string; subsection?: string},
 		language: DocLanguage,
 		format: DocFormat,
