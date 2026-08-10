@@ -6,7 +6,7 @@
 	import {resolve} from '$app/paths'
 	import ui from '@fat-fuzzy/ui'
 
-	import PresetService from '$lib/services/storage/preset-service.svelte'
+	import PresetService from '$lib/services/storage/PresetService.svelte'
 	import DialogSavePreset from '$lib/ui/controls/preset/DialogSavePreset.svelte'
 	import DialogDeletePreset from '$lib/ui/controls/preset/DialogDeletePreset.svelte'
 	import Loading from '$lib/ui/Loading.svelte'

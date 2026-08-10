@@ -4,7 +4,7 @@
 	import {getContext} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
 
-	import PresetService from '$lib/services/storage/preset-service.svelte'
+	import PresetService from '$lib/services/storage/PresetService.svelte'
 	import SectionBuilder from '$lib/ui/builder/SectionBuilder.svelte'
 	import PresetHeading from '$lib/ui/controls/preset/PresetHeading.svelte'
 

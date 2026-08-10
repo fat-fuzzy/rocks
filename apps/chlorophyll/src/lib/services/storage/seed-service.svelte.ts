@@ -4,7 +4,7 @@ import WorkerBridge from '$lib/workers/worker-bridge'
 import {getBridge} from '$lib/services/storage/bridge'
 
 /**
- * StorageService class to manage access to stored content
+ * SeedService class to manage seed and import operations into storage
  * Maintains a cache of data in memory
  * Sends/receive messages via worker bridge
  */

@@ -6,7 +6,7 @@
 
 	import {page} from '$app/state'
 
-	import PresetService from '$lib/services/storage/preset-service.svelte'
+	import PresetService from '$lib/services/storage/PresetService.svelte'
 	import SectionEditor from '$lib/ui/editor/SectionEditor.svelte'
 	import DialogSaveSection from '$lib/ui/controls/section/DialogSaveSection.svelte'
 	import PresetHeading from '$lib/ui/controls/preset/PresetHeading.svelte'

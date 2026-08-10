@@ -18,7 +18,7 @@ import {opfsPresetTreeToPresetStore} from '$lib/common/transform/opfs-to-documen
 import {buildPresetIndex} from '$lib/common/transform/store-to-index'
 
 /**
- * StorageService class to manage access to stored content
+ * PresetService class to manage access to stored presets
  * Maintains a cache of data in memory
  * Sends/receive messages via worker bridge
  */
