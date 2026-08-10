@@ -16,7 +16,7 @@
 		PUBLIC_DOCUMENT_FORMAT,
 	} from '$app/env/public'
 
-	import DocumentService from '$lib/services/storage/document-service.svelte'
+	import DocumentService from '$lib/services/storage/DocumentService.svelte'
 	import TagService from '$lib/services/storage/tag-service.svelte'
 	import DocumentEditor from '$lib/ui/editor/DocumentEditor.svelte'
 	import DocumentBuilder from '$lib/ui/builder/DocumentBuilder.svelte'

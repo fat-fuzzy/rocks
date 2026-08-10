@@ -12,7 +12,7 @@
 	import prose from '@fat-fuzzy/prose'
 
 	import {applyTags} from '$lib/common/tags'
-	import DocumentService from '$lib/services/storage/document-service.svelte'
+	import DocumentService from '$lib/services/storage/DocumentService.svelte'
 	import TagService from '$lib/services/storage/tag-service.svelte'
 	import DialogDeleteBlock from '$lib/ui/controls/block/DialogDeleteBlock.svelte'
 	import SelectTags from '$lib/ui/controls/tags/SelectTags.svelte'

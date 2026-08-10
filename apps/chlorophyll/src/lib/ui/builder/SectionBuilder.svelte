@@ -6,7 +6,7 @@
 	import {isHidden, checkTags} from '$data/cv/cv-display'
 	import {LOCALIZATIONS} from '$lib/intl/l10n'
 
-	import DocumentService from '$lib/services/storage/document-service.svelte'
+	import DocumentService from '$lib/services/storage/DocumentService.svelte'
 	import BlockBuilder from '$lib/ui/builder/BlockBuilder.svelte'
 	import FeedbackContent from '$lib/ui/FeedbackContent.svelte'
 	import Loading from '$lib/ui/Loading.svelte'

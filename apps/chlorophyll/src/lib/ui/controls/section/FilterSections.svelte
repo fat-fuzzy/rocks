@@ -6,7 +6,7 @@
 	import ui from '@fat-fuzzy/ui'
 
 	import {page} from '$app/state'
-	import DocumentService from '$lib/services/storage/document-service.svelte'
+	import DocumentService from '$lib/services/storage/DocumentService.svelte'
 	import {PUBLIC_DOCUMENT_FORMAT} from '$app/env/public'
 
 	const {InputGroup} = ui.blocks

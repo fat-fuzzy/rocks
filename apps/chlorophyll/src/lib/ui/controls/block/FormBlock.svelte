@@ -16,7 +16,7 @@
 	import ui from '@fat-fuzzy/ui'
 
 	import {applyTags} from '$lib/common/tags'
-	import DocumentService from '$lib/services/storage/document-service.svelte'
+	import DocumentService from '$lib/services/storage/DocumentService.svelte'
 	import TagService from '$lib/services/storage/tag-service.svelte'
 	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
 	import SelectTags from '$lib/ui/controls/tags/SelectTags.svelte'
