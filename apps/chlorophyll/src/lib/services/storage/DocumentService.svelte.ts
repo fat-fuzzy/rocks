@@ -476,7 +476,7 @@ export default class DocumentService implements IDocumentService {
 		]
 	}
 
-	loadBlock(
+	lazyLoadBlock(
 		dataset: {block?: string; section?: string; subsection?: string},
 		language: DocLanguage,
 		format: DocFormat,

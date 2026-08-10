@@ -63,7 +63,7 @@
 			const target = entry.target as HTMLElement
 
 			if (entry.isIntersecting) {
-				documentService.loadBlock(
+				documentService.lazyLoadBlock(
 					{
 						block: target.dataset.block,
 						section: target.dataset.section,
