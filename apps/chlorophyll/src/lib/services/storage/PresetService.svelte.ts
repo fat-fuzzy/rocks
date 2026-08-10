@@ -6,6 +6,7 @@ import type {
 	PresetStore,
 	PresetIndex,
 	OPFSPresetTree,
+	IPresetService,
 } from '$types'
 
 import WorkerBridge from '$lib/workers/worker-bridge'
@@ -22,7 +23,7 @@ import {buildPresetIndex} from '$lib/common/transform/store-to-index'
  * Maintains a cache of data in memory
  * Sends/receive messages via worker bridge
  */
-export default class PresetService {
+export default class PresetService implements IPresetService {
 	bridge: WorkerBridge | undefined = $state()
 	seeded: {date_seed?: string; source?: string} = $state({})
 	loading = $state(false)
