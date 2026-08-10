@@ -50,9 +50,6 @@ export default class PresetService implements IPresetService {
 
 	reset() {
 		this.presets = {}
-		this.presetIndex = {
-			presets: {},
-		}
 	}
 
 	/**
