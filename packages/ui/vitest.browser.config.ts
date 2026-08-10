@@ -4,9 +4,6 @@ import {sveltekit} from '@sveltejs/kit/vite'
 import path from 'path'
 
 export const ALIAS_BASE = {
-	$stores: path.resolve('./src/lib/stores'),
-	$utils: path.resolve('./src/utils'),
-	$data: path.resolve('./src/data'),
 	$types: path.resolve('./src/lib/types/index.ts'),
 	$tests: path.resolve('./tests'),
 }
