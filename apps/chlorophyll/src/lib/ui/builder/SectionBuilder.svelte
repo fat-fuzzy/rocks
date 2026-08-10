@@ -1,17 +1,22 @@
 <script lang="ts">
-	import type {Slug, DocFormat, DocLanguage, Section} from '$types'
+	import type {
+		Slug,
+		DocFormat,
+		DocLanguage,
+		Section,
+		IDocumentService,
+	} from '$types'
 
 	import {getContext, onMount} from 'svelte'
 
 	import {isHidden, checkTags} from '$data/cv/cv-display'
 	import {LOCALIZATIONS} from '$lib/intl/l10n'
 
-	import DocumentService from '$lib/services/storage/DocumentService.svelte'
 	import BlockBuilder from '$lib/ui/builder/BlockBuilder.svelte'
 	import FeedbackContent from '$lib/ui/FeedbackContent.svelte'
 	import Loading from '$lib/ui/Loading.svelte'
 
-	let documentService: DocumentService = getContext('documentService')
+	let documentService: IDocumentService = getContext('documentService')
 
 	let {
 		cta = 'build',

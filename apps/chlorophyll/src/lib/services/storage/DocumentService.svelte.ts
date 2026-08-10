@@ -17,6 +17,7 @@ import type {
 	OPFSBaseTree,
 	OPFSStructureTree,
 	DocContentType,
+	IDocumentService,
 } from '$types'
 
 import {PUBLIC_DOCUMENT_LANGUAGE, PUBLIC_DOCUMENT_FORMAT} from '$app/env/public'
@@ -39,7 +40,7 @@ import {buildDocumentIndex} from '$lib/common/transform/store-to-index'
  * Maintains a cache of data in memory
  * Sends/receive messages via worker bridge
  */
-export default class DocumentService {
+export default class DocumentService implements IDocumentService {
 	bridge: WorkerBridge | undefined = $state()
 	loading = $state(false)
 	error = $state(false)
@@ -92,6 +93,7 @@ export default class DocumentService {
 	 * @param meta metadata to retrieve file
 	 * @returns a Promise that will update when
 	 */
+
 	async getProse(options: {
 		path: DocPath
 		meta: DocMeta

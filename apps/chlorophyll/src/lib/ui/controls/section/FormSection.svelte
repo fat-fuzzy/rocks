@@ -1,13 +1,18 @@
 <script lang="ts">
 	import type {UiColor} from '@fat-fuzzy/ui'
-	import type {ActionCrud, DocFormat, DocLanguage, Section} from '$types'
+	import type {
+		ActionCrud,
+		DocFormat,
+		DocLanguage,
+		Section,
+		IDocumentService,
+	} from '$types'
 
 	import * as validators from '$lib/generated/ajv/validation/validate.ajv.mjs'
 
 	import {getContext, onDestroy, onMount} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
 
-	import DocumentService from '$lib/services/storage/DocumentService.svelte'
 	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
 	import {
 		PUBLIC_DOCUMENT_FORMAT,
@@ -25,7 +30,7 @@
 	}
 	let {formats, cta, color = 'primary'}: Props = $props()
 
-	let documentService: DocumentService = getContext('documentService')
+	let documentService: IDocumentService = getContext('documentService')
 
 	const validator = new FormValidator(
 		'FormSectionValidationFunction',
