@@ -1,11 +1,16 @@
 export * from '$lib/types/domain/ui'
 export * from '$lib/types/domain/actions'
-export * from '$lib/types/domain/services'
+export * from '$lib/types/services/tag'
 export * from '$lib/types/storage/fs-base'
 export * from '$lib/types/storage/fs-storage'
 export * from '$lib/types/storage/fs-markdowns'
 export * from '$lib/types/transfer/messages'
 export * from '$lib/types/intl'
+
+// Service Interfaces
+export * from '$lib/types/services/document'
+export * from '$lib/types/services/preset'
+export * from '$lib/types/services/tag'
 
 // Domain + Identity
 export * from '$lib/generated/types/Document'
