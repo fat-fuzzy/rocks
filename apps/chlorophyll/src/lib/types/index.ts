@@ -12,6 +12,7 @@ export * from '$lib/types/services/seed'
 export * from '$lib/types/services/document'
 export * from '$lib/types/services/preset'
 export * from '$lib/types/services/tag'
+export * from '$lib/types/services/export'
 
 // Domain + Identity
 export * from '$lib/generated/types/Document'
