@@ -31,7 +31,7 @@ export default class TagService implements ITagService {
 		this.docService
 			? buildTagIndex(
 					this.tags,
-					Object.values(this.docService?.documentIndex.blocks),
+					Object.values(this.docService?.docIndex.blocks),
 				)
 			: {
 					tags: {},

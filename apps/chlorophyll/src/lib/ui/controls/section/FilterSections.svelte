@@ -6,7 +6,7 @@
 	import ui from '@fat-fuzzy/ui'
 
 	import {page} from '$app/state'
-	import {PUBLIC_DOCUMENT_FORMAT} from '$app/env/public'
+	import {PUBLIC_DOC_FORMAT} from '$app/env/public'
 
 	const {InputGroup} = ui.blocks
 
@@ -16,8 +16,7 @@
 	let docService: IDocService = getContext('docService')
 
 	let format = $derived(
-		(page.url.searchParams.get('format') ||
-			PUBLIC_DOCUMENT_FORMAT) as DocFormat,
+		(page.url.searchParams.get('format') || PUBLIC_DOC_FORMAT) as DocFormat,
 	)
 
 	let structure = $derived(

@@ -20,7 +20,7 @@ import type {
 	IDocService,
 } from '$types'
 
-import {PUBLIC_DOCUMENT_LANGUAGE, PUBLIC_DOCUMENT_FORMAT} from '$app/env/public'
+import {PUBLIC_DOC_LANGUAGE, PUBLIC_DOC_FORMAT} from '$app/env/public'
 
 import WorkerBridge from '$lib/workers/worker-bridge'
 import {getBridge} from '$lib/services/storage/bridge'
@@ -46,14 +46,14 @@ export default class DocService implements IDocService {
 	error = $state(false)
 	base: FrontmatterBase = $state({
 		schema_version: '0.1',
-		languages: [PUBLIC_DOCUMENT_LANGUAGE as DocLanguage],
-		formats: [PUBLIC_DOCUMENT_FORMAT as DocFormat],
+		languages: [PUBLIC_DOC_LANGUAGE as DocLanguage],
+		formats: [PUBLIC_DOC_FORMAT as DocFormat],
 		tags: [],
 		settings: [],
 	})
 	structures: FrontmatterStructure[] = $state([])
 	content: DocStore = $state({})
-	documentIndex: DocIndex = $derived(buildDocIndex(this.content))
+	docIndex: DocIndex = $derived(buildDocIndex(this.content))
 	blockEditorsLoaded: {[name: string]: Block} = $state({})
 	sectionEditorsLoaded: {[name: string]: Section} = $state({})
 
@@ -66,9 +66,9 @@ export default class DocService implements IDocService {
 		try {
 			this.loading = true
 
-			await this.getAllDocuments()
-			await this.getDocumentBase()
-			await this.getDocumentStructure()
+			await this.getAllDocs()
+			await this.getDocBase()
+			await this.getDocStructure()
 		} catch {
 			this.error = true
 		} finally {
@@ -80,8 +80,8 @@ export default class DocService implements IDocService {
 		this.content = {}
 		this.base = {
 			schema_version: '0.1',
-			languages: [PUBLIC_DOCUMENT_LANGUAGE as DocLanguage],
-			formats: [PUBLIC_DOCUMENT_FORMAT as DocFormat],
+			languages: [PUBLIC_DOC_LANGUAGE as DocLanguage],
+			formats: [PUBLIC_DOC_FORMAT as DocFormat],
 			tags: [],
 			settings: [],
 		}
@@ -226,7 +226,7 @@ export default class DocService implements IDocService {
 		let sectionToUpdate
 
 		// Optimistic update of the local content structure
-		// - For UI reactivity: documentIndex re-derives automatically
+		// - For UI reactivity: docIndex re-derives automatically
 		const doc = this.content[options.language]?.[options.format]
 		const sectionRoot = options.path.parent ?? options.path.filename
 
@@ -360,7 +360,7 @@ export default class DocService implements IDocService {
 
 		// Check if an existing section's rank is affected
 		let updateRanks: Section[] = []
-		const maxRank = Object.keys(this.documentIndex.sections).length
+		const maxRank = Object.keys(this.docIndex.sections).length
 
 		if (options.rank <= 1 || options.rank < maxRank) {
 			for (let i = options.rank; i < maxRank; i++) {
@@ -391,8 +391,7 @@ export default class DocService implements IDocService {
 
 		const selected = sections.map((name) => ({
 			name: name,
-			section:
-				this.documentIndex.sections[getSectionKey(language, format, name)],
+			section: this.docIndex.sections[getSectionKey(language, format, name)],
 		}))
 
 		return selected
@@ -415,7 +414,7 @@ export default class DocService implements IDocService {
 		const selected = blocks.map((name) => ({
 			name: name,
 			block:
-				this.documentIndex.blocks[
+				this.docIndex.blocks[
 					getBlockKey(language, format, section, name, subsection)
 				],
 		}))
@@ -435,7 +434,7 @@ export default class DocService implements IDocService {
 	}): Section {
 		const {language, format, name} = options
 
-		return this.documentIndex.sections[getSectionKey(language, format, name)]
+		return this.docIndex.sections[getSectionKey(language, format, name)]
 	}
 
 	/**
@@ -444,7 +443,7 @@ export default class DocService implements IDocService {
 	 * @returns section
 	 */
 	getSectionById(id: Uuid): Section {
-		return this.documentIndex.sectionsById[id]
+		return this.docIndex.sectionsById[id]
 	}
 
 	/**
@@ -453,7 +452,7 @@ export default class DocService implements IDocService {
 	 * @returns sections found
 	 */
 	getSectionsByRank(rank: Rank): Section[] {
-		const sections = Object.values(this.documentIndex.sections)
+		const sections = Object.values(this.docIndex.sections)
 		return sections.filter((s) => s.rank === rank)
 	}
 
@@ -471,7 +470,7 @@ export default class DocService implements IDocService {
 	}): Block {
 		const {language, format, section, subsection, name} = options
 
-		return this.documentIndex.blocks[
+		return this.docIndex.blocks[
 			getBlockKey(language, format, section, name, subsection)
 		]
 	}
@@ -510,14 +509,14 @@ export default class DocService implements IDocService {
 	/**
 	 * Load full document tree from storage
 	 */
-	async getDocumentBase() {
+	async getDocBase() {
 		if (!this.bridge) return
 
 		// Raw content retrieved from OPFS "as is"
 		// 2 files are read:
 		// - content.json // Has FrontmatterBase shaped data FIXME: not always : se RawFrontmatterBase type
 		// - meta.json // Has DocMeta shaped data FIXME: not always : see RawSection type
-		const raw = (await this.bridge.getDocumentBase()) as OPFSBaseTree
+		const raw = (await this.bridge.getDocBase()) as OPFSBaseTree
 
 		this.base = opfsBaseTreeToFrontmatterBase(raw)
 	}
@@ -525,14 +524,14 @@ export default class DocService implements IDocService {
 	/**
 	 * Load full document tree from storage
 	 */
-	async getDocumentStructure() {
+	async getDocStructure() {
 		if (!this.bridge) return
 
 		// Raw content retrieved from OPFS "as is"
 		// 2 files are read:
 		// - content.json // Has FrontmatterBase shaped data FIXME: not always : se RawFrontmatterBase type
 		// - meta.json // Has DocMeta shaped data FIXME: not always : see RawSection type
-		const raw = (await this.bridge.getDocumentStructure()) as OPFSStructureTree
+		const raw = (await this.bridge.getDocStructure()) as OPFSStructureTree
 
 		this.structures = opfsStructureTreeToFrontmatterStructures(raw)
 	}
@@ -540,14 +539,14 @@ export default class DocService implements IDocService {
 	/**
 	 * Load full document tree from storage
 	 */
-	async getAllDocuments() {
+	async getAllDocs() {
 		if (!this.bridge) return
 
 		// Raw content retrieved from OPFS "as is"
 		// 2 files are read:
 		// - content.json // Has Section shaped data FIXME: not always : se RawSection type
 		// - meta.json // Has DocMeta shaped data FIXME: not always : se RawSection type
-		const raw = (await this.bridge.getAllDocuments()) as OPFSDocumentTree
+		const raw = (await this.bridge.getAllDocs()) as OPFSDocumentTree
 
 		this.content = opfsDocumentTreeToDocStore(raw)
 	}
