@@ -99,7 +99,7 @@ export default class SeedService implements ISeedService {
 			return
 		}
 
-		const docs = (await this.bridge.seedDocuments({seed})) as {
+		const docs = (await this.bridge.seedDocs({seed})) as {
 			seeded: number
 		}
 		const base = (await this.bridge.seedBase({

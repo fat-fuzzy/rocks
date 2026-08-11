@@ -15,8 +15,8 @@
 	import {page} from '$app/state'
 	import {PUBLIC_DOC_LANGUAGE, PUBLIC_DOC_FORMAT} from '$app/env/public'
 
-	import DocumentEditor from '$lib/ui/editor/DocumentEditor.svelte'
-	import DocumentBuilder from '$lib/ui/builder/DocumentBuilder.svelte'
+	import DocEditor from '$lib/ui/editor/DocEditor.svelte'
+	import DocBuilder from '$lib/ui/builder/DocBuilder.svelte'
 	import ContentActions from '$lib/ui/controls/ContentActions.svelte'
 	import Tags from '$lib/ui/controls/tags/Tags.svelte'
 	import Presets from '$lib/ui/controls/preset/Presets.svelte'
@@ -115,7 +115,7 @@
 		{:else}
 			{#key queryString}
 				{#if cta === 'edit'}
-					<DocumentEditor
+					<DocEditor
 						{selectedSections}
 						{selectedTags}
 						{language}
@@ -124,7 +124,7 @@
 						{query}
 					/>
 				{:else if cta}
-					<DocumentBuilder
+					<DocBuilder
 						{cta}
 						{selectedSections}
 						{selectedTags}

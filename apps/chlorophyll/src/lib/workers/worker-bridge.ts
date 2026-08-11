@@ -91,7 +91,7 @@ export default class WorkerBridge {
 		})
 	}
 
-	seedDocuments(payload: {seed: SeedDoc[]}) {
+	seedDocs(payload: {seed: SeedDoc[]}) {
 		return this.send({
 			type: 'SEED_ROOT',
 			requestId: crypto.randomUUID(),
@@ -203,7 +203,7 @@ export default class WorkerBridge {
 		})
 	}
 
-	deleteDocument(payload: {path: DocPath; meta: DocMeta}) {
+	deleteDoc(payload: {path: DocPath; meta: DocMeta}) {
 		return this.send({
 			type: 'DELETE_DOC',
 			requestId: crypto.randomUUID(),
