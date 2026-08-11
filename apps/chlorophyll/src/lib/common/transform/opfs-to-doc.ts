@@ -7,7 +7,7 @@ import type {
 	Preset,
 	DocStore,
 	PresetStore,
-	OPFSDocumentTree,
+	OPFSDocTree,
 	OPFSPresetTree,
 	OPFSBaseTree,
 	OPFSStructureTree,
@@ -101,7 +101,7 @@ function rawToSection(raw: Section): Section {
 	return raw
 }
 
-export function opfsDocumentTreeToDocStore(tree: OPFSDocumentTree): DocStore {
+export function opfsDocTreeToDocStore(tree: OPFSDocTree): DocStore {
 	// eslint-disable-next-line
 	const store: any = {} // FIXME: fix type
 

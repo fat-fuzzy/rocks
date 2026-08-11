@@ -4,7 +4,7 @@
 import type {
 	DocMeta,
 	DocPath,
-	OPFSDocumentTree,
+	OPFSDocTree,
 	OPFSPresetTree,
 	Preset,
 } from '$types'
@@ -20,7 +20,7 @@ import {
 export async function loadPreset(options: {
 	meta: DocMeta
 	path: DocPath
-}): Promise<{data: OPFSDocumentTree}> {
+}): Promise<{data: OPFSDocTree}> {
 	const {path} = options
 	const {filename, filetype} = path
 

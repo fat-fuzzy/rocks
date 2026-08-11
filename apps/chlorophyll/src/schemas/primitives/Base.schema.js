@@ -4,7 +4,7 @@ import {defineDefinitions} from '../index.js'
 import EnumsSchema from './Enums.schema.js'
 
 /** @type {{[key: string]: import('json-schema-to-typescript').JSONSchema}} */
-// @ts-expect-error these are JSON Schema definitions from @fat-fuzzy/validation definitions
+// @ts-expect-error these are JSON Schema definitions from @fat-fuzzy/validation package
 const externalBase = schemas.BaseSchema
 /**
  * Base types used for validating data at transform boundaries:

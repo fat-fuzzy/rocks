@@ -12,7 +12,7 @@ import type {
 	Section,
 	Block,
 	Preset,
-	OPFSDocumentTree,
+	OPFSDocTree,
 	OPFSPresetTree,
 	SeedDoc,
 	PendingRequest,
@@ -138,7 +138,7 @@ export default class WorkerBridge {
 	}
 
 	restoreFromBackup(payload: {
-		content: OPFSDocumentTree
+		content: OPFSDocTree
 		presets: OPFSPresetTree
 		base: OPFSBaseTree
 	}) {

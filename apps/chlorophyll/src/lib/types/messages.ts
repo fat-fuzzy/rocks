@@ -12,9 +12,9 @@ import type {
 	Block,
 	Prose,
 	Preset,
-	DocumentStore,
+	DocStore,
 	PresetStore,
-	OPFSDocumentTree,
+	OPFSDocTree,
 	OPFSPresetTree,
 	OPFSBaseTree,
 	SeedDoc,
@@ -50,7 +50,7 @@ export type RestoreFromBackupCommand = {
 	type: 'RESTORE_FROM_BACKUP'
 	requestId: RequestId
 	payload: {
-		content: OPFSDocumentTree
+		content: OPFSDocTree
 		presets: OPFSPresetTree
 		base: OPFSBaseTree
 	}
@@ -89,7 +89,7 @@ export type SaveSectionCommand = {
 	}
 }
 
-export type DeleteDocumentCommand = {
+export type DeleteDocCommand = {
 	type: 'DELETE_DOC'
 	requestId: RequestId
 	payload: {meta: DocMeta; path: DocPath}
@@ -134,30 +134,30 @@ export type Command =
 	| SaveBaseCommand
 	| SaveBlockCommand
 	| SavePresetCommand
-	| DeleteDocumentCommand
+	| DeleteDocCommand
 	| DeletePresetCommand
 	| DeleteAllCommand
 	| ExportCommand
 
 // ── Queries (reads) ────────────────────────────────────────────────────────────
 
-export type GetDocumentBaseQuery = {
+export type GetDocBaseQuery = {
 	type: 'GET_DOC_BASE'
 	requestId: RequestId
 }
 
-export type GetDocumentStructureQuery = {
+export type GetDocStructureQuery = {
 	type: 'GET_DOC_STRUCTURE'
 	requestId: RequestId
 }
 
-export type GetDocumentContentQuery = {
+export type GetDocContentQuery = {
 	type: 'GET_DOC_CONTENT'
 	requestId: RequestId
 	payload: {meta: DocMeta; path: DocPath}
 }
 
-export type GetAllDocumentsQuery = {
+export type GetAllDocsQuery = {
 	type: 'GET_ALL_DOCS'
 	requestId: RequestId
 }
@@ -180,10 +180,10 @@ export type CheckSeedQuery = {
 }
 
 export type Query =
-	| GetDocumentBaseQuery
-	| GetDocumentStructureQuery
-	| GetDocumentContentQuery
-	| GetAllDocumentsQuery
+	| GetDocBaseQuery
+	| GetDocStructureQuery
+	| GetDocContentQuery
+	| GetAllDocsQuery
 	| GetPresetQuery
 	| GetAllPresetsQuery
 	| CheckSeedQuery
@@ -217,7 +217,7 @@ export type ResponsePayload = {
 	SEED_STRUCTURE: {seeded: number}
 	RESTORE_FROM_BACKUP: {seeded: number} // TODO: rethink this response
 	GET_DOC_CONTENT: Prose | void
-	GET_ALL_DOCS: DocumentStore | void
+	GET_ALL_DOCS: DocStore | void
 	SAVE_BASE: {saved: boolean}
 	SAVE_BLOCK: {id: Uuid}
 	CREATE_SECTION: {name: string}
