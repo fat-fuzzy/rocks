@@ -273,7 +273,7 @@
 				<InputGroup
 					id="section-formats"
 					name="formats"
-					legend="Document Formats"
+					legend="Doc Formats"
 					type="checkbox"
 					value={formats}
 					size="2xs"

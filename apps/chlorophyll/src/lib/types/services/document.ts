@@ -12,11 +12,12 @@ import type {
 	Section,
 	Slug,
 	Uuid,
+	Doc,
 } from '$types'
 
 export type DocumentStore = {
 	[language in DocLanguage]?: {
-		[format in DocFormat]?: Document
+		[format in DocFormat]?: Doc
 	}
 }
 

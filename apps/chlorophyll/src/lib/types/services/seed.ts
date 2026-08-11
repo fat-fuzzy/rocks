@@ -1,4 +1,4 @@
-import type {SeedDocument, FrontmatterSeed, FrontmatterStructure} from '$types'
+import type {SeedDoc, FrontmatterSeed, FrontmatterStructure} from '$types'
 
 export interface ISeedService {
 	readonly seeded: {date_seed?: string; source?: string}
@@ -9,7 +9,7 @@ export interface ISeedService {
 
 	init(
 		frontmatter: FrontmatterSeed,
-		seed: {content: SeedDocument[]; structures: FrontmatterStructure[]},
+		seed: {content: SeedDoc[]; structures: FrontmatterStructure[]},
 	): Promise<void>
 	reset(): void
 
@@ -17,7 +17,7 @@ export interface ISeedService {
 
 	initSeed(
 		frontmatter: FrontmatterSeed,
-		seed: SeedDocument[],
+		seed: SeedDoc[],
 	): Promise<{
 		documents: {seeded: number}
 		base: {seeded: number}

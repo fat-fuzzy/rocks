@@ -16,12 +16,12 @@ export * from '$lib/types/services/tag'
 export * from '$lib/types/services/export'
 
 // Domain + Identity
-export * from '$lib/generated/types/Document'
+export * from '$lib/generated/types/Doc'
 export * from '$lib/generated/types/Preset'
 export * from '$lib/generated/types/Human'
 
 // Seed + Markdown
-export * from '$lib/generated/types/SeedDocument'
+export * from '$lib/generated/types/SeedDoc'
 export * from '$lib/generated/types/FrontmatterBase'
 export * from '$lib/generated/types/FrontmatterStructure'
 
@@ -37,7 +37,7 @@ export * from '$lib/generated/types/FormTag'
 
 export type {Query} from '$lib/types/messages'
 export type {Username, Date} from '$lib/generated/types/Human'
-export type {SeedType} from '$lib/generated/types/SeedDocument'
+export type {SeedType} from '$lib/generated/types/SeedDoc'
 export type {Title} from '$lib/generated/types/FormSection'
 
 export type {
@@ -54,4 +54,4 @@ export type {
 	DocVisibility,
 	Path,
 	Prose,
-} from '$lib/generated/types/Document'
+} from '$lib/generated/types/Doc'

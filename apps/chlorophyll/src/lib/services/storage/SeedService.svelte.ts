@@ -1,6 +1,6 @@
 export * from '$lib/types/services/seed'
 import type {
-	SeedDocument,
+	SeedDoc,
 	FrontmatterSeed,
 	FrontmatterStructure,
 	ISeedService,
@@ -32,7 +32,7 @@ export default class SeedService implements ISeedService {
 
 	async init(
 		frontmatter: FrontmatterSeed,
-		seed: {content: SeedDocument[]; structures: FrontmatterStructure[]},
+		seed: {content: SeedDoc[]; structures: FrontmatterStructure[]},
 	) {
 		this.bridge = getBridge()
 		try {

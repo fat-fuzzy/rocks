@@ -7,7 +7,7 @@ import type {
 	DocLanguage,
 	DocMeta,
 	DocPath,
-	Document,
+	Doc,
 	Section,
 	Block,
 	Prose,
@@ -17,7 +17,7 @@ import type {
 	OPFSDocumentTree,
 	OPFSPresetTree,
 	OPFSBaseTree,
-	SeedDocument,
+	SeedDoc,
 	FrontmatterBase,
 	FrontmatterStructure,
 } from '$types'
@@ -31,7 +31,7 @@ export type RequestId = string // crypto.randomUUID()
 export type SeedRootCommand = {
 	type: 'SEED_ROOT'
 	requestId: RequestId
-	payload: {seed: SeedDocument[]}
+	payload: {seed: SeedDoc[]}
 }
 
 export type SeedBaseCommand = {
@@ -227,7 +227,7 @@ export type ResponsePayload = {
 	DELETE_PRESET: {deleted: boolean}
 	DELETE_ALL: {deleted: boolean}
 	EXPORT_ALL: {markdown: string}
-	GET_PRESET: {document: Document | void}
+	GET_PRESET: {document: Doc | void}
 	GET_ALL_PRESETS: PresetStore | void
 	CHECK_SEED: {seeded: boolean}
 }

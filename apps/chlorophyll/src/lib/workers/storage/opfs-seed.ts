@@ -11,11 +11,11 @@
 
 import type {
 	OPFSBaseTree,
-	Document,
+	Doc,
 	FrontmatterBase,
 	OPFSDocumentTree,
 	OPFSPresetTree,
-	SeedDocument,
+	SeedDoc,
 	SeedType,
 	FrontmatterStructure,
 } from '$types'
@@ -27,7 +27,7 @@ import {
 	isSection,
 } from '$lib/common/transform/opfs-to-document'
 
-import {seedDocumentToDocument} from '$lib/common/transform/seed-to-document'
+import {seedDocToDoc} from '$lib/common/transform/seed-to-document'
 
 import {
 	parseSection,
@@ -93,12 +93,12 @@ async function markSeedComplete(type: SeedType) {
  * Loads seed cv data from markdown content and saves it to OPFS
  * @returns void
  */
-export async function seedRoot(seed: SeedDocument[]): Promise<void> {
+export async function seedRoot(seed: SeedDoc[]): Promise<void> {
 	if (await isSeedComplete('root')) return
 
 	try {
 		for (let i = 0; i < seed.length; i++) {
-			const document: Document = seedDocumentToDocument(seed[i])
+			const document: Doc = seedDocToDoc(seed[i])
 			const {schema_version, id, path, meta, sections} = document
 			const {language, format} = meta
 

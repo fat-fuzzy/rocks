@@ -8,7 +8,7 @@ const FrontmatterStructureSchema = defineSchema({
 	$id: 'FrontmatterStructure',
 	type: 'object',
 	description:
-		'Metadata that defines initial Document seed structures for settings combinations',
+		'Metadata that defines initial Doc seed structures for settings combinations',
 	properties: {
 		schema_version: {
 			$ref: '#/definitions/schemaVersion',

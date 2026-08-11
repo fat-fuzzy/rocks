@@ -14,7 +14,7 @@ import type {
 	Preset,
 	OPFSDocumentTree,
 	OPFSPresetTree,
-	SeedDocument,
+	SeedDoc,
 	PendingRequest,
 	ResponsePayload,
 	WorkerMessage,
@@ -91,7 +91,7 @@ export default class WorkerBridge {
 		})
 	}
 
-	seedDocuments(payload: {seed: SeedDocument[]}) {
+	seedDocuments(payload: {seed: SeedDoc[]}) {
 		return this.send({
 			type: 'SEED_ROOT',
 			requestId: crypto.randomUUID(),

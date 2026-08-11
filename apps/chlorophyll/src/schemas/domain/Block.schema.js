@@ -1,6 +1,6 @@
 import {defineSchema} from '../index.js'
 
-const BlockSchema = defineSchema({
+const BlockEntitySchema = defineSchema({
 	type: 'object',
 	properties: {
 		content_type: {
@@ -43,4 +43,4 @@ const BlockSchema = defineSchema({
 	additionalProperties: false,
 })
 
-export default BlockSchema
+export default BlockEntitySchema

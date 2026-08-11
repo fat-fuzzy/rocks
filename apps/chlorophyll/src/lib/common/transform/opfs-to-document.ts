@@ -2,7 +2,7 @@ import type {
 	DocLanguage,
 	DocFormat,
 	DocMeta,
-	Document,
+	Doc,
 	Section,
 	Preset,
 	DocumentStore,
@@ -121,7 +121,7 @@ export function opfsDocumentTreeToDocumentStore(
 
 			// FIXME: this should come from storage
 			// - meta.json at root > content folder level
-			const document: Document = {
+			const document: Doc = {
 				id: crypto.randomUUID(),
 				schema_version: '0.1',
 				meta: {
@@ -192,7 +192,7 @@ export function opfsBaseTreeToFrontmatterBase(
 
 	if (isRawBase(tree)) {
 		data = rawBaseToBase(tree)
-		const base = parseBase('OPFS Document base', data)
+		const base = parseBase('OPFS Doc base', data)
 
 		return base
 	}

@@ -8,11 +8,11 @@ import SeedSectionSchema from './SeedSection.schema.js'
 import SeedMetaSchema from './SeedMeta.schema.js'
 import SeedBlockSchema from './SeedBlock.schema.js'
 
-const SeedDocumentSchema = defineSchema({
+const SeedDocSchema = defineSchema({
 	$schema: 'http://json-schema.org/draft-07/schema#',
-	$id: 'SeedDocument',
+	$id: 'SeedDoc',
 	type: 'object',
-	description: 'Markdown Documents parsed and ready for initial app data seed',
+	description: 'Markdown Docs parsed and ready for initial app data seed',
 	properties: {
 		schema_version: {
 			$ref: '#/definitions/schemaVersion',
@@ -50,4 +50,4 @@ const SeedDocumentSchema = defineSchema({
 	},
 })
 
-export default SeedDocumentSchema
+export default SeedDocSchema

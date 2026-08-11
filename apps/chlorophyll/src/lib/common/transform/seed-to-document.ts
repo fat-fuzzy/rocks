@@ -3,10 +3,10 @@ import type {
 	DocPath,
 	FileExt,
 	DocContentType,
-	Document,
+	Doc,
 	Section,
 	Block,
-	SeedDocument,
+	SeedDoc,
 	SeedSection,
 	SeedBlock,
 } from '$types'
@@ -62,7 +62,7 @@ function seedSectionToSection(
 	}
 }
 
-export function seedDocumentToDocument(seed: SeedDocument): Document {
+export function seedDocToDoc(seed: SeedDoc): Doc {
 	const docId = crypto.randomUUID()
 
 	const meta: DocMeta = {
