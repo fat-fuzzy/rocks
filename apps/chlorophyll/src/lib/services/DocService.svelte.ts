@@ -54,8 +54,8 @@ export default class DocService implements IDocService {
 	structures: FrontmatterStructure[] = $state([])
 	content: DocStore = $state({})
 	docIndex: DocIndex = $derived(buildDocIndex(this.content))
-	blockEditorsLoaded: {[name: string]: Block} = $state({})
-	sectionEditorsLoaded: {[name: string]: Section} = $state({})
+	lazyBlocks: {[name: string]: Block} = $state({})
+	lazySections: {[name: string]: Section} = $state({})
 
 	constructor() {
 		this.loading = true
@@ -485,18 +485,18 @@ export default class DocService implements IDocService {
 			return
 		}
 
-		if (this.blockEditorsLoaded[dataset.block]) {
+		if (this.lazyBlocks[dataset.block]) {
 			return
 		}
 
 		if (dataset.block === dataset.section) {
-			this.sectionEditorsLoaded[dataset.block] = this.getSectionByName({
+			this.lazySections[dataset.block] = this.getSectionByName({
 				language,
 				format,
 				name,
 			})
 		} else {
-			this.blockEditorsLoaded[dataset.block] = this.getBlock({
+			this.lazyBlocks[dataset.block] = this.getBlock({
 				language,
 				format,
 				section: dataset.section as Slug,

@@ -43,8 +43,8 @@ export interface IDocService {
 	readonly structures: FrontmatterStructure[]
 	readonly content: DocStore
 	readonly docIndex: DocIndex
-	readonly blockEditorsLoaded: {[name: string]: Block}
-	readonly sectionEditorsLoaded: {[name: string]: Section}
+	readonly lazyBlocks: {[name: string]: Block}
+	readonly lazySections: {[name: string]: Section}
 
 	init(): Promise<void>
 
