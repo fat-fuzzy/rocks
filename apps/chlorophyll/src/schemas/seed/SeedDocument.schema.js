@@ -1,3 +1,5 @@
+import {defineSchema} from '../index.js'
+
 import BaseSchema from '../primitives/Base.schema.js'
 import ProseSchema from '../primitives/Prose.schema.js'
 import DocPathSchema from '../primitives/DocPath.schema.js'
@@ -6,8 +8,7 @@ import SeedSectionSchema from './SeedSection.schema.js'
 import SeedMetaSchema from './SeedMeta.schema.js'
 import SeedBlockSchema from './SeedBlock.schema.js'
 
-/** @type {import('json-schema-to-typescript').JSONSchema} */
-const SeedDocumentSchema = {
+const SeedDocumentSchema = defineSchema({
 	$schema: 'http://json-schema.org/draft-07/schema#',
 	$id: 'SeedDocument',
 	type: 'object',
@@ -47,6 +48,6 @@ const SeedDocumentSchema = {
 		Prose: ProseSchema,
 		Block: BlockSchema,
 	},
-}
+})
 
 export default SeedDocumentSchema

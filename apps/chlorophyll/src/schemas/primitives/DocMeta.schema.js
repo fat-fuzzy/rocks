@@ -1,4 +1,6 @@
-const DocMetaSchema = {
+import {defineSchema} from '../index.js'
+
+const DocMetaSchema = defineSchema({
 	type: 'object',
 	properties: {
 		label: {
@@ -43,6 +45,6 @@ const DocMetaSchema = {
 	},
 	required: ['id', 'name', 'label', 'content_type'],
 	additionalProperties: false,
-}
+})
 
 export default DocMetaSchema

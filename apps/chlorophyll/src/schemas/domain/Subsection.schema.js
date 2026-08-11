@@ -1,4 +1,6 @@
-const SubsectionSchema = {
+import {defineSchema} from '../index.js'
+
+const SubsectionSchema = defineSchema({
 	type: 'object',
 	properties: {
 		name: {
@@ -19,6 +21,6 @@ const SubsectionSchema = {
 	},
 	required: ['name', 'rank', 'parent', 'blocks'],
 	additionalProperties: false,
-}
+})
 
 export default SubsectionSchema

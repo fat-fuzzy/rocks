@@ -1,4 +1,6 @@
-const BlockSchema = {
+import {defineSchema} from '../index.js'
+
+const BlockSchema = defineSchema({
 	type: 'object',
 	properties: {
 		content_type: {
@@ -39,6 +41,6 @@ const BlockSchema = {
 		'tags',
 	],
 	additionalProperties: false,
-}
+})
 
 export default BlockSchema

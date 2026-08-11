@@ -1,4 +1,6 @@
-const SectionSchema = {
+import {defineSchema} from '../index.js'
+
+const SectionSchema = defineSchema({
 	type: 'object',
 	properties: {
 		content_type: {
@@ -40,6 +42,6 @@ const SectionSchema = {
 	},
 	required: ['id', 'name', 'rank', 'parentId'],
 	additionalProperties: false,
-}
+})
 
 export default SectionSchema

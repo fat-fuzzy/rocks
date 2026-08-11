@@ -1,4 +1,6 @@
-const DocPathSchema = {
+import {defineSchema} from '../index.js'
+
+const DocPathSchema = defineSchema({
 	type: 'object',
 	properties: {
 		filename: {
@@ -13,6 +15,6 @@ const DocPathSchema = {
 	},
 	required: ['filename', 'filetype'],
 	additionalProperties: false,
-}
+})
 
 export default DocPathSchema
