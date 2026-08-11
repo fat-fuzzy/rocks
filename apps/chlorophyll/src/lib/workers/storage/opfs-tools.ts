@@ -486,9 +486,7 @@ export async function deleteAllContent(): Promise<void> {
 
 			await opfsRoot.removeEntry(flagName)
 		} catch {
-			console.log('deleteAllContent: delete file error')
-
-			// console.log(error)
+			console.log(`deleteAllContent: Error deleting seed file ${name}`)
 		}
 
 		try {
@@ -499,9 +497,7 @@ export async function deleteAllContent(): Promise<void> {
 				await deleteDirectoryRecursive(directoryHandle)
 			}
 		} catch {
-			console.log('deleteAllContent: delete folder error')
-
-			// console.log(error)
+			console.log(`deleteAllContent: Error deleting seed folder ${name}`)
 		}
 	}
 }

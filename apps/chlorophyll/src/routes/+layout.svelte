@@ -3,19 +3,16 @@
 	import type {AreaProps, UiLayout, ViewingPreferences} from '@fat-fuzzy/ui'
 
 	import {setContext, onMount, onDestroy} from 'svelte'
-
-	import {buildNav} from '$data/nav'
-
-	import {initBridge, destroyBridge} from '$lib/services/storage/bridge'
-	import {createServices} from '$lib/services/container'
-	import Dialog from '$lib/ui/overlays/dialog/Dialog.svelte'
-
+	import ui from '@fat-fuzzy/ui'
+	import {page} from '$app/state'
 	// @ts-expect-error types not used for css
 	import '@fat-fuzzy/style/css'
 	import '$lib/styles/css/main.css'
 
-	import ui from '@fat-fuzzy/ui'
-	import {page} from '$app/state'
+	import {buildNav} from '$data/nav'
+	import {initBridge, destroyBridge} from '$lib/services/bridge'
+	import {createServices} from '$lib/services/container'
+	import Dialog from '$lib/ui/overlays/dialog/Dialog.svelte'
 
 	const {ToggleTree, ToggleReveal, ToggleSettings} = ui.drafts
 	const {SkipLinks} = ui.recipes
@@ -31,14 +28,14 @@
 	/**
 	 * Register Contexts
 	 */
-	const {seedService, docService, tagService, presetService, exportService} =
+	const {importService, exportService, docService, tagService, presetService} =
 		createServices()
 
-	setContext('seedService', seedService)
+	setContext('importService', importService)
+	setContext('exportService', exportService)
 	setContext('docService', docService)
 	setContext('tagService', tagService)
 	setContext('presetService', presetService)
-	setContext('exportService', exportService)
 
 	/**
 	 * Setup page data (loaded / generated)
@@ -109,7 +106,7 @@
 	onMount(async () => {
 		initBridge()
 
-		await seedService.init({base, structures}, seed)
+		await importService.init({base, structures}, seed)
 		await docService.init()
 		await tagService.init()
 		await presetService.init()

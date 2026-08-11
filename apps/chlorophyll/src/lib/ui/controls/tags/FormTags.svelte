@@ -254,9 +254,11 @@
 			font="sm"
 			asset="none"
 		>
-			<p>Deleting tags does not delete content.</p>
-			<p>If you can't find content after deleting tags, try selecting:</p>
-			<p class="font:semibold font:sm">Twilight Z > untagged</p>
+			<p>
+				The group <span class="font:semibold font:sm"> Twilight Z </span> cannot be
+				deleted
+			</p>
+			<p>Deleted tags will be removed without deleting content.</p>
 		</Feedback>
 	{:else if cta === 'save' || cta === 'update' || cta === 'copy'}
 		<div class="l:sidebar size:md">

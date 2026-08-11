@@ -128,3 +128,8 @@ input[name='rank'] {
 fieldset:has(label > [type='radio']) {
 	margin-block-start: var(--ui-size);
 }
+
+.tags-menu fieldset:only-child {
+	flex-grow: 0;
+	flex-basis: 35%;
+}

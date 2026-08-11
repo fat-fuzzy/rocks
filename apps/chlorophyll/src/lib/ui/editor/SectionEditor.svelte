@@ -45,8 +45,8 @@
 
 	let noContentFound = $derived(!section)
 	let error = $derived(docService.error)
-	let blocksLoaded = docService.blockEditorsLoaded
-	let sectionsLoaded = docService.sectionEditorsLoaded
+	let blocksLoaded = docService.lazyBlocks
+	let sectionsLoaded = docService.lazySections
 
 	const observerOptions = $derived({
 		root: null,

@@ -95,7 +95,7 @@
 			<p class="font:heading font:semibold text:center">No tags found</p>
 		</div>
 	{:else}
-		<div class="l:flex:2xs align:start justify:between">
+		<div class="tags-menu l:flex:2xs align:start justify:between">
 			{#each tags as group, i (i)}
 				<InputGroup
 					id={group.name}
