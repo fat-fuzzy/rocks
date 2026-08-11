@@ -13,7 +13,7 @@ import type {
 	OPFSBaseTree,
 	Doc,
 	FrontmatterBase,
-	OPFSDocumentTree,
+	OPFSDocTree,
 	OPFSPresetTree,
 	SeedDoc,
 	SeedType,
@@ -181,7 +181,7 @@ export async function seedStructure(options: {
 }
 
 export async function restoreFromBackup(options: {
-	content: OPFSDocumentTree
+	content: OPFSDocTree
 	presets: OPFSPresetTree
 	base: OPFSBaseTree
 }): Promise<void> {

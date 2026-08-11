@@ -11,7 +11,7 @@ import type {
 	Prose,
 	DocStore,
 	DocIndex,
-	OPFSDocumentTree,
+	OPFSDocTree,
 	FrontmatterStructure,
 	FrontmatterBase,
 	OPFSBaseTree,
@@ -29,7 +29,7 @@ import {getSectionKey, getBlockKey} from '$lib/common/format'
 
 import {
 	opfsBaseTreeToFrontmatterBase,
-	opfsDocumentTreeToDocStore,
+	opfsDocTreeToDocStore,
 	opfsStructureTreeToFrontmatterStructures,
 } from '$lib/common/transform/opfs-to-doc'
 
@@ -546,8 +546,8 @@ export default class DocService implements IDocService {
 		// 2 files are read:
 		// - content.json // Has Section shaped data FIXME: not always : se RawSection type
 		// - meta.json // Has DocMeta shaped data FIXME: not always : se RawSection type
-		const raw = (await this.bridge.getAllDocs()) as OPFSDocumentTree
+		const raw = (await this.bridge.getAllDocs()) as OPFSDocTree
 
-		this.content = opfsDocumentTreeToDocStore(raw)
+		this.content = opfsDocTreeToDocStore(raw)
 	}
 }
