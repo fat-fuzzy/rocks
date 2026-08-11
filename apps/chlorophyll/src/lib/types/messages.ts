@@ -90,7 +90,7 @@ export type SaveSectionCommand = {
 }
 
 export type DeleteDocumentCommand = {
-	type: 'DELETE_DOCUMENT'
+	type: 'DELETE_DOC'
 	requestId: RequestId
 	payload: {meta: DocMeta; path: DocPath}
 }
@@ -142,23 +142,23 @@ export type Command =
 // ── Queries (reads) ────────────────────────────────────────────────────────────
 
 export type GetDocumentBaseQuery = {
-	type: 'GET_DOCUMENT_BASE'
+	type: 'GET_DOC_BASE'
 	requestId: RequestId
 }
 
 export type GetDocumentStructureQuery = {
-	type: 'GET_DOCUMENT_STRUCTURE'
+	type: 'GET_DOC_STRUCTURE'
 	requestId: RequestId
 }
 
 export type GetDocumentContentQuery = {
-	type: 'GET_DOCUMENT_CONTENT'
+	type: 'GET_DOC_CONTENT'
 	requestId: RequestId
 	payload: {meta: DocMeta; path: DocPath}
 }
 
 export type GetAllDocumentsQuery = {
-	type: 'GET_ALL_DOCUMENTS'
+	type: 'GET_ALL_DOCS'
 	requestId: RequestId
 }
 
@@ -216,13 +216,13 @@ export type ResponsePayload = {
 	SEED_BASE: {seeded: number}
 	SEED_STRUCTURE: {seeded: number}
 	RESTORE_FROM_BACKUP: {seeded: number} // TODO: rethink this response
-	GET_DOCUMENT_CONTENT: Prose | void
-	GET_ALL_DOCUMENTS: DocumentStore | void
+	GET_DOC_CONTENT: Prose | void
+	GET_ALL_DOCS: DocumentStore | void
 	SAVE_BASE: {saved: boolean}
 	SAVE_BLOCK: {id: Uuid}
 	CREATE_SECTION: {name: string}
 	SAVE_SECTION: {id: Uuid}
-	DELETE_DOCUMENT: {deleted: boolean}
+	DELETE_DOC: {deleted: boolean}
 	SAVE_PRESET: {id: Uuid}
 	DELETE_PRESET: {deleted: boolean}
 	DELETE_ALL: {deleted: boolean}

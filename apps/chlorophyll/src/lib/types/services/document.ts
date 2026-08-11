@@ -42,7 +42,7 @@ export interface IDocService {
 	readonly base: FrontmatterBase
 	readonly structures: FrontmatterStructure[]
 	readonly content: DocStore
-	readonly documentIndex: DocIndex
+	readonly docIndex: DocIndex
 	readonly blockEditorsLoaded: {[name: string]: Block}
 	readonly sectionEditorsLoaded: {[name: string]: Section}
 
