@@ -1,18 +1,20 @@
 <script lang="ts">
 	import type {UiColor} from '@fat-fuzzy/ui'
-	import type {ActionCrud, DocFormat, DocLanguage, Section} from '$types'
+	import type {
+		ActionCrud,
+		DocFormat,
+		DocLanguage,
+		Section,
+		IDocService,
+	} from '$types'
 
 	import * as validators from '$lib/generated/ajv/validation/validate.ajv.mjs'
 
 	import {getContext, onDestroy, onMount} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
 
-	import DocumentService from '$lib/services/storage/document-service.svelte'
 	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
-	import {
-		PUBLIC_DOCUMENT_FORMAT,
-		PUBLIC_DOCUMENT_LANGUAGE,
-	} from '$app/env/public'
+	import {PUBLIC_DOC_FORMAT, PUBLIC_DOC_LANGUAGE} from '$app/env/public'
 	import {page} from '$app/state'
 
 	const {Button, Input, InputGroup, Feedback} = ui.blocks
@@ -25,7 +27,7 @@
 	}
 	let {formats, cta, color = 'primary'}: Props = $props()
 
-	let documentService: DocumentService = getContext('documentService')
+	let docService: IDocService = getContext('docService')
 
 	const validator = new FormValidator(
 		'FormSectionValidationFunction',
@@ -130,9 +132,9 @@
 	}
 
 	function checkSectionExists(sectionName: string): Section | undefined {
-		return documentService.getSectionByName({
-			language: PUBLIC_DOCUMENT_LANGUAGE as DocLanguage,
-			format: PUBLIC_DOCUMENT_FORMAT as DocFormat,
+		return docService.getSectionByName({
+			language: PUBLIC_DOC_LANGUAGE as DocLanguage,
+			format: PUBLIC_DOC_FORMAT as DocFormat,
 			name: sectionName,
 		})
 	}
@@ -150,7 +152,7 @@
 			formats,
 		}
 
-		documentService.createSection(newSection)
+		docService.createSection(newSection)
 
 		dialogActor.close()
 
@@ -163,7 +165,7 @@
 
 	function deleteSection() {
 		// TODO
-		// documentService.deleteSection({
+		// docService.deleteSection({
 		// 	path: {
 		// 		filename: sectionName,
 		// 		filetype: 'json',
@@ -268,7 +270,7 @@
 				<InputGroup
 					id="section-formats"
 					name="formats"
-					legend="Document Formats"
+					legend="Doc Formats"
 					type="checkbox"
 					value={formats}
 					size="2xs"

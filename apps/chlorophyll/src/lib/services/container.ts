@@ -1,19 +1,32 @@
-import SeedService from '$lib/services/storage/seed-service.svelte'
-import DocumentService from '$lib/services/storage/document-service.svelte'
-import TagService from '$lib/services/storage/tag-service.svelte'
-import ExportService from '$lib/services/export-service'
-import PresetService from '$lib/services/storage/preset-service.svelte'
+import type {
+	ISeedService,
+	IDocService,
+	IPresetService,
+	ITagService,
+	IExportService,
+} from '$types'
+import SeedService from '$lib/services/storage/SeedService.svelte'
+import DocService from '$lib/services/storage/DocService.svelte'
+import TagService from '$lib/services/storage/TagService.svelte'
+import ExportService from '$lib/services/ExportService'
+import PresetService from '$lib/services/storage/PresetService.svelte'
 
-export function createServices() {
+export function createServices(): {
+	seedService: ISeedService
+	docService: IDocService
+	tagService: ITagService
+	presetService: IPresetService
+	exportService: IExportService
+} {
 	const seedService = new SeedService()
-	const documentService = new DocumentService()
+	const docService = new DocService()
 	const presetService = new PresetService()
 	const exportService = new ExportService()
-	const tagService = new TagService(documentService)
+	const tagService = new TagService(docService)
 
 	return {
 		seedService,
-		documentService,
+		docService,
 		tagService,
 		presetService,
 		exportService,

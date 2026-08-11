@@ -1,3 +1,5 @@
+import {defineSchema} from '../index.js'
+
 import BaseSchema from '../primitives/Base.schema.js'
 import DocMetaSchema from '../primitives/DocMeta.schema.js'
 import DocPathSchema from '../primitives/DocPath.schema.js'
@@ -8,15 +10,14 @@ import BlockSchema from './Block.schema.js'
 import SectionSchema from './Section.schema.js'
 import SubsectionSchema from './Subsection.schema.js'
 
-/** @type {import('json-schema-to-typescript').JSONSchema} */
-const DocumentSchema = {
+const DocSchema = defineSchema({
 	$schema: 'http://json-schema.org/draft-07/schema#',
-	$id: 'Document',
+	$id: 'Doc',
 	type: 'object',
 	properties: {
 		description: {
 			type: 'string',
-			const: 'Domain definitions of Document data',
+			const: 'Domain definitions of Doc data',
 		},
 		schema_version: {
 			$ref: '#/definitions/schemaVersion',
@@ -48,6 +49,6 @@ const DocumentSchema = {
 		Section: SectionSchema,
 		Subsection: SubsectionSchema,
 	},
-}
+})
 
-export default DocumentSchema
+export default DocSchema

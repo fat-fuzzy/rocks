@@ -16,7 +16,7 @@ export const OPFS_FOLDERS: {[key in SeedType]: string[]} = {
 }
 
 /**
- * Get the deepest nested folder handle for given document
+ * Get the deepest nested folder handle for given doc
  * @param filename
  * @returns file contents
  */
@@ -74,7 +74,7 @@ export async function getDocsHandle(options: {
 }
 
 /**
- * Get the folder handle for the base metadata for documents
+ * Get the folder handle for the base metadata for docs
  * @param filename
  * @returns file contents
  */
@@ -104,7 +104,7 @@ export async function getBaseHandle(options: {
 }
 
 /**
- * Get the folder handle for the structure metadata for documents
+ * Get the folder handle for the structure metadata for docs
  * @param filename
  * @returns file contents
  */

@@ -1,4 +1,6 @@
-const EnumsSchema = /** @type {const} */ {
+import {defineDefinitions} from '../index.js'
+
+const EnumsSchema = defineDefinitions({
 	seedType: {
 		type: 'string',
 		enum: ['backup', 'base', 'structure', 'root'],
@@ -55,6 +57,6 @@ const EnumsSchema = /** @type {const} */ {
 		type: 'string',
 		enum: ['idle', 'loading', 'visible', 'closed', 'cancelled'],
 	},
-}
+})
 
 export default EnumsSchema

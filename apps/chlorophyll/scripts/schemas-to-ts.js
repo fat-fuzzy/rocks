@@ -3,9 +3,6 @@ import path from 'node:path'
 import {fileURLToPath} from 'node:url'
 import {compile} from 'json-schema-to-typescript'
 
-// import {DOCUMENT_SCHEMAS} from '../src/schemas/domain/index.js'
-// import {IDENTITY_SCHEMAS} from '../src/schemas/identity/index.js'
-// import {STORAGE_SCHEMAS} from '../src/schemas/storage/index.js'
 import {schemas} from '../src/schemas/Chlorophyll.registry.js'
 import {buildTypeSchemas} from './schemas-from-registry.js'
 
@@ -30,11 +27,6 @@ const compileOptions = {
 		},
 	},
 }
-
-// compile(ChlorophyllSchema, 'Chlorophyll', compileOptions).then((ts) => {
-// 	fs.mkdirSync(outDir, {recursive: true}) // ensure directory exists
-// 	fs.writeFileSync(path.join(outDir, 'chlorophyll.ts'), ts)
-// })
 
 function verifySchemas(schemas) {
 	// Debug: find schemas with missing or empty $id

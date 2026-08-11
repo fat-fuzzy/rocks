@@ -11,11 +11,11 @@
 
 import type {
 	OPFSBaseTree,
-	Document,
+	Doc,
 	FrontmatterBase,
 	OPFSDocumentTree,
 	OPFSPresetTree,
-	SeedDocument,
+	SeedDoc,
 	SeedType,
 	FrontmatterStructure,
 } from '$types'
@@ -25,9 +25,9 @@ import {
 	isRawSection,
 	isRawPreset,
 	isSection,
-} from '$lib/common/transform/opfs-to-document'
+} from '$lib/common/transform/opfs-to-doc'
 
-import {seedDocumentToDocument} from '$lib/common/transform/seed-to-document'
+import {seedDocToDoc} from '$lib/common/transform/seed-to-doc'
 
 import {
 	parseSection,
@@ -93,13 +93,13 @@ async function markSeedComplete(type: SeedType) {
  * Loads seed cv data from markdown content and saves it to OPFS
  * @returns void
  */
-export async function seedRoot(seed: SeedDocument[]): Promise<void> {
+export async function seedRoot(seed: SeedDoc[]): Promise<void> {
 	if (await isSeedComplete('root')) return
 
 	try {
 		for (let i = 0; i < seed.length; i++) {
-			const document: Document = seedDocumentToDocument(seed[i])
-			const {schema_version, id, path, meta, sections} = document
+			const doc: Doc = seedDocToDoc(seed[i])
+			const {schema_version, id, path, meta, sections} = doc
 			const {language, format} = meta
 
 			// 0. Prepare: ensure language and format folders exist
@@ -128,7 +128,7 @@ export async function seedRoot(seed: SeedDocument[]): Promise<void> {
 			)
 		}
 	} catch {
-		throw new Error('Error seeding document root')
+		throw new Error('Error seeding doc root')
 	}
 
 	await markSeedComplete('root')
@@ -147,7 +147,7 @@ export async function seedBase(base: FrontmatterBase): Promise<void> {
 		const directoryHandle = await getBaseHandle({create: true})
 		await saveEntry(directoryHandle, {name: 'base'}, data)
 	} catch {
-		throw new Error('Error seeding document base')
+		throw new Error('Error seeding doc base')
 	}
 	await markSeedComplete('base')
 }
@@ -174,7 +174,7 @@ export async function seedStructure(options: {
 		const directoryHandle = await getStructureHandle({create: true})
 		await saveEntry(directoryHandle, {name: 'structure'}, {structure: toSeed})
 	} catch {
-		throw new Error('Error seeding document structure')
+		throw new Error('Error seeding doc structure')
 	}
 
 	await markSeedComplete('structure')

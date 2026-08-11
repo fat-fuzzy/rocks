@@ -1,12 +1,11 @@
 <script lang="ts">
-	import type {Preset} from '$types'
+	import type {Preset, IPresetService} from '$types'
 
 	import {getContext} from 'svelte'
 	import {page} from '$app/state'
 	import {resolve} from '$app/paths'
 	import ui from '@fat-fuzzy/ui'
 
-	import PresetService from '$lib/services/storage/preset-service.svelte'
 	import DialogSavePreset from '$lib/ui/controls/preset/DialogSavePreset.svelte'
 	import DialogDeletePreset from '$lib/ui/controls/preset/DialogDeletePreset.svelte'
 	import Loading from '$lib/ui/Loading.svelte'
@@ -21,7 +20,7 @@
 	let cta = $derived(page.params.page)
 	let query = $derived(page.url.search)
 
-	let presetService: PresetService = getContext('presetService')
+	let presetService: IPresetService = getContext('presetService')
 
 	let presetIndex: Record<string, Preset> = $derived(
 		presetService.loadPresets(),

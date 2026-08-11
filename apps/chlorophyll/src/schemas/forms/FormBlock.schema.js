@@ -1,7 +1,8 @@
+import {defineSchema} from '../index.js'
+
 import FormBaseSchema from '../primitives/FormBase.schema.js'
 
-/** @type {import('json-schema-to-typescript').JSONSchema} */
-const FormBlockSchema = /** @type {const} */ {
+const FormBlockSchema = defineSchema({
 	$schema: 'http://json-schema.org/draft-07/schema#',
 	$id: 'FormBlock',
 	type: 'object',
@@ -44,6 +45,6 @@ const FormBlockSchema = /** @type {const} */ {
 	required: ['parent', 'name', 'rank'],
 	// additionalProperties: false, FIXME: tag groups generate additional properties per group (guard: Block will be checked on save)
 	definitions: FormBaseSchema,
-}
+})
 
 export default FormBlockSchema

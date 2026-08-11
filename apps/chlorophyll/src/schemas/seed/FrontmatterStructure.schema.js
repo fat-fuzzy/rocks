@@ -1,13 +1,14 @@
+import {defineSchema} from '../index.js'
+
 import BaseSchema from '../primitives/Base.schema.js'
 import DocPathSchema from '../primitives/DocPath.schema.js'
 
-/** @type {import('json-schema-to-typescript').JSONSchema} */
-const FrontmatterStructureSchema = {
+const FrontmatterStructureSchema = defineSchema({
 	$schema: 'http://json-schema.org/draft-07/schema#',
 	$id: 'FrontmatterStructure',
 	type: 'object',
 	description:
-		'Metadata that defines initial Document seed structures for settings combinations',
+		'Metadata that defines initial Doc seed structures for settings combinations',
 	properties: {
 		schema_version: {
 			$ref: '#/definitions/schemaVersion',
@@ -45,6 +46,6 @@ const FrontmatterStructureSchema = {
 		...BaseSchema,
 		DocPath: DocPathSchema,
 	},
-}
+})
 
 export default FrontmatterStructureSchema

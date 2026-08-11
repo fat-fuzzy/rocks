@@ -1,19 +1,18 @@
 <script lang="ts">
-	import type {Slug, DocFormat, DocLanguage, Section} from '$types'
+	import type {Slug, DocFormat, DocLanguage, Section, IDocService} from '$types'
 
 	import {getContext, onMount} from 'svelte'
 
 	import {isHidden, checkTags} from '$data/cv/cv-display'
 	import {LOCALIZATIONS} from '$lib/intl/l10n'
 
-	import DocumentService from '$lib/services/storage/document-service.svelte'
 	import BlockPlaceholder from '$lib/ui/editor/BlockPlaceholder.svelte'
 	import BlockEditor from '$lib/ui/editor/BlockEditor.svelte'
 	import DialogSaveBlock from '$lib/ui/controls/block/DialogSaveBlock.svelte'
 	import FeedbackContent from '$lib/ui/FeedbackContent.svelte'
 	import Loading from '$lib/ui/Loading.svelte'
 
-	let documentService: DocumentService = getContext('documentService')
+	let docService: IDocService = getContext('docService')
 
 	let {
 		name,
@@ -30,10 +29,10 @@
 	let observerRoot: HTMLElement | undefined = $state()
 	let observer: IntersectionObserver | undefined = $state()
 	let missingIcon = 'emoji:idea justify:end'
-	let loading = $derived(documentService.loading)
+	let loading = $derived(docService.loading)
 
 	let section: Section = $derived(
-		documentService.getSectionByName({
+		docService.getSectionByName({
 			language,
 			format,
 			name,
@@ -45,9 +44,9 @@
 	let displayBlockForm = $derived(name !== undefined)
 
 	let noContentFound = $derived(!section)
-	let error = $derived(documentService.error)
-	let blocksLoaded = documentService.blockEditorsLoaded
-	let sectionsLoaded = documentService.sectionEditorsLoaded
+	let error = $derived(docService.error)
+	let blocksLoaded = docService.blockEditorsLoaded
+	let sectionsLoaded = docService.sectionEditorsLoaded
 
 	const observerOptions = $derived({
 		root: null,
@@ -61,7 +60,7 @@
 			const target = entry.target as HTMLElement
 
 			if (entry.isIntersecting) {
-				documentService.loadBlock(
+				docService.lazyLoadBlock(
 					{
 						block: target.dataset.block,
 						section: target.dataset.section,

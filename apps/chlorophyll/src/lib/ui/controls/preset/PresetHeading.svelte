@@ -1,10 +1,8 @@
 <script lang="ts">
-	import type {ActionDoc, Preset} from '$types'
+	import type {ActionDoc, Preset, IPresetService} from '$types'
 
 	import {getContext} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
-
-	import PresetService from '$lib/services/storage/preset-service.svelte'
 
 	const {Button} = ui.blocks
 
@@ -18,7 +16,7 @@
 		query: string
 	} = $props()
 
-	let presetService: PresetService = getContext('presetService')
+	let presetService: IPresetService = getContext('presetService')
 
 	function savePreset(preset: Preset) {
 		presetService.savePreset({

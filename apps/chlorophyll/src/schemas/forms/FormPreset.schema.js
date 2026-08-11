@@ -1,7 +1,8 @@
+import {defineSchema} from '../index.js'
+
 import FormBaseSchema from '../primitives/FormBase.schema.js'
 
-/** @type {import('json-schema-to-typescript').JSONSchema} */
-const FormPresetSchema = /** @type {const} */ {
+const FormPresetSchema = defineSchema({
 	$schema: 'http://json-schema.org/draft-07/schema#',
 	$id: 'FormPreset',
 	type: 'object',
@@ -21,6 +22,6 @@ const FormPresetSchema = /** @type {const} */ {
 	required: ['name'],
 	additionalProperties: false,
 	definitions: FormBaseSchema,
-}
+})
 
 export default FormPresetSchema

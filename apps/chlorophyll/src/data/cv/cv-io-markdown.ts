@@ -3,7 +3,7 @@ import type {
 	SeedSection,
 	SeedDocParsingOptions,
 	SeedRootParsingOptions,
-	SeedDocument,
+	SeedDoc,
 	FrontmatterSeed,
 	FrontmatterBase,
 	FrontmatterStructure,
@@ -111,7 +111,7 @@ async function parseSectionMarkdowns({
 		: `${localizations.pathPrefix}${format}/`
 
 	if (typeof PATHS_CV_L10N_FORMATS[language][section] === 'string') {
-		throw Error('Seed document structure cannot be parsed')
+		throw Error('Seed doc structure cannot be parsed')
 	}
 
 	const sectionImports = PATHS_CV_L10N_FORMATS[language][section][
@@ -132,8 +132,8 @@ async function parseSectionMarkdowns({
 async function parseMarkdownCvContent({
 	language,
 	format,
-}: SeedDocParsingOptions): Promise<SeedDocument | void> {
-	const markdownCvData: SeedDocument = {
+}: SeedDocParsingOptions): Promise<SeedDoc | void> {
+	const markdownCvData: SeedDoc = {
 		language,
 		format,
 		sections: [],

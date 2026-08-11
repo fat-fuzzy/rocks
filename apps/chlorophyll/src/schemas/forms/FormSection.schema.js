@@ -1,7 +1,8 @@
+import {defineSchema} from '../index.js'
+
 import FormBaseSchema from '../primitives/FormBase.schema.js'
 
-/** @type {import('json-schema-to-typescript').JSONSchema} */
-const FormSectionSchema = /** @type {const} */ {
+const FormSectionSchema = defineSchema({
 	$schema: 'http://json-schema.org/draft-07/schema#',
 	$id: 'FormSection',
 	type: 'object',
@@ -30,6 +31,6 @@ const FormSectionSchema = /** @type {const} */ {
 	required: ['name', 'rank'],
 	additionalProperties: false,
 	definitions: FormBaseSchema,
-}
+})
 
 export default FormSectionSchema

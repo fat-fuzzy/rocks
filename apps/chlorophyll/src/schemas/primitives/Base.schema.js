@@ -1,14 +1,19 @@
 import {schemas} from '@fat-fuzzy/validation'
+import {defineDefinitions} from '../index.js'
+
 import EnumsSchema from './Enums.schema.js'
 
+/** @type {{[key: string]: import('json-schema-to-typescript').JSONSchema}} */
+// @ts-expect-error these are JSON Schema definitions from @fat-fuzzy/validation definitions
+const externalBase = schemas.BaseSchema
 /**
  * Base types used for validating data at transform boundaries:
  * service <> bridge <> worker <> storage
  * CAVEAT: definitions that use multiple validation conditions need `allOf` to work for form validation
  * -> see ./FormBase.schema.js for equivalent types used in form validation
  */
-const BaseSchema = {
-	...schemas.BaseSchema,
+const BaseSchema = defineDefinitions({
+	...externalBase,
 	...EnumsSchema,
 	schemaVersion: {
 		type: 'string',
@@ -53,6 +58,6 @@ const BaseSchema = {
 		type: 'string',
 		pattern: '[0-9]{4}-[0-9]{2}-[0-9]{2}',
 	},
-}
+})
 
 export default BaseSchema
