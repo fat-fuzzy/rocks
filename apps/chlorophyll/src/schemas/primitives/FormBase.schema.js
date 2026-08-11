@@ -1,5 +1,11 @@
 import {schemas} from '@fat-fuzzy/validation'
+import {defineDefinitions} from '../index.js'
+
 import EnumsSchema from './Enums.schema.js'
+
+/** @type {{[key: string]: import('json-schema-to-typescript').JSONSchema}} */
+// @ts-expect-error these are JSON Schema definitions from @fat-fuzzy/validation package
+const externalBase = schemas.BaseSchema
 
 /**
  * FormBase types used for validating form inputs
@@ -7,8 +13,8 @@ import EnumsSchema from './Enums.schema.js'
  * CAVEAT: TypeScript types generated using `allOf` are problematic for data validation in transform operations
  * -> see ./Base.schema.js for equivalent types used in transforms
  */
-const FormBaseSchema = {
-	...schemas.FormBaseSchema,
+const FormBaseSchema = defineDefinitions({
+	...externalBase,
 	...EnumsSchema,
 	schemaVersion: {
 		type: 'string',
@@ -59,6 +65,6 @@ const FormBaseSchema = {
 		type: 'string',
 		pattern: '[0-9]{4}-[0-9]{2}-[0-9]{2}',
 	},
-}
+})
 
 export default FormBaseSchema

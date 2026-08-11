@@ -1,13 +1,11 @@
 <script lang="ts">
 	import type {UiColor, UiSize} from '@fat-fuzzy/ui'
-	import type {ImportStatus} from '$types'
+	import type {ImportStatus, ISeedService, IExportService} from '$types'
 
 	import {getContext} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
 
 	import {guardedExport} from '$lib/common/download'
-	import SeedService from '$lib/services/storage/seed-service.svelte'
-	import ExportService from '$lib/services/export-service'
 	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
 
 	const {Button, Feedback} = ui.blocks
@@ -29,8 +27,8 @@
 		onImported,
 	}: Props = $props()
 
-	let seedService: SeedService = getContext('seedService')
-	let exportService: ExportService = getContext('exportService')
+	let seedService: ISeedService = getContext('seedService')
+	let exportService: IExportService = getContext('exportService')
 
 	const statusLabel: Record<ImportStatus, string> = {
 		idle: '',

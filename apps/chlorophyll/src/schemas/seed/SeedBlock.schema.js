@@ -1,9 +1,11 @@
+import {defineSchema} from '../index.js'
+
 import ProseSchema from '../primitives/Prose.schema.js'
 
-const SeedBlockSchema = {
+const SeedBlockSchema = defineSchema({
 	type: 'object',
 	description:
-		'Human-readable document in markdown with front matter. Aim: to remain human-readable while seeding tiptap editors.',
+		'Human-readable doc in markdown with front matter. Aim: to remain human-readable while seeding tiptap editors.',
 
 	properties: {
 		name: {
@@ -19,6 +21,6 @@ const SeedBlockSchema = {
 	},
 	required: ['name', 'content', 'parent', 'tags'],
 	additionalProperties: false,
-}
+})
 
 export default SeedBlockSchema

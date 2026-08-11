@@ -1,4 +1,6 @@
-const SeedMetaSchema = {
+import {defineSchema} from '../index.js'
+
+const SeedMetaSchema = defineSchema({
 	type: 'object',
 	properties: {
 		id: {
@@ -37,6 +39,6 @@ const SeedMetaSchema = {
 	},
 	required: ['label', 'name', 'language', 'content_type'],
 	additionalProperties: false,
-}
+})
 
 export default SeedMetaSchema

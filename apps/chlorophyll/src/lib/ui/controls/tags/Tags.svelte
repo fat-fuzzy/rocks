@@ -1,29 +1,32 @@
 <script lang="ts">
 	import type {UiColor} from '@fat-fuzzy/ui'
-	import type {TagGroup, InputGroupMenus} from '$types'
+	import type {TagGroup, InputGroupMenus, ActionDoc} from '$types'
 
-	import {getContext} from 'svelte'
 	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
 
-	import TagService from '$lib/services/storage/tag-service.svelte'
 	import DialogSaveTag from '$lib/ui/controls/tags/DialogSaveTag.svelte'
 	import DialogDeleteTags from '$lib/ui/controls/tags/DialogDeleteTags.svelte'
 	import Loading from '$lib/ui/Loading.svelte'
 
 	const {InputGroup, Feedback} = ui.blocks
 
-	const {oninput}: {oninput: (e: Event) => void} = $props()
+	const {
+		cta,
+		loading,
+		error,
+		tags,
+		oninput,
+	}: {
+		cta: ActionDoc
+		loading: boolean
+		error: boolean
+		tags: TagGroup[]
+		oninput: (e: Event) => void
+	} = $props()
 
-	let tagService: TagService = getContext('tagService')
-
-	let cta = $derived(page.params.page)
-	let baseTags = $derived(tagService.tags)
-	let loading = $derived(tagService.loading)
-	let error = $derived(tagService.error)
-
-	let tags = $derived.by(() => {
-		const menuItems = baseTags.reduce(
+	let baseTags = $derived.by(() => {
+		const menuItems = tags.reduce(
 			(
 				menus: InputGroupMenus,
 				{title, name, type, items}: TagGroup,
@@ -67,7 +70,7 @@
 					color="highlight"
 					label="Delete Tags"
 					cta="delete"
-					groups={tagService.tags}
+					groups={tags}
 				/>
 				<DialogSaveTag
 					id="dialog-create-tags"
@@ -76,7 +79,7 @@
 					cta="save"
 					asset="plus"
 					assetType="svg"
-					groups={tagService.tags}
+					groups={tags}
 				/>
 			</menu>
 		{/if}
@@ -87,13 +90,13 @@
 		<Feedback status="error" context="prose" variant="bare" asset="default">
 			<p>Failed to load Tags.</p>
 		</Feedback>
-	{:else if baseTags.length === 0}
+	{:else if tags.length === 0}
 		<div class="scroll:container font:sm shape:mellow surface:1:neutral">
 			<p class="font:heading font:semibold text:center">No tags found</p>
 		</div>
 	{:else}
 		<div class="l:flex:2xs align:start justify:between">
-			{#each baseTags as group, i (i)}
+			{#each tags as group, i (i)}
 				<InputGroup
 					id={group.name}
 					name={group.name}
@@ -106,7 +109,7 @@
 						? 'outline'
 						: 'bare'}
 					selectAll={true}
-					items={tags[group.name]}
+					items={baseTags[group.name]}
 					{oninput}
 				/>
 			{/each}

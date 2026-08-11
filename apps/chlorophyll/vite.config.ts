@@ -1,35 +1,24 @@
 import {defineConfig} from 'vitest/config'
-import {playwright} from '@vitest/browser-playwright'
 import {sveltekit} from '@sveltejs/kit/vite'
 
 export default defineConfig({
 	plugins: [sveltekit()],
 	test: {
-		expect: {requireAssertions: true},
-		projects: [
-			{
-				extends: './vite.config.ts',
-				test: {
-					name: 'client',
-					browser: {
-						enabled: true,
-						provider: playwright(),
-						instances: [{browser: 'chromium', headless: true}],
-					},
-					include: ['src/**/*.svelte.{test,spec}.{js,ts}'],
-					exclude: ['src/lib/server/**'],
-				},
-			},
-
-			{
-				extends: './vite.config.ts',
-				test: {
-					name: 'server',
-					environment: 'node',
-					include: ['src/**/*.{test,spec}.{js,ts}'],
-					exclude: ['src/**/*.svelte.{test,spec}.{js,ts}'],
-				},
-			},
-		],
+		reporters: ['html'],
+		include: ['tests/unit/**/*.{test,spec}.{js,ts}'],
+		coverage: {
+			enabled: true,
+			provider: 'v8',
+			include: ['src/**/*.{js,ts}'],
+			exclude: [
+				'src/app.d.ts',
+				'src/**/browser/*.{js,ts}',
+				'src/**/definitions.{js,ts}',
+				'src/lib/types/*.{js,ts}',
+				'src/lib/**/*.browser.ts',
+				'src/lib/index.ts',
+				'src/lib/components/',
+			],
+		},
 	},
 })

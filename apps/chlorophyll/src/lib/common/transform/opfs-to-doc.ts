@@ -2,12 +2,12 @@ import type {
 	DocLanguage,
 	DocFormat,
 	DocMeta,
-	Document,
+	Doc,
 	Section,
 	Preset,
-	DocumentStore,
+	DocStore,
 	PresetStore,
-	OPFSDocumentTree,
+	OPFSDocTree,
 	OPFSPresetTree,
 	OPFSBaseTree,
 	OPFSStructureTree,
@@ -101,9 +101,7 @@ function rawToSection(raw: Section): Section {
 	return raw
 }
 
-export function opfsDocumentTreeToDocumentStore(
-	tree: OPFSDocumentTree,
-): DocumentStore {
+export function opfsDocTreeToDocStore(tree: OPFSDocTree): DocStore {
 	// eslint-disable-next-line
 	const store: any = {} // FIXME: fix type
 
@@ -121,7 +119,7 @@ export function opfsDocumentTreeToDocumentStore(
 
 			// FIXME: this should come from storage
 			// - meta.json at root > content folder level
-			const document: Document = {
+			const doc: Doc = {
 				id: crypto.randomUUID(),
 				schema_version: '0.1',
 				meta: {
@@ -148,23 +146,23 @@ export function opfsDocumentTreeToDocumentStore(
 				if (isRawSection(rawSection)) {
 					section = rawSectionToSection(rawSection)
 
-					document.sections?.push(
+					doc.sections?.push(
 						parseSection(`OPFS Section: ${sectionName}`, section),
 					)
 				} else if (isSection(rawSection)) {
 					section = rawToSection(rawSection)
 
-					document.sections?.push(
+					doc.sections?.push(
 						parseSection(`OPFS Section: ${sectionName}`, section),
 					)
 				}
 			}
 
-			store[language as DocLanguage][format as DocFormat] = document
+			store[language as DocLanguage][format as DocFormat] = doc
 		}
 	}
 
-	return store as DocumentStore
+	return store as DocStore
 }
 
 export function opfsPresetTreeToPresetStore(tree: OPFSPresetTree): PresetStore {
@@ -192,7 +190,7 @@ export function opfsBaseTreeToFrontmatterBase(
 
 	if (isRawBase(tree)) {
 		data = rawBaseToBase(tree)
-		const base = parseBase('OPFS Document base', data)
+		const base = parseBase('OPFS Doc base', data)
 
 		return base
 	}

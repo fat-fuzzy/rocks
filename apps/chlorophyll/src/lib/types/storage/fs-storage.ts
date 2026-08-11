@@ -17,7 +17,7 @@ export type StorageCreateOrUpdatePayload = {
 }
 // Storage Output
 
-export type OPFSDocumentTree = Record<string, {content: Section; meta: DocMeta}>
+export type OPFSDocTree = Record<string, {content: Section; meta: DocMeta}>
 export type OPFSPresetTree = Record<string, {content: Preset; meta: DocMeta}>
 export type OPFSBaseTree = {
 	content: FrontmatterBase

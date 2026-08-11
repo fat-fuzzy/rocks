@@ -1,9 +1,10 @@
+import {defineSchema} from '../index.js'
+
 import BaseSchema from '../primitives/Base.schema.js'
 import RoleSchema from './Role.schema.js'
 import GroupSchema from './Group.schema.js'
 
-/** @type {import('json-schema-to-typescript').JSONSchema} */
-const HumanSchema = {
+const HumanSchema = defineSchema({
 	$schema: 'http://json-schema.org/draft-07/schema#',
 	$id: 'Human',
 	type: 'object',
@@ -32,6 +33,6 @@ const HumanSchema = {
 		Role: RoleSchema,
 		Group: GroupSchema,
 	},
-}
+})
 
 export default HumanSchema

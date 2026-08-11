@@ -1,13 +1,13 @@
 <script lang="ts">
 	import type {UiColor, UiSize, UiVariant} from '@fat-fuzzy/ui'
+	import type {IExportService} from '$types'
 
 	import ui from '@fat-fuzzy/ui'
 	import {getContext} from 'svelte'
 
-	import ExportService from '$lib/services/export-service'
 	import {generateDownload} from '$lib/common/download'
 
-	let exportService: ExportService = getContext('exportService')
+	let exportService: IExportService = getContext('exportService')
 
 	const {Button} = ui.blocks
 

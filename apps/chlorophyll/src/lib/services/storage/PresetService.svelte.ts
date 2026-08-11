@@ -6,6 +6,7 @@ import type {
 	PresetStore,
 	PresetIndex,
 	OPFSPresetTree,
+	IPresetService,
 } from '$types'
 
 import WorkerBridge from '$lib/workers/worker-bridge'
@@ -13,16 +14,16 @@ import {getBridge} from '$lib/services/storage/bridge'
 
 import {getPresetKey} from '$lib/common/format'
 
-import {opfsPresetTreeToPresetStore} from '$lib/common/transform/opfs-to-document'
+import {opfsPresetTreeToPresetStore} from '$lib/common/transform/opfs-to-doc'
 
 import {buildPresetIndex} from '$lib/common/transform/store-to-index'
 
 /**
- * StorageService class to manage access to stored content
+ * PresetService class to manage access to stored presets
  * Maintains a cache of data in memory
  * Sends/receive messages via worker bridge
  */
-export default class PresetService {
+export default class PresetService implements IPresetService {
 	bridge: WorkerBridge | undefined = $state()
 	seeded: {date_seed?: string; source?: string} = $state({})
 	loading = $state(false)
@@ -49,9 +50,6 @@ export default class PresetService {
 
 	reset() {
 		this.presets = {}
-		this.presetIndex = {
-			presets: {},
-		}
 	}
 
 	/**

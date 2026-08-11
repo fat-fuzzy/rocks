@@ -1,12 +1,11 @@
 <script lang="ts">
-	import type {Slug, DocFormat, DocLanguage} from '$types'
+	import type {Slug, DocFormat, DocLanguage, IPresetService} from '$types'
 
 	import {getContext} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
 
 	import {page} from '$app/state'
 
-	import PresetService from '$lib/services/storage/preset-service.svelte'
 	import SectionEditor from '$lib/ui/editor/SectionEditor.svelte'
 	import DialogSaveSection from '$lib/ui/controls/section/DialogSaveSection.svelte'
 	import PresetHeading from '$lib/ui/controls/preset/PresetHeading.svelte'
@@ -29,7 +28,7 @@
 		selectedTags: string[]
 	} = $props()
 
-	let presetService: PresetService = getContext('presetService')
+	let presetService: IPresetService = getContext('presetService')
 
 	let currentPreset = $derived(
 		preset ? presetService.getPreset(preset) : undefined,

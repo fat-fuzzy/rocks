@@ -60,10 +60,10 @@ export default {
 				$id: '#/definitions/Section',
 				mode: 'replace',
 			},
-			Document: {
-				file: 'Document.schema.json',
-				exportName: 'DocumentValidationFunction',
-				$id: '#/definitions/Document',
+			Doc: {
+				file: 'Doc.schema.json',
+				exportName: 'DocValidationFunction',
+				$id: '#/definitions/Doc',
 				mode: 'replace',
 			},
 			Preset: {

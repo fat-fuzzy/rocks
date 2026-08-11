@@ -31,6 +31,7 @@ test-results
 .npmrc
 
 # === Test ignores
+html/
 /test-results/
 /playwright-report/
 /blob-report/

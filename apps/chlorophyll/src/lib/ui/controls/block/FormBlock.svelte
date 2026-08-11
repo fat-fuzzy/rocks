@@ -8,6 +8,8 @@
 		Uuid,
 		ActionCrud,
 		InputCheckedTypes,
+		IDocService,
+		ITagService,
 	} from '$types'
 
 	import * as validators from '$lib/generated/ajv/validation/validate.ajv.mjs'
@@ -16,8 +18,6 @@
 	import ui from '@fat-fuzzy/ui'
 
 	import {applyTags} from '$lib/common/tags'
-	import DocumentService from '$lib/services/storage/document-service.svelte'
-	import TagService from '$lib/services/storage/tag-service.svelte'
 	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
 	import SelectTags from '$lib/ui/controls/tags/SelectTags.svelte'
 
@@ -33,8 +33,8 @@
 	}
 	let {block, parent, subsections, cta, color = 'primary'}: Props = $props()
 
-	let documentService: DocumentService = getContext('documentService')
-	let tagService: TagService = getContext('tagService')
+	let docService: IDocService = getContext('docService')
+	let tagService: ITagService = getContext('tagService')
 
 	const validator = new FormValidator('FormBlockValidationFunction', validators)
 
@@ -230,7 +230,7 @@
 			tags: toUpdate.tags,
 		}
 
-		documentService.createBlock(newBlock)
+		docService.createBlock(newBlock)
 
 		dialogActor.close()
 	}
@@ -241,7 +241,7 @@
 		} else {
 			errorBlockNotFound = false
 
-			documentService.deleteBlock({
+			docService.deleteBlock({
 				name: block.name as Uuid,
 				content_type: block.content_type,
 				group: block.group,
