@@ -31,16 +31,11 @@
 	/**
 	 * Register Contexts
 	 */
-	const {
-		seedService,
-		documentService,
-		tagService,
-		presetService,
-		exportService,
-	} = createServices()
+	const {seedService, docService, tagService, presetService, exportService} =
+		createServices()
 
 	setContext('seedService', seedService)
-	setContext('documentService', documentService)
+	setContext('docService', docService)
 	setContext('tagService', tagService)
 	setContext('presetService', presetService)
 	setContext('exportService', exportService)
@@ -115,7 +110,7 @@
 		initBridge()
 
 		await seedService.init({base, structures}, seed)
-		await documentService.init()
+		await docService.init()
 		await tagService.init()
 		await presetService.init()
 	})

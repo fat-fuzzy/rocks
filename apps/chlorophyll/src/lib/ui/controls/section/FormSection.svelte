@@ -5,7 +5,7 @@
 		DocFormat,
 		DocLanguage,
 		Section,
-		IDocumentService,
+		IDocService,
 	} from '$types'
 
 	import * as validators from '$lib/generated/ajv/validation/validate.ajv.mjs'
@@ -30,7 +30,7 @@
 	}
 	let {formats, cta, color = 'primary'}: Props = $props()
 
-	let documentService: IDocumentService = getContext('documentService')
+	let docService: IDocService = getContext('docService')
 
 	const validator = new FormValidator(
 		'FormSectionValidationFunction',
@@ -135,7 +135,7 @@
 	}
 
 	function checkSectionExists(sectionName: string): Section | undefined {
-		return documentService.getSectionByName({
+		return docService.getSectionByName({
 			language: PUBLIC_DOCUMENT_LANGUAGE as DocLanguage,
 			format: PUBLIC_DOCUMENT_FORMAT as DocFormat,
 			name: sectionName,
@@ -155,7 +155,7 @@
 			formats,
 		}
 
-		documentService.createSection(newSection)
+		docService.createSection(newSection)
 
 		dialogActor.close()
 
@@ -168,7 +168,7 @@
 
 	function deleteSection() {
 		// TODO
-		// documentService.deleteSection({
+		// docService.deleteSection({
 		// 	path: {
 		// 		filename: sectionName,
 		// 		filetype: 'json',

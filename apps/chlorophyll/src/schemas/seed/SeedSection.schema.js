@@ -5,7 +5,7 @@ import ProseSchema from '../primitives/Prose.schema.js'
 const SeedSectionSchema = defineSchema({
 	type: 'object',
 	description:
-		'Human-readable document in markdown with front matter. Aim: to remain human-readable while seeding tiptap editors.',
+		'Human-readable doc in markdown with front matter. Aim: to remain human-readable while seeding tiptap editors.',
 	properties: {
 		path: {
 			$ref: '#/definitions/DocPath',

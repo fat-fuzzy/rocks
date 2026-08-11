@@ -1,11 +1,5 @@
 <script lang="ts">
-	import type {
-		Slug,
-		DocFormat,
-		DocLanguage,
-		Section,
-		IDocumentService,
-	} from '$types'
+	import type {Slug, DocFormat, DocLanguage, Section, IDocService} from '$types'
 
 	import {getContext, onMount} from 'svelte'
 
@@ -18,7 +12,7 @@
 	import FeedbackContent from '$lib/ui/FeedbackContent.svelte'
 	import Loading from '$lib/ui/Loading.svelte'
 
-	let documentService: IDocumentService = getContext('documentService')
+	let docService: IDocService = getContext('docService')
 
 	let {
 		name,
@@ -35,10 +29,10 @@
 	let observerRoot: HTMLElement | undefined = $state()
 	let observer: IntersectionObserver | undefined = $state()
 	let missingIcon = 'emoji:idea justify:end'
-	let loading = $derived(documentService.loading)
+	let loading = $derived(docService.loading)
 
 	let section: Section = $derived(
-		documentService.getSectionByName({
+		docService.getSectionByName({
 			language,
 			format,
 			name,
@@ -50,9 +44,9 @@
 	let displayBlockForm = $derived(name !== undefined)
 
 	let noContentFound = $derived(!section)
-	let error = $derived(documentService.error)
-	let blocksLoaded = documentService.blockEditorsLoaded
-	let sectionsLoaded = documentService.sectionEditorsLoaded
+	let error = $derived(docService.error)
+	let blocksLoaded = docService.blockEditorsLoaded
+	let sectionsLoaded = docService.sectionEditorsLoaded
 
 	const observerOptions = $derived({
 		root: null,
@@ -66,7 +60,7 @@
 			const target = entry.target as HTMLElement
 
 			if (entry.isIntersecting) {
-				documentService.lazyLoadBlock(
+				docService.lazyLoadBlock(
 					{
 						block: target.dataset.block,
 						section: target.dataset.section,

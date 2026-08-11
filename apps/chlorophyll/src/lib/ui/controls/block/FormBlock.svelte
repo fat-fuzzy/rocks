@@ -8,7 +8,7 @@
 		Uuid,
 		ActionCrud,
 		InputCheckedTypes,
-		IDocumentService,
+		IDocService,
 		ITagService,
 	} from '$types'
 
@@ -33,7 +33,7 @@
 	}
 	let {block, parent, subsections, cta, color = 'primary'}: Props = $props()
 
-	let documentService: IDocumentService = getContext('documentService')
+	let docService: IDocService = getContext('docService')
 	let tagService: ITagService = getContext('tagService')
 
 	const validator = new FormValidator('FormBlockValidationFunction', validators)
@@ -230,7 +230,7 @@
 			tags: toUpdate.tags,
 		}
 
-		documentService.createBlock(newBlock)
+		docService.createBlock(newBlock)
 
 		dialogActor.close()
 	}
@@ -241,7 +241,7 @@
 		} else {
 			errorBlockNotFound = false
 
-			documentService.deleteBlock({
+			docService.deleteBlock({
 				name: block.name as Uuid,
 				content_type: block.content_type,
 				group: block.group,

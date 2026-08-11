@@ -98,8 +98,8 @@ export async function seedRoot(seed: SeedDoc[]): Promise<void> {
 
 	try {
 		for (let i = 0; i < seed.length; i++) {
-			const document: Doc = seedDocToDoc(seed[i])
-			const {schema_version, id, path, meta, sections} = document
+			const doc: Doc = seedDocToDoc(seed[i])
+			const {schema_version, id, path, meta, sections} = doc
 			const {language, format} = meta
 
 			// 0. Prepare: ensure language and format folders exist
@@ -128,7 +128,7 @@ export async function seedRoot(seed: SeedDoc[]): Promise<void> {
 			)
 		}
 	} catch {
-		throw new Error('Error seeding document root')
+		throw new Error('Error seeding doc root')
 	}
 
 	await markSeedComplete('root')
@@ -147,7 +147,7 @@ export async function seedBase(base: FrontmatterBase): Promise<void> {
 		const directoryHandle = await getBaseHandle({create: true})
 		await saveEntry(directoryHandle, {name: 'base'}, data)
 	} catch {
-		throw new Error('Error seeding document base')
+		throw new Error('Error seeding doc base')
 	}
 	await markSeedComplete('base')
 }
@@ -174,7 +174,7 @@ export async function seedStructure(options: {
 		const directoryHandle = await getStructureHandle({create: true})
 		await saveEntry(directoryHandle, {name: 'structure'}, {structure: toSeed})
 	} catch {
-		throw new Error('Error seeding document structure')
+		throw new Error('Error seeding doc structure')
 	}
 
 	await markSeedComplete('structure')
