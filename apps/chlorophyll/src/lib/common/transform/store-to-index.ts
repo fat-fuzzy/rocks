@@ -8,8 +8,8 @@ import {
 
 import type {
 	Block,
-	DocumentIndex,
-	DocumentStore,
+	DocIndex,
+	DocStore,
 	Preset,
 	PresetIndex,
 	PresetStore,
@@ -18,7 +18,7 @@ import type {
 	TagGroup,
 } from '$types'
 
-export function buildDocumentIndex(store: DocumentStore): DocumentIndex {
+export function buildDocIndex(store: DocStore): DocIndex {
 	const sections: Record<string, Section> = {}
 	const sectionsById: Record<string, Section> = {}
 	const subsections: Record<

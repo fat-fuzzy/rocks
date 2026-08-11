@@ -15,13 +15,13 @@ import type {
 	Doc,
 } from '$types'
 
-export type DocumentStore = {
+export type DocStore = {
 	[language in DocLanguage]?: {
 		[format in DocFormat]?: Doc
 	}
 }
 
-export interface DocumentIndex {
+export interface DocIndex {
 	sections: Record<string, Section> // keyed by sectionKey = [group.tag]
 	sectionsById: Record<string, Section> // keyed by id
 	subsections: Record<
@@ -36,13 +36,13 @@ export interface DocumentIndex {
 	blocks: Record<string, Block>
 }
 
-export interface IDocumentService {
+export interface IDocService {
 	readonly loading: boolean
 	readonly error: boolean
 	readonly base: FrontmatterBase
 	readonly structures: FrontmatterStructure[]
-	readonly content: DocumentStore
-	readonly documentIndex: DocumentIndex
+	readonly content: DocStore
+	readonly documentIndex: DocIndex
 	readonly blockEditorsLoaded: {[name: string]: Block}
 	readonly sectionEditorsLoaded: {[name: string]: Section}
 

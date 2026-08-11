@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {UiColor} from '@fat-fuzzy/ui'
-	import type {DocFormat, FrontmatterStructure, IDocumentService} from '$types'
+	import type {DocFormat, FrontmatterStructure, IDocService} from '$types'
 
 	import {getContext} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
@@ -13,7 +13,7 @@
 	const {color, oninput}: {color?: UiColor; oninput: (e: Event) => void} =
 		$props()
 
-	let documentService: IDocumentService = getContext('documentService')
+	let docService: IDocService = getContext('docService')
 
 	let format = $derived(
 		(page.url.searchParams.get('format') ||
@@ -21,7 +21,7 @@
 	)
 
 	let structure = $derived(
-		documentService.structures.find(
+		docService.structures.find(
 			(s: FrontmatterStructure) => s.format === format,
 		),
 	)

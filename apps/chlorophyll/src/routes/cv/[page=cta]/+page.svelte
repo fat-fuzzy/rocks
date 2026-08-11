@@ -5,7 +5,7 @@
 		DocLanguage,
 		TagGroup,
 		FrontmatterStructure,
-		IDocumentService,
+		IDocService,
 		ITagService,
 	} from '$types'
 
@@ -27,7 +27,7 @@
 
 	const {PageRails} = ui.content
 
-	let documentService: IDocumentService = getContext('documentService')
+	let docService: IDocService = getContext('docService')
 	let tagService: ITagService = getContext('tagService')
 
 	let boundForm: HTMLFormElement | undefined = $state()
@@ -55,7 +55,7 @@
 	)
 
 	let structure = $derived(
-		documentService.structures.find(
+		docService.structures.find(
 			(s: FrontmatterStructure) => s.format === format,
 		),
 	)
@@ -105,7 +105,7 @@
 	layout="railway"
 >
 	{#snippet main()}
-		{#if documentService.loading}
+		{#if docService.loading}
 			<div class="w:full col:center">
 				<div class="l:frame:round">
 					<Loading

@@ -127,7 +127,7 @@ async function dispatch(msg: WorkerMessage) {
 			if (result?.data) {
 				return result.data
 			} else {
-				throw new Error('No documents found')
+				throw new Error('No docs found')
 			}
 		}
 
@@ -197,7 +197,7 @@ async function dispatch(msg: WorkerMessage) {
 			if (result) {
 				return result
 			} else {
-				throw new Error('Error deleting document')
+				throw new Error('Error deleting doc')
 			}
 		}
 

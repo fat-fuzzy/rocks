@@ -4,7 +4,7 @@ import type {
 	TagIndex,
 	TagGroup,
 	FileExt,
-	IDocumentService,
+	IDocService,
 	ITagService,
 } from '$types'
 
@@ -23,15 +23,15 @@ import {buildTagIndex} from '$lib/common/transform/store-to-index'
  */
 export default class TagService implements ITagService {
 	bridge: WorkerBridge | undefined = $state()
-	documentService: IDocumentService | undefined = $state()
+	docService: IDocService | undefined = $state()
 	loading = $state(false)
 	error = $state(false)
-	tags: TagGroup[] = $derived(this.documentService?.base.tags ?? [])
+	tags: TagGroup[] = $derived(this.docService?.base.tags ?? [])
 	tagIndex: TagIndex = $derived(
-		this.documentService
+		this.docService
 			? buildTagIndex(
 					this.tags,
-					Object.values(this.documentService?.documentIndex.blocks),
+					Object.values(this.docService?.documentIndex.blocks),
 				)
 			: {
 					tags: {},
@@ -39,9 +39,9 @@ export default class TagService implements ITagService {
 				},
 	)
 
-	constructor(documentService: IDocumentService) {
+	constructor(docService: IDocService) {
 		this.loading = true
-		this.documentService = documentService
+		this.docService = docService
 	}
 
 	async init() {
@@ -60,16 +60,16 @@ export default class TagService implements ITagService {
 		name: Slug
 		group: {name: Slug; title: string; type?: string}
 	}): Promise<{id: string} | void> {
-		if (!this.bridge || !this.documentService) {
+		if (!this.bridge || !this.docService) {
 			return
 		}
 
-		const group = this.documentService.base.tags.find(
+		const group = this.docService.base.tags.find(
 			(tg) => tg.name === options.group.name,
 		)
 
 		if (!group) {
-			this.documentService.base.tags.push({
+			this.docService.base.tags.push({
 				...options.group,
 				items: [options.name],
 			})
@@ -84,7 +84,7 @@ export default class TagService implements ITagService {
 		}
 
 		await this.bridge.saveBase({
-			base: JSON.parse(JSON.stringify(this.documentService.base)),
+			base: JSON.parse(JSON.stringify(this.docService.base)),
 		})
 	}
 
@@ -94,7 +94,7 @@ export default class TagService implements ITagService {
 	async deleteTags(options: {
 		groups: {name: Slug; items: string[]}[]
 	}): Promise<{id: string} | void> {
-		if (!this.bridge || !this.documentService) {
+		if (!this.bridge || !this.docService) {
 			return
 		}
 
@@ -139,16 +139,14 @@ export default class TagService implements ITagService {
 					}
 				}
 
-				const {languages, formats} = this.documentService.base
+				const {languages, formats} = this.docService.base
 				for (const language of languages) {
 					for (const format of formats) {
 						// 2. Update blocks
 						for (const block of blocksToUpdate.values()) {
-							const section = this.documentService.getSectionById(
-								block.parentId,
-							)
+							const section = this.docService.getSectionById(block.parentId)
 
-							await this.documentService.saveBlock({
+							await this.docService.saveBlock({
 								language,
 								format,
 								block,
@@ -161,7 +159,7 @@ export default class TagService implements ITagService {
 						}
 
 						// 3. Update sections (TODO: create tagged sections index)
-						const doc = this.documentService.content[language]?.[format]
+						const doc = this.docService.content[language]?.[format]
 
 						if (!doc) {
 							continue
@@ -210,10 +208,10 @@ export default class TagService implements ITagService {
 			}
 		}
 
-		this.documentService.base.tags = tagGroupsToKeep
+		this.docService.base.tags = tagGroupsToKeep
 
 		await this.bridge.saveBase({
-			base: JSON.parse(JSON.stringify(this.documentService.base)),
+			base: JSON.parse(JSON.stringify(this.docService.base)),
 		})
 	}
 }

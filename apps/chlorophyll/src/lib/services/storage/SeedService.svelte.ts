@@ -94,7 +94,7 @@ export default class SeedService implements ISeedService {
 	 * @param seed: parsed markdown data as JSON
 	 * @returns a Promise that will update when the worker message arrives
 	 */
-	async initSeed(frontmatter: FrontmatterSeed, seed: SeedDocument[]) {
+	async initSeed(frontmatter: FrontmatterSeed, seed: SeedDoc[]) {
 		if (!this.bridge) {
 			return
 		}

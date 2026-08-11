@@ -6,7 +6,7 @@
 		DocLanguage,
 		DocFormat,
 		InputCheckedTypes,
-		IDocumentService,
+		IDocService,
 		ITagService,
 	} from '$types'
 
@@ -19,7 +19,7 @@
 
 	const {Editor} = prose.editor
 
-	let documentService: IDocumentService = getContext('documentService')
+	let docService: IDocService = getContext('docService')
 	let tagService: ITagService = getContext('tagService')
 
 	let {
@@ -94,7 +94,7 @@
 			block,
 		}
 
-		documentService.saveBlock(updated)
+		docService.saveBlock(updated)
 	}
 
 	function updateTags(event: Event) {
@@ -131,7 +131,7 @@
 			block,
 		}
 
-		documentService.saveBlock(updated)
+		docService.saveBlock(updated)
 	}
 
 	$effect(() => {

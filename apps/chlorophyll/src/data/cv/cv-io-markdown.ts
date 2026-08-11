@@ -111,7 +111,7 @@ async function parseSectionMarkdowns({
 		: `${localizations.pathPrefix}${format}/`
 
 	if (typeof PATHS_CV_L10N_FORMATS[language][section] === 'string') {
-		throw Error('Seed document structure cannot be parsed')
+		throw Error('Seed doc structure cannot be parsed')
 	}
 
 	const sectionImports = PATHS_CV_L10N_FORMATS[language][section][

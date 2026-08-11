@@ -9,15 +9,15 @@ import type {
 	Section,
 	Block,
 	Prose,
-	DocumentStore,
-	DocumentIndex,
+	DocStore,
+	DocIndex,
 	OPFSDocumentTree,
 	FrontmatterStructure,
 	FrontmatterBase,
 	OPFSBaseTree,
 	OPFSStructureTree,
 	DocContentType,
-	IDocumentService,
+	IDocService,
 } from '$types'
 
 import {PUBLIC_DOCUMENT_LANGUAGE, PUBLIC_DOCUMENT_FORMAT} from '$app/env/public'
@@ -29,18 +29,18 @@ import {getSectionKey, getBlockKey} from '$lib/common/format'
 
 import {
 	opfsBaseTreeToFrontmatterBase,
-	opfsDocumentTreeToDocumentStore,
+	opfsDocumentTreeToDocStore,
 	opfsStructureTreeToFrontmatterStructures,
 } from '$lib/common/transform/opfs-to-document'
 
-import {buildDocumentIndex} from '$lib/common/transform/store-to-index'
+import {buildDocIndex} from '$lib/common/transform/store-to-index'
 
 /**
- * DocumentService class to manage access to stored documents
+ * DocService class to manage access to stored docs
  * Maintains a cache of data in memory
  * Sends/receive messages via worker bridge
  */
-export default class DocumentService implements IDocumentService {
+export default class DocService implements IDocService {
 	bridge: WorkerBridge | undefined = $state()
 	loading = $state(false)
 	error = $state(false)
@@ -52,8 +52,8 @@ export default class DocumentService implements IDocumentService {
 		settings: [],
 	})
 	structures: FrontmatterStructure[] = $state([])
-	content: DocumentStore = $state({})
-	documentIndex: DocumentIndex = $derived(buildDocumentIndex(this.content))
+	content: DocStore = $state({})
+	documentIndex: DocIndex = $derived(buildDocIndex(this.content))
 	blockEditorsLoaded: {[name: string]: Block} = $state({})
 	sectionEditorsLoaded: {[name: string]: Section} = $state({})
 
@@ -549,6 +549,6 @@ export default class DocumentService implements IDocumentService {
 		// - meta.json // Has DocMeta shaped data FIXME: not always : se RawSection type
 		const raw = (await this.bridge.getAllDocuments()) as OPFSDocumentTree
 
-		this.content = opfsDocumentTreeToDocumentStore(raw)
+		this.content = opfsDocumentTreeToDocStore(raw)
 	}
 }

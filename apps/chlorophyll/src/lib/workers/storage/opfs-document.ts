@@ -110,7 +110,7 @@ export async function createSection(options: {
 
 		if (!structureToUpdate) {
 			throw new Error(
-				`Error creating section: missing document structure for ${format}`,
+				`Error creating section: missing doc structure for ${format}`,
 			)
 		}
 
