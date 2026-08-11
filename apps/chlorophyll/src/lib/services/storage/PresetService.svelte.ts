@@ -14,7 +14,7 @@ import {getBridge} from '$lib/services/storage/bridge'
 
 import {getPresetKey} from '$lib/common/format'
 
-import {opfsPresetTreeToPresetStore} from '$lib/common/transform/opfs-to-document'
+import {opfsPresetTreeToPresetStore} from '$lib/common/transform/opfs-to-doc'
 
 import {buildPresetIndex} from '$lib/common/transform/store-to-index'
 

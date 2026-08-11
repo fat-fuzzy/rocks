@@ -99,7 +99,7 @@ export default class SeedService implements ISeedService {
 			return
 		}
 
-		const documents = (await this.bridge.seedDocuments({seed})) as {
+		const docs = (await this.bridge.seedDocuments({seed})) as {
 			seeded: number
 		}
 		const base = (await this.bridge.seedBase({
@@ -115,7 +115,7 @@ export default class SeedService implements ISeedService {
 		}
 
 		// FIXME: adjust and make use of this data or remove it
-		return {documents, base, structure}
+		return {docs, base, structure}
 	}
 
 	async importFromJSON(jsonString: string) {

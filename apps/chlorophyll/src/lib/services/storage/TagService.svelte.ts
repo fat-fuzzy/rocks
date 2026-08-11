@@ -17,7 +17,7 @@ import {getTagKey} from '$lib/common/format'
 import {buildTagIndex} from '$lib/common/transform/store-to-index'
 
 /**
- * TagService class to manage access to document tags
+ * TagService class to manage block and section tags
  * Maintains a cache of data in memory
  * Sends/receive messages via worker bridge
  */
