@@ -1,4 +1,4 @@
-import type {SeedDocument} from '$types'
+import type {SeedDoc} from '$types'
 
 import cvParser from '$data/cv/cv-io-markdown'
 
@@ -12,7 +12,7 @@ export const load = async () => {
 		return
 	}
 
-	const contentPromises: Promise<SeedDocument | void>[] = []
+	const contentPromises: Promise<SeedDoc | void>[] = []
 
 	const {languages, formats} = seedMetadata
 

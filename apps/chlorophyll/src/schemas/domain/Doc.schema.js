@@ -10,14 +10,14 @@ import BlockSchema from './Block.schema.js'
 import SectionSchema from './Section.schema.js'
 import SubsectionSchema from './Subsection.schema.js'
 
-const DocumentSchema = defineSchema({
+const DocSchema = defineSchema({
 	$schema: 'http://json-schema.org/draft-07/schema#',
-	$id: 'Document',
+	$id: 'Doc',
 	type: 'object',
 	properties: {
 		description: {
 			type: 'string',
-			const: 'Domain definitions of Document data',
+			const: 'Domain definitions of Doc data',
 		},
 		schema_version: {
 			$ref: '#/definitions/schemaVersion',
@@ -51,4 +51,4 @@ const DocumentSchema = defineSchema({
 	},
 })
 
-export default DocumentSchema
+export default DocSchema

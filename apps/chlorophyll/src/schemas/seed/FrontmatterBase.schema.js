@@ -9,7 +9,7 @@ const FrontmatterBaseSchema = defineSchema({
 	$id: 'FrontmatterBase',
 	type: 'object',
 	description:
-		'Metadata that defines the base settings available for Documents that affect document structure and available UI controls',
+		'Metadata that defines the base settings available for Docs that affect document structure and available UI controls',
 	properties: {
 		schema_version: {
 			$ref: '#/definitions/schemaVersion',

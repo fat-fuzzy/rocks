@@ -3,7 +3,7 @@ import type {
 	SeedSection,
 	SeedDocParsingOptions,
 	SeedRootParsingOptions,
-	SeedDocument,
+	SeedDoc,
 	FrontmatterSeed,
 	FrontmatterBase,
 	FrontmatterStructure,
@@ -132,8 +132,8 @@ async function parseSectionMarkdowns({
 async function parseMarkdownCvContent({
 	language,
 	format,
-}: SeedDocParsingOptions): Promise<SeedDocument | void> {
-	const markdownCvData: SeedDocument = {
+}: SeedDocParsingOptions): Promise<SeedDoc | void> {
+	const markdownCvData: SeedDoc = {
 		language,
 		format,
 		sections: [],

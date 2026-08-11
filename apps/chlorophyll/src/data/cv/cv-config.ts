@@ -62,7 +62,7 @@ const PATHS_STRUCTURE: {
 	short: import.meta.glob('/assets/in/cv/structure/cv-short.md'),
 }
 
-// The known top-level section keys on SeedDocument
+// The known top-level section keys on SeedDoc
 export const SECTION_KEYS: Slug[] = [
 	'header',
 	'summary',

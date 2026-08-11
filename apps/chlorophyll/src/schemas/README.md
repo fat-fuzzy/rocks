@@ -3,7 +3,7 @@
 ## Layers
 
 - **Domain** core functionality model
-  - root: Document, Preset
+  - root: Doc, Preset
 - **Identity** identity model
   - root: Human 🚧
 - **Primitives** shared properties and types

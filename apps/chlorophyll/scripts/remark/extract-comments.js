@@ -15,7 +15,7 @@ const openSectionRegex = /^<!--\s*section:\s*(?<name>[\w-]+)\s*-->$/
 ******* SECTIONS *******
 ************************
 
-Document structure templates may declare (ordered) sections:
+Doc structure templates may declare (ordered) sections:
 
 <!-- section: section-name -->
 
@@ -54,7 +54,7 @@ in its frontmatter output containing the parsed section entry:
 ******** BLOCKS ********
 ************************
 
-Document section markdowns may be chunked into blocks of content:
+Doc section markdowns may be chunked into blocks of content:
 
 ```md
 <!-- block: block-name | tags: public, beginners -->
