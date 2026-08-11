@@ -1,7 +1,8 @@
+import {defineSchema} from '../index.js'
+
 import FormBaseSchema from '../primitives/FormBase.schema.js'
 
-/** @type {import('json-schema-to-typescript').JSONSchema} */
-const FormTagSchema = /** @type {const} */ {
+const FormTagSchema = defineSchema({
 	$schema: 'http://json-schema.org/draft-07/schema#',
 	$id: 'FormTag',
 	type: 'object',
@@ -36,6 +37,6 @@ const FormTagSchema = /** @type {const} */ {
 	required: ['name', 'group'],
 	additionalProperties: false,
 	definitions: FormBaseSchema,
-}
+})
 
 export default FormTagSchema

@@ -1,9 +1,10 @@
+import {defineSchema} from '../index.js'
+
 import BaseSchema from '../primitives/Base.schema.js'
 import DocPathSchema from '../primitives/DocPath.schema.js'
 import TagGroupSchema from '../primitives/TagGroup.schema.js'
 
-/** @type {import('json-schema-to-typescript').JSONSchema} */
-const FrontmatterBaseSchema = {
+const FrontmatterBaseSchema = defineSchema({
 	$schema: 'http://json-schema.org/draft-07/schema#',
 	$id: 'FrontmatterBase',
 	type: 'object',
@@ -55,6 +56,6 @@ const FrontmatterBaseSchema = {
 		DocPath: DocPathSchema,
 		TagGroup: TagGroupSchema,
 	},
-}
+})
 
 export default FrontmatterBaseSchema
