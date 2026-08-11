@@ -217,7 +217,7 @@ export async function saveSection(options: {
  * @param data file contents to save, stringified
  * @returns
  */
-export async function saveDocument(options: {
+export async function saveDoc(options: {
 	meta: DocMeta
 	path: DocPath
 	content: Prose
