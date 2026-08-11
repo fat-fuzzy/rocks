@@ -60,14 +60,14 @@
 			color,
 			label: `${action} Section`,
 			position: 'nord',
-			children: presetInfo,
+			children: sectionForm,
 		})
 
 		dialogActor.show()
 	}
 </script>
 
-{#snippet presetInfo()}
+{#snippet sectionForm()}
 	<FormSection {color} {cta} {formats} />
 {/snippet}
 
