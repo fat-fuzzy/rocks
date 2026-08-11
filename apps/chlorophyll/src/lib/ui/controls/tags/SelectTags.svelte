@@ -83,20 +83,28 @@
 </script>
 
 <div class={layoutClasses}>
-	{#each groups as { name, title, type, items }, i (i)}
-		{@const groupId = getTagGroupName(cta, name, id)}
-		<InputGroup
-			id={groupId}
-			name={groupId}
-			legend={title}
-			type={cta === 'delete' || !type ? 'checkbox' : type}
-			value={value.filter((t) => items.includes(t))}
-			size="2xs"
-			{color}
-			variant="bare"
-			selectAll={true}
-			items={tags[name]}
-			{oninput}
-		/>
-	{/each}
+	{#if cta === 'delete' && groups.length === 0}
+		<div class="ravioli:xs font:sm shape:mellow surface:1:neutral">
+			<p class="font:heading font:semibold text:center">
+				No custom tag groups found
+			</p>
+		</div>
+	{:else}
+		{#each groups as { name, title, type, items }, i (i)}
+			{@const groupId = getTagGroupName(cta, name, id)}
+			<InputGroup
+				id={groupId}
+				name={groupId}
+				legend={title}
+				type={cta === 'delete' || !type ? 'checkbox' : type}
+				value={value.filter((t) => items.includes(t))}
+				size="2xs"
+				{color}
+				variant="bare"
+				selectAll={true}
+				items={tags[name]}
+				{oninput}
+			/>
+		{/each}
+	{/if}
 </div>
