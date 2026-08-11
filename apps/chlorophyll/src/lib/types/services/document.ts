@@ -33,6 +33,7 @@ export interface DocumentIndex {
 			blocks: Block[]
 		}
 	> // keyed by name
+	blocks: Record<string, Block>
 }
 
 export interface IDocumentService {
