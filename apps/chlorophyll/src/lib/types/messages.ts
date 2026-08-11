@@ -227,7 +227,7 @@ export type ResponsePayload = {
 	DELETE_PRESET: {deleted: boolean}
 	DELETE_ALL: {deleted: boolean}
 	EXPORT_ALL: {markdown: string}
-	GET_PRESET: {document: Doc | void}
+	GET_PRESET: {doc: Doc | void}
 	GET_ALL_PRESETS: PresetStore | void
 	CHECK_SEED: {seeded: boolean}
 }

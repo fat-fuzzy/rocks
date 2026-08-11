@@ -19,7 +19,7 @@ export interface ISeedService {
 		frontmatter: FrontmatterSeed,
 		seed: SeedDoc[],
 	): Promise<{
-		documents: {seeded: number}
+		docs: {seeded: number}
 		base: {seeded: number}
 		structure: {seeded: number}
 	} | void>

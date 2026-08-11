@@ -31,7 +31,7 @@ import {
 	opfsBaseTreeToFrontmatterBase,
 	opfsDocumentTreeToDocStore,
 	opfsStructureTreeToFrontmatterStructures,
-} from '$lib/common/transform/opfs-to-document'
+} from '$lib/common/transform/opfs-to-doc'
 
 import {buildDocIndex} from '$lib/common/transform/store-to-index'
 
@@ -507,7 +507,7 @@ export default class DocService implements IDocService {
 	}
 
 	/**
-	 * Load full document tree from storage
+	 * Load full doc tree from storage
 	 */
 	async getDocBase() {
 		if (!this.bridge) return
@@ -522,7 +522,7 @@ export default class DocService implements IDocService {
 	}
 
 	/**
-	 * Load full document tree from storage
+	 * Load full doc tree from storage
 	 */
 	async getDocStructure() {
 		if (!this.bridge) return
@@ -537,7 +537,7 @@ export default class DocService implements IDocService {
 	}
 
 	/**
-	 * Load full document tree from storage
+	 * Load full doc tree from storage
 	 */
 	async getAllDocs() {
 		if (!this.bridge) return

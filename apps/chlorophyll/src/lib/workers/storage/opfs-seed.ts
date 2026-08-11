@@ -25,9 +25,9 @@ import {
 	isRawSection,
 	isRawPreset,
 	isSection,
-} from '$lib/common/transform/opfs-to-document'
+} from '$lib/common/transform/opfs-to-doc'
 
-import {seedDocToDoc} from '$lib/common/transform/seed-to-document'
+import {seedDocToDoc} from '$lib/common/transform/seed-to-doc'
 
 import {
 	parseSection,
