@@ -256,7 +256,7 @@
 		>
 			<p>
 				The group <span class="font:semibold font:sm"> Twilight Z </span> cannot be
-				deleted
+				deleted.
 			</p>
 			<p>Deleted tags will be removed without deleting content.</p>
 		</Feedback>
