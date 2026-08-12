@@ -11,7 +11,7 @@ import type {
 import {SvelteMap} from 'svelte/reactivity'
 
 import WorkerBridge from '$lib/workers/worker-bridge'
-import {getBridge} from '$lib/services/storage/bridge'
+import {getBridge} from '$lib/services/bridge'
 
 import {getTagKey} from '$lib/common/format'
 import {buildTagIndex} from '$lib/common/transform/store-to-index'

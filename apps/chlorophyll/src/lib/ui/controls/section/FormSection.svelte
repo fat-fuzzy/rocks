@@ -152,7 +152,7 @@
 			formats,
 		}
 
-		docService.createSection(newSection)
+		docService.createSection(JSON.parse(JSON.stringify(newSection)))
 
 		dialogActor.close()
 

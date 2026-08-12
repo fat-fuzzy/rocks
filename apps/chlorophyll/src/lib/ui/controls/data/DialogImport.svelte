@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {UiColor, UiSize} from '@fat-fuzzy/ui'
-	import type {ImportStatus, ISeedService, IExportService} from '$types'
+	import type {ImportStatus, IImportService, IExportService} from '$types'
 
 	import {getContext} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
@@ -27,12 +27,12 @@
 		onImported,
 	}: Props = $props()
 
-	let seedService: ISeedService = getContext('seedService')
+	let importService: IImportService = getContext('importService')
 	let exportService: IExportService = getContext('exportService')
 
 	const statusLabel: Record<ImportStatus, string> = {
 		idle: '',
-		deleting: 'Deleteing storage...',
+		deleting: 'Deleting storage...',
 		ready: 'Ready to import',
 		'backing-up': 'Backing up...',
 		importing: 'Importing...',
@@ -61,12 +61,14 @@
 
 			// 2. Import and write data
 			status = 'importing'
-			await seedService.importFromJSON(serialized)
+			await importService.importFromJSON(serialized)
 
 			status = 'done'
 
 			// 3. TODO: tell parent to reload from OPFS
 			onImported?.()
+
+			window.location.href = '' // FIXME: hacky solution to reload for now
 		} catch (error) {
 			status = 'error'
 			errorMessage = error instanceof Error ? error.message : 'Import failed'
@@ -83,7 +85,7 @@
 	function showDialog() {
 		dialogActor.init({
 			modal: false,
-			size: 'md',
+			size: 'sm',
 			color,
 			label: 'Import Data',
 			position: 'nord-est',
@@ -96,7 +98,7 @@
 	/**
 	 * Back up current content to filesystem
 	 */
-	async function saveBackup() {
+	async function deleteCurrentData() {
 		if (withBackup) {
 			status = 'backing-up'
 			// 1. Back up current content to filesystem
@@ -107,48 +109,24 @@
 		status = 'deleting'
 
 		// 2. Delete existing storage: the import replaces OPFS content
-		await seedService.deleteAllContent()
+		await importService.deleteAllContent()
 
 		status = 'ready'
-	}
-
-	/**
-	 * Restore OPFS content from seed markdowns
-	 */
-	async function reSeed() {
-		status = 'ready'
-
-		// FIXME: maintain selection minus preset ?
-		window.location.href = ''
-		dialogActor.close()
 	}
 </script>
 
 {#snippet presetInfo()}
 	<form class="raviolink l:stack:lg" enctype="multipart/form-data">
-		<div class="l:sidebar font:sm">
-			<div class="l:main">
-				<p>You can import data by:</p>
-				<ul>
-					<li>restoring from a backup</li>
-					<li>
-						restoring app defaults via <span class="font:semibold">Seed</span>
-					</li>
-				</ul>
-			</div>
-			<div class="l:side">
-				<Feedback
-					status="default"
-					context="prose"
-					variant="bare"
-					size="xs"
-					font="sm"
-					asset="none"
-				>
-					<p>In both cases, current data will be overwritten.</p>
-				</Feedback>
-			</div>
-		</div>
+		<Feedback
+			status="default"
+			context="prose"
+			variant="bare"
+			size="xs"
+			font="sm"
+			asset="none"
+		>
+			<p>Before you import, you must delete current data.</p>
+		</Feedback>
 
 		<div class="l:stack:lg">
 			<!-- File input triggered by the button -->
@@ -162,7 +140,6 @@
 			/>
 
 			<div class="w:full l:flex size:3xs justify:between">
-				<p class="font:sm">Choose your delete strategy</p>
 				<div class="l:flex size:3xs justify:between grow">
 					<Button
 						type="button"
@@ -175,7 +152,7 @@
 						size="2xs"
 						font="2xs font:heading"
 						disabled={disabled || status === 'ready'}
-						onclick={saveBackup}
+						onclick={deleteCurrentData}
 					/>
 					<Button
 						type="button"
@@ -190,18 +167,17 @@
 						disabled={disabled || status === 'ready'}
 						onclick={() => {
 							withBackup = false
-							saveBackup()
+							deleteCurrentData()
 						}}
 					/>
 				</div>
 			</div>
 
 			<div class="w:full l:flex size:3xs justify:between">
-				<p class="font:sm">Choose your import strategy</p>
 				<div class="l:flex size:3xs justify:between grow">
 					<Button
 						type="button"
-						label="Restore from Backup"
+						label="Import"
 						id="import-dialog-reset"
 						name=""
 						{color}
@@ -212,23 +188,9 @@
 						disabled={status !== 'ready'}
 						onclick={() => fileInput.click()}
 					/>
-					<Button
-						type="button"
-						label="Seed"
-						id="import-dialog-seed"
-						name=""
-						{color}
-						shape="mellow"
-						variant="outline"
-						size="2xs"
-						font="2xs font:heading"
-						disabled={status !== 'ready'}
-						onclick={() => {
-							reSeed()
-						}}
-					/>
 				</div>
 			</div>
+
 			{#if status}
 				<Feedback
 					status="success"

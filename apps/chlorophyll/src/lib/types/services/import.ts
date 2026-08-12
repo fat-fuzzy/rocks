@@ -1,6 +1,6 @@
 import type {SeedDoc, FrontmatterSeed, FrontmatterStructure} from '$types'
 
-export interface ISeedService {
+export interface IImportService {
 	readonly seeded: {date_seed?: string; source?: string}
 	readonly loading: boolean
 	readonly error: boolean

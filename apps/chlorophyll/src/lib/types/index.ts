@@ -9,7 +9,7 @@ export * from '$lib/types/storage/fs-storage'
 export * from '$lib/types/storage/fs-markdowns'
 
 // Service Interfaces
-export * from '$lib/types/services/seed'
+export * from '$lib/types/services/import'
 export * from '$lib/types/services/doc'
 export * from '$lib/types/services/preset'
 export * from '$lib/types/services/tag'

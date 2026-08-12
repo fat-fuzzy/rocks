@@ -93,9 +93,7 @@ dialog[open]:modal.size\:2xl {
 
 /** Non-modal dialog sizes */
 dialog[open]:not(:modal).size\:sm {
-	--dialog-inline-size: calc(
-		var(--sidebar-width, var(--layout-sidebar-md)) - var(--ui-size)
-	);
+	--dialog-inline-size: calc(var(--layout-sidebar-lg) - var(--ui-size));
 }
 dialog[open]:not(:modal).size\:md {
 	--dialog-inline-size: calc(

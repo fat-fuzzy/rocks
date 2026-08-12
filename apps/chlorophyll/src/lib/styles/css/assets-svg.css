@@ -30,6 +30,10 @@
 	--icon-url: url('/icons/memo.svg');
 }
 
+.svg\:leaf {
+	--icon-url: url('/icons/leaf.svg');
+}
+
 .svg\:lock {
 	--icon-url: url('/icons/lock.svg');
 }
@@ -61,4 +65,8 @@ button.variant\:fill:not([disabled]):hover {
 
 button.variant\:fill:not([disabled]):focus {
 	--lightness-contrast: var(--lightness-surface-5-contrast);
+}
+
+[class*='svg'].reverse\:y::before {
+	transform: rotateY(180deg);
 }

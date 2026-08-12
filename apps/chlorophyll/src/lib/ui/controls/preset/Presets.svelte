@@ -15,7 +15,10 @@
 	const {
 		currentPreset,
 		oninput,
-	}: {currentPreset?: string; oninput: (e: Event) => void} = $props()
+	}: {
+		currentPreset: string | null
+		oninput: (e: Event) => void
+	} = $props()
 
 	let cta = $derived(page.params.page)
 	let query = $derived(page.url.search)
@@ -184,8 +187,8 @@
 											cta="copy"
 											disabled={!isCurrent}
 											preset={{
-												name: preset.name,
 												id: crypto.randomUUID(),
+												name: preset.name,
 												query,
 											}}
 										/>

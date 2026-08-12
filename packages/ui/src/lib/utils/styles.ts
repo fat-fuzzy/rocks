@@ -169,7 +169,7 @@ function getLayoutStyles(props: UiLayoutProps): string {
 			: (layout as string)
 
 	if (layoutBase) {
-		// TODO: fix this later
+		// FIXME:
 		// if (layoutBase === 'switcher' && !thresholdClass) {
 		// 	console.warn(
 		// 		'Switcher layout will not wrap without a threshold and no threshold is provided',
@@ -178,16 +178,19 @@ function getLayoutStyles(props: UiLayoutProps): string {
 
 		let layoutClass = getClass('layout', layoutBase)
 
-		if (size) layoutClass = appendModifier(layoutClass, size)
+		// FIXME: fix layout + size inconsistencies later
+		if (size && layout !== 'sidebar') {
+			layoutClass = appendModifier(layoutClass, size)
+		}
 
 		classes.push(layoutClass)
 		if (layoutBase === 'switcher') {
 			classes.push(thresholdClass)
 		}
-	} else {
-		const sizeClass = getClass('size', size)
-		if (sizeClass) classes.push(sizeClass)
 	}
+
+	const sizeClass = getClass('size', size)
+	if (sizeClass) classes.push(sizeClass)
 
 	const alignSelfClass = getClass('alignSelf', alignSelf)
 

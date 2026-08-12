@@ -10,7 +10,7 @@ import type {
 } from '$types'
 
 import WorkerBridge from '$lib/workers/worker-bridge'
-import {getBridge} from '$lib/services/storage/bridge'
+import {getBridge} from '$lib/services/bridge'
 
 import {getPresetKey} from '$lib/common/format'
 

@@ -1,20 +1,20 @@
-export * from '$lib/types/services/seed'
+export * from '$lib/types/services/import'
 import type {
 	SeedDoc,
 	FrontmatterSeed,
 	FrontmatterStructure,
-	ISeedService,
+	IImportService,
 } from '$types'
 
 import WorkerBridge from '$lib/workers/worker-bridge'
-import {getBridge} from '$lib/services/storage/bridge'
+import {getBridge} from '$lib/services/bridge'
 
 /**
- * SeedService class to manage seed and import operations into storage
+ * ImportService class to manage data transfer operations into storage
  * Maintains a cache of data in memory
  * Sends/receive messages via worker bridge
  */
-export default class SeedService implements ISeedService {
+export default class ImportService implements IImportService {
 	bridge: WorkerBridge | undefined = $state()
 	seeded: {date_seed?: string; source?: string} = $state({})
 	loading = $state(false)

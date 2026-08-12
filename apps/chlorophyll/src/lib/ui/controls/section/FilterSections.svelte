@@ -47,16 +47,24 @@
 	}
 </script>
 
-<InputGroup
-	id="sections"
-	name="sections"
-	legend="Main Sections"
-	type="checkbox"
-	layout="switcher"
-	value={selected}
-	size="2xs"
-	{color}
-	variant="bare"
-	items={sectionItems}
-	{oninput}
-/>
+{#if sectionItems.length}
+	<InputGroup
+		id="sections"
+		name="sections"
+		legend="Main Sections"
+		type="checkbox"
+		layout="switcher"
+		value={selected}
+		size="2xs"
+		{color}
+		variant="bare"
+		items={sectionItems}
+		{oninput}
+	/>
+{:else}
+	<div>
+		<div class="ravioli:xs font:sm shape:mellow surface:1:neutral">
+			<p class="font:heading font:semibold text:center">No sections found</p>
+		</div>
+	</div>
+{/if}

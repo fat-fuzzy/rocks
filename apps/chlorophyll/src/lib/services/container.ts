@@ -1,31 +1,31 @@
 import type {
-	ISeedService,
+	IImportService,
 	IDocService,
 	IPresetService,
 	ITagService,
 	IExportService,
 } from '$types'
-import SeedService from '$lib/services/storage/SeedService.svelte'
-import DocService from '$lib/services/storage/DocService.svelte'
-import TagService from '$lib/services/storage/TagService.svelte'
+import ImportService from '$lib/services/ImportService.svelte'
 import ExportService from '$lib/services/ExportService'
-import PresetService from '$lib/services/storage/PresetService.svelte'
+import DocService from '$lib/services/DocService.svelte'
+import TagService from '$lib/services/TagService.svelte'
+import PresetService from '$lib/services/PresetService.svelte'
 
 export function createServices(): {
-	seedService: ISeedService
+	importService: IImportService
 	docService: IDocService
 	tagService: ITagService
 	presetService: IPresetService
 	exportService: IExportService
 } {
-	const seedService = new SeedService()
+	const importService = new ImportService()
+	const exportService = new ExportService()
 	const docService = new DocService()
 	const presetService = new PresetService()
-	const exportService = new ExportService()
 	const tagService = new TagService(docService)
 
 	return {
-		seedService,
+		importService,
 		docService,
 		tagService,
 		presetService,
