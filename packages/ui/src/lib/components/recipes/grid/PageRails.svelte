@@ -18,9 +18,11 @@
 		main,
 		nav,
 		aside,
+		details,
 		footer,
 		useHeader = true,
 		layout = 'metro',
+		headerLayout,
 	}: PageRailsProps = $props()
 
 	let currentPage = $derived(pageName ?? title)
@@ -75,10 +77,11 @@
 	)
 	let zoneMainClass = $derived(zoneMainClasses[layout])
 	let pageMainClass = $derived(pageMainClasses[layout])
-	let headerLayout = $derived(
-		layout === 'steam' || layout === 'tram' || layout === 'voyager'
-			? 'sidebar'
-			: '',
+	let hLayout = $derived(
+		headerLayout ??
+			(layout === 'steam' || layout === 'tram' || layout === 'voyager'
+				? 'sidebar'
+				: ''),
 	)
 </script>
 
@@ -94,7 +97,8 @@
 			{title}
 			text={text as UiSize}
 			{justify}
-			layout={headerLayout as UiLayout}
+			layout={hLayout as UiLayout}
+			side={details}
 		>
 			{#snippet main()}
 				<Breadcrumbs

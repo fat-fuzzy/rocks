@@ -16,6 +16,7 @@
 			layout,
 			justify,
 			align: 'baseline',
+			size: layout === 'sidebar' ? '2xs' : undefined,
 		}),
 	)
 
@@ -36,10 +37,10 @@
 	class={`page-header ${textClass} ${headerClass} ${mainClasses} ${contentClasses}`}
 >
 	{#if layout === 'sidebar'}
-		<div class="l:main">
+		<div class="l:side">
 			{@render headerMain()}
 		</div>
-		<div class="l:side">
+		<div class="l:main">
 			{#if side}
 				{@render side()}
 			{/if}
