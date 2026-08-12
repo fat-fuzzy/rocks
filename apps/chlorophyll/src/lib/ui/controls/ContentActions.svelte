@@ -24,7 +24,7 @@
 	let linkStyles = $state('font:xs font:semibold font:heading w:full')
 </script>
 
-<div class="l:stack raviolink">
+<div class="l:stack maki:inline:4xs">
 	<nav id="secondary-nav">
 		<ul
 			class={`unstyled input-group l:${layout}:3xs w:full align:center justify:between`}

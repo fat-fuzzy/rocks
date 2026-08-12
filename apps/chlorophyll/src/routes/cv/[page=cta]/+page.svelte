@@ -15,14 +15,16 @@
 	import {page} from '$app/state'
 	import {PUBLIC_DOC_LANGUAGE, PUBLIC_DOC_FORMAT} from '$app/env/public'
 
-	import DocEditor from '$lib/ui/editor/DocEditor.svelte'
-	import DocBuilder from '$lib/ui/builder/DocBuilder.svelte'
+	import SectionEditor from '$lib/ui/editor/SectionEditor.svelte'
+	import SectionBuilder from '$lib/ui/builder/SectionBuilder.svelte'
+	import ContentHeading from '$lib/ui/controls/ContentHeading.svelte'
 	import ContentActions from '$lib/ui/controls/ContentActions.svelte'
 	import Tags from '$lib/ui/controls/tags/Tags.svelte'
 	import Presets from '$lib/ui/controls/preset/Presets.svelte'
 	import Loading from '$lib/ui/Loading.svelte'
 
 	const {PageRails} = ui.content
+	const {Feedback} = ui.blocks
 
 	let docService: IDocService = getContext('docService')
 	let tagService: ITagService = getContext('tagService')
@@ -46,9 +48,7 @@
 		(page.url.searchParams.get('format') || PUBLIC_DOC_FORMAT) as DocFormat,
 	)
 
-	let preset: string | undefined = $derived(
-		page.url.searchParams.get('preset') ?? undefined,
-	)
+	let preset: string | null = $derived(page.url.searchParams.get('preset'))
 
 	let structure = $derived(
 		docService.structures.find(
@@ -83,6 +83,11 @@
 
 	let description = $derived(structure?.name || '')
 
+	let ctaClass = $derived(
+		cta === 'edit' ? 'doc-editor' : 'doc-builder l:stack:3xl',
+	)
+	let contentClass = $derived(selectedSections.length === 0 ? '' : ctaClass)
+
 	async function updateFilters() {
 		await tick()
 		if (boundForm) {
@@ -99,10 +104,22 @@
 	nav={page.data.nav}
 	context={pageContext}
 	layout="railway"
+	headerLayout="sidebar"
 >
+	{#snippet details()}
+		{#if cta}
+			<ContentHeading
+				{cta}
+				{preset}
+				{query}
+				formats={docService.base.formats}
+			/>
+		{/if}
+	{/snippet}
+
 	{#snippet main()}
-		{#if docService.loading}
-			<div class="w:full col:center">
+		<div class="w:full h:full col:center l:stack">
+			{#if docService.loading}
 				<div class="l:frame:round">
 					<Loading
 						message="Loading content..."
@@ -111,36 +128,55 @@
 						color="primary"
 					/>
 				</div>
-			</div>
-		{:else}
-			{#key queryString}
-				{#if cta === 'edit'}
-					<DocEditor
-						{selectedSections}
-						{selectedTags}
-						{language}
-						{format}
-						{preset}
-						{query}
-					/>
-				{:else if cta}
-					<DocBuilder
-						{cta}
-						{selectedSections}
-						{selectedTags}
-						{preset}
-						{query}
-						{language}
-						{format}
-					/>
-				{/if}
-			{/key}
-		{/if}
+			{:else}
+				{#key queryString}
+					{#if selectedSections.length === 0}
+						<div class="l:frame size:lg">
+							<Feedback
+								status="default"
+								context="prose"
+								variant="bare"
+								shape="round"
+								asset="default"
+								size="lg"
+							>
+								<p>Select a Section to get started</p>
+							</Feedback>
+						</div>
+					{:else}
+						<div class="l:text:xl">
+							<div class={contentClass}>
+								{#if cta === 'edit'}
+									{#each selectedSections as sectionName, i (i)}
+										<SectionEditor
+											name={sectionName}
+											{selectedTags}
+											{language}
+											{format}
+										/>
+									{/each}
+								{:else if cta}
+									{#each selectedSections as sectionName, i (i)}
+										<SectionBuilder
+											{cta}
+											name={sectionName}
+											{selectedTags}
+											{language}
+											{format}
+										/>
+									{/each}
+								{/if}
+							</div>
+						</div>
+					{/if}
+				{/key}
+			{/if}
+		</div>
 	{/snippet}
 
 	{#snippet aside()}
 		{#if cta}
-			<div class="noprint l:stack:xs maki:block">
+			<div class="noprint l:stack:xs maki:block:2xl">
 				<form bind:this={boundForm} class="l:stack:md">
 					<ContentActions oninput={updateFilters} />
 

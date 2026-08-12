@@ -72,18 +72,20 @@
 {/snippet}
 
 <!-- FIXME: add tooltip -->
-<Button
-	{id}
-	type="button"
-	name={id}
-	{size}
-	font="2xs font:heading"
-	align="center"
-	{label}
-	{color}
-	{shape}
-	{variant}
-	{asset}
-	{assetType}
-	onclick={showDialog}
-/>
+<div class="l:flex justify:end">
+	<Button
+		{id}
+		type="button"
+		name={id}
+		{size}
+		font="2xs font:heading"
+		align="center"
+		{label}
+		{color}
+		{shape}
+		{variant}
+		{asset}
+		{assetType}
+		onclick={showDialog}
+	/>
+</div>

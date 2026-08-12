@@ -117,7 +117,6 @@
 			],
 		)
 
-		// TODO: put selected sections into context (fix reactivity)
 		const newUrl = new SvelteURL(page.url)
 		newUrl.search = ''
 
