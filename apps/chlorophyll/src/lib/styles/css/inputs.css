@@ -133,3 +133,7 @@ fieldset:has(label > [type='radio']) {
 	flex-grow: 0;
 	flex-basis: 35%;
 }
+
+[name='add-section'] {
+	margin-block-start: var(--outline-offset-lg);
+}
