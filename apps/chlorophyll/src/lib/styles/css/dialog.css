@@ -113,6 +113,6 @@ dialog[open]:not(:modal).size\:xl {
 
 @media screen and (min-width: 38.75rem) {
 	dialog[open] {
-		--y-axis: 8.25rem;
+		--y-axis: 7.25rem;
 	}
 }
