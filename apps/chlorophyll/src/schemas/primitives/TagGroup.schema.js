@@ -1,4 +1,6 @@
-const TagGroupSchema = {
+import {defineSchema} from '../index.js'
+
+const TagGroupSchema = defineSchema({
 	type: 'object',
 	properties: {
 		name: {$ref: '#/definitions/slug'},
@@ -14,6 +16,6 @@ const TagGroupSchema = {
 	},
 	required: ['name', 'title', 'items'],
 	additionalProperties: false,
-}
+})
 
 export default TagGroupSchema

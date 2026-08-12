@@ -73,7 +73,7 @@ async function dispatch(msg: WorkerMessage) {
 			return {seeded: Date.now()}
 		}
 
-		case 'GET_DOCUMENT_BASE': {
+		case 'GET_DOC_BASE': {
 			const result = await getBaseData()
 
 			if (result) {
@@ -83,7 +83,7 @@ async function dispatch(msg: WorkerMessage) {
 			}
 		}
 
-		case 'GET_DOCUMENT_STRUCTURE': {
+		case 'GET_DOC_STRUCTURE': {
 			const result = await getStructureData()
 
 			if (result) {
@@ -111,7 +111,7 @@ async function dispatch(msg: WorkerMessage) {
 			return {seeded: Date.now()}
 		}
 
-		case 'GET_DOCUMENT_CONTENT': {
+		case 'GET_DOC_CONTENT': {
 			const result = await loadFile(msg.payload)
 
 			if (result?.data) {
@@ -121,13 +121,13 @@ async function dispatch(msg: WorkerMessage) {
 			}
 		}
 
-		case 'GET_ALL_DOCUMENTS': {
+		case 'GET_ALL_DOCS': {
 			const result = await getContentData()
 
 			if (result?.data) {
 				return result.data
 			} else {
-				throw new Error('No documents found')
+				throw new Error('No docs found')
 			}
 		}
 
@@ -191,13 +191,13 @@ async function dispatch(msg: WorkerMessage) {
 			}
 		}
 
-		case 'DELETE_DOCUMENT': {
+		case 'DELETE_DOC': {
 			const result = await deleteContentFile(msg.payload)
 
 			if (result) {
 				return result
 			} else {
-				throw new Error('Error deleting document')
+				throw new Error('Error deleting doc')
 			}
 		}
 

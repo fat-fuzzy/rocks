@@ -1,7 +1,8 @@
+import {defineSchema} from '../index.js'
+
 import BaseSchema from '../primitives/Base.schema.js'
 
-/** @type {import('json-schema-to-typescript').JSONSchema} */
-const PresetSchema = /** @type {const} */ {
+const PresetSchema = defineSchema({
 	$schema: 'http://json-schema.org/draft-07/schema#',
 	$id: 'Preset',
 	type: 'object',
@@ -30,6 +31,6 @@ const PresetSchema = /** @type {const} */ {
 	required: ['id', 'name', 'query'],
 	additionalProperties: false,
 	definitions: BaseSchema,
-}
+})
 
 export default PresetSchema

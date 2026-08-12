@@ -13,7 +13,7 @@ vite.config.ts.timestamp-*
 
 # === CSS side effects
 
-# === Playwright ignores
+# === Test ignores
 /test-results/
 /playwright-report/
 /blob-report/

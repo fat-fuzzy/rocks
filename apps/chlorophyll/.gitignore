@@ -30,10 +30,13 @@ test-results
 .tool-versions
 .npmrc
 
-**/*/**-anon.md
-**/*/**-review.md
-
-_data/
+# === Test ignores
+html/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+tests/e2e/test-results
 
 # Generated
 src/lib/generated/diagrams

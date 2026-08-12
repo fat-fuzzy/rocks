@@ -9,52 +9,53 @@ import type {
 	Section,
 	Block,
 	Prose,
-	DocumentStore,
-	DocumentIndex,
-	OPFSDocumentTree,
+	DocStore,
+	DocIndex,
+	OPFSDocTree,
 	FrontmatterStructure,
 	FrontmatterBase,
 	OPFSBaseTree,
 	OPFSStructureTree,
 	DocContentType,
+	IDocService,
 } from '$types'
 
-import {PUBLIC_DOCUMENT_LANGUAGE, PUBLIC_DOCUMENT_FORMAT} from '$app/env/public'
+import {PUBLIC_DOC_LANGUAGE, PUBLIC_DOC_FORMAT} from '$app/env/public'
 
 import WorkerBridge from '$lib/workers/worker-bridge'
-import {getBridge} from '$lib/services/storage/bridge'
+import {getBridge} from '$lib/services/bridge'
 
 import {getSectionKey, getBlockKey} from '$lib/common/format'
 
 import {
 	opfsBaseTreeToFrontmatterBase,
-	opfsDocumentTreeToDocumentStore,
+	opfsDocTreeToDocStore,
 	opfsStructureTreeToFrontmatterStructures,
-} from '$lib/common/transform/opfs-to-document'
+} from '$lib/common/transform/opfs-to-doc'
 
-import {buildDocumentIndex} from '$lib/common/transform/store-to-index'
+import {buildDocIndex} from '$lib/common/transform/store-to-index'
 
 /**
- * StorageService class to manage access to stored content
+ * DocService class to manage access to stored docs
  * Maintains a cache of data in memory
  * Sends/receive messages via worker bridge
  */
-export default class DocumentService {
+export default class DocService implements IDocService {
 	bridge: WorkerBridge | undefined = $state()
 	loading = $state(false)
 	error = $state(false)
 	base: FrontmatterBase = $state({
 		schema_version: '0.1',
-		languages: [PUBLIC_DOCUMENT_LANGUAGE as DocLanguage],
-		formats: [PUBLIC_DOCUMENT_FORMAT as DocFormat],
+		languages: [PUBLIC_DOC_LANGUAGE as DocLanguage],
+		formats: [PUBLIC_DOC_FORMAT as DocFormat],
 		tags: [],
 		settings: [],
 	})
 	structures: FrontmatterStructure[] = $state([])
-	content: DocumentStore = $state({})
-	documentIndex: DocumentIndex = $derived(buildDocumentIndex(this.content))
-	blockEditorsLoaded: {[name: string]: Block} = $state({})
-	sectionEditorsLoaded: {[name: string]: Section} = $state({})
+	content: DocStore = $state({})
+	docIndex: DocIndex = $derived(buildDocIndex(this.content))
+	lazyBlocks: {[name: string]: Block} = $state({})
+	lazySections: {[name: string]: Section} = $state({})
 
 	constructor() {
 		this.loading = true
@@ -65,9 +66,9 @@ export default class DocumentService {
 		try {
 			this.loading = true
 
-			await this.getAllDocuments()
-			await this.getDocumentBase()
-			await this.getDocumentStructure()
+			await this.getAllDocs()
+			await this.getDocBase()
+			await this.getDocStructure()
 		} catch {
 			this.error = true
 		} finally {
@@ -79,8 +80,8 @@ export default class DocumentService {
 		this.content = {}
 		this.base = {
 			schema_version: '0.1',
-			languages: [PUBLIC_DOCUMENT_LANGUAGE as DocLanguage],
-			formats: [PUBLIC_DOCUMENT_FORMAT as DocFormat],
+			languages: [PUBLIC_DOC_LANGUAGE as DocLanguage],
+			formats: [PUBLIC_DOC_FORMAT as DocFormat],
 			tags: [],
 			settings: [],
 		}
@@ -92,6 +93,7 @@ export default class DocumentService {
 	 * @param meta metadata to retrieve file
 	 * @returns a Promise that will update when
 	 */
+
 	async getProse(options: {
 		path: DocPath
 		meta: DocMeta
@@ -224,7 +226,7 @@ export default class DocumentService {
 		let sectionToUpdate
 
 		// Optimistic update of the local content structure
-		// - For UI reactivity: documentIndex re-derives automatically
+		// - For UI reactivity: docIndex re-derives automatically
 		const doc = this.content[options.language]?.[options.format]
 		const sectionRoot = options.path.parent ?? options.path.filename
 
@@ -358,7 +360,7 @@ export default class DocumentService {
 
 		// Check if an existing section's rank is affected
 		let updateRanks: Section[] = []
-		const maxRank = Object.keys(this.documentIndex.sections).length
+		const maxRank = Object.keys(this.docIndex.sections).length
 
 		if (options.rank <= 1 || options.rank < maxRank) {
 			for (let i = options.rank; i < maxRank; i++) {
@@ -389,8 +391,7 @@ export default class DocumentService {
 
 		const selected = sections.map((name) => ({
 			name: name,
-			section:
-				this.documentIndex.sections[getSectionKey(language, format, name)],
+			section: this.docIndex.sections[getSectionKey(language, format, name)],
 		}))
 
 		return selected
@@ -413,7 +414,7 @@ export default class DocumentService {
 		const selected = blocks.map((name) => ({
 			name: name,
 			block:
-				this.documentIndex.blocks[
+				this.docIndex.blocks[
 					getBlockKey(language, format, section, name, subsection)
 				],
 		}))
@@ -433,7 +434,7 @@ export default class DocumentService {
 	}): Section {
 		const {language, format, name} = options
 
-		return this.documentIndex.sections[getSectionKey(language, format, name)]
+		return this.docIndex.sections[getSectionKey(language, format, name)]
 	}
 
 	/**
@@ -442,7 +443,7 @@ export default class DocumentService {
 	 * @returns section
 	 */
 	getSectionById(id: Uuid): Section {
-		return this.documentIndex.sectionsById[id]
+		return this.docIndex.sectionsById[id]
 	}
 
 	/**
@@ -451,7 +452,7 @@ export default class DocumentService {
 	 * @returns sections found
 	 */
 	getSectionsByRank(rank: Rank): Section[] {
-		const sections = Object.values(this.documentIndex.sections)
+		const sections = Object.values(this.docIndex.sections)
 		return sections.filter((s) => s.rank === rank)
 	}
 
@@ -469,12 +470,12 @@ export default class DocumentService {
 	}): Block {
 		const {language, format, section, subsection, name} = options
 
-		return this.documentIndex.blocks[
+		return this.docIndex.blocks[
 			getBlockKey(language, format, section, name, subsection)
 		]
 	}
 
-	loadBlock(
+	lazyLoadBlock(
 		dataset: {block?: string; section?: string; subsection?: string},
 		language: DocLanguage,
 		format: DocFormat,
@@ -484,18 +485,18 @@ export default class DocumentService {
 			return
 		}
 
-		if (this.blockEditorsLoaded[dataset.block]) {
+		if (this.lazyBlocks[dataset.block]) {
 			return
 		}
 
 		if (dataset.block === dataset.section) {
-			this.sectionEditorsLoaded[dataset.block] = this.getSectionByName({
+			this.lazySections[dataset.block] = this.getSectionByName({
 				language,
 				format,
 				name,
 			})
 		} else {
-			this.blockEditorsLoaded[dataset.block] = this.getBlock({
+			this.lazyBlocks[dataset.block] = this.getBlock({
 				language,
 				format,
 				section: dataset.section as Slug,
@@ -506,60 +507,47 @@ export default class DocumentService {
 	}
 
 	/**
-	 * Load full document tree from storage
+	 * Load full doc tree from storage
 	 */
-	async getDocumentBase() {
+	async getDocBase() {
 		if (!this.bridge) return
 
 		// Raw content retrieved from OPFS "as is"
 		// 2 files are read:
 		// - content.json // Has FrontmatterBase shaped data FIXME: not always : se RawFrontmatterBase type
 		// - meta.json // Has DocMeta shaped data FIXME: not always : see RawSection type
-		const raw = (await this.bridge.getDocumentBase()) as OPFSBaseTree
+		const raw = (await this.bridge.getDocBase()) as OPFSBaseTree
 
 		this.base = opfsBaseTreeToFrontmatterBase(raw)
 	}
 
 	/**
-	 * Load full document tree from storage
+	 * Load full doc tree from storage
 	 */
-	async getDocumentStructure() {
+	async getDocStructure() {
 		if (!this.bridge) return
 
 		// Raw content retrieved from OPFS "as is"
 		// 2 files are read:
 		// - content.json // Has FrontmatterBase shaped data FIXME: not always : se RawFrontmatterBase type
 		// - meta.json // Has DocMeta shaped data FIXME: not always : see RawSection type
-		const raw = (await this.bridge.getDocumentStructure()) as OPFSStructureTree
+		const raw = (await this.bridge.getDocStructure()) as OPFSStructureTree
 
 		this.structures = opfsStructureTreeToFrontmatterStructures(raw)
 	}
 
 	/**
-	 * Load full document tree from storage
+	 * Load full doc tree from storage
 	 */
-	async getAllDocuments() {
+	async getAllDocs() {
 		if (!this.bridge) return
 
 		// Raw content retrieved from OPFS "as is"
 		// 2 files are read:
 		// - content.json // Has Section shaped data FIXME: not always : se RawSection type
 		// - meta.json // Has DocMeta shaped data FIXME: not always : se RawSection type
-		const raw = (await this.bridge.getAllDocuments()) as OPFSDocumentTree
+		const raw = (await this.bridge.getAllDocs()) as OPFSDocTree
 
-		this.content = opfsDocumentTreeToDocumentStore(raw)
-	}
-
-	/**
-	 * Delete all content and presets from OPFS storage
-	 * @returns void
-	 */
-	async deleteAllContent(): Promise<void> {
-		if (!this.bridge) {
-			return
-		}
-
-		await this.bridge.deleteAll()
-		this.reset()
+		this.content = opfsDocTreeToDocStore(raw)
 	}
 }

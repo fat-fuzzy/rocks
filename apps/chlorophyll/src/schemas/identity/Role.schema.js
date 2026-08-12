@@ -1,4 +1,6 @@
-const RoleSchema = {
+import {defineSchema} from '../index.js'
+
+const RoleSchema = defineSchema({
 	type: 'object',
 	properties: {
 		id: {
@@ -16,6 +18,6 @@ const RoleSchema = {
 	},
 	required: ['id', 'name', 'date_added'],
 	additionalProperties: false,
-}
+})
 
 export default RoleSchema

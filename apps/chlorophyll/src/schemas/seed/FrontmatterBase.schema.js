@@ -1,14 +1,15 @@
+import {defineSchema} from '../index.js'
+
 import BaseSchema from '../primitives/Base.schema.js'
 import DocPathSchema from '../primitives/DocPath.schema.js'
 import TagGroupSchema from '../primitives/TagGroup.schema.js'
 
-/** @type {import('json-schema-to-typescript').JSONSchema} */
-const FrontmatterBaseSchema = {
+const FrontmatterBaseSchema = defineSchema({
 	$schema: 'http://json-schema.org/draft-07/schema#',
 	$id: 'FrontmatterBase',
 	type: 'object',
 	description:
-		'Metadata that defines the base settings available for Documents that affect document structure and available UI controls',
+		'Metadata that defines the base settings available for Docs that affect doc structure and available UI controls',
 	properties: {
 		schema_version: {
 			$ref: '#/definitions/schemaVersion',
@@ -55,6 +56,6 @@ const FrontmatterBaseSchema = {
 		DocPath: DocPathSchema,
 		TagGroup: TagGroupSchema,
 	},
-}
+})
 
 export default FrontmatterBaseSchema

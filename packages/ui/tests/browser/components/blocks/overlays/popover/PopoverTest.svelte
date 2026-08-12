@@ -35,16 +35,17 @@
 </script>
 
 <TestContext>
-	<Popover {...popover1.props}>
-		<p>{popover1.expected.content}</p>
-	</Popover>
-
-	{#if count === 2}
-		<Popover {...popover2.props}>
-			<p>{popover2.expected.content}</p>
+	<div class="l:flex 3xs">
+		<Popover {...popover1.props}>
+			<p>{popover1.expected.content}</p>
 		</Popover>
-	{/if}
 
+		{#if count === 2}
+			<Popover {...popover2.props}>
+				<p>{popover2.expected.content}</p>
+			</Popover>
+		{/if}
+	</div>
 	{#if externalEvent}
 		<form onsubmit={handleSubmit}>
 			<label>

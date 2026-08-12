@@ -23,7 +23,12 @@ html:has(.l\:grid\:urbanist) {
 	}
 }
 
-.zone\:main {
+.zone\:main,
+.page-main {
+	min-block-size: 100%;
+}
+
+.h\:full {
 	block-size: 100%;
 }
 

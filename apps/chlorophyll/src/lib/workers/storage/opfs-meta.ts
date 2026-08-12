@@ -40,7 +40,7 @@ export async function getStructureData(): Promise<{
 }
 
 /**
- * Save document base to OPFS
+ * Save doc base to OPFS
  * @returns void
  */
 export async function saveBase(
@@ -56,6 +56,6 @@ export async function saveBase(
 	} catch (error) {
 		console.log(error)
 
-		throw new Error('Error saving document base', {cause: error})
+		throw new Error('Error saving doc base', {cause: error})
 	}
 }

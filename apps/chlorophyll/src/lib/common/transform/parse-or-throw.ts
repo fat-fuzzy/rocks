@@ -2,7 +2,7 @@ import type {AjvValidateFunction} from '@fat-fuzzy/ui'
 import type {
 	Block,
 	Section,
-	Document,
+	Doc,
 	Preset,
 	FrontmatterBase,
 	FrontmatterStructure,
@@ -35,8 +35,8 @@ export function parseSection(label: string, data: unknown): Section {
 	return parseOrThrow(label, data, validators.SectionValidationFunction)
 }
 
-export function parseDocument(label: string, data: unknown): Document {
-	return parseOrThrow(label, data, validators.DocumentValidationFunction)
+export function parseDoc(label: string, data: unknown): Doc {
+	return parseOrThrow(label, data, validators.DocValidationFunction)
 }
 
 export function parsePreset(label: string, data: unknown): Preset {

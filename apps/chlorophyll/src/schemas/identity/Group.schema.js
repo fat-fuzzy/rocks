@@ -1,4 +1,6 @@
-const GroupSchema = {
+import {defineSchema} from '../index.js'
+
+const GroupSchema = defineSchema({
 	type: 'object',
 	properties: {
 		id: {
@@ -13,6 +15,6 @@ const GroupSchema = {
 	},
 	required: ['id', 'name', 'date_added'],
 	additionalProperties: false,
-}
+})
 
 export default GroupSchema

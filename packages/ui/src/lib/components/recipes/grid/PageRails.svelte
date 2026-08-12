@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {UiSize, PageRailsProps} from '$types'
+	import type {UiSize, PageRailsProps, UiLayout} from '$types'
 	import Head from '$lib/components/blocks/global/Head.svelte'
 	import PageHeader from '$lib/components/recipes/content/PageHeader.svelte'
 	import PageNav from '$lib/components/recipes/navs/PageNav.svelte'
@@ -18,9 +18,11 @@
 		main,
 		nav,
 		aside,
+		details,
 		footer,
 		useHeader = true,
 		layout = 'metro',
+		headerLayout,
 	}: PageRailsProps = $props()
 
 	let currentPage = $derived(pageName ?? title)
@@ -75,10 +77,11 @@
 	)
 	let zoneMainClass = $derived(zoneMainClasses[layout])
 	let pageMainClass = $derived(pageMainClasses[layout])
-	let headerLayout = $derived(
-		layout === 'steam' || layout === 'tram' || layout === 'voyager'
-			? 'sidebar'
-			: '',
+	let hLayout = $derived(
+		headerLayout ??
+			(layout === 'steam' || layout === 'tram' || layout === 'voyager'
+				? 'sidebar'
+				: ''),
 	)
 </script>
 
@@ -90,7 +93,13 @@
 			<PageHeader {title} text={text as UiSize} layout="center" />
 		{/if}
 	{:else}
-		<PageHeader {title} text={text as UiSize} {justify} layout={headerLayout}>
+		<PageHeader
+			{title}
+			text={text as UiSize}
+			{justify}
+			layout={hLayout as UiLayout}
+			side={details}
+		>
 			{#snippet main()}
 				<Breadcrumbs
 					id={`${id}-header-content`}

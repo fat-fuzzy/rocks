@@ -1,28 +1,26 @@
 <script lang="ts">
 	import type {UiColor} from '@fat-fuzzy/ui'
-	import type {DocFormat, FrontmatterStructure} from '$types'
+	import type {DocFormat, FrontmatterStructure, IDocService} from '$types'
 
 	import {getContext} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
 
 	import {page} from '$app/state'
-	import DocumentService from '$lib/services/storage/document-service.svelte'
-	import {PUBLIC_DOCUMENT_FORMAT} from '$app/env/public'
+	import {PUBLIC_DOC_FORMAT} from '$app/env/public'
 
 	const {InputGroup} = ui.blocks
 
 	const {color, oninput}: {color?: UiColor; oninput: (e: Event) => void} =
 		$props()
 
-	let documentService: DocumentService = getContext('documentService')
+	let docService: IDocService = getContext('docService')
 
 	let format = $derived(
-		(page.url.searchParams.get('format') ||
-			PUBLIC_DOCUMENT_FORMAT) as DocFormat,
+		(page.url.searchParams.get('format') || PUBLIC_DOC_FORMAT) as DocFormat,
 	)
 
 	let structure = $derived(
-		documentService.structures.find(
+		docService.structures.find(
 			(s: FrontmatterStructure) => s.format === format,
 		),
 	)
@@ -49,16 +47,24 @@
 	}
 </script>
 
-<InputGroup
-	id="sections"
-	name="sections"
-	legend="Main Sections"
-	type="checkbox"
-	layout="switcher"
-	value={selected}
-	size="2xs"
-	{color}
-	variant="bare"
-	items={sectionItems}
-	{oninput}
-/>
+{#if sectionItems.length}
+	<InputGroup
+		id="sections"
+		name="sections"
+		legend="Main Sections"
+		type="checkbox"
+		layout="switcher"
+		value={selected}
+		size="2xs"
+		{color}
+		variant="bare"
+		items={sectionItems}
+		{oninput}
+	/>
+{:else}
+	<div>
+		<div class="ravioli:xs font:sm shape:mellow surface:1:neutral">
+			<p class="font:heading font:semibold text:center">No sections found</p>
+		</div>
+	</div>
+{/if}

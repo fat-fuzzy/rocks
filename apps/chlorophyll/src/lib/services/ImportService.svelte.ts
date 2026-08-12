@@ -1,14 +1,20 @@
-import type {SeedDocument, FrontmatterSeed, FrontmatterStructure} from '$types'
+export * from '$lib/types/services/import'
+import type {
+	SeedDoc,
+	FrontmatterSeed,
+	FrontmatterStructure,
+	IImportService,
+} from '$types'
 
 import WorkerBridge from '$lib/workers/worker-bridge'
-import {getBridge} from '$lib/services/storage/bridge'
+import {getBridge} from '$lib/services/bridge'
 
 /**
- * StorageService class to manage access to stored content
+ * ImportService class to manage data transfer operations into storage
  * Maintains a cache of data in memory
  * Sends/receive messages via worker bridge
  */
-export default class SeedService {
+export default class ImportService implements IImportService {
 	bridge: WorkerBridge | undefined = $state()
 	seeded: {date_seed?: string; source?: string} = $state({})
 	loading = $state(false)
@@ -26,7 +32,7 @@ export default class SeedService {
 
 	async init(
 		frontmatter: FrontmatterSeed,
-		seed: {content: SeedDocument[]; structures: FrontmatterStructure[]},
+		seed: {content: SeedDoc[]; structures: FrontmatterStructure[]},
 	) {
 		this.bridge = getBridge()
 		try {
@@ -88,12 +94,12 @@ export default class SeedService {
 	 * @param seed: parsed markdown data as JSON
 	 * @returns a Promise that will update when the worker message arrives
 	 */
-	async initSeed(frontmatter: FrontmatterSeed, seed: SeedDocument[]) {
+	async initSeed(frontmatter: FrontmatterSeed, seed: SeedDoc[]) {
 		if (!this.bridge) {
 			return
 		}
 
-		const documents = (await this.bridge.seedDocuments({seed})) as {
+		const docs = (await this.bridge.seedDocs({seed})) as {
 			seeded: number
 		}
 		const base = (await this.bridge.seedBase({
@@ -109,7 +115,7 @@ export default class SeedService {
 		}
 
 		// FIXME: adjust and make use of this data or remove it
-		return {documents, base, structure}
+		return {docs, base, structure}
 	}
 
 	async importFromJSON(jsonString: string) {
@@ -136,11 +142,5 @@ export default class SeedService {
 
 		await this.bridge.deleteAll()
 		this.reset()
-	}
-
-	destroy() {
-		if (this.bridge) {
-			this.bridge.destroy()
-		}
 	}
 }

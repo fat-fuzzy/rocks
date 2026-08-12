@@ -36,7 +36,6 @@ export type PageProps = {
 	pageName?: string
 	text?: string
 	header?: SidebarLayoutProps
-	layout?: string
 	justify?: string
 	children?: Snippet
 }
@@ -55,6 +54,7 @@ export type PageRailsProps = UiLayoutProps &
 		details?: Snippet
 		aside?: Snippet
 		useHeader?: boolean
+		headerLayout?: UiLayout
 		app?: {
 			brightness: string
 			contrast: string

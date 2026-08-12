@@ -23,7 +23,7 @@ export type PageNavProps = UiBlockProps & {
 export type BreadcrumbsProps = UiBlockProps & {
 	level: number
 	id: string
-	label?: string
+	title?: string
 	path: string
 	breadcrumbTabs?: Snippet // TODO: deprecate with tabs
 }

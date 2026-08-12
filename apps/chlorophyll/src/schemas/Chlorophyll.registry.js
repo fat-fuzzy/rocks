@@ -4,7 +4,7 @@ import ProseSchema from './primitives/Prose.schema.js'
 import DocMetaSchema from './primitives/DocMeta.schema.js'
 import DocPathSchema from './primitives/DocPath.schema.js'
 
-import DocumentSchema from './domain/Document.schema.js'
+import DocSchema from './domain/Doc.schema.js'
 import SubsectionSchema from './domain/Subsection.schema.js'
 import SectionSchema from './domain/Section.schema.js'
 import BlockSchema from './domain/Block.schema.js'
@@ -23,7 +23,7 @@ import FrontmatterBaseSchema from './seed/FrontmatterBase.schema.js'
 import FrontmatterStructureSchema from './seed/FrontmatterStructure.schema.js'
 import SeedBlockSchema from './seed/SeedBlock.schema.js'
 import SeedSectionSchema from './seed/SeedSection.schema.js'
-import SeedDocumentSchema from './seed/SeedDocument.schema.js'
+import SeedDocSchema from './seed/SeedDoc.schema.js'
 /**
  * @param schema {import('json-schema-to-typescript').JSONSchema | { properties: {schema_version: { const: string }}}} */
 function getVersion(schema) {
@@ -34,17 +34,17 @@ export const schemas = {
 	primitives: {
 		Prose: {
 			schema: ProseSchema,
-			version: getVersion(DocumentSchema),
+			version: getVersion(DocSchema),
 			isRoot: false,
 		},
 		Tag: {
 			schema: TagSchema,
-			version: getVersion(DocumentSchema),
+			version: getVersion(DocSchema),
 			isRoot: false,
 		},
 		TagGroup: {
 			schema: TagGroupSchema,
-			version: getVersion(DocumentSchema),
+			version: getVersion(DocSchema),
 			isRoot: false,
 		},
 	},
@@ -61,49 +61,49 @@ export const schemas = {
 		},
 		SeedBlock: {
 			schema: SeedBlockSchema,
-			version: getVersion(SeedDocumentSchema),
+			version: getVersion(SeedDocSchema),
 			isRoot: false,
 		},
 		SeedSection: {
 			schema: SeedSectionSchema,
-			version: getVersion(SeedDocumentSchema),
+			version: getVersion(SeedDocSchema),
 			isRoot: false,
 		},
-		SeedDocument: {
-			schema: SeedDocumentSchema,
-			version: getVersion(SeedDocumentSchema),
+		SeedDoc: {
+			schema: SeedDocSchema,
+			version: getVersion(SeedDocSchema),
 			isRoot: true,
 		},
 	},
 	domain: {
-		Document: {
-			schema: DocumentSchema,
-			version: getVersion(DocumentSchema),
+		Doc: {
+			schema: DocSchema,
+			version: getVersion(DocSchema),
 			isRoot: true,
 		},
 		Section: {
 			schema: SectionSchema,
-			version: getVersion(DocumentSchema),
+			version: getVersion(DocSchema),
 			isRoot: false,
 		},
 		Subsection: {
 			schema: SubsectionSchema,
-			version: getVersion(DocumentSchema),
+			version: getVersion(DocSchema),
 			isRoot: false,
 		},
 		Block: {
 			schema: BlockSchema,
-			version: getVersion(DocumentSchema),
+			version: getVersion(DocSchema),
 			isRoot: false,
 		},
 		DocMeta: {
 			schema: DocMetaSchema,
-			version: getVersion(DocumentSchema),
+			version: getVersion(DocSchema),
 			isRoot: false,
 		},
 		DocPath: {
 			schema: DocPathSchema,
-			version: getVersion(DocumentSchema),
+			version: getVersion(DocSchema),
 			isRoot: false,
 		},
 		Preset: {

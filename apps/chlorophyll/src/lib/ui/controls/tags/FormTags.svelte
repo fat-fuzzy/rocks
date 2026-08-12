@@ -6,6 +6,7 @@
 		Slug,
 		TagGroup,
 		TagProps,
+		ITagService,
 	} from '$types'
 
 	import * as validators from '$lib/generated/ajv/validation/validate.ajv.mjs'
@@ -18,7 +19,6 @@
 		parseGroupFromTargetData,
 		applyTags,
 	} from '$lib/common/tags'
-	import TagService from '$lib/services/storage/tag-service.svelte'
 	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
 	import SelectTags from '$lib/ui/controls/tags/SelectTags.svelte'
 
@@ -32,7 +32,7 @@
 	}
 	let {groups, cta, color = 'primary'}: Props = $props()
 
-	let tagService: TagService = getContext('tagService')
+	let tagService: ITagService = getContext('tagService')
 
 	const validator = new FormValidator('FormTagValidationFunction', validators)
 
@@ -254,9 +254,11 @@
 			font="sm"
 			asset="none"
 		>
-			<p>Deleting tags does not delete content.</p>
-			<p>If you can't find content after deleting tags, try selecting:</p>
-			<p class="font:semibold font:sm">Twilight Z > untagged</p>
+			<p>
+				The group <span class="font:semibold font:sm"> Twilight Z </span> cannot be
+				deleted
+			</p>
+			<p>Deleted tags will be removed without deleting content.</p>
 		</Feedback>
 	{:else if cta === 'save' || cta === 'update' || cta === 'copy'}
 		<div class="l:sidebar size:md">

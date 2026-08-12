@@ -1,17 +1,16 @@
 <script lang="ts">
-	import type {Slug, DocFormat, DocLanguage, Section} from '$types'
+	import type {Slug, DocFormat, DocLanguage, Section, IDocService} from '$types'
 
 	import {getContext, onMount} from 'svelte'
 
 	import {isHidden, checkTags} from '$data/cv/cv-display'
 	import {LOCALIZATIONS} from '$lib/intl/l10n'
 
-	import DocumentService from '$lib/services/storage/document-service.svelte'
 	import BlockBuilder from '$lib/ui/builder/BlockBuilder.svelte'
 	import FeedbackContent from '$lib/ui/FeedbackContent.svelte'
 	import Loading from '$lib/ui/Loading.svelte'
 
-	let documentService: DocumentService = getContext('documentService')
+	let docService: IDocService = getContext('docService')
 
 	let {
 		cta = 'build',
@@ -30,10 +29,10 @@
 	let observerRoot: HTMLElement | undefined = $state()
 	let observer: IntersectionObserver | undefined = $state()
 	let missingIcon = 'emoji:idea justify:end'
-	let loading = $derived(documentService.loading)
+	let loading = $derived(docService.loading)
 
 	let section: Section = $derived(
-		documentService.getSectionByName({
+		docService.getSectionByName({
 			language,
 			format,
 			name,
@@ -44,7 +43,7 @@
 	let content = $derived(section?.content)
 
 	let noContentFound = $derived(!section)
-	let error = $derived(documentService.error)
+	let error = $derived(docService.error)
 
 	const observerOptions = $derived({
 		root: null,
@@ -58,7 +57,7 @@
 			const target = entry.target as HTMLElement
 
 			if (entry.isIntersecting) {
-				documentService.loadBlock(
+				docService.lazyLoadBlock(
 					{
 						block: target.dataset.block,
 						section: target.dataset.section,

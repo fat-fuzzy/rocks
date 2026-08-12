@@ -1,4 +1,10 @@
-import type {AriaInvoke, FuzzyEvent, UiState} from '$types'
+import type {
+	AriaInvoke,
+	FuzzyEvent,
+	UiCoords,
+	UiPosition,
+	UiState,
+} from '$types'
 
 import {TOGGLE_MACHINE} from '$lib/components/blocks/buttons/Toggle/definitions'
 import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/definitions'
@@ -241,8 +247,8 @@ const POPOVER_PROPS = [
 			title: 'Test Popover 1',
 			label: 'Test Popover 1',
 			fixed: 'true',
-			coords: 'bottom-right',
-			position: 'top',
+			coords: 'bottom-right' as UiCoords,
+			position: 'anchored' as UiPosition,
 			asset: 'cookie',
 			layer: '1',
 			invoke: 'auto' as AriaInvoke, // will light dismiss
@@ -258,8 +264,8 @@ const POPOVER_PROPS = [
 			role: 'dialog',
 			title: 'Test Popover 2',
 			label: 'Test Popover 2',
-			coords: 'top-left',
-			position: 'bottom',
+			coords: 'top-right' as UiCoords,
+			position: 'anchored' as UiPosition,
 			asset: 'cookie',
 			invoke: 'manual' as AriaInvoke, // won't light dismiss
 		},

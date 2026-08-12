@@ -60,30 +60,32 @@
 			color,
 			label: `${action} Section`,
 			position: 'nord',
-			children: presetInfo,
+			children: sectionForm,
 		})
 
 		dialogActor.show()
 	}
 </script>
 
-{#snippet presetInfo()}
+{#snippet sectionForm()}
 	<FormSection {color} {cta} {formats} />
 {/snippet}
 
 <!-- FIXME: add tooltip -->
-<Button
-	{id}
-	type="button"
-	name={id}
-	{size}
-	font="2xs font:heading"
-	align="center"
-	{label}
-	{color}
-	{shape}
-	{variant}
-	{asset}
-	{assetType}
-	onclick={showDialog}
-/>
+<div class="l:flex justify:end">
+	<Button
+		{id}
+		type="button"
+		name={id}
+		{size}
+		font="2xs font:heading"
+		align="center"
+		{label}
+		{color}
+		{shape}
+		{variant}
+		{asset}
+		{assetType}
+		onclick={showDialog}
+	/>
+</div>

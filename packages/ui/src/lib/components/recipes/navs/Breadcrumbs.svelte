@@ -46,13 +46,15 @@
 </script>
 
 <div {id} class={`l:stack:${size} w:full`}>
-	<svelte:element
-		this={`h${level}`}
-		id={`${id}-heading`}
-		class="l:flex align:center"
-	>
-		{title}
-	</svelte:element>
+	{#if title}
+		<svelte:element
+			this={`h${level}`}
+			id={`${id}-heading`}
+			class="l:flex align:center"
+		>
+			{title}
+		</svelte:element>
+	{/if}
 	<nav
 		aria-label="Breadcrumb"
 		id={`${id}-breadcrumbs`}
@@ -67,6 +69,7 @@
 						aria-current={path === item.slug ? 'page' : undefined}
 						class="l:flex nowrap align:center"
 					>
+						<!-- FIXME:  svelte/no-navigation-without-resolve -->
 						<a
 							data-sveltekit-preload-data
 							href={item.path}

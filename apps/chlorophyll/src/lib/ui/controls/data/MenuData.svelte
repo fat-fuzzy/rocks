@@ -5,6 +5,7 @@
 
 	import DialogImport from '$lib/ui/controls/data/DialogImport.svelte'
 	import Export from '$lib/ui/controls/data/Export.svelte'
+	import DialogReset from '$lib/ui/controls/data/DialogReset.svelte'
 
 	const {Popover} = ui.drafts
 
@@ -35,5 +36,6 @@
 	<menu class="l:stack:3xs ravioli:xs align:start">
 		<DialogImport id="button-import" label="Import" {color} />
 		<Export id="button-export" label="Export" filename="cv-content" {color} />
+		<DialogReset id="button-reset" label="Reset" {color} />
 	</menu>
 </Popover>

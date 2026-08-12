@@ -20,6 +20,8 @@
 		isEmpty?: boolean
 		isError?: boolean
 	} = $props()
+
+	const dedupedTags = $derived(Array.from(new Set(tags)))
 </script>
 
 <div class="maki:block">
@@ -62,7 +64,7 @@
 					<p>Available Tags:</p>
 					<div>
 						<ul class="tags unstyled l:flex:xs">
-							{#each tags as tag, i (i)}
+							{#each dedupedTags as tag, i (i)}
 								<li class="variant:outline raviolink shape:pill font:xs">
 									<span class="maki:inline"> {tag}</span>
 								</li>

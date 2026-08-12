@@ -12,9 +12,9 @@ import type {
 	Section,
 	Block,
 	Preset,
-	OPFSDocumentTree,
+	OPFSDocTree,
 	OPFSPresetTree,
-	SeedDocument,
+	SeedDoc,
 	PendingRequest,
 	ResponsePayload,
 	WorkerMessage,
@@ -91,7 +91,7 @@ export default class WorkerBridge {
 		})
 	}
 
-	seedDocuments(payload: {seed: SeedDocument[]}) {
+	seedDocs(payload: {seed: SeedDoc[]}) {
 		return this.send({
 			type: 'SEED_ROOT',
 			requestId: crypto.randomUUID(),
@@ -123,22 +123,22 @@ export default class WorkerBridge {
 		})
 	}
 
-	getDocumentBase() {
+	getDocBase() {
 		return this.send({
-			type: 'GET_DOCUMENT_BASE',
+			type: 'GET_DOC_BASE',
 			requestId: crypto.randomUUID(),
 		})
 	}
 
-	getDocumentStructure() {
+	getDocStructure() {
 		return this.send({
-			type: 'GET_DOCUMENT_STRUCTURE',
+			type: 'GET_DOC_STRUCTURE',
 			requestId: crypto.randomUUID(),
 		})
 	}
 
 	restoreFromBackup(payload: {
-		content: OPFSDocumentTree
+		content: OPFSDocTree
 		presets: OPFSPresetTree
 		base: OPFSBaseTree
 	}) {
@@ -151,15 +151,15 @@ export default class WorkerBridge {
 
 	getProse(payload: {path: DocPath; meta: DocMeta}) {
 		return this.send({
-			type: 'GET_DOCUMENT_CONTENT',
+			type: 'GET_DOC_CONTENT',
 			requestId: crypto.randomUUID(),
 			payload,
 		})
 	}
 
-	getAllDocuments() {
+	getAllDocs() {
 		return this.send({
-			type: 'GET_ALL_DOCUMENTS',
+			type: 'GET_ALL_DOCS',
 			requestId: crypto.randomUUID(),
 		})
 	}
@@ -203,9 +203,9 @@ export default class WorkerBridge {
 		})
 	}
 
-	deleteDocument(payload: {path: DocPath; meta: DocMeta}) {
+	deleteDoc(payload: {path: DocPath; meta: DocMeta}) {
 		return this.send({
-			type: 'DELETE_DOCUMENT',
+			type: 'DELETE_DOC',
 			requestId: crypto.randomUUID(),
 			payload,
 		})

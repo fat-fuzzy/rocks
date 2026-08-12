@@ -16,7 +16,10 @@ describe(`Popover - a popover component`, () => {
 			const popover = POPOVER_PROPS[0]
 
 			page.render(Popover)
-			await page.getByLabelText(popover.props.label).click()
+
+			await page
+				.getByRole('button', {name: popover.props.label, exact: false})
+				.click()
 			const popoverContent = page.getByText(popover.expected.content)
 
 			expect(popoverContent).toBeVisible()
@@ -28,14 +31,18 @@ describe(`Popover - a popover component`, () => {
 			const popover = POPOVER_PROPS[0]
 			page.render(Popover)
 
-			await page.getByLabelText(popover.props.label).click()
+			await page
+				.getByRole('button', {name: popover.props.label, exact: false})
+				.click()
 			let popoverRole = page.getByRole(popover.props.role)
 			let popoverContent = page.getByText(popover.expected.content)
 
 			expect(popoverRole).toBeInViewport()
 			expect(popoverContent).toBeVisible()
 
-			await page.getByLabelText(popover.props.label).click()
+			await page
+				.getByRole('button', {name: popover.props.label, exact: false})
+				.click()
 			popoverRole = page.getByTestId(popover.props.id)
 			popoverContent = page.getByText(popover.expected.content)
 
@@ -52,14 +59,18 @@ describe(`Popover - a popover component`, () => {
 
 			page.render(Popover, {count: 2})
 
-			await page.getByLabelText(popover1.props.label).click()
+			await page
+				.getByRole('button', {name: popover1.props.label, exact: false})
+				.click()
 			const popoverRole = page.getByRole(popover1.props.role)
 			const popoverContent = page.getByText(popover1.expected.content)
 
 			expect(popoverRole).toBeInViewport()
 			expect(popoverContent).toBeVisible()
 
-			await page.getByLabelText(popover2.props.label).click()
+			await page
+				.getByRole('button', {name: popover2.props.label, exact: false})
+				.click()
 
 			expect(popoverRole).not.toBeInViewport()
 			expect(popoverContent).not.toBeVisible()
@@ -69,7 +80,9 @@ describe(`Popover - a popover component`, () => {
 			const popover = POPOVER_PROPS[0]
 			page.render(Popover)
 
-			await page.getByLabelText(popover.props.label).click()
+			await page
+				.getByRole('button', {name: popover.props.label, exact: false})
+				.click()
 			const popoverContent = page.getByText(popover.expected.content)
 
 			expect(popoverContent).toBeVisible()
@@ -83,7 +96,9 @@ describe(`Popover - a popover component`, () => {
 			const popover = POPOVER_PROPS[0]
 			page.render(Popover)
 
-			await page.getByLabelText(popover.props.label).click()
+			await page
+				.getByRole('button', {name: popover.props.label, exact: false})
+				.click()
 			const popoverContent = page.getByText(popover.expected.content)
 
 			expect(popoverContent).toBeVisible()
@@ -94,7 +109,9 @@ describe(`Popover - a popover component`, () => {
 
 			page.render(Popover, {count: 2, externalEvent: true})
 
-			await page.getByLabelText(popover.props.label).click()
+			await page
+				.getByRole('button', {name: popover.props.label, exact: false})
+				.click()
 			const popoverRole = page.getByRole(popover.props.role)
 			const popoverContent = page.getByText(popover.expected.content)
 
@@ -153,7 +170,9 @@ describe(`Popover - a popover component`, () => {
 			const popover = POPOVER_PROPS[0]
 
 			const {unmount} = render(Popover)
-			await page.getByLabelText(popover.props.label).click()
+			await page
+				.getByRole('button', {name: popover.props.label, exact: false})
+				.click()
 			const popoverContent = page.getByRole(popover.props.role)
 
 			expect(popoverContent).toBeVisible()

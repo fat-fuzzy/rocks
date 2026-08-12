@@ -9,7 +9,7 @@ import type {
 	Section,
 	Block,
 	Prose,
-	OPFSDocumentTree,
+	OPFSDocTree,
 	Slug,
 	Rank,
 } from '$types'
@@ -37,7 +37,7 @@ import {getBaseData, getStructureData} from '$lib/workers/storage/opfs-meta'
 export async function loadFile(options: {
 	meta: DocMeta
 	path: DocPath
-}): Promise<{data: OPFSDocumentTree}> {
+}): Promise<{data: OPFSDocTree}> {
 	const {meta, path} = options
 	const {language, format} = meta
 	const {filename, filetype, parent} = path
@@ -110,7 +110,7 @@ export async function createSection(options: {
 
 		if (!structureToUpdate) {
 			throw new Error(
-				`Error creating section: missing document structure for ${format}`,
+				`Error creating section: missing doc structure for ${format}`,
 			)
 		}
 
@@ -217,7 +217,7 @@ export async function saveSection(options: {
  * @param data file contents to save, stringified
  * @returns
  */
-export async function saveDocument(options: {
+export async function saveDoc(options: {
 	meta: DocMeta
 	path: DocPath
 	content: Prose
@@ -324,7 +324,7 @@ export async function deleteContentFile(options: {
 	}
 }
 
-export async function getContentData(): Promise<{data: OPFSDocumentTree}> {
+export async function getContentData(): Promise<{data: OPFSDocTree}> {
 	const opfsRoot = await navigator.storage.getDirectory()
 
 	let parentHandle
@@ -335,7 +335,7 @@ export async function getContentData(): Promise<{data: OPFSDocumentTree}> {
 		const data = await readDirectoryRecursive(parentHandle)
 
 		return {
-			data: data as OPFSDocumentTree,
+			data: data as OPFSDocTree,
 		}
 	} catch (error) {
 		const notFound = String(error).startsWith('NotFoundError:')

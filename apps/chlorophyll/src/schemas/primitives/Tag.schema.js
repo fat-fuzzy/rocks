@@ -1,13 +1,5 @@
-const TagSchema = {$ref: '#/definitions/slug'}
+import {defineSchema} from '../index.js'
+
+const TagSchema = defineSchema({$ref: '#/definitions/slug'})
 
 export default TagSchema
-
-// const TagSchema = {
-// 	type: 'object',
-// 	properties: {
-// 		value: {$ref: '#/definitions/slug'},
-// 		label: {$ref: '#/definitions/text'},
-// 	},
-// 	required: ['value'],
-// 	additionalProperties: false,
-// }

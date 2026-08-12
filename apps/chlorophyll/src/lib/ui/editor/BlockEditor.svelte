@@ -6,21 +6,21 @@
 		DocLanguage,
 		DocFormat,
 		InputCheckedTypes,
+		IDocService,
+		ITagService,
 	} from '$types'
 
 	import {getContext} from 'svelte'
 	import prose from '@fat-fuzzy/prose'
 
 	import {applyTags} from '$lib/common/tags'
-	import DocumentService from '$lib/services/storage/document-service.svelte'
-	import TagService from '$lib/services/storage/tag-service.svelte'
 	import DialogDeleteBlock from '$lib/ui/controls/block/DialogDeleteBlock.svelte'
 	import SelectTags from '$lib/ui/controls/tags/SelectTags.svelte'
 
 	const {Editor} = prose.editor
 
-	let documentService: DocumentService = getContext('documentService')
-	let tagService: TagService = getContext('tagService')
+	let docService: IDocService = getContext('docService')
+	let tagService: ITagService = getContext('tagService')
 
 	let {
 		id,
@@ -94,7 +94,7 @@
 			block,
 		}
 
-		documentService.saveBlock(updated)
+		docService.saveBlock(updated)
 	}
 
 	function updateTags(event: Event) {
@@ -131,7 +131,7 @@
 			block,
 		}
 
-		documentService.saveBlock(updated)
+		docService.saveBlock(updated)
 	}
 
 	$effect(() => {

@@ -5,54 +5,53 @@
 		DocLanguage,
 		TagGroup,
 		FrontmatterStructure,
+		IDocService,
+		ITagService,
 	} from '$types'
 
 	import {getContext, tick} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
 
 	import {page} from '$app/state'
-	import {
-		PUBLIC_DOCUMENT_LANGUAGE,
-		PUBLIC_DOCUMENT_FORMAT,
-	} from '$app/env/public'
+	import {PUBLIC_DOC_LANGUAGE, PUBLIC_DOC_FORMAT} from '$app/env/public'
 
-	import DocumentService from '$lib/services/storage/document-service.svelte'
-	import TagService from '$lib/services/storage/tag-service.svelte'
-	import DocumentEditor from '$lib/ui/editor/DocumentEditor.svelte'
-	import DocumentBuilder from '$lib/ui/builder/DocumentBuilder.svelte'
+	import SectionEditor from '$lib/ui/editor/SectionEditor.svelte'
+	import SectionBuilder from '$lib/ui/builder/SectionBuilder.svelte'
+	import ContentHeading from '$lib/ui/controls/ContentHeading.svelte'
 	import ContentActions from '$lib/ui/controls/ContentActions.svelte'
 	import Tags from '$lib/ui/controls/tags/Tags.svelte'
 	import Presets from '$lib/ui/controls/preset/Presets.svelte'
 	import Loading from '$lib/ui/Loading.svelte'
 
 	const {PageRails} = ui.content
+	const {Feedback} = ui.blocks
 
-	let documentService: DocumentService = getContext('documentService')
-	let tagService: TagService = getContext('tagService')
+	let docService: IDocService = getContext('docService')
+	let tagService: ITagService = getContext('tagService')
 
 	let boundForm: HTMLFormElement | undefined = $state()
 	let pageContext = $derived({...page.data.pageContext, label: 'On this Page'})
 
 	let cta = $derived(page.params.page)
 	let query = $derived(page.url.search)
+	let tags = $derived(tagService.tags)
+	let tagsLoading = $derived(tagService.loading)
+	let tagsError = $derived(tagService.error)
 
 	let editing = $derived(cta === 'build' || cta === 'edit')
 
 	let language = $derived(
 		(page.url.searchParams.get('language') ||
-			PUBLIC_DOCUMENT_LANGUAGE) as DocLanguage,
+			PUBLIC_DOC_LANGUAGE) as DocLanguage,
 	)
 	let format = $derived(
-		(page.url.searchParams.get('format') ||
-			PUBLIC_DOCUMENT_FORMAT) as DocFormat,
+		(page.url.searchParams.get('format') || PUBLIC_DOC_FORMAT) as DocFormat,
 	)
 
-	let preset: string | undefined = $derived(
-		page.url.searchParams.get('preset') ?? undefined,
-	)
+	let preset: string | null = $derived(page.url.searchParams.get('preset'))
 
 	let structure = $derived(
-		documentService.structures.find(
+		docService.structures.find(
 			(s: FrontmatterStructure) => s.format === format,
 		),
 	)
@@ -84,6 +83,11 @@
 
 	let description = $derived(structure?.name || '')
 
+	let ctaClass = $derived(
+		cta === 'edit' ? 'doc-editor' : 'doc-builder l:stack:3xl',
+	)
+	let contentClass = $derived(selectedSections.length === 0 ? '' : ctaClass)
+
 	async function updateFilters() {
 		await tick()
 		if (boundForm) {
@@ -100,10 +104,22 @@
 	nav={page.data.nav}
 	context={pageContext}
 	layout="railway"
+	headerLayout="sidebar"
 >
+	{#snippet details()}
+		{#if cta}
+			<ContentHeading
+				{cta}
+				{preset}
+				{query}
+				formats={docService.base.formats}
+			/>
+		{/if}
+	{/snippet}
+
 	{#snippet main()}
-		{#if documentService.loading}
-			<div class="w:full col:center">
+		<div class="w:full h:full col:center l:stack">
+			{#if docService.loading}
 				<div class="l:frame:round">
 					<Loading
 						message="Loading content..."
@@ -112,43 +128,68 @@
 						color="primary"
 					/>
 				</div>
-			</div>
-		{:else}
-			{#key queryString}
-				{#if cta === 'edit'}
-					<DocumentEditor
-						{selectedSections}
-						{selectedTags}
-						{language}
-						{format}
-						{preset}
-						{query}
-					/>
-				{:else if cta}
-					<DocumentBuilder
-						{cta}
-						{selectedSections}
-						{selectedTags}
-						{preset}
-						{query}
-						{language}
-						{format}
-					/>
-				{/if}
-			{/key}
-		{/if}
+			{:else}
+				{#key queryString}
+					{#if selectedSections.length === 0}
+						<div class="l:frame size:lg">
+							<Feedback
+								status="default"
+								context="prose"
+								variant="bare"
+								shape="round"
+								asset="default"
+								size="lg"
+							>
+								<p>Select a Section to get started</p>
+							</Feedback>
+						</div>
+					{:else}
+						<div class="l:text:xl">
+							<div class={contentClass}>
+								{#if cta === 'edit'}
+									{#each selectedSections as sectionName, i (i)}
+										<SectionEditor
+											name={sectionName}
+											{selectedTags}
+											{language}
+											{format}
+										/>
+									{/each}
+								{:else if cta}
+									{#each selectedSections as sectionName, i (i)}
+										<SectionBuilder
+											{cta}
+											name={sectionName}
+											{selectedTags}
+											{language}
+											{format}
+										/>
+									{/each}
+								{/if}
+							</div>
+						</div>
+					{/if}
+				{/key}
+			{/if}
+		</div>
 	{/snippet}
 
 	{#snippet aside()}
 		{#if cta}
-			<div class="noprint l:stack:xs maki:block">
+			<div class="noprint l:stack:xs maki:block:2xl">
 				<form bind:this={boundForm} class="l:stack:md">
 					<ContentActions oninput={updateFilters} />
 
 					<Presets oninput={updateFilters} currentPreset={preset} />
 
 					{#if editing}
-						<Tags oninput={updateFilters} />
+						<Tags
+							{cta}
+							{tags}
+							loading={tagsLoading}
+							error={tagsError}
+							oninput={updateFilters}
+						/>
 					{/if}
 				</form>
 			</div>
