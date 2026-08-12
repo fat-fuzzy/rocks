@@ -9,7 +9,7 @@ export interface IImportService {
 
 	init(
 		frontmatter: FrontmatterSeed,
-		seed: {content: SeedDoc[]; structures: FrontmatterStructure[]},
+		seed?: {content: SeedDoc[]; structures: FrontmatterStructure[]},
 	): Promise<void>
 	reset(): void
 

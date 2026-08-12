@@ -61,7 +61,6 @@
 		}
 	})
 
-	let seed = $derived(page.data.seed)
 	let base = $derived(page.data.base)
 	let structures = $derived(page.data.structures)
 
@@ -106,7 +105,7 @@
 	onMount(async () => {
 		initBridge()
 
-		await importService.init({base, structures}, seed)
+		await importService.init({base, structures})
 		await docService.init()
 		await tagService.init()
 		await presetService.init()
