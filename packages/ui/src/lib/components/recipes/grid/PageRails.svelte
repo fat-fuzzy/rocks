@@ -77,12 +77,7 @@
 	)
 	let zoneMainClass = $derived(zoneMainClasses[layout])
 	let pageMainClass = $derived(pageMainClasses[layout])
-	let hLayout = $derived(
-		headerLayout ??
-			(layout === 'steam' || layout === 'tram' || layout === 'voyager'
-				? 'sidebar'
-				: ''),
-	)
+	let hLayout = $derived(headerLayout || details ? 'sidebar' : '')
 </script>
 
 <Head pageName={currentPage} {title} {description} />
