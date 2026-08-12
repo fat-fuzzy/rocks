@@ -56,6 +56,8 @@
 		),
 	)
 
+	let availableSections = $derived(Object.values(docService.docIndex.sections))
+
 	let selectedSections = $derived(
 		page.url.searchParams
 			.getAll('sections')
@@ -131,16 +133,36 @@
 			{:else}
 				{#key queryString}
 					{#if selectedSections.length === 0}
-						<div class="l:frame size:lg">
+						<div
+							class={`l:frame size:${availableSections.length ? 'lg' : 'md'}`}
+						>
 							<Feedback
 								status="default"
 								context="prose"
 								variant="bare"
-								shape="round"
-								asset="default"
-								size="lg"
+								shape={availableSections.length ? 'round' : undefined}
+								asset={availableSections.length ? 'default' : 'none'}
+								size={availableSections.length ? 'lg' : undefined}
 							>
-								<p>Select a Section to get started</p>
+								{#if availableSections.length}
+									<p>Select a Section to get started</p>
+								{:else}
+									<p>To get started you can:</p>
+									<ul>
+										<li>
+											Create your own content: click on <span
+												class="font:semibold"
+											>
+												Add Section
+											</span>
+										</li>
+										<li>
+											Load the demo: go to <span class="font:semibold">
+												Data > Reset
+											</span> and follow instructions
+										</li>
+									</ul>
+								{/if}
 							</Feedback>
 						</div>
 					{:else}
