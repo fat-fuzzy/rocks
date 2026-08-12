@@ -159,7 +159,9 @@
 										<li>
 											Load the demo: go to <span class="font:semibold">
 												Data > Reset
-											</span> and follow instructions
+											</span>
+											and click on
+											<span class="font:semibold"> Seed Demo </span>
 										</li>
 									</ul>
 								{/if}
