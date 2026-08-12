@@ -26,9 +26,7 @@
 
 <div class="l:stack maki:inline:4xs">
 	<nav id="secondary-nav">
-		<ul
-			class={`unstyled input-group l:${layout}:3xs w:full align:center justify:between`}
-		>
+		<ul class={`unstyled input-group l:${layout}:3xs w:full justify:between`}>
 			{#each Object.entries(CTA_OPTIONS) as [key, value], i (i)}
 				{@const classes =
 					key === cta ? linkStyles : `${linkStyles} ink:primary`}

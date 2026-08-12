@@ -113,6 +113,15 @@
 					{oninput}
 				/>
 			{/each}
+			{#if tags.length < 2}
+				<div
+					class="ravioli:xs font:sm shape:mellow surface:1:neutral maki:block:xs"
+				>
+					<p class="font:heading font:semibold text:center">
+						No custom tags found
+					</p>
+				</div>
+			{/if}
 		</div>
 	{/if}
 </div>
