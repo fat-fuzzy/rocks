@@ -256,6 +256,8 @@ function getFeedbackStyles(
 	const {
 		asset,
 		assetType,
+		surface,
+		surfaceLightness,
 		container,
 		font,
 		size,
@@ -277,8 +279,10 @@ function getFeedbackStyles(
 
 	const classes = [layoutStyles, blockStyles]
 
-	const statusClass = getClass('status', status)
-	classes.push(statusClass)
+	if (status) {
+		const statusClass = getClass('status', status)
+		classes.push(statusClass)
+	}
 
 	if (asset !== 'none') {
 		const defaultAssetType = assetType ?? 'emoji'
@@ -289,7 +293,16 @@ function getFeedbackStyles(
 	const typeClass = `feedback:${context}`
 	classes.push(typeClass)
 
-	const backgroundClass = context === 'code' ? undefined : `bg:${status}:100`
+	const surfaceLightnessLevel = surfaceLightness ?? '2'
+	const surfaceClass =
+		context === 'code'
+			? undefined
+			: status
+				? `surface:${surfaceLightnessLevel}:${status}`
+				: surface
+					? `surface:${surfaceLightnessLevel}:${surface}`
+					: undefined
+
 	const containerBase = container?.startsWith('ravioli')
 		? container
 		: getClass('container', container)
@@ -300,7 +313,7 @@ function getFeedbackStyles(
 			? appendModifier(containerBase, localSize)
 			: containerBase
 
-	if (backgroundClass) classes.push(backgroundClass)
+	if (surfaceClass) classes.push(surfaceClass)
 	if (containerClass) classes.push(containerClass)
 
 	return classes.join(' ').trim()
