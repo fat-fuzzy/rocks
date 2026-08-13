@@ -7,6 +7,7 @@
 		name = 'button',
 		ref = $bindable(),
 		label,
+		ariaLabel,
 		value,
 		disabled,
 		formaction,
@@ -70,7 +71,7 @@
 	onclick={handleClick}
 	data-testid={id}
 	{popovertarget}
-	aria-label={isIconButton ? (label ?? name) : undefined}
+	aria-label={ariaLabel ?? (isIconButton ? (label ?? name) : undefined)}
 >
 	{#if children}
 		{@render children()}

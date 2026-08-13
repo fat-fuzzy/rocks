@@ -20,7 +20,7 @@
 		assetType,
 		shape,
 		coords,
-		align,
+		align = 'center',
 		justify,
 		color,
 		size,
