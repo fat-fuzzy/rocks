@@ -35,7 +35,7 @@
 	)
 </script>
 
-<label class={`l:stack:${size} ${inputClasses}`} data-testid={id}>
+<label for={id} class={`l:stack:${size} ${inputClasses}`} data-testid={id}>
 	{label}
 	<input
 		{id}
