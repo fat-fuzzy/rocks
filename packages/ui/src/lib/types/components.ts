@@ -31,6 +31,7 @@ export interface Blocks {
 	InputRadio: typeof import('$lib/components/blocks/inputs/InputRadio.svelte').default
 	InputGroup: typeof import('$lib/components/blocks/inputs/InputGroup.svelte').default
 	InputRange: typeof import('$lib/components/blocks/inputs/InputRange.svelte').default
+	InputSidecar: typeof import('$lib/components/blocks/inputs/InputSidecar.svelte').default
 	InputFile: typeof import('$lib/components/blocks/inputs/InputFile.svelte').default
 	Magic: typeof import('$lib/components/blocks/global/Magic.svelte').default
 }
