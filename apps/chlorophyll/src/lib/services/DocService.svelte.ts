@@ -333,8 +333,7 @@ export default class DocService implements IDocService {
 					throw Error('Deleting main section content not allowed')
 				}
 
-				// Save Block to OPFS
-				// Block data is saved within the section file
+				// Save Section to OPFS
 				await this.bridge.saveSection({
 					language,
 					format,
