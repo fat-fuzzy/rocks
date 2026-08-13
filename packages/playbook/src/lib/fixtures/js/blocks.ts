@@ -75,6 +75,12 @@ export default {
 		],
 	},
 	InputRange: {label: 'Value'},
+	InputSidecar: {
+		label: 'An input with an action',
+		asset: 'plus',
+		shape: 'square',
+		ariaLabel: 'Apply',
+	},
 	Feedback: {
 		status: [
 			{

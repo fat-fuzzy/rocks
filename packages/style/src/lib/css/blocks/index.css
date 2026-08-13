@@ -13,6 +13,7 @@
 @import './control/fieldset.css'; /* Use for fieldset element: TODO: maybe move to form */
 @import './control/form.css'; /* Use for form and form inputs */
 @import './control/input.css'; /* ff-control overrides */
+@import './control/sidecar.css'; /* ff-control overrides */
 
 /* ============  Presentation presets ==================*/
 @import './presentation/media.css'; /* Use for framed elements: video, img, picture, canvas */
