@@ -124,7 +124,8 @@ async function generate() {
 	}
 
 	// 6. Write output
-	const outDir = path.dirname(modulePath)
+	const outDirPath = config.validation.outDir ?? modulePath
+	const outDir = path.dirname(outDirPath)
 	if (!fs.existsSync(outDir)) {
 		fs.mkdirSync(outDir, {recursive: true})
 	}
