@@ -12,6 +12,7 @@ export type ButtonProps = UiBlockProps & {
 	id: string
 	name: string
 	label?: string // Always set either a label or children (with text) See
+	ariaLabel?: string
 	value?: string | number
 	disabled?: boolean
 	popovertarget?: string
