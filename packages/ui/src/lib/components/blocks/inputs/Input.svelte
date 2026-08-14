@@ -15,6 +15,8 @@
 		font,
 		size,
 		color,
+		asset,
+		assetType,
 		variant,
 		onfocus,
 		onblur,
@@ -63,4 +65,13 @@
 	/>
 </label>
 
-<Feedback id={`input-feedback-${id}`} {hint} {errors} {size} {variant} {font} />
+<Feedback
+	id={`input-feedback-${id}`}
+	{hint}
+	{errors}
+	{size}
+	{variant}
+	{font}
+	asset={asset ?? 'none'}
+	{assetType}
+/>
