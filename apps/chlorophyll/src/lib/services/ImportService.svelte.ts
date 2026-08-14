@@ -6,6 +6,7 @@ import type {
 	IImportService,
 } from '$types'
 
+import {DEFAULT_STRUCTURES, DEFAULT_CONTENT} from '$data/cv/cv-config'
 import WorkerBridge from '$lib/workers/worker-bridge'
 import {getBridge} from '$lib/services/bridge'
 
@@ -42,51 +43,7 @@ export default class ImportService implements IImportService {
 			if (!seeded && seed?.content.length) {
 				await this.initSeed(frontmatter, seed.content)
 			} else {
-				await this.initSeed(
-					{
-						base: {
-							schema_version: '0.1',
-							languages: ['en'],
-							formats: ['long', 'short'],
-							tags: [
-								{
-									title: 'Twilight Z',
-									name: 'twilight-z',
-									items: ['draft', 'hidden', 'untagged'],
-								},
-							],
-							settings: [],
-						},
-						structures: [
-							{
-								schema_version: '0.1',
-								format: 'long',
-								sections: [],
-							},
-							{
-								schema_version: '0.1',
-								format: 'short',
-								sections: [],
-							},
-						],
-					},
-					[
-						{
-							schema_version: '0.1',
-							seed_type: 'root',
-							language: 'en',
-							format: 'long',
-							sections: [[]],
-						},
-						{
-							schema_version: '0.1',
-							seed_type: 'root',
-							language: 'en',
-							format: 'short',
-							sections: [[]],
-						},
-					],
-				)
+				await this.initSeed(DEFAULT_STRUCTURES, DEFAULT_CONTENT)
 			}
 		} catch {
 			this.error = true

@@ -1,4 +1,10 @@
-import type {MarkdownStructure, Slug} from '$types'
+import type {
+	FrontmatterBase,
+	FrontmatterStructure,
+	MarkdownStructure,
+	SeedDoc,
+	Slug,
+} from '$types'
 
 const PATHS_CV_L10N_FORMATS: MarkdownStructure = {
 	en: {
@@ -87,6 +93,56 @@ const CV_SECTIONS: Slug[] = [
 
 const NESTED_SECTIONS = ['experience']
 
+const DEFAULT_STRUCTURES: {
+	base: FrontmatterBase
+	structures: FrontmatterStructure[]
+} = {
+	base: {
+		schema_version: '0.1',
+		languages: ['en', 'fr'],
+		formats: ['long', 'short'],
+		tags: [
+			{
+				title: 'Twilight Z',
+				name: 'twilight-z',
+				items: ['draft', 'hidden', 'untagged'],
+			},
+		],
+		settings: [],
+	},
+	structures: [
+		{
+			schema_version: '0.1',
+			seed_type: 'root',
+			format: 'long',
+			sections: [],
+		},
+		{
+			schema_version: '0.1',
+			seed_type: 'root',
+			format: 'short',
+			sections: [],
+		},
+	],
+}
+
+const DEFAULT_CONTENT: SeedDoc[] = [
+	{
+		schema_version: '0.1',
+		seed_type: 'root',
+		language: 'en',
+		format: 'long',
+		sections: [[]],
+	},
+	{
+		schema_version: '0.1',
+		seed_type: 'root',
+		language: 'en',
+		format: 'short',
+		sections: [[]],
+	},
+]
+
 export {
 	PATH_PREFIX_STRUCTURE,
 	PATHS_STRUCTURE,
@@ -94,4 +150,6 @@ export {
 	CV_HEADER,
 	CV_SECTIONS,
 	NESTED_SECTIONS,
+	DEFAULT_STRUCTURES,
+	DEFAULT_CONTENT,
 }
