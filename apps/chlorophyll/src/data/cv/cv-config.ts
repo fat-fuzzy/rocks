@@ -6,6 +6,8 @@ import type {
 	Slug,
 } from '$types'
 
+import {SCHEMA_VERSION} from '$config/setup'
+
 const PATHS_CV_L10N_FORMATS: MarkdownStructure = {
 	en: {
 		pathPrefix: '/assets/in/cv/en/',
@@ -98,7 +100,7 @@ const DEFAULT_STRUCTURES: {
 	structures: FrontmatterStructure[]
 } = {
 	base: {
-		schema_version: '0.1',
+		schema_version: SCHEMA_VERSION,
 		languages: ['en', 'fr'],
 		formats: ['long', 'short'],
 		tags: [
@@ -112,13 +114,13 @@ const DEFAULT_STRUCTURES: {
 	},
 	structures: [
 		{
-			schema_version: '0.1',
+			schema_version: SCHEMA_VERSION,
 			seed_type: 'root',
 			format: 'long',
 			sections: [],
 		},
 		{
-			schema_version: '0.1',
+			schema_version: SCHEMA_VERSION,
 			seed_type: 'root',
 			format: 'short',
 			sections: [],
@@ -128,14 +130,14 @@ const DEFAULT_STRUCTURES: {
 
 const DEFAULT_CONTENT: SeedDoc[] = [
 	{
-		schema_version: '0.1',
+		schema_version: SCHEMA_VERSION,
 		seed_type: 'root',
 		language: 'en',
 		format: 'long',
 		sections: [[]],
 	},
 	{
-		schema_version: '0.1',
+		schema_version: SCHEMA_VERSION,
 		seed_type: 'root',
 		language: 'en',
 		format: 'short',
@@ -152,4 +154,5 @@ export {
 	NESTED_SECTIONS,
 	DEFAULT_STRUCTURES,
 	DEFAULT_CONTENT,
+	SCHEMA_VERSION,
 }

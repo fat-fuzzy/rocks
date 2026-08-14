@@ -24,6 +24,7 @@ import FrontmatterStructureSchema from './seed/FrontmatterStructure.schema.js'
 import SeedBlockSchema from './seed/SeedBlock.schema.js'
 import SeedSectionSchema from './seed/SeedSection.schema.js'
 import SeedDocSchema from './seed/SeedDoc.schema.js'
+
 /**
  * @param schema {import('json-schema-to-typescript').JSONSchema | { properties: {schema_version: { const: string }}}} */
 function getVersion(schema) {

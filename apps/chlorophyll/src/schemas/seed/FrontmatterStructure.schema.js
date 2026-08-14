@@ -1,3 +1,4 @@
+import {SCHEMA_VERSION} from '../../config/setup.js'
 import {defineSchema} from '../index.js'
 
 import BaseSchema from '../primitives/Base.schema.js'
@@ -12,7 +13,7 @@ const FrontmatterStructureSchema = defineSchema({
 	properties: {
 		schema_version: {
 			$ref: '#/definitions/schemaVersion',
-			const: '0.1',
+			const: SCHEMA_VERSION,
 		},
 		seed_type: {
 			$ref: '#/definitions/seedType',

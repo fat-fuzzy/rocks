@@ -11,6 +11,8 @@ import type {
 	SeedBlock,
 } from '$types'
 
+import {SCHEMA_VERSION} from '$config/setup'
+
 function seedBlockToBlock(
 	seed: SeedBlock,
 	parentId: string,
@@ -121,7 +123,7 @@ export function seedDocToDoc(seed: SeedDoc): Doc {
 		.filter((section) => section !== undefined)
 
 	return {
-		schema_version: '0.1',
+		schema_version: SCHEMA_VERSION,
 		id: docId,
 		path,
 		meta,
