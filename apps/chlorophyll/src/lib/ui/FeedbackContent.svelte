@@ -25,13 +25,7 @@
 </script>
 
 <div class="maki:block">
-	<Feedback
-		status="default"
-		context="prose"
-		variant="bare"
-		asset="default"
-		size="md"
-	>
+	<Feedback context="prose" variant="bare" asset="default" size="md">
 		{#if isError}
 			<p>Failed to load content for {name}.</p>
 		{:else if isEmpty}

@@ -137,7 +137,6 @@
 							class={`l:frame size:${availableSections.length ? 'lg' : 'md'}`}
 						>
 							<Feedback
-								status="default"
 								context="prose"
 								variant="bare"
 								shape={availableSections.length ? 'round' : undefined}

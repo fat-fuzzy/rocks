@@ -139,14 +139,7 @@
 
 {#snippet presetInfo()}
 	<form class="raviolink l:stack:lg" enctype="multipart/form-data">
-		<Feedback
-			status="default"
-			context="prose"
-			variant="bare"
-			size="xs"
-			font="sm"
-			asset="none"
-		>
+		<Feedback context="prose" variant="bare" size="xs" font="sm" asset="none">
 			<h4 class="font:sm font:heading">Choose a reset mode</h4>
 			<ul class="unstyled">
 				<li>
