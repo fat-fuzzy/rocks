@@ -136,6 +136,22 @@
 				<div class="l:flex size:3xs justify:between grow">
 					<Button
 						type="button"
+						label="Just Delete"
+						id="import-dialog-delete"
+						name=""
+						color="highlight"
+						variant="outline"
+						shape="mellow"
+						size="2xs"
+						font="2xs font:heading"
+						disabled={disabled || status === 'ready'}
+						onclick={() => {
+							withBackup = false
+							deleteCurrentData()
+						}}
+					/>
+					<Button
+						type="button"
 						label="Backup and Delete"
 						id="import-dialog-bk-delete"
 						name=""
@@ -146,22 +162,6 @@
 						font="2xs font:heading"
 						disabled={disabled || status === 'ready'}
 						onclick={deleteCurrentData}
-					/>
-					<Button
-						type="button"
-						label="Just Delete"
-						id="import-dialog-delete"
-						name=""
-						color="highlight"
-						variant="fill"
-						shape="mellow"
-						size="2xs"
-						font="2xs font:heading"
-						disabled={disabled || status === 'ready'}
-						onclick={() => {
-							withBackup = false
-							deleteCurrentData()
-						}}
 					/>
 				</div>
 			</div>
