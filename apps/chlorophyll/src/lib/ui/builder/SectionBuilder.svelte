@@ -137,8 +137,8 @@
 					{@const subsectionIcon = tagsFound.length === 0 ? missingIcon : ''}
 
 					{#if cta !== 'print' && subsections.length > 1}
-						<h3 class="font:bold raviolink shape:mellow maki:block">
-							<span class={`${subsectionIcon} maki:inline:md'`}>
+						<h3 class="raviolink shape:mellow maki:block surface:0:primary">
+							<span class={`${subsectionIcon} maki:inline:md font:heading`}>
 								{subsection.name}
 							</span>
 						</h3>
