@@ -1,7 +1,8 @@
 <script lang="ts">
-	import type {UiColor, UiVariant} from '@fat-fuzzy/ui'
-	import type {TagGroup, InputGroupMenus} from '$types'
+	import type {UiColor, UiShape, UiVariant, InputProps} from '@fat-fuzzy/ui'
+	import type {IDocService} from '$types'
 
+	import {getContext} from 'svelte'
 	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
 
@@ -17,7 +18,10 @@
 		oninput: (e: Event) => void
 	} = $props()
 
-	let base = $derived(page.data.base)
+	let docService: IDocService = getContext('docService')
+
+	let base = $derived(docService.base)
+
 	let language = $derived.by(() => {
 		const lang = page.url.searchParams.get('language')
 		return lang ? [lang] : ['en']
@@ -28,33 +32,39 @@
 		return fmt ? [fmt] : ['long']
 	})
 
-	let settingsItems = $derived.by(() => {
-		const menus = base.settings.reduce(
-			(
-				menus: InputGroupMenus,
-				{title, name, items}: TagGroup,
-			): InputGroupMenus => {
-				const menuItems = items.map((i: string) => {
-					let selected = checkSelected(name, i)
-					return {
-						id: i,
-						name,
-						value: i,
-						checked: selected ? true : undefined,
-						label: i,
-						title: title ?? name,
-						variant: 'bare',
-						shape: 'pill',
-					}
-				})
-				menus[name] = menuItems
-				return menus
-			},
-			{},
-		)
+	// @ts-expect-error FIXME: add validator
+	let languageItems: InputProps[] = $derived(
+		base.languages.map((i: string) => {
+			let selected = checkSelected('language', i)
+			return {
+				id: i,
+				name: i,
+				value: i,
+				checked: selected ? true : undefined,
+				label: i,
+				title: i,
+				variant: 'bare' as UiVariant,
+				shape: 'pill' as UiShape,
+			}
+		}),
+	)
 
-		return menus
-	})
+	// @ts-expect-error FIXME: add validator
+	let formatItems: InputProps[] = $derived(
+		base.formats.map((i: string) => {
+			let selected = checkSelected('format', i)
+			return {
+				id: i,
+				name: i,
+				value: i,
+				checked: selected ? true : undefined,
+				label: i,
+				title: i,
+				variant: 'bare' as UiVariant,
+				shape: 'pill' as UiShape,
+			}
+		}),
+	)
 
 	function checkSelected(group: string, value: string) {
 		const allValues = page.url.searchParams.getAll(group)
@@ -70,7 +80,7 @@
 	size="2xs"
 	{color}
 	{variant}
-	items={settingsItems['language']}
+	items={languageItems}
 	{oninput}
 />
 <InputGroup
@@ -81,6 +91,6 @@
 	size="2xs"
 	{color}
 	{variant}
-	items={settingsItems['format']}
+	items={formatItems}
 	{oninput}
 />
