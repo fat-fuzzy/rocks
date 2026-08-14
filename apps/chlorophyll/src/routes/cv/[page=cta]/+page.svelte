@@ -152,7 +152,7 @@
 											Create your own content: click on <span
 												class="font:semibold"
 											>
-												Add Section
+												Edit > Add Section
 											</span>
 										</li>
 										<li>
