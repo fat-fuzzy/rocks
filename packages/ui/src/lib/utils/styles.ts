@@ -293,7 +293,7 @@ function getFeedbackStyles(
 	const typeClass = `feedback:${context}`
 	classes.push(typeClass)
 
-	const surfaceLightnessLevel = surfaceLightness ?? '2'
+	const surfaceLightnessLevel = surfaceLightness ?? '1'
 	const surfaceClass =
 		context === 'code'
 			? undefined
@@ -301,7 +301,7 @@ function getFeedbackStyles(
 				? `surface:${surfaceLightnessLevel}:${status}`
 				: surface
 					? `surface:${surfaceLightnessLevel}:${surface}`
-					: undefined
+					: `surface:${surfaceLightnessLevel}:neutral`
 
 	const containerBase = container?.startsWith('ravioli')
 		? container
