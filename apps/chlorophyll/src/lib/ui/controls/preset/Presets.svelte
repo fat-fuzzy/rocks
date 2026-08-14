@@ -91,7 +91,7 @@
 	{#if loading}
 		<Loading color="neutral" />
 	{:else if error}
-		<Feedback status="error" context="prose" variant="bare" asset="default">
+		<Feedback status="error" context="prose" variant="bare" asset="none">
 			<p>Failed to load presets.</p>
 		</Feedback>
 	{:else}
