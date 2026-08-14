@@ -136,7 +136,7 @@ html:has(.l\:grid\:urbanist) {
 	}
 
 	.exchange > .context {
-		grid-column-start: 5;
+		grid-column-start: 6;
 	}
 
 	.exchange > .sidebar .layer\:1 {
