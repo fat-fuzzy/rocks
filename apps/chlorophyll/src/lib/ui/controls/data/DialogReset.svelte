@@ -135,8 +135,10 @@
 			{base: page.data.base, structures: page.data.structures},
 			page.data.seed,
 		)
+		const newUrl = new SvelteURL(page.url)
+		newUrl.search = ''
 
-		window.location.href = '' // FIXME: hacky solution to reload for now
+		window.location.href = newUrl.href // FIXME: hacky solution to reload for now
 
 		dialogActor.close()
 	}
