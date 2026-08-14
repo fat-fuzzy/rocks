@@ -165,11 +165,7 @@
 												: 'save'}
 											assetType="svg"
 											shape="round"
-											color={!isCurrent ||
-											preset.locked ||
-											(isCurrent && query === preset.query)
-												? 'accent'
-												: 'primary'}
+											color="primary"
 											variant="bare"
 											size="2xs"
 											font="2xs font:heading"
