@@ -246,14 +246,7 @@
 			oninput={updateTags}
 			tagGroups={tagService.tags}
 		/>
-		<Feedback
-			status="default"
-			context="prose"
-			variant="bare"
-			size="xs"
-			font="sm"
-			asset="none"
-		>
+		<Feedback context="prose" variant="bare" size="xs" font="sm" asset="none">
 			<p>
 				The group <span class="font:semibold font:sm"> Twilight Z </span> cannot be
 				deleted.
