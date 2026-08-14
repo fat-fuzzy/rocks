@@ -131,6 +131,11 @@
 	async function reSeed() {
 		await deleteData()
 
+		await importService.init(
+			{base: page.data.base, structures: page.data.structures},
+			page.data.seed,
+		)
+
 		window.location.href = '' // FIXME: hacky solution to reload for now
 
 		dialogActor.close()
