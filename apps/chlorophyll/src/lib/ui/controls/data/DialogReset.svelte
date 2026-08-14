@@ -6,6 +6,7 @@
 	import ui from '@fat-fuzzy/ui'
 	import {page} from '$app/state'
 
+	import {DEFAULT_STRUCTURES, DEFAULT_CONTENT} from '$data/cv/cv-config'
 	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
 	import {SvelteURL} from 'svelte/reactivity'
 
@@ -71,51 +72,7 @@
 	async function freshStart() {
 		await deleteData()
 
-		await importService.initSeed(
-			{
-				base: {
-					schema_version: '0.1',
-					languages: ['en'],
-					formats: ['long', 'short'],
-					tags: [
-						{
-							title: 'Twilight Z',
-							name: 'twilight-z',
-							items: ['draft', 'hidden', 'untagged'],
-						},
-					],
-					settings: [],
-				},
-				structures: [
-					{
-						schema_version: '0.1',
-						format: 'long',
-						sections: [],
-					},
-					{
-						schema_version: '0.1',
-						format: 'short',
-						sections: [],
-					},
-				],
-			},
-			[
-				{
-					schema_version: '0.1',
-					seed_type: 'root',
-					language: 'en',
-					format: 'long',
-					sections: [[]],
-				},
-				{
-					schema_version: '0.1',
-					seed_type: 'root',
-					language: 'en',
-					format: 'short',
-					sections: [[]],
-				},
-			],
-		)
+		await importService.initSeed(DEFAULT_STRUCTURES, DEFAULT_CONTENT)
 
 		const newUrl = new SvelteURL(page.url)
 		newUrl.search = ''
