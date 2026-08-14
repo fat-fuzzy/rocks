@@ -30,7 +30,7 @@ export type InputFeedbackProps = {
 	size?: UiSize
 	font?: UiSize
 	assetType?: UiAssetType
-	asset?: UiSize
+	asset?: string
 	variant?: UiVariant
 	errors?: string[]
 	hint?: string
