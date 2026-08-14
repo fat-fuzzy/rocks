@@ -196,7 +196,7 @@ html:has(.l\:grid\:urbanist) {
 @media screen and (min-width: 58.75rem) {
 	.l\:grid\:urbanist.railway {
 		ff-toggle-reveal.est ff-control:has(input:checked) + ff-reveal {
-			--x-axis: calc(-4 * var(--ui-size-lg));
+			--x-axis: 0;
 		}
 	}
 }
