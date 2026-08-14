@@ -15,6 +15,7 @@ import type {
 	FrontmatterStructure,
 } from '$types'
 
+import {SCHEMA_VERSION} from '$config/setup'
 import {
 	parseSection,
 	parseBase,
@@ -121,7 +122,7 @@ export function opfsDocTreeToDocStore(tree: OPFSDocTree): DocStore {
 			// - meta.json at root > content folder level
 			const doc: Doc = {
 				id: crypto.randomUUID(),
-				schema_version: '0.1',
+				schema_version: SCHEMA_VERSION,
 				meta: {
 					id: crypto.randomUUID(),
 					content_type: 'doc-root',
@@ -198,7 +199,7 @@ export function opfsBaseTreeToFrontmatterBase(
 	// Return default fallback
 	// TODO: review this
 	return {
-		schema_version: '0.1',
+		schema_version: SCHEMA_VERSION,
 		languages: [],
 		formats: [],
 		tags: [],

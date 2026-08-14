@@ -21,6 +21,7 @@ import type {
 } from '$types'
 
 import {PUBLIC_DOC_LANGUAGE, PUBLIC_DOC_FORMAT} from '$app/env/public'
+import {SCHEMA_VERSION} from '$config/setup'
 
 import WorkerBridge from '$lib/workers/worker-bridge'
 import {getBridge} from '$lib/services/bridge'
@@ -45,7 +46,7 @@ export default class DocService implements IDocService {
 	loading = $state(false)
 	error = $state(false)
 	base: FrontmatterBase = $state({
-		schema_version: '0.1',
+		schema_version: SCHEMA_VERSION,
 		languages: [PUBLIC_DOC_LANGUAGE as DocLanguage],
 		formats: [PUBLIC_DOC_FORMAT as DocFormat],
 		tags: [],
@@ -79,7 +80,7 @@ export default class DocService implements IDocService {
 	reset() {
 		this.content = {}
 		this.base = {
-			schema_version: '0.1',
+			schema_version: SCHEMA_VERSION,
 			languages: [PUBLIC_DOC_LANGUAGE as DocLanguage],
 			formats: [PUBLIC_DOC_FORMAT as DocFormat],
 			tags: [],
