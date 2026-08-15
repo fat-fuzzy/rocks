@@ -38,14 +38,14 @@
 			color,
 			label: 'Delete Preset',
 			position: 'nord-est',
-			children: presetInfo,
+			children: presetForm,
 		})
 
 		dialogActor.show()
 	}
 </script>
 
-{#snippet presetInfo()}
+{#snippet presetForm()}
 	<FormPreset cta="delete" {preset} {color} />
 {/snippet}
 
