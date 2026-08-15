@@ -169,6 +169,19 @@
 				hint={sourceLanguageHint}
 				{validator}
 			/>
+			{#if errorLanguageExists}
+				<Feedback
+					status="error"
+					context="prose"
+					variant="bare"
+					size="sm"
+					asset="none"
+				>
+					<p>
+						Language <span class="font:semibold">{newLanguage}</span> already exists
+					</p>
+				</Feedback>
+			{/if}
 		</div>
 		<div class="l:side l:stack">
 			{#if docService.base.languages.length}
@@ -214,17 +227,7 @@
 			{/if}
 		</div>
 	{/if}
-	<div
-		class={`l:flex w:full justify:${errorLanguageExists ? 'between' : 'end'}`}
-	>
-		{#if errorLanguageExists}
-			<Feedback status="error" context="prose" variant="bare" size="sm">
-				<p>
-					Language <span class="font:semibold">{newLanguage}</span> already exists
-				</p>
-			</Feedback>
-		{/if}
-
+	<div class="l:flex w:full justify:end">
 		<div class="l:flex">
 			<Button
 				label="Cancel"

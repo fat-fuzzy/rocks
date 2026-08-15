@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {ActionDoc, Preset, IPresetService, DocFormat} from '$types'
+	import type {ActionDoc, Preset, DocFormat, IPresetService} from '$types'
 
 	import {getContext} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
@@ -46,7 +46,7 @@
 
 <div class="w:full noprint">
 	<div class={`l:flex grow justify:${currentPreset ? 'between' : 'end'}`}>
-		{#if currentPreset && cta}
+		{#if currentPreset}
 			<h2 class="font:semibold">
 				Preset:
 				{currentPreset.name}
@@ -89,19 +89,22 @@
 					/>
 				{/if}
 			</div>
-		{:else if cta === 'edit'}
-			<div class="maki:block">
-				<DialogSaveSection
-					id="add-section"
-					color="accent"
-					asset="plus"
-					assetType="svg"
-					variant="fill"
-					label="Add Section"
-					cta="save"
-					{formats}
-				/>
-			</div>
+		{:else}
+			<h2 class="font:semibold">New Document</h2>
+			{#if cta === 'edit'}
+				<div class="maki:block">
+					<DialogSaveSection
+						id="add-section"
+						color="accent"
+						asset="plus"
+						assetType="svg"
+						variant="fill"
+						label="Add Section"
+						cta="save"
+						{formats}
+					/>
+				</div>
+			{/if}
 		{/if}
 	</div>
 </div>

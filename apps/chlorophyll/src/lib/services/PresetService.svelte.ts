@@ -53,6 +53,13 @@ export default class PresetService implements IPresetService {
 	}
 
 	/**
+	 * Return true if presets found
+	 */
+	hasPresets(): boolean {
+		return Object.keys(this.presets).length > 0
+	}
+
+	/**
 	 * Get preset by name
 	 * @param name
 	 */

@@ -18,6 +18,7 @@ export interface IPresetService {
 	init(): Promise<void>
 	reset(): void
 
+	hasPresets(): boolean
 	getPreset(name: string): Preset
 
 	savePreset(options: {
