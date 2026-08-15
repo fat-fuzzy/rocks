@@ -92,8 +92,6 @@ label > input[type='checkbox'] {
 	max-inline-size: 1.6em; /* local relative size that improves alignment in switcher layouts : TODO: fix magic number */
 }
 
-/* TODO : cleanup - use "current" size values */
-
 [type='file'] {
 	display: flex;
 	align-items: center;
@@ -102,7 +100,7 @@ label > input[type='checkbox'] {
 }
 
 [type='file']:hover {
-	--lightness: var(--color-lightness-000);
+	--lightness: var(--lightness-surface-0);
 }
 
 [type='file']:active {
@@ -111,8 +109,8 @@ label > input[type='checkbox'] {
 
 input:hover,
 label:hover > [type='file'] {
-	--lightness: var(--color-lightness-100); /* TODO: use themeable color var */
-	--lightness-contrast: var(--color-contrast-200);
+	--lightness: var(--lightness-surface-1);
+	--lightness-contrast: var(--lightness-surface-1-contrast);
 }
 
 [disabled] {
