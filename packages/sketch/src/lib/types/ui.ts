@@ -1,7 +1,7 @@
-import type {UiDimension} from '@fat-fuzzy/ui'
+import type {UiDimension, UiStatus} from '@fat-fuzzy/ui'
 
 export type FeedbackType = {
-	status: string
+	status: UiStatus
 	message: string
 }
 

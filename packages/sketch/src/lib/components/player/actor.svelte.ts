@@ -1,7 +1,14 @@
 import type {FuzzyPayload} from '@fat-fuzzy/ui'
 
-import type {FeedbackType, PlayerSwitchType, PlayerEventsType} from '$types'
-import {PlayerEvent, PlayerState, PlayerAction} from '$types'
+import type {
+	FeedbackType,
+	PlayerSwitchType,
+	PlayerEventsType,
+	PlayerState,
+	PlayerEvent,
+	PlayerAction,
+} from '$types'
+
 import {
 	PLAYER_EVENTS,
 	PLAYER_ACTIONS,
@@ -9,17 +16,14 @@ import {
 	PLAYER_SWITCH,
 } from '$lib/components/player/definitions.js'
 class PlayerActor {
-	state = $state(PlayerState.idle)
+	state: PlayerState = $state('idle')
 	events: PlayerEventsType = PLAYER_EVENTS
 	feedback: FeedbackType[] = $state([])
 	playSwitch: PlayerSwitchType = $state(PLAYER_SWITCH)
-	playState = $derived(
-		this.state === PlayerState.playing ? 'active' : 'inactive',
-	)
+	playState = $derived(this.state === 'playing' ? 'active' : 'inactive')
 	playLabel = $derived.by(() => {
 		{
-			const playState =
-				this.state === PlayerState.playing ? 'active' : 'inactive'
+			const playState = this.state === 'playing' ? 'active' : 'inactive'
 			if (this.playSwitch && this.playSwitch[playState]) {
 				return this.playSwitch[playState].text
 			}
@@ -36,7 +40,7 @@ class PlayerActor {
 		initial?: PlayerState
 		onclick: (payload: FuzzyPayload) => void
 	}) {
-		this.state = initial ?? PlayerState.idle
+		this.state = initial ?? 'idle'
 		this.playSwitch.active.onclick = onclick
 		this.playSwitch.inactive.onclick = onclick
 	}
@@ -65,25 +69,24 @@ class PlayerActor {
 
 	public getPlayDisabled(): boolean | undefined {
 		const actions = this.actions[this.state]
-		return actions?.includes(PlayerAction.play) ||
-			actions?.includes(PlayerAction.pause)
+		return actions?.includes('play') || actions?.includes('pause')
 			? undefined
 			: true
 	}
 
 	public getStopDisabled(): boolean | undefined {
 		const actions = this.actions[this.state]
-		return actions?.includes(PlayerAction.stop) ? undefined : true
+		return actions?.includes('stop') ? undefined : true
 	}
 
 	public getClearDisabled(): boolean | undefined {
 		const actions = this.actions[this.state]
-		return actions?.includes(PlayerAction.clear) ? undefined : true
+		return actions?.includes('clear') ? undefined : true
 	}
 
 	public getSnapDisabled(): boolean | undefined {
 		const actions = this.actions[this.state]
-		return actions?.includes(PlayerAction.snap) ? undefined : true
+		return actions?.includes('snap') ? undefined : true
 	}
 
 	public getTransition(event: PlayerEvent): PlayerState {

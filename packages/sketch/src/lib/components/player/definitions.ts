@@ -3,12 +3,11 @@ import type {
 	PlayerActionsType,
 	PlayerTransitionsType,
 } from '$types'
-import {PlayerEvent, PlayerState, PlayerAction, EventOrder} from '$types'
 
 export const PLAYER_SWITCH = {
 	active: {
 		id: 'active',
-		value: PlayerEvent.pause as string,
+		value: 'pause',
 		text: 'pause',
 		asset: 'pause',
 		variant: 'outline',
@@ -16,7 +15,7 @@ export const PLAYER_SWITCH = {
 	},
 	inactive: {
 		id: 'inactive',
-		value: PlayerEvent.play as string,
+		value: 'play',
 		text: 'play',
 		asset: 'play',
 		variant: 'fill',
@@ -25,41 +24,31 @@ export const PLAYER_SWITCH = {
 }
 
 export const PLAYER_EVENTS: PlayerEventsType = {
-	[EventOrder.previous]: '',
-	[EventOrder.current]: '',
+	previous: '',
+	current: '',
 }
 
 export const PLAYER_ACTIONS: PlayerActionsType = {
-	[PlayerState.idle]: [PlayerAction.play],
-	[PlayerState.playing]: [
-		PlayerAction.pause,
-		PlayerAction.stop,
-		PlayerAction.clear,
-		PlayerAction.snap,
-	],
-	[PlayerState.paused]: [
-		PlayerAction.play,
-		PlayerAction.stop,
-		PlayerAction.clear,
-		PlayerAction.snap,
-	],
-	[PlayerState.stopped]: [PlayerAction.play],
+	idle: ['play'],
+	playing: ['pause', 'stop', 'clear', 'snap'],
+	paused: ['play', 'stop', 'clear', 'snap'],
+	stopped: ['play'],
 }
 
 export const PLAYER_TRANSITIONS: PlayerTransitionsType = {
-	[PlayerState.idle]: {
-		[PlayerEvent.play]: PlayerState.playing,
+	idle: {
+		play: 'playing',
 	},
-	[PlayerState.playing]: {
-		[PlayerEvent.pause]: PlayerState.paused,
-		[PlayerEvent.stop]: PlayerState.idle,
-		[PlayerEvent.clear]: PlayerState.playing,
-		[PlayerEvent.snap]: PlayerState.playing,
+	playing: {
+		pause: 'paused',
+		stop: 'idle',
+		clear: 'playing',
+		snap: 'playing',
 	},
-	[PlayerState.paused]: {
-		[PlayerEvent.play]: PlayerState.playing,
-		[PlayerEvent.stop]: PlayerState.idle,
-		[PlayerEvent.clear]: PlayerState.paused,
-		[PlayerEvent.snap]: PlayerState.paused,
+	paused: {
+		play: 'playing',
+		stop: 'idle',
+		clear: 'paused',
+		snap: 'paused',
 	},
 }
