@@ -135,10 +135,6 @@ html:has(.l\:grid\:urbanist) {
 		}
 	}
 
-	.exchange > .context {
-		grid-column-start: 6;
-	}
-
 	.exchange > .sidebar .layer\:1 {
 		box-shadow: var(--shadow-sm);
 	}
@@ -206,11 +202,5 @@ html:has(.l\:grid\:urbanist) {
 		ff-toggle-reveal.est ff-control:has(input:checked) + ff-reveal {
 			max-inline-size: unset;
 		}
-	}
-}
-
-@media screen and (min-width: 68.75rem) {
-	ff-toggle-reveal.est ff-control:has(input:checked) + ff-reveal {
-		--x-axis: 0;
 	}
 }

@@ -46,3 +46,13 @@
 		grid-column-start: 5;
 	}
 }
+
+@media screen and (min-width: 68.75rem) {
+	.exchange > .context {
+		grid-column-start: 6;
+	}
+
+	ff-toggle-reveal.est ff-control:has(input:checked) + ff-reveal {
+		--x-axis: 0;
+	}
+}
