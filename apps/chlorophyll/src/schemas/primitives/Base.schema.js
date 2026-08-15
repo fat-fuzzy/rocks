@@ -25,6 +25,12 @@ const BaseSchema = defineDefinitions({
 		minLength: 2,
 		maxLength: 64,
 	},
+	docLanguage: {
+		type: 'string',
+		pattern: '[a-z]{2}',
+		minLength: 2,
+		maxLength: 2,
+	},
 	title: {
 		type: 'string',
 		pattern: '^$|^[A-Za-z_](\\s?[A-Za-z0-9_-])*$',

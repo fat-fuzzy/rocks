@@ -28,6 +28,17 @@ const FormBaseSchema = defineDefinitions({
 			{maxLength: 64},
 		],
 	},
+	docLanguage: {
+		oneOf: [
+			{
+				type: 'string',
+				allOf: [{pattern: '[a-z]{2}'}, {minLength: 2}, {maxLength: 2}],
+			},
+			{
+				type: 'null',
+			},
+		],
+	},
 	title: {
 		type: 'string',
 		allOf: [
