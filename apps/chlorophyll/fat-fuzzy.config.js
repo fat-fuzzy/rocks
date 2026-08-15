@@ -114,6 +114,12 @@ export default {
 				$id: '#/definitions/FormTag',
 				mode: 'replace',
 			},
+			FormLanguage: {
+				file: 'FormLanguage.schema.json',
+				exportName: 'FormLanguageValidationFunction',
+				$id: '#/definitions/FormLanguage',
+				mode: 'replace',
+			},
 			FrontmatterBase: {
 				file: 'FrontmatterBase.schema.json',
 				exportName: 'FrontmatterBaseValidationFunction',
