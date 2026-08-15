@@ -4,7 +4,6 @@
 		DocFormat,
 		DocLanguage,
 		TagGroup,
-		FrontmatterStructure,
 		IDocService,
 		ITagService,
 	} from '$types'
@@ -50,12 +49,6 @@
 
 	let preset: string | null = $derived(page.url.searchParams.get('preset'))
 
-	let structure = $derived(
-		docService.structures.find(
-			(s: FrontmatterStructure) => s.format === format,
-		),
-	)
-
 	let availableSections = $derived(Object.values(docService.docIndex.sections))
 
 	let selectedSections = $derived(
@@ -81,9 +74,15 @@
 		print: 'Print',
 	}
 
-	let title = $derived(cta ? CTA_TO_TITLE[cta] : '')
+	const CTA_TO_DESCRIPTION: {[key: string]: string} = {
+		edit: 'Focus on your core message. Make your voice heard.',
+		build: 'Structure content to tell your story. Save and modify presets.',
+		preview: 'Check your work in progress. Compare content blocks or presets.',
+		print: 'Save to PDF using your browser.',
+	}
 
-	let description = $derived(structure?.name || '')
+	let title = $derived(cta ? CTA_TO_TITLE[cta] : '')
+	let description = $derived(cta ? CTA_TO_DESCRIPTION[cta] : '')
 
 	let ctaClass = $derived(
 		cta === 'edit' ? 'doc-editor' : 'doc-builder l:stack:3xl',
