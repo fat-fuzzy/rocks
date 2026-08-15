@@ -1,11 +1,10 @@
 <script lang="ts">
 	import type {FuzzyPayload} from '@fat-fuzzy/ui'
+	import type {PlayerProps, PlayerEvent} from '$types'
 	import {onMount} from 'svelte'
 
 	import ui from '@fat-fuzzy/ui'
 	import actor from './actor.svelte'
-	import type {PlayerProps} from '$types'
-	import {PlayerEvent, PlayerState} from '$types'
 
 	const {Button, Switch} = ui.blocks
 
@@ -26,22 +25,19 @@
 	function updatePlayer(payload: FuzzyPayload) {
 		let event = payload.value as PlayerEvent
 		if (event === 'play') {
-			event =
-				actor.getState() === PlayerState.playing
-					? PlayerEvent.pause
-					: PlayerEvent.play
+			event = actor.getState() === 'playing' ? 'pause' : 'play'
 		}
 		switch (event) {
-			case PlayerEvent.play:
+			case 'play':
 				play({event})
 				break
-			case PlayerEvent.pause:
+			case 'pause':
 				pause({event})
 				break
-			case PlayerEvent.clear:
+			case 'clear':
 				clear({event})
 				break
-			case PlayerEvent.stop:
+			case 'stop':
 				stop({event})
 				break
 		}
@@ -50,12 +46,12 @@
 
 	onMount(() => {
 		actor.init({
-			initial: PlayerState.idle,
+			initial: 'idle',
 			onclick: updatePlayer,
 		})
 
 		if (init) {
-			init({event: PlayerEvent.loadOk})
+			init({event: 'loadOk'})
 		}
 	})
 </script>
