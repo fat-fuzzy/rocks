@@ -11,6 +11,7 @@
 	import {page} from '$app/state'
 
 	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
+	import {PUBLIC_DOC_LANGUAGE} from '$app/env/public'
 
 	const {Button, Input, Feedback} = ui.blocks
 	const {FormValidator} = ui.utils
@@ -98,9 +99,14 @@
 			return
 		}
 
+		let fromLang = PUBLIC_DOC_LANGUAGE
+		if (sourceLanguage) {
+			fromLang = sourceLanguage
+		}
+
 		await docService.addLanguage({
 			name: newLanguage,
-			sourceLanguage: sourceLanguage ?? 'en',
+			sourceLanguage: fromLang,
 		})
 
 		dialogActor.close()
