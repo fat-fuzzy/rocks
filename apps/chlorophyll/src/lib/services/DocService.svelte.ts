@@ -464,6 +464,27 @@ export default class DocService implements IDocService {
 	}
 
 	/**
+	 * Get all sections
+	 * @param options section selection to load, blocks to load within sections
+	 * @returns Array: {name, section}[]
+	 */
+	getSections(options: {language: Slug; format: DocLanguage}): Section[] {
+		return Object.entries(this.docIndex.sections).reduce(
+			(sections: Section[], [key, value]) => {
+				const [language, format] = key.split(':')
+				if (language === options.language) {
+					if (format === options.format) {
+						sections.push(value)
+					}
+				}
+
+				return sections
+			},
+			[],
+		)
+	}
+
+	/**
 	 * Get selected sections for given options
 	 * @param options section selection to load, blocks to load within sections
 	 * @returns Array: {name, section}[]
@@ -496,6 +517,7 @@ export default class DocService implements IDocService {
 			return
 		}
 
+		const {name, formats} = options
 		// Check if an existing section's rank is affected
 		let updateRanks: Section[] = []
 		const maxRank = Object.keys(this.docIndex.sections).length
@@ -513,6 +535,17 @@ export default class DocService implements IDocService {
 			...options,
 			updateRanks,
 		})
+
+		for (const format of formats) {
+			const structure = this.structures.find((s) => s.format === format)
+			structure?.sections.push(name)
+		}
+
+		await this.bridge.saveStructures({
+			structures: JSON.parse(JSON.stringify(this.structures)),
+		})
+
+		this.getAllDocs()
 	}
 
 	/**
