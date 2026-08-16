@@ -122,6 +122,14 @@ export default class WorkerBridge {
 		})
 	}
 
+	saveStructures(payload: {structures: FrontmatterStructure[]}) {
+		return this.send({
+			type: 'SAVE_STRUCTURES',
+			requestId: crypto.randomUUID(),
+			payload,
+		})
+	}
+
 	getDocBase() {
 		return this.send({
 			type: 'GET_DOC_BASE',

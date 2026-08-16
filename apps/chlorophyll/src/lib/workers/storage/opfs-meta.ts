@@ -7,7 +7,7 @@ import {
 	readDirectoryRecursive,
 } from '$lib/workers/storage/opfs-tools'
 
-import {parseBase} from '$lib/common/transform/parse-or-throw'
+import {parseBase, parseStructure} from '$lib/common/transform/parse-or-throw'
 
 export async function getBaseData(): Promise<{
 	content: FrontmatterBase
@@ -45,17 +45,42 @@ export async function getStructureData(): Promise<{
  */
 export async function saveBase(
 	base: FrontmatterBase,
-): Promise<FrontmatterBase> {
+): Promise<FrontmatterBase | undefined> {
 	try {
 		const data = parseBase('Save Base', base)
 
 		const directoryHandle = await getBaseHandle({create: true})
-		await saveEntry(directoryHandle, {name: 'base'}, data)
+		await saveEntry(directoryHandle, {name: 'base'}, {base: data})
 
 		return data
 	} catch (error) {
 		console.log(error)
 
 		throw new Error('Error saving doc base', {cause: error})
+	}
+}
+
+/**
+ * Save doc structure to OPFS
+ * @returns void
+ */
+export async function saveStructure({
+	structures,
+}: {
+	structures: FrontmatterStructure[]
+}): Promise<FrontmatterStructure | undefined> {
+	for (const structure of structures) {
+		try {
+			const data = parseStructure('Save Structures', structure)
+
+			const directoryHandle = await getStructureHandle({create: true})
+			await saveEntry(directoryHandle, {name: 'structure'}, {structure: data})
+
+			return data
+		} catch (error) {
+			console.log(error)
+
+			throw new Error('Error saving doc base', {cause: error})
+		}
 	}
 }
