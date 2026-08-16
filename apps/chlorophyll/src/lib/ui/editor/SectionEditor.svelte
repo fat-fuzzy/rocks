@@ -1,10 +1,9 @@
 <script lang="ts">
-	import type {Slug, DocFormat, DocLanguage, Section, IDocService} from '$types'
+	import type {Slug, DocLanguage, Section, IDocService} from '$types'
 
 	import {getContext, onMount} from 'svelte'
 
 	import {isHidden, checkTags} from '$data/cv/cv-display'
-	import {LOCALIZATIONS} from '$lib/intl/l10n'
 
 	import BlockPlaceholder from '$lib/ui/editor/BlockPlaceholder.svelte'
 	import BlockEditor from '$lib/ui/editor/BlockEditor.svelte'
@@ -23,7 +22,7 @@
 		selectedTags: string[]
 		name: Slug
 		language: DocLanguage
-		format?: DocFormat
+		format?: Slug
 	} = $props()
 
 	let observerRoot: HTMLElement | undefined = $state()
@@ -102,9 +101,12 @@
 				{section.rank}.
 				{section.name}
 			</summary>
-			<h2 class="ravioli:2xs">
-				{section.title ?? LOCALIZATIONS[language][name]}
-			</h2>
+
+			{#if section.title}
+				<h2 class="ravioli:2xs">
+					{section.title}
+				</h2>
+			{/if}
 
 			{#if content}
 				{@const blockLoaded = Boolean(sectionsLoaded[section.name])}
@@ -182,6 +184,7 @@
 								{#if blockLoaded}
 									<BlockEditor
 										{...block}
+										group={subsectionName}
 										sectionName={name}
 										content={block.content}
 										tagsFound={blockTagsFound}
@@ -225,7 +228,7 @@
 							color="primary"
 							asset="plus"
 							assetType="svg"
-							label="Add block"
+							label="New Block"
 							cta="save"
 							sectionName={name}
 							subsections={section.subsections || []}

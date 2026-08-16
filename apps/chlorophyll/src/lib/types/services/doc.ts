@@ -1,7 +1,7 @@
 import type {
 	Block,
+	Doc,
 	DocContentType,
-	DocFormat,
 	DocLanguage,
 	DocMeta,
 	DocPath,
@@ -12,12 +12,11 @@ import type {
 	Section,
 	Slug,
 	Uuid,
-	Doc,
 } from '$types'
 
 export type DocStore = {
 	[language in DocLanguage]?: {
-		[format in DocFormat]?: Doc
+		[format in Slug]?: Doc
 	}
 }
 
@@ -50,6 +49,13 @@ export interface IDocService {
 
 	reset(): void
 
+	addLanguage(options: {
+		name: DocLanguage
+		sourceLanguage?: DocLanguage
+	}): Promise<void>
+
+	addFormat(options: {name: Slug; sourceFormat: Slug}): Promise<void>
+
 	getProse(options: {path: DocPath; meta: DocMeta}): Promise<Prose | undefined>
 
 	createBlock(options: {
@@ -63,7 +69,7 @@ export interface IDocService {
 
 	saveBlock(options: {
 		language: DocLanguage
-		format: DocFormat
+		format: Slug
 		block: Block
 		path: DocPath
 	}): Promise<{id: string} | void>
@@ -79,26 +85,26 @@ export interface IDocService {
 		name: Slug
 		title?: string
 		rank: Rank
-		formats: DocFormat[]
+		formats: Slug[]
 	}): Promise<{id: string} | void>
+
+	getSections({
+		language,
+		format,
+	}: {
+		language: Slug
+		format: DocLanguage
+	}): Section[]
 
 	getSelectedSections(options: {
 		language: DocLanguage
-		format: DocFormat
+		format: Slug
 		sections: Slug[]
 	}): {name: Slug; section: Section}[]
 
-	getSelectedBlocks(options: {
-		language: DocLanguage
-		format: DocFormat
-		section: Slug
-		blocks: string[]
-		subsection?: string
-	}): {name: string; block: Block}[]
-
 	getSectionByName(options: {
 		language: DocLanguage
-		format: DocFormat
+		format: Slug
 		name: Slug
 	}): Section
 
@@ -108,7 +114,7 @@ export interface IDocService {
 
 	getBlock(options: {
 		language: DocLanguage
-		format: DocFormat
+		format: Slug
 		section: Slug
 		name: string
 		subsection?: string
@@ -117,7 +123,7 @@ export interface IDocService {
 	lazyLoadBlock(
 		dataset: {block?: string; section?: string; subsection?: string},
 		language: DocLanguage,
-		format: DocFormat,
+		format: Slug,
 		name: Slug,
 	): void
 }

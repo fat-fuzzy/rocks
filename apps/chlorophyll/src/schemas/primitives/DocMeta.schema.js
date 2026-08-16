@@ -28,7 +28,7 @@ const DocMetaSchema = defineSchema({
 			$ref: '#/definitions/text',
 		},
 		format: {
-			$ref: '#/definitions/docFormat',
+			$ref: '#/definitions/slug',
 		},
 		content_type: {
 			$ref: '#/definitions/docContentType',

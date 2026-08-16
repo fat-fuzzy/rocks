@@ -2,7 +2,7 @@
  * OPFS Operations: User content
  */
 import type {
-	DocFormat,
+	Slug,
 	DocLanguage,
 	DocMeta,
 	DocPath,
@@ -10,12 +10,16 @@ import type {
 	Block,
 	Prose,
 	OPFSDocTree,
-	Slug,
 	Rank,
+	FrontmatterStructure,
 } from '$types'
 
 import {sanitizeFileName} from '$lib/common/sanitize'
 import {parseBlock, parseSection} from '$lib/common/transform/parse-or-throw'
+import {
+	isRawSection,
+	rawSectionToSection,
+} from '$lib/common/transform/opfs-to-doc'
 import {
 	getDocsHandle,
 	getStructureHandle,
@@ -27,7 +31,108 @@ import {
 	saveSectionToOPFS,
 } from '$lib/workers/storage/opfs-tools'
 
-import {getBaseData, getStructureData} from '$lib/workers/storage/opfs-meta'
+/**
+ * Add new Language and clone content from source language
+ * @param options
+ * @returns created language slug
+ */
+export async function saveLanguage(options: {
+	language: DocLanguage
+	sourceLanguage: DocLanguage
+	formats: Slug[]
+}): Promise<{data: {language: DocLanguage}}> {
+	const {language, sourceLanguage, formats} = options
+
+	for (const format of formats) {
+		const sourceDoc = await getContentDataForLanguage(sourceLanguage)
+
+		const targetParentHandle = await getDocsHandle({
+			language,
+			format,
+			create: true,
+		})
+
+		const opfsContent = Object.values(sourceDoc.data)
+
+		for (const formatData of Object.values(opfsContent)) {
+			const sections = Object.values(formatData)
+
+			for (const sectionData of Object.values(sections)) {
+				let unsafeSection
+				if (isRawSection(sectionData)) {
+					unsafeSection = rawSectionToSection(sectionData)
+				}
+
+				if (unsafeSection) {
+					const section = parseSection(
+						`Section ${unsafeSection.name}`,
+						unsafeSection,
+					)
+
+					await saveSectionToOPFS(targetParentHandle, section, 'json')
+				}
+			}
+		}
+	}
+
+	return {
+		data: {
+			language,
+		},
+	}
+}
+
+/**
+ * Add new Format and clone content from source language
+ * @param options
+ * @returns created language slug
+ */
+export async function saveFormat(options: {
+	format: Slug
+	sourceFormat: Slug
+	formats: Slug[]
+	languages: DocLanguage[]
+}): Promise<{data: {format: Slug}}> {
+	const {format, sourceFormat, languages} = options
+
+	for (const language of languages) {
+		const sourceDoc = await getContentDataForFormat(language, sourceFormat)
+
+		const targetParentHandle = await getDocsHandle({
+			language,
+			format,
+			create: true,
+		})
+
+		const opfsContent = Object.values(sourceDoc.data)
+
+		for (const formatData of Object.values(opfsContent)) {
+			const sections = Object.values(formatData)
+
+			for (const sectionData of Object.values(sections)) {
+				let unsafeSection
+				if (isRawSection(sectionData)) {
+					unsafeSection = rawSectionToSection(sectionData)
+				}
+
+				if (unsafeSection) {
+					const section = parseSection(
+						`Section ${unsafeSection.name}`,
+						unsafeSection,
+					)
+
+					await saveSectionToOPFS(targetParentHandle, section, 'json')
+				}
+			}
+		}
+	}
+
+	return {
+		data: {
+			format,
+		},
+	}
+}
 
 /**
  * Read API
@@ -65,7 +170,7 @@ export async function loadFile(options: {
  */
 export async function saveBlock(options: {
 	language: DocLanguage
-	format: DocFormat
+	format: Slug
 	block: Block
 	path: DocPath
 }): Promise<{id: string}> {
@@ -83,68 +188,40 @@ export async function saveBlock(options: {
 
 	const payload = await saveBlockToOPFS(parentHandle, parsed, filetype)
 
+	// FIXME:  clean return type inconsistencies
 	return payload
 }
 
 export async function createSection(options: {
 	name: Slug
 	rank: Rank
-	formats: DocFormat[]
+	formats: Slug[]
+	languages: DocLanguage[]
+	structure: FrontmatterStructure
 	updateRanks: Section[]
 	title?: string
 }) {
-	const {name, title, rank, updateRanks} = options
+	const {name, title, rank, formats, languages, updateRanks} = options
 
-	const baseData = await getBaseData()
-	const structureData = await getStructureData()
+	const structureToUpdate = options.structure
 
-	const base = baseData.content
-	const structures = structureData.content.structure
-
-	const structureUpdated: {[key in DocFormat]?: boolean} = {}
-	let sections: string[] = []
 	const structuresToUpdate = []
+	for (const format of formats) {
+		let sections = [...structureToUpdate.sections]
 
-	for (const format of options.formats) {
-		const structureToUpdate = structures.find((s) => s.format === format)
-
-		if (!structureToUpdate) {
-			throw new Error(
-				`Error creating section: missing doc structure for ${format}`,
-			)
+		// Insert section at rank
+		// TODO: factor out this code to helper fn
+		if (rank >= sections.length) {
+			sections.push(name)
+		} else if (rank <= 1) {
+			sections.unshift(name)
+		} else {
+			const precedingSections = sections.splice(0, rank - 1)
+			precedingSections.push(name)
+			sections = precedingSections.concat(sections)
 		}
 
-		if (!structureUpdated[format]) {
-			if (structureToUpdate.sections.find((s) => s === name)) {
-				throw new Error(
-					`Error creating section: a section named ${name} already exists`,
-				)
-			}
-
-			sections = [...structureToUpdate.sections]
-
-			// Insert section at rank
-			// TODO: factor out this code to helper fn
-			if (rank >= sections.length) {
-				sections.push(name)
-			} else if (rank <= 1) {
-				sections.unshift(name)
-			} else {
-				const precedingSections = sections.splice(0, rank - 1)
-				precedingSections.push(name)
-				sections = precedingSections.concat(sections)
-			}
-
-			// TODO:
-			// 1. Update CV structure [DONE]
-			// 1.bis Update Main Sections menu
-			// 2. Update section indices (insert before / after) [DONE]
-			// 2.bis UI-side: refresh index
-
-			structureUpdated[format] = true
-		}
-
-		for (const language of base.languages) {
+		for (const language of languages) {
 			const docHandle = await getDocsHandle({language, format})
 			const docRoot = 'content.json'
 			const fh = await docHandle.getFileHandle(docRoot)
@@ -170,20 +247,20 @@ export async function createSection(options: {
 		structureToUpdate.sections = sections
 		structuresToUpdate.push(structureToUpdate)
 	}
-
 	// TODO: factor out this code to helper fn
 	for (let i = 0; i < updateRanks.length; i++) {
 		const toUpdate = updateRanks[i]
 		toUpdate.rank = toUpdate.rank + 1
 
-		for (const format of base.formats) {
-			for (const language of base.languages) {
+		for (const format of formats) {
+			for (const language of languages) {
 				await saveSection({language, format, section: toUpdate})
 			}
 		}
 	}
 
 	const structureHandle = await getStructureHandle({create: true})
+
 	await saveEntry(
 		structureHandle,
 		{name: 'structure'},
@@ -195,7 +272,7 @@ export async function createSection(options: {
 
 export async function saveSection(options: {
 	language: DocLanguage
-	format: DocFormat
+	format: Slug
 	section: Section
 }) {
 	// 0. Prepare: ensure language and format folders exist
@@ -333,6 +410,71 @@ export async function getContentData(): Promise<{data: OPFSDocTree}> {
 		parentHandle = await opfsRoot.getDirectoryHandle('content')
 
 		const data = await readDirectoryRecursive(parentHandle)
+
+		return {
+			data: data as OPFSDocTree,
+		}
+	} catch (error) {
+		const notFound = String(error).startsWith('NotFoundError:')
+		if (notFound) {
+			return {
+				data: {},
+			}
+		}
+
+		throw new Error('Load all content failed', {cause: error})
+	}
+}
+
+export async function getContentDataForLanguage(
+	language: DocLanguage,
+): Promise<{
+	data: OPFSDocTree
+}> {
+	const opfsRoot = await navigator.storage.getDirectory()
+
+	let contentHandle
+	let parentHandle
+
+	try {
+		contentHandle = await opfsRoot.getDirectoryHandle('content')
+		parentHandle = await contentHandle.getDirectoryHandle(language)
+
+		const data = await readDirectoryRecursive(parentHandle)
+
+		return {
+			data: data as OPFSDocTree,
+		}
+	} catch (error) {
+		const notFound = String(error).startsWith('NotFoundError:')
+		if (notFound) {
+			return {
+				data: {},
+			}
+		}
+
+		throw new Error('Load all content failed', {cause: error})
+	}
+}
+
+export async function getContentDataForFormat(
+	language: DocLanguage,
+	format: Slug,
+): Promise<{
+	data: OPFSDocTree
+}> {
+	const opfsRoot = await navigator.storage.getDirectory()
+
+	let contentHandle
+	let languageHandle
+	let formatHandle
+
+	try {
+		contentHandle = await opfsRoot.getDirectoryHandle('content')
+		languageHandle = await contentHandle.getDirectoryHandle(language)
+		formatHandle = await languageHandle.getDirectoryHandle(format)
+
+		const data = await readDirectoryRecursive(formatHandle)
 
 		return {
 			data: data as OPFSDocTree,

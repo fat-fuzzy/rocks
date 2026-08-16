@@ -60,6 +60,7 @@ ff-control > label.variant\:fill {
 	--lightness: var(--lightness-ui-base);
 	--lightness-accent: var(--lightness-ui-base);
 	--lightness-contrast: var(--lightness-ui-contrast-base);
+	--lightness-accent: var(--lightness-ui-base);
 	background-color: var(--shade);
 }
 

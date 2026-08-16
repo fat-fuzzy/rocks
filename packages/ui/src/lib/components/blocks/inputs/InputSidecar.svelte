@@ -41,12 +41,21 @@
 			: [],
 	)
 
-	let inputClasses = $derived(
+	let labelClasses = $derived(
 		styleHelper.getStyles({
 			font,
 			size,
 			color,
 			variant,
+			layout: 'stack',
+		}),
+	)
+
+	let inputClasses = $derived(
+		styleHelper.getStyles({
+			font,
+			size,
+			color,
 		}),
 	)
 
@@ -61,7 +70,7 @@
 </script>
 
 <fieldset>
-	<label for={id} class={`l:stack:${size} ${inputClasses}`}>
+	<label for={id} class={labelClasses}>
 		{label}
 	</label>
 
@@ -81,6 +90,7 @@
 			{oninput}
 			{disabled}
 			{autocomplete}
+			class={inputClasses}
 			aria-describedby={errors ? `input-feedback-${id}` : undefined}
 			aria-invalid={errors && errors.length > 0}
 		/>

@@ -6,7 +6,6 @@
 
 import type {
 	DocLanguage,
-	DocFormat,
 	DocMeta,
 	DocPath,
 	Section,
@@ -123,6 +122,14 @@ export default class WorkerBridge {
 		})
 	}
 
+	saveStructures(payload: {structures: FrontmatterStructure[]}) {
+		return this.send({
+			type: 'SAVE_STRUCTURES',
+			requestId: crypto.randomUUID(),
+			payload,
+		})
+	}
+
 	getDocBase() {
 		return this.send({
 			type: 'GET_DOC_BASE',
@@ -149,6 +156,31 @@ export default class WorkerBridge {
 		})
 	}
 
+	saveLanguage(payload: {
+		language: DocLanguage
+		sourceLanguage: DocLanguage
+		formats: Slug[]
+	}) {
+		return this.send({
+			type: 'ADD_LANGUAGE',
+			requestId: crypto.randomUUID(),
+			payload,
+		})
+	}
+
+	saveFormat(payload: {
+		format: Slug
+		sourceFormat: Slug
+		languages: DocLanguage[]
+		formats: Slug[]
+	}) {
+		return this.send({
+			type: 'ADD_FORMAT',
+			requestId: crypto.randomUUID(),
+			payload,
+		})
+	}
+
 	getProse(payload: {path: DocPath; meta: DocMeta}) {
 		return this.send({
 			type: 'GET_DOC_CONTENT',
@@ -166,7 +198,7 @@ export default class WorkerBridge {
 
 	saveBlock(payload: {
 		language: DocLanguage
-		format: DocFormat
+		format: Slug
 		block: Block
 		path: DocPath
 	}) {
@@ -181,7 +213,9 @@ export default class WorkerBridge {
 		name: Slug
 		title?: string
 		rank: Rank
-		formats: DocFormat[]
+		structure: FrontmatterStructure
+		languages: DocLanguage[]
+		formats: Slug[]
 		updateRanks: Section[]
 	}) {
 		return this.send({
@@ -193,7 +227,7 @@ export default class WorkerBridge {
 
 	saveSection(payload: {
 		language: DocLanguage
-		format: DocFormat
+		format: Slug
 		section: Section
 	}) {
 		return this.send({

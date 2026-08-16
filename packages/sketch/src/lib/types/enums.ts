@@ -1,98 +1,59 @@
-export enum ControlsState {
-	pristine = 'pristine',
-	updated = 'updated',
-	hidden = 'hidden',
-}
+export type ControlsState = 'pristine' | 'updated' | 'hidden'
 
-export enum ControlsEvent {
-	update = 'update',
-	pause = 'pause',
-}
+export type ControlsEvent = 'update' | 'pause'
 
-export enum ControlsAction {
-	update = 'update',
-}
-export enum CanvasState {
-	loading = 'loading',
-	idle = 'idle',
-	playing = 'playing',
-	paused = 'paused',
-	stopped = 'stopped',
-	error = 'error',
-}
+export type ControlsAction = 'update'
 
-export enum CanvasEvent {
-	start = 'start',
-	pause = 'pause',
-	play = 'play',
-	clear = 'clear',
-	stop = 'stop',
-	loadNok = 'loadNok',
-	error = 'error',
-}
+export type CanvasState =
+	| 'loading'
+	| 'idle'
+	| 'playing'
+	| 'paused'
+	| 'stopped'
+	| 'error'
 
-export enum CanvasAction {
-	play = 'play',
-	pause = 'pause',
-	clear = 'clear',
-	stop = 'stop',
-}
+export type CanvasEvent =
+	| 'start'
+	| 'pause'
+	| 'play'
+	| 'clear'
+	| 'stop'
+	| 'loadNok'
+	| 'error'
 
-export enum SketchState {
-	idle = 'idle',
-	active = 'active',
-	loading = 'loading',
-	error = 'error',
-}
+export type CanvasAction = 'play' | 'pause' | 'clear' | 'stop'
 
-export enum SketchEvent {
-	load = 'load',
-	cancel = 'cancel',
-	exit = 'exit',
-	loadOk = 'loadOk',
-	loadNok = 'loadNok',
-	exitNok = 'exitNok',
-}
+export type SketchState = 'idle' | 'active' | 'loading' | 'error'
 
-export enum SketchAction {
-	load = 'load',
-	exit = 'exit',
-}
+export type SketchEvent =
+	| 'load'
+	| 'cancel'
+	| 'exit'
+	| 'loadOk'
+	| 'loadNok'
+	| 'exitNok'
 
-export enum EventOrder {
-	previous = 'previous',
-	current = 'current',
-}
-export enum PlayerState {
-	idle = 'idle',
-	loading = 'loading',
-	error = 'error',
-	playing = 'playing',
-	paused = 'paused',
-	ended = 'ended',
-	stopped = 'stopped',
-}
+export type SketchAction = 'load' | 'exit'
 
-export enum PlayerEvent {
-	play = 'play',
-	pause = 'pause',
-	clear = 'clear',
-	stop = 'stop',
-	snap = 'snap',
-	loadOk = 'loadOk',
-}
+export type EventOrder = 'previous' | 'current'
 
-export enum PlayerAction {
-	play = 'play',
-	pause = 'pause',
-	clear = 'clear',
-	stop = 'stop',
-	snap = 'snap',
-}
+export type PlayerState =
+	| 'idle'
+	| 'loading'
+	| 'error'
+	| 'playing'
+	| 'paused'
+	| 'ended'
+	| 'stopped'
 
-export enum PlayerError {
-	load = 'load',
-	play = 'play',
-	clear = 'clear',
-	stop = 'stop',
-}
+export type PlayerEvent =
+	| 'play'
+	| 'pause'
+	| 'clear'
+	| 'stop'
+	| 'snap'
+	| 'loadOk'
+
+export type PlayerAction = 'play' | 'pause' | 'clear' | 'stop' | 'snap'
+
+export type PlayerError = 'load' | 'play' | 'clear' | 'stop'

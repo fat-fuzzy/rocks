@@ -4,7 +4,7 @@
 		Prose,
 		Block,
 		DocLanguage,
-		DocFormat,
+		Slug,
 		InputCheckedTypes,
 		IDocService,
 		ITagService,
@@ -38,7 +38,7 @@
 	}: {
 		sectionName: string
 		language: DocLanguage
-		format: DocFormat
+		format: Slug
 		tagsFound?: string[]
 	} & Block = $props()
 

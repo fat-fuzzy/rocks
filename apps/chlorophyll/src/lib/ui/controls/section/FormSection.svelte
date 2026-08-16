@@ -2,7 +2,7 @@
 	import type {UiColor} from '@fat-fuzzy/ui'
 	import type {
 		ActionCrud,
-		DocFormat,
+		Slug,
 		DocLanguage,
 		Section,
 		IDocService,
@@ -12,16 +12,16 @@
 
 	import {getContext, onDestroy, onMount} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
+	import {page} from '$app/state'
 
 	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
 	import {PUBLIC_DOC_FORMAT, PUBLIC_DOC_LANGUAGE} from '$app/env/public'
-	import {page} from '$app/state'
 
 	const {Button, Input, InputGroup, Feedback} = ui.blocks
 	const {FormValidator} = ui.utils
 
 	interface Props {
-		formats: DocFormat[]
+		formats: Slug[]
 		cta: ActionCrud
 		color?: UiColor
 	}
@@ -45,7 +45,7 @@
 		name: string
 		title?: string
 		rank?: number
-		formats: DocFormat[]
+		formats: Slug[]
 	}
 
 	let section: SectionProps = $state({
@@ -106,7 +106,7 @@
 		const target = event.target as HTMLInputElement
 
 		if (target?.value) {
-			const format = String(target.value) as DocFormat
+			const format = String(target.value) as Slug
 			if (!section.formats.includes(format)) {
 				section.formats.push(format)
 			} else {
@@ -134,7 +134,7 @@
 	function checkSectionExists(sectionName: string): Section | undefined {
 		return docService.getSectionByName({
 			language: PUBLIC_DOC_LANGUAGE as DocLanguage,
-			format: PUBLIC_DOC_FORMAT as DocFormat,
+			format: PUBLIC_DOC_FORMAT as Slug,
 			name: sectionName,
 		})
 	}

@@ -20,7 +20,7 @@ const parseContentMarkdowns = async (
 	section: string,
 	pathPrefix: string,
 	imports: Record<string, () => Promise<ModuleImportInterface>>,
-	isNested = false,
+	isNested?: boolean,
 ): Promise<SeedSection[]> => {
 	if (!imports) return []
 	const mdImports = Object.entries(imports)

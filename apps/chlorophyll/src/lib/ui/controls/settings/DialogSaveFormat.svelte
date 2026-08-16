@@ -1,5 +1,4 @@
 <script lang="ts">
-	import type {Preset} from '$types'
 	import type {
 		UiAssetType,
 		UiColor,
@@ -11,13 +10,12 @@
 	import ui from '@fat-fuzzy/ui'
 
 	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
-	import FormPreset from '$lib/ui/controls/preset/FormPreset.svelte'
+	import FormFormat from '$lib/ui/controls/settings/FormFormat.svelte'
 
 	const {Button} = ui.blocks
 
 	interface Props {
 		id: string
-		preset: Preset
 		cta: 'save' | 'update' | 'copy'
 		disabled?: boolean
 		label?: string
@@ -31,11 +29,10 @@
 	let {
 		id,
 		cta,
-		preset,
 		disabled,
-		label = 'Save Preset',
+		label = 'Add Format',
 		size = '2xs',
-		color = 'primary',
+		color = 'accent',
 		variant = 'outline',
 		shape = 'mellow',
 		asset,
@@ -44,34 +41,36 @@
 
 	function showDialog() {
 		dialogActor.init({
-			size: 'sm',
+			size: 'md',
 			color,
 			label,
 			position: 'nord-est',
-			children: presetForm,
+			children: languageForm,
 		})
 
 		dialogActor.show()
 	}
 </script>
 
-{#snippet presetForm()}
-	<FormPreset {preset} {color} {cta} />
+{#snippet languageForm()}
+	<FormFormat {color} {cta} />
 {/snippet}
 
 <!-- FIXME: add tooltip -->
-<Button
-	{id}
-	type="button"
-	name={id}
-	{size}
-	font="2xs font:heading"
-	{label}
-	{color}
-	{shape}
-	{variant}
-	{asset}
-	{assetType}
-	disabled={disabled || !preset.query}
-	onclick={showDialog}
-/>
+<div class="l:stack maki:block">
+	<Button
+		{id}
+		type="button"
+		name={id}
+		{size}
+		font="2xs font:heading nowrap"
+		{label}
+		{color}
+		{shape}
+		{variant}
+		{asset}
+		{assetType}
+		{disabled}
+		onclick={showDialog}
+	/>
+</div>

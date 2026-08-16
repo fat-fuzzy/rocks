@@ -6,8 +6,6 @@ const openBlockRegex =
 
 const closeBlockRegex = /^<!--\s*\/block\s*-->$/
 
-const openSectionRegex = /^<!--\s*section:\s*(?<name>[\w-]+)\s*-->$/
-
 /**
  * This plugin will parse HTML comment blocks in markdown with the patterns below
 
@@ -101,7 +99,6 @@ export default function remarkExtractComments() {
 			if (node.type === 'html') {
 				const openBlockMatch = node.value.match(openBlockRegex)
 				const closeBlockMatch = node.value.match(closeBlockRegex)
-				const openSectionMatch = node.value.match(openSectionRegex)
 
 				if (openBlockMatch?.groups) {
 					const {name, tags} = openBlockMatch.groups
@@ -113,9 +110,7 @@ export default function remarkExtractComments() {
 				} else if (closeBlockMatch && currentBlock) {
 					// Serialize captured nodes to HTML
 					const fragment = {type: 'root', children: blockNodes}
-					const blockName = file.data.fm.name
-						? `${file.data.fm.name}-${currentBlock}`
-						: currentBlock
+					const blockName = currentBlock
 
 					// Add new block data
 					const newBlock = {
@@ -136,9 +131,6 @@ export default function remarkExtractComments() {
 					currentBlock = null
 					blockNodes = []
 					tagList = []
-				} else if (openSectionMatch?.groups) {
-					const {name} = openSectionMatch.groups
-					sections.push(name)
 				}
 			} else if (currentBlock) {
 				blockNodes.push(node)

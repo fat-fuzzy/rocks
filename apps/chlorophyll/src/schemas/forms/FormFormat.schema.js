@@ -3,14 +3,14 @@ import {defineSchema} from '../index.js'
 
 import FormBaseSchema from '../primitives/FormBase.schema.js'
 
-const FormTagSchema = defineSchema({
+const FormFormatSchema = defineSchema({
 	$schema: 'http://json-schema.org/draft-07/schema#',
-	$id: 'FormTag',
+	$id: 'FormFormat',
 	type: 'object',
 	properties: {
 		description: {
 			type: 'string',
-			const: 'Validation schema for Tag create/update form',
+			const: 'Validation schema for Format create/update form',
 		},
 		schema_version: {
 			$ref: '#/definitions/schemaVersion',
@@ -19,25 +19,13 @@ const FormTagSchema = defineSchema({
 		name: {
 			$ref: '#/definitions/slug',
 		},
-		group: {
+		sourceFormat: {
 			type: 'string',
-			maxLength: 64,
-		},
-		groups: {
-			type: 'string',
-			maxLength: 64,
-		},
-		groupTitle: {
-			$ref: '#/definitions/title',
-		},
-		type: {
-			type: 'string',
-			pattern: 'radio',
 		},
 	},
-	required: ['name', 'group'],
+	required: ['name'],
 	additionalProperties: false,
 	definitions: FormBaseSchema,
 })
 
-export default FormTagSchema
+export default FormFormatSchema

@@ -106,7 +106,9 @@ async function parseSectionMarkdowns({
 		return []
 	}
 
-	const pathPrefix = NESTED_SECTIONS.includes(section)
+	const isNested = NESTED_SECTIONS.includes(section)
+
+	const pathPrefix = isNested
 		? `${localizations.pathPrefix}${format}/${section}/`
 		: `${localizations.pathPrefix}${format}/`
 
@@ -123,7 +125,7 @@ async function parseSectionMarkdowns({
 		section,
 		pathPrefix,
 		sectionImports,
-		NESTED_SECTIONS.includes(section),
+		isNested,
 	)
 
 	return markdowns.sort(sort.sortByNameDesc)

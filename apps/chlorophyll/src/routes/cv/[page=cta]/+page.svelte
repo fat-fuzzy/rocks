@@ -1,12 +1,11 @@
 <script lang="ts">
 	import type {
 		Slug,
-		DocFormat,
 		DocLanguage,
 		TagGroup,
-		FrontmatterStructure,
 		IDocService,
 		ITagService,
+		IPresetService,
 	} from '$types'
 
 	import {getContext, tick} from 'svelte'
@@ -22,11 +21,13 @@
 	import Tags from '$lib/ui/controls/tags/Tags.svelte'
 	import Presets from '$lib/ui/controls/preset/Presets.svelte'
 	import Loading from '$lib/ui/Loading.svelte'
+	import {resolve} from '$app/paths'
 
 	const {PageRails} = ui.content
 	const {Feedback} = ui.blocks
 
 	let docService: IDocService = getContext('docService')
+	let presetService: IPresetService = getContext('presetService')
 	let tagService: ITagService = getContext('tagService')
 
 	let boundForm: HTMLFormElement | undefined = $state()
@@ -45,16 +46,10 @@
 			PUBLIC_DOC_LANGUAGE) as DocLanguage,
 	)
 	let format = $derived(
-		(page.url.searchParams.get('format') || PUBLIC_DOC_FORMAT) as DocFormat,
+		(page.url.searchParams.get('format') || PUBLIC_DOC_FORMAT) as Slug,
 	)
 
 	let preset: string | null = $derived(page.url.searchParams.get('preset'))
-
-	let structure = $derived(
-		docService.structures.find(
-			(s: FrontmatterStructure) => s.format === format,
-		),
-	)
 
 	let availableSections = $derived(Object.values(docService.docIndex.sections))
 
@@ -81,9 +76,15 @@
 		print: 'Print',
 	}
 
-	let title = $derived(cta ? CTA_TO_TITLE[cta] : '')
+	const CTA_TO_DESCRIPTION: {[key: string]: string} = {
+		edit: 'Focus on your core message. Make your voice heard.',
+		build: 'Structure content to tell your story. Save and modify presets.',
+		preview: 'Check your work in progress. Compare content blocks or presets.',
+		print: 'Save to PDF using your browser.',
+	}
 
-	let description = $derived(structure?.name || '')
+	let title = $derived(cta ? CTA_TO_TITLE[cta] : '')
+	let description = $derived(cta ? CTA_TO_DESCRIPTION[cta] : '')
 
 	let ctaClass = $derived(
 		cta === 'edit' ? 'doc-editor' : 'doc-builder l:stack:3xl',
@@ -97,6 +98,35 @@
 		}
 	}
 </script>
+
+{#snippet getStartedSections()}
+	<p>To get started you can:</p>
+	<ul>
+		<li>
+			Create your own content: click on <span class="font:semibold">
+				Edit > New Section
+			</span>
+		</li>
+		<li>
+			Load the demo: go to <span class="font:semibold"> Data > Reset </span>
+			and click on
+			<span class="font:semibold"> Seed Demo </span>
+		</li>
+	</ul>
+{/snippet}
+
+{#snippet getStartedPresets()}
+	<p>
+		To get started, first create a Preset from <a
+			href={resolve('/cv/edit')}
+			class="font:semibold"
+		>
+			Edit
+		</a>
+		or
+		<a href={resolve('/cv/build')} class="font:semibold"> Build </a>
+	</p>
+{/snippet}
 
 <PageRails
 	{title}
@@ -133,36 +163,33 @@
 			{:else}
 				{#key queryString}
 					{#if selectedSections.length === 0}
-						<div
-							class={`l:frame size:${availableSections.length ? 'lg' : 'md'}`}
-						>
+						<div class={`size:${availableSections.length ? 'lg' : 'md'}`}>
 							<Feedback
 								context="prose"
 								variant="bare"
-								shape={availableSections.length ? 'round' : undefined}
-								asset={availableSections.length ? 'default' : 'none'}
 								size={availableSections.length ? 'lg' : undefined}
+								font="md"
 							>
 								{#if availableSections.length}
-									<p>Select a Section to get started</p>
+									{#if cta === 'edit'}
+										<p class="font:md">Select a Section to edit</p>
+									{:else if cta === 'build'}
+										<p class="font:md">Select a Section to build</p>
+									{:else if cta === 'preview'}
+										{#if presetService.hasPresets()}
+											<p class="font:md">Select a Preset to preview</p>
+										{:else}
+											{@render getStartedPresets()}
+										{/if}
+									{:else if cta === 'print'}
+										{#if presetService.hasPresets()}
+											<p class="font:md">Select a Preset to print</p>
+										{:else}
+											{@render getStartedPresets()}
+										{/if}
+									{/if}
 								{:else}
-									<p>To get started you can:</p>
-									<ul>
-										<li>
-											Create your own content: click on <span
-												class="font:semibold"
-											>
-												Edit > Add Section
-											</span>
-										</li>
-										<li>
-											Load the demo: go to <span class="font:semibold">
-												Data > Reset
-											</span>
-											and click on
-											<span class="font:semibold"> Seed Demo </span>
-										</li>
-									</ul>
+									{@render getStartedSections()}
 								{/if}
 							</Feedback>
 						</div>

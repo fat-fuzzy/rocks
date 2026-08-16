@@ -11,6 +11,8 @@
 		asset,
 		hint,
 		errors,
+		surface,
+		surfaceLightness = 0,
 	}: InputFeedbackProps = $props()
 
 	const fontClass = $derived(font ? `font:${font}` : '')
@@ -26,6 +28,8 @@
 		{size}
 		{font}
 		{variant}
+		{surface}
+		{surfaceLightness}
 	>
 		<p>{hint}</p>
 	</Feedback>
@@ -41,6 +45,8 @@
 		{font}
 		{assetType}
 		{asset}
+		{surface}
+		{surfaceLightness}
 	>
 		{#each errors as message, i (i)}
 			<p class={`status:error ${fontClass}`}>{message}</p>

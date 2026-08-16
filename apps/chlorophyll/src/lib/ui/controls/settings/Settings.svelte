@@ -1,10 +1,13 @@
 <script lang="ts">
-	import type {UiColor, UiShape, UiVariant, InputProps} from '@fat-fuzzy/ui'
+	import type {UiColor, UiVariant, InputProps} from '@fat-fuzzy/ui'
 	import type {IDocService} from '$types'
 
 	import {getContext} from 'svelte'
 	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
+
+	import DialogSaveLanguage from '$lib/ui/controls/settings/DialogSaveLanguage.svelte'
+	import DialogSaveFormat from '$lib/ui/controls/settings/DialogSaveFormat.svelte'
 
 	const {InputGroup} = ui.blocks
 
@@ -20,39 +23,31 @@
 
 	let docService: IDocService = getContext('docService')
 
-	let base = $derived(docService.base)
+	let cta = $derived(page.params.page)
+	let baseLanguages = $derived(docService.base.languages)
+	let baseFormats = $derived(docService.base.formats)
 
-	let language = $derived.by(() => {
+	let currentLanguage = $derived.by(() => {
 		const lang = page.url.searchParams.get('language')
 		return lang ? [lang] : ['en']
 	})
 
-	let format = $derived.by(() => {
+	let currentFormat = $derived.by(() => {
 		const fmt = page.url.searchParams.get('format')
 		return fmt ? [fmt] : ['long']
 	})
 
 	// @ts-expect-error FIXME: add validator
 	let languageItems: InputProps[] = $derived(
-		base.languages.map((i: string) => {
-			let selected = checkSelected('language', i)
-			return {
-				id: i,
-				name: i,
-				value: i,
-				checked: selected ? true : undefined,
-				label: i,
-				title: i,
-				variant: 'bare' as UiVariant,
-				shape: 'pill' as UiShape,
-			}
-		}),
+		deriveInputs(baseLanguages, 'language'),
 	)
 
 	// @ts-expect-error FIXME: add validator
-	let formatItems: InputProps[] = $derived(
-		base.formats.map((i: string) => {
-			let selected = checkSelected('format', i)
+	let formatItems: InputProps[] = $derived(deriveInputs(baseFormats, 'format'))
+
+	function deriveInputs(base: string[], type: string): Partial<InputProps>[] {
+		return base.map((i: string) => {
+			let selected = checkSelected(type, i)
 			return {
 				id: i,
 				name: i,
@@ -61,10 +56,9 @@
 				label: i,
 				title: i,
 				variant: 'bare' as UiVariant,
-				shape: 'pill' as UiShape,
 			}
-		}),
-	)
+		})
+	}
 
 	function checkSelected(group: string, value: string) {
 		const allValues = page.url.searchParams.getAll(group)
@@ -72,25 +66,50 @@
 	}
 </script>
 
-<InputGroup
-	id="language"
-	name="language"
-	legend="Language"
-	value={language}
-	size="2xs"
-	{color}
-	{variant}
-	items={languageItems}
-	{oninput}
-/>
-<InputGroup
-	id="format"
-	name="format"
-	legend="Format"
-	value={format}
-	size="2xs"
-	{color}
-	{variant}
-	items={formatItems}
-	{oninput}
-/>
+<div class="l:stack">
+	<InputGroup
+		id="language"
+		name="language"
+		legend="Language"
+		value={currentLanguage}
+		size="2xs"
+		{color}
+		{variant}
+		items={languageItems}
+		{oninput}
+	/>
+
+	{#if cta === 'edit' || cta === 'build'}
+		<DialogSaveLanguage
+			id="dialog-add-language"
+			label="Add Language"
+			asset="plus"
+			assetType="svg"
+			cta="save"
+		/>
+	{/if}
+</div>
+<br />
+<div class="l:stack">
+	<InputGroup
+		id="format"
+		name="format"
+		legend="Format"
+		value={currentFormat}
+		size="2xs"
+		justify="start"
+		{color}
+		{variant}
+		items={formatItems}
+		{oninput}
+	/>
+	{#if cta === 'edit' || cta === 'build'}
+		<DialogSaveFormat
+			id="dialog-add-format"
+			label="Add Format"
+			asset="plus"
+			assetType="svg"
+			cta="save"
+		/>
+	{/if}
+</div>
