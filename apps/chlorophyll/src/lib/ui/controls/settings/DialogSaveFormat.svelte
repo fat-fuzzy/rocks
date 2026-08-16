@@ -10,7 +10,7 @@
 	import ui from '@fat-fuzzy/ui'
 
 	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
-	import FormLanguage from '$lib/ui/controls/settings/FormLanguage.svelte'
+	import FormFormat from '$lib/ui/controls/settings/FormFormat.svelte'
 
 	const {Button} = ui.blocks
 
@@ -30,7 +30,7 @@
 		id,
 		cta,
 		disabled,
-		label = 'Add Language',
+		label = 'Add Format',
 		size = '2xs',
 		color = 'accent',
 		variant = 'outline',
@@ -53,7 +53,7 @@
 </script>
 
 {#snippet languageForm()}
-	<FormLanguage {color} {cta} />
+	<FormFormat {color} {cta} />
 {/snippet}
 
 <!-- FIXME: add tooltip -->

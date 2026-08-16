@@ -160,6 +160,19 @@ export default class WorkerBridge {
 		})
 	}
 
+	saveFormat(payload: {
+		format: Slug
+		sourceFormat: Slug
+		languages: DocLanguage[]
+		formats: Slug[]
+	}) {
+		return this.send({
+			type: 'ADD_FORMAT',
+			requestId: crypto.randomUUID(),
+			payload,
+		})
+	}
+
 	getProse(payload: {path: DocPath; meta: DocMeta}) {
 		return this.send({
 			type: 'GET_DOC_CONTENT',

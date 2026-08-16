@@ -84,6 +84,58 @@ export async function saveLanguage(options: {
 }
 
 /**
+ * Add new Format and clone content from source language
+ * @param options
+ * @returns created language slug
+ */
+export async function saveFormat(options: {
+	format: Slug
+	sourceFormat: Slug
+	formats: Slug[]
+	languages: DocLanguage[]
+}): Promise<{data: {format: Slug}}> {
+	const {format, sourceFormat, languages} = options
+
+	for (const language of languages) {
+		const sourceDoc = await getContentDataForFormat(language, sourceFormat)
+
+		const targetParentHandle = await getDocsHandle({
+			language,
+			format,
+			create: true,
+		})
+
+		const opfsContent = Object.values(sourceDoc.data)
+
+		for (const formatData of Object.values(opfsContent)) {
+			const sections = Object.values(formatData)
+
+			for (const sectionData of Object.values(sections)) {
+				let unsafeSection
+				if (isRawSection(sectionData)) {
+					unsafeSection = rawSectionToSection(sectionData)
+				}
+
+				if (unsafeSection) {
+					const section = parseSection(
+						`Section ${unsafeSection.name}`,
+						unsafeSection,
+					)
+
+					await saveSectionToOPFS(targetParentHandle, section, 'json')
+				}
+			}
+		}
+	}
+
+	return {
+		data: {
+			format,
+		},
+	}
+}
+
+/**
  * Read API
  * @param filename
  * @returns file contents
@@ -419,6 +471,40 @@ export async function getContentDataForLanguage(
 		parentHandle = await contentHandle.getDirectoryHandle(language)
 
 		const data = await readDirectoryRecursive(parentHandle)
+
+		return {
+			data: data as OPFSDocTree,
+		}
+	} catch (error) {
+		const notFound = String(error).startsWith('NotFoundError:')
+		if (notFound) {
+			return {
+				data: {},
+			}
+		}
+
+		throw new Error('Load all content failed', {cause: error})
+	}
+}
+
+export async function getContentDataForFormat(
+	language: DocLanguage,
+	format: Slug,
+): Promise<{
+	data: OPFSDocTree
+}> {
+	const opfsRoot = await navigator.storage.getDirectory()
+
+	let contentHandle
+	let languageHandle
+	let formatHandle
+
+	try {
+		contentHandle = await opfsRoot.getDirectoryHandle('content')
+		languageHandle = await contentHandle.getDirectoryHandle(language)
+		formatHandle = await languageHandle.getDirectoryHandle(format)
+
+		const data = await readDirectoryRecursive(formatHandle)
 
 		return {
 			data: data as OPFSDocTree,

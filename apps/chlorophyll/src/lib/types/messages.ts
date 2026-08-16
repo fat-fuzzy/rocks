@@ -152,6 +152,7 @@ export type Command =
 	| CreateSectionCommand
 	| SaveBaseCommand
 	| SaveLanguageCommand
+	| SaveFormatCommand
 	| SaveBlockCommand
 	| SavePresetCommand
 	| DeleteDocCommand
@@ -240,6 +241,7 @@ export type ResponsePayload = {
 	GET_ALL_DOCS: DocStore | void
 	SAVE_BASE: {saved: boolean}
 	ADD_LANGUAGE: {name: string}
+	ADD_FORMAT: {name: string}
 	SAVE_BLOCK: {id: Uuid}
 	CREATE_SECTION: {name: string}
 	SAVE_SECTION: {id: Uuid}

@@ -7,6 +7,7 @@
 	import ui from '@fat-fuzzy/ui'
 
 	import DialogSaveLanguage from '$lib/ui/controls/settings/DialogSaveLanguage.svelte'
+	import DialogSaveFormat from '$lib/ui/controls/settings/DialogSaveFormat.svelte'
 
 	const {InputGroup} = ui.blocks
 
@@ -80,7 +81,7 @@
 
 	{#if cta === 'edit' || cta === 'build'}
 		<DialogSaveLanguage
-			id="cta-preset-add-new"
+			id="dialog-add-language"
 			label="Add Language"
 			asset="plus"
 			assetType="svg"
@@ -96,9 +97,19 @@
 		legend="Format"
 		value={currentFormat}
 		size="2xs"
+		justify="start"
 		{color}
 		{variant}
 		items={formatItems}
 		{oninput}
 	/>
+	{#if cta === 'edit' || cta === 'build'}
+		<DialogSaveFormat
+			id="dialog-add-format"
+			label="Add Format"
+			asset="plus"
+			assetType="svg"
+			cta="save"
+		/>
+	{/if}
 </div>

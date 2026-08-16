@@ -74,7 +74,7 @@
 		<h3 class="ravioli:3xs">Presets</h3>
 		{#if cta === 'edit' || cta === 'build'}
 			<DialogSavePreset
-				id="cta-preset-add-new"
+				id="dialog-add-preset"
 				color="primary"
 				label="Add Preset"
 				asset="plus"
