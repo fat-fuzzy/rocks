@@ -4,7 +4,6 @@
 	import {getContext, onMount} from 'svelte'
 
 	import {isHidden, checkTags} from '$data/cv/cv-display'
-	import {LOCALIZATIONS} from '$lib/intl/l10n'
 
 	import BlockBuilder from '$lib/ui/builder/BlockBuilder.svelte'
 	import FeedbackContent from '$lib/ui/FeedbackContent.svelte'
@@ -98,10 +97,11 @@
 	{:else if noContentFound}
 		<FeedbackContent name="section" content_type="section" isEmpty={true} />
 	{:else if section}
-		<h2>
-			{section.title ?? LOCALIZATIONS[language][name]}
-		</h2>
-
+		{#if section.title}
+			<h2>
+				{section.title}
+			</h2>
+		{/if}
 		{#if content}
 			{@const tagsFound = section.tags?.length
 				? checkTags(section.tags, selectedTags)
