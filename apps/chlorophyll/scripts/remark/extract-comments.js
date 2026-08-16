@@ -113,9 +113,7 @@ export default function remarkExtractComments() {
 				} else if (closeBlockMatch && currentBlock) {
 					// Serialize captured nodes to HTML
 					const fragment = {type: 'root', children: blockNodes}
-					const blockName = file.data.fm.name
-						? `${file.data.fm.name}-${currentBlock}`
-						: currentBlock
+					const blockName = currentBlock
 
 					// Add new block data
 					const newBlock = {
