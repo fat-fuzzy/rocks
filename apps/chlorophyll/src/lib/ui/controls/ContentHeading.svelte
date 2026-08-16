@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {ActionDoc, Preset, DocFormat, IPresetService} from '$types'
+	import type {ActionDoc, Preset, Slug, IPresetService} from '$types'
 
 	import {getContext} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
@@ -16,7 +16,7 @@
 		cta: ActionDoc
 		preset: string | null
 		query: string
-		formats: DocFormat[]
+		formats: Slug[]
 	} = $props()
 
 	let presetService: IPresetService = getContext('presetService')

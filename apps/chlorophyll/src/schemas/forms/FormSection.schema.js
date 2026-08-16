@@ -26,7 +26,7 @@ const FormSectionSchema = defineSchema({
 			$ref: '#/definitions/title',
 		},
 		formats: {
-			$ref: '#/definitions/docFormat',
+			$ref: '#/definitions/slug',
 		},
 	},
 	required: ['name', 'rank'],

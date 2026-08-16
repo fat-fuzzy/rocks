@@ -2,7 +2,7 @@
  * OPFS Operations: User content
  */
 import type {
-	DocFormat,
+	Slug,
 	DocLanguage,
 	DocMeta,
 	DocPath,
@@ -10,7 +10,6 @@ import type {
 	Block,
 	Prose,
 	OPFSDocTree,
-	Slug,
 	Rank,
 } from '$types'
 
@@ -41,7 +40,7 @@ import {getBaseData, getStructureData} from '$lib/workers/storage/opfs-meta'
 export async function saveLanguage(options: {
 	language: DocLanguage
 	sourceLanguage: DocLanguage
-	formats: DocFormat[]
+	formats: Slug[]
 }): Promise<{data: {language: DocLanguage}}> {
 	const {language, sourceLanguage, formats} = options
 
@@ -120,7 +119,7 @@ export async function loadFile(options: {
  */
 export async function saveBlock(options: {
 	language: DocLanguage
-	format: DocFormat
+	format: Slug
 	block: Block
 	path: DocPath
 }): Promise<{id: string}> {
@@ -145,7 +144,7 @@ export async function saveBlock(options: {
 export async function createSection(options: {
 	name: Slug
 	rank: Rank
-	formats: DocFormat[]
+	formats: Slug[]
 	updateRanks: Section[]
 	title?: string
 }) {
@@ -157,7 +156,7 @@ export async function createSection(options: {
 	const base = baseData.content
 	const structures = structureData.content.structure
 
-	const structureUpdated: {[key in DocFormat]?: boolean} = {}
+	const structureUpdated: {[key in Slug]?: boolean} = {}
 	let sections: string[] = []
 	const structuresToUpdate = []
 
@@ -251,7 +250,7 @@ export async function createSection(options: {
 
 export async function saveSection(options: {
 	language: DocLanguage
-	format: DocFormat
+	format: Slug
 	section: Section
 }) {
 	// 0. Prepare: ensure language and format folders exist

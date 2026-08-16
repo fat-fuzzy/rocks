@@ -1,9 +1,8 @@
 import type {
 	Rank,
 	SeedType,
-	Slug,
 	Uuid,
-	DocFormat,
+	Slug,
 	DocLanguage,
 	DocMeta,
 	DocPath,
@@ -62,7 +61,17 @@ export type SaveLanguageCommand = {
 	payload: {
 		language: DocLanguage
 		sourceLanguage: DocLanguage
-		formats: DocFormat[]
+		formats: Slug[]
+	}
+}
+export type SaveFormatCommand = {
+	type: 'ADD_FORMAT'
+	requestId: RequestId
+	payload: {
+		format: Slug
+		sourceFormat: Slug
+		languages: DocLanguage[]
+		formats: Slug[]
 	}
 }
 
@@ -71,7 +80,7 @@ export type SaveBlockCommand = {
 	requestId: RequestId
 	payload: {
 		language: DocLanguage
-		format: DocFormat
+		format: Slug
 		block: Block
 		path: DocPath
 	}
@@ -84,7 +93,7 @@ export type CreateSectionCommand = {
 		name: Slug
 		title?: string
 		rank: Rank
-		formats: DocFormat[]
+		formats: Slug[]
 		updateRanks: Section[]
 	}
 }
@@ -94,7 +103,7 @@ export type SaveSectionCommand = {
 	requestId: RequestId
 	payload: {
 		language: DocLanguage
-		format: DocFormat
+		format: Slug
 		section: Section
 	}
 }

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {Slug, DocFormat, DocLanguage, Section, IDocService} from '$types'
+	import type {Slug, DocLanguage, Section, IDocService} from '$types'
 
 	import {getContext, onMount} from 'svelte'
 
@@ -23,7 +23,7 @@
 		selectedTags: string[]
 		name: Slug
 		language: DocLanguage
-		format?: DocFormat
+		format?: Slug
 	} = $props()
 
 	let observerRoot: HTMLElement | undefined = $state()

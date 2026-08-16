@@ -6,7 +6,6 @@
 
 import type {
 	DocLanguage,
-	DocFormat,
 	DocMeta,
 	DocPath,
 	Section,
@@ -152,7 +151,7 @@ export default class WorkerBridge {
 	saveLanguage(payload: {
 		language: DocLanguage
 		sourceLanguage: DocLanguage
-		formats: DocFormat[]
+		formats: Slug[]
 	}) {
 		return this.send({
 			type: 'ADD_LANGUAGE',
@@ -178,7 +177,7 @@ export default class WorkerBridge {
 
 	saveBlock(payload: {
 		language: DocLanguage
-		format: DocFormat
+		format: Slug
 		block: Block
 		path: DocPath
 	}) {
@@ -193,7 +192,7 @@ export default class WorkerBridge {
 		name: Slug
 		title?: string
 		rank: Rank
-		formats: DocFormat[]
+		formats: Slug[]
 		updateRanks: Section[]
 	}) {
 		return this.send({
@@ -205,7 +204,7 @@ export default class WorkerBridge {
 
 	saveSection(payload: {
 		language: DocLanguage
-		format: DocFormat
+		format: Slug
 		section: Section
 	}) {
 		return this.send({
