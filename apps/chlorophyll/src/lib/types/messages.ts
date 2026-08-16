@@ -120,6 +120,12 @@ export type SaveBaseCommand = {
 	payload: {base: FrontmatterBase}
 }
 
+export type SaveStructuresCommand = {
+	type: 'SAVE_STRUCTURES'
+	requestId: RequestId
+	payload: {structures: FrontmatterStructure[]}
+}
+
 export type SavePresetCommand = {
 	type: 'SAVE_PRESET'
 	requestId: RequestId
@@ -151,6 +157,7 @@ export type Command =
 	| SaveSectionCommand
 	| CreateSectionCommand
 	| SaveBaseCommand
+	| SaveStructuresCommand
 	| SaveLanguageCommand
 	| SaveFormatCommand
 	| SaveBlockCommand
@@ -240,6 +247,7 @@ export type ResponsePayload = {
 	GET_DOC_CONTENT: Prose | void
 	GET_ALL_DOCS: DocStore | void
 	SAVE_BASE: {saved: boolean}
+	SAVE_STRUCTURES: {saved: boolean}
 	ADD_LANGUAGE: {name: string}
 	ADD_FORMAT: {name: string}
 	SAVE_BLOCK: {id: Uuid}

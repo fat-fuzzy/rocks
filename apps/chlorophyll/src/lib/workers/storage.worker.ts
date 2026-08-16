@@ -19,6 +19,7 @@ import {
 	getStructureData,
 	getBaseData,
 	saveBase,
+	saveStructure,
 	saveFormat,
 	saveLanguage,
 } from '$lib/workers/storage/opfs'
@@ -103,6 +104,12 @@ async function dispatch(msg: WorkerMessage) {
 
 		case 'SAVE_BASE': {
 			await saveBase(msg.payload.base)
+
+			return {seeded: Date.now()}
+		}
+
+		case 'SAVE_STRUCTURES': {
+			await saveStructure(msg.payload)
 
 			return {seeded: Date.now()}
 		}
