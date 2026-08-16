@@ -266,7 +266,7 @@
 <form class="form:wide raviolink l:stack:lg" bind:this={form}>
 	{#if block && cta === 'delete'}
 		<label class="l:stack:xs font:sm variant:bare">
-			Delete Block
+			Block Name
 			<input
 				id="name"
 				type="text"
@@ -413,6 +413,14 @@
 				</div>
 			</div>
 		</div>
+	{/if}
+	{#if cta === 'delete'}
+		<Feedback context="prose" variant="bare" asset="" size="sm">
+			<p>
+				This will delete the Block for all formats and languages where found.
+			</p>
+			<p class="font:semibold">This action cannot be undone</p>
+		</Feedback>
 	{/if}
 	<div
 		class={`l:flex justify:${errorBlockExists || errorCascadingName || errorBlockNotFound || errorNameNotAllowed ? 'between' : 'end'}`}
