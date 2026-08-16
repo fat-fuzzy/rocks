@@ -88,6 +88,14 @@ export interface IDocService {
 		formats: Slug[]
 	}): Promise<{id: string} | void>
 
+	getSections({
+		language,
+		format,
+	}: {
+		language: Slug
+		format: DocLanguage
+	}): Section[]
+
 	getSelectedSections(options: {
 		language: DocLanguage
 		format: Slug
