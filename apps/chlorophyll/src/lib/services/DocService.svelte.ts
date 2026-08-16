@@ -91,8 +91,8 @@ export default class DocService implements IDocService {
 
 	/**
 	 * Add a new language
-	 * @param meta metadata to retrieve file
-	 * @returns a Promise that will update when
+	 * @param options
+	 * @returns the new language name
 	 */
 
 	async addLanguage(options: {
@@ -116,9 +116,34 @@ export default class DocService implements IDocService {
 	}
 
 	/**
-	 * Retrieve file content from store
-	 * @param meta metadata to retrieve file
-	 * @returns a Promise that will update when
+	 * Add a new format
+	 * @param options
+	 * @returns the new format name
+	 */
+
+	async addFormat(options: {name: Slug; sourceFormat: Slug}): Promise<void> {
+		if (!this.bridge) {
+			return
+		}
+		const {name, sourceFormat} = options
+
+		await this.bridge.saveFormat({
+			format: name,
+			sourceFormat,
+			formats: JSON.parse(JSON.stringify(this.base.formats)),
+			languages: JSON.parse(JSON.stringify(this.base.languages)),
+		})
+
+		this.base.formats.push(name)
+
+		this.bridge.saveBase({base: JSON.parse(JSON.stringify(this.base))})
+	}
+
+	/**
+	 * Retrieve prose content content from store
+	 * @param path metadata to retrieve file
+	 * @param meta content metadata
+	 * @returns Prose content or undefined (on Promise resolve)
 	 */
 
 	async getProse(options: {

@@ -7,7 +7,6 @@ import {
 	seedRoot,
 	restoreFromBackup,
 	loadFile,
-	saveLanguage,
 	saveBlock,
 	createSection,
 	saveSection,
@@ -20,6 +19,8 @@ import {
 	getStructureData,
 	getBaseData,
 	saveBase,
+	saveFormat,
+	saveLanguage,
 } from '$lib/workers/storage/opfs'
 
 import {deleteAllContent} from '$lib/workers/storage/opfs-tools'
@@ -124,6 +125,16 @@ async function dispatch(msg: WorkerMessage) {
 
 		case 'ADD_LANGUAGE': {
 			const result = await saveLanguage(msg.payload)
+
+			if (result?.data) {
+				return result.data
+			} else {
+				throw new Error('No content found')
+			}
+		}
+
+		case 'ADD_FORMAT': {
+			const result = await saveFormat(msg.payload)
 
 			if (result?.data) {
 				return result.data
