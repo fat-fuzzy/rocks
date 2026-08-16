@@ -34,7 +34,7 @@ const FrontmatterBaseSchema = defineSchema({
 		formats: {
 			type: 'array',
 			items: {
-				$ref: '#/definitions/docFormat',
+				$ref: '#/definitions/slug',
 			},
 		},
 		tags: {

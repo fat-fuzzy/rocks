@@ -1,7 +1,6 @@
 <script lang="ts">
 	import type {
 		Slug,
-		DocFormat,
 		DocLanguage,
 		TagGroup,
 		IDocService,
@@ -47,7 +46,7 @@
 			PUBLIC_DOC_LANGUAGE) as DocLanguage,
 	)
 	let format = $derived(
-		(page.url.searchParams.get('format') || PUBLIC_DOC_FORMAT) as DocFormat,
+		(page.url.searchParams.get('format') || PUBLIC_DOC_FORMAT) as Slug,
 	)
 
 	let preset: string | null = $derived(page.url.searchParams.get('preset'))

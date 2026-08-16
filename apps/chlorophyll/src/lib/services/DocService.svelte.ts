@@ -3,7 +3,6 @@ import type {
 	Rank,
 	Slug,
 	DocLanguage,
-	DocFormat,
 	DocMeta,
 	DocPath,
 	Section,
@@ -49,7 +48,7 @@ export default class DocService implements IDocService {
 	base: FrontmatterBase = $state({
 		schema_version: SCHEMA_VERSION,
 		languages: [PUBLIC_DOC_LANGUAGE as DocLanguage],
-		formats: [PUBLIC_DOC_FORMAT as DocFormat],
+		formats: [PUBLIC_DOC_FORMAT as Slug],
 		tags: [],
 		settings: [],
 	})
@@ -83,7 +82,7 @@ export default class DocService implements IDocService {
 		this.base = {
 			schema_version: SCHEMA_VERSION,
 			languages: [PUBLIC_DOC_LANGUAGE as DocLanguage],
-			formats: [PUBLIC_DOC_FORMAT as DocFormat],
+			formats: [PUBLIC_DOC_FORMAT as Slug],
 			tags: [],
 			settings: [],
 		}
@@ -142,7 +141,7 @@ export default class DocService implements IDocService {
 	 */
 	getBlock(options: {
 		language: DocLanguage
-		format: DocFormat
+		format: Slug
 		section: Slug
 		name: string
 		subsection?: string
@@ -157,7 +156,7 @@ export default class DocService implements IDocService {
 	lazyLoadBlock(
 		dataset: {block?: string; section?: string; subsection?: string},
 		language: DocLanguage,
-		format: DocFormat,
+		format: Slug,
 		name: Slug,
 	) {
 		if (!dataset.section || !dataset.block) {
@@ -274,7 +273,7 @@ export default class DocService implements IDocService {
 	 */
 	async saveBlock(options: {
 		language: DocLanguage
-		format: DocFormat
+		format: Slug
 		block: Block
 		path: DocPath
 	}): Promise<{id: string} | void> {
@@ -412,7 +411,7 @@ export default class DocService implements IDocService {
 	 */
 	getSectionByName(options: {
 		language: DocLanguage
-		format: DocFormat
+		format: Slug
 		name: Slug
 	}): Section {
 		const {language, format, name} = options
@@ -446,7 +445,7 @@ export default class DocService implements IDocService {
 	 */
 	getSelectedSections(options: {
 		language: DocLanguage
-		format: DocFormat
+		format: Slug
 		sections: Slug[]
 	}): {name: Slug; section: Section}[] {
 		const {language, format, sections} = options
@@ -466,7 +465,7 @@ export default class DocService implements IDocService {
 		name: Slug
 		title?: string
 		rank: Rank
-		formats: DocFormat[]
+		formats: Slug[]
 	}): Promise<{id: string} | void> {
 		if (!this.bridge) {
 			return

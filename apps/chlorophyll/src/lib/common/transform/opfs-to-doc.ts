@@ -1,6 +1,6 @@
 import type {
 	DocLanguage,
-	DocFormat,
+	Slug,
 	DocMeta,
 	Doc,
 	Section,
@@ -116,7 +116,7 @@ export function opfsDocTreeToDocStore(tree: OPFSDocTree): DocStore {
 
 			if (!store[language as DocLanguage]) continue
 
-			store[language as DocLanguage][format as DocFormat] = {}
+			store[language as DocLanguage][format as Slug] = {}
 
 			// FIXME: this should come from storage
 			// - meta.json at root > content folder level
@@ -129,7 +129,7 @@ export function opfsDocTreeToDocStore(tree: OPFSDocTree): DocStore {
 					label: 'doc-root',
 					name: 'doc-root',
 					language: language as DocLanguage,
-					format: format as DocFormat,
+					format: format as Slug,
 				},
 				path: {
 					filename: 'doc-root',
@@ -159,7 +159,7 @@ export function opfsDocTreeToDocStore(tree: OPFSDocTree): DocStore {
 				}
 			}
 
-			store[language as DocLanguage][format as DocFormat] = doc
+			store[language as DocLanguage][format as Slug] = doc
 		}
 	}
 

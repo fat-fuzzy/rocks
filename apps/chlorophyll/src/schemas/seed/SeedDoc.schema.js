@@ -26,7 +26,7 @@ const SeedDocSchema = defineSchema({
 			$ref: '#/definitions/docLanguage',
 		},
 		format: {
-			$ref: '#/definitions/docFormat',
+			$ref: '#/definitions/slug',
 		},
 		sections: {
 			type: 'array',

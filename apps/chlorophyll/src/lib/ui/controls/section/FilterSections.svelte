@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {UiColor} from '@fat-fuzzy/ui'
-	import type {DocFormat, FrontmatterStructure, IDocService} from '$types'
+	import type {Slug, FrontmatterStructure, IDocService} from '$types'
 
 	import {getContext} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
@@ -16,7 +16,7 @@
 	let docService: IDocService = getContext('docService')
 
 	let format = $derived(
-		(page.url.searchParams.get('format') || PUBLIC_DOC_FORMAT) as DocFormat,
+		(page.url.searchParams.get('format') || PUBLIC_DOC_FORMAT) as Slug,
 	)
 
 	let structure = $derived(

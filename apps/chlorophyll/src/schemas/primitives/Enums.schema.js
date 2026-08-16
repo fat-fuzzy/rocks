@@ -9,10 +9,6 @@ const EnumsSchema = defineDefinitions({
 		type: 'string',
 		enum: ['section', 'block', 'seed', 'doc-root', 'preset'],
 	},
-	docFormat: {
-		type: 'string',
-		enum: ['short', 'long'],
-	},
 	docVersion: {
 		type: 'string',
 		enum: ['free', 'ft'],

@@ -25,7 +25,7 @@ const FrontmatterStructureSchema = defineSchema({
 			$ref: '#/definitions/DocPath',
 		},
 		format: {
-			$ref: '#/definitions/docFormat',
+			$ref: '#/definitions/slug',
 		},
 		sections: {
 			type: 'array',
