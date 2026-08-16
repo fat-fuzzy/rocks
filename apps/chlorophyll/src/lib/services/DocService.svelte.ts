@@ -91,6 +91,32 @@ export default class DocService implements IDocService {
 	}
 
 	/**
+	 * Add a new language
+	 * @param meta metadata to retrieve file
+	 * @returns a Promise that will update when
+	 */
+
+	async addLanguage(options: {
+		name: DocLanguage
+		sourceLanguage: DocLanguage
+	}): Promise<void> {
+		if (!this.bridge) {
+			return
+		}
+		const {name, sourceLanguage} = options
+
+		await this.bridge.saveLanguage({
+			language: name,
+			sourceLanguage,
+			formats: JSON.parse(JSON.stringify(this.base.formats)),
+		})
+
+		this.base.languages.push(name)
+
+		this.bridge.saveBase({base: JSON.parse(JSON.stringify(this.base))})
+	}
+
+	/**
 	 * Retrieve file content from store
 	 * @param meta metadata to retrieve file
 	 * @returns a Promise that will update when
@@ -468,11 +494,11 @@ export default class DocService implements IDocService {
 	/**
 	 * @param options section metadata
 	 */
-	async updateSubsections(options: {
+	updateSubsections(options: {
 		group: string
 		block: Block // Block to update / create
 		section: Section
-	}): Promise<Subsection[] | void> {
+	}): Subsection[] {
 		const {section, group, block} = options
 		let subsections = section.subsections
 
@@ -495,7 +521,7 @@ export default class DocService implements IDocService {
 					rank: 1,
 					blocks: [block],
 				}
-				section.subsections.push(subsection)
+				subsections.push(subsection)
 			}
 		}
 

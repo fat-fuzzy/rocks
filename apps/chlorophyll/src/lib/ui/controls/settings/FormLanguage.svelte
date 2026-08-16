@@ -50,7 +50,7 @@
 
 	let errorLanguageExists = $state(false)
 	let newLanguage = $derived(language)
-	let sourceLanguage = $state('')
+	let sourceLanguage: string | undefined = $state()
 	let sourceLanguageHint = `Use two lowercase letters. Example: "ja" for "Japanese"`
 
 	let disabled: boolean | undefined = $derived(
@@ -98,13 +98,16 @@
 			return
 		}
 
+		docService.addLanguage({
+			name: newLanguage,
+			sourceLanguage: sourceLanguage ?? 'en',
+		})
+
+		dialogActor.close()
+
 		let url = new SvelteURL(page.url)
 		url.searchParams.delete('language')
 		url.searchParams.append('language', newLanguage)
-
-		// TODO
-
-		dialogActor.close()
 
 		window.location.href = url.href
 	}

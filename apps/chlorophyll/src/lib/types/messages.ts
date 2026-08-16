@@ -56,6 +56,16 @@ export type RestoreFromBackupCommand = {
 	}
 }
 
+export type SaveLanguageCommand = {
+	type: 'ADD_LANGUAGE'
+	requestId: RequestId
+	payload: {
+		language: DocLanguage
+		sourceLanguage: DocLanguage
+		formats: DocFormat[]
+	}
+}
+
 export type SaveBlockCommand = {
 	type: 'SAVE_BLOCK'
 	requestId: RequestId
@@ -132,6 +142,7 @@ export type Command =
 	| SaveSectionCommand
 	| CreateSectionCommand
 	| SaveBaseCommand
+	| SaveLanguageCommand
 	| SaveBlockCommand
 	| SavePresetCommand
 	| DeleteDocCommand
@@ -219,6 +230,7 @@ export type ResponsePayload = {
 	GET_DOC_CONTENT: Prose | void
 	GET_ALL_DOCS: DocStore | void
 	SAVE_BASE: {saved: boolean}
+	ADD_LANGUAGE: {name: string}
 	SAVE_BLOCK: {id: Uuid}
 	CREATE_SECTION: {name: string}
 	SAVE_SECTION: {id: Uuid}

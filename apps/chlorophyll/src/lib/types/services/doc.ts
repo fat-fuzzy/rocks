@@ -50,6 +50,11 @@ export interface IDocService {
 
 	reset(): void
 
+	addLanguage(options: {
+		name: DocLanguage
+		sourceLanguage?: DocLanguage
+	}): Promise<void>
+
 	getProse(options: {path: DocPath; meta: DocMeta}): Promise<Prose | undefined>
 
 	createBlock(options: {
