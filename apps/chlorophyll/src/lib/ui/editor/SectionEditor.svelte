@@ -182,6 +182,7 @@
 								{#if blockLoaded}
 									<BlockEditor
 										{...block}
+										group={subsectionName}
 										sectionName={name}
 										content={block.content}
 										tagsFound={blockTagsFound}

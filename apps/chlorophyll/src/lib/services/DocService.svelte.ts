@@ -18,6 +18,7 @@ import type {
 	OPFSStructureTree,
 	DocContentType,
 	IDocService,
+	Subsection,
 } from '$types'
 
 import {PUBLIC_DOC_LANGUAGE, PUBLIC_DOC_FORMAT} from '$app/env/public'
@@ -109,6 +110,55 @@ export default class DocService implements IDocService {
 	}
 
 	/**
+	 * Get block for options
+	 * @param options block to load, blocks to load within blocks
+	 * @returns block
+	 */
+	getBlock(options: {
+		language: DocLanguage
+		format: DocFormat
+		section: Slug
+		name: string
+		subsection?: string
+	}): Block {
+		const {language, format, section, subsection, name} = options
+
+		return this.docIndex.blocks[
+			getBlockKey(language, format, section, name, subsection)
+		]
+	}
+
+	lazyLoadBlock(
+		dataset: {block?: string; section?: string; subsection?: string},
+		language: DocLanguage,
+		format: DocFormat,
+		name: Slug,
+	) {
+		if (!dataset.section || !dataset.block) {
+			return
+		}
+
+		if (this.lazyBlocks[dataset.block]) {
+			return
+		}
+		if (dataset.block === dataset.section) {
+			this.lazySections[dataset.block] = this.getSectionByName({
+				language,
+				format,
+				name,
+			})
+		} else {
+			this.lazyBlocks[dataset.block] = this.getBlock({
+				language,
+				format,
+				section: dataset.section as Slug,
+				name: dataset.block,
+				subsection: dataset.subsection,
+			})
+		}
+	}
+
+	/**
 	 * Create a new Block
 	 * @param options block metadata and content
 	 */
@@ -167,28 +217,11 @@ export default class DocService implements IDocService {
 						tags,
 					}
 
-					if (!section.subsections) {
-						const subsection = {
-							name: group,
-							parent: section.name,
-							rank: 1,
-							blocks: [block],
-						}
-						section.subsections = [subsection]
-					} else {
-						const subsection = section.subsections.find((s) => s.name === group)
-						if (subsection) {
-							subsection.blocks.push(block)
-						} else {
-							const subsection = {
-								name: group,
-								parent: section.name,
-								rank: 1,
-								blocks: [block],
-							}
-							section.subsections.push(subsection)
-						}
-					}
+					section.subsections = this.updateSubsections({
+						group,
+						block,
+						section,
+					})
 				} else {
 					section.content = {
 						html: '<p>Edit main section content</p>',
@@ -284,7 +317,7 @@ export default class DocService implements IDocService {
 		name: Slug
 		content_type: DocContentType
 		group?: string
-		parent?: Slug
+		parent: Slug
 	}): Promise<{id: string} | void> {
 		if (!this.bridge) {
 			return
@@ -301,37 +334,38 @@ export default class DocService implements IDocService {
 					continue
 				}
 
-				const section = doc.sections?.find((s) => s.name === options.parent)
+				const section = this.getSectionByName({
+					language,
+					format,
+					name: options.parent,
+				})
 
 				if (!section) {
 					continue
 				}
 
-				// FIXME: currently skills groups are assigned the section as the group
+				// Determine subsection:
+				// - group is provided
+				// - OR or use default subgroup (name = section)
 				const group = options.group ?? options.parent
 
-				if (group) {
-					// Case 1: block belongs to default section group
-					if (group === section.name) {
-						delete section.content
-					}
+				// Case 1: block belongs to default subgroup (name = section)
+				if (group === section.name && !section.subsections) {
+					delete section.content
+				} else if (section.subsections) {
+					// Case 2: block belongs to named subgroup
 
-					// Case 2: block belongs to another section group
-					else if (!section.subsections) {
-						throw Error(`No groups found for ${section.name}`)
+					const subsection = section.subsections.find((s) => s.name === group)
+
+					if (subsection) {
+						subsection.blocks = subsection.blocks.filter(
+							(b) => b.name !== options.name,
+						)
 					} else {
-						const subsection = section.subsections.find((s) => s.name === group)
-
-						if (subsection) {
-							subsection.blocks = subsection.blocks.filter(
-								(b) => b.name !== options.name,
-							)
-						} else {
-							throw Error(`Group ${group} for block ${options.name} not found`)
-						}
+						console.warn(`Group ${group} for block ${options.name} not found`)
 					}
-				} else if (options.content_type === 'section' && !options.parent) {
-					throw Error('Deleting main section content not allowed')
+				} else {
+					throw Error(`No groups found for ${section.name}`)
 				}
 
 				// Save Section to OPFS
@@ -343,83 +377,6 @@ export default class DocService implements IDocService {
 				})
 			}
 		}
-	}
-
-	/**
-	 * @param options section metadata
-	 */
-	async createSection(options: {
-		name: Slug
-		title?: string
-		rank: Rank
-		formats: DocFormat[]
-	}): Promise<{id: string} | void> {
-		if (!this.bridge) {
-			return
-		}
-
-		// Check if an existing section's rank is affected
-		let updateRanks: Section[] = []
-		const maxRank = Object.keys(this.docIndex.sections).length
-
-		if (options.rank <= 1 || options.rank < maxRank) {
-			for (let i = options.rank; i < maxRank; i++) {
-				const toUpdate = this.getSectionsByRank(i)
-				if (toUpdate.length) {
-					updateRanks = updateRanks.concat(JSON.parse(JSON.stringify(toUpdate)))
-				}
-			}
-		}
-
-		await this.bridge.createSection({
-			...options,
-			updateRanks,
-		})
-	}
-
-	/**
-	 * Get selected sections for given options
-	 * @param options section selection to load, blocks to load within sections
-	 * @returns Array: {name, section}[]
-	 */
-	getSelectedSections(options: {
-		language: DocLanguage
-		format: DocFormat
-		sections: Slug[]
-	}): {name: Slug; section: Section}[] {
-		const {language, format, sections} = options
-
-		const selected = sections.map((name) => ({
-			name: name,
-			section: this.docIndex.sections[getSectionKey(language, format, name)],
-		}))
-
-		return selected
-	}
-
-	/**
-	 * Get selected blocks for given options
-	 * @param options block to load, within section / subsection
-	 * @returns Array: {name, block}[]
-	 */
-	getSelectedBlocks(options: {
-		language: DocLanguage
-		format: DocFormat
-		section: Slug
-		blocks: string[]
-		subsection?: string
-	}): {name: string; block: Block}[] {
-		const {language, format, section, blocks, subsection} = options
-
-		const selected = blocks.map((name) => ({
-			name: name,
-			block:
-				this.docIndex.blocks[
-					getBlockKey(language, format, section, name, subsection)
-				],
-		}))
-
-		return selected
 	}
 
 	/**
@@ -457,53 +414,92 @@ export default class DocService implements IDocService {
 	}
 
 	/**
-	 * Get block for option
-	 * @param options block to load, blocks to load within blocks
-	 * @returns block
+	 * Get selected sections for given options
+	 * @param options section selection to load, blocks to load within sections
+	 * @returns Array: {name, section}[]
 	 */
-	getBlock(options: {
+	getSelectedSections(options: {
 		language: DocLanguage
 		format: DocFormat
-		section: Slug
-		name: string
-		subsection?: string
-	}): Block {
-		const {language, format, section, subsection, name} = options
+		sections: Slug[]
+	}): {name: Slug; section: Section}[] {
+		const {language, format, sections} = options
 
-		return this.docIndex.blocks[
-			getBlockKey(language, format, section, name, subsection)
-		]
+		const selected = sections.map((name) => ({
+			name: name,
+			section: this.docIndex.sections[getSectionKey(language, format, name)],
+		}))
+
+		return selected
 	}
 
-	lazyLoadBlock(
-		dataset: {block?: string; section?: string; subsection?: string},
-		language: DocLanguage,
-		format: DocFormat,
-		name: Slug,
-	) {
-		if (!dataset.section || !dataset.block) {
+	/**
+	 * @param options section metadata
+	 */
+	async createSection(options: {
+		name: Slug
+		title?: string
+		rank: Rank
+		formats: DocFormat[]
+	}): Promise<{id: string} | void> {
+		if (!this.bridge) {
 			return
 		}
 
-		if (this.lazyBlocks[dataset.block]) {
-			return
+		// Check if an existing section's rank is affected
+		let updateRanks: Section[] = []
+		const maxRank = Object.keys(this.docIndex.sections).length
+
+		if (options.rank <= 1 || options.rank < maxRank) {
+			for (let i = options.rank; i < maxRank; i++) {
+				const toUpdate = this.getSectionsByRank(i)
+				if (toUpdate.length) {
+					updateRanks = updateRanks.concat(JSON.parse(JSON.stringify(toUpdate)))
+				}
+			}
 		}
 
-		if (dataset.block === dataset.section) {
-			this.lazySections[dataset.block] = this.getSectionByName({
-				language,
-				format,
-				name,
-			})
+		await this.bridge.createSection({
+			...options,
+			updateRanks,
+		})
+	}
+
+	/**
+	 * @param options section metadata
+	 */
+	async updateSubsections(options: {
+		group: string
+		block: Block // Block to update / create
+		section: Section
+	}): Promise<Subsection[] | void> {
+		const {section, group, block} = options
+		let subsections = section.subsections
+
+		if (!subsections) {
+			const subsection = {
+				name: group,
+				parent: section.name,
+				rank: 1,
+				blocks: [block],
+			}
+			subsections = [subsection]
 		} else {
-			this.lazyBlocks[dataset.block] = this.getBlock({
-				language,
-				format,
-				section: dataset.section as Slug,
-				name: dataset.block,
-				subsection: dataset.subsection,
-			})
+			const subsection = subsections.find((s) => s.name === group)
+			if (subsection) {
+				subsection.blocks.push(block)
+			} else {
+				const subsection = {
+					name: group,
+					parent: section.name,
+					rank: 1,
+					blocks: [block],
+				}
+				section.subsections.push(subsection)
+			}
 		}
+
+		return subsections
 	}
 
 	/**

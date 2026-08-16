@@ -88,14 +88,6 @@ export interface IDocService {
 		sections: Slug[]
 	}): {name: Slug; section: Section}[]
 
-	getSelectedBlocks(options: {
-		language: DocLanguage
-		format: DocFormat
-		section: Slug
-		blocks: string[]
-		subsection?: string
-	}): {name: string; block: Block}[]
-
 	getSectionByName(options: {
 		language: DocLanguage
 		format: DocFormat
