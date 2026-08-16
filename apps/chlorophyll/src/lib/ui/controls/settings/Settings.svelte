@@ -23,7 +23,8 @@
 	let docService: IDocService = getContext('docService')
 
 	let cta = $derived(page.params.page)
-	let base = $derived(docService.base)
+	let baseLanguages = $derived(docService.base.languages)
+	let baseFormats = $derived(docService.base.formats)
 
 	let currentLanguage = $derived.by(() => {
 		const lang = page.url.searchParams.get('language')
@@ -37,24 +38,15 @@
 
 	// @ts-expect-error FIXME: add validator
 	let languageItems: InputProps[] = $derived(
-		base.languages.map((i: string) => {
-			let selected = checkSelected('language', i)
-			return {
-				id: i,
-				name: i,
-				value: i,
-				checked: selected ? true : undefined,
-				label: i,
-				title: i,
-				variant: 'bare' as UiVariant,
-			}
-		}),
+		deriveInputs(baseLanguages, 'language'),
 	)
 
 	// @ts-expect-error FIXME: add validator
-	let formatItems: InputProps[] = $derived(
-		base.formats.map((i: string) => {
-			let selected = checkSelected('format', i)
+	let formatItems: InputProps[] = $derived(deriveInputs(baseFormats, 'format'))
+
+	function deriveInputs(base: string[], type: string): Partial<InputProps>[] {
+		return base.map((i: string) => {
+			let selected = checkSelected(type, i)
 			return {
 				id: i,
 				name: i,
@@ -64,8 +56,8 @@
 				title: i,
 				variant: 'bare' as UiVariant,
 			}
-		}),
-	)
+		})
+	}
 
 	function checkSelected(group: string, value: string) {
 		const allValues = page.url.searchParams.getAll(group)

@@ -7,6 +7,7 @@ import {
 	seedRoot,
 	restoreFromBackup,
 	loadFile,
+	saveLanguage,
 	saveBlock,
 	createSection,
 	saveSection,
@@ -113,6 +114,16 @@ async function dispatch(msg: WorkerMessage) {
 
 		case 'GET_DOC_CONTENT': {
 			const result = await loadFile(msg.payload)
+
+			if (result?.data) {
+				return result.data
+			} else {
+				throw new Error('No content found')
+			}
+		}
+
+		case 'ADD_LANGUAGE': {
+			const result = await saveLanguage(msg.payload)
 
 			if (result?.data) {
 				return result.data

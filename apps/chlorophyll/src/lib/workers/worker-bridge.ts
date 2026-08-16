@@ -149,6 +149,18 @@ export default class WorkerBridge {
 		})
 	}
 
+	saveLanguage(payload: {
+		language: DocLanguage
+		sourceLanguage: DocLanguage
+		formats: DocFormat[]
+	}) {
+		return this.send({
+			type: 'ADD_LANGUAGE',
+			requestId: crypto.randomUUID(),
+			payload,
+		})
+	}
+
 	getProse(payload: {path: DocPath; meta: DocMeta}) {
 		return this.send({
 			type: 'GET_DOC_CONTENT',
