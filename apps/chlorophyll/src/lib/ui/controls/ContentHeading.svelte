@@ -61,7 +61,7 @@
 						assetType="svg"
 						label="Add Section"
 						size="xs"
-						variant="fill"
+						variant="outline"
 						cta="save"
 						{formats}
 					/>
@@ -90,7 +90,7 @@
 				{/if}
 			</div>
 		{:else}
-			<h2 class="font:semibold">New Document</h2>
+			<h2 class="font:semibold">New Doc</h2>
 			{#if cta === 'edit'}
 				<div class="maki:block">
 					<DialogSaveSection
@@ -98,7 +98,7 @@
 						color="accent"
 						asset="plus"
 						assetType="svg"
-						variant="fill"
+						variant="outline"
 						label="Add Section"
 						cta="save"
 						{formats}

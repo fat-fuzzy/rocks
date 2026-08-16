@@ -176,6 +176,7 @@
 					variant="bare"
 					size="sm"
 					asset="none"
+					surfaceLightness={0}
 				>
 					<p>
 						Language <span class="font:semibold">{newLanguage}</span> already exists
