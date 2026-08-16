@@ -4,7 +4,6 @@
 	import {getContext, onMount} from 'svelte'
 
 	import {isHidden, checkTags} from '$data/cv/cv-display'
-	import {LOCALIZATIONS} from '$lib/intl/l10n'
 
 	import BlockPlaceholder from '$lib/ui/editor/BlockPlaceholder.svelte'
 	import BlockEditor from '$lib/ui/editor/BlockEditor.svelte'
@@ -102,9 +101,12 @@
 				{section.rank}.
 				{section.name}
 			</summary>
-			<h2 class="ravioli:2xs">
-				{section.title ?? LOCALIZATIONS[language][name]}
-			</h2>
+
+			{#if section.title}
+				<h2 class="ravioli:2xs">
+					{section.title}
+				</h2>
+			{/if}
 
 			{#if content}
 				{@const blockLoaded = Boolean(sectionsLoaded[section.name])}
