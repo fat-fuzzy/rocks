@@ -94,12 +94,12 @@
 		return docService.base.formats.includes(formatName)
 	}
 
-	function saveFormat() {
+	async function saveFormat() {
 		if (validator.formHasErrors()) {
 			return
 		}
 
-		docService.addFormat({
+		await docService.addFormat({
 			name: newFormat,
 			sourceFormat: sourceFormat ?? 'long',
 		})

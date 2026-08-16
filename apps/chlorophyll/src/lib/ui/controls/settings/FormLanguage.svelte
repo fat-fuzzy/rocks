@@ -93,12 +93,12 @@
 		return docService.base.languages.includes(languageName)
 	}
 
-	function saveLanguage() {
+	async function saveLanguage() {
 		if (validator.formHasErrors()) {
 			return
 		}
 
-		docService.addLanguage({
+		await docService.addLanguage({
 			name: newLanguage,
 			sourceLanguage: sourceLanguage ?? 'en',
 		})
