@@ -213,6 +213,8 @@ export default class WorkerBridge {
 		name: Slug
 		title?: string
 		rank: Rank
+		structure: FrontmatterStructure
+		languages: DocLanguage[]
 		formats: Slug[]
 		updateRanks: Section[]
 	}) {

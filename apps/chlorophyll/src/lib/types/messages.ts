@@ -93,7 +93,9 @@ export type CreateSectionCommand = {
 		name: Slug
 		title?: string
 		rank: Rank
+		structure: FrontmatterStructure
 		formats: Slug[]
+		languages: DocLanguage[]
 		updateRanks: Section[]
 	}
 }

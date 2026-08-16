@@ -15,7 +15,6 @@
 
 	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
 	import {PUBLIC_DOC_FORMAT, PUBLIC_DOC_LANGUAGE} from '$app/env/public'
-	import {page} from '$app/state'
 
 	const {Button, Input, InputGroup, Feedback} = ui.blocks
 	const {FormValidator} = ui.utils

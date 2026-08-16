@@ -112,7 +112,9 @@ export default class DocService implements IDocService {
 
 		this.base.languages.push(name)
 
-		this.bridge.saveBase({base: JSON.parse(JSON.stringify(this.base))})
+		await this.bridge.saveBase({base: JSON.parse(JSON.stringify(this.base))})
+
+		await this.getDocBase()
 	}
 
 	/**
@@ -136,7 +138,9 @@ export default class DocService implements IDocService {
 
 		this.base.formats.push(name)
 
-		this.bridge.saveBase({base: JSON.parse(JSON.stringify(this.base))})
+		await this.bridge.saveBase({base: JSON.parse(JSON.stringify(this.base))})
+
+		await this.getDocBase()
 	}
 
 	/**
@@ -517,8 +521,10 @@ export default class DocService implements IDocService {
 			return
 		}
 
-		const {name, formats} = options
+		const {formats} = options
+		const languages = this.base.languages
 		// Check if an existing section's rank is affected
+
 		let updateRanks: Section[] = []
 		const maxRank = Object.keys(this.docIndex.sections).length
 
@@ -531,14 +537,16 @@ export default class DocService implements IDocService {
 			}
 		}
 
-		await this.bridge.createSection({
-			...options,
-			updateRanks,
-		})
-
 		for (const format of formats) {
-			const structure = this.structures.find((s) => s.format === format)
-			structure?.sections.push(name)
+			const structureToUpdate = this.structures.find((s) => s.format === format)
+			if (structureToUpdate) {
+				await this.bridge.createSection({
+					...options,
+					structure: JSON.parse(JSON.stringify(structureToUpdate)),
+					languages: JSON.parse(JSON.stringify(languages)),
+					updateRanks,
+				})
+			}
 		}
 
 		await this.bridge.saveStructures({
@@ -546,6 +554,7 @@ export default class DocService implements IDocService {
 		})
 
 		this.getAllDocs()
+		this.getDocStructure()
 	}
 
 	/**
