@@ -104,7 +104,7 @@
 	<ul>
 		<li>
 			Create your own content: click on <span class="font:semibold">
-				Edit > Add Section
+				Edit > New Section
 			</span>
 		</li>
 		<li>

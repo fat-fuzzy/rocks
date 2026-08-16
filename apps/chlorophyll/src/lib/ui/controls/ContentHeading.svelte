@@ -59,7 +59,7 @@
 						color="accent"
 						asset="plus"
 						assetType="svg"
-						label="Add Section"
+						label="New Section"
 						size="xs"
 						variant="outline"
 						cta="save"
@@ -99,7 +99,7 @@
 						asset="plus"
 						assetType="svg"
 						variant="outline"
-						label="Add Section"
+						label="New Section"
 						cta="save"
 						{formats}
 					/>
