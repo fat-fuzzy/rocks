@@ -19,6 +19,7 @@ import FormSectionSchema from './forms/FormSection.schema.js'
 import FormPresetSchema from './forms/FormPreset.schema.js'
 import FormTagSchema from './forms/FormTag.schema.js'
 import FormLanguageSchema from './forms/FormLanguage.schema.js'
+import FormFormatSchema from './forms/FormFormat.schema.js'
 
 import FrontmatterBaseSchema from './seed/FrontmatterBase.schema.js'
 import FrontmatterStructureSchema from './seed/FrontmatterStructure.schema.js'
@@ -151,6 +152,11 @@ export const schemas = {
 		FormLanguage: {
 			schema: FormLanguageSchema,
 			version: getVersion(FormLanguageSchema),
+			isRoot: true,
+		},
+		FormFormat: {
+			schema: FormFormatSchema,
+			version: getVersion(FormFormatSchema),
 			isRoot: true,
 		},
 	},
