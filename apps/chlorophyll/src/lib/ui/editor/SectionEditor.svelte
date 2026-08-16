@@ -226,7 +226,7 @@
 							color="primary"
 							asset="plus"
 							assetType="svg"
-							label="Add block"
+							label="New Block"
 							cta="save"
 							sectionName={name}
 							subsections={section.subsections || []}

@@ -76,7 +76,7 @@
 			<DialogSavePreset
 				id="dialog-add-preset"
 				color="primary"
-				label="Add Preset"
+				label="New Preset"
 				asset="plus"
 				assetType="svg"
 				cta="save"
