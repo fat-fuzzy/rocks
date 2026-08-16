@@ -50,7 +50,7 @@ export async function saveBase(
 		const data = parseBase('Save Base', base)
 
 		const directoryHandle = await getBaseHandle({create: true})
-		await saveEntry(directoryHandle, {name: 'base'}, {base: data})
+		await saveEntry(directoryHandle, {name: 'base'}, data)
 
 		return data
 	} catch (error) {
@@ -74,7 +74,7 @@ export async function saveStructure({
 			const data = parseStructure('Save Structures', structure)
 
 			const directoryHandle = await getStructureHandle({create: true})
-			await saveEntry(directoryHandle, {name: 'structure'}, {structure: data})
+			await saveEntry(directoryHandle, {name: 'structure'}, data)
 
 			return data
 		} catch (error) {

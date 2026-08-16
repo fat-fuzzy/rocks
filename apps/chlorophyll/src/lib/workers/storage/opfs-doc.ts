@@ -11,6 +11,7 @@ import type {
 	Prose,
 	OPFSDocTree,
 	Rank,
+	FrontmatterStructure,
 } from '$types'
 
 import {sanitizeFileName} from '$lib/common/sanitize'
@@ -29,8 +30,6 @@ import {
 	saveBlockToOPFS,
 	saveSectionToOPFS,
 } from '$lib/workers/storage/opfs-tools'
-
-import {getBaseData, getStructureData} from '$lib/workers/storage/opfs-meta'
 
 /**
  * Add new Language and clone content from source language
@@ -197,61 +196,32 @@ export async function createSection(options: {
 	name: Slug
 	rank: Rank
 	formats: Slug[]
+	languages: DocLanguage[]
+	structure: FrontmatterStructure
 	updateRanks: Section[]
 	title?: string
 }) {
-	const {name, title, rank, updateRanks} = options
+	const {name, title, rank, formats, languages, updateRanks} = options
 
-	const baseData = await getBaseData()
-	const structureData = await getStructureData()
+	const structureToUpdate = options.structure
 
-	const base = baseData.content
-	const structures = structureData.content.structure
-
-	const structureUpdated: {[key in Slug]?: boolean} = {}
-	let sections: string[] = []
 	const structuresToUpdate = []
+	for (const format of formats) {
+		let sections = [...structureToUpdate.sections]
 
-	for (const format of options.formats) {
-		const structureToUpdate = structures.find((s) => s.format === format)
-
-		if (!structureToUpdate) {
-			throw new Error(
-				`Error creating section: missing doc structure for ${format}`,
-			)
+		// Insert section at rank
+		// TODO: factor out this code to helper fn
+		if (rank >= sections.length) {
+			sections.push(name)
+		} else if (rank <= 1) {
+			sections.unshift(name)
+		} else {
+			const precedingSections = sections.splice(0, rank - 1)
+			precedingSections.push(name)
+			sections = precedingSections.concat(sections)
 		}
 
-		if (!structureUpdated[format]) {
-			if (structureToUpdate.sections.find((s) => s === name)) {
-				throw new Error(
-					`Error creating section: a section named ${name} already exists`,
-				)
-			}
-
-			sections = [...structureToUpdate.sections]
-
-			// Insert section at rank
-			// TODO: factor out this code to helper fn
-			if (rank >= sections.length) {
-				sections.push(name)
-			} else if (rank <= 1) {
-				sections.unshift(name)
-			} else {
-				const precedingSections = sections.splice(0, rank - 1)
-				precedingSections.push(name)
-				sections = precedingSections.concat(sections)
-			}
-
-			// TODO:
-			// 1. Update CV structure [DONE]
-			// 1.bis Update Main Sections menu
-			// 2. Update section indices (insert before / after) [DONE]
-			// 2.bis UI-side: refresh index
-
-			structureUpdated[format] = true
-		}
-
-		for (const language of base.languages) {
+		for (const language of languages) {
 			const docHandle = await getDocsHandle({language, format})
 			const docRoot = 'content.json'
 			const fh = await docHandle.getFileHandle(docRoot)
@@ -277,20 +247,20 @@ export async function createSection(options: {
 		structureToUpdate.sections = sections
 		structuresToUpdate.push(structureToUpdate)
 	}
-
 	// TODO: factor out this code to helper fn
 	for (let i = 0; i < updateRanks.length; i++) {
 		const toUpdate = updateRanks[i]
 		toUpdate.rank = toUpdate.rank + 1
 
-		for (const format of base.formats) {
-			for (const language of base.languages) {
+		for (const format of formats) {
+			for (const language of languages) {
 				await saveSection({language, format, section: toUpdate})
 			}
 		}
 	}
 
 	const structureHandle = await getStructureHandle({create: true})
+
 	await saveEntry(
 		structureHandle,
 		{name: 'structure'},

@@ -101,8 +101,8 @@ const DEFAULT_STRUCTURES: {
 } = {
 	base: {
 		schema_version: SCHEMA_VERSION,
-		languages: ['en', 'fr'],
-		formats: ['long', 'short'],
+		languages: ['en'],
+		formats: ['long'],
 		tags: [
 			{
 				title: 'Twilight Z',
@@ -119,12 +119,6 @@ const DEFAULT_STRUCTURES: {
 			format: 'long',
 			sections: [],
 		},
-		{
-			schema_version: SCHEMA_VERSION,
-			seed_type: 'root',
-			format: 'short',
-			sections: [],
-		},
 	],
 }
 
@@ -134,13 +128,6 @@ const DEFAULT_CONTENT: SeedDoc[] = [
 		seed_type: 'root',
 		language: 'en',
 		format: 'long',
-		sections: [[]],
-	},
-	{
-		schema_version: SCHEMA_VERSION,
-		seed_type: 'root',
-		language: 'en',
-		format: 'short',
 		sections: [[]],
 	},
 ]
