@@ -2,6 +2,7 @@
 	import type {DocContentType, Slug} from '$types'
 
 	import ui from '@fat-fuzzy/ui'
+	import CardContent from '$lib/ui/CardContent.svelte'
 
 	const {Feedback} = ui.blocks
 
@@ -20,8 +21,6 @@
 		isEmpty?: boolean
 		isError?: boolean
 	} = $props()
-
-	const dedupedTags = $derived(Array.from(new Set(tags)))
 </script>
 
 <div class="maki:block">
@@ -51,33 +50,8 @@
 					</li>
 				</ul>
 			</div>
-		{:else if isHidden}
-			<p>
-				Hidden {content_type}:
-				<span class="font:bold">
-					{name}
-				</span>
-			</p>
 		{:else}
-			<div class="l:stack:xs">
-				<div class="l:flex justify:between">
-					<h3>{name}</h3>
-					<h4 class="font:semibold font:heading text:end">Tags</h4>
-				</div>
-				{#if tags?.length}
-					<div class="w:full l:stack:xs justify:end">
-						<ul class="tags unstyled l:flex:xs">
-							{#each dedupedTags as tag, i (i)}
-								<li class="variant:outline raviolink shape:pill font:xs">
-									<span class="maki:inline"> {tag}</span>
-								</li>
-							{/each}
-						</ul>
-					</div>
-				{:else}
-					<p>Add a Block to get started</p>
-				{/if}
-			</div>
+			<CardContent {content_type} {name} {tags} {isHidden} />
 		{/if}
 	</Feedback>
 </div>
