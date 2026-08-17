@@ -11,6 +11,7 @@
 	import {getContext, tick} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
 
+	import {resolve} from '$app/paths'
 	import {page} from '$app/state'
 	import {DOC_LANGUAGE, DOC_FORMAT} from '$config/setup'
 
@@ -21,7 +22,6 @@
 	import Tags from '$lib/ui/controls/tags/Tags.svelte'
 	import Presets from '$lib/ui/controls/preset/Presets.svelte'
 	import Loading from '$lib/ui/Loading.svelte'
-	import {resolve} from '$app/paths'
 
 	const {PageRails} = ui.content
 	const {Feedback} = ui.blocks
@@ -102,13 +102,17 @@
 	<p>To get started you can:</p>
 	<ul>
 		<li>
-			Create your own content: click on <span class="font:semibold">
-				Edit > New Section
-			</span>
+			Create your own content: go to <a
+				class="font:semibold"
+				href={resolve('/cv/edit/')}
+			>
+				Edit
+			</a>, then click on
+			<span class="font:semibold"> New Section </span>
 		</li>
 		<li>
-			Load the demo: go to <span class="font:semibold"> Data > Reset </span>
-			and click on
+			Load the demo: under <span class="font:semibold"> Data > Reset </span>,
+			click on
 			<span class="font:semibold"> Seed Demo </span>
 		</li>
 	</ul>
