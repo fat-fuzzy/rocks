@@ -74,9 +74,9 @@
 		<h3 class="ravioli:3xs">Presets</h3>
 		{#if cta === 'edit' || cta === 'build'}
 			<DialogSavePreset
-				id="cta-preset-add-new"
+				id="dialog-add-preset"
 				color="primary"
-				label="Add Preset"
+				label="New Preset"
 				asset="plus"
 				assetType="svg"
 				cta="save"
@@ -91,7 +91,7 @@
 	{#if loading}
 		<Loading color="neutral" />
 	{:else if error}
-		<Feedback status="error" context="prose" variant="bare" asset="default">
+		<Feedback status="error" context="prose" variant="bare" asset="none">
 			<p>Failed to load presets.</p>
 		</Feedback>
 	{:else}
@@ -165,11 +165,7 @@
 												: 'save'}
 											assetType="svg"
 											shape="round"
-											color={!isCurrent ||
-											preset.locked ||
-											(isCurrent && query === preset.query)
-												? 'accent'
-												: 'primary'}
+											color="primary"
 											variant="bare"
 											size="2xs"
 											font="2xs font:heading"

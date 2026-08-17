@@ -1,3 +1,4 @@
+import {SCHEMA_VERSION} from '../../config/setup.js'
 import {defineSchema} from '../index.js'
 
 import FormBaseSchema from '../primitives/FormBase.schema.js'
@@ -13,7 +14,7 @@ const FormPresetSchema = defineSchema({
 		},
 		schema_version: {
 			$ref: '#/definitions/schemaVersion',
-			const: '0.1',
+			const: SCHEMA_VERSION,
 		},
 		name: {
 			$ref: '#/definitions/slug',

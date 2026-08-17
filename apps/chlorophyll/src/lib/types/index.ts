@@ -50,7 +50,6 @@ export type {
 	DocMeta,
 	DocContentType,
 	DocLanguage,
-	DocFormat,
 	DocVisibility,
 	Path,
 	Prose,

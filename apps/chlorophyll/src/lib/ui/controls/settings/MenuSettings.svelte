@@ -32,7 +32,7 @@
 	layout="flex"
 	coords="bottom-right"
 >
-	<div class="l:flex nowrap ravioli:xs">
+	<div class="l:flex align:between nowrap ravioli:xs">
 		<Settings {oninput} {color} />
 	</div>
 </Popover>

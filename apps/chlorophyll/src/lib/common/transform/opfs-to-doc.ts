@@ -1,6 +1,6 @@
 import type {
 	DocLanguage,
-	DocFormat,
+	Slug,
 	DocMeta,
 	Doc,
 	Section,
@@ -15,6 +15,7 @@ import type {
 	FrontmatterStructure,
 } from '$types'
 
+import {SCHEMA_VERSION} from '$config/setup'
 import {
 	parseSection,
 	parseBase,
@@ -46,7 +47,7 @@ export function isRawPreset(value: unknown): value is RawPreset {
 	return 'meta' in value && 'content' in value
 }
 
-function rawSectionToSection(raw: RawSection): Section {
+export function rawSectionToSection(raw: RawSection): Section {
 	return raw.content
 }
 
@@ -115,20 +116,20 @@ export function opfsDocTreeToDocStore(tree: OPFSDocTree): DocStore {
 
 			if (!store[language as DocLanguage]) continue
 
-			store[language as DocLanguage][format as DocFormat] = {}
+			store[language as DocLanguage][format as Slug] = {}
 
 			// FIXME: this should come from storage
 			// - meta.json at root > content folder level
 			const doc: Doc = {
 				id: crypto.randomUUID(),
-				schema_version: '0.1',
+				schema_version: SCHEMA_VERSION,
 				meta: {
 					id: crypto.randomUUID(),
 					content_type: 'doc-root',
 					label: 'doc-root',
 					name: 'doc-root',
 					language: language as DocLanguage,
-					format: format as DocFormat,
+					format: format as Slug,
 				},
 				path: {
 					filename: 'doc-root',
@@ -158,7 +159,7 @@ export function opfsDocTreeToDocStore(tree: OPFSDocTree): DocStore {
 				}
 			}
 
-			store[language as DocLanguage][format as DocFormat] = doc
+			store[language as DocLanguage][format as Slug] = doc
 		}
 	}
 
@@ -198,7 +199,7 @@ export function opfsBaseTreeToFrontmatterBase(
 	// Return default fallback
 	// TODO: review this
 	return {
-		schema_version: '0.1',
+		schema_version: SCHEMA_VERSION,
 		languages: [],
 		formats: [],
 		tags: [],

@@ -4,7 +4,7 @@
 		Prose,
 		Block,
 		DocLanguage,
-		DocFormat,
+		Slug,
 		InputCheckedTypes,
 		IDocService,
 		ITagService,
@@ -38,7 +38,7 @@
 	}: {
 		sectionName: string
 		language: DocLanguage
-		format: DocFormat
+		format: Slug
 		tagsFound?: string[]
 	} & Block = $props()
 
@@ -150,7 +150,12 @@
 		size="sm"
 		oninput={updateTags}
 		value={block.tags}
-		tagGroups={tagService.tags}
+		tagGroups={tagService.tags.filter((tg) => {
+			if (block.content_type === 'section') {
+				return tg.type !== 'radio'
+			}
+			return tg
+		})}
 	/>
 {/snippet}
 

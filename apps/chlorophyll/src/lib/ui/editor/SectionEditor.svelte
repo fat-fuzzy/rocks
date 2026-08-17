@@ -1,11 +1,11 @@
 <script lang="ts">
-	import type {Slug, DocFormat, DocLanguage, Section, IDocService} from '$types'
+	import type {Slug, DocLanguage, Section, IDocService} from '$types'
 
 	import {getContext, onMount} from 'svelte'
 
 	import {isHidden, checkTags} from '$data/cv/cv-display'
-	import {LOCALIZATIONS} from '$lib/intl/l10n'
 
+	import {DOC_LANGUAGE, DOC_FORMAT} from '$config/setup'
 	import BlockPlaceholder from '$lib/ui/editor/BlockPlaceholder.svelte'
 	import BlockEditor from '$lib/ui/editor/BlockEditor.svelte'
 	import DialogSaveBlock from '$lib/ui/controls/block/DialogSaveBlock.svelte'
@@ -17,13 +17,13 @@
 	let {
 		name,
 		selectedTags,
-		language = 'en',
-		format = 'long',
+		language = DOC_LANGUAGE,
+		format = DOC_FORMAT,
 	}: {
 		selectedTags: string[]
 		name: Slug
 		language: DocLanguage
-		format?: DocFormat
+		format?: Slug
 	} = $props()
 
 	let observerRoot: HTMLElement | undefined = $state()
@@ -102,9 +102,12 @@
 				{section.rank}.
 				{section.name}
 			</summary>
-			<h2 class="ravioli:2xs">
-				{section.title ?? LOCALIZATIONS[language][name]}
-			</h2>
+
+			{#if section.title}
+				<h2 class="ravioli:2xs">
+					{section.title}
+				</h2>
+			{/if}
 
 			{#if content}
 				{@const blockLoaded = Boolean(sectionsLoaded[section.name])}
@@ -152,6 +155,7 @@
 				{#each subsections as subsection, i (i)}
 					{@const blocks = subsection.blocks}
 					{@const tags = subsection.blocks.flatMap((b) => b.tags)}
+					{@const tagSet = new Set(tags)}
 					{@const tagsFound = checkTags(tags, selectedTags)}
 					{@const subsectionName =
 						subsection.name !== section.name ? subsection.name : undefined}
@@ -160,8 +164,8 @@
 						{@const subsectionIcon = tagsFound.length === 0 ? missingIcon : ''}
 
 						{#if subsections.length > 1}
-							<h3 class="font:bold raviolink shape:mellow maki:block">
-								<span class={`${subsectionIcon} maki:inline:md'`}>
+							<h3 class="raviolink shape:mellow maki:block surface:0:primary">
+								<span class={`${subsectionIcon} maki:inline:md font:heading`}>
 									{subsection.name}
 								</span>
 							</h3>
@@ -177,11 +181,13 @@
 									name={section.name}
 									content_type="block"
 									isHidden={true}
+									tags={Array.from(tagSet)}
 								/>
 							{:else if block.tags.length === 0 || blockTagsFound.length}
 								{#if blockLoaded}
 									<BlockEditor
 										{...block}
+										group={subsectionName}
 										sectionName={name}
 										content={block.content}
 										tagsFound={blockTagsFound}
@@ -201,7 +207,6 @@
 					{:else}
 						{@const contentName =
 							subsection.name !== section.name ? subsection.name : section.name}
-						{@const tagSet = new Set(tags)}
 						<FeedbackContent
 							name={contentName}
 							content_type="block"
@@ -225,7 +230,7 @@
 							color="primary"
 							asset="plus"
 							assetType="svg"
-							label="Add block"
+							label="New Block"
 							cta="save"
 							sectionName={name}
 							subsections={section.subsections || []}

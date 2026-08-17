@@ -1,9 +1,8 @@
 import type {
 	Rank,
 	SeedType,
-	Slug,
 	Uuid,
-	DocFormat,
+	Slug,
 	DocLanguage,
 	DocMeta,
 	DocPath,
@@ -56,12 +55,32 @@ export type RestoreFromBackupCommand = {
 	}
 }
 
+export type SaveLanguageCommand = {
+	type: 'ADD_LANGUAGE'
+	requestId: RequestId
+	payload: {
+		language: DocLanguage
+		sourceLanguage: DocLanguage
+		formats: Slug[]
+	}
+}
+export type SaveFormatCommand = {
+	type: 'ADD_FORMAT'
+	requestId: RequestId
+	payload: {
+		format: Slug
+		sourceFormat: Slug
+		languages: DocLanguage[]
+		formats: Slug[]
+	}
+}
+
 export type SaveBlockCommand = {
 	type: 'SAVE_BLOCK'
 	requestId: RequestId
 	payload: {
 		language: DocLanguage
-		format: DocFormat
+		format: Slug
 		block: Block
 		path: DocPath
 	}
@@ -74,7 +93,9 @@ export type CreateSectionCommand = {
 		name: Slug
 		title?: string
 		rank: Rank
-		formats: DocFormat[]
+		structure: FrontmatterStructure
+		formats: Slug[]
+		languages: DocLanguage[]
 		updateRanks: Section[]
 	}
 }
@@ -84,7 +105,7 @@ export type SaveSectionCommand = {
 	requestId: RequestId
 	payload: {
 		language: DocLanguage
-		format: DocFormat
+		format: Slug
 		section: Section
 	}
 }
@@ -99,6 +120,12 @@ export type SaveBaseCommand = {
 	type: 'SAVE_BASE'
 	requestId: RequestId
 	payload: {base: FrontmatterBase}
+}
+
+export type SaveStructuresCommand = {
+	type: 'SAVE_STRUCTURES'
+	requestId: RequestId
+	payload: {structures: FrontmatterStructure[]}
 }
 
 export type SavePresetCommand = {
@@ -132,6 +159,9 @@ export type Command =
 	| SaveSectionCommand
 	| CreateSectionCommand
 	| SaveBaseCommand
+	| SaveStructuresCommand
+	| SaveLanguageCommand
+	| SaveFormatCommand
 	| SaveBlockCommand
 	| SavePresetCommand
 	| DeleteDocCommand
@@ -219,6 +249,9 @@ export type ResponsePayload = {
 	GET_DOC_CONTENT: Prose | void
 	GET_ALL_DOCS: DocStore | void
 	SAVE_BASE: {saved: boolean}
+	SAVE_STRUCTURES: {saved: boolean}
+	ADD_LANGUAGE: {name: string}
+	ADD_FORMAT: {name: string}
 	SAVE_BLOCK: {id: Uuid}
 	CREATE_SECTION: {name: string}
 	SAVE_SECTION: {id: Uuid}

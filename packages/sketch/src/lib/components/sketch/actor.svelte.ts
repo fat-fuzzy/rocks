@@ -9,9 +9,11 @@ import type {
 	SketchFeedbackType,
 	SketchEventType,
 	SceneContext,
+	PlayerState,
+	SketchState,
+	ControlsState,
+	CanvasState,
 } from '$types'
-
-import {PlayerState, SketchState, ControlsState, CanvasState} from '$types'
 
 import {
 	SKETCH_FEEDBACK,
@@ -45,7 +47,7 @@ class SketchActor {
 	}
 
 	public getPlayButtonState(): string {
-		return this.state.canvas === PlayerState.playing ? 'active' : 'inactive'
+		return this.state.canvas === 'playing' ? 'active' : 'inactive'
 	}
 
 	public getNextActions(ui: SketchUi): UiAction[] | undefined {
@@ -73,15 +75,13 @@ class SketchActor {
 	}
 
 	public getSketchDisabled(): boolean | undefined {
-		return this.state.canvas === CanvasState.idle ||
-			this.state.canvas === CanvasState.paused
+		return this.state.canvas === 'idle' || this.state.canvas === 'paused'
 			? true
 			: undefined
 	}
 
 	public getIsInteractive(): boolean | undefined {
-		return this.state.canvas === CanvasState.playing ||
-			this.state.canvas === CanvasState.paused
+		return this.state.canvas === 'playing' || this.state.canvas === 'paused'
 			? true
 			: undefined
 	}
@@ -108,6 +108,7 @@ class SketchActor {
 		this.events.previous = previous
 	}
 
+	// eslint-disable-next-line
 	public updateTexture({texture}: SceneContext, event: UiEvent): void {
 		// TODO: implement
 		this.update(event)

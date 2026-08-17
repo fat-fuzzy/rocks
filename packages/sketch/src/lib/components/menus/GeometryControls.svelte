@@ -53,7 +53,7 @@
 	<Geometry3D
 		id={`${id}-context-3d`}
 		onupdate={updateGeometry}
-		threshold={breakpoint}
+		threshold={threshold ?? breakpoint}
 		context={geometry}
 		canvasWidth={canvas.getBoundingClientRect().width}
 		canvasHeight={canvas.getBoundingClientRect().height}

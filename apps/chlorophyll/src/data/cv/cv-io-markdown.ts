@@ -10,7 +10,7 @@ import type {
 } from '$types'
 
 import assetsUtils from '$data/markdown-in'
-import sort from '$lib/common/sort'
+import {sortByNameDesc} from '$lib/common/sort'
 
 import {
 	PATHS_CV_L10N_FORMATS,
@@ -87,7 +87,7 @@ async function parseHeaderMarkdowns({
 		experience,
 	)
 
-	return markdowns.sort(sort.sortByNameDesc)
+	return markdowns.sort(sortByNameDesc)
 }
 
 async function parseSectionMarkdowns({
@@ -106,7 +106,9 @@ async function parseSectionMarkdowns({
 		return []
 	}
 
-	const pathPrefix = NESTED_SECTIONS.includes(section)
+	const isNested = NESTED_SECTIONS.includes(section)
+
+	const pathPrefix = isNested
 		? `${localizations.pathPrefix}${format}/${section}/`
 		: `${localizations.pathPrefix}${format}/`
 
@@ -123,10 +125,10 @@ async function parseSectionMarkdowns({
 		section,
 		pathPrefix,
 		sectionImports,
-		NESTED_SECTIONS.includes(section),
+		isNested,
 	)
 
-	return markdowns.sort(sort.sortByNameDesc)
+	return markdowns.sort(sortByNameDesc)
 }
 
 async function parseMarkdownCvContent({

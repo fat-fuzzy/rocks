@@ -7,20 +7,6 @@ import type {
 	SketchEventType,
 } from '$types'
 
-import {
-	PlayerState,
-	SketchState,
-	ControlsState,
-	CanvasState,
-	PlayerAction,
-	ControlsAction,
-	SketchAction,
-	CanvasAction,
-	PlayerEvent,
-	SketchEvent,
-	ControlsEvent,
-} from '$types'
-
 import {PLAYER_TRANSITIONS} from '$lib/components/player/definitions.js'
 
 export const DEFAULT_FILTERS: Filters = {
@@ -42,98 +28,80 @@ export const SKETCH_EVENTS: SketchEventType = {
 }
 
 export const SKETCH_STATE: SketchStateType = {
-	sketch: SketchState.idle,
-	canvas: CanvasState.idle,
-	player: PlayerState.idle,
-	controls: ControlsState.hidden,
+	sketch: 'idle',
+	canvas: 'idle',
+	player: 'idle',
+	controls: 'hidden',
 }
 
 export const SKETCH_ACTIONS: SketchActionsType = {
 	sketch: {
-		[SketchState.idle]: [SketchAction.load],
-		[SketchState.active]: [SketchAction.exit],
+		idle: ['load'],
+		active: ['exit'],
 	},
 	canvas: {
-		[CanvasState.idle]: [CanvasAction.play],
-		[CanvasState.playing]: [
-			CanvasAction.pause,
-			CanvasAction.clear,
-			CanvasAction.stop,
-		],
-		[CanvasState.paused]: [
-			CanvasAction.play,
-			CanvasAction.clear,
-			CanvasAction.stop,
-		],
-		[CanvasState.stopped]: [CanvasAction.play],
+		idle: ['play'],
+		playing: ['pause', 'clear', 'stop'],
+		paused: ['play', 'clear', 'stop'],
+		stopped: ['play'],
 	},
 	player: {
-		[PlayerState.idle]: [PlayerAction.play],
-		[PlayerState.playing]: [
-			PlayerAction.pause,
-			PlayerAction.stop,
-			PlayerAction.clear,
-			PlayerAction.snap,
-		],
-		[PlayerState.paused]: [
-			PlayerAction.play,
-			PlayerAction.stop,
-			PlayerAction.clear,
-			PlayerAction.snap,
-		],
-		[PlayerState.stopped]: [PlayerAction.play],
+		idle: ['play'],
+		playing: ['pause', 'stop', 'clear', 'snap'],
+		paused: ['play', 'stop', 'clear', 'snap'],
+		stopped: ['play'],
 	},
 	controls: {
-		[ControlsState.pristine]: [ControlsAction.update],
-		[ControlsState.updated]: [ControlsAction.update],
+		pristine: ['update'],
+		updated: ['update'],
 	},
 }
 
 export const SKETCH_TRANSITIONS: SketchTransitionsType = {
 	sketch: {
-		[SketchState.idle]: {
-			[SketchEvent.load]: SketchState.loading,
+		idle: {
+			load: 'loading',
 		},
-		[SketchState.loading]: {
-			[SketchEvent.loadOk]: SketchState.active,
-			[SketchEvent.loadNok]: SketchState.error,
+		loading: {
+			loadOk: 'active',
+			loadNok: 'error',
 		},
-		[SketchState.active]: {
-			[PlayerEvent.stop]: SketchState.idle,
-			[SketchEvent.exitNok]: SketchState.error,
+		active: {
+			stop: 'idle',
+			exitNok: 'error',
 		},
 	},
 	canvas: {
-		[CanvasState.idle]: {
-			[PlayerEvent.play]: CanvasState.playing,
-			[SketchEvent.loadNok]: CanvasState.error,
+		idle: {
+			play: 'playing',
+			loadNok: 'error',
 		},
-		[CanvasState.playing]: {
-			[PlayerEvent.pause]: CanvasState.paused,
-			[PlayerEvent.stop]: CanvasState.idle,
-			[PlayerEvent.clear]: CanvasState.playing,
-			[PlayerEvent.snap]: CanvasState.playing,
+		playing: {
+			pause: 'paused',
+			stop: 'idle',
+			clear: 'playing',
+			snap: 'playing',
 		},
-		[CanvasState.paused]: {
-			[PlayerEvent.play]: CanvasState.playing,
-			[PlayerEvent.stop]: CanvasState.idle,
-			[PlayerEvent.clear]: CanvasState.paused,
-			[PlayerEvent.snap]: CanvasState.paused,
+		paused: {
+			play: 'playing',
+			stop: 'idle',
+			clear: 'paused',
+			snap: 'paused',
 		},
 	},
 	controls: {
-		[ControlsState.pristine]: {
-			[ControlsEvent.update]: ControlsState.updated,
-			[PlayerEvent.stop]: ControlsState.hidden,
-			[PlayerEvent.pause]: ControlsState.pristine,
+		pristine: {
+			update: 'updated',
+			stop: 'hidden',
+			pause: 'pristine',
 		},
-		[ControlsState.updated]: {
-			[PlayerEvent.clear]: ControlsState.pristine,
-			[PlayerEvent.stop]: ControlsState.hidden,
-			[PlayerEvent.pause]: ControlsState.updated,
+		updated: {
+			clear: 'pristine',
+			stop: 'hidden',
+			pause: 'updated',
 		},
-		[ControlsState.hidden]: {
-			[PlayerEvent.play]: ControlsState.pristine,
+		hidden: {
+			play: 'pristine',
 		},
 	},
 	player: PLAYER_TRANSITIONS,

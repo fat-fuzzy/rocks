@@ -2,6 +2,7 @@
 	import type {DocContentType, Slug} from '$types'
 
 	import ui from '@fat-fuzzy/ui'
+	import CardContent from '$lib/ui/CardContent.svelte'
 
 	const {Feedback} = ui.blocks
 
@@ -20,12 +21,17 @@
 		isEmpty?: boolean
 		isError?: boolean
 	} = $props()
-
-	const dedupedTags = $derived(Array.from(new Set(tags)))
 </script>
 
 <div class="maki:block">
-	<Feedback context="prose" variant="bare" asset="default" size="md">
+	<Feedback
+		context="prose"
+		size="md"
+		asset="none"
+		surface={content_type === 'section' ? 'accent' : 'primary'}
+		variant="bare"
+		surfaceLightness={content_type === 'section' ? 1 : 0}
+	>
 		{#if isError}
 			<p>Failed to load content for {name}.</p>
 		{:else if isEmpty}
@@ -44,31 +50,8 @@
 					</li>
 				</ul>
 			</div>
-		{:else if isHidden}
-			<p>
-				Hidden {content_type}:
-				<span class="font:bold">
-					{name}
-				</span>
-			</p>
 		{:else}
-			<p class="font:bold">{name}</p>
-			{#if tags?.length}
-				<div class="l:stack:xs">
-					<p>Available Tags:</p>
-					<div>
-						<ul class="tags unstyled l:flex:xs">
-							{#each dedupedTags as tag, i (i)}
-								<li class="variant:outline raviolink shape:pill font:xs">
-									<span class="maki:inline"> {tag}</span>
-								</li>
-							{/each}
-						</ul>
-					</div>
-				</div>
-			{:else}
-				<p>Add a Block to get started</p>
-			{/if}
+			<CardContent {content_type} {name} {tags} {isHidden} />
 		{/if}
 	</Feedback>
 </div>

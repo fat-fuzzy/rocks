@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {ActionDoc, Preset, IPresetService, DocFormat} from '$types'
+	import type {ActionDoc, Preset, Slug, IPresetService} from '$types'
 
 	import {getContext} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
@@ -16,7 +16,7 @@
 		cta: ActionDoc
 		preset: string | null
 		query: string
-		formats: DocFormat[]
+		formats: Slug[]
 	} = $props()
 
 	let presetService: IPresetService = getContext('presetService')
@@ -46,7 +46,7 @@
 
 <div class="w:full noprint">
 	<div class={`l:flex grow justify:${currentPreset ? 'between' : 'end'}`}>
-		{#if currentPreset && cta}
+		{#if currentPreset}
 			<h2 class="font:semibold">
 				Preset:
 				{currentPreset.name}
@@ -59,9 +59,9 @@
 						color="accent"
 						asset="plus"
 						assetType="svg"
-						label="Add Section"
+						label="New Section"
 						size="xs"
-						variant="fill"
+						variant="outline"
 						cta="save"
 						{formats}
 					/>
@@ -89,19 +89,22 @@
 					/>
 				{/if}
 			</div>
-		{:else if cta === 'edit'}
-			<div class="maki:block">
-				<DialogSaveSection
-					id="add-section"
-					color="accent"
-					asset="plus"
-					assetType="svg"
-					variant="fill"
-					label="Add Section"
-					cta="save"
-					{formats}
-				/>
-			</div>
+		{:else}
+			<h2 class="font:semibold">New Doc</h2>
+			{#if cta === 'edit'}
+				<div class="maki:block">
+					<DialogSaveSection
+						id="add-section"
+						color="accent"
+						asset="plus"
+						assetType="svg"
+						variant="outline"
+						label="New Section"
+						cta="save"
+						{formats}
+					/>
+				</div>
+			{/if}
 		{/if}
 	</div>
 </div>
