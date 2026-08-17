@@ -74,6 +74,7 @@
 		legend="Language"
 		value={currentLanguage}
 		size="2xs"
+		justify="start"
 		{color}
 		{variant}
 		items={languageItems}
