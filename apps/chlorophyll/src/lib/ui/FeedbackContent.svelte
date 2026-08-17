@@ -59,11 +59,13 @@
 				</span>
 			</p>
 		{:else}
-			<p class="font:bold">{name}</p>
-			{#if tags?.length}
-				<div class="l:stack:xs">
-					<p>Available Tags:</p>
-					<div>
+			<div class="l:stack:xs">
+				<div class="l:flex justify:between">
+					<h3>{name}</h3>
+					<h4 class="font:semibold font:heading text:end">Tags</h4>
+				</div>
+				{#if tags?.length}
+					<div class="w:full l:stack:xs justify:end">
 						<ul class="tags unstyled l:flex:xs">
 							{#each dedupedTags as tag, i (i)}
 								<li class="variant:outline raviolink shape:pill font:xs">
@@ -72,10 +74,10 @@
 							{/each}
 						</ul>
 					</div>
-				</div>
-			{:else}
-				<p>Add a Block to get started</p>
-			{/if}
+				{:else}
+					<p>Add a Block to get started</p>
+				{/if}
+			</div>
 		{/if}
 	</Feedback>
 </div>
