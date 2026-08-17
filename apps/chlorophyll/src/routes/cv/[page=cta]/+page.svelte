@@ -51,7 +51,7 @@
 
 	let preset: string | null = $derived(page.url.searchParams.get('preset'))
 
-	let availableSections = $derived(Object.values(docService.docIndex.sections))
+	let availableSections = $derived(docService.getSections({language, format}))
 
 	let selectedSections = $derived(
 		page.url.searchParams

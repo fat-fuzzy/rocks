@@ -26,6 +26,7 @@ import {SCHEMA_VERSION} from '$config/setup'
 import WorkerBridge from '$lib/workers/worker-bridge'
 import {getBridge} from '$lib/services/bridge'
 
+import {sortByRankAsc} from '$lib/common/sort'
 import {getSectionKey, getBlockKey} from '$lib/common/format'
 
 import {
@@ -473,7 +474,7 @@ export default class DocService implements IDocService {
 	 * @returns Array: {name, section}[]
 	 */
 	getSections(options: {language: Slug; format: DocLanguage}): Section[] {
-		return Object.entries(this.docIndex.sections).reduce(
+		const sectionsFound = Object.entries(this.docIndex.sections).reduce(
 			(sections: Section[], [key, value]) => {
 				const [language, format] = key.split(':')
 				if (language === options.language) {
@@ -486,6 +487,9 @@ export default class DocService implements IDocService {
 			},
 			[],
 		)
+		const result = sectionsFound.sort(sortByRankAsc)
+
+		return result
 	}
 
 	/**
