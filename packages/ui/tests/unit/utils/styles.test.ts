@@ -88,7 +88,9 @@ describe('style.ts - a module to build class names from props', () => {
 
 			const classes = result.split(' ')
 			expect(classes).toContain('ravioli:md')
-			expect(classes).toContain('l:grid:md')
+			expect(classes).toContain('l:grid')
+			expect(classes).not.toContain('l:grid:md')
+			expect(classes).toContain('size:md')
 			expect(classes).toContain('color:primary')
 			expect(classes.length).toBeGreaterThan(3)
 		})

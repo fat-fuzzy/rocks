@@ -179,7 +179,7 @@ function getLayoutStyles(props: UiLayoutProps): string {
 		let layoutClass = getClass('layout', layoutBase)
 
 		// FIXME: fix layout + size inconsistencies later
-		if (size && layout !== 'sidebar') {
+		if (size && layout !== 'sidebar' && layout !== 'grid') {
 			layoutClass = appendModifier(layoutClass, size)
 		}
 
