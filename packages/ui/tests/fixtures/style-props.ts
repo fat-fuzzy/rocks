@@ -79,7 +79,7 @@ const PROPS_LAYOUT: {props: UiLayoutProps; expected: string}[] = [
 			layout: 'stack',
 			size: '2xl',
 		},
-		expected: 'l:stack:2xl',
+		expected: 'l:stack:2xl size:2xl',
 	},
 	{
 		props: {
@@ -87,14 +87,14 @@ const PROPS_LAYOUT: {props: UiLayoutProps; expected: string}[] = [
 			size: 'xl',
 			threshold: 'md',
 		},
-		expected: 'l:switcher:xl th:md',
+		expected: 'l:switcher:xl th:md size:xl',
 	},
 	{
 		props: {
 			layout: 'grid',
 			size: 'lg',
 		},
-		expected: 'l:grid:lg',
+		expected: 'l:grid size:lg',
 	},
 	{
 		props: {
@@ -103,7 +103,8 @@ const PROPS_LAYOUT: {props: UiLayoutProps; expected: string}[] = [
 			shape: 'round',
 			threshold: 'md',
 		},
-		expected: 'l:switcher:md th:md align:center justify:center shape:round',
+		expected:
+			'l:switcher:md th:md size:md align:center justify:center shape:round',
 	},
 	{
 		props: {
@@ -112,7 +113,7 @@ const PROPS_LAYOUT: {props: UiLayoutProps; expected: string}[] = [
 			shape: 'pill',
 			threshold: 'md',
 		},
-		expected: 'l:switcher:md th:md shape:pill',
+		expected: 'l:switcher:md th:md size:md shape:pill',
 	},
 	{
 		props: {
@@ -126,14 +127,14 @@ const PROPS_LAYOUT: {props: UiLayoutProps; expected: string}[] = [
 			size: 'md',
 			layer: '1',
 		},
-		expected: 'l:grid:md layer:1',
+		expected: 'l:grid size:md layer:1',
 	},
 	{
 		props: {
 			layout: 'reveal',
-			position: 'sticky',
+			position: 'fixed',
 		},
-		expected: 'l:reveal sticky',
+		expected: 'l:reveal fixed',
 	},
 	{
 		props: {
@@ -207,7 +208,7 @@ const PROPS_FEEDBACK: {
 			context: 'form',
 		},
 		expected:
-			'size:lg font:lg variant:fill status:info emoji:info feedback:form bg:info:100 l:burrito:lg',
+			'size:lg font:lg variant:fill status:info emoji:info feedback:form surface:1:info l:burrito:lg',
 	},
 	{
 		props: {
@@ -222,7 +223,7 @@ const PROPS_FEEDBACK: {
 			context: 'prose',
 		},
 		expected:
-			'l:stack:md align:center justify:center shape:round font:md variant:outline status:default emoji:default feedback:prose bg:default:100 raviolink',
+			'l:stack:md size:md align:center justify:center shape:round font:md variant:outline status:default emoji:default feedback:prose surface:1:default raviolink',
 	},
 	{
 		props: {
@@ -238,7 +239,7 @@ const PROPS_FEEDBACK: {
 			context: 'prose',
 		},
 		expected:
-			'l:stack:md align:center justify:center shape:round font:md variant:outline status:default feedback:prose bg:default:100 raviolink',
+			'l:stack:md size:md align:center justify:center shape:round font:md variant:outline status:default feedback:prose surface:1:default raviolink',
 	},
 ]
 
