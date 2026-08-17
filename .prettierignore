@@ -45,6 +45,7 @@ packages/validation/src/ajv/out/
 packages/ui/src/lib/generated/
 packages/validation/src/ajv/out/validate.ajv.mjs
 packages/validation/src/ajv/config/validate.config.mjs
+apps/chlorophyll/src/lib/generated/ajv/validate.ajv.mjs
 
 ## Generated code
 packages/gfx/test/index.html
