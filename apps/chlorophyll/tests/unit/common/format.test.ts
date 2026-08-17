@@ -12,6 +12,7 @@ const SECTION_KEY_OPTIONS = {
 	format: 'long',
 	name: 'new-section',
 }
+const SECTION_KEY = Object.values(SECTION_KEY_OPTIONS).join(':')
 
 const SUBSECTION_KEY_OPTIONS = {
 	language: 'en',
@@ -20,6 +21,8 @@ const SUBSECTION_KEY_OPTIONS = {
 	name: 'new-subsection',
 }
 
+const SUBSECTION_KEY = Object.values(SUBSECTION_KEY_OPTIONS).join(':')
+
 const BLOCK_KEY_OPTIONS = {
 	language: 'en',
 	format: 'long',
@@ -27,6 +30,14 @@ const BLOCK_KEY_OPTIONS = {
 	subsection: SUBSECTION_KEY_OPTIONS.name,
 	name: 'new-block',
 }
+
+const BLOCK_KEY = Object.values(BLOCK_KEY_OPTIONS).join(':')
+const BLOCK_KEY_NO_GROUP = [
+	BLOCK_KEY_OPTIONS.language,
+	BLOCK_KEY_OPTIONS.format,
+	BLOCK_KEY_OPTIONS.section,
+	BLOCK_KEY_OPTIONS.name,
+].join(':')
 
 const PRESET_KEY_OPTIONS = {
 	name: 'new-preset',
@@ -45,7 +56,7 @@ describe('format.ts - formatting utilities', () => {
 			SECTION_KEY_OPTIONS.name,
 		)
 
-		expect(key).toBe(Object.values(SECTION_KEY_OPTIONS).join(':'))
+		expect(key).toBe(SECTION_KEY)
 	})
 
 	test('getSubsectionKey', () => {
@@ -56,7 +67,7 @@ describe('format.ts - formatting utilities', () => {
 			SUBSECTION_KEY_OPTIONS.name,
 		)
 
-		expect(key).toBe(Object.values(SUBSECTION_KEY_OPTIONS).join(':'))
+		expect(key).toBe(SUBSECTION_KEY)
 	})
 
 	test('getBlockKey', () => {
@@ -68,10 +79,10 @@ describe('format.ts - formatting utilities', () => {
 			BLOCK_KEY_OPTIONS.subsection,
 		)
 
-		expect(key).toBe(Object.values(BLOCK_KEY_OPTIONS).join(':'))
+		expect(key).toBe(BLOCK_KEY)
 	})
 
-	test('getBlockKey- missing subsection', () => {
+	test('getBlockKey - missing subsection', () => {
 		const key = getBlockKey(
 			BLOCK_KEY_OPTIONS.language,
 			BLOCK_KEY_OPTIONS.format,
@@ -79,14 +90,7 @@ describe('format.ts - formatting utilities', () => {
 			BLOCK_KEY_OPTIONS.name,
 		)
 
-		expect(key).toBe(
-			Object.values([
-				BLOCK_KEY_OPTIONS.language,
-				BLOCK_KEY_OPTIONS.format,
-				BLOCK_KEY_OPTIONS.section,
-				BLOCK_KEY_OPTIONS.name,
-			]).join(':'),
-		)
+		expect(key).toBe(BLOCK_KEY_NO_GROUP)
 	})
 
 	test('getPresetKey', () => {
