@@ -27,9 +27,9 @@
 			<div class="card l:flex:4xs">
 				<h3>{name}</h3>
 			</div>
-			{#if tags?.length}
-				<h4 class="font:semibold font:heading text:end">{content_type} tags</h4>
-			{/if}
+			<h4 class="font:semibold font:heading text:end">
+				{content_type} tags
+			</h4>
 		</div>
 		<div class="l:flex justify:between">
 			{#if tags?.length}
@@ -43,7 +43,7 @@
 					</ul>
 				</div>
 			{:else}
-				<p>Add a Block to get started</p>
+				<p class="w:full text:end">Add a Block to get started</p>
 			{/if}
 		</div>
 	</div>
