@@ -6,6 +6,7 @@
 	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
 
+	import {DOC_LANGUAGE, DOC_FORMAT} from '$config/setup'
 	import DialogSaveLanguage from '$lib/ui/controls/settings/DialogSaveLanguage.svelte'
 	import DialogSaveFormat from '$lib/ui/controls/settings/DialogSaveFormat.svelte'
 
@@ -29,12 +30,12 @@
 
 	let currentLanguage = $derived.by(() => {
 		const lang = page.url.searchParams.get('language')
-		return lang ? [lang] : ['en']
+		return lang ? [lang] : [DOC_LANGUAGE]
 	})
 
 	let currentFormat = $derived.by(() => {
 		const fmt = page.url.searchParams.get('format')
-		return fmt ? [fmt] : ['long']
+		return fmt ? [fmt] : [DOC_FORMAT]
 	})
 
 	// @ts-expect-error FIXME: add validator

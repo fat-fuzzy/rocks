@@ -20,7 +20,7 @@ import type {
 	Subsection,
 } from '$types'
 
-import {PUBLIC_DOC_LANGUAGE, PUBLIC_DOC_FORMAT} from '$app/env/public'
+import {DOC_LANGUAGE, DOC_FORMAT} from '$config/setup'
 import {SCHEMA_VERSION} from '$config/setup'
 
 import WorkerBridge from '$lib/workers/worker-bridge'
@@ -48,8 +48,8 @@ export default class DocService implements IDocService {
 	error = $state(false)
 	base: FrontmatterBase = $state({
 		schema_version: SCHEMA_VERSION,
-		languages: [PUBLIC_DOC_LANGUAGE as DocLanguage],
-		formats: [PUBLIC_DOC_FORMAT as Slug],
+		languages: [DOC_LANGUAGE as DocLanguage],
+		formats: [DOC_FORMAT as Slug],
 		tags: [],
 		settings: [],
 	})
@@ -82,8 +82,8 @@ export default class DocService implements IDocService {
 		this.content = {}
 		this.base = {
 			schema_version: SCHEMA_VERSION,
-			languages: [PUBLIC_DOC_LANGUAGE as DocLanguage],
-			formats: [PUBLIC_DOC_FORMAT as Slug],
+			languages: [DOC_LANGUAGE as DocLanguage],
+			formats: [DOC_FORMAT as Slug],
 			tags: [],
 			settings: [],
 		}

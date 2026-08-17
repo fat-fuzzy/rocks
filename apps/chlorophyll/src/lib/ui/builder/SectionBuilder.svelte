@@ -4,6 +4,7 @@
 	import {getContext, onMount} from 'svelte'
 
 	import {isHidden, checkTags} from '$data/cv/cv-display'
+	import {DOC_LANGUAGE, DOC_FORMAT} from '$config/setup'
 
 	import BlockBuilder from '$lib/ui/builder/BlockBuilder.svelte'
 	import FeedbackContent from '$lib/ui/FeedbackContent.svelte'
@@ -15,8 +16,8 @@
 		cta = 'build',
 		name,
 		selectedTags,
-		language = 'en',
-		format = 'long',
+		language = DOC_LANGUAGE,
+		format = DOC_FORMAT,
 	}: {
 		cta: 'build' | 'preview' | 'print'
 		selectedTags: string[]

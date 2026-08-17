@@ -11,7 +11,7 @@
 	import {page} from '$app/state'
 
 	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
-	import {PUBLIC_DOC_FORMAT} from '$app/env/public'
+	import {DOC_FORMAT} from '$config/setup'
 
 	const {Button, Input, Feedback} = ui.blocks
 	const {FormValidator} = ui.utils
@@ -100,7 +100,7 @@
 			return
 		}
 
-		let fromFormat = PUBLIC_DOC_FORMAT
+		let fromFormat = DOC_FORMAT
 		if (sourceFormat) {
 			fromFormat = sourceFormat
 		}
