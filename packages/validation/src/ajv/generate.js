@@ -126,21 +126,18 @@ async function generate() {
 	// 6. Write output
 	const outDirPath = config.validation.outDir ?? modulePath
 	const outDir = path.dirname(outDirPath)
-	if (!fs.existsSync(outDir)) {
-		fs.mkdirSync(outDir, {recursive: true})
-	}
 
 	// If consumer config specifies outDir, write there instead of the default
-	const effectiveModulePath = config?.validation?.outDir
-		? path.join(config.validation.outDir, path.basename(modulePath))
+	const effectiveModulePath = outDir
+		? path.join(outDir, path.basename(modulePath))
 		: modulePath
 
-	const effectiveHashPath = config?.validation?.outDir
-		? path.join(config.validation.outDir, path.basename(hashFilePath))
+	const effectiveHashPath = outDir
+		? path.join(outDir, path.basename(hashFilePath))
 		: hashFilePath
 
-	if (config?.validation?.outDir && !fs.existsSync(config.validation.outDir)) {
-		fs.mkdirSync(config.validation.outDir, {recursive: true})
+	if (outDir && !fs.existsSync(outDir)) {
+		fs.mkdirSync(outDir, {recursive: true})
 	}
 
 	fs.writeFileSync(effectiveModulePath, moduleCode)
