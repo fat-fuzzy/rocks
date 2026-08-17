@@ -26,7 +26,7 @@ p + [class*='feedback:'] {
 	font-size: var(--font-size);
 	padding-inline: var(--ui-size-sm);
 	padding-block: var(--ui-size-sm);
-	border: var(--border-width-xl) solid var(--color-accent);
+	border: var(--border-width-md) dotted var(--color-accent);
 	background-color: var(--color-bg);
 
 	.status {

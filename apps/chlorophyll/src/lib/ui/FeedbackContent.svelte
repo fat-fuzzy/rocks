@@ -26,11 +26,11 @@
 <div class="maki:block">
 	<Feedback
 		context="prose"
-		variant="bare"
 		size="md"
 		asset="none"
-		surface="primary"
-		surfaceLightness={0}
+		surface={content_type === 'section' ? 'accent' : 'primary'}
+		variant="bare"
+		surfaceLightness={content_type === 'section' ? 1 : 0}
 	>
 		{#if isError}
 			<p>Failed to load content for {name}.</p>
