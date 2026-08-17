@@ -12,7 +12,7 @@
 	import ui from '@fat-fuzzy/ui'
 
 	import {page} from '$app/state'
-	import {PUBLIC_DOC_LANGUAGE, PUBLIC_DOC_FORMAT} from '$app/env/public'
+	import {DOC_LANGUAGE, DOC_FORMAT} from '$config/setup'
 
 	import SectionEditor from '$lib/ui/editor/SectionEditor.svelte'
 	import SectionBuilder from '$lib/ui/builder/SectionBuilder.svelte'
@@ -42,16 +42,15 @@
 	let editing = $derived(cta === 'build' || cta === 'edit')
 
 	let language = $derived(
-		(page.url.searchParams.get('language') ||
-			PUBLIC_DOC_LANGUAGE) as DocLanguage,
+		(page.url.searchParams.get('language') || DOC_LANGUAGE) as DocLanguage,
 	)
 	let format = $derived(
-		(page.url.searchParams.get('format') || PUBLIC_DOC_FORMAT) as Slug,
+		(page.url.searchParams.get('format') || DOC_FORMAT) as Slug,
 	)
 
 	let preset: string | null = $derived(page.url.searchParams.get('preset'))
 
-	let availableSections = $derived(Object.values(docService.docIndex.sections))
+	let availableSections = $derived(docService.getSections({language, format}))
 
 	let selectedSections = $derived(
 		page.url.searchParams

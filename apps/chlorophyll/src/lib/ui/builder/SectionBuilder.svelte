@@ -4,6 +4,7 @@
 	import {getContext, onMount} from 'svelte'
 
 	import {isHidden, checkTags} from '$data/cv/cv-display'
+	import {DOC_LANGUAGE, DOC_FORMAT} from '$config/setup'
 
 	import BlockBuilder from '$lib/ui/builder/BlockBuilder.svelte'
 	import FeedbackContent from '$lib/ui/FeedbackContent.svelte'
@@ -15,8 +16,8 @@
 		cta = 'build',
 		name,
 		selectedTags,
-		language = 'en',
-		format = 'long',
+		language = DOC_LANGUAGE,
+		format = DOC_FORMAT,
 	}: {
 		cta: 'build' | 'preview' | 'print'
 		selectedTags: string[]
@@ -131,6 +132,7 @@
 			{#each subsections as subsection, i (i)}
 				{@const blocks = subsection.blocks}
 				{@const tags = subsection.blocks.flatMap((b) => b.tags)}
+				{@const tagSet = new Set(tags)}
 				{@const tagsFound = checkTags(tags, selectedTags)}
 
 				{#if tagsFound.length}
@@ -153,6 +155,7 @@
 								name={section.name}
 								content_type="block"
 								isHidden={true}
+								tags={Array.from(tagSet)}
 							/>
 						{:else if block.tags.length === 0 || blockTagsFound.length}
 							<BlockBuilder {...block} content={block.content} {selectedTags} />
@@ -161,7 +164,11 @@
 				{:else if cta === 'build'}
 					{@const contentName =
 						subsection.name !== section.name ? subsection.name : section.name}
-					<FeedbackContent name={contentName} content_type="block" {tags} />
+					<FeedbackContent
+						name={contentName}
+						content_type="block"
+						tags={Array.from(tagSet)}
+					/>
 				{/if}
 			{/each}
 		{/if}

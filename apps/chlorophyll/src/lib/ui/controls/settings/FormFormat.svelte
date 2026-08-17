@@ -11,6 +11,7 @@
 	import {page} from '$app/state'
 
 	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
+	import {DOC_FORMAT} from '$config/setup'
 
 	const {Button, Input, Feedback} = ui.blocks
 	const {FormValidator} = ui.utils
@@ -99,9 +100,13 @@
 			return
 		}
 
+		let fromFormat = DOC_FORMAT
+		if (sourceFormat) {
+			fromFormat = sourceFormat
+		}
 		await docService.addFormat({
 			name: newFormat,
-			sourceFormat: sourceFormat ?? 'long',
+			sourceFormat: fromFormat,
 		})
 
 		dialogActor.close()
@@ -200,7 +205,7 @@
 						onblur={updateSourceFormat}
 						onfocus={handleFocus}
 					>
-						<option class="size:xs font:xs" value={null}>
+						<option class="size:xs font:xs" value="">
 							No format selected
 						</option>
 						{#each docService.base.formats as lang, i (i)}

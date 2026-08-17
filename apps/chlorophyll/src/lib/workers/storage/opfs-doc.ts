@@ -107,22 +107,18 @@ export async function saveFormat(options: {
 		const opfsContent = Object.values(sourceDoc.data)
 
 		for (const formatData of Object.values(opfsContent)) {
-			const sections = Object.values(formatData)
+			let unsafeSection
+			if (isRawSection(formatData)) {
+				unsafeSection = rawSectionToSection(formatData)
+			}
 
-			for (const sectionData of Object.values(sections)) {
-				let unsafeSection
-				if (isRawSection(sectionData)) {
-					unsafeSection = rawSectionToSection(sectionData)
-				}
+			if (unsafeSection) {
+				const section = parseSection(
+					`Section ${unsafeSection.name}`,
+					unsafeSection,
+				)
 
-				if (unsafeSection) {
-					const section = parseSection(
-						`Section ${unsafeSection.name}`,
-						unsafeSection,
-					)
-
-					await saveSectionToOPFS(targetParentHandle, section, 'json')
-				}
+				await saveSectionToOPFS(targetParentHandle, section, 'json')
 			}
 		}
 	}
@@ -438,7 +434,9 @@ export async function getContentDataForLanguage(
 
 	try {
 		contentHandle = await opfsRoot.getDirectoryHandle('content')
-		parentHandle = await contentHandle.getDirectoryHandle(language)
+		parentHandle = await contentHandle.getDirectoryHandle(language, {
+			create: true,
+		})
 
 		const data = await readDirectoryRecursive(parentHandle)
 
@@ -453,7 +451,9 @@ export async function getContentDataForLanguage(
 			}
 		}
 
-		throw new Error('Load all content failed', {cause: error})
+		throw new Error(`Load content failed for language: ${language}`, {
+			cause: error,
+		})
 	}
 }
 
@@ -472,7 +472,9 @@ export async function getContentDataForFormat(
 	try {
 		contentHandle = await opfsRoot.getDirectoryHandle('content')
 		languageHandle = await contentHandle.getDirectoryHandle(language)
-		formatHandle = await languageHandle.getDirectoryHandle(format)
+		formatHandle = await languageHandle.getDirectoryHandle(format, {
+			create: true,
+		})
 
 		const data = await readDirectoryRecursive(formatHandle)
 
@@ -487,6 +489,6 @@ export async function getContentDataForFormat(
 			}
 		}
 
-		throw new Error('Load all content failed', {cause: error})
+		throw new Error(`Load content failed for format: ${format}`, {cause: error})
 	}
 }
