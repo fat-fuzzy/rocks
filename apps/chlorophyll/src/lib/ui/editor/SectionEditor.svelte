@@ -155,6 +155,7 @@
 				{#each subsections as subsection, i (i)}
 					{@const blocks = subsection.blocks}
 					{@const tags = subsection.blocks.flatMap((b) => b.tags)}
+					{@const tagSet = new Set(tags)}
 					{@const tagsFound = checkTags(tags, selectedTags)}
 					{@const subsectionName =
 						subsection.name !== section.name ? subsection.name : undefined}
@@ -180,6 +181,7 @@
 									name={section.name}
 									content_type="block"
 									isHidden={true}
+									tags={Array.from(tagSet)}
 								/>
 							{:else if block.tags.length === 0 || blockTagsFound.length}
 								{#if blockLoaded}
@@ -205,7 +207,6 @@
 					{:else}
 						{@const contentName =
 							subsection.name !== section.name ? subsection.name : section.name}
-						{@const tagSet = new Set(tags)}
 						<FeedbackContent
 							name={contentName}
 							content_type="block"
