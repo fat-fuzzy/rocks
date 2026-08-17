@@ -17,9 +17,18 @@
 </script>
 
 {#if content_type === 'section' && isHidden}
-	<div class="card l:flex:4xs justify:between">
-		<h3>{name}</h3>
-		<h4 class="font:semibold font:heading text:end">{content_type} (hidden)</h4>
+	<div class="l:stack:xs">
+		<div class="card l:flex:4xs justify:between">
+			<h3>{name}</h3>
+			<h4 class="font:semibold font:heading text:end">{content_type} Tags</h4>
+		</div>
+		<div class="w:full l:stack:xs justify:end">
+			<ul class="tags unstyled l:flex:xs">
+				<li class="variant:outline raviolink shape:pill font:xs">
+					<span class="maki:inline"> hidden</span>
+				</li>
+			</ul>
+		</div>
 	</div>
 {:else}
 	<div class="l:stack:xs">
