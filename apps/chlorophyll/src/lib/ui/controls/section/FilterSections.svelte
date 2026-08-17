@@ -6,7 +6,7 @@
 	import ui from '@fat-fuzzy/ui'
 
 	import {page} from '$app/state'
-	import {PUBLIC_DOC_FORMAT, PUBLIC_DOC_LANGUAGE} from '$app/env/public'
+	import {DOC_LANGUAGE, DOC_FORMAT} from '$config/setup'
 
 	const {InputGroup} = ui.blocks
 
@@ -16,12 +16,11 @@
 	let docService: IDocService = getContext('docService')
 
 	let format = $derived(
-		(page.url.searchParams.get('format') || PUBLIC_DOC_FORMAT) as Slug,
+		(page.url.searchParams.get('format') || DOC_FORMAT) as Slug,
 	)
 
 	let language = $derived(
-		(page.url.searchParams.get('language') ||
-			PUBLIC_DOC_LANGUAGE) as DocLanguage,
+		(page.url.searchParams.get('language') || DOC_LANGUAGE) as DocLanguage,
 	)
 
 	let sections = $derived(

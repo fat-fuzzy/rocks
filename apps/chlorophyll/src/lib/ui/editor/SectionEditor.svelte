@@ -5,6 +5,7 @@
 
 	import {isHidden, checkTags} from '$data/cv/cv-display'
 
+	import {DOC_LANGUAGE, DOC_FORMAT} from '$config/setup'
 	import BlockPlaceholder from '$lib/ui/editor/BlockPlaceholder.svelte'
 	import BlockEditor from '$lib/ui/editor/BlockEditor.svelte'
 	import DialogSaveBlock from '$lib/ui/controls/block/DialogSaveBlock.svelte'
@@ -16,8 +17,8 @@
 	let {
 		name,
 		selectedTags,
-		language = 'en',
-		format = 'long',
+		language = DOC_LANGUAGE,
+		format = DOC_FORMAT,
 	}: {
 		selectedTags: string[]
 		name: Slug

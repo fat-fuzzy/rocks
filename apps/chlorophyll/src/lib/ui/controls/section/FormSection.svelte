@@ -15,7 +15,7 @@
 	import {page} from '$app/state'
 
 	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
-	import {PUBLIC_DOC_FORMAT, PUBLIC_DOC_LANGUAGE} from '$app/env/public'
+	import {DOC_LANGUAGE, DOC_FORMAT} from '$config/setup'
 
 	const {Button, Input, InputGroup, Feedback} = ui.blocks
 	const {FormValidator} = ui.utils
@@ -133,8 +133,8 @@
 
 	function checkSectionExists(sectionName: string): Section | undefined {
 		return docService.getSectionByName({
-			language: PUBLIC_DOC_LANGUAGE as DocLanguage,
-			format: PUBLIC_DOC_FORMAT as Slug,
+			language: DOC_LANGUAGE as DocLanguage,
+			format: DOC_FORMAT as Slug,
 			name: sectionName,
 		})
 	}

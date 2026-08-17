@@ -6,7 +6,7 @@ import type {
 	Slug,
 } from '$types'
 
-import {SCHEMA_VERSION} from '$config/setup'
+import {SCHEMA_VERSION, DOC_LANGUAGE, DOC_FORMAT} from '$config/setup'
 
 const PATHS_CV_L10N_FORMATS: MarkdownStructure = {
 	en: {
@@ -101,8 +101,8 @@ const DEFAULT_STRUCTURES: {
 } = {
 	base: {
 		schema_version: SCHEMA_VERSION,
-		languages: ['en'],
-		formats: ['long'],
+		languages: [DOC_LANGUAGE],
+		formats: [DOC_FORMAT],
 		tags: [
 			{
 				title: 'Twilight Z',
@@ -116,7 +116,7 @@ const DEFAULT_STRUCTURES: {
 		{
 			schema_version: SCHEMA_VERSION,
 			seed_type: 'root',
-			format: 'long',
+			format: DOC_FORMAT,
 			sections: [],
 		},
 	],
@@ -126,8 +126,8 @@ const DEFAULT_CONTENT: SeedDoc[] = [
 	{
 		schema_version: SCHEMA_VERSION,
 		seed_type: 'root',
-		language: 'en',
-		format: 'long',
+		language: DOC_LANGUAGE,
+		format: DOC_FORMAT,
 		sections: [[]],
 	},
 ]
