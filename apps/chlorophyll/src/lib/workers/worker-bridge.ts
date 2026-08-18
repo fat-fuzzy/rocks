@@ -11,8 +11,8 @@ import type {
 	Section,
 	Block,
 	Preset,
-	OPFSDocTree,
-	OPFSPresetTree,
+	OPFSTreeDoc,
+	OPFSTreePreset,
 	SeedDoc,
 	PendingRequest,
 	ResponsePayload,
@@ -23,7 +23,8 @@ import type {
 	Slug,
 	Rank,
 	FrontmatterStructure,
-	OPFSBaseTree,
+	OPFSTreeBase,
+	Uuid,
 } from '$types'
 
 const REQUEST_TIMEOUT_MS = 100000
@@ -145,9 +146,9 @@ export default class WorkerBridge {
 	}
 
 	restoreFromBackup(payload: {
-		content: OPFSDocTree
-		presets: OPFSPresetTree
-		base: OPFSBaseTree
+		content: OPFSTreeDoc
+		presets: OPFSTreePreset
+		base: OPFSTreeBase
 	}) {
 		return this.send({
 			type: 'RESTORE_FROM_BACKUP',
@@ -213,6 +214,7 @@ export default class WorkerBridge {
 		name: Slug
 		title?: string
 		rank: Rank
+		parentId: Uuid
 		structure: FrontmatterStructure
 		languages: DocLanguage[]
 		formats: Slug[]

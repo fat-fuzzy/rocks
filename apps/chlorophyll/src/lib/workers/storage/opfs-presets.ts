@@ -4,8 +4,8 @@
 import type {
 	DocMeta,
 	DocPath,
-	OPFSDocTree,
-	OPFSPresetTree,
+	OPFSTreeDoc,
+	OPFSTreePreset,
 	Preset,
 } from '$types'
 import {sanitizeFileName} from '$lib/common/sanitize'
@@ -20,7 +20,7 @@ import {
 export async function loadPreset(options: {
 	meta: DocMeta
 	path: DocPath
-}): Promise<{data: OPFSDocTree}> {
+}): Promise<{data: OPFSTreeDoc}> {
 	const {path} = options
 	const {filename, filetype} = path
 
@@ -38,7 +38,7 @@ export async function loadPreset(options: {
 	return {data: JSON.parse(serialized)}
 }
 
-export async function getPresetsData(): Promise<{data: OPFSPresetTree}> {
+export async function getPresetsData(): Promise<{data: OPFSTreePreset}> {
 	const opfsRoot = await navigator.storage.getDirectory()
 
 	let parentHandle
@@ -49,7 +49,7 @@ export async function getPresetsData(): Promise<{data: OPFSPresetTree}> {
 		const data = await readDirectoryRecursive(parentHandle)
 
 		return {
-			data: data as OPFSPresetTree,
+			data: data as OPFSTreePreset,
 		}
 	} catch (error) {
 		const notFound = String(error).startsWith('NotFoundError:')
