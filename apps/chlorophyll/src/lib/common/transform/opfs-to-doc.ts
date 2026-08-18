@@ -37,7 +37,7 @@ export function isRawSection(value: unknown): value is RawSection {
 	return 'meta' in value && 'content' in value
 }
 
-function rawSectionToSection(raw: RawSection): Section {
+export function rawSectionToSection(raw: RawSection): Section {
 	return raw.content
 }
 
