@@ -3,10 +3,12 @@ import type {
 	DocPath,
 	DocContentType,
 	Prose,
-	Section,
+	Doc,
 	Preset,
 	FrontmatterBase,
 	FrontmatterStructure,
+	DocLanguage,
+	Slug,
 } from '$types'
 
 export type StorageCreateOrUpdatePayload = {
@@ -17,7 +19,16 @@ export type StorageCreateOrUpdatePayload = {
 }
 // Storage Output
 
-export type OPFSTreeDoc = Record<string, {content: Section; meta: DocMeta}>
+export type OPFSTreeDoc = Record<
+	string,
+	Record<
+		string,
+		{
+			content: Doc
+			meta: {language: DocLanguage; format: Slug; name: DocLanguage}
+		}
+	>
+>
 export type OPFSTreePreset = Record<string, {content: Preset; meta: DocMeta}>
 export type OPFSTreeBase = {
 	content: FrontmatterBase
