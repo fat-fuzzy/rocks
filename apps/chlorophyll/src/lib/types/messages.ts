@@ -13,9 +13,9 @@ import type {
 	Preset,
 	DocStore,
 	PresetStore,
-	OPFSDocTree,
-	OPFSPresetTree,
-	OPFSBaseTree,
+	OPFSTreeDoc,
+	OPFSTreePreset,
+	OPFSTreeBase,
 	SeedDoc,
 	FrontmatterBase,
 	FrontmatterStructure,
@@ -49,9 +49,9 @@ export type RestoreFromBackupCommand = {
 	type: 'RESTORE_FROM_BACKUP'
 	requestId: RequestId
 	payload: {
-		content: OPFSDocTree
-		presets: OPFSPresetTree
-		base: OPFSBaseTree
+		content: OPFSTreeDoc
+		presets: OPFSTreePreset
+		base: OPFSTreeBase
 	}
 }
 
@@ -93,6 +93,7 @@ export type CreateSectionCommand = {
 		name: Slug
 		title?: string
 		rank: Rank
+		parentId: Uuid
 		structure: FrontmatterStructure
 		formats: Slug[]
 		languages: DocLanguage[]

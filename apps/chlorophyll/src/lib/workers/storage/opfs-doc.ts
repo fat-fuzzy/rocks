@@ -9,9 +9,10 @@ import type {
 	Section,
 	Block,
 	Prose,
-	OPFSDocTree,
+	OPFSTreeDoc,
 	Rank,
 	FrontmatterStructure,
+	Uuid,
 } from '$types'
 
 import {sanitizeFileName} from '$lib/common/sanitize'
@@ -138,7 +139,7 @@ export async function saveFormat(options: {
 export async function loadFile(options: {
 	meta: DocMeta
 	path: DocPath
-}): Promise<{data: OPFSDocTree}> {
+}): Promise<{data: OPFSTreeDoc}> {
 	const {meta, path} = options
 	const {language, format} = meta
 	const {filename, filetype, parent} = path
@@ -191,6 +192,7 @@ export async function saveBlock(options: {
 export async function createSection(options: {
 	name: Slug
 	rank: Rank
+	parentId: Uuid
 	formats: Slug[]
 	languages: DocLanguage[]
 	structure: FrontmatterStructure
@@ -397,7 +399,7 @@ export async function deleteContentFile(options: {
 	}
 }
 
-export async function getContentData(): Promise<{data: OPFSDocTree}> {
+export async function getContentData(): Promise<{data: OPFSTreeDoc}> {
 	const opfsRoot = await navigator.storage.getDirectory()
 
 	let parentHandle
@@ -408,7 +410,7 @@ export async function getContentData(): Promise<{data: OPFSDocTree}> {
 		const data = await readDirectoryRecursive(parentHandle)
 
 		return {
-			data: data as OPFSDocTree,
+			data: data as OPFSTreeDoc,
 		}
 	} catch (error) {
 		const notFound = String(error).startsWith('NotFoundError:')
@@ -425,7 +427,7 @@ export async function getContentData(): Promise<{data: OPFSDocTree}> {
 export async function getContentDataForLanguage(
 	language: DocLanguage,
 ): Promise<{
-	data: OPFSDocTree
+	data: OPFSTreeDoc
 }> {
 	const opfsRoot = await navigator.storage.getDirectory()
 
@@ -441,7 +443,7 @@ export async function getContentDataForLanguage(
 		const data = await readDirectoryRecursive(parentHandle)
 
 		return {
-			data: data as OPFSDocTree,
+			data: data as OPFSTreeDoc,
 		}
 	} catch (error) {
 		const notFound = String(error).startsWith('NotFoundError:')
@@ -461,7 +463,7 @@ export async function getContentDataForFormat(
 	language: DocLanguage,
 	format: Slug,
 ): Promise<{
-	data: OPFSDocTree
+	data: OPFSTreeDoc
 }> {
 	const opfsRoot = await navigator.storage.getDirectory()
 
@@ -479,7 +481,7 @@ export async function getContentDataForFormat(
 		const data = await readDirectoryRecursive(formatHandle)
 
 		return {
-			data: data as OPFSDocTree,
+			data: data as OPFSTreeDoc,
 		}
 	} catch (error) {
 		const notFound = String(error).startsWith('NotFoundError:')

@@ -102,9 +102,6 @@ export default class ImportService implements IImportService {
 			return
 		}
 
-		const docs = (await this.bridge.seedDocs({seed})) as {
-			seeded: number
-		}
 		const base = (await this.bridge.seedBase({
 			base: frontmatter.base,
 		})) as {
@@ -114,6 +111,10 @@ export default class ImportService implements IImportService {
 		const structure = (await this.bridge.seedStructure({
 			structures: frontmatter.structures,
 		})) as {
+			seeded: number
+		}
+
+		const docs = (await this.bridge.seedDocs({seed})) as {
 			seeded: number
 		}
 

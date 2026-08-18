@@ -88,10 +88,11 @@
 	async function reSeed() {
 		await deleteData()
 
-		await importService.init(
+		await importService.initSeed(
 			{base: page.data.base, structures: page.data.structures},
-			page.data.seed,
+			page.data.seed.content,
 		)
+
 		const newUrl = new SvelteURL(page.url)
 		newUrl.search = ''
 

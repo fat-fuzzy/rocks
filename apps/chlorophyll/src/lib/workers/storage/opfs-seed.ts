@@ -10,11 +10,11 @@
  */
 
 import type {
-	OPFSBaseTree,
+	OPFSTreeBase,
 	Doc,
 	FrontmatterBase,
-	OPFSDocTree,
-	OPFSPresetTree,
+	OPFSTreeDoc,
+	OPFSTreePreset,
 	SeedDoc,
 	SeedType,
 	FrontmatterStructure,
@@ -146,8 +146,8 @@ export async function seedBase(base: FrontmatterBase): Promise<void> {
 
 		const directoryHandle = await getBaseHandle({create: true})
 		await saveEntry(directoryHandle, {name: 'base'}, data)
-	} catch {
-		throw new Error('Error seeding doc base')
+	} catch (error) {
+		throw new Error('Error seeding doc base', {cause: error})
 	}
 	await markSeedComplete('base')
 }
@@ -173,17 +173,17 @@ export async function seedStructure(options: {
 
 		const directoryHandle = await getStructureHandle({create: true})
 		await saveEntry(directoryHandle, {name: 'structure'}, {structure: toSeed})
-	} catch {
-		throw new Error('Error seeding doc structure')
+	} catch (error) {
+		throw new Error('Error seeding doc structure', {cause: error})
 	}
 
 	await markSeedComplete('structure')
 }
 
 export async function restoreFromBackup(options: {
-	content: OPFSDocTree
-	presets: OPFSPresetTree
-	base: OPFSBaseTree
+	content: OPFSTreeDoc
+	presets: OPFSTreePreset
+	base: OPFSTreeBase
 }): Promise<void> {
 	await seedBase(options.base.content)
 
