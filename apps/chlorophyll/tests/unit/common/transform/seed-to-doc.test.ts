@@ -1,7 +1,7 @@
 import {describe, test, expect} from 'vitest'
 import {seedDocToDoc} from '$lib/common/transform/seed-to-doc'
 import {SEED_DOC} from '$tests/fixtures/seed'
-import {TEST_DOC} from '$tests/fixtures/doc'
+import {TEST_DOC_EN_LONG} from '$tests/fixtures/doc'
 
 describe('seed-to-doc.ts - transform SeedDoc data to Doc object', () => {
 	test('seedDocToDoc', () => {
@@ -44,13 +44,13 @@ describe('seed-to-doc.ts - transform SeedDoc data to Doc object', () => {
 		}
 
 		const expected = {
-			...TEST_DOC,
+			...TEST_DOC_EN_LONG,
 			id: undefined,
 			meta: {
-				...TEST_DOC.meta,
+				...TEST_DOC_EN_LONG.meta,
 				id: undefined,
 			},
-			sections: TEST_DOC.sections.map((s) => ({
+			sections: TEST_DOC_EN_LONG.sections.map((s) => ({
 				...s,
 				id: undefined,
 				name: undefined,
