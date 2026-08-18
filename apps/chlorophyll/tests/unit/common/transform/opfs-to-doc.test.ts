@@ -10,7 +10,13 @@ import {
 import {BASE, RAW_BASE, STRUCTURE, RAW_STRUCTURE} from '$tests/fixtures/meta'
 import {PRESETS, RAW_PRESETS} from '$tests/fixtures/preset'
 import {SEED_DOC, SEED_SECTIONS} from '$tests/fixtures/seed'
-import {TEST_DOC, OPFS_DOC, OPFS_SECTIONS, DOC_STORE} from '$tests/fixtures/doc'
+import {
+	TEST_DOC_EN_LONG,
+	OPFS_DOC,
+	OPFS_SECTIONS,
+	DOC_STORE,
+} from '$tests/fixtures/doc'
+import type {DocStore} from '$types'
 
 describe('opfs-to-doc.ts - transform OPFSTreeDoc data to Doc object', () => {
 	test('isRecord', () => {
@@ -18,7 +24,7 @@ describe('opfs-to-doc.ts - transform OPFSTreeDoc data to Doc object', () => {
 
 		expect(result).toBe(true)
 
-		result = isRecord(TEST_DOC)
+		result = isRecord(TEST_DOC_EN_LONG)
 
 		expect(result).toBe(true)
 
@@ -123,40 +129,58 @@ describe('opfs-to-doc.ts - transform OPFSTreeDoc data to Doc object', () => {
 	// 	expect(result).toStrictEqual([STRUCTURE])
 	// })
 
-	test.skip('opfsDocTreeToDocStore', () => {
+	test('opfsDocTreeToDocStore', () => {
 		const result = opfsDocTreeToDocStore(OPFS_DOC)
 
-		const actual = {
+		const actual: DocStore = {
 			...result,
 			meta: {
 				...result.meta,
 				id: undefined,
 			},
-			content: {
-				...result.content,
-				id: undefined,
-			},
 		}
 
-		const expected = {
+		if (actual['en'] !== undefined && actual['fr'] !== undefined) {
+			if (actual['en']['long'] !== undefined) {
+				actual['en']['long'].id = ''
+
+				if (actual['en']['long']['meta'] !== undefined) {
+					actual['en']['long']['meta'].id = ''
+				}
+			}
+			if (actual['fr']['long'] !== undefined) {
+				actual['fr']['long'].id = ''
+
+				if (actual['fr']['long']['meta'] !== undefined) {
+					actual['fr']['long']['meta'].id = ''
+				}
+			}
+		}
+
+		const expected: DocStore = {
 			...DOC_STORE,
 			meta: {
 				...DOC_STORE.meta,
 				id: undefined,
 			},
-			content: {
-				...DOC_STORE.content,
-				id: undefined,
-			},
 		}
-		// console.log('result')
-		// console.log(result)
-		// console.log('actual')
-		// console.log(actual)
-		// console.log('DOC_STORE')
-		// console.log(DOC_STORE)
-		// console.log('expected')
-		// console.log(expected)
+
+		if (expected['en'] !== undefined && expected['fr'] !== undefined) {
+			if (expected['en']['long'] !== undefined) {
+				expected['en']['long'].id = ''
+
+				if (expected['en']['long']['meta'] !== undefined) {
+					expected['en']['long']['meta'].id = ''
+				}
+			}
+			if (expected['fr']['long'] !== undefined) {
+				expected['fr']['long'].id = ''
+
+				if (expected['fr']['long']['meta'] !== undefined) {
+					expected['fr']['long']['meta'].id = ''
+				}
+			}
+		}
 
 		expect(actual).toStrictEqual(expected)
 	})
