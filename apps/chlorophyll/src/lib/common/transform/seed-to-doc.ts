@@ -124,11 +124,13 @@ export function seedDocToDoc(seed: SeedDoc): Doc {
 		})
 		.filter((section) => section !== undefined)
 
-	return {
+	const doc: Doc = {
 		schema_version: SCHEMA_VERSION,
 		id: docId,
 		path,
 		meta,
 		sections,
 	}
+
+	return doc
 }

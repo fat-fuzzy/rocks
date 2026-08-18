@@ -10,11 +10,11 @@ import type {
 	Prose,
 	DocStore,
 	DocIndex,
-	OPFSDocTree,
+	OPFSTreeDoc,
 	FrontmatterStructure,
 	FrontmatterBase,
-	OPFSBaseTree,
-	OPFSStructureTree,
+	OPFSTreeBase,
+	OPFSTreeStructure,
 	DocContentType,
 	IDocService,
 	Subsection,
@@ -608,7 +608,7 @@ export default class DocService implements IDocService {
 		// 2 files are read:
 		// - content.json // Has FrontmatterBase shaped data FIXME: not always : se RawFrontmatterBase type
 		// - meta.json // Has DocMeta shaped data FIXME: not always : see RawSection type
-		const raw = (await this.bridge.getDocBase()) as OPFSBaseTree
+		const raw = (await this.bridge.getDocBase()) as OPFSTreeBase
 
 		this.base = opfsBaseTreeToFrontmatterBase(raw)
 	}
@@ -623,7 +623,7 @@ export default class DocService implements IDocService {
 		// 2 files are read:
 		// - content.json // Has FrontmatterBase shaped data FIXME: not always : se RawFrontmatterBase type
 		// - meta.json // Has DocMeta shaped data FIXME: not always : see RawSection type
-		const raw = (await this.bridge.getDocStructure()) as OPFSStructureTree
+		const raw = (await this.bridge.getDocStructure()) as OPFSTreeStructure
 
 		this.structures = opfsStructureTreeToFrontmatterStructures(raw)
 	}
@@ -638,7 +638,7 @@ export default class DocService implements IDocService {
 		// 2 files are read:
 		// - content.json // Has Section shaped data FIXME: not always : se RawSection type
 		// - meta.json // Has DocMeta shaped data FIXME: not always : se RawSection type
-		const raw = (await this.bridge.getAllDocs()) as OPFSDocTree
+		const raw = (await this.bridge.getAllDocs()) as OPFSTreeDoc
 
 		this.content = opfsDocTreeToDocStore(raw)
 	}

@@ -14,8 +14,10 @@ export default defineConfig({
 				'src/app.d.ts',
 				'src/**/browser/*.{js,ts}',
 				'src/**/definitions.{js,ts}',
-				'src/lib/types/*.{js,ts}',
+				'src/lib/types/**/*.{js,ts}',
 				'src/lib/**/*.browser.ts',
+				'src/schemas', // TODO: review need
+				'src/lib/generated',
 				'src/lib/index.ts',
 				'src/lib/components/',
 			],

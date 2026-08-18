@@ -7,12 +7,14 @@ import type {
 	Preset,
 	DocStore,
 	PresetStore,
-	OPFSDocTree,
-	OPFSPresetTree,
-	OPFSBaseTree,
-	OPFSStructureTree,
+	OPFSTreeDoc,
+	OPFSTreePreset,
+	OPFSTreeBase,
+	OPFSTreeStructure,
 	FrontmatterBase,
 	FrontmatterStructure,
+	Uuid,
+	DocPath,
 } from '$types'
 
 import {SCHEMA_VERSION} from '$config/setup'
@@ -27,7 +29,54 @@ export function isRecord(value: unknown): value is Record<string, unknown> {
 	return typeof value === 'object' && value !== null
 }
 
-type RawSection = {content: Section; meta: DocMeta}
+type RawDoc = {
+	content: {schema_version: string; id: Uuid; path: DocPath}
+	meta: {language: DocLanguage; format: Slug; name: Slug}
+} & Record<string, unknown>
+
+export function isRawDoc(value: unknown): value is RawDoc {
+	if (!isRecord(value)) {
+		return false
+	}
+
+	return 'meta' in value && 'content' in value
+}
+
+export function rawDocToDoc(raw: RawDoc): Section[] {
+	const rawEntries = Object.entries(raw)
+	const sections: Section[] = []
+
+	for (const entry of rawEntries) {
+		const [key, rawSection] = entry
+		let section: Section | undefined
+
+		if (key === 'content' || key === 'meta') {
+			continue
+		}
+		if (isRawSection(rawSection)) {
+			section = parseSection(
+				`OPFS Section: ${rawSection.meta.name}`,
+				rawSectionToSection(rawSection),
+			)
+		} else if (isSection(rawSection)) {
+			section = parseSection(
+				`OPFS Section: ${rawSection.name}`,
+				rawToSection(rawSection),
+			)
+		}
+
+		if (section) {
+			sections.push(section)
+		}
+	}
+
+	return sections
+}
+
+type RawSection = {
+	content: Section
+	meta: DocMeta
+}
 
 export function isRawSection(value: unknown): value is RawSection {
 	if (!isRecord(value)) {
@@ -37,6 +86,10 @@ export function isRawSection(value: unknown): value is RawSection {
 	return 'meta' in value && 'content' in value
 }
 
+export function rawSectionToSection(raw: RawSection): Section {
+	return raw.content
+}
+
 type RawPreset = {content: Preset; meta: DocMeta}
 
 export function isRawPreset(value: unknown): value is RawPreset {
@@ -44,11 +97,11 @@ export function isRawPreset(value: unknown): value is RawPreset {
 		return false
 	}
 
-	return 'meta' in value && 'content' in value
-}
-
-export function rawSectionToSection(raw: RawSection): Section {
-	return raw.content
+	return (
+		'meta' in value &&
+		'content' in value &&
+		'query' in (value.content as {content: unknown})
+	)
 }
 
 function rawPresetToPreset(raw: RawPreset): Preset {
@@ -62,7 +115,12 @@ export function isRawBase(value: unknown): value is RawBase {
 		return false
 	}
 
-	return 'meta' in value && 'content' in value
+	return (
+		'meta' in value &&
+		'content' in value &&
+		'languages' in (value.content as {content: unknown}) &&
+		'formats' in (value.content as {content: unknown})
+	)
 }
 
 function rawBaseToBase(raw: RawBase): FrontmatterBase {
@@ -95,78 +153,67 @@ export function isSection(value: unknown): value is Section {
 		return false
 	}
 
-	return 'meta' in value && 'content' in value
+	return 'content_type' in value && value.content_type === 'section'
 }
 
 function rawToSection(raw: Section): Section {
 	return raw
 }
 
-export function opfsDocTreeToDocStore(tree: OPFSDocTree): DocStore {
-	// eslint-disable-next-line
-	const store: any = {} // FIXME: fix type
+// FIXME: fix many issues
+export function opfsDocTreeToDocStore(tree: OPFSTreeDoc): DocStore {
+	const store: Partial<DocStore> = {}
 
 	for (const [language, formats] of Object.entries(tree)) {
 		if (!isRecord(formats)) continue
 
-		store[language as DocLanguage] = {}
+		let languageTree: Partial<{[format: Slug]: Doc} | undefined> =
+			store[language as DocLanguage]
 
-		for (const [format, sections] of Object.entries(formats)) {
-			if (!isRecord(sections)) continue
-
-			if (!store[language as DocLanguage]) continue
-
-			store[language as DocLanguage][format as Slug] = {}
-
-			// FIXME: this should come from storage
-			// - meta.json at root > content folder level
-			const doc: Doc = {
-				id: crypto.randomUUID(),
-				schema_version: SCHEMA_VERSION,
-				meta: {
-					id: crypto.randomUUID(),
-					content_type: 'doc-root',
-					label: 'doc-root',
-					name: 'doc-root',
-					language: language as DocLanguage,
-					format: format as Slug,
-				},
-				path: {
-					filename: 'doc-root',
-					filetype: 'json',
-				},
-				sections: [],
-			}
-
-			let section: Section
-			for (const [sectionName, rawSection] of Object.entries(sections)) {
-				if (sectionName === 'meta') {
-					continue
-				}
-
-				if (isRawSection(rawSection)) {
-					section = rawSectionToSection(rawSection)
-
-					doc.sections?.push(
-						parseSection(`OPFS Section: ${sectionName}`, section),
-					)
-				} else if (isSection(rawSection)) {
-					section = rawToSection(rawSection)
-
-					doc.sections?.push(
-						parseSection(`OPFS Section: ${sectionName}`, section),
-					)
-				}
-			}
-
-			store[language as DocLanguage][format as Slug] = doc
+		if (languageTree === undefined) {
+			languageTree = {}
 		}
+
+		languageTree = JSON.parse(JSON.stringify(languageTree))
+
+		if (languageTree === undefined) {
+			console.warn(`No folder found for ${language}`)
+
+			continue
+		}
+
+		const doc: Doc = {
+			id: crypto.randomUUID(),
+			schema_version: SCHEMA_VERSION,
+			meta: {
+				content_type: 'section',
+				id: crypto.randomUUID(),
+				name: 'doc-root',
+				label: 'doc-root',
+			},
+			path: {
+				filename: 'doc-root',
+				filetype: 'json',
+			},
+			sections: [],
+		}
+
+		for (const [format, docTree] of Object.entries(formats)) {
+			if (isRawDoc(docTree)) {
+				const sections = rawDocToDoc(docTree)
+				doc.sections = doc.sections.concat(sections)
+			}
+
+			languageTree[format as Slug] = doc
+		}
+
+		store[language as DocLanguage] = languageTree
 	}
 
 	return store as DocStore
 }
 
-export function opfsPresetTreeToPresetStore(tree: OPFSPresetTree): PresetStore {
+export function opfsPresetTreeToPresetStore(tree: OPFSTreePreset): PresetStore {
 	// eslint-disable-next-line
 	const store: any = {} // FIXME: fix type
 
@@ -185,7 +232,7 @@ export function opfsPresetTreeToPresetStore(tree: OPFSPresetTree): PresetStore {
 }
 
 export function opfsBaseTreeToFrontmatterBase(
-	tree: OPFSBaseTree,
+	tree: OPFSTreeBase,
 ): FrontmatterBase {
 	let data: FrontmatterBase
 
@@ -208,7 +255,7 @@ export function opfsBaseTreeToFrontmatterBase(
 }
 
 export function opfsStructureTreeToFrontmatterStructures(
-	tree: OPFSStructureTree,
+	tree: OPFSTreeStructure,
 ): FrontmatterStructure[] {
 	let data: FrontmatterStructure[]
 	const result = []
