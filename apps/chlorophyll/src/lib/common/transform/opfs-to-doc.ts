@@ -199,7 +199,7 @@ export function opfsDocTreeToDocStore(tree: OPFSTreeDoc): DocStore {
 		}
 
 		for (const [format, docTree] of Object.entries(formats)) {
-			if (rawDocToDoc(docTree)) {
+			if (isRawDoc(docTree)) {
 				const sections = rawDocToDoc(docTree)
 				doc.sections = doc.sections.concat(sections)
 			}
