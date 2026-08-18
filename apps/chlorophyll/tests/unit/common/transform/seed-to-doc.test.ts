@@ -3,7 +3,7 @@ import {seedDocToDoc} from '$lib/common/transform/seed-to-doc'
 import {SEED_DOC} from '$tests/fixtures/seed'
 import {TEST_DOC} from '$tests/fixtures/doc'
 
-describe('seed-to-doc.ts - basic sanitization for filename', () => {
+describe('seed-to-doc.ts - transform SeedDoc data to Doc object', () => {
 	test('seedDocToDoc', () => {
 		const doc = seedDocToDoc(SEED_DOC)
 
@@ -32,7 +32,7 @@ describe('seed-to-doc.ts - basic sanitization for filename', () => {
 					...sub,
 					id: undefined,
 					name: undefined,
-					parent: undefined, // FIXME: this data is actually a parentId
+					parent: undefined, // FIXME: this data is actually a parentId / check id chain
 					blocks: sub.blocks?.map((b) => ({
 						...b,
 						id: undefined,
@@ -59,7 +59,7 @@ describe('seed-to-doc.ts - basic sanitization for filename', () => {
 					...sub,
 					id: undefined,
 					name: undefined,
-					parent: undefined, // FIXME: this data is actually a parentId
+					parent: undefined, // FIXME: this data is actually a parentId / check id chain
 					blocks: sub.blocks?.map((b) => ({
 						...b,
 						id: undefined,
