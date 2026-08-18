@@ -146,8 +146,8 @@ export async function seedBase(base: FrontmatterBase): Promise<void> {
 
 		const directoryHandle = await getBaseHandle({create: true})
 		await saveEntry(directoryHandle, {name: 'base'}, data)
-	} catch {
-		throw new Error('Error seeding doc base')
+	} catch (error) {
+		throw new Error('Error seeding doc base', {cause: error})
 	}
 	await markSeedComplete('base')
 }
@@ -173,8 +173,8 @@ export async function seedStructure(options: {
 
 		const directoryHandle = await getStructureHandle({create: true})
 		await saveEntry(directoryHandle, {name: 'structure'}, {structure: toSeed})
-	} catch {
-		throw new Error('Error seeding doc structure')
+	} catch (error) {
+		throw new Error('Error seeding doc structure', {cause: error})
 	}
 
 	await markSeedComplete('structure')
