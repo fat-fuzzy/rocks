@@ -61,7 +61,7 @@ export const OPFS_SECTIONS: Section[] = [
 	},
 ]
 
-export const TEST_DOC: Doc = {
+export const TEST_DOC_EN_LONG: Doc = {
 	id: DOC_ID,
 	schema_version: SCHEMA_VERSION,
 	meta: {
@@ -79,36 +79,80 @@ export const TEST_DOC: Doc = {
 	sections: OPFS_SECTIONS,
 }
 
+export const TEST_DOC_FR_LONG: Doc = {
+	id: DOC_ID,
+	schema_version: SCHEMA_VERSION,
+	meta: {
+		id: DOC_ID,
+		content_type: 'seed',
+		format: 'long',
+		label: 'fr-long',
+		language: 'fr',
+		name: 'fr-long',
+	},
+	path: {
+		filename: 'fr-long',
+		filetype: 'json',
+	},
+	sections: OPFS_SECTIONS,
+}
+
 export const OPFS_DOC: OPFSTreeDoc = {
+	fr: {
+		long: {
+			meta: {
+				language: 'fr',
+				format: 'long',
+				name: 'fr',
+			},
+			content: TEST_DOC_EN_LONG,
+		},
+	},
 	en: {
-		content: OPFS_SECTIONS[0],
-		meta: {
-			content_type: 'section',
-			id: DOC_ID,
-			label: 'Doc',
-			name: 'en-long',
+		long: {
+			meta: {
+				name: 'long',
+				language: 'en',
+				format: 'long',
+			},
+			content: TEST_DOC_FR_LONG,
 		},
 	},
 }
 
 export const DOC_STORE: DocStore = {
 	en: {
-		content: {
-			schema_version: SCHEMA_VERSION,
-			id: DOC_ID,
+		long: {
+			id: DOC_ID, // FIXME: not relevant for now
 			meta: {
-				content_type: 'doc-root',
-				id: DOC_ID,
+				content_type: 'section',
+				id: DOC_ID, // FIXME: not relevant for now
 				label: 'doc-root',
 				name: 'doc-root',
-				language: 'en',
-				format: 'long',
 			},
 			path: {
 				filename: 'doc-root',
 				filetype: 'json',
 			},
-			sections: OPFS_SECTIONS,
+			schema_version: '0.1',
+			sections: [],
+		},
+	},
+	fr: {
+		long: {
+			id: DOC_ID,
+			meta: {
+				name: 'doc-root',
+				id: DOC_ID,
+				content_type: 'section',
+				label: 'doc-root',
+			},
+			schema_version: '0.1',
+			path: {
+				filename: 'doc-root',
+				filetype: 'json',
+			},
+			sections: [],
 		},
 	},
 }
@@ -124,7 +168,7 @@ export const SECTIONS: Section[] = [
 		subsections: [
 			{
 				name: 'section-1-sub-1',
-				parent: 'section-1',
+				parent: SECTION_IDS[0],
 				rank: 1,
 				blocks: [],
 			},
@@ -144,7 +188,7 @@ export const SECTIONS: Section[] = [
 		subsections: [
 			{
 				name: 'section-2-sub-1',
-				parent: 'section-2',
+				parent: SECTION_IDS[0],
 				rank: 1,
 				blocks: [],
 			},
