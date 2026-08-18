@@ -37,6 +37,10 @@ export function isRawSection(value: unknown): value is RawSection {
 	return 'meta' in value && 'content' in value
 }
 
+function rawSectionToSection(raw: RawSection): Section {
+	return raw.content
+}
+
 type RawPreset = {content: Preset; meta: DocMeta}
 
 export function isRawPreset(value: unknown): value is RawPreset {
@@ -44,11 +48,11 @@ export function isRawPreset(value: unknown): value is RawPreset {
 		return false
 	}
 
-	return 'meta' in value && 'content' in value
-}
-
-export function rawSectionToSection(raw: RawSection): Section {
-	return raw.content
+	return (
+		'meta' in value &&
+		'content' in value &&
+		'query' in (value.content as {content: unknown})
+	)
 }
 
 function rawPresetToPreset(raw: RawPreset): Preset {
@@ -62,7 +66,12 @@ export function isRawBase(value: unknown): value is RawBase {
 		return false
 	}
 
-	return 'meta' in value && 'content' in value
+	return (
+		'meta' in value &&
+		'content' in value &&
+		'languages' in (value.content as {content: unknown}) &&
+		'formats' in (value.content as {content: unknown})
+	)
 }
 
 function rawBaseToBase(raw: RawBase): FrontmatterBase {
@@ -102,6 +111,7 @@ function rawToSection(raw: Section): Section {
 	return raw
 }
 
+// FIXME: fix many issues
 export function opfsDocTreeToDocStore(tree: OPFSTreeDoc): DocStore {
 	// eslint-disable-next-line
 	const store: any = {} // FIXME: fix type
@@ -117,6 +127,11 @@ export function opfsDocTreeToDocStore(tree: OPFSTreeDoc): DocStore {
 			if (!store[language as DocLanguage]) continue
 
 			store[language as DocLanguage][format as Slug] = {}
+
+			// FIXME: type mismatch
+			// if (format === 'content' || format === 'meta') {
+			// 	continue
+			// }
 
 			// FIXME: this should come from storage
 			// - meta.json at root > content folder level
@@ -144,12 +159,14 @@ export function opfsDocTreeToDocStore(tree: OPFSTreeDoc): DocStore {
 					continue
 				}
 
+				// FIXME: Why
 				if (isRawSection(rawSection)) {
 					section = rawSectionToSection(rawSection)
 
 					doc.sections?.push(
 						parseSection(`OPFS Section: ${sectionName}`, section),
 					)
+					// FIXME: Why
 				} else if (isSection(rawSection)) {
 					section = rawToSection(rawSection)
 
