@@ -18,6 +18,10 @@ export const load = async () => {
 
 	const {languages, formats} = seedMetadata
 
+	if (!languages || !formats) {
+		error(404, {message: 'Not found'})
+	}
+
 	const structures = await cvParser.parseMarkdownCvMeta({
 		formats,
 	})
