@@ -1,11 +1,12 @@
-import type {Doc, Section} from '$types'
+import type {Doc, DocStore, OPFSTreeDoc, Section} from '$types'
+import {SCHEMA_VERSION} from '$config/setup'
 
 export const DOC_ID = crypto.randomUUID()
 export const SECTION_IDS = [crypto.randomUUID(), crypto.randomUUID()]
 export const SUBSECTION_IDS = [crypto.randomUUID(), crypto.randomUUID()]
 export const BLOCK_IDS = [crypto.randomUUID(), crypto.randomUUID()]
 
-const _SECTIONS: Section[] = [
+export const OPFS_SECTIONS: Section[] = [
 	{
 		content: undefined,
 		content_type: 'section',
@@ -62,7 +63,7 @@ const _SECTIONS: Section[] = [
 
 export const TEST_DOC: Doc = {
 	id: DOC_ID,
-	schema_version: '0.1',
+	schema_version: SCHEMA_VERSION,
 	meta: {
 		id: DOC_ID,
 		content_type: 'seed',
@@ -75,7 +76,41 @@ export const TEST_DOC: Doc = {
 		filename: 'en-long',
 		filetype: 'json',
 	},
-	sections: _SECTIONS,
+	sections: OPFS_SECTIONS,
+}
+
+export const OPFS_DOC: OPFSTreeDoc = {
+	en: {
+		content: OPFS_SECTIONS[0],
+		meta: {
+			content_type: 'section',
+			id: DOC_ID,
+			label: 'Doc',
+			name: 'en-long',
+		},
+	},
+}
+
+export const DOC_STORE: DocStore = {
+	en: {
+		content: {
+			schema_version: SCHEMA_VERSION,
+			id: DOC_ID,
+			meta: {
+				content_type: 'doc-root',
+				id: DOC_ID,
+				label: 'doc-root',
+				name: 'doc-root',
+				language: 'en',
+				format: 'long',
+			},
+			path: {
+				filename: 'doc-root',
+				filetype: 'json',
+			},
+			sections: OPFS_SECTIONS,
+		},
+	},
 }
 
 export const SECTIONS: Section[] = [
