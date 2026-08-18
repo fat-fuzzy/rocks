@@ -7,10 +7,10 @@ import type {
 	Preset,
 	DocStore,
 	PresetStore,
-	OPFSDocTree,
-	OPFSPresetTree,
-	OPFSBaseTree,
-	OPFSStructureTree,
+	OPFSTreeDoc,
+	OPFSTreePreset,
+	OPFSTreeBase,
+	OPFSTreeStructure,
 	FrontmatterBase,
 	FrontmatterStructure,
 } from '$types'
@@ -102,7 +102,7 @@ function rawToSection(raw: Section): Section {
 	return raw
 }
 
-export function opfsDocTreeToDocStore(tree: OPFSDocTree): DocStore {
+export function opfsDocTreeToDocStore(tree: OPFSTreeDoc): DocStore {
 	// eslint-disable-next-line
 	const store: any = {} // FIXME: fix type
 
@@ -166,7 +166,7 @@ export function opfsDocTreeToDocStore(tree: OPFSDocTree): DocStore {
 	return store as DocStore
 }
 
-export function opfsPresetTreeToPresetStore(tree: OPFSPresetTree): PresetStore {
+export function opfsPresetTreeToPresetStore(tree: OPFSTreePreset): PresetStore {
 	// eslint-disable-next-line
 	const store: any = {} // FIXME: fix type
 
@@ -185,7 +185,7 @@ export function opfsPresetTreeToPresetStore(tree: OPFSPresetTree): PresetStore {
 }
 
 export function opfsBaseTreeToFrontmatterBase(
-	tree: OPFSBaseTree,
+	tree: OPFSTreeBase,
 ): FrontmatterBase {
 	let data: FrontmatterBase
 
@@ -208,7 +208,7 @@ export function opfsBaseTreeToFrontmatterBase(
 }
 
 export function opfsStructureTreeToFrontmatterStructures(
-	tree: OPFSStructureTree,
+	tree: OPFSTreeStructure,
 ): FrontmatterStructure[] {
 	let data: FrontmatterStructure[]
 	const result = []

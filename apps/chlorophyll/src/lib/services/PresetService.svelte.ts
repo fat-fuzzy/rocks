@@ -5,7 +5,7 @@ import type {
 	Preset,
 	PresetStore,
 	PresetIndex,
-	OPFSPresetTree,
+	OPFSTreePreset,
 	IPresetService,
 } from '$types'
 
@@ -120,7 +120,7 @@ export default class PresetService implements IPresetService {
 			return
 		}
 
-		const raw = (await this.bridge.getAllPresets()) as OPFSPresetTree
+		const raw = (await this.bridge.getAllPresets()) as OPFSTreePreset
 		this.presets = opfsPresetTreeToPresetStore(raw)
 	}
 
