@@ -202,7 +202,7 @@
 			type,
 			id: 'delete-tags',
 			currentTags: tagsToDelete[groupName] ?? [],
-			tagGroups: tagService.tags,
+			tagGroups: tagService.tagGroups,
 		})
 
 		tagsToDelete[groupName] = updatedTags
@@ -244,7 +244,7 @@
 			{color}
 			value={[]}
 			oninput={updateTags}
-			tagGroups={tagService.tags}
+			tagGroups={tagService.tagGroups}
 		/>
 		<Feedback context="prose" variant="bare" size="xs" font="sm" asset="none">
 			<p>

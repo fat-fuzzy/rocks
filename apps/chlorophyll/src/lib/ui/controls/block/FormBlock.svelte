@@ -196,7 +196,7 @@
 			type,
 			id: 'tags',
 			currentTags: toUpdate.tags,
-			tagGroups: tagService.tags,
+			tagGroups: tagService.tagGroups,
 		})
 	}
 
@@ -407,7 +407,7 @@
 							cta="save"
 							oninput={updateTags}
 							value={[]}
-							tagGroups={tagService.tags}
+							tagGroups={tagService.tagGroups}
 						/>
 					</div>
 				</div>

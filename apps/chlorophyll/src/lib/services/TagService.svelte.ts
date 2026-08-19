@@ -26,11 +26,13 @@ export default class TagService implements ITagService {
 	docService: IDocService | undefined = $state()
 	loading = $state(false)
 	error = $state(false)
-	tags: TagGroup[] = $derived(this.docService?.base.tags ?? [])
+	tagGroups: TagGroup[] = $derived(
+		this.metadataService ? this.metadataService.getTagGroups() : [],
+	)
 	tagIndex: TagIndex = $derived(
 		this.docService
 			? buildTagIndex(
-					this.tags,
+					this.tagGroups,
 					Object.values(this.docService?.docIndex.blocks),
 				)
 			: {
@@ -50,7 +52,7 @@ export default class TagService implements ITagService {
 	}
 
 	reset() {
-		this.tags = []
+		this.tagGroups = []
 	}
 
 	/**
@@ -94,18 +96,18 @@ export default class TagService implements ITagService {
 	async deleteTags(options: {
 		groups: {name: Slug; items: string[]}[]
 	}): Promise<{id: string} | void> {
-		if (!this.bridge || !this.docService) {
+		if (!this.bridge || !this.metadataService || !this.docService) {
 			return
 		}
 
-		const tagGroupsToKeep = this.tags.filter((tg) => {
+		const tagGroupsToKeep = this.tagGroups.filter((tg) => {
 			return !options.groups.some((g) => g.name === tg.name)
 		})
 
 		const blocksToUpdate = new SvelteMap<string, Block>()
 
 		for (const group of options.groups) {
-			const groupToUpdate = this.tags.find((tg) => tg.name === group.name)
+			const groupToUpdate = this.tagGroups.find((tg) => tg.name === group.name)
 
 			if (!groupToUpdate) {
 				throw Error(`No tag group found with name ${group.name}`)

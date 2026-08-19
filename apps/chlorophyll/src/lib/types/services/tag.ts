@@ -8,7 +8,7 @@ export interface TagIndex {
 export interface ITagService {
 	readonly loading: boolean
 	readonly error: boolean
-	readonly tags: TagGroup[]
+	readonly tagGroups: TagGroup[]
 	readonly tagIndex: TagIndex
 
 	init(): Promise<void>

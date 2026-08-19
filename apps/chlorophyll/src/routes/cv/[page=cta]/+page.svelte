@@ -35,7 +35,7 @@
 
 	let cta = $derived(page.params.page)
 	let query = $derived(page.url.search)
-	let tags = $derived(tagService.tags)
+	let tags = $derived(tagService.tagGroups)
 	let tagsLoading = $derived(tagService.loading)
 	let tagsError = $derived(tagService.error)
 
@@ -59,7 +59,7 @@
 	)
 
 	let selectedTags: string[] = $derived(
-		tagService.tags.reduce((selected: string[], menu: TagGroup) => {
+		tagService.tagGroups.reduce((selected: string[], menu: TagGroup) => {
 			return selected.concat(page.url.searchParams.getAll(menu.name) || [])
 		}, []),
 	)
