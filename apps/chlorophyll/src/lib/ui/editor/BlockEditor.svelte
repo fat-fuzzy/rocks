@@ -115,7 +115,7 @@
 			type,
 			id,
 			currentTags: block.tags,
-			tagGroups: tagService.tags,
+			tagGroups: tagService.tagGroups,
 		})
 
 		block.tags = updatedTags
@@ -150,7 +150,7 @@
 		size="sm"
 		oninput={updateTags}
 		value={block.tags}
-		tagGroups={tagService.tags.filter((tg) => {
+		tagGroups={tagService.tagGroups.filter((tg) => {
 			if (block.content_type === 'section') {
 				return tg.type !== 'radio'
 			}
