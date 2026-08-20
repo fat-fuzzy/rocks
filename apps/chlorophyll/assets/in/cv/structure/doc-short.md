@@ -1,6 +1,6 @@
 ---
 schema_version: "0.1"
-name: cv-short
+name: doc-short
 format: short
 experience: [
 	XP-05,

@@ -1,6 +1,6 @@
 ---
 schema_version: "0.1"
-name: cv-base
+name: doc-base
 formats: [long, short]
 languages: [en, fr]
 settings: [
