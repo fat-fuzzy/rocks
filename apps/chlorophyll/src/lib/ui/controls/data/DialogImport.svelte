@@ -1,6 +1,11 @@
 <script lang="ts">
 	import type {UiColor, UiSize} from '@fat-fuzzy/ui'
-	import type {ImportStatus, IImportService, IExportService} from '$types'
+	import type {
+		ImportStatus,
+		IImportService,
+		IExportService,
+		IDocService,
+	} from '$types'
 
 	import {getContext} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
@@ -29,6 +34,7 @@
 
 	let importService: IImportService = getContext('importService')
 	let exportService: IExportService = getContext('exportService')
+	let docService: IDocService = getContext('docService')
 
 	const statusLabel: Record<ImportStatus, string> = {
 		idle: '',
@@ -110,6 +116,7 @@
 
 		// 2. Delete existing storage: the import replaces OPFS content
 		await importService.deleteAllContent()
+		await docService.loadDocStore()
 
 		status = 'ready'
 	}
