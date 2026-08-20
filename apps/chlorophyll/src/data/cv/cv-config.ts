@@ -65,9 +65,9 @@ const PATH_PREFIX_STRUCTURE = '/assets/in/cv/structure/'
 const PATHS_STRUCTURE: {
 	[format: string]: Record<string, () => Promise<unknown>>
 } = {
-	base: import.meta.glob('/assets/in/cv/structure/cv-base.md'),
-	long: import.meta.glob('/assets/in/cv/structure/cv-long.md'),
-	short: import.meta.glob('/assets/in/cv/structure/cv-short.md'),
+	base: import.meta.glob('/assets/in/cv/structure/doc-base.md'),
+	long: import.meta.glob('/assets/in/cv/structure/doc-long.md'),
+	short: import.meta.glob('/assets/in/cv/structure/doc-short.md'),
 }
 
 // The known top-level section keys on SeedDoc
