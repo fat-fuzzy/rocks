@@ -22,11 +22,11 @@
 		oninput: (e: Event) => void
 	} = $props()
 
-	let docService: IDocService = getContext('docService')
+	let metadataService: IDocService = getContext('metadataService')
 
 	let cta = $derived(page.params.page)
-	let baseLanguages = $derived(docService.base.languages)
-	let baseFormats = $derived(docService.base.formats)
+	let baseLanguages = $derived(metadataService.base.languages)
+	let baseFormats = $derived(metadataService.base.formats)
 
 	let currentLanguage = $derived.by(() => {
 		const lang = page.url.searchParams.get('language')

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {Slug, DocLanguage, Section, IDocService} from '$types'
+	import type {Slug, DocLanguage, Section, IUiChlorophyll} from '$types'
 
 	import {getContext, onMount} from 'svelte'
 
@@ -12,7 +12,7 @@
 	import FeedbackContent from '$lib/ui/FeedbackContent.svelte'
 	import Loading from '$lib/ui/Loading.svelte'
 
-	let docService: IDocService = getContext('docService')
+	let uiChlorophyll: IUiChlorophyll = getContext('uiChlorophyll')
 
 	let {
 		name,
@@ -29,10 +29,10 @@
 	let observerRoot: HTMLElement | undefined = $state()
 	let observer: IntersectionObserver | undefined = $state()
 	let missingIcon = 'emoji:idea justify:end'
-	let loading = $derived(docService.loading)
+	let loading = $derived(uiChlorophyll.loading)
 
 	let section: Section = $derived(
-		docService.getSectionByName({
+		uiChlorophyll.getSectionByName({
 			language,
 			format,
 			name,
@@ -44,9 +44,9 @@
 	let displayBlockForm = $derived(name !== undefined)
 
 	let noContentFound = $derived(!section)
-	let error = $derived(docService.error)
-	let blocksLoaded = docService.lazyBlocks
-	let sectionsLoaded = docService.lazySections
+	let error = $derived(uiChlorophyll.error)
+	let blocksLoaded = uiChlorophyll.lazyBlocks
+	let sectionsLoaded = uiChlorophyll.lazySections
 
 	const observerOptions = $derived({
 		root: null,
@@ -60,7 +60,7 @@
 			const target = entry.target as HTMLElement
 
 			if (entry.isIntersecting) {
-				docService.lazyLoadBlock(
+				uiChlorophyll.lazyLoadBlock(
 					{
 						block: target.dataset.block,
 						section: target.dataset.section,

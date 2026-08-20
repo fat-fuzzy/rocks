@@ -1,6 +1,7 @@
 export * from '$lib/types/actions'
 export * from '$lib/types/intl'
 export * from '$lib/types/ui'
+export * from '$lib/types/ui-chlorophyll'
 export * from '$lib/types/messages'
 
 // Storage
@@ -14,6 +15,7 @@ export * from '$lib/types/services/doc'
 export * from '$lib/types/services/preset'
 export * from '$lib/types/services/tag'
 export * from '$lib/types/services/export'
+export * from '$lib/types/services/meta'
 
 // Domain + Identity
 export * from '$lib/generated/types/Doc'

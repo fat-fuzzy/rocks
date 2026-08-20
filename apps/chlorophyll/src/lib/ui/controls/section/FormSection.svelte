@@ -5,7 +5,7 @@
 		Slug,
 		DocLanguage,
 		Section,
-		IDocService,
+		IUiChlorophyll,
 	} from '$types'
 
 	import * as validators from '$lib/generated/ajv/validation/validate.ajv.mjs'
@@ -27,7 +27,7 @@
 	}
 	let {formats, cta, color = 'primary'}: Props = $props()
 
-	let docService: IDocService = getContext('docService')
+	let uiChlorophyll: IUiChlorophyll = getContext('uiChlorophyll')
 
 	const validator = new FormValidator(
 		'FormSectionValidationFunction',
@@ -132,7 +132,7 @@
 	}
 
 	function checkSectionExists(sectionName: string): Section | undefined {
-		return docService.getSectionByName({
+		return uiChlorophyll.getSectionByName({
 			language: DOC_LANGUAGE as DocLanguage,
 			format: DOC_FORMAT as Slug,
 			name: sectionName,
@@ -152,7 +152,7 @@
 			formats,
 		}
 
-		docService.createSection(JSON.parse(JSON.stringify(newSection)))
+		uiChlorophyll.createSection(newSection)
 
 		dialogActor.close()
 

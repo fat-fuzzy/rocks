@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {UiColor} from '@fat-fuzzy/ui'
-	import type {ActionCrud, IDocService} from '$types'
+	import type {ActionCrud, IMetadataService} from '$types'
 
 	import * as validators from '$lib/generated/ajv/validation/validate.ajv.mjs'
 
@@ -23,7 +23,7 @@
 	}
 	let {cta, language = '', color = 'primary'}: Props = $props()
 
-	let docService: IDocService = getContext('docService')
+	let metadataService: IMetadataService = getContext('metadataService')
 
 	const validator = new FormValidator(
 		'FormLanguageValidationFunction',
@@ -91,7 +91,7 @@
 	}
 
 	function checkLanguageExists(languageName: string): boolean {
-		return docService.base.languages.includes(languageName)
+		return metadataService.base.languages.includes(languageName)
 	}
 
 	async function saveLanguage() {
@@ -104,7 +104,7 @@
 			fromLang = sourceLanguage
 		}
 
-		await docService.addLanguage({
+		await metadataService.addLanguage({
 			name: newLanguage,
 			sourceLanguage: fromLang,
 		})
@@ -194,7 +194,7 @@
 			{/if}
 		</div>
 		<div class="l:side l:stack">
-			{#if docService.base.languages.length}
+			{#if metadataService.base.languages.length}
 				<label class="size:2xs font:sm">
 					Source Language
 					<select
@@ -208,7 +208,7 @@
 						<option class="size:xs font:xs" value={null}>
 							No language selected
 						</option>
-						{#each docService.base.languages as lang, i (i)}
+						{#each metadataService.base.languages as lang, i (i)}
 							<option class="size:xs font:xs" value={lang}>
 								{lang}
 							</option>

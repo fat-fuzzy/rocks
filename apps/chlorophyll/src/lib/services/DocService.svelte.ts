@@ -11,31 +11,23 @@ import type {
 	DocStore,
 	DocIndex,
 	OPFSTreeDoc,
-	FrontmatterStructure,
-	FrontmatterBase,
-	OPFSTreeBase,
-	OPFSTreeStructure,
 	DocContentType,
 	IDocService,
 	Subsection,
 } from '$types'
 
-import {DOC_LANGUAGE, DOC_FORMAT} from '$config/setup'
-import {SCHEMA_VERSION} from '$config/setup'
-
 import WorkerBridge from '$lib/workers/worker-bridge'
 import {getBridge} from '$lib/services/bridge'
 
+import {SCHEMA_VERSION} from '$config/setup'
 import {sortByRankAsc} from '$lib/common/sort'
 import {getSectionKey, getBlockKey} from '$lib/common/format'
-
-import {
-	opfsBaseTreeToFrontmatterBase,
-	opfsDocTreeToDocStore,
-	opfsStructureTreeToFrontmatterStructures,
-} from '$lib/common/transform/opfs-to-doc'
-
+import {opfsDocTreeToDocStore} from '$lib/common/transform/opfs-to-doc'
 import {buildDocIndex} from '$lib/common/transform/store-to-index'
+import {
+	updateBlockInSection,
+	deleteBlockInSection,
+} from '$lib/common/transform/operations-block'
 
 /**
  * DocService class to manage access to stored docs
@@ -46,18 +38,8 @@ export default class DocService implements IDocService {
 	bridge: WorkerBridge | undefined = $state()
 	loading = $state(false)
 	error = $state(false)
-	base: FrontmatterBase = $state({
-		schema_version: SCHEMA_VERSION,
-		languages: [DOC_LANGUAGE as DocLanguage],
-		formats: [DOC_FORMAT as Slug],
-		tags: [],
-		settings: [],
-	})
-	structures: FrontmatterStructure[] = $state([])
 	content: DocStore = $state({})
 	docIndex: DocIndex = $derived(buildDocIndex(this.content))
-	lazyBlocks: {[name: string]: Block} = $state({})
-	lazySections: {[name: string]: Section} = $state({})
 
 	constructor() {
 		this.loading = true
@@ -68,9 +50,7 @@ export default class DocService implements IDocService {
 		try {
 			this.loading = true
 
-			await this.getAllDocs()
-			await this.getDocBase()
-			await this.getDocStructure()
+			await this.loadDocStore()
 		} catch {
 			this.error = true
 		} finally {
@@ -80,68 +60,6 @@ export default class DocService implements IDocService {
 
 	reset() {
 		this.content = {}
-		this.base = {
-			schema_version: SCHEMA_VERSION,
-			languages: [DOC_LANGUAGE as DocLanguage],
-			formats: [DOC_FORMAT as Slug],
-			tags: [],
-			settings: [],
-		}
-		this.structures = []
-	}
-
-	/**
-	 * Add a new language
-	 * @param options
-	 * @returns the new language name
-	 */
-
-	async addLanguage(options: {
-		name: DocLanguage
-		sourceLanguage: DocLanguage
-	}): Promise<void> {
-		if (!this.bridge) {
-			return
-		}
-		const {name, sourceLanguage} = options
-
-		await this.bridge.saveLanguage({
-			language: name,
-			sourceLanguage,
-			formats: JSON.parse(JSON.stringify(this.base.formats)),
-		})
-
-		this.base.languages.push(name)
-
-		await this.bridge.saveBase({base: JSON.parse(JSON.stringify(this.base))})
-
-		await this.getDocBase()
-	}
-
-	/**
-	 * Add a new format
-	 * @param options
-	 * @returns the new format name
-	 */
-
-	async addFormat(options: {name: Slug; sourceFormat: Slug}): Promise<void> {
-		if (!this.bridge) {
-			return
-		}
-		const {name, sourceFormat} = options
-
-		await this.bridge.saveFormat({
-			format: name,
-			sourceFormat,
-			formats: JSON.parse(JSON.stringify(this.base.formats)),
-			languages: JSON.parse(JSON.stringify(this.base.languages)),
-		})
-
-		this.base.formats.push(name)
-
-		await this.bridge.saveBase({base: JSON.parse(JSON.stringify(this.base))})
-
-		await this.getDocBase()
 	}
 
 	/**
@@ -183,118 +101,105 @@ export default class DocService implements IDocService {
 		]
 	}
 
-	lazyLoadBlock(
-		dataset: {block?: string; section?: string; subsection?: string},
-		language: DocLanguage,
-		format: Slug,
-		name: Slug,
-	) {
-		if (!dataset.section || !dataset.block) {
-			return
-		}
-
-		if (this.lazyBlocks[dataset.block]) {
-			return
-		}
-		if (dataset.block === dataset.section) {
-			this.lazySections[dataset.block] = this.getSectionByName({
-				language,
-				format,
-				name,
-			})
-		} else {
-			this.lazyBlocks[dataset.block] = this.getBlock({
-				language,
-				format,
-				section: dataset.section as Slug,
-				name: dataset.block,
-				subsection: dataset.subsection,
-			})
-		}
-	}
-
 	/**
 	 * Create a new Block
 	 * @param options block metadata and content
 	 */
-	async createBlock(options: {
+	async createBlockForLanguageAndFormat(options: {
 		name: Slug
 		title?: string
 		group?: string
 		rank: Rank
 		parent: Slug
 		tags: string[]
+		language: DocLanguage
+		format: Slug
 	}): Promise<{id: string} | void> {
 		if (!this.bridge) {
 			return
 		}
 
-		const languages = this.base.languages
-		const formats = this.base.formats
+		const {language, format, name} = options
 
-		// TODO: enable optional format selection
-		// const formats = this.base.formats
-		for (const language of languages) {
-			for (const format of formats) {
-				const doc = this.content[language]?.[format]
+		let doc = this.content[language]?.[format]
 
-				if (!doc) {
-					continue // FIXME: user feedback / create doc ?
+		if (!doc) {
+			const languageTree = this.content[language]
+
+			if (languageTree) {
+				languageTree[format] = {
+					schema_version: SCHEMA_VERSION,
+					id: `${language}-${format}`,
+					meta: {
+						id: `${language}-${format}`,
+						name: `${language}-${format}`,
+						label: format,
+						content_type: 'doc-root',
+					},
+					path: {filename: format, filetype: 'json'},
+					sections: [],
 				}
-
-				const section = doc.sections?.find((s) => s.name === options.parent)
-
-				if (!section) {
-					continue
-				}
-
-				// FIXME: a group will be assigned by default if none is chosen by the user (otherwise the block would overwrite the main section content). The name of the group equals the name of the section
-				const group = options.group ? options.group : section.name
-
-				const tags = options.tags.length
-					? options.tags
-					: !options.tags.length || section.content
-						? ['untagged']
-						: []
-
-				if (group) {
-					const block = {
-						id: crypto.randomUUID(),
-						parentId: section.id,
-						content_type: 'block' as DocContentType,
-						rank: options.rank,
-						group: group,
-						name: options.name,
-						content: {
-							html: '<p>Edit block content</p>',
-							json: {},
-						},
-						tags,
-					}
-
-					section.subsections = this.updateSubsections({
-						group,
-						block,
-						section,
-					})
-				} else {
-					section.content = {
-						html: '<p>Edit main section content</p>',
-						json: {},
-					}
-					section.tags = tags
-				}
-
-				// Save Block to OPFS
-				// Block data is saved within the section file
-				await this.bridge.saveSection({
-					language,
-					format,
-					// FIXME: shouldn't have to do this
-					section: JSON.parse(JSON.stringify(section)),
-				})
+				doc = languageTree[format]
 			}
 		}
+
+		if (!doc) {
+			throw Error(`Error creating document "${name}" in format "${format}"`)
+		}
+
+		const section = doc.sections?.find((s) => s.name === options.parent)
+
+		if (!section) {
+			throw Error(
+				`Error creating document "${name}" in section "${options.parent}"`,
+			)
+		}
+
+		// FIXME: a group will be assigned by default if none is chosen by the user (otherwise the block would overwrite the main section content). The name of the group equals the name of the section
+		const group = options.group ? options.group : section.name
+
+		const tags = options.tags.length
+			? options.tags
+			: !options.tags.length || section.content
+				? ['untagged']
+				: []
+
+		if (group) {
+			const block = {
+				id: crypto.randomUUID(),
+				parentId: section.id,
+				content_type: 'block' as DocContentType,
+				rank: options.rank,
+				group: group,
+				name: options.name,
+				content: {
+					html: '<p>Edit block content</p>',
+					json: {},
+				},
+				tags,
+			}
+
+			section.subsections = this.updateSubsections({
+				group,
+				block,
+				section,
+			})
+		} else {
+			section.content = {
+				html: '<p>Edit main section content</p>',
+				json: {},
+			}
+			section.tags = tags
+		}
+
+		// Save Block to OPFS
+		// Block data is saved within the section file
+		await this.bridge.saveSection({
+			language,
+			format,
+			// FIXME: shouldn't have to do this
+			section: JSON.parse(JSON.stringify(section)),
+		})
 	}
 
 	/**
@@ -311,8 +216,7 @@ export default class DocService implements IDocService {
 			return
 		}
 
-		const {language, format} = options
-		let sectionToUpdate
+		const {language, format, block} = options
 
 		// Optimistic update of the local content structure
 		// - For UI reactivity: docIndex re-derives automatically
@@ -329,26 +233,12 @@ export default class DocService implements IDocService {
 			return // FIXME: user feedback / create section ?
 		}
 
-		// 1. If block is not in a group: it is the main content of the section
-		if (options.block.content_type === 'section') {
-			section.content = options.block.content
-			section.tags = options.block.tags
-
-			sectionToUpdate = section
-		} else if (section.subsections) {
-			// 2. Block is in a group: find the subsection to update
-			section.subsections.forEach((subsection) => {
-				if (subsection.blocks) {
-					const i = subsection.blocks.findIndex(
-						(b) => b.id === options.block.id,
-					)
-					if (i !== -1) {
-						subsection.blocks[i] = options.block
-						sectionToUpdate = section
-					}
-				}
-			})
-		}
+		const sectionToUpdate = updateBlockInSection({
+			language,
+			format,
+			block,
+			section,
+		})
 
 		if (!sectionToUpdate) {
 			return // FIXME: user feedback / create section ?
@@ -373,13 +263,14 @@ export default class DocService implements IDocService {
 		content_type: DocContentType
 		group?: string
 		parent: Slug
+		languages: DocLanguage[]
+		formats: Slug[]
 	}): Promise<{id: string} | void> {
 		if (!this.bridge) {
 			return
 		}
 
-		const languages = this.base.languages
-		const formats = this.base.formats
+		const {languages, formats} = options
 
 		for (const language of languages) {
 			for (const format of formats) {
@@ -398,38 +289,16 @@ export default class DocService implements IDocService {
 				if (!section) {
 					continue
 				}
+				const sectionToUpdate = deleteBlockInSection({...options, section})
 
-				// Determine subsection:
-				// - group is provided
-				// - OR or use default subgroup (name = section)
-				const group = options.group ?? options.parent
-
-				// Case 1: block belongs to default subgroup (name = section)
-				if (group === section.name && !section.subsections) {
-					delete section.content
-				} else if (section.subsections) {
-					// Case 2: block belongs to named subgroup
-
-					const subsection = section.subsections.find((s) => s.name === group)
-
-					if (subsection) {
-						subsection.blocks = subsection.blocks.filter(
-							(b) => b.name !== options.name,
-						)
-					} else {
-						console.warn(`Group ${group} for block ${options.name} not found`)
-					}
-				} else {
-					throw Error(`No groups found for ${section.name}`)
+				if (sectionToUpdate) {
+					// Save Section to OPFS
+					await this.bridge.saveSection({
+						language,
+						format,
+						section: sectionToUpdate,
+					})
 				}
-
-				// Save Section to OPFS
-				await this.bridge.saveSection({
-					language,
-					format,
-					// FIXME: shouldn't have to do this
-					section: JSON.parse(JSON.stringify(section)),
-				})
 			}
 		}
 	}
@@ -512,6 +381,24 @@ export default class DocService implements IDocService {
 		return selected
 	}
 
+	async saveSections(
+		options: {
+			language: DocLanguage
+			format: Slug
+			section: Section
+		}[],
+	) {
+		if (!this.bridge) {
+			return
+		}
+		const bridge = this.bridge
+		await Promise.all(options.map((data) => bridge.saveSection(data)))
+		// Save Block to OPFS
+		// Block data is saved within the section file
+
+		this.loadDocStore()
+	}
+
 	/**
 	 * @param options section metadata
 	 */
@@ -520,45 +407,24 @@ export default class DocService implements IDocService {
 		title?: string
 		rank: Rank
 		formats: Slug[]
+		languages: DocLanguage[]
+		updateRanks: Section[]
 	}): Promise<{id: string} | void> {
 		if (!this.bridge) {
 			return
 		}
 
-		const {formats} = options
-		const languages = this.base.languages
+		const {languages, updateRanks} = options
 		// Check if an existing section's rank is affected
 
-		let updateRanks: Section[] = []
-		const maxRank = Object.keys(this.docIndex.sections).length
-
-		if (options.rank <= 1 || options.rank < maxRank) {
-			for (let i = options.rank; i < maxRank; i++) {
-				const toUpdate = this.getSectionsByRank(i)
-				if (toUpdate.length) {
-					updateRanks = updateRanks.concat(JSON.parse(JSON.stringify(toUpdate)))
-				}
-			}
+		for (const language of languages) {
+			this.bridge.createSection({
+				...options,
+				language,
+				updateRanks,
+			})
 		}
-
-		for (const format of formats) {
-			const structureToUpdate = this.structures.find((s) => s.format === format)
-			if (structureToUpdate) {
-				await this.bridge.createSection({
-					...options,
-					structure: JSON.parse(JSON.stringify(structureToUpdate)),
-					languages: JSON.parse(JSON.stringify(languages)),
-					updateRanks,
-				})
-			}
-		}
-
-		await this.bridge.saveStructures({
-			structures: JSON.parse(JSON.stringify(this.structures)),
-		})
-
-		this.getAllDocs()
-		this.getDocStructure()
+		this.loadDocStore()
 	}
 
 	/**
@@ -601,38 +467,10 @@ export default class DocService implements IDocService {
 	/**
 	 * Load full doc tree from storage
 	 */
-	async getDocBase() {
-		if (!this.bridge) return
-
-		// Raw content retrieved from OPFS "as is"
-		// 2 files are read:
-		// - content.json // Has FrontmatterBase shaped data FIXME: not always : se RawFrontmatterBase type
-		// - meta.json // Has DocMeta shaped data FIXME: not always : see RawSection type
-		const raw = (await this.bridge.getDocBase()) as OPFSTreeBase
-
-		this.base = opfsBaseTreeToFrontmatterBase(raw)
-	}
-
-	/**
-	 * Load full doc tree from storage
-	 */
-	async getDocStructure() {
-		if (!this.bridge) return
-
-		// Raw content retrieved from OPFS "as is"
-		// 2 files are read:
-		// - content.json // Has FrontmatterBase shaped data FIXME: not always : se RawFrontmatterBase type
-		// - meta.json // Has DocMeta shaped data FIXME: not always : see RawSection type
-		const raw = (await this.bridge.getDocStructure()) as OPFSTreeStructure
-
-		this.structures = opfsStructureTreeToFrontmatterStructures(raw)
-	}
-
-	/**
-	 * Load full doc tree from storage
-	 */
-	async getAllDocs() {
-		if (!this.bridge) return
+	async loadDocStore(): Promise<DocStore> {
+		if (!this.bridge) {
+			return this.content
+		}
 
 		// Raw content retrieved from OPFS "as is"
 		// 2 files are read:
@@ -641,5 +479,7 @@ export default class DocService implements IDocService {
 		const raw = (await this.bridge.getAllDocs()) as OPFSTreeDoc
 
 		this.content = opfsDocTreeToDocStore(raw)
+
+		return this.content
 	}
 }

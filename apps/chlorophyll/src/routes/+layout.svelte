@@ -13,6 +13,7 @@
 	import {initBridge, destroyBridge} from '$lib/services/bridge'
 	import {createServices} from '$lib/services/container'
 	import Dialog from '$lib/ui/overlays/dialog/Dialog.svelte'
+	import UiChlorophyll from '$lib/stores/UiChlorophyll.svelte'
 
 	const {ToggleTree, ToggleReveal, ToggleSettings} = ui.drafts
 	const {SkipLinks} = ui.recipes
@@ -28,14 +29,26 @@
 	/**
 	 * Register Contexts
 	 */
-	const {importService, exportService, docService, tagService, presetService} =
-		createServices()
+	const {
+		metadataService,
+		importService,
+		exportService,
+		docService,
+		tagService,
+		presetService,
+	} = createServices()
 
 	setContext('importService', importService)
 	setContext('exportService', exportService)
 	setContext('docService', docService)
 	setContext('tagService', tagService)
 	setContext('presetService', presetService)
+	setContext('importService', importService)
+	setContext('metadataService', metadataService)
+
+	const uiChlorophyll = new UiChlorophyll(metadataService, docService)
+
+	setContext('uiChlorophyll', uiChlorophyll)
 
 	/**
 	 * Setup page data (loaded / generated)
@@ -106,6 +119,7 @@
 		initBridge()
 
 		await importService.init({base, structures})
+		await metadataService.init()
 		await docService.init()
 		await tagService.init()
 		await presetService.init()
