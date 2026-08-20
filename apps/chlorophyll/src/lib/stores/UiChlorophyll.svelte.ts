@@ -14,7 +14,7 @@ import type {
 	IMetadataService,
 } from '$types'
 
-import {getSectionsUpdatedByRank} from '$lib/common/transform/operations-block'
+import {updatedSectionsByRank} from '$lib/common/transform/operations-block'
 
 /**
  * UiChlorophyll class to manage access to stored docs
@@ -139,7 +139,7 @@ export default class UiChlorophyll implements IUiChlorophyll {
 			return 1
 		}
 
-		return docTree.sections.length
+		return docTree.sections.length + 1
 	}
 
 	/**
@@ -263,7 +263,7 @@ export default class UiChlorophyll implements IUiChlorophyll {
 		const {rank} = options
 
 		const languages = this.metadataService.getLanguages()
-		const updateRanks: Section[] = getSectionsUpdatedByRank({
+		const updateRanks: Section[] = updatedSectionsByRank({
 			rank,
 			docIndex: this.docService.docIndex,
 		})
