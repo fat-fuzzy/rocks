@@ -6,7 +6,7 @@ import type {
 	IImportService,
 } from '$types'
 
-import {DEFAULT_STRUCTURES, DEFAULT_CONTENT} from '$data/cv/cv-config'
+import {DEFAULT_STRUCTURES, DEFAULT_CONTENT} from '$data/doc/cv-config'
 import WorkerBridge from '$lib/workers/worker-bridge'
 import {getBridge} from '$lib/services/bridge'
 
