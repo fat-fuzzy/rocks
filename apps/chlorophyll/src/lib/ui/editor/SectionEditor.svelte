@@ -3,7 +3,7 @@
 
 	import {getContext, onMount} from 'svelte'
 
-	import {isHidden, checkTags} from '$data/cv/cv-display'
+	import {isHidden, checkTags} from '$lib/common/tags'
 
 	import {DOC_LANGUAGE, DOC_FORMAT} from '$config/setup'
 	import BlockPlaceholder from '$lib/ui/editor/BlockPlaceholder.svelte'

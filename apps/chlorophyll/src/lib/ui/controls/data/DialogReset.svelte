@@ -6,7 +6,7 @@
 	import ui from '@fat-fuzzy/ui'
 	import {page} from '$app/state'
 
-	import {DEFAULT_STRUCTURES, DEFAULT_CONTENT} from '$data/cv/cv-config'
+	import {DEFAULT_STRUCTURES, DEFAULT_CONTENT} from '$data/doc/cv-config'
 	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
 	import {SvelteURL} from 'svelte/reactivity'
 
