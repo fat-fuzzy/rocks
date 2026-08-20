@@ -15,6 +15,7 @@ import type {
 	FrontmatterStructure,
 	Uuid,
 	DocPath,
+	OPFStructure,
 } from '$types'
 
 import {SCHEMA_VERSION} from '$config/setup'
@@ -127,12 +128,12 @@ function rawBaseToBase(raw: RawBase): FrontmatterBase {
 	return raw.content
 }
 
-type RawStructure = {
+type RawStructureTree = {
 	content: {structure: FrontmatterStructure[]}
 	meta: DocMeta
 }
 
-export function isRawStructure(value: unknown): value is RawStructure {
+export function isRawStructureTree(value: unknown): value is RawStructureTree {
 	if (!isRecord(value)) {
 		return false
 	}
@@ -144,8 +145,31 @@ export function isRawStructure(value: unknown): value is RawStructure {
 	)
 }
 
-function rawStructureToStructure(raw: RawStructure): FrontmatterStructure[] {
+function rawStructureTreeToStructure(
+	raw: RawStructureTree,
+): FrontmatterStructure[] {
 	return raw.content.structure
+}
+
+type RawStructure = {
+	content: FrontmatterStructure
+	meta: DocMeta
+}
+
+export function isRawStructure(value: unknown): value is RawStructure {
+	if (!isRecord(value)) {
+		return false
+	}
+
+	return (
+		'meta' in value &&
+		'content' in value &&
+		'format' in (value.content as {content: unknown})
+	)
+}
+
+function rawStructureToStructure(raw: RawStructure): FrontmatterStructure {
+	return raw.content
 }
 
 export function isSection(value: unknown): value is Section {
@@ -255,24 +279,23 @@ export function opfsBaseTreeToFrontmatterBase(
 }
 
 export function opfsStructureTreeToFrontmatterStructures(
-	tree: OPFSTreeStructure,
+	tree: OPFSTreeStructure | OPFStructure,
 ): FrontmatterStructure[] {
-	let data: FrontmatterStructure[]
+	let data = []
 	const result = []
 
-	if (isRawStructure(tree)) {
-		data = rawStructureToStructure(tree)
+	if (isRawStructureTree(tree)) {
+		data = rawStructureTreeToStructure(tree)
+	} else if (isRawStructure(tree)) {
+		const structure = rawStructureToStructure(tree)
 
-		for (const structure of data) {
-			result.push(
-				parseStructure(`OPFS Structure: ${structure.format}`, structure),
-			)
-		}
-
-		return result
+		data.push(structure)
 	}
 
-	// Return default fallback
-	// TODO: review this
-	return []
+	for (const structure of data) {
+		result.push(
+			parseStructure(`OPFS Structure: ${structure.format}`, structure),
+		)
+	}
+	return result
 }
