@@ -179,9 +179,6 @@ export default class MetadataService implements IMetadataService {
 
 		const structures = opfsStructureTreeToFrontmatterStructures(raw)
 		this.structures = structures
-
-		console.log('this.structures')
-		console.log(this.structures)
 	}
 
 	/**
@@ -217,11 +214,6 @@ export default class MetadataService implements IMetadataService {
 						structureToUpdate.sections,
 					)
 				}
-
-				console.log('structureToUpdate')
-				console.log(structureToUpdate)
-				console.log('metadataService.structures')
-				console.log(this.structures)
 			}
 		}
 

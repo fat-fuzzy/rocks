@@ -143,6 +143,7 @@ export default class TagService implements ITagService {
 				}
 
 				const {languages, formats} = this.metadataService.base
+
 				for (const language of languages) {
 					for (const format of formats) {
 						// 2. Update blocks

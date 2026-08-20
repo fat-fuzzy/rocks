@@ -8,20 +8,13 @@ import type {
 	Section,
 	Block,
 	Prose,
-	DocStore,
-	DocIndex,
 	DocContentType,
 	IUiChlorophyll,
 	IDocService,
 	IMetadataService,
 } from '$types'
 
-import {
-	getUpdatedSectionList,
-	getSectionsUpdatedByRank,
-} from '$lib/common/transform/operations-block'
-
-import {buildDocIndex} from '$lib/common/transform/store-to-index'
+import {getSectionsUpdatedByRank} from '$lib/common/transform/operations-block'
 
 /**
  * UiChlorophyll class to manage access to stored docs
@@ -33,8 +26,6 @@ export default class UiChlorophyll implements IUiChlorophyll {
 	docService: IDocService
 	loading = $state(false)
 	error = $state(false)
-	content: DocStore = $state({})
-	docIndex: DocIndex = $derived(buildDocIndex(this.content))
 	lazyBlocks: {[name: string]: Block} = $state({})
 	lazySections: {[name: string]: Section} = $state({})
 
@@ -44,7 +35,10 @@ export default class UiChlorophyll implements IUiChlorophyll {
 	}
 
 	reset() {
-		this.content = {}
+		this.loading = false
+		this.error = false
+		this.lazyBlocks = {}
+		this.lazySections = {}
 	}
 
 	/**
@@ -131,6 +125,23 @@ export default class UiChlorophyll implements IUiChlorophyll {
 		}
 	}
 
+	getSectionMaxRank(options: {language: DocLanguage; format: Slug}): number {
+		const {language, format} = options
+		const languageTree = this.docService.content[language]
+
+		if (!languageTree) {
+			return 1
+		}
+
+		const docTree = languageTree[format]
+
+		if (!docTree) {
+			return 1
+		}
+
+		return docTree.sections.length
+	}
+
 	/**
 	 * Create a new Block
 	 * @param options block metadata and content
@@ -145,7 +156,6 @@ export default class UiChlorophyll implements IUiChlorophyll {
 	}): Promise<{id: string} | void> {
 		const languages = this.metadataService.getLanguages()
 		const formats = this.metadataService.getFormats()
-		const content = this.docService.content
 
 		// TODO: enable optional format selection
 		for (const language of languages) {
@@ -157,16 +167,6 @@ export default class UiChlorophyll implements IUiChlorophyll {
 				})
 			}
 		}
-
-		// FIXME: duplicated
-		const sectionsToUpdate = getUpdatedSectionList({
-			...options,
-			languages,
-			formats,
-			content,
-		})
-
-		await this.docService.saveSections(sectionsToUpdate)
 	}
 
 	/**
@@ -265,7 +265,7 @@ export default class UiChlorophyll implements IUiChlorophyll {
 		const languages = this.metadataService.getLanguages()
 		const updateRanks: Section[] = getSectionsUpdatedByRank({
 			rank,
-			docIndex: this.docIndex,
+			docIndex: this.docService.docIndex,
 		})
 
 		await this.docService.createSection({
