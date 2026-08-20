@@ -235,7 +235,7 @@ function updateSubsections(options: {
 	return subsections
 }
 
-export function updatedSectionsByRank(options: {
+export function updateSectionRanks(options: {
 	rank: number
 	docIndex: DocIndex
 }): Section[] {
