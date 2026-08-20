@@ -79,6 +79,8 @@ export interface IUiChlorophyll {
 
 	getSectionsByRank(rank: Rank): Section[]
 
+	getSectionMaxRank(options: {language: DocLanguage; format: Slug}): number
+
 	getBlock(options: {
 		language: DocLanguage
 		format: Slug

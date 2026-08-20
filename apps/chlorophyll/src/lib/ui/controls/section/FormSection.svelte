@@ -50,7 +50,10 @@
 
 	let section: SectionProps = $state({
 		name: '',
-		rank: 1,
+		rank: uiChlorophyll.getSectionMaxRank({
+			language: page.url.searchParams.get('language') ?? DOC_LANGUAGE,
+			format: page.url.searchParams.get('format') ?? DOC_FORMAT,
+		}),
 		formats: [],
 	})
 
@@ -156,7 +159,7 @@
 
 		dialogActor.close()
 
-		// TODO: put selected sections into context (fix reactivity)
+		// FIXME: put selected sections into context (fix reactivity)
 		const newUrl = new URL(page.url)
 		newUrl.searchParams.append('sections', newSection.name)
 

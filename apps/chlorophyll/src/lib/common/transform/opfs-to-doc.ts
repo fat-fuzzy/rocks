@@ -206,26 +206,25 @@ export function opfsDocTreeToDocStore(tree: OPFSTreeDoc): DocStore {
 			continue
 		}
 
-		const doc: Doc = {
-			id: crypto.randomUUID(),
-			schema_version: SCHEMA_VERSION,
-			meta: {
-				content_type: 'section',
-				id: crypto.randomUUID(),
-				name: 'doc-root',
-				label: 'doc-root',
-			},
-			path: {
-				filename: 'doc-root',
-				filetype: 'json',
-			},
-			sections: [],
-		}
-
 		for (const [format, docTree] of Object.entries(formats)) {
+			const doc: Doc = {
+				id: crypto.randomUUID(),
+				schema_version: SCHEMA_VERSION,
+				meta: {
+					content_type: 'section',
+					id: crypto.randomUUID(),
+					name: 'doc-root',
+					label: 'doc-root',
+				},
+				path: {
+					filename: 'doc-root',
+					filetype: 'json',
+				},
+				sections: [],
+			}
+
 			if (isRawDoc(docTree)) {
-				const sections = rawDocToDoc(docTree)
-				doc.sections = doc.sections.concat(sections)
+				doc.sections = rawDocToDoc(docTree)
 			}
 
 			languageTree[format as Slug] = doc
