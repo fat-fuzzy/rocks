@@ -2,7 +2,7 @@ import type {SeedDoc} from '$types'
 
 import {error} from '@sveltejs/kit'
 
-import cvParser from '$data/cv/cv-io-markdown'
+import cvParser from '$data/doc/cv-io-markdown'
 
 export const prerender = true
 
