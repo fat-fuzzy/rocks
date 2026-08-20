@@ -4,6 +4,7 @@
 		DocLanguage,
 		TagGroup,
 		IDocService,
+		IMetadataService,
 		ITagService,
 		IPresetService,
 	} from '$types'
@@ -26,6 +27,7 @@
 	const {PageRails} = ui.content
 	const {Feedback} = ui.blocks
 
+	let metadataService: IMetadataService = getContext('metadataService')
 	let docService: IDocService = getContext('docService')
 	let presetService: IPresetService = getContext('presetService')
 	let tagService: ITagService = getContext('tagService')
@@ -147,7 +149,7 @@
 				{cta}
 				{preset}
 				{query}
-				formats={docService.base.formats}
+				formats={metadataService.getFormats()}
 			/>
 		{/if}
 	{/snippet}

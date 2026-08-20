@@ -6,6 +6,7 @@ import type {
 	FileExt,
 	IDocService,
 	ITagService,
+	IMetadataService,
 } from '$types'
 
 import {SvelteMap} from 'svelte/reactivity'
@@ -23,6 +24,7 @@ import {buildTagIndex} from '$lib/common/transform/store-to-index'
  */
 export default class TagService implements ITagService {
 	bridge: WorkerBridge | undefined = $state()
+	metadataService: IMetadataService | undefined = $state()
 	docService: IDocService | undefined = $state()
 	loading = $state(false)
 	error = $state(false)
@@ -41,8 +43,9 @@ export default class TagService implements ITagService {
 				},
 	)
 
-	constructor(docService: IDocService) {
+	constructor(metadataService: IMetadataService, docService: IDocService) {
 		this.loading = true
+		this.metadataService = metadataService
 		this.docService = docService
 	}
 
@@ -62,16 +65,14 @@ export default class TagService implements ITagService {
 		name: Slug
 		group: {name: Slug; title: string; type?: string}
 	}): Promise<{id: string} | void> {
-		if (!this.bridge || !this.docService) {
+		if (!this.bridge || !this.metadataService) {
 			return
 		}
 
-		const group = this.docService.base.tags.find(
-			(tg) => tg.name === options.group.name,
-		)
+		const group = this.metadataService.getTagGroupByName(options.group.name)
 
 		if (!group) {
-			this.docService.base.tags.push({
+			this.metadataService.base.tags.push({
 				...options.group,
 				items: [options.name],
 			})
@@ -86,7 +87,7 @@ export default class TagService implements ITagService {
 		}
 
 		await this.bridge.saveBase({
-			base: JSON.parse(JSON.stringify(this.docService.base)),
+			base: JSON.parse(JSON.stringify(this.metadataService.base)),
 		})
 	}
 
@@ -141,7 +142,7 @@ export default class TagService implements ITagService {
 					}
 				}
 
-				const {languages, formats} = this.docService.base
+				const {languages, formats} = this.metadataService.base
 				for (const language of languages) {
 					for (const format of formats) {
 						// 2. Update blocks
@@ -210,10 +211,10 @@ export default class TagService implements ITagService {
 			}
 		}
 
-		this.docService.base.tags = tagGroupsToKeep
+		this.metadataService.base.tags = tagGroupsToKeep
 
 		await this.bridge.saveBase({
-			base: JSON.parse(JSON.stringify(this.docService.base)),
+			base: JSON.parse(JSON.stringify(this.metadataService.base)),
 		})
 	}
 }

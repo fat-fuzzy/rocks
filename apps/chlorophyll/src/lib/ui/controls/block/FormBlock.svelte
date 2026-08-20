@@ -8,8 +8,8 @@
 		Uuid,
 		ActionCrud,
 		InputCheckedTypes,
-		IDocService,
 		ITagService,
+		IUiChlorophyll,
 	} from '$types'
 
 	import * as validators from '$lib/generated/ajv/validation/validate.ajv.mjs'
@@ -33,8 +33,8 @@
 	}
 	let {block, parent, subsections, cta, color = 'primary'}: Props = $props()
 
-	let docService: IDocService = getContext('docService')
 	let tagService: ITagService = getContext('tagService')
+	let uiChlorophyll: IUiChlorophyll = getContext('uiChlorophyll')
 
 	const validator = new FormValidator('FormBlockValidationFunction', validators)
 
@@ -230,7 +230,7 @@
 			tags: toUpdate.tags,
 		}
 
-		docService.createBlock(newBlock)
+		uiChlorophyll.createBlock(newBlock)
 
 		dialogActor.close()
 	}
@@ -241,7 +241,7 @@
 		} else {
 			errorBlockNotFound = false
 
-			docService.deleteBlock({
+			uiChlorophyll.deleteBlock({
 				name: block.name as Uuid,
 				content_type: block.content_type,
 				group: block.group,

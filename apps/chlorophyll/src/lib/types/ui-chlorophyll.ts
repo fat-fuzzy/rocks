@@ -1,10 +1,11 @@
 import type {
 	Block,
-	Doc,
 	DocContentType,
 	DocLanguage,
 	DocMeta,
 	DocPath,
+	IDocService,
+	IMetadataService,
 	Prose,
 	Rank,
 	Section,
@@ -12,38 +13,26 @@ import type {
 	Uuid,
 } from '$types'
 
-export type DocStore = {
-	[language in DocLanguage]?: {
-		[format in Slug]?: Doc
-	}
-}
-
-export interface DocIndex {
-	sections: Record<string, Section> // keyed by sectionKey = [group.tag]
-	sectionsById: Record<string, Section> // keyed by id
-	subsections: Record<
-		string,
-		{
-			name: string
-			parent: string
-			rank: number
-			blocks: Block[]
-		}
-	> // keyed by name
-	blocks: Record<string, Block>
-}
-
-export interface IDocService {
+export interface IUiChlorophyll {
+	readonly metadataService: IMetadataService | undefined
+	readonly docService: IDocService | undefined
 	readonly loading: boolean
 	readonly error: boolean
-	readonly content: DocStore
-	readonly docIndex: DocIndex
-
-	init(): Promise<void>
+	readonly lazyBlocks: {[name: string]: Block}
+	readonly lazySections: {[name: string]: Section}
 
 	reset(): void
 
 	getProse(options: {path: DocPath; meta: DocMeta}): Promise<Prose | undefined>
+
+	createBlock(options: {
+		name: Slug
+		title?: string
+		group?: string
+		rank: Rank
+		parent: Slug
+		tags: string[]
+	}): Promise<{id: string} | void>
 
 	saveBlock(options: {
 		language: DocLanguage
@@ -52,24 +41,11 @@ export interface IDocService {
 		path: DocPath
 	}): Promise<{id: string} | void>
 
-	createBlockForLanguageAndFormat(options: {
-		name: Slug
-		title?: string
-		group?: string
-		rank: Rank
-		parent: Slug
-		tags: string[]
-		language: DocLanguage
-		format: Slug
-	}): Promise<{id: string} | void>
-
 	deleteBlock(options: {
 		name: Slug
 		content_type: DocContentType
 		group?: string
 		parent?: Slug
-		languages: DocLanguage[]
-		formats: Slug[]
 	}): Promise<{id: string} | void>
 
 	createSection(options: {
@@ -77,17 +53,7 @@ export interface IDocService {
 		title?: string
 		rank: Rank
 		formats: Slug[]
-		languages: DocLanguage[]
-		updateRanks: Section[]
 	}): Promise<{id: string} | void>
-
-	saveSections(
-		options: {
-			language: DocLanguage
-			format: Slug
-			section: Section
-		}[],
-	): Promise<{id: string} | void>
 
 	getSections({
 		language,
@@ -121,5 +87,10 @@ export interface IDocService {
 		subsection?: string
 	}): Block
 
-	loadDocStore(): Promise<DocStore>
+	lazyLoadBlock(
+		dataset: {block?: string; section?: string; subsection?: string},
+		language: DocLanguage,
+		format: Slug,
+		name: Slug,
+	): void
 }
