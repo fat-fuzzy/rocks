@@ -1,5 +1,11 @@
 # @fat-fuzzy/validation
 
+## 0.1.29
+
+### Patch Changes
+
+- 099428a: UI updates, bugfixes & cleanup, add tests
+
 ## 0.1.28
 
 ### Patch Changes
