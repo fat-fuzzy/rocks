@@ -1,9 +1,12 @@
-import type {SeedDoc, FrontmatterSeed, FrontmatterStructure} from '$types'
+import type {
+	SeedDoc,
+	FrontmatterSeed,
+	FrontmatterStructure,
+	Prose,
+} from '$types'
 
-export interface IImportService {
+export interface IAggregateDataLifecycle {
 	readonly seeded: {date_seed?: string; source?: string}
-	readonly loading: boolean
-	readonly error: boolean
 	readonly export: {type: string; meta: Record<string, unknown>; data: string}
 	readonly import: string
 
@@ -25,6 +28,14 @@ export interface IImportService {
 	} | void>
 
 	importFromJSON(jsonString: string): Promise<void>
+
+	buildFullJSON(): Promise<string>
+
+	buildFullMarkdown(options: {
+		root: string
+		content: {[id: string]: Prose}
+		presets: {id: string; query: string}[]
+	}): string
 
 	deleteAllContent(): Promise<void>
 }

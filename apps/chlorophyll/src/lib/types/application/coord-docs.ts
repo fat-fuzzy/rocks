@@ -1,12 +1,11 @@
 import type {
 	Block,
-	Doc,
 	DocContentType,
 	DocLanguage,
 	DocMeta,
 	DocPath,
-	FrontmatterBase,
-	FrontmatterStructure,
+	IAggregateDocs,
+	IAggregateMetadata,
 	Prose,
 	Rank,
 	Section,
@@ -14,47 +13,15 @@ import type {
 	Uuid,
 } from '$types'
 
-export type DocStore = {
-	[language in DocLanguage]?: {
-		[format in Slug]?: Doc
-	}
-}
-
-export interface DocIndex {
-	sections: Record<string, Section> // keyed by sectionKey = [group.tag]
-	sectionsById: Record<string, Section> // keyed by id
-	subsections: Record<
-		string,
-		{
-			name: string
-			parent: string
-			rank: number
-			blocks: Block[]
-		}
-	> // keyed by name
-	blocks: Record<string, Block>
-}
-
-export interface IDocService {
+export interface ICoordinateDocs {
+	readonly aggMetadata: IAggregateMetadata | undefined
+	readonly aggDocs: IAggregateDocs | undefined
 	readonly loading: boolean
 	readonly error: boolean
-	readonly base: FrontmatterBase
-	readonly structures: FrontmatterStructure[]
-	readonly content: DocStore
-	readonly docIndex: DocIndex
 	readonly lazyBlocks: {[name: string]: Block}
 	readonly lazySections: {[name: string]: Section}
 
-	init(): Promise<void>
-
 	reset(): void
-
-	addLanguage(options: {
-		name: DocLanguage
-		sourceLanguage?: DocLanguage
-	}): Promise<void>
-
-	addFormat(options: {name: Slug; sourceFormat: Slug}): Promise<void>
 
 	getProse(options: {path: DocPath; meta: DocMeta}): Promise<Prose | undefined>
 
@@ -111,6 +78,8 @@ export interface IDocService {
 	getSectionById(id: Uuid): Section
 
 	getSectionsByRank(rank: Rank): Section[]
+
+	getSectionMaxRank(options: {language: DocLanguage; format: Slug}): number
 
 	getBlock(options: {
 		language: DocLanguage

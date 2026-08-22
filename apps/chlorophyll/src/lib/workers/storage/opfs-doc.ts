@@ -8,11 +8,8 @@ import type {
 	DocPath,
 	Section,
 	Block,
-	Prose,
 	OPFSTreeDoc,
 	Rank,
-	FrontmatterStructure,
-	Uuid,
 } from '$types'
 
 import {sanitizeFileName} from '$lib/common/sanitize'
@@ -23,7 +20,6 @@ import {
 } from '$lib/common/transform/opfs-to-doc'
 import {
 	getDocsHandle,
-	getStructureHandle,
 	saveEntry,
 	deleteEntry,
 	readDirectoryRecursive,
@@ -45,35 +41,19 @@ export async function saveLanguage(options: {
 	const {language, sourceLanguage, formats} = options
 
 	for (const format of formats) {
+		await saveFormat({
+			format,
+			sourceFormat: formats[0], // TODO: test this
+			formats,
+			languages: [language],
+		})
 		const sourceDoc = await getContentDataForLanguage(sourceLanguage)
 
-		const targetParentHandle = await getDocsHandle({
+		await duplicateDocContent({
 			language,
 			format,
-			create: true,
+			opfsContent: sourceDoc.data,
 		})
-
-		const opfsContent = Object.values(sourceDoc.data)
-
-		for (const formatData of Object.values(opfsContent)) {
-			const sections = Object.values(formatData)
-
-			for (const sectionData of Object.values(sections)) {
-				let unsafeSection
-				if (isRawSection(sectionData)) {
-					unsafeSection = rawSectionToSection(sectionData)
-				}
-
-				if (unsafeSection) {
-					const section = parseSection(
-						`Section ${unsafeSection.name}`,
-						unsafeSection,
-					)
-
-					await saveSectionToOPFS(targetParentHandle, section, 'json')
-				}
-			}
-		}
 	}
 
 	return {
@@ -99,21 +79,65 @@ export async function saveFormat(options: {
 	for (const language of languages) {
 		const sourceDoc = await getContentDataForFormat(language, sourceFormat)
 
-		const targetParentHandle = await getDocsHandle({
+		await duplicateDocContent({
 			language,
 			format,
-			create: true,
+			opfsContent: sourceDoc.data,
 		})
+	}
 
-		const opfsContent = Object.values(sourceDoc.data)
+	return {
+		data: {
+			format,
+		},
+	}
+}
 
-		for (const formatData of Object.values(opfsContent)) {
+/**
+ * Duplicate directory content from source [language*format] in a new directory [language*format]
+ * @param options
+ */
+async function duplicateDocContent(options: {
+	language: DocLanguage
+	format: Slug
+	opfsContent: OPFSTreeDoc
+}) {
+	const {language, format, opfsContent} = options
+
+	const targetParentHandle = await getDocsHandle({
+		language,
+		format,
+		create: true,
+	})
+
+	const docMeta = {
+		path: {filename: format, filetype: 'json'},
+		meta: {
+			id: crypto.randomUUID(),
+			content_type: 'doc-root',
+			name: `${language}-${format}`,
+			label: `${language}-${format}`,
+		},
+	}
+	const docContent = {
+		id: crypto.randomUUID(),
+		content_type: 'doc-root',
+		name: `${language}-${format}`,
+		label: `${language}-${format}`,
+	}
+
+	await saveEntry(targetParentHandle, docMeta, docContent)
+
+	for (const sections of Object.values(opfsContent)) {
+		for (const sectionData of Object.values(sections)) {
 			let unsafeSection
-			if (isRawSection(formatData)) {
-				unsafeSection = rawSectionToSection(formatData)
+			if (isRawSection(sectionData)) {
+				unsafeSection = rawSectionToSection(sectionData)
 			}
 
 			if (unsafeSection) {
+				unsafeSection.parentId = docMeta.meta.id
+
 				const section = parseSection(
 					`Section ${unsafeSection.name}`,
 					unsafeSection,
@@ -122,12 +146,6 @@ export async function saveFormat(options: {
 				await saveSectionToOPFS(targetParentHandle, section, 'json')
 			}
 		}
-	}
-
-	return {
-		data: {
-			format,
-		},
 	}
 }
 
@@ -192,78 +210,54 @@ export async function saveBlock(options: {
 export async function createSection(options: {
 	name: Slug
 	rank: Rank
-	parentId: Uuid
 	formats: Slug[]
-	languages: DocLanguage[]
-	structure: FrontmatterStructure
+	language: DocLanguage
 	updateRanks: Section[]
 	title?: string
 }) {
-	const {name, title, rank, formats, languages, updateRanks} = options
+	const {name, title, rank, formats, language, updateRanks} = options
 
-	const structureToUpdate = options.structure
-
-	const structuresToUpdate = []
 	for (const format of formats) {
-		let sections = [...structureToUpdate.sections]
+		// 1. Gather parent data
+		const docHandle = await getDocsHandle({
+			language,
+			format,
+		})
+		const docRoot = 'content.json'
+		const fh = await docHandle.getFileHandle(docRoot, {
+			create: true,
+		})
 
-		// Insert section at rank
-		// TODO: factor out this code to helper fn
-		if (rank >= sections.length) {
-			sections.push(name)
-		} else if (rank <= 1) {
-			sections.unshift(name)
-		} else {
-			const precedingSections = sections.splice(0, rank - 1)
-			precedingSections.push(name)
-			sections = precedingSections.concat(sections)
+		const file = await fh.getFile()
+		const serialized = await file.text()
+
+		const docMeta = JSON.parse(serialized)
+
+		// 2. Create the section folder
+		const sectionId = crypto.randomUUID()
+
+		const section: Section = {
+			content_type: 'section',
+			id: sectionId,
+			name,
+			title,
+			rank,
+			parentId: docMeta.id,
 		}
 
-		for (const language of languages) {
-			const docHandle = await getDocsHandle({language, format})
-			const docRoot = 'content.json'
-			const fh = await docHandle.getFileHandle(docRoot)
-			const file = await fh.getFile()
-			const serialized = await file.text()
+		const parsed = parseSection(`Section ${name}`, section)
 
-			const docMeta = JSON.parse(serialized)
-
-			const section: Section = {
-				content_type: 'section',
-				id: crypto.randomUUID(),
-				name,
-				title,
-				rank,
-				parentId: docMeta.id,
-			}
-
-			const parsed = parseSection(`Section ${name}`, section)
-
-			await saveSection({language, format, section: parsed})
-		}
-
-		structureToUpdate.sections = sections
-		structuresToUpdate.push(structureToUpdate)
+		await saveSection({language, format, section: parsed})
 	}
-	// TODO: factor out this code to helper fn
+	// 3. Update ranks of sections around, if necessary
 	for (let i = 0; i < updateRanks.length; i++) {
 		const toUpdate = updateRanks[i]
 		toUpdate.rank = toUpdate.rank + 1
 
 		for (const format of formats) {
-			for (const language of languages) {
-				await saveSection({language, format, section: toUpdate})
-			}
+			await saveSection({language, format, section: toUpdate})
 		}
 	}
-
-	const structureHandle = await getStructureHandle({create: true})
-
-	await saveEntry(
-		structureHandle,
-		{name: 'structure'},
-		{structure: structuresToUpdate},
-	)
 
 	return {name: options.name}
 }
@@ -273,8 +267,6 @@ export async function saveSection(options: {
 	format: Slug
 	section: Section
 }) {
-	// 0. Prepare: ensure language and format folders exist
-
 	const {language, format, section} = options
 	const opfsOptions = language && format ? {language, format} : {language}
 
@@ -284,67 +276,6 @@ export async function saveSection(options: {
 	const payload = await saveSectionToOPFS(directoryHandle, parsed, 'json')
 
 	return payload
-}
-
-/**
- * Write API
- * @param filename
- * @param data file contents to save, stringified
- * @returns
- */
-export async function saveDoc(options: {
-	meta: DocMeta
-	path: DocPath
-	content: Prose
-}): Promise<{id: string}> {
-	const {meta, path, content} = options
-	const {language, format} = meta
-	const {filename, filetype, parent} = path
-
-	const parentHandle = await getDocsHandle({
-		language,
-		format,
-		parent,
-		create: true,
-	})
-
-	const dirName = sanitizeFileName(filename)
-
-	const directoryHandle = await parentHandle.getDirectoryHandle(dirName, {
-		create: true,
-	})
-
-	const fileContent = `content.${filetype}`
-	const fileMeta = `meta.${filetype}`
-
-	// Stringify here — at the OPFS boundary
-	let serialized
-
-	let writable
-	let fh
-
-	try {
-		// Save content
-		serialized = JSON.stringify(content)
-		fh = await directoryHandle.getFileHandle(fileContent, {create: true})
-		writable = await fh.createWritable()
-		await writable.write(serialized)
-		await writable.close()
-
-		// Save meta
-		serialized = JSON.stringify(meta)
-		fh = await directoryHandle.getFileHandle(fileMeta, {create: true})
-		writable = await fh.createWritable()
-		await writable.write(serialized)
-		await writable.close()
-
-		return {
-			id: meta.id,
-		}
-	} catch (error) {
-		await writable?.abort() // release the lock on failure
-		throw error
-	}
 }
 
 /**

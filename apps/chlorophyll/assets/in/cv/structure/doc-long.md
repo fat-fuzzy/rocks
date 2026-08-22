@@ -1,6 +1,6 @@
 ---
 schema_version: "0.1"
-name: cv-long
+name: doc-long
 format: long
 experience: [
 	XP-05,

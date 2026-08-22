@@ -93,10 +93,8 @@ export type CreateSectionCommand = {
 		name: Slug
 		title?: string
 		rank: Rank
-		parentId: Uuid
-		structure: FrontmatterStructure
 		formats: Slug[]
-		languages: DocLanguage[]
+		language: DocLanguage
 		updateRanks: Section[]
 	}
 }
@@ -259,7 +257,10 @@ export type ResponsePayload = {
 	DELETE_DOC: {deleted: boolean}
 	SAVE_PRESET: {id: Uuid}
 	DELETE_PRESET: {deleted: boolean}
-	DELETE_ALL: {deleted: boolean}
+	DELETE_ALL: {
+		status: string
+		errors: string[]
+	}
 	EXPORT_ALL: {markdown: string}
 	GET_PRESET: {doc: Doc | void}
 	GET_ALL_PRESETS: PresetStore | void

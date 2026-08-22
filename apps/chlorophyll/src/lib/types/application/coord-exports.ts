@@ -1,6 +1,10 @@
 import type {Prose} from '$types'
 
-export interface IExportService {
+export interface ICoordinateExports {
+	readonly export: {type: string; meta: Record<string, unknown>; data: string}
+	readonly loading: boolean
+	readonly error: boolean
+
 	buildFullJSON(): Promise<string>
 
 	buildFullMarkdown(options: {
