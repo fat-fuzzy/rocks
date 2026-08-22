@@ -6,7 +6,8 @@
 		Slug,
 		TagGroup,
 		TagProps,
-		IAggregateTags,
+		ICoordinateMetadata,
+		IAggregateMetadata,
 	} from '$types'
 
 	import * as validators from '$lib/generated/ajv/validation/validate.ajv.mjs'
@@ -32,7 +33,8 @@
 	}
 	let {groups, cta, color = 'primary'}: Props = $props()
 
-	let aggTags: IAggregateTags = getContext('aggTags')
+	let coordMetadata: ICoordinateMetadata = getContext('coordMetadata')
+	let aggMetadata: IAggregateMetadata = getContext('aggMetadata')
 
 	const validator = new FormValidator('FormTagValidationFunction', validators)
 
@@ -168,7 +170,7 @@
 			group,
 		}
 
-		aggTags.createTag(newTag)
+		aggMetadata.createTag(newTag)
 
 		dialogActor.close()
 	}
@@ -202,7 +204,7 @@
 			type,
 			id: 'delete-tags',
 			currentTags: tagsToDelete[groupName] ?? [],
-			tagGroups: aggTags.tagGroups,
+			tagGroups: coordMetadata.getTagGroups(),
 		})
 
 		tagsToDelete[groupName] = updatedTags
@@ -217,7 +219,7 @@
 			return groups
 		}, [])
 
-		aggTags.deleteTags({groups})
+		coordMetadata.deleteTags({groups})
 
 		dialogActor.close()
 	}
@@ -244,7 +246,7 @@
 			{color}
 			value={[]}
 			oninput={updateTags}
-			tagGroups={aggTags.tagGroups}
+			tagGroups={coordMetadata.getTagGroups()}
 		/>
 		<Feedback context="prose" variant="bare" size="xs" font="sm" asset="none">
 			<p>

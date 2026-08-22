@@ -12,12 +12,12 @@ export * from '$lib/types/storage/fs-markdowns'
 export * from '$lib/types/aggregates/import'
 export * from '$lib/types/aggregates/doc'
 export * from '$lib/types/aggregates/preset'
-export * from '$lib/types/aggregates/tag'
 export * from '$lib/types/aggregates/meta'
 
 // Use case coordinators
 export * from '$lib/types/application/CoordinateDocs'
 export * from '$lib/types/application/CoordinateExports'
+export * from '$lib/types/application/CoordinateMetadata'
 
 // Domain + Identity
 export * from '$lib/generated/types/Doc'

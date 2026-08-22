@@ -29,12 +29,14 @@
 	/**
 	 * Register Contexts
 	 */
-	const {aggMetadata, aggImports, aggDocs, aggTags, aggPresets} =
-		createAggregates()
-	const {coordExports, coordDocs} = createCoords(aggMetadata, aggDocs)
+	const {aggMetadata, aggImports, aggDocs, aggPresets} = createAggregates()
+	const {coordExports, coordDocs, coordMetadata} = createCoords(
+		aggMetadata,
+		aggDocs,
+	)
 
 	setContext('aggDocs', aggDocs)
-	setContext('aggTags', aggTags)
+	setContext('coordMetadata', coordMetadata)
 	setContext('aggPresets', aggPresets)
 	setContext('aggImports', aggImports)
 	setContext('aggMetadata', aggMetadata)
@@ -113,7 +115,7 @@
 		await aggImports.init({base, structures})
 		await aggMetadata.init()
 		await aggDocs.init()
-		await aggTags.init()
+		await coordMetadata.init()
 		await aggPresets.init()
 	})
 

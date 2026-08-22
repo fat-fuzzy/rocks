@@ -32,6 +32,15 @@ export interface IAggregateMetadata {
 
 	getTagGroupByName(name: Slug): TagGroup | undefined
 
+	createTag(options: {
+		name: Slug
+		group: {name: Slug; title: string; type?: string}
+	}): Promise<{id: string} | void>
+
+	updateTagGroups(options: {
+		groups: {name: Slug; items: string[]}[]
+	}): Promise<{id: string} | void>
+
 	loadBase(): Promise<void>
 
 	loadStructure(): Promise<void>

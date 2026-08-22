@@ -14,6 +14,9 @@ import type {
 	DocContentType,
 	IAggregateDocs,
 	Subsection,
+	TagGroup,
+	TagIndex,
+	FileExt,
 } from '$types'
 
 import WorkerBridge from '$lib/workers/worker-bridge'
@@ -21,6 +24,7 @@ import {getBridge} from '$lib/aggregates/bridge'
 
 import {SCHEMA_VERSION} from '$config/setup'
 import {sortByRankAsc} from '$lib/common/sort'
+import {getTagKey} from '$lib/common/format'
 import {getSectionKey, getBlockKey} from '$lib/common/format'
 import {opfsDocTreeToDocStore} from '$lib/common/transform/opfs-to-doc'
 import {buildDocIndex} from '$lib/common/transform/store-to-index'
@@ -28,6 +32,7 @@ import {
 	updateBlockInSection,
 	deleteBlockInSection,
 } from '$lib/common/transform/operations-block'
+import {SvelteMap} from 'svelte/reactivity'
 
 /**
  * AggregateDocs class to manage access to stored docs
@@ -300,6 +305,117 @@ export default class AggregateDocs implements IAggregateDocs {
 					})
 				}
 			}
+		}
+	}
+
+	/**
+	 * @param options tags to delete
+	 */
+	async untagBlocks(options: {
+		group: TagGroup
+		tagIndex: TagIndex
+		languages: DocLanguage[]
+		formats: Slug[]
+	}): Promise<TagGroup | void> {
+		if (!this.bridge) {
+			return
+		}
+
+		const {group} = options
+
+		const blocksToUpdate = new SvelteMap<string, Block>()
+		const groupToUpdate: TagGroup = {...group, items: []}
+		const tagsToKeep: Slug[] = []
+
+		for (const tag of group.items) {
+			if (!group.items.includes(tag)) {
+				tagsToKeep.push(tag)
+			}
+		}
+
+		for (const tag of group.items) {
+			const tagKey = getTagKey(group.name, tag)
+
+			// 1. Gather blocks to update
+			const taggedBlocks = options.tagIndex.taggedBlocks[tagKey]
+
+			if (taggedBlocks) {
+				for (const block of taggedBlocks) {
+					let toUpdate = blocksToUpdate.get(block.id)
+
+					if (!toUpdate) {
+						toUpdate = block
+					}
+
+					toUpdate.tags = toUpdate.tags.filter((t) => t !== tag)
+
+					blocksToUpdate.set(toUpdate.id, toUpdate)
+				}
+			}
+		}
+
+		const {languages, formats} = options
+
+		for (const language of languages) {
+			for (const format of formats) {
+				// 2. Update blocks
+				for (const block of blocksToUpdate.values()) {
+					const section = this.getSectionById(block.parentId)
+
+					await this.saveBlock({
+						language,
+						format,
+						block,
+						path: {
+							filename: block.name,
+							filetype: 'json' as FileExt,
+							parent: section.name,
+						},
+					})
+				}
+
+				// 3. Update sections (TODO: create tagged sections index)
+				const doc = this.content[language]?.[format]
+
+				if (!doc) {
+					continue
+				}
+
+				for (const section of doc.sections) {
+					if (section.tags) {
+						section.tags = section.tags.filter((t) => !group.items.includes(t))
+						await this.bridge.saveSection({
+							language,
+							format,
+							// FIXME: shouldn't have to do this
+							section: JSON.parse(JSON.stringify(section)),
+						})
+					} else if (section.subsections) {
+						const defaultGroup = section.subsections.find(
+							(sub) => sub.name === section.name,
+						)
+
+						if (defaultGroup) {
+							for (const block of defaultGroup.blocks) {
+								block.tags = block.tags.filter((t) => !group.items.includes(t))
+							}
+
+							await this.bridge.saveSection({
+								language,
+								format,
+								// FIXME: shouldn't have to do this
+								section: JSON.parse(JSON.stringify(section)),
+							})
+						}
+					}
+				}
+			}
+		}
+
+		// 4. Update tag groups
+		if (tagsToKeep.length > 0) {
+			groupToUpdate.items = tagsToKeep
+			return groupToUpdate
 		}
 	}
 

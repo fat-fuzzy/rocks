@@ -8,7 +8,7 @@
 		Uuid,
 		ActionCrud,
 		InputCheckedTypes,
-		IAggregateTags,
+		ICoordinateMetadata,
 		ICoordinateDocs,
 	} from '$types'
 
@@ -33,7 +33,7 @@
 	}
 	let {block, parent, subsections, cta, color = 'primary'}: Props = $props()
 
-	let aggTags: IAggregateTags = getContext('aggTags')
+	let coordMetadata: ICoordinateMetadata = getContext('coordMetadata')
 	let coordDocs: ICoordinateDocs = getContext('coordDocs')
 
 	const validator = new FormValidator('FormBlockValidationFunction', validators)
@@ -196,7 +196,7 @@
 			type,
 			id: 'tags',
 			currentTags: toUpdate.tags,
-			tagGroups: aggTags.tagGroups,
+			tagGroups: coordMetadata.getTagGroups(),
 		})
 	}
 
@@ -407,7 +407,7 @@
 							cta="save"
 							oninput={updateTags}
 							value={[]}
-							tagGroups={aggTags.tagGroups}
+							tagGroups={coordMetadata.getTagGroups()}
 						/>
 					</div>
 				</div>

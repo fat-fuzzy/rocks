@@ -7,7 +7,7 @@
 		Slug,
 		InputCheckedTypes,
 		IAggregateDocs,
-		IAggregateTags,
+		ICoordinateMetadata,
 	} from '$types'
 
 	import {getContext} from 'svelte'
@@ -20,7 +20,7 @@
 	const {Editor} = prose.editor
 
 	let aggDocs: IAggregateDocs = getContext('aggDocs')
-	let aggTags: IAggregateTags = getContext('aggTags')
+	let coordMetadata: ICoordinateMetadata = getContext('coordMetadata')
 
 	let {
 		id,
@@ -115,7 +115,7 @@
 			type,
 			id,
 			currentTags: block.tags,
-			tagGroups: aggTags.tagGroups,
+			tagGroups: coordMetadata.getTagGroups(),
 		})
 
 		block.tags = updatedTags
@@ -150,7 +150,7 @@
 		size="sm"
 		oninput={updateTags}
 		value={block.tags}
-		tagGroups={aggTags.tagGroups.filter((tg) => {
+		tagGroups={coordMetadata.getTagGroups().filter((tg) => {
 			if (block.content_type === 'section') {
 				return tg.type !== 'radio'
 			}
