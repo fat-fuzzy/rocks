@@ -12,7 +12,7 @@ import type {UiStatus} from '@fat-fuzzy/ui'
 import {guardedExport} from '$lib/common/download'
 
 const STATUS_LABEL: Record<ImportStatus, string> = {
-	idle: '',
+	idle: 'First, choose your delete strategy',
 	deleting: 'Deleting storage...',
 	ready: 'Ready to import',
 	'backing-up': 'Backing up...',
