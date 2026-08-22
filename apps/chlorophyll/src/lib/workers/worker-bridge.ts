@@ -6,14 +6,13 @@
 
 import type {
 	DocLanguage,
-	DocFormat,
 	DocMeta,
 	DocPath,
 	Section,
 	Block,
 	Preset,
-	OPFSDocTree,
-	OPFSPresetTree,
+	OPFSTreeDoc,
+	OPFSTreePreset,
 	SeedDoc,
 	PendingRequest,
 	ResponsePayload,
@@ -24,7 +23,7 @@ import type {
 	Slug,
 	Rank,
 	FrontmatterStructure,
-	OPFSBaseTree,
+	OPFSTreeBase,
 } from '$types'
 
 const REQUEST_TIMEOUT_MS = 100000
@@ -123,6 +122,14 @@ export default class WorkerBridge {
 		})
 	}
 
+	saveStructures(payload: {structures: FrontmatterStructure[]}) {
+		return this.send({
+			type: 'SAVE_STRUCTURES',
+			requestId: crypto.randomUUID(),
+			payload,
+		})
+	}
+
 	getDocBase() {
 		return this.send({
 			type: 'GET_DOC_BASE',
@@ -138,12 +145,37 @@ export default class WorkerBridge {
 	}
 
 	restoreFromBackup(payload: {
-		content: OPFSDocTree
-		presets: OPFSPresetTree
-		base: OPFSBaseTree
+		content: OPFSTreeDoc
+		presets: OPFSTreePreset
+		base: OPFSTreeBase
 	}) {
 		return this.send({
 			type: 'RESTORE_FROM_BACKUP',
+			requestId: crypto.randomUUID(),
+			payload,
+		})
+	}
+
+	saveLanguage(payload: {
+		language: DocLanguage
+		sourceLanguage: DocLanguage
+		formats: Slug[]
+	}) {
+		return this.send({
+			type: 'ADD_LANGUAGE',
+			requestId: crypto.randomUUID(),
+			payload,
+		})
+	}
+
+	saveFormat(payload: {
+		format: Slug
+		sourceFormat: Slug
+		languages: DocLanguage[]
+		formats: Slug[]
+	}) {
+		return this.send({
+			type: 'ADD_FORMAT',
 			requestId: crypto.randomUUID(),
 			payload,
 		})
@@ -166,7 +198,7 @@ export default class WorkerBridge {
 
 	saveBlock(payload: {
 		language: DocLanguage
-		format: DocFormat
+		format: Slug
 		block: Block
 		path: DocPath
 	}) {
@@ -181,7 +213,8 @@ export default class WorkerBridge {
 		name: Slug
 		title?: string
 		rank: Rank
-		formats: DocFormat[]
+		formats: Slug[]
+		language: DocLanguage
 		updateRanks: Section[]
 	}) {
 		return this.send({
@@ -193,7 +226,7 @@ export default class WorkerBridge {
 
 	saveSection(payload: {
 		language: DocLanguage
-		format: DocFormat
+		format: Slug
 		section: Section
 	}) {
 		return this.send({

@@ -4,10 +4,10 @@
 		Prose,
 		Block,
 		DocLanguage,
-		DocFormat,
+		Slug,
 		InputCheckedTypes,
-		IDocService,
-		ITagService,
+		IAggregateDocs,
+		ICoordinateMetadata,
 	} from '$types'
 
 	import {getContext} from 'svelte'
@@ -19,8 +19,8 @@
 
 	const {Editor} = prose.editor
 
-	let docService: IDocService = getContext('docService')
-	let tagService: ITagService = getContext('tagService')
+	let aggDocs: IAggregateDocs = getContext('aggDocs')
+	let coordMetadata: ICoordinateMetadata = getContext('coordMetadata')
 
 	let {
 		id,
@@ -38,7 +38,7 @@
 	}: {
 		sectionName: string
 		language: DocLanguage
-		format: DocFormat
+		format: Slug
 		tagsFound?: string[]
 	} & Block = $props()
 
@@ -94,7 +94,7 @@
 			block,
 		}
 
-		docService.saveBlock(updated)
+		aggDocs.saveBlock(updated)
 	}
 
 	function updateTags(event: Event) {
@@ -115,7 +115,7 @@
 			type,
 			id,
 			currentTags: block.tags,
-			tagGroups: tagService.tags,
+			tagGroups: coordMetadata.getTagGroups(),
 		})
 
 		block.tags = updatedTags
@@ -131,7 +131,7 @@
 			block,
 		}
 
-		docService.saveBlock(updated)
+		aggDocs.saveBlock(updated)
 	}
 
 	$effect(() => {
@@ -150,7 +150,12 @@
 		size="sm"
 		oninput={updateTags}
 		value={block.tags}
-		tagGroups={tagService.tags}
+		tagGroups={coordMetadata.getTagGroups().filter((tg) => {
+			if (block.content_type === 'section') {
+				return tg.type !== 'radio'
+			}
+			return tg
+		})}
 	/>
 {/snippet}
 

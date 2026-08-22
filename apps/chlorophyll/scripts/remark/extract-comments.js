@@ -5,7 +5,6 @@ const openBlockRegex =
 	/^<!--\s*block:\s*(?<name>[\w-]+)\s*\|\s*tags:\s*(?<tags>[\w-]+(?:,\s*[\w-]+){0,20})\s*-->$/
 
 const closeBlockRegex = /^<!--\s*\/block\s*-->$/
-
 const openSectionRegex = /^<!--\s*section:\s*(?<name>[\w-]+)\s*-->$/
 
 /**
@@ -94,6 +93,7 @@ export default function remarkExtractComments() {
 		const blocks = [] // {name: string, html: string, tags: string[]}
 		const sections = []
 		let currentBlock = null // : string | null
+		let currentSection = null // : string | null
 		let blockNodes = [] // : Block[]
 		let tagList = []
 
@@ -113,15 +113,13 @@ export default function remarkExtractComments() {
 				} else if (closeBlockMatch && currentBlock) {
 					// Serialize captured nodes to HTML
 					const fragment = {type: 'root', children: blockNodes}
-					const blockName = file.data.fm.name
-						? `${file.data.fm.name}-${currentBlock}`
-						: currentBlock
+					const blockName = currentBlock
 
 					// Add new block data
 					const newBlock = {
 						name: blockName,
 						rank: blockNodes.length,
-						parent: file.data.fm.name,
+						parent: currentSection ?? file.data.fm.name,
 						content: {
 							// @ts-expect-error 'root' should cover intended usage
 							html: toHtml(toHast(fragment)),
@@ -138,6 +136,7 @@ export default function remarkExtractComments() {
 					tagList = []
 				} else if (openSectionMatch?.groups) {
 					const {name} = openSectionMatch.groups
+					currentSection = name
 					sections.push(name)
 				}
 			} else if (currentBlock) {
@@ -146,8 +145,11 @@ export default function remarkExtractComments() {
 		}
 
 		file.data.fm = {
-			...file.data.fm,
+			// Two possibilities:
+			// 1. in structure data, sections are defined at frontmatter level
+			// 2. in content, sections are parsed via comments
 			sections: sections.length > 0 ? sections : undefined,
+			...file.data.fm, // overrides sections
 			blocks: blocks.length > 0 ? blocks : undefined,
 		}
 	}

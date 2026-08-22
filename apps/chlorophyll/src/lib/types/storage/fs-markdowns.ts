@@ -3,7 +3,6 @@ import type {Component} from 'svelte'
 import type {
 	Slug,
 	DocLanguage,
-	DocFormat,
 	FrontmatterBase,
 	FrontmatterStructure,
 } from '$types'
@@ -30,12 +29,12 @@ export type FrontmatterSeed = {
 }
 
 export type SeedRootParsingOptions = {
-	formats: DocFormat[]
+	formats: Slug[]
 }
 
 export type SeedDocParsingOptions = {
 	language: DocLanguage
-	format: DocFormat
+	format: Slug
 	header?: Slug
 	section?: Slug
 	startIndex?: number

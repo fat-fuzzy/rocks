@@ -2,32 +2,32 @@
 	import type {UiColor} from '@fat-fuzzy/ui'
 	import type {
 		ActionCrud,
-		DocFormat,
+		Slug,
 		DocLanguage,
 		Section,
-		IDocService,
+		ICoordinateDocs,
 	} from '$types'
 
 	import * as validators from '$lib/generated/ajv/validation/validate.ajv.mjs'
 
 	import {getContext, onDestroy, onMount} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
+	import {page} from '$app/state'
 
 	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
-	import {PUBLIC_DOC_FORMAT, PUBLIC_DOC_LANGUAGE} from '$app/env/public'
-	import {page} from '$app/state'
+	import {DOC_LANGUAGE, DOC_FORMAT} from '$config/setup'
 
 	const {Button, Input, InputGroup, Feedback} = ui.blocks
 	const {FormValidator} = ui.utils
 
 	interface Props {
-		formats: DocFormat[]
+		formats: Slug[]
 		cta: ActionCrud
 		color?: UiColor
 	}
 	let {formats, cta, color = 'primary'}: Props = $props()
 
-	let docService: IDocService = getContext('docService')
+	let coordDocs: ICoordinateDocs = getContext('coordDocs')
 
 	const validator = new FormValidator(
 		'FormSectionValidationFunction',
@@ -45,12 +45,15 @@
 		name: string
 		title?: string
 		rank?: number
-		formats: DocFormat[]
+		formats: Slug[]
 	}
 
 	let section: SectionProps = $state({
 		name: '',
-		rank: 1,
+		rank: coordDocs.getSectionMaxRank({
+			language: page.url.searchParams.get('language') ?? DOC_LANGUAGE,
+			format: page.url.searchParams.get('format') ?? DOC_FORMAT,
+		}),
 		formats: [],
 	})
 
@@ -106,7 +109,7 @@
 		const target = event.target as HTMLInputElement
 
 		if (target?.value) {
-			const format = String(target.value) as DocFormat
+			const format = String(target.value) as Slug
 			if (!section.formats.includes(format)) {
 				section.formats.push(format)
 			} else {
@@ -132,9 +135,9 @@
 	}
 
 	function checkSectionExists(sectionName: string): Section | undefined {
-		return docService.getSectionByName({
-			language: PUBLIC_DOC_LANGUAGE as DocLanguage,
-			format: PUBLIC_DOC_FORMAT as DocFormat,
+		return coordDocs.getSectionByName({
+			language: DOC_LANGUAGE as DocLanguage,
+			format: DOC_FORMAT as Slug,
 			name: sectionName,
 		})
 	}
@@ -152,11 +155,11 @@
 			formats,
 		}
 
-		docService.createSection(JSON.parse(JSON.stringify(newSection)))
+		coordDocs.createSection(newSection)
 
 		dialogActor.close()
 
-		// TODO: put selected sections into context (fix reactivity)
+		// FIXME: put selected sections into context (fix reactivity)
 		const newUrl = new URL(page.url)
 		newUrl.searchParams.append('sections', newSection.name)
 
@@ -165,7 +168,7 @@
 
 	function deleteSection() {
 		// TODO
-		// docService.deleteSection({
+		// aggDocs.deleteSection({
 		// 	path: {
 		// 		filename: sectionName,
 		// 		filetype: 'json',

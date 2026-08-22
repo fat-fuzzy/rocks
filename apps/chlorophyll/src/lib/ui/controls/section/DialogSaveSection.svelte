@@ -6,7 +6,7 @@
 		UiSize,
 		UiVariant,
 	} from '@fat-fuzzy/ui'
-	import type {DocFormat} from '$types'
+	import type {Slug} from '$types'
 
 	import ui from '@fat-fuzzy/ui'
 
@@ -17,7 +17,7 @@
 
 	interface Props {
 		id: string
-		formats: DocFormat[]
+		formats: Slug[]
 		cta: 'save' | 'update' | 'copy'
 		label?: string
 		size?: UiSize

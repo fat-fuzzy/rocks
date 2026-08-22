@@ -6,8 +6,7 @@
 	import ui from '@fat-fuzzy/ui'
 	import {page} from '$app/state'
 
-	import {
-		CanvasState,
+	import type {
 		SketchEvent,
 		ControlsEvent,
 		CanvasEvent,
@@ -61,17 +60,16 @@
 	let blobLink: HTMLAnchorElement | undefined = $state(undefined)
 	let blobUrl: string | undefined = $state(undefined)
 	let blobName: string | undefined = $state(undefined)
-	let downloadSnap = $derived(actor.getCurrentEvent() === PlayerEvent.snap)
+	let downloadSnap = $derived(actor.getCurrentEvent() === 'snap')
 
 	let currentAsset = $derived(
-		actor.state.canvas === CanvasState.idle && asset
+		actor.state.canvas === 'idle' && asset
 			? `emoji:${asset}`
 			: `emoji:${actor.events.current}`,
 	)
 
 	let currentState = $derived(
-		actor.state.canvas === CanvasState.loading ||
-			actor.state.canvas === CanvasState.idle
+		actor.state.canvas === 'loading' || actor.state.canvas === 'idle'
 			? `state:${actor.state.canvas}`
 			: '',
 	)
@@ -87,14 +85,14 @@
 	)
 
 	async function init() {
-		actor.update(SketchEvent.load)
+		actor.update('load')
 		if (canvas) {
 			try {
 				sceneContext = await scene.main(canvas)
 				scene.update({...sceneContext, texture: {filters}})
-				actor.update(SketchEvent.loadOk)
+				actor.update('loadOk')
 			} catch (e: unknown) {
-				actor.update(SketchEvent.loadNok)
+				actor.update('loadNok')
 				actor.feedback.canvas.push({status: 'error', message: e as string})
 			}
 		}
@@ -119,11 +117,11 @@
 	}
 
 	async function play() {
-		if (actor.state.canvas === CanvasState.idle) {
+		if (actor.state.canvas === 'idle') {
 			await init()
 		}
 		render()
-		actor.update(PlayerEvent.play)
+		actor.update('play')
 	}
 
 	function reset() {
@@ -132,10 +130,7 @@
 		actor.feedback.canvas = []
 		let random = Math.random()
 		resetEvent = random !== resetEvent ? random : random - 1
-		actor.updateTexture(
-			{texture: {filters: DEFAULT_FILTERS}},
-			ControlsEvent.update,
-		)
+		actor.updateTexture({texture: {filters: DEFAULT_FILTERS}}, 'update')
 	}
 
 	async function clear() {
@@ -143,18 +138,18 @@
 		reset()
 		await init()
 		render()
-		if (prevCanvasState === CanvasState.paused) {
+		if (prevCanvasState === 'paused') {
 			pause()
 		} else {
-			actor.update(PlayerEvent.play)
+			actor.update('play')
 		}
-		actor.update(PlayerEvent.clear)
+		actor.update('clear')
 	}
 
 	function stop() {
 		scene.stop()
 		reset()
-		actor.update(PlayerEvent.stop)
+		actor.update('stop')
 	}
 
 	function pause() {
@@ -162,7 +157,7 @@
 		if (frame) {
 			cancelAnimationFrame(frame)
 		}
-		actor.update(PlayerEvent.pause)
+		actor.update('pause')
 	}
 
 	function updateGeometry(payload: SceneContext) {
@@ -173,7 +168,7 @@
 			)
 		}
 		scene.update({...sceneContext, texture: {filters}})
-		actor.update(ControlsEvent.update)
+		actor.update('update')
 	}
 
 	function degToRad(degrees: number) {
@@ -191,7 +186,7 @@
 		}
 		sceneContext.texture = {filters}
 		scene.update(sceneContext)
-		actor.update(ControlsEvent.update)
+		actor.update('update')
 	}
 
 	async function updateCanvas(payload: {
@@ -222,10 +217,10 @@
 			if (meta.controls.includes('texture')) {
 				render()
 			}
-			actor.update(ControlsEvent.update)
+			actor.update('update')
 		} catch (e: unknown) {
 			actor.feedback.canvas.push({status: 'error', message: e as string})
-			actor.update(CanvasEvent.error)
+			actor.update('error')
 		}
 	}
 
@@ -233,10 +228,10 @@
 		try {
 			sceneContext.grid = grid
 			scene.update(sceneContext)
-			actor.update(ControlsEvent.update)
+			actor.update('update')
 		} catch (e: unknown) {
 			actor.feedback.canvas.push({status: 'error', message: e as string})
-			actor.update(CanvasEvent.error)
+			actor.update('error')
 		}
 	}
 
@@ -254,7 +249,7 @@
 				1,
 			)
 		}
-		actor.update(PlayerEvent.snap)
+		actor.update('snap')
 		downloadSnap = true // TODO: this should be handled by the actor
 	}
 
@@ -283,7 +278,7 @@
 			await init()
 		} catch (e: unknown) {
 			actor.feedback.sketch.push({status: 'error', message: e as string})
-			actor.update(SketchEvent.loadNok)
+			actor.update('loadNok')
 		}
 	})
 
@@ -293,7 +288,7 @@
 			clearBlob()
 		} catch (e: unknown) {
 			actor.feedback.sketch.push({status: 'error', message: e as string})
-			actor.update(SketchEvent.exitNok)
+			actor.update('exitNok')
 		}
 	})
 </script>
@@ -311,7 +306,13 @@
 	{#snippet main()}
 		{#await Promise.resolve()}
 			<div class="feedback w:full">
-				<Feedback status="info" context="prose" {size} title="MISSING JS">
+				<Feedback
+					status="info"
+					context="prose"
+					{size}
+					title="MISSING JS"
+					variant="bare"
+				>
 					<p>
 						Some content on this page needs JavaScript enabled to display
 						interactive animations.
@@ -325,7 +326,13 @@
 		{:then}
 			{#if canvas?.getContext('webgl2') === null}
 				<div class="feedback w:full">
-					<Feedback status="info" context="prose" {size} title="MISSING WebGL">
+					<Feedback
+						status="info"
+						context="prose"
+						{size}
+						title="MISSING WebGL"
+						variant="bare"
+					>
 						<p>
 							Some content on this page needs WebGL enabled to display
 							interactive animations.
@@ -341,7 +348,7 @@
 					The canvas element needs JavaScript enabled to display WebGL
 					animations
 				</p>
-			{:else if meta.warnings && meta.warnings.length && actor.state.canvas === CanvasState.idle}
+			{:else if meta.warnings && meta.warnings.length && actor.state.canvas === 'idle'}
 				<div class="feedback w:full">
 					{#each meta.warnings as warning, i (i)}
 						<Feedback
@@ -349,6 +356,7 @@
 							context="prose"
 							{size}
 							title={warning.title}
+							variant="bare"
 						>
 							{warning.message}
 						</Feedback>
@@ -357,7 +365,7 @@
 			{/if}
 		{/await}
 		<div
-			class={`${frameClasses} splash color:primary bg:${actor.state.canvas === CanvasState.idle ? 'inherit' : meta.background}`}
+			class={`${frameClasses} splash color:primary bg:${actor.state.canvas === 'idle' ? 'inherit' : meta.background}`}
 		>
 			<canvas
 				id={`${id}.canvas`}

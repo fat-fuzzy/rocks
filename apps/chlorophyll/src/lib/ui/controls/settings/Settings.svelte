@@ -1,9 +1,14 @@
 <script lang="ts">
-	import type {UiColor, UiVariant} from '@fat-fuzzy/ui'
-	import type {TagGroup, InputGroupMenus} from '$types'
+	import type {UiColor, UiVariant, InputProps} from '@fat-fuzzy/ui'
+	import type {IAggregateMetadata} from '$types'
 
+	import {getContext} from 'svelte'
 	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
+
+	import {DOC_LANGUAGE, DOC_FORMAT} from '$config/setup'
+	import DialogSaveLanguage from '$lib/ui/controls/settings/DialogSaveLanguage.svelte'
+	import DialogSaveFormat from '$lib/ui/controls/settings/DialogSaveFormat.svelte'
 
 	const {InputGroup} = ui.blocks
 
@@ -17,44 +22,44 @@
 		oninput: (e: Event) => void
 	} = $props()
 
-	let base = $derived(page.data.base)
-	let language = $derived.by(() => {
+	let aggMetadata: IAggregateMetadata = getContext('aggMetadata')
+
+	let cta = $derived(page.params.page)
+	let baseLanguages = $derived(aggMetadata.base.languages)
+	let baseFormats = $derived(aggMetadata.base.formats)
+
+	let currentLanguage = $derived.by(() => {
 		const lang = page.url.searchParams.get('language')
-		return lang ? [lang] : ['en']
+		return lang ? [lang] : [DOC_LANGUAGE]
 	})
 
-	let format = $derived.by(() => {
+	let currentFormat = $derived.by(() => {
 		const fmt = page.url.searchParams.get('format')
-		return fmt ? [fmt] : ['long']
+		return fmt ? [fmt] : [DOC_FORMAT]
 	})
 
-	let settingsItems = $derived.by(() => {
-		const menus = base.settings.reduce(
-			(
-				menus: InputGroupMenus,
-				{title, name, items}: TagGroup,
-			): InputGroupMenus => {
-				const menuItems = items.map((i: string) => {
-					let selected = checkSelected(name, i)
-					return {
-						id: i,
-						name,
-						value: i,
-						checked: selected ? true : undefined,
-						label: i,
-						title: title ?? name,
-						variant: 'bare',
-						shape: 'pill',
-					}
-				})
-				menus[name] = menuItems
-				return menus
-			},
-			{},
-		)
+	// @ts-expect-error FIXME: add validator
+	let languageItems: InputProps[] = $derived(
+		deriveInputs(baseLanguages, 'language'),
+	)
 
-		return menus
-	})
+	// @ts-expect-error FIXME: add validator
+	let formatItems: InputProps[] = $derived(deriveInputs(baseFormats, 'format'))
+
+	function deriveInputs(base: string[], type: string): Partial<InputProps>[] {
+		return base.map((i: string) => {
+			let selected = checkSelected(type, i)
+			return {
+				id: i,
+				name: i,
+				value: i,
+				checked: selected ? true : undefined,
+				label: i,
+				title: i,
+				variant: 'bare' as UiVariant,
+			}
+		})
+	}
 
 	function checkSelected(group: string, value: string) {
 		const allValues = page.url.searchParams.getAll(group)
@@ -62,25 +67,51 @@
 	}
 </script>
 
-<InputGroup
-	id="language"
-	name="language"
-	legend="Language"
-	value={language}
-	size="2xs"
-	{color}
-	{variant}
-	items={settingsItems['language']}
-	{oninput}
-/>
-<InputGroup
-	id="format"
-	name="format"
-	legend="Format"
-	value={format}
-	size="2xs"
-	{color}
-	{variant}
-	items={settingsItems['format']}
-	{oninput}
-/>
+<div class="l:stack">
+	<InputGroup
+		id="language"
+		name="language"
+		legend="Language"
+		value={currentLanguage}
+		size="2xs"
+		justify="start"
+		{color}
+		{variant}
+		items={languageItems}
+		{oninput}
+	/>
+
+	{#if cta === 'edit' || cta === 'build'}
+		<DialogSaveLanguage
+			id="dialog-add-language"
+			label="Add Language"
+			asset="plus"
+			assetType="svg"
+			cta="save"
+		/>
+	{/if}
+</div>
+<br />
+<div class="l:stack">
+	<InputGroup
+		id="format"
+		name="format"
+		legend="Format"
+		value={currentFormat}
+		size="2xs"
+		justify="start"
+		{color}
+		{variant}
+		items={formatItems}
+		{oninput}
+	/>
+	{#if cta === 'edit' || cta === 'build'}
+		<DialogSaveFormat
+			id="dialog-add-format"
+			label="Add Format"
+			asset="plus"
+			assetType="svg"
+			cta="save"
+		/>
+	{/if}
+</div>

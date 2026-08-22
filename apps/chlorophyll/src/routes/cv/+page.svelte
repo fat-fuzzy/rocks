@@ -7,7 +7,7 @@
 
 	let pageContext = $derived({...page.data.pageContext, label: 'On this Page'})
 	let title = 'CV'
-	let description = 'Generate a CV from markdown'
+	let description = 'Edit, structure, preview and print a CV from your browser'
 </script>
 
 <PageRails

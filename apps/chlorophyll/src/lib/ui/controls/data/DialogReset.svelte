@@ -1,11 +1,12 @@
 <script lang="ts">
 	import type {UiColor, UiSize} from '@fat-fuzzy/ui'
-	import type {ImportStatus, IImportService} from '$types'
+	import type {ImportStatus, ICoordinateImports, IAggregateDocs} from '$types'
 
 	import {getContext} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
 	import {page} from '$app/state'
 
+	import {DEFAULT_STRUCTURES, DEFAULT_CONTENT} from '$data/doc/cv-config'
 	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
 	import {SvelteURL} from 'svelte/reactivity'
 
@@ -26,7 +27,8 @@
 		font = '2xs',
 	}: Props = $props()
 
-	let importService: IImportService = getContext('importService')
+	let coordImports: ICoordinateImports = getContext('coordImports')
+	let aggDocs: IAggregateDocs = getContext('aggDocs')
 
 	const statusLabel: Record<ImportStatus, string> = {
 		idle: '',
@@ -60,7 +62,8 @@
 		status = 'deleting'
 
 		// 2. Delete existing storage: the import replaces OPFS content
-		await importService.deleteAllContent()
+		await coordImports.deleteAllContent()
+		await aggDocs.loadDocStore()
 
 		status = 'ready'
 	}
@@ -71,51 +74,7 @@
 	async function freshStart() {
 		await deleteData()
 
-		await importService.initSeed(
-			{
-				base: {
-					schema_version: '0.1',
-					languages: ['en'],
-					formats: ['long', 'short'],
-					tags: [
-						{
-							title: 'Twilight Z',
-							name: 'twilight-z',
-							items: ['draft', 'hidden', 'untagged'],
-						},
-					],
-					settings: [],
-				},
-				structures: [
-					{
-						schema_version: '0.1',
-						format: 'long',
-						sections: [],
-					},
-					{
-						schema_version: '0.1',
-						format: 'short',
-						sections: [],
-					},
-				],
-			},
-			[
-				{
-					schema_version: '0.1',
-					seed_type: 'root',
-					language: 'en',
-					format: 'long',
-					sections: [[]],
-				},
-				{
-					schema_version: '0.1',
-					seed_type: 'root',
-					language: 'en',
-					format: 'short',
-					sections: [[]],
-				},
-			],
-		)
+		await coordImports.initSeed(DEFAULT_STRUCTURES, DEFAULT_CONTENT)
 
 		const newUrl = new SvelteURL(page.url)
 		newUrl.search = ''
@@ -131,7 +90,15 @@
 	async function reSeed() {
 		await deleteData()
 
-		window.location.href = '' // FIXME: hacky solution to reload for now
+		await coordImports.initSeed(
+			{base: page.data.base, structures: page.data.structures},
+			page.data.seed.content,
+		)
+
+		const newUrl = new SvelteURL(page.url)
+		newUrl.search = ''
+
+		window.location.href = newUrl.href // FIXME: hacky solution to reload for now
 
 		dialogActor.close()
 	}
@@ -139,14 +106,7 @@
 
 {#snippet presetInfo()}
 	<form class="raviolink l:stack:lg" enctype="multipart/form-data">
-		<Feedback
-			status="default"
-			context="prose"
-			variant="bare"
-			size="xs"
-			font="sm"
-			asset="none"
-		>
+		<Feedback context="prose" variant="bare" size="xs" font="sm" asset="none">
 			<h4 class="font:sm font:heading">Choose a reset mode</h4>
 			<ul class="unstyled">
 				<li>

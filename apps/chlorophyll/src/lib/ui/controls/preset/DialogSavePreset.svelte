@@ -48,14 +48,14 @@
 			color,
 			label,
 			position: 'nord-est',
-			children: presetInfo,
+			children: presetForm,
 		})
 
 		dialogActor.show()
 	}
 </script>
 
-{#snippet presetInfo()}
+{#snippet presetForm()}
 	<FormPreset {preset} {color} {cta} />
 {/snippet}
 

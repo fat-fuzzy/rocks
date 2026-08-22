@@ -71,17 +71,21 @@ dialog[open]:not(:modal) {
 
 /** Modal dialog sizes */
 dialog[open]:modal.size\:sm {
-	--dialog-inline-size: var(--layout-sidebar-sm);
+	--dialog-inline-size: calc(var(--layout-sidebar-lg) - 2 * var(--ui-size));
 }
 dialog[open]:modal.size\:md {
-	--dialog-inline-size: var(--layout-sidebar-md);
+	--dialog-inline-size: calc(
+		2 * var(--sidebar-width, var(--layout-sidebar-md)) - 2 * var(--ui-size-sm)
+	);
 }
 dialog[open]:modal.size\:lg {
-	--dialog-inline-size: var(--layout-sidebar-lg);
+	--dialog-inline-size: calc(
+		3 * var(--sidebar-width, var(--layout-sidebar-md)) - var(--ui-size)
+	);
 }
 dialog[open]:modal.size\:xl {
 	--dialog-inline-size: calc(
-		var(--ratio) * var(--ratio) * var(--layout-sidebar-lg)
+		3 * var(--sidebar-width, var(--layout-sidebar-md)) - var(--ui-size)
 	);
 }
 dialog[open]:modal.size\:2xl {
@@ -97,7 +101,7 @@ dialog[open]:not(:modal).size\:sm {
 }
 dialog[open]:not(:modal).size\:md {
 	--dialog-inline-size: calc(
-		2 * var(--sidebar-width, var(--layout-sidebar-md)) - var(--ui-size)
+		2 * var(--sidebar-width, var(--layout-sidebar-md)) - 2 * var(--ui-size-sm)
 	);
 }
 dialog[open]:not(:modal).size\:lg {

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {Preset, IPresetService} from '$types'
+	import type {Preset, IAggregatePresets} from '$types'
 
 	import {getContext} from 'svelte'
 	import {page} from '$app/state'
@@ -23,18 +23,16 @@
 	let cta = $derived(page.params.page)
 	let query = $derived(page.url.search)
 
-	let presetService: IPresetService = getContext('presetService')
+	let aggPresets: IAggregatePresets = getContext('aggPresets')
 
-	let presetIndex: Record<string, Preset> = $derived(
-		presetService.loadPresets(),
-	)
+	let presetIndex: Record<string, Preset> = $derived(aggPresets.loadPresets())
 	let presets = $derived(Object.values(presetIndex))
 
-	let loading = $derived(presetService.loading)
-	let error = $derived(presetService.error)
+	let loading = $derived(aggPresets.loading)
+	let error = $derived(aggPresets.error)
 
 	function savePreset(preset: Preset) {
-		presetService.savePreset({
+		aggPresets.savePreset({
 			path: {
 				filename: preset.name,
 				filetype: 'json',
@@ -53,7 +51,7 @@
 	}
 
 	function toggleLock(preset: Preset) {
-		presetService.togglePresetLock({
+		aggPresets.togglePresetLock({
 			path: {
 				filename: preset.name,
 				filetype: 'json',
@@ -74,9 +72,9 @@
 		<h3 class="ravioli:3xs">Presets</h3>
 		{#if cta === 'edit' || cta === 'build'}
 			<DialogSavePreset
-				id="cta-preset-add-new"
+				id="dialog-add-preset"
 				color="primary"
-				label="Add Preset"
+				label="New Preset"
 				asset="plus"
 				assetType="svg"
 				cta="save"
@@ -91,7 +89,7 @@
 	{#if loading}
 		<Loading color="neutral" />
 	{:else if error}
-		<Feedback status="error" context="prose" variant="bare" asset="default">
+		<Feedback status="error" context="prose" variant="bare" asset="none">
 			<p>Failed to load presets.</p>
 		</Feedback>
 	{:else}
@@ -165,11 +163,7 @@
 												: 'save'}
 											assetType="svg"
 											shape="round"
-											color={!isCurrent ||
-											preset.locked ||
-											(isCurrent && query === preset.query)
-												? 'accent'
-												: 'primary'}
+											color="primary"
 											variant="bare"
 											size="2xs"
 											font="2xs font:heading"

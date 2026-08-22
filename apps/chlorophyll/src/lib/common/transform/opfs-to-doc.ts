@@ -1,20 +1,24 @@
 import type {
 	DocLanguage,
-	DocFormat,
+	Slug,
 	DocMeta,
 	Doc,
 	Section,
 	Preset,
 	DocStore,
 	PresetStore,
-	OPFSDocTree,
-	OPFSPresetTree,
-	OPFSBaseTree,
-	OPFSStructureTree,
+	OPFSTreeDoc,
+	OPFSTreePreset,
+	OPFSTreeBase,
+	OPFSTreeStructure,
 	FrontmatterBase,
 	FrontmatterStructure,
+	Uuid,
+	DocPath,
+	OPFStructure,
 } from '$types'
 
+import {SCHEMA_VERSION} from '$config/setup'
 import {
 	parseSection,
 	parseBase,
@@ -26,7 +30,54 @@ export function isRecord(value: unknown): value is Record<string, unknown> {
 	return typeof value === 'object' && value !== null
 }
 
-type RawSection = {content: Section; meta: DocMeta}
+type RawDoc = {
+	content: {schema_version: string; id: Uuid; path: DocPath}
+	meta: {language: DocLanguage; format: Slug; name: Slug}
+} & Record<string, unknown>
+
+export function isRawDoc(value: unknown): value is RawDoc {
+	if (!isRecord(value)) {
+		return false
+	}
+
+	return 'meta' in value && 'content' in value
+}
+
+export function rawDocToDoc(raw: RawDoc): Section[] {
+	const rawEntries = Object.entries(raw)
+	const sections: Section[] = []
+
+	for (const entry of rawEntries) {
+		const [key, rawSection] = entry
+		let section: Section | undefined
+
+		if (key === 'content' || key === 'meta') {
+			continue
+		}
+		if (isRawSection(rawSection)) {
+			section = parseSection(
+				`OPFS Section: ${rawSection.meta.name}`,
+				rawSectionToSection(rawSection),
+			)
+		} else if (isSection(rawSection)) {
+			section = parseSection(
+				`OPFS Section: ${rawSection.name}`,
+				rawToSection(rawSection),
+			)
+		}
+
+		if (section) {
+			sections.push(section)
+		}
+	}
+
+	return sections
+}
+
+type RawSection = {
+	content: Section
+	meta: DocMeta
+}
 
 export function isRawSection(value: unknown): value is RawSection {
 	if (!isRecord(value)) {
@@ -36,6 +87,10 @@ export function isRawSection(value: unknown): value is RawSection {
 	return 'meta' in value && 'content' in value
 }
 
+export function rawSectionToSection(raw: RawSection): Section {
+	return raw.content
+}
+
 type RawPreset = {content: Preset; meta: DocMeta}
 
 export function isRawPreset(value: unknown): value is RawPreset {
@@ -43,11 +98,11 @@ export function isRawPreset(value: unknown): value is RawPreset {
 		return false
 	}
 
-	return 'meta' in value && 'content' in value
-}
-
-function rawSectionToSection(raw: RawSection): Section {
-	return raw.content
+	return (
+		'meta' in value &&
+		'content' in value &&
+		'query' in (value.content as {content: unknown})
+	)
 }
 
 function rawPresetToPreset(raw: RawPreset): Preset {
@@ -61,19 +116,24 @@ export function isRawBase(value: unknown): value is RawBase {
 		return false
 	}
 
-	return 'meta' in value && 'content' in value
+	return (
+		'meta' in value &&
+		'content' in value &&
+		'languages' in (value.content as {content: unknown}) &&
+		'formats' in (value.content as {content: unknown})
+	)
 }
 
 function rawBaseToBase(raw: RawBase): FrontmatterBase {
 	return raw.content
 }
 
-type RawStructure = {
+type RawStructureTree = {
 	content: {structure: FrontmatterStructure[]}
 	meta: DocMeta
 }
 
-export function isRawStructure(value: unknown): value is RawStructure {
+export function isRawStructureTree(value: unknown): value is RawStructureTree {
 	if (!isRecord(value)) {
 		return false
 	}
@@ -85,8 +145,31 @@ export function isRawStructure(value: unknown): value is RawStructure {
 	)
 }
 
-function rawStructureToStructure(raw: RawStructure): FrontmatterStructure[] {
+function rawStructureTreeToStructure(
+	raw: RawStructureTree,
+): FrontmatterStructure[] {
 	return raw.content.structure
+}
+
+type RawStructure = {
+	content: FrontmatterStructure
+	meta: DocMeta
+}
+
+export function isRawStructure(value: unknown): value is RawStructure {
+	if (!isRecord(value)) {
+		return false
+	}
+
+	return (
+		'meta' in value &&
+		'content' in value &&
+		'format' in (value.content as {content: unknown})
+	)
+}
+
+function rawStructureToStructure(raw: RawStructure): FrontmatterStructure {
+	return raw.content
 }
 
 export function isSection(value: unknown): value is Section {
@@ -94,41 +177,44 @@ export function isSection(value: unknown): value is Section {
 		return false
 	}
 
-	return 'meta' in value && 'content' in value
+	return 'content_type' in value && value.content_type === 'section'
 }
 
 function rawToSection(raw: Section): Section {
 	return raw
 }
 
-export function opfsDocTreeToDocStore(tree: OPFSDocTree): DocStore {
-	// eslint-disable-next-line
-	const store: any = {} // FIXME: fix type
+// FIXME: fix many issues
+export function opfsDocTreeToDocStore(tree: OPFSTreeDoc): DocStore {
+	const store: Partial<DocStore> = {}
 
 	for (const [language, formats] of Object.entries(tree)) {
 		if (!isRecord(formats)) continue
 
-		store[language as DocLanguage] = {}
+		let languageTree: Partial<{[format: Slug]: Doc} | undefined> =
+			store[language as DocLanguage]
 
-		for (const [format, sections] of Object.entries(formats)) {
-			if (!isRecord(sections)) continue
+		if (languageTree === undefined) {
+			languageTree = {}
+		}
 
-			if (!store[language as DocLanguage]) continue
+		languageTree = JSON.parse(JSON.stringify(languageTree))
 
-			store[language as DocLanguage][format as DocFormat] = {}
+		if (languageTree === undefined) {
+			console.warn(`No folder found for ${language}`)
 
-			// FIXME: this should come from storage
-			// - meta.json at root > content folder level
+			continue
+		}
+
+		for (const [format, docTree] of Object.entries(formats)) {
 			const doc: Doc = {
 				id: crypto.randomUUID(),
-				schema_version: '0.1',
+				schema_version: SCHEMA_VERSION,
 				meta: {
+					content_type: 'section',
 					id: crypto.randomUUID(),
-					content_type: 'doc-root',
-					label: 'doc-root',
 					name: 'doc-root',
-					language: language as DocLanguage,
-					format: format as DocFormat,
+					label: 'doc-root',
 				},
 				path: {
 					filename: 'doc-root',
@@ -137,35 +223,20 @@ export function opfsDocTreeToDocStore(tree: OPFSDocTree): DocStore {
 				sections: [],
 			}
 
-			let section: Section
-			for (const [sectionName, rawSection] of Object.entries(sections)) {
-				if (sectionName === 'meta') {
-					continue
-				}
-
-				if (isRawSection(rawSection)) {
-					section = rawSectionToSection(rawSection)
-
-					doc.sections?.push(
-						parseSection(`OPFS Section: ${sectionName}`, section),
-					)
-				} else if (isSection(rawSection)) {
-					section = rawToSection(rawSection)
-
-					doc.sections?.push(
-						parseSection(`OPFS Section: ${sectionName}`, section),
-					)
-				}
+			if (isRawDoc(docTree)) {
+				doc.sections = rawDocToDoc(docTree)
 			}
 
-			store[language as DocLanguage][format as DocFormat] = doc
+			languageTree[format as Slug] = doc
 		}
+
+		store[language as DocLanguage] = languageTree
 	}
 
 	return store as DocStore
 }
 
-export function opfsPresetTreeToPresetStore(tree: OPFSPresetTree): PresetStore {
+export function opfsPresetTreeToPresetStore(tree: OPFSTreePreset): PresetStore {
 	// eslint-disable-next-line
 	const store: any = {} // FIXME: fix type
 
@@ -184,7 +255,7 @@ export function opfsPresetTreeToPresetStore(tree: OPFSPresetTree): PresetStore {
 }
 
 export function opfsBaseTreeToFrontmatterBase(
-	tree: OPFSBaseTree,
+	tree: OPFSTreeBase,
 ): FrontmatterBase {
 	let data: FrontmatterBase
 
@@ -198,7 +269,7 @@ export function opfsBaseTreeToFrontmatterBase(
 	// Return default fallback
 	// TODO: review this
 	return {
-		schema_version: '0.1',
+		schema_version: SCHEMA_VERSION,
 		languages: [],
 		formats: [],
 		tags: [],
@@ -207,24 +278,23 @@ export function opfsBaseTreeToFrontmatterBase(
 }
 
 export function opfsStructureTreeToFrontmatterStructures(
-	tree: OPFSStructureTree,
+	tree: OPFSTreeStructure | OPFStructure,
 ): FrontmatterStructure[] {
-	let data: FrontmatterStructure[]
+	let data = []
 	const result = []
 
-	if (isRawStructure(tree)) {
-		data = rawStructureToStructure(tree)
+	if (isRawStructureTree(tree)) {
+		data = rawStructureTreeToStructure(tree)
+	} else if (isRawStructure(tree)) {
+		const structure = rawStructureToStructure(tree)
 
-		for (const structure of data) {
-			result.push(
-				parseStructure(`OPFS Structure: ${structure.format}`, structure),
-			)
-		}
-
-		return result
+		data.push(structure)
 	}
 
-	// Return default fallback
-	// TODO: review this
-	return []
+	for (const structure of data) {
+		result.push(
+			parseStructure(`OPFS Structure: ${structure.format}`, structure),
+		)
+	}
+	return result
 }

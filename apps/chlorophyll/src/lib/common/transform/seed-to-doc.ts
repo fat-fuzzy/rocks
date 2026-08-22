@@ -11,9 +11,12 @@ import type {
 	SeedBlock,
 } from '$types'
 
+import {SCHEMA_VERSION} from '$config/setup'
+
 function seedBlockToBlock(
 	seed: SeedBlock,
 	parentId: string,
+	group: string,
 	rank: number,
 ): Block {
 	return {
@@ -22,6 +25,7 @@ function seedBlockToBlock(
 		name: seed.name,
 		rank,
 		content: seed.content,
+		group,
 		tags: seed.tags,
 		parentId,
 	}
@@ -39,11 +43,11 @@ function seedSectionToSection(
 	const subsections = sectionContent
 		? sectionContent.map((sub, i) => {
 				return {
-					name: sub.meta.group ?? sectionName,
+					name: sub.meta.name,
 					parent: sectionName,
 					rank: i + 1,
 					blocks: (sub.meta.blocks ?? []).map((b, i) =>
-						seedBlockToBlock(b, sectionId, i + 1),
+						seedBlockToBlock(b, sectionId, sub.meta.name, i + 1),
 					),
 				}
 			})
@@ -120,11 +124,13 @@ export function seedDocToDoc(seed: SeedDoc): Doc {
 		})
 		.filter((section) => section !== undefined)
 
-	return {
-		schema_version: '0.1',
+	const doc: Doc = {
+		schema_version: SCHEMA_VERSION,
 		id: docId,
 		path,
 		meta,
 		sections,
 	}
+
+	return doc
 }
