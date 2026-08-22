@@ -1,5 +1,11 @@
 # @fat-fuzzy/sketch
 
+## 0.1.42
+
+### Patch Changes
+
+- 099428a: UI updates, bugfixes & cleanup, add tests
+
 ## 0.1.41
 
 ### Patch Changes

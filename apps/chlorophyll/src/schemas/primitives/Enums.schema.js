@@ -5,17 +5,9 @@ const EnumsSchema = defineDefinitions({
 		type: 'string',
 		enum: ['backup', 'base', 'structure', 'root'],
 	},
-	docLanguage: {
-		type: 'string',
-		enum: ['en', 'fr'],
-	},
 	docContentType: {
 		type: 'string',
 		enum: ['section', 'block', 'seed', 'doc-root', 'preset'],
-	},
-	docFormat: {
-		type: 'string',
-		enum: ['short', 'long'],
 	},
 	docVersion: {
 		type: 'string',

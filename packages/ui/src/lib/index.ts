@@ -26,6 +26,7 @@ import InputCheck from '$lib/components/blocks/inputs/InputCheck.svelte'
 import InputRadio from '$lib/components/blocks/inputs/InputRadio.svelte'
 import InputGroup from '$lib/components/blocks/inputs/InputGroup.svelte'
 import InputRange from '$lib/components/blocks/inputs/InputRange.svelte'
+import InputSidecar from '$lib/components/blocks/inputs/InputSidecar.svelte'
 import InputFile from '$lib/components/blocks/inputs/InputFile.svelte'
 
 /**
@@ -149,6 +150,7 @@ const blocks = {
 	InputRadio,
 	InputGroup,
 	InputRange,
+	InputSidecar,
 	InputFile,
 }
 

@@ -109,7 +109,7 @@
 
 {#if shape === 'square' || shape === 'round'}
 	<ff-control class={`${controlClasses} ${reverseClass}`}>
-		<label class={labelClasses}>
+		<label for={id} class={labelClasses}>
 			<ff-icon class={iconClasses}></ff-icon>
 			{@render input()}
 			<Tooltip id={`labels-${id}`} {label} {size} {variant} {font}>

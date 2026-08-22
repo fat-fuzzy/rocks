@@ -1,0 +1,45 @@
+.sidecar {
+	align-content: stretch;
+	grid-template-columns: 1fr auto;
+	grid-gap: 0;
+}
+
+.sidecar button,
+.sidecar input {
+	block-size: 100%;
+}
+
+.sidecar button {
+	line-height: normal;
+}
+
+.sidecar button[class*='emoji'],
+.sidecar button[class*='shape:'][class*='emoji'] {
+	--block-size: 2.95em; /* FIXME: figure out a better algorithmic way to do this */
+
+	padding-block: unset;
+	block-size: var(--block-size);
+	max-block-size: 100%;
+}
+
+.sidecar button {
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	border-left: none;
+}
+
+.sidecar input {
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+.sidecar.reverse button {
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+	border-right: none;
+}
+
+.sidecar.reverse input {
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+}

@@ -8,8 +8,8 @@
 		Uuid,
 		ActionCrud,
 		InputCheckedTypes,
-		IDocService,
-		ITagService,
+		ICoordinateMetadata,
+		ICoordinateDocs,
 	} from '$types'
 
 	import * as validators from '$lib/generated/ajv/validation/validate.ajv.mjs'
@@ -33,8 +33,8 @@
 	}
 	let {block, parent, subsections, cta, color = 'primary'}: Props = $props()
 
-	let docService: IDocService = getContext('docService')
-	let tagService: ITagService = getContext('tagService')
+	let coordMetadata: ICoordinateMetadata = getContext('coordMetadata')
+	let coordDocs: ICoordinateDocs = getContext('coordDocs')
 
 	const validator = new FormValidator('FormBlockValidationFunction', validators)
 
@@ -196,7 +196,7 @@
 			type,
 			id: 'tags',
 			currentTags: toUpdate.tags,
-			tagGroups: tagService.tags,
+			tagGroups: coordMetadata.getTagGroups(),
 		})
 	}
 
@@ -230,7 +230,7 @@
 			tags: toUpdate.tags,
 		}
 
-		docService.createBlock(newBlock)
+		coordDocs.createBlock(newBlock)
 
 		dialogActor.close()
 	}
@@ -241,7 +241,7 @@
 		} else {
 			errorBlockNotFound = false
 
-			docService.deleteBlock({
+			coordDocs.deleteBlock({
 				name: block.name as Uuid,
 				content_type: block.content_type,
 				group: block.group,
@@ -266,7 +266,7 @@
 <form class="form:wide raviolink l:stack:lg" bind:this={form}>
 	{#if block && cta === 'delete'}
 		<label class="l:stack:xs font:sm variant:bare">
-			Delete Block
+			Block Name
 			<input
 				id="name"
 				type="text"
@@ -407,12 +407,20 @@
 							cta="save"
 							oninput={updateTags}
 							value={[]}
-							tagGroups={tagService.tags}
+							tagGroups={coordMetadata.getTagGroups()}
 						/>
 					</div>
 				</div>
 			</div>
 		</div>
+	{/if}
+	{#if cta === 'delete'}
+		<Feedback context="prose" variant="bare" asset="" size="sm">
+			<p>
+				This will delete the Block for all formats and languages where found.
+			</p>
+			<p class="font:semibold">This action cannot be undone</p>
+		</Feedback>
 	{/if}
 	<div
 		class={`l:flex justify:${errorBlockExists || errorCascadingName || errorBlockNotFound || errorNameNotAllowed ? 'between' : 'end'}`}

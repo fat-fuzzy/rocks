@@ -179,7 +179,7 @@ function getLayoutStyles(props: UiLayoutProps): string {
 		let layoutClass = getClass('layout', layoutBase)
 
 		// FIXME: fix layout + size inconsistencies later
-		if (size && layout !== 'sidebar') {
+		if (size && layout !== 'sidebar' && layout !== 'grid') {
 			layoutClass = appendModifier(layoutClass, size)
 		}
 
@@ -256,6 +256,8 @@ function getFeedbackStyles(
 	const {
 		asset,
 		assetType,
+		surface,
+		surfaceLightness,
 		container,
 		font,
 		size,
@@ -277,8 +279,10 @@ function getFeedbackStyles(
 
 	const classes = [layoutStyles, blockStyles]
 
-	const statusClass = getClass('status', status)
-	classes.push(statusClass)
+	if (status) {
+		const statusClass = getClass('status', status)
+		classes.push(statusClass)
+	}
 
 	if (asset !== 'none') {
 		const defaultAssetType = assetType ?? 'emoji'
@@ -289,7 +293,16 @@ function getFeedbackStyles(
 	const typeClass = `feedback:${context}`
 	classes.push(typeClass)
 
-	const backgroundClass = context === 'code' ? undefined : `bg:${status}:100`
+	const surfaceLightnessLevel = surfaceLightness ?? '1'
+	const surfaceClass =
+		context === 'code'
+			? undefined
+			: status
+				? `surface:${surfaceLightnessLevel}:${status}`
+				: surface
+					? `surface:${surfaceLightnessLevel}:${surface}`
+					: `surface:${surfaceLightnessLevel}:neutral`
+
 	const containerBase = container?.startsWith('ravioli')
 		? container
 		: getClass('container', container)
@@ -300,7 +313,7 @@ function getFeedbackStyles(
 			? appendModifier(containerBase, localSize)
 			: containerBase
 
-	if (backgroundClass) classes.push(backgroundClass)
+	if (surfaceClass) classes.push(surfaceClass)
 	if (containerClass) classes.push(containerClass)
 
 	return classes.join(' ').trim()

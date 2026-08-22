@@ -21,16 +21,16 @@ p + [class*='feedback:'] {
 	--color-bg: var(--shade-semantic, var(--shade));
 	--color-ink: var(--ink-semantic, var(--ink));
 	--icon-size: var(--font-size-minus);
+
 	color: var(--color-ink);
 	font-size: var(--font-size);
 	padding-inline: var(--ui-size-sm);
 	padding-block: var(--ui-size-sm);
-	border: var(--border-width-xl) solid var(--color-accent);
+	border: var(--border-width-md) dotted var(--color-accent);
 	background-color: var(--color-bg);
 
 	.status {
 		font-family: var(--font-family-heading);
-		font-size: var(--font-size-minus);
 		font-weight: var(--font-weight-ui);
 	}
 

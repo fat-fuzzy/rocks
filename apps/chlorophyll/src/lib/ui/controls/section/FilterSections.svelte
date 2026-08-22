@@ -1,31 +1,31 @@
 <script lang="ts">
 	import type {UiColor} from '@fat-fuzzy/ui'
-	import type {DocFormat, FrontmatterStructure, IDocService} from '$types'
+	import type {Slug, IAggregateDocs, DocLanguage} from '$types'
 
 	import {getContext} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
 
 	import {page} from '$app/state'
-	import {PUBLIC_DOC_FORMAT} from '$app/env/public'
+	import {DOC_LANGUAGE, DOC_FORMAT} from '$config/setup'
 
 	const {InputGroup} = ui.blocks
 
 	const {color, oninput}: {color?: UiColor; oninput: (e: Event) => void} =
 		$props()
 
-	let docService: IDocService = getContext('docService')
+	let aggDocs: IAggregateDocs = getContext('aggDocs')
 
 	let format = $derived(
-		(page.url.searchParams.get('format') || PUBLIC_DOC_FORMAT) as DocFormat,
+		(page.url.searchParams.get('format') || DOC_FORMAT) as Slug,
 	)
 
-	let structure = $derived(
-		docService.structures.find(
-			(s: FrontmatterStructure) => s.format === format,
-		),
+	let language = $derived(
+		(page.url.searchParams.get('language') || DOC_LANGUAGE) as DocLanguage,
 	)
 
-	let sections = $derived(structure?.sections || [])
+	let sections = $derived(
+		aggDocs.getSections({format, language}).map((s) => s.name),
+	)
 	let selected = $derived(page.url.searchParams.getAll('sections'))
 
 	let sectionItems = $derived(

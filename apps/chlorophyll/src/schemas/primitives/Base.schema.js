@@ -8,7 +8,7 @@ import EnumsSchema from './Enums.schema.js'
 const externalBase = schemas.BaseSchema
 /**
  * Base types used for validating data at transform boundaries:
- * service <> bridge <> worker <> storage
+ * aggregate <> bridge <> worker <> storage
  * CAVEAT: definitions that use multiple validation conditions need `allOf` to work for form validation
  * -> see ./FormBase.schema.js for equivalent types used in form validation
  */
@@ -24,6 +24,12 @@ const BaseSchema = defineDefinitions({
 		pattern: '^[A-Za-z_]([A-Za-z0-9_-])*$',
 		minLength: 2,
 		maxLength: 64,
+	},
+	docLanguage: {
+		type: 'string',
+		pattern: '[a-z]{2}',
+		minLength: 2,
+		maxLength: 2,
 	},
 	title: {
 		type: 'string',

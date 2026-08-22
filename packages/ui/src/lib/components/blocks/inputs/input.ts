@@ -8,6 +8,7 @@ import type {
 	UiSize,
 	UiVariant,
 	UiAssetType,
+	FeedbackProps,
 } from '$types'
 import type {HTMLInputTypeAttribute} from 'svelte/elements'
 
@@ -25,12 +26,12 @@ export type FeedbackMessage = {
 	error?: string[]
 }
 
-export type InputFeedbackProps = {
+export type InputFeedbackProps = FeedbackProps & {
 	id: string
 	size?: UiSize
 	font?: UiSize
 	assetType?: UiAssetType
-	asset?: UiSize
+	asset?: string
 	variant?: UiVariant
 	errors?: string[]
 	hint?: string

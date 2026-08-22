@@ -19,6 +19,9 @@ import {
 	getStructureData,
 	getBaseData,
 	saveBase,
+	saveStructure,
+	saveFormat,
+	saveLanguage,
 } from '$lib/workers/storage/opfs'
 
 import {deleteAllContent} from '$lib/workers/storage/opfs-tools'
@@ -105,6 +108,12 @@ async function dispatch(msg: WorkerMessage) {
 			return {seeded: Date.now()}
 		}
 
+		case 'SAVE_STRUCTURES': {
+			await saveStructure(msg.payload)
+
+			return {seeded: Date.now()}
+		}
+
 		case 'RESTORE_FROM_BACKUP': {
 			await restoreFromBackup(msg.payload)
 
@@ -113,6 +122,26 @@ async function dispatch(msg: WorkerMessage) {
 
 		case 'GET_DOC_CONTENT': {
 			const result = await loadFile(msg.payload)
+
+			if (result?.data) {
+				return result.data
+			} else {
+				throw new Error('No content found')
+			}
+		}
+
+		case 'ADD_LANGUAGE': {
+			const result = await saveLanguage(msg.payload)
+
+			if (result?.data) {
+				return result.data
+			} else {
+				throw new Error('No content found')
+			}
+		}
+
+		case 'ADD_FORMAT': {
+			const result = await saveFormat(msg.payload)
 
 			if (result?.data) {
 				return result.data
@@ -221,10 +250,15 @@ async function dispatch(msg: WorkerMessage) {
 			}
 		}
 
-		case 'DELETE_ALL':
-			await deleteAllContent()
-			return
+		case 'DELETE_ALL': {
+			const result = await deleteAllContent()
 
+			if (result) {
+				return result
+			} else {
+				throw new Error('Error deleting content')
+			}
+		}
 		// case 'EXPORT_ALL': {
 		// 	const markdown = await opfs.buildMarkdown(
 		// 		msg.payload.language,

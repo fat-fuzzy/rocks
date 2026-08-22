@@ -13,16 +13,16 @@
 	.status\:error
 ) {
 	--shade-semantic: oklch(
-		var(--lightness-base) var(--chroma) var(--hue-semantic)
+		var(--lightness) var(--chroma-base) var(--hue-semantic)
 	);
 	--ink-semantic: oklch(
-		var(--lightness-contrast-base) var(--chroma-contrast) var(--hue-semantic)
+		var(--lightness-contrast) var(--chroma-contrast) var(--hue-semantic)
 	);
 	--accent-semantic: oklch(
 		var(--lightness-accent) var(--chroma-accent-base) var(--hue-semantic)
 	);
 	--shadow-semantic: oklch(
-		var(--lightness-base) var(--chroma) var(--hue-semantic)
+		var(--lightness) var(--chroma-base) var(--hue-semantic)
 	);
 }
 

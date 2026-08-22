@@ -16,10 +16,8 @@ const config = {
 		// If your environment is not supported, or you settled on a specific environment, switch out the adapter.
 		// See https://svelte.dev/docs/kit/adapters for more information about adapters.
 		adapter: adapter(),
-		experimental: {
-			explicitEnvironmentVariables: true,
-		},
 		alias: {
+			$config: path.resolve('./src/config'),
 			$data: path.resolve('./src/data'),
 			$types: path.resolve('./src/lib/types/index.ts'),
 			$schemas: path.resolve('./src/schemas'),

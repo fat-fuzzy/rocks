@@ -78,22 +78,27 @@ export function applyTags(options: {
 		} else {
 			const tagsInBlock = []
 
-			for (const tag of groupItems) {
-				if (updatedTags.includes(tag)) {
-					tagsInBlock.push(tag)
-				}
-			}
-
-			// Retain all tags not in this group (doing this to avoid duplicates later)
-			// TODO: use Set
-			updatedTags = updatedTags.filter((t) => !groupItems.includes(t))
-
-			// If Block contains all tags already, selectAll will remove them all
-			if (tagsInBlock.length === groupItems.length) {
-				// Do nothing
+			if (cta === 'delete') {
+				// TODO: check this is used anywhere
+				updatedTags = []
 			} else {
-				// Else it will add them all
-				updatedTags = [...updatedTags, ...groupItems]
+				for (const tag of groupItems) {
+					if (updatedTags.includes(tag)) {
+						tagsInBlock.push(tag)
+					}
+				}
+
+				// Retain all tags not in this group (doing this to avoid duplicates later)
+				// TODO: use Set
+				updatedTags = updatedTags.filter((t) => !groupItems.includes(t))
+
+				// If Block contains all tags already, selectAll will remove them all
+				if (tagsInBlock.length === groupItems.length) {
+					// Do nothing
+				} else {
+					// Else it will add them all
+					updatedTags = [...updatedTags, ...groupItems]
+				}
 			}
 		}
 
@@ -105,4 +110,14 @@ export function applyTags(options: {
 	}
 
 	return updatedTags
+}
+
+export function checkTags(tags: string[], selected: string[]) {
+	return selected.filter((s) => tags.includes(s))
+}
+
+export function isHidden(tags: string[], selected: string[]) {
+	if (tags.includes('hidden') && !selected.includes('hidden')) {
+		return true
+	}
 }

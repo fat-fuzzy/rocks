@@ -134,6 +134,7 @@
 				{asset}
 				{assetType}
 				{color}
+				{size}
 				{justify}
 				{container}
 				containerSize={innerLayoutSize as UiSize}

@@ -11,7 +11,6 @@
 	import ui from '@fat-fuzzy/ui'
 
 	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
-
 	import FormPreset from '$lib/ui/controls/preset/FormPreset.svelte'
 
 	const {Button} = ui.blocks
@@ -49,14 +48,14 @@
 			color,
 			label,
 			position: 'nord-est',
-			children: presetInfo,
+			children: presetForm,
 		})
 
 		dialogActor.show()
 	}
 </script>
 
-{#snippet presetInfo()}
+{#snippet presetForm()}
 	<FormPreset {preset} {color} {cta} />
 {/snippet}
 

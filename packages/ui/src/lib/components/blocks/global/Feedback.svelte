@@ -16,6 +16,8 @@
 		justify = 'start',
 		size,
 		font,
+		surface,
+		surfaceLightness,
 		variant,
 		layer,
 		container = 'raviolink',
@@ -32,6 +34,8 @@
 				assetType,
 				shape,
 				variant,
+				surface,
+				surfaceLightness,
 				layer,
 				align,
 				justify,
@@ -57,7 +61,7 @@
 	let feedbackTitle = $derived(
 		title
 			? title
-			: context === 'prose' && status !== 'default'
+			: status && (status !== 'default' || context === 'prose')
 				? status
 				: undefined,
 	)

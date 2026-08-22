@@ -54,7 +54,7 @@ Chlorophyll is Vital for photosynthesis, which allows one to absorb energy from 
     │           ├── XP-05.md
     │           └── XP-06.md
     └── structure
-        ├── cv-base.md
-        ├── cv-long.md
-        └── cv-short.md
+        ├── doc-base.md
+        ├── doc-long.md
+        └── doc-short.md
 ```
