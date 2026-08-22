@@ -1,21 +1,21 @@
-export * from '$lib/types/services/import'
+export * from '$lib/types/aggregates/import'
 import type {
 	SeedDoc,
 	FrontmatterSeed,
 	FrontmatterStructure,
-	IImportService,
+	IAggregateImports,
 } from '$types'
 
 import {DEFAULT_STRUCTURES, DEFAULT_CONTENT} from '$data/doc/cv-config'
 import WorkerBridge from '$lib/workers/worker-bridge'
-import {getBridge} from '$lib/services/bridge'
+import {getBridge} from '$lib/aggregates/bridge'
 
 /**
- * ImportService class to manage data transfer operations into storage
+ * AggregateImports class to manage data transfer operations into storage
  * Maintains a cache of data in memory
  * Sends/receive messages via worker bridge
  */
-export default class ImportService implements IImportService {
+export default class AggregateImports implements IAggregateImports {
 	bridge: WorkerBridge | undefined = $state()
 	seeded: {date_seed?: string; source?: string} = $state({})
 	loading = $state(false)

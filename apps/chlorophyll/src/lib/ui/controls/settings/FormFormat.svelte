@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {UiColor} from '@fat-fuzzy/ui'
-	import type {ActionCrud, IMetadataService} from '$types'
+	import type {ActionCrud, IAggregateMetadata} from '$types'
 
 	import * as validators from '$lib/generated/ajv/validation/validate.ajv.mjs'
 
@@ -23,7 +23,7 @@
 	}
 	let {cta, format = '', color = 'primary'}: Props = $props()
 
-	let metadataService: IMetadataService = getContext('metadataService')
+	let aggMetadata: IAggregateMetadata = getContext('aggMetadata')
 
 	const validator = new FormValidator(
 		'FormFormatValidationFunction',
@@ -92,7 +92,7 @@
 	}
 
 	function checkFormatExists(formatName: string): boolean {
-		return metadataService.base.formats.includes(formatName)
+		return aggMetadata.base.formats.includes(formatName)
 	}
 
 	async function saveFormat() {
@@ -104,7 +104,7 @@
 		if (sourceFormat) {
 			fromFormat = sourceFormat
 		}
-		await metadataService.addFormat({
+		await aggMetadata.addFormat({
 			name: newFormat,
 			sourceFormat: fromFormat,
 		})
@@ -194,7 +194,7 @@
 			{/if}
 		</div>
 		<div class="l:side l:stack">
-			{#if metadataService.base.formats.length}
+			{#if aggMetadata.base.formats.length}
 				<label class="size:2xs font:sm">
 					Source Format
 					<select
@@ -208,7 +208,7 @@
 						<option class="size:xs font:xs" value="">
 							No format selected
 						</option>
-						{#each metadataService.base.formats as lang, i (i)}
+						{#each aggMetadata.base.formats as lang, i (i)}
 							<option class="size:xs font:xs" value={lang}>
 								{lang}
 							</option>

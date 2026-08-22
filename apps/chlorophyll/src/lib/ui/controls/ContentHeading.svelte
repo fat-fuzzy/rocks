@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {ActionDoc, Preset, Slug, IPresetService} from '$types'
+	import type {ActionDoc, Preset, Slug, IAggregatePresets} from '$types'
 
 	import {getContext} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
@@ -19,13 +19,13 @@
 		formats: Slug[]
 	} = $props()
 
-	let presetService: IPresetService = getContext('presetService')
+	let aggPresets: IAggregatePresets = getContext('aggPresets')
 	let currentPreset = $derived(
-		preset ? presetService.getPreset(preset) : undefined,
+		preset ? aggPresets.getPreset(preset) : undefined,
 	)
 
 	function savePreset(preset: Preset) {
-		presetService.savePreset({
+		aggPresets.savePreset({
 			path: {
 				filename: preset.name,
 				filetype: 'json',

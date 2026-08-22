@@ -1,7 +1,6 @@
 export * from '$lib/types/actions'
 export * from '$lib/types/intl'
 export * from '$lib/types/ui'
-export * from '$lib/types/ui-chlorophyll'
 export * from '$lib/types/messages'
 
 // Storage
@@ -10,12 +9,15 @@ export * from '$lib/types/storage/fs-storage'
 export * from '$lib/types/storage/fs-markdowns'
 
 // Service Interfaces
-export * from '$lib/types/services/import'
-export * from '$lib/types/services/doc'
-export * from '$lib/types/services/preset'
-export * from '$lib/types/services/tag'
-export * from '$lib/types/services/export'
-export * from '$lib/types/services/meta'
+export * from '$lib/types/aggregates/import'
+export * from '$lib/types/aggregates/doc'
+export * from '$lib/types/aggregates/preset'
+export * from '$lib/types/aggregates/tag'
+export * from '$lib/types/aggregates/meta'
+
+// Use case coordinators
+export * from '$lib/types/application/CoordinateDocs'
+export * from '$lib/types/application/CoordinateExports'
 
 // Domain + Identity
 export * from '$lib/generated/types/Doc'

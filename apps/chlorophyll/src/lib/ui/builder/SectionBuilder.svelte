@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {Slug, DocLanguage, Section, IUiChlorophyll} from '$types'
+	import type {Slug, DocLanguage, Section, ICoordinateDocs} from '$types'
 
 	import {getContext, onMount} from 'svelte'
 
@@ -10,7 +10,7 @@
 	import FeedbackContent from '$lib/ui/FeedbackContent.svelte'
 	import Loading from '$lib/ui/Loading.svelte'
 
-	let uiChlorophyll: IUiChlorophyll = getContext('uiChlorophyll')
+	let coordDocs: ICoordinateDocs = getContext('coordDocs')
 
 	let {
 		cta = 'build',
@@ -29,10 +29,10 @@
 	let observerRoot: HTMLElement | undefined = $state()
 	let observer: IntersectionObserver | undefined = $state()
 	let missingIcon = 'emoji:idea justify:end'
-	let loading = $derived(uiChlorophyll.loading)
+	let loading = $derived(coordDocs.loading)
 
 	let section: Section = $derived(
-		uiChlorophyll.getSectionByName({
+		coordDocs.getSectionByName({
 			language,
 			format,
 			name,
@@ -43,7 +43,7 @@
 	let content = $derived(section?.content)
 
 	let noContentFound = $derived(!section)
-	let error = $derived(uiChlorophyll.error)
+	let error = $derived(coordDocs.error)
 
 	const observerOptions = $derived({
 		root: null,
@@ -57,7 +57,7 @@
 			const target = entry.target as HTMLElement
 
 			if (entry.isIntersecting) {
-				uiChlorophyll.lazyLoadBlock(
+				coordDocs.lazyLoadBlock(
 					{
 						block: target.dataset.block,
 						section: target.dataset.section,

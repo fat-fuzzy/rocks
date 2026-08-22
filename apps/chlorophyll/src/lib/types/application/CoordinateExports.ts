@@ -1,6 +1,6 @@
 import type {Prose} from '$types'
 
-export interface IExportService {
+export interface ICoordinateExports {
 	buildFullJSON(): Promise<string>
 
 	buildFullMarkdown(options: {

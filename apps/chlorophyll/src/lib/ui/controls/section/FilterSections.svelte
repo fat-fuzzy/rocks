@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {UiColor} from '@fat-fuzzy/ui'
-	import type {Slug, IDocService, DocLanguage} from '$types'
+	import type {Slug, IAggregateDocs, DocLanguage} from '$types'
 
 	import {getContext} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
@@ -13,7 +13,7 @@
 	const {color, oninput}: {color?: UiColor; oninput: (e: Event) => void} =
 		$props()
 
-	let docService: IDocService = getContext('docService')
+	let aggDocs: IAggregateDocs = getContext('aggDocs')
 
 	let format = $derived(
 		(page.url.searchParams.get('format') || DOC_FORMAT) as Slug,
@@ -24,7 +24,7 @@
 	)
 
 	let sections = $derived(
-		docService.getSections({format, language}).map((s) => s.name),
+		aggDocs.getSections({format, language}).map((s) => s.name),
 	)
 	let selected = $derived(page.url.searchParams.getAll('sections'))
 

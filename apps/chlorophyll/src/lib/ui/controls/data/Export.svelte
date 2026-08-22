@@ -1,13 +1,13 @@
 <script lang="ts">
 	import type {UiColor, UiSize, UiVariant} from '@fat-fuzzy/ui'
-	import type {IExportService} from '$types'
+	import type {ICoordinateExports} from '$types'
 
 	import ui from '@fat-fuzzy/ui'
 	import {getContext} from 'svelte'
 
 	import {generateDownload} from '$lib/common/download'
 
-	let exportService: IExportService = getContext('exportService')
+	let coordExports: ICoordinateExports = getContext('coordExports')
 
 	const {Button} = ui.blocks
 
@@ -34,7 +34,7 @@
 	}: Props = $props()
 
 	async function handleExport() {
-		const data = await exportService.buildFullJSON()
+		const data = await coordExports.buildFullJSON()
 		generateDownload({filename, data, mimeType})
 	}
 </script>

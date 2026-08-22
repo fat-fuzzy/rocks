@@ -6,7 +6,7 @@
 		Slug,
 		TagGroup,
 		TagProps,
-		ITagService,
+		IAggregateTags,
 	} from '$types'
 
 	import * as validators from '$lib/generated/ajv/validation/validate.ajv.mjs'
@@ -32,7 +32,7 @@
 	}
 	let {groups, cta, color = 'primary'}: Props = $props()
 
-	let tagService: ITagService = getContext('tagService')
+	let aggTags: IAggregateTags = getContext('aggTags')
 
 	const validator = new FormValidator('FormTagValidationFunction', validators)
 
@@ -168,7 +168,7 @@
 			group,
 		}
 
-		tagService.createTag(newTag)
+		aggTags.createTag(newTag)
 
 		dialogActor.close()
 	}
@@ -202,7 +202,7 @@
 			type,
 			id: 'delete-tags',
 			currentTags: tagsToDelete[groupName] ?? [],
-			tagGroups: tagService.tagGroups,
+			tagGroups: aggTags.tagGroups,
 		})
 
 		tagsToDelete[groupName] = updatedTags
@@ -217,7 +217,7 @@
 			return groups
 		}, [])
 
-		tagService.deleteTags({groups})
+		aggTags.deleteTags({groups})
 
 		dialogActor.close()
 	}
@@ -244,7 +244,7 @@
 			{color}
 			value={[]}
 			oninput={updateTags}
-			tagGroups={tagService.tagGroups}
+			tagGroups={aggTags.tagGroups}
 		/>
 		<Feedback context="prose" variant="bare" size="xs" font="sm" asset="none">
 			<p>

@@ -10,10 +10,10 @@
 	import '$lib/styles/css/main.css'
 
 	import {buildNav} from '$data/nav'
-	import {initBridge, destroyBridge} from '$lib/services/bridge'
-	import {createServices} from '$lib/services/container'
+	import {initBridge, destroyBridge} from '$lib/aggregates/bridge'
+	import {createAggregates} from '$lib/aggregates/container'
+	import {createCoords} from '$lib/application/container'
 	import Dialog from '$lib/ui/overlays/dialog/Dialog.svelte'
-	import UiChlorophyll from '$lib/stores/UiChlorophyll.svelte'
 
 	const {ToggleTree, ToggleReveal, ToggleSettings} = ui.drafts
 	const {SkipLinks} = ui.recipes
@@ -29,26 +29,18 @@
 	/**
 	 * Register Contexts
 	 */
-	const {
-		metadataService,
-		importService,
-		exportService,
-		docService,
-		tagService,
-		presetService,
-	} = createServices()
+	const {aggMetadata, aggImports, aggDocs, aggTags, aggPresets} =
+		createAggregates()
+	const {coordExports, coordDocs} = createCoords(aggMetadata, aggDocs)
 
-	setContext('importService', importService)
-	setContext('exportService', exportService)
-	setContext('docService', docService)
-	setContext('tagService', tagService)
-	setContext('presetService', presetService)
-	setContext('importService', importService)
-	setContext('metadataService', metadataService)
+	setContext('aggDocs', aggDocs)
+	setContext('aggTags', aggTags)
+	setContext('aggPresets', aggPresets)
+	setContext('aggImports', aggImports)
+	setContext('aggMetadata', aggMetadata)
 
-	const uiChlorophyll = new UiChlorophyll(metadataService, docService)
-
-	setContext('uiChlorophyll', uiChlorophyll)
+	setContext('coordDocs', coordDocs)
+	setContext('coordExports', coordExports)
 
 	/**
 	 * Setup page data (loaded / generated)
@@ -118,11 +110,11 @@
 	onMount(async () => {
 		initBridge()
 
-		await importService.init({base, structures})
-		await metadataService.init()
-		await docService.init()
-		await tagService.init()
-		await presetService.init()
+		await aggImports.init({base, structures})
+		await aggMetadata.init()
+		await aggDocs.init()
+		await aggTags.init()
+		await aggPresets.init()
 	})
 
 	onDestroy(() => destroyBridge())

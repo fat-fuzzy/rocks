@@ -1,6 +1,6 @@
 import type {SeedDoc, FrontmatterSeed, FrontmatterStructure} from '$types'
 
-export interface IImportService {
+export interface IAggregateImports {
 	readonly seeded: {date_seed?: string; source?: string}
 	readonly loading: boolean
 	readonly error: boolean

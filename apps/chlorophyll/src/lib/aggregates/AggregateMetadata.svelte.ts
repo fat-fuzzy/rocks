@@ -5,7 +5,7 @@ import type {
 	FrontmatterBase,
 	OPFSTreeBase,
 	OPFSTreeStructure,
-	IMetadataService,
+	IAggregateMetadata,
 	TagGroup,
 	Rank,
 } from '$types'
@@ -14,7 +14,7 @@ import {DOC_LANGUAGE, DOC_FORMAT} from '$config/setup'
 import {SCHEMA_VERSION} from '$config/setup'
 
 import WorkerBridge from '$lib/workers/worker-bridge'
-import {getBridge} from '$lib/services/bridge'
+import {getBridge} from '$lib/aggregates/bridge'
 
 import {
 	opfsBaseTreeToFrontmatterBase,
@@ -22,11 +22,11 @@ import {
 } from '$lib/common/transform/opfs-to-doc'
 
 /**
- * MetadataService class to manage access to stored docs
+ * AggregateMetadata class to manage access to stored docs
  * Maintains a cache of data in memory
  * Sends/receive messages via worker bridge
  */
-export default class MetadataService implements IMetadataService {
+export default class AggregateMetadata implements IAggregateMetadata {
 	bridge: WorkerBridge | undefined = $state()
 	loading = $state(false)
 	error = $state(false)
