@@ -18,7 +18,7 @@
 	},
 	"engineStrict": true,
 	"engines": {
-		"node": ">= 22"
+		"node": ">= 26"
 	},
 	"author": "Jim Cummins <jimthedev@gmail.com>",
 	"license": "MIT",
