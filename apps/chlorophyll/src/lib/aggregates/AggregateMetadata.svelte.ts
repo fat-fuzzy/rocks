@@ -38,6 +38,7 @@ export default class AggregateMetadata implements IAggregateMetadata {
 		settings: [],
 	})
 	structures: FrontmatterStructure[] = $state([])
+	tagGroups: TagGroup[] = $derived(this.base.tags)
 
 	constructor() {
 		this.loading = true
@@ -68,6 +69,10 @@ export default class AggregateMetadata implements IAggregateMetadata {
 		this.structures = []
 	}
 
+	getLanguages() {
+		return this.base.languages
+	}
+
 	/**
 	 * Add a new language
 	 * @param options
@@ -94,6 +99,10 @@ export default class AggregateMetadata implements IAggregateMetadata {
 		await this.bridge.saveBase({base: JSON.parse(JSON.stringify(this.base))})
 
 		await this.loadBase()
+	}
+
+	getFormats() {
+		return this.base.formats
 	}
 
 	/**
@@ -125,22 +134,8 @@ export default class AggregateMetadata implements IAggregateMetadata {
 	/**
 	 * Load full doc tree from storage
 	 */
-	getLanguages() {
-		return this.base.languages
-	}
-
-	/**
-	 * Load full doc tree from storage
-	 */
-	getFormats() {
-		return this.base.formats
-	}
-
-	/**
-	 * Load full doc tree from storage
-	 */
 	getTagGroups() {
-		return this.base.tags
+		return JSON.parse(JSON.stringify(this.tagGroups))
 	}
 
 	/**
@@ -148,6 +143,56 @@ export default class AggregateMetadata implements IAggregateMetadata {
 	 */
 	getTagGroupByName(name: Slug): TagGroup | undefined {
 		return this.base.tags.find((tg) => tg.name === name)
+	}
+
+	/**
+	 * @param options tag data
+	 */
+	async createTag(options: {
+		name: Slug
+		group: {name: Slug; title: string; type?: string}
+	}): Promise<{id: string} | void> {
+		if (!this.bridge) {
+			return
+		}
+
+		const group = this.getTagGroupByName(options.group.name)
+
+		if (!group) {
+			this.base.tags.push({
+				...options.group,
+				items: [options.name],
+			})
+		} else {
+			if (group.items.some((i) => i === options.name)) {
+				throw Error(
+					`A tag named ${options.name} already exists in group ${options.group.title}`,
+				)
+			} else {
+				group.items.push(options.name)
+			}
+		}
+
+		await this.bridge.saveBase({
+			base: JSON.parse(JSON.stringify(this.base)),
+		})
+	}
+
+	/**
+	 * @param options tags to delete
+	 */
+	async updateTagGroups(options: {
+		groups: TagGroup[]
+	}): Promise<{id: string} | void> {
+		if (!this.bridge) {
+			return
+		}
+
+		this.base.tags = options.groups
+
+		await this.bridge.saveBase({
+			base: JSON.parse(JSON.stringify(this.base)),
+		})
 	}
 
 	/**

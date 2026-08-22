@@ -5,7 +5,7 @@
 		TagGroup,
 		IAggregateDocs,
 		IAggregateMetadata,
-		IAggregateTags,
+		ICoordinateMetadata,
 		IAggregatePresets,
 	} from '$types'
 
@@ -30,16 +30,16 @@
 	let aggMetadata: IAggregateMetadata = getContext('aggMetadata')
 	let aggDocs: IAggregateDocs = getContext('aggDocs')
 	let aggPresets: IAggregatePresets = getContext('aggPresets')
-	let aggTags: IAggregateTags = getContext('aggTags')
+	let coordMetadata: ICoordinateMetadata = getContext('coordMetadata')
 
 	let boundForm: HTMLFormElement | undefined = $state()
 	let pageContext = $derived({...page.data.pageContext, label: 'On this Page'})
 
 	let cta = $derived(page.params.page)
 	let query = $derived(page.url.search)
-	let tags = $derived(aggTags.tagGroups)
-	let tagsLoading = $derived(aggTags.loading)
-	let tagsError = $derived(aggTags.error)
+	let tags = $derived(coordMetadata.getTagGroups())
+	let tagsLoading = $derived(coordMetadata.loading)
+	let tagsError = $derived(coordMetadata.error)
 
 	let editing = $derived(cta === 'build' || cta === 'edit')
 
@@ -61,9 +61,11 @@
 	)
 
 	let selectedTags: string[] = $derived(
-		aggTags.tagGroups.reduce((selected: string[], menu: TagGroup) => {
-			return selected.concat(page.url.searchParams.getAll(menu.name) || [])
-		}, []),
+		coordMetadata
+			.getTagGroups()
+			.reduce((selected: string[], menu: TagGroup) => {
+				return selected.concat(page.url.searchParams.getAll(menu.name) || [])
+			}, []),
 	)
 
 	let queryString = $derived(

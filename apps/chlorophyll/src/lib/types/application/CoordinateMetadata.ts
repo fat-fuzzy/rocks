@@ -5,19 +5,16 @@ export interface TagIndex {
 	taggedBlocks: Record<string, Block[]> //   keyed by tagKey = group:tag
 }
 
-export interface IAggregateTags {
+export interface ICoordinateMetadata {
 	readonly loading: boolean
 	readonly error: boolean
-	readonly tagGroups: TagGroup[]
-	readonly tagIndex: TagIndex
 
 	init(): Promise<void>
 	reset(): void
 
-	createTag(options: {
-		name: Slug
-		group: {name: Slug; title: string; type?: string}
-	}): Promise<{id: string} | void>
+	getTagGroups(): TagGroup[]
+
+	getTagIndex(): TagIndex
 
 	deleteTags(options: {
 		groups: {name: Slug; items: string[]}[]
