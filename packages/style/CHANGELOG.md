@@ -1,5 +1,11 @@
 # @fat-fuzzy/style
 
+## 0.1.54
+
+### Patch Changes
+
+- 099428a: UI updates, bugfixes & cleanup, add tests
+
 ## 0.1.53
 
 ### Patch Changes
