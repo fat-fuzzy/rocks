@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {UiColor} from '@fat-fuzzy/ui'
+	import type {UiColor, UiSurface} from '@fat-fuzzy/ui'
 	import type {ICoordinateImports} from '$types'
 
 	import {getContext} from 'svelte'
@@ -52,7 +52,7 @@
 			// 4. Reset input so the same file can be re-selected if needed
 			setTimeout(() => {
 				dialogActor.close()
-			}, 1500)
+			}, 2000)
 		}
 	}
 
@@ -139,6 +139,7 @@
 				variant="bare"
 				size="xs"
 				font="sm"
+				surface={statusFeedback ? (statusFeedback as UiSurface) : 'neutral'}
 				asset={statusFeedback ? status : 'none'}
 			>
 				<output class="w:full text:center">
