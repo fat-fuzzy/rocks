@@ -1,5 +1,11 @@
 # @fat-fuzzy/playbook
 
+## 0.1.43
+
+### Patch Changes
+
+- 099428a: UI updates, bugfixes & cleanup, add tests
+
 ## 0.1.42
 
 ### Patch Changes
