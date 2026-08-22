@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {UiColor, UiSize} from '@fat-fuzzy/ui'
-	import type {ImportStatus, IAggregateImports, IAggregateDocs} from '$types'
+	import type {ImportStatus, ICoordinateImports, IAggregateDocs} from '$types'
 
 	import {getContext} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
@@ -27,7 +27,7 @@
 		font = '2xs',
 	}: Props = $props()
 
-	let aggImports: IAggregateImports = getContext('aggImports')
+	let coordImports: ICoordinateImports = getContext('coordImports')
 	let aggDocs: IAggregateDocs = getContext('aggDocs')
 
 	const statusLabel: Record<ImportStatus, string> = {
@@ -62,7 +62,7 @@
 		status = 'deleting'
 
 		// 2. Delete existing storage: the import replaces OPFS content
-		await aggImports.deleteAllContent()
+		await coordImports.deleteAllContent()
 		await aggDocs.loadDocStore()
 
 		status = 'ready'
@@ -74,7 +74,7 @@
 	async function freshStart() {
 		await deleteData()
 
-		await aggImports.initSeed(DEFAULT_STRUCTURES, DEFAULT_CONTENT)
+		await coordImports.initSeed(DEFAULT_STRUCTURES, DEFAULT_CONTENT)
 
 		const newUrl = new SvelteURL(page.url)
 		newUrl.search = ''
@@ -90,7 +90,7 @@
 	async function reSeed() {
 		await deleteData()
 
-		await aggImports.initSeed(
+		await coordImports.initSeed(
 			{base: page.data.base, structures: page.data.structures},
 			page.data.seed.content,
 		)

@@ -1,9 +1,16 @@
-export * from '$lib/types/aggregates/import'
+import {
+	getContentData,
+	getPresetsData,
+	getBaseData,
+	getStructureData,
+} from '$lib/workers/storage/opfs'
+
 import type {
 	SeedDoc,
 	FrontmatterSeed,
 	FrontmatterStructure,
-	IAggregateImports,
+	IAggregateDataLifecycle,
+	Prose,
 } from '$types'
 
 import {DEFAULT_STRUCTURES, DEFAULT_CONTENT} from '$data/doc/cv-config'
@@ -11,15 +18,13 @@ import WorkerBridge from '$lib/workers/worker-bridge'
 import {getBridge} from '$lib/aggregates/bridge'
 
 /**
- * AggregateImports class to manage data transfer operations into storage
+ * AggregateDataLifecycle class to manage data transfer operations into storage
  * Maintains a cache of data in memory
  * Sends/receive messages via worker bridge
  */
-export default class AggregateImports implements IAggregateImports {
+export default class AggregateDataLifecycle implements IAggregateDataLifecycle {
 	bridge: WorkerBridge | undefined = $state()
 	seeded: {date_seed?: string; source?: string} = $state({})
-	loading = $state(false)
-	error = $state(false)
 	export = $state({
 		type: 'doc-root',
 		meta: {},
@@ -27,28 +32,19 @@ export default class AggregateImports implements IAggregateImports {
 	})
 	import = $state('')
 
-	constructor() {
-		this.loading = true
-	}
+	constructor() {}
 
 	async init(
 		frontmatter: FrontmatterSeed,
 		seed?: {content: SeedDoc[]; structures: FrontmatterStructure[]},
 	) {
 		this.bridge = getBridge()
-		try {
-			this.loading = true
-			const seeded = await this.checkSeed()
+		const seeded = await this.checkSeed()
 
-			if (!seeded && seed?.content.length) {
-				await this.initSeed(frontmatter, seed.content)
-			} else {
-				await this.initSeed(DEFAULT_STRUCTURES, DEFAULT_CONTENT)
-			}
-		} catch {
-			this.error = true
-		} finally {
-			this.loading = false
+		if (!seeded && seed?.content.length) {
+			await this.initSeed(frontmatter, seed.content)
+		} else {
+			await this.initSeed(DEFAULT_STRUCTURES, DEFAULT_CONTENT)
 		}
 	}
 
@@ -127,12 +123,8 @@ export default class AggregateImports implements IAggregateImports {
 			return
 		}
 
-		this.loading = true
-
 		const {content, presets, base} = JSON.parse(jsonString)
 		await this.bridge.restoreFromBackup({content, presets, base})
-
-		this.loading = false
 	}
 
 	/**
@@ -144,7 +136,50 @@ export default class AggregateImports implements IAggregateImports {
 			return
 		}
 
-		await this.bridge.deleteAll()
-		this.reset()
+		try {
+			await this.bridge.deleteAll()
+			this.reset()
+		} catch (error) {
+			throw Error('Deleting content failed', {cause: error})
+		}
+	}
+
+	async buildFullJSON(): Promise<string> {
+		// Load returns stringified data (worker message boundary)
+		const [contentResult, presetsResult, baseResult, structureResult] =
+			await Promise.all([
+				getContentData(),
+				getPresetsData(),
+				getBaseData(),
+				getStructureData(),
+			])
+
+		// Parse to JSON here — at worker message boundary inwards
+		// (we need objects to merge)
+		const content = contentResult.data
+		const presets = presetsResult.data
+		const base = baseResult
+		const structure = structureResult
+
+		const exportData = {content, presets, base, structure}
+
+		// Stringify here — at the download boundary outwards
+		return JSON.stringify(exportData, null, 2)
+	}
+
+	// TODO Export markdowns
+	buildFullMarkdown(options: {
+		root: string
+		content: {[id: string]: Prose}
+		presets: {id: string; query: string}[]
+	}): string {
+		const {content} = options
+		let html = ''
+
+		Object.keys(content).forEach((key) => {
+			html += content[key].html
+		})
+
+		return html
 	}
 }

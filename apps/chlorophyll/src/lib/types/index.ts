@@ -9,15 +9,16 @@ export * from '$lib/types/storage/fs-storage'
 export * from '$lib/types/storage/fs-markdowns'
 
 // Service Interfaces
-export * from '$lib/types/aggregates/import'
-export * from '$lib/types/aggregates/doc'
-export * from '$lib/types/aggregates/preset'
-export * from '$lib/types/aggregates/meta'
+export * from '$lib/types/aggregates/agg-docs'
+export * from '$lib/types/aggregates/agg-preset'
+export * from '$lib/types/aggregates/agg-meta'
+export * from '$lib/types/aggregates/agg-storage-lifecycle'
 
 // Use case coordinators
-export * from '$lib/types/application/CoordinateDocs'
-export * from '$lib/types/application/CoordinateExports'
-export * from '$lib/types/application/CoordinateMetadata'
+export * from '$lib/types/application/coord-docs'
+export * from '$lib/types/application/coord-metadata'
+export * from '$lib/types/application/coord-exports'
+export * from '$lib/types/application/coord-imports'
 
 // Domain + Identity
 export * from '$lib/generated/types/Doc'

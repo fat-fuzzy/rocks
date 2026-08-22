@@ -477,15 +477,19 @@ export async function deleteDirectoryRecursive(
 	return result
 }
 
-export async function deleteAllContent(): Promise<void> {
+export async function deleteAllContent(): Promise<{
+	status: string
+	errors: string[]
+}> {
 	const opfsRoot = await navigator.storage.getDirectory()
-
+	const errors = []
 	for (const name of SEED_TYPES) {
 		try {
 			const flagName = `seed-${name}-complete.json`
 
 			await opfsRoot.removeEntry(flagName)
 		} catch {
+			errors.push(name)
 			console.log(`deleteAllContent: Error deleting seed file ${name}`)
 		}
 
@@ -497,7 +501,13 @@ export async function deleteAllContent(): Promise<void> {
 				await deleteDirectoryRecursive(directoryHandle)
 			}
 		} catch {
+			errors.push(name)
 			console.log(`deleteAllContent: Error deleting seed folder ${name}`)
 		}
+	}
+
+	return {
+		status: errors.length ? 'error' : 'ok',
+		errors,
 	}
 }
