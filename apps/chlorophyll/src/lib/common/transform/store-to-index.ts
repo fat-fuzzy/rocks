@@ -33,7 +33,15 @@ export function buildDocIndex(store: DocStore): DocIndex {
 	const blocks: Record<string, Block> = {}
 
 	for (const [language, formats] of Object.entries(store)) {
+		if (!language || !formats) {
+			continue
+		}
+
 		for (const [format, doc] of Object.entries(formats)) {
+			if (!doc) {
+				continue
+			}
+
 			for (const section of doc.sections ?? []) {
 				const sectionKey = getSectionKey(language, format, section.name)
 

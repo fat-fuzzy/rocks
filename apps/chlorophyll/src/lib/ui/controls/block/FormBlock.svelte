@@ -8,8 +8,8 @@
 		Uuid,
 		ActionCrud,
 		InputCheckedTypes,
-		IDocService,
-		ITagService,
+		ICoordinateMetadata,
+		ICoordinateDocs,
 	} from '$types'
 
 	import * as validators from '$lib/generated/ajv/validation/validate.ajv.mjs'
@@ -33,8 +33,8 @@
 	}
 	let {block, parent, subsections, cta, color = 'primary'}: Props = $props()
 
-	let docService: IDocService = getContext('docService')
-	let tagService: ITagService = getContext('tagService')
+	let coordMetadata: ICoordinateMetadata = getContext('coordMetadata')
+	let coordDocs: ICoordinateDocs = getContext('coordDocs')
 
 	const validator = new FormValidator('FormBlockValidationFunction', validators)
 
@@ -196,7 +196,7 @@
 			type,
 			id: 'tags',
 			currentTags: toUpdate.tags,
-			tagGroups: tagService.tags,
+			tagGroups: coordMetadata.getTagGroups(),
 		})
 	}
 
@@ -230,7 +230,7 @@
 			tags: toUpdate.tags,
 		}
 
-		docService.createBlock(newBlock)
+		coordDocs.createBlock(newBlock)
 
 		dialogActor.close()
 	}
@@ -241,7 +241,7 @@
 		} else {
 			errorBlockNotFound = false
 
-			docService.deleteBlock({
+			coordDocs.deleteBlock({
 				name: block.name as Uuid,
 				content_type: block.content_type,
 				group: block.group,
@@ -407,7 +407,7 @@
 							cta="save"
 							oninput={updateTags}
 							value={[]}
-							tagGroups={tagService.tags}
+							tagGroups={coordMetadata.getTagGroups()}
 						/>
 					</div>
 				</div>

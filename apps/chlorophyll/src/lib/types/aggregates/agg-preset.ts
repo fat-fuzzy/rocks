@@ -8,7 +8,7 @@ export interface PresetIndex {
 	presets: Record<string, Preset> // keyed by name
 }
 
-export interface IPresetService {
+export interface IAggregatePresets {
 	readonly seeded: {date_seed?: string; source?: string}
 	readonly loading: boolean
 	readonly error: boolean

@@ -3,9 +3,10 @@
 		Slug,
 		DocLanguage,
 		TagGroup,
-		IDocService,
-		ITagService,
-		IPresetService,
+		IAggregateDocs,
+		IAggregateMetadata,
+		ICoordinateMetadata,
+		IAggregatePresets,
 	} from '$types'
 
 	import {getContext, tick} from 'svelte'
@@ -26,18 +27,19 @@
 	const {PageRails} = ui.content
 	const {Feedback} = ui.blocks
 
-	let docService: IDocService = getContext('docService')
-	let presetService: IPresetService = getContext('presetService')
-	let tagService: ITagService = getContext('tagService')
+	let aggMetadata: IAggregateMetadata = getContext('aggMetadata')
+	let aggDocs: IAggregateDocs = getContext('aggDocs')
+	let aggPresets: IAggregatePresets = getContext('aggPresets')
+	let coordMetadata: ICoordinateMetadata = getContext('coordMetadata')
 
 	let boundForm: HTMLFormElement | undefined = $state()
 	let pageContext = $derived({...page.data.pageContext, label: 'On this Page'})
 
 	let cta = $derived(page.params.page)
 	let query = $derived(page.url.search)
-	let tags = $derived(tagService.tags)
-	let tagsLoading = $derived(tagService.loading)
-	let tagsError = $derived(tagService.error)
+	let tags = $derived(coordMetadata.getTagGroups())
+	let tagsLoading = $derived(coordMetadata.loading)
+	let tagsError = $derived(coordMetadata.error)
 
 	let editing = $derived(cta === 'build' || cta === 'edit')
 
@@ -50,7 +52,7 @@
 
 	let preset: string | null = $derived(page.url.searchParams.get('preset'))
 
-	let availableSections = $derived(docService.getSections({language, format}))
+	let availableSections = $derived(aggDocs.getSections({language, format}))
 
 	let selectedSections = $derived(
 		page.url.searchParams
@@ -59,9 +61,11 @@
 	)
 
 	let selectedTags: string[] = $derived(
-		tagService.tags.reduce((selected: string[], menu: TagGroup) => {
-			return selected.concat(page.url.searchParams.getAll(menu.name) || [])
-		}, []),
+		coordMetadata
+			.getTagGroups()
+			.reduce((selected: string[], menu: TagGroup) => {
+				return selected.concat(page.url.searchParams.getAll(menu.name) || [])
+			}, []),
 	)
 
 	let queryString = $derived(
@@ -147,14 +151,14 @@
 				{cta}
 				{preset}
 				{query}
-				formats={docService.base.formats}
+				formats={aggMetadata.getFormats()}
 			/>
 		{/if}
 	{/snippet}
 
 	{#snippet main()}
 		<div class="w:full h:full col:center l:stack">
-			{#if docService.loading}
+			{#if aggDocs.loading}
 				<div class="l:frame:round">
 					<Loading
 						message="Loading content..."
@@ -179,13 +183,13 @@
 									{:else if cta === 'build'}
 										<p class="font:md">Select a Section to build</p>
 									{:else if cta === 'preview'}
-										{#if presetService.hasPresets()}
+										{#if aggPresets.hasPresets()}
 											<p class="font:md">Select a Preset to preview</p>
 										{:else}
 											{@render getStartedPresets()}
 										{/if}
 									{:else if cta === 'print'}
-										{#if presetService.hasPresets()}
+										{#if aggPresets.hasPresets()}
 											<p class="font:md">Select a Preset to print</p>
 										{:else}
 											{@render getStartedPresets()}

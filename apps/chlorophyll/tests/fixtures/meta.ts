@@ -31,7 +31,7 @@ export const RAW_BASE: {content: FrontmatterBase; meta: DocMeta} = {
 export const STRUCTURE: FrontmatterStructure = {
 	schema_version: SCHEMA_VERSION,
 	seed_type: 'backup',
-	name: 'cv-long',
+	name: 'doc-long',
 	path: {
 		filename: 'base',
 		filetype: 'json',
@@ -47,8 +47,8 @@ export const RAW_STRUCTURE: {
 	content: {structure: [STRUCTURE]},
 	meta: {
 		content_type: 'doc-root',
-		name: 'cv-long',
-		label: 'CV Long',
+		name: 'doc-long',
+		label: 'Doc Long',
 		id: STRUCTURE_IDS[0],
 	},
 }

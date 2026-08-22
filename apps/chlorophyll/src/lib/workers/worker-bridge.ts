@@ -24,7 +24,6 @@ import type {
 	Rank,
 	FrontmatterStructure,
 	OPFSTreeBase,
-	Uuid,
 } from '$types'
 
 const REQUEST_TIMEOUT_MS = 100000
@@ -214,10 +213,8 @@ export default class WorkerBridge {
 		name: Slug
 		title?: string
 		rank: Rank
-		parentId: Uuid
-		structure: FrontmatterStructure
-		languages: DocLanguage[]
 		formats: Slug[]
+		language: DocLanguage
 		updateRanks: Section[]
 	}) {
 		return this.send({

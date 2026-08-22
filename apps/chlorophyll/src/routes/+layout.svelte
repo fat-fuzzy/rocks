@@ -10,8 +10,9 @@
 	import '$lib/styles/css/main.css'
 
 	import {buildNav} from '$data/nav'
-	import {initBridge, destroyBridge} from '$lib/services/bridge'
-	import {createServices} from '$lib/services/container'
+	import {initBridge, destroyBridge} from '$lib/aggregates/bridge'
+	import {createAggregates} from '$lib/aggregates/container'
+	import {createCoords} from '$lib/application/container'
 	import Dialog from '$lib/ui/overlays/dialog/Dialog.svelte'
 
 	const {ToggleTree, ToggleReveal, ToggleSettings} = ui.drafts
@@ -28,14 +29,22 @@
 	/**
 	 * Register Contexts
 	 */
-	const {importService, exportService, docService, tagService, presetService} =
-		createServices()
+	const {aggDataLifecycle, aggMetadata, aggDocs, aggPresets} =
+		createAggregates()
+	const {coordDocs, coordExports, coordImports, coordMetadata} = createCoords({
+		aggDataLifecycle,
+		aggMetadata,
+		aggDocs,
+	})
 
-	setContext('importService', importService)
-	setContext('exportService', exportService)
-	setContext('docService', docService)
-	setContext('tagService', tagService)
-	setContext('presetService', presetService)
+	setContext('aggDocs', aggDocs)
+	setContext('aggMetadata', aggMetadata)
+	setContext('aggPresets', aggPresets)
+
+	setContext('coordMetadata', coordMetadata)
+	setContext('coordImports', coordImports)
+	setContext('coordDocs', coordDocs)
+	setContext('coordExports', coordExports)
 
 	/**
 	 * Setup page data (loaded / generated)
@@ -105,10 +114,11 @@
 	onMount(async () => {
 		initBridge()
 
-		await importService.init({base, structures})
-		await docService.init()
-		await tagService.init()
-		await presetService.init()
+		await coordImports.init({base, structures})
+		await aggMetadata.init()
+		await aggDocs.init()
+		await coordMetadata.init()
+		await aggPresets.init()
 	})
 
 	onDestroy(() => destroyBridge())

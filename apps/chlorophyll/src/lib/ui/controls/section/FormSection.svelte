@@ -5,7 +5,7 @@
 		Slug,
 		DocLanguage,
 		Section,
-		IDocService,
+		ICoordinateDocs,
 	} from '$types'
 
 	import * as validators from '$lib/generated/ajv/validation/validate.ajv.mjs'
@@ -27,7 +27,7 @@
 	}
 	let {formats, cta, color = 'primary'}: Props = $props()
 
-	let docService: IDocService = getContext('docService')
+	let coordDocs: ICoordinateDocs = getContext('coordDocs')
 
 	const validator = new FormValidator(
 		'FormSectionValidationFunction',
@@ -50,7 +50,10 @@
 
 	let section: SectionProps = $state({
 		name: '',
-		rank: 1,
+		rank: coordDocs.getSectionMaxRank({
+			language: page.url.searchParams.get('language') ?? DOC_LANGUAGE,
+			format: page.url.searchParams.get('format') ?? DOC_FORMAT,
+		}),
 		formats: [],
 	})
 
@@ -132,7 +135,7 @@
 	}
 
 	function checkSectionExists(sectionName: string): Section | undefined {
-		return docService.getSectionByName({
+		return coordDocs.getSectionByName({
 			language: DOC_LANGUAGE as DocLanguage,
 			format: DOC_FORMAT as Slug,
 			name: sectionName,
@@ -152,11 +155,11 @@
 			formats,
 		}
 
-		docService.createSection(JSON.parse(JSON.stringify(newSection)))
+		coordDocs.createSection(newSection)
 
 		dialogActor.close()
 
-		// TODO: put selected sections into context (fix reactivity)
+		// FIXME: put selected sections into context (fix reactivity)
 		const newUrl = new URL(page.url)
 		newUrl.searchParams.append('sections', newSection.name)
 
@@ -165,7 +168,7 @@
 
 	function deleteSection() {
 		// TODO
-		// docService.deleteSection({
+		// aggDocs.deleteSection({
 		// 	path: {
 		// 		filename: sectionName,
 		// 		filetype: 'json',

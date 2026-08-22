@@ -250,10 +250,15 @@ async function dispatch(msg: WorkerMessage) {
 			}
 		}
 
-		case 'DELETE_ALL':
-			await deleteAllContent()
-			return
+		case 'DELETE_ALL': {
+			const result = await deleteAllContent()
 
+			if (result) {
+				return result
+			} else {
+				throw new Error('Error deleting content')
+			}
+		}
 		// case 'EXPORT_ALL': {
 		// 	const markdown = await opfs.buildMarkdown(
 		// 		msg.payload.language,
