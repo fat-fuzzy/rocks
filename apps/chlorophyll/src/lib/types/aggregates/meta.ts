@@ -7,7 +7,7 @@ import type {
 	TagGroup,
 } from '$types'
 
-export interface IMetadataService {
+export interface IAggregateMetadata {
 	readonly base: FrontmatterBase
 	readonly structures: FrontmatterStructure[]
 	readonly loading: boolean

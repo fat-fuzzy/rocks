@@ -2,9 +2,9 @@
 	import type {UiColor, UiSize} from '@fat-fuzzy/ui'
 	import type {
 		ImportStatus,
-		IImportService,
-		IExportService,
-		IDocService,
+		IAggregateImports,
+		ICoordinateExports,
+		IAggregateDocs,
 	} from '$types'
 
 	import {getContext} from 'svelte'
@@ -32,9 +32,9 @@
 		onImported,
 	}: Props = $props()
 
-	let importService: IImportService = getContext('importService')
-	let exportService: IExportService = getContext('exportService')
-	let docService: IDocService = getContext('docService')
+	let aggDocs: IAggregateDocs = getContext('aggDocs')
+	let aggImports: IAggregateImports = getContext('aggImports')
+	let coordExports: ICoordinateExports = getContext('coordExports')
 
 	const statusLabel: Record<ImportStatus, string> = {
 		idle: '',
@@ -67,7 +67,7 @@
 
 			// 2. Import and write data
 			status = 'importing'
-			await importService.importFromJSON(serialized)
+			await aggImports.importFromJSON(serialized)
 
 			status = 'done'
 
@@ -108,15 +108,15 @@
 		if (withBackup) {
 			status = 'backing-up'
 			// 1. Back up current content to filesystem
-			const data = await exportService.buildFullJSON()
+			const data = await coordExports.buildFullJSON()
 			await guardedExport({data})
 		}
 
 		status = 'deleting'
 
 		// 2. Delete existing storage: the import replaces OPFS content
-		await importService.deleteAllContent()
-		await docService.loadDocStore()
+		await aggImports.deleteAllContent()
+		await aggDocs.loadDocStore()
 
 		status = 'ready'
 	}

@@ -33,7 +33,7 @@ export interface DocIndex {
 	blocks: Record<string, Block>
 }
 
-export interface IDocService {
+export interface IAggregateDocs {
 	readonly loading: boolean
 	readonly error: boolean
 	readonly content: DocStore

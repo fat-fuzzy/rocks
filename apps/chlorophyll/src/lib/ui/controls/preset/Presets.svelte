@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {Preset, IPresetService} from '$types'
+	import type {Preset, IAggregatePresets} from '$types'
 
 	import {getContext} from 'svelte'
 	import {page} from '$app/state'
@@ -23,18 +23,16 @@
 	let cta = $derived(page.params.page)
 	let query = $derived(page.url.search)
 
-	let presetService: IPresetService = getContext('presetService')
+	let aggPresets: IAggregatePresets = getContext('aggPresets')
 
-	let presetIndex: Record<string, Preset> = $derived(
-		presetService.loadPresets(),
-	)
+	let presetIndex: Record<string, Preset> = $derived(aggPresets.loadPresets())
 	let presets = $derived(Object.values(presetIndex))
 
-	let loading = $derived(presetService.loading)
-	let error = $derived(presetService.error)
+	let loading = $derived(aggPresets.loading)
+	let error = $derived(aggPresets.error)
 
 	function savePreset(preset: Preset) {
-		presetService.savePreset({
+		aggPresets.savePreset({
 			path: {
 				filename: preset.name,
 				filetype: 'json',
@@ -53,7 +51,7 @@
 	}
 
 	function toggleLock(preset: Preset) {
-		presetService.togglePresetLock({
+		aggPresets.togglePresetLock({
 			path: {
 				filename: preset.name,
 				filetype: 'json',

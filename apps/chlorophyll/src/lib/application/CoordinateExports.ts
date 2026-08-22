@@ -1,4 +1,4 @@
-import type {Prose, IExportService} from '$types'
+import type {Prose, ICoordinateExports} from '$types'
 
 import {
 	getContentData,
@@ -7,7 +7,7 @@ import {
 	getStructureData,
 } from '$lib/workers/storage/opfs'
 
-export default class ExportService implements IExportService {
+export default class CoordinateExports implements ICoordinateExports {
 	async buildFullJSON(): Promise<string> {
 		// Load returns stringified data (worker message boundary)
 		const [contentResult, presetsResult, baseResult, structureResult] =

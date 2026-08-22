@@ -6,8 +6,8 @@
 		DocLanguage,
 		Slug,
 		InputCheckedTypes,
-		IDocService,
-		ITagService,
+		IAggregateDocs,
+		IAggregateTags,
 	} from '$types'
 
 	import {getContext} from 'svelte'
@@ -19,8 +19,8 @@
 
 	const {Editor} = prose.editor
 
-	let docService: IDocService = getContext('docService')
-	let tagService: ITagService = getContext('tagService')
+	let aggDocs: IAggregateDocs = getContext('aggDocs')
+	let aggTags: IAggregateTags = getContext('aggTags')
 
 	let {
 		id,
@@ -94,7 +94,7 @@
 			block,
 		}
 
-		docService.saveBlock(updated)
+		aggDocs.saveBlock(updated)
 	}
 
 	function updateTags(event: Event) {
@@ -115,7 +115,7 @@
 			type,
 			id,
 			currentTags: block.tags,
-			tagGroups: tagService.tagGroups,
+			tagGroups: aggTags.tagGroups,
 		})
 
 		block.tags = updatedTags
@@ -131,7 +131,7 @@
 			block,
 		}
 
-		docService.saveBlock(updated)
+		aggDocs.saveBlock(updated)
 	}
 
 	$effect(() => {
@@ -150,7 +150,7 @@
 		size="sm"
 		oninput={updateTags}
 		value={block.tags}
-		tagGroups={tagService.tagGroups.filter((tg) => {
+		tagGroups={aggTags.tagGroups.filter((tg) => {
 			if (block.content_type === 'section') {
 				return tg.type !== 'radio'
 			}

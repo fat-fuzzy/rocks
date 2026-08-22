@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {UiColor, UiVariant, InputProps} from '@fat-fuzzy/ui'
-	import type {IDocService} from '$types'
+	import type {IAggregateMetadata} from '$types'
 
 	import {getContext} from 'svelte'
 	import {page} from '$app/state'
@@ -22,11 +22,11 @@
 		oninput: (e: Event) => void
 	} = $props()
 
-	let metadataService: IDocService = getContext('metadataService')
+	let aggMetadata: IAggregateMetadata = getContext('aggMetadata')
 
 	let cta = $derived(page.params.page)
-	let baseLanguages = $derived(metadataService.base.languages)
-	let baseFormats = $derived(metadataService.base.formats)
+	let baseLanguages = $derived(aggMetadata.base.languages)
+	let baseFormats = $derived(aggMetadata.base.formats)
 
 	let currentLanguage = $derived.by(() => {
 		const lang = page.url.searchParams.get('language')

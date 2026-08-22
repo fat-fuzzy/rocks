@@ -5,7 +5,7 @@ export interface TagIndex {
 	taggedBlocks: Record<string, Block[]> //   keyed by tagKey = group:tag
 }
 
-export interface ITagService {
+export interface IAggregateTags {
 	readonly loading: boolean
 	readonly error: boolean
 	readonly tagGroups: TagGroup[]

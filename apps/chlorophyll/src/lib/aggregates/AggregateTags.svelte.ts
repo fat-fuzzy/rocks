@@ -4,38 +4,38 @@ import type {
 	TagIndex,
 	TagGroup,
 	FileExt,
-	IDocService,
-	ITagService,
-	IMetadataService,
+	IAggregateDocs,
+	IAggregateTags,
+	IAggregateMetadata,
 } from '$types'
 
 import {SvelteMap} from 'svelte/reactivity'
 
 import WorkerBridge from '$lib/workers/worker-bridge'
-import {getBridge} from '$lib/services/bridge'
+import {getBridge} from '$lib/aggregates/bridge'
 
 import {getTagKey} from '$lib/common/format'
 import {buildTagIndex} from '$lib/common/transform/store-to-index'
 
 /**
- * TagService class to manage block and section tags
+ * AggregateTags class to manage block and section tags
  * Maintains a cache of data in memory
  * Sends/receive messages via worker bridge
  */
-export default class TagService implements ITagService {
+export default class AggregateTags implements IAggregateTags {
 	bridge: WorkerBridge | undefined = $state()
-	metadataService: IMetadataService | undefined = $state()
-	docService: IDocService | undefined = $state()
+	aggMetadata: IAggregateMetadata | undefined = $state()
+	aggDocs: IAggregateDocs | undefined = $state()
 	loading = $state(false)
 	error = $state(false)
 	tagGroups: TagGroup[] = $derived(
-		this.metadataService ? this.metadataService.getTagGroups() : [],
+		this.aggMetadata ? this.aggMetadata.getTagGroups() : [],
 	)
 	tagIndex: TagIndex = $derived(
-		this.docService
+		this.aggDocs
 			? buildTagIndex(
 					this.tagGroups,
-					Object.values(this.docService?.docIndex.blocks),
+					Object.values(this.aggDocs?.docIndex.blocks),
 				)
 			: {
 					tags: {},
@@ -43,10 +43,10 @@ export default class TagService implements ITagService {
 				},
 	)
 
-	constructor(metadataService: IMetadataService, docService: IDocService) {
+	constructor(aggMetadata: IAggregateMetadata, aggDocs: IAggregateDocs) {
 		this.loading = true
-		this.metadataService = metadataService
-		this.docService = docService
+		this.aggMetadata = aggMetadata
+		this.aggDocs = aggDocs
 	}
 
 	async init() {
@@ -65,14 +65,14 @@ export default class TagService implements ITagService {
 		name: Slug
 		group: {name: Slug; title: string; type?: string}
 	}): Promise<{id: string} | void> {
-		if (!this.bridge || !this.metadataService) {
+		if (!this.bridge || !this.aggMetadata) {
 			return
 		}
 
-		const group = this.metadataService.getTagGroupByName(options.group.name)
+		const group = this.aggMetadata.getTagGroupByName(options.group.name)
 
 		if (!group) {
-			this.metadataService.base.tags.push({
+			this.aggMetadata.base.tags.push({
 				...options.group,
 				items: [options.name],
 			})
@@ -87,7 +87,7 @@ export default class TagService implements ITagService {
 		}
 
 		await this.bridge.saveBase({
-			base: JSON.parse(JSON.stringify(this.metadataService.base)),
+			base: JSON.parse(JSON.stringify(this.aggMetadata.base)),
 		})
 	}
 
@@ -97,7 +97,7 @@ export default class TagService implements ITagService {
 	async deleteTags(options: {
 		groups: {name: Slug; items: string[]}[]
 	}): Promise<{id: string} | void> {
-		if (!this.bridge || !this.metadataService || !this.docService) {
+		if (!this.bridge || !this.aggMetadata || !this.aggDocs) {
 			return
 		}
 
@@ -142,15 +142,15 @@ export default class TagService implements ITagService {
 					}
 				}
 
-				const {languages, formats} = this.metadataService.base
+				const {languages, formats} = this.aggMetadata.base
 
 				for (const language of languages) {
 					for (const format of formats) {
 						// 2. Update blocks
 						for (const block of blocksToUpdate.values()) {
-							const section = this.docService.getSectionById(block.parentId)
+							const section = this.aggDocs.getSectionById(block.parentId)
 
-							await this.docService.saveBlock({
+							await this.aggDocs.saveBlock({
 								language,
 								format,
 								block,
@@ -163,7 +163,7 @@ export default class TagService implements ITagService {
 						}
 
 						// 3. Update sections (TODO: create tagged sections index)
-						const doc = this.docService.content[language]?.[format]
+						const doc = this.aggDocs.content[language]?.[format]
 
 						if (!doc) {
 							continue
@@ -212,10 +212,10 @@ export default class TagService implements ITagService {
 			}
 		}
 
-		this.metadataService.base.tags = tagGroupsToKeep
+		this.aggMetadata.base.tags = tagGroupsToKeep
 
 		await this.bridge.saveBase({
-			base: JSON.parse(JSON.stringify(this.metadataService.base)),
+			base: JSON.parse(JSON.stringify(this.aggMetadata.base)),
 		})
 	}
 }

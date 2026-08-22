@@ -5,7 +5,7 @@
 		Slug,
 		DocLanguage,
 		Section,
-		IUiChlorophyll,
+		ICoordinateDocs,
 	} from '$types'
 
 	import * as validators from '$lib/generated/ajv/validation/validate.ajv.mjs'
@@ -27,7 +27,7 @@
 	}
 	let {formats, cta, color = 'primary'}: Props = $props()
 
-	let uiChlorophyll: IUiChlorophyll = getContext('uiChlorophyll')
+	let coordDocs: ICoordinateDocs = getContext('coordDocs')
 
 	const validator = new FormValidator(
 		'FormSectionValidationFunction',
@@ -50,7 +50,7 @@
 
 	let section: SectionProps = $state({
 		name: '',
-		rank: uiChlorophyll.getSectionMaxRank({
+		rank: coordDocs.getSectionMaxRank({
 			language: page.url.searchParams.get('language') ?? DOC_LANGUAGE,
 			format: page.url.searchParams.get('format') ?? DOC_FORMAT,
 		}),
@@ -135,7 +135,7 @@
 	}
 
 	function checkSectionExists(sectionName: string): Section | undefined {
-		return uiChlorophyll.getSectionByName({
+		return coordDocs.getSectionByName({
 			language: DOC_LANGUAGE as DocLanguage,
 			format: DOC_FORMAT as Slug,
 			name: sectionName,
@@ -155,7 +155,7 @@
 			formats,
 		}
 
-		uiChlorophyll.createSection(newSection)
+		coordDocs.createSection(newSection)
 
 		dialogActor.close()
 
@@ -168,7 +168,7 @@
 
 	function deleteSection() {
 		// TODO
-		// docService.deleteSection({
+		// aggDocs.deleteSection({
 		// 	path: {
 		// 		filename: sectionName,
 		// 		filetype: 'json',

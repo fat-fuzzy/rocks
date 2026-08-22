@@ -9,29 +9,29 @@ import type {
 	Block,
 	Prose,
 	DocContentType,
-	IUiChlorophyll,
-	IDocService,
-	IMetadataService,
+	ICoordinateDocs,
+	IAggregateDocs,
+	IAggregateMetadata,
 } from '$types'
 
 import {updateSectionRanks} from '$lib/common/transform/operations-block'
 
 /**
- * UiChlorophyll class to manage access to stored docs
+ * CoordinateDocs class to manage access to stored docs
  * Maintains a cache of data in memory
  * Sends/receive messages via worker bridge
  */
-export default class UiChlorophyll implements IUiChlorophyll {
-	metadataService: IMetadataService
-	docService: IDocService
+export default class CoordinateDocs implements ICoordinateDocs {
+	aggMetadata: IAggregateMetadata
+	aggDocs: IAggregateDocs
 	loading = $state(false)
 	error = $state(false)
 	lazyBlocks: {[name: string]: Block} = $state({})
 	lazySections: {[name: string]: Section} = $state({})
 
-	constructor(metadataService: IMetadataService, docService: IDocService) {
-		this.metadataService = metadataService
-		this.docService = docService
+	constructor(aggMetadata: IAggregateMetadata, aggDocs: IAggregateDocs) {
+		this.aggMetadata = aggMetadata
+		this.aggDocs = aggDocs
 	}
 
 	reset() {
@@ -51,8 +51,8 @@ export default class UiChlorophyll implements IUiChlorophyll {
 		name: DocLanguage
 		sourceLanguage: DocLanguage
 	}): Promise<void> {
-		await this.metadataService.addLanguage(options)
-		await this.metadataService.loadBase()
+		await this.aggMetadata.addLanguage(options)
+		await this.aggMetadata.loadBase()
 	}
 
 	/**
@@ -62,8 +62,8 @@ export default class UiChlorophyll implements IUiChlorophyll {
 	 */
 
 	async addFormat(options: {name: Slug; sourceFormat: Slug}): Promise<void> {
-		await this.metadataService.addFormat(options)
-		await this.metadataService.loadBase()
+		await this.aggMetadata.addFormat(options)
+		await this.aggMetadata.loadBase()
 	}
 
 	/**
@@ -77,7 +77,7 @@ export default class UiChlorophyll implements IUiChlorophyll {
 		path: DocPath
 		meta: DocMeta
 	}): Promise<Prose | undefined> {
-		return this.docService.getProse(options)
+		return this.aggDocs.getProse(options)
 	}
 
 	/**
@@ -92,7 +92,7 @@ export default class UiChlorophyll implements IUiChlorophyll {
 		name: string
 		subsection?: string
 	}): Block {
-		return this.docService.getBlock(options)
+		return this.aggDocs.getBlock(options)
 	}
 
 	lazyLoadBlock(
@@ -109,13 +109,13 @@ export default class UiChlorophyll implements IUiChlorophyll {
 			return
 		}
 		if (dataset.block === dataset.section) {
-			this.lazySections[dataset.block] = this.docService.getSectionByName({
+			this.lazySections[dataset.block] = this.aggDocs.getSectionByName({
 				language,
 				format,
 				name,
 			})
 		} else {
-			this.lazyBlocks[dataset.block] = this.docService.getBlock({
+			this.lazyBlocks[dataset.block] = this.aggDocs.getBlock({
 				language,
 				format,
 				section: dataset.section as Slug,
@@ -127,7 +127,7 @@ export default class UiChlorophyll implements IUiChlorophyll {
 
 	getSectionMaxRank(options: {language: DocLanguage; format: Slug}): number {
 		const {language, format} = options
-		const languageTree = this.docService.content[language]
+		const languageTree = this.aggDocs.content[language]
 
 		if (!languageTree) {
 			return 1
@@ -154,13 +154,13 @@ export default class UiChlorophyll implements IUiChlorophyll {
 		parent: Slug
 		tags: string[]
 	}): Promise<{id: string} | void> {
-		const languages = this.metadataService.getLanguages()
-		const formats = this.metadataService.getFormats()
+		const languages = this.aggMetadata.getLanguages()
+		const formats = this.aggMetadata.getFormats()
 
 		// TODO: enable optional format selection
 		for (const language of languages) {
 			for (const format of formats) {
-				await this.docService.createBlockForLanguageAndFormat({
+				await this.aggDocs.createBlockForLanguageAndFormat({
 					...options,
 					language,
 					format,
@@ -179,7 +179,7 @@ export default class UiChlorophyll implements IUiChlorophyll {
 		block: Block
 		path: DocPath
 	}): Promise<{id: string} | void> {
-		await this.docService.saveBlock(options)
+		await this.aggDocs.saveBlock(options)
 	}
 
 	/**
@@ -192,10 +192,10 @@ export default class UiChlorophyll implements IUiChlorophyll {
 		group?: string
 		parent: Slug
 	}): Promise<{id: string} | void> {
-		const languages = this.metadataService.getLanguages()
-		const formats = this.metadataService.getFormats()
+		const languages = this.aggMetadata.getLanguages()
+		const formats = this.aggMetadata.getFormats()
 
-		await this.docService.deleteBlock({...options, languages, formats})
+		await this.aggDocs.deleteBlock({...options, languages, formats})
 	}
 
 	/**
@@ -208,7 +208,7 @@ export default class UiChlorophyll implements IUiChlorophyll {
 		format: Slug
 		name: Slug
 	}): Section {
-		return this.docService.getSectionByName(options)
+		return this.aggDocs.getSectionByName(options)
 	}
 
 	/**
@@ -217,7 +217,7 @@ export default class UiChlorophyll implements IUiChlorophyll {
 	 * @returns section
 	 */
 	getSectionById(id: Uuid): Section {
-		return this.docService.getSectionById(id)
+		return this.aggDocs.getSectionById(id)
 	}
 
 	/**
@@ -226,7 +226,7 @@ export default class UiChlorophyll implements IUiChlorophyll {
 	 * @returns sections found
 	 */
 	getSectionsByRank(rank: Rank): Section[] {
-		return this.docService.getSectionsByRank(rank)
+		return this.aggDocs.getSectionsByRank(rank)
 	}
 
 	/**
@@ -235,7 +235,7 @@ export default class UiChlorophyll implements IUiChlorophyll {
 	 * @returns Array: {name, section}[]
 	 */
 	getSections(options: {language: Slug; format: DocLanguage}): Section[] {
-		return this.docService.getSections(options)
+		return this.aggDocs.getSections(options)
 	}
 
 	/**
@@ -248,7 +248,7 @@ export default class UiChlorophyll implements IUiChlorophyll {
 		format: Slug
 		sections: Slug[]
 	}): {name: Slug; section: Section}[] {
-		return this.docService.getSelectedSections(options)
+		return this.aggDocs.getSelectedSections(options)
 	}
 
 	/**
@@ -262,19 +262,19 @@ export default class UiChlorophyll implements IUiChlorophyll {
 	}): Promise<{id: string} | void> {
 		const {rank} = options
 
-		const languages = this.metadataService.getLanguages()
+		const languages = this.aggMetadata.getLanguages()
 		const updateRanks: Section[] = updateSectionRanks({
 			rank,
-			docIndex: this.docService.docIndex,
+			docIndex: this.aggDocs.docIndex,
 		})
 
-		await this.docService.createSection({
+		await this.aggDocs.createSection({
 			...options,
 			formats: JSON.parse(JSON.stringify(options.formats)),
 			languages: JSON.parse(JSON.stringify(languages)),
 			updateRanks,
 		})
 
-		await this.metadataService.updateDocStructureSections(options)
+		await this.aggMetadata.updateDocStructureSections(options)
 	}
 }

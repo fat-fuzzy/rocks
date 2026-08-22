@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {ActionCrud, Preset, IPresetService} from '$types'
+	import type {ActionCrud, Preset, IAggregatePresets} from '$types'
 	import type {UiColor} from '@fat-fuzzy/ui'
 	import * as validators from '$lib/generated/ajv/validation/validate.ajv.mjs'
 
@@ -21,7 +21,7 @@
 	}
 	let {cta, preset, color = 'primary'}: Props = $props()
 
-	let presetService: IPresetService = getContext('presetService')
+	let aggPresets: IAggregatePresets = getContext('aggPresets')
 
 	const validator = new FormValidator(
 		'FormPresetValidationFunction',
@@ -84,7 +84,7 @@
 	}
 
 	function checkPresetExists(presetName: string): Preset | undefined {
-		return presetService.getPreset(presetName)
+		return aggPresets.getPreset(presetName)
 	}
 
 	function savePreset() {
@@ -98,7 +98,7 @@
 		url.searchParams.delete('preset')
 		url.searchParams.append('preset', presetName)
 
-		presetService.savePreset({
+		aggPresets.savePreset({
 			path: {
 				filename: presetName,
 				filetype: 'json',
@@ -124,7 +124,7 @@
 	function deletePreset() {
 		const presetName = String(toUpdate.name)
 
-		presetService.deletePreset({
+		aggPresets.deletePreset({
 			path: {
 				filename: presetName,
 				filetype: 'json',

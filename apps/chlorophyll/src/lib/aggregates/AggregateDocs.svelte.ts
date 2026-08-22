@@ -12,12 +12,12 @@ import type {
 	DocIndex,
 	OPFSTreeDoc,
 	DocContentType,
-	IDocService,
+	IAggregateDocs,
 	Subsection,
 } from '$types'
 
 import WorkerBridge from '$lib/workers/worker-bridge'
-import {getBridge} from '$lib/services/bridge'
+import {getBridge} from '$lib/aggregates/bridge'
 
 import {SCHEMA_VERSION} from '$config/setup'
 import {sortByRankAsc} from '$lib/common/sort'
@@ -30,11 +30,11 @@ import {
 } from '$lib/common/transform/operations-block'
 
 /**
- * DocService class to manage access to stored docs
+ * AggregateDocs class to manage access to stored docs
  * Maintains a cache of data in memory
  * Sends/receive messages via worker bridge
  */
-export default class DocService implements IDocService {
+export default class AggregateDocs implements IAggregateDocs {
 	bridge: WorkerBridge | undefined = $state()
 	loading = $state(false)
 	error = $state(false)

@@ -4,8 +4,8 @@ import type {
 	DocLanguage,
 	DocMeta,
 	DocPath,
-	IDocService,
-	IMetadataService,
+	IAggregateDocs,
+	IAggregateMetadata,
 	Prose,
 	Rank,
 	Section,
@@ -13,9 +13,9 @@ import type {
 	Uuid,
 } from '$types'
 
-export interface IUiChlorophyll {
-	readonly metadataService: IMetadataService | undefined
-	readonly docService: IDocService | undefined
+export interface ICoordinateDocs {
+	readonly aggMetadata: IAggregateMetadata | undefined
+	readonly aggDocs: IAggregateDocs | undefined
 	readonly loading: boolean
 	readonly error: boolean
 	readonly lazyBlocks: {[name: string]: Block}
