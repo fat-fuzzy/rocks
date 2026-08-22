@@ -41,6 +41,19 @@ export const STRUCTURE: FrontmatterStructure = {
 }
 
 export const RAW_STRUCTURE: {
+	content: FrontmatterStructure
+	meta: DocMeta
+} = {
+	content: STRUCTURE,
+	meta: {
+		content_type: 'doc-root',
+		name: 'doc-long',
+		label: 'Doc Long',
+		id: STRUCTURE_IDS[0],
+	},
+}
+
+export const RAW_STRUCTURE_TREE: {
 	content: {structure: FrontmatterStructure[]}
 	meta: DocMeta
 } = {
