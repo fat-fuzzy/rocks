@@ -59,11 +59,7 @@
 			: '',
 	)
 	let feedbackTitle = $derived(
-		title
-			? title
-			: status && (status !== 'default' || context === 'prose')
-				? status
-				: undefined,
+		title ? title : status && status !== 'default' ? status : undefined,
 	)
 </script>
 
