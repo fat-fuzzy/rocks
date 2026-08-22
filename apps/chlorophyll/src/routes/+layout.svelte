@@ -29,18 +29,20 @@
 	/**
 	 * Register Contexts
 	 */
-	const {aggMetadata, aggImports, aggDocs, aggPresets} = createAggregates()
-	const {coordExports, coordDocs, coordMetadata} = createCoords(
+	const {aggDataLifecycle, aggMetadata, aggDocs, aggPresets} =
+		createAggregates()
+	const {coordDocs, coordExports, coordImports, coordMetadata} = createCoords({
+		aggDataLifecycle,
 		aggMetadata,
 		aggDocs,
-	)
+	})
 
 	setContext('aggDocs', aggDocs)
-	setContext('coordMetadata', coordMetadata)
-	setContext('aggPresets', aggPresets)
-	setContext('aggImports', aggImports)
 	setContext('aggMetadata', aggMetadata)
+	setContext('aggPresets', aggPresets)
 
+	setContext('coordMetadata', coordMetadata)
+	setContext('coordImports', coordImports)
 	setContext('coordDocs', coordDocs)
 	setContext('coordExports', coordExports)
 
@@ -112,7 +114,7 @@
 	onMount(async () => {
 		initBridge()
 
-		await aggImports.init({base, structures})
+		await coordImports.init({base, structures})
 		await aggMetadata.init()
 		await aggDocs.init()
 		await coordMetadata.init()
