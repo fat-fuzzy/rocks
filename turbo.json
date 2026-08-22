@@ -9,18 +9,46 @@
 			"outputs": ["src/lib/css/mixins/**"],
 			"cache": false
 		},
-		"@fat-fuzzy/style#build:main": {
-			"dependsOn": ["^@fat-fuzzy/style#build:scss"],
-			"outputs": ["dist/**"],
-			"cache": false
-		},
 		"@fat-fuzzy/style#build:lib": {
 			"dependsOn": ["^@fat-fuzzy/style#build:scss"],
 			"outputs": ["dist/lib/**"]
 		},
-		"test": {
-			"dependsOn": ["^test"],
+		"@fat-fuzzy/style#build:main": {
+			"dependsOn": ["^@fat-fuzzy/style#build:lib"],
+			"outputs": ["dist/**"],
+			"cache": false
+		},
+		"@fat-fuzzy/validation#test": {
+			"dependsOn": ["^build"],
+			"outputs": ["tests/test-results/**"]
+		},
+		"@fat-fuzzy/ui#test": {
+			"dependsOn": ["^@fat-fuzzy/validation#test"],
 			"outputs": ["tests/e2e/test-results/**"]
+		},
+		"@fat-fuzzy/playbook#test": {
+			"dependsOn": ["^@fat-fuzzy/ui#test"],
+			"outputs": ["tests/unit/test-results/**"]
+		},
+		"@fat-fuzzy/prose#test": {
+			"dependsOn": ["^@fat-fuzzy/ui#test"],
+			"outputs": ["tests/unit/test-results/**"]
+		},
+		"@fat-fuzzy/sketch#test": {
+			"dependsOn": ["^@fat-fuzzy/ui#test"],
+			"outputs": ["tests/unit/test-results/**"]
+		},
+		"@fat-fuzzy/doc#test": {
+			"dependsOn": [
+				"^@fat-fuzzy/ui#test",
+				"^@fat-fuzzy/playbook#test",
+				"^@fat-fuzzy/sketch#test"
+			],
+			"outputs": ["tests/unit/test-results/**"]
+		},
+		"@fat-fuzzy/chlorophyll#test": {
+			"dependsOn": ["^@fat-fuzzy/prose#test", "^@fat-fuzzy/doc#test"],
+			"outputs": ["tests/unit/test-results/**"]
 		},
 		"package": {
 			"dependsOn": ["^package"],
