@@ -534,12 +534,13 @@ export default class AggregateDocs implements IAggregateDocs {
 		// Check if an existing section's rank is affected
 
 		for (const language of languages) {
-			this.bridge.createSection({
+			await this.bridge.createSection({
 				...options,
 				language,
 				updateRanks,
 			})
 		}
+
 		this.loadDocStore()
 	}
 
