@@ -19,6 +19,7 @@ import type {
 	SeedDoc,
 	FrontmatterBase,
 	FrontmatterStructure,
+	OPFSTreeStructure,
 } from '$types'
 
 // ── Identifiers ────────────────────────────────────────────────────────────────
@@ -52,6 +53,7 @@ export type RestoreFromBackupCommand = {
 		content: OPFSTreeDoc
 		presets: OPFSTreePreset
 		base: OPFSTreeBase
+		structure: OPFSTreeStructure
 	}
 }
 
