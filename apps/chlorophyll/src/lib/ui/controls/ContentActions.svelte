@@ -6,7 +6,7 @@
 
 	import MenuSections from '$lib/ui/controls/section/MenuSections.svelte'
 	import MenuSettings from '$lib/ui/controls/settings/MenuSettings.svelte'
-	import DialogData from '$lib/ui/controls/data/DialogData.svelte'
+	import MenuData from '$lib/ui/controls/data/MenuData.svelte'
 
 	let {layout = 'switcher', oninput}: {layout?: UiLayout; oninput: () => void} =
 		$props()
@@ -50,7 +50,7 @@
 		</div>
 		<div class="l:flex:2xs justify:between hug">
 			<MenuSettings {oninput} color="accent" variant="outline" />
-			<DialogData id="button-import" label="Data" color="accent" {oninput} />
+			<MenuData id="button-import" label="Data" color="accent" {oninput} />
 		</div>
 	</div>
 </div>

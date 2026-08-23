@@ -1,6 +1,8 @@
 <script lang="ts">
 	import type {UiColor, UiSize} from '@fat-fuzzy/ui'
+	import type {ICoordinateImports} from '$types'
 
+	import {getContext} from 'svelte'
 	import {SvelteURL} from 'svelte/reactivity'
 	import ui from '@fat-fuzzy/ui'
 
@@ -8,7 +10,8 @@
 
 	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
 	import FormData from '$lib/ui/controls/data/FormData.svelte'
-	import Export from '$lib/ui/controls/data/Export.svelte'
+
+	let coordImports: ICoordinateImports = getContext('coordImports')
 
 	const {Button} = ui.blocks
 
@@ -24,8 +27,8 @@
 		id,
 		label = 'Manage Data',
 		color = 'primary',
-		size = '2xs',
-		font = '2xs',
+		size = 'xs',
+		font = 'xs',
 		oninput,
 	}: Props = $props()
 
@@ -48,25 +51,18 @@
 		}
 
 		setTimeout(() => {
+			coordImports.setStatus('idle')
+			dialogActor.close()
+
 			const newUrl = new SvelteURL(page.url)
 			newUrl.search = ''
 
 			window.location.href = newUrl.href // FIXME: hacky solution to reload for now
-
-			dialogActor.close()
-		}, 1500)
+		}, 2000)
 	}
 </script>
 
 {#snippet dialogContent()}
-	<div class="l:sidebar size:lg">
-		<div class="l:main l:flex align:center justify:between">
-			<h4 class="font:heading">To backup your data:</h4>
-		</div>
-		<div class="l:side">
-			<Export {color} {id} filename={id} />
-		</div>
-	</div>
 	<FormData {color} onsubmit={refreshAndClose} />
 {/snippet}
 
@@ -85,5 +81,5 @@
 	onclick={showDialog}
 >
 	<span class="font:heading">{label}</span>
-	<ff-con class={`svg:arrow-bar-down size:${size} l:flex`}></ff-con>
+	<ff-icon class="svg:herb openmoji size:md l:flex"></ff-icon>
 </Button>
