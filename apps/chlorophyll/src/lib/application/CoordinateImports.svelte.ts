@@ -11,17 +11,6 @@ import type {UiStatus} from '@fat-fuzzy/ui'
 
 import {guardedExport} from '$lib/common/download'
 
-// const ACTION_LABEL: Record<ImportStatus, string> = {
-// 	idle: 'Waiting',
-// 	seeding: 'Seeding',
-// 	deleting: 'Deleting storage',
-// 	ready: 'Ready to import',
-// 	'backing-up': 'Backing up',
-// 	importing: 'Importing',
-// 	done: 'All done!',
-// 	error: 'Error',
-// }
-
 const STATUS_LABEL: Record<ImportStatus, string> = {
 	idle: 'Choose delete strategy and proceed',
 	seeding: 'Seeding...',
