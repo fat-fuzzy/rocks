@@ -18,7 +18,7 @@ import type {
 	SeedDoc,
 	SeedType,
 	FrontmatterStructure,
-	OPFStructure,
+	OPFTreeStructure,
 } from '$types'
 
 import {
@@ -185,13 +185,13 @@ export async function restoreFromBackup(options: {
 	content: OPFSTreeDoc
 	presets: OPFSTreePreset
 	base: OPFSTreeBase
-	structure: OPFStructure
+	structure: OPFTreeStructure
 }): Promise<void> {
 	try {
 		await seedBase(options.base.content)
 
 		// FIXME: this is incomplete
-		await seedStructure({structures: [options.structure.content]})
+		await seedStructure({structures: options.structure.content.structure})
 
 		if (await isSeedComplete('root')) return
 
