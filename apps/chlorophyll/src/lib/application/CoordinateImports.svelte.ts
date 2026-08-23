@@ -67,6 +67,7 @@ export default class CoordinateImports implements ICoordinateImports {
 		| undefined = $state()
 	loading = $state(false)
 	error = $state(false)
+	withBackup = $state(true)
 	status: ImportStatus = $state('idle')
 	statusLabel: string = $derived(STATUS_LABEL[this.status])
 	statusFeedback: UiStatus | undefined = $derived(STATUS_FEEDBACK[this.status])
@@ -104,6 +105,10 @@ export default class CoordinateImports implements ICoordinateImports {
 
 	setStatus(status: ImportStatus) {
 		this.status = status
+	}
+
+	setDeleteStrategy(withBackup: boolean) {
+		this.withBackup = withBackup
 	}
 
 	/**
@@ -162,10 +167,10 @@ export default class CoordinateImports implements ICoordinateImports {
 	 * Delete all content and presets from OPFS storage
 	 * @returns void
 	 */
-	async deleteAllContent(withBackup: boolean): Promise<void> {
+	async deleteAllContent(): Promise<void> {
 		this.loading = true
 
-		if (withBackup) {
+		if (this.withBackup) {
 			this.status = 'backing-up'
 			// 1. Back up current content to filesystem
 			const data = await this.aggDataLifecycle.buildFullJSON()

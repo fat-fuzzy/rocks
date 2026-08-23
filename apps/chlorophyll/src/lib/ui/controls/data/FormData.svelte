@@ -1,12 +1,12 @@
 <script lang="ts">
-	import type {UiColor, UiSurface} from '@fat-fuzzy/ui'
+	import type {InputProps, UiColor, UiSurface} from '@fat-fuzzy/ui'
 	import type {ICoordinateImports} from '$types'
 
 	import {getContext} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
 	import {page} from '$app/state'
 
-	const {Button, Feedback} = ui.blocks
+	const {Button, InputGroup, Feedback} = ui.blocks
 
 	import {DEFAULT_STRUCTURES, DEFAULT_CONTENT} from '$data/doc/cv-config'
 
@@ -29,13 +29,39 @@
 			coordImports.status === 'importing',
 	)
 
-	let withBackup = $state(true)
-
+	const deleteOptions: Partial<InputProps>[] = $derived([
+		{
+			id: 'with-backup',
+			name: 'with-backup',
+			value: 'with-backup',
+			checked: false,
+			label: 'Backup and Delete',
+			color: 'primary',
+			title: 'Backup and Delete',
+			disabled: disabled || status === 'ready',
+		},
+		{
+			id: 'just-delete',
+			name: 'just-delete',
+			value: 'just-delete',
+			checked: false,
+			label: 'Just Delete',
+			color: 'highlight',
+			title: 'Just Delete',
+			disabled: disabled || status === 'ready',
+		},
+	])
 	/**
 	 * Back up current content to filesystem
 	 */
+	function setDeleteStrategy(event: Event) {
+		const target = event.target as HTMLInputElement
+
+		coordImports.setDeleteStrategy(target.value === 'with-backup')
+	}
+
 	async function deleteCurrentData() {
-		await coordImports.deleteAllContent(withBackup)
+		await coordImports.deleteAllContent()
 	}
 
 	async function handleFileSelected(event: Event) {
@@ -99,18 +125,19 @@
 		class="sr-only"
 		onchange={handleFileSelected}
 	/>
+	<h4 class="font:heading">To source data</h4>
 	<div class="l:sidebar size:lg">
 		<div class="l:main l:stack font:sm">
-			<h4 class="font:heading">To source data</h4>
-
 			{#if status !== 'ready'}
 				<div>
 					<p>First, you must delete current data</p>
-					<p class="font:semibold">This action cannot be undone</p>
 				</div>
 			{/if}
 			<div>
-				<p>When <span class="font:semibold">ready to source</span>, you can:</p>
+				<p>
+					When you are <span class="font:semibold">ready to source</span>, you
+					can:
+				</p>
 				<div class="size:xs font:sm maki:block">
 					<ul>
 						<li>
@@ -148,51 +175,54 @@
 					</output>
 				</Feedback>
 			{/if}
-			<div class="l:flex size:3xs justify:between grow">
-				<Button
-					type="button"
-					label="Just Delete"
-					id="data-delete"
-					name=""
+			<div class="l:flex size:3xs justify:between align:start grow">
+				<InputGroup
+					id="delete-strategy"
+					name="delete-strategy"
+					legend="Delete strategy"
+					type="radio"
+					value={coordImports.withBackup ? ['with-backup'] : ['just-delete']}
+					size="2xs"
 					color="highlight"
-					variant="outline"
-					shape="mellow"
-					size="xs"
-					font="xs font:heading"
-					disabled={disabled || status === 'ready'}
-					onclick={() => {
-						withBackup = false
-						deleteCurrentData()
-					}}
+					variant="bare"
+					selectAll={true}
+					items={deleteOptions}
+					oninput={setDeleteStrategy}
 				/>
-				<Button
-					type="button"
-					label="Backup and Delete"
-					id="data-bk-delete"
-					name=""
-					{color}
-					variant="fill"
-					shape="mellow"
-					size="xs"
-					font="xs font:heading"
-					disabled={disabled || status === 'ready'}
-					onclick={deleteCurrentData}
-				/>
+				<div class="l:stack maki:block:sm">
+					<Button
+						type="button"
+						label="Delete"
+						id="data-delete"
+						name=""
+						color="primary"
+						variant="outline"
+						shape="mellow"
+						size="xs"
+						font="xs font:heading"
+						disabled={disabled || status === 'ready'}
+						hint="This action cannot be undone"
+						onclick={deleteCurrentData}
+					/>
+				</div>
 			</div>
 			<div class="l:flex size:3xs justify:between grow">
 				<Button
 					type="button"
-					label="Import"
 					id="data-reset"
 					name=""
+					label="Import"
 					{color}
 					variant="outline"
 					shape="mellow"
 					size="xs"
 					font="xs font:heading"
 					disabled={status !== 'ready'}
+					asset="arrow-bar-down"
+					assetType="svg"
 					onclick={() => fileInput.click()}
 				/>
+
 				<Button
 					type="button"
 					label="Fresh Start"
@@ -203,6 +233,8 @@
 					shape="mellow"
 					size="xs"
 					font="xs font:heading"
+					asset="leaf"
+					assetType="svg"
 					onclick={freshStart}
 					disabled={status !== 'ready'}
 				/>
@@ -216,6 +248,8 @@
 					variant="outline"
 					size="xs"
 					font="xs font:heading"
+					asset="herb openmoji"
+					assetType="svg"
 					onclick={reSeed}
 					disabled={status !== 'ready'}
 				/>

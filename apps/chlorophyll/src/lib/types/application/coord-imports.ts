@@ -14,6 +14,7 @@ export interface ICoordinateImports {
 	readonly loading: boolean
 	readonly error: boolean
 	readonly status: ImportStatus
+	readonly withBackup: boolean
 	readonly statusLabel: string
 	readonly statusFeedback: UiStatus | undefined
 	readonly import: string
@@ -26,6 +27,8 @@ export interface ICoordinateImports {
 	reset(): void
 
 	setStatus(status: ImportStatus): void
+
+	setDeleteStrategy(withBackup: boolean): void
 
 	checkSeed(): Promise<{date_seed?: string; source?: string} | undefined>
 
