@@ -10,7 +10,6 @@
 
 	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
 	import FormData from '$lib/ui/controls/data/FormData.svelte'
-	import Export from '$lib/ui/controls/data/Export.svelte'
 
 	let coordImports: ICoordinateImports = getContext('coordImports')
 
@@ -65,14 +64,6 @@
 
 {#snippet dialogContent()}
 	<FormData {color} onsubmit={refreshAndClose} />
-	<div class="l:sidebar size:lg">
-		<div class="l:main l:flex align:center justify:between">
-			<h4 class="font:heading">To backup your data:</h4>
-		</div>
-		<div class="l:side">
-			<Export {color} {id} filename={id} />
-		</div>
-	</div>
 {/snippet}
 
 <Button
