@@ -70,3 +70,25 @@ button.variant\:fill:not([disabled]):focus {
 [class*='svg'].reverse\:y::before {
 	transform: rotateY(180deg);
 }
+
+button[class*='shape:'].openmoji {
+	padding-block: var(--outline-offset-lg);
+	padding-inline: var(--outline-offset-lg) var(--ui-size-xs);
+}
+
+.openmoji[class*='svg'].size\:xs::before {
+	--icon-size: calc(var(--icon-svg-lg) / var(--ratio-xs));
+}
+
+.openmoji[class*='svg'].size\:md::before {
+	--icon-size: calc(var(--icon-svg-lg) / var(--ratio-sm));
+}
+
+ff-icon.openmoji {
+	padding: 0;
+}
+
+button[class*='shape:']:has(ff-icon.openmoji) {
+	padding-block: calc(var(--ui-size-xs) / var(--ratio-sm));
+	padding-inline: var(--ui-size) var(--ui-size-xs);
+}
