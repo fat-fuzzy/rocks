@@ -76,9 +76,12 @@
 		try {
 			const serialized = await file.text() // read the file — parse happens inside importFromFile
 
-			await coordImports.importFromJSON(serialized)
+			await coordImports.restoreFromBackup(serialized)
 		} catch (error) {
-			errorMessage = error instanceof Error ? error.message : 'Import failed'
+			errorMessage =
+				error instanceof Error && error.message
+					? error.message
+					: 'Import failed'
 		} finally {
 			// 3. TODO: tell parent to reload from OPFS
 			onsubmit?.()
@@ -92,7 +95,8 @@
 		try {
 			await coordImports.initSeed(DEFAULT_STRUCTURES, DEFAULT_CONTENT)
 		} catch (error) {
-			errorMessage = error instanceof Error ? error.message : 'Reset failed'
+			errorMessage =
+				error instanceof Error && error.message ? error.message : 'Reset failed'
 		} finally {
 			// 3. TODO: tell parent to reload from OPFS
 			onsubmit?.()
@@ -110,7 +114,8 @@
 				page.data.seed.content,
 			)
 		} catch (error) {
-			errorMessage = error instanceof Error ? error.message : 'Seed failed'
+			errorMessage =
+				error instanceof Error && error.message ? error.message : 'Seed failed'
 		} finally {
 			onsubmit?.()
 		}

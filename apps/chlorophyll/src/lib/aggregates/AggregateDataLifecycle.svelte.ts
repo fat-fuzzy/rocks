@@ -10,7 +10,6 @@ import type {
 	FrontmatterSeed,
 	FrontmatterStructure,
 	IAggregateDataLifecycle,
-	Prose,
 } from '$types'
 
 import {DEFAULT_STRUCTURES, DEFAULT_CONTENT} from '$data/doc/cv-config'
@@ -118,13 +117,19 @@ export default class AggregateDataLifecycle implements IAggregateDataLifecycle {
 		return {docs, base, structure}
 	}
 
-	async importFromJSON(jsonString: string) {
+	async importFromJson(jsonString: string) {
 		if (!this.bridge) {
 			return
 		}
 
-		const {content, presets, base} = JSON.parse(jsonString)
-		await this.bridge.restoreFromBackup({content, presets, base})
+		const {content, presets, base, structure} = JSON.parse(jsonString)
+
+		await this.bridge.restoreFromBackup({
+			content,
+			presets,
+			base,
+			structure,
+		})
 	}
 
 	/**
@@ -144,7 +149,7 @@ export default class AggregateDataLifecycle implements IAggregateDataLifecycle {
 		}
 	}
 
-	async buildFullJSON(): Promise<string> {
+	async buildJsonForExport(): Promise<string> {
 		// Load returns stringified data (worker message boundary)
 		const [contentResult, presetsResult, baseResult, structureResult] =
 			await Promise.all([
@@ -168,12 +173,12 @@ export default class AggregateDataLifecycle implements IAggregateDataLifecycle {
 	}
 
 	// TODO Export markdowns
-	buildFullMarkdown(options: {
-		root: string
-		content: {[id: string]: Prose}
-		presets: {id: string; query: string}[]
-	}): string {
-		const {content} = options
+	async buildMarkdownForExport(): Promise<string> {
+		const contentResult = await getContentData()
+		// Parse to JSON here — at worker message boundary inwards
+		// (we need objects to merge)
+		const content = contentResult.data
+
 		let html = ''
 
 		Object.keys(content).forEach((key) => {

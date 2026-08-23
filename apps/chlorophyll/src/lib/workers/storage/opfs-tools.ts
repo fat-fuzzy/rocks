@@ -6,13 +6,12 @@ import type {FileExt, DocPath, Section, Block, SeedType} from '$types'
 
 import {sanitizeFileName} from '$lib/common/sanitize'
 
-const SEED_TYPES: SeedType[] = ['root', 'backup', 'base', 'structure']
+const SEED_TYPES: SeedType[] = ['structure', 'root', 'base']
 
 export const OPFS_FOLDERS: {[key in SeedType]: string[]} = {
 	root: ['content', 'presets', 'base', 'structure'],
 	base: ['base'],
 	structure: ['structure'],
-	backup: ['content', 'presets', 'base', 'structure'],
 }
 
 /**

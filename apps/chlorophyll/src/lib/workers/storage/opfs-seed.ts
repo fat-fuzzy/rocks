@@ -18,6 +18,7 @@ import type {
 	SeedDoc,
 	SeedType,
 	FrontmatterStructure,
+	OPFStructure,
 } from '$types'
 
 import {
@@ -184,17 +185,21 @@ export async function restoreFromBackup(options: {
 	content: OPFSTreeDoc
 	presets: OPFSTreePreset
 	base: OPFSTreeBase
+	structure: OPFStructure
 }): Promise<void> {
-	await seedBase(options.base.content)
-
 	try {
-		if (await isSeedComplete('backup')) return
+		await seedBase(options.base.content)
 
-		for (const [language, formats] of Object.entries(options.content)) {
-			if (!isRecord(formats)) continue
+		// FIXME: this is incomplete
+		await seedStructure({structures: [options.structure.content]})
 
-			for (const [format, sections] of Object.entries(formats)) {
-				if (!isRecord(sections)) continue
+		if (await isSeedComplete('root')) return
+
+		for (const [language, languageTree] of Object.entries(options.content)) {
+			if (!isRecord(languageTree)) continue
+
+			for (const [format, formatContent] of Object.entries(languageTree)) {
+				if (!isRecord(formatContent)) continue
 
 				const directoryHandle = await getDocsHandle({
 					language,
@@ -202,7 +207,25 @@ export async function restoreFromBackup(options: {
 					create: true,
 				})
 
-				for (const [sectionName, rawSection] of Object.entries(sections)) {
+				// 2. Save sections in [language * format]
+				for (const [sectionName, rawSection] of Object.entries(formatContent)) {
+					if (sectionName === 'meta' || sectionName === 'content') {
+						const data = {
+							id: formatContent.content.id ?? crypto.randomUUID(),
+							language,
+							format,
+							name: `${language}-${format}`,
+						}
+
+						// 1. Save metadata for [language * format]
+						const meta = {
+							id: `${language}-${format}`,
+							path: {filename: `${language}-${format}`, filetype: 'json'},
+						}
+
+						await saveEntry(directoryHandle, meta, data)
+					}
+
 					if (isRawSection(rawSection)) {
 						const {content} = rawSection
 						if (content.content_type) {
@@ -223,8 +246,6 @@ export async function restoreFromBackup(options: {
 					}
 				}
 			}
-
-			// FIXME: save doc meta (see seedRoot function above)
 		}
 
 		await getPresetsHandle({create: true})
@@ -237,7 +258,7 @@ export async function restoreFromBackup(options: {
 
 				await savePreset({
 					meta: {
-						id: crypto.randomUUID(),
+						id: content.id,
 						content_type: 'preset',
 						label: presetName,
 						name: presetName,
@@ -250,8 +271,8 @@ export async function restoreFromBackup(options: {
 				})
 			}
 		}
-	} catch {
-		throw new Error('Error restoring from backup')
+	} catch (error) {
+		throw new Error('Error restoring from backup', {cause: error})
 	}
-	await markSeedComplete('backup')
+	await markSeedComplete('root')
 }
