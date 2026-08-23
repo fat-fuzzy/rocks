@@ -42,6 +42,10 @@ html:has(.l\:grid\:urbanist) {
 	padding-inline: var(--gap);
 }
 
+ff-toggle-reveal.est ff-control:has(input:checked) + ff-reveal {
+	--x-axis: -35%;
+}
+
 @media screen and (min-width: 38.75rem) {
 	.railway.zone\:2 {
 		padding-inline: unset;
@@ -89,7 +93,7 @@ html:has(.l\:grid\:urbanist) {
 		grid-template-columns: subgrid;
 	}
 	.exchange > .context {
-		grid-column-start: 3;
+		grid-column-start: 6;
 	}
 
 	.l\:grid\:urbanist.railway {
@@ -116,10 +120,14 @@ html:has(.l\:grid\:urbanist) {
 		.zone\:1.exchange {
 			grid-template-columns: subgrid;
 		}
+	}
 
-		ff-toggle-reveal.est ff-control:has(input:checked) + ff-reveal {
-			--x-axis: calc(10 * var(--ui-size-xl));
-		}
+	.exchange > .context {
+		grid-column-start: 5;
+	}
+
+	ff-toggle-reveal.est ff-control:has(input:checked) + ff-reveal {
+		--x-axis: 5%;
 	}
 
 	.l\:grid\:urbanist.railway {
