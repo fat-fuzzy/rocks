@@ -78,7 +78,7 @@
 			<div class="l:flex justify:around w:full">
 				<DialogData
 					id="button-import"
-					label="Import"
+					label="Manage Data"
 					color="primary"
 					font="sm"
 				/>
