@@ -18,7 +18,7 @@ import type {
 	SeedDoc,
 	SeedType,
 	FrontmatterStructure,
-	OPFSTreeStructure,
+	OPFStructure,
 } from '$types'
 
 import {
@@ -185,12 +185,14 @@ export async function restoreFromBackup(options: {
 	content: OPFSTreeDoc
 	presets: OPFSTreePreset
 	base: OPFSTreeBase
-	structure: OPFSTreeStructure
+	structure: OPFStructure
 }): Promise<void> {
-	await seedBase(options.base.content)
-	await seedStructure({structures: options.structure.content.structure})
-
 	try {
+		await seedBase(options.base.content)
+
+		// FIXME: this is incomplete
+		await seedStructure({structures: [options.structure.content]})
+
 		if (await isSeedComplete('root')) return
 
 		for (const [language, languageTree] of Object.entries(options.content)) {
@@ -244,8 +246,6 @@ export async function restoreFromBackup(options: {
 					}
 				}
 			}
-
-			// FIXME: save doc meta (see seedRoot function above)
 		}
 
 		await getPresetsHandle({create: true})
