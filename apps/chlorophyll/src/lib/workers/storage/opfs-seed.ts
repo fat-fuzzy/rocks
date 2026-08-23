@@ -199,7 +199,6 @@ export async function restoreFromBackup(options: {
 			for (const [format, formatContent] of Object.entries(languageTree)) {
 				if (!isRecord(formatContent)) continue
 
-				const data = {language, format, name: `${language}-${format}`}
 				const directoryHandle = await getDocsHandle({
 					language,
 					format,
@@ -209,6 +208,13 @@ export async function restoreFromBackup(options: {
 				// 2. Save sections in [language * format]
 				for (const [sectionName, rawSection] of Object.entries(formatContent)) {
 					if (sectionName === 'meta' || sectionName === 'content') {
+						const data = {
+							id: formatContent.content.id ?? crypto.randomUUID(),
+							language,
+							format,
+							name: `${language}-${format}`,
+						}
+
 						// 1. Save metadata for [language * format]
 						const meta = {
 							id: `${language}-${format}`,
