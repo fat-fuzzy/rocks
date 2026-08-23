@@ -11,18 +11,31 @@ import type {UiStatus} from '@fat-fuzzy/ui'
 
 import {guardedExport} from '$lib/common/download'
 
+// const ACTION_LABEL: Record<ImportStatus, string> = {
+// 	idle: 'Waiting',
+// 	seeding: 'Seeding',
+// 	deleting: 'Deleting storage',
+// 	ready: 'Ready to import',
+// 	'backing-up': 'Backing up',
+// 	importing: 'Importing',
+// 	done: 'All done!',
+// 	error: 'Error',
+// }
+
 const STATUS_LABEL: Record<ImportStatus, string> = {
-	idle: 'First, choose your delete strategy',
+	idle: 'Choose delete strategy and proceed',
+	seeding: 'Seeding...',
 	deleting: 'Deleting storage...',
-	ready: 'Ready to import',
+	ready: 'Ready to source data',
 	'backing-up': 'Backing up...',
 	importing: 'Importing...',
-	done: 'Imported!',
-	error: 'Error',
+	done: 'All done!',
+	error: `Error`,
 }
 
 const STATUS_FEEDBACK: Record<ImportStatus, UiStatus | undefined> = {
 	idle: undefined,
+	seeding: undefined,
 	deleting: undefined,
 	ready: undefined,
 	'backing-up': undefined,
@@ -39,6 +52,19 @@ const STATUS_FEEDBACK: Record<ImportStatus, UiStatus | undefined> = {
 export default class CoordinateImports implements ICoordinateImports {
 	aggDataLifecycle: IAggregateDataLifecycle
 	aggDocs: IAggregateDocs
+	seeded:
+		| {
+				docs: {
+					seeded: number
+				}
+				base: {
+					seeded: number
+				}
+				structure: {
+					seeded: number
+				}
+		  }
+		| undefined = $state()
 	loading = $state(false)
 	error = $state(false)
 	status: ImportStatus = $state('idle')
@@ -95,7 +121,24 @@ export default class CoordinateImports implements ICoordinateImports {
 	 * @returns a Promise that will update when the worker message arrives
 	 */
 	async initSeed(frontmatter: FrontmatterSeed, seed: SeedDoc[]) {
-		return this.aggDataLifecycle.initSeed(frontmatter, seed)
+		this.loading = true
+
+		try {
+			this.status = 'seeding'
+
+			const seeded = await this.aggDataLifecycle.initSeed(frontmatter, seed)
+
+			if (seeded) {
+				this.seeded = seeded
+			}
+
+			this.status = 'done'
+		} catch {
+			this.status = 'error'
+			this.error = true
+		} finally {
+			this.loading = false
+		}
 	}
 
 	async importFromJSON(jsonString: string) {

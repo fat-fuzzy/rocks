@@ -29,8 +29,8 @@
 		label = 'Export',
 		color = 'primary',
 		variant = 'outline',
-		size = '2xs',
-		font = '2xs',
+		size = 'xs',
+		font = 'xs',
 	}: Props = $props()
 
 	async function handleExport() {
