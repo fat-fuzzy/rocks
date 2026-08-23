@@ -45,25 +45,26 @@
 		dialogActor.show()
 	}
 
-	function refreshAndClose() {
+	function handleSubmit() {
 		if (oninput) {
 			oninput()
 		}
 
 		setTimeout(() => {
-			coordImports.setStatus('idle')
 			dialogActor.close()
+
+			coordImports.setStatus('idle')
 
 			const newUrl = new SvelteURL(page.url)
 			newUrl.search = ''
 
 			window.location.href = newUrl.href // FIXME: hacky solution to reload for now
-		}, 2000)
+		}, 1500)
 	}
 </script>
 
 {#snippet dialogContent()}
-	<FormData {color} onsubmit={refreshAndClose} />
+	<FormData {color} onsubmit={handleSubmit} />
 {/snippet}
 
 <Button

@@ -3,7 +3,7 @@
 
 	import ui from '@fat-fuzzy/ui'
 
-	import DialogImport from '$lib/ui/controls/data/DialogData.svelte'
+	import DialogData from '$lib/ui/controls/data/DialogData.svelte'
 	import Export from '$lib/ui/controls/data/Export.svelte'
 
 	const {Popover} = ui.drafts
@@ -34,6 +34,6 @@
 >
 	<menu class="l:stack:3xs ravioli:xs align:start">
 		<Export id="button-export" label="Export" filename="cv-content" {color} />
-		<DialogImport id="button-import" label="Source" {color} />
+		<DialogData id="button-import" label="Source" {color} />
 	</menu>
 </Popover>
