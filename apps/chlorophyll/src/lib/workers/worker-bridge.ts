@@ -24,6 +24,7 @@ import type {
 	Rank,
 	FrontmatterStructure,
 	OPFSTreeBase,
+	OPFSTreeStructure,
 } from '$types'
 
 const REQUEST_TIMEOUT_MS = 100000
@@ -148,6 +149,7 @@ export default class WorkerBridge {
 		content: OPFSTreeDoc
 		presets: OPFSTreePreset
 		base: OPFSTreeBase
+		structure: OPFSTreeStructure
 	}) {
 		return this.send({
 			type: 'RESTORE_FROM_BACKUP',
