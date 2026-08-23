@@ -41,7 +41,7 @@ export interface ICoordinateImports {
 		structure: {seeded: number}
 	} | void>
 
-	importFromJSON(jsonString: string): Promise<void>
+	restoreFromBackup(jsonString: string): Promise<void>
 
 	deleteAllContent(withBackup?: boolean): Promise<void>
 }

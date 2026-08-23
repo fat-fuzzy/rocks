@@ -3,7 +3,7 @@ import {defineDefinitions} from '../index.js'
 const EnumsSchema = defineDefinitions({
 	seedType: {
 		type: 'string',
-		enum: ['backup', 'base', 'structure', 'root'],
+		enum: ['base', 'structure', 'root'],
 	},
 	docContentType: {
 		type: 'string',

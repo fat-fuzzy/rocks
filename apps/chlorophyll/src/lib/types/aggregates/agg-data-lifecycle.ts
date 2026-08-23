@@ -1,9 +1,4 @@
-import type {
-	SeedDoc,
-	FrontmatterSeed,
-	FrontmatterStructure,
-	Prose,
-} from '$types'
+import type {SeedDoc, FrontmatterSeed, FrontmatterStructure} from '$types'
 
 export interface IAggregateDataLifecycle {
 	readonly seeded: {date_seed?: string; source?: string}
@@ -27,15 +22,11 @@ export interface IAggregateDataLifecycle {
 		structure: {seeded: number}
 	} | void>
 
-	importFromJSON(jsonString: string): Promise<void>
+	importFromJson(jsonString: string): Promise<void>
 
-	buildFullJSON(): Promise<string>
+	buildJsonForExport(): Promise<string>
 
-	buildFullMarkdown(options: {
-		root: string
-		content: {[id: string]: Prose}
-		presets: {id: string; query: string}[]
-	}): string
+	buildMarkdownForExport(): Promise<string>
 
 	deleteAllContent(): Promise<void>
 }
