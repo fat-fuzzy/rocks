@@ -6,6 +6,8 @@
 	import ui from '@fat-fuzzy/ui'
 	import {page} from '$app/state'
 
+	import Export from '$lib/ui/controls/data/Export.svelte'
+
 	const {Button, InputGroup, Feedback} = ui.blocks
 
 	import {DEFAULT_STRUCTURES, DEFAULT_CONTENT} from '$data/doc/cv-config'
@@ -149,7 +151,7 @@
 							slate
 						</li>
 						<li>
-							<span class="font:semibold">Seed Demo</span> to restore demo data
+							<span class="font:semibold">Seed Demo</span> to restore the app demo
 						</li>
 					</ul>
 				</div>
@@ -254,6 +256,15 @@
 					disabled={status !== 'ready'}
 				/>
 			</div>
+		</div>
+	</div>
+	<hr />
+	<div class="l:sidebar size:lg">
+		<div class="l:main">
+			<h4 class="font:heading">To backup data</h4>
+		</div>
+		<div class="l:side">
+			<Export {color} id="export-data" filename="doc" />
 		</div>
 	</div>
 </form>
