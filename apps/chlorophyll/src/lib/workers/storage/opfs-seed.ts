@@ -272,8 +272,6 @@ export async function restoreFromBackup(options: {
 			}
 		}
 	} catch (error) {
-		console.log(error)
-
 		throw new Error('Error restoring from backup', {cause: error})
 	}
 	await markSeedComplete('root')
