@@ -54,8 +54,6 @@ export async function saveBase(
 
 		return data
 	} catch (error) {
-		console.log(error)
-
 		throw new Error('Error saving doc base', {cause: error})
 	}
 }
@@ -78,8 +76,6 @@ export async function saveStructure({
 
 			return data
 		} catch (error) {
-			console.log(error)
-
 			throw new Error('Error saving doc base', {cause: error})
 		}
 	}
