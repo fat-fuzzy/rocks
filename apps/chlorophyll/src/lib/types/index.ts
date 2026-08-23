@@ -12,7 +12,7 @@ export * from '$lib/types/storage/fs-markdowns'
 export * from '$lib/types/aggregates/agg-docs'
 export * from '$lib/types/aggregates/agg-preset'
 export * from '$lib/types/aggregates/agg-meta'
-export * from '$lib/types/aggregates/agg-storage-lifecycle'
+export * from '$lib/types/aggregates/agg-data-lifecycle'
 
 // Use case coordinators
 export * from '$lib/types/application/coord-docs'

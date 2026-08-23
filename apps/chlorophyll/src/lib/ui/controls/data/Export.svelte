@@ -34,7 +34,9 @@
 	}: Props = $props()
 
 	async function handleExport() {
-		const data = await coordExports.buildFullJSON()
+		const data = await coordExports.exportData({
+			filetype: 'json',
+		})
 		generateDownload({filename, data, mimeType})
 	}
 </script>

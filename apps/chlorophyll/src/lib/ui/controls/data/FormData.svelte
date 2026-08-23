@@ -76,7 +76,7 @@
 		try {
 			const serialized = await file.text() // read the file — parse happens inside importFromFile
 
-			await coordImports.importFromJSON(serialized)
+			await coordImports.restoreFromBackup(serialized)
 		} catch (error) {
 			errorMessage = error instanceof Error ? error.message : 'Import failed'
 		} finally {

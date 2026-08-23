@@ -135,13 +135,13 @@ export default class CoordinateImports implements ICoordinateImports {
 		}
 	}
 
-	async importFromJSON(jsonString: string) {
+	async restoreFromBackup(jsonString: string) {
 		this.loading = true
 
 		try {
 			this.status = 'importing'
 
-			await this.aggDataLifecycle.importFromJSON(jsonString)
+			await this.aggDataLifecycle.importFromJson(jsonString)
 
 			this.status = 'done'
 		} catch {
@@ -162,7 +162,7 @@ export default class CoordinateImports implements ICoordinateImports {
 		if (this.withBackup) {
 			this.status = 'backing-up'
 			// 1. Back up current content to filesystem
-			const data = await this.aggDataLifecycle.buildFullJSON()
+			const data = await this.aggDataLifecycle.buildJsonForExport()
 			await guardedExport({data})
 		}
 
