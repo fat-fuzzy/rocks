@@ -4,9 +4,9 @@
 	import {page} from '$app/state'
 	import {resolve} from '$app/paths'
 
-	import MenuData from '$lib/ui/controls/data/MenuData.svelte'
 	import MenuSections from '$lib/ui/controls/section/MenuSections.svelte'
 	import MenuSettings from '$lib/ui/controls/settings/MenuSettings.svelte'
+	import MenuData from '$lib/ui/controls/data/MenuData.svelte'
 
 	let {layout = 'switcher', oninput}: {layout?: UiLayout; oninput: () => void} =
 		$props()
@@ -50,7 +50,7 @@
 		</div>
 		<div class="l:flex:2xs justify:between hug">
 			<MenuSettings {oninput} color="accent" variant="outline" />
-			<MenuData color="accent" variant="outline" />
+			<MenuData id="button-import" label="Data" color="accent" {oninput} />
 		</div>
 	</div>
 </div>

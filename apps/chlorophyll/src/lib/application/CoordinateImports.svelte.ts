@@ -11,18 +11,31 @@ import type {UiStatus} from '@fat-fuzzy/ui'
 
 import {guardedExport} from '$lib/common/download'
 
+// const ACTION_LABEL: Record<ImportStatus, string> = {
+// 	idle: 'Waiting',
+// 	seeding: 'Seeding',
+// 	deleting: 'Deleting storage',
+// 	ready: 'Ready to import',
+// 	'backing-up': 'Backing up',
+// 	importing: 'Importing',
+// 	done: 'All done!',
+// 	error: 'Error',
+// }
+
 const STATUS_LABEL: Record<ImportStatus, string> = {
-	idle: 'First, choose your delete strategy',
+	idle: 'Choose delete strategy and proceed',
+	seeding: 'Seeding...',
 	deleting: 'Deleting storage...',
-	ready: 'Ready to import',
+	ready: 'Ready to source data',
 	'backing-up': 'Backing up...',
 	importing: 'Importing...',
-	done: 'Imported!',
-	error: 'Error',
+	done: 'All done!',
+	error: `Error`,
 }
 
 const STATUS_FEEDBACK: Record<ImportStatus, UiStatus | undefined> = {
 	idle: undefined,
+	seeding: undefined,
 	deleting: undefined,
 	ready: undefined,
 	'backing-up': undefined,
@@ -39,8 +52,22 @@ const STATUS_FEEDBACK: Record<ImportStatus, UiStatus | undefined> = {
 export default class CoordinateImports implements ICoordinateImports {
 	aggDataLifecycle: IAggregateDataLifecycle
 	aggDocs: IAggregateDocs
+	seeded:
+		| {
+				docs: {
+					seeded: number
+				}
+				base: {
+					seeded: number
+				}
+				structure: {
+					seeded: number
+				}
+		  }
+		| undefined = $state()
 	loading = $state(false)
 	error = $state(false)
+	withBackup = $state(true)
 	status: ImportStatus = $state('idle')
 	statusLabel: string = $derived(STATUS_LABEL[this.status])
 	statusFeedback: UiStatus | undefined = $derived(STATUS_FEEDBACK[this.status])
@@ -80,6 +107,10 @@ export default class CoordinateImports implements ICoordinateImports {
 		this.status = status
 	}
 
+	setDeleteStrategy(withBackup: boolean) {
+		this.withBackup = withBackup
+	}
+
 	/**
 	 * Retrieve seed-flag if any
 	 * @param meta metadata to retrieve file
@@ -95,7 +126,24 @@ export default class CoordinateImports implements ICoordinateImports {
 	 * @returns a Promise that will update when the worker message arrives
 	 */
 	async initSeed(frontmatter: FrontmatterSeed, seed: SeedDoc[]) {
-		return this.aggDataLifecycle.initSeed(frontmatter, seed)
+		this.loading = true
+
+		try {
+			this.status = 'seeding'
+
+			const seeded = await this.aggDataLifecycle.initSeed(frontmatter, seed)
+
+			if (seeded) {
+				this.seeded = seeded
+			}
+
+			this.status = 'done'
+		} catch {
+			this.status = 'error'
+			this.error = true
+		} finally {
+			this.loading = false
+		}
 	}
 
 	async importFromJSON(jsonString: string) {
@@ -119,10 +167,10 @@ export default class CoordinateImports implements ICoordinateImports {
 	 * Delete all content and presets from OPFS storage
 	 * @returns void
 	 */
-	async deleteAllContent(withBackup: boolean): Promise<void> {
+	async deleteAllContent(): Promise<void> {
 		this.loading = true
 
-		if (withBackup) {
+		if (this.withBackup) {
 			this.status = 'backing-up'
 			// 1. Back up current content to filesystem
 			const data = await this.aggDataLifecycle.buildFullJSON()

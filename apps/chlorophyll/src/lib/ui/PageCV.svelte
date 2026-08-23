@@ -1,8 +1,7 @@
 <script lang="ts">
 	import {resolve} from '$app/paths'
 
-	import Export from '$lib/ui/controls/data/Export.svelte'
-	import DialogImport from '$lib/ui/controls/data/DialogImport.svelte'
+	import DialogData from '$lib/ui/controls/data/DialogData.svelte'
 
 	const CTA = ['edit', 'build', 'preview', 'print']
 	const CTA_LINK_LABELS: {[cta: string]: string} = {
@@ -77,16 +76,9 @@
 			</div>
 
 			<div class="l:flex justify:around w:full">
-				<Export
-					id="button-export"
-					label="Export"
-					filename="cv-content"
-					color="primary"
-					font="sm"
-				/>
-				<DialogImport
+				<DialogData
 					id="button-import"
-					label="Import"
+					label="Manage Data"
 					color="primary"
 					font="sm"
 				/>

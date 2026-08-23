@@ -29,8 +29,8 @@
 		label = 'Export',
 		color = 'primary',
 		variant = 'outline',
-		size = '2xs',
-		font = '2xs',
+		size = 'xs',
+		font = 'xs',
 	}: Props = $props()
 
 	async function handleExport() {
@@ -43,6 +43,7 @@
 	{id}
 	type="button"
 	name={id}
+	{label}
 	{size}
 	{font}
 	{color}
@@ -50,7 +51,7 @@
 	shape="mellow"
 	onclick={handleExport}
 	layout="flex"
-	justify="end nowrap"
+	justify="between nowrap"
 	align="center"
 >
 	<span class="font:heading">{label}</span>
