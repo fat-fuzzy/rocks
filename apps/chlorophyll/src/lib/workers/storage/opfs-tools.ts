@@ -12,7 +12,6 @@ export const OPFS_FOLDERS: {[key in SeedType]: string[]} = {
 	root: ['content', 'presets', 'base', 'structure'],
 	base: ['base'],
 	structure: ['structure'],
-	backup: ['content', 'presets', 'base', 'structure'],
 }
 
 /**
