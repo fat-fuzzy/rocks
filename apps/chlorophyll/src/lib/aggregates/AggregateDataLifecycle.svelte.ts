@@ -123,7 +123,13 @@ export default class AggregateDataLifecycle implements IAggregateDataLifecycle {
 		}
 
 		const {content, presets, base, structure} = JSON.parse(jsonString)
-		await this.bridge.restoreFromBackup({content, presets, base, structure})
+
+		await this.bridge.restoreFromBackup({
+			content,
+			presets,
+			base,
+			structure,
+		})
 	}
 
 	/**
