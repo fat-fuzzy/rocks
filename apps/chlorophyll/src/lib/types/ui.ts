@@ -24,6 +24,7 @@ export type ImportStatus =
 	| 'deleting'
 	| 'backing-up'
 	| 'ready'
+	| 'seeding'
 	| 'importing'
 	| 'done'
 	| 'error'
