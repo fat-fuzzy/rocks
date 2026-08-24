@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {UiColor, UiVariant, InputProps} from '@fat-fuzzy/ui'
-	import type {IAggregateMetadata} from '$types'
+	import type {ICoordinateMetadata} from '$types'
 
 	import {getContext} from 'svelte'
 	import {page} from '$app/state'
@@ -22,11 +22,11 @@
 		oninput: (e: Event) => void
 	} = $props()
 
-	let aggMetadata: IAggregateMetadata = getContext('aggMetadata')
+	let coordMetadata: ICoordinateMetadata = getContext('coordMetadata')
 
 	let cta = $derived(page.params.page)
-	let baseLanguages = $derived(aggMetadata.base.languages)
-	let baseFormats = $derived(aggMetadata.base.formats)
+	let baseLanguages = $derived(coordMetadata.getLanguages())
+	let baseFormats = $derived(coordMetadata.getFormats())
 
 	let currentLanguage = $derived.by(() => {
 		const lang = page.url.searchParams.get('language')

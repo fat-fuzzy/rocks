@@ -3,10 +3,9 @@
 		Slug,
 		DocLanguage,
 		TagGroup,
-		IAggregateDocs,
-		IAggregateMetadata,
+		ICoordinateDocs,
 		ICoordinateMetadata,
-		IAggregatePresets,
+		ICoordinatePresets,
 	} from '$types'
 
 	import {getContext, tick} from 'svelte'
@@ -27,9 +26,8 @@
 	const {PageRails} = ui.content
 	const {Feedback} = ui.blocks
 
-	let aggMetadata: IAggregateMetadata = getContext('aggMetadata')
-	let aggDocs: IAggregateDocs = getContext('aggDocs')
-	let aggPresets: IAggregatePresets = getContext('aggPresets')
+	let coordDocs: ICoordinateDocs = getContext('coordDocs')
+	let coordPresets: ICoordinatePresets = getContext('coordPresets')
 	let coordMetadata: ICoordinateMetadata = getContext('coordMetadata')
 
 	let boundForm: HTMLFormElement | undefined = $state()
@@ -52,7 +50,7 @@
 
 	let preset: string | null = $derived(page.url.searchParams.get('preset'))
 
-	let availableSections = $derived(aggDocs.getSections({language, format}))
+	let availableSections = $derived(coordDocs.getSections({language, format}))
 
 	let selectedSections = $derived(
 		page.url.searchParams
@@ -151,14 +149,14 @@
 				{cta}
 				{preset}
 				{query}
-				formats={aggMetadata.getFormats()}
+				formats={coordMetadata.getFormats()}
 			/>
 		{/if}
 	{/snippet}
 
 	{#snippet main()}
 		<div class="w:full h:full col:center l:stack">
-			{#if aggDocs.loading}
+			{#if coordDocs.loading}
 				<div class="l:frame:round">
 					<Loading
 						message="Loading content..."
@@ -183,13 +181,13 @@
 									{:else if cta === 'build'}
 										<p class="font:md">Select a Section to build</p>
 									{:else if cta === 'preview'}
-										{#if aggPresets.hasPresets()}
+										{#if coordPresets.hasPresets()}
 											<p class="font:md">Select a Preset to preview</p>
 										{:else}
 											{@render getStartedPresets()}
 										{/if}
 									{:else if cta === 'print'}
-										{#if aggPresets.hasPresets()}
+										{#if coordPresets.hasPresets()}
 											<p class="font:md">Select a Preset to print</p>
 										{:else}
 											{@render getStartedPresets()}

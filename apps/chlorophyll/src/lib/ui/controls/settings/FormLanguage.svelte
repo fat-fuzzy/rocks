@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {UiColor} from '@fat-fuzzy/ui'
-	import type {ActionCrud, IAggregateMetadata} from '$types'
+	import type {ActionCrud, ICoordinateMetadata} from '$types'
 
 	import * as validators from '$lib/generated/ajv/validation/validate.ajv.mjs'
 
@@ -23,7 +23,7 @@
 	}
 	let {cta, language = '', color = 'primary'}: Props = $props()
 
-	let aggMetadata: IAggregateMetadata = getContext('aggMetadata')
+	let coordMetadata: ICoordinateMetadata = getContext('coordMetadata')
 
 	const validator = new FormValidator(
 		'FormLanguageValidationFunction',
@@ -49,6 +49,7 @@
 						: 'Submit',
 	)
 
+	let languages = $derived(coordMetadata.getLanguages())
 	let errorLanguageExists = $state(false)
 	let newLanguage = $derived(language)
 	let sourceLanguage: string | undefined = $state()
@@ -73,7 +74,7 @@
 
 		newLanguage = target.value
 
-		const languageFound = checkLanguageExists(newLanguage)
+		const languageFound = coordMetadata.checkLanguageExists(newLanguage)
 
 		if (languageFound) {
 			errorLanguageExists = true
@@ -90,10 +91,6 @@
 		sourceLanguage = target.value
 	}
 
-	function checkLanguageExists(languageName: string): boolean {
-		return aggMetadata.base.languages.includes(languageName)
-	}
-
 	async function saveLanguage() {
 		if (validator.formHasErrors()) {
 			return
@@ -104,7 +101,7 @@
 			fromLang = sourceLanguage
 		}
 
-		await aggMetadata.addLanguage({
+		await coordMetadata.addLanguage({
 			name: newLanguage,
 			sourceLanguage: fromLang,
 		})
@@ -194,7 +191,7 @@
 			{/if}
 		</div>
 		<div class="l:side l:stack">
-			{#if aggMetadata.base.languages.length}
+			{#if languages.length}
 				<label class="size:2xs font:sm">
 					Source Language
 					<select
@@ -208,7 +205,7 @@
 						<option class="size:xs font:xs" value={null}>
 							No language selected
 						</option>
-						{#each aggMetadata.base.languages as lang, i (i)}
+						{#each languages as lang, i (i)}
 							<option class="size:xs font:xs" value={lang}>
 								{lang}
 							</option>
