@@ -168,7 +168,7 @@
 
 	function deleteSection() {
 		// TODO
-		// aggDocs.deleteSection({
+		// coordDocs.deleteSection({
 		// 	path: {
 		// 		filename: sectionName,
 		// 		filetype: 'json',

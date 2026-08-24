@@ -3,8 +3,8 @@
 		Slug,
 		DocLanguage,
 		TagGroup,
-		IAggregateDocs,
 		IAggregateMetadata,
+		ICoordinateDocs,
 		ICoordinateMetadata,
 		ICoordinatePresets,
 	} from '$types'
@@ -28,7 +28,7 @@
 	const {Feedback} = ui.blocks
 
 	let aggMetadata: IAggregateMetadata = getContext('aggMetadata')
-	let aggDocs: IAggregateDocs = getContext('aggDocs')
+	let coordDocs: ICoordinateDocs = getContext('coordDocs')
 	let coordPresets: ICoordinatePresets = getContext('coordPresets')
 	let coordMetadata: ICoordinateMetadata = getContext('coordMetadata')
 
@@ -52,7 +52,7 @@
 
 	let preset: string | null = $derived(page.url.searchParams.get('preset'))
 
-	let availableSections = $derived(aggDocs.getSections({language, format}))
+	let availableSections = $derived(coordDocs.getSections({language, format}))
 
 	let selectedSections = $derived(
 		page.url.searchParams
@@ -158,7 +158,7 @@
 
 	{#snippet main()}
 		<div class="w:full h:full col:center l:stack">
-			{#if aggDocs.loading}
+			{#if coordDocs.loading}
 				<div class="l:frame:round">
 					<Loading
 						message="Loading content..."
