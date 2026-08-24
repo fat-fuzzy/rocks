@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {UiColor} from '@fat-fuzzy/ui'
-	import type {ActionCrud, IAggregateMetadata} from '$types'
+	import type {ActionCrud, ICoordinateMetadata} from '$types'
 
 	import * as validators from '$lib/generated/ajv/validation/validate.ajv.mjs'
 
@@ -23,7 +23,7 @@
 	}
 	let {cta, format = '', color = 'primary'}: Props = $props()
 
-	let aggMetadata: IAggregateMetadata = getContext('aggMetadata')
+	let coordMetadata: ICoordinateMetadata = getContext('coordMetadata')
 
 	const validator = new FormValidator(
 		'FormFormatValidationFunction',
@@ -48,7 +48,7 @@
 						? 'Copy'
 						: 'Submit',
 	)
-
+	let formats = $derived(coordMetadata.getFormats())
 	let errorFormatExists = $state(false)
 	let newFormat = $derived(format)
 	let sourceFormat: string | undefined = $state()
@@ -74,7 +74,7 @@
 
 		newFormat = target.value
 
-		const formatFound = checkFormatExists(newFormat)
+		const formatFound = coordMetadata.checkFormatExists(newFormat)
 
 		if (formatFound) {
 			errorFormatExists = true
@@ -91,10 +91,6 @@
 		sourceFormat = target.value
 	}
 
-	function checkFormatExists(formatName: string): boolean {
-		return aggMetadata.base.formats.includes(formatName)
-	}
-
 	async function saveFormat() {
 		if (validator.formHasErrors()) {
 			return
@@ -104,7 +100,8 @@
 		if (sourceFormat) {
 			fromFormat = sourceFormat
 		}
-		await aggMetadata.addFormat({
+
+		coordMetadata.addFormat({
 			name: newFormat,
 			sourceFormat: fromFormat,
 		})
@@ -194,7 +191,7 @@
 			{/if}
 		</div>
 		<div class="l:side l:stack">
-			{#if aggMetadata.base.formats.length}
+			{#if formats.length}
 				<label class="size:2xs font:sm">
 					Source Format
 					<select
@@ -208,7 +205,7 @@
 						<option class="size:xs font:xs" value="">
 							No format selected
 						</option>
-						{#each aggMetadata.base.formats as lang, i (i)}
+						{#each formats as lang, i (i)}
 							<option class="size:xs font:xs" value={lang}>
 								{lang}
 							</option>
