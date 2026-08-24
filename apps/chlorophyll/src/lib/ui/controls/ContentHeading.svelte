@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {ActionDoc, Preset, Slug, IAggregatePresets} from '$types'
+	import type {ActionDoc, Preset, Slug, ICoordinatePresets} from '$types'
 
 	import {getContext} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
@@ -19,13 +19,13 @@
 		formats: Slug[]
 	} = $props()
 
-	let aggPresets: IAggregatePresets = getContext('aggPresets')
+	let coordPresets: ICoordinatePresets = getContext('coordPresets')
 	let currentPreset = $derived(
-		preset ? aggPresets.getPreset(preset) : undefined,
+		preset ? coordPresets.getPreset(preset) : undefined,
 	)
 
 	function savePreset(preset: Preset) {
-		aggPresets.savePreset({
+		coordPresets.savePreset({
 			path: {
 				filename: preset.name,
 				filetype: 'json',
