@@ -6,7 +6,7 @@
 		DocLanguage,
 		Slug,
 		InputCheckedTypes,
-		IAggregateDocs,
+		ICoordinateDocs,
 		ICoordinateMetadata,
 	} from '$types'
 
@@ -19,7 +19,7 @@
 
 	const {Editor} = prose.editor
 
-	let aggDocs: IAggregateDocs = getContext('aggDocs')
+	let coordDocs: ICoordinateDocs = getContext('coordDocs')
 	let coordMetadata: ICoordinateMetadata = getContext('coordMetadata')
 
 	let {
@@ -94,7 +94,7 @@
 			block,
 		}
 
-		aggDocs.saveBlock(updated)
+		coordDocs.saveBlock(updated)
 	}
 
 	function updateTags(event: Event) {
@@ -131,7 +131,7 @@
 			block,
 		}
 
-		aggDocs.saveBlock(updated)
+		coordDocs.saveBlock(updated)
 	}
 
 	$effect(() => {
