@@ -19,6 +19,7 @@ export * from '$lib/types/application/coord-docs'
 export * from '$lib/types/application/coord-metadata'
 export * from '$lib/types/application/coord-exports'
 export * from '$lib/types/application/coord-imports'
+export * from '$lib/types/application/coord-presets'
 
 // Domain + Identity
 export * from '$lib/generated/types/Doc'
