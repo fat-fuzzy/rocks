@@ -31,11 +31,13 @@
 	 */
 	const {aggDataLifecycle, aggMetadata, aggDocs, aggPresets} =
 		createAggregates()
-	const {coordDocs, coordExports, coordImports, coordMetadata} = createCoords({
-		aggDataLifecycle,
-		aggMetadata,
-		aggDocs,
-	})
+	const {coordDocs, coordExports, coordImports, coordMetadata, coordPresets} =
+		createCoords({
+			aggDataLifecycle,
+			aggDocs,
+			aggMetadata,
+			aggPresets,
+		})
 
 	setContext('aggDocs', aggDocs)
 	setContext('aggMetadata', aggMetadata)
@@ -45,6 +47,7 @@
 	setContext('coordImports', coordImports)
 	setContext('coordDocs', coordDocs)
 	setContext('coordExports', coordExports)
+	setContext('coordPresets', coordPresets)
 
 	/**
 	 * Setup page data (loaded / generated)
