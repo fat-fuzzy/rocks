@@ -69,10 +69,6 @@ export default class AggregateMetadata implements IAggregateMetadata {
 		this.structures = []
 	}
 
-	getLanguages() {
-		return this.base.languages
-	}
-
 	/**
 	 * Add a new language
 	 * @param options
@@ -101,10 +97,6 @@ export default class AggregateMetadata implements IAggregateMetadata {
 		await this.loadBase()
 	}
 
-	getFormats() {
-		return this.base.formats
-	}
-
 	/**
 	 * Add a new format
 	 * @param options
@@ -129,13 +121,6 @@ export default class AggregateMetadata implements IAggregateMetadata {
 		await this.bridge.saveBase({base: JSON.parse(JSON.stringify(this.base))})
 
 		await this.loadBase()
-	}
-
-	/**
-	 * Load full doc tree from storage
-	 */
-	getTagGroups() {
-		return JSON.parse(JSON.stringify(this.tagGroups))
 	}
 
 	/**

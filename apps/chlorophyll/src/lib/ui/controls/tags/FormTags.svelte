@@ -7,7 +7,6 @@
 		TagGroup,
 		TagProps,
 		ICoordinateMetadata,
-		IAggregateMetadata,
 	} from '$types'
 
 	import * as validators from '$lib/generated/ajv/validation/validate.ajv.mjs'
@@ -34,7 +33,6 @@
 	let {groups, cta, color = 'primary'}: Props = $props()
 
 	let coordMetadata: ICoordinateMetadata = getContext('coordMetadata')
-	let aggMetadata: IAggregateMetadata = getContext('aggMetadata')
 
 	const validator = new FormValidator('FormTagValidationFunction', validators)
 
@@ -170,7 +168,7 @@
 			group,
 		}
 
-		aggMetadata.createTag(newTag)
+		coordMetadata.createTag(newTag)
 
 		dialogActor.close()
 	}

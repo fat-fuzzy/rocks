@@ -70,14 +70,8 @@ export default class AggregateDataLifecycle implements IAggregateDataLifecycle {
 			seeded: {date_seed?: string; source?: string}
 		}
 
-		let content = (await this.bridge.checkSeed('root')) as {
+		const content = (await this.bridge.checkSeed('root')) as {
 			seeded: {date_seed?: string; source?: string}
-		}
-
-		if (!content.seeded) {
-			content = (await this.bridge.checkSeed('backup')) as {
-				seeded: {date_seed?: string; source?: string}
-			}
 		}
 
 		if (!content.seeded) {

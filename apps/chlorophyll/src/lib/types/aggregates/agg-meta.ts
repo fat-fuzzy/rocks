@@ -12,6 +12,7 @@ export interface IAggregateMetadata {
 	readonly structures: FrontmatterStructure[]
 	readonly loading: boolean
 	readonly error: boolean
+	readonly tagGroups: TagGroup[]
 
 	init(): Promise<void>
 
@@ -23,12 +24,6 @@ export interface IAggregateMetadata {
 	}): Promise<void>
 
 	addFormat(options: {name: Slug; sourceFormat: Slug}): Promise<void>
-
-	getLanguages(): DocLanguage[]
-
-	getFormats(): Slug[]
-
-	getTagGroups(): TagGroup[]
 
 	getTagGroupByName(name: Slug): TagGroup | undefined
 

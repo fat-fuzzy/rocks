@@ -3,7 +3,6 @@
 		Slug,
 		DocLanguage,
 		TagGroup,
-		IAggregateMetadata,
 		ICoordinateDocs,
 		ICoordinateMetadata,
 		ICoordinatePresets,
@@ -27,7 +26,6 @@
 	const {PageRails} = ui.content
 	const {Feedback} = ui.blocks
 
-	let aggMetadata: IAggregateMetadata = getContext('aggMetadata')
 	let coordDocs: ICoordinateDocs = getContext('coordDocs')
 	let coordPresets: ICoordinatePresets = getContext('coordPresets')
 	let coordMetadata: ICoordinateMetadata = getContext('coordMetadata')
@@ -151,7 +149,7 @@
 				{cta}
 				{preset}
 				{query}
-				formats={aggMetadata.getFormats()}
+				formats={coordMetadata.getFormats()}
 			/>
 		{/if}
 	{/snippet}

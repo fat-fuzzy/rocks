@@ -154,8 +154,8 @@ export default class CoordinateDocs implements ICoordinateDocs {
 		parent: Slug
 		tags: string[]
 	}): Promise<{id: string} | void> {
-		const languages = this.aggMetadata.getLanguages()
-		const formats = this.aggMetadata.getFormats()
+		const languages = this.aggMetadata.base.languages
+		const formats = this.aggMetadata.base.formats
 
 		// TODO: enable optional format selection
 		for (const language of languages) {
@@ -192,8 +192,8 @@ export default class CoordinateDocs implements ICoordinateDocs {
 		group?: string
 		parent: Slug
 	}): Promise<{id: string} | void> {
-		const languages = this.aggMetadata.getLanguages()
-		const formats = this.aggMetadata.getFormats()
+		const languages = this.aggMetadata.base.languages
+		const formats = this.aggMetadata.base.formats
 
 		await this.aggDocs.deleteBlock({...options, languages, formats})
 	}
@@ -262,7 +262,7 @@ export default class CoordinateDocs implements ICoordinateDocs {
 	}): Promise<{id: string} | void> {
 		const {rank} = options
 
-		const languages = this.aggMetadata.getLanguages()
+		const languages = this.aggMetadata.base.languages
 		const updateRanks: Section[] = updateSectionRanks({
 			rank,
 			docIndex: this.aggDocs.docIndex,
