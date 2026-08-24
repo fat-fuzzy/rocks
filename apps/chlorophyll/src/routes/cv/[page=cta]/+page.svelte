@@ -6,7 +6,7 @@
 		IAggregateDocs,
 		IAggregateMetadata,
 		ICoordinateMetadata,
-		IAggregatePresets,
+		ICoordinatePresets,
 	} from '$types'
 
 	import {getContext, tick} from 'svelte'
@@ -29,7 +29,7 @@
 
 	let aggMetadata: IAggregateMetadata = getContext('aggMetadata')
 	let aggDocs: IAggregateDocs = getContext('aggDocs')
-	let aggPresets: IAggregatePresets = getContext('aggPresets')
+	let coordPresets: ICoordinatePresets = getContext('coordPresets')
 	let coordMetadata: ICoordinateMetadata = getContext('coordMetadata')
 
 	let boundForm: HTMLFormElement | undefined = $state()
@@ -183,13 +183,13 @@
 									{:else if cta === 'build'}
 										<p class="font:md">Select a Section to build</p>
 									{:else if cta === 'preview'}
-										{#if aggPresets.hasPresets()}
+										{#if coordPresets.hasPresets()}
 											<p class="font:md">Select a Preset to preview</p>
 										{:else}
 											{@render getStartedPresets()}
 										{/if}
 									{:else if cta === 'print'}
-										{#if aggPresets.hasPresets()}
+										{#if coordPresets.hasPresets()}
 											<p class="font:md">Select a Preset to print</p>
 										{:else}
 											{@render getStartedPresets()}
