@@ -5,6 +5,7 @@ import type {
 	IAggregateDocs,
 	ICoordinateMetadata,
 	IAggregateMetadata,
+	DocLanguage,
 } from '$types'
 
 import {buildTagIndex} from '$lib/common/transform/store-to-index'
@@ -17,6 +18,7 @@ import {buildTagIndex} from '$lib/common/transform/store-to-index'
 export default class CoordinateMetadata implements ICoordinateMetadata {
 	aggMetadata: IAggregateMetadata
 	aggDocs: IAggregateDocs
+	tagIndex: TagIndex
 	loading = $state(false)
 	error = $state(false)
 
@@ -24,6 +26,7 @@ export default class CoordinateMetadata implements ICoordinateMetadata {
 		this.loading = true
 		this.aggMetadata = aggMetadata
 		this.aggDocs = aggDocs
+		this.tagIndex = this.getTagIndex()
 	}
 
 	async init() {
@@ -35,15 +38,46 @@ export default class CoordinateMetadata implements ICoordinateMetadata {
 		this.error = false
 	}
 
+	getLanguages(): DocLanguage[] {
+		return this.aggMetadata.base.languages
+	}
+
+	checkLanguageExists(languageName: string): boolean {
+		return this.aggMetadata.base.languages.includes(languageName)
+	}
+
+	async addLanguage(options: {name: DocLanguage; sourceLanguage: DocLanguage}) {
+		this.aggMetadata.addLanguage(options)
+	}
+
+	getFormats(): Slug[] {
+		return this.aggMetadata.base.formats
+	}
+
+	checkFormatExists(formatName: string): boolean {
+		return this.aggMetadata.base.formats.includes(formatName)
+	}
+
+	async addFormat(options: {name: Slug; sourceFormat: Slug}) {
+		this.aggMetadata.addFormat(options)
+	}
+
 	getTagGroups(): TagGroup[] {
-		return this.aggMetadata.getTagGroups()
+		return JSON.parse(JSON.stringify(this.aggMetadata.tagGroups))
 	}
 
 	getTagIndex(): TagIndex {
 		return buildTagIndex(
-			this.aggMetadata.getTagGroups(),
+			this.getTagGroups(),
 			Object.values(JSON.parse(JSON.stringify(this.aggDocs?.docIndex.blocks))),
 		)
+	}
+
+	async createTag(options: {
+		name: Slug
+		group: {name: Slug; title: string; type?: string}
+	}): Promise<{id: string} | void> {
+		return this.aggMetadata.createTag(options)
 	}
 
 	/**
@@ -67,8 +101,8 @@ export default class CoordinateMetadata implements ICoordinateMetadata {
 					const tg = await this.aggDocs.untagBlocks({
 						group: tagGroup,
 						tagIndex: this.getTagIndex(),
-						languages: this.aggMetadata.getLanguages(),
-						formats: this.aggMetadata.getFormats(),
+						languages: this.getLanguages(),
+						formats: this.getFormats(),
 					})
 					if (tg) {
 						tagGroupsToKeep.push(tg)
