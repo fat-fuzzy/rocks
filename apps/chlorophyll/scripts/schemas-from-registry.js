@@ -32,7 +32,7 @@ export async function generatedAjvSchemas(registry) {
 
 	for (const item of schemas) {
 		const [name, schema] = item
-		await fs.writeFileSync(
+		fs.writeFileSync(
 			path.join(subDir, `${name}.schema.json`),
 			JSON.stringify(schema),
 		)

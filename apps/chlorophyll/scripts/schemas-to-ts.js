@@ -63,7 +63,7 @@ async function generateTypes(schemas) {
 	for (const item of typeSchemas) {
 		const {schema, name} = item
 		const ts = await compile(schema, name, compileOptions)
-		await fs.writeFileSync(path.join(outDir, `${name}.ts`), ts)
+		fs.writeFileSync(path.join(outDir, `${name}.ts`), ts)
 	}
 }
 
