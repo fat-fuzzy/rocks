@@ -15,13 +15,13 @@
 	let coordDocs: ICoordinateDocs = getContext('coordDocs')
 
 	let {
-		name,
+		section,
 		selectedTags,
 		language = DOC_LANGUAGE,
 		format = DOC_FORMAT,
 	}: {
 		selectedTags: string[]
-		name: Slug
+		section: Section
 		language: DocLanguage
 		format?: Slug
 	} = $props()
@@ -29,24 +29,18 @@
 	let observerRoot: HTMLElement | undefined = $state()
 	let observer: IntersectionObserver | undefined = $state()
 	let missingIcon = 'emoji:idea justify:end'
-	let loading = $derived(coordDocs.loading)
+	let loading = $derived(coordDocs.isLoading())
 
-	let section: Section = $derived(
-		coordDocs.getSectionByName({
-			language,
-			format,
-			name,
-		}),
-	)
+	let name = $derived(section.name)
+	let displayBlockForm = $derived(name !== undefined)
+
+	let error = $derived(coordDocs.hasError())
+	let blocksLoaded = coordDocs.lazyBlocks
+	let sectionsLoaded = coordDocs.lazySections
+	let noContentFound = $derived(!loading && !section)
 
 	let subsections = $derived(section?.subsections)
 	let content = $derived(section?.content)
-	let displayBlockForm = $derived(name !== undefined)
-
-	let noContentFound = $derived(!section)
-	let error = $derived(coordDocs.error)
-	let blocksLoaded = coordDocs.lazyBlocks
-	let sectionsLoaded = coordDocs.lazySections
 
 	const observerOptions = $derived({
 		root: null,

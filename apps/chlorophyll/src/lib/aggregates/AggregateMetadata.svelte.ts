@@ -257,6 +257,7 @@ export default class AggregateMetadata implements IAggregateMetadata {
 		if (!this.bridge) return
 
 		const structuresToUpdate: FrontmatterStructure[] = []
+
 		for (const format of formats) {
 			const structureToUpdate = this.structures.find((s) => s.format === format)
 			if (structureToUpdate) {

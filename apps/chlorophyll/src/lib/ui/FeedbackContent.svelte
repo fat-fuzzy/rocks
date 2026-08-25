@@ -33,9 +33,14 @@
 		surfaceLightness={content_type === 'section' ? 1 : 0}
 	>
 		{#if isError}
-			<p>Failed to load content for {name}.</p>
+			<h3>
+				Failed to load content for {content_type}
+				<span class="font:bold">{name}</span>
+			</h3>
 		{:else if isEmpty}
-			<p class="font:bold">No content found for {name}</p>
+			<h3>
+				No content found for {content_type} "{name}"
+			</h3>
 			<div class="ravioli:md">
 				<p>To fix this:</p>
 				<ul>

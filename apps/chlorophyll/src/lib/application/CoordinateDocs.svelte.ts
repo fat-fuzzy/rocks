@@ -1,5 +1,4 @@
 import type {
-	Uuid,
 	Rank,
 	Slug,
 	DocLanguage,
@@ -24,8 +23,6 @@ import {updateSectionRanks} from '$lib/common/transform/operations-block'
 export default class CoordinateDocs implements ICoordinateDocs {
 	aggMetadata: IAggregateMetadata
 	aggDocs: IAggregateDocs
-	loading = $state(false)
-	error = $state(false)
 	lazyBlocks: {[name: string]: Block} = $state({})
 	lazySections: {[name: string]: Section} = $state({})
 
@@ -35,35 +32,16 @@ export default class CoordinateDocs implements ICoordinateDocs {
 	}
 
 	reset() {
-		this.loading = false
-		this.error = false
 		this.lazyBlocks = {}
 		this.lazySections = {}
 	}
 
-	/**
-	 * Add a new language
-	 * @param options
-	 * @returns the new language name
-	 */
-
-	async addLanguage(options: {
-		name: DocLanguage
-		sourceLanguage: DocLanguage
-	}): Promise<void> {
-		await this.aggMetadata.addLanguage(options)
-		await this.aggMetadata.loadBase()
+	isLoading() {
+		return this.aggDocs.loading || this.aggMetadata.loading
 	}
 
-	/**
-	 * Add a new format
-	 * @param options
-	 * @returns the new format name
-	 */
-
-	async addFormat(options: {name: Slug; sourceFormat: Slug}): Promise<void> {
-		await this.aggMetadata.addFormat(options)
-		await this.aggMetadata.loadBase()
+	hasError() {
+		return this.aggDocs.error || this.aggMetadata.error
 	}
 
 	/**
@@ -167,6 +145,8 @@ export default class CoordinateDocs implements ICoordinateDocs {
 				})
 			}
 		}
+
+		this.aggDocs.loadDocStore()
 	}
 
 	/**
@@ -180,6 +160,8 @@ export default class CoordinateDocs implements ICoordinateDocs {
 		path: DocPath
 	}): Promise<{id: string} | void> {
 		await this.aggDocs.saveBlock(options)
+
+		this.aggDocs.loadDocStore()
 	}
 
 	/**
@@ -196,6 +178,8 @@ export default class CoordinateDocs implements ICoordinateDocs {
 		const formats = this.aggMetadata.base.formats
 
 		await this.aggDocs.deleteBlock({...options, languages, formats})
+
+		this.aggDocs.loadDocStore()
 	}
 
 	/**
@@ -207,26 +191,8 @@ export default class CoordinateDocs implements ICoordinateDocs {
 		language: DocLanguage
 		format: Slug
 		name: Slug
-	}): Section {
+	}): Section | void {
 		return this.aggDocs.getSectionByName(options)
-	}
-
-	/**
-	 * Get selected section by name for given [language*format]
-	 * @param options language, format and name to match
-	 * @returns section
-	 */
-	getSectionById(id: Uuid): Section {
-		return this.aggDocs.getSectionById(id)
-	}
-
-	/**
-	 * Get sections per [language*format] for given rank
-	 * @param rank
-	 * @returns sections found
-	 */
-	getSectionsByRank(rank: Rank): Section[] {
-		return this.aggDocs.getSectionsByRank(rank)
 	}
 
 	/**
@@ -234,21 +200,32 @@ export default class CoordinateDocs implements ICoordinateDocs {
 	 * @param options section selection to load, blocks to load within sections
 	 * @returns Array: {name, section}[]
 	 */
-	getSections(options: {language: Slug; format: DocLanguage}): Section[] {
+	getSections(options: {language: DocLanguage; format: Slug}): Section[] {
 		return this.aggDocs.getSections(options)
 	}
 
 	/**
-	 * Get selected sections for given options
+	 * Get all sections
 	 * @param options section selection to load, blocks to load within sections
 	 * @returns Array: {name, section}[]
 	 */
-	getSelectedSections(options: {
+	getSectionsByName(options: {
 		language: DocLanguage
 		format: Slug
-		sections: Slug[]
-	}): {name: Slug; section: Section}[] {
-		return this.aggDocs.getSelectedSections(options)
+		names: Slug[]
+	}): Section[] {
+		const {language, format, names} = options
+		const sections: Section[] = []
+
+		for (const name of names) {
+			const section = this.getSectionByName({language, format, name})
+
+			if (section) {
+				sections.push(section)
+			}
+		}
+
+		return sections
 	}
 
 	/**
@@ -276,5 +253,7 @@ export default class CoordinateDocs implements ICoordinateDocs {
 		})
 
 		await this.aggMetadata.updateDocStructureSections(options)
+
+		this.aggDocs.loadDocStore()
 	}
 }
