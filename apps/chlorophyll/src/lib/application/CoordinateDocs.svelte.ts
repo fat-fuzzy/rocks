@@ -252,6 +252,8 @@ export default class CoordinateDocs implements ICoordinateDocs {
 			updateRanks,
 		})
 
+		// FIXME: this should be done elsewhere
+		// TODO: check: not sure structure.sections are necessary
 		await this.aggMetadata.updateDocStructureSections(options)
 
 		this.aggDocs.loadDocStore()
