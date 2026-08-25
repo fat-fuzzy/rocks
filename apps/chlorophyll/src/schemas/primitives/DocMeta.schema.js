@@ -43,7 +43,7 @@ const DocMetaSchema = defineSchema({
 			},
 		},
 	},
-	required: ['id', 'name', 'label', 'content_type'],
+	required: ['id', 'name', 'content_type'],
 	additionalProperties: false,
 })
 

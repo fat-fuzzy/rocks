@@ -37,7 +37,7 @@ const SeedMetaSchema = defineSchema({
 			},
 		},
 	},
-	required: ['label', 'name', 'language', 'content_type'],
+	required: ['name', 'language', 'content_type'],
 	additionalProperties: false,
 })
 
