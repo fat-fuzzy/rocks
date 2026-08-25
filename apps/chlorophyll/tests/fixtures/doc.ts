@@ -12,6 +12,7 @@ export const OPFS_SECTIONS: Section[] = [
 		content_type: 'section',
 		id: SECTION_IDS[0],
 		name: SECTION_IDS[0],
+		title: 'Seed Section 1',
 		parentId: DOC_ID,
 		rank: 1,
 		subsections: [
@@ -57,7 +58,6 @@ export const OPFS_SECTIONS: Section[] = [
 			},
 		],
 		subtitle: undefined,
-		title: undefined,
 	},
 ]
 
@@ -68,7 +68,6 @@ export const TEST_DOC_EN_LONG: Doc = {
 		id: DOC_ID,
 		content_type: 'seed',
 		format: 'long',
-		label: 'en-long',
 		language: 'en',
 		name: 'en-long',
 	},
