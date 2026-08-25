@@ -101,7 +101,7 @@ self.addEventListener('fetch', (event) => {
 					return withoutSearch
 				}
 			} catch (error) {
-				throw new Error('Fetch failed', {cause: error})
+				throw new Error('Fetch failed on navigate', {cause: error})
 			}
 		}
 
