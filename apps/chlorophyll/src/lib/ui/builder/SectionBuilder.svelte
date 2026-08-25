@@ -9,6 +9,7 @@
 	import BlockBuilder from '$lib/ui/builder/BlockBuilder.svelte'
 	import FeedbackContent from '$lib/ui/FeedbackContent.svelte'
 	import Loading from '$lib/ui/Loading.svelte'
+	import {LOCALIZATIONS} from '$lib/intl/l10n'
 
 	let coordDocs: ICoordinateDocs = getContext('coordDocs')
 
@@ -91,7 +92,12 @@
 			<h2>
 				{section.title}
 			</h2>
+		{:else if LOCALIZATIONS[language][section.name]}
+			<h2>
+				{LOCALIZATIONS[language][section.name]}
+			</h2>
 		{/if}
+
 		{#if content}
 			{@const tagsFound = section.tags?.length
 				? checkTags(section.tags, selectedTags)
