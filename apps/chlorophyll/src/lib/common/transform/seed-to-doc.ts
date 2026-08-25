@@ -72,7 +72,6 @@ export function seedDocToDoc(seed: SeedDoc): Doc {
 	const meta: DocMeta = {
 		id: docId,
 		name: `${seed.language}-${seed.format}`,
-		label: `${seed.language}-${seed.format}`,
 		language: seed.language,
 		format: seed.format,
 		content_type: 'seed',
@@ -105,7 +104,7 @@ export function seedDocToDoc(seed: SeedDoc): Doc {
 				meta: {
 					content_type: 'section' as DocContentType,
 					name: sectionName,
-					label: sectionName,
+					title: head.meta.title,
 					language: seed.language,
 					format: seed.format,
 				},

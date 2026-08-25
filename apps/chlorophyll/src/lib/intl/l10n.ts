@@ -1,5 +1,14 @@
 import type {UiStatus} from '@fat-fuzzy/ui'
-import type {ImportStatus} from '$types'
+import type {ImportStatus, Localizations} from '$types'
+
+export const LOCALIZATIONS: Localizations = {
+	en: {
+		experience: 'Expérience',
+	},
+	fr: {
+		experience: 'Compétences',
+	},
+}
 
 export const CTA_TO_TITLE: {[key: string]: string} = {
 	edit: 'Content',

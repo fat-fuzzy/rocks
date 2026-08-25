@@ -6,6 +6,7 @@
 	import {isHidden, checkTags} from '$lib/common/tags'
 
 	import {DOC_LANGUAGE, DOC_FORMAT} from '$config/setup'
+	import {LOCALIZATIONS} from '$lib/intl/l10n'
 	import BlockPlaceholder from '$lib/ui/editor/BlockPlaceholder.svelte'
 	import BlockEditor from '$lib/ui/editor/BlockEditor.svelte'
 	import DialogSaveBlock from '$lib/ui/controls/block/DialogSaveBlock.svelte'
@@ -100,6 +101,10 @@
 			{#if section.title}
 				<h2 class="ravioli:2xs">
 					{section.title}
+				</h2>
+			{:else if LOCALIZATIONS[language][section.name]}
+				<h2 class="ravioli:2xs">
+					{LOCALIZATIONS[language][section.name]}
 				</h2>
 			{/if}
 
