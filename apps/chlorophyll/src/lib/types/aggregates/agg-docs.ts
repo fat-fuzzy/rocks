@@ -120,8 +120,6 @@ export interface IAggregateDocs {
 
 	getSectionById(id: Uuid): Section
 
-	getSectionsByRank(rank: Rank): Section[]
-
 	getBlock(options: {
 		language: DocLanguage
 		format: Slug

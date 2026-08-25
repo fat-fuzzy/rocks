@@ -220,7 +220,7 @@
 	{#if children}
 		{@render children()}
 	{:else}
-		<p class="feedback outline status:danger emoji:wip">TODO !</p>
+		<p class="feedback outline status:info emoji:wip">TODO !</p>
 	{/if}
 	<Dialog />
 {/snippet}

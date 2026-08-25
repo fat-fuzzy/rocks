@@ -444,35 +444,23 @@ export default class AggregateDocs implements IAggregateDocs {
 	}
 
 	/**
-	 * Get sections per [language*format] for given rank
-	 * @param rank
-	 * @returns sections found
-	 */
-	getSectionsByRank(rank: Rank): Section[] {
-		const sections = Object.values(this.docIndex.sections)
-		return sections.filter((s) => s.rank === rank)
-	}
-
-	/**
 	 * Get all sections
 	 * @param options section selection to load, blocks to load within sections
 	 * @returns Array: {name, section}[]
 	 */
 	getSections(options: {language: Slug; format: DocLanguage}): Section[] {
-		const sectionsFound = Object.entries(this.docIndex.sections).reduce(
-			(sections: Section[], [key, value]) => {
-				const [language, format] = key.split(':')
-				if (language === options.language) {
-					if (format === options.format) {
-						sections.push(value)
-					}
-				}
+		const languageTree = this.content[options.language]
+		if (!languageTree) {
+			return []
+		}
 
-				return sections
-			},
-			[],
-		)
-		const result = sectionsFound.sort(sortByRankAsc)
+		const sectionsFound = languageTree[options.format]
+
+		if (!sectionsFound) {
+			return []
+		}
+
+		const result = [...sectionsFound.sections].sort(sortByRankAsc)
 
 		return result
 	}

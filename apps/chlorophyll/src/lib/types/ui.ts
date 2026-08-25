@@ -19,6 +19,7 @@ export type DialogState =
 	| 'closed'
 	| 'cancelled'
 
+// TODO move elsewhere
 export type ImportStatus =
 	| 'idle'
 	| 'deleting'
@@ -28,6 +29,9 @@ export type ImportStatus =
 	| 'importing'
 	| 'done'
 	| 'error'
+
+// TODO move elsewhere
+export type DocStatus = 'idle' | 'loading' | 'saving' | 'ready' | 'error'
 
 export type DialogProps = {
 	labelId?: string // Use as form id if using autofocus to focus on the first input (fixes accessibility issues: https://brucelawson.co.uk/2009/the-accessibility-of-html-5-autofocus/)

@@ -10,20 +10,21 @@ import type {
 	Rank,
 	Section,
 	Slug,
-	Uuid,
 } from '$types'
 
 export interface ICoordinateDocs {
 	readonly aggMetadata: IAggregateMetadata | undefined
 	readonly aggDocs: IAggregateDocs | undefined
-	readonly loading: boolean
-	readonly error: boolean
 	readonly lazyBlocks: {[name: string]: Block}
 	readonly lazySections: {[name: string]: Section}
 
 	reset(): void
 
 	getProse(options: {path: DocPath; meta: DocMeta}): Promise<Prose | undefined>
+
+	isLoading(): boolean
+
+	hasError(): boolean
 
 	createBlock(options: {
 		name: Slug
@@ -63,21 +64,17 @@ export interface ICoordinateDocs {
 		format: DocLanguage
 	}): Section[]
 
-	getSelectedSections(options: {
-		language: DocLanguage
-		format: Slug
-		sections: Slug[]
-	}): {name: Slug; section: Section}[]
-
 	getSectionByName(options: {
 		language: DocLanguage
 		format: Slug
 		name: Slug
-	}): Section
+	}): Section | void
 
-	getSectionById(id: Uuid): Section
-
-	getSectionsByRank(rank: Rank): Section[]
+	getSectionsByName(options: {
+		language: DocLanguage
+		format: Slug
+		names: Slug[]
+	}): Section[]
 
 	getSectionMaxRank(options: {language: DocLanguage; format: Slug}): number
 

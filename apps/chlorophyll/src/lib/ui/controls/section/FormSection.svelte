@@ -1,12 +1,6 @@
 <script lang="ts">
 	import type {UiColor} from '@fat-fuzzy/ui'
-	import type {
-		ActionCrud,
-		Slug,
-		DocLanguage,
-		Section,
-		ICoordinateDocs,
-	} from '$types'
+	import type {ActionCrud, Slug, DocLanguage, ICoordinateDocs} from '$types'
 
 	import * as validators from '$lib/generated/ajv/validation/validate.ajv.mjs'
 
@@ -125,21 +119,17 @@
 
 		section.name = target.value
 
-		const sectionFound = checkSectionExists(section.name)
+		const sectionFound = coordDocs.getSectionByName({
+			language: DOC_LANGUAGE as DocLanguage,
+			format: DOC_FORMAT as Slug,
+			name: section.name,
+		})
 
 		if (sectionFound) {
 			sectionExistsError = true
 		} else {
 			sectionExistsError = false
 		}
-	}
-
-	function checkSectionExists(sectionName: string): Section | undefined {
-		return coordDocs.getSectionByName({
-			language: DOC_LANGUAGE as DocLanguage,
-			format: DOC_FORMAT as Slug,
-			name: sectionName,
-		})
 	}
 
 	function saveSection() {

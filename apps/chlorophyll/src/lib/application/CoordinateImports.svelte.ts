@@ -10,28 +10,7 @@ import type {
 import type {UiStatus} from '@fat-fuzzy/ui'
 
 import {guardedExport} from '$lib/common/download'
-
-const STATUS_LABEL: Record<ImportStatus, string> = {
-	idle: 'Choose delete strategy and proceed',
-	seeding: 'Seeding...',
-	deleting: 'Deleting storage...',
-	ready: 'Ready to source data',
-	'backing-up': 'Backing up...',
-	importing: 'Importing...',
-	done: 'All done!',
-	error: `Error`,
-}
-
-const STATUS_FEEDBACK: Record<ImportStatus, UiStatus | undefined> = {
-	idle: undefined,
-	seeding: undefined,
-	deleting: undefined,
-	ready: undefined,
-	'backing-up': undefined,
-	importing: undefined,
-	done: 'success',
-	error: 'error',
-}
+import {STATUS_LABEL, STATUS_FEEDBACK} from '$lib/intl/l10n'
 
 /**
  * CoordinateImports class to manage data transfer operations into storage
@@ -54,10 +33,10 @@ export default class CoordinateImports implements ICoordinateImports {
 				}
 		  }
 		| undefined = $state()
-	loading = $state(false)
-	error = $state(false)
 	withBackup = $state(true)
 	status: ImportStatus = $state('idle')
+	loading = $derived(this.status !== 'idle' && this.status !== 'ready')
+	error = $derived(this.status === 'error')
 	statusLabel: string = $derived(STATUS_LABEL[this.status])
 	statusFeedback: UiStatus | undefined = $derived(STATUS_FEEDBACK[this.status])
 	import = $state('')
@@ -87,7 +66,6 @@ export default class CoordinateImports implements ICoordinateImports {
 
 	reset() {
 		this.loading = false
-		this.error = false
 		this.import = ''
 		this.status = 'idle'
 	}
@@ -129,7 +107,6 @@ export default class CoordinateImports implements ICoordinateImports {
 			this.status = 'done'
 		} catch {
 			this.status = 'error'
-			this.error = true
 		} finally {
 			this.loading = false
 		}
@@ -146,7 +123,6 @@ export default class CoordinateImports implements ICoordinateImports {
 			this.status = 'done'
 		} catch {
 			this.status = 'error'
-			this.error = true
 		} finally {
 			this.loading = false
 		}
