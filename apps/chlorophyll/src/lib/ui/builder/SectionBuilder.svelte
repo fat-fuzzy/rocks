@@ -14,14 +14,14 @@
 
 	let {
 		cta = 'build',
-		name,
+		section,
 		selectedTags,
 		language = DOC_LANGUAGE,
 		format = DOC_FORMAT,
 	}: {
 		cta: 'build' | 'preview' | 'print'
 		selectedTags: string[]
-		name: Slug
+		section: Section
 		language: DocLanguage
 		format?: Slug
 	} = $props()
@@ -29,21 +29,14 @@
 	let observerRoot: HTMLElement | undefined = $state()
 	let observer: IntersectionObserver | undefined = $state()
 	let missingIcon = 'emoji:idea justify:end'
-	let loading = $derived(coordDocs.loading)
-
-	let section: Section = $derived(
-		coordDocs.getSectionByName({
-			language,
-			format,
-			name,
-		}),
-	)
+	let loading = $derived(coordDocs.isLoading())
+	let name = $derived(section.name)
 
 	let subsections = $derived(section?.subsections)
 	let content = $derived(section?.content)
 
-	let noContentFound = $derived(!section)
-	let error = $derived(coordDocs.error)
+	let noContentFound = $derived(!coordDocs.isLoading() && !section)
+	let error = $derived(coordDocs.hasError())
 
 	const observerOptions = $derived({
 		root: null,
@@ -89,14 +82,14 @@
 		<div class="maki:block:xl">
 			<Loading message={`Loading ${name}`} />
 		</div>
-	{:else if error}
+	{:else if noContentFound}
+		<FeedbackContent name="section" content_type="section" isEmpty={true} />
+	{:else if error && section}
 		<FeedbackContent
 			name={section.name}
 			content_type="section"
 			isError={true}
 		/>
-	{:else if noContentFound}
-		<FeedbackContent name="section" content_type="section" isEmpty={true} />
 	{:else if section}
 		{#if section.title}
 			<h2>

@@ -13,7 +13,9 @@
 
 	import {resolve} from '$app/paths'
 	import {page} from '$app/state'
+
 	import {DOC_LANGUAGE, DOC_FORMAT} from '$config/setup'
+	import {CTA_TO_TITLE, CTA_TO_DESCRIPTION} from '$lib/intl/l10n'
 
 	import SectionEditor from '$lib/ui/editor/SectionEditor.svelte'
 	import SectionBuilder from '$lib/ui/builder/SectionBuilder.svelte'
@@ -30,11 +32,13 @@
 	let coordPresets: ICoordinatePresets = getContext('coordPresets')
 	let coordMetadata: ICoordinateMetadata = getContext('coordMetadata')
 
-	let boundForm: HTMLFormElement | undefined = $state()
+	let filtersForm: HTMLFormElement | undefined = $state()
 	let pageContext = $derived({...page.data.pageContext, label: 'On this Page'})
 
 	let cta = $derived(page.params.page)
 	let query = $derived(page.url.search)
+	let loading = $derived(coordDocs.isLoading())
+
 	let tags = $derived(coordMetadata.getTagGroups())
 	let tagsLoading = $derived(coordMetadata.loading)
 	let tagsError = $derived(coordMetadata.error)
@@ -52,10 +56,18 @@
 
 	let availableSections = $derived(coordDocs.getSections({language, format}))
 
-	let selectedSections = $derived(
+	let urlSections = $derived(
 		page.url.searchParams
 			.getAll('sections')
 			.filter((s) => s !== 'all-sections') as Slug[],
+	)
+
+	let selectedSections = $derived(
+		coordDocs.getSectionsByName({
+			language,
+			format,
+			names: urlSections,
+		}),
 	)
 
 	let selectedTags: string[] = $derived(
@@ -65,24 +77,6 @@
 				return selected.concat(page.url.searchParams.getAll(menu.name) || [])
 			}, []),
 	)
-
-	let queryString = $derived(
-		`${page.url.pathname}?language=${language}&format=${format}&preset=${preset}`,
-	)
-
-	const CTA_TO_TITLE: {[key: string]: string} = {
-		edit: 'Content',
-		build: 'Structure',
-		preview: 'Preview',
-		print: 'Print',
-	}
-
-	const CTA_TO_DESCRIPTION: {[key: string]: string} = {
-		edit: 'Focus on your core message. Make your voice heard.',
-		build: 'Structure content to tell your story. Save and modify presets.',
-		preview: 'Check your work in progress. Compare content blocks or presets.',
-		print: 'Save to PDF using your browser.',
-	}
 
 	let title = $derived(cta ? CTA_TO_TITLE[cta] : '')
 	let description = $derived(cta ? CTA_TO_DESCRIPTION[cta] : '')
@@ -94,8 +88,8 @@
 
 	async function updateFilters() {
 		await tick()
-		if (boundForm) {
-			boundForm.requestSubmit()
+		if (filtersForm) {
+			filtersForm.requestSubmit()
 		}
 	}
 </script>
@@ -156,7 +150,7 @@
 
 	{#snippet main()}
 		<div class="w:full h:full col:center l:stack">
-			{#if coordDocs.loading}
+			{#if loading}
 				<div class="l:frame:round">
 					<Loading
 						message="Loading content..."
@@ -166,8 +160,8 @@
 					/>
 				</div>
 			{:else}
-				{#key queryString}
-					{#if selectedSections.length === 0}
+				<div class="l:text:xl">
+					{#if availableSections.length === 0}
 						<div class={`size:${availableSections.length ? 'lg' : 'md'}`}>
 							<Feedback
 								context="prose"
@@ -175,56 +169,57 @@
 								size={availableSections.length ? 'lg' : undefined}
 								font="md"
 							>
-								{#if availableSections.length}
-									{#if cta === 'edit'}
-										<p class="font:md">Select a Section to edit</p>
-									{:else if cta === 'build'}
-										<p class="font:md">Select a Section to build</p>
-									{:else if cta === 'preview'}
-										{#if coordPresets.hasPresets()}
-											<p class="font:md">Select a Preset to preview</p>
-										{:else}
-											{@render getStartedPresets()}
-										{/if}
-									{:else if cta === 'print'}
-										{#if coordPresets.hasPresets()}
-											<p class="font:md">Select a Preset to print</p>
-										{:else}
-											{@render getStartedPresets()}
-										{/if}
-									{/if}
-								{:else}
+								{#if cta === 'edit' || cta === 'build'}
 									{@render getStartedSections()}
+								{:else if cta === 'preview'}
+									{#if coordPresets.hasPresets()}
+										<p class="font:md">Select a Preset to preview</p>
+									{:else}
+										{@render getStartedPresets()}
+									{/if}
+								{:else if cta === 'print'}
+									{#if coordPresets.hasPresets()}
+										<p class="font:md">Select a Preset to print</p>
+									{:else}
+										{@render getStartedPresets()}
+									{/if}
 								{/if}
 							</Feedback>
 						</div>
-					{:else}
-						<div class="l:text:xl">
+					{:else if selectedSections.length > 0}
+						{#key language || format || preset}
 							<div class={contentClass}>
-								{#if cta === 'edit'}
-									{#each selectedSections as sectionName, i (i)}
+								{#each selectedSections as section, i (i)}
+									{#if cta === 'edit'}
 										<SectionEditor
-											name={sectionName}
+											{section}
 											{selectedTags}
 											{language}
 											{format}
 										/>
-									{/each}
-								{:else if cta}
-									{#each selectedSections as sectionName, i (i)}
+									{:else if cta}
 										<SectionBuilder
 											{cta}
-											name={sectionName}
+											{section}
 											{selectedTags}
 											{language}
 											{format}
 										/>
-									{/each}
-								{/if}
+									{/if}
+								{/each}
 							</div>
-						</div>
+						{/key}
+					{:else}
+						<Feedback
+							context="prose"
+							variant="bare"
+							size={availableSections.length ? 'lg' : undefined}
+							font="md"
+						>
+							<p class="font:md">Select a Section to edit</p>
+						</Feedback>
 					{/if}
-				{/key}
+				</div>
 			{/if}
 		</div>
 	{/snippet}
@@ -232,7 +227,7 @@
 	{#snippet aside()}
 		{#if cta}
 			<div class="noprint l:stack:xs maki:block:2xl">
-				<form bind:this={boundForm} class="l:stack:md">
+				<form bind:this={filtersForm} class="l:stack:md">
 					<ContentActions oninput={updateFilters} />
 
 					<Presets oninput={updateFilters} currentPreset={preset} />

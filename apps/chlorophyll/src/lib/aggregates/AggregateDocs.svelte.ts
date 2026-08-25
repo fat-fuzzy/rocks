@@ -285,11 +285,8 @@ export default class AggregateDocs implements IAggregateDocs {
 					continue
 				}
 
-				const section = this.getSectionByName({
-					language,
-					format,
-					name: options.parent,
-				})
+				const sectionKey = getSectionKey(language, format, options.parent)
+				const section = this.getSectionByKey(sectionKey)
 
 				if (!section) {
 					continue
@@ -424,14 +421,8 @@ export default class AggregateDocs implements IAggregateDocs {
 	 * @param options language, format and name to match
 	 * @returns section
 	 */
-	getSectionByName(options: {
-		language: DocLanguage
-		format: Slug
-		name: Slug
-	}): Section {
-		const {language, format, name} = options
-
-		return this.docIndex.sections[getSectionKey(language, format, name)]
+	getSectionByKey(key: string): Section {
+		return this.docIndex.sections[key]
 	}
 
 	/**
@@ -444,57 +435,25 @@ export default class AggregateDocs implements IAggregateDocs {
 	}
 
 	/**
-	 * Get sections per [language*format] for given rank
-	 * @param rank
-	 * @returns sections found
-	 */
-	getSectionsByRank(rank: Rank): Section[] {
-		const sections = Object.values(this.docIndex.sections)
-		return sections.filter((s) => s.rank === rank)
-	}
-
-	/**
 	 * Get all sections
 	 * @param options section selection to load, blocks to load within sections
 	 * @returns Array: {name, section}[]
 	 */
 	getSections(options: {language: Slug; format: DocLanguage}): Section[] {
-		const sectionsFound = Object.entries(this.docIndex.sections).reduce(
-			(sections: Section[], [key, value]) => {
-				const [language, format] = key.split(':')
-				if (language === options.language) {
-					if (format === options.format) {
-						sections.push(value)
-					}
-				}
+		const languageTree = this.content[options.language]
+		if (!languageTree) {
+			return []
+		}
 
-				return sections
-			},
-			[],
-		)
-		const result = sectionsFound.sort(sortByRankAsc)
+		const sectionsFound = languageTree[options.format]
+
+		if (!sectionsFound) {
+			return []
+		}
+
+		const result = [...sectionsFound.sections].sort(sortByRankAsc)
 
 		return result
-	}
-
-	/**
-	 * Get selected sections for given options
-	 * @param options section selection to load, blocks to load within sections
-	 * @returns Array: {name, section}[]
-	 */
-	getSelectedSections(options: {
-		language: DocLanguage
-		format: Slug
-		sections: Slug[]
-	}): {name: Slug; section: Section}[] {
-		const {language, format, sections} = options
-
-		const selected = sections.map((name) => ({
-			name: name,
-			section: this.docIndex.sections[getSectionKey(language, format, name)],
-		}))
-
-		return selected
 	}
 
 	async saveSections(

@@ -106,21 +106,9 @@ export interface IAggregateDocs {
 		format: DocLanguage
 	}): Section[]
 
-	getSelectedSections(options: {
-		language: DocLanguage
-		format: Slug
-		sections: Slug[]
-	}): {name: Slug; section: Section}[]
-
-	getSectionByName(options: {
-		language: DocLanguage
-		format: Slug
-		name: Slug
-	}): Section
+	getSectionByKey(key: string): Section
 
 	getSectionById(id: Uuid): Section
-
-	getSectionsByRank(rank: Rank): Section[]
 
 	getBlock(options: {
 		language: DocLanguage
