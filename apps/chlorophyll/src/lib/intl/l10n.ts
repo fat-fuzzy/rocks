@@ -3,10 +3,12 @@ import type {ImportStatus, Localizations} from '$types'
 
 export const LOCALIZATIONS: Localizations = {
 	en: {
-		experience: 'Expérience',
+		experience: 'Experience',
+		skills: 'Skills',
 	},
 	fr: {
-		experience: 'Compétences',
+		experience: 'Expérience',
+		skills: 'Compétences',
 	},
 }
 
