@@ -171,9 +171,9 @@
 							>
 								{#if cta === 'edit' || cta === 'build'}
 									{@render getStartedSections()}
-								{:else if cta === 'preview'}
+								{:else if cta === 'compare'}
 									{#if coordPresets.hasPresets()}
-										<p class="font:md">Select a Preset to preview</p>
+										<p class="font:md">Select a Preset to compare</p>
 									{:else}
 										{@render getStartedPresets()}
 									{/if}

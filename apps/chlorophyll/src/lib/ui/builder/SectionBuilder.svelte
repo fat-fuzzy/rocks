@@ -20,7 +20,7 @@
 		language = DOC_LANGUAGE,
 		format = DOC_FORMAT,
 	}: {
-		cta: 'build' | 'preview' | 'print'
+		cta: 'build' | 'compare' | 'print'
 		selectedTags: string[]
 		section: Section
 		language: DocLanguage

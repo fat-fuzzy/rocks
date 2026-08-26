@@ -15,14 +15,21 @@ export const LOCALIZATIONS: Localizations = {
 export const CTA_TO_TITLE: {[key: string]: string} = {
 	edit: 'Content',
 	build: 'Structure',
-	preview: 'Preview',
+	compare: 'Compare',
+	print: 'Print',
+}
+
+export const CTA_TO_ACTION: {[key: string]: string} = {
+	edit: 'Edit',
+	build: 'Build',
+	compare: 'Compare',
 	print: 'Print',
 }
 
 export const CTA_TO_DESCRIPTION: {[key: string]: string} = {
 	edit: 'Focus on your core message. Make your voice heard.',
 	build: 'Structure content to tell your story. Save and modify presets.',
-	preview: 'Check your work in progress. Compare content blocks or presets.',
+	compare: 'Check your work in progress. Compare content blocks or presets.',
 	print: 'Save to PDF using your browser.',
 }
 

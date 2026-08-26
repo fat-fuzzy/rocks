@@ -80,11 +80,11 @@ export const cta: {[key: string]: NavItem} = {
 				actionPath: '/cv/build',
 			},
 			{
-				slug: 'preview',
-				title: 'Preview',
-				label: 'Preview',
+				slug: 'compare',
+				title: 'Compare',
+				label: 'Compare',
 				asset: 'decisions',
-				actionPath: '/cv/preview',
+				actionPath: '/cv/compare',
 			},
 			{
 				slug: 'print',

@@ -61,7 +61,7 @@
 		switch (_page) {
 			case 'build':
 			case 'edit':
-			case 'preview':
+			case 'compare':
 			case 'print':
 				return 'railway'
 			case '/cv':
