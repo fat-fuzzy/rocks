@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {Preset, ICoordinatePresets} from '$types'
+	import type {Preset, ICoordinatePresets, Slug} from '$types'
 
 	import {getContext} from 'svelte'
 	import {page} from '$app/state'
@@ -13,9 +13,15 @@
 	const {Feedback, Button} = ui.blocks
 
 	const {
+		id,
+		title = 'Presets',
+		headingLevel = 3,
 		currentPreset,
 		oninput,
 	}: {
+		id: Slug
+		title?: string
+		headingLevel?: number
 		currentPreset: string | null
 		oninput: (e: Event) => void
 	} = $props()
@@ -69,10 +75,12 @@
 
 <div class="presets justify:start shape:soft l:stack:3xs raviolink">
 	<div class="w:full l:flex:2xs align:center justify:between">
-		<h3 class="ravioli:3xs">Presets</h3>
+		<svelte:element this={`h${headingLevel}`} class="ravioli:3xs">
+			{title}
+		</svelte:element>
 		{#if cta === 'edit' || cta === 'build'}
 			<DialogSavePreset
-				id="dialog-add-preset"
+				id={`dialog-add-preset-${id}`}
 				color="primary"
 				label="New Preset"
 				asset="plus"
@@ -144,7 +152,7 @@
 												title="Editing"
 												id={preset.name}
 												checked={true}
-												name="preset"
+												name={id}
 												value={preset.name}
 												disabled={!preset.query}
 												class="maki:block"

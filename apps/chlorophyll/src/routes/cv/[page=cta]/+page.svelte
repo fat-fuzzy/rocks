@@ -53,14 +53,35 @@
 	)
 
 	let preset: string | null = $derived(page.url.searchParams.get('preset'))
+	let sourcePreset: string | null = $derived(
+		page.url.searchParams.get('source-preset'),
+	)
+	let targetPreset: string | null = $derived(
+		page.url.searchParams.get('target-preset'),
+	)
 
 	let availableSections = $derived(coordDocs.getSections({language, format}))
 
-	let urlSections = $derived(
-		page.url.searchParams
-			.getAll('sections')
-			.filter((s) => s !== 'all-sections') as Slug[],
-	)
+	let urlSections = $derived.by(() => {
+		const presetFound = preset || sourcePreset || targetPreset
+
+		if (presetFound) {
+			const _preset = coordPresets.getPreset(presetFound)
+
+			if (_preset) {
+				const queryString = `cv/${cta}${_preset.query}`
+				const url = new URL(`http://example.com/${queryString}`)
+				return url.searchParams
+					.getAll('sections')
+					.filter((s) => s !== 'all-sections') as Slug[]
+			}
+			return []
+		} else {
+			return page.url.searchParams
+				.getAll('sections')
+				.filter((s) => s !== 'all-sections') as Slug[]
+		}
+	})
 
 	let selectedSections = $derived(
 		coordDocs.getSectionsByName({
@@ -236,8 +257,29 @@
 				<form bind:this={filtersForm} class="l:stack:md">
 					<ContentActions oninput={updateFilters} />
 
-					<Presets oninput={updateFilters} currentPreset={preset} />
-
+					{#if cta !== 'compare'}
+						<Presets
+							id="preset"
+							oninput={updateFilters}
+							currentPreset={preset}
+						/>
+					{:else}
+						<h3>Compare Presets</h3>
+						<Presets
+							title="Source (readonly)"
+							headingLevel={4}
+							id="preset-source"
+							oninput={() => {}}
+							currentPreset={sourcePreset}
+						/>
+						<Presets
+							title="Target (editing)"
+							headingLevel={4}
+							id="preset-target"
+							oninput={updateFilters}
+							currentPreset={targetPreset}
+						/>
+					{/if}
 					{#if editing}
 						<Tags
 							{cta}
