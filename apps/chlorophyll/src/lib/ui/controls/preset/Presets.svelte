@@ -16,11 +16,15 @@
 		id,
 		title = 'Presets',
 		headingLevel = 3,
+		isSource = false,
+		isTarget = false,
 		currentPreset,
 		oninput,
 	}: {
 		id: Slug
 		title?: string
+		isSource?: boolean
+		isTarget?: boolean
 		headingLevel?: number
 		currentPreset: string | null
 		oninput: (e: Event) => void
@@ -129,16 +133,21 @@
 					</div>
 				</div>
 			{:else}
-				<ol class="unstyled scroll:y">
+				<ul class="unstyled scroll:y">
 					{#each presets as preset, i (i)}
 						{@const isCurrent = currentPreset === preset.name}
+						{@const presetQuery = isSource
+							? `${preset.query}&preset-source=${preset.name}`
+							: isTarget
+								? `${preset.query}&preset-target=${preset.name}`
+								: preset.query}
 
 						<li
 							aria-current={isCurrent}
 							class={`raviolink shape:mellow l:flex justify:between ${isCurrent ? 'surface:0:primary' : ''}`}
 						>
 							<a
-								href={resolve(`/cv/${cta}/${preset.query}`)}
+								href={resolve(`/cv/${cta}/${presetQuery}`)}
 								class="font:sm raviolink grow"
 							>
 								{preset.name}
@@ -222,7 +231,7 @@
 							{/if}
 						</li>
 					{/each}
-				</ol>
+				</ul>
 			{/if}
 		</div>
 	{/if}

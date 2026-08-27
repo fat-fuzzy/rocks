@@ -54,40 +54,21 @@
 
 	let preset: string | null = $derived(page.url.searchParams.get('preset'))
 	let sourcePreset: string | null = $derived(
-		page.url.searchParams.get('source-preset'),
+		page.url.searchParams.get('preset-source'),
 	)
 	let targetPreset: string | null = $derived(
-		page.url.searchParams.get('target-preset'),
+		page.url.searchParams.get('preset-target'),
 	)
 
 	let availableSections = $derived(coordDocs.getSections({language, format}))
 
-	let urlSections = $derived.by(() => {
-		const presetFound = preset || sourcePreset || targetPreset
-
-		if (presetFound) {
-			const _preset = coordPresets.getPreset(presetFound)
-
-			if (_preset) {
-				const queryString = `cv/${cta}${_preset.query}`
-				const url = new URL(`http://example.com/${queryString}`)
-				return url.searchParams
-					.getAll('sections')
-					.filter((s) => s !== 'all-sections') as Slug[]
-			}
-			return []
-		} else {
-			return page.url.searchParams
-				.getAll('sections')
-				.filter((s) => s !== 'all-sections') as Slug[]
-		}
-	})
+	let presetSections = $derived(getSectionsForPreset(preset))
 
 	let selectedSections = $derived(
 		coordDocs.getSectionsByName({
 			language,
 			format,
-			names: urlSections,
+			names: presetSections,
 		}),
 	)
 
@@ -106,6 +87,26 @@
 		cta === 'edit' ? 'doc-editor' : 'doc-builder l:stack:3xl',
 	)
 	let contentClass = $derived(selectedSections.length === 0 ? '' : ctaClass)
+	let compareContentClass = $derived('l:flex')
+
+	function getSectionsForPreset(presetFound?: string | null): string[] {
+		if (presetFound) {
+			const _preset = coordPresets.getPreset(presetFound)
+
+			if (_preset) {
+				const queryString = `cv/${cta}${_preset.query}`
+				const url = new URL(`http://example.com/${queryString}`)
+				return url.searchParams
+					.getAll('sections')
+					.filter((s) => s !== 'all-sections') as Slug[]
+			}
+			return []
+		} else {
+			return page.url.searchParams
+				.getAll('sections')
+				.filter((s) => s !== 'all-sections') as Slug[]
+		}
+	}
 
 	async function updateFilters() {
 		await tick()
@@ -207,6 +208,39 @@
 								{/if}
 							</Feedback>
 						</div>
+					{:else if cta === 'compare'}
+						{@const editing = targetPreset ? targetPreset : preset}
+						{@const compareTo = sourcePreset ? sourcePreset : preset}
+						{@const targetPresetSections = getSectionsForPreset(editing)}
+						{@const sourcePresetSections = getSectionsForPreset(compareTo)}
+
+						{@const sourceSections = coordDocs.getSectionsByName({
+							language,
+							format,
+							names: sourcePresetSections,
+						})}
+
+						{@const targetSections = coordDocs.getSectionsByName({
+							language,
+							format,
+							names: targetPresetSections,
+						})}
+
+						<div class={compareContentClass}>
+							{#each targetSections as section, i (i)}
+								<SectionEditor {section} {selectedTags} {language} {format} />
+							{/each}
+
+							{#each sourceSections as section, i (i)}
+								<SectionBuilder
+									cta="compare"
+									{section}
+									{selectedTags}
+									{language}
+									{format}
+								/>
+							{/each}
+						</div>
 					{:else if selectedSections.length}
 						{#key language || format || preset}
 							<div class={contentClass}>
@@ -264,19 +298,18 @@
 							currentPreset={preset}
 						/>
 					{:else}
-						<h3>Compare Presets</h3>
 						<Presets
-							title="Source (readonly)"
-							headingLevel={4}
+							title="Source Preset (readonly)"
 							id="preset-source"
-							oninput={() => {}}
+							isSource={true}
+							oninput={updateFilters}
 							currentPreset={sourcePreset}
 						/>
 						<Presets
-							title="Target (editing)"
-							headingLevel={4}
+							title="Target Preset (editing)"
 							id="preset-target"
-							oninput={updateFilters}
+							isTarget={true}
+							oninput={() => {}}
 							currentPreset={targetPreset}
 						/>
 					{/if}
