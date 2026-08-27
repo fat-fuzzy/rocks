@@ -3,18 +3,18 @@
 
 	import DialogData from '$lib/ui/controls/data/DialogData.svelte'
 
-	const CTA = ['edit', 'build', 'preview', 'print']
+	const CTA = ['edit', 'build', 'compare', 'print']
 	const CTA_LINK_LABELS: {[cta: string]: string} = {
 		edit: 'Edit the Content',
 		build: 'Build the Structure',
-		preview: 'Preview & Compare',
+		compare: 'compare & Compare',
 		print: 'Save to PDF',
 	}
 
 	const CTA_TITLE: {[cta: string]: string} = {
 		edit: 'Content',
 		build: 'Structure',
-		preview: 'Preview',
+		compare: 'Compare',
 		print: 'Print',
 		io: 'Your data',
 	}
@@ -25,7 +25,7 @@
 			'Structure content to tell your story.',
 			'Save and modify presets.',
 		],
-		preview: [
+		compare: [
 			'Check your work in progress.',
 			'Compare content blocks or presets.',
 		],

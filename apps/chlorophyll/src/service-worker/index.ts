@@ -21,10 +21,10 @@ const SHELL_URL = '/'
 const CV_URL = '/cv'
 const EDIT_URL = `${CV_URL}/edit`
 const BUILD_URL = `${CV_URL}/build`
-const PREVIEW_URL = `${CV_URL}/preview`
+const COMPARE_URL = `${CV_URL}/compare`
 const PRINT_URL = `${CV_URL}/print`
 
-const CTA = [EDIT_URL, BUILD_URL, PREVIEW_URL, PRINT_URL]
+const CTA = [EDIT_URL, BUILD_URL, COMPARE_URL, PRINT_URL]
 
 const ASSETS = [
 	SHELL_URL,

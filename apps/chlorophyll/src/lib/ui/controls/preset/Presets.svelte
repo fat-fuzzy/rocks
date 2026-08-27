@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {Preset, ICoordinatePresets} from '$types'
+	import type {Preset, ICoordinatePresets, Slug} from '$types'
 
 	import {getContext} from 'svelte'
 	import {page} from '$app/state'
@@ -13,9 +13,19 @@
 	const {Feedback, Button} = ui.blocks
 
 	const {
+		id,
+		title = 'Presets',
+		headingLevel = 3,
+		isSource = false,
+		isTarget = false,
 		currentPreset,
 		oninput,
 	}: {
+		id: Slug
+		title?: string
+		isSource?: boolean
+		isTarget?: boolean
+		headingLevel?: number
 		currentPreset: string | null
 		oninput: (e: Event) => void
 	} = $props()
@@ -69,10 +79,12 @@
 
 <div class="presets justify:start shape:soft l:stack:3xs raviolink">
 	<div class="w:full l:flex:2xs align:center justify:between">
-		<h3 class="ravioli:3xs">Presets</h3>
+		<svelte:element this={`h${headingLevel}`} class="ravioli:3xs">
+			{title}
+		</svelte:element>
 		{#if cta === 'edit' || cta === 'build'}
 			<DialogSavePreset
-				id="dialog-add-preset"
+				id={`dialog-add-preset-${id}`}
 				color="primary"
 				label="New Preset"
 				asset="plus"
@@ -121,17 +133,29 @@
 					</div>
 				</div>
 			{:else}
-				<ol class="unstyled scroll:y">
+				<ul class="unstyled scroll:y">
 					{#each presets as preset, i (i)}
 						{@const isCurrent = currentPreset === preset.name}
+						{@const presetQuery =
+							isSource || isTarget
+								? coordPresets.getCompareQuery(preset.name, isSource, isTarget)
+								: coordPresets.getPresetQuery(preset.name)}
 
 						<li
 							aria-current={isCurrent}
 							class={`raviolink shape:mellow l:flex justify:between ${isCurrent ? 'surface:0:primary' : ''}`}
 						>
 							<a
-								href={resolve(`/cv/${cta}/${preset.query}`)}
+								href={resolve(`/cv/${cta}/${presetQuery}`)}
 								class="font:sm raviolink grow"
+								onclick={isSource
+									? () => coordPresets.setSourcePreset(preset.name)
+									: isTarget
+										? () => coordPresets.setTargetPreset(preset.name)
+										: () => {
+												coordPresets.setSourcePreset()
+												coordPresets.setTargetPreset()
+											}}
 							>
 								{preset.name}
 							</a>
@@ -144,7 +168,7 @@
 												title="Editing"
 												id={preset.name}
 												checked={true}
-												name="preset"
+												name={id}
 												value={preset.name}
 												disabled={!preset.query}
 												class="maki:block"
@@ -187,13 +211,13 @@
 											}}
 										/>
 									{/if}
-									<DialogDeletePreset
-										id={`delete-preset-${preset.id}`}
-										{preset}
-										size="2xs"
-										disabled={preset.locked || !preset.query}
-									/>
 									{#if cta === 'edit' || cta === 'build'}
+										<DialogDeletePreset
+											id={`delete-preset-${preset.id}`}
+											{preset}
+											size="2xs"
+											disabled={preset.locked || !preset.query}
+										/>
 										<Button
 											label={preset.locked ? 'Unlock Preset' : 'Lock Preset'}
 											type="button"
@@ -214,7 +238,7 @@
 							{/if}
 						</li>
 					{/each}
-				</ol>
+				</ul>
 			{/if}
 		</div>
 	{/if}

@@ -48,7 +48,8 @@
 	<div class={`l:flex grow justify:${currentPreset ? 'between' : 'end'}`}>
 		{#if currentPreset}
 			<h2 class="font:semibold">
-				Preset:
+				{#if cta === 'compare'}Source
+				{/if} Preset:
 				{currentPreset.name}
 				{currentPreset.locked ? '(Locked)' : ''}
 			</h2>
