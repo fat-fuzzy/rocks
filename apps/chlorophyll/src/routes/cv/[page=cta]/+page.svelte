@@ -118,6 +118,14 @@
 			}, []),
 	)
 
+	let targetTags: string[] = $derived(
+		targetPreset ? coordPresets.getPresetTags(targetPreset) : [],
+	)
+
+	let sourceTags: string[] = $derived(
+		sourcePreset ? coordPresets.getPresetTags(sourcePreset) : [],
+	)
+
 	let title = $derived(cta ? CTA_TO_TITLE[cta] : '')
 	let description = $derived(cta ? CTA_TO_DESCRIPTION[cta] : '')
 
@@ -224,6 +232,20 @@
 			filtersForm.requestSubmit()
 		}
 	}
+
+	$effect(() => {
+		if (cta !== 'compare') {
+			return
+		}
+		if (targetPreset) {
+			coordPresets.setTargetPreset(targetPreset)
+			targetTags = coordPresets.getPresetTags(targetPreset)
+		}
+		if (sourcePreset) {
+			coordPresets.setSourcePreset(sourcePreset)
+			targetTags = coordPresets.getPresetTags(sourcePreset)
+		}
+	})
 </script>
 
 {#snippet getStartedSections()}
@@ -319,34 +341,47 @@
 					</div>
 				</div>
 			{:else if cta === 'compare'}
-				<div class="l:switcher:2xs th:sm">
-					<div class="scroll:container contain:lg">
-						<div class="scroll:y surface:0:primary ravioli:lg shape:soft">
-							{#each sourceSections as section, i (i)}
-								<SectionBuilder
-									cta="compare"
-									{section}
-									{selectedTags}
-									language={sourceLanguage}
-									format={sourceFormat}
-								/>
-							{/each}
+				{#if sourcePreset || targetPreset}
+					<div class="l:switcher:2xs th:sm">
+						<div class="scroll:container contain:lg">
+							<div class="scroll:y surface:0:primary ravioli:lg shape:soft">
+								{#each sourceSections as section, i (i)}
+									<SectionBuilder
+										cta="compare"
+										{section}
+										selectedTags={sourceTags}
+										language={sourceLanguage}
+										format={sourceFormat}
+									/>
+								{/each}
+							</div>
 						</div>
-					</div>
 
-					<div class="scroll:container contain:lg">
-						<div class="scroll:y">
-							{#each targetSections as section, i (i)}
-								<SectionEditor
-									{section}
-									{selectedTags}
-									language={targetLanguage}
-									format={targetFormat}
-								/>
-							{/each}
+						<div class="scroll:container contain:lg">
+							<div class="scroll:y">
+								{#each targetSections as section, i (i)}
+									<SectionEditor
+										{section}
+										selectedTags={targetTags}
+										language={targetLanguage}
+										format={targetFormat}
+									/>
+								{/each}
+							</div>
 						</div>
 					</div>
-				</div>
+				{:else}
+					<Feedback
+						context="prose"
+						variant="bare"
+						size={availableSections.length ? 'lg' : undefined}
+						font="md"
+					>
+						<p>
+							Select a <span class="font:semibold">Source Preset</span> to get started
+						</p>
+					</Feedback>
+				{/if}
 			{:else if selectedSections.length}
 				<div class="l:text:xl">
 					{#key language || format || preset}
@@ -403,15 +438,6 @@
 							currentPreset={preset}
 						/>
 					{:else}
-						{#key targetPreset}
-							<Presets
-								title="Target Preset (editing)"
-								id="preset-target"
-								isTarget={true}
-								oninput={() => coordPresets.setTargetPreset(targetPreset)}
-								currentPreset={targetPreset}
-							/>
-						{/key}
 						{#key sourcePreset}
 							<Presets
 								title="Source Preset (readonly)"
@@ -419,6 +445,15 @@
 								isSource={true}
 								oninput={() => coordPresets.setSourcePreset(sourcePreset)}
 								currentPreset={sourcePreset}
+							/>
+						{/key}
+						{#key targetPreset}
+							<Presets
+								title="Target Preset (editing)"
+								id="preset-target"
+								isTarget={true}
+								oninput={() => coordPresets.setTargetPreset(targetPreset)}
+								currentPreset={targetPreset}
 							/>
 						{/key}
 					{/if}
