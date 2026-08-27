@@ -136,10 +136,9 @@
 				<ul class="unstyled scroll:y">
 					{#each presets as preset, i (i)}
 						{@const isCurrent = currentPreset === preset.name}
-						{@const presetQuery = isSource
-							? coordPresets.getSourcePresetQuery(preset.name)
-							: isTarget
-								? coordPresets.getTargetPresetQuery(preset.name)
+						{@const presetQuery =
+							isSource || isTarget
+								? coordPresets.getCompareQuery(preset.name, isSource, isTarget)
 								: coordPresets.getPresetQuery(preset.name)}
 
 						<li

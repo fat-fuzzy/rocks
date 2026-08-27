@@ -18,8 +18,6 @@
 
 	let cta = $derived(page.params.page)
 	let preset = $derived(page.url.searchParams.get('preset') || '')
-	let targetPreset = $derived(page.url.searchParams.get('preset-target') || '')
-
 	let linkStyles = $state('font:xs font:semibold font:heading w:full')
 </script>
 
@@ -30,8 +28,8 @@
 				{@const classes =
 					key === cta ? linkStyles : `${linkStyles} ink:primary`}
 				{@const presetQuery =
-					cta === 'compare' && targetPreset
-						? coordPresets.getTargetPresetQuery(targetPreset)
+					cta === 'compare'
+						? coordPresets.getCompareQuery(preset, false, true)
 						: coordPresets.getPresetQuery(preset)}
 
 				<li

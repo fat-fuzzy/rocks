@@ -27,6 +27,8 @@ export interface ICoordinatePresets {
 
 	getTargetPresetQuery(name: string): string
 
+	getCompareQuery(name: string, isSource: boolean, isTarget: boolean): string
+
 	savePreset(options: {
 		path: DocPath
 		meta: DocMeta

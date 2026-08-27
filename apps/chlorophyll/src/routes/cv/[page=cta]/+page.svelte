@@ -54,6 +54,9 @@
 	)
 
 	let preset: string | null = $derived(page.url.searchParams.get('preset'))
+	let targetPreset: string | null = $derived(
+		page.url.searchParams.get('preset-target'),
+	)
 	let sourcePreset: string | null = $derived(
 		page.url.searchParams.get('preset-source'),
 	)
@@ -61,34 +64,54 @@
 	let availableSections = $derived(coordDocs.getSections({language, format}))
 
 	let presetSections = $derived(getSectionsForPreset('preset', preset))
+	let targetPresetSections = $derived(
+		getSectionsForPreset('preset-target', targetPreset),
+	)
 	let sourcePresetSections = $derived(
 		getSectionsForPreset('preset-source', sourcePreset),
+	)
+
+	let presetLanguage = $derived(getLanguageForPreset('preset', preset))
+
+	let targetLanguage = $derived(
+		getLanguageForPreset('preset-target', targetPreset),
 	)
 
 	let sourceLanguage = $derived(
 		getLanguageForPreset('preset-source', sourcePreset),
 	)
 
+	let targetFormat = $derived(getFormatForPreset('preset-target', targetPreset))
 	let sourceFormat = $derived(getFormatForPreset('preset-source', sourcePreset))
 
 	let selectedSections = $derived(
 		preset
 			? coordDocs.getSectionsByName({
-					language: getLanguageForPreset(preset),
+					language: presetLanguage,
 					format,
 					names: presetSections,
 				})
 			: [],
 	)
 
-	let targetSections = $derived(selectedSections)
+	let targetSections = $derived(
+		targetPreset
+			? coordDocs.getSectionsByName({
+					language: targetLanguage,
+					format: targetFormat,
+					names: targetPresetSections,
+				})
+			: [],
+	)
 
 	let sourceSections = $derived(
-		coordDocs.getSectionsByName({
-			language: sourceLanguage,
-			format: sourceFormat,
-			names: sourcePresetSections,
-		}) || [],
+		sourcePreset
+			? coordDocs.getSectionsByName({
+					language: sourceLanguage,
+					format: sourceFormat,
+					names: sourcePresetSections,
+				})
+			: [],
 	)
 
 	let selectedTags: string[] = $derived(
@@ -318,7 +341,12 @@
 					<div class="scroll:container contain:lg">
 						<div class="scroll:y">
 							{#each targetSections as section, i (i)}
-								<SectionEditor {section} {selectedTags} {language} {format} />
+								<SectionEditor
+									{section}
+									{selectedTags}
+									language={targetLanguage}
+									format={targetFormat}
+								/>
 							{/each}
 						</div>
 					</div>
@@ -371,10 +399,23 @@
 					{#if cta !== 'compare'}
 						<Presets
 							id="preset"
-							oninput={updateFilters}
+							oninput={() => {
+								coordPresets.setSourcePreset()
+								coordPresets.setTargetPreset()
+								updateFilters()
+							}}
 							currentPreset={preset}
 						/>
 					{:else}
+						{#key targetPreset}
+							<Presets
+								title="Target Preset (editing)"
+								id="preset-target"
+								isTarget={true}
+								oninput={() => coordPresets.setTargetPreset(targetPreset)}
+								currentPreset={targetPreset}
+							/>
+						{/key}
 						{#key sourcePreset}
 							<Presets
 								title="Source Preset (readonly)"
