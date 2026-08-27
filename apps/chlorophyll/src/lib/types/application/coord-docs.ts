@@ -13,7 +13,7 @@ import type {
 } from '$types'
 
 export interface ICoordinateDocs {
-	readonly aggMetadata: IAggregateMetadata | undefined
+	readonly aggMetadata: IAggregateMetadata
 	readonly aggDocs: IAggregateDocs | undefined
 	readonly lazyBlocks: {[name: string]: Block}
 	readonly lazySections: {[name: string]: Section}

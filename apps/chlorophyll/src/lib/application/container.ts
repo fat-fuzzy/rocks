@@ -33,7 +33,7 @@ export function createCoords(options: {
 	const coordImports = new CoordinateImports(aggDataLifecycle, aggDocs)
 	const coordDocs = new CoordinateDocs(aggMetadata, aggDocs)
 	const coordMetadata = new CoordinateMetadata(aggMetadata, aggDocs)
-	const coordPresets = new CoordinatePresets(aggPresets)
+	const coordPresets = new CoordinatePresets(aggMetadata, aggPresets)
 
 	return {
 		coordDocs,

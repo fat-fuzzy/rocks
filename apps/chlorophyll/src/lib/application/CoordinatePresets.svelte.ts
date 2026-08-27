@@ -5,9 +5,12 @@ import type {
 	Preset,
 	ICoordinatePresets,
 	IAggregatePresets,
+	IAggregateMetadata,
+	TagGroup,
 } from '$types'
 
 import {getPresetKey} from '$lib/common/format'
+import {SvelteURL} from 'svelte/reactivity'
 
 /**
  * CoordinatePresets class to manage access to stored presets
@@ -15,13 +18,15 @@ import {getPresetKey} from '$lib/common/format'
  * Sends/receive messages via worker bridge
  */
 export default class CoordinatePresets implements ICoordinatePresets {
-	readonly aggPresets: IAggregatePresets
+	aggMetadata: IAggregateMetadata
+	aggPresets: IAggregatePresets
 	loading = $state(false)
 	error = $state(false)
 	sourcePreset: Preset | null = $state(null)
 	targetPreset: Preset | null = $state(null)
 
-	constructor(aggPresets: IAggregatePresets) {
+	constructor(aggMetadata: IAggregateMetadata, aggPresets: IAggregatePresets) {
+		this.aggMetadata = aggMetadata
 		this.aggPresets = aggPresets
 	}
 
@@ -87,27 +92,48 @@ export default class CoordinatePresets implements ICoordinatePresets {
 
 	getPresetQuery(name: string): string {
 		const query = this.getPreset(name)?.query
-		let cleanQuery = ''
 
-		if (query) {
-			cleanQuery = query.replaceAll('preset-source', 'preset')
-			cleanQuery = cleanQuery.replaceAll('preset-target', 'preset')
-		}
-		return cleanQuery
+		const url = new SvelteURL(`https://example.com${query}`)
+		url.searchParams.delete('preset-source')
+		url.searchParams.delete('preset-target')
+
+		return url.search
+	}
+
+	getPresetTags(name: string): string[] {
+		const query = this.getPreset(name)?.query
+
+		const url = new SvelteURL(`https://example.com${query}`)
+		const tags = this.aggMetadata.tagGroups.reduce(
+			(selected: string[], menu: TagGroup) => {
+				return selected.concat(url.searchParams.getAll(menu.name) || [])
+			},
+			[],
+		)
+
+		return tags
 	}
 
 	getSourcePresetQuery(name: string): string {
 		const query = this.getPreset(name)?.query
-		return query && name
-			? `${query}&preset-source=${name}`
-			: `?preset-source=${name}`
+
+		const url = new SvelteURL(`https://example.com${query}`)
+		url.searchParams.delete('preset')
+		url.searchParams.delete('preset-target')
+		url.searchParams.append('preset-source', name)
+
+		return url.search
 	}
 
 	getTargetPresetQuery(name: string): string {
 		const query = this.getPreset(name)?.query
-		return query && name
-			? `${query}&preset-target=${name}`
-			: `?preset-target=${name}`
+
+		const url = new SvelteURL(`https://example.com${query}`)
+		url.searchParams.delete('preset')
+		url.searchParams.delete('preset-source')
+		url.searchParams.append('preset-target', name)
+
+		return url.search
 	}
 
 	// FLESH THIS OUT

@@ -1,6 +1,14 @@
-import type {Uuid, DocMeta, DocPath, Preset, IAggregatePresets} from '$types'
+import type {
+	Uuid,
+	DocMeta,
+	DocPath,
+	Preset,
+	IAggregatePresets,
+	IAggregateMetadata,
+} from '$types'
 
 export interface ICoordinatePresets {
+	readonly aggMetadata: IAggregateMetadata
 	readonly aggPresets: IAggregatePresets
 	readonly loading: boolean
 	readonly error: boolean
@@ -12,6 +20,8 @@ export interface ICoordinatePresets {
 	hasPresets(): boolean
 
 	getPreset(name: string): Preset
+
+	getPresetTags(name: string): string[]
 
 	getTargetPreset(name: string): Preset | null
 
