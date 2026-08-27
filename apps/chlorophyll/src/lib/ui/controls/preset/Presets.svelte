@@ -137,10 +137,10 @@
 					{#each presets as preset, i (i)}
 						{@const isCurrent = currentPreset === preset.name}
 						{@const presetQuery = isSource
-							? `${preset.query}&preset-source=${preset.name}`
+							? coordPresets.getSourcePresetQuery(preset.name)
 							: isTarget
-								? `${preset.query}&preset-target=${preset.name}`
-								: preset.query}
+								? coordPresets.getTargetPresetQuery(preset.name)
+								: coordPresets.getPresetQuery(preset.name)}
 
 						<li
 							aria-current={isCurrent}
@@ -149,6 +149,14 @@
 							<a
 								href={resolve(`/cv/${cta}/${presetQuery}`)}
 								class="font:sm raviolink grow"
+								onclick={isSource
+									? () => coordPresets.setSourcePreset(preset.name)
+									: isTarget
+										? () => coordPresets.setTargetPreset(preset.name)
+										: () => {
+												coordPresets.setSourcePreset()
+												coordPresets.setTargetPreset()
+											}}
 							>
 								{preset.name}
 							</a>
