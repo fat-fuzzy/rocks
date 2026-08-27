@@ -27,10 +27,7 @@
 			{#each Object.entries(CTA_TO_ACTION) as [key, value], i (i)}
 				{@const classes =
 					key === cta ? linkStyles : `${linkStyles} ink:primary`}
-				{@const presetQuery =
-					cta === 'compare'
-						? coordPresets.getCompareQuery(preset, false, true)
-						: coordPresets.getPresetQuery(preset)}
+				{@const presetQuery = coordPresets.getPresetQuery(preset)}
 
 				<li
 					aria-current={key === cta}
