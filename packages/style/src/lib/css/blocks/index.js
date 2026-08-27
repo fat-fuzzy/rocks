@@ -26,6 +26,7 @@ import './presentation/table.css' /* Use for tables = tabular data: https://www.
 import './presentation/tags.css' /* Use for tabs (navigation + disclosure pattern) data: https://www.w3.org/TR/tabular-data-model/ */
 
 /* ============  Overlay content ==================*/
+import './overlay/anchor.css' /* Use for dialogs */
 import './overlay/scale.css' /* Use for dialogs */
 import './overlay/dialog.css' /* Use for dialogs */
 import './overlay/popover.css' /* Use for popovers */

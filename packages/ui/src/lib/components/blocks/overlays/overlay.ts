@@ -19,7 +19,7 @@ export type OverlayProps = UiBlockProps &
 	}
 
 export type TooltipProps = UiBlockProps & {
-	id: string
+	anchorId: string
 	label: string
 	children?: Snippet
 }
