@@ -68,13 +68,32 @@ export default class CoordinatePresets implements ICoordinatePresets {
 	setSourcePreset(name?: string): void {
 		if (name) {
 			this.sourcePreset = this.getPreset(name)
+		} else {
+			this.sourcePreset = null
 		}
-		this.sourcePreset = null
+	}
+
+	/**
+	 * Set target preset to compare (edit)
+	 * @param name
+	 */
+	setTargetPreset(name?: string): void {
+		if (name) {
+			this.targetPreset = this.getPreset(name)
+		} else {
+			this.targetPreset = null
+		}
 	}
 
 	getPresetQuery(name: string): string {
 		const query = this.getPreset(name)?.query
-		return query && name ? query : ''
+		let cleanQuery = ''
+
+		if (query) {
+			cleanQuery = query.replaceAll('preset-source', 'preset')
+			cleanQuery = cleanQuery.replaceAll('preset-target', 'preset')
+		}
+		return cleanQuery
 	}
 
 	getSourcePresetQuery(name: string): string {
@@ -91,15 +110,29 @@ export default class CoordinatePresets implements ICoordinatePresets {
 			: `?preset-target=${name}`
 	}
 
-	/**
-	 * Set target preset to compare (edit)
-	 * @param name
-	 */
-	setTargetPreset(name?: string): void {
-		if (name) {
-			this.targetPreset = this.getPreset(name)
+	// FLESH THIS OUT
+	getCompareQuery(name: string, isSource: boolean, isTarget: boolean) {
+		let query = this.getPresetQuery(name)
+
+		if (isSource) {
+			const targetPresetName = this.targetPreset?.name ?? ''
+			const targetQuery = targetPresetName
+				? this.getTargetPresetQuery(targetPresetName)
+				: ''
+
+			query = `${targetQuery}${this.getSourcePresetQuery(name)}`
 		}
-		this.targetPreset = null
+
+		if (isTarget) {
+			const sourcePresetName = this.sourcePreset?.name ?? ''
+			const sourceQuery = sourcePresetName
+				? this.getSourcePresetQuery(sourcePresetName)
+				: ''
+
+			query = `${this.getTargetPresetQuery(name)}${sourceQuery}`
+		}
+
+		return query
 	}
 
 	/**
