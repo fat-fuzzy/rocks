@@ -6,6 +6,7 @@
 		ICoordinateDocs,
 		ICoordinateMetadata,
 		ICoordinatePresets,
+		Preset,
 	} from '$types'
 
 	import {getContext, tick} from 'svelte'
@@ -56,20 +57,38 @@
 	let sourcePreset: string | null = $derived(
 		page.url.searchParams.get('preset-source'),
 	)
-	let targetPreset: string | null = $derived(
-		page.url.searchParams.get('preset-target'),
-	)
 
 	let availableSections = $derived(coordDocs.getSections({language, format}))
 
-	let presetSections = $derived(getSectionsForPreset(preset))
+	let presetSections = $derived(getSectionsForPreset('preset', preset))
+	let sourcePresetSections = $derived(
+		getSectionsForPreset('preset-source', sourcePreset),
+	)
+
+	let sourceLanguage = $derived(
+		getLanguageForPreset('preset-source', sourcePreset),
+	)
+
+	let sourceFormat = $derived(getFormatForPreset('preset-source', sourcePreset))
 
 	let selectedSections = $derived(
+		preset
+			? coordDocs.getSectionsByName({
+					language: getLanguageForPreset(preset),
+					format,
+					names: presetSections,
+				})
+			: [],
+	)
+
+	let targetSections = $derived(selectedSections)
+
+	let sourceSections = $derived(
 		coordDocs.getSectionsByName({
-			language,
-			format,
-			names: presetSections,
-		}),
+			language: sourceLanguage,
+			format: sourceFormat,
+			names: sourcePresetSections,
+		}) || [],
 	)
 
 	let selectedTags: string[] = $derived(
@@ -87,25 +106,97 @@
 		cta === 'edit' ? 'doc-editor' : 'doc-builder l:stack:3xl',
 	)
 	let contentClass = $derived(selectedSections.length === 0 ? '' : ctaClass)
-	let compareContentClass = $derived('l:flex')
+	let mainLayoutClass = $derived(
+		cta === 'compare'
+			? 'w:full col:center l:flex'
+			: 'w:full col:center l:stack',
+	)
 
-	function getSectionsForPreset(presetFound?: string | null): string[] {
+	function getPreset(
+		presetKey: Slug,
+		presetFound?: string | null,
+	): Preset | null {
+		let preset = null
+
 		if (presetFound) {
-			const _preset = coordPresets.getPreset(presetFound)
-
-			if (_preset) {
-				const queryString = `cv/${cta}${_preset.query}`
-				const url = new URL(`http://example.com/${queryString}`)
-				return url.searchParams
-					.getAll('sections')
-					.filter((s) => s !== 'all-sections') as Slug[]
+			switch (presetKey) {
+				case 'preset':
+					preset = coordPresets.getPreset(presetFound)
+					break
+				case 'preset-source':
+					preset = coordPresets.getSourcePreset(presetFound)
+					break
+				case 'preset-target':
+					preset = coordPresets.getTargetPreset(presetFound)
+					break
+				default:
+					break
 			}
-			return []
+		}
+
+		return preset
+	}
+
+	function getSectionsForPreset(
+		presetKey: Slug,
+		presetFound?: string | null,
+	): string[] {
+		let preset = getPreset(presetKey, presetFound)
+
+		if (preset) {
+			const queryString = `cv/${cta}${preset.query}`
+			const url = new URL(`http://example.com/${queryString}`)
+			return url.searchParams
+				.getAll('sections')
+				.filter((s) => s !== 'all-sections') as Slug[]
 		} else {
 			return page.url.searchParams
 				.getAll('sections')
 				.filter((s) => s !== 'all-sections') as Slug[]
 		}
+	}
+
+	function getLanguageForPreset(
+		presetKey: Slug,
+		presetFound?: string | null,
+	): DocLanguage {
+		let language
+		let preset = getPreset(presetKey, presetFound)
+
+		if (preset) {
+			const queryString = `cv/${cta}${preset.query}`
+			const url = new URL(`http://example.com/${queryString}`)
+			language = url.searchParams.get('language')
+		} else {
+			language = page.url.searchParams.get('language')
+		}
+		if (language) {
+			return language
+		}
+
+		return DOC_LANGUAGE as DocLanguage
+	}
+
+	function getFormatForPreset(
+		presetKey: Slug,
+		presetFound?: string | null,
+	): Slug {
+		let format
+		let preset = getPreset(presetKey, presetFound)
+
+		if (preset) {
+			const queryString = `cv/${cta}${preset.query}`
+			const url = new URL(`http://example.com/${queryString}`)
+			format = url.searchParams.get('format')
+		} else {
+			format = page.url.searchParams.get('format')
+		}
+
+		if (format) {
+			return format
+		}
+
+		return DOC_FORMAT as Slug
 	}
 
 	async function updateFilters() {
@@ -171,7 +262,7 @@
 	{/snippet}
 
 	{#snippet main()}
-		<div class="w:full col:center l:stack">
+		<div class={mainLayoutClass}>
 			{#if loading}
 				<div class="l:frame:round">
 					<Loading
@@ -181,106 +272,92 @@
 						color="primary"
 					/>
 				</div>
-			{:else}
+			{:else if availableSections.length === 0}
 				<div class="l:text:xl">
-					{#if availableSections.length === 0}
-						<div class={`size:${availableSections.length ? 'lg' : 'md'}`}>
-							<Feedback
-								context="prose"
-								variant="bare"
-								size={availableSections.length ? 'lg' : undefined}
-								font="md"
-							>
-								{#if cta === 'edit' || cta === 'build'}
-									{@render getStartedSections()}
-								{:else if cta === 'compare'}
-									{#if coordPresets.hasPresets()}
-										<p class="font:md">Select a Preset to compare</p>
-									{:else}
-										{@render getStartedPresets()}
-									{/if}
-								{:else if cta === 'print'}
-									{#if coordPresets.hasPresets()}
-										<p class="font:md">Select a Preset to print</p>
-									{:else}
-										{@render getStartedPresets()}
-									{/if}
-								{/if}
-							</Feedback>
-						</div>
-					{:else if cta === 'compare'}
-						{@const editing = targetPreset ? targetPreset : preset}
-						{@const compareTo = sourcePreset ? sourcePreset : preset}
-						{@const targetPresetSections = getSectionsForPreset(editing)}
-						{@const sourcePresetSections = getSectionsForPreset(compareTo)}
-
-						{@const sourceSections = coordDocs.getSectionsByName({
-							language,
-							format,
-							names: sourcePresetSections,
-						})}
-
-						{@const targetSections = coordDocs.getSectionsByName({
-							language,
-							format,
-							names: targetPresetSections,
-						})}
-
-						<div class={compareContentClass}>
-							{#each targetSections as section, i (i)}
-								<SectionEditor {section} {selectedTags} {language} {format} />
-							{/each}
-
-							{#each sourceSections as section, i (i)}
-								<SectionBuilder
-									cta="compare"
-									{section}
-									{selectedTags}
-									{language}
-									{format}
-								/>
-							{/each}
-						</div>
-					{:else if selectedSections.length}
-						{#key language || format || preset}
-							<div class={contentClass}>
-								{#each selectedSections as section, i (i)}
-									{#if cta === 'edit'}
-										<SectionEditor
-											{section}
-											{selectedTags}
-											{language}
-											{format}
-										/>
-									{:else if cta}
-										<SectionBuilder
-											{cta}
-											{section}
-											{selectedTags}
-											{language}
-											{format}
-										/>
-									{/if}
-								{/each}
-							</div>
-						{/key}
-					{:else}
+					<div class={`size:${availableSections.length ? 'lg' : 'md'}`}>
 						<Feedback
-							status={coordDocs.hasError() ? 'error' : undefined}
 							context="prose"
 							variant="bare"
 							size={availableSections.length ? 'lg' : undefined}
 							font="md"
 						>
-							{#if coordDocs.hasError()}
-								<!-- TODO: Improve this message -->
-								<p class="font:md">There was an error loading your document</p>
-							{:else}
-								<p class="font:md">Select a Section to edit</p>
+							{#if cta === 'edit' || cta === 'build'}
+								{@render getStartedSections()}
+							{:else if cta === 'compare'}
+								{#if coordPresets.hasPresets()}
+									<p class="font:md">Select a Preset to compare</p>
+								{:else}
+									{@render getStartedPresets()}
+								{/if}
+							{:else if cta === 'print'}
+								{#if coordPresets.hasPresets()}
+									<p class="font:md">Select a Preset to print</p>
+								{:else}
+									{@render getStartedPresets()}
+								{/if}
 							{/if}
 						</Feedback>
-					{/if}
+					</div>
 				</div>
+			{:else if cta === 'compare'}
+				<div class="l:switcher:2xs th:sm">
+					<div class="scroll:container contain:lg">
+						<div class="scroll:y surface:0:primary ravioli:lg shape:soft">
+							{#each sourceSections as section, i (i)}
+								<SectionBuilder
+									cta="compare"
+									{section}
+									{selectedTags}
+									language={sourceLanguage}
+									format={sourceFormat}
+								/>
+							{/each}
+						</div>
+					</div>
+
+					<div class="scroll:container contain:lg">
+						<div class="scroll:y">
+							{#each targetSections as section, i (i)}
+								<SectionEditor {section} {selectedTags} {language} {format} />
+							{/each}
+						</div>
+					</div>
+				</div>
+			{:else if selectedSections.length}
+				<div class="l:text:xl">
+					{#key language || format || preset}
+						<div class={contentClass}>
+							{#each selectedSections as section, i (i)}
+								{#if cta === 'edit'}
+									<SectionEditor {section} {selectedTags} {language} {format} />
+								{:else if cta}
+									<SectionBuilder
+										{cta}
+										{section}
+										{selectedTags}
+										{language}
+										{format}
+									/>
+								{/if}
+							{/each}
+						</div>
+					{/key}
+				</div>
+			{:else}
+				<Feedback
+					status={coordDocs.hasError() ? 'error' : undefined}
+					context="prose"
+					variant="bare"
+					size={availableSections.length ? 'lg' : undefined}
+					font="md"
+				>
+					{#if coordDocs.hasError()}
+						<!-- TODO: Improve this message -->
+						<p class="font:md">There was an error loading your document</p>
+					{:else}
+						<p class="font:md">Select a Section to edit</p>
+					{/if}
+				</Feedback>
 			{/if}
 		</div>
 	{/snippet}
@@ -298,20 +375,15 @@
 							currentPreset={preset}
 						/>
 					{:else}
-						<Presets
-							title="Source Preset (readonly)"
-							id="preset-source"
-							isSource={true}
-							oninput={updateFilters}
-							currentPreset={sourcePreset}
-						/>
-						<Presets
-							title="Target Preset (editing)"
-							id="preset-target"
-							isTarget={true}
-							oninput={() => {}}
-							currentPreset={targetPreset}
-						/>
+						{#key sourcePreset}
+							<Presets
+								title="Source Preset (readonly)"
+								id="preset-source"
+								isSource={true}
+								oninput={() => coordPresets.setSourcePreset(sourcePreset)}
+								currentPreset={sourcePreset}
+							/>
+						{/key}
 					{/if}
 					{#if editing}
 						<Tags
