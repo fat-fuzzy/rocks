@@ -7,7 +7,7 @@
 	const CTA_LINK_LABELS: {[cta: string]: string} = {
 		edit: 'Edit the Content',
 		build: 'Build the Structure',
-		compare: 'compare & Compare',
+		compare: 'Compare Presets',
 		print: 'Save to PDF',
 	}
 
@@ -27,7 +27,7 @@
 		],
 		compare: [
 			'Check your work in progress.',
-			'Compare content blocks or presets.',
+			'Compare doc content as presets.',
 		],
 		print: ['Save to PDF using your browser.'],
 		io: [
