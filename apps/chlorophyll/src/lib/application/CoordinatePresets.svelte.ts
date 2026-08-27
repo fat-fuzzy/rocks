@@ -18,6 +18,8 @@ export default class CoordinatePresets implements ICoordinatePresets {
 	readonly aggPresets: IAggregatePresets
 	loading = $state(false)
 	error = $state(false)
+	sourcePreset: Preset | null = $state(null)
+	targetPreset: Preset | null = $state(null)
 
 	constructor(aggPresets: IAggregatePresets) {
 		this.aggPresets = aggPresets
@@ -37,10 +39,67 @@ export default class CoordinatePresets implements ICoordinatePresets {
 
 	/**
 	 * Get preset by name
-	 * @param name
+	 * @return Preset if found
 	 */
 	getPreset(name: string): Preset {
 		return this.aggPresets.presetIndex.presets[getPresetKey(name)]
+	}
+
+	/**
+	 * Get source preset to compare (readonly)
+	 * @return Preset if found
+	 */
+	getSourcePreset(): Preset | null {
+		return this.sourcePreset
+	}
+
+	/**
+	 * Get target preset to compare (edit)
+	 * @return Preset if found
+	 */
+	getTargetPreset(): Preset | null {
+		return this.targetPreset
+	}
+
+	/**
+	 * Set source preset to compare (readonly)
+	 * @param name
+	 */
+	setSourcePreset(name?: string): void {
+		if (name) {
+			this.sourcePreset = this.getPreset(name)
+		}
+		this.sourcePreset = null
+	}
+
+	getPresetQuery(name: string): string {
+		const query = this.getPreset(name)?.query
+		return query && name ? query : ''
+	}
+
+	getSourcePresetQuery(name: string): string {
+		const query = this.getPreset(name)?.query
+		return query && name
+			? `${query}&preset-source=${name}`
+			: `?preset-source=${name}`
+	}
+
+	getTargetPresetQuery(name: string): string {
+		const query = this.getPreset(name)?.query
+		return query && name
+			? `${query}&preset-target=${name}`
+			: `?preset-target=${name}`
+	}
+
+	/**
+	 * Set target preset to compare (edit)
+	 * @param name
+	 */
+	setTargetPreset(name?: string): void {
+		if (name) {
+			this.targetPreset = this.getPreset(name)
+		}
+		this.targetPreset = null
 	}
 
 	/**
