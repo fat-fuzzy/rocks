@@ -16,11 +16,15 @@
 		id,
 		title = 'Presets',
 		headingLevel = 3,
+		isSource = false,
+		isTarget = false,
 		currentPreset,
 		oninput,
 	}: {
 		id: Slug
 		title?: string
+		isSource?: boolean
+		isTarget?: boolean
 		headingLevel?: number
 		currentPreset: string | null
 		oninput: (e: Event) => void
@@ -129,17 +133,29 @@
 					</div>
 				</div>
 			{:else}
-				<ol class="unstyled scroll:y">
+				<ul class="unstyled scroll:y">
 					{#each presets as preset, i (i)}
 						{@const isCurrent = currentPreset === preset.name}
+						{@const presetQuery =
+							isSource || isTarget
+								? coordPresets.getCompareQuery(preset.name, isSource, isTarget)
+								: coordPresets.getPresetQuery(preset.name)}
 
 						<li
 							aria-current={isCurrent}
 							class={`raviolink shape:mellow l:flex justify:between ${isCurrent ? 'surface:0:primary' : ''}`}
 						>
 							<a
-								href={resolve(`/cv/${cta}/${preset.query}`)}
+								href={resolve(`/cv/${cta}/${presetQuery}`)}
 								class="font:sm raviolink grow"
+								onclick={isSource
+									? () => coordPresets.setSourcePreset(preset.name)
+									: isTarget
+										? () => coordPresets.setTargetPreset(preset.name)
+										: () => {
+												coordPresets.setSourcePreset()
+												coordPresets.setTargetPreset()
+											}}
 							>
 								{preset.name}
 							</a>
@@ -195,13 +211,13 @@
 											}}
 										/>
 									{/if}
-									<DialogDeletePreset
-										id={`delete-preset-${preset.id}`}
-										{preset}
-										size="2xs"
-										disabled={preset.locked || !preset.query}
-									/>
 									{#if cta === 'edit' || cta === 'build'}
+										<DialogDeletePreset
+											id={`delete-preset-${preset.id}`}
+											{preset}
+											size="2xs"
+											disabled={preset.locked || !preset.query}
+										/>
 										<Button
 											label={preset.locked ? 'Unlock Preset' : 'Lock Preset'}
 											type="button"
@@ -222,7 +238,7 @@
 							{/if}
 						</li>
 					{/each}
-				</ol>
+				</ul>
 			{/if}
 		</div>
 	{/if}
