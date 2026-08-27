@@ -21,7 +21,7 @@
 		assetType,
 		shape,
 		coords,
-		align,
+		align = 'center',
 		justify,
 		color,
 		size,
@@ -104,22 +104,25 @@
 			? `labels-${id}`
 			: undefined}
 		aria-describedby={hint || errors?.length ? `feedback-${id}` : undefined}
+		data-anchor={id}
 	/>
 {/snippet}
 
 {#if shape === 'square' || shape === 'round'}
 	<ff-control class={`${controlClasses} ${reverseClass}`}>
-		<label for={id} class={labelClasses}>
+		<label for={id} class={`anchor ${labelClasses}`} data-anchor={id}>
 			<ff-icon class={iconClasses}></ff-icon>
 			{@render input()}
-			<Tooltip id={`labels-${id}`} {label} {size} {variant} {font}>
+			<Tooltip anchorId={id} {label} {size} {variant} {font} coords="top">
 				<Feedback
 					id={`feedback-${id}`}
+					context="form"
 					{hint}
 					{errors}
 					{size}
 					{variant}
 					{font}
+					asset="none"
 				/>
 			</Tooltip>
 		</label>
@@ -133,5 +136,13 @@
 		<span>{label}</span>
 		{@render input()}
 	</label>
-	<Feedback id={`feedback-${id}`} {hint} {errors} {size} {variant} {font} />
+	<Feedback
+		context="form"
+		id={`feedback-${id}`}
+		{hint}
+		{errors}
+		{size}
+		{variant}
+		{font}
+	/>
 {/if}

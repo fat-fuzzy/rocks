@@ -43,6 +43,8 @@ legend,
 }
 
 label {
+	--input-inline-size: auto;
+
 	font-size: var(--font-size);
 }
 
@@ -56,7 +58,7 @@ select,
 textarea {
 	--padding-block: calc(var(--ui-size-sm) - 2 * var(--border-width-md));
 	--padding-inline: var(--ui-size);
-	--input-inline-size: 100%;
+	--input-inline-size: auto;
 
 	border: 1px solid var(--accent);
 	border-radius: var(--border-radius, var(--border-radius-base));
@@ -122,6 +124,7 @@ label:hover > [type='file'] {
 /* Display range input step labels */
 
 input[type='range'] {
+	--input-inline-size: 100%;
 	padding-inline: 0;
 }
 

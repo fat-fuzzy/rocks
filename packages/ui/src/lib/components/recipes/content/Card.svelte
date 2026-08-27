@@ -17,19 +17,25 @@
 		children,
 	}: ContentProps = $props()
 
-	let blockClasses = styleHelper.getBlockStyles({
-		size,
-		layout,
-		color,
-		background,
-		justify,
-		align,
-	})
-	let containerClasses = styleHelper.getLayoutStyles({
-		size,
-		layout,
-		container,
-	})
+	let blockClasses = $derived(
+		styleHelper.getBlockStyles({
+			size,
+			layout,
+			color,
+			background,
+			justify,
+			align,
+		}),
+	)
+
+	let containerClasses = $derived(
+		styleHelper.getLayoutStyles({
+			size,
+			layout,
+			container,
+		}),
+	)
+
 	let contentClasses = $derived(`${blockClasses} ${containerClasses}`)
 </script>
 
