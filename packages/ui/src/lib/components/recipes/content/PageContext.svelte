@@ -4,6 +4,7 @@
 	import {resolve} from '$app/paths'
 
 	let {
+		status,
 		surface = 'primary',
 		surfaceLightness = 0,
 		created,
@@ -20,7 +21,7 @@
 {#if updated && created}
 	<div class="l:burrito:lg">
 		<Feedback
-			status="default"
+			{status}
 			variant="bare"
 			size="2xs"
 			font="2xs"
