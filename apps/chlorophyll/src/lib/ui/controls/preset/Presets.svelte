@@ -211,13 +211,13 @@
 											}}
 										/>
 									{/if}
-									<DialogDeletePreset
-										id={`delete-preset-${preset.id}`}
-										{preset}
-										size="2xs"
-										disabled={preset.locked || !preset.query}
-									/>
 									{#if cta === 'edit' || cta === 'build'}
+										<DialogDeletePreset
+											id={`delete-preset-${preset.id}`}
+											{preset}
+											size="2xs"
+											disabled={preset.locked || !preset.query}
+										/>
 										<Button
 											label={preset.locked ? 'Unlock Preset' : 'Lock Preset'}
 											type="button"
