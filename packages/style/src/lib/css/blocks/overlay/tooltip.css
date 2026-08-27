@@ -81,7 +81,7 @@ label:focus > [role='tooltip'][class*='anchored:right'] {
 
 label:hover > [role='tooltip'][class*='anchored:top'],
 label:focus > [role='tooltip'][class*='anchored:top'] {
-	--x-transform: -35%;
+	--x-transform: 0;
 	--y-transform: 0;
 }
 
