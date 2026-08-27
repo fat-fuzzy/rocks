@@ -220,7 +220,7 @@ export default class CoordinateDocs implements ICoordinateDocs {
 		for (const name of names) {
 			const section = this.getSectionByName({language, format, name})
 
-			if (section) {
+			if (section && !sections.some((s) => s.name === name)) {
 				sections.push(section)
 			}
 		}
