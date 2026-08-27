@@ -63,15 +63,13 @@
 
 	let availableSections = $derived(coordDocs.getSections({language, format}))
 
-	let presetSections = $derived(getSectionsForPreset('preset', preset))
+	let unassignedSections = $derived(page.url.searchParams.getAll('sections'))
 	let targetPresetSections = $derived(
 		getSectionsForPreset('preset-target', targetPreset),
 	)
 	let sourcePresetSections = $derived(
 		getSectionsForPreset('preset-source', sourcePreset),
 	)
-
-	let presetLanguage = $derived(getLanguageForPreset('preset', preset))
 
 	let targetLanguage = $derived(
 		getLanguageForPreset('preset-target', targetPreset),
@@ -85,13 +83,11 @@
 	let sourceFormat = $derived(getFormatForPreset('preset-source', sourcePreset))
 
 	let selectedSections = $derived(
-		preset
-			? coordDocs.getSectionsByName({
-					language: presetLanguage,
-					format,
-					names: presetSections,
-				})
-			: [],
+		coordDocs.getSectionsByName({
+			language,
+			format,
+			names: unassignedSections,
+		}),
 	)
 
 	let targetSections = $derived(
