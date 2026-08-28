@@ -344,7 +344,9 @@
 				{#if sourcePreset || targetPreset}
 					<div class="l:switcher:2xs th:sm">
 						<div class="scroll:container contain:lg">
-							<div class="scroll:y surface:0:primary ravioli:lg shape:soft">
+							<div
+								class="l:center scroll:y surface:0:primary ravioli:lg shape:soft"
+							>
 								{#each sourceSections as section, i (i)}
 									<SectionBuilder
 										cta="compare"
@@ -358,7 +360,7 @@
 						</div>
 
 						<div class="scroll:container contain:lg">
-							<div class="scroll:y">
+							<div class="l:center scroll:y l:stack">
 								{#each targetSections as section, i (i)}
 									<SectionEditor
 										{section}
@@ -371,16 +373,18 @@
 						</div>
 					</div>
 				{:else}
-					<Feedback
-						context="prose"
-						variant="bare"
-						size={availableSections.length ? 'lg' : undefined}
-						font="md"
-					>
-						<p>
-							Select a <span class="font:semibold">Source Preset</span> to get started
-						</p>
-					</Feedback>
+					<div class="l:text:xl">
+						<Feedback
+							context="prose"
+							variant="bare"
+							size={availableSections.length ? 'lg' : undefined}
+							font="md"
+						>
+							<p>
+								Select a <span class="font:semibold">Source Preset</span> to get started
+							</p>
+						</Feedback>
+					</div>
 				{/if}
 			{:else if selectedSections.length}
 				<div class="l:text:xl">
@@ -403,20 +407,22 @@
 					{/key}
 				</div>
 			{:else}
-				<Feedback
-					status={coordDocs.hasError() ? 'error' : undefined}
-					context="prose"
-					variant="bare"
-					size={availableSections.length ? 'lg' : undefined}
-					font="md"
-				>
-					{#if coordDocs.hasError()}
-						<!-- TODO: Improve this message -->
-						<p class="font:md">There was an error loading your document</p>
-					{:else}
-						<p class="font:md">Select a Section to edit</p>
-					{/if}
-				</Feedback>
+				<div class="l:text:xl">
+					<Feedback
+						status={coordDocs.hasError() ? 'error' : undefined}
+						context="prose"
+						variant="bare"
+						size={availableSections.length ? 'lg' : undefined}
+						font="md"
+					>
+						{#if coordDocs.hasError()}
+							<!-- TODO: Improve this message -->
+							<p class="font:md">There was an error loading your document</p>
+						{:else}
+							<p class="font:md">Select a Section to edit</p>
+						{/if}
+					</Feedback>
+				</div>
 			{/if}
 		</div>
 	{/snippet}
