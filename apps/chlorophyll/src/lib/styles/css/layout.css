@@ -56,7 +56,7 @@ ff-toggle-reveal.est ff-control:has(input:checked) + ff-reveal {
 	}
 
 	.l\:grid\:urbanist.railway {
-		--sidebar-track-sm: var(--layout-sidebar-sm);
+		--sidebar-track-sm: var(--layout-sidebar-xs);
 
 		.zone\:1.exchange {
 			--sidebar-track-sm: var(--layout-sidebar-3xs);
@@ -66,7 +66,7 @@ ff-toggle-reveal.est ff-control:has(input:checked) + ff-reveal {
 		}
 
 		ff-toggle-reveal.est ff-control:has(input:checked) + ff-reveal {
-			--x-axis: calc(-2 * var(--ui-size-xl) - 2 * var(--outline-offset-lg));
+			--x-axis: 0;
 		}
 	}
 
@@ -81,6 +81,7 @@ ff-toggle-reveal.est ff-control:has(input:checked) + ff-reveal {
 	.railway.zone\:main {
 		--overlay-block-size: var(--max-block-size);
 		max-block-size: var(--max-block-size);
+		padding-inline-end: 0;
 	}
 
 	.zone\:2 .voyager.zone\:main {
@@ -88,18 +89,24 @@ ff-toggle-reveal.est ff-control:has(input:checked) + ff-reveal {
 	}
 }
 
+/* FIXME: magic numbers */
 @media screen and (min-width: 58.75rem) {
+	ff-toggle-reveal.est ff-control:has(input:checked) + ff-reveal,
+	ff-toggle-reveal.ouest ff-control:has(input:checked) + ff-reveal {
+		--x-size: calc(var(--layout-sidebar-md) - 4 * var(--grid-gap));
+	}
+
+	.l\:grid\:urbanist.railway {
+		ff-toggle-reveal.est ff-control:has(input:checked) + ff-reveal {
+			--x-axis: calc(6.25 * var(--grid-gap));
+		}
+	}
+
 	.zone\:1.exchange {
 		grid-template-columns: subgrid;
 	}
 	.exchange > .context {
 		grid-column-start: 6;
-	}
-
-	.l\:grid\:urbanist.railway {
-		ff-toggle-reveal.est ff-control:has(input:checked) + ff-reveal {
-			max-inline-size: var(--max-inline-size);
-		}
 	}
 
 	.navbar
@@ -134,13 +141,9 @@ ff-toggle-reveal.est ff-control:has(input:checked) + ff-reveal {
 		max-block-size: var(--max-block-size);
 	}
 
-	.l\:grid\:urbanist.railway {
-		ff-toggle-reveal.ouest ff-control:has(input:checked) + ff-reveal {
-			--overlay-inline-size: calc(var(--sidebar-width) - 2 * var(--ui-size-sm));
-		}
-		ff-toggle-reveal.est ff-control:has(input:checked) + ff-reveal {
-			--overlay-inline-size: calc(var(--sidebar-width));
-		}
+	ff-toggle-reveal.ouest ff-control:has(input:checked) + ff-reveal,
+	ff-toggle-reveal.est ff-control:has(input:checked) + ff-reveal {
+		--overlay-inline-size: calc(var(--sidebar-width) - 2 * var(--ui-size-sm));
 	}
 
 	.exchange > .sidebar .layer\:1 {
@@ -164,7 +167,7 @@ ff-toggle-reveal.est ff-control:has(input:checked) + ff-reveal {
 	}
 
 	.railway .exchange > .context {
-		grid-column-start: 7;
+		grid-column-start: 6;
 	}
 }
 
@@ -195,20 +198,4 @@ ff-toggle-reveal.est ff-control:has(input:checked) + ff-reveal {
 .scroll\:y {
 	block-size: fit-content;
 	max-block-size: 100%;
-}
-
-@media screen and (min-width: 58.75rem) {
-	.l\:grid\:urbanist.railway {
-		ff-toggle-reveal.est ff-control:has(input:checked) + ff-reveal {
-			--x-axis: 0;
-		}
-	}
-}
-
-@media screen and (min-width: 58.75rem) {
-	.l\:grid\:urbanist.railway {
-		ff-toggle-reveal.est ff-control:has(input:checked) + ff-reveal {
-			max-inline-size: unset;
-		}
-	}
 }
