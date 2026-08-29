@@ -9,6 +9,7 @@ import type {
 } from '$types'
 
 import {buildTagIndex} from '$lib/common/transform/store-to-index'
+import {getTagKey} from '$lib/common/format'
 
 /**
  * CoordinateMetadata class to manage block and section tags
@@ -83,38 +84,66 @@ export default class CoordinateMetadata implements ICoordinateMetadata {
 	/**
 	 * @param options tags to delete
 	 */
-	async deleteTags(options: {
+	async untagDocs(options: {
 		groups: {name: Slug; items: string[]}[]
-	}): Promise<{id: string} | void> {
+	}): Promise<TagGroup[]> {
 		const tagGroups = this.getTagGroups()
+		const {groups} = options
+		const languages = this.getLanguages()
+		const formats = this.getLanguages()
 
 		const tagGroupsToKeep: TagGroup[] = []
 
 		for (const tagGroup of tagGroups) {
-			if (!options.groups.find((g) => g.name === tagGroup.name)) {
+			const toUpdate = groups.find((g) => g.name === tagGroup.name)
+
+			if (!toUpdate) {
 				tagGroupsToKeep.push(tagGroup)
 			} else {
-				const groupToUpdate = tagGroups.find((tg) => tg.name === tagGroup.name)
-				if (!groupToUpdate) {
-					throw Error(`No tag group found with name ${tagGroup.name}`)
-				} else {
-					const tg = await this.aggDocs.untagBlocks({
-						group: tagGroup,
-						tagIndex: this.getTagIndex(),
-						languages: this.getLanguages(),
-						formats: this.getFormats(),
-					})
-					if (tg) {
-						tagGroupsToKeep.push(tg)
+				for (const tag of toUpdate.items) {
+					const tagKey = getTagKey(toUpdate.name, tag)
+
+					// 1. Gather blocks to update
+					const taggedBlocks = this.tagIndex.taggedBlocks[tagKey]
+
+					if (taggedBlocks) {
+						for (const block of taggedBlocks) {
+							for (const language of languages) {
+								for (const format of formats) {
+									await this.aggDocs.untagBlocks({
+										block,
+										toUpdate: toUpdate,
+										language,
+										format,
+									})
+								}
+							}
+						}
+					}
+
+					const tagsToKeep: Slug[] = tagGroup.items.filter((t) => t !== tag)
+
+					if (tagsToKeep.length > 0) {
+						tagGroup.items = tagsToKeep
+						tagGroupsToKeep.push(tagGroup)
 					}
 				}
 			}
 		}
 
-		if (tagGroupsToKeep) {
-			await this.aggMetadata.updateTagGroups({
-				groups: tagGroupsToKeep,
-			})
-		}
+		return tagGroupsToKeep
+	}
+
+	/**
+	 * @param options tags to delete
+	 */
+	async setTagGroups(options: {tagGroups: TagGroup[]}): Promise<void> {
+		const {tagGroups} = options
+
+		await this.aggMetadata.updateTagGroups({
+			groups: tagGroups,
+		})
+
+		this.tagIndex = this.getTagIndex()
 	}
 }

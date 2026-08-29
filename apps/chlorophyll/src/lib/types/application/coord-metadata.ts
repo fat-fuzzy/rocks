@@ -37,7 +37,9 @@ export interface ICoordinateMetadata {
 		group: {name: Slug; title: string; type?: string}
 	}): Promise<{id: string} | void>
 
-	deleteTags(options: {
+	untagDocs(options: {
 		groups: {name: Slug; items: string[]}[]
-	}): Promise<{id: string} | void>
+	}): Promise<TagGroup[]>
+
+	setTagGroups(options: {tagGroups: TagGroup[]}): Promise<{id: string} | void>
 }

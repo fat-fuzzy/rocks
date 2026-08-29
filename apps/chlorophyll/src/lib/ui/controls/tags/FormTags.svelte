@@ -208,7 +208,7 @@
 		tagsToDelete[groupName] = updatedTags
 	}
 
-	function deleteTags() {
+	async function deleteTags() {
 		const groups: {name: string; items: string[]}[] = Object.entries(
 			tagsToDelete,
 		).reduce((groups: {name: string; items: string[]}[], entry) => {
@@ -217,7 +217,9 @@
 			return groups
 		}, [])
 
-		coordMetadata.deleteTags({groups})
+		const tagGroupsToKeep = await coordMetadata.untagDocs({groups})
+
+		await coordMetadata.setTagGroups({tagGroups: tagGroupsToKeep})
 
 		dialogActor.close()
 	}
