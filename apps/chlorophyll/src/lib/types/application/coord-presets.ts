@@ -5,6 +5,7 @@ import type {
 	Preset,
 	IAggregatePresets,
 	IAggregateMetadata,
+	Slug,
 } from '$types'
 
 export interface ICoordinatePresets {
@@ -23,9 +24,9 @@ export interface ICoordinatePresets {
 
 	getPresetTags(name: string): string[]
 
-	getTargetPreset(name: string): Preset | null
+	getTargetPreset(): Preset | null
 
-	getSourcePreset(name: string): Preset | null
+	getSourcePreset(): Preset | null
 
 	setSourcePreset(name?: string | null): void
 
@@ -56,4 +57,6 @@ export interface ICoordinatePresets {
 		meta: DocMeta
 		preset: {id?: Uuid; name: string; query: string}
 	}): Promise<void>
+
+	getPresetByRole(presetRole: Slug, presetName?: string | null): Preset | null
 }
