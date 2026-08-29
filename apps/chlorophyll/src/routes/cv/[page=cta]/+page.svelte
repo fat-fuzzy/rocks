@@ -6,7 +6,6 @@
 		ICoordinateDocs,
 		ICoordinateMetadata,
 		ICoordinatePresets,
-		Preset,
 	} from '$types'
 
 	import {getContext, tick} from 'svelte'
@@ -64,23 +63,40 @@
 	let availableSections = $derived(coordDocs.getSections({language, format}))
 
 	let unassignedSections = $derived(page.url.searchParams.getAll('sections'))
-	let targetPresetSections = $derived(
-		getSectionsForPreset('preset-target', targetPreset),
-	)
-	let sourcePresetSections = $derived(
-		getSectionsForPreset('preset-source', sourcePreset),
-	)
-
-	let targetLanguage = $derived(
-		getLanguageForPreset('preset-target', targetPreset),
-	)
 
 	let sourceLanguage = $derived(
-		getLanguageForPreset('preset-source', sourcePreset),
+		page.url.searchParams.get('source-language') ?? language,
 	)
+	let sourceFormat = $derived(
+		page.url.searchParams.get('source-format') ?? format,
+	)
+	let sourcePresetSections = $derived(
+		page.url.searchParams.get('source-sections'),
+	)
+	let sourceTags: string[] = $derived.by(() => {
+		const tags = page.url.searchParams.get('source-tags')
+		if (tags) {
+			return tags.split(',')
+		}
+		return []
+	})
 
-	let targetFormat = $derived(getFormatForPreset('preset-target', targetPreset))
-	let sourceFormat = $derived(getFormatForPreset('preset-source', sourcePreset))
+	let targetLanguage = $derived(
+		page.url.searchParams.get('target-language') ?? language,
+	)
+	let targetFormat = $derived(
+		page.url.searchParams.get('target-format') ?? format,
+	)
+	let targetPresetSections = $derived(
+		page.url.searchParams.get('target-sections'),
+	)
+	let targetTags: string[] = $derived.by(() => {
+		const tags = page.url.searchParams.get('target-tags')
+		if (tags) {
+			return tags.split(',')
+		}
+		return []
+	})
 
 	let selectedSections = $derived(
 		coordDocs.getSectionsByName({
@@ -95,7 +111,7 @@
 			? coordDocs.getSectionsByName({
 					language: targetLanguage,
 					format: targetFormat,
-					names: targetPresetSections,
+					names: targetPresetSections ? targetPresetSections.split(',') : [],
 				})
 			: [],
 	)
@@ -105,7 +121,7 @@
 			? coordDocs.getSectionsByName({
 					language: sourceLanguage,
 					format: sourceFormat,
-					names: sourcePresetSections,
+					names: sourcePresetSections ? sourcePresetSections.split(',') : [],
 				})
 			: [],
 	)
@@ -116,14 +132,6 @@
 			.reduce((selected: string[], menu: TagGroup) => {
 				return selected.concat(page.url.searchParams.getAll(menu.name) || [])
 			}, []),
-	)
-
-	let targetTags: string[] = $derived(
-		targetPreset ? coordPresets.getPresetTags(targetPreset) : [],
-	)
-
-	let sourceTags: string[] = $derived(
-		sourcePreset ? coordPresets.getPresetTags(sourcePreset) : [],
 	)
 
 	let title = $derived(cta ? CTA_TO_TITLE[cta] : '')
@@ -139,93 +147,6 @@
 			: 'w:full col:center l:stack',
 	)
 
-	function getPreset(
-		presetKey: Slug,
-		presetFound?: string | null,
-	): Preset | null {
-		let preset = null
-
-		if (presetFound) {
-			switch (presetKey) {
-				case 'preset':
-					preset = coordPresets.getPreset(presetFound)
-					break
-				case 'preset-source':
-					preset = coordPresets.getSourcePreset(presetFound)
-					break
-				case 'preset-target':
-					preset = coordPresets.getTargetPreset(presetFound)
-					break
-				default:
-					break
-			}
-		}
-
-		return preset
-	}
-
-	function getSectionsForPreset(
-		presetKey: Slug,
-		presetFound?: string | null,
-	): string[] {
-		let preset = getPreset(presetKey, presetFound)
-
-		if (preset) {
-			const queryString = `cv/${cta}${preset.query}`
-			const url = new URL(`http://example.com/${queryString}`)
-			return url.searchParams
-				.getAll('sections')
-				.filter((s) => s !== 'all-sections') as Slug[]
-		} else {
-			return page.url.searchParams
-				.getAll('sections')
-				.filter((s) => s !== 'all-sections') as Slug[]
-		}
-	}
-
-	function getLanguageForPreset(
-		presetKey: Slug,
-		presetFound?: string | null,
-	): DocLanguage {
-		let language
-		let preset = getPreset(presetKey, presetFound)
-
-		if (preset) {
-			const queryString = `cv/${cta}${preset.query}`
-			const url = new URL(`http://example.com/${queryString}`)
-			language = url.searchParams.get('language')
-		} else {
-			language = page.url.searchParams.get('language')
-		}
-		if (language) {
-			return language
-		}
-
-		return DOC_LANGUAGE as DocLanguage
-	}
-
-	function getFormatForPreset(
-		presetKey: Slug,
-		presetFound?: string | null,
-	): Slug {
-		let format
-		let preset = getPreset(presetKey, presetFound)
-
-		if (preset) {
-			const queryString = `cv/${cta}${preset.query}`
-			const url = new URL(`http://example.com/${queryString}`)
-			format = url.searchParams.get('format')
-		} else {
-			format = page.url.searchParams.get('format')
-		}
-
-		if (format) {
-			return format
-		}
-
-		return DOC_FORMAT as Slug
-	}
-
 	async function updateFilters() {
 		await tick()
 		if (filtersForm) {
@@ -237,13 +158,15 @@
 		if (cta !== 'compare') {
 			return
 		}
+
 		if (targetPreset) {
 			coordPresets.setTargetPreset(targetPreset)
 			targetTags = coordPresets.getPresetTags(targetPreset)
 		}
+
 		if (sourcePreset) {
 			coordPresets.setSourcePreset(sourcePreset)
-			targetTags = coordPresets.getPresetTags(sourcePreset)
+			sourceTags = coordPresets.getPresetTags(sourcePreset)
 		}
 	})
 </script>
@@ -295,7 +218,7 @@
 		{#if cta}
 			<ContentHeading
 				{cta}
-				{preset}
+				preset={cta === 'compare' ? targetPreset : preset}
 				{query}
 				formats={coordMetadata.getFormats()}
 			/>
@@ -344,7 +267,9 @@
 				{#if sourcePreset || targetPreset}
 					<div class="l:switcher:2xs th:sm">
 						<div class="scroll:container contain:lg">
-							<div class="scroll:y surface:0:primary ravioli:lg shape:soft">
+							<div
+								class="l:center scroll:y surface:0:primary ravioli:lg shape:soft"
+							>
 								{#each sourceSections as section, i (i)}
 									<SectionBuilder
 										cta="compare"
@@ -358,34 +283,38 @@
 						</div>
 
 						<div class="scroll:container contain:lg">
-							<div class="scroll:y">
-								{#each targetSections as section, i (i)}
-									<SectionEditor
-										{section}
-										selectedTags={targetTags}
-										language={targetLanguage}
-										format={targetFormat}
-									/>
-								{/each}
+							<div class="l:center scroll:y l:stack">
+								{#key targetPreset}
+									{#each targetSections as section, i (i)}
+										<SectionEditor
+											{section}
+											selectedTags={targetTags}
+											language={targetLanguage}
+											format={targetFormat}
+										/>
+									{/each}
+								{/key}
 							</div>
 						</div>
 					</div>
 				{:else}
-					<Feedback
-						context="prose"
-						variant="bare"
-						size={availableSections.length ? 'lg' : undefined}
-						font="md"
-					>
-						<p>
-							Select a <span class="font:semibold">Source Preset</span> to get started
-						</p>
-					</Feedback>
+					<div class="l:text:xl">
+						<Feedback
+							context="prose"
+							variant="bare"
+							size={availableSections.length ? 'lg' : undefined}
+							font="md"
+						>
+							<p>
+								Select a <span class="font:semibold">Source Preset</span> to get started
+							</p>
+						</Feedback>
+					</div>
 				{/if}
 			{:else if selectedSections.length}
 				<div class="l:text:xl">
-					{#key language || format || preset}
-						<div class={contentClass}>
+					<div class={contentClass}>
+						{#key language || format || preset}
 							{#each selectedSections as section, i (i)}
 								{#if cta === 'edit'}
 									<SectionEditor {section} {selectedTags} {language} {format} />
@@ -399,24 +328,26 @@
 									/>
 								{/if}
 							{/each}
-						</div>
-					{/key}
+						{/key}
+					</div>
 				</div>
 			{:else}
-				<Feedback
-					status={coordDocs.hasError() ? 'error' : undefined}
-					context="prose"
-					variant="bare"
-					size={availableSections.length ? 'lg' : undefined}
-					font="md"
-				>
-					{#if coordDocs.hasError()}
-						<!-- TODO: Improve this message -->
-						<p class="font:md">There was an error loading your document</p>
-					{:else}
-						<p class="font:md">Select a Section to edit</p>
-					{/if}
-				</Feedback>
+				<div class="l:text:xl">
+					<Feedback
+						status={coordDocs.hasError() ? 'error' : undefined}
+						context="prose"
+						variant="bare"
+						size={availableSections.length ? 'lg' : undefined}
+						font="md"
+					>
+						{#if coordDocs.hasError()}
+							<!-- TODO: Improve this message -->
+							<p class="font:md">There was an error loading your document</p>
+						{:else}
+							<p class="font:md">Select a Section to edit</p>
+						{/if}
+					</Feedback>
+				</div>
 			{/if}
 		</div>
 	{/snippet}
