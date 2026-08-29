@@ -20,9 +20,17 @@
 	} = $props()
 
 	let coordPresets: ICoordinatePresets = getContext('coordPresets')
-	let currentPreset = $derived(
-		preset ? coordPresets.getPreset(preset) : undefined,
-	)
+
+	let currentPreset = $derived.by(() => {
+		if (!preset) {
+			return
+		}
+		if (cta === 'compare') {
+			return coordPresets.getTargetPreset()
+		} else {
+			return coordPresets.getPreset(preset)
+		}
+	})
 
 	function savePreset(preset: Preset) {
 		coordPresets.savePreset({
@@ -47,11 +55,12 @@
 <div class="w:full noprint">
 	<div class={`l:flex grow justify:${currentPreset ? 'between' : 'end'}`}>
 		{#if currentPreset}
-			<h2 class="font:semibold">
-				{#if cta === 'compare'}Source
-				{/if} Preset:
-				{currentPreset.name}
-				{currentPreset.locked ? '(Locked)' : ''}
+			<h2>
+				{#if cta !== 'compare'}
+					Preset:
+					{currentPreset.name}
+					{currentPreset.locked ? '(Locked)' : ''}
+				{/if}
 			</h2>
 			<div class="l:flex justify:end maki:block">
 				{#if cta === 'edit'}

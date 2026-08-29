@@ -7,10 +7,11 @@ import type {
 	IAggregatePresets,
 	IAggregateMetadata,
 	TagGroup,
+	Slug,
 } from '$types'
 
 import {getPresetKey} from '$lib/common/format'
-import {SvelteURL} from 'svelte/reactivity'
+import {SvelteURLSearchParams} from 'svelte/reactivity'
 
 /**
  * CoordinatePresets class to manage access to stored presets
@@ -70,7 +71,7 @@ export default class CoordinatePresets implements ICoordinatePresets {
 	 * Set source preset to compare (readonly)
 	 * @param name
 	 */
-	setSourcePreset(name?: string): void {
+	setSourcePreset(name?: Slug): void {
 		if (name) {
 			this.sourcePreset = this.getPreset(name)
 		} else {
@@ -82,7 +83,7 @@ export default class CoordinatePresets implements ICoordinatePresets {
 	 * Set target preset to compare (edit)
 	 * @param name
 	 */
-	setTargetPreset(name?: string): void {
+	setTargetPreset(name?: Slug): void {
 		if (name) {
 			this.targetPreset = this.getPreset(name)
 		} else {
@@ -90,73 +91,185 @@ export default class CoordinatePresets implements ICoordinatePresets {
 		}
 	}
 
-	getPresetQuery(name: string): string {
-		const query = this.getPreset(name)?.query
-
-		const url = new SvelteURL(`https://example.com${query}`)
-		url.searchParams.delete('preset-source')
-		url.searchParams.delete('preset-target')
-
-		return url.search
+	getPresetQuery(name: Slug): string {
+		return this.removeRoleFromPresetQuery(name)
 	}
 
 	getPresetTags(name: string): string[] {
 		const query = this.getPreset(name)?.query
 
-		const url = new SvelteURL(`https://example.com${query}`)
-		const tags = this.aggMetadata.tagGroups.reduce(
+		if (!query) {
+			return []
+		}
+
+		const queryString = query.replace('?', '')
+		const searchParams = new SvelteURLSearchParams(queryString)
+
+		return this.aggMetadata.tagGroups.reduce(
 			(selected: string[], menu: TagGroup) => {
-				return selected.concat(url.searchParams.getAll(menu.name) || [])
+				return selected.concat(searchParams.getAll(menu.name) || [])
 			},
 			[],
 		)
+	}
 
-		return tags
+	removeRoleFromPresetQuery(name: Slug): string {
+		const query = this.getPreset(name)?.query
+
+		if (!query) {
+			return ''
+		}
+
+		const queryString = query.replace('?', '')
+		const searchParams = new SvelteURLSearchParams(queryString)
+		let role = searchParams.get('source-preset')
+		if (!role) {
+			role = searchParams.get('target-preset')
+		}
+
+		if (!role) {
+			return query
+		}
+
+		const complementary =
+			role === 'source' ? 'target' : role === 'target' ? 'source' : ''
+
+		if (!complementary) {
+			return query
+		}
+
+		searchParams.delete(`preset-${role}`)
+		searchParams.delete(`preset-${complementary}`)
+		searchParams.delete(`${complementary}-sections`)
+		searchParams.delete(`${complementary}-tags`)
+		searchParams.delete(`${complementary}-language`)
+		searchParams.delete(`${complementary}-format`)
+		searchParams.append('preset', name)
+
+		const language = searchParams.get(`${role}-language`) ?? ''
+		const format = searchParams.get(`${role}-format`) ?? ''
+		const sections = searchParams.get(`${role}-sections`) ?? ''
+
+		if (language) {
+			searchParams.append('language', language)
+			searchParams.delete(`${role}-language`)
+		}
+		if (format) {
+			searchParams.append('format', format)
+			searchParams.delete(`${role}-format`)
+		}
+		if (sections) {
+			sections.split(',').forEach((s) => {
+				searchParams.append('sections', s)
+			})
+			searchParams.delete(`${role}-sections`)
+		}
+		const tags = this.getPresetTags(name)
+		searchParams.delete(`${role}-tags`)
+
+		const tagGroups = this.aggMetadata.tagGroups
+
+		tags.forEach((tag) => {
+			const tagGroup = tagGroups.find((tg) => tg.items.includes(tag))
+			if (tagGroup) {
+				searchParams.append(tagGroup.name, tag)
+			}
+		})
+
+		return searchParams.toString()
+	}
+
+	getPresetQueryForRole(name: Slug, role: Slug): string {
+		const query = this.getPresetQuery(name)
+
+		if (!query) {
+			return ''
+		}
+
+		const complementary =
+			role === 'source' ? 'target' : role === 'target' ? 'source' : ''
+
+		if (!complementary) {
+			return ''
+		}
+
+		const queryString = query.replace('?', '')
+		const searchParams = new SvelteURLSearchParams(queryString)
+
+		if (searchParams.has(`preset-${role}`)) {
+			return query
+		}
+
+		searchParams.delete('preset')
+		searchParams.append(`preset-${role}`, name)
+
+		const language = searchParams.get('language') ?? ''
+		const format = searchParams.get('format') ?? ''
+		const sections = searchParams.getAll('sections')
+		const tags = this.getPresetTags(name)
+
+		if (language) {
+			searchParams.append(`${role}-language`, language)
+		}
+		if (format) {
+			searchParams.append(`${role}-format`, format)
+		}
+		if (tags.length) {
+			searchParams.append(`${role}-tags`, tags.join(','))
+		}
+		if (sections.length) {
+			searchParams.append(`${role}-sections`, sections.join(','))
+		}
+
+		searchParams.delete('sections')
+		searchParams.delete('language')
+		searchParams.delete('format')
+		searchParams.delete('version')
+
+		const tagGroupNames = Object.keys(this.aggMetadata.tagGroups)
+
+		searchParams.forEach((value, key) => {
+			if (tagGroupNames.includes(key) && tags.includes(value)) {
+				searchParams.delete(key)
+			}
+		})
+
+		return searchParams.toString()
 	}
 
 	getSourcePresetQuery(name: string): string {
-		const query = this.getPreset(name)?.query
-
-		const url = new SvelteURL(`https://example.com${query}`)
-		url.searchParams.delete('preset')
-		url.searchParams.delete('preset-target')
-		url.searchParams.append('preset-source', name)
-
-		return url.search
+		return this.getPresetQueryForRole(name, 'source')
 	}
 
 	getTargetPresetQuery(name: string): string {
-		const query = this.getPreset(name)?.query
-
-		const url = new SvelteURL(`https://example.com${query}`)
-		url.searchParams.delete('preset')
-		url.searchParams.delete('preset-source')
-		url.searchParams.append('preset-target', name)
-
-		return url.search
+		return this.getPresetQueryForRole(name, 'target')
 	}
 
-	// FLESH THIS OUT
 	getCompareQuery(name: string, isSource: boolean, isTarget: boolean) {
-		let query = this.getPresetQuery(name)
+		let targetQuery
+		let sourceQuery
 
 		if (isSource) {
 			const targetPresetName = this.targetPreset?.name ?? ''
-			const targetQuery = targetPresetName
-				? this.getTargetPresetQuery(targetPresetName)
-				: ''
+			targetQuery = this.getTargetPresetQuery(targetPresetName)
 
-			query = `${targetQuery}${this.getSourcePresetQuery(name)}`
+			sourceQuery = this.getSourcePresetQuery(name)
 		}
 
 		if (isTarget) {
 			const sourcePresetName = this.sourcePreset?.name ?? ''
-			const sourceQuery = sourcePresetName
-				? this.getSourcePresetQuery(sourcePresetName)
-				: ''
-
-			query = `${this.getTargetPresetQuery(name)}${sourceQuery}`
+			sourceQuery = this.getSourcePresetQuery(sourcePresetName)
+			targetQuery = this.getTargetPresetQuery(name)
 		}
+
+		const query =
+			sourceQuery && targetQuery
+				? `?${sourceQuery}&${targetQuery}`
+				: sourceQuery
+					? `?${sourceQuery}`
+					: targetQuery
+						? `?${targetQuery}`
+						: ''
 
 		return query
 	}
@@ -207,5 +320,27 @@ export default class CoordinatePresets implements ICoordinatePresets {
 		preset: {id?: Uuid; name: string; query: string}
 	}) {
 		return this.aggPresets.togglePresetLock(options)
+	}
+
+	getPresetByRole(presetRole: Slug, presetName?: string | null): Preset | null {
+		let preset = null
+
+		switch (presetRole) {
+			case 'preset':
+				if (presetName) {
+					preset = this.getPreset(presetName)
+				}
+				break
+			case 'preset-source':
+				preset = this.getSourcePreset()
+				break
+			case 'preset-target':
+				preset = this.getTargetPreset()
+				break
+			default:
+				break
+		}
+
+		return preset
 	}
 }
