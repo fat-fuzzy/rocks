@@ -265,7 +265,7 @@
 				</div>
 			{:else if cta === 'compare'}
 				{#if sourcePreset || targetPreset}
-					<div class="l:switcher:2xs th:sm">
+					<div class="l:switcher:2xs th:sm w:full">
 						<div class="scroll:container contain:lg">
 							<div
 								class="l:center scroll:y surface:0:primary ravioli:lg shape:soft"
