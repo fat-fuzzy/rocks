@@ -187,6 +187,7 @@
 		const type = String(target.type) as InputCheckedTypes
 
 		const isSelectAll = checkSelectAll('delete', type, value)
+
 		const groupName = parseGroupFromTargetData(
 			cta,
 			isSelectAll ? value : String(target.name) || value,
