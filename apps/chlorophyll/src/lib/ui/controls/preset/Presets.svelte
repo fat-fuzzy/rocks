@@ -148,14 +148,6 @@
 							<a
 								href={resolve(`/cv/${cta}/${presetQuery}`)}
 								class="font:sm raviolink grow"
-								onclick={isSource
-									? () => coordPresets.setSourcePreset(preset.name)
-									: isTarget
-										? () => coordPresets.setTargetPreset(preset.name)
-										: () => {
-												coordPresets.setSourcePreset()
-												coordPresets.setTargetPreset()
-											}}
 							>
 								{preset.name}
 							</a>
