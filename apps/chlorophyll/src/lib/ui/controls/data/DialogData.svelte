@@ -59,7 +59,7 @@
 			newUrl.search = ''
 
 			window.location.href = newUrl.href // FIXME: hacky solution to reload for now
-		}, 1500)
+		}, 1000)
 	}
 </script>
 

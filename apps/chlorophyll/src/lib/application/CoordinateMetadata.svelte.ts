@@ -19,7 +19,7 @@ import {getTagKey} from '$lib/common/format'
 export default class CoordinateMetadata implements ICoordinateMetadata {
 	aggMetadata: IAggregateMetadata
 	aggDocs: IAggregateDocs
-	tagIndex: TagIndex
+	tagIndex: TagIndex = $derived(this.getTagIndex())
 	loading = $state(false)
 	error = $state(false)
 
@@ -27,7 +27,6 @@ export default class CoordinateMetadata implements ICoordinateMetadata {
 		this.loading = true
 		this.aggMetadata = aggMetadata
 		this.aggDocs = aggDocs
-		this.tagIndex = this.getTagIndex()
 	}
 
 	async init() {
@@ -87,10 +86,11 @@ export default class CoordinateMetadata implements ICoordinateMetadata {
 	async untagDocs(options: {
 		groups: {name: Slug; items: string[]}[]
 	}): Promise<TagGroup[]> {
-		const tagGroups = this.getTagGroups()
 		const {groups} = options
+
+		const tagGroups = this.getTagGroups()
 		const languages = this.getLanguages()
-		const formats = this.getLanguages()
+		const formats = this.getFormats()
 
 		const tagGroupsToKeep: TagGroup[] = []
 
@@ -107,16 +107,14 @@ export default class CoordinateMetadata implements ICoordinateMetadata {
 					const taggedBlocks = this.tagIndex.taggedBlocks[tagKey]
 
 					if (taggedBlocks) {
-						for (const block of taggedBlocks) {
-							for (const language of languages) {
-								for (const format of formats) {
-									await this.aggDocs.untagBlocks({
-										block,
-										toUpdate: toUpdate,
-										language,
-										format,
-									})
-								}
+						for (const language of languages) {
+							for (const format of formats) {
+								await this.aggDocs.untagBlocks({
+									blocks: taggedBlocks,
+									toUpdate: toUpdate,
+									language,
+									format,
+								})
 							}
 						}
 					}

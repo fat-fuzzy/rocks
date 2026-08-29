@@ -73,7 +73,7 @@ export interface IAggregateDocs {
 	}): Promise<{id: string} | void>
 
 	untagBlocks(options: {
-		block: Block
+		blocks: Block[]
 		toUpdate: {name: Slug; items: Slug[]}
 		language: DocLanguage
 		format: Slug

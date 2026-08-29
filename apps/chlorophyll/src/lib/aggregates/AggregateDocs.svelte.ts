@@ -14,7 +14,6 @@ import type {
 	DocContentType,
 	IAggregateDocs,
 	Subsection,
-	FileExt,
 } from '$types'
 
 import WorkerBridge from '$lib/workers/worker-bridge'
@@ -307,16 +306,15 @@ export default class AggregateDocs implements IAggregateDocs {
 	/**
 	 * Remove tags from blocks
 	 * @param options {
-			group: TagGroup // group to update
-			toUpdate: string[] // tags to delete
-			tagIndex: TagIndex // tagIndex to retrieve tagged blocks (FIXME:)
-			languages: DocLanguage[]
-			formats: Slug[]
+		block: Block
+		toUpdate: {name: Slug; items: Slug[]}
+		language: DocLanguage
+		format: Slug
 		}
 	 * @returns 
 	 */
 	async untagBlocks(options: {
-		block: Block
+		blocks: Block[]
 		toUpdate: {name: Slug; items: Slug[]}
 		language: DocLanguage
 		format: Slug
@@ -325,29 +323,123 @@ export default class AggregateDocs implements IAggregateDocs {
 			return
 		}
 
-		const {block, toUpdate, language, format} = options
+		const {blocks, toUpdate, language, format} = options
 
-		// 2. Update blocks
-		const section = this.getSectionById(block.parentId)
+		const sectionsToUpdate: {
+			language: string
+			format: string
+			section: Section
+		}[] = []
 
-		block.tags = block.tags.filter((t) => !toUpdate.items.includes(t))
+		const languageTree = this.content[language]
 
-		if (block.tags.length === 0) {
-			block.tags = ['untagged']
+		if (!languageTree) {
+			// TEST: We should get here
+			return
 		}
 
-		await this.saveBlock({
-			language,
-			format,
-			block,
-			path: {
-				filename: block.name,
-				filetype: 'json' as FileExt,
-				parent: section.name,
-			},
-		})
+		const docTree = languageTree[format]
+
+		if (!docTree) {
+			// TEST: We should get here
+			return
+		}
+
+		for (const block of blocks) {
+			const sectionDataFound = sectionsToUpdate.find(
+				(data) => data.section.id === block.parentId,
+			)
+
+			let sectionToUpdate
+
+			if (!sectionDataFound) {
+				const section = this.getSectionById(block.parentId)
+
+				if (section) {
+					const sectionFound = docTree.sections.find(
+						(s) => s.name === section.name,
+					)
+
+					if (sectionFound) {
+						sectionToUpdate = JSON.parse(JSON.stringify(sectionFound))
+					}
+				}
+			}
+
+			if (!sectionToUpdate) {
+				continue
+			}
+
+			const updated = this.untagSection({
+				section: sectionToUpdate,
+				toUpdate,
+			})
+
+			if (updated) {
+				sectionsToUpdate.push({
+					language,
+					format,
+					section: JSON.parse(JSON.stringify(updated)),
+				})
+			}
+		}
+		await this.saveSections(sectionsToUpdate)
 
 		await this.loadDocStore()
+	}
+
+	/**
+	 * Remove tags from section
+	 * @param options {
+		section: Section
+		toUpdate: {name: Slug; items: Slug[]}
+		}
+	 * @returns updated Section
+	 */
+	untagSection(options: {
+		section: Section
+		toUpdate: {name: Slug; items: Slug[]}
+	}): Section | void {
+		if (!this.bridge) {
+			return
+		}
+
+		const {section, toUpdate} = options
+
+		const sectionToUpdate: Section = {...section, subsections: []}
+
+		if (section.tags) {
+			sectionToUpdate.tags = section.tags.filter(
+				(t) => !toUpdate.items.includes(t),
+			)
+
+			if (sectionToUpdate.tags.length === 0) {
+				sectionToUpdate.tags = ['untagged']
+			}
+		}
+
+		if (section.subsections) {
+			sectionToUpdate.subsections = []
+
+			for (const sub of section.subsections) {
+				const subsection = {...sub}
+				subsection.blocks = []
+
+				for (const block of sub.blocks) {
+					block.tags = block.tags.filter((t) => !toUpdate.items.includes(t))
+
+					if (block.tags.length === 0) {
+						block.tags = ['untagged']
+					}
+
+					subsection.blocks.push(block)
+				}
+
+				sectionToUpdate.subsections.push(subsection)
+			}
+		}
+
+		return sectionToUpdate
 	}
 
 	/**
