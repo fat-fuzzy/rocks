@@ -65,6 +65,7 @@
 			case 'print':
 				return 'railway'
 			case '/chlorophyll':
+			case '/xylem':
 				return 'voyager'
 			case '/':
 				return 'tgv'
