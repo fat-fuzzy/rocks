@@ -79,8 +79,11 @@ export function applyTags(options: {
 			const tagsInBlock = []
 
 			if (cta === 'delete') {
-				// TODO: check this is used anywhere
-				updatedTags = []
+				if (updatedTags.length === 0) {
+					updatedTags = tagGroup.items
+				} else {
+					updatedTags = []
+				}
 			} else {
 				for (const tag of groupItems) {
 					if (updatedTags.includes(tag)) {
@@ -102,10 +105,14 @@ export function applyTags(options: {
 			}
 		}
 
-		if (updatedTags.length === 0) {
-			updatedTags = ['untagged']
-		} else if (updatedTags.length > 1 && updatedTags.includes('untagged')) {
-			updatedTags = updatedTags.filter((t) => t !== 'untagged')
+		if (id !== 'delete-tags') {
+			// We are updating tags for a block or section
+			// TODO: clean this
+			if (updatedTags.length === 0) {
+				updatedTags = ['untagged']
+			} else if (updatedTags.length > 1 && updatedTags.includes('untagged')) {
+				updatedTags = updatedTags.filter((t) => t !== 'untagged')
+			}
 		}
 	}
 

@@ -186,13 +186,14 @@
 
 		const type = String(target.type) as InputCheckedTypes
 
-		const isSelectAll = checkSelectAll('delete', type, value)
+		const isSelectAll = checkSelectAll(cta, type, value)
+
 		const groupName = parseGroupFromTargetData(
 			cta,
 			isSelectAll ? value : String(target.name) || value,
 			type,
 			isSelectAll,
-			'delete-tags',
+			`${cta}-tags`,
 		)
 
 		const updatedTags = applyTags({
@@ -200,7 +201,7 @@
 			value,
 			name: String(target.name),
 			type,
-			id: 'delete-tags',
+			id: `${cta}-tags`,
 			currentTags: tagsToDelete[groupName] ?? [],
 			tagGroups: coordMetadata.getTagGroups(),
 		})
@@ -208,7 +209,7 @@
 		tagsToDelete[groupName] = updatedTags
 	}
 
-	function deleteTags() {
+	async function deleteTags() {
 		const groups: {name: string; items: string[]}[] = Object.entries(
 			tagsToDelete,
 		).reduce((groups: {name: string; items: string[]}[], entry) => {
@@ -217,7 +218,9 @@
 			return groups
 		}, [])
 
-		coordMetadata.deleteTags({groups})
+		const tagGroupsToKeep = await coordMetadata.untagDocs({groups})
+
+		await coordMetadata.setTagGroups({tagGroups: tagGroupsToKeep})
 
 		dialogActor.close()
 	}

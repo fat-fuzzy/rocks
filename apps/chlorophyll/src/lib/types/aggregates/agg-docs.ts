@@ -9,8 +9,6 @@ import type {
 	Rank,
 	Section,
 	Slug,
-	TagGroup,
-	TagIndex,
 	Uuid,
 } from '$types'
 
@@ -75,11 +73,11 @@ export interface IAggregateDocs {
 	}): Promise<{id: string} | void>
 
 	untagBlocks(options: {
-		group: TagGroup
-		tagIndex: TagIndex
-		languages: DocLanguage[]
-		formats: Slug[]
-	}): Promise<TagGroup | void>
+		blocks: Block[]
+		toUpdate: {name: Slug; items: Slug[]}
+		language: DocLanguage
+		format: Slug
+	}): Promise<{name: Slug; items: Slug[]} | void>
 
 	createSection(options: {
 		name: Slug

@@ -9,6 +9,8 @@ import type {
 } from '$types'
 
 import {buildTagIndex} from '$lib/common/transform/store-to-index'
+import {getTagKey} from '$lib/common/format'
+import {SvelteMap} from 'svelte/reactivity'
 
 /**
  * CoordinateMetadata class to manage block and section tags
@@ -18,7 +20,7 @@ import {buildTagIndex} from '$lib/common/transform/store-to-index'
 export default class CoordinateMetadata implements ICoordinateMetadata {
 	aggMetadata: IAggregateMetadata
 	aggDocs: IAggregateDocs
-	tagIndex: TagIndex
+	tagIndex: TagIndex = $derived(this.getTagIndex())
 	loading = $state(false)
 	error = $state(false)
 
@@ -26,7 +28,6 @@ export default class CoordinateMetadata implements ICoordinateMetadata {
 		this.loading = true
 		this.aggMetadata = aggMetadata
 		this.aggDocs = aggDocs
-		this.tagIndex = this.getTagIndex()
 	}
 
 	async init() {
@@ -63,13 +64,13 @@ export default class CoordinateMetadata implements ICoordinateMetadata {
 	}
 
 	getTagGroups(): TagGroup[] {
-		return JSON.parse(JSON.stringify(this.aggMetadata.tagGroups))
+		return $state.snapshot(this.aggMetadata.tagGroups)
 	}
 
 	getTagIndex(): TagIndex {
 		return buildTagIndex(
 			this.getTagGroups(),
-			Object.values(JSON.parse(JSON.stringify(this.aggDocs?.docIndex.blocks))),
+			Object.values($state.snapshot(this.aggDocs?.docIndex.blocks)),
 		)
 	}
 
@@ -83,38 +84,73 @@ export default class CoordinateMetadata implements ICoordinateMetadata {
 	/**
 	 * @param options tags to delete
 	 */
-	async deleteTags(options: {
+	async untagDocs(options: {
 		groups: {name: Slug; items: string[]}[]
-	}): Promise<{id: string} | void> {
-		const tagGroups = this.getTagGroups()
+	}): Promise<TagGroup[]> {
+		const {groups} = options
 
-		const tagGroupsToKeep: TagGroup[] = []
+		const tagGroups = this.getTagGroups()
+		const languages = this.getLanguages()
+		const formats = this.getFormats()
+
+		const tagGroupsToKeep: Map<string, TagGroup> = new SvelteMap()
 
 		for (const tagGroup of tagGroups) {
-			if (!options.groups.find((g) => g.name === tagGroup.name)) {
-				tagGroupsToKeep.push(tagGroup)
+			const toUpdate = groups.find((g) => g.name === tagGroup.name)
+
+			if (!toUpdate) {
+				tagGroupsToKeep.set(tagGroup.name, tagGroup)
 			} else {
-				const groupToUpdate = tagGroups.find((tg) => tg.name === tagGroup.name)
-				if (!groupToUpdate) {
-					throw Error(`No tag group found with name ${tagGroup.name}`)
-				} else {
-					const tg = await this.aggDocs.untagBlocks({
-						group: tagGroup,
-						tagIndex: this.getTagIndex(),
-						languages: this.getLanguages(),
-						formats: this.getFormats(),
-					})
-					if (tg) {
-						tagGroupsToKeep.push(tg)
+				let tagsToKeep: Slug[] = [...tagGroup.items]
+
+				for (const tag of toUpdate.items) {
+					const tagKey = getTagKey(toUpdate.name, tag)
+
+					// 1. Gather blocks to update
+					const taggedBlocks = this.tagIndex.taggedBlocks[tagKey]
+
+					if (taggedBlocks) {
+						for (const language of languages) {
+							for (const format of formats) {
+								await this.aggDocs.untagBlocks({
+									blocks: taggedBlocks,
+									toUpdate: toUpdate,
+									language,
+									format,
+								})
+							}
+						}
 					}
+
+					tagsToKeep = tagsToKeep.filter((t) => t !== tag)
+
+					let tagGroupFound = tagGroupsToKeep.get(tagGroup.name)
+
+					if (!tagGroupFound) {
+						tagGroupFound = tagGroup
+					}
+
+					tagGroupFound.items = tagsToKeep
+					tagGroupsToKeep.set(tagGroupFound.name, tagGroupFound)
 				}
 			}
 		}
 
-		if (tagGroupsToKeep) {
-			await this.aggMetadata.updateTagGroups({
-				groups: tagGroupsToKeep,
-			})
-		}
+		const updatedTagGroups = Array.from(tagGroupsToKeep.values()).filter(
+			(tg) => tg.items.length > 0,
+		)
+
+		return updatedTagGroups
+	}
+
+	/**
+	 * @param options tags to delete
+	 */
+	async setTagGroups(options: {tagGroups: TagGroup[]}): Promise<void> {
+		const {tagGroups} = options
+
+		await this.aggMetadata.updateTagGroups({
+			groups: tagGroups,
+		})
 	}
 }
