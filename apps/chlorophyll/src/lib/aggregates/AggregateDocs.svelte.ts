@@ -332,14 +332,14 @@ export default class AggregateDocs implements IAggregateDocs {
 		const languageTree = this.content[language]
 
 		if (!languageTree) {
-			// TEST: We should get here
+			// TEST: We should not get here
 			return
 		}
 
 		const docTree = languageTree[format]
 
 		if (!docTree) {
-			// TEST: We should get here
+			// TEST: We should not get here
 			return
 		}
 
