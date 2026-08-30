@@ -79,7 +79,11 @@ export function applyTags(options: {
 			const tagsInBlock = []
 
 			if (cta === 'delete') {
-				updatedTags = []
+				if (updatedTags.length === 0) {
+					updatedTags = tagGroup.items
+				} else {
+					updatedTags = []
+				}
 			} else {
 				for (const tag of groupItems) {
 					if (updatedTags.includes(tag)) {
