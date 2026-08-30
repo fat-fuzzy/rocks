@@ -197,8 +197,7 @@ export default class AggregateDocs implements IAggregateDocs {
 		await this.bridge.saveSection({
 			language,
 			format,
-			// FIXME: shouldn't have to do this
-			section: JSON.parse(JSON.stringify(section)),
+			section: $state.snapshot(section),
 		})
 	}
 
@@ -249,8 +248,7 @@ export default class AggregateDocs implements IAggregateDocs {
 		await this.bridge.saveSection({
 			language,
 			format,
-			// FIXME: shouldn't have to do this
-			section: JSON.parse(JSON.stringify(sectionToUpdate)),
+			section: $state.snapshot(sectionToUpdate),
 		})
 	}
 
@@ -361,7 +359,7 @@ export default class AggregateDocs implements IAggregateDocs {
 					)
 
 					if (sectionFound) {
-						sectionToUpdate = JSON.parse(JSON.stringify(sectionFound))
+						sectionToUpdate = $state.snapshot(sectionFound)
 					}
 				}
 			}
@@ -379,7 +377,7 @@ export default class AggregateDocs implements IAggregateDocs {
 				sectionsToUpdate.push({
 					language,
 					format,
-					section: JSON.parse(JSON.stringify(updated)),
+					section: $state.snapshot(updated),
 				})
 			}
 		}

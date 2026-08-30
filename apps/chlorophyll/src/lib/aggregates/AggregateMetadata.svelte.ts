@@ -87,12 +87,12 @@ export default class AggregateMetadata implements IAggregateMetadata {
 		await this.bridge.saveLanguage({
 			language: name,
 			sourceLanguage,
-			formats: JSON.parse(JSON.stringify(this.base.formats)),
+			formats: $state.snapshot(this.base.formats),
 		})
 
 		this.base.languages.push(name)
 
-		await this.bridge.saveBase({base: JSON.parse(JSON.stringify(this.base))})
+		await this.bridge.saveBase({base: $state.snapshot(this.base)})
 
 		await this.loadBase()
 	}
@@ -112,13 +112,13 @@ export default class AggregateMetadata implements IAggregateMetadata {
 		await this.bridge.saveFormat({
 			format: name,
 			sourceFormat,
-			formats: JSON.parse(JSON.stringify(this.base.formats)),
-			languages: JSON.parse(JSON.stringify(this.base.languages)),
+			formats: $state.snapshot(this.base.formats),
+			languages: $state.snapshot(this.base.languages),
 		})
 
 		this.base.formats.push(name)
 
-		await this.bridge.saveBase({base: JSON.parse(JSON.stringify(this.base))})
+		await this.bridge.saveBase({base: $state.snapshot(this.base)})
 
 		await this.loadBase()
 	}
@@ -159,7 +159,7 @@ export default class AggregateMetadata implements IAggregateMetadata {
 		}
 
 		await this.bridge.saveBase({
-			base: JSON.parse(JSON.stringify(this.base)),
+			base: $state.snapshot(this.base),
 		})
 	}
 
@@ -176,7 +176,7 @@ export default class AggregateMetadata implements IAggregateMetadata {
 		this.base.tags = options.groups
 
 		await this.bridge.saveBase({
-			base: JSON.parse(JSON.stringify(this.base)),
+			base: $state.snapshot(this.base),
 		})
 	}
 
@@ -266,7 +266,7 @@ export default class AggregateMetadata implements IAggregateMetadata {
 		}
 
 		await this.bridge.saveStructures({
-			structures: JSON.parse(JSON.stringify(structuresToUpdate)),
+			structures: $state.snapshot(structuresToUpdate),
 		})
 
 		await this.loadStructure()

@@ -63,13 +63,13 @@ export default class CoordinateMetadata implements ICoordinateMetadata {
 	}
 
 	getTagGroups(): TagGroup[] {
-		return JSON.parse(JSON.stringify(this.aggMetadata.tagGroups))
+		return $state.snapshot(this.aggMetadata.tagGroups)
 	}
 
 	getTagIndex(): TagIndex {
 		return buildTagIndex(
 			this.getTagGroups(),
-			Object.values(JSON.parse(JSON.stringify(this.aggDocs?.docIndex.blocks))),
+			Object.values($state.snapshot(this.aggDocs?.docIndex.blocks)),
 		)
 	}
 

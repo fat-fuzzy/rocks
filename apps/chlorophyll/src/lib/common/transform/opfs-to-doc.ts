@@ -198,8 +198,6 @@ export function opfsDocTreeToDocStore(tree: OPFSTreeDoc): DocStore {
 			languageTree = {}
 		}
 
-		languageTree = JSON.parse(JSON.stringify(languageTree))
-
 		if (languageTree === undefined) {
 			console.warn(`No folder found for ${language}`)
 
