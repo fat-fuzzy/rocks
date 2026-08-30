@@ -186,14 +186,14 @@
 
 		const type = String(target.type) as InputCheckedTypes
 
-		const isSelectAll = checkSelectAll('delete', type, value)
+		const isSelectAll = checkSelectAll(cta, type, value)
 
 		const groupName = parseGroupFromTargetData(
 			cta,
 			isSelectAll ? value : String(target.name) || value,
 			type,
 			isSelectAll,
-			'delete-tags',
+			`${cta}-tags`,
 		)
 
 		const updatedTags = applyTags({
@@ -201,7 +201,7 @@
 			value,
 			name: String(target.name),
 			type,
-			id: 'delete-tags',
+			id: `${cta}-tags`,
 			currentTags: tagsToDelete[groupName] ?? [],
 			tagGroups: coordMetadata.getTagGroups(),
 		})
