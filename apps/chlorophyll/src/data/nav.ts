@@ -1,7 +1,14 @@
 import type {NavItem, UiColor, UiShape, UiSize, UiVariant} from '@fat-fuzzy/ui'
 import type {SeedSection} from '$types'
 
-export const links = [{slug: 'cv', title: 'CV', label: 'CV', layout: 'metro'}]
+export const links = [
+	{
+		slug: 'chlorophyll',
+		title: 'Chlorophyll',
+		label: 'Chlorophyll',
+		layout: 'metro',
+	},
+]
 
 export const linksSocials = [
 	{
@@ -38,60 +45,55 @@ const navBase = {
 }
 
 export const pages: {[key: string]: NavItem} = {
-	chlorophyll: {
+	vital: {
 		slug: '',
-		label: 'Chlorophyll',
-		title: 'Home',
-		asset: 'home',
+		label: 'Vital',
+		title: 'Vital',
+		asset: 'rainbow',
 		actionPath: '/',
 		items: [
 			{
-				slug: 'cv',
-				title: 'CV',
-				label: 'CV',
-				asset: 'usage',
-				actionPath: '/cv',
+				slug: 'chlorophyll',
+				label: 'Chlorophyll',
+				title: 'Chlorophyll',
+				asset: 'blocks', // FIXME: derive icon names for use case from original
+				actionPath: '/chlorophyll',
 			},
 		],
 	},
 }
 
 export const cta: {[key: string]: NavItem} = {
-	cv: {
-		slug: 'cv',
-		label: 'CV',
-		title: 'CV',
-		asset: 'usage',
+	chlorophyll: {
+		slug: 'chlorophyll',
+		label: 'Chlorophyll',
+		title: 'Chlorophyll',
 		layout: 'tram',
-		actionPath: '/cv',
+		actionPath: '/chlorophyll',
 		items: [
 			{
 				slug: 'edit',
 				title: 'Edit',
 				label: 'Edit',
-				asset: 'speaking',
-				actionPath: '/cv/edit',
+				actionPath: '/chlorophyll/edit',
 			},
 			{
 				slug: 'build',
 				title: 'Build',
 				label: 'Build',
-				asset: 'settings',
-				actionPath: '/cv/build',
+				actionPath: '/chlorophyll/build',
 			},
 			{
 				slug: 'compare',
 				title: 'Compare',
 				label: 'Compare',
-				asset: 'decisions',
-				actionPath: '/cv/compare',
+				actionPath: '/chlorophyll/compare',
 			},
 			{
 				slug: 'print',
 				title: 'Print',
 				label: 'Print',
-				asset: 'center-origin',
-				actionPath: '/cv/print',
+				actionPath: '/chlorophyll/print',
 			},
 		],
 	},

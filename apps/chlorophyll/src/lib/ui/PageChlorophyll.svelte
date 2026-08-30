@@ -55,7 +55,7 @@
 				</div>
 				<div class="l:stack w:full">
 					<a
-						href={resolve(`/cv/${action}`)}
+						href={resolve(`/chlorophyll/${action}`)}
 						class="l:flex w:full font:heading font:sm justify:center raviolink color:primary surface:2:primary shape:mellow"
 					>
 						{CTA_LINK_LABELS[action]}

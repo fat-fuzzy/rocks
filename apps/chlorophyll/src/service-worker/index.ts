@@ -18,17 +18,17 @@ const self = globalThis.self as unknown as ServiceWorkerGlobalScope
 // Create a unique cache name for this deployment
 const CACHE = `cache-${version}`
 const SHELL_URL = '/'
-const CV_URL = '/cv'
-const EDIT_URL = `${CV_URL}/edit`
-const BUILD_URL = `${CV_URL}/build`
-const COMPARE_URL = `${CV_URL}/compare`
-const PRINT_URL = `${CV_URL}/print`
+const CHLOROPHYLL_URL = '/chlorophyll'
+const EDIT_URL = `${CHLOROPHYLL_URL}/edit`
+const BUILD_URL = `${CHLOROPHYLL_URL}/build`
+const COMPARE_URL = `${CHLOROPHYLL_URL}/compare`
+const PRINT_URL = `${CHLOROPHYLL_URL}/print`
 
 const CTA = [EDIT_URL, BUILD_URL, COMPARE_URL, PRINT_URL]
 
 const ASSETS = [
 	SHELL_URL,
-	CV_URL,
+	CHLOROPHYLL_URL,
 	...build, // the app itself
 	...files, // everything in `static`
 ]

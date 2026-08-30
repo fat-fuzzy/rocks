@@ -52,7 +52,7 @@
 	/**
 	 * Setup page data (loaded / generated)
 	 */
-	const sidenav = buildNav('chlorophyll')
+	const sidenav = buildNav('vital')
 
 	let pathname = $derived(page.url.pathname)
 	let layout: UiLayout = $derived.by(() => {
@@ -64,7 +64,7 @@
 			case 'compare':
 			case 'print':
 				return 'railway'
-			case '/cv':
+			case '/chlorophyll':
 				return 'voyager'
 			case '/':
 				return 'tgv'
@@ -163,7 +163,7 @@
 					color={sidenav.color}
 					background={sidenav.background}
 					variant="bare"
-					checked={pathname.startsWith('/cv/') ? false : undefined}
+					checked={pathname.startsWith('/chlorophyll/') ? false : undefined}
 					area="gare"
 					coords="ouest"
 					shape="square"

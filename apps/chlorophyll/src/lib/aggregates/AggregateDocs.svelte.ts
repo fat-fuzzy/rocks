@@ -441,7 +441,7 @@ export default class AggregateDocs implements IAggregateDocs {
 	}
 
 	/**
-	 * Get selected section by name for given [language*format]
+	 * Get selected section by name for given [language * format]
 	 * @param options language, format and name to match
 	 * @returns section
 	 */
@@ -456,8 +456,8 @@ export default class AggregateDocs implements IAggregateDocs {
 	}
 
 	/**
-	 * Get selected section by name for given [language*format]
-	 * @param options language, format and name to match
+	 * Get selected section by id for given [language * format]
+	 * @param options id to match
 	 * @returns section
 	 */
 	getSectionById(id: Uuid): Section {
@@ -465,9 +465,9 @@ export default class AggregateDocs implements IAggregateDocs {
 	}
 
 	/**
-	 * Get all sections
-	 * @param options section selection to load, blocks to load within sections
-	 * @returns Array: {name, section}[]
+	 * Get all sections for given [language * format]
+	 * @param options language and format query params
+	 * @returns array of sections found in storage
 	 */
 	getSections(options: {language: Slug; format: DocLanguage}): Section[] {
 		const languageTree = this.content[options.language]
@@ -487,7 +487,7 @@ export default class AggregateDocs implements IAggregateDocs {
 	}
 
 	/**
-	 * Get selected sections for given options
+	 * Get selected sections for given [language * format * names]
 	 * @param options section selection to load, blocks to load within sections
 	 * @returns Array: {name, section}[]
 	 */

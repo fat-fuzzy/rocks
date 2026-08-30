@@ -1,13 +1,14 @@
 <script lang="ts">
 	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
-	import PageCV from '$lib/ui/PageCV.svelte'
+	import PageChlorophyll from '$lib/ui/PageChlorophyll.svelte'
 
 	const {PageRails} = ui.content
 
 	let pageContext = $derived({...page.data.pageContext, label: 'On this Page'})
-	let title = 'CV'
-	let description = 'Edit, structure, compare and print a CV from your browser'
+	let title = 'Chlorophyll'
+	let description =
+		'Edit, structure, compare and print a document from your browser'
 </script>
 
 <PageRails
@@ -19,6 +20,6 @@
 	layout="voyager"
 >
 	{#snippet main()}
-		<PageCV />
+		<PageChlorophyll />
 	{/snippet}
 </PageRails>

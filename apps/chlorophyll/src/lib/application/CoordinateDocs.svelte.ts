@@ -183,7 +183,7 @@ export default class CoordinateDocs implements ICoordinateDocs {
 	}
 
 	/**
-	 * Get selected section by name for given [language*format]
+	 * Get selected section by name for given [language * format]
 	 * @param options language, format and name to match
 	 * @returns section
 	 */
