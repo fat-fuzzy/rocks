@@ -14,19 +14,23 @@
 }
 
 .shape\:pill[class*='emoji']::before {
-	margin-inline-end: var(--icon-gap, var(--outline-offset-md));
+	margin-inline-end: var(--icon-gap, var(--ui-size-sm));
 }
 
 [class*='emoji:']:not([class*='justify:'], [class*='l:frame'])::before {
 	margin-inline: var(--icon-gap, var(--outline-offset-md));
 }
 
+a[class*='emoji:']:not([class*='justify:'], [class*='l:frame'])::before {
+	margin-inline-end: var(--icon-gap, var(--ui-size-sm));
+}
+
 [class*='emoji:'].justify\:start::before,
 [class*='emoji:']:not(.shape\:round, .shape\:square).justify\:center::before {
-	margin-inline-end: var(--icon-gap, var(--outline-offset-md));
+	margin-inline-end: var(--icon-gap, var(--ui-size-sm));
 }
 
 [class*='emoji:'].justify\:end::after,
 [class*='emoji:']:not(.shape\:round, .shape\:square).justify\:center::after {
-	margin-inline-start: var(--icon-gap, var(--outline-offset-md));
+	margin-inline-start: var(--icon-gap, var(--ui-size-sm));
 }
