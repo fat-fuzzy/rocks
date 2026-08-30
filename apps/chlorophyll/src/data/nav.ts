@@ -59,6 +59,13 @@ export const pages: {[key: string]: NavItem} = {
 				asset: 'blocks', // FIXME: derive icon names for use case from original
 				actionPath: '/chlorophyll',
 			},
+			{
+				slug: 'xylem',
+				label: 'Xylem',
+				title: 'Xylem',
+				asset: 'moby', // FIXME: derive icon names for use case from original
+				actionPath: '/xylem',
+			},
 		],
 	},
 }
@@ -94,6 +101,39 @@ export const cta: {[key: string]: NavItem} = {
 				title: 'Print',
 				label: 'Print',
 				actionPath: '/chlorophyll/print',
+			},
+		],
+	},
+	xylem: {
+		slug: 'xylem',
+		label: 'Xylem',
+		title: 'Xylem',
+		layout: 'tram',
+		actionPath: '/xylem',
+		items: [
+			{
+				slug: 'edit',
+				title: 'Edit',
+				label: 'Edit',
+				actionPath: '/xylem/edit',
+			},
+			{
+				slug: 'build',
+				title: 'Build',
+				label: 'Build',
+				actionPath: '/xylem/build',
+			},
+			{
+				slug: 'compare',
+				title: 'Compare',
+				label: 'Compare',
+				actionPath: '/xylem/compare',
+			},
+			{
+				slug: 'print',
+				title: 'Print',
+				label: 'Print',
+				actionPath: '/xylem/print',
 			},
 		],
 	},
