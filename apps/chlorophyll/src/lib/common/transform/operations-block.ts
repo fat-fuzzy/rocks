@@ -132,7 +132,7 @@ export function updateBlockInSection(options: {
 }): Section | void {
 	const {block, section} = options
 
-	const sectionToUpdate: Section = $state.snapshot(section)
+	const sectionToUpdate: Section = section
 	// 1. If block is not in a group: it is the main content of the section
 	if (block.content_type === 'section') {
 		sectionToUpdate.content = block.content
@@ -166,7 +166,7 @@ export function deleteBlockInSection(options: {
 }): Section | void {
 	const {group, name, parent, section} = options
 
-	const sectionToUpdate: Section = $state.snapshot(section)
+	const sectionToUpdate: Section = section
 	// Determine subsection:
 	// - group is provided
 	// - OR or use default subgroup (name = section)
