@@ -35,7 +35,7 @@
 	const dialogSize = $derived(
 		groups.length < 5
 			? 'sm'
-			: groups.length < 7
+			: groups.length < 6
 				? 'md'
 				: groups.length < 9
 					? 'lg'
