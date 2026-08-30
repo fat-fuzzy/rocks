@@ -247,8 +247,8 @@ export default class CoordinateDocs implements ICoordinateDocs {
 
 		await this.aggDocs.createSection({
 			...options,
-			formats: JSON.parse(JSON.stringify(options.formats)),
-			languages: JSON.parse(JSON.stringify(languages)),
+			formats: $state.snapshot(options.formats),
+			languages: $state.snapshot(languages),
 			updateRanks,
 		})
 
