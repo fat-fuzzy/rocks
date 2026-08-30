@@ -10,6 +10,7 @@ import type {
 
 import {buildTagIndex} from '$lib/common/transform/store-to-index'
 import {getTagKey} from '$lib/common/format'
+import {SvelteMap} from 'svelte/reactivity'
 
 /**
  * CoordinateMetadata class to manage block and section tags
@@ -92,14 +93,16 @@ export default class CoordinateMetadata implements ICoordinateMetadata {
 		const languages = this.getLanguages()
 		const formats = this.getFormats()
 
-		const tagGroupsToKeep: TagGroup[] = []
+		const tagGroupsToKeep: Map<string, TagGroup> = new SvelteMap()
 
 		for (const tagGroup of tagGroups) {
 			const toUpdate = groups.find((g) => g.name === tagGroup.name)
 
 			if (!toUpdate) {
-				tagGroupsToKeep.push(tagGroup)
+				tagGroupsToKeep.set(tagGroup.name, tagGroup)
 			} else {
+				let tagsToKeep: Slug[] = [...tagGroup.items]
+
 				for (const tag of toUpdate.items) {
 					const tagKey = getTagKey(toUpdate.name, tag)
 
@@ -119,17 +122,25 @@ export default class CoordinateMetadata implements ICoordinateMetadata {
 						}
 					}
 
-					const tagsToKeep: Slug[] = tagGroup.items.filter((t) => t !== tag)
+					tagsToKeep = tagsToKeep.filter((t) => t !== tag)
 
-					if (tagsToKeep.length > 0) {
-						tagGroup.items = tagsToKeep
-						tagGroupsToKeep.push(tagGroup)
+					let tagGroupFound = tagGroupsToKeep.get(tagGroup.name)
+
+					if (!tagGroupFound) {
+						tagGroupFound = tagGroup
 					}
+
+					tagGroupFound.items = tagsToKeep
+					tagGroupsToKeep.set(tagGroupFound.name, tagGroupFound)
 				}
 			}
 		}
 
-		return tagGroupsToKeep
+		const updatedTagGroups = Array.from(tagGroupsToKeep.values()).filter(
+			(tg) => tg.items.length > 0,
+		)
+
+		return updatedTagGroups
 	}
 
 	/**
@@ -141,7 +152,5 @@ export default class CoordinateMetadata implements ICoordinateMetadata {
 		await this.aggMetadata.updateTagGroups({
 			groups: tagGroups,
 		})
-
-		this.tagIndex = this.getTagIndex()
 	}
 }
