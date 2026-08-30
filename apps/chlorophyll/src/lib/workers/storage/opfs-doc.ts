@@ -94,7 +94,7 @@ export async function saveFormat(options: {
 }
 
 /**
- * Duplicate directory content from source [language*format] in a new directory [language*format]
+ * Duplicate directory content from source [language * format] in a new directory [language * format]
  * @param options
  */
 async function duplicateDocContent(options: {

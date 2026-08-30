@@ -256,7 +256,7 @@ export function updateSectionRanks(options: {
 }
 
 /**
- * Get sections per [language*format] for given rank
+ * Get sections per [language * format] for given rank
  * @param rank
  * @returns sections found
  */

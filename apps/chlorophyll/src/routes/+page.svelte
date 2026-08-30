@@ -6,7 +6,7 @@
 	const {Magic} = ui.blocks
 
 	let pageContext = $derived({...page.data.pageContext, label: 'On this Page'})
-	let title = 'Chlorophyll is Vital'
+	let title = 'Vital'
 	let description = `Chlorophyll is Vital for photosynthesis`
 </script>
 
@@ -19,7 +19,7 @@
 	layout="tram"
 >
 	{#snippet main()}
-		<div class="l:frame maki:block:2xl justify:center">
+		<div class="l:frame justify:center">
 			<Magic spell="chlorophyll" size="2xl" shape="round">
 				<span
 					class="font:h1 font:2xl svg:lotus size:2xl l:stack align:between justify:baseline"

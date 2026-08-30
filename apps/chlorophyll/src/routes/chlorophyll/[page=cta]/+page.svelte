@@ -177,7 +177,7 @@
 		<li>
 			Create your own content: go to <a
 				class="font:semibold"
-				href={resolve('/cv/edit/')}
+				href={resolve('/chlorophyll/edit/')}
 			>
 				Edit
 			</a>, then click on
@@ -194,13 +194,13 @@
 {#snippet getStartedPresets()}
 	<p>
 		To get started, first create a Preset from <a
-			href={resolve('/cv/edit')}
+			href={resolve('/chlorophyll/edit')}
 			class="font:semibold"
 		>
 			Edit
 		</a>
 		or
-		<a href={resolve('/cv/build')} class="font:semibold"> Build </a>
+		<a href={resolve('/chlorophyll/build')} class="font:semibold"> Build </a>
 	</p>
 {/snippet}
 

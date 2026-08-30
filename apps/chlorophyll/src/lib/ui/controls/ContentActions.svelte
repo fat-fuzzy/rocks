@@ -34,7 +34,7 @@
 					class="cta text:center surface:2:primary shape:mellow l:flex"
 				>
 					<a
-						href={resolve(`/cv/${key}${presetQuery}`)}
+						href={resolve(`/chlorophyll/${key}${presetQuery}`)}
 						class={linkStyles}
 						onclick={() => {
 							if (cta !== 'compare') {

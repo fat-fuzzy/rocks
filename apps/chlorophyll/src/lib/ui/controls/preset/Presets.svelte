@@ -122,10 +122,13 @@
 							<p class="font:heading font:semibold">To add a preset</p>
 							<ol class="maki:inline:lg">
 								<li>
-									<a href={resolve('/cv/edit')} class="font:sm">Edit</a> some content
+									<a href={resolve('/chlorophyll/edit')} class="font:sm">Edit</a
+									> some content
 								</li>
 								<li>
-									<a href={resolve('/cv/build')} class="font:sm">Build</a> the structure
+									<a href={resolve('/chlorophyll/build')} class="font:sm"
+										>Build</a
+									> the structure
 								</li>
 								<li>Save it as a preset!</li>
 							</ol>
@@ -146,7 +149,7 @@
 							class={`raviolink shape:mellow l:flex justify:between ${isCurrent ? 'surface:0:primary' : ''}`}
 						>
 							<a
-								href={resolve(`/cv/${cta}/${presetQuery}`)}
+								href={resolve(`/chlorophyll/${cta}/${presetQuery}`)}
 								class="font:sm raviolink grow"
 							>
 								{preset.name}
