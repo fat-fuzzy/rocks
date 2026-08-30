@@ -49,9 +49,7 @@
 	// FIXME: enable single tag version deletion (+ tag rename)
 	let groups = $derived(
 		cta === 'delete'
-			? tagGroups.filter(
-					(tg) => tg.name !== 'twilight-z' && tg.name !== 'version',
-				)
+			? tagGroups.filter((tg) => tg.name !== 'twilight-z')
 			: tagGroups,
 	)
 
