@@ -23,6 +23,10 @@ html:has(.l\:grid\:urbanist) {
 	}
 }
 
+.tram.zone\:main {
+	grid-template-rows: subgrid;
+}
+
 .zone\:main,
 .page-main {
 	min-block-size: 100%;
