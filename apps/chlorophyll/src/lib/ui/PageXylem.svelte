@@ -3,33 +3,27 @@
 
 	import DialogData from '$lib/ui/controls/data/DialogData.svelte'
 
-	const CTA = ['edit', 'build', 'compare', 'print']
+	const CTA = ['edit', 'build', 'preview']
 	const CTA_LINK_LABELS: {[cta: string]: string} = {
 		edit: 'Edit the Content',
 		build: 'Build the Structure',
-		compare: 'Compare Presets',
-		print: 'Save to PDF',
+		preview: 'Compare Pathways',
 	}
 
 	const CTA_TITLE: {[cta: string]: string} = {
 		edit: 'Content',
 		build: 'Structure',
-		compare: 'Compare',
-		print: 'Print',
+		preview: 'Compare',
 		io: 'Your data',
 	}
 
 	const CTA_DESCRIPTIONS: {[cta: string]: string[]} = {
-		edit: ['Focus on your core message.', 'Make your voice heard.'],
+		edit: ['Build your resources.', 'Nourish yourself.'],
 		build: [
-			'Structure content to tell your story.',
-			'Save and modify presets.',
+			'Structure resources to fit your needs.',
+			'Save and modify pathways.',
 		],
-		compare: [
-			'Preview your work in progress.',
-			'Compare doc content as presets.',
-		],
-		print: ['Save to PDF using your browser.'],
+		preview: ['Preview notes', 'Compare doc content as pathways.'],
 		io: [
 			'Your data lives in your browser.',
 			'Export it for backup as JSON.',
@@ -55,7 +49,7 @@
 				</div>
 				<div class="l:stack w:full">
 					<a
-						href={resolve(`/chlorophyll/${action}`)}
+						href={resolve(`/xylem/${action}`)}
 						class="l:flex w:full font:heading font:sm justify:center raviolink color:primary surface:2:primary shape:mellow"
 					>
 						{CTA_LINK_LABELS[action]}
