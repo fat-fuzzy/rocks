@@ -4,6 +4,7 @@ import type {
 	DocIndex,
 	DocLanguage,
 	DocStore,
+	Prose,
 	Rank,
 	Section,
 	Slug,
@@ -77,8 +78,7 @@ export function insertBlockInSection(options: {
 	tags: string[]
 	section: Section
 }): Section {
-	// FIXME: shouldn't have to do this
-	const section = JSON.parse(JSON.stringify(options.section))
+	const section = $state.snapshot(options.section)
 	const {rank, name} = options
 
 	// TODO: enable optional format selection
@@ -92,6 +92,11 @@ export function insertBlockInSection(options: {
 			? ['untagged']
 			: []
 
+	const prose: Prose = {
+		html: '<p>Edit block content</p>',
+		json: {},
+	}
+
 	if (group) {
 		const block = {
 			id: crypto.randomUUID(),
@@ -100,23 +105,19 @@ export function insertBlockInSection(options: {
 			rank,
 			group,
 			name,
-			content: {
-				html: '<p>Edit block content</p>',
-				json: {},
-			},
+			content: prose,
 			tags,
 		}
 
+		// @ts-expect-error [unknown vs never] type mismatch in Prose's content.json
 		section.subsections = updateSubsections({
 			group,
 			block,
 			section,
 		})
 	} else {
-		section.content = {
-			html: '<p>Edit main section content</p>',
-			json: {},
-		}
+		// @ts-expect-error [unknown vs never] type mismatch in Prose's content.json
+		section.content = prose
 		section.tags = tags
 	}
 
@@ -131,8 +132,7 @@ export function updateBlockInSection(options: {
 }): Section | void {
 	const {block, section} = options
 
-	// FIXME: shouldn't have to do this
-	const sectionToUpdate: Section = JSON.parse(JSON.stringify(section))
+	const sectionToUpdate: Section = $state.snapshot(section)
 	// 1. If block is not in a group: it is the main content of the section
 	if (block.content_type === 'section') {
 		sectionToUpdate.content = block.content
@@ -166,7 +166,7 @@ export function deleteBlockInSection(options: {
 }): Section | void {
 	const {group, name, parent, section} = options
 
-	const sectionToUpdate: Section = JSON.parse(JSON.stringify(section))
+	const sectionToUpdate: Section = $state.snapshot(section)
 	// Determine subsection:
 	// - group is provided
 	// - OR or use default subgroup (name = section)
@@ -247,7 +247,7 @@ export function updateSectionRanks(options: {
 		for (let i = options.rank; i < maxRank; i++) {
 			const toUpdate = getSectionsByRank({docIndex, rank: i})
 			if (toUpdate.length) {
-				updateRanks = updateRanks.concat(JSON.parse(JSON.stringify(toUpdate)))
+				updateRanks = updateRanks.concat($state.snapshot(toUpdate))
 			}
 		}
 	}
