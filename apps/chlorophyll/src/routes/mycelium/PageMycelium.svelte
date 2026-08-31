@@ -5,7 +5,7 @@
 
 	const CTA: ActionTransform[] = ['analyze', 'engage', 'data']
 	const CTA_LINK_LABELS: {[cta: string]: string} = {
-		analyze: 'Look at Where You Are',
+		analyze: `Get a Sense of Where You're At`,
 		engage: 'Decide Where You are Going',
 	}
 
