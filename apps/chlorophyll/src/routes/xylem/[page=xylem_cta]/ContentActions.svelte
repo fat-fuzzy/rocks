@@ -53,14 +53,14 @@
 	<div class="l:flex:2xs w:full justify:between grow">
 		<div class="l:flex:2xs justify:between grow">
 			{#if cta === 'edit' || cta === 'build'}
-				<MenuSections {oninput} color="accent" variant="fill" />
+				<MenuSections {oninput} color="primary" variant="outline" />
 			{/if}
 		</div>
 		<div class="l:flex:2xs justify:between hug">
 			{#if cta !== 'compare'}
-				<MenuSettings {oninput} color="accent" variant="outline" />
+				<MenuSettings {oninput} color="primary" variant="outline" />
 			{/if}
-			<MenuData id="button-import" color="accent" />
+			<MenuData id="button-import" color="primary" />
 		</div>
 	</div>
 </div>

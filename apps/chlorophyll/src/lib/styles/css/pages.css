@@ -47,3 +47,9 @@
 		max-inline-size: 50rem;
 	}
 }
+
+[class*='page:chlorophyll'] {
+	h1 {
+		--hue: var(--color-theme-accent);
+	}
+}

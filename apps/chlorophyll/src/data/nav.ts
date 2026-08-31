@@ -52,6 +52,7 @@ export const cta: {[key: string]: NavItem} = {
 		layout: 'tram',
 		asset: 'blocks',
 		actionPath: '/chlorophyll',
+		color: 'accent' as UiColor,
 		items: [
 			{
 				slug: 'edit',

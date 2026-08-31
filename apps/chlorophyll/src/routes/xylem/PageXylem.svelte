@@ -53,7 +53,7 @@
 {/snippet}
 
 <section class="l:stack:xl w:full">
-	<h2 class="text:center">A space to Gather your Thoughts</h2>
+	<h2 class="text:center">A Space to Gather your Thoughts</h2>
 	<ContentGrid
 		page={currentPage}
 		actions={CTA}

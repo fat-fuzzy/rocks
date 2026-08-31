@@ -31,7 +31,7 @@
 
 				<li
 					aria-current={key === cta}
-					class="cta text:center surface:2:primary shape:mellow l:flex"
+					class="cta text:center surface:2:accent shape:mellow l:flex"
 				>
 					<a
 						href={resolve(`/chlorophyll/${key}${presetQuery}`)}
@@ -53,7 +53,7 @@
 	<div class="l:flex:2xs w:full justify:between grow">
 		<div class="l:flex:2xs justify:between grow">
 			{#if cta === 'edit' || cta === 'build'}
-				<MenuSections {oninput} color="accent" variant="fill" />
+				<MenuSections {oninput} color="accent" variant="outline" />
 			{/if}
 		</div>
 		<div class="l:flex:2xs justify:between hug">

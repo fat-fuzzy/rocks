@@ -43,7 +43,7 @@
 			<DialogData
 				id="button-import"
 				label="Manage Data"
-				color="primary"
+				color="accent"
 				font="sm"
 			/>
 		</div>
@@ -51,12 +51,13 @@
 {/snippet}
 
 <section class="l:stack:xl w:full">
-	<h2 class="text:center">What can you do from here</h2>
+	<h2 class="text:center">Tools to Communicate with Others about Yourself</h2>
 	<ContentGrid
 		page={currentPage}
 		actions={CTA}
 		links={CTA_LINK_LABELS}
 		headings={CTA_TITLE}
 		{description}
+		color="accent"
 	/>
 </section>

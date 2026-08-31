@@ -66,7 +66,7 @@
 				{#if cta === 'write'}
 					<DialogSaveSection
 						id="add-section"
-						color="accent"
+						color="primary"
 						asset="plus"
 						assetType="svg"
 						label="New Section"
@@ -105,7 +105,7 @@
 				<div class="maki:block">
 					<DialogSaveSection
 						id="add-section"
-						color="accent"
+						color="primary"
 						asset="plus"
 						assetType="svg"
 						variant="outline"
