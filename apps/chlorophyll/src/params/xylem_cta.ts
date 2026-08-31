@@ -1,6 +1,6 @@
 import type {ParamMatcher} from '@sveltejs/kit'
-import type {ActionNote} from '$lib/types'
+import type {ActionResource} from '$lib/types'
 
-export const match = ((param: string): param is ActionNote => {
-	return param === 'edit' || param === 'build' || param === 'preview'
+export const match = ((param: string): param is ActionResource => {
+	return param === 'write' || param === 'reflect' || param === 'experiment'
 }) satisfies ParamMatcher

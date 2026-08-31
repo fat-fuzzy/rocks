@@ -44,38 +44,13 @@ const navBase = {
 	items: [] as NavItem[],
 }
 
-export const pages: {[key: string]: NavItem} = {
-	vital: {
-		slug: '',
-		label: 'Vital',
-		title: 'Vital',
-		asset: 'rainbow',
-		actionPath: '/',
-		items: [
-			{
-				slug: 'chlorophyll',
-				label: 'Chlorophyll',
-				title: 'Chlorophyll',
-				asset: 'blocks', // FIXME: derive icon names for use case from original
-				actionPath: '/chlorophyll',
-			},
-			{
-				slug: 'xylem',
-				label: 'Xylem',
-				title: 'Xylem',
-				asset: 'moby', // FIXME: derive icon names for use case from original
-				actionPath: '/xylem',
-			},
-		],
-	},
-}
-
 export const cta: {[key: string]: NavItem} = {
 	chlorophyll: {
 		slug: 'chlorophyll',
 		label: 'Chlorophyll',
 		title: 'Chlorophyll',
 		layout: 'tram',
+		asset: 'blocks',
 		actionPath: '/chlorophyll',
 		items: [
 			{
@@ -109,27 +84,39 @@ export const cta: {[key: string]: NavItem} = {
 		label: 'Xylem',
 		title: 'Xylem',
 		layout: 'tram',
+		asset: 'moby',
 		actionPath: '/xylem',
 		items: [
 			{
-				slug: 'edit',
-				title: 'Edit',
-				label: 'Edit',
-				actionPath: '/xylem/edit',
+				slug: 'write',
+				title: 'Write',
+				label: 'Write',
+				actionPath: '/xylem/write',
 			},
 			{
-				slug: 'build',
-				title: 'Build',
-				label: 'Build',
-				actionPath: '/xylem/build',
+				slug: 'reflect',
+				title: 'Reflect',
+				label: 'Reflect',
+				actionPath: '/xylem/reflect',
 			},
 			{
-				slug: 'preview',
-				title: 'Preview',
-				label: 'Preview',
-				actionPath: '/xylem/preview',
+				slug: 'experiment',
+				title: 'Experiment',
+				label: 'Experiment',
+				actionPath: '/xylem/experiment',
 			},
 		],
+	},
+}
+
+export const pages: {[key: string]: NavItem} = {
+	vital: {
+		slug: '',
+		label: 'Vital',
+		title: 'Vital',
+		asset: 'rainbow',
+		actionPath: '/',
+		items: [cta.chlorophyll, cta.xylem],
 	},
 }
 

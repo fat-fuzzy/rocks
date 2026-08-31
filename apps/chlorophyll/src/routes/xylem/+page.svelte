@@ -1,7 +1,7 @@
 <script lang="ts">
 	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
-	import PageXylem from '$lib/ui/PageXylem.svelte'
+	import PageXylem from './PageXylem.svelte'
 
 	const {PageRails} = ui.content
 
@@ -17,7 +17,7 @@
 	path={page.url.pathname}
 	nav={page.data.nav}
 	context={pageContext}
-	layout="voyager"
+	layout="tgv"
 >
 	{#snippet main()}
 		<PageXylem />

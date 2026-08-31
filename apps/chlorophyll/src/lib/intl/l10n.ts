@@ -15,15 +15,25 @@ export const LOCALIZATIONS: Localizations = {
 export const CTA_TO_TITLE: {[key: string]: string} = {
 	edit: 'Content',
 	build: 'Structure',
+	preview: 'Preview',
 	compare: 'Compare',
 	print: 'Print',
+	reflect: 'Reflect',
+	experiment: 'Experiment',
+	write: 'Write',
 }
 
-export const CTA_TO_ACTION: {[key: string]: string} = {
+export const CTA_TO_ACTION_DOC: {[key: string]: string} = {
 	edit: 'Edit',
 	build: 'Build',
 	compare: 'Compare',
 	print: 'Print',
+}
+
+export const CTA_TO_ACTION_RESOURCE: {[key: string]: string} = {
+	write: 'Write',
+	reflect: 'Reflect',
+	experiment: 'Experiment',
 }
 
 export const CTA_TO_DESCRIPTION: {[key: string]: string} = {

@@ -1,6 +1,11 @@
 <script lang="ts">
 	import type {UiColor} from '@fat-fuzzy/ui'
-	import type {TagGroup, InputGroupMenus, ActionDoc} from '$types'
+	import type {
+		TagGroup,
+		InputGroupMenus,
+		ActionDoc,
+		ActionResource,
+	} from '$types'
 
 	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
@@ -18,7 +23,7 @@
 		tags,
 		oninput,
 	}: {
-		cta: ActionDoc
+		cta: ActionDoc | ActionResource
 		loading: boolean
 		error: boolean
 		tags: TagGroup[]

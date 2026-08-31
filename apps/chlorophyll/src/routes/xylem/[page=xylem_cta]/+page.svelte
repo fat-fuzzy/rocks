@@ -19,11 +19,11 @@
 
 	import SectionEditor from '$lib/ui/editor/SectionEditor.svelte'
 	import SectionBuilder from '$lib/ui/builder/SectionBuilder.svelte'
-	import ContentHeading from '$lib/ui/controls/ContentHeading.svelte'
-	import ContentActions from '$lib/ui/controls/ContentActions.svelte'
 	import Tags from '$lib/ui/controls/tags/Tags.svelte'
 	import Presets from '$lib/ui/controls/preset/Presets.svelte'
 	import Loading from '$lib/ui/Loading.svelte'
+	import ContentHeading from './ContentHeading.svelte'
+	import ContentActions from './ContentActions.svelte'
 
 	const {PageRails} = ui.content
 	const {Feedback} = ui.blocks
@@ -43,7 +43,7 @@
 	let tagsLoading = $derived(coordMetadata.loading)
 	let tagsError = $derived(coordMetadata.error)
 
-	let editing = $derived(cta === 'build' || cta === 'edit')
+	let editing = $derived(cta === 'write' || cta === 'reflect')
 
 	let language = $derived(
 		(page.url.searchParams.get('language') || DOC_LANGUAGE) as DocLanguage,
@@ -138,11 +138,11 @@
 	let description = $derived(cta ? CTA_TO_DESCRIPTION[cta] : '')
 
 	let ctaClass = $derived(
-		cta === 'edit' ? 'doc-editor' : 'doc-builder l:stack:3xl',
+		cta === 'reflect' ? 'doc-editor' : 'doc-builder l:stack:3xl',
 	)
 	let contentClass = $derived(selectedSections.length === 0 ? '' : ctaClass)
 	let mainLayoutClass = $derived(
-		cta === 'preview'
+		cta === 'experiment'
 			? 'w:full col:center l:flex'
 			: 'w:full col:center l:stack',
 	)
@@ -155,7 +155,7 @@
 	}
 
 	$effect(() => {
-		if (cta !== 'preview') {
+		if (cta !== 'experiment') {
 			return
 		}
 
@@ -177,9 +177,9 @@
 		<li>
 			Create your own content: go to <a
 				class="font:semibold"
-				href={resolve('/xylem/edit/')}
+				href={resolve('/xylem/write/')}
 			>
-				Edit
+				Write
 			</a>, then click on
 			<span class="font:semibold"> New Section </span>
 		</li>
@@ -194,13 +194,13 @@
 {#snippet getStartedPresets()}
 	<p>
 		To get started, first create a Preset from <a
-			href={resolve('/xylem/edit')}
+			href={resolve('/xylem/write')}
 			class="font:semibold"
 		>
-			Edit
+			Write
 		</a>
 		or
-		<a href={resolve('/xylem/build')} class="font:semibold"> Build </a>
+		<a href={resolve('/xylem/reflect')} class="font:semibold"> Reflect </a>
 	</p>
 {/snippet}
 
@@ -218,7 +218,7 @@
 		{#if cta}
 			<ContentHeading
 				{cta}
-				preset={cta === 'preview' ? targetPreset : preset}
+				preset={cta === 'experiment' ? targetPreset : preset}
 				{query}
 				formats={coordMetadata.getFormats()}
 			/>
@@ -245,17 +245,11 @@
 							size={availableSections.length ? 'lg' : undefined}
 							font="md"
 						>
-							{#if cta === 'edit' || cta === 'build'}
+							{#if cta === 'reflect' || cta === 'write'}
 								{@render getStartedSections()}
-							{:else if cta === 'preview'}
+							{:else if cta === 'experiment'}
 								{#if coordPresets.hasPresets()}
 									<p class="font:md">Select a Preset to preview</p>
-								{:else}
-									{@render getStartedPresets()}
-								{/if}
-							{:else if cta === 'print'}
-								{#if coordPresets.hasPresets()}
-									<p class="font:md">Select a Preset to print</p>
 								{:else}
 									{@render getStartedPresets()}
 								{/if}
@@ -263,7 +257,7 @@
 						</Feedback>
 					</div>
 				</div>
-			{:else if cta === 'preview'}
+			{:else if cta === 'experiment'}
 				{#if sourcePreset || targetPreset}
 					<div class="l:switcher:2xs th:sm w:full">
 						<div class="scroll:container contain:lg">
@@ -272,7 +266,7 @@
 							>
 								{#each sourceSections as section, i (i)}
 									<SectionBuilder
-										cta="preview"
+										cta="experiment"
 										{section}
 										selectedTags={sourceTags}
 										language={sourceLanguage}
@@ -316,7 +310,7 @@
 					<div class={contentClass}>
 						{#key language || format || preset}
 							{#each selectedSections as section, i (i)}
-								{#if cta === 'edit'}
+								{#if cta === 'reflect'}
 									<SectionEditor {section} {selectedTags} {language} {format} />
 								{:else if cta}
 									<SectionBuilder
@@ -358,7 +352,7 @@
 				<form bind:this={filtersForm} class="l:stack:md">
 					<ContentActions oninput={updateFilters} />
 
-					{#if cta !== 'preview'}
+					{#if cta !== 'experiment'}
 						<Presets
 							id="preset"
 							oninput={() => {
