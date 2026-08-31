@@ -51,6 +51,7 @@ export const cta: {[key: string]: NavItem} = {
 		title: 'Phloem',
 		layout: 'tram',
 		asset: 'wave',
+		color: 'info' as UiColor,
 		actionPath: '/phloem',
 		items: [
 			{
