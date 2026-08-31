@@ -1,8 +1,9 @@
 <script lang="ts">
+	import type {ActionDoc} from '$types'
 	import ContentGrid from '$lib/ui/ContentGrid.svelte'
 	import DialogData from '$lib/ui/controls/data/DialogData.svelte'
 
-	const CTA = ['edit', 'build', 'compare', 'print', 'data']
+	const CTA: ActionDoc[] = ['edit', 'build', 'compare', 'print', 'data']
 	const CTA_LINK_LABELS: {[cta: string]: string} = {
 		edit: 'Edit the Content',
 		build: 'Build the Structure',
@@ -11,7 +12,7 @@
 	}
 
 	const CTA_TITLE: {[cta: string]: string} = {
-		edit: 'Content',
+		edit: 'Edit',
 		build: 'Structure',
 		compare: 'Compare',
 		print: 'Save & Print',
@@ -50,14 +51,17 @@
 	{/if}
 {/snippet}
 
-<section class="l:stack:xl w:full">
-	<h2 class="text:center">Tools to Tell Your Story</h2>
-	<ContentGrid
-		page={currentPage}
-		actions={CTA}
-		links={CTA_LINK_LABELS}
-		headings={CTA_TITLE}
-		{description}
-		color="accent"
-	/>
-</section>
+<div class="l:stack:xl w:full align:center">
+	<h1 class="text:center">Chlorophyll is Vital</h1>
+	<h2 class="text:center">Tools to Convey Your Story</h2>
+	<div class="w:auto">
+		<ContentGrid
+			page={currentPage}
+			actions={CTA}
+			links={CTA_LINK_LABELS}
+			headings={CTA_TITLE}
+			{description}
+			color="accent"
+		/>
+	</div>
+</div>

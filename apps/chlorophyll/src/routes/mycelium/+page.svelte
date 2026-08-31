@@ -1,13 +1,13 @@
 <script lang="ts">
 	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
-	import PageChlorophyll from './PageChlorophyll.svelte'
+	import PageMycelium from './PageMycelium.svelte'
 
 	const {PageRails} = ui.content
 
 	let pageContext = $derived({...page.data.pageContext, label: 'On this Page'})
 	let description =
-		'Edit, structure, compare and print a document from your browser'
+		'Get a sense of where you are at and decide where you are going.'
 </script>
 
 <PageRails
@@ -19,6 +19,6 @@
 	layout="railway"
 >
 	{#snippet main()}
-		<PageChlorophyll />
+		<PageMycelium />
 	{/snippet}
 </PageRails>

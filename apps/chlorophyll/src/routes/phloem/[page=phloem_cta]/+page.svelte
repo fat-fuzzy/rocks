@@ -177,7 +177,7 @@
 		<li>
 			Create your own content: go to <a
 				class="font:semibold"
-				href={resolve('/xylem/write/')}
+				href={resolve('/phloem/write/')}
 			>
 				Write
 			</a>, then click on
@@ -194,13 +194,13 @@
 {#snippet getStartedPresets()}
 	<p>
 		To get started, first create a Preset from <a
-			href={resolve('/xylem/write')}
+			href={resolve('/phloem/write')}
 			class="font:semibold"
 		>
 			Write
 		</a>
 		or
-		<a href={resolve('/xylem/reflect')} class="font:semibold"> Reflect </a>
+		<a href={resolve('/phloem/reflect')} class="font:semibold"> Reflect </a>
 	</p>
 {/snippet}
 
@@ -233,7 +233,7 @@
 						message="Loading content..."
 						shape="round"
 						size="3xl"
-						color="primary"
+						color="info"
 					/>
 				</div>
 			{:else if availableSections.length === 0}
@@ -262,7 +262,7 @@
 					<div class="l:switcher:2xs th:sm w:full">
 						<div class="scroll:container contain:lg">
 							<div
-								class="l:center scroll:y surface:0:primary ravioli:lg shape:soft"
+								class="l:center scroll:y surface:0:info ravioli:lg shape:soft"
 							>
 								{#each sourceSections as section, i (i)}
 									<SectionBuilder

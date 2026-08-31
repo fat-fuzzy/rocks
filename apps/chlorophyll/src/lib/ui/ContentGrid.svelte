@@ -1,8 +1,9 @@
 <script lang="ts">
 	import type {Snippet} from 'svelte'
+	import type {UiColor} from '@fat-fuzzy/ui'
+	import type {VitalPage} from '$types'
 
 	import {resolve} from '$app/paths'
-	import type {UiColor} from '@fat-fuzzy/ui'
 
 	let {
 		color = 'primary',
@@ -13,7 +14,7 @@
 		description,
 	}: {
 		color?: UiColor
-		page: 'chlorophyll' | 'xylem'
+		page: VitalPage
 		actions: string[]
 		links: {[cta: string]: string}
 		headings: {[cta: string]: string}
@@ -25,7 +26,7 @@
 	{#each actions as action, i (i)}
 		{@const actionLink = links[action]}
 		<li
-			class="l:stack align:start justify:between color:neutral surface:1:neutral shape:mellow ravioli:md"
+			class="l:stack align:start justify:between color:neutral surface:1:neutral shape:mellow ravioli:2xl"
 		>
 			<h3 class="w:full font:sm">
 				{headings[action]}

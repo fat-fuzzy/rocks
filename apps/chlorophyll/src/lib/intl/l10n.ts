@@ -21,6 +21,8 @@ export const CTA_TO_TITLE: {[key: string]: string} = {
 	reflect: 'Reflect',
 	explore: 'Explore',
 	write: 'Write',
+	analyze: 'Analyze',
+	engage: 'Engage',
 }
 
 export const CTA_TO_ACTION_DOC: {[key: string]: string} = {
@@ -34,6 +36,11 @@ export const CTA_TO_ACTION_RESOURCE: {[key: string]: string} = {
 	write: 'Write',
 	reflect: 'Reflect',
 	explore: 'Explore',
+}
+
+export const CTA_TO_ACTION_TRANSFORM: {[key: string]: string} = {
+	analyze: 'Analyze',
+	engage: 'Engage',
 }
 
 export const CTA_TO_DESCRIPTION: {[key: string]: string} = {

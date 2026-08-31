@@ -45,6 +45,34 @@ const navBase = {
 }
 
 export const cta: {[key: string]: NavItem} = {
+	phloem: {
+		slug: 'phloem',
+		label: 'Phloem',
+		title: 'Phloem',
+		layout: 'tram',
+		asset: 'wave',
+		actionPath: '/phloem',
+		items: [
+			{
+				slug: 'write',
+				title: 'Write',
+				label: 'Write',
+				actionPath: '/phloem/write',
+			},
+			{
+				slug: 'reflect',
+				title: 'Reflect',
+				label: 'Reflect',
+				actionPath: '/phloem/reflect',
+			},
+			{
+				slug: 'explore',
+				title: 'Explore',
+				label: 'Explore',
+				actionPath: '/phloem/explore',
+			},
+		],
+	},
 	chlorophyll: {
 		slug: 'chlorophyll',
 		label: 'Chlorophyll',
@@ -80,31 +108,25 @@ export const cta: {[key: string]: NavItem} = {
 			},
 		],
 	},
-	xylem: {
-		slug: 'xylem',
-		label: 'Xylem',
-		title: 'Xylem',
+	mycelium: {
+		slug: 'mycelium',
+		label: 'Mycelium',
+		title: 'Mycelium',
 		layout: 'tram',
-		asset: 'moby',
-		actionPath: '/xylem',
+		asset: 'log',
+		actionPath: '/mycelium',
 		items: [
 			{
-				slug: 'write',
-				title: 'Write',
-				label: 'Write',
-				actionPath: '/xylem/write',
+				slug: 'analyze',
+				title: 'Analyze',
+				label: 'Analyze',
+				actionPath: '/mycelium/analyze',
 			},
 			{
-				slug: 'reflect',
-				title: 'Reflect',
-				label: 'Reflect',
-				actionPath: '/xylem/reflect',
-			},
-			{
-				slug: 'explore',
-				title: 'Explore',
-				label: 'Explore',
-				actionPath: '/xylem/explore',
+				slug: 'engage',
+				title: 'Engage',
+				label: 'Engage',
+				actionPath: '/mycelium/engage',
 			},
 		],
 	},
@@ -117,7 +139,7 @@ export const pages: {[key: string]: NavItem} = {
 		title: 'Vital',
 		asset: 'rainbow',
 		actionPath: '/',
-		items: [cta.chlorophyll, cta.xylem],
+		items: [cta.mycelium, cta.phloem, cta.chlorophyll],
 	},
 }
 
