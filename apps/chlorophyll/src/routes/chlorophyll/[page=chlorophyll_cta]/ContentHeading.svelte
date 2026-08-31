@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {ActionDoc, Preset, Slug, ICoordinatePresets} from '$types'
+	import type {Preset, Slug, ICoordinatePresets} from '$types'
 
 	import {getContext} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
@@ -13,7 +13,7 @@
 		query,
 		formats,
 	}: {
-		cta: ActionDoc
+		cta: string
 		preset: string | null
 		query: string
 		formats: Slug[]

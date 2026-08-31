@@ -3,17 +3,17 @@
 	import DialogData from '$lib/ui/controls/data/DialogData.svelte'
 	import type {ActionResource} from '$types'
 
-	const CTA: ActionResource[] = ['write', 'reflect', 'experiment', 'data']
+	const CTA: ActionResource[] = ['write', 'reflect', 'explore', 'data']
 	const CTA_LINK_LABELS: {[cta: string]: string} = {
 		write: 'Start writing',
 		reflect: 'Organize your Resources',
-		experiment: 'Preview and Compare Pathways',
+		explore: 'Pick a Pathway and Explore',
 	}
 
 	const CTA_TITLE: {[cta: string]: string} = {
 		write: 'Write',
 		reflect: 'Reflect',
-		experiment: 'Experiment',
+		explore: 'Explore',
 		data: 'Your data',
 	}
 
@@ -33,7 +33,7 @@
 		<p>Reflect on your experiences.</p>
 		<p>Structure your resources to fit your needs.</p>
 		<p>Save and modify Pathways.</p>
-	{:else if action === 'experiment'}
+	{:else if action === 'explore'}
 		<p>Overview and compare Pathways.</p>
 		<p>Take a breath and decide what's next !</p>
 	{:else if action === 'data'}

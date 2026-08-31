@@ -88,6 +88,7 @@
 			asset="plus"
 			assetType="svg"
 			cta="save"
+			{color}
 		/>
 	{/if}
 </div>
@@ -112,6 +113,7 @@
 			asset="plus"
 			assetType="svg"
 			cta="save"
+			{color}
 		/>
 	{/if}
 </div>

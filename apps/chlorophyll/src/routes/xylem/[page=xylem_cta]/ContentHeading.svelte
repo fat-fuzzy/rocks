@@ -25,7 +25,7 @@
 		if (!preset) {
 			return
 		}
-		if (cta === 'experiment') {
+		if (cta === 'explore') {
 			return coordPresets.getTargetPreset()
 		} else {
 			return coordPresets.getPreset(preset)
@@ -56,7 +56,7 @@
 	<div class={`l:flex grow justify:${currentPreset ? 'between' : 'end'}`}>
 		{#if currentPreset}
 			<h2>
-				{#if cta !== 'experiment'}
+				{#if cta !== 'explore'}
 					Preset:
 					{currentPreset.name}
 					{currentPreset.locked ? '(Locked)' : ''}
