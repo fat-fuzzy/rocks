@@ -2,14 +2,17 @@
 	import type {Snippet} from 'svelte'
 
 	import {resolve} from '$app/paths'
+	import type {UiColor} from '@fat-fuzzy/ui'
 
 	let {
+		color = 'primary',
 		page,
 		actions,
 		links,
 		headings,
 		description,
 	}: {
+		color?: UiColor
 		page: 'chlorophyll' | 'xylem'
 		actions: string[]
 		links: {[cta: string]: string}
@@ -34,7 +37,7 @@
 				<div class="l:stack w:full">
 					<a
 						href={resolve(`/${page}/${action}`)}
-						class="l:flex w:full font:heading font:sm justify:center raviolink color:primary surface:2:primary shape:mellow"
+						class="l:flex w:full font:heading font:sm justify:center raviolink color:{color} surface:2:{color} shape:mellow"
 					>
 						{actionLink}
 					</a>
