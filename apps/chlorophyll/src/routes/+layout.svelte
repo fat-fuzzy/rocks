@@ -170,7 +170,11 @@
 					color={sidenav.color}
 					background={sidenav.background}
 					variant="bare"
-					checked={pathname.startsWith('/chlorophyll/') ? false : undefined}
+					checked={pathname.startsWith('/chlorophyll/') ||
+					pathname.startsWith('/phloem/') ||
+					pathname.startsWith('/mycelium/')
+						? false
+						: undefined}
 					area="gare"
 					coords="ouest"
 					shape="square"
