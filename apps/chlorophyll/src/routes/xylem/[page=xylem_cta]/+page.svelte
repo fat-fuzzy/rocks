@@ -142,7 +142,7 @@
 	)
 	let contentClass = $derived(selectedSections.length === 0 ? '' : ctaClass)
 	let mainLayoutClass = $derived(
-		cta === 'experiment'
+		cta === 'explore'
 			? 'w:full col:center l:flex'
 			: 'w:full col:center l:stack',
 	)
@@ -155,7 +155,7 @@
 	}
 
 	$effect(() => {
-		if (cta !== 'experiment') {
+		if (cta !== 'explore') {
 			return
 		}
 
@@ -218,7 +218,7 @@
 		{#if cta}
 			<ContentHeading
 				{cta}
-				preset={cta === 'experiment' ? targetPreset : preset}
+				preset={cta === 'explore' ? targetPreset : preset}
 				{query}
 				formats={coordMetadata.getFormats()}
 			/>
@@ -247,7 +247,7 @@
 						>
 							{#if cta === 'reflect' || cta === 'write'}
 								{@render getStartedSections()}
-							{:else if cta === 'experiment'}
+							{:else if cta === 'explore'}
 								{#if coordPresets.hasPresets()}
 									<p class="font:md">Select a Preset to preview</p>
 								{:else}
@@ -257,7 +257,7 @@
 						</Feedback>
 					</div>
 				</div>
-			{:else if cta === 'experiment'}
+			{:else if cta === 'explore'}
 				{#if sourcePreset || targetPreset}
 					<div class="l:switcher:2xs th:sm w:full">
 						<div class="scroll:container contain:lg">
@@ -266,7 +266,7 @@
 							>
 								{#each sourceSections as section, i (i)}
 									<SectionBuilder
-										cta="experiment"
+										cta="explore"
 										{section}
 										selectedTags={sourceTags}
 										language={sourceLanguage}
@@ -352,7 +352,7 @@
 				<form bind:this={filtersForm} class="l:stack:md">
 					<ContentActions oninput={updateFilters} />
 
-					{#if cta !== 'experiment'}
+					{#if cta !== 'explore'}
 						<Presets
 							id="preset"
 							oninput={() => {

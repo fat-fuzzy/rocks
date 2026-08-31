@@ -19,7 +19,7 @@ export const CTA_TO_TITLE: {[key: string]: string} = {
 	compare: 'Compare',
 	print: 'Print',
 	reflect: 'Reflect',
-	experiment: 'Experiment',
+	explore: 'Explore',
 	write: 'Write',
 }
 
@@ -33,7 +33,7 @@ export const CTA_TO_ACTION_DOC: {[key: string]: string} = {
 export const CTA_TO_ACTION_RESOURCE: {[key: string]: string} = {
 	write: 'Write',
 	reflect: 'Reflect',
-	experiment: 'Experiment',
+	explore: 'Explore',
 }
 
 export const CTA_TO_DESCRIPTION: {[key: string]: string} = {
