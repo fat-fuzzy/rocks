@@ -20,7 +20,7 @@ ff-control > label.variant\:bare:has(input:checked),
 .ff-control.variant\:bare:has(input:checked) {
 	--lightness-contrast: var(--lightness-surface-4);
 	--lightness-accent: var(--lightness-surface-4);
-	--border-color: var(--accent);
+	--border-color: var(--shade);
 }
 
 label:has(input:checked) {
@@ -37,6 +37,12 @@ label:has(input):active,
 ff-control > label.variant\:bare:has(input):active,
 .ff-control.variant\:bare:has(input):active {
 	--lightness-accent: var(--lightness-surface-4);
+}
+
+label:has(input:checked):hover,
+ff-control > label.variant\:bare:has(input:checked):hover,
+.ff-control.variant\:bare:has(input:checked):hover {
+	--border-color: var(--accent);
 }
 
 label[class*='bg:'] {

@@ -17,10 +17,9 @@ html:has(.l\:grid\:urbanist) {
 	transform: translate(-50%, var(--ui-size));
 }
 
-.l\:grid\:urbanist.railway {
-	.sidebar {
-		grid-area: unset;
-	}
+.context.hug > ff-toggle-reveal > ff-control > label:has(input:checked),
+.sidebar.hug > nav > ff-toggle-reveal > ff-control > label:has(input:checked) {
+	--input-inline-size: calc(var(--sidebar-width) - var(--grid-gap));
 }
 
 .tram.zone\:main {

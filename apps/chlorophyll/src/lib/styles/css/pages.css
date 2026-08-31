@@ -53,3 +53,9 @@
 		--hue: var(--color-theme-accent);
 	}
 }
+
+[class*='page:phloem'] {
+	h1 {
+		--hue: var(--color-palette-blueberry);
+	}
+}
