@@ -77,6 +77,8 @@ fs.readFile(COMMIT_HISTORY_FILE, 'utf8', (err, data) => {
 		'ui',
 		'validation',
 		'validate',
+		'vital',
+		'xylem',
 	]
 	const commitData = [
 		[
