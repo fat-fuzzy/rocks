@@ -1,7 +1,7 @@
 <script lang="ts">
 	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
-	import PageChlorophyll from '$lib/ui/PageChlorophyll.svelte'
+	import PageChlorophyll from './PageChlorophyll.svelte'
 
 	const {PageRails} = ui.content
 
@@ -17,7 +17,7 @@
 	path={page.url.pathname}
 	nav={page.data.nav}
 	context={pageContext}
-	layout="voyager"
+	layout="tgv"
 >
 	{#snippet main()}
 		<PageChlorophyll />

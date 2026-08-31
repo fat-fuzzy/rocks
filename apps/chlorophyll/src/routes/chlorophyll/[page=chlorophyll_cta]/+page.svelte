@@ -19,11 +19,12 @@
 
 	import SectionEditor from '$lib/ui/editor/SectionEditor.svelte'
 	import SectionBuilder from '$lib/ui/builder/SectionBuilder.svelte'
-	import ContentHeading from '$lib/ui/controls/ContentHeading.svelte'
-	import ContentActions from '$lib/ui/controls/ContentActions.svelte'
 	import Tags from '$lib/ui/controls/tags/Tags.svelte'
 	import Presets from '$lib/ui/controls/preset/Presets.svelte'
 	import Loading from '$lib/ui/Loading.svelte'
+
+	import ContentActions from './ContentActions.svelte'
+	import ContentHeading from './ContentHeading.svelte'
 
 	const {PageRails} = ui.content
 	const {Feedback} = ui.blocks

@@ -66,7 +66,7 @@
 				return 'railway'
 			case '/chlorophyll':
 			case '/xylem':
-				return 'voyager'
+				return 'tgv'
 			case '/':
 				return 'tgv'
 			default:
