@@ -51,7 +51,7 @@
 {/snippet}
 
 <section class="l:stack:xl w:full">
-	<h2 class="text:center">Tools to Communicate with Others about Yourself</h2>
+	<h2 class="text:center">Tools to Tell Your Story</h2>
 	<ContentGrid
 		page={currentPage}
 		actions={CTA}

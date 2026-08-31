@@ -1,5 +1,12 @@
 <script lang="ts">
-	import type {Slug, DocLanguage, Section, ICoordinateDocs} from '$types'
+	import type {
+		Slug,
+		DocLanguage,
+		Section,
+		ICoordinateDocs,
+		ActionDoc,
+		ActionResource,
+	} from '$types'
 
 	import {getContext, onMount} from 'svelte'
 
@@ -20,7 +27,7 @@
 		language = DOC_LANGUAGE,
 		format = DOC_FORMAT,
 	}: {
-		cta: 'build' | 'compare' | 'print'
+		cta: ActionDoc | ActionResource
 		selectedTags: string[]
 		section: Section
 		language: DocLanguage
