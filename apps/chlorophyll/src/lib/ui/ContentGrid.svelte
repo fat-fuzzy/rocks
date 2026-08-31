@@ -26,19 +26,21 @@
 	{#each actions as action, i (i)}
 		{@const actionLink = links[action]}
 		<li
-			class="l:stack align:start justify:between color:neutral surface:1:neutral shape:mellow ravioli:2xl"
+			class="l:stack justify:between color:neutral surface:1:neutral shape:soft ravioli:2xl"
 		>
-			<h3 class="w:full font:sm">
-				{headings[action]}
-			</h3>
-			<div class="l:flex:3xs w:full font:sm maki:block">
-				{@render description(action)}
+			<div>
+				<h3>
+					{headings[action]}
+				</h3>
+				<div class="l:flex:3xs w:full maki:block">
+					{@render description(action)}
+				</div>
 			</div>
 			{#if actionLink}
 				<div class="l:stack w:full">
 					<a
 						href={resolve(`/${page}/${action}`)}
-						class="l:flex w:full font:heading font:sm justify:center raviolink color:{color} surface:2:{color} shape:mellow"
+						class="l:flex font:semibold font:heading justify:center raviolink color:{color} surface:2:{color} shape:mellow"
 					>
 						{actionLink}
 					</a>
