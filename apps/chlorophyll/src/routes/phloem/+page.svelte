@@ -1,25 +1,24 @@
 <script lang="ts">
 	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
-	import PageXylem from './PageXylem.svelte'
+	import PagePhloem from './PagePhloem.svelte'
 
 	const {PageRails} = ui.content
 
 	let pageContext = $derived({...page.data.pageContext, label: 'On this Page'})
-	let title = 'Xylem'
 	let description =
 		'Edit, structure, compare and print a document from your browser'
 </script>
 
 <PageRails
-	{title}
+	title=""
 	{description}
 	path={page.url.pathname}
 	nav={page.data.nav}
 	context={pageContext}
-	layout="tgv"
+	layout="railway"
 >
 	{#snippet main()}
-		<PageXylem />
+		<PagePhloem />
 	{/snippet}
 </PageRails>

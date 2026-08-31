@@ -63,7 +63,7 @@
 				{/if}
 			</h2>
 			<div class="l:flex justify:end maki:block">
-				{#if cta === 'write'}
+				{#if cta === 'analyze'}
 					<DialogSaveSection
 						id="add-section"
 						color="primary"
@@ -76,7 +76,7 @@
 						{formats}
 					/>
 				{/if}
-				{#if cta === 'write' || cta === 'reflect'}
+				{#if cta === 'analyze' || cta === 'engage'}
 					<Button
 						label="Save Preset"
 						type="button"
@@ -100,8 +100,14 @@
 				{/if}
 			</div>
 		{:else}
-			<h2 class="font:semibold">New Resource</h2>
-			{#if cta === 'write'}
+			<h2 class="font:semibold">
+				{#if cta === 'analyze'}
+					New View
+				{:else if cta === 'engage'}
+					New Milestone
+				{/if}
+			</h2>
+			{#if cta === 'analyze'}
 				<div class="maki:block">
 					<DialogSaveSection
 						id="add-section"

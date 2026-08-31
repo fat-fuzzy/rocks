@@ -63,9 +63,15 @@
 			case 'edit':
 			case 'compare':
 			case 'print':
+			case 'write':
+			case 'reflect':
+			case 'explore':
+			case 'analyze':
+			case 'engage':
 				return 'railway'
 			case '/chlorophyll':
-			case '/xylem':
+			case '/mycelium':
+			case '/phloem':
 				return 'tgv'
 			case '/':
 				return 'tgv'

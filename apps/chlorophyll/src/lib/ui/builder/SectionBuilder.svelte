@@ -6,6 +6,7 @@
 		ICoordinateDocs,
 		ActionDoc,
 		ActionResource,
+		ActionTransform,
 	} from '$types'
 
 	import {getContext, onMount} from 'svelte'
@@ -27,7 +28,7 @@
 		language = DOC_LANGUAGE,
 		format = DOC_FORMAT,
 	}: {
-		cta: ActionDoc | ActionResource
+		cta: ActionDoc | ActionResource | ActionTransform
 		selectedTags: string[]
 		section: Section
 		language: DocLanguage

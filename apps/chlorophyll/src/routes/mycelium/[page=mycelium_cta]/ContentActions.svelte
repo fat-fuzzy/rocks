@@ -6,7 +6,7 @@
 	import {page} from '$app/state'
 	import {resolve} from '$app/paths'
 
-	import {CTA_TO_ACTION_RESOURCE} from '$lib/intl/l10n'
+	import {CTA_TO_ACTION_TRANSFORM} from '$lib/intl/l10n'
 	import MenuSections from '$lib/ui/controls/section/MenuSections.svelte'
 	import MenuSettings from '$lib/ui/controls/settings/MenuSettings.svelte'
 	import MenuData from '$lib/ui/controls/data/MenuData.svelte'
@@ -24,7 +24,7 @@
 <div class="l:stack maki:inline:4xs">
 	<nav id="secondary-nav">
 		<ul class={`unstyled input-group l:${layout}:3xs w:full justify:between`}>
-			{#each Object.entries(CTA_TO_ACTION_RESOURCE) as [key, value], i (i)}
+			{#each Object.entries(CTA_TO_ACTION_TRANSFORM) as [key, value], i (i)}
 				{@const classes =
 					key === cta ? linkStyles : `${linkStyles} ink:primary`}
 				{@const presetQuery = preset ? coordPresets.getPresetQuery(preset) : ''}
@@ -34,7 +34,7 @@
 					class="cta text:center surface:2:primary shape:mellow l:flex"
 				>
 					<a
-						href={resolve(`/xylem/${key}${presetQuery}`)}
+						href={resolve(`/mycelium/${key}${presetQuery}`)}
 						class={linkStyles}
 						onclick={() => {
 							if (cta !== 'compare') {
@@ -52,14 +52,12 @@
 
 	<div class="l:flex:2xs w:full justify:between grow">
 		<div class="l:flex:2xs justify:between grow">
-			{#if cta === 'edit' || cta === 'build'}
+			{#if cta === 'analyze' || cta === 'engage'}
 				<MenuSections {oninput} color="primary" variant="outline" />
 			{/if}
 		</div>
 		<div class="l:flex:2xs justify:between hug">
-			{#if cta !== 'compare'}
-				<MenuSettings {oninput} color="primary" variant="outline" />
-			{/if}
+			<MenuSettings {oninput} color="primary" variant="outline" />
 			<MenuData id="button-import" color="primary" />
 		</div>
 	</div>
