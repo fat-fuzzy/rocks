@@ -33,7 +33,7 @@
 
 <nav aria-label={label} {id} class={id}>
 	<ul class={`${layoutClasses} unstyled`}>
-		{#each items as { title, slug, color, size, variant, shape, asset }, i (i)}
+		{#each items as { title, slug, color, size, shape, asset }, i (i)}
 			{@const iconClasses = styleHelper.getStyles({
 				color,
 				size,
