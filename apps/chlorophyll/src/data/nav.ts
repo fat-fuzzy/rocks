@@ -50,7 +50,7 @@ export const cta: {[key: string]: NavItem} = {
 		label: 'Phloem',
 		title: 'Phloem',
 		layout: 'tram',
-		asset: 'herb',
+		asset: 'tree openmoji',
 		color: 'info' as UiColor,
 		actionPath: '/phloem',
 		items: [
@@ -82,7 +82,7 @@ export const cta: {[key: string]: NavItem} = {
 		label: 'Chlorophyll',
 		title: 'Chlorophyll',
 		layout: 'tram',
-		asset: 'herb',
+		asset: 'white-flower openmoji',
 		actionPath: '/chlorophyll',
 		color: 'accent' as UiColor,
 		items: [
@@ -121,7 +121,7 @@ export const cta: {[key: string]: NavItem} = {
 		label: 'Mycelium',
 		title: 'Mycelium',
 		layout: 'tram',
-		asset: 'herb',
+		asset: 'mushroom openmoji',
 		actionPath: '/mycelium',
 		items: [
 			{
@@ -145,7 +145,7 @@ export const pages: {[key: string]: NavItem} = {
 		slug: '',
 		label: 'Vital',
 		title: 'Vital',
-		asset: 'lotus',
+		asset: 'lotus openmoji',
 		size: 'md',
 		assetType: 'svg',
 		actionPath: '/',

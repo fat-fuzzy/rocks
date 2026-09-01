@@ -6,12 +6,32 @@
 	--icon-url: url('/icons/arrow-bar-down.svg');
 }
 
+.svg\:blend {
+	--icon-url: url('/icons/openmoji/blend.svg');
+}
+
 .svg\:check {
 	--icon-url: url('/icons/check.svg');
 }
 
+.svg\:cherry-blossom {
+	--icon-url: url('/icons/openmoji/cherry-blossom.svg');
+}
+
+.svg\:contrast {
+	--icon-url: url('/icons/openmoji/contrast.svg');
+}
+
+.svg\:control-knobs {
+	--icon-url: url('/icons/openmoji/control-knobs.svg');
+}
+
 .svg\:copy {
 	--icon-url: url('/icons/copy.svg');
+}
+
+.svg\:crescent-moon {
+	--icon-url: url('/icons/crescent-moon.svg');
 }
 
 .svg\:cross {
@@ -22,12 +42,36 @@
 	--icon-url: url('/icons/dash.svg');
 }
 
+.svg\:day {
+	--icon-url: url('/icons/openmoji/day.svg');
+}
+
+.svg\:tree {
+	--icon-url: url('/icons/openmoji/tree.svg');
+}
+
+.svg\:gear {
+	--icon-url: url('/icons/openmoji/gear.svg');
+}
+
 .svg\:herb {
-	--icon-url: url('/icons/herb.svg');
+	--icon-url: url('/icons/openmoji/herb.svg');
 }
 
 .svg\:memo {
 	--icon-url: url('/icons/memo.svg');
+}
+
+.svg\:mushroom {
+	--icon-url: url('/icons/openmoji/mushroom.svg');
+}
+
+.svg\:night {
+	--icon-url: url('/icons/openmoji/night.svg');
+}
+
+.svg\:last-quarter-moon {
+	--icon-url: url('/icons/openmoji/last-quarter-moon.svg');
 }
 
 .svg\:leaf {
@@ -39,7 +83,7 @@
 }
 
 .svg\:lotus {
-	--icon-url: url('/icons/lotus.svg');
+	--icon-url: url('/icons/openmoji/lotus.svg');
 }
 
 .svg\:plus {
@@ -50,8 +94,28 @@
 	--icon-url: url('/icons/save.svg');
 }
 
+.svg\:seedling {
+	--icon-url: url('/icons/openmoji/seedling.svg');
+}
+
+.svg\:settings {
+	--icon-url: url('/icons/openmoji/settings.svg');
+}
+
+.svg\:sun {
+	--icon-url: url('/icons/openmoji/sun.svg');
+}
+
+.svg\:system {
+	--icon-url: url('/icons/openmoji/system.svg');
+}
+
 .svg\:unlock {
 	--icon-url: url('/icons/unlock.svg');
+}
+
+.svg\:white-flower {
+	--icon-url: url('/icons/openmoji/white-flower.svg');
 }
 
 ff-magic[class*='svg']::before {

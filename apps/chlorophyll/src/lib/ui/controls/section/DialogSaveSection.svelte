@@ -77,7 +77,7 @@
 		type="button"
 		name={id}
 		{size}
-		font="2xs font:heading"
+		font="xs font:heading"
 		align="center"
 		{label}
 		{color}

@@ -70,7 +70,7 @@
 						asset="plus"
 						assetType="svg"
 						label="New Section"
-						size="2xs"
+						size="xs"
 						variant="outline"
 						cta="save"
 						{formats}
@@ -113,7 +113,7 @@
 						id="add-section"
 						color="primary"
 						asset="plus"
-						size="2xs"
+						size="xs"
 						assetType="svg"
 						variant="outline"
 						label="New Section"
