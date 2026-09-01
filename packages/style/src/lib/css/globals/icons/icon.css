@@ -55,12 +55,11 @@ ff-icon[class*='svg'].justify\:end::before {
 }
 
 ff-icon {
-	padding-block: calc(var(--ui-size-sm) / 1.25);
-	padding-inline: calc(var(--ui-size-sm) / 1.25);
+	padding-block: var(--outline-offset-sm);
+	padding-inline: var(--outline-offset-sm);
 	margin: 0;
 }
 
 ff-icon::before {
-	--ink: #000;
 	margin: 0;
 }

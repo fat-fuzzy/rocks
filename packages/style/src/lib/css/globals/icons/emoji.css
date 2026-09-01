@@ -9,8 +9,9 @@
 [class*='shape:'][class*='emoji'] {
 	--icon-gap: calc(1em * var(--outline-offset-lg));
 
-	padding-block: var(--ui-size-sm);
-	padding-inline: var(--ui-size-sm);
+	/* CAREFUL: this balances svg vs emoji icons, but it's approximate and fragile (in other words don't mix emoji + svg in design-related ui) */
+	padding-block: calc(var(--ui-size-xs) - var(--border-width-md));
+	padding-inline: calc(var(--ui-size-xs) - var(--border-width-md));
 }
 
 .shape\:pill[class*='emoji']::before {
