@@ -74,7 +74,7 @@
 					{area}
 					asset={buttonAssetClass}
 					{href}
-					size="2xs"
+					{size}
 					font="sm"
 					coords="nord"
 					{shape}
@@ -111,7 +111,8 @@
 		items={subItems}
 		{pathname}
 		{layout}
-		size="2xs"
+		{assetType}
+		{size}
 		{align}
 		{layer}
 		depth={depth + 1}

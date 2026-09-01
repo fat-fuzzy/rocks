@@ -62,9 +62,9 @@
 		checkbox: InputCheck,
 	}
 
-	let innerLayoutSize = $derived(
-		size ? styleHelper.SCALES.DECREASE_2[size] : size,
-	)
+	function shrink(size?: UiSize): string {
+		return size ? styleHelper.SCALES.DECREASE_2[size] : ''
+	}
 
 	function handleInput(event: Event) {
 		let target = event.target as HTMLInputElement
@@ -114,7 +114,7 @@
 	{font}
 	{variant}
 	{container}
-	containerSize={innerLayoutSize as UiSize}
+	containerSize={shrink(size) as UiSize}
 	{background}
 	{color}
 	{asset}
@@ -137,7 +137,7 @@
 				{size}
 				{justify}
 				{container}
-				containerSize={innerLayoutSize as UiSize}
+				containerSize={shrink(size) as UiSize}
 				id={`all-${id}`}
 				oninput={handleSelectAll}
 				{validator}
@@ -156,8 +156,8 @@
 			background={undefined}
 			{justify}
 			{container}
-			containerSize={innerLayoutSize as UiSize}
-			{size}
+			containerSize={shrink(input.size ?? size) as UiSize}
+			size={input.size ?? size}
 			{name}
 			id={`${name}.${input.value}`}
 			oninput={handleInput}
