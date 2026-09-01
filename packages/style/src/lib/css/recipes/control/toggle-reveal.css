@@ -88,9 +88,8 @@ ff-toggle-reveal.ouest {
 	}
 
 	ff-control + ff-reveal {
-		--y-axis: var(--ui-size);
+		--y-axis: var(--ui-size-xs);
 		--x-axis: -100%;
-		--x-size: var(--max-inline-size);
 
 		inline-size: var(--x-size);
 		block-size: fit-content;
@@ -140,7 +139,6 @@ ff-toggle-reveal.est {
 	ff-control:has(input:checked) + ff-reveal {
 		--y-axis: var(--ui-size);
 		--x-axis: calc(-50% + var(--ui-size-xl) + var(--outline-offset-lg));
-		--x-size: var(--max-inline-size);
 
 		transition:
 			transform 150ms ease-in 100ms,
@@ -173,7 +171,6 @@ ff-toggle-reveal.sud {
 	}
 
 	ff-control + ff-reveal:not([class*='absolute:']) {
-		max-inline-size: 100%;
 		position: relative;
 	}
 
@@ -195,7 +192,6 @@ ff-toggle-reveal.sud {
 
 @media screen and (min-width: 68.75rem) {
 	ff-control:has(input:checked) + ff-reveal:not([class*='absolute:']) {
-		max-inline-size: 100%;
 		position: static;
 	}
 }
@@ -239,5 +235,40 @@ ff-toggle-reveal.auto {
 	ff-control:has(input.sud:checked) + ff-reveal {
 		inline-size: calc(100 - 2 * var(--ui-size));
 		inset-inline: var(--ui-size-lg) var(--outline-offset-sm);
+	}
+}
+
+/* URBANIST overrides */
+
+.l\:grid\:urbanist {
+	ff-toggle-reveal.est ff-control:has(input:checked) + ff-reveal,
+	ff-toggle-reveal.ouest ff-control:has(input:checked) + ff-reveal {
+		--x-size: var(--layout-sidebar-md);
+		max-inline-size: unset;
+	}
+
+	ff-toggle-reveal.est ff-control + ff-reveal,
+	ff-toggle-reveal.ouest ff-control + ff-reveal,
+	ff-toggle-reveal.est ff-control:has(input:checked) + ff-reveal,
+	ff-toggle-reveal.ouest ff-control:has(input:checked) + ff-reveal {
+		--y-axis: var(--ui-size-xs);
+	}
+
+	ff-toggle-reveal.est ff-control:has(input:checked) + ff-reveal {
+		--x-axis: calc(-35% - var(--ui-size-xl));
+	}
+}
+
+@media screen and (min-width: 68.75rem) {
+	.l\:grid\:urbanist {
+		ff-toggle-reveal.est ff-control:has(input:checked) + ff-reveal,
+		ff-toggle-reveal.ouest ff-control:has(input:checked) + ff-reveal {
+			--x-size: var(--layout-sidebar-md);
+			--y-axis: var(--ui-size-xs);
+		}
+
+		ff-toggle-reveal.est ff-control:has(input:checked) + ff-reveal {
+			--x-axis: calc(-2 * var(--ui-size-lg));
+		}
 	}
 }
