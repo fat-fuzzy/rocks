@@ -1,4 +1,6 @@
 import type {NavItem, Markdown} from '$types'
+import type {UiSize} from '@fat-fuzzy/ui'
+
 import ui from '@fat-fuzzy/ui'
 
 // TODO: move to utils / clean
@@ -15,7 +17,7 @@ const navBase = {
 	id: 'sidebar',
 	label: 'Secondary Navigation',
 	breakpoint: 'sm',
-	size: 'sm',
+	size: 'md' as UiSize,
 	variant: 'outline',
 	background: 'primary',
 	color: 'neutral',
