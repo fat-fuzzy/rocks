@@ -25,7 +25,7 @@
 	}
 	let {
 		id,
-		label = 'Manage Data',
+		label = 'Your data',
 		color = 'primary',
 		size = 'xs',
 		font = 'xs',
@@ -37,7 +37,7 @@
 			modal: false,
 			size: 'lg',
 			color,
-			label: 'Manage Data',
+			label: 'Your data',
 			position: 'nord-est',
 			children: dialogContent,
 		})

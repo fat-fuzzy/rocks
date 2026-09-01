@@ -234,7 +234,7 @@
 						message="Loading content..."
 						shape="round"
 						size="3xl"
-						color="primary"
+						color="accent"
 					/>
 				</div>
 			{:else if availableSections.length === 0}
