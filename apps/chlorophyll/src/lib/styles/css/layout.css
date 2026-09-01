@@ -45,12 +45,6 @@ html:has(.l\:grid\:urbanist) {
 	padding-inline: var(--gap);
 }
 
-/* .l\:grid\:urbanist {
-	ff-toggle-reveal.est ff-control:has(input:checked) + ff-reveal {
-		--x-axis: calc(-35% - var(--outline-offset-lg));
-	}
-} */
-
 @media screen and (min-width: 38.75rem) {
 	.railway.zone\:2 {
 		padding-inline: unset;
@@ -62,7 +56,7 @@ html:has(.l\:grid\:urbanist) {
 		max-block-size: var(--max-block-size);
 
 		ff-toggle-reveal.est ff-control:has(input:checked) + ff-reveal {
-			--x-axis: calc(-2 * var(--ui-size-xl) - var(--outline-offset-lg));
+			--x-axis: calc(-2 * var(--ui-size-xl) - var(--ui-size-xs));
 		}
 	}
 
@@ -98,10 +92,6 @@ html:has(.l\:grid\:urbanist) {
 		.zone\:1.exchange {
 			grid-template-columns: subgrid;
 		}
-
-		ff-toggle-reveal.est ff-control:has(input:checked) + ff-reveal {
-			--x-axis: var(--ui-size-lg);
-		}
 	}
 
 	.exchange > .context {
@@ -126,6 +116,12 @@ html:has(.l\:grid\:urbanist) {
 }
 
 @media screen and (min-width: 68.75rem) {
+	.l\:grid\:urbanist {
+		ff-toggle-reveal.est ff-control:has(input:checked) + ff-reveal {
+			--x-axis: calc(2 * var(--ui-size-xs));
+		}
+	}
+
 	.zone\:1.exchange {
 		grid-template-columns: subgrid;
 	}
