@@ -36,7 +36,7 @@ const navBase = {
 	label: 'Main Navigation',
 	title: '',
 	breakpoint: 'sm' as UiSize,
-	size: 'sm' as UiSize,
+	size: 'md' as UiSize,
 	variant: 'outline' as UiVariant,
 	color: 'neutral' as UiColor,
 	pathname: '',
@@ -50,7 +50,7 @@ export const cta: {[key: string]: NavItem} = {
 		label: 'Phloem',
 		title: 'Phloem',
 		layout: 'tram',
-		asset: 'wave',
+		asset: 'herb',
 		color: 'info' as UiColor,
 		actionPath: '/phloem',
 		items: [
@@ -82,7 +82,7 @@ export const cta: {[key: string]: NavItem} = {
 		label: 'Chlorophyll',
 		title: 'Chlorophyll',
 		layout: 'tram',
-		asset: 'blocks',
+		asset: 'herb',
 		actionPath: '/chlorophyll',
 		color: 'accent' as UiColor,
 		items: [
@@ -121,7 +121,7 @@ export const cta: {[key: string]: NavItem} = {
 		label: 'Mycelium',
 		title: 'Mycelium',
 		layout: 'tram',
-		asset: 'log',
+		asset: 'herb',
 		actionPath: '/mycelium',
 		items: [
 			{
@@ -145,9 +145,11 @@ export const pages: {[key: string]: NavItem} = {
 		slug: '',
 		label: 'Vital',
 		title: 'Vital',
-		asset: 'rainbow',
+		asset: 'lotus',
+		size: 'md',
+		assetType: 'svg',
 		actionPath: '/',
-		items: [cta.mycelium, cta.phloem, cta.chlorophyll],
+		items: [cta.phloem, cta.chlorophyll, cta.mycelium],
 	},
 }
 
