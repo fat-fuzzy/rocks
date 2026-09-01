@@ -29,7 +29,7 @@
 
 <div class="l:stack:xl w:full align:center">
 	<h1 class="text:center">Mycelium</h1>
-	<h2 class="text:center">Rhythm for Growth</h2>
+	<h2 class="text:center">Growth with Rhythm</h2>
 
 	<ContentGrid
 		page={currentPage}
