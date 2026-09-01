@@ -1,4 +1,6 @@
 [class*='svg']::before {
+	--icon-size: 1.25em;
+
 	content: '';
 	background-image: var(--icon-url);
 	background-position: center center;
@@ -10,8 +12,18 @@
 }
 
 @supports (mask: var(--icon-url)) {
+	[class*='svg'] {
+		--icon-ink: var(--ink, currentColor) mask: var(--icon-url) center center /
+			100% auto no-repeat;
+	}
+
 	[class*='svg']::before {
-		background: var(--ink);
+		background: var(--ink, currentColor);
+		mask: var(--icon-url) center center / 100% auto no-repeat;
+	}
+
+	[class*='svg'][class*='magic:']::before {
+		background: var(--magic-gradient);
 		mask: var(--icon-url) center center / 100% auto no-repeat;
 	}
 
@@ -21,38 +33,38 @@
 	}
 }
 
-[class*='svg'].size\:3xs::before {
+.openmoji.size\:3xs::before {
 	--icon-size: var(--icon-svg-3xs);
 }
 
-[class*='svg'].size\:2xs::before {
+.openmoji.size\:2xs::before {
 	--icon-size: var(--icon-svg-2xs);
 }
 
-[class*='svg'].size\:xs::before {
+.openmoji.size\:xs::before {
 	--icon-size: var(--icon-svg-xs);
 }
 
-[class*='svg'].size\:sm::before {
+.openmoji.size\:sm::before {
 	--icon-size: var(--icon-svg-sm);
 }
 
-[class*='svg'].size\:md::before {
+.openmoji.size\:md::before {
 	--icon-size: var(--icon-svg-md);
 }
 
-[class*='svg'].size\:lg::before {
+.openmoji.size\:lg::before {
 	--icon-size: var(--icon-svg-lg);
 }
 
-[class*='svg'].size\:xl::before {
+.openmoji.size\:xl::before {
 	--icon-size: var(--icon-svg-xl);
 }
 
-[class*='svg'].size\:2xl::before {
+.openmoji.size\:2xl::before {
 	--icon-size: var(--icon-svg-2xl);
 }
 
-[class*='svg'].size\:3xl::before {
+.openmoji.size\:3xl::before {
 	--icon-size: var(--icon-svg-3xl);
 }
