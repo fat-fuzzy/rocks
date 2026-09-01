@@ -206,7 +206,8 @@
 			id="appContext"
 			label="Settings"
 			color="neutral"
-			asset="settings"
+			asset="settings openmoji"
+			assetType="svg"
 			font="sm"
 			size="md"
 			layout="flex"
@@ -223,6 +224,7 @@
 				name="app-settings"
 				label="Settings"
 				size="md"
+				assetType="openmoji svg"
 				selected={appContext}
 				oninput={updateSettings}
 			/>

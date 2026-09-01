@@ -18,7 +18,7 @@
 
 	let cta = $derived(page.params.page)
 	let preset = $derived(page.url.searchParams.get('preset') || '')
-	let linkStyles = $state('font:xs font:semibold font:heading w:full')
+	let linkStyles = $state('font:sm font:heading w:full')
 </script>
 
 <div class="l:stack maki:inline:4xs">
