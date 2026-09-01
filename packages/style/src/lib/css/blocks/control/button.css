@@ -47,10 +47,18 @@ ff-control > label {
 }
 
 button,
-.ff-control,
-ff-control > label {
+.ff-control {
 	padding-block: var(--ui-size-sm);
 	padding-inline: var(--ui-size);
+}
+
+ff-control > label {
+	padding-block: var(--outline-offset-md);
+	padding-inline: var(--outline-offset-lg);
+}
+
+ff-control > label .toggle-label {
+	padding-inline: var(--ui-size-sm);
 }
 
 button.variant\:fill,
