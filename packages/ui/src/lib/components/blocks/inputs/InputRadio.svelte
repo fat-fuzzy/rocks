@@ -125,10 +125,10 @@
 {:else}
 	<label
 		for={id}
-		class={`${ffClasses} ellipsis nowrap ${labelClasses} ${iconClasses}`}
+		class={`${ffClasses} ellipsis nowrap ${labelClasses}`}
 		data-testid={id}
 	>
-		<span>{label}</span>
+		<span class={iconClasses}>{label}</span>
 		{@render input()}
 	</label>
 	<Feedback

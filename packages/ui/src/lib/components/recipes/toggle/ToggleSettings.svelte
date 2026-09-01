@@ -3,7 +3,11 @@
 
 	import InputGroup from '$lib/components/blocks/inputs/InputGroup.svelte'
 
-	let {selected, oninput}: ToggleSettingsProps & InputCallbackProps = $props()
+	let {
+		assetType = 'emoji',
+		selected,
+		oninput,
+	}: ToggleSettingsProps & InputCallbackProps = $props()
 
 	let values = $derived(Object.entries(selected).map(([, value]) => value))
 
@@ -27,7 +31,8 @@
 					id: 'brightness.system',
 					slug: 'brightness.system',
 					value: 'system',
-					asset: 'home',
+					asset: 'system',
+					assetType,
 					shape: 'pill',
 					size: 'sm',
 					justify: 'between',
@@ -40,6 +45,7 @@
 					slug: 'brightness.day',
 					value: 'day',
 					asset: 'day',
+					assetType,
 					shape: 'pill',
 					size: 'sm',
 					justify: 'between',
@@ -52,6 +58,7 @@
 					slug: 'brightness.night',
 					value: 'night',
 					asset: 'night',
+					assetType,
 					shape: 'pill',
 					size: 'sm',
 					justify: 'between',
@@ -81,6 +88,7 @@
 					slug: 'contrast.contrast',
 					value: 'contrast',
 					asset: 'contrast',
+					assetType,
 					shape: 'pill',
 					size: 'sm',
 					justify: 'between',
@@ -96,6 +104,7 @@
 					slug: 'contrast.blend',
 					value: 'blend',
 					asset: 'blend',
+					assetType,
 					shape: 'pill',
 					size: 'sm',
 					justify: 'between',
@@ -113,6 +122,7 @@
 	{#each options as item, i (i)}
 		<InputGroup
 			{...item}
+			{assetType}
 			{oninput}
 			value={values}
 			isUiControl={true}
