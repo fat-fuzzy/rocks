@@ -123,6 +123,7 @@
 </script>
 
 <form class="raviolink l:stack:sm" enctype="multipart/form-data">
+	<p class="font:sm">Your data lives in your browser.</p>
 	<!-- File input triggered by the button -->
 	<input
 		bind:this={fileInput}

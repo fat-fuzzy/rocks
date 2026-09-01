@@ -20,32 +20,38 @@
 		headings: {[cta: string]: string}
 		description: Snippet<[action: string]>
 	} = $props()
+
+	let sizeClass = $derived(actions.length > 2 ? '3xl' : '2xl')
 </script>
 
-<ul class="l:grid:auto size:md maki:inline:2xl">
-	{#each actions as action, i (i)}
-		{@const actionLink = links[action]}
-		<li
-			class="l:stack justify:between color:neutral surface:1:neutral shape:soft ravioli:2xl"
-		>
-			<div>
-				<h3>
-					{headings[action]}
-				</h3>
-				<div class="l:flex:3xs w:full maki:block">
-					{@render description(action)}
+<div class={`l:text:${sizeClass} l:flex justify:center`}>
+	<ul class="l:grid:auto size:md">
+		{#each actions as action, i (i)}
+			{@const actionLink = links[action]}
+			<li
+				class="l:stack justify:between color:neutral surface:1:neutral shape:soft ravioli:lg"
+			>
+				<div class="maki:inline:lg">
+					<h3>
+						{headings[action]}
+					</h3>
+					<div class="l:flex:3xs w:full maki:block">
+						{@render description(action)}
+					</div>
 				</div>
-			</div>
-			{#if actionLink}
-				<div class="l:stack w:full">
-					<a
-						href={resolve(`/${page}/${action}`)}
-						class="l:flex font:semibold font:heading justify:center raviolink color:{color} surface:2:{color} shape:mellow"
+				{#if actionLink}
+					<div
+						class="l:stack w:full surface:2:{color} shape:mellow maki:inline:md maki:block:md"
 					>
-						{actionLink}
-					</a>
-				</div>
-			{/if}
-		</li>
-	{/each}
-</ul>
+						<a
+							href={resolve(`/${page}/${action}`)}
+							class="l:flex font:semibold font:heading justify:center ravioli:2xs shape:mellow"
+						>
+							{actionLink}
+						</a>
+					</div>
+				{/if}
+			</li>
+		{/each}
+	</ul>
+</div>
