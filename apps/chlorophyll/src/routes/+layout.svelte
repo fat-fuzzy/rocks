@@ -206,7 +206,7 @@
 			id="appContext"
 			label="Settings"
 			color="neutral"
-			asset="settings openmoji"
+			asset="settings openmoji:md"
 			assetType="svg"
 			font="sm"
 			size="md"

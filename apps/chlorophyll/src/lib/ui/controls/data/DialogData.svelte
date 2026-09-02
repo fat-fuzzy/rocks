@@ -82,5 +82,5 @@
 	onclick={showDialog}
 >
 	<span class="font:heading">{label}</span>
-	<ff-icon class="svg:herb openmoji size:md l:flex"></ff-icon>
+	<ff-icon class="svg:herb openmoji:xs l:flex"></ff-icon>
 </Button>

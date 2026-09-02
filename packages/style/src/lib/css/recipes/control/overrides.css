@@ -1,6 +1,9 @@
-ul.depth-1 ff-toggle-reveal:first-of-type > ff-control > label {
-	padding: var(--border-width-xl);
-	margin-block-end: var(--border-width-xl);
+ul.depth-0 ff-toggle-reveal:first-of-type > ff-control > label {
+	padding-block: var(--border-width-xl);
+}
+
+ul.depth-1 li > a {
+	padding-block: var(--ui-size);
 }
 
 .sidebar > nav > ff-toggle-reveal > ff-control > label {

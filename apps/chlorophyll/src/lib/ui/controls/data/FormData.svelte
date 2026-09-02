@@ -256,7 +256,7 @@
 					variant="outline"
 					size="xs"
 					font="xs font:heading"
-					asset="herb openmoji"
+					asset="herb openmoji:xs"
 					assetType="svg"
 					onclick={reSeed}
 					disabled={status !== 'ready'}
