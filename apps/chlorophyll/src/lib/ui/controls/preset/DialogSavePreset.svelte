@@ -22,6 +22,7 @@
 		disabled?: boolean
 		label?: string
 		size?: UiSize
+		font?: UiSize
 		color?: UiColor
 		variant?: UiVariant
 		shape?: UiShape
@@ -35,6 +36,7 @@
 		disabled,
 		label = 'Save Preset',
 		size = '2xs',
+		font = '2xs',
 		color = 'primary',
 		variant = 'outline',
 		shape = 'mellow',
@@ -65,7 +67,7 @@
 	type="button"
 	name={id}
 	{size}
-	font="2xs font:heading"
+	font={`${font} font:heading`}
 	{label}
 	{color}
 	{shape}

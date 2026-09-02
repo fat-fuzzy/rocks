@@ -33,38 +33,38 @@
 	}
 }
 
-.openmoji.size\:3xs::before {
+.openmoji\:3xs::before {
 	--icon-size: var(--icon-svg-3xs);
 }
 
-.openmoji.size\:2xs::before {
+.openmoji\:2xs::before {
 	--icon-size: var(--icon-svg-2xs);
 }
 
-.openmoji.size\:xs::before {
+.openmoji\:xs::before {
 	--icon-size: var(--icon-svg-xs);
 }
 
-.openmoji.size\:sm::before {
+.openmoji\:sm::before {
 	--icon-size: var(--icon-svg-sm);
 }
 
-.openmoji.size\:md::before {
+.openmoji\:md::before {
 	--icon-size: var(--icon-svg-md);
 }
 
-.openmoji.size\:lg::before {
+.openmoji\:lg::before {
 	--icon-size: var(--icon-svg-lg);
 }
 
-.openmoji.size\:xl::before {
+.openmoji\:xl::before {
 	--icon-size: var(--icon-svg-xl);
 }
 
-.openmoji.size\:2xl::before {
+.openmoji\:2xl::before {
 	--icon-size: var(--icon-svg-2xl);
 }
 
-.openmoji.size\:3xl::before {
+.openmoji\:3xl::before {
 	--icon-size: var(--icon-svg-3xl);
 }

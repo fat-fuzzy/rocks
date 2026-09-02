@@ -135,24 +135,24 @@ button.variant\:fill:not([disabled]):focus {
 	transform: rotateY(180deg);
 }
 
-button[class*='shape:'].openmoji {
+button[class*='shape:'][class*='openmoji'] {
 	padding-block: var(--outline-offset-lg);
 	padding-inline: var(--outline-offset-lg) var(--ui-size-xs);
 }
 
-.openmoji[class*='svg'].size\:xs::before {
+[class*='openmoji'][class*='svg'].size\:xs::before {
 	--icon-size: calc(var(--icon-svg-lg) / var(--ratio-xs));
 }
 
-.openmoji[class*='svg'].size\:md::before {
+[class*='openmoji'][class*='svg'].size\:md::before {
 	--icon-size: calc(var(--icon-svg-lg) / var(--ratio-sm));
 }
 
-ff-icon.openmoji {
+ff-icon[class*='openmoji'] {
 	padding: 0;
 }
 
-button[class*='shape:']:has(ff-icon.openmoji) {
+button[class*='shape:']:has(ff-icon[class*='openmoji']) {
 	padding-block: calc(var(--ui-size-xs) / var(--ratio-sm));
 	padding-inline: var(--ui-size) var(--ui-size-xs);
 }

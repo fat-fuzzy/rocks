@@ -185,7 +185,7 @@
 											color="primary"
 											variant="bare"
 											size="2xs"
-											font="2xs font:heading"
+											font="2xs"
 											disabled={preset.locked || !isCurrent}
 											onclick={() => savePreset(preset)}
 										/>

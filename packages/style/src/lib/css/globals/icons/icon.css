@@ -60,6 +60,12 @@ ff-icon {
 	margin: 0;
 }
 
+button > ff-icon {
+	padding-block: 0;
+	padding-inline: var(--outline-offset-sm);
+	margin: 0;
+}
+
 ff-icon::before {
 	margin: 0;
 }

@@ -93,7 +93,7 @@
 							? 'fill'
 							: 'outline'}
 						size="xs"
-						font="2xs font:heading"
+						font="sm font:heading"
 						disabled={currentPreset.locked || !currentPreset.query}
 						onclick={() => savePreset(currentPreset)}
 					/>
