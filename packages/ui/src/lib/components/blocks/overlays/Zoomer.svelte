@@ -5,17 +5,12 @@
 		children,
 		size = 'md',
 		variant = 'outline',
-		path,
 		cta = 'Zoom',
 		href = '#zoom',
 		open = false,
 	}: {
-		title: string
-		description: string
-		path: string
 		size: string
 		variant?: string
-		layout: string
 		children: Snippet
 		cta: string
 		href: string
@@ -56,7 +51,7 @@
 		class="l:flex justify:end button-zoom ravioli:sm maki:inline"
 	>
 		<button
-			class={`bg:primary variant:outline size:${size}`}
+			class={`color:primary variant:outline size:${size}`}
 			onclick={() => {
 				// TODO: use <a> instead ?
 				history.back()
