@@ -1,5 +1,4 @@
 <script lang="ts">
-	import {resolve} from '$app/paths'
 	import type {ToggleTreeProps, NavItem} from '$types'
 
 	import ToggleLink from './ToggleLink.svelte'
@@ -92,7 +91,7 @@
 				<a
 					data-sveltekit-preload-data
 					//  FIXME: figure this out
-					href={resolve(href)}
+					{href}
 					class={`ellipsis ${linkClass} ${linkAssetClass}`}
 				>
 					{title ?? label}
