@@ -4,8 +4,8 @@ ff-control > label:has(input[type='checkbox']:focus) {
 }
 
 ff-control > label:has(input:checked) ff-icon {
-	--lightness: var(--lightness-surface-1);
-	background-color: var(--shade);
+	--border-color: transparent;
+	background-color: inherit;
 }
 
 .ff-control:not([class*=':neutral']),
