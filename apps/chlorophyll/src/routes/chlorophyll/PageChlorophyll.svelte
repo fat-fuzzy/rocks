@@ -26,7 +26,7 @@
 		<p>Focus on your core message.</p>
 		<p>Make your voice heard.</p>
 	{:else if action === 'build'}
-		<p>Structure content to tell your story.</p>
+		<p>Structure the narrative to convey your story.</p>
 		<p>Save and modify Presets.</p>
 	{:else if action === 'compare'}
 		<p>Preview your work in progress.</p>

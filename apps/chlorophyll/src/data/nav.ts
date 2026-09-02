@@ -149,7 +149,7 @@ export const pages: {[key: string]: NavItem} = {
 		size: 'md',
 		assetType: 'svg',
 		actionPath: '/',
-		items: [cta.phloem, cta.chlorophyll, cta.mycelium],
+		items: [cta.mycelium, cta.phloem, cta.chlorophyll],
 	},
 }
 
