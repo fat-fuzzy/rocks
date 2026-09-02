@@ -26,7 +26,7 @@
 	);
 }
 
-[class*='bg:'][class*='status:'] {
+[class*='status:'] {
 	--color-bg: var(--shade-semantic, --shade);
 	--color-ink: var(--ink-semantic, --ink);
 	--color-accent: var(--accent-semantic, --accent);
