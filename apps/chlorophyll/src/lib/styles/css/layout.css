@@ -17,11 +17,6 @@ html:has(.l\:grid\:urbanist) {
 	transform: translate(-50%, var(--ui-size));
 }
 
-.context.hug > ff-toggle-reveal > ff-control > label:has(input:checked),
-.sidebar.hug > nav > ff-toggle-reveal > ff-control > label:has(input:checked) {
-	--input-inline-size: calc(var(--sidebar-width) - var(--grid-gap));
-}
-
 .tram.zone\:main {
 	grid-template-rows: subgrid;
 }
@@ -60,12 +55,6 @@ html:has(.l\:grid\:urbanist) {
 		}
 	}
 
-	.l\:grid\:urbanist.railway {
-		ff-toggle-reveal.ouest ff-control:has(input:checked) + ff-reveal {
-			--x-axis: 0;
-		}
-	}
-
 	.exchange > .context {
 		grid-column-start: 3;
 	}
@@ -96,10 +85,6 @@ html:has(.l\:grid\:urbanist) {
 
 	.exchange > .context {
 		grid-column-start: 6;
-
-		ff-toggle-reveal {
-			inline-size: 100%;
-		}
 	}
 
 	.navbar
@@ -117,8 +102,10 @@ html:has(.l\:grid\:urbanist) {
 
 @media screen and (min-width: 68.75rem) {
 	.l\:grid\:urbanist {
-		ff-toggle-reveal.est ff-control:has(input:checked) + ff-reveal {
-			--x-axis: calc(2 * var(--ui-size-xs));
+		ff-toggle-reveal.est ff-control:has(input:checked) + ff-reveal,
+		ff-toggle-reveal.ouest ff-control:has(input:checked) + ff-reveal {
+			--x-size: calc(var(--layout-sidebar-md) + var(--ui-size));
+			--x-axis: var(--outline-offset-lg);
 		}
 	}
 

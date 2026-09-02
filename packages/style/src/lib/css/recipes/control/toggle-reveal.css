@@ -255,7 +255,7 @@ ff-toggle-reveal.auto {
 	}
 
 	ff-toggle-reveal.est ff-control:has(input:checked) + ff-reveal {
-		--x-axis: calc(-35% - var(--ui-size-xl));
+		--x-axis: -45%;
 	}
 }
 
@@ -264,8 +264,8 @@ ff-toggle-reveal.auto {
 		ff-toggle-reveal.est ff-control:has(input:checked) + ff-reveal,
 		ff-toggle-reveal.ouest ff-control:has(input:checked) + ff-reveal {
 			--x-size: var(--layout-sidebar-md);
-			--y-axis: var(--ui-size-xs);
 
+			/* Nested toggle trees */
 			ff-reveal {
 				--x-size: calc(
 					var(--layout-sidebar-md) - 2 * var(--ui-size-lg) +
@@ -275,7 +275,11 @@ ff-toggle-reveal.auto {
 		}
 
 		ff-toggle-reveal.est ff-control:has(input:checked) + ff-reveal {
-			--x-axis: calc(-2 * var(--ui-size-lg));
+			--x-axis: calc(-1 * var(--ui-size-xs));
+		}
+
+		ff-toggle-reveal.ouest ff-control:has(input:checked) + ff-reveal {
+			--x-axis: 0;
 		}
 	}
 }

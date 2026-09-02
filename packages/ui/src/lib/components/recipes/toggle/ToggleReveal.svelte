@@ -95,7 +95,7 @@
 		justify ? `justify:${justify}` : 'justify:between',
 	)
 	let ff_labelClasses = $derived(
-		`l:flex nowrap w:full align:center ${justifyClass}`,
+		`l:flex nowrap w:full align:center justify:between`,
 	)
 	let ff_labelReverse = $derived(depth > 1 && nav ? 'reverse nowrap' : '')
 

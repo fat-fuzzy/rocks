@@ -224,6 +224,7 @@
 				name="app-settings"
 				label="Settings"
 				size="md"
+				justify="between"
 				assetType="openmoji svg"
 				selected={appContext}
 				oninput={updateSettings}
