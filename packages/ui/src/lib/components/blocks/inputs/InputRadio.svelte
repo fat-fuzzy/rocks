@@ -128,7 +128,7 @@
 		class={`${ffClasses} ellipsis nowrap ${labelClasses}`}
 		data-testid={id}
 	>
-		<span class={iconClasses}>{label}</span>
+		<span>{label}</span>
 		{@render input()}
 	</label>
 	<Feedback
