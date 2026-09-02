@@ -33,7 +33,7 @@
 	coords="bottom-right"
 >
 	<menu class="l:stack:3xs ravioli:xs align:start">
-		<Export id="button-export" label="Export" filename="cv-content" {color} />
 		<DialogData id="button-import" label="Source" {color} />
+		<Export id="button-export" label="Export" filename="cv-content" {color} />
 	</menu>
 </Popover>
