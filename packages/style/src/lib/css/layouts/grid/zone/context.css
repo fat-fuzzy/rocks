@@ -49,7 +49,7 @@
 
 @media screen and (min-width: 68.75rem) {
 	.exchange > .context {
-		grid-column-start: 6;
+		grid-column-start: 5;
 	}
 
 	ff-toggle-reveal.est ff-control:has(input:checked) + ff-reveal {
