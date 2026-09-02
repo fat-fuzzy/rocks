@@ -18,7 +18,7 @@
 	border: var(--border-width-md) solid var(--color-accent);
 }
 
-[class*=':bare']:not(label, pre) {
+[class*=':bare']:not(label, pre, label > span) {
 	--border-color-bare: oklch(
 		var(--lightness-surface-2) var(--chroma-contrast) var(--hue)
 	);

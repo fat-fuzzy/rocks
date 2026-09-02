@@ -3,7 +3,7 @@ ul.depth-0 ff-toggle-reveal:first-of-type > ff-control > label {
 }
 
 ul.depth-1 li > a {
-	padding-block: var(--ui-size);
+	padding-block: var(--outline-offset-lg);
 }
 
 .sidebar > nav > ff-toggle-reveal > ff-control > label {

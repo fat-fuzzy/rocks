@@ -14,7 +14,14 @@
 	padding-inline: calc(var(--ui-size-xs) - var(--border-width-md));
 }
 
-.shape\:pill[class*='emoji']::before {
+[class*='emoji'][class*='shape:'].size\:3xs,
+[class*='emoji'][class*='shape:'].size\:2xs,
+[class*='emoji'][class*='shape:'].size\:xs {
+	padding-block: calc(var(--ui-size) - var(--border-width-lg));
+	padding-inline: calc(var(--ui-size) - var(--border-width-lg));
+}
+
+[class*='emoji'].shape\:pill::before {
 	margin-inline-end: var(--icon-gap, var(--ui-size-sm));
 }
 
