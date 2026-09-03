@@ -138,14 +138,6 @@ button[class*='shape:'][class*='openmoji'] {
 	padding-inline: var(--outline-offset-lg) var(--ui-size-xs);
 }
 
-[class*='openmoji'][class*='svg'].size\:xs::before {
-	--icon-size: calc(var(--icon-svg-lg) / var(--ratio-xs));
-}
-
-[class*='openmoji'][class*='svg'].size\:md::before {
-	--icon-size: calc(var(--icon-svg-lg) / var(--ratio-sm));
-}
-
 ff-icon[class*='openmoji'] {
 	padding: 0;
 }
@@ -153,4 +145,9 @@ ff-icon[class*='openmoji'] {
 button[class*='shape:']:has(ff-icon[class*='openmoji']) {
 	padding-block: calc(var(--ui-size-xs) / var(--ratio-sm));
 	padding-inline: var(--ui-size) var(--ui-size-xs);
+}
+
+/*  FIXME: Sidenav & context overrides - fix this in tokens */
+[class*='openmoji'][class*='svg'].size\:md::before {
+	--icon-size: calc(var(--icon-svg-lg) / var(--ratio-sm));
 }
