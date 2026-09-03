@@ -75,6 +75,17 @@ ff-popover,
 
 /* Anchor positioning */
 @supports (anchor-name: --anchor-name) {
+	[class*='anchored:'] {
+		margin: 0;
+		inset: auto;
+		position: absolute;
+		position-anchor: var(--anchor-name);
+	}
+
+	.anchor {
+		anchor-name: var(--anchor-name);
+	}
+
 	[popover][class*='anchored:bottom'] {
 		top: anchor(bottom);
 	}
