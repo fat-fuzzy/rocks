@@ -125,10 +125,8 @@ ff-magic[class*='svg']::before {
 button.variant\:fill:not([disabled]):hover {
 	--lightness: var(--lightness-surface-2);
 	--lightness-contrast: var(--lightness-surface-2-contrast);
-}
-
-button.variant\:fill:not([disabled]):focus {
-	--lightness-contrast: var(--lightness-surface-5-contrast);
+	--chroma: var(--chroma-surface-2);
+	--chroma-contrast: var(--chroma-surface-2-contrast);
 }
 
 [class*='svg'].reverse\:y::before {
