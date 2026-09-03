@@ -14,7 +14,8 @@
 		label,
 		color,
 		font,
-		size,
+		size = 'md',
+		dimension,
 		variant = 'fill',
 		shape,
 		children,
@@ -34,7 +35,10 @@
 
 	let positionClass = $derived(position ? `${position}:${coords}` : '')
 	let layerClass = $derived(layer ? `layer:${layer}` : '')
-	let revealClasses = $derived(`${positionClass} ${layerClass}`)
+	let dimensionClass = $derived(dimension ? `size:${dimension}` : '')
+	let revealClasses = $derived(
+		`${dimensionClass} ${positionClass} ${layerClass}`,
+	)
 
 	function toggleReveal(payload: FuzzyPayload) {
 		const updatedValue = TRANSITION_REVEAL[String(payload.value)] as UiState
@@ -56,27 +60,26 @@
 	})
 </script>
 
-<ff-popover {id} data-testid={id} data-anchor={`--popover-anchor-${id}`}>
-	<span class="anchor">
-		<Button
-			id={`button-popover-${id}`}
-			type="button"
-			{label}
-			{font}
-			{size}
-			{color}
-			{variant}
-			{asset}
-			{assetType}
-			{shape}
-			{align}
-			{justify}
-			name={`button-popover-${id}`}
-			popovertarget={`${id}-popover`}
-			onclick={toggleReveal}
-			value={reveal ? TRANSITION_REVEAL[reveal] : undefined}
-		/>
-	</span>
+<ff-popover {id} data-testid={id}>
+	<Button
+		id={`button-popover-${id}`}
+		type="button"
+		{label}
+		{font}
+		{size}
+		{color}
+		{variant}
+		{asset}
+		{assetType}
+		{shape}
+		{align}
+		{justify}
+		name={`button-popover-${id}`}
+		popovertarget={`${id}-popover`}
+		anchorName={`popover-anchor-${id}`}
+		onclick={toggleReveal}
+		value={reveal ? TRANSITION_REVEAL[reveal] : undefined}
+	/>
 	<ff-reveal
 		id={`${id}-popover`}
 		bind:this={popover}
@@ -85,6 +88,7 @@
 		aria-live="polite"
 		class={revealClasses}
 		data-testid={`${id}-popover`}
+		style={`position-anchor: --popover-anchor-${id}`}
 	>
 		{#if children}
 			{@render children()}

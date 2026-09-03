@@ -25,7 +25,7 @@
 
 ff-control:has([role='tooltip']) {
 	position: relative;
-	min-inline-size: var(--layout-sidebar-collapsed);
+	inline-size: auto;
 }
 
 label:has([role='tooltip']) {
@@ -34,15 +34,15 @@ label:has([role='tooltip']) {
 
 label:hover > [role='tooltip'],
 label:focus > [role='tooltip'] {
+	font-size: var(--font-size-minus);
 	opacity: 1;
 	background: var(--tooltip-bg);
-	padding-block: var(--ui-size-sm);
-	padding-inline: var(--ui-size);
+	padding-block: var(--ui-size-xs);
+	padding-inline: var(--ui-size-sm);
 	block-size: auto;
-	inline-size: auto;
-	max-inline-size: var(--layout-sidebar-collapsed);
+	inline-size: max-content;
+	max-inline-size: var(--layout-sidebar-xs);
 	border-radius: var(--border-radius-base);
-	border: var(--border-width-lg) dotted var(--accent);
 	transform: translate(var(--x-transform), var(--y-transform));
 	transition:
 		opacity 150ms ease-out 50ms,
@@ -51,42 +51,42 @@ label:focus > [role='tooltip'] {
 
 /** BASE positioning **/
 
-[role='tooltip'].est {
+[role='tooltip'][class*='anchored:right'] {
 	inset-block-start: var(--y-axis);
 	inset-inline-start: 50%;
 }
 
-[role='tooltip'].ouest {
+[role='tooltip'][class*='anchored:left'] {
 	inset-block-start: var(--y-axis);
 	inset-inline-end: 50%;
 }
 
-[role='tooltip'].nord {
+[role='tooltip'][class*='anchored:top'] {
 	inset-block-end: 100%;
 }
 
-[role='tooltip'].sud {
+[role='tooltip'][class*='anchored:bottom'] {
 	inset-block-end: -100%;
 }
 
 /** HOVER positioning **/
 
-label:hover > [role='tooltip'].est,
-label:focus > [role='tooltip'].est,
-label:hover > [role='tooltip'].ouest,
-label:focus > [role='tooltip'].ouest {
+label:hover > [role='tooltip'][class*='anchored:left'],
+label:focus > [role='tooltip'][class*='anchored:left'],
+label:hover > [role='tooltip'][class*='anchored:right'],
+label:focus > [role='tooltip'][class*='anchored:right'] {
 	--x-transform: 0;
 	--y-transform: 0;
 }
 
-label:hover > [role='tooltip'].nord,
-label:focus > [role='tooltip'].nord {
+label:hover > [role='tooltip'][class*='anchored:top'],
+label:focus > [role='tooltip'][class*='anchored:top'] {
 	--x-transform: 0;
 	--y-transform: 0;
 }
 
-label:hover > [role='tooltip'].sud,
-label:focus > [role='tooltip'].sud {
+label:hover > [role='tooltip'][class*='anchored:bottom'],
+label:focus > [role='tooltip'][class*='anchored:bottom'] {
 	--x-transform: 0;
 	--y-transform: 0;
 }

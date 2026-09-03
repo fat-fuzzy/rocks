@@ -22,6 +22,7 @@
 		variant,
 		dimensions,
 		popovertarget,
+		anchorName,
 		type = 'submit',
 		children,
 		onclick,
@@ -31,7 +32,7 @@
 		if (onclick) onclick(payload)
 	}
 
-	let buttonClasses = $derived(
+	let buttonStyles = $derived(
 		styleHelper.getStyles({
 			color,
 			size,
@@ -45,6 +46,10 @@
 			layout: shape ? 'flex' : 'switcher',
 			dimensions,
 		}),
+	)
+
+	let buttonClasses = $derived(
+		anchorName ? `anchor  ${buttonStyles}` : buttonStyles,
 	)
 
 	let payload = $derived({
@@ -72,6 +77,7 @@
 	data-testid={id}
 	{popovertarget}
 	aria-label={ariaLabel ?? (isIconButton ? (label ?? name) : undefined)}
+	style={anchorName ? `--anchor-name: --${anchorName}` : ''}
 >
 	{#if children}
 		{@render children()}

@@ -1,0 +1,80 @@
+@supports (anchor-name: --anchor-name) {
+	[class*='anchored:'] {
+		margin: 0;
+		inset: auto;
+		position: absolute;
+		position-anchor: var(--anchor-name);
+	}
+
+	.anchor {
+		anchor-name: var(--anchor-name);
+	}
+
+	[class*='anchored:bottom'] {
+		top: anchor(bottom);
+	}
+
+	[class*='anchored:top'] {
+		bottom: anchor(top);
+	}
+
+	[class*='anchored:left'],
+	[class*='anchored:right'] {
+		top: anchor(top);
+	}
+
+	[class*='anchored:left'],
+	[class*='anchored:top-left'],
+	[class*='anchored:bottom-left'] {
+		right: anchor(left);
+	}
+
+	[class*='anchored:right'],
+	[class*='anchored:top-right'],
+	[class*='anchored:bottom-right'] {
+		left: anchor(right);
+	}
+
+	[class*='anchored:top-center'],
+	[class*='anchored:bottom-center'] {
+		right: anchor(center);
+	}
+
+	[class*='anchored:left-center'],
+	[class*='anchored:right-center'] {
+		top: anchor(center);
+	}
+
+	[class*='anchored:top-left'] {
+		transform: translate(100%, calc(-2 * var(--outline-offset-lg)));
+	}
+
+	[class*='anchored:bottom-left'] {
+		transform: translate(100%, calc(2 * var(--outline-offset-lg)));
+	}
+
+	[class*='anchored:top-right'] {
+		transform: translate(-100%, calc(-2 * var(--outline-offset-lg)));
+	}
+
+	[class*='anchored:bottom-right'] {
+		transform: translate(-100%, calc(2 * var(--outline-offset-lg)));
+		position-try-fallbacks: --bottom;
+	}
+
+	[class*='anchored:left-center'] {
+		transform: translate(calc(-1 * var(--outline-offset-lg)), -50%);
+	}
+
+	[class*='anchored:right-center'] {
+		transform: translate(calc(2 * var(--outline-offset-lg)), -50%);
+	}
+
+	[class*='anchored:top-center'] {
+		transform: translate(50%, calc(-2 * var(--outline-offset-lg)));
+	}
+
+	[class*='anchored:bottom-center'] {
+		transform: translate(50%, calc(2 * var(--outline-offset-lg)));
+	}
+}

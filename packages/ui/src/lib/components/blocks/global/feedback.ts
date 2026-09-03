@@ -9,5 +9,5 @@ export type FeedbackProps = UiBlockProps &
 		context: UiTextContext // feedback context: code, form, dialog, prose
 		status?: UiStatus // feedback color: info, success, warning, error,
 		element?: string
-		children: Snippet
+		children?: Snippet
 	}

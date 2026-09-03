@@ -41,7 +41,7 @@
 	>
 		{#snippet main()}
 			<p
-				class="feedback:prose status:default bg:default:100 size:md variant:bare maki:block l:text:xl"
+				class="feedback:prose status:default surface:0:primary size:md variant:bare maki:block l:text:xl"
 			>
 				<span class="font:sm">{description}</span>
 			</p>

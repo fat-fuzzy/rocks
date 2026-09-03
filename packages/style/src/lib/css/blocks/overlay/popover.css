@@ -1,4 +1,4 @@
-rf-popover,
+ff-popover,
 .anchor {
 	display: block;
 	inline-size: max-content;
@@ -51,21 +51,30 @@ rf-popover,
 	pointer-events: auto;
 }
 
+/* Scale popover content */
+
+[popover].size\:sm:popover-open {
+	inline-size: 100%;
+	max-inline-size: var(--layout-sidebar-sm);
+}
+
+[popover].size\:md:popover-open {
+	inline-size: 100%;
+	max-inline-size: var(--layout-sidebar-md);
+}
+
+[popover].size\:lg:popover-open {
+	inline-size: 100%;
+	max-inline-size: var(--layout-sidebar-lg);
+}
+
+[popover].size\:xl:popover-open {
+	inline-size: 100%;
+	max-inline-size: var(--layout-sidebar-xl);
+}
+
+/* Anchor positioning */
 @supports (anchor-name: --anchor-name) {
-	[popover].anchored {
-		margin: 0;
-		inset: auto;
-		position: absolute;
-	}
-
-	[data-anchor] {
-		--anchor-name: attr(data-anchor);
-	}
-
-	.anchor {
-		anchor-name: var(--anchor-name);
-	}
-
 	[popover][class*='anchored:bottom'] {
 		top: anchor(bottom);
 	}
@@ -99,84 +108,6 @@ rf-popover,
 	[popover][class*='anchored:left-center'],
 	[popover][class*='anchored:right-center'] {
 		top: anchor(center);
-	}
-
-	[popover][class*='anchored:top-left'] {
-		transform: translate(100%, calc(-2 * var(--outline-offset-lg)));
-	}
-
-	[popover][class*='anchored:bottom-left'] {
-		transform: translate(100%, calc(2 * var(--outline-offset-lg)));
-	}
-
-	[popover][class*='anchored:top-right'] {
-		transform: translate(-100%, calc(-2 * var(--outline-offset-lg)));
-	}
-
-	[popover][class*='anchored:bottom-right'] {
-		transform: translate(-100%, calc(2 * var(--outline-offset-lg)));
-		position-try-fallbacks: --bottom;
-	}
-
-	[popover][class*='anchored:left-center'] {
-		transform: translate(calc(-1 * var(--outline-offset-lg)), -50%);
-	}
-
-	[popover][class*='anchored:right-center'] {
-		transform: translate(calc(2 * var(--outline-offset-lg)), -50%);
-	}
-
-	[popover][class*='anchored:top-center'] {
-		transform: translate(50%, calc(-2 * var(--outline-offset-lg)));
-	}
-
-	[popover][class*='anchored:bottom-center'] {
-		transform: translate(50%, calc(2 * var(--outline-offset-lg)));
-	}
-}
-
-/* Target Firefox only : magic numbers */
-/* FIXME: use polyfill : https://www.oddbird.net/2025/05/06/polyfill-updates/ */
-@-moz-document url-prefix() {
-	[popover][class*='anchored:top-left'] {
-		transform: translate(0, calc(-150% - var(--outline-offset-lg)));
-	}
-
-	[popover][class*='anchored:bottom-left'] {
-		transform: translate(calc(-2 - var(--outline-offset-lg)), 0);
-	}
-
-	[popover][class*='anchored:top-right'] {
-		transform: translate(calc(-25% - 4 * var(--outline-offset-lg)), -150%);
-	}
-
-	[popover][class*='anchored:bottom-right'] {
-		transform: translate(calc(-25% - 4 * var(--outline-offset-lg)), 0);
-	}
-
-	[popover][class*='anchored:left-center'] {
-		transform: translate(
-			calc(-100% - 2 * var(--outline-offset-lg)),
-			calc(-100% - 2 * var(--outline-offset-lg))
-		);
-	}
-
-	[popover][class*='anchored:right-center'] {
-		transform: translate(
-			calc(75% - 2 * var(--outline-offset-lg)),
-			calc(-100% - 2 * var(--outline-offset-lg))
-		);
-	}
-
-	[popover][class*='anchored:top-center'] {
-		transform: translate(-25%, calc(-150% - var(--outline-offset-lg)));
-	}
-
-	[popover][class*='anchored:bottom-center'] {
-		transform: translate(
-			calc(-25% + 2 * var(--outline-offset-lg)),
-			calc(25% - 6 * var(--outline-offset-lg))
-		);
 	}
 }
 

@@ -8,7 +8,6 @@
 	import popoverActor from '$lib/components/blocks/overlays/Popover/actor.svelte'
 	import FormValidator from '$lib/utils/browser/FormValidator.svelte'
 	import Button from '$lib/components/blocks/buttons/Button.svelte'
-	import InputGroup from '$lib/components/blocks/inputs/InputGroup.svelte'
 	import InputCheck from '$lib/components/blocks/inputs/InputCheck.svelte'
 	import Feedback from '$lib/components/blocks/global/Feedback.svelte'
 	import Popover from '$lib/components/blocks/overlays/Popover/Popover.svelte'
@@ -27,6 +26,7 @@
 		size = 'md',
 		color = 'accent',
 		variant = 'fill',
+		coords,
 		consent,
 		onsubmit,
 		onchange,
@@ -124,8 +124,10 @@
 	variant="fill"
 	layer="3"
 	color={cookiesPartial ? 'accent' : 'primary'}
-	coords="bottom-right"
+	{coords}
 	{fixed}
+	dimension="lg"
+	font="md"
 >
 	<Feedback
 		id="cookies-consent"
@@ -165,54 +167,41 @@
 					<p class="text:center">{description}</p>
 				{/snippet}
 				{#snippet main()}
-					<div class="text:start">
+					<div class="text:start l:stack:md ravioli:lg">
 						{#key validator}
-							<InputGroup
-								id="consent.functional"
-								type="check"
-								name="consent"
+							<InputCheck
+								id="functional"
+								name="functional"
+								type="checkbox"
+								label="Site Functionality"
+								hint="These cookies allow me to save your preferences on the site (including your cookie preferences). No personal data is stored in these cookies."
+								color="primary"
+								asset="none"
 								size="sm"
 								variant="bare"
+								justify="between"
+								disabled={true}
+								checked={true}
+								{validator}
+							/>
+							<br />
+							<InputCheck
+								id="legitimateInterest"
+								name="legitimateInterest"
+								type="checkbox"
+								label="Legitimate Interest"
+								hint="This helps me improve this site using privacy friendly statistics provided by goatcounter.com. You are free to turn these off if you wish to do so, but it would be helpful for my work here if you leave them on!"
+								color="primary"
+								asset="none"
+								variant="bare"
+								size="sm"
+								justify="between"
 								onfocus={handleFocus}
 								onblur={handleBlur}
 								oninput={handleInput}
+								checked={consent?.legitimateInterest ?? true}
 								{validator}
-								justify="between"
-							>
-								<InputCheck
-									id="functional"
-									name="functional"
-									type="checkbox"
-									label="Site Functionality"
-									hint="These cookies allow me to save your preferences on the site (including your cookie preferences). No personal data is stored in these cookies."
-									color="primary"
-									asset="none"
-									size="sm"
-									variant="bare"
-									justify="between"
-									disabled={true}
-									checked={true}
-									{validator}
-								/>
-								<br />
-								<InputCheck
-									id="legitimateInterest"
-									name="legitimateInterest"
-									type="checkbox"
-									label="Legitimate Interest"
-									hint="This helps me improve this site using privacy friendly statistics provided by goatcounter.com. You are free to turn these off if you wish to do so, but it would be helpful for my work here if you leave them on!"
-									color="primary"
-									asset="none"
-									variant="bare"
-									size="sm"
-									justify="between"
-									onfocus={handleFocus}
-									onblur={handleBlur}
-									oninput={handleInput}
-									checked={consent?.legitimateInterest ?? true}
-									{validator}
-								/>
-							</InputGroup>
+							/>
 						{/key}
 					</div>
 				{/snippet}

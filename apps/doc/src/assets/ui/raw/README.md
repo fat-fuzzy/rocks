@@ -5,7 +5,7 @@ tags: ['raw']
 props_style: {}
 ---
 
-<p class="feedback:prose status:warning bg:default:100 variant:bare emoji:wip">Work in Progress!</p>
+<p class="feedback:prose  surface:0:warning variant:bare emoji:wip">Work in Progress!</p>
 
 ## What is Raw ?
 

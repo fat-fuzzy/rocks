@@ -16,6 +16,7 @@ export type ButtonProps = UiBlockProps & {
 	value?: string | number
 	disabled?: boolean
 	popovertarget?: string
+	anchorName?: string // if popover target or has tooltip
 	formaction?: string
 
 	type?: ButtonType

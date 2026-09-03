@@ -46,6 +46,7 @@
 	block-size: 24rem;
 }
 
-.editor-menu ff-popover > .anchor > button {
+.editor-menu button.anchor,
+.editor-menu button.anchor {
 	line-height: 1.65;
 }

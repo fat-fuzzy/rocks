@@ -8,7 +8,7 @@
 		font,
 		variant,
 		assetType,
-		asset,
+		asset = 'none',
 		hint,
 		errors,
 		surface,

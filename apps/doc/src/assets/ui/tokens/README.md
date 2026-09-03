@@ -14,7 +14,7 @@ Design Tokens are `[key, value]` pairs that define design choices such as `Color
 
 All the tokens that are currently defined can be found in the [CSS library's tokens folder](https://github.com/fat-fuzzy/rocks/tree/main/packages/style/src/lib/tokens)
 
-<p class="feedback:prose status:default bg:default:100 variant:bare emoji:wip">The generation of design tokens in this library is still a work in progress. More detailed documentation coming soon! </p>
+<p class="feedback:prose surface:0:warning variant:bare emoji:wip">The generation of design tokens in this library is still a work in progress. More detailed documentation coming soon! </p>
 
 ## Resources
 

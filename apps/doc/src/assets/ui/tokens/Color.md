@@ -14,4 +14,4 @@ There are two color groups:
 
 ## Resources
 
-<p class="feedback:prose status:default bg:default:100 variant:bare emoji:default">Coming Soon!</p>
+<p class="feedback:prose surface:0:primary variant:bare emoji:default">Coming Soon!</p>
