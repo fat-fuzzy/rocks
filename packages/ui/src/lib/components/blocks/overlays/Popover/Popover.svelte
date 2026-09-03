@@ -60,7 +60,7 @@
 	})
 </script>
 
-<ff-popover {id} data-testid={id}>
+<ff-popover {id} data-testid={id} data-anchor={`--popover-anchor-${id}`}>
 	<Button
 		id={`button-popover-${id}`}
 		type="button"
