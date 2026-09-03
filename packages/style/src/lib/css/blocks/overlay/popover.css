@@ -52,17 +52,6 @@ rf-popover,
 }
 
 @supports (anchor-name: --anchor-name) {
-	[popover].anchored {
-		margin: 0;
-		inset: auto;
-		position: absolute;
-		position-anchor: var(--anchor-name);
-	}
-
-	.anchor {
-		anchor-name: var(--anchor-name);
-	}
-
 	[popover][class*='anchored:bottom'] {
 		top: anchor(bottom);
 	}
@@ -96,39 +85,6 @@ rf-popover,
 	[popover][class*='anchored:left-center'],
 	[popover][class*='anchored:right-center'] {
 		top: anchor(center);
-	}
-
-	[popover][class*='anchored:top-left'] {
-		transform: translate(100%, calc(-2 * var(--outline-offset-lg)));
-	}
-
-	[popover][class*='anchored:bottom-left'] {
-		transform: translate(100%, calc(2 * var(--outline-offset-lg)));
-	}
-
-	[popover][class*='anchored:top-right'] {
-		transform: translate(-100%, calc(-2 * var(--outline-offset-lg)));
-	}
-
-	[popover][class*='anchored:bottom-right'] {
-		transform: translate(-100%, calc(2 * var(--outline-offset-lg)));
-		position-try-fallbacks: --bottom;
-	}
-
-	[popover][class*='anchored:left-center'] {
-		transform: translate(calc(-1 * var(--outline-offset-lg)), -50%);
-	}
-
-	[popover][class*='anchored:right-center'] {
-		transform: translate(calc(2 * var(--outline-offset-lg)), -50%);
-	}
-
-	[popover][class*='anchored:top-center'] {
-		transform: translate(50%, calc(-2 * var(--outline-offset-lg)));
-	}
-
-	[popover][class*='anchored:bottom-center'] {
-		transform: translate(50%, calc(2 * var(--outline-offset-lg)));
 	}
 }
 

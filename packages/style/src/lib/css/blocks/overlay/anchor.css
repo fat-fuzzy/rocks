@@ -3,10 +3,7 @@
 		margin: 0;
 		inset: auto;
 		position: absolute;
-	}
-
-	[data-anchor] {
-		--anchor-name: attr(data-anchor);
+		position-anchor: var(--anchor-name);
 	}
 
 	.anchor {
@@ -80,55 +77,4 @@
 	[class*='anchored:bottom-center'] {
 		transform: translate(50%, calc(2 * var(--outline-offset-lg)));
 	}
-}
-
-/* Target Firefox only : magic numbers */
-/* FIXME: use polyfill : https://www.oddbird.net/2025/05/06/polyfill-updates/ */
-@-moz-document url-prefix() {
-	[class*='anchored:top-left'] {
-		transform: translate(0, calc(-150% - var(--outline-offset-lg)));
-	}
-
-	[class*='anchored:bottom-left'] {
-		transform: translate(calc(-2 - var(--outline-offset-lg)), 0);
-	}
-
-	[class*='anchored:top-right'] {
-		transform: translate(calc(-25% - 4 * var(--outline-offset-lg)), -150%);
-	}
-
-	[class*='anchored:bottom-right'] {
-		transform: translate(calc(-25% - 4 * var(--outline-offset-lg)), 0);
-	}
-
-	[class*='anchored:left-center'] {
-		transform: translate(
-			calc(-100% - 2 * var(--outline-offset-lg)),
-			calc(-100% - 2 * var(--outline-offset-lg))
-		);
-	}
-
-	[class*='anchored:right-center'] {
-		transform: translate(
-			calc(75% - 2 * var(--outline-offset-lg)),
-			calc(-100% - 2 * var(--outline-offset-lg))
-		);
-	}
-
-	[class*='anchored:top-center'] {
-		transform: translate(-25%, calc(-150% - var(--outline-offset-lg)));
-	}
-
-	[class*='anchored:bottom-center'] {
-		transform: translate(
-			calc(-25% + 2 * var(--outline-offset-lg)),
-			calc(25% - 6 * var(--outline-offset-lg))
-		);
-	}
-}
-
-@position-try --bottom-right {
-	inset: auto;
-	bottom: anchor(--bottom);
-	left: anchor(--left);
 }
