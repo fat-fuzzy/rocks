@@ -7,6 +7,7 @@
 		assetType = 'emoji',
 		selected,
 		oninput,
+		size = 'xs',
 	}: ToggleSettingsProps & InputCallbackProps = $props()
 
 	let values = $derived(Object.entries(selected).map(([, value]) => value))
@@ -21,6 +22,7 @@
 			justify: 'start',
 			id: 'brightness',
 			background: 'inherit',
+			variant: 'bare',
 			value: Object.entries(selected).map(([key, value]) => {
 				if (key) return value
 				return ''
@@ -34,9 +36,10 @@
 					asset: 'system',
 					assetType,
 					shape: 'pill',
-					size: 'sm',
+					size,
 					justify: 'between',
 					color: 'primary',
+					background: 'primary',
 					variant: 'bare',
 				},
 				{
@@ -47,9 +50,10 @@
 					asset: 'day',
 					assetType,
 					shape: 'pill',
-					size: 'sm',
+					size,
 					justify: 'between',
 					color: 'primary',
+					background: 'primary',
 					variant: 'bare',
 				},
 				{
@@ -60,9 +64,10 @@
 					asset: 'night',
 					assetType,
 					shape: 'pill',
-					size: 'sm',
+					size,
 					justify: 'between',
 					color: 'primary',
+					background: 'primary',
 					variant: 'bare',
 				},
 			],
@@ -77,6 +82,7 @@
 			id: 'contrast',
 			slug: 'contrast',
 			background: 'inherit',
+			variant: 'bare',
 			value: Object.entries(selected).map(([key, value]) => {
 				if (key) return value
 				return ''
@@ -90,9 +96,10 @@
 					asset: 'contrast',
 					assetType,
 					shape: 'pill',
-					size: 'sm',
+					size,
 					justify: 'between',
 					color: 'accent',
+					background: 'accent',
 					variant: 'bare',
 					checked:
 						selected.brightness === 'system' ||
@@ -106,9 +113,10 @@
 					asset: 'blend',
 					assetType,
 					shape: 'pill',
-					size: 'sm',
+					size,
 					justify: 'between',
 					color: 'accent',
+					background: 'accent',
 					variant: 'bare',
 					checked:
 						selected.brightness !== 'system' && selected.contrast === 'blend',
@@ -118,7 +126,7 @@
 	])
 </script>
 
-<div class="l:flex nowrap maki:block:sm align:start">
+<div class="ui-controls l:flex nowrap maki:block:sm align:start">
 	{#each options as item, i (i)}
 		<InputGroup
 			{...item}
@@ -126,7 +134,6 @@
 			{oninput}
 			value={values}
 			isUiControl={true}
-			background="inherit"
 		/>
 	{/each}
 </div>

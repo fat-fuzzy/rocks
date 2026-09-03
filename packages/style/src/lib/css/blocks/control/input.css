@@ -16,8 +16,16 @@ ff-control > label:not([class*=':neutral']) ff-icon {
 	--chroma-accent: var(--chroma-accent-base);
 }
 
-ff-control > label.variant\:bare {
-	--border-color: transparent;
+.ff-control:not([class*=':neutral']):has(input:checked) {
+	--lightness: var(--lightness-surface-1);
+	--chroma: var(--chroma-base);
+	--shade: oklch(var(--lightness) var(--chroma, var(--chroma-base)) var(--hue));
+	background-color: var(--shade);
+}
+
+.ff-control:not([class*=':neutral']):hover {
+	--lightness: var(--lightness-surface-2);
+	border-color: var(--accent);
 }
 
 ff-control > label.variant\:bare:has(input:checked),
@@ -99,4 +107,15 @@ ff-control > label[class*='bg:']:not([class*=':neutral']) {
 		--shade: oklch(var(--lightness) var(--chroma) var(--hue));
 		color: var(--ink);
 	}
+}
+
+/* ui-action  overrides */
+.ui-controls button,
+.ui-controls a,
+.ui-controls legend {
+	font-family: var(--font-family-subheading);
+}
+
+.ui-controls label span {
+	padding-inline-end: var(--ui-size-xs);
 }

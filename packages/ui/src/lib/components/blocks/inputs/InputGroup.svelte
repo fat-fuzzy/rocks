@@ -152,7 +152,6 @@
 			{...input}
 			value={input.value}
 			{checked}
-			color={input.color || color}
 			background={undefined}
 			{justify}
 			{container}
@@ -162,6 +161,7 @@
 			id={`${name}.${input.value}`}
 			oninput={handleInput}
 			{isUiControl}
+			color={input.color || color}
 		/>
 	{/each}
 

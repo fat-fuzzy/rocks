@@ -204,3 +204,19 @@ button[class*='bg:']:not([class*=':neutral']) {
 		--lightness: var(--lightness-surface-2);
 	}
 }
+
+button[class*='bg:']:not([class*=':neutral']) {
+	&.variant\:outline:hover,
+	&.variant\:bare:hover {
+		--lightness: var(--lightness-surface-2);
+		--chroma: var(--chroma-surface-2);
+		--shade: oklch(var(--lightness) var(--chroma) var(--hue));
+		color: var(--ink);
+	}
+
+	&.variant\:outline:active,
+	&.variant\:bare:active,
+	&.variant\:outline:checked {
+		--lightness: var(--lightness-surface-2);
+	}
+}
