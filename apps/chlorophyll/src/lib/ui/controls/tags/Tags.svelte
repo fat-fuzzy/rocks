@@ -5,6 +5,7 @@
 		InputGroupMenus,
 		ActionDoc,
 		ActionResource,
+		ActionTransform,
 	} from '$types'
 
 	import {page} from '$app/state'
@@ -23,7 +24,7 @@
 		tags,
 		oninput,
 	}: {
-		cta: ActionDoc | ActionResource
+		cta: ActionDoc | ActionResource | ActionTransform
 		loading: boolean
 		error: boolean
 		tags: TagGroup[]
@@ -65,16 +66,18 @@
 	}
 </script>
 
-<div class="l:stack:3xs raviolink">
+<div class="ui-controls l:stack:3xs raviolink">
 	<div class="w:full l:flex:2xs align:center justify:between">
 		<h3 class="ravioli:3xs">Tags</h3>
-		{#if cta === 'edit'}
-			<menu class="l:switcher:2xs nowrap">
+		{#if cta != 'compare' && cta !== 'print'}
+			<menu class="l:switcher:sm nowrap">
 				<DialogDeleteTags
 					id="dialog-delete-tags"
 					color="highlight"
 					label="Delete Tags"
 					cta="delete"
+					asset="cross"
+					assetType="svg"
 					groups={tags}
 				/>
 				<DialogSaveTag
