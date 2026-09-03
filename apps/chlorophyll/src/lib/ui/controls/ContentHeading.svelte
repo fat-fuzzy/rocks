@@ -1,8 +1,15 @@
 <script lang="ts">
-	import type {Preset, Slug, ICoordinatePresets} from '$types'
+	import type {
+		ActionDoc,
+		Preset,
+		Slug,
+		ICoordinatePresets,
+		ActionResource,
+		ActionTransform,
+	} from '$types'
 
 	import {getContext} from 'svelte'
-	import ui from '@fat-fuzzy/ui'
+	import ui, {type UiColor, type UiSize} from '@fat-fuzzy/ui'
 	import DialogSaveSection from '$lib/ui/controls/section/DialogSaveSection.svelte'
 
 	const {Button} = ui.blocks
@@ -12,11 +19,17 @@
 		preset,
 		query,
 		formats,
+		color,
+		size = '2xs',
+		font = '2xs',
 	}: {
-		cta: string
+		cta: ActionDoc | ActionResource | ActionTransform
 		preset: string | null
 		query: string
 		formats: Slug[]
+		color?: UiColor
+		size?: UiSize
+		font?: UiSize
 	} = $props()
 
 	let coordPresets: ICoordinatePresets = getContext('coordPresets')
@@ -55,28 +68,29 @@
 <div class="w:full noprint">
 	<div class={`l:flex grow justify:${currentPreset ? 'between' : 'end'}`}>
 		{#if currentPreset}
-			<h2>
-				{#if cta !== 'explore'}
+			{#if cta !== 'explore'}
+				<h2>
 					Preset:
 					{currentPreset.name}
 					{currentPreset.locked ? '(Locked)' : ''}
-				{/if}
-			</h2>
-			<div class="l:flex justify:end maki:block">
-				{#if cta === 'write'}
+				</h2>
+			{/if}
+			<div class="ui-controls l:flex justify:end maki:block">
+				{#if cta === 'edit' || cta === 'write' || cta === 'analyze'}
 					<DialogSaveSection
 						id="add-section"
-						color="info"
-						asset="plus"
-						assetType="svg"
 						label="New Section"
-						size="xs"
-						variant="outline"
 						cta="save"
 						{formats}
+						{size}
+						{font}
+						{color}
+						variant="outline"
+						asset="plus"
+						assetType="svg"
 					/>
 				{/if}
-				{#if cta === 'write' || cta === 'reflect'}
+				{#if cta === 'edit' || cta === 'write' || cta === 'reflect' || cta === 'build' || cta === 'analyze' || cta === 'engage'}
 					<Button
 						label="Save Preset"
 						type="button"
@@ -87,40 +101,47 @@
 							: 'save'}
 						assetType="svg"
 						shape="mellow"
-						color="info"
 						align="center"
 						variant={query === currentPreset.query || currentPreset.locked
 							? 'fill'
 							: 'outline'}
-						size="xs"
-						font="sm font:heading"
+						{color}
+						{size}
+						{font}
 						disabled={currentPreset.locked || !currentPreset.query}
 						onclick={() => savePreset(currentPreset)}
 					/>
 				{/if}
 			</div>
 		{:else}
-			<h2 class="font:semibold">
-				{#if cta === 'write'}
+			<h2>
+				{#if cta === 'analyze'}
+					New View
+				{:else if cta === 'engage'}
+					New Milestone
+				{:else if cta === 'write'}
 					New Note
 				{:else if cta === 'reflect'}
 					New Reflection
 				{:else if cta === 'explore'}
 					New Exploration
+				{:else}
+					New Doc
 				{/if}
 			</h2>
-			{#if cta === 'write'}
-				<div class="maki:block">
+			{#if cta === 'edit' || cta === 'write' || cta === 'analyze'}
+				<div class="ui-controls maki:block">
 					<DialogSaveSection
 						id="add-section"
-						color="info"
-						asset="plus"
-						assetType="svg"
-						size="xs"
-						variant="outline"
 						label="New Section"
 						cta="save"
 						{formats}
+						{size}
+						{font}
+						{color}
+						variant="outline"
+						asset="plus"
+						assetType="svg"
 					/>
 				</div>
 			{/if}

@@ -15,15 +15,20 @@
 	import {page} from '$app/state'
 
 	import {DOC_LANGUAGE, DOC_FORMAT} from '$config/setup'
-	import {CTA_TO_TITLE, CTA_TO_DESCRIPTION} from '$lib/intl/l10n'
+	import {
+		CTA_TO_TITLE,
+		CTA_TO_DESCRIPTION,
+		CTA_TO_ACTION_TRANSFORM,
+	} from '$lib/intl/l10n'
 
 	import SectionEditor from '$lib/ui/editor/SectionEditor.svelte'
 	import SectionBuilder from '$lib/ui/builder/SectionBuilder.svelte'
 	import Tags from '$lib/ui/controls/tags/Tags.svelte'
 	import Presets from '$lib/ui/controls/preset/Presets.svelte'
 	import Loading from '$lib/ui/Loading.svelte'
-	import ContentHeading from './ContentHeading.svelte'
-	import ContentActions from './ContentActions.svelte'
+
+	import ContentActions from '$lib/ui/controls/ContentActions.svelte'
+	import ContentHeading from '$lib/ui/controls/ContentHeading.svelte'
 
 	const {PageRails} = ui.content
 	const {Feedback} = ui.blocks
@@ -350,7 +355,12 @@
 		{#if cta}
 			<div class="noprint l:stack:xs maki:block:2xl">
 				<form bind:this={filtersForm} class="l:stack:md">
-					<ContentActions oninput={updateFilters} />
+					<ContentActions
+						path="mycelium"
+						oninput={updateFilters}
+						color="primary"
+						actions={CTA_TO_ACTION_TRANSFORM}
+					/>
 
 					<Presets
 						id="preset"
