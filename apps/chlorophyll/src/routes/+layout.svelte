@@ -218,9 +218,9 @@
 				id="appContext-menu"
 				name="app-settings"
 				label="Settings"
-				size="md"
+				size="xs"
 				justify="between"
-				assetType="openmoji svg"
+				assetType="openmoji:sm svg"
 				selected={appContext}
 				oninput={updateSettings}
 			/>

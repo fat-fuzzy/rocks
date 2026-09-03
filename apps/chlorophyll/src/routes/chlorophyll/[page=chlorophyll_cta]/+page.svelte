@@ -15,7 +15,11 @@
 	import {page} from '$app/state'
 
 	import {DOC_LANGUAGE, DOC_FORMAT} from '$config/setup'
-	import {CTA_TO_TITLE, CTA_TO_DESCRIPTION} from '$lib/intl/l10n'
+	import {
+		CTA_TO_ACTION_DOC,
+		CTA_TO_TITLE,
+		CTA_TO_DESCRIPTION,
+	} from '$lib/intl/l10n'
 
 	import SectionEditor from '$lib/ui/editor/SectionEditor.svelte'
 	import SectionBuilder from '$lib/ui/builder/SectionBuilder.svelte'
@@ -23,8 +27,8 @@
 	import Presets from '$lib/ui/controls/preset/Presets.svelte'
 	import Loading from '$lib/ui/Loading.svelte'
 
-	import ContentActions from './ContentActions.svelte'
-	import ContentHeading from './ContentHeading.svelte'
+	import ContentActions from '$lib/ui/controls/ContentActions.svelte'
+	import ContentHeading from '$lib/ui/controls/ContentHeading.svelte'
 
 	const {PageRails} = ui.content
 	const {Feedback} = ui.blocks
@@ -222,6 +226,7 @@
 				preset={cta === 'compare' ? targetPreset : preset}
 				{query}
 				formats={coordMetadata.getFormats()}
+				color="accent"
 			/>
 		{/if}
 	{/snippet}
@@ -357,7 +362,12 @@
 		{#if cta}
 			<div class="noprint l:stack:xs maki:block:2xl">
 				<form bind:this={filtersForm} class="l:stack:md">
-					<ContentActions oninput={updateFilters} />
+					<ContentActions
+						path="chlorophyll"
+						oninput={updateFilters}
+						color="accent"
+						actions={CTA_TO_ACTION_DOC}
+					/>
 
 					{#if cta !== 'compare'}
 						<Presets
