@@ -1,10 +1,10 @@
 <script lang="ts">
-	import type {FuzzyPayload, OverlayProps, UiState} from '$types'
+	import type {OverlayProps, UiState} from '$types'
 
 	import {onMount} from 'svelte'
-	import Button from '$lib/components/blocks/buttons/Button.svelte'
 	import actor from './actor.svelte'
 	import constants from '$lib/types/constants.js'
+	import styleHelper from '$lib/utils/styles'
 
 	const {TRANSITION_REVEAL} = constants
 
@@ -36,8 +36,22 @@
 	let layerClass = $derived(layer ? `layer:${layer}` : '')
 	let revealClasses = $derived(`${positionClass} ${layerClass}`)
 
-	function toggleReveal(payload: FuzzyPayload) {
-		const updatedValue = TRANSITION_REVEAL[String(payload.value)] as UiState
+	let buttonClasses = $derived(
+		styleHelper.getStyles({
+			color,
+			font,
+			size,
+			variant,
+			shape,
+			asset,
+			assetType,
+			align,
+			justify,
+		}),
+	)
+	function toggleReveal(event: Event) {
+		const target = event.target as HTMLButtonElement
+		const updatedValue = TRANSITION_REVEAL[String(target.value)] as UiState
 		actor.updatePopoverState(id, updatedValue)
 	}
 
@@ -56,27 +70,19 @@
 	})
 </script>
 
-<ff-popover {id} data-testid={id} data-anchor={`--popover-anchor-${id}`}>
-	<span class="anchor">
-		<Button
-			id={`button-popover-${id}`}
-			type="button"
-			{label}
-			{font}
-			{size}
-			{color}
-			{variant}
-			{asset}
-			{assetType}
-			{shape}
-			{align}
-			{justify}
-			name={`button-popover-${id}`}
-			popovertarget={`${id}-popover`}
-			onclick={toggleReveal}
-			value={reveal ? TRANSITION_REVEAL[reveal] : undefined}
-		/>
-	</span>
+<ff-popover {id} data-testid={id}>
+	<button
+		id={`button-popover-${id}`}
+		type="button"
+		class={`anchor ${buttonClasses}`}
+		name={`button-popover-${id}`}
+		popovertarget={`${id}-popover`}
+		style={`--anchor-name: --popover-anchor-${id}`}
+		onclick={toggleReveal}
+		value={reveal ? TRANSITION_REVEAL[reveal] : undefined}
+	>
+		{label}
+	</button>
 	<ff-reveal
 		id={`${id}-popover`}
 		bind:this={popover}
@@ -85,6 +91,7 @@
 		aria-live="polite"
 		class={revealClasses}
 		data-testid={`${id}-popover`}
+		style={`position-anchor: --popover-anchor-${id}`}
 	>
 		{#if children}
 			{@render children()}
