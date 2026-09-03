@@ -1,10 +1,10 @@
 <script lang="ts">
-	import type {OverlayProps, UiState} from '$types'
+	import type {FuzzyPayload, OverlayProps, UiState} from '$types'
 
 	import {onMount} from 'svelte'
+	import Button from '$lib/components/blocks/buttons/Button.svelte'
 	import actor from './actor.svelte'
 	import constants from '$lib/types/constants.js'
-	import styleHelper from '$lib/utils/styles'
 
 	const {TRANSITION_REVEAL} = constants
 
@@ -14,7 +14,8 @@
 		label,
 		color,
 		font,
-		size,
+		size = 'md',
+		dimension,
 		variant = 'fill',
 		shape,
 		children,
@@ -34,24 +35,13 @@
 
 	let positionClass = $derived(position ? `${position}:${coords}` : '')
 	let layerClass = $derived(layer ? `layer:${layer}` : '')
-	let revealClasses = $derived(`${positionClass} ${layerClass}`)
-
-	let buttonClasses = $derived(
-		styleHelper.getStyles({
-			color,
-			font,
-			size,
-			variant,
-			shape,
-			asset,
-			assetType,
-			align,
-			justify,
-		}),
+	let dimensionClass = $derived(dimension ? `size:${dimension}` : '')
+	let revealClasses = $derived(
+		`${dimensionClass} ${positionClass} ${layerClass}`,
 	)
-	function toggleReveal(event: Event) {
-		const target = event.target as HTMLButtonElement
-		const updatedValue = TRANSITION_REVEAL[String(target.value)] as UiState
+
+	function toggleReveal(payload: FuzzyPayload) {
+		const updatedValue = TRANSITION_REVEAL[String(payload.value)] as UiState
 		actor.updatePopoverState(id, updatedValue)
 	}
 
@@ -71,18 +61,25 @@
 </script>
 
 <ff-popover {id} data-testid={id}>
-	<button
+	<Button
 		id={`button-popover-${id}`}
 		type="button"
-		class={`anchor ${buttonClasses}`}
+		{label}
+		{font}
+		{size}
+		{color}
+		{variant}
+		{asset}
+		{assetType}
+		{shape}
+		{align}
+		{justify}
 		name={`button-popover-${id}`}
 		popovertarget={`${id}-popover`}
-		style={`--anchor-name: --popover-anchor-${id}`}
+		anchorName={`popover-anchor-${id}`}
 		onclick={toggleReveal}
 		value={reveal ? TRANSITION_REVEAL[reveal] : undefined}
-	>
-		{label}
-	</button>
+	/>
 	<ff-reveal
 		id={`${id}-popover`}
 		bind:this={popover}

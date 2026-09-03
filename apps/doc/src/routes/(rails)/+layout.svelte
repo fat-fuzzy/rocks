@@ -221,7 +221,7 @@
 				<Socials links={linksSocials} />
 			{/snippet}
 			{#snippet actions()}
-				<Cookies actionPath={page.url.pathname} font="lg" />
+				<Cookies actionPath={page.url.pathname} />
 			{/snippet}
 		</Footer>
 	{/if}

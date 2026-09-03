@@ -5,12 +5,14 @@ import type {
 	UiLayoutProps,
 	FuzzyPayload,
 	AriaInvoke,
+	UiSize,
 } from '$types'
 
 export type OverlayProps = UiBlockProps &
 	UiLayoutProps & {
 		id: string
 		role?: AriaRole // See: https://hidde.blog/popover-semantics/
+		dimension?: UiSize
 		label: string
 		invoke?: AriaInvoke
 		open?: boolean

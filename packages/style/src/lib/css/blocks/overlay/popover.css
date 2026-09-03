@@ -1,4 +1,4 @@
-rf-popover,
+ff-popover,
 .anchor {
 	display: block;
 	inline-size: max-content;
@@ -51,18 +51,41 @@ rf-popover,
 	pointer-events: auto;
 }
 
+/* Scale popover content */
+
+[popover].size\:sm:popover-open {
+	inline-size: 100%;
+	max-inline-size: var(--layout-sidebar-sm);
+}
+
+[popover].size\:md:popover-open {
+	inline-size: 100%;
+	max-inline-size: var(--layout-sidebar-md);
+}
+
+[popover].size\:lg:popover-open {
+	inline-size: 100%;
+	max-inline-size: var(--layout-sidebar-lg);
+}
+
+[popover].size\:xl:popover-open {
+	inline-size: 100%;
+	max-inline-size: var(--layout-sidebar-xl);
+}
+
+/* Anchor positioning */
 @supports (anchor-name: --anchor-name) {
 	[popover][class*='anchored:bottom'] {
-		top: anchor(bottom);
+		bottom: anchor(top);
 	}
 
 	[popover][class*='anchored:top'] {
-		bottom: anchor(top);
+		top: anchor(bottom);
 	}
 
 	[popover][class*='anchored:left'],
 	[popover][class*='anchored:right'] {
-		top: anchor(top);
+		top: anchor(center);
 	}
 
 	[popover][class*='anchored:left'],
