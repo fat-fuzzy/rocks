@@ -82,7 +82,7 @@
 	})
 </script>
 
-<section bind:this={observerRoot} class="maki:inline:lg">
+<section bind:this={observerRoot}>
 	{#if loading}
 		<div class="maki:block:xl">
 			<Loading message={`Loading ${name}`} />

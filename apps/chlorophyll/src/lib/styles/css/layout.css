@@ -25,6 +25,13 @@ html:has(.l\:grid\:urbanist) {
 .page-main {
 	min-block-size: 100%;
 }
+.zone\:main {
+	scrollbar-gutter: auto;
+	> .page-header,
+	> .page-main {
+		padding-inline: 0;
+	}
+}
 
 .h\:full {
 	block-size: 100%;
@@ -68,6 +75,15 @@ html:has(.l\:grid\:urbanist) {
 
 		max-block-size: var(--max-block-size);
 		padding-inline-end: 0;
+	}
+
+	.zone\:main {
+		scrollbar-gutter: stable;
+
+		> .page-header,
+		> .page-main {
+			padding-inline: calc(6 * var(--grid-gap)) calc(2 * var(--grid-gap));
+		}
 	}
 
 	.zone\:2 .voyager.zone\:main {
