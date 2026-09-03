@@ -1,5 +1,14 @@
 .cta {
 	border: 1px solid var(--shade);
+
+	> a {
+		/* Forces link tap targets to be the same size as ContentActions buttons */
+		/* FIXME: Find a simpler way to achieve the same thing */
+		padding-block: calc(
+			var(--ui-size) - var(--border-width-xl) + var(--border-width-md) / 2.8
+		);
+		padding-inline: var(--size-base-3xs);
+	}
 }
 
 .cta[aria-current='true'] {

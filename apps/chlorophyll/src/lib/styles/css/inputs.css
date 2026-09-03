@@ -1,11 +1,6 @@
 ul.input-group li {
 	padding-inline: 0;
 	padding-block: 0;
-
-	> a {
-		padding-block: var(--outline-offset-lg);
-		padding-inline: var(--size-base-3xs);
-	}
 }
 
 label.variant\:bare:has(input),
