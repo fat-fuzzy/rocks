@@ -1,5 +1,11 @@
 <script lang="ts">
-	import type {UiAssetType, UiColor, UiShape, UiVariant} from '@fat-fuzzy/ui'
+	import type {
+		UiAssetType,
+		UiColor,
+		UiShape,
+		UiSize,
+		UiVariant,
+	} from '@fat-fuzzy/ui'
 	import type {TagGroup} from '$types'
 
 	import ui from '@fat-fuzzy/ui'
@@ -19,6 +25,8 @@
 		shape?: UiShape
 		asset?: string
 		assetType?: UiAssetType
+		size?: UiSize
+		font?: UiSize
 	}
 	let {
 		id,
@@ -30,6 +38,8 @@
 		shape = 'mellow',
 		asset,
 		assetType,
+		size = '2xs',
+		font = '2xs', // TODO: figure out why '2xs' here, and 'xs' in DialogDeleTags
 	}: Props = $props()
 
 	let action = $derived(
@@ -66,8 +76,8 @@
 	{id}
 	type="button"
 	name={id}
-	size="2xs"
-	font="2xs font:heading"
+	{size}
+	{font}
 	justify="start nowrap"
 	align="center"
 	{label}

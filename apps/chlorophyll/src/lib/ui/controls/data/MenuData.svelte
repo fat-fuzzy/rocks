@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {UiColor, UiVariant} from '@fat-fuzzy/ui'
+	import type {UiColor, UiSize, UiVariant} from '@fat-fuzzy/ui'
 
 	import ui from '@fat-fuzzy/ui'
 
@@ -12,10 +12,14 @@
 		id = 'data',
 		color = 'primary',
 		variant = 'outline',
+		size = '2xs',
+		font = 'sm',
 	}: {
 		id?: string
 		color?: UiColor
 		variant?: UiVariant
+		size?: UiSize
+		font?: UiSize
 	} = $props()
 </script>
 
@@ -26,14 +30,21 @@
 	assetType="svg"
 	{color}
 	{variant}
-	size="2xs"
-	font="xs font:heading"
+	{size}
+	{font}
 	layer="1"
 	layout="flex"
 	coords="bottom-right"
 >
 	<menu class="l:stack:3xs ravioli:xs align:start">
-		<DialogData id="button-import" label="Source" {color} />
-		<Export id="button-export" label="Export" filename="cv-content" {color} />
+		<DialogData id="button-import" label="Source" {color} {size} {font} />
+		<Export
+			id="button-export"
+			label="Export"
+			filename="cv-content"
+			{color}
+			{size}
+			{font}
+		/>
 	</menu>
 </Popover>

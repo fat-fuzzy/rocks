@@ -78,7 +78,7 @@
 </script>
 
 <div class="presets justify:start shape:soft l:stack:3xs raviolink">
-	<div class="w:full l:flex:2xs align:center justify:between">
+	<div class="ui-controls w:full l:flex:2xs align:center justify:between">
 		<svelte:element this={`h${headingLevel}`} class="ravioli:3xs">
 			{title}
 		</svelte:element>
@@ -224,7 +224,7 @@
 											color="primary"
 											variant={preset.locked ? 'fill' : 'bare'}
 											size="2xs"
-											font="2xs font:heading"
+											font="2xs"
 											disabled={!preset.query}
 											onclick={() => toggleLock(preset)}
 										/>
