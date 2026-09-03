@@ -241,9 +241,13 @@ ff-toggle-reveal.auto {
 /* URBANIST overrides */
 
 .l\:grid\:urbanist {
-	ff-toggle-reveal.est ff-control:has(input:checked) + ff-reveal,
 	ff-toggle-reveal.ouest ff-control:has(input:checked) + ff-reveal {
 		--x-size: var(--layout-sidebar-md);
+		max-inline-size: unset;
+	}
+
+	ff-toggle-reveal.est ff-control:has(input:checked) + ff-reveal {
+		--x-size: calc(var(--layout-sidebar-md) - var(--ui-size));
 		max-inline-size: unset;
 	}
 
@@ -261,10 +265,7 @@ ff-toggle-reveal.auto {
 
 @media screen and (min-width: 68.75rem) {
 	.l\:grid\:urbanist {
-		ff-toggle-reveal.est ff-control:has(input:checked) + ff-reveal,
 		ff-toggle-reveal.ouest ff-control:has(input:checked) + ff-reveal {
-			--x-size: var(--layout-sidebar-md);
-
 			/* Nested toggle trees */
 			ff-reveal {
 				--x-size: calc(
@@ -275,7 +276,7 @@ ff-toggle-reveal.auto {
 		}
 
 		ff-toggle-reveal.est ff-control:has(input:checked) + ff-reveal {
-			--x-axis: calc(-1 * var(--ui-size-xs));
+			--x-axis: var(--outline-offset-md);
 		}
 
 		ff-toggle-reveal.ouest ff-control:has(input:checked) + ff-reveal {
