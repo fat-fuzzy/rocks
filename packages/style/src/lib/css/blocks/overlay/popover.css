@@ -76,16 +76,16 @@ ff-popover,
 /* Anchor positioning */
 @supports (anchor-name: --anchor-name) {
 	[popover][class*='anchored:bottom'] {
-		bottom: anchor(top);
+		top: anchor(bottom);
 	}
 
 	[popover][class*='anchored:top'] {
-		top: anchor(bottom);
+		bottom: anchor(top);
 	}
 
 	[popover][class*='anchored:left'],
 	[popover][class*='anchored:right'] {
-		top: anchor(center);
+		top: anchor(top);
 	}
 
 	[popover][class*='anchored:left'],
