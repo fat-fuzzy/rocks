@@ -65,13 +65,14 @@
 	let menus = $derived.by(() => {
 		const _menus = [
 			{
-				options: {id: `tags-${id}`, label: 'Tags'},
+				options: {id: `tags-${id}`, label: 'Tags', shape: 'mellow'},
 				menu: blockTags,
 			},
 			{
 				options: {
 					id: `delete-block-${id}`,
 					label: 'Delete',
+					shape: 'mellow',
 				},
 				menu: deleteBlock,
 			},
