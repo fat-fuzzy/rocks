@@ -20,6 +20,7 @@
 		disabled?: boolean
 		label?: string
 		size?: UiSize
+		font?: UiSize
 		color?: UiColor
 		variant?: UiVariant
 		shape?: UiShape
@@ -32,6 +33,7 @@
 		disabled,
 		label = 'Add Language',
 		size = '2xs',
+		font = '2xs',
 		color = 'accent',
 		variant = 'outline',
 		shape = 'mellow',
@@ -63,7 +65,7 @@
 		type="button"
 		name={id}
 		{size}
-		font="2xs font:heading nowrap"
+		font={`${font} nowrap`}
 		{label}
 		{color}
 		{shape}

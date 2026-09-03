@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {UiColor, UiVariant} from '@fat-fuzzy/ui'
+	import type {UiColor, UiSize, UiVariant} from '@fat-fuzzy/ui'
 
 	import ui from '@fat-fuzzy/ui'
 
@@ -12,11 +12,15 @@
 		color = 'primary',
 		variant = 'bare',
 		oninput,
+		size = '2xs',
+		font = 'sm',
 	}: {
 		id?: string
 		color?: UiColor
 		variant?: UiVariant
 		oninput: () => void
+		size?: UiSize
+		font?: UiSize
 	} = $props()
 </script>
 
@@ -27,8 +31,8 @@
 	assetType="svg"
 	{color}
 	{variant}
-	size="2xs"
-	font="xs font:heading"
+	{size}
+	{font}
 	layer="1"
 	layout="flex"
 	coords="bottom-left"

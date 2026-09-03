@@ -21,6 +21,7 @@
 		cta: 'save' | 'update' | 'copy'
 		label?: string
 		size?: UiSize
+		font?: UiSize
 		color?: UiColor
 		variant?: UiVariant
 		shape?: UiShape
@@ -31,6 +32,7 @@
 		id,
 		formats,
 		size = 'xs',
+		font = 'xs',
 		cta,
 		label = 'Save Section',
 		color = 'primary',
@@ -77,7 +79,7 @@
 		type="button"
 		name={id}
 		{size}
-		font="xs font:heading"
+		{font}
 		align="center"
 		{label}
 		{color}

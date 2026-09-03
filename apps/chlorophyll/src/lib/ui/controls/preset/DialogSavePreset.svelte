@@ -30,7 +30,7 @@
 		assetType?: UiAssetType
 	}
 	let {
-		id,
+		id = 'save-preset',
 		cta,
 		preset,
 		disabled,
@@ -67,7 +67,7 @@
 	type="button"
 	name={id}
 	{size}
-	font={`${font} font:heading`}
+	{font}
 	{label}
 	{color}
 	{shape}
