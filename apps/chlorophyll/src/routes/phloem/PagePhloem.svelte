@@ -21,15 +21,16 @@
 
 {#snippet description(action: string)}
 	{#if action === 'write'}
-		<p>Build up your resources. Nourish of yourself.</p>
+		<p>Take the time to build resources.</p>
 		<p>
 			Write a <a href="https://jvns.ca/blog/brag-documents/">
 				brag document
 			</a>.
 		</p>
+		<p>Nourish of yourself.</p>
 	{:else if action === 'reflect'}
-		<p>Reflect on your experience.</p>
-		<p>Structure resources to your liking.</p>
+		<p>Reflect on what motivates you.</p>
+		<p>Clarify your objectives.</p>
 		<p>Save and modify Pathways.</p>
 	{:else if action === 'explore'}
 		<p>Overview and compare Pathways.</p>
