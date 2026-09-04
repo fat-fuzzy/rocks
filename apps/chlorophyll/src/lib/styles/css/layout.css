@@ -80,6 +80,20 @@ html:has(.l\:grid\:urbanist) {
 	.zone\:main {
 		scrollbar-gutter: stable;
 
+		> .page-header {
+			align-items: start;
+			padding-block-start: calc(var(--ui-size-xl) - var(--border-width-md));
+
+			> .page-header h2 {
+				margin-block-start: 0;
+				line-height: 1;
+			}
+
+			[class*='l:stack'] > h1 {
+				margin-block: calc(var(--ui-size-sm) - var(--border-width-md));
+			}
+		}
+
 		> .page-header,
 		> .page-main {
 			padding-inline: calc(6 * var(--grid-gap)) calc(2 * var(--grid-gap));
