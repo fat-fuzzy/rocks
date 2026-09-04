@@ -331,7 +331,7 @@
 					</div>
 				</div>
 			{:else}
-				<div class="l:text:xl">
+				<div class="l:text:lg">
 					<Feedback
 						status={coordDocs.hasError() ? 'error' : undefined}
 						context="prose"
