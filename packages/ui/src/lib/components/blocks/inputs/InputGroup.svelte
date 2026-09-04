@@ -25,7 +25,7 @@
 		type = 'radio', // checkbox, radio
 		items = [],
 		layout,
-		justify = 'between',
+		justify = 'start',
 		container,
 		background,
 		font,

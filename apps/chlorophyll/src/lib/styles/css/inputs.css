@@ -135,6 +135,13 @@ fieldset:has(label > [type='radio']) {
 	flex-basis: 35%;
 }
 
-[name='add-section'] {
-	margin-block-start: var(--outline-offset-lg);
+/* Remove border from popover inputs: the popover layer creates a visual boundary */
+[popover] {
+	[class*=':bare']:not(label, pre, label > span) {
+		--border-color-bare: transparent;
+	}
+}
+
+fieldset {
+	align-self: stretch;
 }
