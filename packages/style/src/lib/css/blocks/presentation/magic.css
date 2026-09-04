@@ -366,10 +366,10 @@ html:has([class*='settings:day:']),
 
 	.magic\:vital {
 		--color-gradient-002-start: hsl(51.02deg 96.03% 76.6%);
-		--color-gradient-001-start: hsl(162.87deg 76.01% 68.01%);
+		--color-gradient-001-start: hsl(162.87deg 77% 62.72%);
 		--color-gradient-001-middle: hsl(182.64deg 73.37% 50.65%);
 		--color-gradient-001-end: hsl(195.48deg 78.39% 50.87%);
-		--color-gradient-002-end: hsl(255.54deg 82.3% 54.11%);
+		--color-gradient-002-end: hsl(257.12deg 75.08% 52.08%);
 	}
 }
 
@@ -410,10 +410,10 @@ html:has([class*='settings:night:']),
 
 	.magic\:vital {
 		--color-gradient-002-start: hsl(51.02deg 96.03% 76.6%);
-		--color-gradient-001-start: hsl(162.87deg 76.01% 68.01%);
+		--color-gradient-001-start: hsl(162.87deg 77% 62.72%);
 		--color-gradient-001-middle: hsl(182.64deg 73.37% 50.65%);
 		--color-gradient-001-end: hsl(195.48deg 78.39% 50.87%);
-		--color-gradient-002-end: hsl(255.54deg 82.3% 54.11%);
+		--color-gradient-002-end: hsl(257.12deg 75.08% 52.08%);
 	}
 }
 
