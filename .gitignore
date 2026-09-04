@@ -149,6 +149,7 @@ dist/
 ### Styles ###
 packages/style/src/css/variables/*
 packages/style/src/tests/tmp/*
+packages/style/src/lib/css/mixins/*.js
 
 # Ignore font files for now
 packages/style/src/assets/fonts/
