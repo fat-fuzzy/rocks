@@ -7,7 +7,7 @@
 		edit: 'Edit the Content',
 		build: 'Build the Structure',
 		compare: 'Compare Presets',
-		print: 'Save to PDF',
+		print: 'Generate PDF',
 	}
 
 	const CTA_TITLE: {[cta: string]: string} = {
@@ -39,7 +39,7 @@
 
 <div class="l:stack:xl w:full align:center">
 	<h1 class="text:center">Chlorophyll</h1>
-	<h2 class="text:center">Carrier Bag of Story</h2>
+	<h2 class="text:center">Carrier Bag for Story</h2>
 
 	<ContentGrid
 		page={currentPage}
