@@ -40,7 +40,7 @@
 
 <div class="l:stack:xl w:full align:center">
 	<h1 class="text:center">Phloem</h1>
-	<h2 class="text:center">Food for Thought</h2>
+	<h2 class="text:center">Fountain of Thought</h2>
 
 	<ContentGrid
 		page={currentPage}
