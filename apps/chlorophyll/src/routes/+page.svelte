@@ -20,7 +20,7 @@
 >
 	{#snippet main()}
 		<div class="l:frame justify:center">
-			<Magic spell="chlorophyll" size="2xl" shape="round">
+			<Magic spell="vital" size="2xl" shape="round">
 				<span
 					class="font:h1 font:2xl svg:lotus size:2xl l:stack align:between justify:baseline"
 				>
