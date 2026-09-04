@@ -24,8 +24,8 @@
 				<span
 					class="font:h1 font:2xl svg:lotus size:2xl l:stack align:between justify:baseline"
 				>
-					<div class="maki:block text:center">
-						<h1 class="l:inline color:accent">{title}</h1>
+					<div class="text:center">
+						<h1>{title}</h1>
 					</div>
 				</span>
 			</Magic>
