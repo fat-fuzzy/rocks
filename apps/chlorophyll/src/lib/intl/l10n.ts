@@ -44,10 +44,10 @@ export const CTA_TO_ACTION_TRANSFORM: {[key: string]: string} = {
 }
 
 export const CTA_TO_DESCRIPTION: {[key: string]: string} = {
-	edit: 'Focus on your core message. Make your voice heard.',
-	build: 'Structure content to tell your story. Save and modify presets.',
-	compare: 'Check your work in progress. Compare content blocks or presets.',
-	print: 'Save to PDF using your browser.',
+	edit: 'Create and edit content.',
+	build: 'Structure content and Presets.',
+	compare: 'Preview and compare content.',
+	print: 'Save or print a document in PDF format.',
 }
 
 export const STATUS_LABEL: Record<ImportStatus, string> = {

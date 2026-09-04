@@ -32,7 +32,8 @@
 		<p>Preview your work in progress.</p>
 		<p>Compare doc content using Presets.</p>
 	{:else if action === 'print'}
-		<p>Save to PDF using your browser.</p>
+		<p>Save a document in PDF format.</p>
+		<p>Print it using your browser.</p>
 	{/if}
 {/snippet}
 
