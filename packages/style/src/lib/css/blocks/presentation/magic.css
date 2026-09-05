@@ -370,6 +370,15 @@ html:has([class*='settings:day:']),
 		--color-gradient-001-middle: hsl(182.64deg 73.37% 50.65%);
 		--color-gradient-001-end: hsl(195.48deg 78.39% 50.87%);
 		--color-gradient-002-end: hsl(257.56deg 100% 50.84%);
+
+		--magic-gradient: radial-gradient(
+			closest-side,
+			var(--color-gradient-002-start) 28%,
+			var(--color-gradient-001-start) 54%,
+			var(--color-gradient-001-middle) 60%,
+			var(--color-gradient-001-end) 68%,
+			var(--color-gradient-002-end)
+		);
 	}
 }
 
@@ -414,6 +423,15 @@ html:has([class*='settings:night:']),
 		--color-gradient-001-middle: hsl(182.64deg 73.37% 50.65%);
 		--color-gradient-001-end: hsl(195.48deg 78.39% 50.87%);
 		--color-gradient-002-end: hsl(257.56deg 100% 50.84%);
+
+		--magic-gradient: radial-gradient(
+			closest-side,
+			var(--color-gradient-002-start) 28%,
+			var(--color-gradient-001-start) 54%,
+			var(--color-gradient-001-middle) 60%,
+			var(--color-gradient-001-end) 68%,
+			var(--color-gradient-002-end)
+		);
 	}
 }
 
