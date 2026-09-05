@@ -60,7 +60,7 @@
 		"@vitest/coverage-v8": "4.1.10",
 		"@vitest/ui": "4.1.10",
 		"mdsvex": "0.12.7",
-		"postcss": "8.5.25",
+		"postcss": "8.5.26",
 		"publint": "0.3.18",
 		"svelte": "5.56.8",
 		"svelte-check": "4.7.3",
