@@ -144,7 +144,7 @@ export const pages: {[key: string]: NavItem} = {
 	vital: {
 		slug: '',
 		label: 'Vital',
-		title: 'Back to The Roots',
+		title: 'Back to The Root',
 		asset: 'lotus openmoji',
 		size: 'md',
 		assetType: 'svg',
