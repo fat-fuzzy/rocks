@@ -49,7 +49,7 @@
 		"chroma": {
 			"$type": "number",
 			"neutral": {
-				"$value": 0.001
+				"$value": 0.01
 			},
 			"000": {
 				"$value": 0.025
@@ -133,7 +133,7 @@
 				"$value": "{color.hue.gray-violet}"
 			},
 			"neutral": {
-				"$value": "{color.hue.gray}"
+				"$value": "{color.hue.violet}"
 			}
 		},
 		"semantic": {
