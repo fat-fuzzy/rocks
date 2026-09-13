@@ -16,6 +16,7 @@
 	import {applyTags} from '$lib/common/tags'
 	import DialogDeleteBlock from '$lib/ui/controls/block/DialogDeleteBlock.svelte'
 	import SelectTags from '$lib/ui/controls/tags/SelectTags.svelte'
+	import type {UiShape} from '@fat-fuzzy/ui'
 
 	const {Editor} = prose.editor
 
@@ -65,14 +66,14 @@
 	let menus = $derived.by(() => {
 		const _menus = [
 			{
-				options: {id: `tags-${id}`, label: 'Tags', shape: 'mellow'},
+				options: {id: `tags-${id}`, label: 'Tags', shape: 'mellow' as UiShape},
 				menu: blockTags,
 			},
 			{
 				options: {
 					id: `delete-block-${id}`,
 					label: 'Delete',
-					shape: 'mellow',
+					shape: 'mellow' as UiShape,
 				},
 				menu: deleteBlock,
 			},

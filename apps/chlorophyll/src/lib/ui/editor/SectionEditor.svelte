@@ -92,14 +92,9 @@
 	{:else if noContentFound}
 		<FeedbackContent {name} content_type="section" isEmpty={true} />
 	{:else if section}
-		<details
-			id={`section-${name}`}
-			data-section={name}
-			class="shape:mellow"
-			open
-		>
+		<details id={`section-${name}`} data-section={name} class="shape:soft" open>
 			<summary
-				class="w:full surface:0:neutral variant:bare ravioli:3xs shape:mellow"
+				class="w:full ravioli:3xs variant:bare color:neutral font:heading font:semibold size:xs font:md"
 			>
 				{section.rank}.
 				{section.name}

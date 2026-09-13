@@ -143,7 +143,7 @@
 	let description = $derived(cta ? CTA_TO_DESCRIPTION[cta] : '')
 
 	let ctaClass = $derived(
-		cta === 'edit' ? 'doc-editor' : 'doc-builder l:stack:3xl',
+		cta === 'edit' ? 'doc-editor l:stack:lg' : 'doc-builder l:stack:lg',
 	)
 	let contentClass = $derived(selectedSections.length === 0 ? '' : ctaClass)
 	let mainLayoutClass = $derived(
@@ -273,9 +273,7 @@
 				{#if sourcePreset || targetPreset}
 					<div class="l:switcher:2xs th:sm w:full">
 						<div class="scroll:container contain:lg">
-							<div
-								class="l:center scroll:y surface:0:primary ravioli:lg shape:soft"
-							>
+							<div class="l:center scroll:y ravioli:lg">
 								{#each sourceSections as section, i (i)}
 									<SectionBuilder
 										cta="compare"
