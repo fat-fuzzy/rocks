@@ -23,7 +23,7 @@
 
 	.singleton,
 	.text {
-		line-height: 1.15;
+		line-height: 1.25;
 		padding-inline: var(--ui-size);
 	}
 
