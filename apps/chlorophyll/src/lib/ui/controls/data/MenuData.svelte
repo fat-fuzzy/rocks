@@ -26,7 +26,7 @@
 <Popover
 	id={`toggle-options-${id}`}
 	label="Data"
-	asset="chevron-down"
+	asset="chevron-right"
 	assetType="svg"
 	{color}
 	{variant}

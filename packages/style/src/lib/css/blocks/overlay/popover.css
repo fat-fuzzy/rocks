@@ -51,6 +51,18 @@ ff-popover,
 	pointer-events: auto;
 }
 
+/* The popover's trigger button icon */
+[data-anchor]:has([popover]) > [popovertarget][class*='-right']::before {
+	transition: transform 150ms ease-in-out;
+	transform: rotate(0deg);
+}
+
+[data-anchor]:has([popover]:popover-open)
+	> [popovertarget][class*='-right']::before {
+	transition: transform 150ms ease-in;
+	transform: rotate(90deg);
+}
+
 /* Scale popover content */
 
 [popover].size\:sm:popover-open {

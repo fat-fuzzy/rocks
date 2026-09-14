@@ -26,7 +26,7 @@
 <Popover
 	id={`toggle-options-${id}`}
 	label="Settings"
-	asset="chevron-down"
+	asset="chevron-right"
 	assetType="svg"
 	{color}
 	{variant}
