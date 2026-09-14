@@ -12,6 +12,30 @@ export default {
 		// per-schema: 'extend' merges with built-in, 'replace' fully substitutes it
 		// key = built-in schema name, value = { file, exportName, $id, mode }
 		schemas: {
+			SlugValue: {
+				file: 'SlugValue.schema.json',
+				exportName: 'SlugValueValidationFunction',
+				$id: '#/definitions/SlugValue',
+				mode: 'replace',
+			},
+			PathValue: {
+				file: 'PathValue.schema.json',
+				exportName: 'PathValueValidationFunction',
+				$id: '#/definitions/PathValue',
+				mode: 'replace',
+			},
+			DateStringValue: {
+				file: 'DateStringValue.schema.json',
+				exportName: 'DateStringValueValidationFunction',
+				$id: '#/definitions/DateStringValue',
+				mode: 'replace',
+			},
+			LanguageValue: {
+				file: 'LanguageValue.schema.json',
+				exportName: 'LanguageValueValidationFunction',
+				$id: '#/definitions/LanguageValue',
+				mode: 'replace',
+			},
 			Tag: {
 				file: 'Tag.schema.json',
 				exportName: 'TagValidationFunction',

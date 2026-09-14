@@ -1,12 +1,39 @@
-export const getSectionKey = (language: string, format: string, name: string) =>
-	`${language}:${format}:${name}`
+import {
+	parseSlugValue,
+	parseLanguageValue,
+} from '$lib/common/transform/parse-or-throw'
+
+const buildBase = (language: string, format: string) => {
+	const languageKey = parseLanguageValue('language Key', language)
+	const formatKey = parseSlugValue('format Key', format)
+
+	return `${languageKey}:${formatKey}`
+}
+
+export const getSectionKey = (
+	language: string,
+	format: string,
+	name: string,
+) => {
+	const base = buildBase(language, format)
+
+	const nameKey = parseSlugValue('name Key', name)
+	return `${base}:${nameKey}`
+}
 
 export const getSubsectionKey = (
 	language: string,
 	format: string,
 	section: string,
 	name: string,
-) => `${language}:${format}:${section}:${name}`
+) => {
+	const base = buildBase(language, format)
+
+	const sectionKey = parseSlugValue('section Key', section)
+	const nameKey = parseSlugValue('name Key', name)
+
+	return `${base}:${sectionKey}:${nameKey}`
+}
 
 export const getBlockKey = (
 	language: string,
@@ -14,11 +41,29 @@ export const getBlockKey = (
 	section: string,
 	name: string,
 	subsection?: string,
-) =>
-	subsection
-		? `${language}:${format}:${section}:${subsection}:${name}`
-		: `${language}:${format}:${section}:${name}`
+) => {
+	const base = buildBase(language, format)
 
-export const getPresetKey = (name: string) => name
+	const sectionKey = parseSlugValue('section Key', section)
+	const subsectionKey = subsection
+		? parseSlugValue('subsection Key', subsection)
+		: ''
+	const nameKey = parseSlugValue('name Key', name)
 
-export const getTagKey = (group: string, name: string) => `${group}:${name}`
+	return subsectionKey
+		? `${base}:${sectionKey}:${subsectionKey}:${nameKey}`
+		: `${base}:${sectionKey}:${nameKey}`
+}
+
+export const getPresetKey = (name: string) => {
+	const nameKey = parseSlugValue('name Key', name)
+
+	return nameKey
+}
+
+export const getTagKey = (group: string, name: string) => {
+	const groupKey = parseSlugValue('group Key', group)
+	const nameKey = parseSlugValue('name Key', name)
+
+	return `${groupKey}:${nameKey}`
+}
