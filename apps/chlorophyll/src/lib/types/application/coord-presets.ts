@@ -20,7 +20,7 @@ export interface ICoordinatePresets {
 
 	hasPresets(): boolean
 
-	getPreset(name: string): Preset
+	getPreset(name: string): Preset | void
 
 	getPresetTags(name: string): string[]
 

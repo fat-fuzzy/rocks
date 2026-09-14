@@ -2,12 +2,11 @@
 	import type {UiColor} from '@fat-fuzzy/ui'
 	import type {ActionCrud, Slug, DocLanguage, ICoordinateDocs} from '$types'
 
-	import * as validators from '$lib/generated/ajv/validation/validate.ajv.mjs'
-
 	import {getContext, onDestroy, onMount} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
 	import {page} from '$app/state'
 
+	import {FormSectionValidator} from '$lib/common/validate'
 	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
 	import {DOC_LANGUAGE, DOC_FORMAT} from '$config/setup'
 
@@ -23,10 +22,7 @@
 
 	let coordDocs: ICoordinateDocs = getContext('coordDocs')
 
-	const validator = new FormValidator(
-		'FormSectionValidationFunction',
-		validators,
-	)
+	const validator = new FormValidator(FormSectionValidator)
 
 	const inputTypes: {[name: string]: string} = {
 		name: 'text',

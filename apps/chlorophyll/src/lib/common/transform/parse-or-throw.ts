@@ -12,12 +12,27 @@ import type {
 	DateString,
 } from '$types'
 
-import * as validators from '$lib/generated/ajv/validation/validate.ajv.mjs'
+import {
+	BlockValidator,
+	SectionValidator,
+	DocValidator,
+	PresetValidator,
+	FrontmatterBaseValidator,
+	SlugValidator,
+	LanguageValidator,
+	FrontmatterStructureValidator,
+	PathValidator,
+	DateStringValidator,
+} from '$lib/common/validate'
+
+/*******************
+ *  Hard fails
+ *******************/
 
 function parseOrThrow<T>(
 	label: string,
 	data: unknown,
-	validate: AjvValidateFunction, // FIXME: define type AjvValidateFunction<T>
+	validate: AjvValidateFunction<T>, // FIXME: define type AjvValidateFunction<T>
 ): T {
 	const isValid = validate(data)
 	if (isValid) return data as T // AJV narrows to T here
@@ -32,204 +47,47 @@ function parseOrThrow<T>(
 }
 
 export function parseBlock(label: string, data: unknown): Block {
-	return parseOrThrow(label, data, validators.BlockValidationFunction)
+	return parseOrThrow(label, data, BlockValidator)
 }
 
 export function parseSection(label: string, data: unknown): Section {
-	return parseOrThrow(label, data, validators.SectionValidationFunction)
+	return parseOrThrow(label, data, SectionValidator)
 }
 
 export function parseDoc(label: string, data: unknown): Doc {
-	return parseOrThrow(label, data, validators.DocValidationFunction)
+	return parseOrThrow(label, data, DocValidator)
 }
 
 export function parsePreset(label: string, data: unknown): Preset {
-	return parseOrThrow(label, data, validators.PresetValidationFunction)
+	return parseOrThrow(label, data, PresetValidator)
 }
 
 export function parseBase(label: string, data: unknown): FrontmatterBase {
-	return parseOrThrow(label, data, validators.FrontmatterBaseValidationFunction)
+	return parseOrThrow(label, data, FrontmatterBaseValidator)
 }
 
 export function parseStructure(
 	label: string,
 	data: unknown,
 ): FrontmatterStructure {
-	return parseOrThrow(
-		label,
-		data,
-		validators.FrontmatterStructureValidationFunction,
-	)
+	return parseOrThrow(label, data, FrontmatterStructureValidator)
 }
 
 /**
  * Parse primitive values
  */
-
 export function parseSlugValue(label: string, data: unknown): Slug {
-	return (
-		parseOrThrow(
-			label,
-			{value: data},
-			validators.SlugValueValidationFunction,
-		) as unknown as {value: Slug}
-	).value
+	return parseOrThrow(label, {value: data}, SlugValidator).value
 }
 
 export function parseLanguageValue(label: string, data: unknown): DocLanguage {
-	return (
-		parseOrThrow(
-			label,
-			{value: data},
-			validators.LanguageValueValidationFunction,
-		) as unknown as {value: DocLanguage}
-	).value
+	return parseOrThrow(label, {value: data}, LanguageValidator).value
 }
 
 export function parsePathValue(label: string, data: unknown): Path {
-	return (
-		parseOrThrow(
-			label,
-			{value: data},
-			validators.LanguageValueValidationFunction,
-		) as unknown as {value: Path}
-	).value
+	return parseOrThrow(label, {value: data}, PathValidator).value
 }
 
 export function parseDateValue(label: string, data: unknown): DateString {
-	return (
-		parseOrThrow(
-			label,
-			{value: data},
-			validators.DateStringValueValidationFunction,
-		) as unknown as {value: DateString}
-	).value
-}
-
-/*******************
- *  Soft fails
- *******************/
-
-export function sanitizeBlock(data: unknown): Block | null {
-	try {
-		return parseOrThrow(
-			'Sanitize Section',
-			data,
-			validators.BlockValidationFunction,
-		)
-	} catch {
-		return null
-	}
-}
-
-export function sanitizeSection(data: unknown): Section | null {
-	try {
-		return parseOrThrow(
-			'Sanitize Section',
-			data,
-			validators.SectionValidationFunction,
-		)
-	} catch {
-		return null
-	}
-}
-
-export function sanitizeDoc(data: unknown): Doc | null {
-	try {
-		return parseOrThrow('Sanitize Doc', data, validators.DocValidationFunction)
-	} catch {
-		return null
-	}
-}
-
-export function sanitizePreset(data: unknown): Preset | null {
-	try {
-		return parseOrThrow(
-			'Sanitize Preset',
-			data,
-			validators.PresetValidationFunction,
-		)
-	} catch {
-		return null
-	}
-}
-
-export function sanitizeBase(data: unknown): FrontmatterBase | null {
-	try {
-		return parseOrThrow(
-			'Sanitize Base',
-			data,
-			validators.FrontmatterBaseValidationFunction,
-		)
-	} catch {
-		return null
-	}
-}
-
-export function sanitizeStructure(data: unknown): FrontmatterStructure | null {
-	try {
-		return parseOrThrow(
-			'Sanitize Structure',
-			data,
-			validators.FrontmatterStructureValidationFunction,
-		)
-	} catch {
-		return null
-	}
-}
-
-export function sanitizeSlugValue(data: unknown): Slug | null {
-	try {
-		return (
-			parseOrThrow(
-				'Sanitize Slug',
-				{value: data},
-				validators.SlugValueValidationFunction,
-			) as unknown as {value: Slug}
-		).value
-	} catch {
-		return null
-	}
-}
-
-export function sanitizeLanguageValue(data: unknown): DocLanguage | null {
-	try {
-		return (
-			parseOrThrow(
-				'Sanitize Language',
-				{value: data},
-				validators.LanguageValueValidationFunction,
-			) as unknown as {value: DocLanguage}
-		).value
-	} catch {
-		return null
-	}
-}
-
-export function sanitizePathValue(data: unknown): Path | null {
-	try {
-		return (
-			parseOrThrow(
-				'Sanitize Path',
-				{value: data},
-				validators.LanguageValueValidationFunction,
-			) as unknown as {value: Path}
-		).value
-	} catch {
-		return null
-	}
-}
-
-export function sanitizeDateStringValue(data: unknown): DateString | null {
-	try {
-		return (
-			parseOrThrow(
-				'Sanitize Date string',
-				{value: data},
-				validators.DateStringValueValidationFunction,
-			) as unknown as {value: DateString}
-		).value
-	} catch {
-		return null
-	}
+	return parseOrThrow(label, {value: data}, DateStringValidator).value
 }
