@@ -1,4 +1,4 @@
-import * as validators from '$lib/generated/ajv/validate.ajv.mjs'
+import {CookiePreferencesValidator} from '$lib/utils/validate'
 import FormValidator from '$lib/utils/browser/FormValidator.svelte'
 
 class SignUpUser {
@@ -8,6 +8,9 @@ class SignUpUser {
 		password: 'password',
 		confirm_password: 'password',
 	}
+
+	validator = CookiePreferencesValidator
+
 	/**
 	 * Initialize default SignUp object with an undefined user
 	 */
@@ -17,7 +20,7 @@ class SignUpUser {
 	 * Update SignUp based on inputs
 	 */
 	signup(formData: FormData) {
-		const validator = new FormValidator('SignUpValidationFunction', validators)
+		const validator = new FormValidator(this.validator)
 
 		validator.init(formData, this.inputTypes)
 		validator.validate()

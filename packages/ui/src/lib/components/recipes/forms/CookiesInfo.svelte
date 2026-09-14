@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type {CookiesPreferencesProps} from '$types'
+	import type {CookiePreferences, CookiesPreferencesProps} from '$types'
 	import {onMount} from 'svelte'
 
-	import * as validators from '$lib/generated/ajv/validate.ajv.mjs'
+	import {CookiePreferencesValidator} from '$lib/utils/validate'
 	import FormValidator from '$lib/utils/browser/FormValidator.svelte'
 	import Button from '$lib/components/blocks/buttons/Button.svelte'
 	import Feedback from '$lib/components/blocks/global/Feedback.svelte'
@@ -17,14 +17,13 @@
 		variant = 'fill',
 		coords,
 		consent,
-	}: CookiesPreferencesProps = $props()
+	}: CookiesPreferencesProps<CookiePreferences> = $props()
 
 	let popoverId = 'cookies-banner'
 	let boundForm: HTMLFormElement | undefined = $state()
 	let formData: FormData | undefined = $state()
-	let validator: FormValidator = new FormValidator(
-		'CookiePreferencesValidationFunction',
-		validators,
+	let validator: FormValidator<CookiePreferences> = new FormValidator(
+		CookiePreferencesValidator,
 	)
 	let cookiesPartial = $derived(
 		consent && consent.functional && !consent.legitimateInterest,
