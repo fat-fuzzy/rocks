@@ -1,3 +1,8 @@
+import SlugValueSchema from './primitives/values/SlugValue.schema.js'
+import PathValueSchema from './primitives/values/PathValue.schema.js'
+import DateStringValueSchema from './primitives/values/DateStringValue.schema.js'
+import LanguageValueSchema from './primitives/values/LanguageValue.schema.js'
+
 import TagSchema from './primitives/Tag.schema.js'
 import TagGroupSchema from './primitives/TagGroup.schema.js'
 import ProseSchema from './primitives/Prose.schema.js'
@@ -35,6 +40,26 @@ function getVersion(schema) {
 
 export const schemas = {
 	primitives: {
+		SlugValue: {
+			schema: SlugValueSchema,
+			version: getVersion(DocSchema),
+			isRoot: false,
+		},
+		PathValue: {
+			schema: PathValueSchema,
+			version: getVersion(DocSchema),
+			isRoot: false,
+		},
+		DateStringValue: {
+			schema: DateStringValueSchema,
+			version: getVersion(DocSchema),
+			isRoot: false,
+		},
+		LanguageValue: {
+			schema: LanguageValueSchema,
+			version: getVersion(DocSchema),
+			isRoot: false,
+		},
 		Prose: {
 			schema: ProseSchema,
 			version: getVersion(DocSchema),

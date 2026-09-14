@@ -1,11 +1,15 @@
 import type {AjvValidateFunction} from '@fat-fuzzy/ui'
 import type {
+	Slug,
 	Block,
 	Section,
 	Doc,
 	Preset,
 	FrontmatterBase,
 	FrontmatterStructure,
+	DocLanguage,
+	Path,
+	DateString,
 } from '$types'
 
 import * as validators from '$lib/generated/ajv/validation/validate.ajv.mjs'
@@ -56,4 +60,48 @@ export function parseStructure(
 		data,
 		validators.FrontmatterStructureValidationFunction,
 	)
+}
+
+/**
+ * Parse primitive values
+ */
+
+export function parseSlugValue(label: string, data: unknown): Slug {
+	return (
+		parseOrThrow(
+			label,
+			{value: data},
+			validators.SlugValueValidationFunction,
+		) as unknown as {value: Slug}
+	).value
+}
+
+export function parseLanguageValue(label: string, data: unknown): DocLanguage {
+	return (
+		parseOrThrow(
+			label,
+			{value: data},
+			validators.LanguageValueValidationFunction,
+		) as unknown as {value: DocLanguage}
+	).value
+}
+
+export function parsePathValue(label: string, data: unknown): Path {
+	return (
+		parseOrThrow(
+			label,
+			{value: data},
+			validators.LanguageValueValidationFunction,
+		) as unknown as {value: Path}
+	).value
+}
+
+export function parseDateValue(label: string, data: unknown): DateString {
+	return (
+		parseOrThrow(
+			label,
+			{value: data},
+			validators.DateStringValueValidationFunction,
+		) as unknown as {value: DateString}
+	).value
 }
