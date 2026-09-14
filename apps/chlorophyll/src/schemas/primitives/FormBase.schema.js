@@ -72,9 +72,9 @@ const FormBaseSchema = defineDefinitions({
 	// 	$ref: '#/definitions/date_time', // use ISO string, not Date object
 	// },
 	// TMP TODO: remove
-	date: {
+	dateString: {
 		type: 'string',
-		pattern: '[0-9]{4}-[0-9]{2}-[0-9]{2}',
+		pattern: '^[0-9]{4}-[0-9]{2}-[0-9]{2}$',
 	},
 })
 
