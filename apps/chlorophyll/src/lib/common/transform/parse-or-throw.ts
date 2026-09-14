@@ -105,3 +105,131 @@ export function parseDateValue(label: string, data: unknown): DateString {
 		) as unknown as {value: DateString}
 	).value
 }
+
+/*******************
+ *  Soft fails
+ *******************/
+
+export function sanitizeBlock(data: unknown): Block | null {
+	try {
+		return parseOrThrow(
+			'Sanitize Section',
+			data,
+			validators.BlockValidationFunction,
+		)
+	} catch {
+		return null
+	}
+}
+
+export function sanitizeSection(data: unknown): Section | null {
+	try {
+		return parseOrThrow(
+			'Sanitize Section',
+			data,
+			validators.SectionValidationFunction,
+		)
+	} catch {
+		return null
+	}
+}
+
+export function sanitizeDoc(data: unknown): Doc | null {
+	try {
+		return parseOrThrow('Sanitize Doc', data, validators.DocValidationFunction)
+	} catch {
+		return null
+	}
+}
+
+export function sanitizePreset(data: unknown): Preset | null {
+	try {
+		return parseOrThrow(
+			'Sanitize Preset',
+			data,
+			validators.PresetValidationFunction,
+		)
+	} catch {
+		return null
+	}
+}
+
+export function sanitizeBase(data: unknown): FrontmatterBase | null {
+	try {
+		return parseOrThrow(
+			'Sanitize Base',
+			data,
+			validators.FrontmatterBaseValidationFunction,
+		)
+	} catch {
+		return null
+	}
+}
+
+export function sanitizeStructure(data: unknown): FrontmatterStructure | null {
+	try {
+		return parseOrThrow(
+			'Sanitize Structure',
+			data,
+			validators.FrontmatterStructureValidationFunction,
+		)
+	} catch {
+		return null
+	}
+}
+
+export function sanitizeSlugValue(data: unknown): Slug | null {
+	try {
+		return (
+			parseOrThrow(
+				'Sanitize Slug',
+				{value: data},
+				validators.SlugValueValidationFunction,
+			) as unknown as {value: Slug}
+		).value
+	} catch {
+		return null
+	}
+}
+
+export function sanitizeLanguageValue(data: unknown): DocLanguage | null {
+	try {
+		return (
+			parseOrThrow(
+				'Sanitize Language',
+				{value: data},
+				validators.LanguageValueValidationFunction,
+			) as unknown as {value: DocLanguage}
+		).value
+	} catch {
+		return null
+	}
+}
+
+export function sanitizePathValue(data: unknown): Path | null {
+	try {
+		return (
+			parseOrThrow(
+				'Sanitize Path',
+				{value: data},
+				validators.LanguageValueValidationFunction,
+			) as unknown as {value: Path}
+		).value
+	} catch {
+		return null
+	}
+}
+
+export function sanitizeDateStringValue(data: unknown): DateString | null {
+	try {
+		return (
+			parseOrThrow(
+				'Sanitize Date string',
+				{value: data},
+				validators.DateStringValueValidationFunction,
+			) as unknown as {value: DateString}
+		).value
+	} catch {
+		return null
+	}
+}
