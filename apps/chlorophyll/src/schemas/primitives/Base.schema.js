@@ -1,5 +1,13 @@
 import {schemas} from '@fat-fuzzy/validation'
 import {defineDefinitions} from '../index.js'
+import {
+	VERSION_PATTERN,
+	SLUG_PATTERN,
+	LANGUAGE_PATTERN,
+	TITLE_PATTERN,
+	PATH_PATTERN,
+	DATE_STRING_PATTERN,
+} from '../patterns.js'
 
 import EnumsSchema from './Enums.schema.js'
 
@@ -17,35 +25,36 @@ const BaseSchema = defineDefinitions({
 	...EnumsSchema,
 	schemaVersion: {
 		type: 'string',
-		pattern: '^[0-9]+\\.[0-9]+$', // semver-lite: "1.0", "2.3", etc.
+		pattern: VERSION_PATTERN,
 	},
 	slug: {
 		type: 'string',
-		pattern: '^[A-Za-z_]([A-Za-z0-9_-])*$',
+		pattern: SLUG_PATTERN,
 		minLength: 2,
 		maxLength: 64,
 	},
 	docLanguage: {
 		type: 'string',
-		pattern: '[a-z]{2}',
+		pattern: LANGUAGE_PATTERN,
 		minLength: 2,
 		maxLength: 2,
 	},
 	title: {
 		type: 'string',
-		pattern: '^$|^[A-Za-z_](\\s?[A-Za-z0-9_-])*$',
+		pattern: TITLE_PATTERN,
 		minLength: 0,
 		maxLength: 64,
 	},
 	path: {
 		type: 'string',
-		pattern: '([A-Za-z_][A-Za-z0-9_-]*\\/?){1,3}$',
+		pattern: PATH_PATTERN,
 		minLength: 3,
 		maxLength: 64,
 	},
 	rank: {
 		type: 'integer',
 		minimum: 1,
+		maximum: 500, // adjust as necessary
 	},
 	query: {
 		type: 'string',
@@ -60,9 +69,11 @@ const BaseSchema = defineDefinitions({
 	// 	$ref: '#/definitions/date_time', // use ISO string, not Date object
 	// },
 	// TMP TODO: remove
-	date: {
+	dateString: {
 		type: 'string',
-		pattern: '[0-9]{4}-[0-9]{2}-[0-9]{2}',
+		pattern: DATE_STRING_PATTERN,
+		minLength: 0,
+		maxLength: 10,
 	},
 })
 
