@@ -24,7 +24,7 @@ const HumanSchema = defineSchema({
 			$ref: '#/definitions/Role',
 		},
 		date_added: {
-			$ref: '#/definitions/date',
+			$ref: '#/definitions/dateString',
 		},
 	},
 	required: ['id', 'username', 'role', 'date_added'],

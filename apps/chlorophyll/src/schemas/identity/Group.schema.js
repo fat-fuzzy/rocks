@@ -10,7 +10,7 @@ const GroupSchema = defineSchema({
 			$ref: '#/definitions/slug',
 		},
 		date_added: {
-			$ref: '#/definitions/date',
+			$ref: '#/definitions/dateString',
 		},
 	},
 	required: ['id', 'name', 'date_added'],

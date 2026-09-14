@@ -13,7 +13,7 @@ const RoleSchema = defineSchema({
 			$ref: '#/definitions/Group',
 		},
 		date_added: {
-			$ref: '#/definitions/date',
+			$ref: '#/definitions/dateString',
 		},
 	},
 	required: ['id', 'name', 'date_added'],
