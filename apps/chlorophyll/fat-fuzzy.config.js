@@ -169,4 +169,36 @@ export default {
 			useDefaults: true, // fill in schema `default` values automatically
 		},
 	},
+	routing: {
+		// where generated files are written
+		outDir: 'src/lib/generated/routing',
+		routes: {
+			edit: {
+				id: '/chlorophyll/edit',
+				allowedParams: ['language', 'format', 'sections', 'preset'],
+			},
+			build: {
+				id: '/chlorophyll/build',
+				allowedParams: ['language', 'format', 'sections', 'preset'],
+			},
+			compare: {
+				id: '/chlorophyll/compare',
+				allowedParams: [
+					'language',
+					'format',
+					'sections',
+					'source-preset',
+					'source-sections',
+					'source-tags',
+					'target-preset',
+					'target-sections',
+					'target-tags',
+				],
+			},
+			print: {
+				id: '/chlorophyll/print',
+				allowedParams: ['language', 'format', 'preset'],
+			},
+		},
+	},
 }

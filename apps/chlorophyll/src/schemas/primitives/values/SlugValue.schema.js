@@ -21,7 +21,7 @@ const SlugValueSchema = defineSchema({
 	},
 	required: ['value'],
 	additionalProperties: false,
-	definitions: FormBaseSchema,
+	definitions: {slug: FormBaseSchema.slug},
 })
 
 export default SlugValueSchema

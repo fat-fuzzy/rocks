@@ -21,7 +21,7 @@ const LanguageValueSchema = defineSchema({
 	},
 	required: ['value'],
 	additionalProperties: false,
-	definitions: FormBaseSchema,
+	definitions: {docLanguage: FormBaseSchema.docLanguage},
 })
 
 export default LanguageValueSchema
