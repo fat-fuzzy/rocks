@@ -1,14 +1,15 @@
+import type {TestForm} from '$types'
 import {describe, it, expect, beforeEach} from 'vitest'
 
-import * as validators from '$lib/generated/ajv/validate.ajv.mjs'
+import {TestFormValidator} from '$lib/utils/validate'
 import FormValidator from '$lib/utils/browser/FormValidator.svelte'
 import {INPUTS} from '$tests/fixtures/form-inputs'
 
 describe('FormValidator - sanitize inputs before validation', () => {
-	let validator: FormValidator
+	let validator: FormValidator<TestForm>
 
 	beforeEach(() => {
-		validator = new FormValidator('TestFormValidationFunction', validators)
+		validator = new FormValidator(TestFormValidator)
 	})
 
 	describe('init', () => {

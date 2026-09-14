@@ -3,14 +3,14 @@
 
 	import {page} from '$app/state'
 
-	import * as validators from '$lib/generated/ajv/validate.ajv.mjs'
+	import {TestFormValidator} from '$lib/utils/validate'
 	import FormValidator from '$lib/utils/browser/FormValidator.svelte'
 
 	import InputGroup from '$lib/components/blocks/inputs/InputGroup.svelte'
 	import TestContext from '$tests/browser/TestContext.svelte'
 	import {INPUTS} from '$tests/fixtures/form-inputs'
 
-	let validator = new FormValidator('TestFormValidationFunction', validators)
+	let validator = new FormValidator(TestFormValidator)
 
 	let {
 		id,
