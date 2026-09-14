@@ -139,7 +139,8 @@
 		coordMetadata
 			.getTagGroups()
 			.reduce((selected: string[], menu: TagGroup) => {
-				return selected.concat(page.url.searchParams.getAll(menu.name) || [])
+				const tags = getSanitizedParamValueList(page.url, menu.name)
+				return selected.concat(tags || [])
 			}, []),
 	)
 

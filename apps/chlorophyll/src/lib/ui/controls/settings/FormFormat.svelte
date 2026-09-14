@@ -2,14 +2,13 @@
 	import type {UiColor} from '@fat-fuzzy/ui'
 	import type {ActionCrud, ICoordinateMetadata} from '$types'
 
-	import * as validators from '$lib/generated/ajv/validation/validate.ajv.mjs'
-
 	import {getContext, onDestroy, onMount} from 'svelte'
 	import {SvelteURL} from 'svelte/reactivity'
 	import ui from '@fat-fuzzy/ui'
 
 	import {page} from '$app/state'
 
+	import {FormFormatValidator} from '$lib/common/validate'
 	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
 	import {DOC_FORMAT} from '$config/setup'
 
@@ -25,10 +24,7 @@
 
 	let coordMetadata: ICoordinateMetadata = getContext('coordMetadata')
 
-	const validator = new FormValidator(
-		'FormFormatValidationFunction',
-		validators,
-	)
+	const validator = new FormValidator(FormFormatValidator)
 
 	const inputTypes: {[name: string]: string} = {
 		name: 'text',

@@ -19,7 +19,7 @@ export interface IAggregatePresets {
 	reset(): void
 
 	hasPresets(): boolean
-	getPreset(name: string): Preset
+	getPreset(name: string): Preset | void
 
 	savePreset(options: {
 		path: DocPath

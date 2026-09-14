@@ -47,8 +47,13 @@ export default class CoordinatePresets implements ICoordinatePresets {
 	 * Get preset by name
 	 * @return Preset if found
 	 */
-	getPreset(name: string): Preset {
-		return this.aggPresets.presetIndex.presets[getPresetKey(name)]
+	getPreset(name: string): Preset | void {
+		try {
+			const key = getPresetKey(name)
+			return this.aggPresets.getPreset(key)
+		} catch {
+			return
+		}
 	}
 
 	/**
@@ -72,8 +77,9 @@ export default class CoordinatePresets implements ICoordinatePresets {
 	 * @param name
 	 */
 	setSourcePreset(name?: Slug): void {
-		if (name) {
-			this.sourcePreset = this.getPreset(name)
+		const preset = name ? this.getPreset(name) : null
+		if (preset) {
+			this.sourcePreset = preset
 		} else {
 			this.sourcePreset = null
 		}
@@ -84,8 +90,9 @@ export default class CoordinatePresets implements ICoordinatePresets {
 	 * @param name
 	 */
 	setTargetPreset(name?: Slug): void {
-		if (name) {
-			this.targetPreset = this.getPreset(name)
+		const preset = name ? this.getPreset(name) : null
+		if (preset) {
+			this.targetPreset = preset
 		} else {
 			this.targetPreset = null
 		}
@@ -328,7 +335,7 @@ export default class CoordinatePresets implements ICoordinatePresets {
 		switch (presetRole) {
 			case 'preset':
 				if (presetName) {
-					preset = this.getPreset(presetName)
+					preset = this.getPreset(presetName) ?? null
 				}
 				break
 			case 'preset-source':

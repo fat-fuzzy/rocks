@@ -1,14 +1,14 @@
 <script lang="ts">
 	import type {ActionCrud, Preset, ICoordinatePresets} from '$types'
 	import type {UiColor} from '@fat-fuzzy/ui'
-	import * as validators from '$lib/generated/ajv/validation/validate.ajv.mjs'
 
 	import {getContext, onDestroy, onMount} from 'svelte'
 	import {SvelteURL} from 'svelte/reactivity'
+	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
 
-	import {page} from '$app/state'
-
+	import {PresetValidator} from '$lib/common/validate'
+	import {getSanitizedParamValue} from '$lib/common/url'
 	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
 
 	const {Button, Input, Feedback} = ui.blocks
@@ -23,10 +23,7 @@
 
 	let coordPresets: ICoordinatePresets = getContext('coordPresets')
 
-	const validator = new FormValidator(
-		'FormPresetValidationFunction',
-		validators,
-	)
+	const validator = new FormValidator(PresetValidator)
 
 	const inputTypes: {[name: string]: string} = {
 		name: 'text',
@@ -74,17 +71,13 @@
 
 		toUpdate.name = target.value
 
-		const presetFound = checkPresetExists(toUpdate.name)
+		const presetFound = coordPresets.getPreset(toUpdate.name)
 
 		if (presetFound) {
 			presetExistsError = true
 		} else {
 			presetExistsError = false
 		}
-	}
-
-	function checkPresetExists(presetName: string): Preset | undefined {
-		return coordPresets.getPreset(presetName)
 	}
 
 	function savePreset() {
@@ -139,7 +132,8 @@
 
 		dialogActor.close()
 
-		if (page.url.searchParams.get('preset') === presetName) {
+		const currentPreset = getSanitizedParamValue(page.url, 'preset')
+		if (currentPreset === presetName) {
 			let url = new SvelteURL(page.url)
 			url.searchParams.delete('preset')
 

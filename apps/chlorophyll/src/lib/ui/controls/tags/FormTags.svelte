@@ -9,8 +9,6 @@
 		ICoordinateMetadata,
 	} from '$types'
 
-	import * as validators from '$lib/generated/ajv/validation/validate.ajv.mjs'
-
 	import {getContext, onDestroy, onMount} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
 
@@ -19,6 +17,7 @@
 		parseGroupFromTargetData,
 		applyTags,
 	} from '$lib/common/tags'
+	import {FormTagValidator} from '$lib/common/validate'
 	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
 	import SelectTags from '$lib/ui/controls/tags/SelectTags.svelte'
 
@@ -34,7 +33,7 @@
 
 	let coordMetadata: ICoordinateMetadata = getContext('coordMetadata')
 
-	const validator = new FormValidator('FormTagValidationFunction', validators)
+	const validator = new FormValidator(FormTagValidator)
 
 	const inputTypes: {[name: string]: string} = {
 		name: 'text',
