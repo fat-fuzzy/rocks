@@ -27,7 +27,7 @@
 <Popover
 	id={`toggle-options-${id}`}
 	label="Sections"
-	asset="chevron-down"
+	asset="chevron-right"
 	assetType="svg"
 	{color}
 	{variant}
