@@ -1,5 +1,13 @@
 import {schemas} from '@fat-fuzzy/validation'
 import {defineDefinitions} from '../index.js'
+import {
+	VERSION_PATTERN,
+	SLUG_PATTERN,
+	LANGUAGE_PATTERN,
+	TITLE_PATTERN,
+	PATH_PATTERN,
+	DATE_STRING_PATTERN,
+} from '../patterns.js'
 
 import EnumsSchema from './Enums.schema.js'
 
@@ -18,21 +26,17 @@ const FormBaseSchema = defineDefinitions({
 	...EnumsSchema,
 	schemaVersion: {
 		type: 'string',
-		pattern: '^[0-9]+\\.[0-9]+$', // semver-lite: "1.0", "2.3", etc.
+		pattern: VERSION_PATTERN,
 	},
 	slug: {
 		type: 'string',
-		allOf: [
-			{pattern: '^[A-Za-z_]([A-Za-z0-9_-])*$'},
-			{minLength: 2},
-			{maxLength: 64},
-		],
+		allOf: [{pattern: SLUG_PATTERN}, {minLength: 2}, {maxLength: 64}],
 	},
 	docLanguage: {
 		oneOf: [
 			{
 				type: 'string',
-				allOf: [{pattern: '[a-z]{2}'}, {minLength: 2}, {maxLength: 2}],
+				allOf: [{pattern: LANGUAGE_PATTERN}, {minLength: 2}, {maxLength: 2}],
 			},
 			{
 				type: 'null',
@@ -41,40 +45,41 @@ const FormBaseSchema = defineDefinitions({
 	},
 	title: {
 		type: 'string',
-		allOf: [
-			{pattern: '^$|^[A-Za-z_](\\s?[A-Za-z0-9_-])*$'},
-			{minLength: 0},
-			{maxLength: 64},
-		],
+		allOf: [{pattern: TITLE_PATTERN}, {minLength: 0}, {maxLength: 64}],
 	},
 	path: {
 		type: 'string',
-		allOf: [
-			{pattern: '([A-Za-z_][A-Za-z0-9_-]*\\/?){1,3}$'},
-			{minLength: 3},
-			{maxLength: 64},
-		],
+		allOf: [{pattern: PATH_PATTERN}, {minLength: 3}, {maxLength: 64}],
 	},
 	rank: {
 		type: 'integer',
 		minimum: 1,
+		maximum: 500, // adjust as necessary
 	},
 	query: {
 		type: 'string',
 		// pattern: TODO
 	},
-	// TODO: fix this
-	// CHECK AJV output error:
-
-	// Generation failed: [@fat-fuzzy/validation] Unreplaced require() statement in compiled validator code.
-
+	// TODO: update
 	// date_exported: {
 	// 	$ref: '#/definitions/date_time', // use ISO string, not Date object
 	// },
 	// TMP TODO: remove
 	dateString: {
 		type: 'string',
-		pattern: '^[0-9]{4}-[0-9]{2}-[0-9]{2}$',
+		oneOf: [
+			{
+				type: 'string',
+				allOf: [
+					{pattern: DATE_STRING_PATTERN},
+					{minLength: 10},
+					{maxLength: 10},
+				],
+			},
+			{
+				type: 'null',
+			},
+		],
 	},
 })
 
