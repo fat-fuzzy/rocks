@@ -21,7 +21,7 @@ const DateStringValueSchema = defineSchema({
 	},
 	required: ['value'],
 	additionalProperties: false,
-	definitions: FormBaseSchema,
+	definitions: {dateString: FormBaseSchema.dateString},
 })
 
 export default DateStringValueSchema

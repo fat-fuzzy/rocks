@@ -21,7 +21,7 @@ const PathValueSchema = defineSchema({
 	},
 	required: ['value'],
 	additionalProperties: false,
-	definitions: FormBaseSchema,
+	definitions: {path: FormBaseSchema.path},
 })
 
 export default PathValueSchema

@@ -42,6 +42,7 @@ tests/e2e/test-results
 src/lib/generated/diagrams
 src/lib/generated/types
 src/lib/generated/ajv/schemas
+src/lib/generated/routing
 src/lib/generated/ajv/validation/validate.ajv.mjs
 !src/lib/generated/ajv/validation/validate.ajv.mjs.hash
 
