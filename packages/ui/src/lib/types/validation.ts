@@ -18,7 +18,7 @@ export type SchemaToValidate = {
 
 export type ValidationError = {instancePath: string; message: string}
 
-export interface IFormValidator<K extends keyof ValidatorMap<K>> {
+export interface IFormValidator<K> {
 	form: FormToValidate
 	inputTypes: InputTypes
 	errors: ValidationError[]
@@ -47,3 +47,8 @@ export interface AjvValidateFunction<T> {
 }
 
 export type ValidatorMap<T> = Record<string, AjvValidateFunction<T>>
+
+export type ErrorObject = {
+	instancePath: string
+	message: string
+}

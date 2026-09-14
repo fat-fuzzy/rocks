@@ -16,7 +16,7 @@ export type FormCommonProps = InputCommonProps & {
 	disabled?: boolean
 }
 
-export type FormProps = InputProps & {
+export type FormProps<T> = InputProps<T> & {
 	depth?: number
 	description?: string
 	formaction?: string
@@ -29,7 +29,7 @@ export type FormProps = InputProps & {
 	inputTypes: {[name: string]: string}
 }
 
-export type CookiesPreferencesProps = InputProps &
+export type CookiesPreferencesProps<T> = InputProps<T> &
 	FormCommonProps &
 	ViewingPreferences &
 	PrivacyPreferences & {
