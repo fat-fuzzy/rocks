@@ -6,6 +6,7 @@ import type {
 	SchemaToValidate,
 	ValidationError,
 	AjvValidateFunction,
+	ValidatorMap,
 } from '$types'
 
 /**
@@ -15,16 +16,20 @@ import type {
  * @param {string} validationFunctionName The name of the AJV validation function to use (see package `@fat-fuzzy/validation`'s README)
  * @returns a validation class with utility methods to validate the form and fields, check and manage field statuses, and manage feedback messages
  */
-class FormValidator implements IFormValidator {
+class FormValidator<
+	K extends keyof ValidatorMap<K>,
+> implements IFormValidator<K> {
 	form: FormToValidate = $state({})
 	inputTypes: InputTypes = $state({}) // Map of input names to their types
 	errors: ValidationError[] = $state([])
-	ajvValidate: AjvValidateFunction = $state(() => false)
+	ajvValidate: AjvValidateFunction<K>
 	sanitize = sanitize.sanitizeForm
 
 	constructor(
-		validationFunctionName: string,
-		validators: Record<string, (data: unknown) => boolean>,
+		validationFunctionName: K,
+		validators: {
+			[P in keyof ValidatorMap<P>]?: AjvValidateFunction<K>
+		},
 	) {
 		const validateFn = validators[validationFunctionName]
 
@@ -42,6 +47,8 @@ class FormValidator implements IFormValidator {
 		this.form = {}
 		this.inputTypes = {}
 		this.errors = []
+
+		// @ts-expect-error FIXME:
 		this.ajvValidate = () => false
 	}
 

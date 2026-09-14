@@ -18,7 +18,7 @@ import {mergeSchemas} from './config/mergeSchemas.js'
 import utils from '../utils/gpg.js'
 import constants from '../utils/constants.js'
 
-const {modulePath, hashFilePath} = constants.PATHS
+const {modulePath, routingPath, hashFilePath} = constants.PATHS
 
 const require = createRequire(import.meta.url)
 const standaloneCode = require('ajv/dist/standalone')
@@ -80,12 +80,24 @@ async function generate() {
 			'[@fat-fuzzy/validation] No config found — using built-in schemas only',
 		)
 	}
-
 	// 2. Merge built-ins with consumer schemas
 	const {schemas, exportMap, ajvOptions} = await mergeSchemas(
 		config?.validation ?? null,
 	)
 
+	generateValidationConfig(config, {schemas, exportMap, ajvOptions})
+
+	if (config.routing) {
+		generateRoutingConfig(config)
+	}
+
+	console.log('[@fat-fuzzy/validation] Done.')
+}
+
+function generateValidationConfig(
+	config /** @FatFuzzyConfig */,
+	{schemas, exportMap, ajvOptions},
+) {
 	console.log(
 		`[@fat-fuzzy/validation] Generating validators for: ${Object.keys(exportMap).join(', ')}`,
 	)
@@ -168,8 +180,37 @@ async function generate() {
 			utils.signHashNonDetached(computedHash)
 		}
 	}
+}
 
-	console.log('[@fat-fuzzy/validation] Done.')
+function generateRoutingConfig(config /** @FatFuzzyConfig */) {
+	console.log(`[@fat-fuzzy/validation] Generating routing data `)
+
+	const outDirPath = config.routing.outDir ?? routingPath
+	const outDir = path.dirname(outDirPath)
+	if (!fs.existsSync(outDir)) {
+		fs.mkdirSync(outDir, {recursive: true})
+	}
+
+	// If consumer config specifies outDir, write there instead of the default
+	const effectiveRoutingPath = config?.routing?.outDir
+		? path.join(config.routing.outDir, path.basename(routingPath))
+		: routingPath
+
+	if (config?.routing?.outDir && !fs.existsSync(config.routing.outDir)) {
+		fs.mkdirSync(config.routing.outDir, {recursive: true})
+	}
+
+	fs.writeFileSync(
+		effectiveRoutingPath,
+		`export const ROUTES = ${JSON.stringify(config.routing.routes)} as const
+		export type RouteName = keyof typeof ROUTES
+		export type RouteId = (typeof ROUTES)[RouteName]['id']
+		`,
+	)
+
+	console.log(
+		`[@fat-fuzzy/validation] Wrote routing data to '${effectiveRoutingPath}'`,
+	)
 }
 
 generate().catch((error) => {

@@ -9,6 +9,9 @@
 		"validation": {
 			"$ref": "#/definitions/ValidationConfig"
 		},
+		"routing": {
+			"$ref": "#/definitions/RoutingConfig"
+		},
 		"style": {
 			"description": "Reserved for the future @fat-fuzzy/style package. Shape is not yet defined.",
 			"type": "object"
@@ -63,6 +66,30 @@
 				}
 			}
 		},
+		"RoutingConfig": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["outDir", "routes"],
+			"properties": {
+				"outDir": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 260,
+					"description": "Path where generated validator files will be written. Relative to the config file. Will be created if it does not exist."
+				},
+				"routes": {
+					"type": "object",
+					"description": "Per-route configuration keyed by route name.",
+					"additionalProperties": {
+						"$ref": "#/definitions/RouteEntry"
+					},
+					"propertyNames": {
+						"pattern": "^[A-Za-z_][A-Za-z0-9_]*$",
+						"maxLength": 64
+					}
+				}
+			}
+		},
 		"SchemaEntry": {
 			"type": "object",
 			"additionalProperties": false,
@@ -78,20 +105,44 @@
 					"type": "string",
 					"minLength": 1,
 					"maxLength": 64,
-					"pattern": "^[A-Za-z_][A-Za-z0-9_]*$",
+					"pattern": "^[A-Za-z_][A-Za-z0-9_-]*$",
 					"description": "Valid JS identifier used as the named export in the generated module, e.g. 'MyFormValidationFunction'."
 				},
 				"$id": {
 					"type": "string",
 					"minLength": 1,
 					"maxLength": 128,
-					"pattern": "^(#/definitions/){0,1}[A-Za-z_$][A-Za-z0-9_$]*$",
+					"pattern": "^(#/definitions/){0,1}[A-Za-z_][A-Za-z0-9_-]*$",
 					"description": "The $id used by AJV to reference this schema, e.g. '#/definitions/MyFormSchema'."
 				},
 				"mode": {
 					"type": "string",
 					"enum": ["extend", "replace"],
 					"description": "'replace' substitutes the built-in schema entirely. 'extend' deep-merges consumer fields on top of the built-in. For greenfield schema names, use 'replace'."
+				}
+			}
+		},
+		"RouteEntry": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["id", "allowedParams"],
+			"properties": {
+				"id": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 260,
+					"pattern": "^/?([A-Za-z_][A-Za-z0-9_-]*\\/?){1,3}$",
+					"description": "Valid route id, e.g. 'edit'."
+				},
+				"allowedParams": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"minLength": 1,
+						"maxLength": 64,
+						"pattern": "^[A-Za-z_][A-Za-z0-9_-]*$"
+					},
+					"description": "Defines parameters allowed un URL search query"
 				}
 			}
 		}

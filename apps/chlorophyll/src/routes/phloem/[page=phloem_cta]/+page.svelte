@@ -1,7 +1,5 @@
 <script lang="ts">
 	import type {
-		Slug,
-		DocLanguage,
 		TagGroup,
 		ICoordinateDocs,
 		ICoordinateMetadata,
@@ -14,7 +12,13 @@
 	import {resolve} from '$app/paths'
 	import {page} from '$app/state'
 
-	import {DOC_LANGUAGE, DOC_FORMAT} from '$config/setup'
+	import {
+		getSanitizedLanguage,
+		getSanitizedFormat,
+		getSanitizedParamValue,
+		getSanitizedParamValueList,
+	} from '$lib/common/url'
+
 	import {
 		CTA_TO_TITLE,
 		CTA_TO_DESCRIPTION,
@@ -50,36 +54,30 @@
 
 	let editing = $derived(cta === 'write' || cta === 'reflect')
 
-	let language = $derived(
-		(page.url.searchParams.get('language') || DOC_LANGUAGE) as DocLanguage,
-	)
-	let format = $derived(
-		(page.url.searchParams.get('format') || DOC_FORMAT) as Slug,
-	)
+	let language = $derived(getSanitizedLanguage(page.url))
+	let format = $derived(getSanitizedFormat(page.url))
 
-	let preset: string | null = $derived(page.url.searchParams.get('preset'))
-	let targetPreset: string | null = $derived(
-		page.url.searchParams.get('preset-target'),
+	let preset: string | null = $derived(
+		getSanitizedParamValue(page.url, 'preset'),
 	)
 	let sourcePreset: string | null = $derived(
-		page.url.searchParams.get('preset-source'),
+		getSanitizedParamValue(page.url, 'preset-source'),
 	)
-
-	let availableSections = $derived(coordDocs.getSections({language, format}))
-
-	let unassignedSections = $derived(page.url.searchParams.getAll('sections'))
+	let targetPreset: string | null = $derived(
+		getSanitizedParamValue(page.url, 'preset-target'),
+	)
 
 	let sourceLanguage = $derived(
-		page.url.searchParams.get('source-language') ?? language,
+		getSanitizedParamValue(page.url, 'source-language') ?? language,
 	)
 	let sourceFormat = $derived(
-		page.url.searchParams.get('source-format') ?? format,
+		getSanitizedParamValue(page.url, 'source-format') ?? format,
 	)
 	let sourcePresetSections = $derived(
-		page.url.searchParams.get('source-sections'),
+		getSanitizedParamValue(page.url, 'source-sections'),
 	)
 	let sourceTags: string[] = $derived.by(() => {
-		const tags = page.url.searchParams.get('source-tags')
+		const tags = getSanitizedParamValue(page.url, 'source-tags')
 		if (tags) {
 			return tags.split(',')
 		}
@@ -87,21 +85,27 @@
 	})
 
 	let targetLanguage = $derived(
-		page.url.searchParams.get('target-language') ?? language,
+		getSanitizedParamValue(page.url, 'target-language') ?? language,
 	)
 	let targetFormat = $derived(
-		page.url.searchParams.get('target-format') ?? format,
+		getSanitizedParamValue(page.url, 'target-format') ?? format,
 	)
 	let targetPresetSections = $derived(
-		page.url.searchParams.get('target-sections'),
+		getSanitizedParamValue(page.url, 'target-sections'),
 	)
 	let targetTags: string[] = $derived.by(() => {
-		const tags = page.url.searchParams.get('target-tags')
+		const tags = getSanitizedParamValue(page.url, 'target-tags')
 		if (tags) {
 			return tags.split(',')
 		}
 		return []
 	})
+
+	let unassignedSections = $derived(
+		getSanitizedParamValueList(page.url, 'sections'),
+	)
+
+	let availableSections = $derived(coordDocs.getSections({language, format}))
 
 	let selectedSections = $derived(
 		coordDocs.getSectionsByName({
