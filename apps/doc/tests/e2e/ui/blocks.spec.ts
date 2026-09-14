@@ -68,6 +68,8 @@ ready.forEach((component) => {
 			component !== 'Expand' &&
 			component !== 'Switch' &&
 			component !== 'InputRange' &&
+			component !== 'InputRadio' &&
+			component !== 'InputCheck' &&
 			component !== 'InputGroup' &&
 			component !== 'InputFile' &&
 			component !== 'Magic' &&
