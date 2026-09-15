@@ -30,7 +30,6 @@
 		height,
 		coords = 'nord',
 		position,
-		background,
 		surface,
 		surfaceLightness,
 		nav,
@@ -95,12 +94,11 @@
 		justify ? `justify:${justify}` : 'justify:between',
 	)
 	let ff_labelClasses = $derived(
-		`l:flex nowrap w:full align:center ${justifyClass}`,
+		`l:flex nowrap w:full align:center justify:between`,
 	)
 	let ff_labelReverse = $derived(depth > 1 && nav ? 'reverse nowrap' : '')
 
 	// Content styles
-	let bgLabelClass = $derived(background ? `bg:${background}` : '')
 	let bgContentClass = $derived(
 		surface
 			? surfaceLightness
@@ -116,7 +114,7 @@
 			: 'shape:mellow',
 	)
 	let contentClasses = $derived(
-		`w:full ${shapeClass} ${scrollClass} ${layerClass} ${bgContentClass} ${bgLabelClass} ${bgContentClass} ${positionClass}`,
+		`w:full ${shapeClass} ${scrollClass} ${layerClass} ${bgContentClass} ${bgContentClass} ${positionClass}`,
 	)
 </script>
 

@@ -20,4 +20,7 @@
 	--overlay-block-xl: calc(
 		var(--overlay-height-xl) * 1vh - 2 * var(--outline-offset-lg)
 	);
+	--overlay-block-2xl: calc(
+		var(--overlay-height-2xl) * 1vh - 2 * var(--outline-offset-lg)
+	);
 }

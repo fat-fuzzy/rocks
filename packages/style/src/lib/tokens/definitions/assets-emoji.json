@@ -388,6 +388,9 @@
 			"star": {
 				"$value": "{emoji.base.star}"
 			},
+			"system": {
+				"$value": "{emoji.base.egg}"
+			},
 			"menu": {
 				"$value": "{emoji.base.bunny}"
 			},

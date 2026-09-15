@@ -30,7 +30,9 @@
 					id="sidenav-reveal"
 					label={sidenav.label ?? sidenav.title}
 					asset={sidenav.asset}
+					assetType={sidenav.assetType}
 					color={sidenav.color}
+					size={sidenav.size}
 					background={sidenav.background}
 					variant="bare"
 					checked={true}
