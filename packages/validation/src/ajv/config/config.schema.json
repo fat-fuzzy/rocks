@@ -137,12 +137,28 @@
 				"allowedParams": {
 					"type": "array",
 					"items": {
-						"type": "string",
-						"minLength": 1,
-						"maxLength": 64,
-						"pattern": "^[A-Za-z_][A-Za-z0-9_-]*$"
+						"$ref": "#/definitions/RouteParam"
 					},
 					"description": "Defines parameters allowed un URL search query"
+				}
+			}
+		},
+		"RouteParam": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["name", "type"],
+			"properties": {
+				"name": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 64,
+					"pattern": "^[A-Za-z_][A-Za-z0-9_-]*$",
+					"description": "Valid route param name. eg. 'language'"
+				},
+				"type": {
+					"type": "string",
+					"pattern": "^atomic|multiple|csv$",
+					"description": "Defines whether URL param value is a single string or an array of strings"
 				}
 			}
 		}
