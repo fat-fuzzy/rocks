@@ -6,11 +6,7 @@
 	import {page} from '$app/state'
 	import {resolve} from '$app/paths'
 
-	import {
-		getSanitizedParamValue,
-		buildForwardedQuery,
-		RESERVED_PARAM_NAMES,
-	} from '$lib/common/url'
+	import {getSanitizedParamValue, buildForwardedQuery} from '$lib/common/url'
 	import MenuData from '$lib/ui/controls/data/MenuData.svelte'
 	import MenuSections from '$lib/ui/controls/section/MenuSections.svelte'
 	import MenuSettings from '$lib/ui/controls/settings/MenuSettings.svelte'
@@ -41,7 +37,6 @@
 	let query = $derived(
 		buildForwardedQuery(
 			page.url,
-			Array.from(RESERVED_PARAM_NAMES),
 			coordMetadata.getTagGroups().map((g) => g.name),
 		),
 	)

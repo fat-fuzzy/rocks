@@ -79,10 +79,12 @@ export const getSanitizedParamValueList = (url: URL, key: Slug): Slug[] => {
 
 export const buildForwardedQuery = (
 	url: URL,
-	allowedParams_Static: string[],
 	allowedParams_Dynamic: string[],
 ): string => {
-	const allowed = new Set([...allowedParams_Static, ...allowedParams_Dynamic])
+	const allowed = new Set([
+		...Array.from(RESERVED_PARAM_NAMES),
+		...allowedParams_Dynamic,
+	])
 	const params = new URLSearchParams()
 
 	for (const [key, value] of url.searchParams) {
