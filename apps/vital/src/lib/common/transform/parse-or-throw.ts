@@ -37,7 +37,6 @@ function parseOrThrow<T>(
 	const isValid = validate(data)
 	if (isValid) return data as T // AJV narrows to T here
 
-	// console.log(data)
 	// console.log(validate.errors)
 
 	const errors = validate.errors?.map(
