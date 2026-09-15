@@ -84,6 +84,7 @@ export const cta: {[key: string]: NavItem} = {
 			},
 		],
 	},
+	// TODO: UPDATE on route changes
 }
 
 export const pages: {[key: string]: NavItem} = {
@@ -95,7 +96,7 @@ export const pages: {[key: string]: NavItem} = {
 		size: 'md',
 		assetType: 'svg',
 		actionPath: '/',
-		items: [cta.chlorophyll],
+		items: [cta.chlorophyll], // TODO: UPDATE on route changes
 	},
 }
 
