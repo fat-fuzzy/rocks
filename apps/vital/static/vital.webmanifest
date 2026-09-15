@@ -3,7 +3,7 @@
 	"id": "/",
 	"start_url": "/",
 	"display": "standalone",
-	"theme_color": "hsl(255.81 93.68% 69.02%)",
+	"theme_color": "hsl(244.37 100% 85%)",
 	"background_color": "hsl(240.03 100% 96%)",
 	"categories": ["utilities", "productivity", "personalization"],
 	"description": "Vital tools for growth, reflection and story.",
