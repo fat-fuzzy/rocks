@@ -114,7 +114,7 @@
 				? isHidden(section.tags, selectedTags)
 				: false}
 
-			{#if cta === 'build' && hiddenTag}
+			{#if hiddenTag}
 				<FeedbackContent
 					name={section.name}
 					content_type="section"
