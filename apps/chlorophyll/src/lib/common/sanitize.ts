@@ -53,28 +53,28 @@ function sanitizeValue<T>(
 }
 
 export function sanitizeBlock(data: unknown): Block | null {
-	return sanitizeValue<Block>(data, BlockValidator)
+	return sanitizeValue<Block>({value: data}, BlockValidator)
 }
 
 export function sanitizeSection(data: unknown): Section | null {
-	return sanitizeValue<Section>(data, SectionValidator)
+	return sanitizeValue<Section>({value: data}, SectionValidator)
 }
 
 export function sanitizeDoc(data: unknown): Doc | null {
-	return sanitizeValue<Doc>(data, DocValidator)
+	return sanitizeValue<Doc>({value: data}, DocValidator)
 }
 
 export function sanitizePreset(data: unknown): Preset | null {
-	return sanitizeValue<Preset>(data, PresetValidator)
+	return sanitizeValue<Preset>({value: data}, PresetValidator)
 }
 
 export function sanitizeBase(data: unknown): FrontmatterBase | null {
-	return sanitizeValue<FrontmatterBase>(data, FrontmatterBaseValidator)
+	return sanitizeValue<FrontmatterBase>({value: data}, FrontmatterBaseValidator)
 }
 
 export function sanitizeStructure(data: unknown): FrontmatterStructure | null {
 	return sanitizeValue<FrontmatterStructure>(
-		data,
+		{value: data},
 		FrontmatterStructureValidator,
 	)
 }

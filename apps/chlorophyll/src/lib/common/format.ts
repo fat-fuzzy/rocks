@@ -1,11 +1,8 @@
-import {
-	parseSlugValue,
-	parseLanguageValue,
-} from '$lib/common/transform/parse-or-throw'
+import {sanitizeSlugValue, sanitizeLanguageValue} from '$lib/common/sanitize'
 
 const buildBase = (language: string, format: string) => {
-	const languageKey = parseLanguageValue('language Key', language)
-	const formatKey = parseSlugValue('format Key', format)
+	const languageKey = sanitizeLanguageValue(language)
+	const formatKey = sanitizeSlugValue(format)
 
 	return `${languageKey}:${formatKey}`
 }
@@ -17,7 +14,7 @@ export const getSectionKey = (
 ) => {
 	const base = buildBase(language, format)
 
-	const nameKey = parseSlugValue('name Key', name)
+	const nameKey = sanitizeSlugValue(name)
 	return `${base}:${nameKey}`
 }
 
@@ -29,8 +26,8 @@ export const getSubsectionKey = (
 ) => {
 	const base = buildBase(language, format)
 
-	const sectionKey = parseSlugValue('section Key', section)
-	const nameKey = parseSlugValue('name Key', name)
+	const sectionKey = sanitizeSlugValue(section)
+	const nameKey = sanitizeSlugValue(name)
 
 	return `${base}:${sectionKey}:${nameKey}`
 }
@@ -44,11 +41,9 @@ export const getBlockKey = (
 ) => {
 	const base = buildBase(language, format)
 
-	const sectionKey = parseSlugValue('section Key', section)
-	const subsectionKey = subsection
-		? parseSlugValue('subsection Key', subsection)
-		: ''
-	const nameKey = parseSlugValue('name Key', name)
+	const sectionKey = sanitizeSlugValue(section)
+	const subsectionKey = subsection ? sanitizeSlugValue(subsection) : null
+	const nameKey = sanitizeSlugValue(name)
 
 	return subsectionKey
 		? `${base}:${sectionKey}:${subsectionKey}:${nameKey}`
@@ -56,14 +51,14 @@ export const getBlockKey = (
 }
 
 export const getPresetKey = (name: string) => {
-	const nameKey = parseSlugValue('name Key', name)
+	const nameKey = sanitizeSlugValue(name)
 
 	return nameKey
 }
 
 export const getTagKey = (group: string, name: string) => {
-	const groupKey = parseSlugValue('group Key', group)
-	const nameKey = parseSlugValue('name Key', name)
+	const groupKey = sanitizeSlugValue(group)
+	const nameKey = sanitizeSlugValue(name)
 
 	return `${groupKey}:${nameKey}`
 }
