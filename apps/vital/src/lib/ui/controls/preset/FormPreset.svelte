@@ -154,7 +154,6 @@
 </script>
 
 <form class="raviolink l:stack:lg" bind:this={form}>
-	{JSON.stringify(validator.errors)}
 	{#if cta === 'delete'}
 		<label class="l:stack:xs font:sm variant:bare">
 			Preset
