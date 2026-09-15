@@ -32,28 +32,28 @@
 		},
 		"svg": {
 			"3xs": {
-				"$value": "{size.base.2xs}"
-			},
-			"2xs": {
-				"$value": "{size.base.xs}"
-			},
-			"xs": {
 				"$value": "{size.base.sm}"
 			},
-			"sm": {
+			"2xs": {
 				"$value": "{size.base.md}"
 			},
-			"md": {
+			"xs": {
 				"$value": "{size.base.lg}"
 			},
-			"lg": {
+			"sm": {
 				"$value": "{size.base.xl}"
 			},
-			"xl": {
+			"md": {
 				"$value": "{size.base.2xl}"
 			},
-			"2xl": {
+			"lg": {
 				"$value": "{size.base.3xl}"
+			},
+			"xl": {
+				"$value": "{size.base.4xl}"
+			},
+			"2xl": {
+				"$value": "{size.base.5xl}"
 			}
 		}
 	}

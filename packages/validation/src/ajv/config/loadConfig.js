@@ -179,5 +179,9 @@ export async function loadConfig({cwd = process.cwd(), configPath} = {}) {
 		result.validation = resolveValidationPaths(raw.validation, configDir)
 	}
 
+	if (raw.routing !== undefined) {
+		result.routing = raw.routing
+	}
+
 	return result
 }

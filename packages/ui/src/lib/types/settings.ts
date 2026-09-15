@@ -20,3 +20,11 @@ export type ViewingPreferences = {
 export type PrivacyPreferences = {
 	consent: CookiePreferences
 }
+
+// FIXME: this should be generated
+export type SignUp = {
+	user?: string
+	email?: string
+	password?: string
+	confirm_password?: string
+}

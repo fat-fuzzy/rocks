@@ -65,18 +65,22 @@ fs.readFile(COMMIT_HISTORY_FILE, 'utf8', (err, data) => {
 		'lib',
 		'markdown',
 		'media',
+		'mycelium',
 		'resources',
 		'root',
 		'sandbox',
 		'sketch',
 		'style',
 		'packages',
+		'phloem',
 		'play',
 		'playbook',
 		'prose',
 		'ui',
 		'validation',
 		'validate',
+		'vital',
+		'xylem',
 	]
 	const commitData = [
 		[

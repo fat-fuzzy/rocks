@@ -90,7 +90,7 @@
 			id="nav"
 			label="Menu"
 			font="sm"
-			size="3xs"
+			size="md"
 			asset="home"
 			justify="center"
 			align="start"
@@ -147,6 +147,7 @@
 					label={sidenav.label}
 					asset={sidenav.asset}
 					color={sidenav.color}
+					size={sidenav.size}
 					background={sidenav.background}
 					variant="bare"
 					checked={true}
@@ -182,6 +183,7 @@
 			color="neutral"
 			asset="settings"
 			font="sm"
+			size="md"
 			layout="flex"
 			justify="end"
 			coords="est"

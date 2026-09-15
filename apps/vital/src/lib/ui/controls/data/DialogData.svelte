@@ -1,0 +1,86 @@
+<script lang="ts">
+	import type {UiColor, UiSize} from '@fat-fuzzy/ui'
+	import type {ICoordinateImports} from '$types'
+
+	import {getContext} from 'svelte'
+	import {SvelteURL} from 'svelte/reactivity'
+	import ui from '@fat-fuzzy/ui'
+
+	import {page} from '$app/state'
+
+	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
+	import FormData from '$lib/ui/controls/data/FormData.svelte'
+
+	let coordImports: ICoordinateImports = getContext('coordImports')
+
+	const {Button} = ui.blocks
+
+	interface Props {
+		id: string
+		label?: string
+		color?: UiColor
+		size?: UiSize
+		font?: UiSize
+		oninput?: () => void // hook for parent to refresh state
+	}
+	let {
+		id,
+		label = 'Your data',
+		color = 'primary',
+		size = 'xs',
+		font = 'xs',
+		oninput,
+	}: Props = $props()
+
+	function showDialog() {
+		dialogActor.init({
+			modal: false,
+			size: 'lg',
+			color,
+			label: 'Your data',
+			position: 'nord-est',
+			children: dialogContent,
+		})
+
+		dialogActor.show()
+	}
+
+	function handleSubmit() {
+		if (oninput) {
+			oninput()
+		}
+
+		setTimeout(() => {
+			dialogActor.close()
+
+			coordImports.setStatus('idle')
+
+			const newUrl = new SvelteURL(page.url)
+			newUrl.search = ''
+
+			window.location.href = newUrl.href // FIXME: hacky solution to reload for now
+		}, 1000)
+	}
+</script>
+
+{#snippet dialogContent()}
+	<FormData {color} onsubmit={handleSubmit} />
+{/snippet}
+
+<Button
+	{id}
+	type="button"
+	name={id}
+	{size}
+	{font}
+	{color}
+	layout="flex"
+	justify="end nowrap"
+	align="center"
+	shape="mellow"
+	variant="outline"
+	onclick={showDialog}
+>
+	<span class="font:heading">{label}</span>
+	<ff-icon class="svg:herb openmoji:xs l:flex"></ff-icon>
+</Button>

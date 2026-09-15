@@ -19,5 +19,6 @@ vite.config.ts.timestamp-*
 # CSS side effects
 src/lib/css/mixins/*.css
 src/lib/css/variables/
+src/lib/css/mixins/index.js
 !src/lib/css/variables/index.js
 /logs

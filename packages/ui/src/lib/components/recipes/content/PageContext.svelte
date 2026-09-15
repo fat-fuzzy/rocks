@@ -19,7 +19,7 @@
 </script>
 
 {#if updated && created}
-	<div class="l:burrito:lg">
+	<div class="l:burrito:lg maki:block:lg">
 		<Feedback
 			{status}
 			variant="bare"

@@ -1,0 +1,13 @@
+.l\:grid\:urbanist {
+	ff-toggle-reveal.ouest ff-control,
+	ff-toggle-reveal.est ff-control {
+		padding-inline-end: 0;
+
+		inline-size: 100%;
+		max-inline-size: var(--overlay-inline-size);
+	}
+
+	ff-toggle-reveal.est ff-control {
+		justify-self: end;
+	}
+}
