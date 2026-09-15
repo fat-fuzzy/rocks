@@ -129,9 +129,9 @@ export default class CoordinatePresets implements ICoordinatePresets {
 
 		const queryString = query.replace('?', '')
 		const searchParams = new SvelteURLSearchParams(queryString)
-		let role = searchParams.get('source-preset')
+		let role = searchParams.get('source_preset')
 		if (!role) {
-			role = searchParams.get('target-preset')
+			role = searchParams.get('target_preset')
 		}
 
 		if (!role) {
@@ -145,34 +145,34 @@ export default class CoordinatePresets implements ICoordinatePresets {
 			return query
 		}
 
-		searchParams.delete(`preset-${role}`)
-		searchParams.delete(`preset-${complementary}`)
-		searchParams.delete(`${complementary}-sections`)
-		searchParams.delete(`${complementary}-tags`)
-		searchParams.delete(`${complementary}-language`)
-		searchParams.delete(`${complementary}-format`)
+		searchParams.delete(`${role}_preset`)
+		searchParams.delete(`${complementary}_preset`)
+		searchParams.delete(`${complementary}_sections`)
+		searchParams.delete(`${complementary}_tags`)
+		searchParams.delete(`${complementary}_language`)
+		searchParams.delete(`${complementary}_format`)
 		searchParams.append('preset', name)
 
-		const language = searchParams.get(`${role}-language`) ?? ''
-		const format = searchParams.get(`${role}-format`) ?? ''
-		const sections = searchParams.get(`${role}-sections`) ?? ''
+		const language = searchParams.get(`${role}_language`) ?? ''
+		const format = searchParams.get(`${role}_format`) ?? ''
+		const sections = searchParams.get(`${role}_sections`) ?? ''
 
 		if (language) {
 			searchParams.append('language', language)
-			searchParams.delete(`${role}-language`)
+			searchParams.delete(`${role}_language`)
 		}
 		if (format) {
 			searchParams.append('format', format)
-			searchParams.delete(`${role}-format`)
+			searchParams.delete(`${role}_format`)
 		}
 		if (sections) {
 			sections.split(',').forEach((s) => {
 				searchParams.append('sections', s)
 			})
-			searchParams.delete(`${role}-sections`)
+			searchParams.delete(`${role}_sections`)
 		}
 		const tags = this.getPresetTags(name)
-		searchParams.delete(`${role}-tags`)
+		searchParams.delete(`${role}_tags`)
 
 		const tagGroups = this.aggMetadata.tagGroups
 
@@ -203,12 +203,12 @@ export default class CoordinatePresets implements ICoordinatePresets {
 		const queryString = query.replace('?', '')
 		const searchParams = new SvelteURLSearchParams(queryString)
 
-		if (searchParams.has(`preset-${role}`)) {
+		if (searchParams.has(`${role}_preset`)) {
 			return query
 		}
 
 		searchParams.delete('preset')
-		searchParams.append(`preset-${role}`, name)
+		searchParams.append(`${role}_preset`, name)
 
 		const language = searchParams.get('language') ?? ''
 		const format = searchParams.get('format') ?? ''
@@ -216,16 +216,16 @@ export default class CoordinatePresets implements ICoordinatePresets {
 		const tags = this.getPresetTags(name)
 
 		if (language) {
-			searchParams.append(`${role}-language`, language)
+			searchParams.append(`${role}_language`, language)
 		}
 		if (format) {
-			searchParams.append(`${role}-format`, format)
+			searchParams.append(`${role}_format`, format)
 		}
 		if (tags.length) {
-			searchParams.append(`${role}-tags`, tags.join(','))
+			searchParams.append(`${role}_tags`, tags.join(','))
 		}
 		if (sections.length) {
-			searchParams.append(`${role}-sections`, sections.join(','))
+			searchParams.append(`${role}_sections`, sections.join(','))
 		}
 
 		searchParams.delete('sections')
@@ -338,10 +338,10 @@ export default class CoordinatePresets implements ICoordinatePresets {
 					preset = this.getPreset(presetName) ?? null
 				}
 				break
-			case 'preset-source':
+			case 'source_preset':
 				preset = this.getSourcePreset()
 				break
-			case 'preset-target':
+			case 'target_preset':
 				preset = this.getTargetPreset()
 				break
 			default:

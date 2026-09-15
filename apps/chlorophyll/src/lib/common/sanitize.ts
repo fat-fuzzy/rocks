@@ -10,6 +10,7 @@ import type {
 	DocLanguage,
 	Path,
 	DateString,
+	Uuid,
 } from '$types'
 
 import {
@@ -23,6 +24,7 @@ import {
 	FrontmatterStructureValidator,
 	PathValidator,
 	DateStringValidator,
+	UuidValidator,
 } from '$lib/common/validate'
 
 /*******************
@@ -46,6 +48,7 @@ function sanitizeValue<T>(
 	validate: AjvValidateFunction<T>,
 ): T | null {
 	const wrapped = {value: data}
+
 	return validate(wrapped.value) ? wrapped.value : null
 }
 
@@ -99,5 +102,11 @@ export function sanitizeDateStringValue(data: unknown): DateString | null {
 	return (
 		sanitizeValue<{value: DateString}>({value: data}, DateStringValidator)
 			?.value || null
+	)
+}
+
+export function sanitizeUuidValue(data: unknown): Uuid | null {
+	return (
+		sanitizeValue<{value: Uuid}>({value: data}, UuidValidator)?.value || null
 	)
 }
