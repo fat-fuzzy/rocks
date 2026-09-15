@@ -11,6 +11,7 @@ import type {
 	Path,
 	DateString,
 	FormTag,
+	Uuid,
 } from '$types'
 
 import * as validators from '$lib/generated/ajv/validation/validate.ajv.mjs'
@@ -50,6 +51,10 @@ export const FrontmatterBaseValidator =
 
 export const SlugValidator = getTypedValidatorFunction<{value: Slug}>(
 	validators.SlugValueValidationFunction,
+)
+
+export const UuidValidator = getTypedValidatorFunction<{value: Uuid}>(
+	validators.UuidValueValidationFunction,
 )
 
 export const LanguageValidator = getTypedValidatorFunction<{

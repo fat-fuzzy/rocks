@@ -19,10 +19,8 @@
 	} from '$lib/intl/l10n'
 
 	import {
-		getSanitizedLanguage,
-		getSanitizedFormat,
-		getSanitizedParamValue,
 		getSanitizedParamValueList,
+		getAllowedParamsForRoute,
 	} from '$lib/common/url'
 
 	import SectionEditor from '$lib/ui/editor/SectionEditor.svelte'
@@ -54,47 +52,30 @@
 
 	let editing = $derived(cta === 'build' || cta === 'edit')
 
-	let language = $derived(getSanitizedLanguage(page.url))
-	let format = $derived(getSanitizedFormat(page.url))
+	let paramValues = $derived(cta ? getAllowedParamsForRoute(cta, page.url) : {})
+	let language = $derived(paramValues.language)
+	let format = $derived(paramValues.format)
 
-	let preset: string | null = $derived(
-		getSanitizedParamValue(page.url, 'preset'),
-	)
-	let sourcePreset: string | null = $derived(
-		getSanitizedParamValue(page.url, 'preset-source'),
-	)
-	let targetPreset: string | null = $derived(
-		getSanitizedParamValue(page.url, 'preset-target'),
-	)
+	let preset: string | null = $derived(paramValues.preset)
+	let sourcePreset: string | null = $derived(paramValues.source_preset)
+	let targetPreset: string | null = $derived(paramValues.target_preset)
 
-	let sourceLanguage = $derived(
-		getSanitizedParamValue(page.url, 'source-language') ?? language,
-	)
-	let sourceFormat = $derived(
-		getSanitizedParamValue(page.url, 'source-format') ?? format,
-	)
-	let sourcePresetSections = $derived(
-		getSanitizedParamValue(page.url, 'source-sections'),
-	)
+	let sourceLanguage = $derived(paramValues.source_language ?? language)
+	let sourceFormat = $derived(paramValues.source_format ?? format)
+	let sourcePresetSections = $derived(paramValues.source_sections)
 	let sourceTags: string[] = $derived.by(() => {
-		const tags = getSanitizedParamValue(page.url, 'source-tags')
+		const tags = paramValues.source_tags
 		if (tags) {
 			return tags.split(',')
 		}
 		return []
 	})
 
-	let targetLanguage = $derived(
-		getSanitizedParamValue(page.url, 'target-language') ?? language,
-	)
-	let targetFormat = $derived(
-		getSanitizedParamValue(page.url, 'target-format') ?? format,
-	)
-	let targetPresetSections = $derived(
-		getSanitizedParamValue(page.url, 'target-sections'),
-	)
+	let targetLanguage = $derived(paramValues.target_language ?? language)
+	let targetFormat = $derived(paramValues.target_format ?? format)
+	let targetPresetSections = $derived(paramValues.target_sections)
 	let targetTags: string[] = $derived.by(() => {
-		const tags = getSanitizedParamValue(page.url, 'target-tags')
+		const tags = paramValues.target_tags
 		if (tags) {
 			return tags.split(',')
 		}
@@ -139,7 +120,8 @@
 		coordMetadata
 			.getTagGroups()
 			.reduce((selected: string[], menu: TagGroup) => {
-				return selected.concat(page.url.searchParams.getAll(menu.name) || [])
+				const tags = getSanitizedParamValueList(page.url, menu.name)
+				return selected.concat(tags || [])
 			}, []),
 	)
 
@@ -385,7 +367,7 @@
 						{#key sourcePreset}
 							<Presets
 								title="Source Preset (readonly)"
-								id="preset-source"
+								id="source_preset"
 								isSource={true}
 								oninput={() => coordPresets.setSourcePreset(sourcePreset)}
 								currentPreset={sourcePreset}
@@ -394,7 +376,7 @@
 						{#key targetPreset}
 							<Presets
 								title="Target Preset (editing)"
-								id="preset-target"
+								id="target_preset"
 								isTarget={true}
 								oninput={() => coordPresets.setTargetPreset(targetPreset)}
 								currentPreset={targetPreset}

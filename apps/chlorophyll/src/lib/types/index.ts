@@ -37,12 +37,15 @@ export * from '$lib/generated/types/FormSection'
 export * from '$lib/generated/types/FormBlock'
 export * from '$lib/generated/types/FormTag'
 
+// Routing constants & types
+export * from '$lib/generated/types/routing'
+
 /*************************************************
  ******* OVERRIDE duplicate generated types ******
  ********* ( src: always domain/identity ) *******/
 
 export type {Query} from '$lib/types/messages'
-export type {Username, Date} from '$lib/generated/types/Human'
+export type {Username} from '$lib/generated/types/Human'
 export type {SeedType} from '$lib/generated/types/SeedDoc'
 export type {Title} from '$lib/generated/types/FormSection'
 

@@ -13,10 +13,12 @@
 	import ui from '@fat-fuzzy/ui'
 
 	import {
+		validateTagGroupName,
 		checkSelectAll,
 		parseGroupFromTargetData,
 		applyTags,
 	} from '$lib/common/tags'
+
 	import {FormTagValidator} from '$lib/common/validate'
 	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
 	import SelectTags from '$lib/ui/controls/tags/SelectTags.svelte'
@@ -115,7 +117,8 @@
 		tag.group = target.value
 
 		if (tag.group) {
-			const tagFound = checkTagExists(tag.group, tag.name)
+			const tagFound =
+				validateTagGroupName(tag.group) && checkTagExists(tag.group, tag.name)
 
 			if (tagFound) {
 				errorTagExists = true

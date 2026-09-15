@@ -1,13 +1,28 @@
 import type {ActionCrud, InputCheckedTypes, Slug, TagGroup, Uuid} from '$types'
 
+import {sanitizeSlugValue, sanitizeUuidValue} from '$lib/common/sanitize'
+import {RESERVED_PARAM_NAMES} from '$lib/common/url'
+
 /******************************
  * Tag (InputGroup) Utilities
  ******************************/
-export const getTagInputPrefix = (cta: ActionCrud, id?: Uuid) =>
-	id ? `${cta}-${id}` : cta
 
-export const getTagGroupName = (cta: ActionCrud, name: string, id?: Uuid) =>
-	`${getTagInputPrefix(cta, id)}-${name}`
+export function validateTagGroupName(name: string): boolean {
+	return sanitizeSlugValue(name) !== null && !RESERVED_PARAM_NAMES.has(name)
+}
+
+export const getTagInputPrefix = (cta: ActionCrud, id?: Uuid) => {
+	const sanitizedId = sanitizeUuidValue(id)
+	const sanitizedCta = sanitizeSlugValue(cta)
+
+	return sanitizedId ? `${sanitizedCta}-${sanitizedId}` : sanitizedCta
+}
+
+export const getTagGroupName = (cta: ActionCrud, name: string, id?: Uuid) => {
+	const sanitizedName = sanitizeSlugValue(name)
+
+	return `${getTagInputPrefix(cta, id)}-${sanitizedName}`
+}
 
 // Use input value since selectAll input is not included in the input group (FIXME: has no name)
 export const checkSelectAll = (

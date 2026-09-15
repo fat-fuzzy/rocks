@@ -1,15 +1,22 @@
 <script lang="ts">
 	import type {UiColor, UiLayout, UiSize} from '@fat-fuzzy/ui'
-	import type {VitalPage, ICoordinatePresets} from '$types'
+	import type {VitalPage, ICoordinatePresets, ICoordinateMetadata} from '$types'
 
 	import {getContext} from 'svelte'
 	import {page} from '$app/state'
 	import {resolve} from '$app/paths'
 
+	import {
+		getSanitizedParamValue,
+		buildForwardedQuery,
+		RESERVED_PARAM_NAMES,
+	} from '$lib/common/url'
 	import MenuData from '$lib/ui/controls/data/MenuData.svelte'
 	import MenuSections from '$lib/ui/controls/section/MenuSections.svelte'
 	import MenuSettings from '$lib/ui/controls/settings/MenuSettings.svelte'
+
 	let coordPresets: ICoordinatePresets = getContext('coordPresets')
+	let coordMetadata: ICoordinateMetadata = getContext('coordMetadata')
 
 	let {
 		layout = 'switcher',
@@ -30,7 +37,14 @@
 	} = $props()
 
 	let cta = $derived(page.params.page)
-	let preset = $derived(page.url.searchParams.get('preset') || '')
+	let preset = $derived(getSanitizedParamValue(page.url, 'preset'))
+	let query = $derived(
+		buildForwardedQuery(
+			page.url,
+			Array.from(RESERVED_PARAM_NAMES),
+			coordMetadata.getTagGroups().map((g) => g.name),
+		),
+	)
 	let linkStyles = $state('font:xs font:semibold font:heading w:full')
 </script>
 
@@ -40,7 +54,9 @@
 			{#each Object.entries(actions) as [key, value], i (i)}
 				{@const classes =
 					key === cta ? linkStyles : `${linkStyles} ink:${color}`}
-				{@const presetQuery = preset ? coordPresets.getPresetQuery(preset) : ''}
+				{@const presetQuery = preset
+					? coordPresets.getPresetQuery(preset)
+					: query}
 				<li
 					aria-current={key === cta}
 					class={`cta text:center surface:2:${color} shape:mellow l:flex`}
