@@ -8,7 +8,7 @@
 
 	import {page} from '$app/state'
 
-	import {FormSectionValidator} from '$lib/common/validate'
+	import {FormLanguageValidator} from '$lib/common/validate'
 	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
 	import {DOC_LANGUAGE} from '$config/setup'
 
@@ -24,7 +24,7 @@
 
 	let coordMetadata: ICoordinateMetadata = getContext('coordMetadata')
 
-	const validator = new FormValidator(FormSectionValidator)
+	const validator = new FormValidator(FormLanguageValidator)
 
 	const inputTypes: {[name: string]: string} = {
 		name: 'text',

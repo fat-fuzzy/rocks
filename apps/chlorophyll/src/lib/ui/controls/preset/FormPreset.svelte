@@ -7,7 +7,7 @@
 	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
 
-	import {PresetValidator} from '$lib/common/validate'
+	import {FormPresetValidator} from '$lib/common/validate'
 	import {getSanitizedParamValue} from '$lib/common/url'
 	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
 
@@ -23,7 +23,7 @@
 
 	let coordPresets: ICoordinatePresets = getContext('coordPresets')
 
-	const validator = new FormValidator(PresetValidator)
+	const validator = new FormValidator(FormPresetValidator)
 
 	const inputTypes: {[name: string]: string} = {
 		name: 'text',
