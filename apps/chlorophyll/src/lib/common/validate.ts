@@ -11,6 +11,7 @@ import type {
 	Path,
 	DateString,
 	FormTag,
+	FormPreset,
 	Uuid,
 } from '$types'
 
@@ -80,6 +81,10 @@ export const FormBlockValidator = getTypedValidatorFunction<Block>(
 
 export const FormFormatValidator = getTypedValidatorFunction<Slug>(
 	validators.FormFormatValidationFunction,
+)
+
+export const FormPresetValidator = getTypedValidatorFunction<FormPreset>(
+	validators.FormPresetValidationFunction,
 )
 
 export const FormTagValidator = getTypedValidatorFunction<FormTag>(
