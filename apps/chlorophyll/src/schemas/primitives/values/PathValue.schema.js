@@ -1,6 +1,5 @@
 import {SCHEMA_VERSION} from '../../../config/setup.js'
 import {defineSchema} from '../../index.js'
-import FormBaseSchema from '../FormBase.schema.js'
 
 const PathValueSchema = defineSchema({
 	$schema: 'http://json-schema.org/draft-07/schema#',
@@ -21,7 +20,6 @@ const PathValueSchema = defineSchema({
 	},
 	required: ['value'],
 	additionalProperties: false,
-	definitions: {path: FormBaseSchema.path},
 })
 
 export default PathValueSchema

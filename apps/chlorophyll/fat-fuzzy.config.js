@@ -12,18 +12,6 @@ export default {
 		// per-schema: 'extend' merges with built-in, 'replace' fully substitutes it
 		// key = built-in schema name, value = { file, exportName, $id, mode }
 		schemas: {
-			SlugValue: {
-				file: 'SlugValue.schema.json',
-				exportName: 'SlugValueValidationFunction',
-				$id: '#/definitions/SlugValue',
-				mode: 'replace',
-			},
-			PathValue: {
-				file: 'PathValue.schema.json',
-				exportName: 'PathValueValidationFunction',
-				$id: '#/definitions/PathValue',
-				mode: 'replace',
-			},
 			DateStringValue: {
 				file: 'DateStringValue.schema.json',
 				exportName: 'DateStringValueValidationFunction',
@@ -34,6 +22,24 @@ export default {
 				file: 'LanguageValue.schema.json',
 				exportName: 'LanguageValueValidationFunction',
 				$id: '#/definitions/LanguageValue',
+				mode: 'replace',
+			},
+			PathValue: {
+				file: 'PathValue.schema.json',
+				exportName: 'PathValueValidationFunction',
+				$id: '#/definitions/PathValue',
+				mode: 'replace',
+			},
+			SlugValue: {
+				file: 'SlugValue.schema.json',
+				exportName: 'SlugValueValidationFunction',
+				$id: '#/definitions/SlugValue',
+				mode: 'replace',
+			},
+			UuidValue: {
+				file: 'UuidValue.schema.json',
+				exportName: 'UuidValueValidationFunction',
+				$id: '#/definitions/UuidValue',
 				mode: 'replace',
 			},
 			Tag: {
@@ -171,7 +177,7 @@ export default {
 	},
 	routing: {
 		// where generated files are written
-		outDir: 'src/lib/generated/routing',
+		outDir: 'src/lib/generated/types',
 		routes: {
 			edit: {
 				id: '/chlorophyll/edit',
@@ -187,17 +193,41 @@ export default {
 					'language',
 					'format',
 					'sections',
-					'source-preset',
-					'source-sections',
-					'source-tags',
-					'target-preset',
-					'target-sections',
-					'target-tags',
+					'source_language',
+					'source_format',
+					'source_preset',
+					'source_sections',
+					'source_tags',
+					'target_language',
+					'target_format',
+					'target_preset',
+					'target_sections',
+					'target_tags',
 				],
 			},
 			print: {
 				id: '/chlorophyll/print',
 				allowedParams: ['language', 'format', 'preset'],
+			},
+			analyze: {
+				id: '/mycelium/analyze',
+				allowedParams: ['language', 'format', 'sections', 'preset'],
+			},
+			engage: {
+				id: '/mycelium/engage',
+				allowedParams: ['language', 'format', 'sections', 'preset'],
+			},
+			write: {
+				id: '/phloem/write',
+				allowedParams: ['language', 'format', 'sections', 'preset'],
+			},
+			reflect: {
+				id: '/phloem/reflect',
+				allowedParams: ['language', 'format', 'sections', 'preset'],
+			},
+			explore: {
+				id: '/phloem/explore',
+				allowedParams: ['language', 'format', 'sections', 'preset'],
 			},
 		},
 	},
