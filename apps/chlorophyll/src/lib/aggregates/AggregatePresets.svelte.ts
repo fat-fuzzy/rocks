@@ -92,7 +92,12 @@ export default class AggregatePresets implements IAggregatePresets {
 		})
 
 		this.presets[options.preset.name] = toUpdate
-		this.presetIndex.presets[getPresetKey(toUpdate.name)] = toUpdate
+
+		const key = getPresetKey(toUpdate.name)
+
+		if (key) {
+			this.presetIndex.presets[key] = toUpdate
+		}
 	}
 
 	/**
@@ -108,7 +113,11 @@ export default class AggregatePresets implements IAggregatePresets {
 
 		if (raw.deleted) {
 			delete this.presets[options.meta.name]
-			delete this.presetIndex.presets[getPresetKey(options.meta.name)]
+			const key = getPresetKey(options.meta.name)
+
+			if (key) {
+				delete this.presetIndex.presets[key]
+			}
 		}
 	}
 
@@ -158,6 +167,10 @@ export default class AggregatePresets implements IAggregatePresets {
 		})
 
 		this.presets[options.preset.name] = toUpdate
-		this.presetIndex.presets[getPresetKey(toUpdate.name)] = toUpdate
+		const key = getPresetKey(toUpdate.name)
+
+		if (key) {
+			this.presetIndex.presets[key] = toUpdate
+		}
 	}
 }

@@ -50,7 +50,7 @@ export default class CoordinatePresets implements ICoordinatePresets {
 	getPreset(name: string): Preset | void {
 		try {
 			const key = getPresetKey(name)
-			return this.aggPresets.getPreset(key)
+			return key ? this.aggPresets.getPreset(key) : undefined
 		} catch {
 			return
 		}
@@ -126,12 +126,13 @@ export default class CoordinatePresets implements ICoordinatePresets {
 		if (!query) {
 			return ''
 		}
+		const queryParams = new SvelteURLSearchParams(query)
+		const searchParams = new SvelteURLSearchParams()
 
-		const queryString = query.replace('?', '')
-		const searchParams = new SvelteURLSearchParams(queryString)
-		let role = searchParams.get('source_preset')
+		let role = queryParams.get('source_preset')
+
 		if (!role) {
-			role = searchParams.get('target_preset')
+			role = queryParams.get('target_preset')
 		}
 
 		if (!role) {
@@ -145,34 +146,24 @@ export default class CoordinatePresets implements ICoordinatePresets {
 			return query
 		}
 
-		searchParams.delete(`${role}_preset`)
-		searchParams.delete(`${complementary}_preset`)
-		searchParams.delete(`${complementary}_sections`)
-		searchParams.delete(`${complementary}_tags`)
-		searchParams.delete(`${complementary}_language`)
-		searchParams.delete(`${complementary}_format`)
-		searchParams.append('preset', name)
+		searchParams.set('preset', name)
 
-		const language = searchParams.get(`${role}_language`) ?? ''
-		const format = searchParams.get(`${role}_format`) ?? ''
-		const sections = searchParams.get(`${role}_sections`) ?? ''
+		const language = queryParams.get(`${role}_language`) ?? ''
+		const format = queryParams.get(`${role}_format`) ?? ''
+		const sections = queryParams.get(`${role}_sections`) ?? ''
 
 		if (language) {
-			searchParams.append('language', language)
-			searchParams.delete(`${role}_language`)
+			searchParams.set('language', language)
 		}
 		if (format) {
-			searchParams.append('format', format)
-			searchParams.delete(`${role}_format`)
+			searchParams.set('format', format)
 		}
 		if (sections) {
 			sections.split(',').forEach((s) => {
-				searchParams.append('sections', s)
+				searchParams.set('sections', s)
 			})
-			searchParams.delete(`${role}_sections`)
 		}
 		const tags = this.getPresetTags(name)
-		searchParams.delete(`${role}_tags`)
 
 		const tagGroups = this.aggMetadata.tagGroups
 
@@ -200,38 +191,32 @@ export default class CoordinatePresets implements ICoordinatePresets {
 			return ''
 		}
 
-		const queryString = query.replace('?', '')
-		const searchParams = new SvelteURLSearchParams(queryString)
+		const queryParams = new SvelteURLSearchParams(query)
+		const searchParams = new SvelteURLSearchParams()
 
-		if (searchParams.has(`${role}_preset`)) {
+		if (queryParams.has(`${role}_preset`)) {
 			return query
 		}
 
-		searchParams.delete('preset')
-		searchParams.append(`${role}_preset`, name)
+		searchParams.set(`${role}_preset`, name)
 
-		const language = searchParams.get('language') ?? ''
-		const format = searchParams.get('format') ?? ''
-		const sections = searchParams.getAll('sections')
+		const language = queryParams.get('language') ?? ''
+		const format = queryParams.get('format') ?? ''
+		const sections = queryParams.getAll('sections')
 		const tags = this.getPresetTags(name)
 
 		if (language) {
-			searchParams.append(`${role}_language`, language)
+			searchParams.set(`${role}_language`, language)
 		}
 		if (format) {
-			searchParams.append(`${role}_format`, format)
+			searchParams.set(`${role}_format`, format)
 		}
 		if (tags.length) {
-			searchParams.append(`${role}_tags`, tags.join(','))
+			searchParams.set(`${role}_tags`, tags.join(','))
 		}
 		if (sections.length) {
-			searchParams.append(`${role}_sections`, sections.join(','))
+			searchParams.set(`${role}_sections`, sections.join(','))
 		}
-
-		searchParams.delete('sections')
-		searchParams.delete('language')
-		searchParams.delete('format')
-		searchParams.delete('version')
 
 		const tagGroupNames = Object.keys(this.aggMetadata.tagGroups)
 
@@ -327,27 +312,5 @@ export default class CoordinatePresets implements ICoordinatePresets {
 		preset: {id?: Uuid; name: string; query: string}
 	}) {
 		return this.aggPresets.togglePresetLock(options)
-	}
-
-	getPresetByRole(presetRole: Slug, presetName?: string | null): Preset | null {
-		let preset = null
-
-		switch (presetRole) {
-			case 'preset':
-				if (presetName) {
-					preset = this.getPreset(presetName) ?? null
-				}
-				break
-			case 'source_preset':
-				preset = this.getSourcePreset()
-				break
-			case 'target_preset':
-				preset = this.getTargetPreset()
-				break
-			default:
-				break
-		}
-
-		return preset
 	}
 }

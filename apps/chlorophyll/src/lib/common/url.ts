@@ -13,7 +13,7 @@ function getStaticAllowedParams(routes: typeof ROUTES): Set<string> {
 	let params: string[] = []
 
 	for (const entry of entries) {
-		params = params.concat(entry[1].allowedParams)
+		params = params.concat(entry[1].allowedParams.map((p) => p.name))
 	}
 	return new Set(params)
 }
@@ -26,14 +26,17 @@ export function getAllowedParamsForRoute(
 
 	const params: {[key: string]: string} = {}
 
-	for (const param of allowedParams) {
-		const value = getSanitizedParamValue(url, param)
+	for (const {name, type} of allowedParams) {
+		const value =
+			type === 'csv'
+				? getSanitizedParamCsvValue(url, name)
+				: getSanitizedParamValue(url, name)
 		if (value) {
-			params[param] = value
-		} else if (param === 'language') {
-			params[param] = DOC_LANGUAGE
-		} else if (param === 'format') {
-			params[param] = DOC_FORMAT
+			params[name] = value
+		} else if (name === 'language') {
+			params[name] = DOC_LANGUAGE
+		} else if (name === 'format') {
+			params[name] = DOC_FORMAT
 		}
 	}
 
@@ -46,6 +49,21 @@ export const getSanitizedParamValue = (url: URL, key: Slug): Slug | null => {
 	return key === 'language'
 		? sanitizeLanguageValue(value)
 		: sanitizeSlugValue(value)
+}
+
+export const getSanitizedParamCsvValue = (
+	url: URL,
+	key: Slug,
+): string | null => {
+	const raw = url.searchParams.get(key)
+	if (!raw) return null
+
+	const clean = raw
+		.split(',')
+		.map((item) => sanitizeSlugValue(item))
+		.filter((v): v is Slug => v !== null)
+
+	return clean.length ? clean.join(',') : null
 }
 
 export const getSanitizedParamValueList = (url: URL, key: Slug): Slug[] => {
