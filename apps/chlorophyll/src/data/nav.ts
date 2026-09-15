@@ -45,38 +45,6 @@ const navBase = {
 }
 
 export const cta: {[key: string]: NavItem} = {
-	phloem: {
-		slug: 'phloem',
-		label: 'Phloem',
-		title: 'Phloem',
-		layout: 'tram',
-		asset: 'tree openmoji',
-		color: 'info' as UiColor,
-		actionPath: '/phloem',
-		items: [
-			{
-				slug: 'write',
-				title: 'Write',
-				label: 'Write',
-				color: 'info' as UiColor,
-				actionPath: '/phloem/write',
-			},
-			{
-				slug: 'reflect',
-				title: 'Reflect',
-				label: 'Reflect',
-				color: 'info' as UiColor,
-				actionPath: '/phloem/reflect',
-			},
-			{
-				slug: 'explore',
-				title: 'Explore',
-				label: 'Explore',
-				color: 'info' as UiColor,
-				actionPath: '/phloem/explore',
-			},
-		],
-	},
 	chlorophyll: {
 		slug: 'chlorophyll',
 		label: 'Chlorophyll',
@@ -116,28 +84,6 @@ export const cta: {[key: string]: NavItem} = {
 			},
 		],
 	},
-	mycelium: {
-		slug: 'mycelium',
-		label: 'Mycelium',
-		title: 'Mycelium',
-		layout: 'tram',
-		asset: 'mushroom openmoji',
-		actionPath: '/mycelium',
-		items: [
-			{
-				slug: 'analyze',
-				title: 'Analyze',
-				label: 'Analyze',
-				actionPath: '/mycelium/analyze',
-			},
-			{
-				slug: 'engage',
-				title: 'Engage',
-				label: 'Engage',
-				actionPath: '/mycelium/engage',
-			},
-		],
-	},
 }
 
 export const pages: {[key: string]: NavItem} = {
@@ -149,7 +95,7 @@ export const pages: {[key: string]: NavItem} = {
 		size: 'md',
 		assetType: 'svg',
 		actionPath: '/',
-		items: [cta.mycelium, cta.phloem, cta.chlorophyll],
+		items: [cta.chlorophyll],
 	},
 }
 

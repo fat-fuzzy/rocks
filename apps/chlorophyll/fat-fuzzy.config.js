@@ -224,51 +224,6 @@ export default {
 					{name: 'preset', type: 'atomic'},
 				],
 			},
-			analyze: {
-				id: '/mycelium/analyze',
-				allowedParams: [
-					{name: 'language', type: 'atomic'},
-					{name: 'format', type: 'atomic'},
-					{name: 'sections', type: 'multiple'},
-					{name: 'preset', type: 'atomic'},
-				],
-			},
-			engage: {
-				id: '/mycelium/engage',
-				allowedParams: [
-					{name: 'language', type: 'atomic'},
-					{name: 'format', type: 'atomic'},
-					{name: 'sections', type: 'multiple'},
-					{name: 'preset', type: 'atomic'},
-				],
-			},
-			write: {
-				id: '/phloem/write',
-				allowedParams: [
-					{name: 'language', type: 'atomic'},
-					{name: 'format', type: 'atomic'},
-					{name: 'sections', type: 'multiple'},
-					{name: 'preset', type: 'atomic'},
-				],
-			},
-			reflect: {
-				id: '/phloem/reflect',
-				allowedParams: [
-					{name: 'language', type: 'atomic'},
-					{name: 'format', type: 'atomic'},
-					{name: 'sections', type: 'multiple'},
-					{name: 'preset', type: 'atomic'},
-				],
-			},
-			explore: {
-				id: '/phloem/explore',
-				allowedParams: [
-					{name: 'language', type: 'atomic'},
-					{name: 'format', type: 'atomic'},
-					{name: 'sections', type: 'multiple'},
-					{name: 'preset', type: 'atomic'},
-				],
-			},
 		},
 	},
 }
