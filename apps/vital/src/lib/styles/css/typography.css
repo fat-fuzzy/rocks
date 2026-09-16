@@ -84,6 +84,21 @@ a span {
 	}
 }
 
+.doc-print {
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-size: var(--font-size-minus);
+	}
+
+	p,
+	li,
+	a {
+		font-size: var(--font-size-sm);
+	}
+}
+
 [class*='feedback'] {
 	h1,
 	h2,

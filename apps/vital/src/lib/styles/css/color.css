@@ -1,0 +1,3 @@
+[class*='surface:'].muted {
+	--chroma: var(--chroma-surface-1);
+}
