@@ -32,6 +32,7 @@
 
 	import ContentActions from '$lib/ui/controls/ContentActions.svelte'
 	import ContentHeading from '$lib/ui/controls/ContentHeading.svelte'
+	import {PAGE_TO_THEME} from '$config/setup'
 
 	const {PageRails} = ui.content
 	const {Feedback} = ui.blocks
@@ -140,9 +141,8 @@
 
 	let description = $derived(cta ? CTA_TO_DESCRIPTION[cta] : '')
 
-	let ctaClass = $derived(
-		cta === 'edit' ? 'doc-editor l:stack:lg' : 'doc-builder l:stack:lg',
-	)
+	let ctaClass = $derived(`doc-${cta} l:stack:lg`)
+	let theme = $derived(PAGE_TO_THEME['chlorophyll'])
 	let contentClass = $derived(selectedSections.length === 0 ? '' : ctaClass)
 	let mainLayoutClass = $derived(
 		cta === 'compare'
@@ -272,7 +272,9 @@
 				{#if sourcePreset || targetPreset}
 					<div class="l:switcher:2xs th:sm w:full">
 						<div class="scroll:container contain:lg">
-							<div class="l:center scroll:y ravioli:lg">
+							<div
+								class={`l:center scroll:y ravioli:lg surface:0:${theme} muted`}
+							>
 								{#each sourceSections as section, i (i)}
 									<SectionBuilder
 										cta="compare"
