@@ -9,7 +9,7 @@
 
 	let {
 		id = 'sections',
-		color = 'primary',
+		color = 'neutral',
 		variant = 'bare',
 		oninput,
 		size = '2xs',

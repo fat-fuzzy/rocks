@@ -10,7 +10,7 @@
 
 	let {
 		id = 'data',
-		color = 'primary',
+		color = 'neutral',
 		variant = 'outline',
 		size = '2xs',
 		font = 'sm',

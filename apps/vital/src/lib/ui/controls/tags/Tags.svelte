@@ -22,12 +22,14 @@
 		loading,
 		error,
 		tags,
+		color = 'neutral',
 		oninput,
 	}: {
 		cta: ActionDoc | ActionResource | ActionTransform
 		loading: boolean
 		error: boolean
 		tags: TagGroup[]
+		color?: UiColor
 		oninput: (e: Event) => void
 	} = $props()
 
@@ -35,7 +37,7 @@
 		const menuItems = tags.reduce(
 			(
 				menus: InputGroupMenus,
-				{title, name, type, items}: TagGroup,
+				{title, name, items}: TagGroup,
 			): InputGroupMenus => {
 				const menuItems = items.map((i: string) => {
 					let selected = checkSelected(name, i)
@@ -45,7 +47,7 @@
 						value: i,
 						checked: selected ? true : undefined,
 						label: i,
-						color: (type ? 'accent' : 'primary') as UiColor,
+						color,
 						title: title ?? name,
 					}
 				})
@@ -73,7 +75,6 @@
 			<menu class="l:switcher:sm nowrap">
 				<DialogDeleteTags
 					id="dialog-delete-tags"
-					color="highlight"
 					label="Delete Tags"
 					cta="delete"
 					asset="cross"
@@ -82,7 +83,7 @@
 				/>
 				<DialogSaveTag
 					id="dialog-create-tags"
-					color="primary"
+					{color}
 					label="Add Tag"
 					cta="save"
 					asset="plus"
@@ -93,7 +94,7 @@
 		{/if}
 	</div>
 	{#if loading}
-		<Loading color="neutral" />
+		<Loading color="neutral" message="Loading Tags" size="sm" />
 	{:else if error}
 		<Feedback status="error" context="prose" variant="bare" asset="default">
 			<p>Failed to load Tags.</p>
@@ -112,7 +113,7 @@
 					type={group.type ?? 'checkbox'}
 					value={page.url.searchParams.getAll(group.name)}
 					size="2xs"
-					color={group.type ? 'accent' : 'primary'}
+					{color}
 					variant={group.name === 'twilight-z' || group.name === 'version'
 						? 'outline'
 						: 'bare'}

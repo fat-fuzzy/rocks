@@ -1,4 +1,5 @@
 <script lang="ts">
+	import type {UiColor} from '@fat-fuzzy/ui'
 	import type {Slug, DocLanguage, Section, ICoordinateDocs} from '$types'
 
 	import {getContext, onMount} from 'svelte'
@@ -20,11 +21,13 @@
 		selectedTags,
 		language = DOC_LANGUAGE,
 		format = DOC_FORMAT,
+		color = 'neutral',
 	}: {
 		selectedTags: string[]
 		section: Section
 		language: DocLanguage
 		format?: Slug
+		color?: UiColor
 	} = $props()
 
 	let observerRoot: HTMLElement | undefined = $state()
@@ -85,7 +88,7 @@
 <section bind:this={observerRoot}>
 	{#if loading}
 		<div class="maki:block:xl">
-			<Loading message={`Loading ${name}`} />
+			<Loading message={`Loading ${name}`} {color} />
 		</div>
 	{:else if error}
 		<FeedbackContent {name} content_type="section" isError={true} />
@@ -94,7 +97,7 @@
 	{:else if section}
 		<details id={`section-${name}`} data-section={name} class="shape:soft" open>
 			<summary
-				class="w:full ravioli:3xs variant:bare color:neutral font:heading font:semibold size:xs font:md"
+				class="w:full ravioli:3xs variant:bare color:neutral font:heading font:semibold size:xs font:md shape:mellow"
 			>
 				{section.rank}.
 				{section.name}
@@ -141,6 +144,7 @@
 							{observer}
 							name={section.name}
 							sectionName={name}
+							{color}
 						/>
 					{/if}
 				{:else if section.tags?.length}
@@ -165,7 +169,7 @@
 						{@const subsectionIcon = tagsFound.length === 0 ? missingIcon : ''}
 
 						{#if subsections.length > 1}
-							<h3 class="raviolink shape:mellow maki:block surface:0:primary">
+							<h3 class="raviolink shape:mellow maki:block surface:1:neutral">
 								<span class={`${subsectionIcon} maki:inline:md font:heading`}>
 									{subsection.name}
 								</span>
@@ -201,6 +205,7 @@
 										name={block.name}
 										sectionName={name}
 										{subsectionName}
+										{color}
 									/>
 								{/if}
 							{/if}
@@ -228,7 +233,7 @@
 					<div class="maki:block:lg">
 						<DialogSaveBlock
 							id={`add-block-to-section-${name}`}
-							color="primary"
+							{color}
 							asset="plus"
 							assetType="svg"
 							label="New Block"

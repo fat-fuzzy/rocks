@@ -3,7 +3,7 @@
 
 	let {
 		message,
-		color = 'primary',
+		color = 'neutral',
 		variant = 'bare',
 		shape = 'mellow',
 		asset = 'none',
@@ -18,8 +18,11 @@
 	} = $props()
 
 	let shapeClass = $derived(shape ? `shape:${shape}` : '')
+	let chromaClass = $derived(color === 'accent' ? 'chroma:1' : '')
+	let surfaceLightness = $derived(color === 'neutral' ? 1 : 0)
+	let surfaceClass = $derived(`surface:${surfaceLightness}:${color}`)
 	let feedbackClass = $derived(
-		`variant:${variant} ${shapeClass} asset:${asset} surface:1:${color} size:${size}`,
+		`variant:${variant} ${shapeClass} asset:${asset} ${surfaceClass} ${chromaClass} size:${size}`,
 	)
 
 	let feedbackMessage = $derived(message ?? 'Loading')

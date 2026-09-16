@@ -15,7 +15,7 @@
 		value,
 		size = '2xs',
 		layout = 'flex',
-		color = 'primary',
+		color = 'neutral',
 		container,
 		oninput,
 		tagGroups,

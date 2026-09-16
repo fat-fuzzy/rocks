@@ -31,7 +31,7 @@
 		cta: ActionCrud
 		color?: UiColor
 	}
-	let {groups, cta, color = 'primary'}: Props = $props()
+	let {groups, cta, color = 'accent'}: Props = $props()
 
 	let coordMetadata: ICoordinateMetadata = getContext('coordMetadata')
 
@@ -307,7 +307,7 @@
 							</select>
 						</label>
 					{/if}
-					<fieldset class="variant:bare color:primary ravioli:md">
+					<fieldset class="variant:bare color:accent ravioli:md">
 						<legend><span class="font:sm">New Tag Group</span></legend>
 						<div class="l:stack">
 							<Input
@@ -405,7 +405,7 @@
 				id="tag-dialog-reset"
 				name=""
 				type="reset"
-				{color}
+				color={cta === 'delete' ? 'highlight' : color}
 				variant="outline"
 				shape="mellow"
 				size="2xs"
@@ -416,7 +416,7 @@
 				type="button"
 				id="tag-dialog-submit"
 				name=""
-				{color}
+				color={cta === 'delete' ? 'highlight' : color}
 				variant="fill"
 				shape="mellow"
 				size="2xs"

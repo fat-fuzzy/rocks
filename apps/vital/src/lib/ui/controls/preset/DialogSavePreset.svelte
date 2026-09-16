@@ -37,7 +37,7 @@
 		label = 'Save Preset',
 		size = '2xs',
 		font = '2xs',
-		color = 'primary',
+		color = 'neutral',
 		variant = 'outline',
 		shape = 'mellow',
 		asset,

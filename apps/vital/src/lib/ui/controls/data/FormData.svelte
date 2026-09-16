@@ -16,7 +16,7 @@
 		color?: UiColor
 		onsubmit?: () => void // hook for parent to refresh state
 	}
-	let {color = 'primary', onsubmit}: Props = $props()
+	let {color = 'neutral', onsubmit}: Props = $props()
 
 	let coordImports: ICoordinateImports = getContext('coordImports')
 
@@ -31,7 +31,7 @@
 			coordImports.status === 'importing',
 	)
 
-	const deleteOptions: Partial<InputProps>[] = $derived([
+	const deleteOptions: Partial<InputProps<string>>[] = $derived([
 		{
 			id: 'with-backup',
 			name: 'with-backup',
