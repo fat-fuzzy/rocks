@@ -82,9 +82,9 @@
 
 	a {
 		font-size: 9.25pt;
-		font-weight: var(--font-wight-semibold);
 		color: inherit;
 		text-decoration: underline;
+		font-weight: var(--font-weight-body);
 	}
 
 	/* [href]::after {
