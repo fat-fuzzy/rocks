@@ -109,3 +109,8 @@ a span {
 		color: var(--accent);
 	}
 }
+
+/* FIXME: not quite */
+.l\:text\:a4 {
+	--text-inline-size: 84ch;
+}

@@ -142,6 +142,7 @@
 	let description = $derived(cta ? CTA_TO_DESCRIPTION[cta] : '')
 
 	let ctaClass = $derived(`doc-${cta} l:stack:lg`)
+	let textClass = $derived(cta === 'edit' ? `l:text:2xl` : 'l:text:a4')
 	let theme = $derived(PAGE_TO_THEME['chlorophyll'])
 	let contentClass = $derived(selectedSections.length === 0 ? '' : ctaClass)
 	let mainLayoutClass = $derived(
@@ -242,7 +243,7 @@
 					/>
 				</div>
 			{:else if availableSections.length === 0}
-				<div class="l:text:2xl">
+				<div class={textClass}>
 					<div class={`size:${availableSections.length ? 'lg' : 'md'}`}>
 						<Feedback
 							context="prose"
@@ -303,7 +304,7 @@
 						</div>
 					</div>
 				{:else}
-					<div class="l:text:2xl">
+					<div class={textClass}>
 						<Feedback
 							context="prose"
 							variant="bare"
@@ -317,7 +318,7 @@
 					</div>
 				{/if}
 			{:else if selectedSections.length}
-				<div class="l:text:2xl">
+				<div class={textClass}>
 					<div class={contentClass}>
 						{#key language || format || preset}
 							{#each selectedSections as section, i (i)}
@@ -337,7 +338,7 @@
 					</div>
 				</div>
 			{:else}
-				<div class="l:text:lg">
+				<div class={textClass}>
 					<Feedback
 						status={coordDocs.hasError() ? 'error' : undefined}
 						context="prose"
