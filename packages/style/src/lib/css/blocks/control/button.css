@@ -164,6 +164,18 @@ ff-control > label[class*='bg:']:not([class*=':neutral']) {
 	&.variant\:outline.variant\:bare:has(input:checked:not([disabled])),
 	&.variant\:bare:has(input:checked:not([disabled])),
 	&.variant\:bare:checked {
+		--chroma: var(--chroma-surface-2);
+	}
+}
+
+button[class*='bg:']:not([class*=':neutral'], [class*='chroma:']),
+.ff-control[class*='bg:']:not([class*=':neutral'], [class*='chroma:']),
+ff-control > label[class*='bg:']:not([class*=':neutral'], [class*='chroma:']) {
+	&.variant\:outline:active,
+	&.variant\:bare:active,
+	&.variant\:outline.variant\:bare:has(input:checked:not([disabled])),
+	&.variant\:bare:has(input:checked:not([disabled])),
+	&.variant\:bare:checked {
 		--chroma: var(--chroma-surface-3);
 	}
 }

@@ -43,6 +43,8 @@
 			text,
 			size,
 			color,
+			surface,
+			surfaceLightness,
 			variant: 'bare',
 		}),
 	)
@@ -122,7 +124,7 @@
 	<ff-control class={`gare-control ${layoutClasses} ${justifyClass}`}>
 		<label
 			for={id}
-			class={`ellipsis  ${labelClasses} ${hugClass} `}
+			class={`ellipsis chroma:1 ${labelClasses} ${hugClass} `}
 			data-testid={`label-${id}`}
 		>
 			<ff-label class={`${ff_labelClasses} ${ff_labelReverse}`}>

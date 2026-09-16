@@ -273,7 +273,7 @@
 					<div class="l:switcher:2xs th:sm w:full">
 						<div class="scroll:container contain:lg">
 							<div
-								class={`l:center scroll:y ravioli:lg surface:0:${theme} muted`}
+								class={`l:center scroll:y ravioli:lg surface:0:${theme} chroma:2`}
 							>
 								{#each sourceSections as section, i (i)}
 									<SectionBuilder

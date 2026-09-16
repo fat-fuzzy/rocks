@@ -13,12 +13,12 @@
 		'Edit, structure, compare and print a document from your browser'
 
 	let language = $derived(DOC_LANGUAGE)
-	let prefix = $derived(getPrefix(language))
 	let title = $derived('Chlorophyll')
+	let prefix = $derived(`${getPrefix(language)} ${title}`)
 </script>
 
 <PageRails
-	{title}
+	title=""
 	{prefix}
 	{description}
 	path={page.url.pathname}
