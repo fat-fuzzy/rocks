@@ -45,6 +45,12 @@ a span {
 	color: inherit;
 }
 
+a {
+	font-weight: inherit;
+	text-decoration-thickness: 0.75%;
+	text-underline-offset: var(--outline-offset-sm);
+}
+
 .l\:frame\:prose {
 	ul > li::marker {
 		display: block;
@@ -108,6 +114,10 @@ a span {
 		font-family: var(--font-family-heading);
 		color: var(--accent);
 	}
+}
+
+.l\:text\:2xl {
+	--text-inline-size: 88ch;
 }
 
 /* FIXME: not quite */
