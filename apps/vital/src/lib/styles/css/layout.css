@@ -211,3 +211,7 @@ html:has(.l\:grid\:urbanist) {
 	block-size: fit-content;
 	max-block-size: 100%;
 }
+
+.scroll\:container {
+	padding-block-end: var(--ui-size-xs);
+}
