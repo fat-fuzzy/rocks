@@ -272,9 +272,11 @@
 			{:else if cta === 'compare'}
 				{#if sourcePreset || targetPreset}
 					<div class="l:switcher:2xs th:sm w:full">
-						<div class="scroll:container contain:lg">
+						<div
+							class={`scroll:container contain:lg surface:0:${theme} chroma:1`}
+						>
 							<div
-								class={`l:center scroll:y ravioli:lg surface:0:${theme} chroma:1`}
+								class="l:center scroll:y ravioli:lg layer:1 maki:inline shape:mellow"
 							>
 								{#each sourceSections as section, i (i)}
 									<SectionBuilder
