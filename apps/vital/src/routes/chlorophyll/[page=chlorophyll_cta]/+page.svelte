@@ -16,6 +16,7 @@
 		CTA_TO_ACTION_DOC,
 		CTA_TO_TITLE,
 		CTA_TO_DESCRIPTION,
+		getPrefix,
 	} from '$lib/intl/l10n'
 
 	import {
@@ -125,7 +126,18 @@
 			}, []),
 	)
 
-	let title = $derived(cta ? CTA_TO_TITLE[cta] : '')
+	let title = $derived(
+		cta && cta !== 'print'
+			? CTA_TO_TITLE[cta]
+			: cta === 'print' && preset
+				? preset
+				: cta
+					? CTA_TO_TITLE[cta]
+					: '',
+	)
+
+	let prefix = $derived(getPrefix(language, cta))
+
 	let description = $derived(cta ? CTA_TO_DESCRIPTION[cta] : '')
 
 	let ctaClass = $derived(
@@ -197,6 +209,7 @@
 
 <PageRails
 	{title}
+	{prefix}
 	{description}
 	size="sm"
 	path={page.url.pathname}

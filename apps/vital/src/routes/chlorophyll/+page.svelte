@@ -1,6 +1,10 @@
 <script lang="ts">
 	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
+
+	import {DOC_LANGUAGE} from '$config/setup'
+	import {getPrefix} from '$lib/intl/l10n'
+	import {getSanitizedParamValue} from '$lib/common/url'
 	import PageChlorophyll from './PageChlorophyll.svelte'
 
 	const {PageRails} = ui.content
@@ -8,10 +12,17 @@
 	let pageContext = $derived({...page.data.pageContext, label: 'On this Page'})
 	let description =
 		'Edit, structure, compare and print a document from your browser'
+
+	let language = $derived(
+		getSanitizedParamValue(page.url, 'language') ?? DOC_LANGUAGE,
+	)
+	let prefix = $derived(getPrefix(language))
+	let title = $derived('Chlorophyll')
 </script>
 
 <PageRails
-	title=""
+	{title}
+	{prefix}
 	{description}
 	path={page.url.pathname}
 	nav={page.data.nav}
