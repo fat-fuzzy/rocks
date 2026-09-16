@@ -242,7 +242,7 @@
 					/>
 				</div>
 			{:else if availableSections.length === 0}
-				<div class="l:text:xl">
+				<div class="l:text:2xl">
 					<div class={`size:${availableSections.length ? 'lg' : 'md'}`}>
 						<Feedback
 							context="prose"
@@ -303,7 +303,7 @@
 						</div>
 					</div>
 				{:else}
-					<div class="l:text:xl">
+					<div class="l:text:2xl">
 						<Feedback
 							context="prose"
 							variant="bare"
@@ -317,7 +317,7 @@
 					</div>
 				{/if}
 			{:else if selectedSections.length}
-				<div class="l:text:xl">
+				<div class="l:text:2xl">
 					<div class={contentClass}>
 						{#key language || format || preset}
 							{#each selectedSections as section, i (i)}
