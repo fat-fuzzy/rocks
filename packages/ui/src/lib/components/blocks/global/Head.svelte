@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type {HeadProps} from '$types'
+
 	let {
 		title,
 		description = 'Page description',
