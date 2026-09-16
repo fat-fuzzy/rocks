@@ -27,7 +27,7 @@
 		filename,
 		mimeType = 'application/json',
 		label = 'Export',
-		color = 'primary',
+		color = 'neutral',
 		variant = 'outline',
 		size = 'xs',
 		font = 'xs',

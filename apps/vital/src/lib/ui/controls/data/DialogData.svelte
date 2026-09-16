@@ -26,7 +26,7 @@
 	let {
 		id,
 		label = 'Your data',
-		color = 'primary',
+		color = 'neutral',
 		size = 'xs',
 		font = 'xs',
 		oninput,

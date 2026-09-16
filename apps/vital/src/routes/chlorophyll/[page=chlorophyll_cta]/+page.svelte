@@ -7,7 +7,7 @@
 	} from '$types'
 
 	import {getContext, tick} from 'svelte'
-	import ui from '@fat-fuzzy/ui'
+	import ui, {type UiColor} from '@fat-fuzzy/ui'
 
 	import {resolve} from '$app/paths'
 	import {page} from '$app/state'
@@ -44,6 +44,7 @@
 	let filtersForm: HTMLFormElement | undefined = $state()
 	let pageContext = $derived({...page.data.pageContext, label: 'On this Page'})
 
+	let color = 'accent' as UiColor // TODO: derive from page config
 	let cta = $derived(page.params.page)
 	let query = $derived(page.url.search)
 	let loading = $derived(coordDocs.isLoading())
@@ -226,7 +227,7 @@
 				preset={cta === 'compare' ? targetPreset : preset}
 				{query}
 				formats={coordMetadata.getFormats()}
-				color="accent"
+				{color}
 			/>
 		{/if}
 	{/snippet}
@@ -239,7 +240,7 @@
 						message="Loading content..."
 						shape="round"
 						size="3xl"
-						color="accent"
+						{color}
 					/>
 				</div>
 			{:else if availableSections.length === 0}
@@ -325,7 +326,13 @@
 						{#key language || format || preset}
 							{#each selectedSections as section, i (i)}
 								{#if cta === 'edit'}
-									<SectionEditor {section} {selectedTags} {language} {format} />
+									<SectionEditor
+										{section}
+										{selectedTags}
+										{language}
+										{format}
+										{color}
+									/>
 								{:else if cta}
 									<SectionBuilder
 										{cta}
@@ -367,7 +374,7 @@
 					<ContentActions
 						path="chlorophyll"
 						oninput={updateFilters}
-						color="accent"
+						{color}
 						actions={CTA_TO_ACTION_DOC}
 					/>
 
@@ -380,6 +387,7 @@
 								updateFilters()
 							}}
 							currentPreset={preset}
+							{color}
 						/>
 					{:else}
 						{#key sourcePreset}
@@ -389,6 +397,7 @@
 								isSource={true}
 								oninput={() => coordPresets.setSourcePreset(sourcePreset)}
 								currentPreset={sourcePreset}
+								{color}
 							/>
 						{/key}
 						{#key targetPreset}
@@ -398,6 +407,7 @@
 								isTarget={true}
 								oninput={() => coordPresets.setTargetPreset(targetPreset)}
 								currentPreset={targetPreset}
+								{color}
 							/>
 						{/key}
 					{/if}
@@ -408,6 +418,7 @@
 							loading={tagsLoading}
 							error={tagsError}
 							oninput={updateFilters}
+							{color}
 						/>
 					{/if}
 				</form>

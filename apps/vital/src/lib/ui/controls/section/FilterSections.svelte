@@ -10,8 +10,10 @@
 
 	const {InputGroup} = ui.blocks
 
-	const {color, oninput}: {color?: UiColor; oninput: (e: Event) => void} =
-		$props()
+	const {
+		color = 'neutral',
+		oninput,
+	}: {color?: UiColor; oninput: (e: Event) => void} = $props()
 
 	let coordDocs: ICoordinateDocs = getContext('coordDocs')
 

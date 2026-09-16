@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type {DocContentType, Slug} from '$types'
+	import type {UiSurface} from '@fat-fuzzy/ui'
 
 	import ui from '@fat-fuzzy/ui'
 	import CardContent from '$lib/ui/CardContent.svelte'
@@ -7,6 +8,7 @@
 	const {Feedback} = ui.blocks
 
 	let {
+		surface = 'neutral',
 		content_type,
 		name,
 		tags,
@@ -14,6 +16,7 @@
 		isEmpty,
 		isError,
 	}: {
+		surface?: UiSurface
 		content_type: DocContentType
 		name: Slug
 		tags?: string[]
@@ -21,6 +24,10 @@
 		isEmpty?: boolean
 		isError?: boolean
 	} = $props()
+
+	// TODO: Better color management
+	let chroma = $derived(surface === 'accent' ? 'chroma:1' : '')
+	let surfaceLightness = $derived(surface === 'neutral' ? 1 : 0)
 </script>
 
 <div class="maki:block">
@@ -28,9 +35,10 @@
 		context="prose"
 		size="md"
 		asset="none"
-		surface={content_type === 'section' ? 'accent' : 'primary'}
+		surface={`${surface} ${chroma}`}
 		variant="bare"
-		surfaceLightness={content_type === 'section' ? 1 : 0}
+		{surfaceLightness}
+		{chroma}
 	>
 		{#if isError}
 			<h3>

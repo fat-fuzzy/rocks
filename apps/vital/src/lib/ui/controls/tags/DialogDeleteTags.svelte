@@ -33,7 +33,7 @@
 		cta,
 		groups,
 		label = 'Delete Tags',
-		color = 'primary',
+		color = 'neutral',
 		variant = 'outline',
 		shape = 'mellow',
 		asset,

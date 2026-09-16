@@ -19,7 +19,7 @@
 		preset,
 		query,
 		formats,
-		color,
+		color = 'neutral',
 		size = '2xs',
 		font = '2xs',
 	}: {

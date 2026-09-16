@@ -4,7 +4,7 @@
 	import {getContext} from 'svelte'
 	import {page} from '$app/state'
 	import {resolve} from '$app/paths'
-	import ui from '@fat-fuzzy/ui'
+	import ui, {type UiColor} from '@fat-fuzzy/ui'
 
 	import DialogSavePreset from '$lib/ui/controls/preset/DialogSavePreset.svelte'
 	import DialogDeletePreset from '$lib/ui/controls/preset/DialogDeletePreset.svelte'
@@ -15,6 +15,7 @@
 	const {
 		id,
 		title = 'Presets',
+		color = 'neutral',
 		headingLevel = 3,
 		isSource = false,
 		isTarget = false,
@@ -23,6 +24,7 @@
 	}: {
 		id: Slug
 		title?: string
+		color?: UiColor
 		isSource?: boolean
 		isTarget?: boolean
 		headingLevel?: number
@@ -85,7 +87,7 @@
 		{#if cta === 'edit' || cta === 'build'}
 			<DialogSavePreset
 				id={`dialog-add-preset-${id}`}
-				color="primary"
+				{color}
 				label="New Preset"
 				asset="plus"
 				assetType="svg"
@@ -146,7 +148,7 @@
 
 						<li
 							aria-current={isCurrent}
-							class={`raviolink shape:mellow l:flex justify:between ${isCurrent ? 'surface:0:primary' : ''}`}
+							class={`raviolink shape:mellow l:flex justify:between ${isCurrent ? `surface:0:${color} chroma:1` : ''}`}
 						>
 							<a
 								href={resolve(`/chlorophyll/${cta}/${presetQuery}`)}
@@ -182,7 +184,7 @@
 												: 'save'}
 											assetType="svg"
 											shape="round"
-											color="primary"
+											{color}
 											variant="bare"
 											size="2xs"
 											font="2xs"
@@ -198,6 +200,7 @@
 											asset="copy"
 											assetType="svg"
 											cta="copy"
+											{color}
 											disabled={!isCurrent}
 											preset={{
 												id: crypto.randomUUID(),
@@ -221,7 +224,7 @@
 											asset={preset.locked ? 'lock' : 'unlock'}
 											assetType="svg"
 											shape="round"
-											color="primary"
+											{color}
 											variant={preset.locked ? 'fill' : 'bare'}
 											size="2xs"
 											font="2xs"

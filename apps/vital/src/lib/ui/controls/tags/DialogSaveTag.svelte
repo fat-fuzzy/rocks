@@ -33,7 +33,7 @@
 		cta,
 		groups,
 		label = 'Save Tag',
-		color = 'primary',
+		color = 'neutral',
 		variant = 'outline',
 		shape = 'mellow',
 		asset,

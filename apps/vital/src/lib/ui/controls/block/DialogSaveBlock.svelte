@@ -28,7 +28,7 @@
 		subsections,
 		cta,
 		label = 'Save Block',
-		color = 'primary',
+		color = 'neutral',
 		variant = 'outline',
 		shape = 'mellow',
 		asset,

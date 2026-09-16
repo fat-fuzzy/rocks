@@ -45,8 +45,8 @@
 				<div class="w:full l:stack:xs justify:end">
 					<ul class="tags unstyled l:flex:xs">
 						{#each dedupedTags as tag, i (i)}
-							<li class="variant:outline raviolink shape:pill font:xs">
-								<span class="maki:inline"> {tag}</span>
+							<li class="variant:outline raviolink shape:pill">
+								<span class="maki:inline font:sm"> {tag}</span>
 							</li>
 						{/each}
 					</ul>

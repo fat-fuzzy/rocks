@@ -8,7 +8,7 @@
 	const {Popover} = ui.drafts
 	let {
 		id = 'settings',
-		color = 'primary',
+		color = 'neutral',
 		variant = 'bare',
 		oninput,
 		size = '2xs',

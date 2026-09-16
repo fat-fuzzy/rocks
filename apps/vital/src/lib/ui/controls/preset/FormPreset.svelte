@@ -19,7 +19,7 @@
 		preset: Preset
 		color?: UiColor
 	}
-	let {cta, preset, color = 'primary'}: Props = $props()
+	let {cta, preset, color = 'neutral'}: Props = $props()
 
 	let coordPresets: ICoordinatePresets = getContext('coordPresets')
 
