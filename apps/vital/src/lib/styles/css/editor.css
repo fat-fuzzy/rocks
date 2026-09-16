@@ -62,8 +62,8 @@ ff-prose .editor-menu button {
 	margin-block: 0;
 }
 
-.doc-builder,
-.doc-editor {
+.doc-build,
+.doc-edit {
 	margin-block-end: calc(4 * var(--size-base-2xl));
 }
 

@@ -41,10 +41,11 @@
 		overflow: visible;
 		margin: 0;
 		padding: 0;
+		font-size: 9.25pt;
 	}
 
 	h1 {
-		font-size: 14pt;
+		font-size: 13pt;
 	}
 
 	h2 {
@@ -52,15 +53,15 @@
 	}
 
 	h3 {
-		font-size: 11pt;
-	}
-
-	h4 {
 		font-size: 10pt;
 	}
 
+	h4 {
+		font-size: 9.25pt;
+	}
+
 	h5 {
-		font-size: 9pt;
+		font-size: 9.25pt;
 	}
 
 	h6 {
@@ -69,18 +70,18 @@
 
 	p,
 	li {
-		font-size: 9pt;
+		font-size: 9.25pt;
 		margin: 0;
 	}
 
 	:where(th, td) {
-		font-size: 9pt;
+		font-size: 9.25pt;
 		padding: 3pt;
 		text-align: initial;
 	}
 
 	a {
-		font-size: 9pt;
+		font-size: 9.25pt;
 		font-weight: var(--font-wight-semibold);
 		color: inherit;
 		text-decoration: underline;
@@ -130,8 +131,8 @@
 		max-block-size: unset;
 	}
 
-	.l\:text\:lg {
-		max-inline-size: 0;
+	[class*='l:text:'] {
+		max-inline-size: unset;
 		width: 100%;
 		margin: 0;
 		padding: 0;

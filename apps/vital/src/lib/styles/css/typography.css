@@ -57,45 +57,37 @@ a span {
 	}
 }
 
-.doc-editor,
-.doc-builder,
+.doc-edit,
+.doc-build,
 .doc-compare,
 .doc-print {
+	h1 {
+		font-size: calc(var(--font-size-h2) / 1.25);
+		font-weight: var(--font-weight-h1);
+	}
+
+	h2 {
+		font-weight: var(--font-weight-bold);
+	}
+
+	h1,
+	h2 {
+		font-family: var(--font-family-heading);
+		color: currentColor;
+	}
+
 	h3,
 	h4,
 	h5,
 	h6,
 	p,
 	li,
-	a {
+	a,
+	th,
+	td {
+		font-size: calc(var(--font-size-md) / var(--ratio-xs));
 		font-family: var(--font-family-body);
 		color: currentColor;
-	}
-}
-
-.doc-editor,
-.doc-builder,
-.doc-compare,
-.doc-print {
-	h1,
-	h2 {
-		font-family: var(--font-family-heading);
-		color: currentColor;
-	}
-}
-
-.doc-print {
-	h3,
-	h4,
-	h5,
-	h6 {
-		font-size: var(--font-size-minus);
-	}
-
-	p,
-	li,
-	a {
-		font-size: var(--font-size-sm);
 	}
 }
 
