@@ -214,53 +214,55 @@
 					/>
 				</div>
 			</div>
-			<div class="l:flex size:3xs justify:between grow">
-				<Button
-					type="button"
-					id="data-reset"
-					name=""
-					label="Import"
-					{color}
-					variant="outline"
-					shape="mellow"
-					size="xs"
-					font="xs font:heading"
-					disabled={status !== 'ready'}
-					asset="arrow-bar-down"
-					assetType="svg"
-					onclick={() => fileInput.click()}
-				/>
+			<div>
+				<div class="l:flex size:3xs justify:between grow">
+					<Button
+						type="button"
+						id="data-reset"
+						name=""
+						label="Import"
+						{color}
+						variant="outline"
+						shape="mellow"
+						size="xs"
+						font="xs font:heading"
+						disabled={status !== 'ready'}
+						asset="arrow-bar-down"
+						assetType="svg"
+						onclick={() => fileInput.click()}
+					/>
 
-				<Button
-					type="button"
-					label="Fresh Start"
-					id="data-fresh-start"
-					name=""
-					{color}
-					variant="outline"
-					shape="mellow"
-					size="xs"
-					font="xs font:heading"
-					asset="leaf"
-					assetType="svg"
-					onclick={freshStart}
-					disabled={status !== 'ready'}
-				/>
-				<Button
-					type="button"
-					label="Seed Demo"
-					id="data-seed"
-					name=""
-					{color}
-					shape="mellow"
-					variant="outline"
-					size="xs"
-					font="xs font:heading"
-					asset="herb openmoji:xs"
-					assetType="svg"
-					onclick={reSeed}
-					disabled={status !== 'ready'}
-				/>
+					<Button
+						type="button"
+						label="Fresh Start"
+						id="data-fresh-start"
+						name=""
+						{color}
+						variant="outline"
+						shape="mellow"
+						size="xs"
+						font="xs font:heading"
+						asset="leaf"
+						assetType="svg"
+						onclick={freshStart}
+						disabled={status !== 'ready'}
+					/>
+					<Button
+						type="button"
+						label="Seed Demo"
+						id="data-seed"
+						name=""
+						{color}
+						shape="mellow"
+						variant="outline"
+						size="xs"
+						font="xs font:heading"
+						asset="herb openmoji:xs"
+						assetType="svg"
+						onclick={reSeed}
+						disabled={status !== 'ready'}
+					/>
+				</div>
 			</div>
 		</div>
 	</div>
