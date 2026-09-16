@@ -46,9 +46,15 @@ a span {
 }
 
 a {
-	font-weight: inherit;
-	text-decoration-thickness: 0.75%;
+	text-decoration-thickness: 0.5%;
 	text-underline-offset: var(--outline-offset-sm);
+}
+
+hr {
+	box-shadow: none;
+	border: none;
+	block-size: var(--border-width-md);
+	background-color: var(--accent);
 }
 
 .l\:frame\:prose {
