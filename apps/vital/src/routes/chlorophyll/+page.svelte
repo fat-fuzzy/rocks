@@ -4,7 +4,6 @@
 
 	import {DOC_LANGUAGE} from '$config/setup'
 	import {getPrefix} from '$lib/intl/l10n'
-	import {getSanitizedParamValue} from '$lib/common/url'
 	import PageChlorophyll from './PageChlorophyll.svelte'
 
 	const {PageRails} = ui.content
@@ -13,9 +12,7 @@
 	let description =
 		'Edit, structure, compare and print a document from your browser'
 
-	let language = $derived(
-		getSanitizedParamValue(page.url, 'language') ?? DOC_LANGUAGE,
-	)
+	let language = $derived(DOC_LANGUAGE)
 	let prefix = $derived(getPrefix(language))
 	let title = $derived('Chlorophyll')
 </script>
