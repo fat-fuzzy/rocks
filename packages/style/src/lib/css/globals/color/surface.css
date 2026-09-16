@@ -46,3 +46,11 @@
 	color: var(--ink);
 	background-color: var(--shade);
 }
+
+[class*='surface:'].chroma\:1 {
+	--chroma: var(--chroma-surface-1);
+}
+
+[class*='surface:'].chroma\:2 {
+	--chroma: var(--chroma-surface-2);
+}
