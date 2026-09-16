@@ -142,7 +142,7 @@
 	let description = $derived(cta ? CTA_TO_DESCRIPTION[cta] : '')
 
 	let ctaClass = $derived(`doc-${cta} l:stack:lg`)
-	let textClass = $derived(cta === 'edit' ? `l:text:2xl` : 'l:text:a4')
+	let textClass = $derived(cta !== 'print' ? `l:text:2xl` : 'l:text:a4')
 	let theme = $derived(PAGE_TO_THEME['chlorophyll'])
 	let contentClass = $derived(selectedSections.length === 0 ? '' : ctaClass)
 	let mainLayoutClass = $derived(
