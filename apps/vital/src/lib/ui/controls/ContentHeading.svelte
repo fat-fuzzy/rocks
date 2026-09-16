@@ -68,7 +68,11 @@
 <div class="w:full noprint">
 	<div class={`l:flex grow justify:${currentPreset ? 'between' : 'end'}`}>
 		{#if currentPreset}
-			{#if cta !== 'explore'}
+			{#if cta === 'print'}
+				<h2>
+					Preset{currentPreset.locked ? ' (Locked)' : ''}
+				</h2>
+			{:else if cta !== 'explore'}
 				<h2>
 					Preset:
 					{currentPreset.name}

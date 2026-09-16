@@ -1,14 +1,26 @@
 import type {UiStatus} from '@fat-fuzzy/ui'
-import type {ImportStatus, Localizations} from '$types'
+import type {
+	ActionDoc,
+	ActionTransform,
+	DocLanguage,
+	ImportStatus,
+	Localizations,
+} from '$types'
+
+import {APP_NAME} from '$config/setup'
 
 export const LOCALIZATIONS: Localizations = {
 	en: {
 		experience: 'Experience',
-		skills: 'Skills',
+		education: 'Education & Development',
+		skills: 'Main Skills',
+		cv: 'Resume',
 	},
 	fr: {
 		experience: 'Expérience',
-		skills: 'Compétences',
+		education: 'Formation et Développement Professionnel',
+		skills: 'Compétences Clés',
+		cv: 'CV',
 	},
 }
 
@@ -70,4 +82,11 @@ export const STATUS_FEEDBACK: Record<ImportStatus, UiStatus | undefined> = {
 	importing: undefined,
 	done: 'success',
 	error: 'error',
+}
+
+export function getPrefix(
+	language: DocLanguage,
+	cta?: ActionDoc | ActionTransform,
+) {
+	return cta === 'print' ? `${LOCALIZATIONS[language].cv}_` : `${APP_NAME} | `
 }
