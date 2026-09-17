@@ -236,8 +236,9 @@ ff-toggle-reveal.auto {
 
 	ff-control:has(input.nord:checked) + ff-reveal,
 	ff-control:has(input.sud:checked) + ff-reveal {
-		inline-size: calc(100 - 2 * var(--ui-size));
-		inset-inline: var(--ui-size-lg) var(--outline-offset-sm);
+		inline-size: 100%;
+		inset-inline: 50%;
+		transform: translate(-50%, var(--gap));
 	}
 }
 
@@ -284,6 +285,17 @@ ff-toggle-reveal.auto {
 
 		ff-toggle-reveal.ouest ff-control:has(input:checked) + ff-reveal {
 			--x-axis: 0;
+		}
+	}
+}
+
+@media screen and (min-width: 58.75rem) {
+	ff-toggle-reveal.auto {
+		ff-control:has(input.nord:checked) + ff-reveal,
+		ff-control:has(input.sud:checked) + ff-reveal {
+			inline-size: auto;
+			inset-inline: unset;
+			transform: unset;
 		}
 	}
 }
