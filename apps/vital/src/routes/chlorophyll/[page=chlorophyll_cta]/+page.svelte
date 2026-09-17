@@ -141,11 +141,14 @@
 	let prefix = $derived(getPrefix(language, cta))
 
 	let description = $derived(cta ? CTA_TO_DESCRIPTION[cta] : '')
-
-	let ctaClass = $derived(`doc-${cta} l:stack:lg`)
-	let textClass = $derived(cta !== 'print' ? `l:text:2xl` : 'l:text:a4')
 	let theme = $derived(PAGE_TO_THEME['chlorophyll'])
-	let contentClass = $derived(selectedSections.length === 0 ? '' : ctaClass)
+
+	let textClass = $derived(
+		cta !== 'edit' || selectedSections.length === 0
+			? `l:text:a4`
+			: 'l:text:2xl',
+	)
+	let contentClass = $derived(`doc-${cta} ${textClass} l:stack:lg`)
 	let mainLayoutClass = $derived(
 		cta === 'compare'
 			? 'w:full col:center l:flex'
@@ -272,12 +275,12 @@
 				</div>
 			{:else if cta === 'compare'}
 				{#if sourcePreset || targetPreset}
-					<div class="l:switcher:2xs th:sm w:full">
+					<div class="l:switcher:md th:sm maki:auto">
 						<div
-							class={`scroll:container contain:lg surface:0:${theme} chroma:1`}
+							class={`scroll:container contain:lg ${contentClass} raviolink`}
 						>
 							<div
-								class="l:center scroll:y ravioli:lg layer:1 maki:inline shape:mellow"
+								class={`scroll:y ravioli:lg layer:1 shape:mellow surface:0:${theme} chroma:1`}
 							>
 								{#each sourceSections as section, i (i)}
 									<SectionBuilder
@@ -291,7 +294,7 @@
 							</div>
 						</div>
 
-						<div class="scroll:container contain:lg">
+						<div class={`scroll:container contain:lg ${contentClass}`}>
 							<div class="l:center scroll:y l:stack">
 								{#key targetPreset}
 									{#each targetSections as section, i (i)}
@@ -321,30 +324,28 @@
 					</div>
 				{/if}
 			{:else if selectedSections.length}
-				<div class={textClass}>
-					<div class={contentClass}>
-						{#key language || format || preset}
-							{#each selectedSections as section, i (i)}
-								{#if cta === 'edit'}
-									<SectionEditor
-										{section}
-										{selectedTags}
-										{language}
-										{format}
-										{color}
-									/>
-								{:else if cta}
-									<SectionBuilder
-										{cta}
-										{section}
-										{selectedTags}
-										{language}
-										{format}
-									/>
-								{/if}
-							{/each}
-						{/key}
-					</div>
+				<div class={contentClass}>
+					{#key language || format || preset}
+						{#each selectedSections as section, i (i)}
+							{#if cta === 'edit'}
+								<SectionEditor
+									{section}
+									{selectedTags}
+									{language}
+									{format}
+									{color}
+								/>
+							{:else if cta}
+								<SectionBuilder
+									{cta}
+									{section}
+									{selectedTags}
+									{language}
+									{format}
+								/>
+							{/if}
+						{/each}
+					{/key}
 				</div>
 			{:else}
 				<div class={textClass}>
