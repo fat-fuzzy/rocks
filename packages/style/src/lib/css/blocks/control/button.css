@@ -87,9 +87,14 @@ button.variant\:bare,
 ff-control > label.variant\:bare {
 	--border-color: var(--accent);
 	--lightness: var(--lightness-base);
-	--lightness-accent: var(--lightness-surface-3);
+	--lightness-accent: var(--lightness-surface-2);
 	--lightness-contrast: var(--lightness-contrast-base);
 	background-color: inherit;
+}
+
+.ff-control.variant\:bare,
+ff-control > label.variant\:bare {
+	--lightness-accent: var(--lightness-surface-1);
 }
 
 button.variant\:outline:hover,
