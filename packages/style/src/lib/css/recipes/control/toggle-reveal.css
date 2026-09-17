@@ -74,6 +74,10 @@ ff-control > label {
 		line-height: 1;
 		inline-size: fit-content;
 	}
+
+	> ff-label > ff-icon.variant\:bare {
+		--border-color: transparent;
+	}
 }
 
 ff-toggle-reveal.ouest {
