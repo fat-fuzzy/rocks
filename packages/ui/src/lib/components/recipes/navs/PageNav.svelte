@@ -31,8 +31,8 @@
 	)
 </script>
 
-<nav aria-label={label} {id} class={id}>
-	<ul class={`${layoutClasses} unstyled`}>
+<nav aria-label={label} {id} class="page-nav">
+	<ul class={`${layoutClasses} unstyled l:flex`}>
 		{#each items as { title, slug, color, size, shape, asset }, i (i)}
 			{@const iconClasses = styleHelper.getStyles({
 				color,
@@ -48,11 +48,14 @@
 				color,
 				container: 'ravioli',
 			})}
-			<li aria-current={currentHash === slug ? 'page' : undefined}>
+			<li
+				aria-current={currentHash === slug ? 'page' : undefined}
+				class="shape:mellow"
+			>
 				<a
 					id={`tab-${slug}`}
 					href={`#${slug}`}
-					class={`${linkLayoutClasses} ${linkClasses} surface:0:${color} link`}
+					class={`${linkLayoutClasses} ${linkClasses} surface:0:${color} link shape:mellow`}
 					onclick={() => {
 						currentHash = slug
 					}}
