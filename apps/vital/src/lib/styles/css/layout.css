@@ -206,12 +206,3 @@ html:has(.l\:grid\:urbanist) {
 	padding-inline-start: var(--ui-size-lg);
 	padding-block: var(--ui-size-lg);
 }
-
-.scroll\:y {
-	block-size: fit-content;
-	max-block-size: 100%;
-}
-
-.scroll\:container {
-	padding-block-end: var(--ui-size-xs);
-}
