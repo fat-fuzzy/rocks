@@ -49,7 +49,9 @@
 			{#key notes.html}
 				<details open>
 					<summary class="font:sm">Notes</summary>
-					<EscapeHtml id={`${slug}-notes`} html={notes.html} />
+					<div class="ravioli:md">
+						<EscapeHtml id={`${slug}-notes`} html={notes.html} />
+					</div>
 				</details>
 			{/key}
 		{/if}
