@@ -275,7 +275,7 @@
 				</div>
 			{:else if cta === 'compare'}
 				{#if sourcePreset || targetPreset}
-					<div class="l:switcher:md th:sm maki:auto">
+					<div class="l:switcher:md th:sm w:full justify:center">
 						<div
 							class={`scroll:container contain:lg ${contentClass} raviolink`}
 						>
@@ -295,7 +295,7 @@
 						</div>
 
 						<div class={`scroll:container contain:lg ${contentClass}`}>
-							<div class="l:center scroll:y l:stack">
+							<div class="l:center scroll:y l:stack justify:start">
 								{#key targetPreset}
 									{#each targetSections as section, i (i)}
 										<SectionEditor
