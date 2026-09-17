@@ -19,13 +19,26 @@
 }
 
 [class*='page:about/speaking'] .steam.zone\:main {
-	max-block-size: unset;
+	max-block-size: var(--overlay-block-xl);
 }
 
 /* TODO:: simplify these selectors */
 [class*='page:about/speaking'] .steam.zone\:2 > .page-context:not(.empty) {
 	max-block-size: unset;
 	font-size: var(--font-size-md);
+}
+
+[class*='page:about/speaking'] .steam.zone\:2 > .page-context:not(.empty) {
+	box-shadow: var(--shadow-md);
+	scrollbar-gutter: auto;
+}
+
+[class*='page:about/speaking']
+	.steam.zone\:2
+	> .page-context:not(.empty)
+	> .ff\:callout
+	> details {
+	padding: 0;
 }
 
 @media screen and (min-width: 38.75rem) {
@@ -37,5 +50,18 @@
 	[class*='page:about/speaking'] .steam.zone\:2 > .page-context:not(.empty) {
 		max-block-size: var(--max-block-size);
 		font-size: var(--font-size-sm);
+	}
+
+	[class*='page:about/speaking'] .steam.zone\:2 > .page-context:not(.empty) {
+		box-shadow: unset;
+		scrollbar-gutter: stable;
+	}
+
+	[class*='page:about/speaking']
+		.steam.zone\:2
+		> .page-context:not(.empty)
+		> .ff\:callout
+		> details {
+		padding: var(--outline-offset-lg);
 	}
 }
