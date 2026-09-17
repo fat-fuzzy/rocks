@@ -33,7 +33,7 @@
 }
 
 .page\:chlorophyll\/compare .zone\:main.scroll\:y {
-	overflow: hidden;
+	overflow: auto;
 }
 
 .l\:inline {
