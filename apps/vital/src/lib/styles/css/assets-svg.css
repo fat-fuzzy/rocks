@@ -142,12 +142,19 @@ ff-icon[class*='openmoji'] {
 	padding: 0;
 }
 
+/*  TODO: Rework ui control alignment mechanisms */
 button[class*='shape:']:has(ff-icon[class*='openmoji']) {
-	padding-block: calc(var(--ui-size-xs) / var(--ratio-sm));
+	padding-block: calc(
+		var(--ui-size-xs) / var(--ratio) - var(--border-width-md) / 2
+	);
 	padding-inline: var(--ui-size) var(--ui-size-xs);
 }
 
-/*  FIXME: Sidenav & context overrides - fix this in tokens */
+/*  FIXME: Fix this in @fat-fuzzy/style  */
+[class*='openmoji'][class*='svg'].size\:xs::before {
+	--icon-size: var(--icon-svg-xs);
+}
+
 [class*='openmoji'][class*='svg'].size\:md::before {
-	--icon-size: calc(var(--icon-svg-lg) / var(--ratio-sm));
+	--icon-size: var(--icon-svg-md);
 }
