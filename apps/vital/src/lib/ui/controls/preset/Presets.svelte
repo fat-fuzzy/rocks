@@ -85,19 +85,21 @@
 			{title}
 		</svelte:element>
 		{#if cta === 'edit' || cta === 'build'}
-			<DialogSavePreset
-				id={`dialog-add-preset-${id}`}
-				{color}
-				label="New Preset"
-				asset="plus"
-				assetType="svg"
-				cta="save"
-				preset={{
-					id: crypto.randomUUID(),
-					name: '',
-					query,
-				}}
-			/>
+			<div>
+				<DialogSavePreset
+					id={`dialog-add-preset-${id}`}
+					{color}
+					label="New Preset"
+					asset="plus"
+					assetType="svg"
+					cta="save"
+					preset={{
+						id: crypto.randomUUID(),
+						name: '',
+						query,
+					}}
+				/>
+			</div>
 		{/if}
 	</div>
 	{#if loading}
