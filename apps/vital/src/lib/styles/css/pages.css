@@ -72,3 +72,10 @@ html:has([class*='page:phloem']),
 		--hue: var(--color-palette-blueberry);
 	}
 }
+
+@media screen and (min-width: 78.75rem) {
+	[class*='page:']:is([class*='/explore'], [class*='/compare'])
+		.railway.zone\:main {
+		max-block-size: unset;
+	}
+}
