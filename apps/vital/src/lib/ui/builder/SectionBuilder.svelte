@@ -18,17 +18,20 @@
 	import FeedbackContent from '$lib/ui/FeedbackContent.svelte'
 	import Loading from '$lib/ui/Loading.svelte'
 	import {LOCALIZATIONS} from '$lib/intl/l10n'
+	import type {UiColor} from '@fat-fuzzy/ui'
 
 	let coordDocs: ICoordinateDocs = getContext('coordDocs')
 
 	let {
 		cta = 'build',
+		color = 'neutral',
 		section,
 		selectedTags,
 		language = DOC_LANGUAGE,
 		format = DOC_FORMAT,
 	}: {
 		cta: ActionDoc | ActionResource | ActionTransform
+		color?: UiColor
 		selectedTags: string[]
 		section: Section
 		language: DocLanguage
@@ -40,6 +43,7 @@
 	let missingIcon = 'emoji:idea justify:end'
 	let loading = $derived(coordDocs.isLoading())
 	let name = $derived(section.name)
+	let localized = $derived(LOCALIZATIONS[language])
 
 	let subsections = $derived(section?.subsections)
 	let content = $derived(section?.content)
@@ -100,9 +104,9 @@
 			<h2>
 				{section.title}
 			</h2>
-		{:else if LOCALIZATIONS[language][section.name]}
+		{:else if localized && localized[section.name]}
 			<h2>
-				{LOCALIZATIONS[language][section.name]}
+				{localized[section.name]}
 			</h2>
 		{/if}
 
@@ -142,7 +146,7 @@
 					{@const subsectionIcon = tagsFound.length === 0 ? missingIcon : ''}
 
 					{#if cta !== 'print' && subsections.length > 1}
-						<h3 class="raviolink shape:mellow maki:block surface:0:primary">
+						<h3 class={`raviolink shape:mellow maki:block surface:0:${color}`}>
 							<span class={`${subsectionIcon} maki:inline:md font:heading`}>
 								{subsection.name}
 							</span>
