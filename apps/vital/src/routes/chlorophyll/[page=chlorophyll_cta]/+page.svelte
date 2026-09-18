@@ -4,6 +4,7 @@
 		ICoordinateDocs,
 		ICoordinateMetadata,
 		ICoordinatePresets,
+		ActionDoc,
 	} from '$types'
 
 	import {getContext, tick} from 'svelte'
@@ -12,13 +13,13 @@
 	import {resolve} from '$app/paths'
 	import {page} from '$app/state'
 
+	import {PAGE_TO_THEME} from '$config/setup'
 	import {
 		CTA_TO_ACTION_DOC,
 		CTA_TO_TITLE,
 		CTA_TO_DESCRIPTION,
 		getPrefix,
 	} from '$lib/intl/l10n'
-
 	import {
 		getSanitizedParamValueList,
 		getAllowedParamsForRoute,
@@ -32,7 +33,6 @@
 
 	import ContentActions from '$lib/ui/controls/ContentActions.svelte'
 	import ContentHeading from '$lib/ui/controls/ContentHeading.svelte'
-	import {PAGE_TO_THEME} from '$config/setup'
 
 	const {PageRails} = ui.content
 	const {Feedback} = ui.blocks
@@ -44,8 +44,9 @@
 	let filtersForm: HTMLFormElement | undefined = $state()
 	let pageContext = $derived({...page.data.pageContext, label: 'On this Page'})
 
-	let color = 'accent' as UiColor // TODO: derive from page config
-	let cta = $derived(page.params.page)
+	let theme = $derived(PAGE_TO_THEME['chlorophyll'])
+	let color = $derived(theme as UiColor)
+	let cta = $derived(page.params.page as ActionDoc)
 	let query = $derived(page.url.search)
 	let loading = $derived(coordDocs.isLoading())
 
@@ -141,7 +142,6 @@
 	let prefix = $derived(getPrefix(language, cta))
 
 	let description = $derived(cta ? CTA_TO_DESCRIPTION[cta] : '')
-	let theme = $derived(PAGE_TO_THEME['chlorophyll'])
 
 	let textClass = $derived(
 		cta !== 'edit' || selectedSections.length === 0

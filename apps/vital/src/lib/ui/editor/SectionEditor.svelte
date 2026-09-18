@@ -34,6 +34,7 @@
 	let observer: IntersectionObserver | undefined = $state()
 	let missingIcon = 'emoji:idea justify:end'
 	let loading = $derived(coordDocs.isLoading())
+	let localized = $derived(LOCALIZATIONS[language])
 
 	let name = $derived(section.name)
 	let displayBlockForm = $derived(name !== undefined)
@@ -107,9 +108,9 @@
 				<h2 class="ravioli:2xs">
 					{section.title}
 				</h2>
-			{:else if LOCALIZATIONS[language][section.name]}
+			{:else if localized && localized[section.name]}
 				<h2 class="ravioli:2xs">
-					{LOCALIZATIONS[language][section.name]}
+					{localized[section.name]}
 				</h2>
 			{/if}
 
