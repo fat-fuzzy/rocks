@@ -294,7 +294,7 @@ export default class AggregateDocs implements IAggregateDocs {
 					await this.bridge.saveSection({
 						language,
 						format,
-						section: sectionToUpdate,
+						section: $state.snapshot(sectionToUpdate),
 					})
 				}
 			}
