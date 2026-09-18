@@ -370,7 +370,7 @@
 
 	{#snippet aside()}
 		{#if cta}
-			<div class="noprint l:stack:xs maki:block:2xl">
+			<div class="noprint l:stack:xs maki:block:lg">
 				<form bind:this={filtersForm} class="l:stack:md">
 					<ContentActions
 						path="chlorophyll"
