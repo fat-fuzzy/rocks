@@ -382,6 +382,7 @@
 					{#if cta !== 'compare'}
 						<Presets
 							id="preset"
+							route={`/chlorophyll/${cta}`}
 							oninput={() => {
 								coordPresets.setSourcePreset()
 								coordPresets.setTargetPreset()
@@ -395,6 +396,7 @@
 							<Presets
 								title="Source Preset (readonly)"
 								id="source_preset"
+								route={`/chlorophyll/${cta}`}
 								isSource={true}
 								oninput={() => coordPresets.setSourcePreset(sourcePreset)}
 								currentPreset={sourcePreset}
@@ -405,6 +407,7 @@
 							<Presets
 								title="Target Preset (editing)"
 								id="target_preset"
+								route={`/chlorophyll/${cta}`}
 								isTarget={true}
 								oninput={() => coordPresets.setTargetPreset(targetPreset)}
 								currentPreset={targetPreset}
