@@ -226,6 +226,43 @@ export default {
 					{name: 'preset', type: 'atomic'},
 				],
 			},
+			write: {
+				id: '/phloem/write',
+				allowedParams: [
+					{name: 'language', type: 'atomic'},
+					{name: 'format', type: 'atomic'},
+					{name: 'sections', type: 'multiple'},
+					{name: 'preset', type: 'atomic'},
+				],
+			},
+			reflect: {
+				id: '/phloem/reflect',
+				allowedParams: [
+					{name: 'language', type: 'atomic'},
+					{name: 'format', type: 'atomic'},
+					{name: 'sections', type: 'multiple'},
+					{name: 'preset', type: 'atomic'},
+				],
+			},
+			explore: {
+				id: '/phloem/explore',
+				allowedParams: [
+					{name: 'language', type: 'atomic'},
+					{name: 'format', type: 'atomic'},
+					{name: 'sections', type: 'multiple'},
+					{name: 'preset', type: 'atomic'},
+					{name: 'source_language', type: 'atomic'},
+					{name: 'source_format', type: 'atomic'},
+					{name: 'source_preset', type: 'multiple'},
+					{name: 'source_sections', type: 'csv'},
+					{name: 'source_tags', type: 'csv'},
+					{name: 'target_language', type: 'atomic'},
+					{name: 'target_format', type: 'atomic'},
+					{name: 'target_preset', type: 'multiple'},
+					{name: 'target_sections', type: 'csv'},
+					{name: 'target_tags', type: 'csv'},
+				],
+			},
 		},
 	},
 }
