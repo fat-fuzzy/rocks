@@ -74,7 +74,7 @@
 	</nav>
 	<div class="l:flex:2xs w:full justify:between grow">
 		<div class="l:flex:2xs justify:between grow">
-			{#if cta === 'edit' || cta === 'build'}
+			{#if cta === 'edit' || cta === 'build' || cta === 'write' || cta === 'reflect'}
 				<MenuSections {oninput} {color} variant="outline" {size} {font} />
 			{/if}
 		</div>
