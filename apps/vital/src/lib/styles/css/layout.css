@@ -31,6 +31,12 @@ html:has(.l\:grid\:urbanist) {
 	> .page-main {
 		padding-inline: 0;
 	}
+
+	> .page-header {
+		padding-block-start: calc(
+			var(--ui-header-height) - 2 * var(--ui-size) - var(--border-width-lg)
+		);
+	}
 }
 
 .h\:full {
@@ -82,7 +88,6 @@ html:has(.l\:grid\:urbanist) {
 
 		> .page-header {
 			align-items: start;
-			padding-block-start: calc(var(--ui-size-xl) - var(--border-width-md));
 
 			> .page-header h2 {
 				margin-block-start: 0;
@@ -105,11 +110,29 @@ html:has(.l\:grid\:urbanist) {
 	}
 }
 
+@media screen and (min-width: 48.75rem) {
+	.zone\:main {
+		> .page-header {
+			padding-block-start: calc(
+				var(--ui-header-height) - var(--border-width-lg)
+			);
+		}
+	}
+}
+
 /* FIXME: magic numbers */
 @media screen and (min-width: 58.75rem) {
 	.l\:grid\:urbanist {
 		.zone\:1.exchange {
 			grid-template-columns: subgrid;
+		}
+	}
+
+	.zone\:main {
+		> .page-header {
+			padding-block-start: calc(
+				var(--ui-header-height) - var(--border-width-lg)
+			);
 		}
 	}
 
