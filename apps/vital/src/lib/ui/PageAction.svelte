@@ -51,9 +51,27 @@
 				presets?: Snippet
 			}
 		}
+		twinLayout: {
+			[key in ActionDoc | ActionResource]?: boolean
+		}
+		editor: {
+			[key in ActionDoc | ActionResource]?: boolean
+		}
+		builder: {
+			[key in ActionDoc | ActionResource]?: boolean
+		}
 	}
 
-	let {theme = 'primary', route, query, cta, gettingStarted}: Props = $props()
+	let {
+		theme = 'primary',
+		route,
+		query,
+		cta,
+		gettingStarted,
+		twinLayout,
+		editor,
+		builder,
+	}: Props = $props()
 
 	let coordDocs: ICoordinateDocs = getContext('coordDocs')
 	let coordPresets: ICoordinatePresets = getContext('coordPresets')
@@ -71,7 +89,7 @@
 	let tagsLoading = $derived(coordMetadata.loading)
 	let tagsError = $derived(coordMetadata.error)
 
-	let editing = $derived(cta === 'build' || cta === 'edit')
+	let editing = $derived(editor[cta] || builder[cta])
 
 	let paramValues = $derived(cta ? getAllowedParamsForRoute(cta, page.url) : {})
 	let language = $derived(paramValues.language)
@@ -149,7 +167,7 @@
 	let title = $derived(
 		cta && cta !== 'print'
 			? CTA_TO_TITLE[cta]
-			: cta === 'print' && preset
+			: cta === 'print' && preset // Forces title of printed document to be heading of document
 				? preset
 				: cta
 					? CTA_TO_TITLE[cta]
@@ -159,9 +177,7 @@
 	let prefix = $derived(getPrefix(language, cta))
 
 	let textClass = $derived(
-		cta !== 'edit' || selectedSections.length === 0
-			? `l:text:a4`
-			: 'l:text:2xl',
+		!editor[cta] || selectedSections.length === 0 ? `l:text:a4` : 'l:text:2xl',
 	)
 	let contentClass = $derived(`doc-${cta} ${textClass} l:stack:lg`)
 	let mainLayoutClass = $derived(
@@ -178,7 +194,7 @@
 	}
 
 	$effect(() => {
-		if (cta !== 'compare') {
+		if (!twinLayout[cta]) {
 			return
 		}
 
@@ -209,7 +225,7 @@
 		{#if cta}
 			<ContentHeading
 				{cta}
-				preset={cta === 'compare' ? targetPreset : preset}
+				preset={twinLayout[cta] ? targetPreset : preset}
 				{query}
 				formats={coordMetadata.getFormats()}
 				{color}
@@ -245,7 +261,7 @@
 						</Feedback>
 					</div>
 				</div>
-			{:else if cta === 'compare'}
+			{:else if twinLayout[cta]}
 				{#if sourcePreset || targetPreset}
 					<div class="l:switcher:md th:sm w:full justify:center">
 						<div
@@ -301,7 +317,7 @@
 				<div class={contentClass}>
 					{#key language || format || preset}
 						{#each selectedSections as section, i (i)}
-							{#if cta === 'edit'}
+							{#if editor[cta]}
 								<SectionEditor
 									{section}
 									{selectedTags}
@@ -309,7 +325,7 @@
 									{format}
 									{color}
 								/>
-							{:else if cta}
+							{:else}
 								<SectionBuilder
 									{cta}
 									{section}
@@ -353,19 +369,7 @@
 						actions={CTA_TO_ACTION[pageName]}
 					/>
 
-					{#if cta !== 'compare'}
-						<Presets
-							id="preset"
-							{route}
-							oninput={() => {
-								coordPresets.setSourcePreset()
-								coordPresets.setTargetPreset()
-								updateFilters()
-							}}
-							currentPreset={preset}
-							{color}
-						/>
-					{:else}
+					{#if twinLayout[cta]}
 						{#key sourcePreset}
 							<Presets
 								title="Source Preset (readonly)"
@@ -388,6 +392,18 @@
 								{color}
 							/>
 						{/key}
+					{:else}
+						<Presets
+							id="preset"
+							{route}
+							oninput={() => {
+								coordPresets.setSourcePreset()
+								coordPresets.setTargetPreset()
+								updateFilters()
+							}}
+							currentPreset={preset}
+							{color}
+						/>
 					{/if}
 					{#if editing}
 						<Tags

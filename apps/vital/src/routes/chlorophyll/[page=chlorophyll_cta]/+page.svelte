@@ -32,6 +32,18 @@
 			presets: getStartedPrint,
 		},
 	}
+
+	let twinLayout = {
+		compare: true,
+	}
+
+	let editor = {
+		edit: true,
+	}
+
+	let builder = {
+		build: true,
+	}
 </script>
 
 {#snippet getStartedSections()}
@@ -89,4 +101,7 @@
 	{query}
 	route={`/chlorophyll/${cta}`}
 	{gettingStarted}
+	{twinLayout}
+	{editor}
+	{builder}
 />
