@@ -34,6 +34,7 @@ export interface DocIndex {
 }
 
 export interface IAggregateDocs {
+	readonly root: string
 	readonly loading: boolean
 	readonly error: boolean
 	readonly content: DocStore

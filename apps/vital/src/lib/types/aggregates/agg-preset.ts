@@ -9,6 +9,7 @@ export interface PresetIndex {
 }
 
 export interface IAggregatePresets {
+	readonly root: string
 	readonly seeded: {date_seed?: string; source?: string}
 	readonly loading: boolean
 	readonly error: boolean

@@ -8,6 +8,7 @@ import type {
 } from '$types'
 
 export interface IAggregateMetadata {
+	readonly root: string
 	readonly base: FrontmatterBase
 	readonly structures: FrontmatterStructure[]
 	readonly loading: boolean

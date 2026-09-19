@@ -1,6 +1,7 @@
 import type {SeedDoc, FrontmatterSeed, FrontmatterStructure} from '$types'
 
 export interface IAggregateDataLifecycle {
+	readonly root: string
 	readonly seeded: {date_seed?: string; source?: string}
 	readonly export: {type: string; meta: Record<string, unknown>; data: string}
 	readonly import: string

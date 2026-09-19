@@ -9,21 +9,36 @@ import AggregateDocs from '$lib/aggregates/AggregateDocs.svelte'
 import AggregatePresets from '$lib/aggregates/AggregatePresets.svelte'
 import AggregateMetadata from '$lib/aggregates/AggregateMetadata.svelte'
 
-export function createAggregates(): {
-	aggDataLifecycle: IAggregateDataLifecycle
-	aggDocs: IAggregateDocs
-	aggPresets: IAggregatePresets
-	aggMetadata: IAggregateMetadata
-} {
-	const aggDataLifecycle = new AggregateDataLifecycle()
-	const aggMetadata = new AggregateMetadata()
-	const aggDocs = new AggregateDocs()
-	const aggPresets = new AggregatePresets()
-
-	return {
-		aggDataLifecycle,
-		aggDocs,
-		aggPresets,
-		aggMetadata,
+export function createAggregates(roots: string[]): {
+	[key: string]: {
+		aggDataLifecycle: IAggregateDataLifecycle
+		aggDocs: IAggregateDocs
+		aggPresets: IAggregatePresets
+		aggMetadata: IAggregateMetadata
 	}
+} {
+	const result: {
+		[key: string]: {
+			aggDataLifecycle: IAggregateDataLifecycle
+			aggDocs: IAggregateDocs
+			aggPresets: IAggregatePresets
+			aggMetadata: IAggregateMetadata
+		}
+	} = {}
+
+	for (const root of roots) {
+		const aggDataLifecycle = new AggregateDataLifecycle(root)
+		const aggMetadata = new AggregateMetadata(root)
+		const aggDocs = new AggregateDocs(root)
+		const aggPresets = new AggregatePresets(root)
+
+		result[root] = {
+			aggDataLifecycle,
+			aggDocs,
+			aggPresets,
+			aggMetadata,
+		}
+	}
+
+	return result
 }
