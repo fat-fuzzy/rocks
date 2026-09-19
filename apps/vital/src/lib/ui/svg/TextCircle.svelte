@@ -4,15 +4,19 @@
 		text,
 		style = 'h1',
 		element = 'p',
+		asset,
+		assetType = 'svg',
 	}: {
 		text: string
 		style?: string
 		element?: string
+		asset?: string
+		assetType?: string
 	} = $props()
 
 	const chars = $derived(text.split(''))
 	const TOTAL_CHARACTERS = $derived(chars.length)
-	const LENGTH_OF_SIDE = $derived(3) // 1ch
+	const LENGTH_OF_SIDE = $derived(2.5) // 1ch
 </script>
 
 <div class="frame">
@@ -26,6 +30,15 @@
 				{char}
 			</span>
 		{/each}
+		{#if asset}
+			<span
+				aria-hidden="true"
+				class="char"
+				style={`--char-index: ${chars.length - 1}`}
+			>
+				<ff-icon class={`${assetType}:${asset} size:2xl`}> </ff-icon>
+			</span>
+		{/if}
 		<span class="sr-only">{text}</span>
 	</svelte:element>
 </div>
@@ -42,9 +55,10 @@
 		--inner-angle: calc((360 / var(--char-count)) * 1deg);
 		--radius: calc(var(--character-width) / sin(var(--inner-angle)) * -1em);
 
+		color: var(--ink);
 		font-family: var(--font-family-mono);
 		text-transform: uppercase;
-		font-size: calc(var(--font-size, 1) * 10vmin);
+		font-size: calc(var(--font-size, 1.5) * 10vmin);
 		position: relative;
 		box-shadow: none;
 	}
@@ -70,6 +84,35 @@
 	@keyframes rotation {
 		to {
 			rotate: -360deg;
+		}
+	}
+
+	@media (prefers-color-scheme: light) {
+		.text-ring {
+			--lightness-contrast: var(--lightness-surface-4);
+			--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
+		}
+	}
+	@media (prefers-color-scheme: dark) {
+		.text-ring {
+			--lightness-contrast: var(--lightness-surface-2);
+			--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
+		}
+	}
+
+	:global([class*='settings:day']),
+	:global([color-scheme='light']) {
+		.text-ring {
+			--lightness-contrast: var(--lightness-surface-4);
+			--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
+		}
+	}
+
+	:global([class*='settings:night']),
+	:global([color-scheme='dark']) {
+		.text-ring {
+			--lightness-contrast: var(--lightness-surface-2);
+			--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
 		}
 	}
 </style>
