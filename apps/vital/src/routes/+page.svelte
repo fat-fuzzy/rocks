@@ -31,7 +31,12 @@
 					</div>
 				</span>
 			</Magic>
-			<TextCircle text="WORK IN PROGRESS! " element="h2" />
+			<TextCircle
+				text=" GROWTH IN PROGRESS!  "
+				element="h2"
+				asset="blend"
+				assetType="emoji"
+			/>
 		</div>
 	{/snippet}
 </PageRails>
