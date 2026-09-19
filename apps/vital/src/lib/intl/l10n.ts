@@ -1,6 +1,7 @@
 import type {UiStatus} from '@fat-fuzzy/ui'
 import type {
 	ActionDoc,
+	ActionResource,
 	ActionTransform,
 	DocLanguage,
 	ImportStatus,
@@ -54,6 +55,11 @@ export const CTA_TO_ACTION_TRANSFORM: {[key: string]: string} = {
 	analyze: 'Analyze',
 	engage: 'Engage',
 }
+export const CTA_TO_ACTION: {[key: string]: {[key: string]: string}} = {
+	chlorophyll: CTA_TO_ACTION_DOC,
+	phloem: CTA_TO_ACTION_RESOURCE,
+	mycelium: CTA_TO_ACTION_TRANSFORM,
+}
 
 export const CTA_TO_DESCRIPTION: {[key: string]: string} = {
 	edit: 'Create and edit content.',
@@ -86,7 +92,7 @@ export const STATUS_FEEDBACK: Record<ImportStatus, UiStatus | undefined> = {
 
 export function getPrefix(
 	language: DocLanguage,
-	cta?: ActionDoc | ActionTransform,
+	cta?: ActionDoc | ActionResource | ActionTransform,
 ) {
 	return cta === 'print' ? `${LOCALIZATIONS[language].cv}_` : `${APP_NAME} | `
 }
