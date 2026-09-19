@@ -145,9 +145,12 @@ export default class CoordinateImports implements ICoordinateImports {
 		// 2. Delete existing storage: the import replaces OPFS content
 		this.status = 'deleting'
 
-		await this.aggDataLifecycle.deleteAllContent()
-		await this.aggDocs.loadDocStore()
-
+		try {
+			await this.aggDataLifecycle.deleteAllContent()
+			await this.aggDocs.loadDocStore()
+		} catch {
+			this.status = 'error'
+		}
 		this.status = 'ready'
 
 		this.loading = false

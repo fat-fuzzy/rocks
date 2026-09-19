@@ -26,6 +26,7 @@ import {
 	deleteEntryRecursive,
 	saveBlockToOPFS,
 	saveSectionToOPFS,
+	getRootHandle,
 } from '$lib/workers/storage/opfs-tools'
 
 /**
@@ -290,7 +291,7 @@ export async function deleteContentFolder(options: {
 }): Promise<{deleted: boolean}> {
 	const {path} = options
 
-	const opfsRoot = await navigator.storage.getDirectory()
+	const opfsRoot = await getRootHandle({name: 'chlorophyll'})
 	const parentHandle = await opfsRoot.getDirectoryHandle('content')
 
 	if (parentHandle) {
@@ -315,7 +316,7 @@ export async function deleteContentFile(options: {
 }): Promise<{deleted: boolean}> {
 	const {path} = options
 
-	const opfsRoot = await navigator.storage.getDirectory()
+	const opfsRoot = await getRootHandle({name: 'chlorophyll'})
 	const parentHandle = await opfsRoot.getDirectoryHandle('content')
 
 	if (parentHandle) {
@@ -331,7 +332,7 @@ export async function deleteContentFile(options: {
 }
 
 export async function getContentData(): Promise<{data: OPFSTreeDoc}> {
-	const opfsRoot = await navigator.storage.getDirectory()
+	const opfsRoot = await getRootHandle({name: 'chlorophyll'})
 
 	let parentHandle
 
@@ -360,7 +361,7 @@ export async function getContentDataForLanguage(
 ): Promise<{
 	data: OPFSTreeDoc
 }> {
-	const opfsRoot = await navigator.storage.getDirectory()
+	const opfsRoot = await getRootHandle({name: 'chlorophyll'})
 
 	let contentHandle
 	let parentHandle
@@ -396,7 +397,7 @@ export async function getContentDataForFormat(
 ): Promise<{
 	data: OPFSTreeDoc
 }> {
-	const opfsRoot = await navigator.storage.getDirectory()
+	const opfsRoot = await getRootHandle({name: 'chlorophyll'})
 
 	let contentHandle
 	let languageHandle
