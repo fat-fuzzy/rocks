@@ -257,6 +257,10 @@ html:has([class*='settings:night:']),
 	--lightness-base: var(--color-lightness-light-blend);
 }
 
+.emoji\:blend::before {
+	content: var(--emoji-icon-half-moon);
+}
+
 @media (prefers-color-scheme: light) {
 	.emoji\:blend::before {
 		content: var(--emoji-icon-blend-day);

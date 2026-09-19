@@ -164,8 +164,8 @@
 			"cyclone": {
 				"$value": "🌀"
 			},
-			"new-moon": {
-				"$value": "🌑"
+			"waning-gibbous-moon": {
+				"$value": "🌖"
 			},
 			"half-moon": {
 				"$value": "🌗"
@@ -320,7 +320,7 @@
 				"$value": "{emoji.base.half-moon}"
 			},
 			"blend": {
-				"$value": "{emoji.base.new-moon}"
+				"$value": "{emoji.base.waning-gibbous-moon}"
 			},
 			"blend-night": {
 				"$value": "{emoji.base.new-moon-face}"
