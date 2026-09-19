@@ -38,7 +38,7 @@
 		if (!preset) {
 			return
 		}
-		if (cta === 'explore') {
+		if (cta === 'explore' || cta === 'compare') {
 			return coordPresets.getTargetPreset()
 		} else {
 			return coordPresets.getPreset(preset)
@@ -70,11 +70,11 @@
 		{#if currentPreset}
 			{#if cta === 'print'}
 				<h2>
-					Preset{currentPreset.locked ? ' (Locked)' : ''}
+					Target {currentPreset.locked ? ' (Locked)' : ''}
 				</h2>
 			{:else if cta !== 'explore'}
 				<h2>
-					Preset:
+					Target:
 					{currentPreset.name}
 					{currentPreset.locked ? '(Locked)' : ''}
 				</h2>
@@ -123,13 +123,7 @@
 					New View
 				{:else if cta === 'engage'}
 					New Milestone
-				{:else if cta === 'write'}
-					New Note
-				{:else if cta === 'reflect'}
-					New Reflection
-				{:else if cta === 'explore'}
-					New Exploration
-				{:else}
+				{:else if cta !== 'reflect' && cta !== 'explore' && cta !== 'compare' && cta !== 'print'}
 					New Doc
 				{/if}
 			</h2>
