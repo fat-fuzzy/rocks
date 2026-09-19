@@ -16,14 +16,13 @@
 
 	const chars = $derived(text.split(''))
 	const TOTAL_CHARACTERS = $derived(chars.length)
-	const LENGTH_OF_SIDE = $derived(2.5) // 1ch
 </script>
 
 <div class="frame">
 	<svelte:element
 		this={element}
 		class={`text-ring ${style}`}
-		style={`--char-count: ${TOTAL_CHARACTERS}; --font-size: 1; --character-width: ${LENGTH_OF_SIDE};`}
+		style={`--char-count: ${TOTAL_CHARACTERS}; --font-size: 1;`}
 	>
 		{#each chars as char, i (i)}
 			<span aria-hidden="true" class="char" style={`--char-index: ${i}`}>
@@ -52,8 +51,9 @@
 	}
 
 	.text-ring {
+		--character-width: 2.65;
 		--inner-angle: calc((360 / var(--char-count)) * 1deg);
-		--radius: calc(var(--character-width) / sin(var(--inner-angle)) * -1em);
+		--radius: calc(var(--character-width) / sin(var(--inner-angle)) * -1ch);
 
 		color: var(--ink);
 		font-family: var(--font-family-mono);
@@ -113,6 +113,36 @@
 		.text-ring {
 			--lightness-contrast: var(--lightness-surface-2);
 			--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
+		}
+	}
+
+	@media screen and (min-width: 18.75rem) {
+		.text-ring {
+			--character-width: 3.25;
+		}
+	}
+
+	@media screen and (min-width: 28.75rem) {
+		.text-ring {
+			--character-width: 4;
+		}
+	}
+
+	@media screen and (min-width: 38.75rem) {
+		.text-ring {
+			--character-width: 3.25;
+		}
+	}
+
+	@media screen and (min-width: 48.75rem) {
+		.text-ring {
+			--character-width: 4;
+		}
+	}
+
+	@media screen and (min-width: 58.75rem) {
+		.text-ring {
+			--character-width: 4.25;
 		}
 	}
 </style>
