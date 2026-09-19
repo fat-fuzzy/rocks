@@ -1,5 +1,5 @@
 <script lang="ts">
-	// src: https://dev.to/jh3y/circular-text-with-css-57jf
+	// Adapted from: https://dev.to/jh3y/circular-text-with-css-57jf
 	let {
 		text,
 		style = 'h1',
