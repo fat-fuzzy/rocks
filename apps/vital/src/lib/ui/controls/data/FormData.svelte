@@ -255,9 +255,9 @@
 						{color}
 						shape="mellow"
 						variant="outline"
-						size="xs"
+						size="sm"
 						font="xs font:heading"
-						asset="herb openmoji:xs"
+						asset="herb openmoji:sm"
 						assetType="svg"
 						onclick={reSeed}
 						disabled={status !== 'ready'}
