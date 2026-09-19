@@ -179,8 +179,6 @@ export default {
 		// where generated files are written
 		outDir: 'src/lib/generated/types',
 		routes: {
-			// TODO: UPDATE on route changes
-
 			edit: {
 				id: '/chlorophyll/edit',
 				allowedParams: [
