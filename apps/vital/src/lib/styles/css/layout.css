@@ -131,7 +131,7 @@ html:has(.l\:grid\:urbanist) {
 	.zone\:main {
 		> .page-header {
 			padding-block-start: calc(
-				var(--ui-header-height) - var(--border-width-lg)
+				var(--ui-header-height) - var(--border-width-md) * var(--ratio)
 			);
 		}
 	}
