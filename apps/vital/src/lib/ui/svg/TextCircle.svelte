@@ -51,7 +51,7 @@
 	}
 
 	.text-ring {
-		--character-width: 2.5;
+		--character-width: 3;
 		--char-font-size: var(--font-size-lg);
 		--inner-angle: calc((360 / var(--char-count)) * 1deg);
 		--radius: calc(var(--character-width) / sin(var(--inner-angle)) * -1ch);
@@ -117,16 +117,22 @@
 		}
 	}
 
-	@media screen and (min-width: 18.75rem) {
+	@media screen and (min-width: 23.75rem) {
 		.text-ring {
-			--character-width: 3.25;
-			--char-font-size: var(--font-size-lg);
+			--character-width: 2.75;
+			--char-font-size: var(--font-size-xl);
 		}
 	}
 
 	@media screen and (min-width: 28.75rem) {
 		.text-ring {
-			--char-font-size: var(--font-size-xl);
+			--character-width: 3.25;
+		}
+	}
+
+	@media screen and (min-width: 35.75rem) {
+		.text-ring {
+			--character-width: 4;
 		}
 	}
 
@@ -134,6 +140,12 @@
 		.text-ring {
 			--character-width: 3.25;
 			--char-font-size: var(--font-size-lg);
+		}
+	}
+
+	@media screen and (min-width: 40.75rem) {
+		.text-ring {
+			--char-font-size: var(--font-size-xl);
 		}
 	}
 
@@ -146,7 +158,7 @@
 
 	@media screen and (min-width: 58.75rem) {
 		.text-ring {
-			--character-width: 3.15;
+			--character-width: 3.45;
 		}
 	}
 </style>

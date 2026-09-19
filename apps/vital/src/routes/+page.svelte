@@ -32,7 +32,7 @@
 				</span>
 			</Magic>
 			<TextCircle
-				text=" GROWTH IN PROGRESS!  "
+				text=" GROWTH IN PROGRESS  "
 				element="h2"
 				asset="blend"
 				assetType="emoji"
