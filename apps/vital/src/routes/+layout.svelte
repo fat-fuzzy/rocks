@@ -30,7 +30,6 @@
 	 * Register Contexts
 	 */
 	const aggregates = createAggregates(['chlorophyll', 'phloem'])
-
 	const coords = createCoords(aggregates)
 
 	setContext('coordMetadata', coords.chlorophyll.coordMetadata)
