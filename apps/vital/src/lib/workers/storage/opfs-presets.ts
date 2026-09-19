@@ -15,6 +15,7 @@ import {
 	getPresetsHandle,
 	readDirectoryRecursive,
 	deleteEntryRecursive,
+	getRootHandle,
 } from '$lib/workers/storage/opfs-tools'
 
 export async function loadPreset(options: {
@@ -24,7 +25,7 @@ export async function loadPreset(options: {
 	const {path} = options
 	const {filename, filetype} = path
 
-	const opfsRoot = await navigator.storage.getDirectory()
+	const opfsRoot = await getRootHandle({name: 'chlorophyll'})
 	const parentHandle = await opfsRoot.getDirectoryHandle('presets')
 
 	let _filename = `${filename}.${filetype}`
@@ -39,7 +40,7 @@ export async function loadPreset(options: {
 }
 
 export async function getPresetsData(): Promise<{data: OPFSTreePreset}> {
-	const opfsRoot = await navigator.storage.getDirectory()
+	const opfsRoot = await getRootHandle({name: 'chlorophyll'})
 
 	let parentHandle
 
@@ -157,7 +158,7 @@ export async function deletePresetRoot(options: {
 }): Promise<{deleted: boolean}> {
 	const {path} = options
 
-	const opfsRoot = await navigator.storage.getDirectory()
+	const opfsRoot = await getRootHandle({name: 'chlorophyll'})
 	const presetsHandle = await opfsRoot.getDirectoryHandle('presets')
 
 	if (presetsHandle) {

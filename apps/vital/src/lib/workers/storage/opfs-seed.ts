@@ -43,6 +43,7 @@ import {
 	getPresetsHandle,
 	saveSectionToOPFS,
 	saveEntry,
+	getRootHandle,
 } from '$lib/workers/storage/opfs-tools'
 
 import {savePreset} from '$lib/workers/storage/opfs'
@@ -51,7 +52,8 @@ export async function isSeedComplete(
 	type: SeedType,
 ): Promise<{seeded: number} | boolean> {
 	const flagName = `seed-${type}-complete.json`
-	const opfsRoot = await navigator.storage.getDirectory()
+	const opfsRoot = await getRootHandle({name: 'chlorophyll'})
+
 	try {
 		await opfsRoot.getFileHandle(flagName)
 		const fh = await opfsRoot.getFileHandle(flagName)
@@ -65,7 +67,7 @@ export async function isSeedComplete(
 }
 
 async function markSeedComplete(type: SeedType) {
-	const opfsRoot = await navigator.storage.getDirectory()
+	const opfsRoot = await getRootHandle({name: 'chlorophyll'})
 
 	// Stringify here - OPFS write boundary
 	const serialized = JSON.stringify({
