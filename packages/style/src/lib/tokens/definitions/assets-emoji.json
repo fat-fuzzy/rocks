@@ -319,9 +319,6 @@
 			"contrast": {
 				"$value": "{emoji.base.half-moon}"
 			},
-			"blend": {
-				"$value": "{emoji.base.waning-gibbous-moon}"
-			},
 			"blend-night": {
 				"$value": "{emoji.base.new-moon-face}"
 			},
