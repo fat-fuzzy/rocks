@@ -29,6 +29,18 @@
 			presets: getStartedCompare,
 		},
 	}
+
+	let twinLayout = {
+		explore: true,
+	}
+
+	let editor = {
+		write: true,
+	}
+
+	let builder = {
+		build: true,
+	}
 </script>
 
 {#snippet getStartedSections()}
@@ -72,4 +84,13 @@
 	{/if}
 {/snippet}
 
-<PageAction {theme} {cta} {query} route={`/phloem/${cta}`} {gettingStarted} />
+<PageAction
+	{theme}
+	{cta}
+	{query}
+	route={`/phloem/${cta}`}
+	{gettingStarted}
+	{twinLayout}
+	{editor}
+	{builder}
+/>
