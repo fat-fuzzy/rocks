@@ -35,22 +35,25 @@ import {
  * @returns created language slug
  */
 export async function saveLanguage(options: {
+	root: string
 	language: DocLanguage
 	sourceLanguage: DocLanguage
 	formats: Slug[]
 }): Promise<{data: {language: DocLanguage}}> {
-	const {language, sourceLanguage, formats} = options
+	const {root, language, sourceLanguage, formats} = options
 
 	for (const format of formats) {
 		await saveFormat({
+			root,
 			format,
 			sourceFormat: formats[0], // TODO: test this
 			formats,
 			languages: [language],
 		})
-		const sourceDoc = await getContentDataForLanguage(sourceLanguage)
+		const sourceDoc = await getContentDataForLanguage(root, sourceLanguage)
 
 		await duplicateDocContent({
+			root,
 			language,
 			format,
 			opfsContent: sourceDoc.data,
@@ -70,17 +73,23 @@ export async function saveLanguage(options: {
  * @returns created language slug
  */
 export async function saveFormat(options: {
+	root: string
 	format: Slug
 	sourceFormat: Slug
 	formats: Slug[]
 	languages: DocLanguage[]
 }): Promise<{data: {format: Slug}}> {
-	const {format, sourceFormat, languages} = options
+	const {root, format, sourceFormat, languages} = options
 
 	for (const language of languages) {
-		const sourceDoc = await getContentDataForFormat(language, sourceFormat)
+		const sourceDoc = await getContentDataForFormat(
+			root,
+			language,
+			sourceFormat,
+		)
 
 		await duplicateDocContent({
+			root,
 			language,
 			format,
 			opfsContent: sourceDoc.data,
@@ -99,13 +108,15 @@ export async function saveFormat(options: {
  * @param options
  */
 async function duplicateDocContent(options: {
+	root: string
 	language: DocLanguage
 	format: Slug
 	opfsContent: OPFSTreeDoc
 }) {
-	const {language, format, opfsContent} = options
+	const {root, language, format, opfsContent} = options
 
 	const targetParentHandle = await getDocsHandle({
+		root,
 		language,
 		format,
 		create: true,
@@ -156,14 +167,15 @@ async function duplicateDocContent(options: {
  * @returns file contents
  */
 export async function loadFile(options: {
+	root: string
 	meta: DocMeta
 	path: DocPath
 }): Promise<{data: OPFSTreeDoc}> {
-	const {meta, path} = options
+	const {root, meta, path} = options
 	const {language, format} = meta
 	const {filename, filetype, parent} = path
 
-	const parentHandle = await getDocsHandle({language, format, parent})
+	const parentHandle = await getDocsHandle({root, language, format, parent})
 
 	let _filename = `${filename}.${filetype}`
 
@@ -185,15 +197,17 @@ export async function loadFile(options: {
  * @returns
  */
 export async function saveBlock(options: {
+	root: string
 	language: DocLanguage
 	format: Slug
 	block: Block
 	path: DocPath
 }): Promise<{id: string}> {
-	const {language, format, block, path} = options
+	const {root, language, format, block, path} = options
 	const {filetype, parent} = path
 
 	const parentHandle = await getDocsHandle({
+		root,
 		language,
 		format,
 		parent,
@@ -209,6 +223,7 @@ export async function saveBlock(options: {
 }
 
 export async function createSection(options: {
+	root: string
 	name: Slug
 	rank: Rank
 	formats: Slug[]
@@ -216,11 +231,12 @@ export async function createSection(options: {
 	updateRanks: Section[]
 	title?: string
 }) {
-	const {name, title, rank, formats, language, updateRanks} = options
+	const {root, name, title, rank, formats, language, updateRanks} = options
 
 	for (const format of formats) {
 		// 1. Gather parent data
 		const docHandle = await getDocsHandle({
+			root,
 			language,
 			format,
 		})
@@ -248,7 +264,7 @@ export async function createSection(options: {
 
 		const parsed = parseSection(`Section ${name}`, section)
 
-		await saveSection({language, format, section: parsed})
+		await saveSection({root, language, format, section: parsed})
 	}
 	// 3. Update ranks of sections around, if necessary
 	for (let i = 0; i < updateRanks.length; i++) {
@@ -256,7 +272,7 @@ export async function createSection(options: {
 		toUpdate.rank = toUpdate.rank + 1
 
 		for (const format of formats) {
-			await saveSection({language, format, section: toUpdate})
+			await saveSection({root, language, format, section: toUpdate})
 		}
 	}
 
@@ -264,12 +280,14 @@ export async function createSection(options: {
 }
 
 export async function saveSection(options: {
+	root: string
 	language: DocLanguage
 	format: Slug
 	section: Section
 }) {
-	const {language, format, section} = options
-	const opfsOptions = language && format ? {language, format} : {language}
+	const {root, language, format, section} = options
+	const opfsOptions =
+		language && format ? {root, language, format} : {root, language}
 
 	const directoryHandle = await getDocsHandle(opfsOptions)
 	const parsed = parseSection(`Section ${section.name}`, section)
@@ -286,12 +304,14 @@ export async function saveSection(options: {
  * @returns
  */
 export async function deleteContentFolder(options: {
+	root: string
 	meta: DocMeta
 	path: DocPath
 }): Promise<{deleted: boolean}> {
-	const {path} = options
+	const {root, path} = options
 
-	const opfsRoot = await getRootHandle({name: 'chlorophyll'})
+	const opfsRoot = await getRootHandle({name: root})
+
 	const parentHandle = await opfsRoot.getDirectoryHandle('content')
 
 	if (parentHandle) {
@@ -311,12 +331,13 @@ export async function deleteContentFolder(options: {
  * @returns
  */
 export async function deleteContentFile(options: {
+	root: string
 	meta: DocMeta
 	path: DocPath
 }): Promise<{deleted: boolean}> {
-	const {path} = options
+	const {root, path} = options
 
-	const opfsRoot = await getRootHandle({name: 'chlorophyll'})
+	const opfsRoot = await getRootHandle({name: root})
 	const parentHandle = await opfsRoot.getDirectoryHandle('content')
 
 	if (parentHandle) {
@@ -331,8 +352,10 @@ export async function deleteContentFile(options: {
 	}
 }
 
-export async function getContentData(): Promise<{data: OPFSTreeDoc}> {
-	const opfsRoot = await getRootHandle({name: 'chlorophyll'})
+export async function getContentData(
+	root: string,
+): Promise<{data: OPFSTreeDoc}> {
+	const opfsRoot = await getRootHandle({name: root})
 
 	let parentHandle
 
@@ -357,11 +380,12 @@ export async function getContentData(): Promise<{data: OPFSTreeDoc}> {
 }
 
 export async function getContentDataForLanguage(
+	root: string,
 	language: DocLanguage,
 ): Promise<{
 	data: OPFSTreeDoc
 }> {
-	const opfsRoot = await getRootHandle({name: 'chlorophyll'})
+	const opfsRoot = await getRootHandle({name: root})
 
 	let contentHandle
 	let parentHandle
@@ -392,12 +416,13 @@ export async function getContentDataForLanguage(
 }
 
 export async function getContentDataForFormat(
+	root: string,
 	language: DocLanguage,
 	format: Slug,
 ): Promise<{
 	data: OPFSTreeDoc
 }> {
-	const opfsRoot = await getRootHandle({name: 'chlorophyll'})
+	const opfsRoot = await getRootHandle({name: root})
 
 	let contentHandle
 	let languageHandle

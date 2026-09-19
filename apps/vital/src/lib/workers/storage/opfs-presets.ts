@@ -19,13 +19,15 @@ import {
 } from '$lib/workers/storage/opfs-tools'
 
 export async function loadPreset(options: {
+	root: string
 	meta: DocMeta
 	path: DocPath
 }): Promise<{data: OPFSTreeDoc}> {
-	const {path} = options
+	const {root, path} = options
 	const {filename, filetype} = path
 
-	const opfsRoot = await getRootHandle({name: 'chlorophyll'})
+	const opfsRoot = await getRootHandle({name: root})
+
 	const parentHandle = await opfsRoot.getDirectoryHandle('presets')
 
 	let _filename = `${filename}.${filetype}`
@@ -39,8 +41,10 @@ export async function loadPreset(options: {
 	return {data: JSON.parse(serialized)}
 }
 
-export async function getPresetsData(): Promise<{data: OPFSTreePreset}> {
-	const opfsRoot = await getRootHandle({name: 'chlorophyll'})
+export async function getPresetsData(
+	root: string,
+): Promise<{data: OPFSTreePreset}> {
+	const opfsRoot = await getRootHandle({name: root})
 
 	let parentHandle
 
@@ -71,14 +75,19 @@ export async function getPresetsData(): Promise<{data: OPFSTreePreset}> {
  * @returns
  */
 export async function savePreset(options: {
+	root: string
 	meta: DocMeta
 	path: DocPath
 	preset: Preset
 }): Promise<{id: string}> {
-	const {meta, path, preset} = options
+	const {root, meta, path, preset} = options
 	const {filename, filetype} = path
 
-	const parentHandle = await getPresetsHandle({parent: filename, create: true})
+	const parentHandle = await getPresetsHandle({
+		root,
+		parent: filename,
+		create: true,
+	})
 
 	const fileContent = `content.${filetype}`
 	const fileMeta = `meta.${filetype}`
@@ -120,13 +129,14 @@ export async function savePreset(options: {
  * @returns
  */
 export async function deletePreset(options: {
+	root: string
 	meta: DocMeta
 	path: DocPath
 }): Promise<{deleted: boolean}> {
-	const {path} = options
+	const {root, path} = options
 	const {filename, filetype} = path
 
-	const parentHandle = await getPresetsHandle({parent: filename})
+	const parentHandle = await getPresetsHandle({root, parent: filename})
 
 	const fileContent = `content.${filetype}`
 	const fileMeta = `meta.${filetype}`
@@ -136,7 +146,7 @@ export async function deletePreset(options: {
 		await parentHandle.removeEntry(fileMeta)
 	}
 
-	const presetsHandle = await getPresetsHandle({})
+	const presetsHandle = await getPresetsHandle({root})
 
 	if (presetsHandle) {
 		await presetsHandle.removeEntry(filename)
@@ -153,12 +163,14 @@ export async function deletePreset(options: {
  * @returns
  */
 export async function deletePresetRoot(options: {
+	root: string
 	meta: DocMeta
 	path: DocPath
 }): Promise<{deleted: boolean}> {
-	const {path} = options
+	const {root, path} = options
 
-	const opfsRoot = await getRootHandle({name: 'chlorophyll'})
+	const opfsRoot = await getRootHandle({name: root})
+
 	const presetsHandle = await opfsRoot.getDirectoryHandle('presets')
 
 	if (presetsHandle) {

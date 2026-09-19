@@ -54,7 +54,7 @@ async function dispatch(msg: WorkerMessage) {
 	switch (msg.type) {
 		case 'CHECK_SEED': {
 			try {
-				const seeded = await isSeedComplete(msg.payload.type)
+				const seeded = await isSeedComplete(msg.payload)
 
 				return {seeded}
 			} catch (err) {
@@ -65,7 +65,7 @@ async function dispatch(msg: WorkerMessage) {
 		}
 
 		case 'SEED_BASE': {
-			await seedBase(msg.payload.base)
+			await seedBase(msg.payload)
 
 			return {seeded: Date.now()}
 		}
@@ -77,7 +77,7 @@ async function dispatch(msg: WorkerMessage) {
 		}
 
 		case 'GET_DOC_BASE': {
-			const result = await getBaseData()
+			const result = await getBaseData(msg.payload.root)
 
 			if (result) {
 				return result
@@ -87,7 +87,7 @@ async function dispatch(msg: WorkerMessage) {
 		}
 
 		case 'GET_DOC_STRUCTURE': {
-			const result = await getStructureData()
+			const result = await getStructureData(msg.payload.root)
 
 			if (result) {
 				return result
@@ -97,13 +97,13 @@ async function dispatch(msg: WorkerMessage) {
 		}
 
 		case 'SEED_ROOT': {
-			await seedRoot(msg.payload.seed)
+			await seedRoot(msg.payload)
 
 			return {seeded: Date.now()}
 		}
 
 		case 'SAVE_BASE': {
-			await saveBase(msg.payload.base)
+			await saveBase(msg.payload)
 
 			return {seeded: Date.now()}
 		}
@@ -151,7 +151,7 @@ async function dispatch(msg: WorkerMessage) {
 		}
 
 		case 'GET_ALL_DOCS': {
-			const result = await getContentData()
+			const result = await getContentData(msg.payload.root)
 
 			if (result?.data) {
 				return result.data
@@ -176,7 +176,7 @@ async function dispatch(msg: WorkerMessage) {
 		}
 
 		case 'GET_ALL_PRESETS': {
-			const result = await getPresetsData()
+			const result = await getPresetsData(msg.payload.root)
 			let data
 
 			if (result) {
@@ -251,7 +251,7 @@ async function dispatch(msg: WorkerMessage) {
 		}
 
 		case 'DELETE_ALL': {
-			const result = await deleteAllContent()
+			const result = await deleteAllContent(msg.payload.root)
 
 			if (result) {
 				return result

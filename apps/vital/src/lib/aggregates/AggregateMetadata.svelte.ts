@@ -27,6 +27,7 @@ import {
  * Sends/receive messages via worker bridge
  */
 export default class AggregateMetadata implements IAggregateMetadata {
+	root: string
 	bridge: WorkerBridge | undefined = $state()
 	loading = $state(false)
 	error = $state(false)
@@ -40,8 +41,9 @@ export default class AggregateMetadata implements IAggregateMetadata {
 	structures: FrontmatterStructure[] = $state([])
 	tagGroups: TagGroup[] = $derived(this.base.tags)
 
-	constructor() {
+	constructor(root: string) {
 		this.loading = true
+		this.root = root
 	}
 
 	async init() {
@@ -85,6 +87,7 @@ export default class AggregateMetadata implements IAggregateMetadata {
 		const {name, sourceLanguage} = options
 
 		await this.bridge.saveLanguage({
+			root: this.root,
 			language: name,
 			sourceLanguage,
 			formats: $state.snapshot(this.base.formats),
@@ -92,7 +95,10 @@ export default class AggregateMetadata implements IAggregateMetadata {
 
 		this.base.languages.push(name)
 
-		await this.bridge.saveBase({base: $state.snapshot(this.base)})
+		await this.bridge.saveBase({
+			root: this.root,
+			base: $state.snapshot(this.base),
+		})
 
 		await this.loadBase()
 	}
@@ -110,6 +116,7 @@ export default class AggregateMetadata implements IAggregateMetadata {
 		const {name, sourceFormat} = options
 
 		await this.bridge.saveFormat({
+			root: this.root,
 			format: name,
 			sourceFormat,
 			formats: $state.snapshot(this.base.formats),
@@ -118,7 +125,10 @@ export default class AggregateMetadata implements IAggregateMetadata {
 
 		this.base.formats.push(name)
 
-		await this.bridge.saveBase({base: $state.snapshot(this.base)})
+		await this.bridge.saveBase({
+			root: this.root,
+			base: $state.snapshot(this.base),
+		})
 
 		await this.loadBase()
 	}
@@ -159,6 +169,7 @@ export default class AggregateMetadata implements IAggregateMetadata {
 		}
 
 		await this.bridge.saveBase({
+			root: this.root,
 			base: $state.snapshot(this.base),
 		})
 	}
@@ -176,6 +187,7 @@ export default class AggregateMetadata implements IAggregateMetadata {
 		this.base.tags = options.groups
 
 		await this.bridge.saveBase({
+			root: this.root,
 			base: $state.snapshot(this.base),
 		})
 	}
@@ -184,13 +196,17 @@ export default class AggregateMetadata implements IAggregateMetadata {
 	 * Load full doc tree from storage
 	 */
 	async loadBase() {
-		if (!this.bridge) return
+		if (!this.bridge) {
+			return
+		}
 
 		// Raw content retrieved from OPFS "as is"
 		// 2 files are read:
 		// - content.json // Has FrontmatterBase shaped data FIXME: not always : se RawFrontmatterBase type
 		// - meta.json // Has DocMeta shaped data FIXME: not always : see RawSection type
-		const raw = (await this.bridge.getDocBase()) as OPFSTreeBase
+		const raw = (await this.bridge.getDocBase({
+			root: this.root,
+		})) as OPFSTreeBase
 
 		this.base = opfsBaseTreeToFrontmatterBase(raw)
 	}
@@ -205,7 +221,9 @@ export default class AggregateMetadata implements IAggregateMetadata {
 		// 2 files are read:
 		// - content.json // Has FrontmatterBase shaped data FIXME: not always : se RawFrontmatterBase type
 		// - meta.json // Has DocMeta shaped data FIXME: not always : see RawSection type
-		const raw = (await this.bridge.getDocStructure()) as OPFSTreeStructure
+		const raw = (await this.bridge.getDocStructure({
+			root: this.root,
+		})) as OPFSTreeStructure
 
 		const structures = opfsStructureTreeToFrontmatterStructures(raw)
 		this.structures = structures
@@ -254,7 +272,9 @@ export default class AggregateMetadata implements IAggregateMetadata {
 	 * Load full doc tree from storage
 	 */
 	async updateDocStructures(formats: Slug[]) {
-		if (!this.bridge) return
+		if (!this.bridge) {
+			return
+		}
 
 		const structuresToUpdate: FrontmatterStructure[] = []
 
@@ -266,6 +286,7 @@ export default class AggregateMetadata implements IAggregateMetadata {
 		}
 
 		await this.bridge.saveStructures({
+			root: this.root,
 			structures: $state.snapshot(structuresToUpdate),
 		})
 

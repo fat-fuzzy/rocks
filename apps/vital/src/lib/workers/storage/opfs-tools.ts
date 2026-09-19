@@ -39,13 +39,15 @@ export async function getRootHandle(options: {name: string; create?: boolean}) {
  * @returns file contents
  */
 export async function getDocsHandle(options: {
+	root: string
 	language?: string
 	format?: string
 	parent?: string
 	create?: boolean
 }) {
-	const {language, format, parent, create} = options
-	const opfsRoot = await getRootHandle({name: 'chlorophyll', create})
+	const {root, language, format, parent, create} = options
+
+	const opfsRoot = await getRootHandle({name: root, create})
 	const contentHandle = await opfsRoot.getDirectoryHandle('content', {
 		create,
 	})
@@ -97,11 +99,13 @@ export async function getDocsHandle(options: {
  * @returns file contents
  */
 export async function getBaseHandle(options: {
+	root: string
 	parent?: string
 	create?: boolean
 }) {
-	const {parent, create} = options
-	const opfsRoot = await getRootHandle({name: 'chlorophyll', create})
+	const {root, parent, create} = options
+
+	const opfsRoot = await getRootHandle({name: root, create})
 	const contentHandle = await opfsRoot.getDirectoryHandle('base', {
 		create,
 	})
@@ -127,11 +131,13 @@ export async function getBaseHandle(options: {
  * @returns file contents
  */
 export async function getStructureHandle(options: {
+	root: string
 	parent?: string
 	create?: boolean
 }) {
-	const {parent, create} = options
-	const opfsRoot = await getRootHandle({name: 'chlorophyll', create})
+	const {root, parent, create} = options
+
+	const opfsRoot = await getRootHandle({name: root, create})
 	const contentHandle = await opfsRoot.getDirectoryHandle('structure', {
 		create,
 	})
@@ -157,12 +163,13 @@ export async function getStructureHandle(options: {
  * @returns file contents
  */
 export async function getPresetsHandle(options: {
+	root: string
 	parent?: string
 	create?: boolean
 }) {
-	const {parent, create} = options
+	const {root, parent, create} = options
 
-	const opfsRoot = await getRootHandle({name: 'chlorophyll', create})
+	const opfsRoot = await getRootHandle({name: root, create})
 	const contentHandle = await opfsRoot.getDirectoryHandle('presets', {
 		create,
 	})
@@ -496,7 +503,7 @@ export async function deleteDirectoryRecursive(
 	return result
 }
 
-export async function deleteAllContent(): Promise<{
+export async function deleteAllContent(root: string): Promise<{
 	status: string
 	errors: string[]
 }> {
@@ -504,7 +511,7 @@ export async function deleteAllContent(): Promise<{
 
 	let opfsRoot
 	try {
-		opfsRoot = await getRootHandle({name: 'chlorophyll'})
+		opfsRoot = await getRootHandle({name: root})
 	} catch {
 		try {
 			opfsRoot = await navigator.storage.getDirectory()
