@@ -25,6 +25,7 @@ import type {
 	FrontmatterStructure,
 	OPFSTreeBase,
 	OPFSTreeStructure,
+	NamespaceId,
 } from '$types'
 
 const REQUEST_TIMEOUT_MS = 100000
@@ -83,7 +84,7 @@ export default class WorkerBridge {
 	 ********** Public API **********
 	 ********************************/
 
-	checkSeed(root: string, type: SeedType) {
+	checkSeed(root: NamespaceId, type: SeedType) {
 		return this.send({
 			type: 'CHECK_SEED',
 			requestId: crypto.randomUUID(),
@@ -91,7 +92,7 @@ export default class WorkerBridge {
 		})
 	}
 
-	seedDocs(payload: {root: string; seed: SeedDoc[]}) {
+	seedDocs(payload: {root: NamespaceId; seed: SeedDoc[]}) {
 		return this.send({
 			type: 'SEED_ROOT',
 			requestId: crypto.randomUUID(),
@@ -99,7 +100,7 @@ export default class WorkerBridge {
 		})
 	}
 
-	seedBase(payload: {root: string; base: FrontmatterBase}) {
+	seedBase(payload: {root: NamespaceId; base: FrontmatterBase}) {
 		return this.send({
 			type: 'SEED_BASE',
 			requestId: crypto.randomUUID(),
@@ -107,7 +108,7 @@ export default class WorkerBridge {
 		})
 	}
 
-	saveBase(payload: {root: string; base: FrontmatterBase}) {
+	saveBase(payload: {root: NamespaceId; base: FrontmatterBase}) {
 		return this.send({
 			type: 'SAVE_BASE',
 			requestId: crypto.randomUUID(),
@@ -115,7 +116,10 @@ export default class WorkerBridge {
 		})
 	}
 
-	seedStructure(payload: {root: string; structures: FrontmatterStructure[]}) {
+	seedStructure(payload: {
+		root: NamespaceId
+		structures: FrontmatterStructure[]
+	}) {
 		return this.send({
 			type: 'SEED_STRUCTURE',
 			requestId: crypto.randomUUID(),
@@ -123,7 +127,10 @@ export default class WorkerBridge {
 		})
 	}
 
-	saveStructures(payload: {root: string; structures: FrontmatterStructure[]}) {
+	saveStructures(payload: {
+		root: NamespaceId
+		structures: FrontmatterStructure[]
+	}) {
 		return this.send({
 			type: 'SAVE_STRUCTURES',
 			requestId: crypto.randomUUID(),
@@ -131,7 +138,7 @@ export default class WorkerBridge {
 		})
 	}
 
-	getDocBase(payload: {root: string}) {
+	getDocBase(payload: {root: NamespaceId}) {
 		return this.send({
 			type: 'GET_DOC_BASE',
 			requestId: crypto.randomUUID(),
@@ -139,7 +146,7 @@ export default class WorkerBridge {
 		})
 	}
 
-	getDocStructure(payload: {root: string}) {
+	getDocStructure(payload: {root: NamespaceId}) {
 		return this.send({
 			type: 'GET_DOC_STRUCTURE',
 			requestId: crypto.randomUUID(),
@@ -148,7 +155,7 @@ export default class WorkerBridge {
 	}
 
 	restoreFromBackup(payload: {
-		root: string
+		root: NamespaceId
 		content: OPFSTreeDoc
 		presets: OPFSTreePreset
 		base: OPFSTreeBase
@@ -162,7 +169,7 @@ export default class WorkerBridge {
 	}
 
 	saveLanguage(payload: {
-		root: string
+		root: NamespaceId
 		language: DocLanguage
 		sourceLanguage: DocLanguage
 		formats: Slug[]
@@ -175,7 +182,7 @@ export default class WorkerBridge {
 	}
 
 	saveFormat(payload: {
-		root: string
+		root: NamespaceId
 		format: Slug
 		sourceFormat: Slug
 		languages: DocLanguage[]
@@ -188,7 +195,7 @@ export default class WorkerBridge {
 		})
 	}
 
-	getProse(payload: {root: string; path: DocPath; meta: DocMeta}) {
+	getProse(payload: {root: NamespaceId; path: DocPath; meta: DocMeta}) {
 		return this.send({
 			type: 'GET_DOC_CONTENT',
 			requestId: crypto.randomUUID(),
@@ -196,7 +203,7 @@ export default class WorkerBridge {
 		})
 	}
 
-	getAllDocs(payload: {root: string}) {
+	getAllDocs(payload: {root: NamespaceId}) {
 		return this.send({
 			type: 'GET_ALL_DOCS',
 			requestId: crypto.randomUUID(),
@@ -205,7 +212,7 @@ export default class WorkerBridge {
 	}
 
 	saveBlock(payload: {
-		root: string
+		root: NamespaceId
 		language: DocLanguage
 		format: Slug
 		block: Block
@@ -219,7 +226,7 @@ export default class WorkerBridge {
 	}
 
 	createSection(payload: {
-		root: string
+		root: NamespaceId
 		name: Slug
 		title?: string
 		rank: Rank
@@ -235,7 +242,7 @@ export default class WorkerBridge {
 	}
 
 	saveSection(payload: {
-		root: string
+		root: NamespaceId
 		language: DocLanguage
 		format: Slug
 		section: Section
@@ -247,7 +254,7 @@ export default class WorkerBridge {
 		})
 	}
 
-	deleteDoc(payload: {root: string; path: DocPath; meta: DocMeta}) {
+	deleteDoc(payload: {root: NamespaceId; path: DocPath; meta: DocMeta}) {
 		return this.send({
 			type: 'DELETE_DOC',
 			requestId: crypto.randomUUID(),
@@ -256,7 +263,7 @@ export default class WorkerBridge {
 	}
 
 	savePreset(payload: {
-		root: string
+		root: NamespaceId
 		path: DocPath
 		meta: DocMeta
 		preset: Preset
@@ -268,7 +275,7 @@ export default class WorkerBridge {
 		})
 	}
 
-	deletePreset(payload: {root: string; path: DocPath; meta: DocMeta}) {
+	deletePreset(payload: {root: NamespaceId; path: DocPath; meta: DocMeta}) {
 		return this.send({
 			type: 'DELETE_PRESET',
 			requestId: crypto.randomUUID(),
@@ -276,7 +283,7 @@ export default class WorkerBridge {
 		})
 	}
 
-	getPreset(payload: {root: string; path: DocPath; meta: DocMeta}) {
+	getPreset(payload: {root: NamespaceId; path: DocPath; meta: DocMeta}) {
 		return this.send({
 			type: 'GET_PRESET',
 			requestId: crypto.randomUUID(),
@@ -284,7 +291,7 @@ export default class WorkerBridge {
 		})
 	}
 
-	getAllPresets(payload: {root: string}) {
+	getAllPresets(payload: {root: NamespaceId}) {
 		return this.send({
 			type: 'GET_ALL_PRESETS',
 			requestId: crypto.randomUUID(),
@@ -292,7 +299,7 @@ export default class WorkerBridge {
 		})
 	}
 
-	deleteAll(payload: {root: string}) {
+	deleteAll(payload: {root: NamespaceId}) {
 		return this.send({
 			type: 'DELETE_ALL',
 			requestId: crypto.randomUUID(),

@@ -19,6 +19,7 @@ import type {
 	SeedType,
 	FrontmatterStructure,
 	OPFSTreeStructure,
+	NamespaceId,
 } from '$types'
 
 import {
@@ -49,7 +50,7 @@ import {
 import {savePreset} from '$lib/workers/storage/opfs'
 
 export async function isSeedComplete(options: {
-	root: string
+	root: NamespaceId
 	type: SeedType
 }): Promise<{seeded: number} | boolean> {
 	const {root, type} = options
@@ -69,7 +70,7 @@ export async function isSeedComplete(options: {
 	}
 }
 
-async function markSeedComplete(root: string, type: SeedType) {
+async function markSeedComplete(root: NamespaceId, type: SeedType) {
 	const opfsRoot = await getRootHandle({name: root})
 
 	// Stringify here - OPFS write boundary
@@ -100,7 +101,7 @@ async function markSeedComplete(root: string, type: SeedType) {
  * @returns void
  */
 export async function seedRoot(options: {
-	root: string
+	root: NamespaceId
 	seed: SeedDoc[]
 }): Promise<void> {
 	const {root, seed} = options
@@ -153,7 +154,7 @@ export async function seedRoot(options: {
  * @returns void
  */
 export async function seedBase(options: {
-	root: string
+	root: NamespaceId
 	base: FrontmatterBase
 }): Promise<void> {
 	const {root, base} = options
@@ -178,7 +179,7 @@ export async function seedBase(options: {
  * @returns void
  */
 export async function seedStructure(options: {
-	root: string
+	root: NamespaceId
 	structures: FrontmatterStructure[]
 }): Promise<void> {
 	const {root, structures} = options
@@ -205,7 +206,7 @@ export async function seedStructure(options: {
 }
 
 export async function restoreFromBackup(options: {
-	root: string
+	root: NamespaceId
 	content: OPFSTreeDoc
 	presets: OPFSTreePreset
 	base: OPFSTreeBase

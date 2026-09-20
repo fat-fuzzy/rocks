@@ -1,4 +1,4 @@
-import type {FrontmatterBase, FrontmatterStructure} from '$types'
+import type {FrontmatterBase, FrontmatterStructure, NamespaceId} from '$types'
 
 import {
 	saveEntry,
@@ -9,7 +9,7 @@ import {
 
 import {parseBase, parseStructure} from '$lib/common/transform/parse-or-throw'
 
-export async function getBaseData(root: string): Promise<{
+export async function getBaseData(root: NamespaceId): Promise<{
 	content: FrontmatterBase
 	meta: {name: string}
 }> {
@@ -23,7 +23,7 @@ export async function getBaseData(root: string): Promise<{
 	return base
 }
 
-export async function getStructureData(root: string): Promise<{
+export async function getStructureData(root: NamespaceId): Promise<{
 	content: {structure: FrontmatterStructure[]}
 	meta: {name: string}
 }> {
@@ -44,7 +44,7 @@ export async function getStructureData(root: string): Promise<{
  * @returns void
  */
 export async function saveBase(options: {
-	root: string
+	root: NamespaceId
 	base: FrontmatterBase
 }): Promise<FrontmatterBase | undefined> {
 	const {root, base} = options
@@ -69,7 +69,7 @@ export async function saveStructure({
 	root,
 	structures,
 }: {
-	root: string
+	root: NamespaceId
 	structures: FrontmatterStructure[]
 }): Promise<FrontmatterStructure | undefined> {
 	for (const structure of structures) {
