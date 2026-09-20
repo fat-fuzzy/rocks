@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {UiColor, UiSize} from '@fat-fuzzy/ui'
+	import type {UiColor, UiSize, UiVariant} from '@fat-fuzzy/ui'
 	import type {ICoordinateImports} from '$types'
 
 	import {SvelteURL} from 'svelte/reactivity'
@@ -16,6 +16,7 @@
 		id: string
 		label?: string
 		color?: UiColor
+		variant?: UiVariant
 		size?: UiSize
 		font?: UiSize
 		oninput?: () => void // hook for parent to refresh state
@@ -25,7 +26,8 @@
 		id,
 		label = 'Your data',
 		color = 'neutral',
-		size = 'xs',
+		variant = 'outline',
+		size = '2xs',
 		font = 'xs',
 		oninput,
 		coordImports,
@@ -73,13 +75,12 @@
 	{size}
 	{font}
 	{color}
+	{variant}
 	layout="flex"
-	justify="end nowrap"
+	justify="between nowrap"
 	align="center"
-	shape="mellow"
-	variant="outline"
 	onclick={showDialog}
 >
 	<span class="font:heading">{label}</span>
-	<ff-icon class="svg:herb openmoji size:xs l:flex"></ff-icon>
+	<ff-icon class={`svg:arrow-bar-down size:${size} l:flex`}></ff-icon>
 </Button>

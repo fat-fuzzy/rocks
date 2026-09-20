@@ -52,12 +52,11 @@
 	{font}
 	{color}
 	{variant}
-	shape="mellow"
 	onclick={handleExport}
 	layout="flex"
 	justify="between nowrap"
 	align="center"
 >
 	<span class="font:heading">{label}</span>
-	<ff-con class={`svg:arrow-bar-up size:${size} l:flex`}></ff-con>
+	<ff-icon class={`svg:arrow-bar-up size:${size} l:flex`}></ff-icon>
 </Button>
