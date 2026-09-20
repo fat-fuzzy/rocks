@@ -2,7 +2,7 @@
 	import type {UiColor} from '@fat-fuzzy/ui'
 	import type {ActionCrud, ICoordinateMetadata} from '$types'
 
-	import {getContext, onDestroy, onMount} from 'svelte'
+	import {onDestroy, onMount} from 'svelte'
 	import {SvelteURL} from 'svelte/reactivity'
 	import ui from '@fat-fuzzy/ui'
 
@@ -19,10 +19,9 @@
 		cta: ActionCrud
 		language?: string
 		color?: UiColor
+		coordMetadata: ICoordinateMetadata
 	}
-	let {cta, language = '', color = 'primary'}: Props = $props()
-
-	let coordMetadata: ICoordinateMetadata = getContext('coordMetadata')
+	let {coordMetadata, cta, language = '', color = 'primary'}: Props = $props()
 
 	const validator = new FormValidator(FormLanguageValidator)
 

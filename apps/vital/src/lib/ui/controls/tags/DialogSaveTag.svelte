@@ -6,7 +6,7 @@
 		UiSize,
 		UiVariant,
 	} from '@fat-fuzzy/ui'
-	import type {TagGroup} from '$types'
+	import type {ICoordinateMetadata, TagGroup} from '$types'
 
 	import ui from '@fat-fuzzy/ui'
 
@@ -27,6 +27,7 @@
 		assetType?: UiAssetType
 		size?: UiSize
 		font?: UiSize
+		coordMetadata: ICoordinateMetadata
 	}
 	let {
 		id,
@@ -40,6 +41,7 @@
 		assetType,
 		size = '2xs',
 		font = '2xs', // TODO: figure out why '2xs' here, and 'xs' in DialogDeleTags
+		coordMetadata,
 	}: Props = $props()
 
 	let action = $derived(
@@ -68,7 +70,7 @@
 </script>
 
 {#snippet presetInfo()}
-	<FormTags {color} {cta} {groups} />
+	<FormTags {color} {cta} {groups} {coordMetadata} />
 {/snippet}
 
 <!-- FIXME: add tooltip -->

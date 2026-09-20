@@ -3,13 +3,11 @@
 	import type {UiColor} from '@fat-fuzzy/ui'
 	import type {
 		TagGroup,
-		ICoordinateDocs,
-		ICoordinateMetadata,
-		ICoordinatePresets,
 		ActionDoc,
 		RouteId,
 		ActionResource,
 		VitalPage,
+		CurrentCoordinators,
 	} from '$types'
 
 	import {getContext, tick} from 'svelte'
@@ -36,6 +34,7 @@
 
 	import ContentActions from '$lib/ui/controls/ContentActions.svelte'
 	import ContentHeading from '$lib/ui/controls/ContentHeading.svelte'
+	import {DOC_FORMAT, DOC_LANGUAGE} from '$config/setup'
 
 	const {PageRails} = ui.content
 	const {Feedback} = ui.blocks
@@ -73,15 +72,17 @@
 		builder,
 	}: Props = $props()
 
-	let coordDocs: ICoordinateDocs = getContext('coordDocs')
-	let coordPresets: ICoordinatePresets = getContext('coordPresets')
-	let coordMetadata: ICoordinateMetadata = getContext('coordMetadata')
+	let color = $derived(theme)
+	let pageName = $derived(route.split('/')[1] as VitalPage)
+
+	const coordinators: CurrentCoordinators = getContext('currentCoordinators')
+
+	let coordDocs = $derived(coordinators.docs)
+	let coordPresets = $derived(coordinators.presets)
+	let coordMetadata = $derived(coordinators.metadata)
 
 	let filtersForm: HTMLFormElement | undefined = $state()
 	let pageContext = $derived({...page.data.pageContext, label: 'On this Page'})
-
-	let color = $derived(theme)
-	let pageName = $derived(route.split('/')[1] as VitalPage)
 
 	let loading = $derived(coordDocs.isLoading())
 
@@ -91,13 +92,15 @@
 
 	let editing = $derived(editor[cta] || builder[cta])
 
-	let paramValues = $derived(cta ? getAllowedParamsForRoute(cta, page.url) : {})
-	let language = $derived(paramValues.language)
-	let format = $derived(paramValues.format)
+	let paramValues = $derived(
+		cta ? getAllowedParamsForRoute(pageName, page.url) : {},
+	)
+	let language = $derived(paramValues.language ?? DOC_LANGUAGE)
+	let format = $derived(paramValues.format ?? DOC_FORMAT)
 
-	let preset: string | null = $derived(paramValues.preset)
-	let sourcePreset: string | null = $derived(paramValues.source_preset)
-	let targetPreset: string | null = $derived(paramValues.target_preset)
+	let preset: string | undefined = $derived(paramValues.preset)
+	let sourcePreset: string | undefined = $derived(paramValues.source_preset)
+	let targetPreset: string | undefined = $derived(paramValues.target_preset)
 
 	let sourceLanguage = $derived(paramValues.source_language ?? language)
 	let sourceFormat = $derived(paramValues.source_format ?? format)

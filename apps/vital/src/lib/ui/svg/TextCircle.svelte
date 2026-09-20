@@ -67,7 +67,6 @@
 	.char {
 		display: inline-block;
 		position: absolute;
-		font-weight: bold;
 		top: 50%;
 		left: 50%;
 		font-size: var(--char-font-size);

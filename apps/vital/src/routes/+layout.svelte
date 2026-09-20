@@ -30,13 +30,8 @@
 	 * Register Contexts
 	 */
 	const aggregates = createAggregates(['chlorophyll', 'phloem'])
-	const coords = createCoords(aggregates)
-
-	setContext('coordMetadata', coords.chlorophyll.coordMetadata)
-	setContext('coordImports', coords.chlorophyll.coordImports)
-	setContext('coordDocs', coords.chlorophyll.coordDocs)
-	setContext('coordExports', coords.chlorophyll.coordExports)
-	setContext('coordPresets', coords.chlorophyll.coordPresets)
+	const coordinators = createCoords(aggregates)
+	setContext('coordinators', coordinators)
 
 	/**
 	 * Setup page data (loaded / generated)
@@ -114,13 +109,18 @@
 		initBridge()
 
 		// Init Chlorophyll
-		await coords.chlorophyll.coordImports.init({base, structures})
+		await coordinators.chlorophyll.coordImports.init({base, structures})
 		await aggregates.chlorophyll.aggMetadata.init()
 		await aggregates.chlorophyll.aggDocs.init()
-		await coords.chlorophyll.coordMetadata.init()
+		await coordinators.chlorophyll.coordMetadata.init()
 		await aggregates.chlorophyll.aggPresets.init()
 
 		// Init Phloem
+		await coordinators.phloem.coordImports.init({base, structures})
+		await aggregates.phloem.aggMetadata.init()
+		await aggregates.phloem.aggDocs.init()
+		await coordinators.phloem.coordMetadata.init()
+		await aggregates.phloem.aggPresets.init()
 	})
 
 	onDestroy(() => destroyBridge())

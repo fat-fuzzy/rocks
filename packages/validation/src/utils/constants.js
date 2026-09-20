@@ -1,6 +1,6 @@
 const outDir = './src/ajv/out'
 const ajvValidate = 'validate.ajv.mjs'
-const routing = 'routing.ts'
+const routing = 'Namespaces.ts'
 const ajvHash = 'validate.ajv.mjs.hash'
 const ajvHashTmp = 'validate.ajv.mjs.hash.tmp'
 const ajvSigned = 'validate.ajv.mjs.hash.sig'

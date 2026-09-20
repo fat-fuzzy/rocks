@@ -7,6 +7,7 @@ import type {
 	PresetIndex,
 	OPFSTreePreset,
 	IAggregatePresets,
+	NamespaceId,
 } from '$types'
 
 import WorkerBridge from '$lib/workers/worker-bridge'
@@ -24,7 +25,7 @@ import {buildPresetIndex} from '$lib/common/transform/store-to-index'
  * Sends/receive messages via worker bridge
  */
 export default class AggregatePresets implements IAggregatePresets {
-	root: string
+	root: NamespaceId
 	bridge: WorkerBridge | undefined = $state()
 	seeded: {date_seed?: string; source?: string} = $state({})
 	loading = $state(false)
@@ -32,7 +33,7 @@ export default class AggregatePresets implements IAggregatePresets {
 	presets: PresetStore = $state({})
 	presetIndex: PresetIndex = $derived(buildPresetIndex(this.presets))
 
-	constructor(root: string) {
+	constructor(root: NamespaceId) {
 		this.loading = true
 		this.root = root
 	}
