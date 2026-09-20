@@ -26,8 +26,8 @@ export const LOCALIZATIONS: Localizations = {
 }
 
 export const NAMESPACE_TO_PRESET_LABEL: {[key in NamespaceId]: string} = {
-	pollen: 'Content',
-	chlorophyll: 'Structure',
+	pollen: 'Pathway',
+	chlorophyll: 'Preset',
 }
 
 export const CTA_TO_TITLE: {[key in RouteName]: string} = {
@@ -38,8 +38,8 @@ export const CTA_TO_TITLE: {[key in RouteName]: string} = {
 	reflect: 'Reflect',
 	explore: 'Explore',
 	write: 'Write',
-	analyze: 'Analyze',
-	engage: 'Engage',
+	// analyze: 'Analyze',
+	// engage: 'Engage',
 }
 
 export const CTA_TO_ACTION_DOC: {[key: string]: string} = {
