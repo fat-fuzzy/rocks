@@ -14,6 +14,7 @@ import type {
 	DocContentType,
 	IAggregateDocs,
 	Subsection,
+	NamespaceId,
 } from '$types'
 
 import WorkerBridge from '$lib/workers/worker-bridge'
@@ -35,14 +36,14 @@ import {
  * Sends/receive messages via worker bridge
  */
 export default class AggregateDocs implements IAggregateDocs {
-	root: string
+	root: NamespaceId
 	bridge: WorkerBridge | undefined = $state()
 	loading = $state(false)
 	error = $state(false)
 	content: DocStore = $state({})
 	docIndex: DocIndex = $derived(buildDocIndex(this.content))
 
-	constructor(root: string) {
+	constructor(root: NamespaceId) {
 		this.loading = true
 		this.root = root
 	}
