@@ -1,50 +1,22 @@
-import type {
-	IAggregateDocs,
-	IAggregateMetadata,
-	IAggregateDataLifecycle,
-	IAggregatePresets,
-	ICoordinateDocs,
-	ICoordinateExports,
-	ICoordinateMetadata,
-	ICoordinateImports,
-	ICoordinatePresets,
-} from '$types'
+import type {Aggregators, Coordinators, NamespaceId} from '$types'
 import CoordinateDocs from '$lib/application/CoordinateDocs.svelte'
 import CoordinateExports from '$lib/application/CoordinateExports.svelte'
 import CoordinateImports from '$lib/application/CoordinateImports.svelte'
 import CoordinateMetadata from '$lib/application/CoordinateMetadata.svelte'
 import CoordinatePresets from '$lib/application/CoordinatePresets.svelte'
 
-export function createCoords(options: {
-	[key: string]: {
-		aggDataLifecycle: IAggregateDataLifecycle
-		aggDocs: IAggregateDocs
-		aggPresets: IAggregatePresets
-		aggMetadata: IAggregateMetadata
-	}
-}): {
-	[key: string]: {
-		coordDocs: ICoordinateDocs
-		coordExports: ICoordinateExports
-		coordImports: ICoordinateImports
-		coordMetadata: ICoordinateMetadata
-		coordPresets: ICoordinatePresets
-	}
+export function createCoords(options: {[key in NamespaceId]: Aggregators}): {
+	[key in NamespaceId]: Coordinators
 } {
 	const roots = Object.keys(options)
 
 	const result: {
-		[key: string]: {
-			coordDocs: ICoordinateDocs
-			coordExports: ICoordinateExports
-			coordImports: ICoordinateImports
-			coordMetadata: ICoordinateMetadata
-			coordPresets: ICoordinatePresets
-		}
+		[key in NamespaceId]?: Coordinators
 	} = {}
 
 	for (const root of roots) {
-		const {aggDataLifecycle, aggMetadata, aggDocs, aggPresets} = options[root]
+		const {aggDataLifecycle, aggMetadata, aggDocs, aggPresets} =
+			options[root as NamespaceId]
 
 		const coordExports = new CoordinateExports(aggDataLifecycle)
 		const coordImports = new CoordinateImports(aggDataLifecycle, aggDocs)
@@ -52,7 +24,7 @@ export function createCoords(options: {
 		const coordMetadata = new CoordinateMetadata(aggMetadata, aggDocs)
 		const coordPresets = new CoordinatePresets(aggMetadata, aggPresets)
 
-		result[root] = {
+		result[root as NamespaceId] = {
 			coordDocs,
 			coordExports,
 			coordImports,
@@ -61,5 +33,7 @@ export function createCoords(options: {
 		}
 	}
 
-	return result
+	return result as {
+		[key in NamespaceId]: Coordinators
+	}
 }

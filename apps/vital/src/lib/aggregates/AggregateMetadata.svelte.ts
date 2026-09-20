@@ -8,6 +8,7 @@ import type {
 	IAggregateMetadata,
 	TagGroup,
 	Rank,
+	NamespaceId,
 } from '$types'
 
 import {DOC_LANGUAGE, DOC_FORMAT} from '$config/setup'
@@ -27,7 +28,7 @@ import {
  * Sends/receive messages via worker bridge
  */
 export default class AggregateMetadata implements IAggregateMetadata {
-	root: string
+	root: NamespaceId
 	bridge: WorkerBridge | undefined = $state()
 	loading = $state(false)
 	error = $state(false)
@@ -41,7 +42,7 @@ export default class AggregateMetadata implements IAggregateMetadata {
 	structures: FrontmatterStructure[] = $state([])
 	tagGroups: TagGroup[] = $derived(this.base.tags)
 
-	constructor(root: string) {
+	constructor(root: NamespaceId) {
 		this.loading = true
 		this.root = root
 	}

@@ -1,29 +1,14 @@
-import type {
-	IAggregateDataLifecycle,
-	IAggregateDocs,
-	IAggregatePresets,
-	IAggregateMetadata,
-} from '$types'
+import type {NamespaceId, Aggregators} from '$types'
 import AggregateDataLifecycle from '$lib/aggregates/AggregateDataLifecycle.svelte'
 import AggregateDocs from '$lib/aggregates/AggregateDocs.svelte'
 import AggregatePresets from '$lib/aggregates/AggregatePresets.svelte'
 import AggregateMetadata from '$lib/aggregates/AggregateMetadata.svelte'
 
-export function createAggregates(roots: string[]): {
-	[key: string]: {
-		aggDataLifecycle: IAggregateDataLifecycle
-		aggDocs: IAggregateDocs
-		aggPresets: IAggregatePresets
-		aggMetadata: IAggregateMetadata
-	}
+export function createAggregates(roots: NamespaceId[]): {
+	[key in NamespaceId]: Aggregators
 } {
 	const result: {
-		[key: string]: {
-			aggDataLifecycle: IAggregateDataLifecycle
-			aggDocs: IAggregateDocs
-			aggPresets: IAggregatePresets
-			aggMetadata: IAggregateMetadata
-		}
+		[key in NamespaceId]?: Aggregators
 	} = {}
 
 	for (const root of roots) {
@@ -40,5 +25,7 @@ export function createAggregates(roots: string[]): {
 		}
 	}
 
-	return result
+	return result as {
+		[key in NamespaceId]: Aggregators
+	}
 }

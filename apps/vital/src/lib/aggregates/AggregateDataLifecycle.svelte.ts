@@ -10,6 +10,7 @@ import type {
 	FrontmatterSeed,
 	FrontmatterStructure,
 	IAggregateDataLifecycle,
+	NamespaceId,
 } from '$types'
 
 import {DEFAULT_STRUCTURES, DEFAULT_CONTENT} from '$data/doc/cv-config'
@@ -22,7 +23,7 @@ import {getBridge} from '$lib/aggregates/bridge'
  * Sends/receive messages via worker bridge
  */
 export default class AggregateDataLifecycle implements IAggregateDataLifecycle {
-	root: string
+	root: NamespaceId
 	loading = $state(false)
 	bridge: WorkerBridge | undefined = $state()
 	seeded: {date_seed?: string; source?: string} = $state({})
@@ -33,7 +34,7 @@ export default class AggregateDataLifecycle implements IAggregateDataLifecycle {
 	})
 	import = $state('')
 
-	constructor(root: string) {
+	constructor(root: NamespaceId) {
 		this.loading = true
 		this.root = root
 	}
