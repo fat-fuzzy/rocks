@@ -1,11 +1,10 @@
 <script lang="ts">
 	import type {
-		ActionDoc,
 		Preset,
 		Slug,
 		CurrentCoordinators,
-		ActionResource,
-		ActionTransform,
+		NamespaceId,
+		RouteNameFor,
 	} from '$types'
 
 	import {getContext} from 'svelte'
@@ -23,7 +22,7 @@
 		size = '2xs',
 		font = '2xs',
 	}: {
-		cta: ActionDoc | ActionResource | ActionTransform
+		cta: RouteNameFor<NamespaceId>
 		preset?: string
 		query: string
 		formats: Slug[]
@@ -71,7 +70,7 @@
 <div class="w:full noprint">
 	<div class={`l:flex grow justify:${currentPreset ? 'between' : 'end'}`}>
 		{#if currentPreset}
-			{#if cta === 'print'}
+			{#if cta === 'preview'}
 				<h2>
 					Target {currentPreset.locked ? ' (Locked)' : ''}
 				</h2>
@@ -127,7 +126,7 @@
 					New View
 				{:else if cta === 'engage'}
 					New Milestone
-				{:else if cta !== 'reflect' && cta !== 'explore' && cta !== 'compare' && cta !== 'print'}
+				{:else if cta !== 'reflect' && cta !== 'explore' && cta !== 'compare' && cta !== 'preview'}
 					New Doc
 				{/if}
 			</h2>

@@ -188,9 +188,11 @@ export default {
 			chlorophyll: {
 				namespace: 'chlorophyll',
 				route: '/chlorophyll',
+				theme: 'accent',
 				children: [
 					{
 						id: '/chlorophyll/edit',
+						name: 'edit',
 						allowedParams: [
 							{name: 'language', type: 'atomic'},
 							{name: 'format', type: 'atomic'},
@@ -200,6 +202,7 @@ export default {
 					},
 					{
 						id: '/chlorophyll/build',
+						name: 'build',
 						allowedParams: [
 							{name: 'language', type: 'atomic'},
 							{name: 'format', type: 'atomic'},
@@ -209,6 +212,7 @@ export default {
 					},
 					{
 						id: '/chlorophyll/compare',
+						name: 'compare',
 						allowedParams: [
 							{name: 'language', type: 'atomic'},
 							{name: 'format', type: 'atomic'},
@@ -227,7 +231,8 @@ export default {
 						],
 					},
 					{
-						id: '/chlorophyll/print',
+						id: '/chlorophyll/preview',
+						name: 'preview',
 						allowedParams: [
 							{name: 'language', type: 'atomic'},
 							{name: 'format', type: 'atomic'},
@@ -239,9 +244,11 @@ export default {
 			pollen: {
 				namespace: 'pollen',
 				route: '/pollen',
+				theme: 'blueberry',
 				children: [
 					{
 						id: '/pollen/write',
+						name: 'write',
 						allowedParams: [
 							{name: 'language', type: 'atomic'},
 							{name: 'format', type: 'atomic'},
@@ -251,6 +258,7 @@ export default {
 					},
 					{
 						id: '/pollen/reflect',
+						name: 'reflect',
 						allowedParams: [
 							{name: 'language', type: 'atomic'},
 							{name: 'format', type: 'atomic'},
@@ -260,6 +268,7 @@ export default {
 					},
 					{
 						id: '/pollen/explore',
+						name: 'explore',
 						allowedParams: [
 							{name: 'language', type: 'atomic'},
 							{name: 'format', type: 'atomic'},

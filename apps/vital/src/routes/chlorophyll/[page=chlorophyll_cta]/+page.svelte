@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {UiColor} from '@fat-fuzzy/ui'
-	import type {ActionDoc, CurrentCoordinators} from '$types'
+	import type {RouteNameFor, CurrentCoordinators} from '$types'
 
 	import {getContext} from 'svelte'
 	import {resolve} from '$app/paths'
@@ -15,7 +15,7 @@
 
 	let theme = $derived(PAGE_TO_THEME['chlorophyll'] as UiColor)
 
-	let cta = $derived(page.params.page as ActionDoc)
+	let cta = $derived(page.params.page as RouteNameFor<'chlorophyll'>)
 	let query = $derived(page.url.search)
 
 	let gettingStarted = {
@@ -30,7 +30,7 @@
 		compare: {
 			presets: getStartedCompare,
 		},
-		print: {
+		preview: {
 			presets: getStartedPrint,
 		},
 	}

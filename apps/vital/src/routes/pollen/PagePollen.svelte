@@ -1,9 +1,9 @@
 <script lang="ts">
-	import type {ActionResource} from '$types'
+	import type {RouteNameFor} from '$types'
 
 	import ContentGrid from '$lib/ui/ContentGrid.svelte'
 
-	const CTA: ActionResource[] = ['write', 'reflect', 'explore']
+	const CTA: RouteNameFor<'pollen'>[] = ['write', 'reflect', 'explore']
 	const CTA_LINK_LABELS: {[cta: string]: string} = {
 		write: 'Start writing',
 		reflect: 'Organize your Resources',

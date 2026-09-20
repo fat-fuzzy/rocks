@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type {Snippet} from 'svelte'
 	import type {UiColor} from '@fat-fuzzy/ui'
-	import type {VitalPage} from '$types'
+	import type {NamespaceId} from '$types'
 
 	import {resolve} from '$app/paths'
 
@@ -14,7 +14,7 @@
 		description,
 	}: {
 		color?: UiColor
-		page: VitalPage
+		page: NamespaceId
 		actions: string[]
 		links: {[cta: string]: string}
 		headings: {[cta: string]: string}

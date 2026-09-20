@@ -1,22 +1,27 @@
 <script lang="ts">
-	import type {ActionDoc} from '$types'
+	import type {RouteNameFor} from '$types'
 	import ContentGrid from '$lib/ui/ContentGrid.svelte'
 
 	const currentPage = 'chlorophyll'
 
-	const CTA: ActionDoc[] = ['edit', 'build', 'compare', 'print']
+	const CTA: RouteNameFor<'chlorophyll'>[] = [
+		'edit',
+		'build',
+		'compare',
+		'preview',
+	]
 	const CTA_LINK_LABELS: {[cta: string]: string} = {
 		edit: 'Edit the Content',
 		build: 'Build the Structure',
 		compare: 'Compare Presets',
-		print: 'Generate PDF',
+		preview: 'Preview, Save, Print',
 	}
 
 	const CTA_TITLE: {[cta: string]: string} = {
 		edit: 'Edit',
 		build: 'Structure',
 		compare: 'Compare',
-		print: 'Save & Print',
+		preview: 'Preview',
 		data: 'Your data',
 	}
 </script>
@@ -31,9 +36,9 @@
 	{:else if action === 'compare'}
 		<p>Preview your work in progress.</p>
 		<p>Compare doc content using Presets.</p>
-	{:else if action === 'print'}
-		<p>Save a document in PDF format.</p>
-		<p>Print it using your browser.</p>
+	{:else if action === 'preview'}
+		<p>Preview your document.</p>
+		<p>Save or print it using your browser.</p>
 	{/if}
 {/snippet}
 

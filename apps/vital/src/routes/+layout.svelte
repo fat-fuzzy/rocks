@@ -46,7 +46,7 @@
 			case 'build':
 			case 'edit':
 			case 'compare':
-			case 'print':
+			case 'preview':
 			case 'write':
 			case 'reflect':
 			case 'explore':
