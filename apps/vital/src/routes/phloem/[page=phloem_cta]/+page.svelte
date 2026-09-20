@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {UiColor} from '@fat-fuzzy/ui'
-	import type {ActionResource, ICoordinatePresets} from '$types'
+	import type {ActionResource, CurrentCoordinators} from '$types'
 
 	import {getContext} from 'svelte'
 	import {resolve} from '$app/paths'
@@ -9,7 +9,9 @@
 	import {PAGE_TO_THEME} from '$config/setup'
 	import PageAction from '$lib/ui/PageAction.svelte'
 
-	let coordPresets: ICoordinatePresets = getContext('coordPresets')
+	const coordinators: CurrentCoordinators = getContext('currentCoordinators')
+
+	let coordPresets = $derived(coordinators.presets)
 
 	let theme = $derived(PAGE_TO_THEME['phloem'] as UiColor)
 
