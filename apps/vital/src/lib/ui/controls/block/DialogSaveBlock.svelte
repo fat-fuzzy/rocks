@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {UiAssetType, UiColor, UiShape, UiVariant} from '@fat-fuzzy/ui'
-	import type {Subsection} from '$types'
+	import type {ICoordinateDocs, ICoordinateMetadata, Subsection} from '$types'
 
 	import ui from '@fat-fuzzy/ui'
 
@@ -21,6 +21,8 @@
 		shape?: UiShape
 		asset?: string
 		assetType?: UiAssetType
+		coordDocs: ICoordinateDocs
+		coordMetadata: ICoordinateMetadata
 	}
 	let {
 		id,
@@ -33,6 +35,8 @@
 		shape = 'mellow',
 		asset,
 		assetType,
+		coordDocs,
+		coordMetadata,
 	}: Props = $props()
 
 	let action = $derived(
@@ -62,7 +66,14 @@
 </script>
 
 {#snippet presetInfo()}
-	<FormBlock {color} {cta} parent={sectionName} {subsections} />
+	<FormBlock
+		{color}
+		{cta}
+		parent={sectionName}
+		{subsections}
+		{coordDocs}
+		{coordMetadata}
+	/>
 {/snippet}
 
 <!-- FIXME: add tooltip -->

@@ -2,7 +2,7 @@
 	import type {UiColor} from '@fat-fuzzy/ui'
 	import type {ActionCrud, Slug, DocLanguage, ICoordinateDocs} from '$types'
 
-	import {getContext, onDestroy, onMount} from 'svelte'
+	import {onDestroy, onMount} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
 	import {page} from '$app/state'
 
@@ -17,10 +17,9 @@
 		formats: Slug[]
 		cta: ActionCrud
 		color?: UiColor
+		coordDocs: ICoordinateDocs
 	}
-	let {formats, cta, color = 'primary'}: Props = $props()
-
-	let coordDocs: ICoordinateDocs = getContext('coordDocs')
+	let {coordDocs, formats, cta, color = 'primary'}: Props = $props()
 
 	const validator = new FormValidator(FormSectionValidator)
 
@@ -38,7 +37,7 @@
 		formats: Slug[]
 	}
 
-	let section: SectionProps = $state({
+	let section: SectionProps = $derived({
 		name: '',
 		rank: coordDocs.getSectionMaxRank({
 			language: page.url.searchParams.get('language') ?? DOC_LANGUAGE,

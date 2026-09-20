@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {Preset, ICoordinatePresets, Slug, RouteId} from '$types'
+	import type {Preset, CurrentCoordinators, Slug, RouteId} from '$types'
 
 	import {getContext} from 'svelte'
 	import {page} from '$app/state'
@@ -30,14 +30,16 @@
 		isSource?: boolean
 		isTarget?: boolean
 		headingLevel?: number
-		currentPreset: string | null
+		currentPreset?: string
 		oninput: (e: Event) => void
 	} = $props()
 
 	let cta = $derived(page.params.page)
 	let query = $derived(page.url.search)
 
-	let coordPresets: ICoordinatePresets = getContext('coordPresets')
+	const coordinators: CurrentCoordinators = getContext('currentCoordinators')
+
+	let coordPresets = $derived(coordinators.presets)
 
 	let presetIndex: Record<string, Preset> = $derived(coordPresets.loadPresets())
 	let presets = $derived(Object.values(presetIndex))
@@ -100,6 +102,7 @@
 						name: '',
 						query,
 					}}
+					{coordPresets}
 				/>
 			</div>
 		{/if}
@@ -208,6 +211,7 @@
 												name: preset.name,
 												query,
 											}}
+											{coordPresets}
 										/>
 									{/if}
 									{#if cta === 'edit' || cta === 'build'}
@@ -216,6 +220,7 @@
 											{preset}
 											size="2xs"
 											disabled={preset.locked || !preset.query}
+											{coordPresets}
 										/>
 										<Button
 											label={preset.locked ? 'Unlock Preset' : 'Lock Preset'}

@@ -1,11 +1,17 @@
 <script lang="ts">
+	import {getContext} from 'svelte'
 	import type {UiColor, UiSize, UiVariant} from '@fat-fuzzy/ui'
 
 	import ui from '@fat-fuzzy/ui'
 
 	import FilterSections from '$lib/ui/controls/section/FilterSections.svelte'
+	import type {CurrentCoordinators} from '$types'
 
 	const {Popover} = ui.drafts
+
+	const coordinators: CurrentCoordinators = getContext('currentCoordinators')
+
+	let coordDocs = $derived(coordinators.docs)
 
 	let {
 		id = 'sections',
@@ -38,6 +44,6 @@
 	coords="bottom-left"
 >
 	<div class="ravioli:xs l:burrito:xs">
-		<FilterSections {color} {oninput} />
+		<FilterSections {color} {oninput} {coordDocs} />
 	</div>
 </Popover>

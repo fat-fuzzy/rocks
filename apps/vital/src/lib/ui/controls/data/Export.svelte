@@ -1,13 +1,15 @@
 <script lang="ts">
 	import type {UiColor, UiSize, UiVariant} from '@fat-fuzzy/ui'
-	import type {ICoordinateExports} from '$types'
+	import type {CurrentCoordinators} from '$types'
 
 	import ui from '@fat-fuzzy/ui'
 	import {getContext} from 'svelte'
 
 	import {generateDownload} from '$lib/common/download'
 
-	let coordExports: ICoordinateExports = getContext('coordExports')
+	const coordinators: CurrentCoordinators = getContext('currentCoordinators')
+
+	let coordExports = $derived(coordinators.exports)
 
 	const {Button} = ui.blocks
 

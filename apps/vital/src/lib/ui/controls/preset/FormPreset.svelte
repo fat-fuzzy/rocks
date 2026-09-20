@@ -2,7 +2,7 @@
 	import type {ActionCrud, Preset, ICoordinatePresets} from '$types'
 	import type {UiColor} from '@fat-fuzzy/ui'
 
-	import {getContext, onDestroy, onMount} from 'svelte'
+	import {onDestroy, onMount} from 'svelte'
 	import {SvelteURL} from 'svelte/reactivity'
 	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
@@ -18,10 +18,9 @@
 		cta: ActionCrud
 		preset: Preset
 		color?: UiColor
+		coordPresets?: ICoordinatePresets
 	}
-	let {cta, preset, color = 'neutral'}: Props = $props()
-
-	let coordPresets: ICoordinatePresets = getContext('coordPresets')
+	let {coordPresets, cta, preset, color = 'neutral'}: Props = $props()
 
 	const validator = new FormValidator(FormPresetValidator)
 

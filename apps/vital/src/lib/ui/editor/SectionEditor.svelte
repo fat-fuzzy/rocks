@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {UiColor} from '@fat-fuzzy/ui'
-	import type {Slug, DocLanguage, Section, ICoordinateDocs} from '$types'
+	import type {Slug, DocLanguage, Section, CurrentCoordinators} from '$types'
 
 	import {getContext, onMount} from 'svelte'
 
@@ -14,7 +14,10 @@
 	import FeedbackContent from '$lib/ui/FeedbackContent.svelte'
 	import Loading from '$lib/ui/Loading.svelte'
 
-	let coordDocs: ICoordinateDocs = getContext('coordDocs')
+	const coordinators: CurrentCoordinators = getContext('currentCoordinators')
+
+	let coordDocs = $derived(coordinators.docs)
+	let coordMetadata = $derived(coordinators.metadata)
 
 	let {
 		section,
@@ -40,8 +43,8 @@
 	let displayBlockForm = $derived(name !== undefined)
 
 	let error = $derived(coordDocs.hasError())
-	let blocksLoaded = coordDocs.lazyBlocks
-	let sectionsLoaded = coordDocs.lazySections
+	let blocksLoaded = $derived(coordDocs.lazyBlocks)
+	let sectionsLoaded = $derived(coordDocs.lazySections)
 	let noContentFound = $derived(!loading && !section)
 
 	let subsections = $derived(section?.subsections)
@@ -241,6 +244,8 @@
 							cta="save"
 							sectionName={name}
 							subsections={section.subsections || []}
+							{coordDocs}
+							{coordMetadata}
 						/>
 					</div>
 				</div>

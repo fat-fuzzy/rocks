@@ -3,7 +3,7 @@
 		ActionDoc,
 		Preset,
 		Slug,
-		ICoordinatePresets,
+		CurrentCoordinators,
 		ActionResource,
 		ActionTransform,
 	} from '$types'
@@ -24,7 +24,7 @@
 		font = '2xs',
 	}: {
 		cta: ActionDoc | ActionResource | ActionTransform
-		preset: string | null
+		preset?: string
 		query: string
 		formats: Slug[]
 		color?: UiColor
@@ -32,7 +32,10 @@
 		font?: UiSize
 	} = $props()
 
-	let coordPresets: ICoordinatePresets = getContext('coordPresets')
+	const coordinators: CurrentCoordinators = getContext('currentCoordinators')
+
+	let coordPresets = $derived(coordinators.presets)
+	let coordDocs = $derived(coordinators.docs)
 
 	let currentPreset = $derived.by(() => {
 		if (!preset) {
@@ -92,6 +95,7 @@
 						variant="outline"
 						asset="plus"
 						assetType="svg"
+						{coordDocs}
 					/>
 				{/if}
 				{#if cta === 'edit' || cta === 'write' || cta === 'reflect' || cta === 'build' || cta === 'analyze' || cta === 'engage'}
@@ -140,6 +144,7 @@
 						variant="outline"
 						asset="plus"
 						assetType="svg"
+						{coordDocs}
 					/>
 				</div>
 			{/if}

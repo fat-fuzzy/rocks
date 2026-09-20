@@ -2,7 +2,6 @@
 	import type {UiColor} from '@fat-fuzzy/ui'
 	import type {Slug, DocLanguage, ICoordinateDocs} from '$types'
 
-	import {getContext} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
 
 	import {page} from '$app/state'
@@ -13,9 +12,12 @@
 	const {
 		color = 'neutral',
 		oninput,
-	}: {color?: UiColor; oninput: (e: Event) => void} = $props()
-
-	let coordDocs: ICoordinateDocs = getContext('coordDocs')
+		coordDocs,
+	}: {
+		coordDocs: ICoordinateDocs
+		color?: UiColor
+		oninput: (e: Event) => void
+	} = $props()
 
 	let format = $derived(
 		(page.url.searchParams.get('format') || DOC_FORMAT) as Slug,

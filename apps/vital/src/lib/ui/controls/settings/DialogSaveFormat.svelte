@@ -11,6 +11,7 @@
 
 	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
 	import FormFormat from '$lib/ui/controls/settings/FormFormat.svelte'
+	import type {ICoordinateMetadata} from '$types'
 
 	const {Button} = ui.blocks
 
@@ -26,6 +27,7 @@
 		shape?: UiShape
 		asset?: string
 		assetType?: UiAssetType
+		coordMetadata: ICoordinateMetadata
 	}
 	let {
 		id,
@@ -39,6 +41,7 @@
 		shape = 'mellow',
 		asset,
 		assetType,
+		coordMetadata,
 	}: Props = $props()
 
 	function showDialog() {
@@ -55,7 +58,7 @@
 </script>
 
 {#snippet languageForm()}
-	<FormFormat {color} {cta} />
+	<FormFormat {color} {cta} {coordMetadata} />
 {/snippet}
 
 <!-- FIXME: add tooltip -->

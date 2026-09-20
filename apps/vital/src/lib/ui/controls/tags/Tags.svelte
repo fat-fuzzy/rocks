@@ -6,8 +6,10 @@
 		ActionDoc,
 		ActionResource,
 		ActionTransform,
+		CurrentCoordinators,
 	} from '$types'
 
+	import {getContext} from 'svelte'
 	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
 
@@ -16,6 +18,10 @@
 	import Loading from '$lib/ui/Loading.svelte'
 
 	const {InputGroup, Feedback} = ui.blocks
+
+	const coordinators: CurrentCoordinators = getContext('currentCoordinators')
+
+	let coordMetadata = $derived(coordinators.metadata)
 
 	const {
 		cta,
@@ -80,6 +86,7 @@
 					asset="cross"
 					assetType="svg"
 					groups={tags}
+					{coordMetadata}
 				/>
 				<DialogSaveTag
 					id="dialog-create-tags"
@@ -89,6 +96,7 @@
 					asset="plus"
 					assetType="svg"
 					groups={tags}
+					{coordMetadata}
 				/>
 			</menu>
 		{/if}

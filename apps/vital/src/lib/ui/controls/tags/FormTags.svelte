@@ -9,7 +9,7 @@
 		ICoordinateMetadata,
 	} from '$types'
 
-	import {getContext, onDestroy, onMount} from 'svelte'
+	import {onDestroy, onMount} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
 
 	import {
@@ -30,10 +30,9 @@
 		groups: TagGroup[]
 		cta: ActionCrud
 		color?: UiColor
+		coordMetadata: ICoordinateMetadata
 	}
-	let {groups, cta, color = 'accent'}: Props = $props()
-
-	let coordMetadata: ICoordinateMetadata = getContext('coordMetadata')
+	let {coordMetadata, groups, cta, color = 'accent'}: Props = $props()
 
 	const validator = new FormValidator(FormTagValidator)
 

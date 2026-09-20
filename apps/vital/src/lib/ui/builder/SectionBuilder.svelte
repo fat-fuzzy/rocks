@@ -3,10 +3,10 @@
 		Slug,
 		DocLanguage,
 		Section,
-		ICoordinateDocs,
 		ActionDoc,
 		ActionResource,
 		ActionTransform,
+		CurrentCoordinators,
 	} from '$types'
 
 	import {getContext, onMount} from 'svelte'
@@ -20,7 +20,9 @@
 	import {LOCALIZATIONS} from '$lib/intl/l10n'
 	import type {UiColor} from '@fat-fuzzy/ui'
 
-	let coordDocs: ICoordinateDocs = getContext('coordDocs')
+	const coordinators: CurrentCoordinators = getContext('currentCoordinators')
+
+	let coordDocs = $derived(coordinators.docs)
 
 	let {
 		cta = 'build',

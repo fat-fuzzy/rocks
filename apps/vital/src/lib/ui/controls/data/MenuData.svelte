@@ -5,6 +5,7 @@
 
 	import DialogData from '$lib/ui/controls/data/DialogData.svelte'
 	import Export from '$lib/ui/controls/data/Export.svelte'
+	import type {ICoordinateImports} from '$types'
 
 	const {Popover} = ui.drafts
 
@@ -14,12 +15,14 @@
 		variant = 'outline',
 		size = '2xs',
 		font = 'sm',
+		coordImports,
 	}: {
 		id?: string
 		color?: UiColor
 		variant?: UiVariant
 		size?: UiSize
 		font?: UiSize
+		coordImports: ICoordinateImports
 	} = $props()
 </script>
 
@@ -45,6 +48,13 @@
 			{size}
 			{font}
 		/>
-		<DialogData id="button-import" label="Source" {color} {size} {font} />
+		<DialogData
+			id="button-import"
+			label="Source"
+			{color}
+			{size}
+			{font}
+			{coordImports}
+		/>
 	</menu>
 </Popover>
