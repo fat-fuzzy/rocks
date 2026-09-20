@@ -56,9 +56,8 @@ export async function isSeedComplete(options: {
 	const {root, type} = options
 	const flagName = `seed-${type}-complete.json`
 
-	const opfsRoot = await getRootHandle({name: root})
-
 	try {
+		const opfsRoot = await getRootHandle({name: root})
 		await opfsRoot.getFileHandle(flagName)
 		const fh = await opfsRoot.getFileHandle(flagName)
 

@@ -61,7 +61,14 @@
 	}
 
 	async function deleteCurrentData() {
-		await coordImports.deleteAllContent()
+		try {
+			await coordImports.deleteAllContent()
+		} catch (error) {
+			errorMessage =
+				error instanceof Error && error.message
+					? error.message
+					: 'Delete content failed'
+		}
 	}
 
 	async function handleFileSelected(event: Event) {
