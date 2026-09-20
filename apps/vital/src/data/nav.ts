@@ -50,7 +50,7 @@ export const cta: {[key: string]: NavItem} = {
 		label: 'Chlorophyll',
 		title: 'Chlorophyll',
 		layout: 'tram',
-		asset: 'white-flower openmoji',
+		asset: 'tree openmoji',
 		actionPath: '/chlorophyll',
 		color: 'accent' as UiColor,
 		items: [
@@ -84,13 +84,13 @@ export const cta: {[key: string]: NavItem} = {
 			},
 		],
 	},
-	phloem: {
-		slug: 'phloem',
-		label: 'Phloem',
-		title: 'Phloem',
+	pollen: {
+		slug: 'pollen',
+		label: 'Pollen',
+		title: 'Pollen',
 		layout: 'tram',
-		asset: 'tree openmoji',
-		actionPath: '/phloem',
+		asset: 'white-flower openmoji',
+		actionPath: '/pollen',
 		color: 'info' as UiColor,
 		items: [
 			{
@@ -98,21 +98,21 @@ export const cta: {[key: string]: NavItem} = {
 				title: 'Write',
 				label: 'Write',
 				color: 'info' as UiColor,
-				actionPath: '/phloem/write',
+				actionPath: '/pollen/write',
 			},
 			{
 				slug: 'reflect',
 				title: 'Reflect',
 				label: 'Reflect',
 				color: 'info' as UiColor,
-				actionPath: '/phloem/reflect',
+				actionPath: '/pollen/reflect',
 			},
 			{
 				slug: 'explore',
 				title: 'Explore',
 				label: 'Explore',
 				color: 'info' as UiColor,
-				actionPath: '/phloem/explore',
+				actionPath: '/pollen/explore',
 			},
 		],
 	},
@@ -128,7 +128,7 @@ export const pages: {[key: string]: NavItem} = {
 		size: 'md',
 		assetType: 'svg',
 		actionPath: '/',
-		items: [cta.phloem, cta.chlorophyll], // TODO: UPDATE on route changes
+		items: [cta.pollen, cta.chlorophyll], // TODO: UPDATE on route changes
 	},
 }
 

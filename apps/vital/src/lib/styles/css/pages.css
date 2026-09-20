@@ -62,8 +62,8 @@ html:has([class*='page:chlorophyll']),
 	}
 }
 
-html:has([class*='page:phloem']),
-[class*='page:phloem'] {
+html:has([class*='page:pollen']),
+[class*='page:pollen'] {
 	--thumb: oklch(
 		var(--lightness-surface-3) var(--chroma-surface-3)
 			var(--color-palette-blueberry)

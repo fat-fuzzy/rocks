@@ -1,7 +1,7 @@
 <script lang="ts">
 	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
-	import PagePhloem from './PagePhloem.svelte'
+	import PagePollen from './PagePollen.svelte'
 
 	const {PageRails} = ui.content
 
@@ -19,6 +19,6 @@
 	layout="railway"
 >
 	{#snippet main()}
-		<PagePhloem />
+		<PagePollen />
 	{/snippet}
 </PageRails>

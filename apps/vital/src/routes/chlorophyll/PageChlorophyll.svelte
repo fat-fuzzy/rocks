@@ -39,7 +39,7 @@
 
 <div class="l:stack:xl w:full align:center">
 	<h1 class="text:center">Chlorophyll</h1>
-	<h2 class="text:center">Carrier Bag for Story</h2>
+	<h2 class="text:center">Narrative Photosynthesis</h2>
 
 	<ContentGrid
 		page={currentPage}

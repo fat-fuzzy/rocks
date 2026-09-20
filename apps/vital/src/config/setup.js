@@ -5,6 +5,6 @@ export const APP_NAME = 'Vital'
 
 export const PAGE_TO_THEME = {
 	chlorophyll: 'accent',
-	phloem: 'info',
+	pollen: 'info',
 	mycelium: 'primary',
 }

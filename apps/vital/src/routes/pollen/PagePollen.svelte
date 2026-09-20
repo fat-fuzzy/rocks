@@ -16,7 +16,7 @@
 		explore: 'Explore',
 	}
 
-	const currentPage = 'phloem'
+	const currentPage = 'pollen'
 </script>
 
 {#snippet description(action: string)}
@@ -39,8 +39,8 @@
 {/snippet}
 
 <div class="l:stack:xl w:full align:center">
-	<h1 class="text:center">Phloem</h1>
-	<h2 class="text:center">Fountain of Thought</h2>
+	<h1 class="text:center">Pollen</h1>
+	<h2 class="text:center">Carrier Bags of Story</h2>
 
 	<ContentGrid
 		page={currentPage}

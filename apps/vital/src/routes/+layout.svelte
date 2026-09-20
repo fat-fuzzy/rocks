@@ -29,7 +29,7 @@
 	/**
 	 * Register Contexts
 	 */
-	const aggregates = createAggregates(['chlorophyll', 'phloem'])
+	const aggregates = createAggregates(['chlorophyll', 'pollen'])
 	const coordinators = createCoords(aggregates)
 	setContext('coordinators', coordinators)
 
@@ -55,7 +55,7 @@
 				return 'railway'
 			case '/chlorophyll':
 			case '/mycelium':
-			case '/phloem':
+			case '/pollen':
 				return 'tgv'
 			case '/':
 				return 'tgv'
@@ -115,12 +115,12 @@
 		await coordinators.chlorophyll.coordMetadata.init()
 		await aggregates.chlorophyll.aggPresets.init()
 
-		// Init Phloem
-		await coordinators.phloem.coordImports.init({base, structures})
-		await aggregates.phloem.aggMetadata.init()
-		await aggregates.phloem.aggDocs.init()
-		await coordinators.phloem.coordMetadata.init()
-		await aggregates.phloem.aggPresets.init()
+		// Init Pollen
+		await coordinators.pollen.coordImports.init({base, structures})
+		await aggregates.pollen.aggMetadata.init()
+		await aggregates.pollen.aggDocs.init()
+		await coordinators.pollen.coordMetadata.init()
+		await aggregates.pollen.aggPresets.init()
 	})
 
 	onDestroy(() => destroyBridge())
@@ -164,7 +164,7 @@
 					background={sidenav.background}
 					variant="bare"
 					checked={pathname.startsWith('/chlorophyll/') ||
-					pathname.startsWith('/phloem/') ||
+					pathname.startsWith('/pollen/') ||
 					pathname.startsWith('/mycelium/')
 						? false
 						: undefined}

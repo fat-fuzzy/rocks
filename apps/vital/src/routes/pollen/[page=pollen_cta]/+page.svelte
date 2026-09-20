@@ -13,7 +13,7 @@
 
 	let coordPresets = $derived(coordinators.presets)
 
-	let theme = $derived(PAGE_TO_THEME['phloem'] as UiColor)
+	let theme = $derived(PAGE_TO_THEME['pollen'] as UiColor)
 
 	let cta = $derived(page.params.page as ActionResource)
 	let query = $derived(page.url.search)
@@ -51,7 +51,7 @@
 		<li>
 			Create your own content: go to <a
 				class="font:semibold"
-				href={resolve('/phloem/write/')}
+				href={resolve('/pollen/write/')}
 			>
 				Edit
 			</a>, then click on
@@ -68,13 +68,13 @@
 {#snippet getStartedPresets()}
 	<p>
 		To get started, first create a Preset from <a
-			href={resolve('/phloem/write')}
+			href={resolve('/pollen/write')}
 			class="font:semibold"
 		>
 			Edit
 		</a>
 		or
-		<a href={resolve('/phloem/reflect')} class="font:semibold"> Build </a>
+		<a href={resolve('/pollen/reflect')} class="font:semibold"> Build </a>
 	</p>
 {/snippet}
 
@@ -90,7 +90,7 @@
 	{theme}
 	{cta}
 	{query}
-	route={`/phloem/${cta}`}
+	route={`/pollen/${cta}`}
 	{gettingStarted}
 	{twinLayout}
 	{editor}

@@ -14,8 +14,7 @@ import type {
 import {sanitizeFileName} from '$lib/common/sanitize'
 
 const SEED_TYPES: SeedType[] = ['structure', 'root', 'base']
-// const OPFS_ROOT_FOLDERS: string[] = ['chlorophyll', 'pollen']
-
+const OPFS_ROOT_FOLDERS: string[] = ['chlorophyll', 'pollen']
 export const OPFS_FOLDERS: {[key in SeedType]: string[]} = {
 	root: ['content', 'presets', 'base', 'structure'],
 	base: ['base'],
@@ -30,71 +29,15 @@ export const OPFS_FOLDERS: {[key in SeedType]: string[]} = {
 export async function getRootHandle(options: {name: string; create?: boolean}) {
 	const {name, create} = options
 	const opfsRoot = await navigator.storage.getDirectory()
-
-	const rootHandle = await opfsRoot.getDirectoryHandle(name, {
-		create,
-	})
-	return rootHandle
-}
-
-/**
- * Get the deepest nested folder handle for given doc
- * @param filename
- * @returns file contents
- */
-export async function getDocsHandle(options: {
-	root: NamespaceId
-	language?: string
-	format?: string
-	parent?: string
-	create?: boolean
-}) {
-	const {root, language, format, parent, create} = options
-
-	const opfsRoot = await getRootHandle({name: root, create})
-	const contentHandle = await opfsRoot.getDirectoryHandle('content', {
+	const docsHandle = await opfsRoot.getDirectoryHandle(name, {
 		create,
 	})
 
-	let parentHandle = contentHandle
-	let languageHandle
-	let formatHandle
-	let sectionHandle
+	const contentHandle = await docsHandle.getDirectoryHandle('content', {
+		create,
+	})
 
-	if (language) {
-		languageHandle = await parentHandle.getDirectoryHandle(language, {
-			create,
-		})
-
-		if (languageHandle) {
-			parentHandle = languageHandle
-		}
-	}
-
-	if (format) {
-		formatHandle = await parentHandle.getDirectoryHandle(format, {
-			create,
-		})
-
-		if (formatHandle) {
-			parentHandle = formatHandle
-		}
-	}
-
-	if (parent) {
-		const pathParts = parent.split('/').filter((part) => part)
-
-		for (const part of pathParts) {
-			sectionHandle = await parentHandle.getDirectoryHandle(part, {
-				create,
-			})
-			if (sectionHandle) {
-				parentHandle = sectionHandle
-			}
-		}
-	}
-
-	return parentHandle
+	return contentHandle
 }
 
 /**
@@ -110,6 +53,7 @@ export async function getBaseHandle(options: {
 	const {root, parent, create} = options
 
 	const opfsRoot = await getRootHandle({name: root, create})
+
 	const contentHandle = await opfsRoot.getDirectoryHandle('base', {
 		create,
 	})
@@ -142,6 +86,7 @@ export async function getStructureHandle(options: {
 	const {root, parent, create} = options
 
 	const opfsRoot = await getRootHandle({name: root, create})
+
 	const contentHandle = await opfsRoot.getDirectoryHandle('structure', {
 		create,
 	})
@@ -174,6 +119,7 @@ export async function getPresetsHandle(options: {
 	const {root, parent, create} = options
 
 	const opfsRoot = await getRootHandle({name: root, create})
+
 	const contentHandle = await opfsRoot.getDirectoryHandle('presets', {
 		create,
 	})
@@ -507,52 +453,36 @@ export async function deleteDirectoryRecursive(
 	return result
 }
 
-export async function deleteAllContent(root: NamespaceId): Promise<{
+export async function deleteAllContent(): Promise<{
 	status: string
 	errors: string[]
 }> {
-	const errors: string[] = []
+	const errors = []
 
-	let opfsRoot
-	try {
-		opfsRoot = await getRootHandle({name: root})
-	} catch {
-		try {
-			opfsRoot = await navigator.storage.getDirectory()
-		} catch (error) {
-			// NotFoundError is fine — nothing to clear
-			const notFound = String(error).startsWith('NotFoundError:')
-			if (!notFound) throw new Error('Recursive delete failed', {cause: error})
-		}
-	}
+	for (const name of OPFS_ROOT_FOLDERS) {
+		const opfsRoot = await getRootHandle({name})
 
-	if (!opfsRoot) {
-		return {
-			status: 'ok',
-			errors,
-		}
-	}
+		for (const name of SEED_TYPES) {
+			try {
+				const flagName = `seed-${name}-complete.json`
 
-	for (const name of SEED_TYPES) {
-		try {
-			const flagName = `seed-${name}-complete.json`
-
-			await opfsRoot.removeEntry(flagName)
-		} catch {
-			errors.push(name)
-			console.log(`deleteAllContent: Error deleting seed file ${name}`)
-		}
-
-		try {
-			const opfsFolders = OPFS_FOLDERS[name]
-
-			for (const folder of opfsFolders) {
-				const directoryHandle = await opfsRoot.getDirectoryHandle(folder)
-				await deleteDirectoryRecursive(directoryHandle)
+				await opfsRoot.removeEntry(flagName)
+			} catch {
+				errors.push(name)
+				console.log(`deleteAllContent: Error deleting seed file ${name}`)
 			}
-		} catch {
-			errors.push(name)
-			console.log(`deleteAllContent: Error deleting seed folder ${name}`)
+
+			try {
+				const opfsFolders = OPFS_FOLDERS[name]
+
+				for (const folder of opfsFolders) {
+					const directoryHandle = await opfsRoot.getDirectoryHandle(folder)
+					await deleteDirectoryRecursive(directoryHandle)
+				}
+			} catch {
+				errors.push(name)
+				console.log(`deleteAllContent: Error deleting seed folder ${name}`)
+			}
 		}
 	}
 
