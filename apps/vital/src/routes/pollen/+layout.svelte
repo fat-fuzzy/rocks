@@ -14,11 +14,11 @@
 	} = getContext('coordinators')
 
 	setContext('currentCoordinators', {
-		metadata: coordinators.phloem.coordMetadata,
-		imports: coordinators.phloem.coordImports,
-		docs: coordinators.phloem.coordDocs,
-		exports: coordinators.phloem.coordExports,
-		presets: coordinators.phloem.coordPresets,
+		metadata: coordinators.pollen.coordMetadata,
+		imports: coordinators.pollen.coordImports,
+		docs: coordinators.pollen.coordDocs,
+		exports: coordinators.pollen.coordExports,
+		presets: coordinators.pollen.coordPresets,
 	})
 </script>
 

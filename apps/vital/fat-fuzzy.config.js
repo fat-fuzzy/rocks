@@ -236,12 +236,12 @@ export default {
 					},
 				],
 			},
-			phloem: {
-				namespace: 'phloem',
-				route: '/phloem',
+			pollen: {
+				namespace: 'pollen',
+				route: '/pollen',
 				children: [
 					{
-						id: '/phloem/write',
+						id: '/pollen/write',
 						allowedParams: [
 							{name: 'language', type: 'atomic'},
 							{name: 'format', type: 'atomic'},
@@ -250,7 +250,7 @@ export default {
 						],
 					},
 					{
-						id: '/phloem/reflect',
+						id: '/pollen/reflect',
 						allowedParams: [
 							{name: 'language', type: 'atomic'},
 							{name: 'format', type: 'atomic'},
@@ -259,7 +259,7 @@ export default {
 						],
 					},
 					{
-						id: '/phloem/explore',
+						id: '/pollen/explore',
 						allowedParams: [
 							{name: 'language', type: 'atomic'},
 							{name: 'format', type: 'atomic'},

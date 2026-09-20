@@ -57,7 +57,7 @@ export const CTA_TO_ACTION_TRANSFORM: {[key: string]: string} = {
 }
 export const CTA_TO_ACTION: {[key: string]: {[key: string]: string}} = {
 	chlorophyll: CTA_TO_ACTION_DOC,
-	phloem: CTA_TO_ACTION_RESOURCE,
+	pollen: CTA_TO_ACTION_RESOURCE,
 	mycelium: CTA_TO_ACTION_TRANSFORM,
 }
 

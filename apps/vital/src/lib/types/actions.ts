@@ -17,7 +17,7 @@ export type ActionTransform = 'analyze' | 'engage'
 export type ActionCrud = 'save' | 'delete' | 'update' | 'copy'
 
 // TODO: UPDATE on route changes
-export type VitalPage = 'chlorophyll' | 'phloem'
+export type VitalPage = 'chlorophyll' | 'pollen'
 
 export type Aggregators = {
 	aggDataLifecycle: IAggregateDataLifecycle
