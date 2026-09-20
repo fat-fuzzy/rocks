@@ -72,7 +72,7 @@ hr {
 .doc-edit,
 .doc-build,
 .doc-compare,
-.doc-print {
+.doc-preview {
 	h1 {
 		font-size: calc(var(--font-size-h2) / 1.25);
 		font-weight: var(--font-weight-h1);

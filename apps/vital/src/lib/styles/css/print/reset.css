@@ -10,17 +10,17 @@
  * Basic reset for printed media
  */
 
-.doc-print :where(h1, h2) {
+.doc-preview :where(h1, h2) {
 	margin-block: 0;
 	line-height: 1.25;
 }
 
-.doc-print h2,
-.doc-print h3 {
+.doc-preview h2,
+.doc-preview h3 {
 	margin-block: 0.75em 0.25em;
 }
 
-.doc-print section:first-of-type {
+.doc-preview section:first-of-type {
 	margin-block-end: 0.5em;
 
 	h1,
