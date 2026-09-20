@@ -19,7 +19,7 @@ const {PATTERNS} = constants
 // TODO: File inputs
 // https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html#file-upload-validation
 
-const BaseSchema = {
+export const BaseSchema = {
 	text: {
 		allOf: [
 			{
@@ -186,7 +186,7 @@ const BaseSchema = {
 /**
  * Validation schema for the form: TestForm
  */
-const FormSchema = {
+export const FormSchema = {
 	$id: '#/definitions/FormSchema',
 	$schema: 'http://json-schema.org/draft-07/schema#',
 	type: 'object',
@@ -215,7 +215,84 @@ const FormSchema = {
 	definitions: BaseSchema,
 }
 
-export default {
-	BaseSchema,
-	FormSchema,
+export const RouteParamSchema = {
+	$id: '#/definitions/RouteParamSchema',
+	$schema: 'http://json-schema.org/draft-07/schema#',
+	type: 'object',
+	additionalProperties: false,
+	required: ['name', 'type'],
+	properties: {
+		name: {
+			type: 'string',
+			minLength: 1,
+			maxLength: 64,
+			pattern: '^[A-Za-z_][A-Za-z0-9_-]*$',
+			description: "Valid route param name. eg. 'language'",
+		},
+		type: {
+			type: 'string',
+			pattern: '^atomic|multiple|csv$',
+			description:
+				'Defines whether URL param value is a single string or an array of strings',
+		},
+	},
+}
+
+export const RouteSchema = {
+	$id: '#/definitions/RouteSchema',
+	$schema: 'http://json-schema.org/draft-07/schema#',
+	type: 'object',
+	description:
+		"Valid [top+N]-level route id, e.g. '/doc/edit', with N between 1 and 3 (keeping it small)",
+	additionalProperties: false,
+	required: ['id', 'allowedParams'],
+	properties: {
+		id: {
+			type: 'string',
+			minLength: 1,
+			maxLength: 260,
+			pattern: '^/?([A-Za-z_][A-Za-z0-9_-]*\\/?){1,3}$',
+			description: "Valid route id, e.g. 'edit'.",
+		},
+		allowedParams: {
+			type: 'array',
+			items: {$ref: '#/definitions/RouteParamSchema'},
+			description: 'Defines parameters allowed in search query',
+		},
+	},
+	definitions: {
+		RouteParamSchema,
+	},
+}
+
+export const NamespaceSchema = {
+	$id: '#/definitions/NamespaceSchema',
+	$schema: 'http://json-schema.org/draft-07/schema#',
+	type: 'object',
+	additionalProperties: false,
+	required: ['namespace', 'route', 'children'],
+	properties: {
+		namespace: {
+			type: 'string',
+			minLength: 1,
+			maxLength: 260,
+			pattern: '^[A-Za-z_][A-Za-z0-9_-]*?$',
+			description: "Valid top-level namespace id, e.g. 'doc'.",
+		},
+		route: {
+			type: 'string',
+			minLength: 1,
+			maxLength: 260,
+			pattern: '^/[A-Za-z_][A-Za-z0-9_-]*$',
+			description: "Valid top-level route id, e.g. '/doc'.",
+		},
+		children: {
+			type: 'array',
+			description: 'Per-route configuration keyed by route name.',
+			items: {$ref: '#/definitions/RouteSchema'},
+		},
+	},
+	definitions: {
+		RouteSchema,
+	},
 }

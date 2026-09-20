@@ -202,9 +202,65 @@ function generateRoutingConfig(config /** @FatFuzzyConfig */) {
 
 	fs.writeFileSync(
 		effectiveRoutingPath,
-		`export const ROUTES = ${JSON.stringify(config.routing.routes)} as const
-		export type RouteName = keyof typeof ROUTES
-		export type RouteId = (typeof ROUTES)[RouteName]['id']
+		`
+		//============================
+		//======== NAMESPACES ========
+		//============================
+
+		export const NAMESPACES = ${JSON.stringify(config.routing.namespaces)} as const
+
+
+		// Every top-level namespace key in NAMESPACES, e.g. "docs" | "settings"
+		// NOTE : only use for direct indexing of NAMESPACES (e.g. validate according to allowedParams): most app code should use NamespaceId instead
+		export type NamespaceKey = keyof typeof NAMESPACES
+		
+		// Every top-level value in NAMESPACES (i.e. what a NamespaceKey points to)
+		export type NamespaceInstance = (typeof NAMESPACES)[NamespaceKey]
+
+		// The \`namespace\` property value for a given namespace entry
+		// - currently: value of NamespaceKey === value of NamespaceId
+		// - kept as its own type in case that ever changes)
+		export type NamespaceId = NamespaceInstance['namespace']
+
+		// The base route path for a namespace, e.g. "/docs" | "/settings"
+		export type NamespaceRoute = NamespaceInstance['route']
+
+		//========================
+		//======== ROUTES ========
+		//========================
+
+		// The tuple of route objects belonging to a namespace (one tuple type per namespace, defined as a Union)
+		// "tuple" reflects that NAMESPACES's children are fixed constants (via \`as const\`)
+		export type Routes = NamespaceInstance['children']
+
+		// A single route object: id + allowedParams, flattened across all namespaces
+		export type Route = Routes[number]
+
+		// A single route object: id + allowedParams, flattened across all namespaces
+		export type RouteId = Route['id']
+
+		// Narrow down to the Route whose \`id\` matches, to get that route's exact shape
+		export type RouteById<Id extends RouteId> = Extract<Route, { id: Id }>
+
+		// The route tuple for one specific namespace (not as a Union like Routes, or flattened as Route)
+		export type RoutesFor<N extends NamespaceKey> = (typeof NAMESPACES)[N]['children']
+
+		// A single route object scoped to one namespace
+		export type RouteFor<N extends NamespaceKey> = RoutesFor<N>[number]
+
+		//============================
+		//======= ROUTE PARAMS =======
+		//============================
+
+		// A single allowed param for any route, flattened across all routes
+		export type AllowedParam = Route['allowedParams'][number]
+
+		// Every param name that exists anywhere in NAMESPACES, e.g. "language" | "format" | "source_tags" | ...
+		// Use case: objects or functions that require a valid param name regardless of the route it belongs to
+		export type AllowedParamName = AllowedParam['name']
+
+    // The Union of allowedParams for a specific route id
+		export type ParamsFor<Id extends RouteId> = RouteById<Id>['allowedParams'][number]
 		`,
 	)
 

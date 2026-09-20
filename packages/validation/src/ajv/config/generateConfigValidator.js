@@ -22,6 +22,7 @@ import {fileURLToPath} from 'url'
 import Ajv from 'ajv'
 import addFormats from 'ajv-formats'
 import addErrors from 'ajv-errors'
+import ConfigSchema from './config.schema.js'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
@@ -32,7 +33,6 @@ const standaloneCode = require('ajv/dist/standalone')
 // Paths — all relative to this file, not to CWD or consumer project
 // ---------------------------------------------------------------------------
 
-const SCHEMA_PATH = path.join(__dirname, 'config.schema.json')
 const OUT_PATH = path.join(__dirname, 'validate.config.mjs')
 const HASH_PATH = path.join(__dirname, 'validate.config.mjs.hash')
 
@@ -74,7 +74,7 @@ const REPLACEMENTS = [
 // ---------------------------------------------------------------------------
 
 function generate() {
-	const schema = JSON.parse(fs.readFileSync(SCHEMA_PATH, 'utf8'))
+	const schema = ConfigSchema
 
 	const ajv = new Ajv({...AJV_OPTIONS, schemas: [schema]})
 	addFormats(ajv)
