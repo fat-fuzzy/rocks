@@ -2,6 +2,8 @@
 	import type {ActionDoc} from '$types'
 	import ContentGrid from '$lib/ui/ContentGrid.svelte'
 
+	const currentPage = 'chlorophyll'
+
 	const CTA: ActionDoc[] = ['edit', 'build', 'compare', 'print']
 	const CTA_LINK_LABELS: {[cta: string]: string} = {
 		edit: 'Edit the Content',
@@ -17,8 +19,6 @@
 		print: 'Save & Print',
 		data: 'Your data',
 	}
-
-	const currentPage = 'chlorophyll'
 </script>
 
 {#snippet description(action: string)}
