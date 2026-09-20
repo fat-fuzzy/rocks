@@ -3,10 +3,9 @@
 		Slug,
 		DocLanguage,
 		Section,
-		ActionDoc,
-		ActionResource,
-		ActionTransform,
+		NamespaceId,
 		CurrentCoordinators,
+		RouteNameFor,
 	} from '$types'
 
 	import {getContext, onMount} from 'svelte'
@@ -32,7 +31,7 @@
 		language = DOC_LANGUAGE,
 		format = DOC_FORMAT,
 	}: {
-		cta: ActionDoc | ActionResource | ActionTransform
+		cta: RouteNameFor<NamespaceId>
 		color?: UiColor
 		selectedTags: string[]
 		section: Section
@@ -147,7 +146,7 @@
 				{#if tagsFound.length}
 					{@const subsectionIcon = tagsFound.length === 0 ? missingIcon : ''}
 
-					{#if cta !== 'print' && subsections.length > 1}
+					{#if cta !== 'preview' && subsections.length > 1}
 						<h3 class={`raviolink shape:mellow maki:block surface:0:${color}`}>
 							<span class={`${subsectionIcon} maki:inline:md font:heading`}>
 								{subsection.name}

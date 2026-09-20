@@ -1,6 +1,6 @@
 import type {ParamMatcher} from '@sveltejs/kit'
-import type {ActionResource} from '$lib/types'
+import type {RouteNameFor} from '$lib/types'
 
-export const match = ((param: string): param is ActionResource => {
+export const match = ((param: string): param is RouteNameFor<'pollen'> => {
 	return param === 'write' || param === 'reflect' || param === 'explore'
 }) satisfies ParamMatcher

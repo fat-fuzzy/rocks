@@ -10,14 +10,7 @@ import type {
 	ICoordinatePresets,
 } from '$types'
 
-// TODO: clean out these types : use generated  type
-export type ActionDoc = 'edit' | 'build' | 'compare' | 'print'
-export type ActionResource = 'write' | 'reflect' | 'explore'
-export type ActionTransform = 'analyze' | 'engage'
 export type ActionCrud = 'save' | 'delete' | 'update' | 'copy'
-
-// TODO: UPDATE on route changes
-export type VitalPage = 'chlorophyll' | 'pollen'
 
 export type Aggregators = {
 	aggDataLifecycle: IAggregateDataLifecycle

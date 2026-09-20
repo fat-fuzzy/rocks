@@ -3,11 +3,10 @@
 	import type {UiColor} from '@fat-fuzzy/ui'
 	import type {
 		TagGroup,
-		ActionDoc,
 		RouteId,
-		ActionResource,
-		VitalPage,
+		NamespaceId,
 		CurrentCoordinators,
+		RouteNameFor,
 	} from '$types'
 
 	import {getContext, tick} from 'svelte'
@@ -43,21 +42,21 @@
 		theme?: UiColor
 		route: RouteId
 		query: string
-		cta: ActionDoc | ActionResource /* | ActionTransform */
+		cta: RouteNameFor<NamespaceId>
 		gettingStarted: {
-			[key in ActionDoc | ActionResource]?: {
+			[key in RouteNameFor<NamespaceId>]?: {
 				sections?: Snippet
 				presets?: Snippet
 			}
 		}
 		twinLayout: {
-			[key in ActionDoc | ActionResource]?: boolean
+			[key in RouteNameFor<NamespaceId>]?: boolean
 		}
 		editor: {
-			[key in ActionDoc | ActionResource]?: boolean
+			[key in RouteNameFor<NamespaceId>]?: boolean
 		}
 		builder: {
-			[key in ActionDoc | ActionResource]?: boolean
+			[key in RouteNameFor<NamespaceId>]?: boolean
 		}
 	}
 
@@ -73,7 +72,7 @@
 	}: Props = $props()
 
 	let color = $derived(theme)
-	let pageName = $derived(route.split('/')[1] as VitalPage)
+	let pageName = $derived(route.split('/')[1] as NamespaceId)
 
 	const coordinators: CurrentCoordinators = getContext('currentCoordinators')
 
@@ -168,9 +167,9 @@
 	)
 
 	let title = $derived(
-		cta && cta !== 'print'
+		cta && cta !== 'preview'
 			? CTA_TO_TITLE[cta]
-			: cta === 'print' && preset // Forces title of printed document to be heading of document
+			: cta === 'preview' && preset // Forces title of printed document to be heading of document
 				? preset
 				: cta
 					? CTA_TO_TITLE[cta]

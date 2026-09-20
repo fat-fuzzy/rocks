@@ -160,7 +160,7 @@
 							>
 								{preset.name}
 							</a>
-							{#if cta === 'edit' || cta === 'build' || cta !== 'print'}
+							{#if cta === 'edit' || cta === 'build' || cta !== 'preview'}
 								<div class="l:flex:4xs align:center justify:end hug">
 									{#if cta === 'edit' || cta === 'build'}
 										{#if isCurrent && !preset.locked}

@@ -1,11 +1,11 @@
 import type {UiStatus} from '@fat-fuzzy/ui'
 import type {
-	ActionDoc,
-	ActionResource,
-	ActionTransform,
+	RouteNameFor,
 	DocLanguage,
 	ImportStatus,
 	Localizations,
+	RouteName,
+	NamespaceId,
 } from '$types'
 
 import {APP_NAME} from '$config/setup'
@@ -25,12 +25,16 @@ export const LOCALIZATIONS: Localizations = {
 	},
 }
 
-export const CTA_TO_TITLE: {[key: string]: string} = {
+export const NAMESPACE_TO_PRESET_LABEL: {[key in NamespaceId]: string} = {
+	pollen: 'Content',
+	chlorophyll: 'Structure',
+}
+
+export const CTA_TO_TITLE: {[key in RouteName]: string} = {
 	edit: 'Content',
 	build: 'Structure',
 	preview: 'Preview',
 	compare: 'Compare',
-	print: 'Print',
 	reflect: 'Reflect',
 	explore: 'Explore',
 	write: 'Write',
@@ -42,7 +46,7 @@ export const CTA_TO_ACTION_DOC: {[key: string]: string} = {
 	edit: 'Edit',
 	build: 'Build',
 	compare: 'Compare',
-	print: 'Print',
+	preview: 'Preview',
 }
 
 export const CTA_TO_ACTION_RESOURCE: {[key: string]: string} = {
@@ -65,7 +69,7 @@ export const CTA_TO_DESCRIPTION: {[key: string]: string} = {
 	edit: 'Create and edit content.',
 	build: 'Structure content and Presets.',
 	compare: 'Preview and compare content.',
-	print: 'Save or print a document in PDF format.',
+	preview: 'Preview a document, save or print in PDF format.',
 }
 
 export const STATUS_LABEL: Record<ImportStatus, string> = {
@@ -92,7 +96,7 @@ export const STATUS_FEEDBACK: Record<ImportStatus, UiStatus | undefined> = {
 
 export function getPrefix(
 	language: DocLanguage,
-	cta?: ActionDoc | ActionResource | ActionTransform,
+	cta?: RouteNameFor<NamespaceId>,
 ) {
-	return cta === 'print' ? `${LOCALIZATIONS[language].cv}_` : `${APP_NAME} | `
+	return cta === 'preview' ? `${LOCALIZATIONS[language].cv}_` : `${APP_NAME} | `
 }

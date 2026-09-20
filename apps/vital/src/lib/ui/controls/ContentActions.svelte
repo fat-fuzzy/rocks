@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {UiColor, UiLayout, UiSize} from '@fat-fuzzy/ui'
-	import type {VitalPage, CurrentCoordinators} from '$types'
+	import type {NamespaceId, CurrentCoordinators} from '$types'
 
 	import {getContext} from 'svelte'
 	import {page} from '$app/state'
@@ -30,7 +30,7 @@
 		color?: UiColor
 		size?: UiSize
 		font?: UiSize
-		path: VitalPage
+		path: NamespaceId
 		actions: {[key: string]: string}
 		oninput: () => void
 	} = $props()

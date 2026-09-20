@@ -3,10 +3,9 @@
 	import type {
 		TagGroup,
 		InputGroupMenus,
-		ActionDoc,
-		ActionResource,
-		ActionTransform,
 		CurrentCoordinators,
+		RouteNameFor,
+		NamespaceId,
 	} from '$types'
 
 	import {getContext} from 'svelte'
@@ -31,7 +30,7 @@
 		color = 'neutral',
 		oninput,
 	}: {
-		cta: ActionDoc | ActionResource | ActionTransform
+		cta: RouteNameFor<NamespaceId>
 		loading: boolean
 		error: boolean
 		tags: TagGroup[]
@@ -77,7 +76,7 @@
 <div class="ui-controls l:stack:3xs raviolink">
 	<div class="w:full l:flex:2xs align:center justify:between">
 		<h3 class="ravioli:3xs">Tags</h3>
-		{#if cta != 'compare' && cta !== 'print'}
+		{#if cta != 'compare' && cta !== 'preview'}
 			<menu class="l:switcher:sm nowrap">
 				<DialogDeleteTags
 					id="dialog-delete-tags"
