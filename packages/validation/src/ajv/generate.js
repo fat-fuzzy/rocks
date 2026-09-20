@@ -225,6 +225,9 @@ function generateRoutingConfig(config /** @FatFuzzyConfig */) {
 		// The base route path for a namespace, e.g. "/docs" | "/settings"
 		export type NamespaceRoute = NamespaceInstance['route']
 
+		// The \`theme\` property value to set the namespace UI color (optional)
+		export type NamespaceTheme = NamespaceInstance['theme']
+
 		//========================
 		//======== ROUTES ========
 		//========================
@@ -236,8 +239,14 @@ function generateRoutingConfig(config /** @FatFuzzyConfig */) {
 		// A single route object: id + allowedParams, flattened across all namespaces
 		export type Route = Routes[number]
 
-		// A single route object: id + allowedParams, flattened across all namespaces
+		// A Union of all route object ids for a given Namespace
 		export type RouteId = Route['id']
+
+		// A Union of all route object names for a given Namespace
+    export type RouteNameFor<N extends NamespaceKey> = RouteFor<N>['name']
+
+		// A Union of all route object names, flattened for all Namespaces
+		export type RouteName = Route['name']
 
 		// Narrow down to the Route whose \`id\` matches, to get that route's exact shape
 		export type RouteById<Id extends RouteId> = Extract<Route, { id: Id }>

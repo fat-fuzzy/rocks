@@ -20,6 +20,7 @@ const {PATTERNS} = constants
 // https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html#file-upload-validation
 
 export const BaseSchema = {
+	additionalProperties: false,
 	text: {
 		allOf: [
 			{
@@ -190,6 +191,7 @@ export const FormSchema = {
 	$id: '#/definitions/FormSchema',
 	$schema: 'http://json-schema.org/draft-07/schema#',
 	type: 'object',
+	additionalProperties: false,
 	properties: {
 		text: {$ref: '#/definitions/text'},
 		username: {$ref: '#/definitions/username'},
@@ -245,14 +247,22 @@ export const RouteSchema = {
 	description:
 		"Valid [top+N]-level route id, e.g. '/doc/edit', with N between 1 and 3 (keeping it small)",
 	additionalProperties: false,
-	required: ['id', 'allowedParams'],
+	required: ['id', 'name', 'allowedParams'],
 	properties: {
+		name: {
+			type: 'string',
+			minLength: 1,
+			maxLength: 64,
+			pattern: '^[A-Za-z_][A-Za-z0-9_-]*$',
+			description:
+				"Valid route name: the id stripped of the parent pathname: e.g 'edit' in '/doc/edit'",
+		},
 		id: {
 			type: 'string',
 			minLength: 1,
 			maxLength: 260,
 			pattern: '^/?([A-Za-z_][A-Za-z0-9_-]*\\/?){1,3}$',
-			description: "Valid route id, e.g. 'edit'.",
+			description: "Valid route id, e.g. '/doc/edit'.",
 		},
 		allowedParams: {
 			type: 'array',
@@ -285,6 +295,13 @@ export const NamespaceSchema = {
 			maxLength: 260,
 			pattern: '^/[A-Za-z_][A-Za-z0-9_-]*$',
 			description: "Valid top-level route id, e.g. '/doc'.",
+		},
+		theme: {
+			type: 'string',
+			minLength: 1,
+			maxLength: 64,
+			pattern: '^[A-Za-z_][A-Za-z0-9_-]*$',
+			description: 'Color theme for the namespace UI',
 		},
 		children: {
 			type: 'array',
