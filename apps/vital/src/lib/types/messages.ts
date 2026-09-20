@@ -20,6 +20,7 @@ import type {
 	FrontmatterBase,
 	FrontmatterStructure,
 	OPFSTreeStructure,
+	NamespaceId,
 } from '$types'
 
 // ── Identifiers ────────────────────────────────────────────────────────────────
@@ -31,26 +32,26 @@ export type RequestId = string // crypto.randomUUID()
 export type SeedRootCommand = {
 	type: 'SEED_ROOT'
 	requestId: RequestId
-	payload: {root: string; seed: SeedDoc[]}
+	payload: {root: NamespaceId; seed: SeedDoc[]}
 }
 
 export type SeedBaseCommand = {
 	type: 'SEED_BASE'
 	requestId: RequestId
-	payload: {root: string; base: FrontmatterBase}
+	payload: {root: NamespaceId; base: FrontmatterBase}
 }
 
 export type SeedStructureCommand = {
 	type: 'SEED_STRUCTURE'
 	requestId: RequestId
-	payload: {root: string; structures: FrontmatterStructure[]}
+	payload: {root: NamespaceId; structures: FrontmatterStructure[]}
 }
 
 export type RestoreFromBackupCommand = {
 	type: 'RESTORE_FROM_BACKUP'
 	requestId: RequestId
 	payload: {
-		root: string
+		root: NamespaceId
 		content: OPFSTreeDoc
 		presets: OPFSTreePreset
 		base: OPFSTreeBase
@@ -62,7 +63,7 @@ export type SaveLanguageCommand = {
 	type: 'ADD_LANGUAGE'
 	requestId: RequestId
 	payload: {
-		root: string
+		root: NamespaceId
 		language: DocLanguage
 		sourceLanguage: DocLanguage
 		formats: Slug[]
@@ -72,7 +73,7 @@ export type SaveFormatCommand = {
 	type: 'ADD_FORMAT'
 	requestId: RequestId
 	payload: {
-		root: string
+		root: NamespaceId
 		format: Slug
 		sourceFormat: Slug
 		languages: DocLanguage[]
@@ -84,7 +85,7 @@ export type SaveBlockCommand = {
 	type: 'SAVE_BLOCK'
 	requestId: RequestId
 	payload: {
-		root: string
+		root: NamespaceId
 		language: DocLanguage
 		format: Slug
 		block: Block
@@ -96,7 +97,7 @@ export type CreateSectionCommand = {
 	type: 'CREATE_SECTION'
 	requestId: RequestId
 	payload: {
-		root: string
+		root: NamespaceId
 		name: Slug
 		title?: string
 		rank: Rank
@@ -109,43 +110,48 @@ export type CreateSectionCommand = {
 export type SaveSectionCommand = {
 	type: 'SAVE_SECTION'
 	requestId: RequestId
-	payload: {root: string; language: DocLanguage; format: Slug; section: Section}
+	payload: {
+		root: NamespaceId
+		language: DocLanguage
+		format: Slug
+		section: Section
+	}
 }
 
 export type DeleteDocCommand = {
 	type: 'DELETE_DOC'
 	requestId: RequestId
-	payload: {root: string; meta: DocMeta; path: DocPath}
+	payload: {root: NamespaceId; meta: DocMeta; path: DocPath}
 }
 
 export type SaveBaseCommand = {
 	type: 'SAVE_BASE'
 	requestId: RequestId
-	payload: {root: string; base: FrontmatterBase}
+	payload: {root: NamespaceId; base: FrontmatterBase}
 }
 
 export type SaveStructuresCommand = {
 	type: 'SAVE_STRUCTURES'
 	requestId: RequestId
-	payload: {root: string; structures: FrontmatterStructure[]}
+	payload: {root: NamespaceId; structures: FrontmatterStructure[]}
 }
 
 export type SavePresetCommand = {
 	type: 'SAVE_PRESET'
 	requestId: RequestId
-	payload: {root: string; meta: DocMeta; path: DocPath; preset: Preset}
+	payload: {root: NamespaceId; meta: DocMeta; path: DocPath; preset: Preset}
 }
 
 export type DeletePresetCommand = {
 	type: 'DELETE_PRESET'
 	requestId: RequestId
-	payload: {root: string; meta: DocMeta; path: DocPath}
+	payload: {root: NamespaceId; meta: DocMeta; path: DocPath}
 }
 
 export type DeleteAllCommand = {
 	type: 'DELETE_ALL'
 	requestId: RequestId
-	payload: {root: string}
+	payload: {root: NamespaceId}
 }
 
 export type ExportCommand = {
@@ -177,43 +183,43 @@ export type Command =
 export type GetDocBaseQuery = {
 	type: 'GET_DOC_BASE'
 	requestId: RequestId
-	payload: {root: string}
+	payload: {root: NamespaceId}
 }
 
 export type GetDocStructureQuery = {
 	type: 'GET_DOC_STRUCTURE'
 	requestId: RequestId
-	payload: {root: string}
+	payload: {root: NamespaceId}
 }
 
 export type GetDocContentQuery = {
 	type: 'GET_DOC_CONTENT'
 	requestId: RequestId
-	payload: {root: string; meta: DocMeta; path: DocPath}
+	payload: {root: NamespaceId; meta: DocMeta; path: DocPath}
 }
 
 export type GetAllDocsQuery = {
 	type: 'GET_ALL_DOCS'
 	requestId: RequestId
-	payload: {root: string}
+	payload: {root: NamespaceId}
 }
 
 export type GetPresetQuery = {
 	type: 'GET_PRESET'
 	requestId: RequestId
-	payload: {root: string; meta: DocMeta; path: DocPath}
+	payload: {root: NamespaceId; meta: DocMeta; path: DocPath}
 }
 
 export type GetAllPresetsQuery = {
 	type: 'GET_ALL_PRESETS'
 	requestId: RequestId
-	payload: {root: string}
+	payload: {root: NamespaceId}
 }
 
 export type CheckSeedQuery = {
 	type: 'CHECK_SEED'
 	requestId: RequestId
-	payload: {root: string; type: SeedType}
+	payload: {root: NamespaceId; type: SeedType}
 }
 
 export type Query =
