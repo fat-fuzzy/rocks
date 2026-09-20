@@ -4,6 +4,7 @@ import PathValueSchema from './primitives/values/PathValue.schema.js'
 import SlugValueSchema from './primitives/values/SlugValue.schema.js'
 import UuidValueSchema from './primitives/values/UuidValue.schema.js'
 
+import NamespaceSchema from './primitives/Namespace.schema.js'
 import TagSchema from './primitives/Tag.schema.js'
 import TagGroupSchema from './primitives/TagGroup.schema.js'
 import ProseSchema from './primitives/Prose.schema.js'
@@ -63,6 +64,11 @@ export const schemas = {
 		},
 		UuidValue: {
 			schema: UuidValueSchema,
+			version: getVersion(DocSchema),
+			isRoot: false,
+		},
+		Namespace: {
+			schema: NamespaceSchema,
 			version: getVersion(DocSchema),
 			isRoot: false,
 		},

@@ -38,7 +38,7 @@ export * from '$lib/generated/types/FormBlock'
 export * from '$lib/generated/types/FormTag'
 
 // Routing constants & types
-export * from '$lib/generated/types/routing'
+export * from '$lib/generated/types/Namespaces'
 
 /*************************************************
  ******* OVERRIDE duplicate generated types ******

@@ -60,6 +60,12 @@ export default {
 				$id: '#/definitions/Prose',
 				mode: 'replace',
 			},
+			Namespace: {
+				file: 'Namespace.schema.json',
+				exportName: 'NamespaceValidationFunction',
+				$id: '#/definitions/NamespaceSchema', // Comes from @fat-fuzzy validation as-is
+				mode: 'replace',
+			},
 			DocMeta: {
 				file: 'DocMeta.schema.json',
 				exportName: 'DocMetaValidationFunction',
@@ -178,87 +184,99 @@ export default {
 	routing: {
 		// where generated files are written
 		outDir: 'src/lib/generated/types',
-		routes: {
-			edit: {
-				id: '/chlorophyll/edit',
-				allowedParams: [
-					{name: 'language', type: 'atomic'},
-					{name: 'format', type: 'atomic'},
-					{name: 'sections', type: 'multiple'},
-					{name: 'preset', type: 'atomic'},
+		namespaces: {
+			chlorophyll: {
+				namespace: 'chlorophyll',
+				route: '/chlorophyll',
+				children: [
+					{
+						id: '/chlorophyll/edit',
+						allowedParams: [
+							{name: 'language', type: 'atomic'},
+							{name: 'format', type: 'atomic'},
+							{name: 'sections', type: 'multiple'},
+							{name: 'preset', type: 'atomic'},
+						],
+					},
+					{
+						id: '/chlorophyll/build',
+						allowedParams: [
+							{name: 'language', type: 'atomic'},
+							{name: 'format', type: 'atomic'},
+							{name: 'sections', type: 'multiple'},
+							{name: 'preset', type: 'atomic'},
+						],
+					},
+					{
+						id: '/chlorophyll/compare',
+						allowedParams: [
+							{name: 'language', type: 'atomic'},
+							{name: 'format', type: 'atomic'},
+							{name: 'sections', type: 'multiple'},
+							{name: 'preset', type: 'atomic'},
+							{name: 'source_language', type: 'atomic'},
+							{name: 'source_format', type: 'atomic'},
+							{name: 'source_preset', type: 'multiple'},
+							{name: 'source_sections', type: 'csv'},
+							{name: 'source_tags', type: 'csv'},
+							{name: 'target_language', type: 'atomic'},
+							{name: 'target_format', type: 'atomic'},
+							{name: 'target_preset', type: 'multiple'},
+							{name: 'target_sections', type: 'csv'},
+							{name: 'target_tags', type: 'csv'},
+						],
+					},
+					{
+						id: '/chlorophyll/print',
+						allowedParams: [
+							{name: 'language', type: 'atomic'},
+							{name: 'format', type: 'atomic'},
+							{name: 'preset', type: 'atomic'},
+						],
+					},
 				],
 			},
-			build: {
-				id: '/chlorophyll/build',
-				allowedParams: [
-					{name: 'language', type: 'atomic'},
-					{name: 'format', type: 'atomic'},
-					{name: 'sections', type: 'multiple'},
-					{name: 'preset', type: 'atomic'},
-				],
-			},
-			compare: {
-				id: '/chlorophyll/compare',
-				allowedParams: [
-					{name: 'language', type: 'atomic'},
-					{name: 'format', type: 'atomic'},
-					{name: 'sections', type: 'multiple'},
-					{name: 'preset', type: 'atomic'},
-					{name: 'source_language', type: 'atomic'},
-					{name: 'source_format', type: 'atomic'},
-					{name: 'source_preset', type: 'multiple'},
-					{name: 'source_sections', type: 'csv'},
-					{name: 'source_tags', type: 'csv'},
-					{name: 'target_language', type: 'atomic'},
-					{name: 'target_format', type: 'atomic'},
-					{name: 'target_preset', type: 'multiple'},
-					{name: 'target_sections', type: 'csv'},
-					{name: 'target_tags', type: 'csv'},
-				],
-			},
-			print: {
-				id: '/chlorophyll/print',
-				allowedParams: [
-					{name: 'language', type: 'atomic'},
-					{name: 'format', type: 'atomic'},
-					{name: 'preset', type: 'atomic'},
-				],
-			},
-			write: {
-				id: '/phloem/write',
-				allowedParams: [
-					{name: 'language', type: 'atomic'},
-					{name: 'format', type: 'atomic'},
-					{name: 'sections', type: 'multiple'},
-					{name: 'preset', type: 'atomic'},
-				],
-			},
-			reflect: {
-				id: '/phloem/reflect',
-				allowedParams: [
-					{name: 'language', type: 'atomic'},
-					{name: 'format', type: 'atomic'},
-					{name: 'sections', type: 'multiple'},
-					{name: 'preset', type: 'atomic'},
-				],
-			},
-			explore: {
-				id: '/phloem/explore',
-				allowedParams: [
-					{name: 'language', type: 'atomic'},
-					{name: 'format', type: 'atomic'},
-					{name: 'sections', type: 'multiple'},
-					{name: 'preset', type: 'atomic'},
-					{name: 'source_language', type: 'atomic'},
-					{name: 'source_format', type: 'atomic'},
-					{name: 'source_preset', type: 'multiple'},
-					{name: 'source_sections', type: 'csv'},
-					{name: 'source_tags', type: 'csv'},
-					{name: 'target_language', type: 'atomic'},
-					{name: 'target_format', type: 'atomic'},
-					{name: 'target_preset', type: 'multiple'},
-					{name: 'target_sections', type: 'csv'},
-					{name: 'target_tags', type: 'csv'},
+			phloem: {
+				namespace: 'phloem',
+				route: '/phloem',
+				children: [
+					{
+						id: '/phloem/write',
+						allowedParams: [
+							{name: 'language', type: 'atomic'},
+							{name: 'format', type: 'atomic'},
+							{name: 'sections', type: 'multiple'},
+							{name: 'preset', type: 'atomic'},
+						],
+					},
+					{
+						id: '/phloem/reflect',
+						allowedParams: [
+							{name: 'language', type: 'atomic'},
+							{name: 'format', type: 'atomic'},
+							{name: 'sections', type: 'multiple'},
+							{name: 'preset', type: 'atomic'},
+						],
+					},
+					{
+						id: '/phloem/explore',
+						allowedParams: [
+							{name: 'language', type: 'atomic'},
+							{name: 'format', type: 'atomic'},
+							{name: 'sections', type: 'multiple'},
+							{name: 'preset', type: 'atomic'},
+							{name: 'source_language', type: 'atomic'},
+							{name: 'source_format', type: 'atomic'},
+							{name: 'source_preset', type: 'multiple'},
+							{name: 'source_sections', type: 'csv'},
+							{name: 'source_tags', type: 'csv'},
+							{name: 'target_language', type: 'atomic'},
+							{name: 'target_format', type: 'atomic'},
+							{name: 'target_preset', type: 'multiple'},
+							{name: 'target_sections', type: 'csv'},
+							{name: 'target_tags', type: 'csv'},
+						],
+					},
 				],
 			},
 		},
