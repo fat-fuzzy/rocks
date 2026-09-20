@@ -121,16 +121,8 @@
 				{/if}
 			</div>
 		{:else}
-			<h2>
-				{#if cta === 'analyze'}
-					New View
-				{:else if cta === 'engage'}
-					New Milestone
-				{:else if cta !== 'reflect' && cta !== 'explore' && cta !== 'compare' && cta !== 'preview'}
-					New Doc
-				{/if}
-			</h2>
-			{#if cta === 'edit' || cta === 'write' || cta === 'analyze'}
+			<h2>New Doc</h2>
+			{#if cta === 'edit' || cta === 'write'}
 				<div class="ui-controls maki:block">
 					<DialogSaveSection
 						id="add-section"
