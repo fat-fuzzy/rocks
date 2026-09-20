@@ -1,9 +1,15 @@
 <script lang="ts">
 	import type {UiColor, UiSize, UiVariant} from '@fat-fuzzy/ui'
+	import type {CurrentCoordinators} from '$types'
 
+	import {getContext} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
 
 	import Settings from '$lib/ui/controls/settings/Settings.svelte'
+
+	const coordinators: CurrentCoordinators = getContext('currentCoordinators')
+
+	let coordMetadata = $derived(coordinators.metadata)
 
 	const {Popover} = ui.drafts
 	let {
@@ -37,6 +43,6 @@
 	coords="bottom-right"
 >
 	<div class="l:flex align:between nowrap ravioli:xs">
-		<Settings {oninput} {color} />
+		<Settings {oninput} {color} {coordMetadata} />
 	</div>
 </Popover>

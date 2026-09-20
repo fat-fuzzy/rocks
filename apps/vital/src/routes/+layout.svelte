@@ -29,25 +29,9 @@
 	/**
 	 * Register Contexts
 	 */
-	const {aggDataLifecycle, aggMetadata, aggDocs, aggPresets} =
-		createAggregates()
-	const {coordDocs, coordExports, coordImports, coordMetadata, coordPresets} =
-		createCoords({
-			aggDataLifecycle,
-			aggDocs,
-			aggMetadata,
-			aggPresets,
-		})
-
-	setContext('aggDocs', aggDocs)
-	setContext('aggMetadata', aggMetadata)
-	setContext('aggPresets', aggPresets)
-
-	setContext('coordMetadata', coordMetadata)
-	setContext('coordImports', coordImports)
-	setContext('coordDocs', coordDocs)
-	setContext('coordExports', coordExports)
-	setContext('coordPresets', coordPresets)
+	const aggregates = createAggregates(['chlorophyll', 'pollen'])
+	const coordinators = createCoords(aggregates)
+	setContext('coordinators', coordinators)
 
 	/**
 	 * Setup page data (loaded / generated)
@@ -62,7 +46,7 @@
 			case 'build':
 			case 'edit':
 			case 'compare':
-			case 'print':
+			case 'preview':
 			case 'write':
 			case 'reflect':
 			case 'explore':
@@ -71,7 +55,7 @@
 				return 'railway'
 			case '/chlorophyll':
 			case '/mycelium':
-			case '/phloem':
+			case '/pollen':
 				return 'tgv'
 			case '/':
 				return 'tgv'
@@ -124,11 +108,19 @@
 	onMount(async () => {
 		initBridge()
 
-		await coordImports.init({base, structures})
-		await aggMetadata.init()
-		await aggDocs.init()
-		await coordMetadata.init()
-		await aggPresets.init()
+		// Init Chlorophyll
+		await coordinators.chlorophyll.coordImports.init({base, structures})
+		await aggregates.chlorophyll.aggMetadata.init()
+		await aggregates.chlorophyll.aggDocs.init()
+		await coordinators.chlorophyll.coordMetadata.init()
+		await aggregates.chlorophyll.aggPresets.init()
+
+		// Init Pollen
+		await coordinators.pollen.coordImports.init({base, structures})
+		await aggregates.pollen.aggMetadata.init()
+		await aggregates.pollen.aggDocs.init()
+		await coordinators.pollen.coordMetadata.init()
+		await aggregates.pollen.aggPresets.init()
 	})
 
 	onDestroy(() => destroyBridge())
@@ -171,6 +163,11 @@
 					size={sidenav.size}
 					background={sidenav.background}
 					variant="bare"
+					checked={pathname.startsWith('/chlorophyll/') ||
+					pathname.startsWith('/pollen/') ||
+					pathname.startsWith('/mycelium/')
+						? false
+						: undefined}
 					area="gare"
 					coords="ouest"
 					shape="square"

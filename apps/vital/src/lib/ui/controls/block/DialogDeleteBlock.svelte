@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {Block} from '$types'
+	import type {Block, ICoordinateDocs, ICoordinateMetadata} from '$types'
 	import type {UiAssetType, UiColor, UiShape, UiVariant} from '@fat-fuzzy/ui'
 
 	import ui from '@fat-fuzzy/ui'
@@ -20,6 +20,8 @@
 		shape?: UiShape
 		asset?: string
 		assetType?: UiAssetType
+		coordDocs: ICoordinateDocs
+		coordMetadata: ICoordinateMetadata
 	}
 	let {
 		id,
@@ -31,6 +33,8 @@
 		shape = 'mellow',
 		asset,
 		assetType,
+		coordDocs,
+		coordMetadata,
 	}: Props = $props()
 
 	function showDialog() {
@@ -50,7 +54,14 @@
 </script>
 
 {#snippet presetInfo()}
-	<FormBlock {block} cta="delete" parent={sectionName} {color} />
+	<FormBlock
+		{block}
+		cta="delete"
+		parent={sectionName}
+		{color}
+		{coordDocs}
+		{coordMetadata}
+	/>
 {/snippet}
 
 <!-- FIXME: add tooltip -->

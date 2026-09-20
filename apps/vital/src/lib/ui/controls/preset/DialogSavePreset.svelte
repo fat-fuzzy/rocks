@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {Preset} from '$types'
+	import type {ICoordinatePresets, Preset} from '$types'
 	import type {
 		UiAssetType,
 		UiColor,
@@ -28,6 +28,7 @@
 		shape?: UiShape
 		asset?: string
 		assetType?: UiAssetType
+		coordPresets?: ICoordinatePresets
 	}
 	let {
 		id = 'save-preset',
@@ -42,6 +43,7 @@
 		shape = 'mellow',
 		asset,
 		assetType,
+		coordPresets,
 	}: Props = $props()
 
 	function showDialog() {
@@ -58,7 +60,7 @@
 </script>
 
 {#snippet presetForm()}
-	<FormPreset {preset} {color} {cta} />
+	<FormPreset {preset} {color} {cta} {coordPresets} />
 {/snippet}
 
 <!-- FIXME: add tooltip -->

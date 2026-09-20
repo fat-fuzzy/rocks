@@ -2,12 +2,14 @@ import type {
 	DocLanguage,
 	FrontmatterBase,
 	FrontmatterStructure,
+	NamespaceId,
 	Rank,
 	Slug,
 	TagGroup,
 } from '$types'
 
 export interface IAggregateMetadata {
+	readonly root: NamespaceId
 	readonly base: FrontmatterBase
 	readonly structures: FrontmatterStructure[]
 	readonly loading: boolean

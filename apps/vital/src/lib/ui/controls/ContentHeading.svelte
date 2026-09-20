@@ -1,11 +1,10 @@
 <script lang="ts">
 	import type {
-		ActionDoc,
 		Preset,
 		Slug,
-		ICoordinatePresets,
-		ActionResource,
-		ActionTransform,
+		CurrentCoordinators,
+		NamespaceId,
+		RouteNameFor,
 	} from '$types'
 
 	import {getContext} from 'svelte'
@@ -23,8 +22,8 @@
 		size = '2xs',
 		font = '2xs',
 	}: {
-		cta: ActionDoc | ActionResource | ActionTransform
-		preset: string | null
+		cta: RouteNameFor<NamespaceId>
+		preset?: string
 		query: string
 		formats: Slug[]
 		color?: UiColor
@@ -32,13 +31,16 @@
 		font?: UiSize
 	} = $props()
 
-	let coordPresets: ICoordinatePresets = getContext('coordPresets')
+	const coordinators: CurrentCoordinators = getContext('currentCoordinators')
+
+	let coordPresets = $derived(coordinators.presets)
+	let coordDocs = $derived(coordinators.docs)
 
 	let currentPreset = $derived.by(() => {
 		if (!preset) {
 			return
 		}
-		if (cta === 'explore') {
+		if (cta === 'explore' || cta === 'compare') {
 			return coordPresets.getTargetPreset()
 		} else {
 			return coordPresets.getPreset(preset)
@@ -68,13 +70,13 @@
 <div class="w:full noprint">
 	<div class={`l:flex grow justify:${currentPreset ? 'between' : 'end'}`}>
 		{#if currentPreset}
-			{#if cta === 'print'}
+			{#if cta === 'preview'}
 				<h2>
-					Preset{currentPreset.locked ? ' (Locked)' : ''}
+					Target {currentPreset.locked ? ' (Locked)' : ''}
 				</h2>
 			{:else if cta !== 'explore'}
 				<h2>
-					Preset:
+					Target:
 					{currentPreset.name}
 					{currentPreset.locked ? '(Locked)' : ''}
 				</h2>
@@ -92,6 +94,7 @@
 						variant="outline"
 						asset="plus"
 						assetType="svg"
+						{coordDocs}
 					/>
 				{/if}
 				{#if cta === 'edit' || cta === 'write' || cta === 'reflect' || cta === 'build' || cta === 'analyze' || cta === 'engage'}
@@ -118,22 +121,8 @@
 				{/if}
 			</div>
 		{:else}
-			<h2>
-				{#if cta === 'analyze'}
-					New View
-				{:else if cta === 'engage'}
-					New Milestone
-				{:else if cta === 'write'}
-					New Note
-				{:else if cta === 'reflect'}
-					New Reflection
-				{:else if cta === 'explore'}
-					New Exploration
-				{:else}
-					New Doc
-				{/if}
-			</h2>
-			{#if cta === 'edit' || cta === 'write' || cta === 'analyze'}
+			<h2>New Doc</h2>
+			{#if cta === 'edit' || cta === 'write'}
 				<div class="ui-controls maki:block">
 					<DialogSaveSection
 						id="add-section"
@@ -146,6 +135,7 @@
 						variant="outline"
 						asset="plus"
 						assetType="svg"
+						{coordDocs}
 					/>
 				</div>
 			{/if}

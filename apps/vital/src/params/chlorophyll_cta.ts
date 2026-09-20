@@ -1,11 +1,11 @@
 import type {ParamMatcher} from '@sveltejs/kit'
-import type {ActionDoc} from '$lib/types'
+import type {RouteNameFor} from '$lib/types'
 
-export const match = ((param: string): param is ActionDoc => {
+export const match = ((param: string): param is RouteNameFor<'chlorophyll'> => {
 	return (
 		param === 'edit' ||
 		param === 'build' ||
 		param === 'compare' ||
-		param === 'print'
+		param === 'preview'
 	)
 }) satisfies ParamMatcher

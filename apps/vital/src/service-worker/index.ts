@@ -22,12 +22,25 @@ const CHLOROPHYLL_URL = '/chlorophyll'
 const EDIT_URL = `${CHLOROPHYLL_URL}/edit`
 const BUILD_URL = `${CHLOROPHYLL_URL}/build`
 const COMPARE_URL = `${CHLOROPHYLL_URL}/compare`
-const PRINT_URL = `${CHLOROPHYLL_URL}/print`
+const PRINT_URL = `${CHLOROPHYLL_URL}/preview`
+const POLLEN_URL = '/pollen'
+const WRITE_URL = `${POLLEN_URL}/write`
+const REFLECT_URL = `${POLLEN_URL}/reflect`
+const EXPLORE_URL = `${POLLEN_URL}/explore`
 
-const CTA = [EDIT_URL, BUILD_URL, COMPARE_URL, PRINT_URL]
+const CTA = [
+	EDIT_URL,
+	BUILD_URL,
+	COMPARE_URL,
+	PRINT_URL,
+	WRITE_URL,
+	REFLECT_URL,
+	EXPLORE_URL,
+]
 
 const ASSETS = [
 	SHELL_URL,
+	POLLEN_URL,
 	CHLOROPHYLL_URL,
 	...build, // the app itself
 	...files, // everything in `static`

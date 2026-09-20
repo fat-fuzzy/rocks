@@ -10,6 +10,7 @@ import type {
 	FrontmatterSeed,
 	FrontmatterStructure,
 	IAggregateDataLifecycle,
+	NamespaceId,
 } from '$types'
 
 import {DEFAULT_STRUCTURES, DEFAULT_CONTENT} from '$data/doc/cv-config'
@@ -22,6 +23,8 @@ import {getBridge} from '$lib/aggregates/bridge'
  * Sends/receive messages via worker bridge
  */
 export default class AggregateDataLifecycle implements IAggregateDataLifecycle {
+	root: NamespaceId
+	loading = $state(false)
 	bridge: WorkerBridge | undefined = $state()
 	seeded: {date_seed?: string; source?: string} = $state({})
 	export = $state({
@@ -31,12 +34,16 @@ export default class AggregateDataLifecycle implements IAggregateDataLifecycle {
 	})
 	import = $state('')
 
-	constructor() {}
+	constructor(root: NamespaceId) {
+		this.loading = true
+		this.root = root
+	}
 
 	async init(
 		frontmatter: FrontmatterSeed,
 		seed?: {content: SeedDoc[]; structures: FrontmatterStructure[]},
 	) {
+		this.loading = true
 		this.bridge = getBridge()
 		const seeded = await this.checkSeed()
 
@@ -45,6 +52,8 @@ export default class AggregateDataLifecycle implements IAggregateDataLifecycle {
 		} else {
 			await this.initSeed(DEFAULT_STRUCTURES, DEFAULT_CONTENT)
 		}
+
+		this.loading = false
 	}
 
 	reset() {
@@ -62,15 +71,15 @@ export default class AggregateDataLifecycle implements IAggregateDataLifecycle {
 		}
 
 		// FIXME: this is fragile
-		const base = (await this.bridge.checkSeed('base')) as {
+		const base = (await this.bridge.checkSeed(this.root, 'base')) as {
 			seeded: {date_seed?: string; source?: string}
 		}
 
-		const structure = (await this.bridge.checkSeed('structure')) as {
+		const structure = (await this.bridge.checkSeed(this.root, 'structure')) as {
 			seeded: {date_seed?: string; source?: string}
 		}
 
-		const content = (await this.bridge.checkSeed('root')) as {
+		const content = (await this.bridge.checkSeed(this.root, 'root')) as {
 			seeded: {date_seed?: string; source?: string}
 		}
 
@@ -92,18 +101,23 @@ export default class AggregateDataLifecycle implements IAggregateDataLifecycle {
 		}
 
 		const base = (await this.bridge.seedBase({
+			root: this.root,
 			base: frontmatter.base,
 		})) as {
 			seeded: number
 		}
 
 		const structure = (await this.bridge.seedStructure({
+			root: this.root,
 			structures: frontmatter.structures,
 		})) as {
 			seeded: number
 		}
 
-		const docs = (await this.bridge.seedDocs({seed})) as {
+		const docs = (await this.bridge.seedDocs({
+			root: this.root,
+			seed,
+		})) as {
 			seeded: number
 		}
 
@@ -119,6 +133,7 @@ export default class AggregateDataLifecycle implements IAggregateDataLifecycle {
 		const {content, presets, base, structure} = JSON.parse(jsonString)
 
 		await this.bridge.restoreFromBackup({
+			root: this.root,
 			content,
 			presets,
 			base,
@@ -136,7 +151,9 @@ export default class AggregateDataLifecycle implements IAggregateDataLifecycle {
 		}
 
 		try {
-			await this.bridge.deleteAll()
+			await this.bridge.deleteAll({
+				root: this.root,
+			})
 			this.reset()
 		} catch (error) {
 			throw Error('Deleting content failed', {cause: error})
@@ -147,10 +164,10 @@ export default class AggregateDataLifecycle implements IAggregateDataLifecycle {
 		// Load returns stringified data (worker message boundary)
 		const [contentResult, presetsResult, baseResult, structureResult] =
 			await Promise.all([
-				getContentData(),
-				getPresetsData(),
-				getBaseData(),
-				getStructureData(),
+				getContentData(this.root),
+				getPresetsData(this.root),
+				getBaseData(this.root),
+				getStructureData(this.root),
 			])
 
 		// Parse to JSON here — at worker message boundary inwards
@@ -168,7 +185,7 @@ export default class AggregateDataLifecycle implements IAggregateDataLifecycle {
 
 	// TODO Export markdowns
 	async buildMarkdownForExport(): Promise<string> {
-		const contentResult = await getContentData()
+		const contentResult = await getContentData(this.root)
 		// Parse to JSON here — at worker message boundary inwards
 		// (we need objects to merge)
 		const content = contentResult.data

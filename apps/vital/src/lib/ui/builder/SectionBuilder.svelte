@@ -3,10 +3,9 @@
 		Slug,
 		DocLanguage,
 		Section,
-		ICoordinateDocs,
-		ActionDoc,
-		ActionResource,
-		ActionTransform,
+		NamespaceId,
+		CurrentCoordinators,
+		RouteNameFor,
 	} from '$types'
 
 	import {getContext, onMount} from 'svelte'
@@ -18,17 +17,22 @@
 	import FeedbackContent from '$lib/ui/FeedbackContent.svelte'
 	import Loading from '$lib/ui/Loading.svelte'
 	import {LOCALIZATIONS} from '$lib/intl/l10n'
+	import type {UiColor} from '@fat-fuzzy/ui'
 
-	let coordDocs: ICoordinateDocs = getContext('coordDocs')
+	const coordinators: CurrentCoordinators = getContext('currentCoordinators')
+
+	let coordDocs = $derived(coordinators.docs)
 
 	let {
 		cta = 'build',
+		color = 'neutral',
 		section,
 		selectedTags,
 		language = DOC_LANGUAGE,
 		format = DOC_FORMAT,
 	}: {
-		cta: ActionDoc | ActionResource | ActionTransform
+		cta: RouteNameFor<NamespaceId>
+		color?: UiColor
 		selectedTags: string[]
 		section: Section
 		language: DocLanguage
@@ -40,6 +44,7 @@
 	let missingIcon = 'emoji:idea justify:end'
 	let loading = $derived(coordDocs.isLoading())
 	let name = $derived(section.name)
+	let localized = $derived(LOCALIZATIONS[language])
 
 	let subsections = $derived(section?.subsections)
 	let content = $derived(section?.content)
@@ -100,9 +105,9 @@
 			<h2>
 				{section.title}
 			</h2>
-		{:else if LOCALIZATIONS[language][section.name]}
+		{:else if localized && localized[section.name]}
 			<h2>
-				{LOCALIZATIONS[language][section.name]}
+				{localized[section.name]}
 			</h2>
 		{/if}
 
@@ -141,8 +146,8 @@
 				{#if tagsFound.length}
 					{@const subsectionIcon = tagsFound.length === 0 ? missingIcon : ''}
 
-					{#if cta !== 'print' && subsections.length > 1}
-						<h3 class="raviolink shape:mellow maki:block surface:0:primary">
+					{#if cta !== 'preview' && subsections.length > 1}
+						<h3 class={`raviolink shape:mellow maki:block surface:0:${color}`}>
 							<span class={`${subsectionIcon} maki:inline:md font:heading`}>
 								{subsection.name}
 							</span>

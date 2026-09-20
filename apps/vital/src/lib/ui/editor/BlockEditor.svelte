@@ -6,8 +6,7 @@
 		DocLanguage,
 		Slug,
 		InputCheckedTypes,
-		ICoordinateDocs,
-		ICoordinateMetadata,
+		CurrentCoordinators,
 	} from '$types'
 
 	import {getContext} from 'svelte'
@@ -20,8 +19,10 @@
 
 	const {Editor} = prose.editor
 
-	let coordDocs: ICoordinateDocs = getContext('coordDocs')
-	let coordMetadata: ICoordinateMetadata = getContext('coordMetadata')
+	const coordinators: CurrentCoordinators = getContext('currentCoordinators')
+
+	let coordDocs = $derived(coordinators.docs)
+	let coordMetadata = $derived(coordinators.metadata)
 
 	let {
 		id,
@@ -162,7 +163,13 @@
 {/snippet}
 
 {#snippet deleteBlock()}
-	<DialogDeleteBlock id={`dialog-delete-block-${id}`} {block} {sectionName} />
+	<DialogDeleteBlock
+		id={`dialog-delete-block-${id}`}
+		{block}
+		{sectionName}
+		{coordDocs}
+		{coordMetadata}
+	/>
 {/snippet}
 
 {#if tags.length === 0 || displayBlock}

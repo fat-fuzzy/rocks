@@ -10,6 +10,7 @@ import type {
 	Block,
 	OPFSTreeDoc,
 	Rank,
+	NamespaceId,
 } from '$types'
 
 import {sanitizeFileName} from '$lib/common/sanitize'
@@ -26,6 +27,7 @@ import {
 	deleteEntryRecursive,
 	saveBlockToOPFS,
 	saveSectionToOPFS,
+	getRootHandle,
 } from '$lib/workers/storage/opfs-tools'
 
 /**
@@ -34,32 +36,39 @@ import {
  * @returns created language slug
  */
 export async function saveLanguage(options: {
+	root: NamespaceId
 	language: DocLanguage
 	sourceLanguage: DocLanguage
 	formats: Slug[]
 }): Promise<{data: {language: DocLanguage}}> {
-	const {language, sourceLanguage, formats} = options
+	const {root, language, sourceLanguage, formats} = options
 
-	for (const format of formats) {
-		await saveFormat({
-			format,
-			sourceFormat: formats[0], // TODO: test this
-			formats,
-			languages: [language],
-		})
-		const sourceDoc = await getContentDataForLanguage(sourceLanguage)
+	try {
+		for (const format of formats) {
+			await saveFormat({
+				root,
+				format,
+				sourceFormat: formats[0], // TODO: test this
+				formats,
+				languages: [language],
+			})
+			const sourceDoc = await getContentDataForLanguage(root, sourceLanguage)
 
-		await duplicateDocContent({
-			language,
-			format,
-			opfsContent: sourceDoc.data,
-		})
-	}
+			await duplicateDocContent({
+				root,
+				language,
+				format,
+				opfsContent: sourceDoc.data,
+			})
+		}
 
-	return {
-		data: {
-			language,
-		},
+		return {
+			data: {
+				language,
+			},
+		}
+	} catch (error) {
+		throw new Error('Save block failed', {cause: error})
 	}
 }
 
@@ -69,27 +78,37 @@ export async function saveLanguage(options: {
  * @returns created language slug
  */
 export async function saveFormat(options: {
+	root: NamespaceId
 	format: Slug
 	sourceFormat: Slug
 	formats: Slug[]
 	languages: DocLanguage[]
 }): Promise<{data: {format: Slug}}> {
-	const {format, sourceFormat, languages} = options
+	const {root, format, sourceFormat, languages} = options
 
-	for (const language of languages) {
-		const sourceDoc = await getContentDataForFormat(language, sourceFormat)
+	try {
+		for (const language of languages) {
+			const sourceDoc = await getContentDataForFormat(
+				root,
+				language,
+				sourceFormat,
+			)
 
-		await duplicateDocContent({
-			language,
-			format,
-			opfsContent: sourceDoc.data,
-		})
-	}
+			await duplicateDocContent({
+				root,
+				language,
+				format,
+				opfsContent: sourceDoc.data,
+			})
+		}
 
-	return {
-		data: {
-			format,
-		},
+		return {
+			data: {
+				format,
+			},
+		}
+	} catch (error) {
+		throw new Error('Save block failed', {cause: error})
 	}
 }
 
@@ -98,54 +117,60 @@ export async function saveFormat(options: {
  * @param options
  */
 async function duplicateDocContent(options: {
+	root: NamespaceId
 	language: DocLanguage
 	format: Slug
 	opfsContent: OPFSTreeDoc
 }) {
-	const {language, format, opfsContent} = options
+	const {root, language, format, opfsContent} = options
 
-	const targetParentHandle = await getDocsHandle({
-		language,
-		format,
-		create: true,
-	})
+	try {
+		const targetParentHandle = await getDocsHandle({
+			root,
+			language,
+			format,
+			create: true,
+		})
 
-	const docMeta = {
-		path: {filename: format, filetype: 'json'},
-		meta: {
+		const docMeta = {
+			path: {filename: format, filetype: 'json'},
+			meta: {
+				id: crypto.randomUUID(),
+				content_type: 'doc-root',
+				name: `${language}-${format}`,
+				label: `${language}-${format}`,
+			},
+		}
+		const docContent = {
 			id: crypto.randomUUID(),
 			content_type: 'doc-root',
 			name: `${language}-${format}`,
 			label: `${language}-${format}`,
-		},
-	}
-	const docContent = {
-		id: crypto.randomUUID(),
-		content_type: 'doc-root',
-		name: `${language}-${format}`,
-		label: `${language}-${format}`,
-	}
+		}
 
-	await saveEntry(targetParentHandle, docMeta, docContent)
+		await saveEntry(targetParentHandle, docMeta, docContent)
 
-	for (const sections of Object.values(opfsContent)) {
-		for (const sectionData of Object.values(sections)) {
-			let unsafeSection
-			if (isRawSection(sectionData)) {
-				unsafeSection = rawSectionToSection(sectionData)
-			}
+		for (const sections of Object.values(opfsContent)) {
+			for (const sectionData of Object.values(sections)) {
+				let unsafeSection
+				if (isRawSection(sectionData)) {
+					unsafeSection = rawSectionToSection(sectionData)
+				}
 
-			if (unsafeSection) {
-				unsafeSection.parentId = docMeta.meta.id
+				if (unsafeSection) {
+					unsafeSection.parentId = docMeta.meta.id
 
-				const section = parseSection(
-					`Section ${unsafeSection.name}`,
-					unsafeSection,
-				)
+					const section = parseSection(
+						`Section ${unsafeSection.name}`,
+						unsafeSection,
+					)
 
-				await saveSectionToOPFS(targetParentHandle, section, 'json')
+					await saveSectionToOPFS(targetParentHandle, section, 'json')
+				}
 			}
 		}
+	} catch (error) {
+		throw new Error('Save block failed', {cause: error})
 	}
 }
 
@@ -155,26 +180,31 @@ async function duplicateDocContent(options: {
  * @returns file contents
  */
 export async function loadFile(options: {
+	root: NamespaceId
 	meta: DocMeta
 	path: DocPath
 }): Promise<{data: OPFSTreeDoc}> {
-	const {meta, path} = options
+	const {root, meta, path} = options
 	const {language, format} = meta
 	const {filename, filetype, parent} = path
 
-	const parentHandle = await getDocsHandle({language, format, parent})
+	try {
+		const parentHandle = await getDocsHandle({root, language, format, parent})
 
-	let _filename = `${filename}.${filetype}`
+		let _filename = `${filename}.${filetype}`
 
-	// FIXME: handle filename error
-	_filename = sanitizeFileName(_filename)
+		// FIXME: handle filename error
+		_filename = sanitizeFileName(_filename)
 
-	const fh = await parentHandle.getFileHandle(_filename)
-	const file = await fh.getFile()
-	const serialized = await file.text()
+		const fh = await parentHandle.getFileHandle(_filename)
+		const file = await fh.getFile()
+		const serialized = await file.text()
 
-	return {
-		data: JSON.parse(serialized),
+		return {
+			data: JSON.parse(serialized),
+		}
+	} catch (error) {
+		throw new Error('Save block failed', {cause: error})
 	}
 }
 
@@ -184,30 +214,37 @@ export async function loadFile(options: {
  * @returns
  */
 export async function saveBlock(options: {
+	root: NamespaceId
 	language: DocLanguage
 	format: Slug
 	block: Block
 	path: DocPath
 }): Promise<{id: string}> {
-	const {language, format, block, path} = options
+	const {root, language, format, block, path} = options
 	const {filetype, parent} = path
 
-	const parentHandle = await getDocsHandle({
-		language,
-		format,
-		parent,
-		create: true,
-	})
+	try {
+		const parentHandle = await getDocsHandle({
+			root,
+			language,
+			format,
+			parent,
+			create: true,
+		})
 
-	const parsed = parseBlock(`Block ${block.name}`, block)
+		const parsed = parseBlock(`Block ${block.name}`, block)
 
-	const payload = await saveBlockToOPFS(parentHandle, parsed, filetype)
+		const payload = await saveBlockToOPFS(parentHandle, parsed, filetype)
 
-	// FIXME:  clean return type inconsistencies
-	return payload
+		// FIXME:  clean return type inconsistencies
+		return payload
+	} catch (error) {
+		throw new Error('Save block failed', {cause: error})
+	}
 }
 
 export async function createSection(options: {
+	root: NamespaceId
 	name: Slug
 	rank: Rank
 	formats: Slug[]
@@ -215,67 +252,78 @@ export async function createSection(options: {
 	updateRanks: Section[]
 	title?: string
 }) {
-	const {name, title, rank, formats, language, updateRanks} = options
+	const {root, name, title, rank, formats, language, updateRanks} = options
 
-	for (const format of formats) {
-		// 1. Gather parent data
-		const docHandle = await getDocsHandle({
-			language,
-			format,
-		})
-		const docRoot = 'content.json'
-		const fh = await docHandle.getFileHandle(docRoot, {
-			create: true,
-		})
-
-		const file = await fh.getFile()
-		const serialized = await file.text()
-
-		const docMeta = JSON.parse(serialized)
-
-		// 2. Create the section folder
-		const sectionId = crypto.randomUUID()
-
-		const section: Section = {
-			content_type: 'section',
-			id: sectionId,
-			name,
-			title,
-			rank,
-			parentId: docMeta.id,
-		}
-
-		const parsed = parseSection(`Section ${name}`, section)
-
-		await saveSection({language, format, section: parsed})
-	}
-	// 3. Update ranks of sections around, if necessary
-	for (let i = 0; i < updateRanks.length; i++) {
-		const toUpdate = updateRanks[i]
-		toUpdate.rank = toUpdate.rank + 1
-
+	try {
 		for (const format of formats) {
-			await saveSection({language, format, section: toUpdate})
-		}
-	}
+			// 1. Gather parent data
+			const docHandle = await getDocsHandle({
+				root,
+				language,
+				format,
+			})
+			const docRoot = 'content.json'
+			const fh = await docHandle.getFileHandle(docRoot, {
+				create: true,
+			})
 
-	return {name: options.name}
+			const file = await fh.getFile()
+			const serialized = await file.text()
+
+			const docMeta = JSON.parse(serialized)
+
+			// 2. Create the section folder
+			const sectionId = crypto.randomUUID()
+
+			const section: Section = {
+				content_type: 'section',
+				id: sectionId,
+				name,
+				title,
+				rank,
+				parentId: docMeta.id,
+			}
+
+			const parsed = parseSection(`Section ${name}`, section)
+
+			await saveSection({root, language, format, section: parsed})
+		}
+		// 3. Update ranks of sections around, if necessary
+		for (let i = 0; i < updateRanks.length; i++) {
+			const toUpdate = updateRanks[i]
+			toUpdate.rank = toUpdate.rank + 1
+
+			for (const format of formats) {
+				await saveSection({root, language, format, section: toUpdate})
+			}
+		}
+
+		return {name: options.name}
+	} catch (error) {
+		throw new Error('Create section failed', {cause: error})
+	}
 }
 
 export async function saveSection(options: {
+	root: NamespaceId
 	language: DocLanguage
 	format: Slug
 	section: Section
 }) {
-	const {language, format, section} = options
-	const opfsOptions = language && format ? {language, format} : {language}
+	const {root, language, format, section} = options
+	const opfsOptions =
+		language && format ? {root, language, format} : {root, language}
 
-	const directoryHandle = await getDocsHandle(opfsOptions)
-	const parsed = parseSection(`Section ${section.name}`, section)
+	try {
+		const directoryHandle = await getDocsHandle(opfsOptions)
+		const parsed = parseSection(`Section ${section.name}`, section)
 
-	const payload = await saveSectionToOPFS(directoryHandle, parsed, 'json')
+		const payload = await saveSectionToOPFS(directoryHandle, parsed, 'json')
 
-	return payload
+		return payload
+	} catch (error) {
+		throw new Error('Save section failed', {cause: error})
+	}
 }
 
 /**
@@ -285,21 +333,27 @@ export async function saveSection(options: {
  * @returns
  */
 export async function deleteContentFolder(options: {
+	root: NamespaceId
 	meta: DocMeta
 	path: DocPath
 }): Promise<{deleted: boolean}> {
-	const {path} = options
+	const {root, path} = options
 
-	const opfsRoot = await navigator.storage.getDirectory()
-	const parentHandle = await opfsRoot.getDirectoryHandle('content')
+	try {
+		const opfsRoot = await getRootHandle({name: root})
 
-	if (parentHandle) {
-		await deleteEntryRecursive(parentHandle, path)
-		await opfsRoot.removeEntry('content')
-	}
+		const parentHandle = await opfsRoot.getDirectoryHandle('content')
 
-	return {
-		deleted: true,
+		if (parentHandle) {
+			await deleteEntryRecursive(parentHandle, path)
+			await opfsRoot.removeEntry('content')
+		}
+
+		return {
+			deleted: true,
+		}
+	} catch (error) {
+		throw new Error('Delete content folder failed', {cause: error})
 	}
 }
 
@@ -310,32 +364,35 @@ export async function deleteContentFolder(options: {
  * @returns
  */
 export async function deleteContentFile(options: {
+	root: NamespaceId
 	meta: DocMeta
 	path: DocPath
 }): Promise<{deleted: boolean}> {
-	const {path} = options
+	const {root, path} = options
 
-	const opfsRoot = await navigator.storage.getDirectory()
-	const parentHandle = await opfsRoot.getDirectoryHandle('content')
+	try {
+		const opfsRoot = await getRootHandle({name: root})
+		const parentHandle = await opfsRoot.getDirectoryHandle('content')
 
-	if (parentHandle) {
-		await deleteEntry(parentHandle, path)
-		await opfsRoot.removeEntry('content')
-	}
-
-	// FIXME: handle delete error
-
-	return {
-		deleted: true,
+		if (parentHandle) {
+			await deleteEntry(parentHandle, path)
+			await opfsRoot.removeEntry('content')
+		}
+		return {
+			deleted: true,
+		}
+	} catch (error) {
+		throw new Error('Delete content file failed', {cause: error})
 	}
 }
 
-export async function getContentData(): Promise<{data: OPFSTreeDoc}> {
-	const opfsRoot = await navigator.storage.getDirectory()
-
+export async function getContentData(
+	root: NamespaceId,
+): Promise<{data: OPFSTreeDoc}> {
 	let parentHandle
 
 	try {
+		const opfsRoot = await getRootHandle({name: root})
 		parentHandle = await opfsRoot.getDirectoryHandle('content')
 
 		const data = await readDirectoryRecursive(parentHandle)
@@ -356,16 +413,16 @@ export async function getContentData(): Promise<{data: OPFSTreeDoc}> {
 }
 
 export async function getContentDataForLanguage(
+	root: NamespaceId,
 	language: DocLanguage,
 ): Promise<{
 	data: OPFSTreeDoc
 }> {
-	const opfsRoot = await navigator.storage.getDirectory()
-
 	let contentHandle
 	let parentHandle
 
 	try {
+		const opfsRoot = await getRootHandle({name: root})
 		contentHandle = await opfsRoot.getDirectoryHandle('content')
 		parentHandle = await contentHandle.getDirectoryHandle(language, {
 			create: true,
@@ -391,18 +448,18 @@ export async function getContentDataForLanguage(
 }
 
 export async function getContentDataForFormat(
+	root: NamespaceId,
 	language: DocLanguage,
 	format: Slug,
 ): Promise<{
 	data: OPFSTreeDoc
 }> {
-	const opfsRoot = await navigator.storage.getDirectory()
-
 	let contentHandle
 	let languageHandle
 	let formatHandle
 
 	try {
+		const opfsRoot = await getRootHandle({name: root})
 		contentHandle = await opfsRoot.getDirectoryHandle('content')
 		languageHandle = await contentHandle.getDirectoryHandle(language)
 		formatHandle = await languageHandle.getDirectoryHandle(format, {

@@ -2,6 +2,8 @@
 	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
 
+	import TextCircle from '$lib/ui/svg/TextCircle.svelte'
+
 	const {PageRails} = ui.content
 	const {Magic} = ui.blocks
 
@@ -29,6 +31,12 @@
 					</div>
 				</span>
 			</Magic>
+			<TextCircle
+				text=" GROWTH IN PROGRESS  "
+				element="h2"
+				asset="blend"
+				assetType="emoji"
+			/>
 		</div>
 	{/snippet}
 </PageRails>

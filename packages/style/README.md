@@ -25,3 +25,9 @@ Test [Lightning CSS](https://lightningcss.dev/docs.html#with-vite)
   - light:
     - oklch: `oklch(0.36 0.22 282.75)`
     - Hex: `#3C00A9`
+
+#### Vital
+
+- Backgroud:
+  - dark: oklch(25% 0.075 285.94)
+  - light: oklch(99% 0.1 285.94)

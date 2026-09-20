@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {UiColor, UiLayout, UiSize} from '@fat-fuzzy/ui'
-	import type {VitalPage, ICoordinatePresets, ICoordinateMetadata} from '$types'
+	import type {NamespaceId, CurrentCoordinators} from '$types'
 
 	import {getContext} from 'svelte'
 	import {page} from '$app/state'
@@ -11,8 +11,11 @@
 	import MenuSections from '$lib/ui/controls/section/MenuSections.svelte'
 	import MenuSettings from '$lib/ui/controls/settings/MenuSettings.svelte'
 
-	let coordPresets: ICoordinatePresets = getContext('coordPresets')
-	let coordMetadata: ICoordinateMetadata = getContext('coordMetadata')
+	const coordinators: CurrentCoordinators = getContext('currentCoordinators')
+
+	let coordPresets = $derived(coordinators.presets)
+	let coordMetadata = $derived(coordinators.metadata)
+	let coordImports = $derived(coordinators.imports)
 
 	let {
 		layout = 'switcher',
@@ -27,7 +30,7 @@
 		color?: UiColor
 		size?: UiSize
 		font?: UiSize
-		path: VitalPage
+		path: NamespaceId
 		actions: {[key: string]: string}
 		oninput: () => void
 	} = $props()
@@ -74,7 +77,7 @@
 	</nav>
 	<div class="l:flex:2xs w:full justify:between grow">
 		<div class="l:flex:2xs justify:between grow">
-			{#if cta === 'edit' || cta === 'build'}
+			{#if cta === 'edit' || cta === 'build' || cta === 'write' || cta === 'reflect'}
 				<MenuSections {oninput} {color} variant="outline" {size} {font} />
 			{/if}
 		</div>
@@ -82,7 +85,7 @@
 			{#if cta !== 'compare'}
 				<MenuSettings {oninput} {color} variant="outline" {size} {font} />
 			{/if}
-			<MenuData id="button-import" {color} {size} {font} />
+			<MenuData id="button-import" {color} {size} {font} {coordImports} />
 		</div>
 	</div>
 </div>

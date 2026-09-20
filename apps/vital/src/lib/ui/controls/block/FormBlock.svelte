@@ -8,11 +8,11 @@
 		Uuid,
 		ActionCrud,
 		InputCheckedTypes,
-		ICoordinateMetadata,
 		ICoordinateDocs,
+		ICoordinateMetadata,
 	} from '$types'
 
-	import {getContext, onDestroy, onMount} from 'svelte'
+	import {onDestroy, onMount} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
 
 	import {FormBlockValidator} from '$lib/common/validate'
@@ -29,11 +29,18 @@
 		subsections?: Subsection[]
 		cta: ActionCrud
 		color?: UiColor
+		coordDocs: ICoordinateDocs
+		coordMetadata: ICoordinateMetadata
 	}
-	let {block, parent, subsections, cta, color = 'primary'}: Props = $props()
-
-	let coordMetadata: ICoordinateMetadata = getContext('coordMetadata')
-	let coordDocs: ICoordinateDocs = getContext('coordDocs')
+	let {
+		coordDocs,
+		coordMetadata,
+		block,
+		parent,
+		subsections,
+		cta,
+		color = 'primary',
+	}: Props = $props()
 
 	const validator = new FormValidator(FormBlockValidator)
 

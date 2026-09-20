@@ -1,30 +1,38 @@
-import type {Slug, RouteName} from '$types'
+import type {Slug, NamespaceKey, AllowedParamName, Route} from '$types'
 
-import {ROUTES} from '$types'
-import {DOC_LANGUAGE, DOC_FORMAT} from '$config/setup'
+import {NAMESPACES} from '$types'
 import {sanitizeSlugValue, sanitizeLanguageValue} from '$lib/common/sanitize'
 
 export const MAX_PARAMS = 100
 
-export const RESERVED_PARAM_NAMES = getStaticAllowedParams(ROUTES)
+export const RESERVED_PARAM_NAMES = getStaticAllowedParams(NAMESPACES)
 
-function getStaticAllowedParams(routes: typeof ROUTES): Set<string> {
-	const entries = Object.entries(routes)
-	let params: string[] = []
+function getStaticAllowedParams(
+	namespaces: typeof NAMESPACES,
+): Set<AllowedParamName> {
+	const entries = Object.entries(namespaces)
+	let params: AllowedParamName[] = []
 
-	for (const entry of entries) {
-		params = params.concat(entry[1].allowedParams.map((p) => p.name))
+	for (const namespace of entries) {
+		const routes = namespace[1].children
+
+		for (const route of routes) {
+			params = params.concat(route.allowedParams.map((p) => p.name))
+		}
 	}
 	return new Set(params)
 }
 
 export function getAllowedParamsForRoute(
-	routeName: RouteName,
+	namespace: NamespaceKey,
 	url: URL,
-): {[key: string]: string} {
-	const allowedParams = ROUTES[routeName].allowedParams
+): {[key in AllowedParamName]?: string} {
+	const allowedParams =
+		NAMESPACES[namespace].children.find(
+			(route: Route) => route.id === url.pathname,
+		)?.allowedParams || []
 
-	const params: {[key: string]: string} = {}
+	const params: {[key in AllowedParamName]?: string} = {}
 
 	for (const {name, type} of allowedParams) {
 		const value =
@@ -33,10 +41,6 @@ export function getAllowedParamsForRoute(
 				: getSanitizedParamValue(url, name)
 		if (value) {
 			params[name] = value
-		} else if (name === 'language') {
-			params[name] = DOC_LANGUAGE
-		} else if (name === 'format') {
-			params[name] = DOC_FORMAT
 		}
 	}
 

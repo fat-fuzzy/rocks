@@ -5,6 +5,7 @@ import type {
 	DocLanguage,
 	DocMeta,
 	DocPath,
+	NamespaceId,
 	Prose,
 	Rank,
 	Section,
@@ -34,6 +35,7 @@ export interface DocIndex {
 }
 
 export interface IAggregateDocs {
+	readonly root: NamespaceId
 	readonly loading: boolean
 	readonly error: boolean
 	readonly content: DocStore

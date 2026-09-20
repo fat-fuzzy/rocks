@@ -50,7 +50,7 @@ export const cta: {[key: string]: NavItem} = {
 		label: 'Chlorophyll',
 		title: 'Chlorophyll',
 		layout: 'tram',
-		asset: 'white-flower openmoji',
+		asset: 'tree openmoji',
 		actionPath: '/chlorophyll',
 		color: 'accent' as UiColor,
 		items: [
@@ -76,14 +76,47 @@ export const cta: {[key: string]: NavItem} = {
 				actionPath: '/chlorophyll/compare',
 			},
 			{
-				slug: 'print',
-				title: 'Print',
-				label: 'Print',
+				slug: 'preview',
+				title: 'Preview',
+				label: 'Preview',
 				color: 'accent' as UiColor,
-				actionPath: '/chlorophyll/print',
+				actionPath: '/chlorophyll/preview',
 			},
 		],
 	},
+	pollen: {
+		slug: 'pollen',
+		label: 'Pollen',
+		title: 'Pollen',
+		layout: 'tram',
+		asset: 'white-flower openmoji',
+		actionPath: '/pollen',
+		color: 'info' as UiColor,
+		items: [
+			{
+				slug: 'write',
+				title: 'Write',
+				label: 'Write',
+				color: 'info' as UiColor,
+				actionPath: '/pollen/write',
+			},
+			{
+				slug: 'reflect',
+				title: 'Reflect',
+				label: 'Reflect',
+				color: 'info' as UiColor,
+				actionPath: '/pollen/reflect',
+			},
+			{
+				slug: 'explore',
+				title: 'Explore',
+				label: 'Explore',
+				color: 'info' as UiColor,
+				actionPath: '/pollen/explore',
+			},
+		],
+	},
+	// TODO: UPDATE on route changes
 }
 
 export const pages: {[key: string]: NavItem} = {
@@ -95,7 +128,7 @@ export const pages: {[key: string]: NavItem} = {
 		size: 'md',
 		assetType: 'svg',
 		actionPath: '/',
-		items: [cta.chlorophyll],
+		items: [cta.pollen, cta.chlorophyll], // TODO: UPDATE on route changes
 	},
 }
 

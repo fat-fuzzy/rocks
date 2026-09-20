@@ -14,6 +14,7 @@ import type {
 	DocContentType,
 	IAggregateDocs,
 	Subsection,
+	NamespaceId,
 } from '$types'
 
 import WorkerBridge from '$lib/workers/worker-bridge'
@@ -35,14 +36,16 @@ import {
  * Sends/receive messages via worker bridge
  */
 export default class AggregateDocs implements IAggregateDocs {
+	root: NamespaceId
 	bridge: WorkerBridge | undefined = $state()
 	loading = $state(false)
 	error = $state(false)
 	content: DocStore = $state({})
 	docIndex: DocIndex = $derived(buildDocIndex(this.content))
 
-	constructor() {
+	constructor(root: NamespaceId) {
 		this.loading = true
+		this.root = root
 	}
 
 	async init() {
@@ -77,7 +80,7 @@ export default class AggregateDocs implements IAggregateDocs {
 			return
 		}
 
-		const response = await this.bridge.getProse(options)
+		const response = await this.bridge.getProse({root: this.root, ...options})
 
 		return response as Prose
 	}
@@ -195,6 +198,7 @@ export default class AggregateDocs implements IAggregateDocs {
 		// Save Block to OPFS
 		// Block data is saved within the section file
 		await this.bridge.saveSection({
+			root: this.root,
 			language,
 			format,
 			section: $state.snapshot(section),
@@ -246,6 +250,7 @@ export default class AggregateDocs implements IAggregateDocs {
 		// Save to OPFS
 		// Block data is saved within the section file
 		await this.bridge.saveSection({
+			root: this.root,
 			language,
 			format,
 			section: $state.snapshot(sectionToUpdate),
@@ -292,6 +297,7 @@ export default class AggregateDocs implements IAggregateDocs {
 				if (sectionToUpdate) {
 					// Save Section to OPFS
 					await this.bridge.saveSection({
+						root: this.root,
 						language,
 						format,
 						section: $state.snapshot(sectionToUpdate),
@@ -517,7 +523,11 @@ export default class AggregateDocs implements IAggregateDocs {
 			return
 		}
 		const bridge = this.bridge
-		await Promise.all(options.map((data) => bridge.saveSection(data)))
+		const root = this.root
+
+		await Promise.all(
+			options.map((data) => bridge.saveSection({root, ...data})),
+		)
 		// Save Block to OPFS
 		// Block data is saved within the section file
 
@@ -544,6 +554,7 @@ export default class AggregateDocs implements IAggregateDocs {
 
 		for (const language of languages) {
 			await this.bridge.createSection({
+				root: this.root,
 				...options,
 				language,
 				updateRanks,
@@ -602,7 +613,7 @@ export default class AggregateDocs implements IAggregateDocs {
 		// 2 files are read:
 		// - content.json // Has Section shaped data FIXME: not always : se RawSection type
 		// - meta.json // Has DocMeta shaped data FIXME: not always : se RawSection type
-		const raw = (await this.bridge.getAllDocs()) as OPFSTreeDoc
+		const raw = (await this.bridge.getAllDocs({root: this.root})) as OPFSTreeDoc
 
 		this.content = opfsDocTreeToDocStore(raw)
 

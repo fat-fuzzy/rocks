@@ -2,7 +2,6 @@
 	import type {InputProps, UiColor, UiSurface} from '@fat-fuzzy/ui'
 	import type {ICoordinateImports} from '$types'
 
-	import {getContext} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
 	import {page} from '$app/state'
 
@@ -15,10 +14,9 @@
 	interface Props {
 		color?: UiColor
 		onsubmit?: () => void // hook for parent to refresh state
+		coordImports: ICoordinateImports
 	}
-	let {color = 'neutral', onsubmit}: Props = $props()
-
-	let coordImports: ICoordinateImports = getContext('coordImports')
+	let {color = 'neutral', onsubmit, coordImports}: Props = $props()
 
 	let errorMessage = $state('')
 	let fileInput: HTMLInputElement
@@ -63,7 +61,14 @@
 	}
 
 	async function deleteCurrentData() {
-		await coordImports.deleteAllContent()
+		try {
+			await coordImports.deleteAllContent()
+		} catch (error) {
+			errorMessage =
+				error instanceof Error && error.message
+					? error.message
+					: 'Delete content failed'
+		}
 	}
 
 	async function handleFileSelected(event: Event) {
@@ -255,9 +260,9 @@
 						{color}
 						shape="mellow"
 						variant="outline"
-						size="xs"
+						size="sm"
 						font="xs font:heading"
-						asset="herb openmoji:xs"
+						asset="herb openmoji:sm"
 						assetType="svg"
 						onclick={reSeed}
 						disabled={status !== 'ready'}

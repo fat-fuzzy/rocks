@@ -1,4 +1,4 @@
-import type {FrontmatterBase, FrontmatterStructure} from '$types'
+import type {FrontmatterBase, FrontmatterStructure, NamespaceId} from '$types'
 
 import {
 	saveEntry,
@@ -9,11 +9,11 @@ import {
 
 import {parseBase, parseStructure} from '$lib/common/transform/parse-or-throw'
 
-export async function getBaseData(): Promise<{
+export async function getBaseData(root: NamespaceId): Promise<{
 	content: FrontmatterBase
 	meta: {name: string}
 }> {
-	const parentHandle = await getBaseHandle({})
+	const parentHandle = await getBaseHandle({root})
 
 	const base = (await readDirectoryRecursive(parentHandle)) as unknown as {
 		content: FrontmatterBase
@@ -23,11 +23,11 @@ export async function getBaseData(): Promise<{
 	return base
 }
 
-export async function getStructureData(): Promise<{
+export async function getStructureData(root: NamespaceId): Promise<{
 	content: {structure: FrontmatterStructure[]}
 	meta: {name: string}
 }> {
-	const parentHandle = await getStructureHandle({})
+	const parentHandle = await getStructureHandle({root})
 
 	const data = (await readDirectoryRecursive(parentHandle)) as unknown as {
 		content: {
@@ -43,13 +43,16 @@ export async function getStructureData(): Promise<{
  * Save doc base to OPFS
  * @returns void
  */
-export async function saveBase(
-	base: FrontmatterBase,
-): Promise<FrontmatterBase | undefined> {
+export async function saveBase(options: {
+	root: NamespaceId
+	base: FrontmatterBase
+}): Promise<FrontmatterBase | undefined> {
+	const {root, base} = options
+
 	try {
 		const data = parseBase('Save Base', base)
 
-		const directoryHandle = await getBaseHandle({create: true})
+		const directoryHandle = await getBaseHandle({root, create: true})
 		await saveEntry(directoryHandle, {name: 'base'}, data)
 
 		return data
@@ -63,15 +66,17 @@ export async function saveBase(
  * @returns void
  */
 export async function saveStructure({
+	root,
 	structures,
 }: {
+	root: NamespaceId
 	structures: FrontmatterStructure[]
 }): Promise<FrontmatterStructure | undefined> {
 	for (const structure of structures) {
 		try {
 			const data = parseStructure('Save Structures', structure)
 
-			const directoryHandle = await getStructureHandle({create: true})
+			const directoryHandle = await getStructureHandle({root, create: true})
 			await saveEntry(directoryHandle, {name: 'structure'}, data)
 
 			return data

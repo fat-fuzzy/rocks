@@ -6,7 +6,7 @@
 		UiSize,
 		UiVariant,
 	} from '@fat-fuzzy/ui'
-	import type {Slug} from '$types'
+	import type {ICoordinateDocs, Slug} from '$types'
 
 	import ui from '@fat-fuzzy/ui'
 
@@ -27,6 +27,7 @@
 		shape?: UiShape
 		asset?: string
 		assetType?: UiAssetType
+		coordDocs: ICoordinateDocs
 	}
 	let {
 		id,
@@ -40,6 +41,7 @@
 		shape = 'mellow',
 		asset,
 		assetType,
+		coordDocs,
 	}: Props = $props()
 
 	let action = $derived(
@@ -69,7 +71,7 @@
 </script>
 
 {#snippet sectionForm()}
-	<FormSection {color} {cta} {formats} />
+	<FormSection {color} {cta} {formats} {coordDocs} />
 {/snippet}
 
 <!-- FIXME: add tooltip -->

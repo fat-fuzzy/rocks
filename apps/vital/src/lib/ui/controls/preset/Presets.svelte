@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {Preset, ICoordinatePresets, Slug} from '$types'
+	import type {Preset, CurrentCoordinators, Slug, RouteId} from '$types'
 
 	import {getContext} from 'svelte'
 	import {page} from '$app/state'
@@ -14,6 +14,7 @@
 
 	const {
 		id,
+		route,
 		title = 'Presets',
 		color = 'neutral',
 		headingLevel = 3,
@@ -23,19 +24,22 @@
 		oninput,
 	}: {
 		id: Slug
+		route: RouteId
 		title?: string
 		color?: UiColor
 		isSource?: boolean
 		isTarget?: boolean
 		headingLevel?: number
-		currentPreset: string | null
+		currentPreset?: string
 		oninput: (e: Event) => void
 	} = $props()
 
 	let cta = $derived(page.params.page)
 	let query = $derived(page.url.search)
 
-	let coordPresets: ICoordinatePresets = getContext('coordPresets')
+	const coordinators: CurrentCoordinators = getContext('currentCoordinators')
+
+	let coordPresets = $derived(coordinators.presets)
 
 	let presetIndex: Record<string, Preset> = $derived(coordPresets.loadPresets())
 	let presets = $derived(Object.values(presetIndex))
@@ -98,6 +102,7 @@
 						name: '',
 						query,
 					}}
+					{coordPresets}
 				/>
 			</div>
 		{/if}
@@ -126,13 +131,10 @@
 							<p class="font:heading font:semibold">To add a preset</p>
 							<ol class="maki:inline:lg">
 								<li>
-									<a href={resolve('/chlorophyll/edit')} class="font:sm">Edit</a
-									> some content
+									<a href={resolve(route)} class="font:sm">Edit</a> some content
 								</li>
 								<li>
-									<a href={resolve('/chlorophyll/build')} class="font:sm"
-										>Build</a
-									> the structure
+									<a href={resolve(route)} class="font:sm">Build</a> the structure
 								</li>
 								<li>Save it as a preset!</li>
 							</ol>
@@ -153,12 +155,12 @@
 							class={`raviolink shape:mellow l:flex justify:between ${isCurrent ? `surface:0:${color} chroma:1` : ''}`}
 						>
 							<a
-								href={resolve(`/chlorophyll/${cta}/${presetQuery}`)}
+								href={resolve(`${route}/${presetQuery}`)}
 								class="font:sm raviolink grow"
 							>
 								{preset.name}
 							</a>
-							{#if cta === 'edit' || cta === 'build' || cta !== 'print'}
+							{#if cta === 'edit' || cta === 'build' || cta !== 'preview'}
 								<div class="l:flex:4xs align:center justify:end hug">
 									{#if cta === 'edit' || cta === 'build'}
 										{#if isCurrent && !preset.locked}
@@ -209,6 +211,7 @@
 												name: preset.name,
 												query,
 											}}
+											{coordPresets}
 										/>
 									{/if}
 									{#if cta === 'edit' || cta === 'build'}
@@ -217,6 +220,7 @@
 											{preset}
 											size="2xs"
 											disabled={preset.locked || !preset.query}
+											{coordPresets}
 										/>
 										<Button
 											label={preset.locked ? 'Unlock Preset' : 'Lock Preset'}

@@ -19,6 +19,7 @@ import type {
 	SeedType,
 	FrontmatterStructure,
 	OPFSTreeStructure,
+	NamespaceId,
 } from '$types'
 
 import {
@@ -43,16 +44,20 @@ import {
 	getPresetsHandle,
 	saveSectionToOPFS,
 	saveEntry,
+	getRootHandle,
 } from '$lib/workers/storage/opfs-tools'
 
 import {savePreset} from '$lib/workers/storage/opfs'
 
-export async function isSeedComplete(
-	type: SeedType,
-): Promise<{seeded: number} | boolean> {
+export async function isSeedComplete(options: {
+	root: NamespaceId
+	type: SeedType
+}): Promise<{seeded: number} | boolean> {
+	const {root, type} = options
 	const flagName = `seed-${type}-complete.json`
-	const opfsRoot = await navigator.storage.getDirectory()
+
 	try {
+		const opfsRoot = await getRootHandle({name: root})
 		await opfsRoot.getFileHandle(flagName)
 		const fh = await opfsRoot.getFileHandle(flagName)
 
@@ -64,8 +69,8 @@ export async function isSeedComplete(
 	}
 }
 
-async function markSeedComplete(type: SeedType) {
-	const opfsRoot = await navigator.storage.getDirectory()
+async function markSeedComplete(root: NamespaceId, type: SeedType) {
+	const opfsRoot = await getRootHandle({name: root})
 
 	// Stringify here - OPFS write boundary
 	const serialized = JSON.stringify({
@@ -94,8 +99,15 @@ async function markSeedComplete(type: SeedType) {
  * Loads seed cv data from markdown content and saves it to OPFS
  * @returns void
  */
-export async function seedRoot(seed: SeedDoc[]): Promise<void> {
-	if (await isSeedComplete('root')) return
+export async function seedRoot(options: {
+	root: NamespaceId
+	seed: SeedDoc[]
+}): Promise<void> {
+	const {root, seed} = options
+
+	if (await isSeedComplete({root, type: 'root'})) {
+		return
+	}
 
 	try {
 		for (let i = 0; i < seed.length; i++) {
@@ -108,12 +120,13 @@ export async function seedRoot(seed: SeedDoc[]): Promise<void> {
 			const opfsOptions = language && format ? {language, format} : {language}
 
 			const directoryHandle = await getDocsHandle({
+				root,
 				...opfsOptions,
 				create: true,
 			})
 
 			// Create empty presets folder
-			await getPresetsHandle({create: true})
+			await getPresetsHandle({root, create: true})
 
 			for (const sectionData of sections) {
 				const section = parseSection(`Section ${sectionData.name}`, sectionData)
@@ -132,25 +145,32 @@ export async function seedRoot(seed: SeedDoc[]): Promise<void> {
 		throw new Error('Error seeding doc root')
 	}
 
-	await markSeedComplete('root')
+	await markSeedComplete(root, 'root')
 }
 
 /**
  * Loads seed cv base from markdown and saves it to OPFS
  * @returns void
  */
-export async function seedBase(base: FrontmatterBase): Promise<void> {
-	if (await isSeedComplete('base')) return
+export async function seedBase(options: {
+	root: NamespaceId
+	base: FrontmatterBase
+}): Promise<void> {
+	const {root, base} = options
+
+	if (await isSeedComplete({root, type: 'base'})) {
+		return
+	}
 
 	try {
 		const data = parseBase('OPFS Seed Base', base)
 
-		const directoryHandle = await getBaseHandle({create: true})
+		const directoryHandle = await getBaseHandle({root, create: true})
 		await saveEntry(directoryHandle, {name: 'base'}, data)
 	} catch (error) {
 		throw new Error('Error seeding doc base', {cause: error})
 	}
-	await markSeedComplete('base')
+	await markSeedComplete(root, 'base')
 }
 
 /**
@@ -158,13 +178,16 @@ export async function seedBase(base: FrontmatterBase): Promise<void> {
  * @returns void
  */
 export async function seedStructure(options: {
+	root: NamespaceId
 	structures: FrontmatterStructure[]
 }): Promise<void> {
-	if (await isSeedComplete('structure')) return
+	const {root, structures} = options
+
+	if (await isSeedComplete({root, type: 'structure'})) {
+		return
+	}
 
 	try {
-		const {structures} = options
-
 		const toSeed = []
 
 		for (const structure of structures) {
@@ -172,28 +195,32 @@ export async function seedStructure(options: {
 			toSeed.push(data)
 		}
 
-		const directoryHandle = await getStructureHandle({create: true})
+		const directoryHandle = await getStructureHandle({root, create: true})
 		await saveEntry(directoryHandle, {name: 'structure'}, {structure: toSeed})
 	} catch (error) {
 		throw new Error('Error seeding doc structure', {cause: error})
 	}
 
-	await markSeedComplete('structure')
+	await markSeedComplete(root, 'structure')
 }
 
 export async function restoreFromBackup(options: {
+	root: NamespaceId
 	content: OPFSTreeDoc
 	presets: OPFSTreePreset
 	base: OPFSTreeBase
 	structure: OPFSTreeStructure
 }): Promise<void> {
+	const {root, base} = options
 	try {
-		await seedBase(options.base.content)
+		await seedBase({root, base: base.content})
 
 		// FIXME: this is incomplete
-		await seedStructure({structures: options.structure.content.structure})
+		await seedStructure({root, structures: options.structure.content.structure})
 
-		if (await isSeedComplete('root')) return
+		if (await isSeedComplete({root, type: 'root'})) {
+			return
+		}
 
 		for (const [language, languageTree] of Object.entries(options.content)) {
 			if (!isRecord(languageTree)) continue
@@ -202,6 +229,7 @@ export async function restoreFromBackup(options: {
 				if (!isRecord(formatContent)) continue
 
 				const directoryHandle = await getDocsHandle({
+					root,
 					language,
 					format,
 					create: true,
@@ -248,7 +276,7 @@ export async function restoreFromBackup(options: {
 			}
 		}
 
-		await getPresetsHandle({create: true})
+		await getPresetsHandle({root, create: true})
 
 		for (const [presetName, rawPreset] of Object.entries(options.presets)) {
 			if (!isRecord(rawPreset)) continue
@@ -257,6 +285,7 @@ export async function restoreFromBackup(options: {
 				const {content} = rawPreset
 
 				await savePreset({
+					root,
 					meta: {
 						id: content.id,
 						content_type: 'preset',
@@ -274,5 +303,5 @@ export async function restoreFromBackup(options: {
 	} catch (error) {
 		throw new Error('Error restoring from backup', {cause: error})
 	}
-	await markSeedComplete('root')
+	await markSeedComplete(root, 'root')
 }

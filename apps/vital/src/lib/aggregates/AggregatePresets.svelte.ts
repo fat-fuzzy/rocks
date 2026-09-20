@@ -7,6 +7,7 @@ import type {
 	PresetIndex,
 	OPFSTreePreset,
 	IAggregatePresets,
+	NamespaceId,
 } from '$types'
 
 import WorkerBridge from '$lib/workers/worker-bridge'
@@ -24,6 +25,7 @@ import {buildPresetIndex} from '$lib/common/transform/store-to-index'
  * Sends/receive messages via worker bridge
  */
 export default class AggregatePresets implements IAggregatePresets {
+	root: NamespaceId
 	bridge: WorkerBridge | undefined = $state()
 	seeded: {date_seed?: string; source?: string} = $state({})
 	loading = $state(false)
@@ -31,8 +33,9 @@ export default class AggregatePresets implements IAggregatePresets {
 	presets: PresetStore = $state({})
 	presetIndex: PresetIndex = $derived(buildPresetIndex(this.presets))
 
-	constructor() {
+	constructor(root: NamespaceId) {
 		this.loading = true
+		this.root = root
 	}
 
 	async init() {
@@ -86,6 +89,7 @@ export default class AggregatePresets implements IAggregatePresets {
 		const toUpdate: Preset = {...preset, id: preset.id ?? crypto.randomUUID()}
 
 		await this.bridge.savePreset({
+			root: this.root,
 			path,
 			meta,
 			preset: toUpdate,
@@ -109,7 +113,10 @@ export default class AggregatePresets implements IAggregatePresets {
 			return
 		}
 
-		const raw = (await this.bridge.deletePreset(options)) as {deleted: boolean}
+		const raw = (await this.bridge.deletePreset({
+			root: this.root,
+			...options,
+		})) as {deleted: boolean}
 
 		if (raw.deleted) {
 			delete this.presets[options.meta.name]
@@ -129,7 +136,9 @@ export default class AggregatePresets implements IAggregatePresets {
 			return
 		}
 
-		const raw = (await this.bridge.getAllPresets()) as OPFSTreePreset
+		const raw = (await this.bridge.getAllPresets({
+			root: this.root,
+		})) as OPFSTreePreset
 		this.presets = opfsPresetTreeToPresetStore(raw)
 	}
 
@@ -161,6 +170,7 @@ export default class AggregatePresets implements IAggregatePresets {
 		toUpdate.locked = !toUpdate.locked
 
 		await this.bridge.savePreset({
+			root: this.root,
 			path,
 			meta,
 			preset: toUpdate,

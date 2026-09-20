@@ -2,11 +2,19 @@
  * OPFS Operations
  */
 
-import type {FileExt, DocPath, Section, Block, SeedType} from '$types'
+import type {
+	FileExt,
+	DocPath,
+	Section,
+	Block,
+	SeedType,
+	NamespaceId,
+} from '$types'
 
 import {sanitizeFileName} from '$lib/common/sanitize'
 
 const SEED_TYPES: SeedType[] = ['structure', 'root', 'base']
+// const OPFS_ROOT_FOLDERS: string[] = ['chlorophyll', 'pollen']
 
 export const OPFS_FOLDERS: {[key in SeedType]: string[]} = {
 	root: ['content', 'presets', 'base', 'structure'],
@@ -19,14 +27,31 @@ export const OPFS_FOLDERS: {[key in SeedType]: string[]} = {
  * @param filename
  * @returns file contents
  */
+export async function getRootHandle(options: {name: string; create?: boolean}) {
+	const {name, create} = options
+	const opfsRoot = await navigator.storage.getDirectory()
+
+	const rootHandle = await opfsRoot.getDirectoryHandle(name, {
+		create,
+	})
+	return rootHandle
+}
+
+/**
+ * Get the deepest nested folder handle for given doc
+ * @param filename
+ * @returns file contents
+ */
 export async function getDocsHandle(options: {
+	root: NamespaceId
 	language?: string
 	format?: string
 	parent?: string
 	create?: boolean
 }) {
-	const {language, format, parent, create} = options
-	const opfsRoot = await navigator.storage.getDirectory()
+	const {root, language, format, parent, create} = options
+
+	const opfsRoot = await getRootHandle({name: root, create})
 	const contentHandle = await opfsRoot.getDirectoryHandle('content', {
 		create,
 	})
@@ -78,11 +103,13 @@ export async function getDocsHandle(options: {
  * @returns file contents
  */
 export async function getBaseHandle(options: {
+	root: NamespaceId
 	parent?: string
 	create?: boolean
 }) {
-	const {parent, create} = options
-	const opfsRoot = await navigator.storage.getDirectory()
+	const {root, parent, create} = options
+
+	const opfsRoot = await getRootHandle({name: root, create})
 	const contentHandle = await opfsRoot.getDirectoryHandle('base', {
 		create,
 	})
@@ -108,11 +135,13 @@ export async function getBaseHandle(options: {
  * @returns file contents
  */
 export async function getStructureHandle(options: {
+	root: NamespaceId
 	parent?: string
 	create?: boolean
 }) {
-	const {parent, create} = options
-	const opfsRoot = await navigator.storage.getDirectory()
+	const {root, parent, create} = options
+
+	const opfsRoot = await getRootHandle({name: root, create})
 	const contentHandle = await opfsRoot.getDirectoryHandle('structure', {
 		create,
 	})
@@ -138,11 +167,13 @@ export async function getStructureHandle(options: {
  * @returns file contents
  */
 export async function getPresetsHandle(options: {
+	root: NamespaceId
 	parent?: string
 	create?: boolean
 }) {
-	const {parent, create} = options
-	const opfsRoot = await navigator.storage.getDirectory()
+	const {root, parent, create} = options
+
+	const opfsRoot = await getRootHandle({name: root, create})
 	const contentHandle = await opfsRoot.getDirectoryHandle('presets', {
 		create,
 	})
@@ -476,12 +507,32 @@ export async function deleteDirectoryRecursive(
 	return result
 }
 
-export async function deleteAllContent(): Promise<{
+export async function deleteAllContent(root: NamespaceId): Promise<{
 	status: string
 	errors: string[]
 }> {
-	const opfsRoot = await navigator.storage.getDirectory()
-	const errors = []
+	const errors: string[] = []
+
+	let opfsRoot
+	try {
+		opfsRoot = await getRootHandle({name: root})
+	} catch {
+		try {
+			opfsRoot = await navigator.storage.getDirectory()
+		} catch (error) {
+			// NotFoundError is fine — nothing to clear
+			const notFound = String(error).startsWith('NotFoundError:')
+			if (!notFound) throw new Error('Recursive delete failed', {cause: error})
+		}
+	}
+
+	if (!opfsRoot) {
+		return {
+			status: 'ok',
+			errors,
+		}
+	}
+
 	for (const name of SEED_TYPES) {
 		try {
 			const flagName = `seed-${name}-complete.json`

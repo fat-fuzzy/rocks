@@ -30,9 +30,24 @@ import fs from 'fs'
 /** @type {Record<string, BuiltInDescriptor>} */
 const BUILT_INS = {
 	Form: {
-		load: async () => (await import('../in/ajv.schemas.js')).default.FormSchema,
+		load: async () => (await import('../in/ajv.schemas.js')).FormSchema,
 		exportName: 'FormValidationFunction',
 		$id: '#/definitions/FormSchema',
+	},
+	Namespace: {
+		load: async () => (await import('../in/ajv.schemas.js')).NamespaceSchema,
+		exportName: 'NamespaceValidationFunction',
+		$id: '#/definitions/NamespaceSchema',
+	},
+	Route: {
+		load: async () => (await import('../in/ajv.schemas.js')).RouteSchema,
+		exportName: 'RouteValidationFunction',
+		$id: '#/definitions/RouteSchema',
+	},
+	RouteParam: {
+		load: async () => (await import('../in/ajv.schemas.js')).RouteParamSchema,
+		exportName: 'RouteParamValidationFunction',
+		$id: '#/definitions/RouteParamSchema',
 	},
 }
 
