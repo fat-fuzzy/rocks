@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {Preset} from '$types'
+	import type {ICoordinatePresets, Preset} from '$types'
 	import type {UiColor, UiShape, UiSize, UiVariant} from '@fat-fuzzy/ui'
 
 	import ui from '@fat-fuzzy/ui'
@@ -19,6 +19,7 @@
 		variant?: UiVariant
 		shape?: UiShape
 		disabled?: boolean
+		coordPresets?: ICoordinatePresets
 	}
 	let {
 		id,
@@ -29,6 +30,7 @@
 		variant = 'bare',
 		shape = 'round',
 		disabled,
+		coordPresets,
 	}: Props = $props()
 
 	function showDialog() {
@@ -46,7 +48,7 @@
 </script>
 
 {#snippet presetForm()}
-	<FormPreset cta="delete" {preset} {color} />
+	<FormPreset cta="delete" {preset} {color} {coordPresets} />
 {/snippet}
 
 <!-- FIXME: add tooltip -->

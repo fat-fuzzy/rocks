@@ -2,7 +2,6 @@
 	import type {UiColor, UiVariant, InputProps} from '@fat-fuzzy/ui'
 	import type {ICoordinateMetadata} from '$types'
 
-	import {getContext} from 'svelte'
 	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
 
@@ -16,13 +15,13 @@
 		color = 'primary',
 		variant = 'bare',
 		oninput,
+		coordMetadata,
 	}: {
 		color?: UiColor
 		variant?: UiVariant
 		oninput: (e: Event) => void
+		coordMetadata: ICoordinateMetadata
 	} = $props()
-
-	let coordMetadata: ICoordinateMetadata = getContext('coordMetadata')
 
 	let cta = $derived(page.params.page)
 	let baseLanguages = $derived(coordMetadata.getLanguages())
@@ -46,7 +45,10 @@
 	// @ts-expect-error FIXME: add validator
 	let formatItems: InputProps[] = $derived(deriveInputs(baseFormats, 'format'))
 
-	function deriveInputs(base: string[], type: string): Partial<InputProps>[] {
+	function deriveInputs(
+		base: string[],
+		type: string,
+	): Partial<InputProps<string>>[] {
 		return base.map((i: string) => {
 			let selected = checkSelected(type, i)
 			return {
@@ -89,6 +91,7 @@
 			assetType="svg"
 			cta="save"
 			{color}
+			{coordMetadata}
 		/>
 	{/if}
 </div>
@@ -114,6 +117,7 @@
 			assetType="svg"
 			cta="save"
 			{color}
+			{coordMetadata}
 		/>
 	{/if}
 </div>
