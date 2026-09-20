@@ -2,7 +2,14 @@
  * OPFS Operations
  */
 
-import type {FileExt, DocPath, Section, Block, SeedType} from '$types'
+import type {
+	FileExt,
+	DocPath,
+	Section,
+	Block,
+	SeedType,
+	NamespaceId,
+} from '$types'
 
 import {sanitizeFileName} from '$lib/common/sanitize'
 
@@ -24,13 +31,10 @@ export async function getRootHandle(options: {name: string; create?: boolean}) {
 	const {name, create} = options
 	const opfsRoot = await navigator.storage.getDirectory()
 
-	const docsHandle = await opfsRoot.getDirectoryHandle(name, {
+	const rootHandle = await opfsRoot.getDirectoryHandle(name, {
 		create,
 	})
-	const contentHandle = await docsHandle.getDirectoryHandle('content', {
-		create,
-	})
-	return contentHandle
+	return rootHandle
 }
 
 /**
@@ -39,7 +43,7 @@ export async function getRootHandle(options: {name: string; create?: boolean}) {
  * @returns file contents
  */
 export async function getDocsHandle(options: {
-	root: string
+	root: NamespaceId
 	language?: string
 	format?: string
 	parent?: string
@@ -99,7 +103,7 @@ export async function getDocsHandle(options: {
  * @returns file contents
  */
 export async function getBaseHandle(options: {
-	root: string
+	root: NamespaceId
 	parent?: string
 	create?: boolean
 }) {
@@ -131,7 +135,7 @@ export async function getBaseHandle(options: {
  * @returns file contents
  */
 export async function getStructureHandle(options: {
-	root: string
+	root: NamespaceId
 	parent?: string
 	create?: boolean
 }) {
@@ -163,7 +167,7 @@ export async function getStructureHandle(options: {
  * @returns file contents
  */
 export async function getPresetsHandle(options: {
-	root: string
+	root: NamespaceId
 	parent?: string
 	create?: boolean
 }) {
@@ -503,7 +507,7 @@ export async function deleteDirectoryRecursive(
 	return result
 }
 
-export async function deleteAllContent(root: string): Promise<{
+export async function deleteAllContent(root: NamespaceId): Promise<{
 	status: string
 	errors: string[]
 }> {

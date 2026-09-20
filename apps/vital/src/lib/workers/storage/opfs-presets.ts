@@ -4,6 +4,7 @@
 import type {
 	DocMeta,
 	DocPath,
+	NamespaceId,
 	OPFSTreeDoc,
 	OPFSTreePreset,
 	Preset,
@@ -19,7 +20,7 @@ import {
 } from '$lib/workers/storage/opfs-tools'
 
 export async function loadPreset(options: {
-	root: string
+	root: NamespaceId
 	meta: DocMeta
 	path: DocPath
 }): Promise<{data: OPFSTreeDoc}> {
@@ -42,7 +43,7 @@ export async function loadPreset(options: {
 }
 
 export async function getPresetsData(
-	root: string,
+	root: NamespaceId,
 ): Promise<{data: OPFSTreePreset}> {
 	const opfsRoot = await getRootHandle({name: root})
 
@@ -75,7 +76,7 @@ export async function getPresetsData(
  * @returns
  */
 export async function savePreset(options: {
-	root: string
+	root: NamespaceId
 	meta: DocMeta
 	path: DocPath
 	preset: Preset
@@ -129,7 +130,7 @@ export async function savePreset(options: {
  * @returns
  */
 export async function deletePreset(options: {
-	root: string
+	root: NamespaceId
 	meta: DocMeta
 	path: DocPath
 }): Promise<{deleted: boolean}> {
@@ -163,7 +164,7 @@ export async function deletePreset(options: {
  * @returns
  */
 export async function deletePresetRoot(options: {
-	root: string
+	root: NamespaceId
 	meta: DocMeta
 	path: DocPath
 }): Promise<{deleted: boolean}> {

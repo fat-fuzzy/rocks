@@ -10,6 +10,7 @@ import type {
 	Block,
 	OPFSTreeDoc,
 	Rank,
+	NamespaceId,
 } from '$types'
 
 import {sanitizeFileName} from '$lib/common/sanitize'
@@ -35,7 +36,7 @@ import {
  * @returns created language slug
  */
 export async function saveLanguage(options: {
-	root: string
+	root: NamespaceId
 	language: DocLanguage
 	sourceLanguage: DocLanguage
 	formats: Slug[]
@@ -73,7 +74,7 @@ export async function saveLanguage(options: {
  * @returns created language slug
  */
 export async function saveFormat(options: {
-	root: string
+	root: NamespaceId
 	format: Slug
 	sourceFormat: Slug
 	formats: Slug[]
@@ -108,7 +109,7 @@ export async function saveFormat(options: {
  * @param options
  */
 async function duplicateDocContent(options: {
-	root: string
+	root: NamespaceId
 	language: DocLanguage
 	format: Slug
 	opfsContent: OPFSTreeDoc
@@ -167,7 +168,7 @@ async function duplicateDocContent(options: {
  * @returns file contents
  */
 export async function loadFile(options: {
-	root: string
+	root: NamespaceId
 	meta: DocMeta
 	path: DocPath
 }): Promise<{data: OPFSTreeDoc}> {
@@ -197,7 +198,7 @@ export async function loadFile(options: {
  * @returns
  */
 export async function saveBlock(options: {
-	root: string
+	root: NamespaceId
 	language: DocLanguage
 	format: Slug
 	block: Block
@@ -223,7 +224,7 @@ export async function saveBlock(options: {
 }
 
 export async function createSection(options: {
-	root: string
+	root: NamespaceId
 	name: Slug
 	rank: Rank
 	formats: Slug[]
@@ -280,7 +281,7 @@ export async function createSection(options: {
 }
 
 export async function saveSection(options: {
-	root: string
+	root: NamespaceId
 	language: DocLanguage
 	format: Slug
 	section: Section
@@ -304,7 +305,7 @@ export async function saveSection(options: {
  * @returns
  */
 export async function deleteContentFolder(options: {
-	root: string
+	root: NamespaceId
 	meta: DocMeta
 	path: DocPath
 }): Promise<{deleted: boolean}> {
@@ -331,7 +332,7 @@ export async function deleteContentFolder(options: {
  * @returns
  */
 export async function deleteContentFile(options: {
-	root: string
+	root: NamespaceId
 	meta: DocMeta
 	path: DocPath
 }): Promise<{deleted: boolean}> {
@@ -353,7 +354,7 @@ export async function deleteContentFile(options: {
 }
 
 export async function getContentData(
-	root: string,
+	root: NamespaceId,
 ): Promise<{data: OPFSTreeDoc}> {
 	const opfsRoot = await getRootHandle({name: root})
 
@@ -380,7 +381,7 @@ export async function getContentData(
 }
 
 export async function getContentDataForLanguage(
-	root: string,
+	root: NamespaceId,
 	language: DocLanguage,
 ): Promise<{
 	data: OPFSTreeDoc
@@ -416,7 +417,7 @@ export async function getContentDataForLanguage(
 }
 
 export async function getContentDataForFormat(
-	root: string,
+	root: NamespaceId,
 	language: DocLanguage,
 	format: Slug,
 ): Promise<{
