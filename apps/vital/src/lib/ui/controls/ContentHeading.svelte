@@ -21,6 +21,7 @@
 		color = 'neutral',
 		size = '2xs',
 		font = '2xs',
+		canEdit,
 	}: {
 		cta: RouteNameFor<NamespaceId>
 		preset?: string
@@ -29,6 +30,10 @@
 		color?: UiColor
 		size?: UiSize
 		font?: UiSize
+		canEdit?: {
+			presets?: boolean
+			doc?: boolean
+		}
 	} = $props()
 
 	const coordinators: CurrentCoordinators = getContext('currentCoordinators')
@@ -70,11 +75,7 @@
 <div class="w:full noprint">
 	<div class={`l:flex grow justify:${currentPreset ? 'between' : 'end'}`}>
 		{#if currentPreset}
-			{#if cta === 'preview'}
-				<h2>
-					Target {currentPreset.locked ? ' (Locked)' : ''}
-				</h2>
-			{:else if cta !== 'explore'}
+			{#if coordPresets.targetPreset}
 				<h2>
 					Target:
 					{currentPreset.name}
@@ -82,7 +83,7 @@
 				</h2>
 			{/if}
 			<div class="ui-controls l:flex justify:end maki:block">
-				{#if cta === 'edit' || cta === 'write' || cta === 'analyze'}
+				{#if canEdit?.doc}
 					<DialogSaveSection
 						id="add-section"
 						label="New Section"
@@ -97,7 +98,7 @@
 						{coordDocs}
 					/>
 				{/if}
-				{#if cta === 'edit' || cta === 'write' || cta === 'reflect' || cta === 'build' || cta === 'analyze' || cta === 'engage'}
+				{#if canEdit?.presets}
 					<Button
 						label="Save Preset"
 						type="button"
@@ -120,25 +121,23 @@
 					/>
 				{/if}
 			</div>
-		{:else}
+		{:else if canEdit?.doc}
 			<h2>New Doc</h2>
-			{#if cta === 'edit' || cta === 'write'}
-				<div class="ui-controls maki:block">
-					<DialogSaveSection
-						id="add-section"
-						label="New Section"
-						cta="save"
-						{formats}
-						{size}
-						{font}
-						{color}
-						variant="outline"
-						asset="plus"
-						assetType="svg"
-						{coordDocs}
-					/>
-				</div>
-			{/if}
+			<div class="ui-controls maki:block">
+				<DialogSaveSection
+					id="add-section"
+					label="New Section"
+					cta="save"
+					{formats}
+					{size}
+					{font}
+					{color}
+					variant="outline"
+					asset="plus"
+					assetType="svg"
+					{coordDocs}
+				/>
+			</div>
 		{/if}
 	</div>
 </div>

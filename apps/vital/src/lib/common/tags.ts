@@ -1,4 +1,11 @@
-import type {ActionCrud, InputCheckedTypes, Slug, TagGroup, Uuid} from '$types'
+import type {
+	ActionCrud,
+	AllowedParamName,
+	InputCheckedTypes,
+	Slug,
+	TagGroup,
+	Uuid,
+} from '$types'
 
 import {sanitizeSlugValue, sanitizeUuidValue} from '$lib/common/sanitize'
 import {RESERVED_PARAM_NAMES} from '$lib/common/url'
@@ -7,7 +14,7 @@ import {RESERVED_PARAM_NAMES} from '$lib/common/url'
  * Tag (InputGroup) Utilities
  ******************************/
 
-export function validateTagGroupName(name: string): boolean {
+export function validateTagGroupName(name: AllowedParamName): boolean {
 	return sanitizeSlugValue(name) !== null && !RESERVED_PARAM_NAMES.has(name)
 }
 

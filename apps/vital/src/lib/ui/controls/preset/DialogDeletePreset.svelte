@@ -4,6 +4,7 @@
 
 	import ui from '@fat-fuzzy/ui'
 
+	import {NAMESPACE_TO_PRESET_LABEL} from '$lib/intl/l10n'
 	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
 
 	import FormPreset from '$lib/ui/controls/preset/FormPreset.svelte'
@@ -19,12 +20,12 @@
 		variant?: UiVariant
 		shape?: UiShape
 		disabled?: boolean
-		coordPresets?: ICoordinatePresets
+		coordPresets: ICoordinatePresets
 	}
 	let {
 		id,
 		preset,
-		label = 'Delete preset',
+		label = 'Delete',
 		size = '2xs',
 		color = 'neutral',
 		variant = 'bare',
@@ -38,7 +39,7 @@
 			modal: false,
 			size: 'sm',
 			color,
-			label: 'Delete Preset',
+			label: `${label} ${NAMESPACE_TO_PRESET_LABEL[coordPresets.aggPresets.root]}`,
 			position: 'nord-est',
 			children: presetForm,
 		})

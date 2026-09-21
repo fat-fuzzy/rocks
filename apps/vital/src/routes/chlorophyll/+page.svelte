@@ -3,8 +3,9 @@
 	import ui from '@fat-fuzzy/ui'
 
 	import {DOC_LANGUAGE} from '$config/setup'
-	import {getPrefix} from '$lib/intl/l10n'
 	import PageChlorophyll from './PageChlorophyll.svelte'
+
+	import {getPrefixForRoute} from '$lib/common/routing'
 
 	const {PageRails} = ui.content
 
@@ -14,7 +15,7 @@
 
 	let language = $derived(DOC_LANGUAGE)
 	let title = $derived('Chlorophyll')
-	let prefix = $derived(`${getPrefix(language)} ${title}`)
+	let prefix = $derived(`${getPrefixForRoute(language)} ${title}`)
 </script>
 
 <PageRails

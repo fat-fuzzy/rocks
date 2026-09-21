@@ -1,6 +1,11 @@
 <script lang="ts">
 	import type {UiColor, UiLayout, UiSize} from '@fat-fuzzy/ui'
-	import type {NamespaceId, CurrentCoordinators} from '$types'
+	import type {
+		NamespaceId,
+		CurrentCoordinators,
+		NamespaceKey,
+		LabelsForRoutes,
+	} from '$types'
 
 	import {getContext} from 'svelte'
 	import {page} from '$app/state'
@@ -25,17 +30,25 @@
 		path,
 		actions,
 		oninput,
+		canEdit,
 	}: {
 		layout?: UiLayout
 		color?: UiColor
 		size?: UiSize
 		font?: UiSize
 		path: NamespaceId
-		actions: {[key: string]: string}
+		actions: LabelsForRoutes<NamespaceKey>
 		oninput: () => void
+		canEdit?: {
+			presets?: boolean
+			doc?: boolean
+		}
 	} = $props()
 
 	let cta = $derived(page.params.page)
+	let isTwinDoc = $derived(
+		coordPresets.targetPreset || coordPresets.sourcePreset,
+	)
 	let preset = $derived(getSanitizedParamValue(page.url, 'preset'))
 	let query = $derived(
 		buildForwardedQuery(
@@ -63,7 +76,8 @@
 						href={resolve(`/${path}/${key}${presetQuery}`)}
 						class={linkStyles}
 						onclick={() => {
-							if (cta !== 'compare') {
+							if (!isTwinDoc) {
+								// Unset source & target presets
 								coordPresets.setSourcePreset()
 								coordPresets.setTargetPreset()
 							}
@@ -77,12 +91,12 @@
 	</nav>
 	<div class="l:flex:2xs w:full justify:between grow">
 		<div class="l:flex:2xs justify:between grow">
-			{#if cta === 'edit' || cta === 'build' || cta === 'write' || cta === 'reflect'}
+			{#if canEdit?.doc}
 				<MenuSections {oninput} {color} variant="outline" {size} {font} />
 			{/if}
 		</div>
 		<div class="l:flex:2xs justify:between hug">
-			{#if cta !== 'compare'}
+			{#if !isTwinDoc}
 				<MenuSettings {oninput} {color} variant="outline" {size} {font} />
 			{/if}
 			<MenuData id="button-import" {color} {size} {font} {coordImports} />
