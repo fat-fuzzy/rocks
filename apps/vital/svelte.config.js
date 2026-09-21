@@ -51,7 +51,7 @@ const config = {
 				'default-src': ["'self'"],
 				'style-src': ["'self'", 'data:'],
 				'style-src-elem': ["'self'"],
-				'style-src-attr': ["'self'"],
+				'style-src-attr': ["'unsafe-inline'"], // FIXME
 				'base-uri': ["'self'"],
 				'child-src': ["'self'"],
 				'connect-src': ["'self'"],
