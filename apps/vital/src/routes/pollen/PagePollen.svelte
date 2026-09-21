@@ -40,7 +40,7 @@
 
 <div class="l:stack:xl w:full align:center cannelloni:inline size:md">
 	<h1 class="text:center">Pollen</h1>
-	<h2 class="text:center">Carrier Bags of Story</h2>
+	<h2 class="text:center">Carrier Bag of Story</h2>
 
 	<ContentGrid
 		page={currentPage}
