@@ -12,7 +12,6 @@
 	--radius: calc(var(--character-width) / sin(var(--inner-angle)) * -1ch);
 
 	color: var(--ink);
-	font-family: var(--font-family-mono);
 	text-transform: uppercase;
 	font-size: calc(var(--font-size, 1.5) * 10vmin);
 	position: relative;
@@ -25,6 +24,7 @@
 	top: 50%;
 	left: 50%;
 	font-size: var(--char-font-size);
+	font-family: var(--font-family-mono);
 	transform: translate(-50%, -50%)
 		rotate(calc(var(--inner-angle) * var(--char-index)))
 		translateY(var(--radius));
@@ -112,6 +112,18 @@
 
 @media screen and (min-width: 58.75rem) {
 	.text-ring {
+		--character-width: 3.25;
+	}
+}
+
+@media screen and (min-width: 88.75rem) {
+	.text-ring {
 		--character-width: 3.65;
+	}
+}
+
+@media screen and (min-width: 108.75rem) {
+	.text-ring {
+		--character-width: 3.95;
 	}
 }
