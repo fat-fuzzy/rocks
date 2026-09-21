@@ -15,15 +15,16 @@
 	import {page} from '$app/state'
 
 	import {
-		CTA_TO_ACTION,
-		CTA_TO_TITLE,
-		CTA_TO_DESCRIPTION,
-		getPrefix,
-	} from '$lib/intl/l10n'
-	import {
 		getSanitizedParamValueList,
 		getAllowedParamsForRoute,
 	} from '$lib/common/url'
+	import {
+		getNamespaceFromRoute,
+		getRouteLabelsForNamespace,
+		getTitleForRoute,
+		getDescriptionForRoute,
+		getPrefixForRoute,
+	} from '$lib/common/routing'
 
 	import SectionEditor from '$lib/ui/editor/SectionEditor.svelte'
 	import SectionBuilder from '$lib/ui/builder/SectionBuilder.svelte'
@@ -58,6 +59,12 @@
 		builder: {
 			[key in RouteNameFor<NamespaceId>]?: boolean
 		}
+		presetsEditor: {
+			[key in RouteNameFor<NamespaceId>]?: boolean
+		}
+		docEditor: {
+			[key in RouteNameFor<NamespaceId>]?: boolean
+		}
 	}
 
 	let {
@@ -69,10 +76,12 @@
 		twinLayout,
 		editor,
 		builder,
+		presetsEditor,
+		docEditor,
 	}: Props = $props()
 
 	let color = $derived(theme)
-	let pageName = $derived(route.split('/')[1] as NamespaceId)
+	let namespace = $derived(getNamespaceFromRoute(route))
 
 	const coordinators: CurrentCoordinators = getContext('currentCoordinators')
 
@@ -92,7 +101,7 @@
 	let editing = $derived(editor[cta] || builder[cta])
 
 	let paramValues = $derived(
-		cta ? getAllowedParamsForRoute(pageName, page.url) : {},
+		namespace ? getAllowedParamsForRoute(namespace, page.url) : {},
 	)
 	let language = $derived(paramValues.language ?? DOC_LANGUAGE)
 	let format = $derived(paramValues.format ?? DOC_FORMAT)
@@ -167,16 +176,12 @@
 	)
 
 	let title = $derived(
-		cta && cta !== 'preview'
-			? CTA_TO_TITLE[cta]
-			: cta === 'preview' && preset // Forces title of printed document to be heading of document
-				? preset
-				: cta
-					? CTA_TO_TITLE[cta]
-					: '',
+		// Force title of printed document to be heading of document if printing
+		cta === 'preview' && preset ? preset : getTitleForRoute(cta),
 	)
-	let description = $derived(cta ? CTA_TO_DESCRIPTION[cta] : '')
-	let prefix = $derived(getPrefix(language, cta))
+
+	let description = $derived(getDescriptionForRoute(cta))
+	let prefix = $derived(getPrefixForRoute(language, cta))
 
 	let textClass = $derived(
 		!editor[cta] || selectedSections.length === 0 ? `l:text:a4` : 'l:text:2xl',
@@ -227,10 +232,11 @@
 		{#if cta}
 			<ContentHeading
 				{cta}
-				preset={twinLayout[cta] ? targetPreset : preset}
 				{query}
-				formats={coordMetadata.getFormats()}
 				{color}
+				preset={twinLayout[cta] ? targetPreset : preset}
+				formats={coordMetadata.getFormats()}
+				canEdit={{presets: presetsEditor[cta], doc: docEditor[cta]}}
 			/>
 		{/if}
 	{/snippet}
@@ -361,64 +367,69 @@
 	{/snippet}
 
 	{#snippet aside()}
-		{#if cta}
-			<div class="noprint l:stack:xs maki:block:lg">
-				<form bind:this={filtersForm} class="l:stack:md">
+		<div class="noprint l:stack:xs maki:block:lg">
+			<form bind:this={filtersForm} class="l:stack:md">
+				{#if namespace}
 					<ContentActions
-						path={pageName}
+						path={namespace}
 						oninput={updateFilters}
 						{color}
-						actions={CTA_TO_ACTION[pageName]}
+						actions={getRouteLabelsForNamespace(namespace)}
+						canEdit={{presets: presetsEditor[cta], doc: docEditor[cta]}}
 					/>
+				{/if}
 
-					{#if twinLayout[cta]}
-						{#key sourcePreset}
-							<Presets
-								title="Source Preset (readonly)"
-								id="source_preset"
-								{route}
-								isSource={true}
-								oninput={() => coordPresets.setSourcePreset(sourcePreset)}
-								currentPreset={sourcePreset}
-								{color}
-							/>
-						{/key}
-						{#key targetPreset}
-							<Presets
-								title="Target Preset (editing)"
-								id="target_preset"
-								{route}
-								isTarget={true}
-								oninput={() => coordPresets.setTargetPreset(targetPreset)}
-								currentPreset={targetPreset}
-								{color}
-							/>
-						{/key}
-					{:else}
+				{#if twinLayout[cta]}
+					{#key sourcePreset}
 						<Presets
-							id="preset"
+							title="Source Preset (readonly)"
+							id="source_preset"
 							{route}
-							oninput={() => {
-								coordPresets.setSourcePreset()
-								coordPresets.setTargetPreset()
-								updateFilters()
-							}}
-							currentPreset={preset}
+							{query}
+							isSource={true}
+							oninput={() => coordPresets.setSourcePreset(sourcePreset)}
+							currentPreset={sourcePreset}
 							{color}
 						/>
-					{/if}
-					{#if editing}
-						<Tags
-							{cta}
-							{tags}
-							loading={tagsLoading}
-							error={tagsError}
-							oninput={updateFilters}
+					{/key}
+					{#key targetPreset}
+						<Presets
+							title="Target Preset (editing)"
+							id="target_preset"
+							{route}
+							{query}
+							isTarget={true}
+							oninput={() => coordPresets.setTargetPreset(targetPreset)}
+							currentPreset={targetPreset}
 							{color}
 						/>
-					{/if}
-				</form>
-			</div>
-		{/if}
+					{/key}
+				{:else}
+					<Presets
+						id="preset"
+						{route}
+						{query}
+						{color}
+						oninput={() => {
+							coordPresets.setSourcePreset()
+							coordPresets.setTargetPreset()
+							updateFilters()
+						}}
+						currentPreset={preset}
+						canEdit={presetsEditor[cta]}
+					/>
+				{/if}
+				{#if editing}
+					<Tags
+						{cta}
+						{tags}
+						loading={tagsLoading}
+						error={tagsError}
+						oninput={updateFilters}
+						{color}
+					/>
+				{/if}
+			</form>
+		</div>
 	{/snippet}
 </PageRails>

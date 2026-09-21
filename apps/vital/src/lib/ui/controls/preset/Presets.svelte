@@ -2,7 +2,6 @@
 	import type {Preset, CurrentCoordinators, Slug, RouteId} from '$types'
 
 	import {getContext} from 'svelte'
-	import {page} from '$app/state'
 	import {resolve} from '$app/paths'
 	import ui, {type UiColor} from '@fat-fuzzy/ui'
 
@@ -15,6 +14,7 @@
 	const {
 		id,
 		route,
+		query,
 		title = 'Presets',
 		color = 'neutral',
 		headingLevel = 3,
@@ -22,9 +22,11 @@
 		isTarget = false,
 		currentPreset,
 		oninput,
+		canEdit,
 	}: {
 		id: Slug
 		route: RouteId
+		query: string
 		title?: string
 		color?: UiColor
 		isSource?: boolean
@@ -32,10 +34,8 @@
 		headingLevel?: number
 		currentPreset?: string
 		oninput: (e: Event) => void
+		canEdit?: boolean
 	} = $props()
-
-	let cta = $derived(page.params.page)
-	let query = $derived(page.url.search)
 
 	const coordinators: CurrentCoordinators = getContext('currentCoordinators')
 
@@ -88,7 +88,7 @@
 		<svelte:element this={`h${headingLevel}`} class="ravioli:3xs">
 			{title}
 		</svelte:element>
-		{#if cta === 'edit' || cta === 'build'}
+		{#if canEdit}
 			<div>
 				<DialogSavePreset
 					id={`dialog-add-preset-${id}`}
@@ -122,7 +122,7 @@
 					class="feedback:prose w:full justify:center ravioli:2xl variant:bare scroll:y"
 				>
 					<div class="l:stack font:sm raviolink">
-						{#if (cta === 'build' || cta === 'edit') && query.includes('section')}
+						{#if canEdit && query.includes('section')}
 							<p class="font:heading font:semibold text:center">
 								You don't have presets yet
 							</p>
@@ -160,84 +160,80 @@
 							>
 								{preset.name}
 							</a>
-							{#if cta === 'edit' || cta === 'build' || cta !== 'preview'}
+							{#if canEdit}
 								<div class="l:flex:4xs align:center justify:end hug">
-									{#if cta === 'edit' || cta === 'build'}
-										{#if isCurrent && !preset.locked}
-											<input
-												type="radio"
-												title="Editing"
-												id={preset.name}
-												checked={true}
-												name={id}
-												value={preset.name}
-												disabled={!preset.query}
-												class="maki:block"
-												{oninput}
-											/>
-										{/if}
-										<Button
-											label="Save Preset"
-											type="button"
-											id="preset-dialog-submit"
-											name=""
-											asset={!isCurrent ||
-											preset.locked ||
-											(isCurrent && query === preset.query)
-												? 'check'
-												: 'save'}
-											assetType="svg"
-											shape="round"
-											{color}
-											variant="bare"
-											size="2xs"
-											font="2xs"
-											disabled={preset.locked || !isCurrent}
-											onclick={() => savePreset(preset)}
-										/>
-										<DialogSavePreset
-											label="Duplicate Preset"
-											id={`duplicate-preset-${preset.id}`}
-											size="2xs"
-											shape="round"
-											variant="bare"
-											asset="copy"
-											assetType="svg"
-											cta="copy"
-											{color}
-											disabled={!isCurrent}
-											preset={{
-												id: crypto.randomUUID(),
-												name: preset.name,
-												query,
-											}}
-											{coordPresets}
-										/>
-									{/if}
-									{#if cta === 'edit' || cta === 'build'}
-										<DialogDeletePreset
-											id={`delete-preset-${preset.id}`}
-											{preset}
-											size="2xs"
-											disabled={preset.locked || !preset.query}
-											{coordPresets}
-										/>
-										<Button
-											label={preset.locked ? 'Unlock Preset' : 'Lock Preset'}
-											type="button"
-											id="preset-dialog-submit"
-											name=""
-											asset={preset.locked ? 'lock' : 'unlock'}
-											assetType="svg"
-											shape="round"
-											{color}
-											variant={preset.locked ? 'fill' : 'bare'}
-											size="2xs"
-											font="2xs"
+									{#if isCurrent && !preset.locked}
+										<input
+											type="radio"
+											title="Editing"
+											id={preset.name}
+											checked={true}
+											name={id}
+											value={preset.name}
 											disabled={!preset.query}
-											onclick={() => toggleLock(preset)}
+											class="maki:block"
+											{oninput}
 										/>
 									{/if}
+									<Button
+										label="Save Preset"
+										type="button"
+										id="preset-dialog-submit"
+										name=""
+										asset={!isCurrent ||
+										preset.locked ||
+										(isCurrent && query === preset.query)
+											? 'check'
+											: 'save'}
+										assetType="svg"
+										shape="round"
+										{color}
+										variant="bare"
+										size="2xs"
+										font="2xs"
+										disabled={preset.locked || !isCurrent}
+										onclick={() => savePreset(preset)}
+									/>
+									<DialogSavePreset
+										label="Duplicate Preset"
+										id={`duplicate-preset-${preset.id}`}
+										size="2xs"
+										shape="round"
+										variant="bare"
+										asset="copy"
+										assetType="svg"
+										cta="copy"
+										{color}
+										disabled={!isCurrent}
+										preset={{
+											id: crypto.randomUUID(),
+											name: preset.name,
+											query,
+										}}
+										{coordPresets}
+									/>
+									<DialogDeletePreset
+										id={`delete-preset-${preset.id}`}
+										{preset}
+										size="2xs"
+										disabled={preset.locked || !preset.query}
+										{coordPresets}
+									/>
+									<Button
+										label={preset.locked ? 'Unlock Preset' : 'Lock Preset'}
+										type="button"
+										id="preset-dialog-submit"
+										name=""
+										asset={preset.locked ? 'lock' : 'unlock'}
+										assetType="svg"
+										shape="round"
+										{color}
+										variant={preset.locked ? 'fill' : 'bare'}
+										size="2xs"
+										font="2xs"
+										disabled={!preset.query}
+										onclick={() => toggleLock(preset)}
+									/>
 								</div>
 							{/if}
 						</li>
