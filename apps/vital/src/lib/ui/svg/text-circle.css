@@ -1,0 +1,117 @@
+.frame {
+	position: absolute;
+	aspect-ratio: 1;
+	display: grid;
+	place-items: center;
+}
+
+.text-ring {
+	--character-width: 3;
+	--char-font-size: var(--font-size-lg);
+	--inner-angle: calc((360 / var(--char-count)) * 1deg);
+	--radius: calc(var(--character-width) / sin(var(--inner-angle)) * -1ch);
+
+	color: var(--ink);
+	font-family: var(--font-family-mono);
+	text-transform: uppercase;
+	font-size: calc(var(--font-size, 1.5) * 10vmin);
+	position: relative;
+	box-shadow: none;
+}
+
+.char {
+	display: inline-block;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	font-size: var(--char-font-size);
+	transform: translate(-50%, -50%)
+		rotate(calc(var(--inner-angle) * var(--char-index)))
+		translateY(var(--radius));
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.text-ring {
+		animation: rotation 15s infinite linear;
+	}
+}
+
+@keyframes rotation {
+	to {
+		rotate: -360deg;
+	}
+}
+
+@media (prefers-color-scheme: light) {
+	.text-ring {
+		--lightness-contrast: var(--lightness-surface-4);
+		--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
+	}
+}
+@media (prefers-color-scheme: dark) {
+	.text-ring {
+		--lightness-contrast: var(--lightness-surface-2);
+		--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
+	}
+}
+
+:global([class*='settings:day']),
+:global([color-scheme='light']) {
+	.text-ring {
+		--lightness-contrast: var(--lightness-surface-4);
+		--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
+	}
+}
+
+:global([class*='settings:night']),
+:global([color-scheme='dark']) {
+	.text-ring {
+		--lightness-contrast: var(--lightness-surface-2);
+		--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
+	}
+}
+
+@media screen and (min-width: 23.75rem) {
+	.text-ring {
+		--character-width: 2.75;
+		--char-font-size: var(--font-size-xl);
+	}
+}
+
+@media screen and (min-width: 28.75rem) {
+	.text-ring {
+		--character-width: 3.25;
+	}
+}
+
+@media screen and (min-width: 35.75rem) {
+	.text-ring {
+		--character-width: 4;
+	}
+}
+
+@media screen and (min-width: 38.75rem) {
+	.text-ring {
+		--character-width: 3.25;
+		--char-font-size: var(--font-size-lg);
+	}
+}
+
+@media screen and (min-width: 40.75rem) {
+	.text-ring {
+		--char-font-size: var(--font-size-xl);
+	}
+}
+
+@media screen and (min-width: 48.75rem) {
+	.text-ring {
+		--character-width: 3;
+		--char-font-size: var(--font-size-2xl);
+	}
+}
+
+@media screen and (min-width: 58.75rem) {
+	.text-ring {
+		--character-width: 3.65;
+	}
+}
