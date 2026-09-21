@@ -63,7 +63,7 @@ export default class AggregatePresets implements IAggregatePresets {
 	}
 
 	/**
-	 * Get a preset give a well formed index key
+	 * Get a preset given a well formed index key
 	 * @param name
 	 */
 	getPreset(key: string): Preset | void {

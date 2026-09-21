@@ -3,7 +3,7 @@
 	"version": "0.1.1",
 	"type": "module",
 	"private": true,
-	"description": "Is Vital",
+	"description": "Vital tools for growth, reflection and story.",
 	"main": "index.js",
 	"author": "Patricia Boh",
 	"scripts": {
