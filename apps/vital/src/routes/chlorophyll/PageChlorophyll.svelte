@@ -42,7 +42,7 @@
 	{/if}
 {/snippet}
 
-<div class="l:stack:xl w:full align:center">
+<div class="l:stack:xl w:full align:center cannelloni:inline size:md">
 	<h1 class="text:center">Chlorophyll</h1>
 	<h2 class="text:center">Narrative Photosynthesis</h2>
 
