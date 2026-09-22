@@ -346,7 +346,7 @@
 					{/key}
 				</div>
 			{:else}
-				<div class={textClass}>
+				<div class={`${textClass} maki:block size:lg`}>
 					<Feedback
 						status={coordDocs.hasError() ? 'error' : undefined}
 						context="prose"
