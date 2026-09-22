@@ -15,7 +15,7 @@
 	import {applyTags} from '$lib/common/tags'
 	import DialogDeleteBlock from '$lib/ui/overlays/dialog/DialogDeleteBlock.svelte'
 	import SelectTags from '$lib/ui/controls/tags/SelectTags.svelte'
-	import type {UiColor, UiShape} from '@fat-fuzzy/ui'
+	import type {UiColor, UiShape, UiSize} from '@fat-fuzzy/ui'
 
 	const {Editor} = prose.editor
 
@@ -50,7 +50,15 @@
 
 	let displayBlock = $state(false)
 	let isSkillSet = $derived(tags.find((t) => t === 'skills'))
+	let isChlorophyll = $derived(coordDocs.aggDocs?.root === 'chlorophyll')
 	let isMainContentBlock = $derived(content_type === 'section')
+	let height = $derived(
+		isChlorophyll && isSkillSet
+			? ('xs' as UiSize)
+			: isChlorophyll
+				? ('sm' as UiSize)
+				: 'xl',
+	)
 
 	let block: Block = $derived({
 		id,
@@ -182,7 +190,7 @@
 			type="html"
 			{content}
 			color="neutral"
-			height={isSkillSet ? 'xs' : 'sm'}
+			{height}
 			width="2xl"
 			onblur={handleBlur}
 			{menus}
