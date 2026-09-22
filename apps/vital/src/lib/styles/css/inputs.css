@@ -137,7 +137,7 @@ fieldset:has(label > [type='radio']) {
 
 /* Remove border from popover inputs: the popover layer creates a visual boundary */
 [popover] {
-	[class*=':bare']:not(label, pre, label > span) {
+	[class*=':bare']:only-child:not(label, pre, label > span) {
 		--border-color-bare: transparent;
 	}
 }

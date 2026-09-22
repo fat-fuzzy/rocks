@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {UiColor, UiShape} from '@fat-fuzzy/ui'
+	import type {UiColor} from '@fat-fuzzy/ui'
 	import type {
 		TagGroup,
 		InputGroupMenus,
@@ -42,7 +42,7 @@
 		const menuItems = tags.reduce(
 			(
 				menus: InputGroupMenus,
-				{title, name, items}: TagGroup,
+				{title, name, type, items}: TagGroup,
 			): InputGroupMenus => {
 				const menuItems = items.map((i: string) => {
 					let selected = checkSelected(name, i)
@@ -52,9 +52,9 @@
 						value: i,
 						checked: selected ? true : undefined,
 						label: i,
-						color,
+						color: type === 'radio' ? 'neutral' : color,
 						title: title ?? name,
-						shape: 'pill chroma:1' as UiShape,
+						shape: type === 'radio' ? 'mellow' : 'pill',
 					}
 				})
 
