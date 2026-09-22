@@ -30,13 +30,13 @@ fieldset {
 
 fieldset.radio,
 fieldset.checkbox {
+	--gap: var(--ui-size-sm);
+
 	font-size: var(--font-size);
 	padding-inline: var(--ui-size) var(--ui-size-sm);
 	padding-block: 0 var(--ui-size-sm);
 
 	label {
-		--gap: calc(var(--ui-size-xs) / var(--ratio-md));
-
 		align-items: var(--align, center);
 		justify-content: var(--justify, space-between);
 		padding-block: var(--border-width-xl);
@@ -114,9 +114,15 @@ fieldset.checkbox {
 		--chroma: var(--chroma-surface-1);
 	}
 
-	label:not([class*=':neutral']):has(input:checked):hover {
+	label:has(input:checked):hover {
+		--lightness: var(--lightness-surface-1);
+		--chroma: var(--chroma-surface-2);
+		--shade: oklch(var(--lightness) var(--chroma) var(--hue));
+	}
+
+	label[class*=':neutral']:has(input:checked):hover {
 		--lightness: var(--lightness-surface-2);
-		--chroma: var(--chroma-surface-3);
+		--chroma: var(--color-chroma-neutral);
 		--shade: oklch(var(--lightness) var(--chroma) var(--hue));
 	}
 }
