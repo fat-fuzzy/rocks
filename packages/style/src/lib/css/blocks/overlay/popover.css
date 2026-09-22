@@ -1,6 +1,5 @@
 ff-popover,
 .anchor {
-	display: block;
 	inline-size: max-content;
 	block-size: max-content;
 }
@@ -83,6 +82,19 @@ ff-popover,
 [popover].size\:xl:popover-open {
 	inline-size: 100%;
 	max-inline-size: var(--layout-sidebar-xl);
+}
+
+/* Match background color to current contrast settings */
+[popover]:popover-open {
+	--shade: oklch(
+		var(--lightness-base) var(--chroma) var(--color-theme-neutral)
+	);
+	background-color: var(--shade);
+}
+
+[class*=':blend'] [popover]:popover-open {
+	--shade: oklch(var(--lightness) var(--chroma, var(--chroma-base)) var(--hue));
+	background-color: var(--shade);
 }
 
 /* Anchor positioning */
