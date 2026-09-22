@@ -95,7 +95,7 @@ html:has(.l\:grid\:urbanist) {
 			}
 
 			[class*='l:stack'] > h1 {
-				margin-block: calc(var(--ui-size-sm) - var(--border-width-md));
+				margin-block-start: var(--ui-size-sm);
 			}
 		}
 
