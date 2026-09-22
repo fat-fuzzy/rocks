@@ -64,6 +64,7 @@
 		variant="bare"
 		items={sectionItems}
 		{oninput}
+		selectAll={true}
 	/>
 {:else}
 	<div>
