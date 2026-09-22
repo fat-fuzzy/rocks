@@ -27,7 +27,7 @@
 		preset,
 		label = 'Delete',
 		size = '2xs',
-		color = 'neutral',
+		color = 'highlight',
 		variant = 'bare',
 		shape = 'round',
 		disabled,
