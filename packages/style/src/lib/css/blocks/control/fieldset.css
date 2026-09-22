@@ -40,7 +40,7 @@ fieldset.checkbox {
 		align-items: var(--align, center);
 		justify-content: var(--justify, space-between);
 		padding-block: var(--border-width-xl);
-		padding-inline: var(--border-width-xl);
+		padding-inline: var(--ui-size-sm);
 		inline-size: 100%;
 		color: var(--ink);
 		line-height: 1;
@@ -71,13 +71,16 @@ fieldset.checkbox {
 		margin-block-end: var(--ui-size);
 		padding-inline: var(--border-width-xl);
 		font-weight: var(--font-weight-semibold);
+		font-family: var(--font-family-subheading);
 
 		> label {
-			padding-inline: 0;
+			padding-inline: var(--ui-size-xs);
+			font-family: var(--font-family-subheading);
 		}
 
 		> label > span {
 			font-weight: var(--font-weight-semibold);
+			font-family: var(--font-family-subheading);
 		}
 	}
 
@@ -102,11 +105,18 @@ fieldset.checkbox {
 
 	label:hover {
 		--lightness: var(--lightness-surface-1);
-		--lightness-contrast: var(--lightness-contrast);
+		--lightness-contrast: var(--lightness-surface-1-contrast);
 		background-color: var(--shade);
 	}
 
 	label:not([class*=':neutral']):hover {
+		--lightness: var(--lightness-base);
+		--chroma: var(--chroma-surface-1);
+	}
+
+	label:not([class*=':neutral']):has(input:checked):hover {
+		--lightness: var(--lightness-surface-2);
 		--chroma: var(--chroma-surface-3);
+		--shade: oklch(var(--lightness) var(--chroma) var(--hue));
 	}
 }

@@ -16,17 +16,27 @@ ff-control > label:not([class*=':neutral']) ff-icon {
 	--chroma-accent: var(--chroma-accent-base);
 }
 
-.ff-control:not([class*=':neutral']):has(input:checked) {
-	--lightness: var(--lightness-surface-1);
+.ff-control:has(input:checked) {
+	--lightness: var(--lightness-base);
 	--chroma: var(--chroma-surface-2);
-	--shade: oklch(var(--lightness) var(--chroma, var(--chroma-base)) var(--hue));
+	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
 
 	background-color: var(--shade);
+	border-color: var(--accent);
 }
 
-.ff-control:not([class*=':neutral']):hover {
+.ff-control:hover {
 	--lightness: var(--lightness-surface-3);
 
+	border-color: var(--accent);
+}
+
+.ff-control[class*=':neutral']:has(input:checked) {
+	--lightness: var(--lightness-surface-1);
+	--chroma: var(--color-chroma-neutral);
+	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
+
+	background-color: var(--shade);
 	border-color: var(--accent);
 }
 
