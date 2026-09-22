@@ -18,13 +18,15 @@ ff-control > label:not([class*=':neutral']) ff-icon {
 
 .ff-control:not([class*=':neutral']):has(input:checked) {
 	--lightness: var(--lightness-surface-1);
-	--chroma: var(--chroma-base);
+	--chroma: var(--chroma-surface-2);
 	--shade: oklch(var(--lightness) var(--chroma, var(--chroma-base)) var(--hue));
+
 	background-color: var(--shade);
 }
 
 .ff-control:not([class*=':neutral']):hover {
-	--lightness: var(--lightness-surface-2);
+	--lightness: var(--lightness-surface-3);
+
 	border-color: var(--accent);
 }
 
