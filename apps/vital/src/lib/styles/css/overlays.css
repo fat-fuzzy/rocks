@@ -1,3 +1,5 @@
+/******************** DIALOGS ***********************/
+
 /* Aligns height for Chrome,  Firefox, Safari, and Edge */
 dialog:modal {
 	block-size: fit-content;

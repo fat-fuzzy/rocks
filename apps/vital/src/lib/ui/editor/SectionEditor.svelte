@@ -8,9 +8,10 @@
 
 	import {DOC_LANGUAGE, DOC_FORMAT} from '$config/setup'
 	import {LOCALIZATIONS} from '$lib/intl/l10n'
+
+	import DialogSaveBlock from '$lib/ui/overlays/dialog/DialogSaveBlock.svelte'
 	import BlockPlaceholder from '$lib/ui/editor/BlockPlaceholder.svelte'
 	import BlockEditor from '$lib/ui/editor/BlockEditor.svelte'
-	import DialogSaveBlock from '$lib/ui/controls/block/DialogSaveBlock.svelte'
 	import FeedbackContent from '$lib/ui/FeedbackContent.svelte'
 	import Loading from '$lib/ui/Loading.svelte'
 
@@ -141,6 +142,7 @@
 							{content}
 							{language}
 							{format}
+							{color}
 							tags={section.tags || []}
 						/>
 					{:else}
@@ -202,6 +204,7 @@
 										tagsFound={blockTagsFound}
 										{language}
 										{format}
+										{color}
 									/>
 								{:else}
 									<BlockPlaceholder

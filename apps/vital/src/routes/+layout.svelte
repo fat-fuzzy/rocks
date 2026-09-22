@@ -217,7 +217,7 @@
 				label="Settings"
 				size="xs"
 				justify="between"
-				assetType="openmoji:sm svg"
+				assetType="openmoji svg"
 				selected={appContext}
 				oninput={updateSettings}
 			/>

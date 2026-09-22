@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {UiColor} from '@fat-fuzzy/ui'
+	import type {UiColor, UiShape} from '@fat-fuzzy/ui'
 	import type {
 		TagGroup,
 		InputGroupMenus,
@@ -12,8 +12,8 @@
 	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
 
-	import DialogSaveTag from '$lib/ui/controls/tags/DialogSaveTag.svelte'
-	import DialogDeleteTags from '$lib/ui/controls/tags/DialogDeleteTags.svelte'
+	import DialogSaveTag from '$lib/ui/overlays/dialog/DialogSaveTag.svelte'
+	import DialogDeleteTags from '$lib/ui/overlays/dialog/DialogDeleteTags.svelte'
 	import Loading from '$lib/ui/Loading.svelte'
 
 	const {InputGroup, Feedback} = ui.blocks
@@ -54,6 +54,7 @@
 						label: i,
 						color,
 						title: title ?? name,
+						shape: 'pill chroma:1' as UiShape,
 					}
 				})
 
@@ -127,6 +128,7 @@
 					selectAll={true}
 					items={baseTags[group.name]}
 					{oninput}
+					isUiControl={true}
 				/>
 			{/each}
 			{#if tags.length < 2}
