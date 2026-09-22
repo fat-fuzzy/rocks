@@ -52,16 +52,23 @@ label[class*='bg:'] {
 	opacity: 0.75;
 }
 
-[class*='color:']:not([class*=':neutral']):is(
-		input,
-		textarea,
-		select,
-		fieldset,
-		label
-	) {
+[class*='color:']:is(input, textarea, select, fieldset) {
 	--chroma-contrast: var(--color-chroma-neutral);
 	--lightness-contrast: var(--lightness-surface-5);
 	--lightness-accent: var(--lightness-surface-4);
+}
+
+label[class*='color:'] {
+	--chroma-contrast: var(--color-chroma-neutral);
+	--lightness-contrast: var(--lightness-surface-5);
+	--lightness-accent: var(--lightness-surface-3);
+}
+
+label[class*='color:'][class*=':neutral'],
+label[class*='color:'][class*=':neutral']:hover,
+[class*='color:'][class*=':neutral']:is(input, textarea, select, fieldset) {
+	--chroma: var(--color-chroma-neutral);
+	--chroma-contrast: var(--color-chroma-neutral);
 }
 
 [disabled],

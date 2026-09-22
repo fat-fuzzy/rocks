@@ -18,8 +18,10 @@ ff-control > label:not([class*=':neutral']) ff-icon {
 
 .ff-control:has(input:checked) {
 	--lightness: var(--lightness-base);
-	--chroma: var(--chroma-surface-2);
+	--chroma: var(--chroma-surface-1);
+	--lightness-accent: var(--lightness-surface-4);
 	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
+	--accent: oklch(var(--lightness-accent) var(--chroma-accent-base) var(--hue));
 
 	background-color: var(--shade);
 	border-color: var(--accent);
@@ -35,16 +37,23 @@ ff-control > label:not([class*=':neutral']) ff-icon {
 	--lightness: var(--lightness-surface-1);
 	--chroma: var(--color-chroma-neutral);
 	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
+	--accent: oklch(var(--lightness-accent) var(--chroma) var(--hue));
 
 	background-color: var(--shade);
 	border-color: var(--accent);
+}
+
+.ff-control[class*=':neutral']:has(input:checked):hover {
+	--lightness: var(--lightness-surface-2);
+
+	background-color: var(--shade);
 }
 
 ff-control > label.variant\:bare:has(input:checked),
 .ff-control.variant\:bare:has(input:checked) {
 	--border-color: var(--accent);
 	--lightness: var(--lightness-surface-1);
-	--lightness-accent: var(--lightness-surface-1);
+	--lightness-accent: var(--lightness-surface-3);
 	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
 	background-color: var(--shade);
 }
