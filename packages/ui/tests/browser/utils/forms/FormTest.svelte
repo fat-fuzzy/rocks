@@ -1,10 +1,9 @@
 <script lang="ts">
-	import type {FormProps} from '$types'
+	import type {FormProps, TestForm} from '$types'
 	import {onMount} from 'svelte'
 	import {enhance} from '$app/forms'
 
-	import * as validators from '$lib/generated/ajv/validate.ajv.mjs'
-
+	import {TestFormValidator} from '$lib/utils/validate'
 	import Button from '$lib/components/blocks/buttons/Button.svelte'
 	import Feedback from '$lib/components/blocks/global/Feedback.svelte'
 	import Input from '$lib/components/blocks/inputs/Input.svelte'
@@ -31,14 +30,11 @@
 		asset = 'log',
 		align = 'center',
 		background,
-	}: FormProps = $props()
+	}: FormProps<TestForm> = $props()
 
 	let boundForm: HTMLFormElement | undefined = $state()
 	let formData: FormData | undefined = $state()
-	let validator: FormValidator = new FormValidator(
-		'TestFormValidationFunction',
-		validators,
-	)
+	let validator: FormValidator<TestForm> = new FormValidator(TestFormValidator)
 	let disabled: boolean | undefined = $derived(undefined)
 
 	$effect(() => {

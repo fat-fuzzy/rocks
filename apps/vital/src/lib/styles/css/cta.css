@@ -1,0 +1,23 @@
+.cta {
+	border: 1px solid var(--shade);
+
+	> a {
+		/* Forces link tap targets to be the same size as ContentActions buttons */
+		/* FIXME: Find a simpler way to achieve the same thing */
+		padding-block: calc(var(--ui-size-xs) - var(--border-width-lg));
+		padding-inline: var(--size-base-3xs);
+	}
+}
+
+.cta[aria-current='true'] {
+	--lightness-contrast: var(--lightness-surface-4-contrast);
+	background-color: var(--accent);
+	border: var(--border-width-md) solid var(--accent);
+}
+
+.cta[aria-current='true']:hover {
+	--lightness: var(--lightness-surface-2);
+	--lightness-contrast: var(--lightness-surface-2-contrast);
+	background-color: var(--shade);
+	border: var(--border-width-md) solid var(--accent);
+}

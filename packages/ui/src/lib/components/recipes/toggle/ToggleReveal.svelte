@@ -30,7 +30,6 @@
 		height,
 		coords = 'nord',
 		position,
-		background,
 		surface,
 		surfaceLightness,
 		nav,
@@ -44,6 +43,8 @@
 			text,
 			size,
 			color,
+			surface,
+			surfaceLightness,
 			variant: 'bare',
 		}),
 	)
@@ -95,12 +96,11 @@
 		justify ? `justify:${justify}` : 'justify:between',
 	)
 	let ff_labelClasses = $derived(
-		`l:flex nowrap w:full align:center ${justifyClass}`,
+		`l:flex nowrap w:full align:center justify:between`,
 	)
 	let ff_labelReverse = $derived(depth > 1 && nav ? 'reverse nowrap' : '')
 
 	// Content styles
-	let bgLabelClass = $derived(background ? `bg:${background}` : '')
 	let bgContentClass = $derived(
 		surface
 			? surfaceLightness
@@ -116,7 +116,7 @@
 			: 'shape:mellow',
 	)
 	let contentClasses = $derived(
-		`w:full ${shapeClass} ${scrollClass} ${layerClass} ${bgContentClass} ${bgLabelClass} ${bgContentClass} ${positionClass}`,
+		`w:full ${shapeClass} ${scrollClass} ${layerClass} ${bgContentClass} ${bgContentClass} ${positionClass}`,
 	)
 </script>
 
@@ -124,7 +124,7 @@
 	<ff-control class={`gare-control ${layoutClasses} ${justifyClass}`}>
 		<label
 			for={id}
-			class={`ellipsis  ${labelClasses} ${hugClass} `}
+			class={`ellipsis chroma:1 ${labelClasses} ${hugClass} `}
 			data-testid={`label-${id}`}
 		>
 			<ff-label class={`${ff_labelClasses} ${ff_labelReverse}`}>

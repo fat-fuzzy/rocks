@@ -14,4 +14,4 @@ export {default as sanitize} from './utils/sanitize.js'
 
 // AUTHORING — used at schema-authoring time to compose consumer schemas
 // import {schemas} from '@fat-fuzzy/validation'
-export {default as schemas} from './ajv/in/ajv.schemas.js'
+export * as schemas from './ajv/in/ajv.schemas.js'

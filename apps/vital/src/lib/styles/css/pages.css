@@ -1,0 +1,81 @@
+.page\:home > .zone\:2 {
+	grid-template-rows: subgrid;
+}
+
+.page\:home > .zone\:2 .page-main {
+	grid-template-rows: subgrid;
+	align-items: center;
+}
+
+.page\:home > .zone\:2 .page-header {
+	display: none;
+}
+
+.page\:home .l\:frame {
+	block-size: 80%;
+	max-inline-size: 100%;
+}
+
+.page\:home ff-magic.shape\:round {
+	block-size: 100%;
+	max-inline-size: calc(100% - 2 * var(--gap));
+	[class*='svg:'] {
+		scale: 1.05;
+	}
+
+	[class*='svg:']::before {
+		--ink: oklch(
+			var(--lightness-surface-4) var(--chroma-accent-base) var(--hue)
+		);
+		scale: 3;
+		background: var(--ink);
+	}
+}
+
+.page\:chlorophyll\/compare .zone\:main.scroll\:y {
+	overflow: auto;
+}
+
+.l\:inline {
+	display: inline;
+}
+
+@media screen and (min-width: 38.75rem) {
+	.page\:home ff-magic.shape\:round {
+		max-inline-size: 60vw;
+	}
+}
+
+@media screen and (min-width: 68.75rem) {
+	.page\:home ff-magic.shape\:round {
+		max-inline-size: 50rem;
+	}
+}
+
+html:has([class*='page:chlorophyll']),
+[class*='page:chlorophyll'] {
+	--thumb: oklch(
+		var(--lightness-surface-3) var(--chroma-surface-3) var(--color-neutral)
+	);
+	h1 {
+		--hue: var(--color-theme-accent);
+	}
+}
+
+html:has([class*='page:pollen']),
+[class*='page:pollen'] {
+	--thumb: oklch(
+		var(--lightness-surface-3) var(--chroma-surface-3)
+			var(--color-palette-blueberry)
+	);
+	h1 {
+		--hue: var(--color-palette-blueberry);
+	}
+}
+
+@media screen and (min-width: 78.75rem) {
+	[class*='page:']:is([class*='/explore'], [class*='/compare'])
+		.railway.zone\:main {
+		max-block-size: unset;
+	}
+}

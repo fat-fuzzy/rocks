@@ -22,13 +22,13 @@
 			},
 			"lg": {
 				"$value": {
-					"value": 0.34,
+					"value": 0.36,
 					"unit": "rem"
 				}
 			},
 			"xl": {
 				"$value": {
-					"value": 0.66,
+					"value": 0.88,
 					"unit": "rem"
 				}
 			},

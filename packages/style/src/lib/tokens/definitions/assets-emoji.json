@@ -164,8 +164,8 @@
 			"cyclone": {
 				"$value": "🌀"
 			},
-			"new-moon": {
-				"$value": "🌑"
+			"waning-gibbous-moon": {
+				"$value": "🌖"
 			},
 			"half-moon": {
 				"$value": "🌗"
@@ -319,9 +319,6 @@
 			"contrast": {
 				"$value": "{emoji.base.half-moon}"
 			},
-			"blend": {
-				"$value": "{emoji.base.new-moon}"
-			},
 			"blend-night": {
 				"$value": "{emoji.base.new-moon-face}"
 			},
@@ -387,6 +384,9 @@
 			},
 			"star": {
 				"$value": "{emoji.base.star}"
+			},
+			"system": {
+				"$value": "{emoji.base.egg}"
 			},
 			"menu": {
 				"$value": "{emoji.base.bunny}"

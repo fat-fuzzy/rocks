@@ -53,7 +53,7 @@
 			threshold,
 			container,
 			containerSize,
-			background: background ? background : 'inherit',
+			background,
 		}),
 	)
 
@@ -125,10 +125,10 @@
 {:else}
 	<label
 		for={id}
-		class={`${ffClasses} ellipsis nowrap ${labelClasses} ${iconClasses}`}
+		class={`${ffClasses} ellipsis nowrap ${labelClasses}`}
 		data-testid={id}
 	>
-		<span>{label}</span>
+		<span class={isUiControl ? iconClasses : ''}>{label}</span>
 		{@render input()}
 	</label>
 	<Feedback

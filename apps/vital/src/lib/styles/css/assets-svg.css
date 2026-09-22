@@ -1,0 +1,160 @@
+.svg\:arrow-bar-up {
+	--icon-url: url('/icons/arrow-bar-up.svg');
+}
+
+.svg\:arrow-bar-down {
+	--icon-url: url('/icons/arrow-bar-down.svg');
+}
+
+.svg\:blend {
+	--icon-url: url('/icons/openmoji/blend.svg');
+}
+
+.svg\:check {
+	--icon-url: url('/icons/check.svg');
+}
+
+.svg\:cherry-blossom {
+	--icon-url: url('/icons/openmoji/cherry-blossom.svg');
+}
+
+.svg\:contrast {
+	--icon-url: url('/icons/openmoji/contrast.svg');
+}
+
+.svg\:control-knobs {
+	--icon-url: url('/icons/openmoji/control-knobs.svg');
+}
+
+.svg\:copy {
+	--icon-url: url('/icons/copy.svg');
+}
+
+.svg\:crescent-moon {
+	--icon-url: url('/icons/crescent-moon.svg');
+}
+
+.svg\:cross {
+	--icon-url: url('/icons/cross.svg');
+}
+
+.svg\:dash {
+	--icon-url: url('/icons/dash.svg');
+}
+
+.svg\:day {
+	--icon-url: url('/icons/openmoji/day.svg');
+}
+
+.svg\:tree {
+	--icon-url: url('/icons/openmoji/tree.svg');
+}
+
+.svg\:gear {
+	--icon-url: url('/icons/openmoji/gear.svg');
+}
+
+.svg\:herb {
+	--icon-url: url('/icons/openmoji/herb.svg');
+}
+
+.svg\:memo {
+	--icon-url: url('/icons/memo.svg');
+}
+
+.svg\:mushroom {
+	--icon-url: url('/icons/openmoji/mushroom.svg');
+}
+
+.svg\:night {
+	--icon-url: url('/icons/openmoji/night.svg');
+}
+
+.svg\:last-quarter-moon {
+	--icon-url: url('/icons/openmoji/last-quarter-moon.svg');
+}
+
+.svg\:leaf {
+	--icon-url: url('/icons/leaf.svg');
+}
+
+.svg\:lock {
+	--icon-url: url('/icons/lock.svg');
+}
+
+.svg\:lotus {
+	--icon-url: url('/icons/openmoji/lotus.svg');
+}
+
+.svg\:plus {
+	--icon-url: url('/icons/plus.svg');
+}
+
+.svg\:save {
+	--icon-url: url('/icons/save.svg');
+}
+
+.svg\:seedling {
+	--icon-url: url('/icons/openmoji/seedling.svg');
+}
+
+.svg\:settings {
+	--icon-url: url('/icons/openmoji/settings.svg');
+}
+
+.svg\:sun {
+	--icon-url: url('/icons/openmoji/sun.svg');
+}
+
+.svg\:system {
+	--icon-url: url('/icons/openmoji/system.svg');
+}
+
+.svg\:unlock {
+	--icon-url: url('/icons/unlock.svg');
+}
+
+.svg\:white-flower {
+	--icon-url: url('/icons/openmoji/white-flower.svg');
+}
+
+ff-magic[class*='svg']::before {
+	--icon-size: calc(1.35 * var(--size-base-2xl));
+}
+
+button.variant\:fill:not([disabled]):hover {
+	--lightness: var(--lightness-surface-2);
+	--lightness-contrast: var(--lightness-surface-2-contrast);
+	--chroma: var(--chroma-surface-2);
+	--chroma-contrast: var(--chroma-surface-2-contrast);
+}
+
+[class*='svg'].reverse\:y::before {
+	transform: rotateY(180deg);
+}
+
+button[class*='shape:'][class*='openmoji'] {
+	padding-block: var(--outline-offset-lg);
+	padding-inline: var(--outline-offset-lg) var(--ui-size-xs);
+}
+
+ff-icon[class*='openmoji'] {
+	padding: 0;
+}
+
+/*  TODO: Rework ui control alignment mechanisms */
+button[class*='shape:']:has(ff-icon[class*='openmoji']) {
+	padding-block: calc(
+		var(--ui-size-xs) / var(--ratio) - var(--border-width-md) / 2
+	);
+	padding-inline: var(--ui-size) var(--ui-size-xs);
+}
+
+/*  FIXME: Fix this in @fat-fuzzy/style  */
+[class*='openmoji'][class*='svg'].size\:xs::before {
+	--icon-size: var(--icon-svg-xs);
+}
+
+[class*='openmoji'][class*='svg'].size\:md::before {
+	--icon-size: var(--icon-svg-md);
+}

@@ -8,10 +8,10 @@
 		"ff-validation": "./src/ajv/generate.js"
 	},
 	"scripts": {
-		"build": "pnpm build:ajv && rollup -c",
+		"build": "pnpm build:ts && pnpm gen:config-validator && rollup -c",
 		"package": "pnpm build",
 		"prepublishOnly": "npm pack --dry-run",
-		"build:ts": "pnpm tsc && pnpm build:ajv && rollup -c",
+		"build:ts": "pnpm tsc && pnpm build:ajv",
 		"build:schemas": "node src/ajv/esm/ajv.js ",
 		"build:ajv": "pnpm build:schemas && rollup --config rollup.config.ajv.js",
 		"gen:config-validator": "node src/ajv/config/generateConfigValidator.js",

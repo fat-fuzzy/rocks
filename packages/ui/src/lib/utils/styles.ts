@@ -25,6 +25,8 @@ const STYLE_BASE_CLASS: Record<string, string> = {
 	theme: 'color', // TODO: check / harmonize
 	threshold: 'th',
 	variant: 'variant',
+	surface: 'surface',
+	chroma: 'chroma',
 }
 
 // eslint-disable-next-line
@@ -150,6 +152,9 @@ function getLayoutStyles(props: UiLayoutProps): string {
 		breakpoint,
 		layer,
 		background,
+		surface,
+		surfaceLightness,
+		surfaceChroma,
 	} = props
 
 	const classes = []
@@ -160,7 +165,20 @@ function getLayoutStyles(props: UiLayoutProps): string {
 	const widthClass = getClass('width', width)
 	const heightClass = getClass('height', height)
 	const layerClass = getClass('layer', layer)
-	const backgroundClass = getClass('background', background)
+	const chromaClass = getClass(
+		'chroma',
+		surfaceChroma ? String(surfaceChroma) : undefined,
+	)
+
+	let backgroundClass
+	let surfaceClass
+
+	if (surface) {
+		const lightness = surfaceLightness ?? 1
+		surfaceClass = getClass('surface', `${lightness}:${surface}`)
+	} else if (background) {
+		backgroundClass = getClass('background', background)
+	}
 	const positionClass = position ? position : ''
 
 	const layoutBase =
@@ -204,6 +222,8 @@ function getLayoutStyles(props: UiLayoutProps): string {
 	if (alignClass) classes.push(alignClass)
 	if (alignSelfClass) classes.push(alignSelfClass)
 	if (backgroundClass) classes.push(backgroundClass)
+	if (surfaceClass) classes.push(surfaceClass)
+	if (chromaClass) classes.push(chromaClass)
 	if (breakpointClass) classes.push(breakpointClass)
 	if (widthClass) classes.push(widthClass)
 	if (heightClass) classes.push(heightClass)
@@ -340,6 +360,9 @@ function getStyles(props: UiBlockProps): string {
 		threshold,
 		breakpoint,
 		background,
+		surface,
+		surfaceLightness,
+		surfaceChroma,
 	} = props
 
 	const blockClasses = getBlockStyles({
@@ -364,6 +387,9 @@ function getStyles(props: UiBlockProps): string {
 		threshold,
 		breakpoint,
 		background,
+		surface,
+		surfaceLightness,
+		surfaceChroma,
 	})
 
 	const containerClasses = getContainerStyles({

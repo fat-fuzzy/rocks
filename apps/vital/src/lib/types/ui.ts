@@ -1,0 +1,69 @@
+import type {Snippet} from 'svelte'
+import type {
+	UiSize,
+	UiColor,
+	UiVariant,
+	UiShape,
+	InputProps,
+} from '@fat-fuzzy/ui'
+import type {Slug, Uuid} from '$types'
+
+export type InputCheckedTypes = 'radio' | 'checkbox'
+
+export type InputGroupMenus = {[name: string]: InputProps[]}
+
+export type DialogState =
+	| 'idle'
+	| 'loading'
+	| 'visible'
+	| 'closed'
+	| 'cancelled'
+
+// TODO move elsewhere
+export type ImportStatus =
+	| 'idle'
+	| 'deleting'
+	| 'backing-up'
+	| 'ready'
+	| 'seeding'
+	| 'importing'
+	| 'done'
+	| 'error'
+
+// TODO move elsewhere
+export type DocStatus = 'idle' | 'loading' | 'saving' | 'ready' | 'error'
+
+export type DialogProps = {
+	labelId?: string // Use as form id if using autofocus to focus on the first input (fixes accessibility issues: https://brucelawson.co.uk/2009/the-accessibility-of-html-5-autofocus/)
+	label?: string
+	modal?: boolean
+	variant?: UiVariant
+	color?: UiColor
+	size?: UiSize
+	shape?: UiShape
+	position?: string
+	justify?: string
+	level?: number
+	children?: Snippet
+	cta?: string
+	message?: string
+	onSubmit?: () => void
+	onClose?: () => void
+}
+
+export interface TagProps {
+	name: Slug
+	group?: Slug
+	groupTitle?: string
+	type?: string // 'radio' or undefined
+}
+
+export type BlockProps = {
+	name: Slug
+	id?: Uuid
+	title?: string
+	rank?: number
+	group?: Slug
+	parent: Slug
+	tags: Slug[]
+}

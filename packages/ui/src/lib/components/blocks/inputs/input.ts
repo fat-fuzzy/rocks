@@ -38,10 +38,10 @@ export type InputFeedbackProps = FeedbackProps & {
 	isUiControl?: boolean
 }
 
-export type ValidationProps = {
+export type ValidationProps<T> = {
 	type?: string
 	pattern?: string
-	validator: IFormValidator
+	validator: IFormValidator<T>
 }
 
 export type InputCommonProps = {
@@ -74,26 +74,26 @@ export type InputCallbackProps = {
 	onchange?: (event: Event, payload?: FuzzyPayload) => void
 }
 
-export type InputProps = UiBlockProps &
-	ValidationProps &
+export type InputProps<T> = UiBlockProps &
+	ValidationProps<T> &
 	InputCommonProps &
 	InputCallbackProps & {
 		name: string
 	}
 
-export type InputRadioProps = UiBlockProps &
-	ValidationProps &
+export type InputRadioProps<T> = UiBlockProps &
+	ValidationProps<T> &
 	InputCommonProps &
 	InputCallbackProps & {
 		name?: string
 		isUiControl?: boolean
 	}
 
-export type InputCheckProps = InputRadioProps & {
+export type InputCheckProps<T> = InputRadioProps<T> & {
 	indeterminate?: boolean
 }
 
-export type FieldsetProps = UiBlockProps &
+export type FieldsetProps<T> = UiBlockProps &
 	InputCallbackProps &
 	InputFeedbackProps & {
 		/**
@@ -108,11 +108,11 @@ export type FieldsetProps = UiBlockProps &
 		disabled?: boolean
 
 		type?: HTMLInputTypeAttribute
-		items?: InputProps[] // 1. EITHER Use items for InputGroups
+		items?: InputProps<T>[] // 1. EITHER Use items for InputGroups
 		children?: Snippet // 2. OR use children
 	}
 
-export type InputRangeProps = InputProps & {
+export type InputRangeProps<T> = InputProps<T> & {
 	min?: number
 	max?: number
 	step?: number
@@ -122,7 +122,7 @@ export type InputRangeProps = InputProps & {
 
 type FileType = 'image/png, image/jpeg'
 
-export type InputFileProps = InputProps & {
+export type InputFileProps<T> = InputProps<T> & {
 	/**
 	 * State props
 	 */

@@ -1,0 +1,69 @@
+<script lang="ts">
+	import type {ICoordinatePresets, Preset} from '$types'
+	import type {UiColor, UiShape, UiSize, UiVariant} from '@fat-fuzzy/ui'
+
+	import ui from '@fat-fuzzy/ui'
+
+	import {NAMESPACE_TO_PRESET_LABEL} from '$lib/intl/l10n'
+	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
+
+	import FormPreset from '$lib/ui/controls/preset/FormPreset.svelte'
+
+	const {Button} = ui.blocks
+
+	interface Props {
+		id: string
+		preset: Preset
+		label?: string
+		size: UiSize
+		color?: UiColor
+		variant?: UiVariant
+		shape?: UiShape
+		disabled?: boolean
+		coordPresets: ICoordinatePresets
+	}
+	let {
+		id,
+		preset,
+		label = 'Delete',
+		size = '2xs',
+		color = 'neutral',
+		variant = 'bare',
+		shape = 'round',
+		disabled,
+		coordPresets,
+	}: Props = $props()
+
+	function showDialog() {
+		dialogActor.init({
+			modal: false,
+			size: 'sm',
+			color,
+			label: `${label} ${NAMESPACE_TO_PRESET_LABEL[coordPresets.aggPresets.root]}`,
+			position: 'nord-est',
+			children: presetForm,
+		})
+
+		dialogActor.show()
+	}
+</script>
+
+{#snippet presetForm()}
+	<FormPreset cta="delete" {preset} {color} {coordPresets} />
+{/snippet}
+
+<!-- FIXME: add tooltip -->
+<Button
+	{id}
+	{label}
+	type="button"
+	name={id}
+	{size}
+	{color}
+	{shape}
+	{variant}
+	asset="cross"
+	assetType="svg"
+	onclick={showDialog}
+	{disabled}
+/>
