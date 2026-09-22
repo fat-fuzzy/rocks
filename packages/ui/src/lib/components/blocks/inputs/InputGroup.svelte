@@ -37,7 +37,7 @@
 		oninput,
 		children,
 		validator,
-	}: FieldsetProps & ValidationProps = $props()
+	}: FieldsetProps<string> & ValidationProps<string> = $props()
 
 	let selected: string[] = $derived(value ?? [])
 	let allSelected = $derived(selected.length === items.length)
@@ -56,7 +56,11 @@
 	)
 
 	const COMPONENT_IMPORTS: {
-		[input: string]: Component<InputCheckProps | InputRadioProps, object, ''>
+		[input: string]: Component<
+			InputCheckProps<string> | InputRadioProps<string>,
+			object,
+			''
+		>
 	} = {
 		radio: InputRadio,
 		checkbox: InputCheck,
@@ -92,7 +96,8 @@
 
 		if (target.checked === true) {
 			selected = items.map(
-				(item: InputCheckProps | InputRadioProps) => String(item.value) || '',
+				(item: InputCheckProps<string> | InputRadioProps<string>) =>
+					String(item.value) || '',
 			)
 		} else {
 			selected = []
@@ -176,5 +181,6 @@
 		{size}
 		{variant}
 		{font}
+		context="form"
 	/>
 </Fieldset>
