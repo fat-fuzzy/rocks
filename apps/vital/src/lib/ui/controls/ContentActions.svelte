@@ -12,9 +12,9 @@
 	import {resolve} from '$app/paths'
 
 	import {getSanitizedParamValue, buildForwardedQuery} from '$lib/common/url'
-	import MenuData from '$lib/ui/controls/data/MenuData.svelte'
-	import MenuSections from '$lib/ui/controls/section/MenuSections.svelte'
-	import MenuSettings from '$lib/ui/controls/settings/MenuSettings.svelte'
+	import MenuData from '$lib/ui/overlays/popover-menu/MenuData.svelte'
+	import MenuSections from '$lib/ui/overlays/popover-menu/MenuSections.svelte'
+	import MenuSettings from '$lib/ui/overlays/popover-menu/MenuSettings.svelte'
 
 	const coordinators: CurrentCoordinators = getContext('currentCoordinators')
 

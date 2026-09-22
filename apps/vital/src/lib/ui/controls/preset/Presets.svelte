@@ -5,8 +5,8 @@
 	import {resolve} from '$app/paths'
 	import ui, {type UiColor} from '@fat-fuzzy/ui'
 
-	import DialogSavePreset from '$lib/ui/controls/preset/DialogSavePreset.svelte'
-	import DialogDeletePreset from '$lib/ui/controls/preset/DialogDeletePreset.svelte'
+	import DialogSavePreset from '$lib/ui/overlays/dialog/DialogSavePreset.svelte'
+	import DialogDeletePreset from '$lib/ui/overlays/dialog/DialogDeletePreset.svelte'
 	import Loading from '$lib/ui/Loading.svelte'
 
 	const {Feedback, Button} = ui.blocks

@@ -1,5 +1,11 @@
 <script lang="ts">
-	import type {UiColor, UiContainer, UiLayout, UiSize} from '@fat-fuzzy/ui'
+	import type {
+		UiColor,
+		UiContainer,
+		UiLayout,
+		UiShape,
+		UiSize,
+	} from '@fat-fuzzy/ui'
 	import type {TagGroup, InputGroupMenus, ActionCrud} from '$types'
 
 	import ui from '@fat-fuzzy/ui'
@@ -68,6 +74,7 @@
 						label: i,
 						color,
 						title: title ?? name,
+						shape: 'pill' as UiShape,
 					}
 				})
 
@@ -102,6 +109,7 @@
 				selectAll={true}
 				items={tags[name]}
 				{oninput}
+				isUiControl={true}
 			/>
 		{/each}
 	{/if}

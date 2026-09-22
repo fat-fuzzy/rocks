@@ -6,8 +6,8 @@
 	import ui from '@fat-fuzzy/ui'
 
 	import {DOC_LANGUAGE, DOC_FORMAT} from '$config/setup'
-	import DialogSaveLanguage from '$lib/ui/controls/settings/DialogSaveLanguage.svelte'
-	import DialogSaveFormat from '$lib/ui/controls/settings/DialogSaveFormat.svelte'
+	import DialogSaveLanguage from '$lib/ui/overlays/dialog/DialogSaveLanguage.svelte'
+	import DialogSaveFormat from '$lib/ui/overlays/dialog/DialogSaveFormat.svelte'
 
 	const {InputGroup} = ui.blocks
 

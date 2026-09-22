@@ -13,9 +13,9 @@
 	import prose from '@fat-fuzzy/prose'
 
 	import {applyTags} from '$lib/common/tags'
-	import DialogDeleteBlock from '$lib/ui/controls/block/DialogDeleteBlock.svelte'
+	import DialogDeleteBlock from '$lib/ui/overlays/dialog/DialogDeleteBlock.svelte'
 	import SelectTags from '$lib/ui/controls/tags/SelectTags.svelte'
-	import type {UiShape} from '@fat-fuzzy/ui'
+	import type {UiColor, UiShape} from '@fat-fuzzy/ui'
 
 	const {Editor} = prose.editor
 
@@ -37,10 +37,12 @@
 		tagsFound,
 		language,
 		format,
+		color,
 	}: {
 		sectionName: string
 		language: DocLanguage
 		format: Slug
+		color?: UiColor
 		tagsFound?: string[]
 	} & Block = $props()
 
@@ -150,6 +152,7 @@
 	<SelectTags
 		cta="save"
 		{id}
+		{color}
 		size="sm"
 		oninput={updateTags}
 		value={block.tags}
