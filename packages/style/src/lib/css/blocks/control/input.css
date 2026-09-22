@@ -111,6 +111,11 @@ ff-control > label[class*='bg:']:not([class*=':neutral']) {
 	}
 }
 
+.ff-control:has(input:focus) {
+	outline: 1px dotted var(--accent);
+	outline-offset: var(--outline-offset-md);
+}
+
 /* ui-action  overrides */
 .ui-controls button,
 .ui-controls a,
