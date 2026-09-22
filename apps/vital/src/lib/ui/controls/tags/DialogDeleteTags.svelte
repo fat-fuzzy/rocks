@@ -34,7 +34,7 @@
 		cta,
 		groups,
 		label = 'Delete Tags',
-		color = 'neutral',
+		color = 'highlight',
 		variant = 'outline',
 		shape = 'mellow',
 		asset,
