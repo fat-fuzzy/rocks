@@ -416,7 +416,7 @@
 							updateFilters()
 						}}
 						currentPreset={preset}
-						canEdit={presetsEditor[cta]}
+						canEdit={{presets: presetsEditor[cta], doc: docEditor[cta]}}
 					/>
 				{/if}
 				{#if editing}

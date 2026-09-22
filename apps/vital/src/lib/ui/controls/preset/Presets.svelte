@@ -34,7 +34,10 @@
 		headingLevel?: number
 		currentPreset?: string
 		oninput: (e: Event) => void
-		canEdit?: boolean
+		canEdit?: {
+			presets?: boolean
+			doc?: boolean
+		}
 	} = $props()
 
 	const coordinators: CurrentCoordinators = getContext('currentCoordinators')
@@ -88,7 +91,7 @@
 		<svelte:element this={`h${headingLevel}`} class="ravioli:3xs">
 			{title}
 		</svelte:element>
-		{#if canEdit}
+		{#if canEdit?.presets}
 			<div>
 				<DialogSavePreset
 					id={`dialog-add-preset-${id}`}
@@ -122,7 +125,7 @@
 					class="feedback:prose w:full justify:center ravioli:2xl variant:bare scroll:y"
 				>
 					<div class="l:stack font:sm raviolink">
-						{#if canEdit && query.includes('section')}
+						{#if canEdit?.presets && query.includes('section')}
 							<p class="font:heading font:semibold text:center">
 								You don't have presets yet
 							</p>
@@ -160,7 +163,7 @@
 							>
 								{preset.name}
 							</a>
-							{#if canEdit}
+							{#if canEdit?.presets}
 								<div class="l:flex:4xs align:center justify:end hug">
 									{#if isCurrent && !preset.locked}
 										<input
