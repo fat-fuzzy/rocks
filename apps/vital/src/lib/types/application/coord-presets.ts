@@ -5,6 +5,7 @@ import type {
 	Preset,
 	IAggregatePresets,
 	IAggregateMetadata,
+	NamespaceId,
 } from '$types'
 
 export interface ICoordinatePresets {
@@ -16,6 +17,8 @@ export interface ICoordinatePresets {
 	readonly targetPreset: Preset | null
 
 	reset(): void
+
+	getRoot(): NamespaceId
 
 	hasPresets(): boolean
 
