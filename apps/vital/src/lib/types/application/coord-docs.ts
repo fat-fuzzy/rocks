@@ -6,6 +6,7 @@ import type {
 	DocPath,
 	IAggregateDocs,
 	IAggregateMetadata,
+	NamespaceId,
 	Prose,
 	Rank,
 	Section,
@@ -20,11 +21,13 @@ export interface ICoordinateDocs {
 
 	reset(): void
 
-	getProse(options: {path: DocPath; meta: DocMeta}): Promise<Prose | undefined>
-
 	isLoading(): boolean
 
 	hasError(): boolean
+
+	getRoot(): NamespaceId
+
+	getProse(options: {path: DocPath; meta: DocMeta}): Promise<Prose | undefined>
 
 	createBlock(options: {
 		name: Slug

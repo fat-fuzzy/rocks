@@ -6,6 +6,7 @@ import type {
 	ICoordinateMetadata,
 	IAggregateMetadata,
 	DocLanguage,
+	NamespaceId,
 } from '$types'
 
 import {buildTagIndex} from '$lib/common/transform/store-to-index'
@@ -37,6 +38,10 @@ export default class CoordinateMetadata implements ICoordinateMetadata {
 	reset() {
 		this.loading = false
 		this.error = false
+	}
+
+	getRoot(): NamespaceId {
+		return this.aggMetadata.root // or aggDocs ?
 	}
 
 	getLanguages(): DocLanguage[] {

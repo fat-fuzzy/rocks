@@ -5,6 +5,7 @@ import type {
 	IAggregateDataLifecycle,
 	ImportStatus,
 	IAggregateDocs,
+	NamespaceId,
 } from '$types'
 import type {UiStatus} from '@fat-fuzzy/ui'
 
@@ -25,6 +26,8 @@ export interface ICoordinateImports {
 	): Promise<void>
 
 	reset(): void
+
+	getRoot(): NamespaceId
 
 	setStatus(status: ImportStatus): void
 

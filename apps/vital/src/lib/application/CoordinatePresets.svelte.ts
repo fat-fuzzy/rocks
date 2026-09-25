@@ -8,6 +8,7 @@ import type {
 	IAggregateMetadata,
 	TagGroup,
 	Slug,
+	NamespaceId,
 } from '$types'
 
 import {getPresetKey} from '$lib/common/format'
@@ -36,6 +37,10 @@ export default class CoordinatePresets implements ICoordinatePresets {
 		this.error = false
 	}
 
+	getRoot(): NamespaceId {
+		return this.aggPresets.root // or aggMetadata ?
+	}
+
 	/**
 	 * Return true if presets found
 	 */
@@ -47,7 +52,7 @@ export default class CoordinatePresets implements ICoordinatePresets {
 	 * Get preset by name
 	 * @return Preset if found
 	 */
-	getPreset(name: string): Preset | void {
+	getPreset(name: Slug): Preset | void {
 		try {
 			const key = getPresetKey(name)
 			return key ? this.aggPresets.getPreset(key) : undefined

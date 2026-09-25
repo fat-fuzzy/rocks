@@ -50,7 +50,7 @@
 
 	let displayBlock = $state(false)
 	let isSkillSet = $derived(tags.find((t) => t === 'skills'))
-	let isChlorophyll = $derived(coordDocs.aggDocs?.root === 'chlorophyll')
+	let isChlorophyll = $derived(coordDocs.getRoot() === 'chlorophyll')
 	let isMainContentBlock = $derived(content_type === 'section')
 	let height = $derived(
 		isChlorophyll && isSkillSet
