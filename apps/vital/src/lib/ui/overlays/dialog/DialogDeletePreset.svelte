@@ -39,7 +39,7 @@
 			modal: false,
 			size: 'sm',
 			color,
-			label: `${label} ${NAMESPACE_TO_PRESET_LABEL[coordPresets.aggPresets.root]}`,
+			label: `${label} ${NAMESPACE_TO_PRESET_LABEL[coordPresets.getRoot()]}`,
 			position: 'nord-est',
 			children: presetForm,
 		})

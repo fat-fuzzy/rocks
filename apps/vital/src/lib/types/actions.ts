@@ -8,6 +8,9 @@ import type {
 	ICoordinateImports,
 	ICoordinateMetadata,
 	ICoordinatePresets,
+	NamespaceId,
+	Preset,
+	Slug,
 } from '$types'
 
 export type ActionCrud = 'save' | 'delete' | 'update' | 'copy'
@@ -33,4 +36,35 @@ export type CurrentCoordinators = {
 	presets: ICoordinatePresets
 	imports: ICoordinateImports
 	exports: ICoordinateExports
+}
+
+export type PresetOptions = {
+	namespace: NamespaceId
+	name: Slug // TODO: use Uuid
+}
+
+export type ComparePresetOptions = {
+	source: PresetOptions
+	target: PresetOptions
+}
+
+export type CombinedCoordinators = {
+	getPresetCoords: (options: ComparePresetOptions) => {
+		source: ICoordinatePresets
+		target: ICoordinatePresets
+	}
+	getCoordDocs: (namespace: NamespaceId) => ICoordinateDocs
+	getCoordPresets: (namespace: NamespaceId) => ICoordinatePresets
+	getPresetSections: (options: PresetOptions) => Preset | void
+	getCoordDocsPair: (
+		sourceNamespace: NamespaceId,
+		targetNamespace: NamespaceId,
+	) => {
+		source: ICoordinateDocs
+		target: ICoordinateDocs
+	}
+
+	setPreset: (options: PresetOptions) => void
+	setSourceRoot: (namespace: NamespaceId, root: NamespaceId) => void
+	getSourceRoot: (namespace: NamespaceId) => NamespaceId
 }
