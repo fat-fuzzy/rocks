@@ -190,7 +190,7 @@
 				<label class="size:2xs font:sm">
 					Source Format
 					<select
-						class="w:full size:2xs font:sm"
+						class="w:full size:2xs font:sm variant:bare color:neutral"
 						name="sourceFormat"
 						id="sourceFormat"
 						onselect={updateSourceFormat}
