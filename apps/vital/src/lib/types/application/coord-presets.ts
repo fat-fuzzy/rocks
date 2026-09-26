@@ -15,10 +15,20 @@ export interface ICoordinatePresets {
 	readonly error: boolean
 	readonly sourcePreset: Preset | null
 	readonly targetPreset: Preset | null
+	readonly sourceRoot: NamespaceId | undefined
+	readonly targetRoot: NamespaceId | undefined
 
 	reset(): void
 
 	getRoot(): NamespaceId
+
+	getSourceRoot(): NamespaceId | undefined
+
+	getTargetRoot(): NamespaceId | undefined
+
+	setSourceRoot(root: NamespaceId): void
+
+	setTargetRoot(root: NamespaceId): void
 
 	hasPresets(): boolean
 
@@ -40,7 +50,11 @@ export interface ICoordinatePresets {
 
 	getTargetPresetQuery(name: string): string
 
-	getCompareQuery(name: string, isSource: boolean, isTarget: boolean): string
+	getCompareQuery(options: {
+		query: string
+		source: {root?: NamespaceId; preset?: string}
+		target: {root?: NamespaceId; preset?: string}
+	}): string
 
 	savePreset(options: {
 		path: DocPath
