@@ -22,6 +22,11 @@ export const LOCALIZATIONS: Localizations = {
 	},
 }
 
+export const NAMESPACE_TO_TITLE: LabelsForNamespace = {
+	pollen: 'Pollen',
+	chlorophyll: 'Chlorophyll',
+}
+
 export const NAMESPACE_TO_PRESET_LABEL: LabelsForNamespace = {
 	pollen: 'Pathway',
 	chlorophyll: 'Preset',

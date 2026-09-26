@@ -5,8 +5,9 @@
 		TagGroup,
 		RouteId,
 		NamespaceId,
-		CurrentCoordinators,
 		RouteNameFor,
+		CurrentCoordinators,
+		CompareCoordinators,
 	} from '$types'
 
 	import {getContext, tick} from 'svelte'
@@ -84,6 +85,9 @@
 	let namespace = $derived(getNamespaceFromRoute(route))
 
 	const coordinators: CurrentCoordinators = getContext('currentCoordinators')
+	const coordCompare: CompareCoordinators | null = $derived(
+		twinLayout[cta] ? getContext('coordCompare') : null,
+	)
 
 	let coordDocs = $derived(coordinators.docs)
 	let coordPresets = $derived(coordinators.presets)
@@ -101,14 +105,30 @@
 	let editing = $derived(editor[cta] || builder[cta])
 
 	let paramValues = $derived(
-		namespace ? getAllowedParamsForRoute(namespace, page.url) : {},
+		namespace
+			? getAllowedParamsForRoute(
+					namespace,
+					page.url.pathname,
+					page.url.searchParams,
+				)
+			: {},
 	)
 	let language = $derived(paramValues.language ?? DOC_LANGUAGE)
 	let format = $derived(paramValues.format ?? DOC_FORMAT)
 
 	let preset: string | undefined = $derived(paramValues.preset)
-	let sourcePreset: string | undefined = $derived(paramValues.source_preset)
-	let targetPreset: string | undefined = $derived(paramValues.target_preset)
+	let sourceRoot: NamespaceId | undefined = $derived(
+		paramValues.source_root as NamespaceId,
+	)
+	let targetRoot: NamespaceId | undefined = $derived(
+		(paramValues.target_root as NamespaceId) || namespace,
+	)
+	let sourcePreset: string | null | undefined = $derived(
+		paramValues.source_preset,
+	)
+	let targetPreset: string | null | undefined = $derived(
+		paramValues.target_preset,
+	)
 
 	let sourceLanguage = $derived(paramValues.source_language ?? language)
 	let sourceFormat = $derived(paramValues.source_format ?? format)
@@ -133,7 +153,7 @@
 	})
 
 	let unassignedSections = $derived(
-		getSanitizedParamValueList(page.url, 'sections'),
+		getSanitizedParamValueList(page.url.searchParams, 'sections'),
 	)
 
 	let availableSections = $derived(coordDocs.getSections({language, format}))
@@ -146,31 +166,38 @@
 		}),
 	)
 
-	let targetSections = $derived(
-		targetPreset
-			? coordDocs.getSectionsByName({
-					language: targetLanguage,
-					format: targetFormat,
-					names: targetPresetSections ? targetPresetSections.split(',') : [],
-				})
-			: [],
-	)
+	let targetSections = $derived.by(() => {
+		if (!targetRoot || !coordCompare) {
+			return []
+		}
 
-	let sourceSections = $derived(
-		sourcePreset
-			? coordDocs.getSectionsByName({
-					language: sourceLanguage,
-					format: sourceFormat,
-					names: sourcePresetSections ? sourcePresetSections.split(',') : [],
-				})
-			: [],
-	)
+		return coordCompare.getCoordDocs(targetRoot).getSectionsByName({
+			language: targetLanguage,
+			format: targetFormat,
+			names: targetPresetSections ? targetPresetSections.split(',') : [],
+		})
+	})
+
+	let sourceSections = $derived.by(() => {
+		if (!sourcePreset || !sourceRoot || !coordCompare) {
+			return []
+		}
+
+		return coordCompare.getCoordDocs(sourceRoot).getSectionsByName({
+			language: sourceLanguage,
+			format: sourceFormat,
+			names: sourcePresetSections ? sourcePresetSections.split(',') : [],
+		})
+	})
 
 	let selectedTags: string[] = $derived(
 		coordMetadata
 			.getTagGroups()
 			.reduce((selected: string[], menu: TagGroup) => {
-				const tags = getSanitizedParamValueList(page.url, menu.name)
+				const tags = getSanitizedParamValueList(
+					page.url.searchParams,
+					menu.name,
+				)
 				return selected.concat(tags || [])
 			}, []),
 	)
@@ -199,22 +226,6 @@
 			filtersForm.requestSubmit()
 		}
 	}
-
-	$effect(() => {
-		if (!twinLayout[cta]) {
-			return
-		}
-
-		if (targetPreset) {
-			coordPresets.setTargetPreset(targetPreset)
-			targetTags = coordPresets.getPresetTags(targetPreset)
-		}
-
-		if (sourcePreset) {
-			coordPresets.setSourcePreset(sourcePreset)
-			sourceTags = coordPresets.getPresetTags(sourcePreset)
-		}
-	})
 </script>
 
 <PageRails
@@ -269,9 +280,9 @@
 						</Feedback>
 					</div>
 				</div>
-			{:else if twinLayout[cta]}
-				{#if sourcePreset || targetPreset}
-					<div class="l:switcher:md th:sm w:full justify:center">
+			{:else if coordCompare}
+				<div class="l:switcher:md th:sm w:full justify:center">
+					{#if sourcePreset}
 						<div
 							class={`scroll:container contain:lg ${contentClass} raviolink`}
 						>
@@ -290,7 +301,23 @@
 								{/each}
 							</div>
 						</div>
+					{:else}
+						<div class={textClass}>
+							<Feedback
+								context="prose"
+								variant="bare"
+								size={availableSections.length ? 'lg' : undefined}
+								font="md"
+							>
+								<p>
+									Select a <span class="font:semibold">Source Preset</span> to display
+									(read only)
+								</p>
+							</Feedback>
+						</div>
+					{/if}
 
+					{#if targetPreset}
 						<div class={`scroll:container contain:lg ${contentClass}`}>
 							<div class="l:center scroll:y l:stack justify:start">
 								{#key targetPreset}
@@ -306,21 +333,21 @@
 								{/key}
 							</div>
 						</div>
-					</div>
-				{:else}
-					<div class={textClass}>
-						<Feedback
-							context="prose"
-							variant="bare"
-							size={availableSections.length ? 'lg' : undefined}
-							font="md"
-						>
-							<p>
-								Select a <span class="font:semibold">Source Preset</span> to get started
-							</p>
-						</Feedback>
-					</div>
-				{/if}
+					{:else}
+						<div class={textClass}>
+							<Feedback
+								context="prose"
+								variant="bare"
+								size={availableSections.length ? 'lg' : undefined}
+								font="md"
+							>
+								<p>
+									Select a <span class="font:semibold">Targe Preset</span> to edit
+								</p>
+							</Feedback>
+						</div>
+					{/if}
+				</div>
 			{:else if selectedSections.length}
 				<div class={contentClass}>
 					{#key language || format || preset}
@@ -375,31 +402,35 @@
 						oninput={updateFilters}
 						{color}
 						actions={getRouteLabelsForNamespace(namespace)}
+						isTwinLayout={twinLayout[cta]}
 						canEdit={{presets: presetsEditor[cta], doc: docEditor[cta]}}
 					/>
 				{/if}
 
-				{#if twinLayout[cta]}
-					{#key sourcePreset}
+				{#if coordCompare}
+					{#key sourceRoot}
 						<Presets
 							title="Source Preset (readonly)"
 							id="source_preset"
 							{route}
 							{query}
 							isSource={true}
-							oninput={() => coordPresets.setSourcePreset(sourcePreset)}
+							{sourceRoot}
+							oninput={updateFilters}
 							currentPreset={sourcePreset}
 							{color}
 						/>
 					{/key}
-					{#key targetPreset}
+
+					{#key targetRoot}
 						<Presets
 							title="Target Preset (editing)"
 							id="target_preset"
 							{route}
 							{query}
 							isTarget={true}
-							oninput={() => coordPresets.setTargetPreset(targetPreset)}
+							{sourceRoot}
+							oninput={updateFilters}
 							currentPreset={targetPreset}
 							{color}
 						/>

@@ -1,4 +1,9 @@
-import type {ICoordinateExports, IAggregateDataLifecycle, FileExt} from '$types'
+import type {
+	ICoordinateExports,
+	IAggregateDataLifecycle,
+	FileExt,
+	NamespaceId,
+} from '$types'
 
 export default class CoordinateExports implements ICoordinateExports {
 	aggDataLifecycle: IAggregateDataLifecycle
@@ -9,6 +14,10 @@ export default class CoordinateExports implements ICoordinateExports {
 		meta: {},
 		data: '',
 	})
+
+	getRoot(): NamespaceId {
+		return this.aggDataLifecycle.root
+	}
 
 	constructor(aggDataLifecycle: IAggregateDataLifecycle) {
 		this.loading = true

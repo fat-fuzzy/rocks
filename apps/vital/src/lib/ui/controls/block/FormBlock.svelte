@@ -355,7 +355,7 @@
 								onfocus={handleFocus}
 							>
 								<option class="size:xs font:xs" value={parent}>
-									No subsection selected
+									No group selected
 								</option>
 								{#each subsections as subsection, i (i)}
 									<option class="size:xs font:xs" value={subsection.name}>

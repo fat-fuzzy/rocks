@@ -1,5 +1,12 @@
 <script lang="ts">
-	import type {Preset, CurrentCoordinators, Slug, RouteId} from '$types'
+	import type {
+		Preset,
+		CurrentCoordinators,
+		Slug,
+		RouteId,
+		NamespaceId,
+		CompareCoordinators,
+	} from '$types'
 
 	import {getContext} from 'svelte'
 	import {resolve} from '$app/paths'
@@ -8,6 +15,7 @@
 	import DialogSavePreset from '$lib/ui/overlays/dialog/DialogSavePreset.svelte'
 	import DialogDeletePreset from '$lib/ui/overlays/dialog/DialogDeletePreset.svelte'
 	import Loading from '$lib/ui/Loading.svelte'
+	import {getNamespaceFromRoute, getNamespaces} from '$lib/common/routing'
 
 	const {Feedback, Button} = ui.blocks
 
@@ -21,6 +29,7 @@
 		isSource = false,
 		isTarget = false,
 		currentPreset,
+		sourceRoot,
 		oninput,
 		canEdit,
 	}: {
@@ -32,23 +41,44 @@
 		isSource?: boolean
 		isTarget?: boolean
 		headingLevel?: number
-		currentPreset?: string
-		oninput: (e: Event) => void
+		currentPreset?: string | null
+		sourceRoot?: NamespaceId
+		oninput: () => void
 		canEdit?: {
 			presets?: boolean
 			doc?: boolean
 		}
 	} = $props()
 
+	const namespace = $derived(getNamespaceFromRoute(route))
 	const coordinators: CurrentCoordinators = getContext('currentCoordinators')
 
-	let coordPresets = $derived(coordinators.presets)
+	const coordCompare: CompareCoordinators = getContext('coordCompare')
+
+	let currentRoot: NamespaceId | undefined = $derived(
+		isSource ? coordinators.presets.getSourceRoot() : namespace,
+	)
+
+	let coordPresets = $derived(
+		isSource && currentRoot
+			? coordCompare.getCoordPresets(currentRoot)
+			: coordinators.presets,
+	)
 
 	let presetIndex: Record<string, Preset> = $derived(coordPresets.loadPresets())
 	let presets = $derived(Object.values(presetIndex))
 
 	let loading = $derived(coordPresets.loading)
 	let error = $derived(coordPresets.error)
+
+	let namespaceList = getNamespaces()
+
+	function updateSourceRoot(event: Event) {
+		const target = event.target as HTMLInputElement
+		const sourceRoot = target.value as NamespaceId
+
+		coordinators.presets.setSourceRoot(sourceRoot)
+	}
 
 	function savePreset(preset: Preset) {
 		coordPresets.savePreset({
@@ -84,13 +114,55 @@
 			preset,
 		})
 	}
+
+	$effect(() => {
+		if (!namespace) {
+			return
+		}
+
+		if (isTarget) {
+			coordinators.presets.setTargetRoot(namespace)
+		}
+	})
+
+	$effect(() => {
+		if (!sourceRoot) {
+			return
+		}
+
+		if (isSource) {
+			coordinators.presets.setSourceRoot(sourceRoot)
+		}
+	})
 </script>
 
-<div class="presets justify:start shape:soft l:stack:3xs raviolink">
+<div class="presets justify:start shape:mellow l:stack:3xs raviolink">
 	<div class="ui-controls w:full l:flex:2xs align:center justify:between">
 		<svelte:element this={`h${headingLevel}`} class="ravioli:3xs">
 			{title}
 		</svelte:element>
+
+		{#if isSource}
+			<label class="w:full size:2xs l:flex:2xs font:sm space:between">
+				<span> Source Root </span>
+				<select
+					class={`size:2xs font:sm grow color:${color}`}
+					name="source_root"
+					id="source_root"
+					onselect={updateSourceRoot}
+					onchange={updateSourceRoot}
+					onblur={updateSourceRoot}
+					value={sourceRoot ?? namespace}
+				>
+					{#each namespaceList as { name, title }, i (i)}
+						<option class="size:xs font:xs" value={name}>
+							{title}
+						</option>
+					{/each}
+				</select>
+			</label>
+		{/if}
+
 		{#if canEdit?.presets}
 			<div>
 				<DialogSavePreset
@@ -145,103 +217,125 @@
 					</div>
 				</div>
 			{:else}
-				<ul class="unstyled scroll:y">
-					{#each presets as preset, i (i)}
-						{@const isCurrent = currentPreset === preset.name}
-						{@const presetQuery =
-							isSource || isTarget
-								? coordPresets.getCompareQuery(preset.name, isSource, isTarget)
-								: coordPresets.getPresetQuery(preset.name)}
-
-						<li
-							aria-current={isCurrent}
-							class={`raviolink shape:mellow l:flex justify:between ${isCurrent ? `surface:0:${color} chroma:1` : ''}`}
-						>
-							<a
-								href={resolve(`${route}/${presetQuery}`)}
-								class="font:sm raviolink grow"
-							>
-								{preset.name}
-							</a>
-							{#if canEdit?.presets}
-								<div class="l:flex:4xs align:center justify:end hug">
-									{#if isCurrent && !preset.locked}
-										<input
-											type="radio"
-											title="Editing"
-											id={preset.name}
-											checked={true}
-											name={id}
-											value={preset.name}
-											disabled={!preset.query}
-											class="maki:block"
-											{oninput}
-										/>
-									{/if}
-									<Button
-										label="Save Preset"
-										type="button"
-										id="preset-dialog-submit"
-										name=""
-										asset={!isCurrent ||
-										preset.locked ||
-										(isCurrent && query === preset.query)
-											? 'check'
-											: 'save'}
-										assetType="svg"
-										shape="round"
-										{color}
-										variant="bare"
-										size="2xs"
-										font="2xs"
-										disabled={preset.locked || !isCurrent}
-										onclick={() => savePreset(preset)}
-									/>
-									<DialogSavePreset
-										label="Duplicate Preset"
-										id={`duplicate-preset-${preset.id}`}
-										size="2xs"
-										shape="round"
-										variant="bare"
-										asset="copy"
-										assetType="svg"
-										cta="copy"
-										{color}
-										disabled={!isCurrent}
-										preset={{
-											id: crypto.randomUUID(),
-											name: preset.name,
+				{#key currentRoot}
+					<ul class="unstyled scroll:y">
+						{#each presets as preset, i (i)}
+							{@const isCurrent = currentPreset === preset.name}
+							{@const presetQuery =
+								isSource || isTarget
+									? coordPresets.getCompareQuery({
 											query,
-										}}
-										{coordPresets}
-									/>
-									<DialogDeletePreset
-										id={`delete-preset-${preset.id}`}
-										{preset}
-										size="2xs"
-										disabled={preset.locked || !preset.query}
-										{coordPresets}
-									/>
-									<Button
-										label={preset.locked ? 'Unlock Preset' : 'Lock Preset'}
-										type="button"
-										id="preset-dialog-submit"
-										name=""
-										asset={preset.locked ? 'lock' : 'unlock'}
-										assetType="svg"
-										shape="round"
-										{color}
-										variant={preset.locked ? 'fill' : 'bare'}
-										size="2xs"
-										font="2xs"
-										disabled={!preset.query}
-										onclick={() => toggleLock(preset)}
-									/>
-								</div>
-							{/if}
-						</li>
-					{/each}
-				</ul>
+											source: isSource
+												? {
+														preset: preset.name,
+														root: currentRoot,
+													}
+												: {
+														preset: coordinators.presets.sourcePreset?.name,
+														root: coordinators.presets.sourceRoot,
+													},
+											target: isTarget
+												? {
+														preset: preset.name,
+														root: currentRoot,
+													}
+												: {
+														preset: coordinators.presets.targetPreset?.name,
+														root: coordinators.presets.targetRoot,
+													},
+										})
+									: coordPresets.getPresetQuery(preset.name)}
+
+							<li
+								aria-current={isCurrent}
+								class={`raviolink l:flex justify:between ${isCurrent ? `surface:0:${color} chroma:1` : ''}`}
+							>
+								<a
+									href={resolve(`${route}/${presetQuery}`)}
+									class="font:sm raviolink grow"
+								>
+									{preset.name}
+								</a>
+								{#if canEdit?.presets}
+									<div class="l:flex:4xs align:center justify:end hug">
+										{#if isCurrent && !preset.locked}
+											<input
+												type="radio"
+												title="Editing"
+												id={preset.name}
+												checked={true}
+												name={id}
+												value={preset.name}
+												disabled={!preset.query}
+												class="maki:block"
+												{oninput}
+											/>
+										{/if}
+										<Button
+											label="Save Preset"
+											type="button"
+											id="preset-dialog-submit"
+											name=""
+											asset={!isCurrent ||
+											preset.locked ||
+											(isCurrent && query === preset.query)
+												? 'check'
+												: 'save'}
+											assetType="svg"
+											shape="round"
+											{color}
+											variant="bare"
+											size="2xs"
+											font="2xs"
+											disabled={preset.locked || !isCurrent}
+											onclick={() => savePreset(preset)}
+										/>
+										<DialogSavePreset
+											label="Duplicate Preset"
+											id={`duplicate-preset-${preset.id}`}
+											size="2xs"
+											shape="round"
+											variant="bare"
+											asset="copy"
+											assetType="svg"
+											cta="copy"
+											{color}
+											disabled={!isCurrent}
+											preset={{
+												id: crypto.randomUUID(),
+												name: preset.name,
+												query,
+											}}
+											{coordPresets}
+										/>
+										<DialogDeletePreset
+											id={`delete-preset-${preset.id}`}
+											{preset}
+											size="2xs"
+											disabled={preset.locked || !preset.query}
+											{coordPresets}
+										/>
+										<Button
+											label={preset.locked ? 'Unlock Preset' : 'Lock Preset'}
+											type="button"
+											id="preset-dialog-submit"
+											name=""
+											asset={preset.locked ? 'lock' : 'unlock'}
+											assetType="svg"
+											shape="round"
+											{color}
+											variant={preset.locked ? 'fill' : 'bare'}
+											size="2xs"
+											font="2xs"
+											disabled={!preset.query}
+											onclick={() => toggleLock(preset)}
+										/>
+									</div>
+								{/if}
+							</li>
+						{/each}
+					</ul>
+				{/key}
 			{/if}
 		</div>
 	{/if}

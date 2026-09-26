@@ -18,7 +18,7 @@
 		cta: ActionCrud
 		preset: Preset
 		color?: UiColor
-		coordPresets?: ICoordinatePresets
+		coordPresets: ICoordinatePresets
 	}
 	let {coordPresets, cta, preset, color = 'neutral'}: Props = $props()
 
@@ -131,7 +131,10 @@
 
 		dialogActor.close()
 
-		const currentPreset = getSanitizedParamValue(page.url, 'preset')
+		const currentPreset = getSanitizedParamValue(
+			page.url.searchParams,
+			'preset',
+		)
 		if (currentPreset === presetName) {
 			let url = new SvelteURL(page.url)
 			url.searchParams.delete('preset')

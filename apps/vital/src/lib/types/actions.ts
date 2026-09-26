@@ -8,6 +8,8 @@ import type {
 	ICoordinateImports,
 	ICoordinateMetadata,
 	ICoordinatePresets,
+	NamespaceId,
+	Slug,
 } from '$types'
 
 export type ActionCrud = 'save' | 'delete' | 'update' | 'copy'
@@ -33,4 +35,25 @@ export type CurrentCoordinators = {
 	presets: ICoordinatePresets
 	imports: ICoordinateImports
 	exports: ICoordinateExports
+}
+
+export type PresetOptions = {
+	namespace: NamespaceId
+	name: Slug // TODO: use Uuid
+}
+
+export type ComparePresetOptions = {
+	source: PresetOptions
+	target: PresetOptions
+}
+
+export type CompareCoordinators = {
+	getPresetCoords: (options: ComparePresetOptions) => {
+		source: ICoordinatePresets
+		target: ICoordinatePresets
+	}
+	getCoordDocs: (namespace: NamespaceId) => ICoordinateDocs
+	getCoordPresets: (namespace: NamespaceId) => ICoordinatePresets
+	setSourceRoot: (namespace: NamespaceId, root: NamespaceId) => void
+	getSourceRoot: (namespace: NamespaceId) => NamespaceId
 }
