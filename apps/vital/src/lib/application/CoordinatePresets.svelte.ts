@@ -14,6 +14,7 @@ import type {
 import {SvelteURLSearchParams} from 'svelte/reactivity'
 
 import {getPresetKey} from '$lib/common/format'
+import {getAllowedParams} from '$lib/common/url'
 
 /**
  * CoordinatePresets class to manage access to stored presets
@@ -274,13 +275,12 @@ export default class CoordinatePresets implements ICoordinatePresets {
 		const queryParams = new SvelteURLSearchParams(query)
 
 		if (target.preset) {
-			const sourcePreset = queryParams.get('source_preset')
-			const sourceSections = queryParams.get('source_sections')
-			const sourceTags = queryParams.get('source_tags')
-			const sourceRoot = queryParams.get('source_root')
-
-			sourceQuery = `source_root=${sourceRoot}&source_preset=${sourcePreset}&source_sections=${sourceSections}&source_tags=${sourceTags}`
-
+			const sourceParams = source.root
+				? getAllowedParams(source.root, queryParams)
+				: {}
+			sourceQuery = Object.entries(sourceParams)
+				.map(([key, value]) => `${key}=${value}`)
+				.join('&')
 			targetQuery = this.getTargetPresetQuery(target.preset)
 		}
 
@@ -291,12 +291,13 @@ export default class CoordinatePresets implements ICoordinatePresets {
 		}
 
 		if (source.preset) {
-			const targetPreset = queryParams.get('target_preset')
-			const targetSections = queryParams.get('target_sections')
-			const targetTags = queryParams.get('target_tags')
-			const targetRoot = queryParams.get('target_root')
+			const targetParams = target.root
+				? getAllowedParams(target.root, queryParams)
+				: {}
+			targetQuery = Object.entries(targetParams)
+				.map(([key, value]) => `${key}=${value}`)
+				.join('&')
 
-			targetQuery = `target_root=${targetRoot}&target_preset=${targetPreset}&target_sections=${targetSections}&target_tags=${targetTags}`
 			sourceQuery = this.getSourcePresetQuery(source.preset)
 		}
 
