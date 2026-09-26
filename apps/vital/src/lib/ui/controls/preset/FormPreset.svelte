@@ -131,7 +131,10 @@
 
 		dialogActor.close()
 
-		const currentPreset = getSanitizedParamValue(page.url, 'preset')
+		const currentPreset = getSanitizedParamValue(
+			page.url.searchParams,
+			'preset',
+		)
 		if (currentPreset === presetName) {
 			let url = new SvelteURL(page.url)
 			url.searchParams.delete('preset')

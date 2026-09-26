@@ -49,10 +49,10 @@
 	let isTwinDoc = $derived(
 		coordPresets.targetPreset || coordPresets.sourcePreset,
 	)
-	let preset = $derived(getSanitizedParamValue(page.url, 'preset'))
+	let preset = $derived(getSanitizedParamValue(page.url.searchParams, 'preset'))
 	let query = $derived(
 		buildForwardedQuery(
-			page.url,
+			page.url.searchParams,
 			coordMetadata.getTagGroups().map((g) => g.name),
 		),
 	)

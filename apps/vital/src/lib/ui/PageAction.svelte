@@ -105,7 +105,13 @@
 	let editing = $derived(editor[cta] || builder[cta])
 
 	let paramValues = $derived(
-		namespace ? getAllowedParamsForRoute(namespace, page.url) : {},
+		namespace
+			? getAllowedParamsForRoute(
+					namespace,
+					page.url.pathname,
+					page.url.searchParams,
+				)
+			: {},
 	)
 	let language = $derived(paramValues.language ?? DOC_LANGUAGE)
 	let format = $derived(paramValues.format ?? DOC_FORMAT)
@@ -147,7 +153,7 @@
 	})
 
 	let unassignedSections = $derived(
-		getSanitizedParamValueList(page.url, 'sections'),
+		getSanitizedParamValueList(page.url.searchParams, 'sections'),
 	)
 
 	let availableSections = $derived(coordDocs.getSections({language, format}))
@@ -188,7 +194,10 @@
 		coordMetadata
 			.getTagGroups()
 			.reduce((selected: string[], menu: TagGroup) => {
-				const tags = getSanitizedParamValueList(page.url, menu.name)
+				const tags = getSanitizedParamValueList(
+					page.url.searchParams,
+					menu.name,
+				)
 				return selected.concat(tags || [])
 			}, []),
 	)
