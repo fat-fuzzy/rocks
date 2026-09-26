@@ -23,6 +23,29 @@ function getStaticAllowedParams(
 	return new Set(params)
 }
 
+export function getAllowedParams(
+	namespace: NamespaceKey,
+	searchParams: URLSearchParams,
+): {[key in AllowedParamName]?: string} {
+	const allowedParams = NAMESPACES[namespace].children
+		.map((route: Route) => route.allowedParams || [])
+		.flat()
+
+	const params: {[key in AllowedParamName]?: string} = {}
+
+	for (const {name, type} of allowedParams) {
+		const value =
+			type === 'csv'
+				? getSanitizedParamCsvValue(searchParams, name)
+				: getSanitizedParamValue(searchParams, name)
+		if (value) {
+			params[name] = value
+		}
+	}
+
+	return params
+}
+
 export function getAllowedParamsForRoute(
 	namespace: NamespaceKey,
 	pathname: string,

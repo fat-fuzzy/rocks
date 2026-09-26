@@ -402,6 +402,7 @@
 						oninput={updateFilters}
 						{color}
 						actions={getRouteLabelsForNamespace(namespace)}
+						isTwinLayout={twinLayout[cta]}
 						canEdit={{presets: presetsEditor[cta], doc: docEditor[cta]}}
 					/>
 				{/if}

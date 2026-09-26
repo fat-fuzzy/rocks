@@ -152,11 +152,8 @@
 					onselect={updateSourceRoot}
 					onchange={updateSourceRoot}
 					onblur={updateSourceRoot}
-					value={sourceRoot}
+					value={sourceRoot ?? namespace}
 				>
-					<option class="size:xs font:xs" value={null}>
-						No root selected
-					</option>
 					{#each namespaceList as { name, title }, i (i)}
 						<option class="size:xs font:xs" value={name}>
 							{title}
