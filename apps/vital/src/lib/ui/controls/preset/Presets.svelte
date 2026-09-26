@@ -146,7 +146,7 @@
 			<label class="w:full size:2xs l:flex:2xs font:sm space:between">
 				<span> Source Root </span>
 				<select
-					class={`size:2xs font:sm grow color:${color}`}
+					class="size:2xs font:sm grow variant:bare color:neutral"
 					name="source_root"
 					id="source_root"
 					onselect={updateSourceRoot}

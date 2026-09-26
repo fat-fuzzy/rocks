@@ -301,13 +301,13 @@
 						/>
 					</label>
 				</div>
-				<div class="l:flex align:end">
+				<fieldset class="l:flex align:end">
 					<Input
 						id="name"
 						label="Name"
 						type="text"
 						name="name"
-						{color}
+						color={validator.fieldHasError('name') ? 'error' : color}
 						font="sm"
 						variant="bare"
 						size="xs"
@@ -321,8 +321,8 @@
 						hint="Use lower or uppercase letters, numbers, dashes or underscores"
 						{validator}
 					/>
-				</div>
-				<div class="l:flex align:end">
+				</fieldset>
+				<fieldset class="l:flex align:end">
 					<Input
 						id="title"
 						label="Title"
@@ -341,13 +341,13 @@
 						onfocus={handleFocus}
 						{validator}
 					/>
-				</div>
+				</fieldset>
 				<div class="l:flex align:end">
 					{#if subsections?.length}
 						<label class="size:2xs font:sm">
 							Group
 							<select
-								class="w:full size:2xs font:sm"
+								class="w:full size:2xs font:sm variant:bare color:neutral"
 								name="subsections"
 								id="subsections"
 								onselect={updateGroup}

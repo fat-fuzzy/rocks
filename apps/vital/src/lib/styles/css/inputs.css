@@ -7,7 +7,15 @@ label.variant\:bare:has(input),
 ff-control > label.variant\:bare:has(input),
 .ff-control.variant\:bare:has(input) {
 	--lightness-accent: var(--lightness-surface-2);
+	--chroma-accent-base: var(--color-chroma-neutral);
 	--border-color: var(--shade);
+}
+
+label.variant\:bare:has(input)[class*='error'],
+ff-control > label.variant\:bare:has(input),
+.ff-control.variant\:bare:has(input) {
+	--lightness-accent: var(--lightness-surface-2);
+	--chroma-accent-base: var(--chroma-surface-3);
 }
 
 label:has(input:checked),
