@@ -9,7 +9,6 @@ import type {
 	ICoordinateMetadata,
 	ICoordinatePresets,
 	NamespaceId,
-	Preset,
 	Slug,
 } from '$types'
 
@@ -48,23 +47,13 @@ export type ComparePresetOptions = {
 	target: PresetOptions
 }
 
-export type CombinedCoordinators = {
+export type CompareCoordinators = {
 	getPresetCoords: (options: ComparePresetOptions) => {
 		source: ICoordinatePresets
 		target: ICoordinatePresets
 	}
 	getCoordDocs: (namespace: NamespaceId) => ICoordinateDocs
 	getCoordPresets: (namespace: NamespaceId) => ICoordinatePresets
-	getPresetSections: (options: PresetOptions) => Preset | void
-	getCoordDocsPair: (
-		sourceNamespace: NamespaceId,
-		targetNamespace: NamespaceId,
-	) => {
-		source: ICoordinateDocs
-		target: ICoordinateDocs
-	}
-
-	setPreset: (options: PresetOptions) => void
 	setSourceRoot: (namespace: NamespaceId, root: NamespaceId) => void
 	getSourceRoot: (namespace: NamespaceId) => NamespaceId
 }

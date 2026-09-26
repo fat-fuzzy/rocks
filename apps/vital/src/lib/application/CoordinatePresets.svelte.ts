@@ -11,8 +11,9 @@ import type {
 	NamespaceId,
 } from '$types'
 
-import {getPresetKey} from '$lib/common/format'
 import {SvelteURLSearchParams} from 'svelte/reactivity'
+
+import {getPresetKey} from '$lib/common/format'
 
 /**
  * CoordinatePresets class to manage access to stored presets
@@ -26,6 +27,8 @@ export default class CoordinatePresets implements ICoordinatePresets {
 	error = $state(false)
 	sourcePreset: Preset | null = $state(null)
 	targetPreset: Preset | null = $state(null)
+	sourceRoot: NamespaceId | undefined = $state()
+	targetRoot: NamespaceId | undefined = $state()
 
 	constructor(aggMetadata: IAggregateMetadata, aggPresets: IAggregatePresets) {
 		this.aggMetadata = aggMetadata
@@ -39,6 +42,22 @@ export default class CoordinatePresets implements ICoordinatePresets {
 
 	getRoot(): NamespaceId {
 		return this.aggPresets.root // or aggMetadata ?
+	}
+
+	getSourceRoot(): NamespaceId | undefined {
+		return this.sourceRoot
+	}
+
+	getTargetRoot(): NamespaceId | undefined {
+		return this.targetRoot
+	}
+
+	setSourceRoot(namespace: NamespaceId): void {
+		this.sourceRoot = namespace
+	}
+
+	setTargetRoot(namespace: NamespaceId): void {
+		this.targetRoot = namespace
 	}
 
 	/**
@@ -242,24 +261,52 @@ export default class CoordinatePresets implements ICoordinatePresets {
 		return this.getPresetQueryForRole(name, 'target')
 	}
 
-	getCompareQuery(name: string, isSource: boolean, isTarget: boolean) {
+	getCompareQuery(options: {
+		query: string
+		source: {root?: NamespaceId; preset?: string}
+		target: {root?: NamespaceId; preset?: string}
+	}) {
 		let targetQuery
 		let sourceQuery
 
-		if (isSource) {
-			const targetPresetName = this.targetPreset?.name ?? ''
-			targetQuery = this.getTargetPresetQuery(targetPresetName)
+		const {query, source, target} = options
 
-			sourceQuery = this.getSourcePresetQuery(name)
+		const queryParams = new SvelteURLSearchParams(query)
+
+		if (target.preset) {
+			const sourcePreset = queryParams.get('source_preset')
+			const sourceSections = queryParams.get('source_sections')
+			const sourceTags = queryParams.get('source_tags')
+			const sourceRoot = queryParams.get('source_root')
+
+			sourceQuery = `source_root=${sourceRoot}&source_preset=${sourcePreset}&source_sections=${sourceSections}&source_tags=${sourceTags}`
+
+			targetQuery = this.getTargetPresetQuery(target.preset)
 		}
 
-		if (isTarget) {
-			const sourcePresetName = this.sourcePreset?.name ?? ''
-			sourceQuery = this.getSourcePresetQuery(sourcePresetName)
-			targetQuery = this.getTargetPresetQuery(name)
+		if (target.root) {
+			targetQuery = targetQuery
+				? `target_root=${target.root}&${targetQuery}`
+				: `target_root=${target.root}`
 		}
 
-		const query =
+		if (source.preset) {
+			const targetPreset = queryParams.get('target_preset')
+			const targetSections = queryParams.get('target_sections')
+			const targetTags = queryParams.get('target_tags')
+			const targetRoot = queryParams.get('target_root')
+
+			targetQuery = `target_root=${targetRoot}&target_preset=${targetPreset}&target_sections=${targetSections}&target_tags=${targetTags}`
+			sourceQuery = this.getSourcePresetQuery(source.preset)
+		}
+
+		if (source.root) {
+			sourceQuery = sourceQuery
+				? `source_root=${source.root}&${sourceQuery}`
+				: `source_root=${source.root}`
+		}
+
+		const combinedQuery =
 			sourceQuery && targetQuery
 				? `?${sourceQuery}&${targetQuery}`
 				: sourceQuery
@@ -268,7 +315,7 @@ export default class CoordinatePresets implements ICoordinatePresets {
 						? `?${targetQuery}`
 						: ''
 
-		return query
+		return combinedQuery
 	}
 
 	/**
