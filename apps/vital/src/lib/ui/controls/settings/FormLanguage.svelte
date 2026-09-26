@@ -190,7 +190,7 @@
 				<label class="size:2xs font:sm">
 					Source Language
 					<select
-						class="w:full size:2xs font:sm"
+						class="w:full size:2xs font:sm variant:bare color:neutral"
 						name="sourceLanguage"
 						id="sourceLanguage"
 						onselect={updateSourceLanguage}

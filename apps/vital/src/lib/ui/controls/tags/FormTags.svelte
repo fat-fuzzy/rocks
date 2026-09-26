@@ -286,7 +286,7 @@
 						<label class={`size:2xs font:sm color:${color}`}>
 							Tag Group
 							<select
-								class="w:full size:2xs font:sm"
+								class="w:full size:2xs font:sm variant:bare color:neutral"
 								name="groups"
 								id="groups"
 								{color}
