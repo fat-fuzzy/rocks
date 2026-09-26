@@ -18,7 +18,7 @@
 		cta: ActionCrud
 		preset: Preset
 		color?: UiColor
-		coordPresets?: ICoordinatePresets
+		coordPresets: ICoordinatePresets
 	}
 	let {coordPresets, cta, preset, color = 'neutral'}: Props = $props()
 

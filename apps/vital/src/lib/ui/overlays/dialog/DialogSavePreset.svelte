@@ -28,7 +28,7 @@
 		shape?: UiShape
 		asset?: string
 		assetType?: UiAssetType
-		coordPresets?: ICoordinatePresets
+		coordPresets: ICoordinatePresets
 	}
 	let {
 		id = 'save-preset',
