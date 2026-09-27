@@ -32,7 +32,7 @@ export interface IFormValidator<K> {
 	formHasErrors(): boolean
 	fieldHasChanged(name: string): boolean
 	fieldHasError(name: string): boolean
-	getFieldErrors(name: string): string[] | undefined
+	getFieldErrors(name: string): string[]
 	validateInput(event: Event): void
 	touchInput(event: Event): void
 	changeInput(event: Event): void

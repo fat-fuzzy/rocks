@@ -139,8 +139,9 @@ class FormValidator<K> implements IFormValidator<K> {
 		return field?.changed
 	}
 
-	public getFieldErrors(name: string): string[] | undefined {
-		return this.form[name]?.feedback?.error
+	public getFieldErrors(fieldName: string): string[] {
+		const field = this.form[fieldName]
+		return this.fieldHasError(fieldName) ? (field?.feedback?.error ?? []) : []
 	}
 
 	public validateInput(event: Event) {
