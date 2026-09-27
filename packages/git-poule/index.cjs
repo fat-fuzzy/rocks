@@ -75,6 +75,7 @@ fs.readFile(COMMIT_HISTORY_FILE, 'utf8', (err, data) => {
 		'phloem',
 		'play',
 		'playbook',
+		'pollen',
 		'prose',
 		'ui',
 		'validation',
