@@ -11,6 +11,7 @@ import type {
 // TODO: figure out if I can extract this info from Svelte component
 interface IStyleInputOptions {
 	id: string
+	name: string
 	label: string
 	value: string
 	[key: string]: string
