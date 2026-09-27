@@ -46,15 +46,15 @@
 		"svelte": "5.57.0"
 	},
 	"dependencies": {
-		"@tiptap/core": "3.29.0",
-		"@tiptap/extension-bold": "3.29.0",
-		"@tiptap/extension-link": "3.29.0",
-		"@tiptap/extension-list": "3.29.0",
-		"@tiptap/extension-text-style": "3.29.0",
-		"@tiptap/extension-typography": "3.29.0",
-		"@tiptap/pm": "3.29.0",
-		"@tiptap/starter-kit": "3.29.0",
-		"@tiptap/static-renderer": "3.29.0",
+		"@tiptap/core": "3.31.3",
+		"@tiptap/extension-bold": "3.31.3",
+		"@tiptap/extension-link": "3.31.3",
+		"@tiptap/extension-list": "3.31.3",
+		"@tiptap/extension-text-style": "3.31.3",
+		"@tiptap/extension-typography": "3.31.3",
+		"@tiptap/pm": "3.31.3",
+		"@tiptap/starter-kit": "3.31.3",
+		"@tiptap/static-renderer": "3.31.3",
 		"dompurify": "3.4.13"
 	},
 	"devDependencies": {
@@ -68,14 +68,14 @@
 		"@sveltejs/package": "2.5.8",
 		"@sveltejs/vite-plugin-svelte": "6.2.4",
 		"@types/eslint": "9.6.1",
-		"@vitest/coverage-v8": "4.1.10",
-		"@vitest/ui": "4.1.10",
+		"@vitest/coverage-v8": "5.0.1",
+		"@vitest/ui": "5.0.1",
 		"mdsvex": "0.12.7",
 		"publint": "0.3.18",
 		"svelte": "5.57.0",
 		"svelte-check": "4.7.6",
 		"typescript": "5.9.3",
 		"vite": "7.3.5",
-		"vitest": "4.1.10"
+		"vitest": "5.0.1"
 	}
 }
