@@ -187,7 +187,7 @@
 			onfocus={handleFocus}
 			required
 			hint="Use lower or uppercase letters, numbers, dashes or underscores"
-			{validator}
+			errors={validator.getFieldErrors('name')}
 		/>
 	{/if}
 	{#if presetExistsError}
