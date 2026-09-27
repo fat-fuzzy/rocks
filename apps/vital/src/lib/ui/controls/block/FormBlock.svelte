@@ -319,7 +319,7 @@
 						onfocus={handleFocus}
 						layout="flex"
 						hint="Use lower or uppercase letters, numbers, dashes or underscores"
-						{validator}
+						errors={validator.getFieldErrors('name')}
 					/>
 				</fieldset>
 				<fieldset class="l:flex align:end">
@@ -339,7 +339,7 @@
 						oninput={updateTitle}
 						onblur={handleBlur}
 						onfocus={handleFocus}
-						{validator}
+						errors={validator.getFieldErrors('title')}
 					/>
 				</fieldset>
 				<div class="l:flex align:end">
@@ -380,7 +380,7 @@
 						oninput={updateGroup}
 						onblur={handleBlur}
 						onfocus={handleFocus}
-						{validator}
+						errors={validator.getFieldErrors('group')}
 					/>
 				</div>
 				<div class="l:flex align:end">
@@ -399,7 +399,7 @@
 						oninput={updateRank}
 						onblur={handleBlur}
 						onfocus={handleFocus}
-						{validator}
+						errors={validator.getFieldErrors('rank')}
 					/>
 				</div>
 			</div>

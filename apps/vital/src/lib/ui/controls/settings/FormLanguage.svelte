@@ -168,7 +168,7 @@
 				onfocus={handleFocus}
 				required
 				hint={sourceLanguageHint}
-				{validator}
+				errors={validator.getFieldErrors('name')}
 			/>
 			{#if errorLanguageExists}
 				<Feedback

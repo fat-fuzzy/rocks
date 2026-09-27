@@ -53,6 +53,7 @@
 
 {#if sectionItems.length}
 	<InputGroup
+		context="form"
 		id="sections"
 		name="sections"
 		legend="Main Sections"
@@ -65,6 +66,7 @@
 		items={sectionItems}
 		{oninput}
 		selectAll={true}
+		errors={[]}
 	/>
 {:else}
 	<div>

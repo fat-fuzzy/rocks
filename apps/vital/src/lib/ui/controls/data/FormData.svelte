@@ -29,7 +29,7 @@
 			coordImports.status === 'importing',
 	)
 
-	const deleteOptions: Partial<InputProps<string>>[] = $derived([
+	const deleteOptions: InputProps[] = $derived([
 		{
 			id: 'with-backup',
 			name: 'with-backup',
@@ -190,6 +190,7 @@
 			{/if}
 			<div class="l:flex size:3xs justify:between align:start grow">
 				<InputGroup
+					context="form"
 					id="delete-strategy"
 					name="delete-strategy"
 					legend="Delete strategy"
@@ -201,6 +202,7 @@
 					selectAll={true}
 					items={deleteOptions}
 					oninput={setDeleteStrategy}
+					errors={[]}
 				/>
 				<div class="l:stack maki:block:sm">
 					<Button
@@ -212,9 +214,8 @@
 						variant="outline"
 						shape="mellow"
 						size="xs"
-						font="xs font:heading"
+						font="xs"
 						disabled={disabled || status === 'ready'}
-						hint="This action cannot be undone"
 						onclick={deleteCurrentData}
 					/>
 				</div>
@@ -230,7 +231,7 @@
 						variant="outline"
 						shape="mellow"
 						size="xs"
-						font="xs font:heading"
+						font="xs"
 						disabled={status !== 'ready'}
 						asset="arrow-bar-down"
 						assetType="svg"
@@ -246,7 +247,7 @@
 						variant="outline"
 						shape="mellow"
 						size="xs"
-						font="xs font:heading"
+						font="xs"
 						asset="leaf"
 						assetType="svg"
 						onclick={freshStart}
@@ -261,7 +262,7 @@
 						shape="mellow"
 						variant="outline"
 						size="sm"
-						font="xs font:heading"
+						font="xs"
 						asset="herb openmoji:sm"
 						assetType="svg"
 						onclick={reSeed}
