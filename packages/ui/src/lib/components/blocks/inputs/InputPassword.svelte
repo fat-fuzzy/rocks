@@ -16,15 +16,9 @@
 		onblur,
 		oninput,
 		disabled,
-		validator,
+		errors,
 		autocomplete,
 	}: InputProps = $props()
-
-	let errors = $derived(
-		validator && validator?.fieldHasChanged(name)
-			? validator?.getFieldErrors(name)
-			: [],
-	)
 
 	let inputClasses = $derived(
 		styleHelper.getStyles({
@@ -55,4 +49,12 @@
 	/>
 </label>
 
-<Feedback id={`input-feedback-${id}`} {hint} {errors} {size} {variant} {font} />
+<Feedback
+	context="form"
+	id={`input-feedback-${id}`}
+	{hint}
+	{errors}
+	{size}
+	{variant}
+	{font}
+/>

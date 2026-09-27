@@ -24,14 +24,8 @@
 		variant,
 		background,
 		breakpoint,
-		validator,
+		errors,
 	}: InputFileProps = $props()
-
-	let errors = $derived(
-		validator && validator?.fieldHasChanged(name)
-			? validator?.getFieldErrors(name)
-			: [],
-	)
 
 	let inputClasses = $derived(
 		styleHelper.getStyles({
@@ -75,6 +69,7 @@
 
 {#if hint}
 	<Fieldset
+		context="form"
 		id={`fieldset-${id}`}
 		name={`fieldset-${name}`}
 		{layout}
@@ -84,6 +79,7 @@
 		{@render input()}
 
 		<Feedback
+			context="form"
 			id={`input-feedback-${id}`}
 			{hint}
 			{errors}

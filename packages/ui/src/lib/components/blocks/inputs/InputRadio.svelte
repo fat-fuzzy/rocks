@@ -30,14 +30,8 @@
 		container,
 		containerSize,
 		oninput,
-		validator,
+		errors,
 	}: InputRadioProps = $props()
-
-	let errors = $derived(
-		name && validator && validator?.fieldHasChanged(name)
-			? validator?.getFieldErrors(name)
-			: [],
-	)
 
 	let labelClasses = $derived(
 		styleHelper.getStyles({
