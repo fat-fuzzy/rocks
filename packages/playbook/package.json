@@ -49,8 +49,8 @@
 		"@sveltejs/adapter-cloudflare": "7.2.9",
 		"@sveltejs/kit": "2.70.3",
 		"@sveltejs/package": "2.5.8",
-		"@vitest/coverage-v8": "4.1.10",
-		"@vitest/ui": "4.1.10",
+		"@vitest/coverage-v8": "5.0.1",
+		"@vitest/ui": "5.0.1",
 		"@sveltejs/vite-plugin-svelte": "6.2.4",
 		"publint": "0.3.18",
 		"svelte": "5.57.0",
@@ -58,7 +58,7 @@
 		"tslib": "2.8.1",
 		"typescript": "5.9.3",
 		"vite": "7.3.5",
-		"vitest": "5.0.2"
+		"vitest": "5.0.1"
 	},
 	"type": "module"
 }
