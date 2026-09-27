@@ -55,6 +55,7 @@
 						color: type === 'radio' ? 'neutral' : color,
 						title: title ?? name,
 						shape: type === 'radio' ? 'mellow' : 'pill',
+						errors: [],
 					}
 				})
 
@@ -115,6 +116,7 @@
 		<div class="tags-menu l:flex:2xs align:start justify:between">
 			{#each tags as group, i (i)}
 				<InputGroup
+					context="form"
 					id={group.name}
 					name={group.name}
 					legend={group.title}
@@ -129,6 +131,7 @@
 					items={baseTags[group.name]}
 					{oninput}
 					isUiControl={true}
+					errors={[]}
 				/>
 			{/each}
 			{#if tags.length < 2}

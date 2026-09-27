@@ -73,6 +73,8 @@ export type UiContentProps = {
 }
 
 export type UiControl = {
+	id: string
+	name: string
 	slug: string
 	label: string
 	title?: string

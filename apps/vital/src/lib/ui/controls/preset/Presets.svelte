@@ -138,7 +138,7 @@
 
 <div class="presets justify:start shape:mellow l:stack:3xs raviolink">
 	<div class="ui-controls w:full l:flex:2xs align:center justify:between">
-		<svelte:element this={`h${headingLevel}`} class="ravioli:3xs">
+		<svelte:element this={`h${headingLevel}`} class="maki:block:3xs">
 			{title}
 		</svelte:element>
 

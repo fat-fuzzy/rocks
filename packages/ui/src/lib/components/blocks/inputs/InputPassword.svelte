@@ -16,15 +16,9 @@
 		onblur,
 		oninput,
 		disabled,
-		validator,
 		autocomplete,
+		errors = [],
 	}: InputProps = $props()
-
-	let errors = $derived(
-		validator && validator?.fieldHasChanged(name)
-			? validator?.getFieldErrors(name)
-			: [],
-	)
 
 	let inputClasses = $derived(
 		styleHelper.getStyles({
@@ -49,10 +43,18 @@
 		{oninput}
 		{disabled}
 		{autocomplete}
-		aria-describedby={hint || errors?.length
+		aria-describedby={hint || errors.length
 			? `input-feedback-${id}`
 			: undefined}
 	/>
 </label>
 
-<Feedback id={`input-feedback-${id}`} {hint} {errors} {size} {variant} {font} />
+<Feedback
+	context="form"
+	id={`input-feedback-${id}`}
+	{hint}
+	{errors}
+	{size}
+	{variant}
+	{font}
+/>

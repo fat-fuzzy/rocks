@@ -33,7 +33,7 @@ export type InputFeedbackProps = FeedbackProps & {
 	assetType?: UiAssetType
 	asset?: string
 	variant?: UiVariant
-	errors?: string[]
+	errors: string[]
 	hint?: string
 	isUiControl?: boolean
 }
@@ -51,6 +51,12 @@ export type InputCommonProps = {
 	autocomplete?: AutoComplete
 
 	/**
+	 * Validation props
+	 */
+	type?: string
+	pattern?: string
+
+	/**
 	 * State props
 	 */
 	hint?: string
@@ -63,6 +69,7 @@ export type InputCommonProps = {
 	required?: boolean
 
 	children?: Snippet
+	errors: string[]
 }
 
 export type InputCallbackProps = {
@@ -74,26 +81,24 @@ export type InputCallbackProps = {
 	onchange?: (event: Event, payload?: FuzzyPayload) => void
 }
 
-export type InputProps<T> = UiBlockProps &
-	ValidationProps<T> &
+export type InputProps = UiBlockProps &
 	InputCommonProps &
 	InputCallbackProps & {
 		name: string
 	}
 
-export type InputRadioProps<T> = UiBlockProps &
-	ValidationProps<T> &
+export type InputRadioProps = UiBlockProps &
 	InputCommonProps &
 	InputCallbackProps & {
 		name?: string
 		isUiControl?: boolean
 	}
 
-export type InputCheckProps<T> = InputRadioProps<T> & {
+export type InputCheckProps = InputRadioProps & {
 	indeterminate?: boolean
 }
 
-export type FieldsetProps<T> = UiBlockProps &
+export type FieldsetProps = UiBlockProps &
 	InputCallbackProps &
 	InputFeedbackProps & {
 		/**
@@ -108,11 +113,11 @@ export type FieldsetProps<T> = UiBlockProps &
 		disabled?: boolean
 
 		type?: HTMLInputTypeAttribute
-		items?: InputProps<T>[] // 1. EITHER Use items for InputGroups
+		items?: InputProps[] // 1. EITHER Use items for InputGroups
 		children?: Snippet // 2. OR use children
 	}
 
-export type InputRangeProps<T> = InputProps<T> & {
+export type InputRangeProps = InputProps & {
 	min?: number
 	max?: number
 	step?: number
@@ -122,7 +127,7 @@ export type InputRangeProps<T> = InputProps<T> & {
 
 type FileType = 'image/png, image/jpeg'
 
-export type InputFileProps<T> = InputProps<T> & {
+export type InputFileProps = InputProps & {
 	/**
 	 * State props
 	 */

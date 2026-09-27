@@ -10,7 +10,7 @@
 		assetType,
 		asset = 'none',
 		hint,
-		errors,
+		errors = [],
 		surface,
 		surfaceLightness = 0,
 	}: InputFeedbackProps = $props()
@@ -35,7 +35,7 @@
 	</Feedback>
 {/if}
 
-{#if errors?.length}
+{#if errors.length}
 	<Feedback
 		{id}
 		context="form"

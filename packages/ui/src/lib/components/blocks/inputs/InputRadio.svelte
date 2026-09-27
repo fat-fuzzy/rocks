@@ -30,14 +30,8 @@
 		container,
 		containerSize,
 		oninput,
-		validator,
+		errors = [],
 	}: InputRadioProps = $props()
-
-	let errors = $derived(
-		name && validator && validator?.fieldHasChanged(name)
-			? validator?.getFieldErrors(name)
-			: [],
-	)
 
 	let labelClasses = $derived(
 		styleHelper.getStyles({
@@ -99,7 +93,7 @@
 		{disabled}
 		class={inputClasses}
 		aria-labelledby={shape ? `labels-${id}` : undefined}
-		aria-describedby={hint || errors?.length ? `feedback-${id}` : undefined}
+		aria-describedby={hint || errors.length ? `feedback-${id}` : undefined}
 	/>
 {/snippet}
 

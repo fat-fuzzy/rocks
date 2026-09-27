@@ -87,7 +87,11 @@ export function buildPresetIndex(store: PresetStore): PresetIndex {
 	const presets: Record<string, Preset> = {}
 
 	for (const preset of Object.values(store)) {
-		presets[getPresetKey(preset.name)] = preset
+		const key = getPresetKey(preset.name)
+
+		if (key) {
+			presets[key] = preset
+		}
 	}
 
 	return {presets}

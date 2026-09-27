@@ -168,7 +168,7 @@
 				onfocus={handleFocus}
 				required
 				hint={sourceFormatHint}
-				{validator}
+				errors={validator.getFieldErrors('name')}
 			/>
 			{#if errorFormatExists}
 				<Feedback
