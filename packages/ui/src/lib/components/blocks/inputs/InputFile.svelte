@@ -24,7 +24,7 @@
 		variant,
 		background,
 		breakpoint,
-		errors,
+		errors = [],
 	}: InputFileProps = $props()
 
 	let inputClasses = $derived(
@@ -56,7 +56,7 @@
 			{id}
 			{name}
 			accept={fileType}
-			aria-describedby={hint || errors?.length
+			aria-describedby={hint || errors.length
 				? `input-feedback-${id}`
 				: undefined}
 			{multiple}
@@ -75,6 +75,7 @@
 		{layout}
 		{size}
 		{color}
+		{errors}
 	>
 		{@render input()}
 

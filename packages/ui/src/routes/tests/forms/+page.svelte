@@ -20,7 +20,7 @@
 			...i,
 			name: inputProps.name,
 			disabled: false,
-			validator,
+			errors: validator.getFieldErrors(inputProps.name),
 		})),
 	)
 
@@ -30,7 +30,7 @@
 			name: inputProps2.name,
 			label: `${i.label} Bis`,
 			disabled: false,
-			validator,
+			errors: validator.getFieldErrors(inputProps2.name),
 		})),
 	)
 

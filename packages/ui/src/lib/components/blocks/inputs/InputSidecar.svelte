@@ -28,7 +28,7 @@
 		oninput,
 		onclick,
 		disabled,
-		errors,
+		errors = [],
 		autocomplete,
 	}: InputProps &
 		ButtonProps & {

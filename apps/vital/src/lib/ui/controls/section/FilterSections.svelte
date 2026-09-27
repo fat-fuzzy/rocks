@@ -41,6 +41,7 @@
 				value: section,
 				checked: selected ? true : undefined,
 				label: section,
+				errors: [], // set errors at group level
 			}
 		}),
 	)

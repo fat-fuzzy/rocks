@@ -56,6 +56,7 @@
 				label: i,
 				title: i,
 				variant: 'bare' as UiVariant,
+				errors: [],
 			}
 		})
 	}

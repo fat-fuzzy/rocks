@@ -30,7 +30,7 @@
 		container,
 		containerSize,
 		oninput,
-		errors,
+		errors = [],
 	}: InputRadioProps = $props()
 
 	let labelClasses = $derived(
@@ -93,7 +93,7 @@
 		{disabled}
 		class={inputClasses}
 		aria-labelledby={shape ? `labels-${id}` : undefined}
-		aria-describedby={hint || errors?.length ? `feedback-${id}` : undefined}
+		aria-describedby={hint || errors.length ? `feedback-${id}` : undefined}
 	/>
 {/snippet}
 

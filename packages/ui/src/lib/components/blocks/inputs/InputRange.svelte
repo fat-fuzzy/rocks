@@ -26,7 +26,7 @@
 		breakpoint,
 		threshold,
 		oninput,
-		errors,
+		errors = [],
 	}: InputRangeProps = $props()
 
 	const numberToClass: {[key: string]: string} = {
@@ -138,7 +138,7 @@
 		oninput={handleInput}
 		list={items?.length ? `${id}-markers` : undefined}
 		{disabled}
-		aria-describedby={hint || errors?.length
+		aria-describedby={hint || errors.length
 			? `input-feedback-${id}`
 			: undefined}
 	/>

@@ -39,6 +39,7 @@
 			color: 'primary',
 			title: 'Backup and Delete',
 			disabled: disabled || status === 'ready',
+			errors: [],
 		},
 		{
 			id: 'just-delete',
@@ -49,6 +50,7 @@
 			color: 'highlight',
 			title: 'Just Delete',
 			disabled: disabled || status === 'ready',
+			errors: [],
 		},
 	])
 	/**

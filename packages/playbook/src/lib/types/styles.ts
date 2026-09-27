@@ -1,4 +1,5 @@
 import type {
+	InputProps,
 	UiAssetType,
 	UiColor,
 	UiContainer,
@@ -9,7 +10,7 @@ import type {
 } from '@fat-fuzzy/ui'
 
 // TODO: figure out if I can extract this info from Svelte component
-interface IStyleInputOptions {
+export interface IStyleInputOptions {
 	id: string
 	name: string
 	label: string
@@ -123,7 +124,7 @@ export interface IStyleInputGroup extends IStylesSet {
 	slug: string
 	input: string
 	value: string
-	items: Array<IStyleInputOptions>
+	items: Array<IStyleInputOptions & InputProps>
 
 	getValue: () => string
 	setValue: (value: string) => void

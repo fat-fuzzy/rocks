@@ -277,6 +277,7 @@
 						label: i,
 						title: i,
 						validator,
+						errors: [], // set errors at group level
 					}))}
 					errors={validator.getFieldErrors('formats')}
 				/>
