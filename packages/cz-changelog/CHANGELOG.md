@@ -1,5 +1,11 @@
 # @fat-fuzzy/cz-changelog
 
+## 0.1.11
+
+### Patch Changes
+
+- 9bd3c9a: UI improvements, bugfixes, tests
+
 ## 0.1.10
 
 ### Patch Changes
