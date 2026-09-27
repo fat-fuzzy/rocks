@@ -46,7 +46,7 @@
 		"svelte": "5.57.0"
 	},
 	"dependencies": {
-		"@tiptap/core": "3.30.4",
+		"@tiptap/core": "3.30.5",
 		"@tiptap/extension-bold": "3.29.0",
 		"@tiptap/extension-link": "3.29.0",
 		"@tiptap/extension-list": "3.29.0",
@@ -76,6 +76,6 @@
 		"svelte-check": "4.7.6",
 		"typescript": "5.9.3",
 		"vite": "7.3.5",
-		"vitest": "4.1.10"
+		"vitest": "5.0.2"
 	}
 }
