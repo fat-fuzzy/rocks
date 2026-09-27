@@ -55,6 +55,7 @@
 						color: type === 'radio' ? 'neutral' : color,
 						title: title ?? name,
 						shape: type === 'radio' ? 'mellow' : 'pill',
+						errors: [],
 					}
 				})
 

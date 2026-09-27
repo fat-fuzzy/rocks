@@ -77,7 +77,7 @@
 		onupdate(updated)
 	}
 
-	function handleRangeInput(event) {
+	function handleRangeInput(event: {id: string; name: string; value: string}) {
 		const payload = {
 			name: familyName.toLowerCase(),
 			items: [
@@ -229,6 +229,7 @@
 				font={apiFont}
 				variant={styleInput.variant}
 				oninput={handleRangeInput}
+				errors={[]}
 			/>
 		</Fieldset>
 	{/if}

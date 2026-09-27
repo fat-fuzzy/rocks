@@ -16,8 +16,8 @@
 		onblur,
 		oninput,
 		disabled,
-		errors,
 		autocomplete,
+		errors = [],
 	}: InputProps = $props()
 
 	let inputClasses = $derived(
@@ -43,7 +43,7 @@
 		{oninput}
 		{disabled}
 		{autocomplete}
-		aria-describedby={hint || errors?.length
+		aria-describedby={hint || errors.length
 			? `input-feedback-${id}`
 			: undefined}
 	/>

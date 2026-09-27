@@ -22,7 +22,7 @@
 		onblur,
 		oninput,
 		disabled,
-		errors,
+		errors = [],
 		autocomplete,
 	}: InputProps = $props()
 
@@ -54,8 +54,8 @@
 		{oninput}
 		{disabled}
 		{autocomplete}
-		aria-describedby={errors?.length ? `input-feedback-${id}` : undefined}
-		aria-invalid={errors && errors.length > 0}
+		aria-describedby={errors.length > 0 ? `input-feedback-${id}` : undefined}
+		aria-invalid={errors.length > 0}
 	/>
 </label>
 

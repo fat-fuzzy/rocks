@@ -1,5 +1,9 @@
 <script lang="ts">
-	import type {ToggleSettingsProps, InputCallbackProps, UiControl} from '$types'
+	import type {
+		ToggleSettingsProps,
+		InputCallbackProps,
+		InputProps,
+	} from '$types'
 
 	import InputGroup from '$lib/components/blocks/inputs/InputGroup.svelte'
 
@@ -12,25 +16,27 @@
 
 	let values = $derived(Object.entries(selected).map(([, value]) => value))
 
-	const options: UiControl[] = $derived([
+	const options: InputProps[] = $derived([
 		{
+			id: 'brightness',
 			label: 'Brightness',
 			name: 'brightness',
 			slug: 'brightness',
 			type: 'radio',
 			size: 'xs',
 			justify: 'start',
-			id: 'brightness',
 			background: 'inherit',
 			variant: 'bare',
+			errors: [],
 			value: Object.entries(selected).map(([key, value]) => {
-				if (key) return value
+				if (key) return value as string
 				return ''
 			}),
 			items: [
 				{
 					label: 'System',
 					id: 'brightness.system',
+					name: 'brightness.system',
 					slug: 'brightness.system',
 					value: 'system',
 					asset: 'system',
@@ -41,10 +47,12 @@
 					color: 'primary',
 					background: 'primary',
 					variant: 'bare',
+					errors: [],
 				},
 				{
 					label: 'Day',
 					id: 'brightness.day',
+					name: 'brightness.day',
 					slug: 'brightness.day',
 					value: 'day',
 					asset: 'day',
@@ -55,10 +63,12 @@
 					color: 'primary',
 					background: 'primary',
 					variant: 'bare',
+					errors: [],
 				},
 				{
 					label: 'Night',
 					id: 'brightness.night',
+					name: 'brightness.night',
 					slug: 'brightness.night',
 					value: 'night',
 					asset: 'night',
@@ -69,28 +79,31 @@
 					color: 'primary',
 					background: 'primary',
 					variant: 'bare',
+					errors: [],
 				},
 			],
 		},
 		{
 			label: 'Contrast',
+			id: 'contrast',
 			name: 'contrast',
 			type: 'radio',
 			size: 'xs',
 			justify: 'start',
 			layout: 'stack',
-			id: 'contrast',
 			slug: 'contrast',
 			background: 'inherit',
 			variant: 'bare',
+			errors: [],
 			value: Object.entries(selected).map(([key, value]) => {
-				if (key) return value
+				if (key) return value as string
 				return ''
 			}),
 			items: [
 				{
 					label: 'Default',
 					id: 'contrast.contrast',
+					name: 'contrast.contrast',
 					slug: 'contrast.contrast',
 					value: 'contrast',
 					asset: 'contrast',
@@ -101,6 +114,7 @@
 					color: 'accent',
 					background: 'accent',
 					variant: 'bare',
+					errors: [],
 					checked:
 						selected.brightness === 'system' ||
 						selected.contrast === 'contrast',
@@ -108,6 +122,7 @@
 				{
 					label: 'Blend',
 					id: 'contrast.blend',
+					name: 'contrast.blend',
 					slug: 'contrast.blend',
 					value: 'blend',
 					asset: 'blend',
@@ -118,6 +133,7 @@
 					color: 'accent',
 					background: 'accent',
 					variant: 'bare',
+					errors: [],
 					checked:
 						selected.brightness !== 'system' && selected.contrast === 'blend',
 				},
@@ -129,11 +145,13 @@
 <div class="ui-controls l:flex nowrap maki:block:sm align:start">
 	{#each options as item, i (i)}
 		<InputGroup
+			context="form"
 			{...item}
 			{assetType}
 			{oninput}
 			value={values}
 			isUiControl={true}
+			errors={[]}
 		/>
 	{/each}
 </div>

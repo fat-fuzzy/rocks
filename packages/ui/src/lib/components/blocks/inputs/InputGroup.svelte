@@ -34,7 +34,7 @@
 		assetType,
 		oninput,
 		children,
-		errors,
+		errors = [],
 	}: FieldsetProps = $props()
 
 	let selected: string[] = $derived(value ?? [])

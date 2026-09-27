@@ -31,7 +31,7 @@
 		container,
 		containerSize,
 		oninput,
-		errors,
+		errors = [],
 	}: InputCheckProps = $props()
 
 	let labelClasses = $derived(
@@ -97,7 +97,7 @@
 		aria-labelledby={shape === 'square' || shape === 'round'
 			? `labels-${id}`
 			: undefined}
-		aria-describedby={hint || errors?.length ? `feedback-${id}` : undefined}
+		aria-describedby={hint || errors.length ? `feedback-${id}` : undefined}
 		data-anchor={id}
 	/>
 {/snippet}
