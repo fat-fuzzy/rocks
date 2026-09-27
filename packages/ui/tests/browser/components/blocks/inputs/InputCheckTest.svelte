@@ -15,9 +15,8 @@
 	let inputProps = $derived(INPUTS[id])
 
 	let isDisabled = $derived(inputProps.value.valid === 'disabled')
-	let color: UiColor = $derived(
-		validator.getFieldErrors(inputProps.name)?.length ? 'error' : 'primary',
-	)
+	let errors = $derived(validator.getFieldErrors(inputProps.name))
+	let color: UiColor = $derived(errors.length ? 'error' : 'primary')
 
 	function handleFocus(event: Event) {
 		validator.touchInput(event)
@@ -41,7 +40,7 @@
 			id={`${inputProps.name}.${inputProps.value.valid}`}
 			value={inputProps.value.valid}
 			checked={false}
-			{validator}
+			{errors}
 			disabled={isDisabled}
 			onfocus={handleFocus}
 			onblur={handleBlur}

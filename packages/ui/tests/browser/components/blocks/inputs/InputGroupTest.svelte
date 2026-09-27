@@ -33,9 +33,9 @@
 		})),
 	)
 
-	let color: UiColor = $derived(
-		validator.getFieldErrors(inputProps.name)?.length ? 'error' : 'primary',
-	)
+	let errors = $derived(validator.getFieldErrors(inputProps.name))
+
+	let color: UiColor = $derived(errors.length ? 'error' : 'primary')
 </script>
 
 <TestContext>
@@ -46,8 +46,9 @@
 			{items}
 			{value}
 			id={inputProps.name}
-			{validator}
+			{errors}
 			{color}
+			context="form"
 		/>
 	</form>
 </TestContext>
