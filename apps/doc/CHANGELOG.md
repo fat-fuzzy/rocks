@@ -1,5 +1,11 @@
 # @fat-fuzzy/doc
 
+## 0.1.90
+
+### Patch Changes
+
+- 1b4d2ee: Dep updates, type & schema improvements, Vital compare docs
+
 ## 0.1.89
 
 ### Patch Changes
