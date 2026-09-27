@@ -25,7 +25,7 @@
 		asset = 'log',
 		align = 'center',
 		background,
-	}: FormProps<SignUp> = $props()
+	}: FormProps = $props()
 
 	let boundForm: HTMLFormElement | undefined = $state()
 	let formData: FormData | undefined = $state()
@@ -118,7 +118,7 @@
 					onfocus={handleFocus}
 					onblur={handleBlur}
 					oninput={handleInput}
-					{validator}
+					errors={validator.getFieldErrors('username')}
 					autocomplete="username"
 				/>
 				<Input
@@ -133,7 +133,7 @@
 					onfocus={handleFocus}
 					onblur={handleBlur}
 					oninput={handleInput}
-					{validator}
+					errors={validator.getFieldErrors('email')}
 				/>
 				<InputPassword
 					type="password"
@@ -147,7 +147,7 @@
 					onfocus={handleFocus}
 					onblur={handleBlur}
 					oninput={handleInput}
-					{validator}
+					errors={validator.getFieldErrors('password')}
 					autocomplete="new-password"
 				/>
 				<InputPassword
@@ -159,11 +159,13 @@
 					{size}
 					{color}
 					{variant}
-					disabled={validator.getFieldErrors('password') ? true : undefined}
+					disabled={validator.getFieldErrors('password')?.length
+						? true
+						: undefined}
 					onfocus={handleFocus}
 					onblur={handleBlur}
 					oninput={handleInput}
-					{validator}
+					errors={validator.getFieldErrors('confirm_password')}
 					autocomplete="new-password"
 				/>
 				<Button
