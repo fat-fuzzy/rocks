@@ -1,5 +1,11 @@
 # @fat-fuzzy/prose
 
+## 0.1.51
+
+### Patch Changes
+
+- 1b4d2ee: Dep updates, type & schema improvements, Vital compare docs
+
 ## 0.1.50
 
 ### Patch Changes
