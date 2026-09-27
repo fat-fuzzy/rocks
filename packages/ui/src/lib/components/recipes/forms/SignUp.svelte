@@ -1,9 +1,9 @@
 <script lang="ts">
-	import type {FormProps} from '$types'
+	import type {FormProps, SignUp} from '$types'
 	import {onMount} from 'svelte'
 	import {enhance} from '$app/forms'
 
-	import * as validators from '$lib/generated/ajv/validate.ajv.mjs'
+	import {SignUpValidator} from '$lib/utils/validate'
 	import Button from '$lib/components/blocks/buttons/Button.svelte'
 	import Feedback from '$lib/components/blocks/global/Feedback.svelte'
 	import Input from '$lib/components/blocks/inputs/Input.svelte'
@@ -29,10 +29,8 @@
 
 	let boundForm: HTMLFormElement | undefined = $state()
 	let formData: FormData | undefined = $state()
-	let validator: FormValidator = new FormValidator(
-		'SignUpValidationFunction',
-		validators,
-	)
+
+	let validator: FormValidator<SignUp> = new FormValidator(SignUpValidator)
 	let disabled: boolean | undefined = $derived(
 		validator.formHasErrors() ? true : undefined,
 	)
@@ -120,7 +118,7 @@
 					onfocus={handleFocus}
 					onblur={handleBlur}
 					oninput={handleInput}
-					{validator}
+					errors={validator.getFieldErrors('username')}
 					autocomplete="username"
 				/>
 				<Input
@@ -135,7 +133,7 @@
 					onfocus={handleFocus}
 					onblur={handleBlur}
 					oninput={handleInput}
-					{validator}
+					errors={validator.getFieldErrors('email')}
 				/>
 				<InputPassword
 					type="password"
@@ -149,7 +147,7 @@
 					onfocus={handleFocus}
 					onblur={handleBlur}
 					oninput={handleInput}
-					{validator}
+					errors={validator.getFieldErrors('password')}
 					autocomplete="new-password"
 				/>
 				<InputPassword
@@ -161,11 +159,13 @@
 					{size}
 					{color}
 					{variant}
-					disabled={validator.getFieldErrors('password') ? true : undefined}
+					disabled={validator.getFieldErrors('password')?.length
+						? true
+						: undefined}
 					onfocus={handleFocus}
 					onblur={handleBlur}
 					oninput={handleInput}
-					{validator}
+					errors={validator.getFieldErrors('confirm_password')}
 					autocomplete="new-password"
 				/>
 				<Button

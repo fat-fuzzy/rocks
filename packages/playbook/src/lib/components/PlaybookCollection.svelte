@@ -201,9 +201,9 @@
 			{@render children()}
 		{/if}
 
-		<details class={`l:stack:${size} maki:block`}>
+		<details class={`l:stack:${size} maki:block shape:mellow`}>
 			<summary
-				class={`color:${color} variant:outline ravioli:2xs emoji:${category}`}
+				class={`color:${color} variant:outline ravioli:2xs emoji:${category} shape:mellow`}
 			>
 				{category}
 			</summary>

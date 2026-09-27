@@ -1,0 +1,42 @@
+{
+	"name": "Vital",
+	"id": "/",
+	"start_url": "/",
+	"display": "standalone",
+	"theme_color": "hsl(239.67 12.29% 88.15%)",
+	"background_color": "hsl(240.03 100% 96%)",
+	"categories": ["utilities", "productivity", "personalization"],
+	"description": "Vital tools for growth, reflection and story.",
+	"icons": [
+		{
+			"src": "/pwa/icons/192.png",
+			"type": "image/png",
+			"sizes": "192x192"
+		},
+		{
+			"src": "/pwa/icons/512.png",
+			"type": "image/png",
+			"sizes": "512x512"
+		},
+		{
+			"src": "/pwa/icons/1024.png",
+			"type": "image/png",
+			"sizes": "1024x1024"
+		}
+	],
+	"screenshots": [
+		{
+			"src": "/pwa/images/edit-800-440.png",
+			"sizes": "800x440",
+			"form_factor": "wide",
+			"platform": "macos",
+			"label": "Chlorophyll is Vital"
+		},
+		{
+			"src": "/pwa/images/edit-600-1000.png",
+			"sizes": "600x1000",
+			"platform": "macos",
+			"label": "Chlorophyll is Vital"
+		}
+	]
+}

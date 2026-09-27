@@ -36,6 +36,10 @@
 	max-block-size: var(--overlay-block-md);
 }
 
+.scroll\:container.contain\:lg:has(.scroll\:y) {
+	max-block-size: var(--overlay-block-lg);
+}
+
 .scroll\:container:has(.scroll\:x) {
 	overflow: auto hidden;
 }

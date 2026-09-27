@@ -1,11 +1,9 @@
 <script lang="ts">
-	import type {Component} from 'svelte'
 	import type {
+		UiSize,
 		FieldsetProps,
-		ValidationProps,
 		InputCheckProps,
 		InputRadioProps,
-		UiSize,
 	} from '$types'
 
 	import styleHelper from '$lib/utils/styles'
@@ -25,7 +23,7 @@
 		type = 'radio', // checkbox, radio
 		items = [],
 		layout,
-		justify = 'between',
+		justify = 'start',
 		container,
 		background,
 		font,
@@ -36,8 +34,8 @@
 		assetType,
 		oninput,
 		children,
-		validator,
-	}: FieldsetProps & ValidationProps = $props()
+		errors = [],
+	}: FieldsetProps = $props()
 
 	let selected: string[] = $derived(value ?? [])
 	let allSelected = $derived(selected.length === items.length)
@@ -45,26 +43,20 @@
 		selected.length > 0 && selected.length < items.length,
 	)
 
-	let errors = $derived(
-		validator && validator?.fieldHasChanged(name)
-			? validator?.getFieldErrors(name)
-			: [],
-	)
-
 	let enableSelectAll = $derived(
 		type === 'checkbox' && (selectAll || items.length > 5),
 	)
 
 	const COMPONENT_IMPORTS: {
-		[input: string]: Component<InputCheckProps | InputRadioProps, object, ''>
+		[input: string]: typeof InputRadio | typeof InputCheck
 	} = {
 		radio: InputRadio,
 		checkbox: InputCheck,
 	}
 
-	let innerLayoutSize = $derived(
-		size ? styleHelper.SCALES.DECREASE_2[size] : size,
-	)
+	function shrink(size?: UiSize): string {
+		return size ? styleHelper.SCALES.DECREASE_2[size] : ''
+	}
 
 	function handleInput(event: Event) {
 		let target = event.target as HTMLInputElement
@@ -105,6 +97,7 @@
 </script>
 
 <Fieldset
+	context="form"
 	{id}
 	{name}
 	{type}
@@ -114,13 +107,14 @@
 	{font}
 	{variant}
 	{container}
-	containerSize={innerLayoutSize as UiSize}
+	containerSize={shrink(size) as UiSize}
 	{background}
 	{color}
 	{asset}
 	{assetType}
 	{justify}
 	ariaDescribedby={hint || errors?.length ? `input-feedback-${id}` : undefined}
+	{errors}
 >
 	{@const InputComponent = COMPONENT_IMPORTS[type]}
 
@@ -137,10 +131,10 @@
 				{size}
 				{justify}
 				{container}
-				containerSize={innerLayoutSize as UiSize}
+				containerSize={shrink(size) as UiSize}
 				id={`all-${id}`}
 				oninput={handleSelectAll}
-				{validator}
+				{errors}
 				{isUiControl}
 			/>
 		</legend>
@@ -152,16 +146,17 @@
 			{...input}
 			value={input.value}
 			{checked}
-			color={input.color || color}
 			background={undefined}
 			{justify}
 			{container}
-			containerSize={innerLayoutSize as UiSize}
-			{size}
+			containerSize={shrink(input.size ?? size) as UiSize}
+			size={input.size ?? size}
 			{name}
 			id={`${name}.${input.value}`}
 			oninput={handleInput}
 			{isUiControl}
+			color={input.color || color}
+			{errors}
 		/>
 	{/each}
 
@@ -170,6 +165,7 @@
 	{/if}
 
 	<Feedback
+		context="form"
 		id={`input-feedback-${id}`}
 		{hint}
 		{errors}

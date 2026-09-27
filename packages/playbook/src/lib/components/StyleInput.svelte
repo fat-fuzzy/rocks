@@ -77,13 +77,14 @@
 		onupdate(updated)
 	}
 
-	function handleRangeInput(event) {
+	function handleRangeInput(event: {id: string; name: string; value: string}) {
 		const payload = {
 			name: familyName.toLowerCase(),
 			items: [
 				{
 					id: event.id,
 					name: event.name.toLowerCase(),
+					label: event.name.toLowerCase(),
 					value: event.value,
 				},
 			],
@@ -158,12 +159,14 @@
 
 {#if input === 'toggle'}
 	<Fieldset
+		context="form"
 		id={family.name}
 		layout={family.layout}
 		container={family.container}
 		size={family.size}
 		name={familyName}
 		justify={apiJustify}
+		errors={[]}
 	>
 		<ToggleMenu
 			{id}
@@ -185,11 +188,12 @@
 {:else}
 	{#if input === 'radio' || input === 'checkbox'}
 		<InputGroup
+			context="form"
 			{id}
 			{items}
 			name={id}
 			type={input}
-			value={currentValue}
+			value={[currentValue]}
 			legend={name}
 			layout={styleInput.layout ?? 'switcher'}
 			container={(styleInput.container as UiContainer) ?? ''}
@@ -199,16 +203,19 @@
 			font={apiFont}
 			variant={styleInput.variant}
 			oninput={(event) => handleInput(event)}
+			errors={[]}
 		/>
 	{/if}
 	{#if input == 'range'}
 		<Fieldset
+			context="form"
 			id={family.name}
 			layout={family.layout}
 			container={family.container}
 			size={family.size ?? apiSize}
 			name={familyName}
 			justify={apiJustify}
+			errors={[]}
 		>
 			<InputRange
 				{id}
@@ -222,6 +229,7 @@
 				font={apiFont}
 				variant={styleInput.variant}
 				oninput={handleRangeInput}
+				errors={[]}
 			/>
 		</Fieldset>
 	{/if}

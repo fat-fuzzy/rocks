@@ -38,6 +38,7 @@ export type UiLayoutProps = UiContainerProps & {
 	background?: UiSurface
 	surface?: UiSurface
 	surfaceLightness?: number
+	surfaceChroma?: number
 	breakpoint?: UiSize
 	direction?: string // TODO: check / harmonize STYLE_MODIFIER
 	font?: UiSize
@@ -72,6 +73,8 @@ export type UiContentProps = {
 }
 
 export type UiControl = {
+	id: string
+	name: string
 	slug: string
 	label: string
 	title?: string

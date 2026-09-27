@@ -31,14 +31,8 @@
 		container,
 		containerSize,
 		oninput,
-		validator,
+		errors = [],
 	}: InputCheckProps = $props()
-
-	let errors = $derived(
-		name && validator && validator?.fieldHasChanged(name)
-			? validator?.getFieldErrors(name)
-			: [],
-	)
 
 	let labelClasses = $derived(
 		styleHelper.getStyles({
@@ -103,7 +97,7 @@
 		aria-labelledby={shape === 'square' || shape === 'round'
 			? `labels-${id}`
 			: undefined}
-		aria-describedby={hint || errors?.length ? `feedback-${id}` : undefined}
+		aria-describedby={hint || errors.length ? `feedback-${id}` : undefined}
 		data-anchor={id}
 	/>
 {/snippet}

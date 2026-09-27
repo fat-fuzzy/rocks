@@ -2,12 +2,12 @@
 	import {tick} from 'svelte'
 	import {page} from '$app/state'
 
-	import * as validators from '$lib/generated/ajv/validate.ajv.mjs'
+	import {TestFormValidator} from '$lib/utils/validate'
 	import FormValidator from '$lib/utils/browser/FormValidator.svelte'
 	import InputGroup from '$lib/components/blocks/inputs/InputGroup.svelte'
 	import {INPUTS} from '$tests/fixtures/form-inputs'
 
-	let validator = new FormValidator('TestFormValidationFunction', validators)
+	let validator = new FormValidator(TestFormValidator)
 	let form: HTMLFormElement
 
 	const id = 'checkbox_group_select_all'
@@ -20,7 +20,7 @@
 			...i,
 			name: inputProps.name,
 			disabled: false,
-			validator,
+			errors: validator.getFieldErrors(inputProps.name),
 		})),
 	)
 
@@ -30,7 +30,7 @@
 			name: inputProps2.name,
 			label: `${i.label} Bis`,
 			disabled: false,
-			validator,
+			errors: validator.getFieldErrors(inputProps2.name),
 		})),
 	)
 
@@ -47,6 +47,7 @@
 		</div>
 		<div class="l:flex size:2xs align:start justify:between">
 			<InputGroup
+				context="form"
 				id={INPUTS[id].name}
 				name={INPUTS[id].name}
 				legend={INPUTS[id].legend}
@@ -57,9 +58,10 @@
 				variant="outline"
 				{items}
 				oninput={handleInput}
-				{validator}
+				errors={validator.getFieldErrors(INPUTS[id].name)}
 			/>
 			<InputGroup
+				context="form"
 				id={INPUTS[id2].name}
 				name={INPUTS[id2].name}
 				legend={INPUTS[id2].legend}
@@ -70,7 +72,7 @@
 				variant="outline"
 				items={items2}
 				oninput={handleInput}
-				{validator}
+				errors={validator.getFieldErrors(INPUTS[id2].name)}
 			/>
 		</div>
 	</section>

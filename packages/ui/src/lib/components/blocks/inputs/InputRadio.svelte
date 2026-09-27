@@ -30,14 +30,8 @@
 		container,
 		containerSize,
 		oninput,
-		validator,
+		errors = [],
 	}: InputRadioProps = $props()
-
-	let errors = $derived(
-		name && validator && validator?.fieldHasChanged(name)
-			? validator?.getFieldErrors(name)
-			: [],
-	)
 
 	let labelClasses = $derived(
 		styleHelper.getStyles({
@@ -53,7 +47,7 @@
 			threshold,
 			container,
 			containerSize,
-			background: background ? background : 'inherit',
+			background,
 		}),
 	)
 
@@ -99,7 +93,7 @@
 		{disabled}
 		class={inputClasses}
 		aria-labelledby={shape ? `labels-${id}` : undefined}
-		aria-describedby={hint || errors?.length ? `feedback-${id}` : undefined}
+		aria-describedby={hint || errors.length ? `feedback-${id}` : undefined}
 	/>
 {/snippet}
 
@@ -125,10 +119,10 @@
 {:else}
 	<label
 		for={id}
-		class={`${ffClasses} ellipsis nowrap ${labelClasses} ${iconClasses}`}
+		class={`${ffClasses} ellipsis nowrap ${labelClasses}`}
 		data-testid={id}
 	>
-		<span>{label}</span>
+		<span class={isUiControl ? iconClasses : ''}>{label}</span>
 		{@render input()}
 	</label>
 	<Feedback

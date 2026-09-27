@@ -8,6 +8,7 @@
 	let {
 		id = 'main',
 		title = 'PageRails',
+		prefix,
 		path = '',
 		hash,
 		description = `Rails layout (zones 1-5)`,
@@ -80,7 +81,7 @@
 	let hLayout = $derived(headerLayout || details ? 'sidebar' : '')
 </script>
 
-<Head pageName={currentPage} {title} {description} />
+<Head pageName={currentPage} {title} {description} {prefix} />
 
 <main {id} class={`zone:main ${layout} ${zoneMainClass}`}>
 	{#if layout === 'tgv'}

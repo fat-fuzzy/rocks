@@ -11,11 +11,11 @@ Test [Lightning CSS](https://lightningcss.dev/docs.html#with-vite)
 - Background
   - dark:
     - color: `color(display-p3 0.16 0.13 0.34)`
-    - oklch: `oklch(0.29 0.1 286.67)`
+    - oklch: `oklch(0.29 0.1 286.67)` / `oklch(25% 0.075 285.94)`
     - Hex: `#2a215a`
   - light:
     - color: `color(display-p3 0.94 0.94 0.99)`
-    - oklch: `oklch(0.96 0.02 286.04)`
+    - oklch: `oklch(0.96 0.02 286.04)` / `oklch(99% 0.1 285.94)`
     - Hex: `#efefff`
 - Ink :
   - dark:
@@ -25,3 +25,9 @@ Test [Lightning CSS](https://lightningcss.dev/docs.html#with-vite)
   - light:
     - oklch: `oklch(0.36 0.22 282.75)`
     - Hex: `#3C00A9`
+
+#### Vital
+
+- Backgroud:
+  - dark: oklch(25% 0.075 285.94)
+  - light: oklch(99% 0.1 285.94)

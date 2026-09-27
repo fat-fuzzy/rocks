@@ -1,5 +1,13 @@
 # @fat-fuzzy/git-poule
 
+## 0.1.24
+
+### Patch Changes
+
+- 1b4d2ee: Dep updates, type & schema improvements, Vital compare docs
+- Updated dependencies [1b4d2ee]
+  - @fat-fuzzy/config@0.1.28
+
 ## 0.1.23
 
 ### Patch Changes

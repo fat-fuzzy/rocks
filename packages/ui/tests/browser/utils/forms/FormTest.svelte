@@ -1,10 +1,9 @@
 <script lang="ts">
-	import type {FormProps} from '$types'
+	import type {FormProps, TestForm} from '$types'
 	import {onMount} from 'svelte'
 	import {enhance} from '$app/forms'
 
-	import * as validators from '$lib/generated/ajv/validate.ajv.mjs'
-
+	import {TestFormValidator} from '$lib/utils/validate'
 	import Button from '$lib/components/blocks/buttons/Button.svelte'
 	import Feedback from '$lib/components/blocks/global/Feedback.svelte'
 	import Input from '$lib/components/blocks/inputs/Input.svelte'
@@ -35,10 +34,7 @@
 
 	let boundForm: HTMLFormElement | undefined = $state()
 	let formData: FormData | undefined = $state()
-	let validator: FormValidator = new FormValidator(
-		'TestFormValidationFunction',
-		validators,
-	)
+	let validator: FormValidator<TestForm> = new FormValidator(TestFormValidator)
 	let disabled: boolean | undefined = $derived(undefined)
 
 	$effect(() => {
@@ -121,7 +117,7 @@
 				bind:this={boundForm}
 				onsubmit={handleSubmit}
 			>
-				{#key validator}
+				{#if validator}
 					<header class={`l:stack:${size} text:${align} ${asset}`}>
 						<svelte:element this={`h${depth}`}>{title}</svelte:element>
 						<p class={`font:${size}`}>{description}</p>
@@ -137,7 +133,7 @@
 						onfocus={handleFocus}
 						onblur={handleBlur}
 						oninput={handleInput}
-						{validator}
+						errors={validator.getFieldErrors('name')}
 						autocomplete="username"
 					/>
 					<Input
@@ -152,7 +148,7 @@
 						onfocus={handleFocus}
 						onblur={handleBlur}
 						oninput={handleInput}
-						{validator}
+						errors={validator.getFieldErrors('phone')}
 					/>
 					<Input
 						id="email"
@@ -166,7 +162,7 @@
 						onfocus={handleFocus}
 						onblur={handleBlur}
 						oninput={handleInput}
-						{validator}
+						errors={validator.getFieldErrors('email')}
 					/>
 					<Input
 						id="postcode"
@@ -180,7 +176,7 @@
 						onfocus={handleFocus}
 						onblur={handleBlur}
 						oninput={handleInput}
-						{validator}
+						errors={validator.getFieldErrors('postcode')}
 					/>
 					<!-- Input
 					id="description"
@@ -194,7 +190,7 @@
 					onfocus={handleFocus}
 					onblur={handleBlur}
 					oninput={handleInput}
-					{validator}
+					errors={validator.getFieldErrors('description')}
 				/ -->
 					<InputCheck
 						id="checkbox"
@@ -208,7 +204,7 @@
 						onblur={handleBlur}
 						oninput={handleInput}
 						checked={false}
-						{validator}
+						errors={validator.getFieldErrors('checkbox')}
 					/>
 					<!-- Input
 					id="select"
@@ -222,12 +218,12 @@
 					onfocus={handleFocus}
 					onblur={handleBlur}
 					oninput={handleInput}
-					{validator}
+					errors={validator.getFieldErrors('select')}
 				/ -->
 					<Input
-						id="disabled_text"
+						id="disabled_field"
 						type="text"
-						name="disabled"
+						name="disabled_field"
 						label="Disabled Field"
 						value="Disabled Value"
 						{size}
@@ -237,9 +233,10 @@
 						onblur={handleBlur}
 						oninput={handleInput}
 						disabled
-						{validator}
+						errors={validator.getFieldErrors('disabled_text')}
 					/>
 					<InputGroup
+						context="form"
 						id="checkbox_group"
 						type="check"
 						name="checkbox_group"
@@ -250,7 +247,7 @@
 						onfocus={handleFocus}
 						onblur={handleBlur}
 						oninput={handleInput}
-						{validator}
+						errors={validator.getFieldErrors('checkbox_group')}
 						justify="between"
 					>
 						<InputCheck
@@ -264,7 +261,7 @@
 							onfocus={handleFocus}
 							onblur={handleBlur}
 							oninput={handleInput}
-							{validator}
+							errors={validator.getFieldErrors('choice_1')}
 						/>
 						<br />
 						<InputCheck
@@ -278,10 +275,11 @@
 							onfocus={handleFocus}
 							onblur={handleBlur}
 							oninput={handleInput}
-							{validator}
+							errors={validator.getFieldErrors('choice_2')}
 						/>
 					</InputGroup>
 					<InputGroup
+						context="form"
 						id="radio_group"
 						type="radio"
 						name="radio_group"
@@ -292,7 +290,7 @@
 						onfocus={handleFocus}
 						onblur={handleBlur}
 						oninput={handleInput}
-						{validator}
+						errors={validator.getFieldErrors('radio_group')}
 						justify="between"
 					>
 						<InputRadio
@@ -306,7 +304,7 @@
 							onfocus={handleFocus}
 							onblur={handleBlur}
 							oninput={handleInput}
-							{validator}
+							errors={validator.getFieldErrors('unique_choice_1')}
 						/>
 						<br />
 						<InputRadio
@@ -320,7 +318,7 @@
 							onfocus={handleFocus}
 							onblur={handleBlur}
 							oninput={handleInput}
-							{validator}
+							errors={validator.getFieldErrors('unique_choice_2')}
 						/>
 					</InputGroup>
 					<InputPassword
@@ -335,7 +333,7 @@
 						onfocus={handleFocus}
 						onblur={handleBlur}
 						oninput={handleInput}
-						{validator}
+						errors={validator.getFieldErrors('password')}
 						autocomplete="new-password"
 					/>
 					<InputPassword
@@ -347,11 +345,13 @@
 						{size}
 						{color}
 						{variant}
-						disabled={validator.getFieldErrors('password') ? true : undefined}
+						disabled={validator.getFieldErrors('password').length
+							? true
+							: undefined}
 						onfocus={handleFocus}
 						onblur={handleBlur}
 						oninput={handleInput}
-						{validator}
+						errors={validator.getFieldErrors('confirm_password')}
 						autocomplete="new-password"
 					/>
 					<Button
@@ -364,7 +364,7 @@
 					>
 						Submit
 					</Button>
-				{/key}
+				{/if}
 			</form>
 		{/if}
 	</div>

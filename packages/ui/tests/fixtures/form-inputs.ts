@@ -1,3 +1,4 @@
+import type {TestForm} from '$types'
 import fatFuzzyIntl from '@fat-fuzzy/intl'
 import FormValidator from '$lib/utils/browser/FormValidator.svelte'
 
@@ -217,7 +218,7 @@ function getBasicInputFields() {
 }
 
 async function initFormDataWithSampleInputs(
-	validator: FormValidator,
+	validator: FormValidator<TestForm>,
 	state: 'valid' | 'invalid' | 'sanitized' | 'unsanitized',
 ) {
 	const formData = new FormData()

@@ -1,5 +1,12 @@
 # @fat-fuzzy/sketch
 
+## 0.1.43
+
+### Patch Changes
+
+- 1b4d2ee: Dep updates, type & schema improvements, Vital compare docs
+- 9bd3c9a: UI improvements, bugfixes, tests
+
 ## 0.1.42
 
 ### Patch Changes

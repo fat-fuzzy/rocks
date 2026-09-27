@@ -39,7 +39,7 @@
 }
 
 .shape\:soft {
-	--border-radius: var(--border-radius-base);
+	--border-radius: var(--border-radius-xl);
 
 	border-radius: var(--border-radius);
 }

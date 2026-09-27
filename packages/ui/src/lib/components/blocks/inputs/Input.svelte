@@ -22,18 +22,12 @@
 		onblur,
 		oninput,
 		disabled,
-		validator,
+		errors = [],
 		autocomplete,
 	}: InputProps = $props()
 
 	// TODO: map errors to Constraint Validation API
 	// https://developer.mozilla.org/en-US/docs/Web/HTML/Guides/Constraint_validation
-
-	let errors = $derived(
-		validator && validator?.fieldHasChanged(name)
-			? validator?.getFieldErrors(name)
-			: [],
-	)
 
 	let inputClasses = $derived(
 		styleHelper.getStyles({
@@ -60,12 +54,13 @@
 		{oninput}
 		{disabled}
 		{autocomplete}
-		aria-describedby={errors ? `input-feedback-${id}` : undefined}
-		aria-invalid={errors && errors.length > 0}
+		aria-describedby={errors.length > 0 ? `input-feedback-${id}` : undefined}
+		aria-invalid={errors.length > 0}
 	/>
 </label>
 
 <Feedback
+	context="form"
 	id={`input-feedback-${id}`}
 	{hint}
 	{errors}

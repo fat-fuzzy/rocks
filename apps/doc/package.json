@@ -1,6 +1,6 @@
 {
 	"name": "@fat-fuzzy/doc",
-	"version": "0.1.89",
+	"version": "0.1.90",
 	"description": "Fat Fuzzy Doc",
 	"main": "index.js",
 	"author": "Patricia Boh",
@@ -30,7 +30,7 @@
 	},
 	"peerDependencies": {
 		"@sveltejs/kit": "2.70.3",
-		"svelte": "5.56.8"
+		"svelte": "5.57.0"
 	},
 	"devDependencies": {
 		"@eslint/compat": "2.0.3",
@@ -48,20 +48,20 @@
 		"autoprefixer": "10.5.0",
 		"cssnano": "8.0.2",
 		"mdsvex": "0.12.7",
-		"postcss": "8.5.26",
+		"postcss": "8.5.27",
 		"postcss-import": "16.1.1",
 		"postcss-preset-env": "11.3.2",
 		"rollup": "4.62.0",
 		"rollup-plugin-postcss": "4.0.2",
 		"rollup-plugin-scss": "4.0.1",
 		"sass": "1.97.3",
-		"svelte": "5.56.8",
-		"svelte-check": "4.7.3",
+		"svelte": "5.57.0",
+		"svelte-check": "4.7.6",
 		"svelte-preprocess": "6.0.5",
 		"tslib": "2.8.1",
 		"typescript": "5.9.3",
 		"vite": "7.3.5",
-		"vitest": "4.1.10",
+		"vitest": "5.0.1",
 		"wrangler": "4.71.0"
 	},
 	"type": "module"

@@ -34,6 +34,7 @@ export type PageProps = {
 	hash?: string
 	description: string
 	pageName?: string
+	prefix?: string // Customize the HTML document title (app name, or specific name for printed documents)
 	text?: string
 	header?: SidebarLayoutProps
 	justify?: string

@@ -1,0 +1,20 @@
+import {defineSchema} from '../index.js'
+
+const GroupSchema = defineSchema({
+	type: 'object',
+	properties: {
+		id: {
+			$ref: '#/definitions/uuid',
+		},
+		name: {
+			$ref: '#/definitions/slug',
+		},
+		date_added: {
+			$ref: '#/definitions/dateString',
+		},
+	},
+	required: ['id', 'name', 'date_added'],
+	additionalProperties: false,
+})
+
+export default GroupSchema

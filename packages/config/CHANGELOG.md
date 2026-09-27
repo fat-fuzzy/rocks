@@ -1,5 +1,11 @@
 # @fat-fuzzy/config
 
+## 0.1.28
+
+### Patch Changes
+
+- 1b4d2ee: Dep updates, type & schema improvements, Vital compare docs
+
 ## 0.1.27
 
 ### Patch Changes

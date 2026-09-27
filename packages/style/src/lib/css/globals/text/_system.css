@@ -1,0 +1,15 @@
+/**
+* Serif font
+*/
+:root {
+	--font-system-sans:
+		-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, Roboto,
+		Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+}
+
+.font\:system-sans {
+	font-family: var(--font-system-sans);
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}

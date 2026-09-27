@@ -1,5 +1,7 @@
+import type {Locator} from 'vitest/browser'
+
 import {describe, test, expect} from 'vitest'
-import {userEvent, type Locator} from 'vitest/browser'
+import {userEvent} from 'vitest/browser'
 import {render} from 'vitest-browser-svelte'
 import {INPUTS} from '$tests/fixtures/form-inputs'
 import Form from './FormTest.svelte'
@@ -53,11 +55,16 @@ describe('FormValidator - Svelte Integration Tests', () => {
 
 						INPUTS[input.key].errors.forEach((message) => {
 							const error = getByText(message)
+
 							expect(error).toBeInTheDocument()
 						})
 					} else {
 						const value = INPUTS[input.key].value.invalid
-						if (value) await loc.fill(value)
+						if (value) {
+							await loc.fill(value)
+							loc.element().blur()
+						}
+
 						INPUTS[input.key].errors.forEach((message) => {
 							const error = getByText(message)
 							expect(error).toBeInTheDocument()

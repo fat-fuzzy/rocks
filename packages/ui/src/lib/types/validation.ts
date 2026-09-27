@@ -18,11 +18,11 @@ export type SchemaToValidate = {
 
 export type ValidationError = {instancePath: string; message: string}
 
-export interface IFormValidator {
+export interface IFormValidator<K> {
 	form: FormToValidate
 	inputTypes: InputTypes
 	errors: ValidationError[]
-	ajvValidate: unknown
+	ajvValidate: AjvValidateFunction<K>
 	sanitize: unknown
 
 	setFieldValue?(field: string, value: string): void
@@ -32,7 +32,7 @@ export interface IFormValidator {
 	formHasErrors(): boolean
 	fieldHasChanged(name: string): boolean
 	fieldHasError(name: string): boolean
-	getFieldErrors(name: string): string[] | undefined
+	getFieldErrors(name: string): string[]
 	validateInput(event: Event): void
 	touchInput(event: Event): void
 	changeInput(event: Event): void
@@ -41,9 +41,14 @@ export interface IFormValidator {
 /****************************************
  * AJV: Types for generated functions
  ****************************************/
-export interface AjvValidateFunction {
-	(data: unknown): boolean
+export interface AjvValidateFunction<T> {
+	(data: unknown): data is T
 	errors?: ValidationError[]
 }
 
-export type ValidatorMap = Record<string, AjvValidateFunction>
+export type ValidatorMap<T> = Record<string, AjvValidateFunction<T>>
+
+export type ErrorObject = {
+	instancePath: string
+	message: string
+}

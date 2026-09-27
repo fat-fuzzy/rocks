@@ -8,17 +8,17 @@
 
 {#if meta}
 	{#if meta.props_state}
-		<details class="surface:1:primary shape:soft" open>
+		<details class="surface:1:primary shape:mellow" open>
 			<summary
-				class="color:primary font:sm font:heading ravioli:3xs shape:soft"
+				class="color:primary font:sm font:heading ravioli:3xs shape:mellow"
 			>
 				State Props
 			</summary>
-			<div class="ravioli:3xs shape:soft">
+			<div class="ravioli:3xs shape:mellow">
 				<ul class="tags l:switcher:2xs" data-testid="doc-state-props">
 					{#each meta.props_state as prop (prop)}
 						<li
-							class="font:xs ravioli:3xs surface:1:primary variant:bare shape:soft"
+							class="font:xs ravioli:3xs surface:1:primary variant:bare shape:mellow"
 							data-testid={`prop-state-${prop}`}
 						>
 							{prop}
@@ -29,15 +29,17 @@
 		</details>
 	{/if}
 	{#if meta.content_types}
-		<details class="surface:1:accent shape:soft" open>
-			<summary class="color:accent font:sm font:heading ravioli:3xs shape:soft">
+		<details class="surface:1:accent shape:mellow" open>
+			<summary
+				class="color:accent font:sm font:heading ravioli:3xs shape:mellow"
+			>
 				Children
 			</summary>
-			<div class="ravioli:3xs shape:soft">
+			<div class="ravioli:3xs shape:mellow">
 				<ul class="tags l:switcher:2xs" data-testid="doc-child-props">
 					{#each meta.content_types as prop (prop)}
 						<li
-							class="font:xs ravioli:3xs surface:1:accent variant:bare shape:soft"
+							class="font:xs ravioli:3xs surface:1:accent variant:bare shape:mellow"
 							data-testid={`prop-child-${prop}`}
 						>
 							{prop}

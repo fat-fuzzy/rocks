@@ -33,15 +33,15 @@ export type InputFeedbackProps = FeedbackProps & {
 	assetType?: UiAssetType
 	asset?: string
 	variant?: UiVariant
-	errors?: string[]
+	errors: string[]
 	hint?: string
 	isUiControl?: boolean
 }
 
-export type ValidationProps = {
+export type ValidationProps<T> = {
 	type?: string
 	pattern?: string
-	validator: IFormValidator
+	validator: IFormValidator<T>
 }
 
 export type InputCommonProps = {
@@ -49,6 +49,12 @@ export type InputCommonProps = {
 	label: string
 	placeholder?: string
 	autocomplete?: AutoComplete
+
+	/**
+	 * Validation props
+	 */
+	type?: string
+	pattern?: string
 
 	/**
 	 * State props
@@ -63,6 +69,7 @@ export type InputCommonProps = {
 	required?: boolean
 
 	children?: Snippet
+	errors: string[]
 }
 
 export type InputCallbackProps = {
@@ -75,14 +82,12 @@ export type InputCallbackProps = {
 }
 
 export type InputProps = UiBlockProps &
-	ValidationProps &
 	InputCommonProps &
 	InputCallbackProps & {
 		name: string
 	}
 
 export type InputRadioProps = UiBlockProps &
-	ValidationProps &
 	InputCommonProps &
 	InputCallbackProps & {
 		name?: string

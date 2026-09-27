@@ -4,10 +4,10 @@
 	}
 	let {depth = 3}: Props = $props()
 
-	const status = ['info', 'success', 'warning', 'error']
+	const status = ['info', 'success', 'warning', 'danger']
 	const colors = ['primary', 'accent', 'highlight']
-	const statusVariants = ['000', '100', '200', '300', '400', '500', '600']
-	const variants = ['000', '100', '200', '300', '400', '500', '600']
+	const statusVariants = ['0', '1', '2', '3', '4', '5']
+	const variants = ['0', '1', '2', '3', '4', '5']
 	const baseColor = ['light', 'dark']
 
 	let colorClasses = `ravioli:md l:stack:sm font:sm text:center`
@@ -20,7 +20,7 @@
 		</svelte:element>
 		<div class="l:grid:auto size:md">
 			{#each baseColor as base, i (i)}
-				<figure class={`${colorClasses} bg:primary:${base}`}>
+				<figure class={`${colorClasses} surface:${base}:neutral`}>
 					<figcaption>color:{base}</figcaption>
 				</figure>
 			{/each}
@@ -39,7 +39,7 @@
 					</svelte:element>
 					<div class="l:stack:2xs">
 						{#each variants as variant, i (i)}
-							<figure class={`${colorClasses} bg:${color}:${variant}`}>
+							<figure class={`${colorClasses} surface:${variant}:${color}`}>
 								<figcaption>{color}:{variant}</figcaption>
 							</figure>
 						{/each}
@@ -61,7 +61,7 @@
 					</svelte:element>
 					<div class="l:stack:2xs">
 						{#each statusVariants as variant, i (i)}
-							<figure class={`${colorClasses} bg:${color}:${variant}`}>
+							<figure class={`${colorClasses} surface:${variant}:${color}`}>
 								<figcaption>{color}:{variant}</figcaption>
 							</figure>
 						{/each}

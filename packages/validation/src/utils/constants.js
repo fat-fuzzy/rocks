@@ -1,19 +1,27 @@
 const outDir = './src/ajv/out'
 const ajvValidate = 'validate.ajv.mjs'
+const routing = 'Namespaces.ts'
 const ajvHash = 'validate.ajv.mjs.hash'
 const ajvHashTmp = 'validate.ajv.mjs.hash.tmp'
 const ajvSigned = 'validate.ajv.mjs.hash.sig'
 
 // Path to the compiled module and the hash file
 const modulePath = `${outDir}/${ajvValidate}`
+const routingPath = `${outDir}/${routing}`
 const hashFilePath = `${outDir}/${ajvHash}`
 const hashFilePathTmp = `${outDir}/${ajvHashTmp}`
 const signatureFilePath = `${outDir}/${ajvSigned}`
 
-const PATHS = {modulePath, hashFilePath, hashFilePathTmp, signatureFilePath}
+const PATHS = {
+	modulePath,
+	routingPath,
+	hashFilePath,
+	hashFilePathTmp,
+	signatureFilePath,
+}
 
 const PATTERNS = {
-	USERNAME: '^([\\W\\D\\S]{0}[\\.\\-]{0,1000}[\\w\\d]{0,1000}){3,1000}$',
+	USERNAME: '^([\\W\\D\\S]{0}[\\.\\-]{0,64}[\\w\\d]{0,64}){3,64}$',
 	PASSWORD_SPECIAL_CHARS: '([$\\-+!?*&%~_@#]{1}[a-z|A-Z|0-9]{0,100}){3}',
 	PASSWORD_DIGITS: '([0-9]{1}[a-z|A-Z|0-9]{0,100}){3}',
 	PHONE: '[\\+0-9]{10,14}',

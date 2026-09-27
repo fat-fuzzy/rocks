@@ -46,17 +46,17 @@
 			</Popover>
 		{/if}
 	</div>
-	{#if externalEvent}
-		<form onsubmit={handleSubmit}>
-			<label>
-				Enter the popoverId
-				<input name="popover-id" type="text" />
-				<button>Save and close</button>
-			</label>
-		</form>
-	{/if}
 
 	<p class="click-outside">Click outside</p>
+	{#if externalEvent}
+		<form onsubmit={handleSubmit} class="maki:block">
+			<label for="popover-id">
+				Enter the popoverId
+				<input id="popover-id" name="popover-id" type="text" />
+			</label>
+			<button>Save and close</button>
+		</form>
+	{/if}
 </TestContext>
 
 <style>

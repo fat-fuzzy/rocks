@@ -78,10 +78,6 @@ export default function emojiAsset() {
 			})
 			for (const token of Tokens) {
 				if (token.localID) {
-					const name = token.value
-
-					console.log(name)
-
 					output.push(
 						`
 .emoji\\:${token.name}:not(.justify\\:end, .coords\\:end)::before,

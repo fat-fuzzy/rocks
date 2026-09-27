@@ -1,0 +1,120 @@
+<script lang="ts">
+	import type {RouteNameFor, CurrentCoordinators} from '$types'
+
+	import {getContext} from 'svelte'
+	import {resolve} from '$app/paths'
+	import {page} from '$app/state'
+
+	import {getThemeForNamespace} from '$lib/styles/theme'
+	import PageAction from '$lib/ui/PageAction.svelte'
+
+	const coordinators: CurrentCoordinators = getContext('currentCoordinators')
+
+	let coordPresets = $derived(coordinators.presets)
+
+	let theme = $derived(getThemeForNamespace('chlorophyll'))
+
+	let cta = $derived(page.params.page as RouteNameFor<'chlorophyll'>)
+	let query = $derived(page.url.search)
+
+	let gettingStarted = {
+		edit: {
+			sections: getStartedSections,
+			presets: getStartedPresets,
+		},
+		build: {
+			sections: getStartedSections,
+			presets: getStartedPresets,
+		},
+		compare: {
+			presets: getStartedCompare,
+		},
+		preview: {
+			presets: getStartedPrint,
+		},
+	}
+
+	let twinLayout = {
+		compare: true,
+	}
+
+	let editor = {
+		edit: true,
+	}
+
+	let builder = {
+		build: true,
+	}
+
+	let presetsEditor = {
+		edit: true,
+		build: true,
+	}
+
+	let docEditor = {
+		edit: true,
+		build: true,
+	}
+</script>
+
+{#snippet getStartedSections()}
+	<p>To get started you can:</p>
+	<ul>
+		<li>
+			Create your own content: go to <a
+				class="font:semibold"
+				href={resolve('/chlorophyll/edit/')}
+			>
+				Edit
+			</a>, then click on
+			<span class="font:semibold"> New Section </span>
+		</li>
+		<li>
+			Load the demo: under <span class="font:semibold"> Data > Reset </span>,
+			click on
+			<span class="font:semibold"> Seed Demo </span>
+		</li>
+	</ul>
+{/snippet}
+
+{#snippet getStartedPresets()}
+	<p>
+		To get started, first create a Preset from <a
+			href={resolve('/chlorophyll/edit')}
+			class="font:semibold"
+		>
+			Edit
+		</a>
+		or
+		<a href={resolve('/chlorophyll/build')} class="font:semibold"> Build </a>
+	</p>
+{/snippet}
+
+{#snippet getStartedCompare()}
+	{#if coordPresets.hasPresets()}
+		<p class="font:md">Select a Preset to compare</p>
+	{:else}
+		{@render getStartedPresets()}
+	{/if}
+{/snippet}
+
+{#snippet getStartedPrint()}
+	{#if coordPresets.hasPresets()}
+		<p class="font:md">Select a Preset to print</p>
+	{:else}
+		{@render getStartedPresets()}
+	{/if}
+{/snippet}
+
+<PageAction
+	{theme}
+	{cta}
+	{query}
+	route={`/chlorophyll/${cta}`}
+	{gettingStarted}
+	{twinLayout}
+	{editor}
+	{builder}
+	{presetsEditor}
+	{docEditor}
+/>

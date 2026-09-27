@@ -52,7 +52,8 @@
 		{@const subItems = item.items}
 		{@const buttonAssetClass = subItems && asset ? asset : ''}
 		{@const surfaceLevel = pathname === href ? 1 : 0}
-		{@const surfaceColor = pathname === href ? color : 'neutral'}
+		{@const surfaceColor =
+			pathname === href ? (item.color ?? color) : 'neutral'}
 		{@const surfaceClass = `surface:${surfaceLevel}:${surfaceColor}`}
 		{@const linkAssetClass =
 			!subItems && asset ? `${assetType ? assetType : 'emoji'}:${asset}` : ''}
@@ -72,12 +73,13 @@
 					{area}
 					asset={buttonAssetClass}
 					{href}
-					size="2xs"
+					{size}
 					font="sm"
 					coords="nord"
 					{shape}
 					{layer}
 					{depth}
+					color={surfaceColor}
 					width="full"
 					assetType={depth === 2 ? 'svg' : assetType ? assetType : 'emoji'}
 				>
@@ -88,7 +90,7 @@
 				<!-- https://sveltejs.github.io/eslint-plugin-svelte/rules/no-navigation-without-resolve/ -->
 				<a
 					data-sveltekit-preload-data
-					// svelte-ignore svelte/no-navigation-without-resolve
+					//  FIXME: figure this out
 					{href}
 					class={`ellipsis ${linkClass} ${linkAssetClass}`}
 				>
@@ -108,7 +110,8 @@
 		items={subItems}
 		{pathname}
 		{layout}
-		size="2xs"
+		{assetType}
+		{size}
 		{align}
 		{layer}
 		depth={depth + 1}
