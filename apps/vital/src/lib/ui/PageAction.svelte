@@ -328,6 +328,7 @@
 											language={targetLanguage}
 											format={targetFormat}
 											{color}
+											isTwinLayout={true}
 										/>
 									{/each}
 								{/key}

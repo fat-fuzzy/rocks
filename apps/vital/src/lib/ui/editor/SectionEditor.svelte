@@ -21,12 +21,14 @@
 	let coordMetadata = $derived(coordinators.metadata)
 
 	let {
+		isTwinLayout,
 		section,
 		selectedTags,
 		language = DOC_LANGUAGE,
 		format = DOC_FORMAT,
 		color = 'neutral',
 	}: {
+		isTwinLayout?: boolean
 		selectedTags: string[]
 		section: Section
 		language: DocLanguage
@@ -144,6 +146,7 @@
 							{format}
 							{color}
 							tags={section.tags || []}
+							{isTwinLayout}
 						/>
 					{:else}
 						<BlockPlaceholder
@@ -205,6 +208,7 @@
 										{language}
 										{format}
 										{color}
+										{isTwinLayout}
 									/>
 								{:else}
 									<BlockPlaceholder

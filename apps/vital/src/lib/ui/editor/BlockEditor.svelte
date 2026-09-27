@@ -26,6 +26,7 @@
 
 	let {
 		id,
+		isTwinLayout,
 		content_type,
 		parentId,
 		name,
@@ -39,6 +40,7 @@
 		format,
 		color,
 	}: {
+		isTwinLayout?: boolean
 		sectionName: string
 		language: DocLanguage
 		format: Slug
@@ -55,9 +57,11 @@
 	let height = $derived(
 		isChlorophyll && isSkillSet
 			? ('xs' as UiSize)
-			: isChlorophyll
-				? ('sm' as UiSize)
-				: 'xl',
+			: isTwinLayout
+				? 'xl'
+				: isChlorophyll
+					? 'sm'
+					: 'xl',
 	)
 
 	let block: Block = $derived({
