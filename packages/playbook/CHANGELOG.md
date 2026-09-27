@@ -1,5 +1,11 @@
 # @fat-fuzzy/playbook
 
+## 0.1.44
+
+### Patch Changes
+
+- 1b4d2ee: Dep updates, type & schema improvements, Vital compare docs
+
 ## 0.1.43
 
 ### Patch Changes
