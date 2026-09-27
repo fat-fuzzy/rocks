@@ -1,5 +1,12 @@
 # @fat-fuzzy/validation
 
+## 0.1.30
+
+### Patch Changes
+
+- 1b4d2ee: Dep updates, type & schema improvements, Vital compare docs
+- 9bd3c9a: UI improvements, bugfixes, tests
+
 ## 0.1.29
 
 ### Patch Changes
