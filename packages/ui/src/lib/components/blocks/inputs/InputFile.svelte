@@ -24,14 +24,8 @@
 		variant,
 		background,
 		breakpoint,
-		validator,
+		errors = [],
 	}: InputFileProps = $props()
-
-	let errors = $derived(
-		validator && validator?.fieldHasChanged(name)
-			? validator?.getFieldErrors(name)
-			: [],
-	)
 
 	let inputClasses = $derived(
 		styleHelper.getStyles({
@@ -62,7 +56,7 @@
 			{id}
 			{name}
 			accept={fileType}
-			aria-describedby={hint || errors?.length
+			aria-describedby={hint || errors.length
 				? `input-feedback-${id}`
 				: undefined}
 			{multiple}
@@ -75,15 +69,18 @@
 
 {#if hint}
 	<Fieldset
+		context="form"
 		id={`fieldset-${id}`}
 		name={`fieldset-${name}`}
 		{layout}
 		{size}
 		{color}
+		{errors}
 	>
 		{@render input()}
 
 		<Feedback
+			context="form"
 			id={`input-feedback-${id}`}
 			{hint}
 			{errors}

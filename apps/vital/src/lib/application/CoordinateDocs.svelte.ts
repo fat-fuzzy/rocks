@@ -11,6 +11,7 @@ import type {
 	ICoordinateDocs,
 	IAggregateDocs,
 	IAggregateMetadata,
+	NamespaceId,
 } from '$types'
 
 import {updateSectionRanks} from '$lib/common/transform/operations-block'
@@ -42,6 +43,10 @@ export default class CoordinateDocs implements ICoordinateDocs {
 
 	hasError() {
 		return this.aggDocs.error || this.aggMetadata.error
+	}
+
+	getRoot(): NamespaceId {
+		return this.aggDocs.root
 	}
 
 	/**
@@ -205,7 +210,7 @@ export default class CoordinateDocs implements ICoordinateDocs {
 	}
 
 	/**
-	 * Get all sections
+	 * Get a collection of sections for [language * format * given names]
 	 * @param options section selection to load, blocks to load within sections
 	 * @returns Array: {name, section}[]
 	 */

@@ -61,8 +61,8 @@ tags: [
 		]
 	},
 	{
-		title: 'Teamwork',
-		name: 'teamwork',
+		title: 'Crew',
+		name: 'crew',
 		items: [
 			flocking,
 			migration,

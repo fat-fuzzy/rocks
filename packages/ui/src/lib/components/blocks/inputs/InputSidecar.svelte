@@ -28,18 +28,15 @@
 		oninput,
 		onclick,
 		disabled,
-		validator,
+		errors = [],
 		autocomplete,
-	}: InputProps & ButtonProps & {actionLabel?: string} = $props()
+	}: InputProps &
+		ButtonProps & {
+			actionLabel?: string
+		} = $props()
 
 	// TODO: map errors to Constraint Validation API
 	// https://developer.mozilla.org/en-US/docs/Web/HTML/Guides/Constraint_validation
-
-	let errors = $derived(
-		validator && validator?.fieldHasChanged(name)
-			? validator?.getFieldErrors(name)
-			: [],
-	)
 
 	let labelClasses = $derived(
 		styleHelper.getStyles({
@@ -91,7 +88,9 @@
 			{disabled}
 			{autocomplete}
 			class={inputClasses}
-			aria-describedby={errors ? `input-feedback-${id}` : undefined}
+			aria-describedby={errors && errors.length
+				? `input-feedback-${id}`
+				: undefined}
 			aria-invalid={errors && errors.length > 0}
 		/>
 		<Button
@@ -113,6 +112,7 @@
 		/>
 	</div>
 	<Feedback
+		context="form"
 		id={`input-feedback-${id}`}
 		{hint}
 		{errors}

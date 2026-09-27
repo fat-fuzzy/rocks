@@ -1,5 +1,11 @@
 <script lang="ts">
-	import type {UiColor, UiContainer, UiLayout, UiSize} from '@fat-fuzzy/ui'
+	import type {
+		UiColor,
+		UiContainer,
+		UiLayout,
+		UiShape,
+		UiSize,
+	} from '@fat-fuzzy/ui'
 	import type {TagGroup, InputGroupMenus, ActionCrud} from '$types'
 
 	import ui from '@fat-fuzzy/ui'
@@ -57,17 +63,20 @@
 		const menuItems = groups.reduce(
 			(
 				menus: InputGroupMenus,
-				{title, name, items}: TagGroup,
+				{title, name, type, items}: TagGroup,
 			): InputGroupMenus => {
 				const menuItems = items.map((i: string) => {
+					const shape = type === 'radio' ? 'mellow' : 'pill'
+
 					return {
 						id: i,
 						name,
 						value: i,
 						checked: value.includes(i) ? true : undefined,
 						label: i,
-						color,
+						color: type === 'radio' ? 'neutral' : color,
 						title: title ?? name,
+						shape: shape as UiShape,
 					}
 				})
 
@@ -91,6 +100,7 @@
 		{#each groups as { name, title, type, items }, i (i)}
 			{@const groupId = getTagGroupName(cta, name, id)}
 			<InputGroup
+				context="form"
 				id={groupId}
 				name={groupId}
 				legend={title}
@@ -102,6 +112,8 @@
 				selectAll={true}
 				items={tags[name]}
 				{oninput}
+				isUiControl={true}
+				errors={[]}
 			/>
 		{/each}
 	{/if}

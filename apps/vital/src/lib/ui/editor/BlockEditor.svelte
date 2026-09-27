@@ -13,9 +13,9 @@
 	import prose from '@fat-fuzzy/prose'
 
 	import {applyTags} from '$lib/common/tags'
-	import DialogDeleteBlock from '$lib/ui/controls/block/DialogDeleteBlock.svelte'
+	import DialogDeleteBlock from '$lib/ui/overlays/dialog/DialogDeleteBlock.svelte'
 	import SelectTags from '$lib/ui/controls/tags/SelectTags.svelte'
-	import type {UiShape} from '@fat-fuzzy/ui'
+	import type {UiColor, UiShape, UiSize} from '@fat-fuzzy/ui'
 
 	const {Editor} = prose.editor
 
@@ -37,10 +37,12 @@
 		tagsFound,
 		language,
 		format,
+		color,
 	}: {
 		sectionName: string
 		language: DocLanguage
 		format: Slug
+		color?: UiColor
 		tagsFound?: string[]
 	} & Block = $props()
 
@@ -48,7 +50,15 @@
 
 	let displayBlock = $state(false)
 	let isSkillSet = $derived(tags.find((t) => t === 'skills'))
+	let isChlorophyll = $derived(coordDocs.getRoot() === 'chlorophyll')
 	let isMainContentBlock = $derived(content_type === 'section')
+	let height = $derived(
+		isChlorophyll && isSkillSet
+			? ('xs' as UiSize)
+			: isChlorophyll
+				? ('sm' as UiSize)
+				: 'xl',
+	)
 
 	let block: Block = $derived({
 		id,
@@ -150,6 +160,7 @@
 	<SelectTags
 		cta="save"
 		{id}
+		{color}
 		size="sm"
 		oninput={updateTags}
 		value={block.tags}
@@ -179,7 +190,7 @@
 			type="html"
 			{content}
 			color="neutral"
-			height={isSkillSet ? 'xs' : 'sm'}
+			{height}
 			width="2xl"
 			onblur={handleBlur}
 			{menus}

@@ -41,6 +41,7 @@
 				value: section,
 				checked: selected ? true : undefined,
 				label: section,
+				errors: [], // set errors at group level
 			}
 		}),
 	)
@@ -53,6 +54,7 @@
 
 {#if sectionItems.length}
 	<InputGroup
+		context="form"
 		id="sections"
 		name="sections"
 		legend="Main Sections"
@@ -64,6 +66,8 @@
 		variant="bare"
 		items={sectionItems}
 		{oninput}
+		selectAll={true}
+		errors={[]}
 	/>
 {:else}
 	<div>

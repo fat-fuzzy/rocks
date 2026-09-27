@@ -1,4 +1,4 @@
-import type {Block, DocLanguage, Slug, TagGroup} from '$types'
+import type {Block, DocLanguage, NamespaceId, Slug, TagGroup} from '$types'
 
 export interface TagIndex {
 	tags: Record<string, string[]> // keyed by group
@@ -11,7 +11,10 @@ export interface ICoordinateMetadata {
 	readonly tagIndex: TagIndex
 
 	init(): Promise<void>
+
 	reset(): void
+
+	getRoot(): NamespaceId
 
 	getLanguages(): DocLanguage[]
 

@@ -30,7 +30,7 @@
 		consent,
 		onsubmit,
 		onchange,
-	}: CookiesPreferencesProps<CookiePreferences> = $props()
+	}: CookiesPreferencesProps = $props()
 
 	let popoverId = 'cookies-banner'
 	let boundForm: HTMLFormElement | undefined = $state()
@@ -172,7 +172,6 @@
 							<InputCheck
 								id="functional"
 								name="functional"
-								type="checkbox"
 								label="Site Functionality"
 								hint="These cookies allow me to save your preferences on the site (including your cookie preferences). No personal data is stored in these cookies."
 								color="primary"
@@ -182,13 +181,12 @@
 								justify="between"
 								disabled={true}
 								checked={true}
-								{validator}
+								errors={validator?.getFieldErrors('functional')}
 							/>
 							<br />
 							<InputCheck
 								id="legitimateInterest"
 								name="legitimateInterest"
-								type="checkbox"
 								label="Legitimate Interest"
 								hint="This helps me improve this site using privacy friendly statistics provided by goatcounter.com. You are free to turn these off if you wish to do so, but it would be helpful for my work here if you leave them on!"
 								color="primary"
@@ -200,7 +198,7 @@
 								onblur={handleBlur}
 								oninput={handleInput}
 								checked={consent?.legitimateInterest ?? true}
-								{validator}
+								errors={validator?.getFieldErrors('legitimateInterest')}
 							/>
 						{/key}
 					</div>

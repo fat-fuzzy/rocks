@@ -12,8 +12,8 @@
 	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
 
-	import DialogSaveTag from '$lib/ui/controls/tags/DialogSaveTag.svelte'
-	import DialogDeleteTags from '$lib/ui/controls/tags/DialogDeleteTags.svelte'
+	import DialogSaveTag from '$lib/ui/overlays/dialog/DialogSaveTag.svelte'
+	import DialogDeleteTags from '$lib/ui/overlays/dialog/DialogDeleteTags.svelte'
 	import Loading from '$lib/ui/Loading.svelte'
 
 	const {InputGroup, Feedback} = ui.blocks
@@ -42,7 +42,7 @@
 		const menuItems = tags.reduce(
 			(
 				menus: InputGroupMenus,
-				{title, name, items}: TagGroup,
+				{title, name, type, items}: TagGroup,
 			): InputGroupMenus => {
 				const menuItems = items.map((i: string) => {
 					let selected = checkSelected(name, i)
@@ -52,8 +52,10 @@
 						value: i,
 						checked: selected ? true : undefined,
 						label: i,
-						color,
+						color: type === 'radio' ? 'neutral' : color,
 						title: title ?? name,
+						shape: type === 'radio' ? 'mellow' : 'pill',
+						errors: [],
 					}
 				})
 
@@ -114,6 +116,7 @@
 		<div class="tags-menu l:flex:2xs align:start justify:between">
 			{#each tags as group, i (i)}
 				<InputGroup
+					context="form"
 					id={group.name}
 					name={group.name}
 					legend={group.title}
@@ -127,6 +130,8 @@
 					selectAll={true}
 					items={baseTags[group.name]}
 					{oninput}
+					isUiControl={true}
+					errors={[]}
 				/>
 			{/each}
 			{#if tags.length < 2}

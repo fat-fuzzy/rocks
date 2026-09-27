@@ -301,13 +301,13 @@
 						/>
 					</label>
 				</div>
-				<div class="l:flex align:end">
+				<fieldset class="l:flex align:end">
 					<Input
 						id="name"
 						label="Name"
 						type="text"
 						name="name"
-						{color}
+						color={validator.fieldHasError('name') ? 'error' : color}
 						font="sm"
 						variant="bare"
 						size="xs"
@@ -319,10 +319,10 @@
 						onfocus={handleFocus}
 						layout="flex"
 						hint="Use lower or uppercase letters, numbers, dashes or underscores"
-						{validator}
+						errors={validator.getFieldErrors('name')}
 					/>
-				</div>
-				<div class="l:flex align:end">
+				</fieldset>
+				<fieldset class="l:flex align:end">
 					<Input
 						id="title"
 						label="Title"
@@ -339,15 +339,15 @@
 						oninput={updateTitle}
 						onblur={handleBlur}
 						onfocus={handleFocus}
-						{validator}
+						errors={validator.getFieldErrors('title')}
 					/>
-				</div>
+				</fieldset>
 				<div class="l:flex align:end">
 					{#if subsections?.length}
 						<label class="size:2xs font:sm">
 							Group
 							<select
-								class="w:full size:2xs font:sm"
+								class="w:full size:2xs font:sm variant:bare color:neutral"
 								name="subsections"
 								id="subsections"
 								onselect={updateGroup}
@@ -355,7 +355,7 @@
 								onfocus={handleFocus}
 							>
 								<option class="size:xs font:xs" value={parent}>
-									No subsection selected
+									No group selected
 								</option>
 								{#each subsections as subsection, i (i)}
 									<option class="size:xs font:xs" value={subsection.name}>
@@ -380,7 +380,7 @@
 						oninput={updateGroup}
 						onblur={handleBlur}
 						onfocus={handleFocus}
-						{validator}
+						errors={validator.getFieldErrors('group')}
 					/>
 				</div>
 				<div class="l:flex align:end">
@@ -399,7 +399,7 @@
 						oninput={updateRank}
 						onblur={handleBlur}
 						onfocus={handleFocus}
-						{validator}
+						errors={validator.getFieldErrors('rank')}
 					/>
 				</div>
 			</div>

@@ -12,7 +12,7 @@
 	import {buildNav} from '$data/nav'
 	import {initBridge, destroyBridge} from '$lib/aggregates/bridge'
 	import {createAggregates} from '$lib/aggregates/container'
-	import {createCoords} from '$lib/application/container'
+	import {createCoords, createCompareCoords} from '$lib/application/container'
 	import Dialog from '$lib/ui/overlays/dialog/Dialog.svelte'
 
 	const {ToggleTree, ToggleReveal, ToggleSettings} = ui.drafts
@@ -31,7 +31,10 @@
 	 */
 	const aggregates = createAggregates(['chlorophyll', 'pollen'])
 	const coordinators = createCoords(aggregates)
+	const coordCompare = createCompareCoords(coordinators)
+
 	setContext('coordinators', coordinators)
+	setContext('coordCompare', coordCompare)
 
 	/**
 	 * Setup page data (loaded / generated)
@@ -217,7 +220,7 @@
 				label="Settings"
 				size="xs"
 				justify="between"
-				assetType="openmoji:sm svg"
+				assetType="openmoji svg"
 				selected={appContext}
 				oninput={updateSettings}
 			/>

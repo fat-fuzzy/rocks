@@ -273,18 +273,22 @@ describe('FormValidator - a class that validates form inputs using validation fu
 			await validator.init(formData, {email: 'email'})
 		})
 
-		it('should return errors for a field', () => {
-			validator.form.email.feedback['error'] = ['Invalid format']
+		it('should return errors for a field', async () => {
+			validator.form.email.changed = true
+			validator.form.email.value = 'Invalid format'
+			validator.validate()
 
-			expect(validator.getFieldErrors('email')).toEqual(['Invalid format'])
+			expect(validator.getFieldErrors('email')).toEqual([
+				'Please enter a valid email',
+			])
 		})
 
-		it('should return undefined when no errors exist', () => {
-			expect(validator.getFieldErrors('email')).toBeUndefined()
+		it('should return empty array when no errors exist', () => {
+			expect(validator.getFieldErrors('email')).toEqual([])
 		})
 
-		it('should return undefined for non-existent fields', () => {
-			expect(validator.getFieldErrors('nonexistent')).toBeUndefined()
+		it('should return empty array for non-existent fields', () => {
+			expect(validator.getFieldErrors('nonexistent')).toEqual([])
 		})
 	})
 

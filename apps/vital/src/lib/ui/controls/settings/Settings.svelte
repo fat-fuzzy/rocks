@@ -6,8 +6,8 @@
 	import ui from '@fat-fuzzy/ui'
 
 	import {DOC_LANGUAGE, DOC_FORMAT} from '$config/setup'
-	import DialogSaveLanguage from '$lib/ui/controls/settings/DialogSaveLanguage.svelte'
-	import DialogSaveFormat from '$lib/ui/controls/settings/DialogSaveFormat.svelte'
+	import DialogSaveLanguage from '$lib/ui/overlays/dialog/DialogSaveLanguage.svelte'
+	import DialogSaveFormat from '$lib/ui/overlays/dialog/DialogSaveFormat.svelte'
 
 	const {InputGroup} = ui.blocks
 
@@ -45,10 +45,7 @@
 	// @ts-expect-error FIXME: add validator
 	let formatItems: InputProps[] = $derived(deriveInputs(baseFormats, 'format'))
 
-	function deriveInputs(
-		base: string[],
-		type: string,
-	): Partial<InputProps<string>>[] {
+	function deriveInputs(base: string[], type: string): Partial<InputProps>[] {
 		return base.map((i: string) => {
 			let selected = checkSelected(type, i)
 			return {
@@ -59,6 +56,7 @@
 				label: i,
 				title: i,
 				variant: 'bare' as UiVariant,
+				errors: [],
 			}
 		})
 	}
@@ -71,6 +69,7 @@
 
 <div class="l:stack">
 	<InputGroup
+		context="form"
 		id="language"
 		name="language"
 		legend="Language"
@@ -81,6 +80,7 @@
 		{variant}
 		items={languageItems}
 		{oninput}
+		errors={[]}
 	/>
 
 	{#if cta === 'edit' || cta === 'build'}
@@ -98,6 +98,7 @@
 <br />
 <div class="l:stack">
 	<InputGroup
+		context="form"
 		id="format"
 		name="format"
 		legend="Format"
@@ -108,6 +109,7 @@
 		{variant}
 		items={formatItems}
 		{oninput}
+		errors={[]}
 	/>
 	{#if cta === 'edit' || cta === 'build'}
 		<DialogSaveFormat

@@ -12,9 +12,9 @@
 	import {resolve} from '$app/paths'
 
 	import {getSanitizedParamValue, buildForwardedQuery} from '$lib/common/url'
-	import MenuData from '$lib/ui/controls/data/MenuData.svelte'
-	import MenuSections from '$lib/ui/controls/section/MenuSections.svelte'
-	import MenuSettings from '$lib/ui/controls/settings/MenuSettings.svelte'
+	import MenuData from '$lib/ui/overlays/popover-menu/MenuData.svelte'
+	import MenuSections from '$lib/ui/overlays/popover-menu/MenuSections.svelte'
+	import MenuSettings from '$lib/ui/overlays/popover-menu/MenuSettings.svelte'
 
 	const coordinators: CurrentCoordinators = getContext('currentCoordinators')
 
@@ -29,6 +29,7 @@
 		font = 'xs',
 		path,
 		actions,
+		isTwinLayout,
 		oninput,
 		canEdit,
 	}: {
@@ -38,6 +39,7 @@
 		font?: UiSize
 		path: NamespaceId
 		actions: LabelsForRoutes<NamespaceKey>
+		isTwinLayout?: boolean
 		oninput: () => void
 		canEdit?: {
 			presets?: boolean
@@ -46,13 +48,10 @@
 	} = $props()
 
 	let cta = $derived(page.params.page)
-	let isTwinDoc = $derived(
-		coordPresets.targetPreset || coordPresets.sourcePreset,
-	)
-	let preset = $derived(getSanitizedParamValue(page.url, 'preset'))
+	let preset = $derived(getSanitizedParamValue(page.url.searchParams, 'preset'))
 	let query = $derived(
 		buildForwardedQuery(
-			page.url,
+			page.url.searchParams,
 			coordMetadata.getTagGroups().map((g) => g.name),
 		),
 	)
@@ -76,7 +75,7 @@
 						href={resolve(`/${path}/${key}${presetQuery}`)}
 						class={linkStyles}
 						onclick={() => {
-							if (!isTwinDoc) {
+							if (!isTwinLayout) {
 								// Unset source & target presets
 								coordPresets.setSourcePreset()
 								coordPresets.setTargetPreset()
@@ -96,7 +95,7 @@
 			{/if}
 		</div>
 		<div class="l:flex:2xs justify:between hug">
-			{#if !isTwinDoc}
+			{#if !isTwinLayout}
 				<MenuSettings {oninput} {color} variant="outline" {size} {font} />
 			{/if}
 			<MenuData id="button-import" {color} {size} {font} {coordImports} />

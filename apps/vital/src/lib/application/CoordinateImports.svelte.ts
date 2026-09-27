@@ -6,6 +6,7 @@ import type {
 	IAggregateDataLifecycle,
 	ImportStatus,
 	IAggregateDocs,
+	NamespaceId,
 } from '$types'
 import type {UiStatus} from '@fat-fuzzy/ui'
 
@@ -68,6 +69,10 @@ export default class CoordinateImports implements ICoordinateImports {
 		this.loading = false
 		this.import = ''
 		this.status = 'idle'
+	}
+
+	getRoot(): NamespaceId {
+		return this.aggDataLifecycle.root // or aggDocs ?
 	}
 
 	setStatus(status: ImportStatus) {
