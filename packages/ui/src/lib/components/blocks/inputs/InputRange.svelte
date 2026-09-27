@@ -26,7 +26,7 @@
 		breakpoint,
 		threshold,
 		oninput,
-		validator,
+		errors = [],
 	}: InputRangeProps = $props()
 
 	const numberToClass: {[key: string]: string} = {
@@ -42,12 +42,6 @@
 	let markers: {id: string; label: string; value: number}[] = $derived([
 		{id: '', label: '', value: min},
 	])
-
-	let errors = $derived(
-		validator && validator?.fieldHasChanged(name)
-			? validator?.getFieldErrors(name)
-			: [],
-	)
 
 	// This assignment not work inside a rune
 	// svelte-ignore state_referenced_locally
@@ -144,7 +138,7 @@
 		oninput={handleInput}
 		list={items?.length ? `${id}-markers` : undefined}
 		{disabled}
-		aria-describedby={hint || errors?.length
+		aria-describedby={hint || errors.length
 			? `input-feedback-${id}`
 			: undefined}
 	/>
@@ -157,4 +151,12 @@
 	{/if}
 </label>
 
-<Feedback id={`input-feedback-${id}`} {hint} {errors} {size} {variant} {font} />
+<Feedback
+	context="form"
+	id={`input-feedback-${id}`}
+	{hint}
+	{errors}
+	{size}
+	{variant}
+	{font}
+/>

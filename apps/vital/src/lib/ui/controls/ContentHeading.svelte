@@ -9,7 +9,7 @@
 
 	import {getContext} from 'svelte'
 	import ui, {type UiColor, type UiSize} from '@fat-fuzzy/ui'
-	import DialogSaveSection from '$lib/ui/controls/section/DialogSaveSection.svelte'
+	import DialogSaveSection from '$lib/ui/overlays/dialog/DialogSaveSection.svelte'
 
 	const {Button} = ui.blocks
 

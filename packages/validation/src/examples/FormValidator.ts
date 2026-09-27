@@ -162,9 +162,9 @@ class FormValidator<
 		return field?.changed && !field.is_valid
 	}
 
-	public getFieldErrors(name: string): string[] | undefined {
-		const errors = this.form[name]?.feedback.error
-		return errors
+	public getFieldErrors(name: string): string[] {
+		const field = this.form[name]
+		return field?.changed ? (field.feedback?.error ?? []) : []
 	}
 
 	public validateInput(event: Event) {

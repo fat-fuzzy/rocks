@@ -1,4 +1,5 @@
 <script lang="ts">
+	import type {ICoordinatePresets, Preset} from '$types'
 	import type {
 		UiAssetType,
 		UiColor,
@@ -6,71 +7,60 @@
 		UiSize,
 		UiVariant,
 	} from '@fat-fuzzy/ui'
-	import type {ICoordinateMetadata, TagGroup} from '$types'
 
 	import ui from '@fat-fuzzy/ui'
 
 	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
-	import FormTags from '$lib/ui/controls/tags/FormTags.svelte'
+	import FormPreset from '$lib/ui/controls/preset/FormPreset.svelte'
 
 	const {Button} = ui.blocks
 
 	interface Props {
 		id: string
-		groups: TagGroup[]
-		cta: 'delete'
+		preset: Preset
+		cta: 'save' | 'update' | 'copy'
+		disabled?: boolean
 		label?: string
+		size?: UiSize
+		font?: UiSize
 		color?: UiColor
 		variant?: UiVariant
 		shape?: UiShape
 		asset?: string
 		assetType?: UiAssetType
-		size?: UiSize
-		font?: UiSize
-		coordMetadata: ICoordinateMetadata
+		coordPresets: ICoordinatePresets
 	}
 	let {
-		id,
+		id = 'save-preset',
 		cta,
-		groups,
-		label = 'Delete Tags',
+		preset,
+		disabled,
+		label = 'Save Preset',
+		size = '2xs',
+		font = '2xs',
 		color = 'neutral',
 		variant = 'outline',
 		shape = 'mellow',
 		asset,
 		assetType,
-		size = '2xs',
-		font = 'xs',
-		coordMetadata,
+		coordPresets,
 	}: Props = $props()
 
-	const dialogSize = $derived(
-		groups.length < 5
-			? 'sm'
-			: groups.length < 6
-				? 'md'
-				: groups.length < 8
-					? 'lg'
-					: 'xl',
-	)
-
 	function showDialog() {
-		dialogActor.close()
-
 		dialogActor.init({
-			size: dialogSize,
+			size: 'sm',
 			color,
-			label: 'Delete Tags',
+			label,
 			position: 'nord-est',
-			children: presetInfo,
+			children: presetForm,
 		})
 
 		dialogActor.show()
 	}
 </script>
 
-{#snippet presetInfo()}
-	<FormTags {color} {cta} {groups} {coordMetadata} />
+{#snippet presetForm()}
+	<FormPreset {preset} {color} {cta} {coordPresets} />
 {/snippet}
 
 <!-- FIXME: add tooltip -->
@@ -80,13 +70,12 @@
 	name={id}
 	{size}
 	{font}
-	justify="start nowrap"
-	align="center"
 	{label}
 	{color}
 	{shape}
 	{variant}
 	{asset}
 	{assetType}
+	disabled={disabled || !preset.query}
 	onclick={showDialog}
 />

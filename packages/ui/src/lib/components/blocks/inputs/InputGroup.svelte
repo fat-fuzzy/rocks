@@ -1,11 +1,9 @@
 <script lang="ts">
-	import type {Component} from 'svelte'
 	import type {
+		UiSize,
 		FieldsetProps,
-		ValidationProps,
 		InputCheckProps,
 		InputRadioProps,
-		UiSize,
 	} from '$types'
 
 	import styleHelper from '$lib/utils/styles'
@@ -36,8 +34,8 @@
 		assetType,
 		oninput,
 		children,
-		validator,
-	}: FieldsetProps & ValidationProps = $props()
+		errors = [],
+	}: FieldsetProps = $props()
 
 	let selected: string[] = $derived(value ?? [])
 	let allSelected = $derived(selected.length === items.length)
@@ -45,18 +43,12 @@
 		selected.length > 0 && selected.length < items.length,
 	)
 
-	let errors = $derived(
-		validator && validator?.fieldHasChanged(name)
-			? validator?.getFieldErrors(name)
-			: [],
-	)
-
 	let enableSelectAll = $derived(
 		type === 'checkbox' && (selectAll || items.length > 5),
 	)
 
 	const COMPONENT_IMPORTS: {
-		[input: string]: Component<InputCheckProps | InputRadioProps, object, ''>
+		[input: string]: typeof InputRadio | typeof InputCheck
 	} = {
 		radio: InputRadio,
 		checkbox: InputCheck,
@@ -105,6 +97,7 @@
 </script>
 
 <Fieldset
+	context="form"
 	{id}
 	{name}
 	{type}
@@ -121,6 +114,7 @@
 	{assetType}
 	{justify}
 	ariaDescribedby={hint || errors?.length ? `input-feedback-${id}` : undefined}
+	{errors}
 >
 	{@const InputComponent = COMPONENT_IMPORTS[type]}
 
@@ -140,7 +134,7 @@
 				containerSize={shrink(size) as UiSize}
 				id={`all-${id}`}
 				oninput={handleSelectAll}
-				{validator}
+				{errors}
 				{isUiControl}
 			/>
 		</legend>
@@ -162,6 +156,7 @@
 			oninput={handleInput}
 			{isUiControl}
 			color={input.color || color}
+			{errors}
 		/>
 	{/each}
 
@@ -170,6 +165,7 @@
 	{/if}
 
 	<Feedback
+		context="form"
 		id={`input-feedback-${id}`}
 		{hint}
 		{errors}

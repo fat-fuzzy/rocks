@@ -7,6 +7,7 @@
 		TagGroup,
 		TagProps,
 		ICoordinateMetadata,
+		AllowedParamName,
 	} from '$types'
 
 	import {onDestroy, onMount} from 'svelte'
@@ -117,7 +118,9 @@
 
 		if (tag.group) {
 			const tagFound =
-				validateTagGroupName(tag.group) && checkTagExists(tag.group, tag.name)
+				// parse ??
+				validateTagGroupName(tag.group as AllowedParamName) &&
+				checkTagExists(tag.group, tag.name)
 
 			if (tagFound) {
 				errorTagExists = true
@@ -278,7 +281,7 @@
 						onfocus={handleFocus}
 						layout="flex"
 						hint="Use lower or uppercase letters, numbers, dashes or underscores"
-						{validator}
+						errors={validator.getFieldErrors('name')}
 					/>
 				</div>
 				<div class="l:flex align:start">
@@ -286,7 +289,7 @@
 						<label class={`size:2xs font:sm color:${color}`}>
 							Tag Group
 							<select
-								class="w:full size:2xs font:sm"
+								class="w:full size:2xs font:sm variant:bare color:neutral"
 								name="groups"
 								id="groups"
 								{color}
@@ -323,7 +326,7 @@
 								oninput={updateGroup}
 								onblur={handleBlur}
 								onfocus={handleFocus}
-								{validator}
+								errors={validator.getFieldErrors('group')}
 							/>
 							<Input
 								id="groupTitle"
@@ -340,7 +343,7 @@
 								oninput={updateGroupName}
 								onblur={handleBlur}
 								onfocus={handleFocus}
-								{validator}
+								errors={validator.getFieldErrors('groupTitle')}
 							/>
 							<div class="l:flex justify:between align:center">
 								<InputCheck
@@ -358,7 +361,7 @@
 									onblur={handleBlur}
 									onfocus={handleFocus}
 									hint="Select to enforce a unique tag choice"
-									{validator}
+									errors={validator.getFieldErrors('type')}
 								/>
 							</div>
 						</div>

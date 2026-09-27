@@ -7,7 +7,15 @@ label.variant\:bare:has(input),
 ff-control > label.variant\:bare:has(input),
 .ff-control.variant\:bare:has(input) {
 	--lightness-accent: var(--lightness-surface-2);
+	--chroma-accent-base: var(--color-chroma-neutral);
 	--border-color: var(--shade);
+}
+
+label.variant\:bare:has(input)[class*='error'],
+ff-control > label.variant\:bare:has(input),
+.ff-control.variant\:bare:has(input) {
+	--lightness-accent: var(--lightness-surface-2);
+	--chroma-accent-base: var(--chroma-surface-3);
 }
 
 label:has(input:checked),
@@ -52,16 +60,23 @@ label[class*='bg:'] {
 	opacity: 0.75;
 }
 
-[class*='color:']:not([class*=':neutral']):is(
-		input,
-		textarea,
-		select,
-		fieldset,
-		label
-	) {
+[class*='color:']:is(input, textarea, select, fieldset) {
 	--chroma-contrast: var(--color-chroma-neutral);
 	--lightness-contrast: var(--lightness-surface-5);
 	--lightness-accent: var(--lightness-surface-4);
+}
+
+label[class*='color:'] {
+	--chroma-contrast: var(--color-chroma-neutral);
+	--lightness-contrast: var(--lightness-surface-5);
+	--lightness-accent: var(--lightness-surface-3);
+}
+
+label[class*='color:'][class*=':neutral'],
+label[class*='color:'][class*=':neutral']:hover,
+[class*='color:'][class*=':neutral']:is(input, textarea, select, fieldset) {
+	--chroma: var(--color-chroma-neutral);
+	--chroma-contrast: var(--color-chroma-neutral);
 }
 
 [disabled],
@@ -137,7 +152,7 @@ fieldset:has(label > [type='radio']) {
 
 /* Remove border from popover inputs: the popover layer creates a visual boundary */
 [popover] {
-	[class*=':bare']:not(label, pre, label > span) {
+	[class*=':bare']:only-child:not(label, pre, label > span) {
 		--border-color-bare: transparent;
 	}
 }

@@ -23,22 +23,21 @@ function getStaticAllowedParams(
 	return new Set(params)
 }
 
-export function getAllowedParamsForRoute(
+export function getAllowedParams(
 	namespace: NamespaceKey,
-	url: URL,
+	searchParams: URLSearchParams,
 ): {[key in AllowedParamName]?: string} {
-	const allowedParams =
-		NAMESPACES[namespace].children.find(
-			(route: Route) => route.id === url.pathname,
-		)?.allowedParams || []
+	const allowedParams = NAMESPACES[namespace].children
+		.map((route: Route) => route.allowedParams || [])
+		.flat()
 
 	const params: {[key in AllowedParamName]?: string} = {}
 
 	for (const {name, type} of allowedParams) {
 		const value =
 			type === 'csv'
-				? getSanitizedParamCsvValue(url, name)
-				: getSanitizedParamValue(url, name)
+				? getSanitizedParamCsvValue(searchParams, name)
+				: getSanitizedParamValue(searchParams, name)
 		if (value) {
 			params[name] = value
 		}
@@ -47,8 +46,35 @@ export function getAllowedParamsForRoute(
 	return params
 }
 
-export const getSanitizedParamValue = (url: URL, key: Slug): Slug | null => {
-	const value = url.searchParams.get(key)
+export function getAllowedParamsForRoute(
+	namespace: NamespaceKey,
+	pathname: string,
+	searchParams: URLSearchParams,
+): {[key in AllowedParamName]?: string} {
+	const allowedParams =
+		NAMESPACES[namespace].children.find((route: Route) => route.id === pathname)
+			?.allowedParams || []
+
+	const params: {[key in AllowedParamName]?: string} = {}
+
+	for (const {name, type} of allowedParams) {
+		const value =
+			type === 'csv'
+				? getSanitizedParamCsvValue(searchParams, name)
+				: getSanitizedParamValue(searchParams, name)
+		if (value) {
+			params[name] = value
+		}
+	}
+
+	return params
+}
+
+export const getSanitizedParamValue = (
+	searchParams: URLSearchParams,
+	key: Slug,
+): Slug | null => {
+	const value = searchParams.get(key)
 
 	return key === 'language'
 		? sanitizeLanguageValue(value)
@@ -56,10 +82,10 @@ export const getSanitizedParamValue = (url: URL, key: Slug): Slug | null => {
 }
 
 export const getSanitizedParamCsvValue = (
-	url: URL,
+	searchParams: URLSearchParams,
 	key: Slug,
 ): string | null => {
-	const raw = url.searchParams.get(key)
+	const raw = searchParams.get(key)
 	if (!raw) return null
 
 	const clean = raw
@@ -70,8 +96,11 @@ export const getSanitizedParamCsvValue = (
 	return clean.length ? clean.join(',') : null
 }
 
-export const getSanitizedParamValueList = (url: URL, key: Slug): Slug[] => {
-	const values = url.searchParams.getAll(key)
+export const getSanitizedParamValueList = (
+	searchParams: URLSearchParams,
+	key: Slug,
+): Slug[] => {
+	const values = searchParams.getAll(key)
 	return values.reduce((sanitized: Slug[], value: unknown) => {
 		const clean = sanitizeSlugValue(value)
 		if (clean) {
@@ -82,16 +111,16 @@ export const getSanitizedParamValueList = (url: URL, key: Slug): Slug[] => {
 }
 
 export const buildForwardedQuery = (
-	url: URL,
-	allowedParams_Dynamic: string[],
+	searchParams: URLSearchParams,
+	dynamicParams: string[],
 ): string => {
 	const allowed = new Set([
 		...Array.from(RESERVED_PARAM_NAMES),
-		...allowedParams_Dynamic,
+		...dynamicParams,
 	])
 	const params = new URLSearchParams()
 
-	for (const [key, value] of url.searchParams) {
+	for (const [key, value] of searchParams) {
 		if (!allowed.has(key)) {
 			continue
 		}

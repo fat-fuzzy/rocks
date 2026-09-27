@@ -16,23 +16,44 @@ ff-control > label:not([class*=':neutral']) ff-icon {
 	--chroma-accent: var(--chroma-accent-base);
 }
 
-.ff-control:not([class*=':neutral']):has(input:checked) {
-	--lightness: var(--lightness-surface-1);
-	--chroma: var(--chroma-base);
-	--shade: oklch(var(--lightness) var(--chroma, var(--chroma-base)) var(--hue));
+.ff-control:has(input:checked) {
+	--lightness: var(--lightness-base);
+	--chroma: var(--chroma-surface-1);
+	--lightness-accent: var(--lightness-surface-4);
+	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
+	--accent: oklch(var(--lightness-accent) var(--chroma-accent-base) var(--hue));
+
 	background-color: var(--shade);
+	border-color: var(--accent);
 }
 
-.ff-control:not([class*=':neutral']):hover {
-	--lightness: var(--lightness-surface-2);
+.ff-control:hover {
+	--lightness: var(--lightness-surface-3);
+
 	border-color: var(--accent);
+}
+
+.ff-control[class*=':neutral']:has(input:checked) {
+	--lightness: var(--lightness-surface-1);
+	--chroma: var(--color-chroma-neutral);
+	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
+	--accent: oklch(var(--lightness-accent) var(--chroma) var(--hue));
+
+	background-color: var(--shade);
+	border-color: var(--accent);
+}
+
+.ff-control[class*=':neutral']:has(input:checked):hover {
+	--lightness: var(--lightness-surface-2);
+
+	background-color: var(--shade);
 }
 
 ff-control > label.variant\:bare:has(input:checked),
 .ff-control.variant\:bare:has(input:checked) {
 	--border-color: var(--accent);
 	--lightness: var(--lightness-surface-1);
-	--lightness-accent: var(--lightness-surface-1);
+	--lightness-accent: var(--lightness-surface-3);
 	--shade: oklch(var(--lightness) var(--chroma) var(--hue));
 	background-color: var(--shade);
 }
@@ -107,6 +128,11 @@ ff-control > label[class*='bg:']:not([class*=':neutral']) {
 		--shade: oklch(var(--lightness) var(--chroma) var(--hue));
 		color: var(--ink);
 	}
+}
+
+.ff-control:has(input:focus) {
+	outline: 1px dotted var(--accent);
+	outline-offset: var(--outline-offset-md);
 }
 
 /* ui-action  overrides */

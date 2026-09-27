@@ -212,7 +212,7 @@
 				onblur={handleBlur}
 				onfocus={handleFocus}
 				hint="Use lower or uppercase letters, numbers, dashes or underscores"
-				{validator}
+				errors={validator.getFieldErrors('name')}
 			/>
 		</div>
 		<div class="l:flex align:end">
@@ -232,7 +232,7 @@
 				oninput={updateTitle}
 				onblur={handleBlur}
 				onfocus={handleFocus}
-				{validator}
+				errors={validator.getFieldErrors('title')}
 			/>
 		</div>
 		<div class="l:flex align:start justify:between">
@@ -251,11 +251,12 @@
 				oninput={updateRank}
 				onblur={handleBlur}
 				onfocus={handleFocus}
-				{validator}
+				errors={validator.getFieldErrors('rank')}
 			/>
 
 			<div class="l:flex:2xs justify:end">
 				<InputGroup
+					context="form"
 					id="section-formats"
 					name="formats"
 					legend="Doc Formats"
@@ -276,8 +277,9 @@
 						label: i,
 						title: i,
 						validator,
+						errors: [], // set errors at group level
 					}))}
-					{validator}
+					errors={validator.getFieldErrors('formats')}
 				/>
 			</div>
 		</div>

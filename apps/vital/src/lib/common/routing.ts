@@ -5,6 +5,7 @@ import {
 	CTA_TO_TITLE,
 	CTA_TO_DESCRIPTION,
 	LOCALIZATIONS,
+	NAMESPACE_TO_TITLE,
 } from '$lib/intl/l10n'
 
 import type {
@@ -17,6 +18,16 @@ import type {
 } from '$types'
 
 import {NAMESPACES} from '$types'
+
+export function getNamespaces(): {
+	name: NamespaceId
+	title?: string
+}[] {
+	return Object.values(NAMESPACES).map((n) => ({
+		name: n.namespace,
+		title: NAMESPACE_TO_TITLE[n.namespace],
+	}))
+}
 
 export function getNamespaceFromRoute(id: RouteId): NamespaceId | undefined {
 	const key = id.split('/')[1] as NamespaceKey
