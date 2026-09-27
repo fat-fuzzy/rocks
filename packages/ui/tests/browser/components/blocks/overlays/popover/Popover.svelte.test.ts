@@ -118,7 +118,7 @@ describe(`Popover - a popover component`, () => {
 			expect(popoverRole).toBeInViewport()
 			expect(popoverContent).toBeVisible()
 
-			await page.getByText('Enter the popoverId').fill(popover.props.id)
+			await page.getByLabelText('Enter the popoverId').fill(popover.props.id)
 			await page.getByText('Save and close').click()
 
 			expect(popoverContent).not.toBeVisible()

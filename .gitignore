@@ -146,6 +146,9 @@ iam-policy-default.json
 .Rhistory
 dist/
 
+### Tests ###
+.vitest/
+
 ### Styles ###
 packages/style/src/css/variables/*
 packages/style/src/tests/tmp/*
