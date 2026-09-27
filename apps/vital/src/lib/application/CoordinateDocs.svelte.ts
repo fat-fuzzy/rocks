@@ -210,7 +210,7 @@ export default class CoordinateDocs implements ICoordinateDocs {
 	}
 
 	/**
-	 * Get all sections
+	 * Get a collection of sections for [language * format * given names]
 	 * @param options section selection to load, blocks to load within sections
 	 * @returns Array: {name, section}[]
 	 */
