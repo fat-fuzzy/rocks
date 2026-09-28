@@ -1,9 +1,5 @@
-import type {
-	Aggregators,
-	Coordinators,
-	NamespaceId,
-	PresetOptions,
-} from '$types'
+import type {Aggregators, Coordinators, NamespaceId} from '$types'
+import CoordinateCompare from '$lib/application/CoordinateCompare.svelte'
 import CoordinateDocs from '$lib/application/CoordinateDocs.svelte'
 import CoordinateExports from '$lib/application/CoordinateExports.svelte'
 import CoordinateImports from '$lib/application/CoordinateImports.svelte'
@@ -46,31 +42,5 @@ export function createCoords(options: {[key in NamespaceId]: Aggregators}): {
 export function createCompareCoords(coords: {
 	[key in NamespaceId]: Coordinators
 }) {
-	function setPreset(options: PresetOptions) {
-		return coords[options.namespace].coordPresets.setSourcePreset(options.name)
-	}
-
-	function setSourceRoot(namespace: NamespaceId, sourceRoot: NamespaceId) {
-		return coords[namespace].coordPresets.setSourceRoot(sourceRoot)
-	}
-
-	function getSourceRoot(namespace: NamespaceId) {
-		return coords[namespace].coordPresets.getSourceRoot()
-	}
-
-	function getCoordPresets(namespace: NamespaceId) {
-		return coords[namespace].coordPresets
-	}
-
-	function getCoordDocs(namespace: NamespaceId) {
-		return coords[namespace].coordDocs
-	}
-
-	return {
-		getCoordDocs,
-		getCoordPresets,
-		setPreset,
-		setSourceRoot,
-		getSourceRoot,
-	}
+	return new CoordinateCompare(coords)
 }

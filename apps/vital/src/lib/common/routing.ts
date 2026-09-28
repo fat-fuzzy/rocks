@@ -29,12 +29,13 @@ export function getNamespaces(): {
 	}))
 }
 
-export function getNamespaceFromRoute(id: RouteId): NamespaceId | undefined {
+export function getNamespaceFromRoute(id: RouteId): NamespaceId {
 	const key = id.split('/')[1] as NamespaceKey
 
 	if (NAMESPACES[key]) {
 		return key
 	}
+	throw Error('Namespace for route not available')
 }
 
 export function getRouteNamesForNamespace(

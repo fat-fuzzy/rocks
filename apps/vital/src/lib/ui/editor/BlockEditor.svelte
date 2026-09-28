@@ -26,6 +26,7 @@
 
 	let {
 		id,
+		isTwinLayout,
 		content_type,
 		parentId,
 		name,
@@ -39,6 +40,7 @@
 		format,
 		color,
 	}: {
+		isTwinLayout?: boolean
 		sectionName: string
 		language: DocLanguage
 		format: Slug
@@ -52,12 +54,8 @@
 	let isSkillSet = $derived(tags.find((t) => t === 'skills'))
 	let isChlorophyll = $derived(coordDocs.getRoot() === 'chlorophyll')
 	let isMainContentBlock = $derived(content_type === 'section')
-	let height = $derived(
-		isChlorophyll && isSkillSet
-			? ('xs' as UiSize)
-			: isChlorophyll
-				? ('sm' as UiSize)
-				: 'xl',
+	let height: UiSize = $derived(
+		isSkillSet ? 'xs' : isTwinLayout ? 'xl' : isChlorophyll ? 'sm' : 'xl',
 	)
 
 	let block: Block = $derived({

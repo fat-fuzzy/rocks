@@ -71,17 +71,7 @@
 					aria-current={key === cta}
 					class={`cta text:center surface:2:${color} shape:mellow l:flex`}
 				>
-					<a
-						href={resolve(`/${path}/${key}${presetQuery}`)}
-						class={linkStyles}
-						onclick={() => {
-							if (!isTwinLayout) {
-								// Unset source & target presets
-								coordPresets.setSourcePreset()
-								coordPresets.setTargetPreset()
-							}
-						}}
-					>
+					<a href={resolve(`/${path}/${key}${presetQuery}`)} class={linkStyles}>
 						<span class={classes}>{value}</span>
 					</a>
 				</li>

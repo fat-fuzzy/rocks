@@ -13,22 +13,10 @@ export interface ICoordinatePresets {
 	readonly aggPresets: IAggregatePresets
 	readonly loading: boolean
 	readonly error: boolean
-	readonly sourcePreset: Preset | null
-	readonly targetPreset: Preset | null
-	readonly sourceRoot: NamespaceId | undefined
-	readonly targetRoot: NamespaceId | undefined
 
 	reset(): void
 
 	getRoot(): NamespaceId
-
-	getSourceRoot(): NamespaceId | undefined
-
-	getTargetRoot(): NamespaceId | undefined
-
-	setSourceRoot(root: NamespaceId): void
-
-	setTargetRoot(root: NamespaceId): void
 
 	hasPresets(): boolean
 
@@ -36,25 +24,11 @@ export interface ICoordinatePresets {
 
 	getPresetTags(name: string): string[]
 
-	getTargetPreset(): Preset | null
-
-	getSourcePreset(): Preset | null
-
-	setSourcePreset(name?: string | null): void
-
-	setTargetPreset(name?: string | null): void
-
 	getPresetQuery(name: string): string
 
 	getSourcePresetQuery(name: string): string
 
 	getTargetPresetQuery(name: string): string
-
-	getCompareQuery(options: {
-		query: string
-		source: {root?: NamespaceId; preset?: string}
-		target: {root?: NamespaceId; preset?: string}
-	}): string
 
 	savePreset(options: {
 		path: DocPath
