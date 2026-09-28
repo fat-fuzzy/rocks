@@ -1,11 +1,5 @@
 <script lang="ts">
-	import type {
-		Preset,
-		Slug,
-		CurrentCoordinators,
-		NamespaceId,
-		RouteNameFor,
-	} from '$types'
+	import type {Preset, Slug, CurrentCoordinators} from '$types'
 
 	import {getContext} from 'svelte'
 	import ui, {type UiColor, type UiSize} from '@fat-fuzzy/ui'
@@ -14,7 +8,6 @@
 	const {Button} = ui.blocks
 
 	const {
-		cta,
 		preset,
 		query,
 		formats,
@@ -23,7 +16,6 @@
 		font = '2xs',
 		canEdit,
 	}: {
-		cta: RouteNameFor<NamespaceId>
 		preset?: string
 		query: string
 		formats: Slug[]
@@ -45,11 +37,7 @@
 		if (!preset) {
 			return
 		}
-		if (cta === 'explore' || cta === 'compare') {
-			return coordPresets.getTargetPreset()
-		} else {
-			return coordPresets.getPreset(preset)
-		}
+		return coordPresets.getPreset(preset)
 	})
 
 	function savePreset(preset: Preset) {
@@ -75,13 +63,11 @@
 <div class="w:full noprint">
 	<div class={`l:flex grow justify:${currentPreset ? 'between' : 'end'}`}>
 		{#if currentPreset}
-			{#if coordPresets.targetPreset}
-				<h2>
-					Target:
-					{currentPreset.name}
-					{currentPreset.locked ? '(Locked)' : ''}
-				</h2>
-			{/if}
+			<h2>
+				Target:
+				{currentPreset.name}
+				{currentPreset.locked ? '(Locked)' : ''}
+			</h2>
 			<div class="ui-controls l:flex justify:end maki:block">
 				{#if canEdit?.doc}
 					<DialogSaveSection
