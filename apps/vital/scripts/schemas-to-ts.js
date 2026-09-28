@@ -3,7 +3,7 @@ import path from 'node:path'
 import {fileURLToPath} from 'node:url'
 import {compile} from 'json-schema-to-typescript'
 
-import {schemas} from '../src/schemas/Chlorophyll.registry.js'
+import {schemas} from '../src/schemas/Vital.registry.js'
 import {buildTypeSchemas} from './schemas-from-registry.js'
 
 // Resolve relative to this script file
