@@ -51,7 +51,7 @@
 		"glob": "13.0.6",
 		"postcss": "8.5.27",
 		"postcss-import": "16.1.1",
-		"postcss-preset-env": "11.3.2",
+		"postcss-preset-env": "11.5.3",
 		"rollup": "4.62.0",
 		"rollup-plugin-postcss": "4.0.2",
 		"rollup-plugin-scss": "4.0.1",
