@@ -54,14 +54,8 @@
 	let isSkillSet = $derived(tags.find((t) => t === 'skills'))
 	let isChlorophyll = $derived(coordDocs.getRoot() === 'chlorophyll')
 	let isMainContentBlock = $derived(content_type === 'section')
-	let height = $derived(
-		isChlorophyll && isSkillSet
-			? ('xs' as UiSize)
-			: isTwinLayout
-				? 'xl'
-				: isChlorophyll
-					? 'sm'
-					: 'xl',
+	let height: UiSize = $derived(
+		isSkillSet ? 'xs' : isTwinLayout ? 'xl' : isChlorophyll ? 'sm' : 'xl',
 	)
 
 	let block: Block = $derived({
