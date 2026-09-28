@@ -55,16 +55,16 @@
 	}
 }
 
-:global([class*='settings:day']),
-:global([color-scheme='light']) {
+[class*='settings:day'],
+[color-scheme='light'] {
 	.text-ring {
 		--lightness-contrast: var(--lightness-surface-4);
 		--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
 	}
 }
 
-:global([class*='settings:night']),
-:global([color-scheme='dark']) {
+[class*='settings:night'],
+[color-scheme='dark'] {
 	.text-ring {
 		--lightness-contrast: var(--lightness-surface-2);
 		--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));

@@ -83,26 +83,10 @@
 
 	let color = $derived(theme)
 	let namespace = $derived(getNamespaceFromRoute(route))
+	let isTwinLayout = $derived(twinLayout[cta])
 
 	const coordinators: CurrentCoordinators = getContext('currentCoordinators')
-	const coordCompare: CompareCoordinators | null = $derived(
-		twinLayout[cta] ? getContext('coordCompare') : null,
-	)
-
-	let coordDocs = $derived(coordinators.docs)
-	let coordPresets = $derived(coordinators.presets)
-	let coordMetadata = $derived(coordinators.metadata)
-
-	let filtersForm: HTMLFormElement | undefined = $state()
-	let pageContext = $derived({...page.data.pageContext, label: 'On this Page'})
-
-	let loading = $derived(coordDocs.isLoading())
-
-	let tags = $derived(coordMetadata.getTagGroups())
-	let tagsLoading = $derived(coordMetadata.loading)
-	let tagsError = $derived(coordMetadata.error)
-
-	let editing = $derived(editor[cta] || builder[cta])
+	const coordCompare: CompareCoordinators = $derived(getContext('coordCompare'))
 
 	let paramValues = $derived(
 		namespace
@@ -116,9 +100,9 @@
 	let language = $derived(paramValues.language ?? DOC_LANGUAGE)
 	let format = $derived(paramValues.format ?? DOC_FORMAT)
 
-	let preset: string | undefined = $derived(paramValues.preset)
+	let defaultPreset: string | undefined = $derived(paramValues.preset)
 	let sourceRoot: NamespaceId | undefined = $derived(
-		paramValues.source_root as NamespaceId,
+		(paramValues.source_root as NamespaceId) || namespace,
 	)
 	let targetRoot: NamespaceId | undefined = $derived(
 		(paramValues.target_root as NamespaceId) || namespace,
@@ -151,6 +135,20 @@
 		}
 		return []
 	})
+
+	let coordDocs = $derived(coordinators.docs)
+	let coordMetadata = $derived(coordinators.metadata)
+
+	let filtersForm: HTMLFormElement | undefined = $state()
+	let pageContext = $derived({...page.data.pageContext, label: 'On this Page'})
+
+	let loading = $derived(coordDocs.isLoading())
+
+	let tags = $derived(coordMetadata.getTagGroups())
+	let tagsLoading = $derived(coordMetadata.loading)
+	let tagsError = $derived(coordMetadata.error)
+
+	let editing = $derived(editor[cta] || builder[cta])
 
 	let unassignedSections = $derived(
 		getSanitizedParamValueList(page.url.searchParams, 'sections'),
@@ -204,7 +202,7 @@
 
 	let title = $derived(
 		// Force title of printed document to be heading of document if printing
-		cta === 'preview' && preset ? preset : getTitleForRoute(cta),
+		cta === 'preview' && defaultPreset ? defaultPreset : getTitleForRoute(cta),
 	)
 
 	let description = $derived(getDescriptionForRoute(cta))
@@ -240,16 +238,13 @@
 	headerLayout="sidebar"
 >
 	{#snippet details()}
-		{#if cta}
-			<ContentHeading
-				{cta}
-				{query}
-				{color}
-				preset={twinLayout[cta] ? targetPreset : preset}
-				formats={coordMetadata.getFormats()}
-				canEdit={{presets: presetsEditor[cta], doc: docEditor[cta]}}
-			/>
-		{/if}
+		<ContentHeading
+			{query}
+			{color}
+			preset={isTwinLayout && targetPreset ? targetPreset : defaultPreset}
+			formats={coordMetadata.getFormats()}
+			canEdit={{presets: presetsEditor[cta], doc: docEditor[cta]}}
+		/>
 	{/snippet}
 
 	{#snippet main()}
@@ -280,7 +275,7 @@
 						</Feedback>
 					</div>
 				</div>
-			{:else if coordCompare}
+			{:else if isTwinLayout}
 				<div class="l:switcher:md th:sm w:full justify:center">
 					{#if sourcePreset}
 						<div
@@ -328,6 +323,7 @@
 											language={targetLanguage}
 											format={targetFormat}
 											{color}
+											isTwinLayout={true}
 										/>
 									{/each}
 								{/key}
@@ -350,7 +346,7 @@
 				</div>
 			{:else if selectedSections.length}
 				<div class={contentClass}>
-					{#key language || format || preset}
+					{#key language || format || defaultPreset}
 						{#each selectedSections as section, i (i)}
 							{#if editor[cta]}
 								<SectionEditor
@@ -402,34 +398,34 @@
 						oninput={updateFilters}
 						{color}
 						actions={getRouteLabelsForNamespace(namespace)}
-						isTwinLayout={twinLayout[cta]}
+						{isTwinLayout}
 						canEdit={{presets: presetsEditor[cta], doc: docEditor[cta]}}
 					/>
 				{/if}
 
-				{#if coordCompare}
-					{#key sourceRoot}
+				{#if isTwinLayout}
+					{#key sourceRoot || sourcePreset}
 						<Presets
 							title="Source Preset (readonly)"
 							id="source_preset"
 							{route}
+							root={sourceRoot}
 							{query}
-							isSource={true}
-							{sourceRoot}
+							role="source"
 							oninput={updateFilters}
 							currentPreset={sourcePreset}
 							{color}
 						/>
 					{/key}
 
-					{#key targetRoot}
+					{#key targetRoot || targetPreset}
 						<Presets
 							title="Target Preset (editing)"
 							id="target_preset"
 							{route}
+							root={targetRoot}
 							{query}
-							isTarget={true}
-							{sourceRoot}
+							role="target"
 							oninput={updateFilters}
 							currentPreset={targetPreset}
 							{color}
@@ -441,12 +437,9 @@
 						{route}
 						{query}
 						{color}
-						oninput={() => {
-							coordPresets.setSourcePreset()
-							coordPresets.setTargetPreset()
-							updateFilters()
-						}}
-						currentPreset={preset}
+						root={namespace}
+						oninput={updateFilters}
+						currentPreset={defaultPreset}
 						canEdit={{presets: presetsEditor[cta], doc: docEditor[cta]}}
 					/>
 				{/if}
