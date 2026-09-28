@@ -15,6 +15,7 @@ export * from '$lib/types/aggregates/agg-meta'
 export * from '$lib/types/aggregates/agg-data-lifecycle'
 
 // Use case coordinators
+export * from '$lib/types/application/coord-compare'
 export * from '$lib/types/application/coord-docs'
 export * from '$lib/types/application/coord-metadata'
 export * from '$lib/types/application/coord-exports'
