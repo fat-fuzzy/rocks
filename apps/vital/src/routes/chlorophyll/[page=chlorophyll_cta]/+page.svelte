@@ -57,7 +57,7 @@
 </script>
 
 {#snippet getStartedSections()}
-	<p>To get started you can:</p>
+	<h3 class={`font:heading font:bold color:${theme}`}>Getting Started</h3>
 	<ul>
 		<li>
 			Create your own content: go to <a

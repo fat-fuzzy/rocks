@@ -54,14 +54,14 @@
 </script>
 
 {#snippet getStartedSections()}
-	<p>To get started you can:</p>
+	<h3 class={`font:heading font:bold color:${theme}`}>Getting Started</h3>
 	<ul>
 		<li>
 			Create your own content: go to <a
 				class="font:semibold"
 				href="/pollen/write/"
 			>
-				Edit
+				Write
 			</a>, then click on
 			<span class="font:semibold"> New Section </span>
 		</li>
@@ -79,10 +79,10 @@
 			href="/pollen/write"
 			class="font:semibold"
 		>
-			Edit
+			Write
 		</a>
 		or
-		<a href="/pollen/reflect" class="font:semibold"> Build </a>
+		<a href="/pollen/reflect" class="font:semibold"> Reflect </a>
 	</p>
 {/snippet}
 

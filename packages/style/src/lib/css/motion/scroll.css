@@ -1,10 +1,14 @@
 /* Scroll container */
 [class*='scroll:'] {
-	--thumb: oklch(var(--lightness-surface-3) var(--chroma-surface-3) var(--hue));
 	--track: var(--shade);
 
 	scrollbar-gutter: stable;
 	scrollbar-width: thin;
+}
+
+[class*='scroll:']:not([class*=':neutral'], [class*='bg:']) {
+	--thumb: oklch(var(--lightness-surface-3) var(--chroma-surface-3) var(--hue));
+	--track: var(--shade);
 	scrollbar-color: var(--thumb) var(--track);
 }
 

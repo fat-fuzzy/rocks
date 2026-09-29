@@ -31,13 +31,13 @@
 	let mediaClass = $derived(dimensions ? `media:${dimensions}` : '')
 
 	const zoneMainClasses: {[key: string]: string} = {
-		metro: 'l:grid size:3xs scroll:y color:neutral align:start',
-		railway: 'l:grid size:3xs scroll:y color:neutral align:start',
-		steam: 'l:grid size:3xs scroll:y color:neutral align:start align:start',
+		metro: 'l:grid size:3xs scroll:y bg:inherit align:start',
+		railway: 'l:grid size:3xs scroll:y bg:inherit align:start',
+		steam: 'l:grid size:3xs scroll:y bg:inherit align:start align:start',
 		tgv: 'snap:center align:start',
-		tram: 'l:grid snap:start size:3xs scroll:y color:neutral align:start',
-		voyager: 'l:grid snap:start size:3xs scroll:y color:neutral align:start ',
-		urbanist: 'snap:start l:grid size:3xs scroll:y color:neutral',
+		tram: 'l:grid snap:start size:3xs scroll:y bg:inherit align:start',
+		voyager: 'l:grid snap:start size:3xs scroll:y bg:inherit align:start ',
+		urbanist: 'snap:start l:grid size:3xs scroll:y bg:inherit',
 	}
 
 	const pageMainClasses: {[key: string]: string} = {
@@ -66,8 +66,8 @@
 		steam: 'ff:callout magic:feather shape:soft',
 		tgv: '',
 		tram: 'ff:callout shape:soft',
-		voyager: '',
-		urbanist: '',
+		voyager: 'bg:inherit',
+		urbanist: 'bg:inherit',
 	}
 
 	let contextClass = $derived(
@@ -119,7 +119,7 @@
 {#if layout !== 'tgv'}
 	<aside
 		id={`context-${id}`}
-		class={`page-context ${contextClass} ${mediaClass} scroll:y color:neutral`}
+		class={`page-context ${contextClass} ${mediaClass} scroll:y bg:inherit`}
 	>
 		{#if nav && nav.length > 0}
 			<PageNav id="page-nav" {hash} items={nav} />

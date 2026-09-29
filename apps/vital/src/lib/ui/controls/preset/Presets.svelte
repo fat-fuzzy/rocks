@@ -170,7 +170,7 @@
 		>
 			{#if presets.length === 0}
 				<div
-					class="feedback:prose w:full justify:center ravioli:2xl variant:bare scroll:y"
+					class={`feedback:prose w:full justify:center ravioli:2xl variant:bare scroll:y color:${color}`}
 				>
 					<div class="l:stack font:sm raviolink">
 						{#if canEdit?.presets && query.includes('section')}
@@ -193,9 +193,12 @@
 					</div>
 				</div>
 			{:else}
-				<ul class="unstyled scroll:y">
+				<ul class={`unstyled scroll:y color:${color}`}>
 					{#each presets as preset, i (i)}
 						{@const isCurrent = currentPreset === preset.name}
+						{@const surfaceColor = isCurrent
+							? `surface:0:${color} chroma:1`
+							: ''}
 						{@const presetQuery =
 							role === 'default'
 								? coordPresets.getPresetQuery(preset.name)
@@ -208,7 +211,7 @@
 
 						<li
 							aria-current={isCurrent}
-							class={`raviolink l:flex justify:between ${isCurrent ? `surface:0:${color} chroma:1` : ''}`}
+							class={`raviolink l:flex justify:between ${surfaceColor}`}
 						>
 							<a
 								href={`${route}/${presetQuery}`}
