@@ -314,7 +314,9 @@
 
 					{#if targetPreset}
 						<div class={`scroll:container contain:lg ${contentClass}`}>
-							<div class="l:center scroll:y l:stack justify:start">
+							<div
+								class={`l:center scroll:y l:stack justify:start color:${color}`}
+							>
 								{#key targetPreset}
 									{#each targetSections as section, i (i)}
 										<SectionEditor
@@ -363,6 +365,7 @@
 									{selectedTags}
 									{language}
 									{format}
+									{color}
 								/>
 							{/if}
 						{/each}

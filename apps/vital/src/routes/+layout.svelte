@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {Snippet} from 'svelte'
-	import type {AreaProps, UiLayout, ViewingPreferences} from '@fat-fuzzy/ui'
+	import type {AreaProps, UiLayout} from '@fat-fuzzy/ui'
 
 	import {setContext, onMount, onDestroy} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
@@ -73,7 +73,7 @@
 	/**
 	 * Setup App context (user controlled UI)
 	 */
-	let appContext: ViewingPreferences = $state({
+	let appContext = $state({
 		brightness: 'system',
 		contrast: 'contrast',
 		consent: {
