@@ -95,5 +95,5 @@ export function getPrefixForRoute(
 	language: DocLanguage,
 	cta?: RouteNameFor<NamespaceId>,
 ) {
-	return cta === 'preview' ? `${LOCALIZATIONS[language].cv}_` : `${APP_NAME} | `
+	return cta === 'preview' ? `${LOCALIZATIONS[language].cv}` : `${APP_NAME} | `
 }
