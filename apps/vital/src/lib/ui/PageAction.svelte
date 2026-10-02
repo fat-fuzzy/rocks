@@ -25,6 +25,7 @@
 		getTitleForRoute,
 		getDescriptionForRoute,
 		getPrefixForRoute,
+		getRouteNameFromRoute,
 	} from '$lib/common/routing'
 
 	import SectionEditor from '$lib/ui/editor/SectionEditor.svelte'
@@ -44,7 +45,6 @@
 		theme?: UiColor
 		route: RouteId
 		query: string
-		cta: RouteNameFor<NamespaceId>
 		gettingStarted: {
 			[key in RouteNameFor<NamespaceId>]?: {
 				sections?: Snippet
@@ -72,7 +72,6 @@
 		theme = 'primary',
 		route,
 		query,
-		cta,
 		gettingStarted,
 		twinLayout,
 		editor,
@@ -82,6 +81,8 @@
 	}: Props = $props()
 
 	let color = $derived(theme)
+	let cta = $derived(getRouteNameFromRoute(route))
+	let searchParams = $derived(new URL(page.url.href).searchParams)
 	let namespace = $derived(getNamespaceFromRoute(route))
 	let isTwinLayout = $derived(twinLayout[cta])
 
@@ -90,11 +91,7 @@
 
 	let paramValues = $derived(
 		namespace
-			? getAllowedParamsForRoute(
-					namespace,
-					page.url.pathname,
-					page.url.searchParams,
-				)
+			? getAllowedParamsForRoute(namespace, page.url.pathname, searchParams)
 			: {},
 	)
 	let language = $derived(paramValues.language ?? DOC_LANGUAGE)
@@ -151,7 +148,7 @@
 	let editing = $derived(editor[cta] || builder[cta])
 
 	let unassignedSections = $derived(
-		getSanitizedParamValueList(page.url.searchParams, 'sections'),
+		getSanitizedParamValueList(searchParams, 'sections'),
 	)
 
 	let availableSections = $derived(coordDocs.getSections({language, format}))
@@ -192,10 +189,7 @@
 		coordMetadata
 			.getTagGroups()
 			.reduce((selected: string[], menu: TagGroup) => {
-				const tags = getSanitizedParamValueList(
-					page.url.searchParams,
-					menu.name,
-				)
+				const tags = getSanitizedParamValueList(searchParams, menu.name)
 				return selected.concat(tags || [])
 			}, []),
 	)

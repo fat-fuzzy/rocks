@@ -1,8 +1,7 @@
 <script lang="ts">
-	import type {RouteNameFor, CurrentCoordinators} from '$types'
+	import type {CurrentCoordinators, RouteId} from '$types'
 
 	import {getContext} from 'svelte'
-	import {resolve} from '$app/paths'
 	import {page} from '$app/state'
 
 	import {getThemeForNamespace} from '$lib/styles/theme'
@@ -14,7 +13,7 @@
 
 	let theme = $derived(getThemeForNamespace('chlorophyll'))
 
-	let cta = $derived(page.params.page as RouteNameFor<'chlorophyll'>)
+	let route = $derived(page.url.pathname as RouteId)
 	let query = $derived(page.url.search)
 
 	let gettingStarted = {
@@ -63,7 +62,7 @@
 		<li>
 			Create your own content: go to <a
 				class="font:semibold"
-				href={resolve('/chlorophyll/edit/')}
+				href="/chlorophyll/edit/"
 			>
 				Edit
 			</a>, then click on
@@ -80,13 +79,13 @@
 {#snippet getStartedPresets()}
 	<p>
 		To get started, first create a Preset from <a
-			href={resolve('/chlorophyll/edit')}
+			href="/chlorophyll/edit/"
 			class="font:semibold"
 		>
 			Edit
 		</a>
 		or
-		<a href={resolve('/chlorophyll/build')} class="font:semibold"> Build </a>
+		<a href="/chlorophyll/build" class="font:semibold"> Build </a>
 	</p>
 {/snippet}
 
@@ -108,9 +107,8 @@
 
 <PageAction
 	{theme}
-	{cta}
 	{query}
-	route={`/chlorophyll/${cta}`}
+	{route}
 	{gettingStarted}
 	{twinLayout}
 	{editor}

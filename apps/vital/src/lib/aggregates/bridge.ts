@@ -1,4 +1,4 @@
-import {browser} from '$app/environment'
+import {browser} from '$app/env'
 import WorkerBridge from '$lib/workers/worker-bridge'
 import StorageWorker from '$lib/workers/storage.worker?worker'
 
