@@ -1,5 +1,11 @@
 # @fat-fuzzy/prose
 
+## 0.1.52
+
+### Patch Changes
+
+- a7b99cb: Update dependencies, ui & test fixes
+
 ## 0.1.51
 
 ### Patch Changes
