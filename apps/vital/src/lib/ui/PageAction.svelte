@@ -25,7 +25,7 @@
 		getTitleForRoute,
 		getDescriptionForRoute,
 		getPrefixForRoute,
-		getRouteNameFromRoute,
+		getRouteNameFromRouteId,
 	} from '$lib/common/routing'
 
 	import SectionEditor from '$lib/ui/editor/SectionEditor.svelte'
@@ -81,7 +81,7 @@
 	}: Props = $props()
 
 	let color = $derived(theme)
-	let cta = $derived(getRouteNameFromRoute(route))
+	let cta = $derived(getRouteNameFromRouteId(route))
 	let searchParams = $derived(new URL(page.url.href).searchParams)
 	let namespace = $derived(getNamespaceFromRoute(route))
 	let isTwinLayout = $derived(twinLayout[cta])
@@ -221,6 +221,7 @@
 </script>
 
 <PageRails
+	theme="neutral"
 	{title}
 	{prefix}
 	{description}

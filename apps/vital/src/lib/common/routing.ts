@@ -38,11 +38,17 @@ export function getNamespaceFromRoute(id: RouteId): NamespaceId {
 	throw Error('Namespace for route not available')
 }
 
-export function getRouteNameFromRoute(id: RouteId): RouteNameFor<NamespaceId> {
+export function getRouteNameFromRouteId(
+	id: string,
+): NamespaceId | RouteNameFor<NamespaceId> {
 	const key = id.split('/')[1] as NamespaceKey
 	const route = id.split('/')[2] as RouteNameFor<NamespaceId>
 
-	if (NAMESPACES[key].children.find((r) => r.name === route)) {
+	if (!route) {
+		return key
+	}
+
+	if (route && NAMESPACES[key].children.find((r) => r.name === route)) {
 		return route
 	}
 

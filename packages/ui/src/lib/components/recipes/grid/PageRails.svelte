@@ -23,6 +23,7 @@
 		footer,
 		useHeader = true,
 		layout = 'metro',
+		theme = 'neutral',
 		headerLayout,
 	}: PageRailsProps = $props()
 
@@ -83,7 +84,7 @@
 
 <Head pageName={currentPage} {title} {description} {prefix} />
 
-<main {id} class={`zone:main ${layout} ${zoneMainClass}`}>
+<main {id} class={`zone:main ${layout} ${zoneMainClass} color:${theme}`}>
 	{#if layout === 'tgv'}
 		{#if useHeader}
 			<PageHeader {title} text={text as UiSize} layout="center" />
@@ -119,7 +120,7 @@
 {#if layout !== 'tgv'}
 	<aside
 		id={`context-${id}`}
-		class={`page-context ${contextClass} ${mediaClass} scroll:y bg:inherit`}
+		class={`page-context ${contextClass} ${mediaClass} scroll:y bg:inherit color:${theme}`}
 	>
 		{#if nav && nav.length > 0}
 			<PageNav id="page-nav" {hash} items={nav} />
