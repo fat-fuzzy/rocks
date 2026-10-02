@@ -36,7 +36,7 @@
 		"!dist/**/*.spec.*"
 	],
 	"peerDependencies": {
-		"@sveltejs/kit": "2.70.3",
+		"@sveltejs/kit": "3.0.0",
 		"svelte": "5.57.0"
 	},
 	"devDependencies": {
@@ -48,7 +48,7 @@
 		"@fat-fuzzy/intl": "workspace:*",
 		"@playwright/test": "1.61.1",
 		"@sveltejs/adapter-cloudflare": "7.2.9",
-		"@sveltejs/kit": "2.70.3",
+		"@sveltejs/kit": "3.0.0",
 		"@sveltejs/package": "2.5.8",
 		"@sveltejs/vite-plugin-svelte": "6.2.4",
 		"publint": "0.3.18",

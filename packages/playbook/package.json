@@ -37,7 +37,7 @@
 		"./api": "./dist/index.js"
 	},
 	"peerDependencies": {
-		"@sveltejs/kit": "2.70.3",
+		"@sveltejs/kit": "3.0.0",
 		"svelte": "5.57.0"
 	},
 	"devDependencies": {
@@ -47,7 +47,7 @@
 		"@fat-fuzzy/ui": "workspace:*",
 		"@playwright/test": "1.61.1",
 		"@sveltejs/adapter-cloudflare": "7.2.9",
-		"@sveltejs/kit": "2.70.3",
+		"@sveltejs/kit": "3.0.0",
 		"@sveltejs/package": "2.5.8",
 		"@vitest/coverage-v8": "5.0.1",
 		"@vitest/ui": "5.0.1",
