@@ -1,5 +1,11 @@
 # @fat-fuzzy/ui
 
+## 0.1.111
+
+### Patch Changes
+
+- 4d9d360: Update tsconfig
+
 ## 0.1.110
 
 ### Patch Changes
