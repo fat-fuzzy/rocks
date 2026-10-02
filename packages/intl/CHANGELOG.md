@@ -1,5 +1,11 @@
 # @fat-fuzzy/intl
 
+## 0.1.15
+
+### Patch Changes
+
+- a7b99cb: Update dependencies, ui & test fixes
+
 ## 0.1.14
 
 ### Patch Changes
