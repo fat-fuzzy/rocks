@@ -1,7 +1,11 @@
+import path from 'node:path'
 import {defineConfig} from 'vitest/config'
-import {playwright} from '@vitest/browser-playwright'
 import {sveltekit} from '@sveltejs/kit/vite'
-import path from 'path'
+import {vitePreprocess} from '@sveltejs/vite-plugin-svelte'
+import adapter from '@sveltejs/adapter-cloudflare'
+import {playwright} from '@vitest/browser-playwright'
+import {mdsvex} from 'mdsvex'
+import mdsvexConfig from './mdsvex.config.js'
 
 export const ALIAS_BASE = {
 	$types: path.resolve('./src/lib/types/index.ts'),
@@ -14,7 +18,27 @@ export const TEST_CONFIG_BASE = {
 }
 
 export default defineConfig({
-	plugins: [sveltekit()],
+	plugins: [
+		sveltekit({
+			extensions: ['.svelte', '.md', '.svx'],
+
+			// Consult https://github.com/sveltejs/svelte-preprocess
+			// for more information about preprocessors
+			preprocess: [vitePreprocess(), mdsvex(mdsvexConfig)],
+			// adapter-auto only supports some environments, see https://svelte.dev/docs/kit/adapter-auto for a list.
+			// If your environment is not supported, or you settled on a specific environment, switch out the adapter.
+			// See https://svelte.dev/docs/kit/adapters for more information about adapters.
+			adapter: adapter(),
+			alias: {
+				$config: path.resolve('./src/config'),
+				$data: path.resolve('./src/data'),
+				$types: path.resolve('./src/lib/types/index.ts'),
+				$schemas: path.resolve('./src/schemas'),
+				$tests: path.resolve('./tests'),
+				$lib: path.resolve('./src/lib'),
+			},
+		}),
+	],
 	resolve: {
 		alias: ALIAS_BASE,
 	},

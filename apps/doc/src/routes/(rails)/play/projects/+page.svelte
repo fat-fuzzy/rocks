@@ -1,18 +1,18 @@
 <script lang="ts">
-	import {page} from '$app/stores'
+	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
 
 	const {PageRails} = ui.content
 	const {EscapeHtml} = ui.headless
 
-	const path = $derived($page.url.pathname)
+	const path = $derived(page.url.pathname)
 
-	let markdown = $derived($page.data.content)
+	let markdown = $derived(page.data.content)
 	let title = $derived(markdown.meta.title)
 	let description = $derived(markdown.meta.description)
 	let html = $derived(markdown.html)
 	let slug = $derived(markdown.meta.slug)
-	let sketches = $derived($page.data.projects)
+	let sketches = $derived(page.data.projects)
 
 	// TODO: Use webgl & webglfundamentals tags to group sketches elsewhere
 	let tags = $derived(
@@ -25,8 +25,8 @@
 	{title}
 	{description}
 	size="sm"
-	path={$page.url.pathname}
-	nav={$page.data.pageNav}
+	path={page.url.pathname}
+	nav={page.data.pageNav}
 	layout="tram"
 >
 	{#snippet main()}
@@ -38,7 +38,7 @@
 				Tags
 			</p>
 			<div class="l:grid:auto size:sm maki:block">
-				{#each tags as tag}
+				{#each tags as tag, i (i)}
 					<details class="surface:1:neutral shape:soft" open>
 						<summary
 							class="color:neutral font:sm font:heading ravioli:3xs shape:soft"
@@ -47,7 +47,7 @@
 						</summary>
 						<div class="ravioli:md shape:soft">
 							<ul class="unstyled">
-								{#each sketches as { slug, asset, title, tags }}
+								{#each sketches as { slug, asset, title, tags }, j (j)}
 									{#if tags.includes(tag)}
 										<li class={`size:sm emoji:${asset}`}>
 											<a class="font:sm" href={`${path}/${slug}`}>

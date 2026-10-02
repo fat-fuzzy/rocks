@@ -5,7 +5,7 @@
 
 	import '$lib/styles/css/editor.css'
 	import DOMPurify from 'dompurify'
-	import {browser} from '$app/environment'
+	import {browser} from '$app/env'
 	import {onMount, onDestroy} from 'svelte'
 	import {Editor} from '@tiptap/core'
 	import settings from '$lib/editor/editor-settings'

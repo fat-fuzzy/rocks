@@ -1,3 +1,5 @@
+// per-schema: 'extend' merges with built-in, 'replace' fully substitutes it
+// key = built-in schema name, value = { file, exportName, $id, mode }
 const SCHEMAS_CONFIG = {
 	DateStringValue: {
 		file: 'DateStringValue.schema.json',

@@ -9,7 +9,6 @@
 
 	import {getContext} from 'svelte'
 	import {page} from '$app/state'
-	import {resolve} from '$app/paths'
 
 	import {getSanitizedParamValue, buildForwardedQuery} from '$lib/common/url'
 	import MenuData from '$lib/ui/overlays/popover-menu/MenuData.svelte'
@@ -47,11 +46,12 @@
 		}
 	} = $props()
 
-	let cta = $derived(page.params.page)
-	let preset = $derived(getSanitizedParamValue(page.url.searchParams, 'preset'))
+	let cta = $derived(page.url.pathname)
+	let searchParams = $derived(new URL(page.url.href).searchParams)
+	let preset = $derived(getSanitizedParamValue(searchParams, 'preset'))
 	let query = $derived(
 		buildForwardedQuery(
-			page.url.searchParams,
+			searchParams,
 			coordMetadata.getTagGroups().map((g) => g.name),
 		),
 	)
@@ -63,15 +63,15 @@
 		<ul class={`unstyled input-group l:${layout}:3xs w:full justify:between`}>
 			{#each Object.entries(actions) as [key, value], i (i)}
 				{@const classes =
-					key === cta ? linkStyles : `${linkStyles} ink:${color}`}
+					`/${path}/${key}` === cta ? linkStyles : `${linkStyles} ink:${color}`}
 				{@const presetQuery = preset
 					? coordPresets.getPresetQuery(preset)
 					: query}
 				<li
-					aria-current={key === cta}
+					aria-current={`/${path}/${key}` === cta}
 					class={`cta text:center surface:2:${color} shape:mellow l:flex`}
 				>
-					<a href={resolve(`/${path}/${key}${presetQuery}`)} class={linkStyles}>
+					<a href={`/${path}/${key}${presetQuery}`} class={linkStyles}>
 						<span class={classes}>{value}</span>
 					</a>
 				</li>

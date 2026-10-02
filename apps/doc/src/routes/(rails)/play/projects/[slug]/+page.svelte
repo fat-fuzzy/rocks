@@ -1,6 +1,6 @@
 <script lang="ts">
 	import {page} from '$app/state'
-	import {dev} from '$app/environment'
+	import {dev} from '$app/env'
 
 	import ui from '@fat-fuzzy/ui'
 	import gfx from '@fat-fuzzy/gfx'
