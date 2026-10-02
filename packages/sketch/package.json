@@ -41,7 +41,7 @@
 		"!dist/**/*.spec.*"
 	],
 	"peerDependencies": {
-		"@sveltejs/kit": "3.0.0-next.27",
+		"@sveltejs/kit": "3.0.0-next.28",
 		"svelte": "5.57.1"
 	},
 	"devDependencies": {
@@ -53,9 +53,9 @@
 		"@fat-fuzzy/intl": "workspace:*",
 		"@playwright/test": "1.61.1",
 		"@sveltejs/adapter-auto": "8.0.0-next.4",
-		"@sveltejs/kit": "3.0.0-next.27",
+		"@sveltejs/kit": "3.0.0-next.28",
 		"@sveltejs/package": "3.0.0-next.8",
-		"@sveltejs/vite-plugin-svelte": "7.3.0",
+		"@sveltejs/vite-plugin-svelte": "7.3.1",
 		"publint": "0.3.18",
 		"svelte": "5.57.1",
 		"svelte-check": "4.7.6",
