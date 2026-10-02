@@ -121,7 +121,9 @@ const DEFAULT_STYLES /*: StyleTree */ = {
 	},
 }
 
-const APP_LINKS: NavItem[] = [{slug: 'about', label: 'About'}]
+const APP_LINKS: NavItem[] = [
+	{id: 'about', name: 'about', slug: 'about', label: 'About'},
+]
 
 const APP_SETTINGS: AppContextItems = {
 	display: [

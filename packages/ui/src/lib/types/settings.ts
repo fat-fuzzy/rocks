@@ -1,4 +1,4 @@
-import type {UiSettings, SwitchProps, FuzzyPayload} from '$types'
+import type {SwitchProps, FuzzyPayload, UiColor} from '$types'
 
 export type AppContextItems = {
 	display: SwitchProps[]
@@ -13,8 +13,11 @@ export type CookiePreferences = {
 }
 
 export type ViewingPreferences = {
-	brightness: UiSettings
-	contrast?: UiSettings
+	brightness: string
+	contrast: string
+	theme?: UiColor
+	language?: string
+	consent?: CookiePreferences
 }
 
 export type PrivacyPreferences = {

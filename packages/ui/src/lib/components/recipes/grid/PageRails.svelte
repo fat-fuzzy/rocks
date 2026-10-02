@@ -31,13 +31,13 @@
 	let mediaClass = $derived(dimensions ? `media:${dimensions}` : '')
 
 	const zoneMainClasses: {[key: string]: string} = {
-		metro: 'l:grid size:3xs scroll:y align:start bg:inherit',
-		railway: 'l:grid size:3xs scroll:y align:start bg:inherit',
-		steam: 'l:grid size:3xs scroll:y align:start align:start bg:inherit',
-		tgv: 'snap:center align:start bg:inherit',
-		tram: 'l:grid snap:start size:3xs scroll:y align:start bg:inherit',
-		voyager: 'l:grid snap:start size:3xs scroll:y align:start bg:inherit ',
-		urbanist: 'snap:start l:grid size:3xs scroll:y bg:inherit',
+		metro: 'l:grid size:3xs scroll:y color:neutral align:start',
+		railway: 'l:grid size:3xs scroll:y color:neutral align:start',
+		steam: 'l:grid size:3xs scroll:y color:neutral align:start align:start',
+		tgv: 'snap:center align:start',
+		tram: 'l:grid snap:start size:3xs scroll:y color:neutral align:start',
+		voyager: 'l:grid snap:start size:3xs scroll:y color:neutral align:start ',
+		urbanist: 'snap:start l:grid size:3xs scroll:y color:neutral',
 	}
 
 	const pageMainClasses: {[key: string]: string} = {
@@ -61,13 +61,13 @@
 	}
 
 	const contextInnerClasses: {[key: string]: string} = {
-		metro: 'bg:inherit',
-		railway: 'bg:inherit',
+		metro: '',
+		railway: '',
 		steam: 'ff:callout magic:feather shape:soft',
 		tgv: '',
 		tram: 'ff:callout shape:soft',
-		voyager: 'bg:inherit',
-		urbanist: 'bg:inherit',
+		voyager: '',
+		urbanist: '',
 	}
 
 	let contextClass = $derived(
@@ -119,7 +119,7 @@
 {#if layout !== 'tgv'}
 	<aside
 		id={`context-${id}`}
-		class={`page-context ${contextClass} ${mediaClass} scroll:y`}
+		class={`page-context ${contextClass} ${mediaClass} scroll:y color:neutral`}
 	>
 		{#if nav && nav.length > 0}
 			<PageNav id="page-nav" {hash} items={nav} />

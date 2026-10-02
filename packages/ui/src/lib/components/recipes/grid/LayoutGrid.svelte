@@ -8,10 +8,11 @@
 
 	let brightness = $derived(app.brightness)
 	let contrast = $derived(app.contrast)
+	let theme = $derived(app.theme ?? 'neutral')
 	let surfaceBrightness = $derived(contrast === 'blend' ? '1' : '0')
 	let pageClass = $derived(format.getClassNameFromPathname(path))
 	let themeClass = $derived(
-		`${pageClass} settings:${brightness}:${contrast} surface:${surfaceBrightness}:neutral`,
+		`${pageClass} settings:${brightness}:${contrast} surface:${surfaceBrightness}:${theme}`,
 	)
 
 	let containClass = $derived(
@@ -56,7 +57,7 @@
 	{#each areas as { zone, grid, gare, exchange, scroll, tag, hug }, i (i)}
 		{@const gridClass = grid ? `l:grid ${sizeClass}` : ''}
 		{@const gareClass = gare ? gare : ''}
-		{@const exchangeClass = exchange ? 'exchange bg:inherit' : 'bg:inherit'}
+		{@const exchangeClass = exchange ? 'exchange' : ''}
 		{@const hugClass = hug ? 'hug' : ''}
 		{@const scrollClass = scroll ? `scroll:${scroll}` : ''}
 		{@const element = tag ? tag : 'div'}

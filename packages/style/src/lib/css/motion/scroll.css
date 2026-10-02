@@ -1,7 +1,11 @@
 /* Scroll container */
 [class*='scroll:'] {
+	--thumb: oklch(var(--lightness-surface-3) var(--chroma-surface-3) var(--hue));
+	--track: var(--shade);
+
 	scrollbar-gutter: stable;
 	scrollbar-width: thin;
+	scrollbar-color: var(--thumb) var(--track);
 }
 
 [class*='scroll:'].compact {

@@ -1,12 +1,7 @@
-import type {NavItem, PageProps, GridProps, CookiePreferences} from '$types'
+import type {NavItem, PageProps, GridProps, ViewingPreferences} from '$types'
 
 export type LayoutGridProps = GridProps & {
-	app: {
-		brightness: string
-		contrast: string
-		language?: string
-		consent?: CookiePreferences
-	}
+	app: ViewingPreferences
 	sidenav?: NavItem
 	layout?: string
 	path: string

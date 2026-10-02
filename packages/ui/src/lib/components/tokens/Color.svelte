@@ -20,8 +20,8 @@
 		</svelte:element>
 		<div class="l:grid:auto size:md">
 			{#each baseColor as base, i (i)}
-				<figure class={`${colorClasses} surface:${base}:neutral`}>
-					<figcaption>color:{base}</figcaption>
+				<figure class={`${colorClasses} bg:${base}`}>
+					<figcaption>bg:{base}</figcaption>
 				</figure>
 			{/each}
 		</div>
@@ -40,7 +40,7 @@
 					<div class="l:stack:2xs">
 						{#each variants as variant, i (i)}
 							<figure class={`${colorClasses} surface:${variant}:${color}`}>
-								<figcaption>{color}:{variant}</figcaption>
+								<figcaption>surface:{variant}:{color}</figcaption>
 							</figure>
 						{/each}
 					</div>
@@ -62,7 +62,7 @@
 					<div class="l:stack:2xs">
 						{#each statusVariants as variant, i (i)}
 							<figure class={`${colorClasses} surface:${variant}:${color}`}>
-								<figcaption>{color}:{variant}</figcaption>
+								<figcaption>surface:{variant}:{color}</figcaption>
 							</figure>
 						{/each}
 					</div>

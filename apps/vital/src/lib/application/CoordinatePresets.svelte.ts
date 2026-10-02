@@ -14,7 +14,6 @@ import type {
 import {SvelteURLSearchParams} from 'svelte/reactivity'
 
 import {getPresetKey} from '$lib/common/format'
-import {getAllowedParams} from '$lib/common/url'
 
 /**
  * CoordinatePresets class to manage access to stored presets
@@ -26,10 +25,6 @@ export default class CoordinatePresets implements ICoordinatePresets {
 	aggPresets: IAggregatePresets
 	loading = $state(false)
 	error = $state(false)
-	sourcePreset: Preset | null = $state(null)
-	targetPreset: Preset | null = $state(null)
-	sourceRoot: NamespaceId | undefined = $state()
-	targetRoot: NamespaceId | undefined = $state()
 
 	constructor(aggMetadata: IAggregateMetadata, aggPresets: IAggregatePresets) {
 		this.aggMetadata = aggMetadata
@@ -43,22 +38,6 @@ export default class CoordinatePresets implements ICoordinatePresets {
 
 	getRoot(): NamespaceId {
 		return this.aggPresets.root // or aggMetadata ?
-	}
-
-	getSourceRoot(): NamespaceId | undefined {
-		return this.sourceRoot
-	}
-
-	getTargetRoot(): NamespaceId | undefined {
-		return this.targetRoot
-	}
-
-	setSourceRoot(namespace: NamespaceId): void {
-		this.sourceRoot = namespace
-	}
-
-	setTargetRoot(namespace: NamespaceId): void {
-		this.targetRoot = namespace
 	}
 
 	/**
@@ -78,48 +57,6 @@ export default class CoordinatePresets implements ICoordinatePresets {
 			return key ? this.aggPresets.getPreset(key) : undefined
 		} catch {
 			return
-		}
-	}
-
-	/**
-	 * Get source preset to compare (readonly)
-	 * @return Preset if found
-	 */
-	getSourcePreset(): Preset | null {
-		return this.sourcePreset
-	}
-
-	/**
-	 * Get target preset to compare (edit)
-	 * @return Preset if found
-	 */
-	getTargetPreset(): Preset | null {
-		return this.targetPreset
-	}
-
-	/**
-	 * Set source preset to compare (readonly)
-	 * @param name
-	 */
-	setSourcePreset(name?: Slug): void {
-		const preset = name ? this.getPreset(name) : null
-		if (preset) {
-			this.sourcePreset = preset
-		} else {
-			this.sourcePreset = null
-		}
-	}
-
-	/**
-	 * Set target preset to compare (edit)
-	 * @param name
-	 */
-	setTargetPreset(name?: Slug): void {
-		const preset = name ? this.getPreset(name) : null
-		if (preset) {
-			this.targetPreset = preset
-		} else {
-			this.targetPreset = null
 		}
 	}
 
@@ -260,63 +197,6 @@ export default class CoordinatePresets implements ICoordinatePresets {
 
 	getTargetPresetQuery(name: string): string {
 		return this.getPresetQueryForRole(name, 'target')
-	}
-
-	getCompareQuery(options: {
-		query: string
-		source: {root?: NamespaceId; preset?: string}
-		target: {root?: NamespaceId; preset?: string}
-	}) {
-		let targetQuery
-		let sourceQuery
-
-		const {query, source, target} = options
-
-		const queryParams = new SvelteURLSearchParams(query)
-
-		if (target.preset) {
-			const sourceParams = source.root
-				? getAllowedParams(source.root, queryParams)
-				: {}
-			sourceQuery = Object.entries(sourceParams)
-				.map(([key, value]) => `${key}=${value}`)
-				.join('&')
-			targetQuery = this.getTargetPresetQuery(target.preset)
-		}
-
-		if (target.root) {
-			targetQuery = targetQuery
-				? `target_root=${target.root}&${targetQuery}`
-				: `target_root=${target.root}`
-		}
-
-		if (source.preset) {
-			const targetParams = target.root
-				? getAllowedParams(target.root, queryParams)
-				: {}
-			targetQuery = Object.entries(targetParams)
-				.map(([key, value]) => `${key}=${value}`)
-				.join('&')
-
-			sourceQuery = this.getSourcePresetQuery(source.preset)
-		}
-
-		if (source.root) {
-			sourceQuery = sourceQuery
-				? `source_root=${source.root}&${sourceQuery}`
-				: `source_root=${source.root}`
-		}
-
-		const combinedQuery =
-			sourceQuery && targetQuery
-				? `?${sourceQuery}&${targetQuery}`
-				: sourceQuery
-					? `?${sourceQuery}`
-					: targetQuery
-						? `?${targetQuery}`
-						: ''
-
-		return combinedQuery
 	}
 
 	/**

@@ -46,7 +46,7 @@
 			],
 			"outputs": ["tests/unit/test-results/**"]
 		},
-		"@fat-fuzzy/chlorophyll#test": {
+		"@fat-fuzzy/vital#test": {
 			"dependsOn": ["^@fat-fuzzy/prose#test", "^@fat-fuzzy/doc#test"],
 			"outputs": ["tests/unit/test-results/**"]
 		},

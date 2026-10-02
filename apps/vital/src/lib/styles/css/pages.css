@@ -54,9 +54,6 @@
 
 html:has([class*='page:chlorophyll']),
 [class*='page:chlorophyll'] {
-	--thumb: oklch(
-		var(--lightness-surface-3) var(--chroma-surface-2) var(--color-theme-accent)
-	);
 	h1 {
 		--hue: var(--color-theme-accent);
 	}
@@ -64,10 +61,6 @@ html:has([class*='page:chlorophyll']),
 
 html:has([class*='page:pollen']),
 [class*='page:pollen'] {
-	--thumb: oklch(
-		var(--lightness-surface-3) var(--chroma-surface-3)
-			var(--color-palette-blueberry)
-	);
 	h1 {
 		--hue: var(--color-palette-blueberry);
 	}
