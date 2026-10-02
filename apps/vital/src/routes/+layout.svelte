@@ -10,6 +10,7 @@
 	import '$lib/styles/css/main.css'
 
 	import {buildNav} from '$data/nav'
+	import {getRouteNameFromRouteId} from '$lib/common/routing'
 	import {initBridge, destroyBridge} from '$lib/aggregates/bridge'
 	import {createAggregates} from '$lib/aggregates/container'
 	import {createCoords, createCompareCoords} from '$lib/application/container'
@@ -36,14 +37,16 @@
 	setContext('coordinators', coordinators)
 	setContext('coordCompare', coordCompare)
 
+	let pathname = $derived(page.url.pathname)
+	let cta = $derived(getRouteNameFromRouteId(pathname))
+
 	/**
 	 * Setup page data (loaded / generated)
 	 */
 	const sidenav = buildNav('vital')
 
-	let pathname = $derived(page.url.pathname)
 	let layout: UiLayout = $derived.by(() => {
-		const _page = page.params.page ? page.params.page : page.url.pathname
+		const _page = cta ? cta : pathname
 
 		switch (_page) {
 			case 'build':
@@ -56,11 +59,11 @@
 			case 'analyze':
 			case 'engage':
 				return 'railway'
-			case '/chlorophyll':
-			case '/mycelium':
-			case '/pollen':
+			case 'chlorophyll':
+			case 'mycelium':
+			case 'pollen':
 				return 'tgv'
-			case '/':
+			case '':
 				return 'tgv'
 			default:
 				return 'voyager'
