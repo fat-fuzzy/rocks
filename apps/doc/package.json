@@ -27,7 +27,7 @@
 		"format": "prettier --write --ignore-path=../../.prettierignore ."
 	},
 	"dependencies": {
-		"dompurify": "3.4.13"
+		"dompurify": "3.4.16"
 	},
 	"peerDependencies": {
 		"@sveltejs/kit": "2.70.3",
