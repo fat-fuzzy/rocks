@@ -55,7 +55,7 @@
 		"@tiptap/pm": "3.31.3",
 		"@tiptap/starter-kit": "3.31.3",
 		"@tiptap/static-renderer": "3.31.3",
-		"dompurify": "3.4.13"
+		"dompurify": "3.4.16"
 	},
 	"devDependencies": {
 		"@eslint/compat": "2.0.3",
