@@ -64,13 +64,11 @@
 		const value = target.value as NamespaceId
 
 		goto(
-			resolve(
-				`${route}/${coordCompare.getCompareQuery({
-					params: new URLSearchParams(query),
-					role: 'source',
-					namespace: value,
-				})}`,
-			),
+			`${route}/${coordCompare.getCompareQuery({
+				params: new URLSearchParams(query),
+				role: 'source',
+				namespace: value,
+			})}`,
 		)
 	}
 
@@ -213,7 +211,7 @@
 							class={`raviolink l:flex justify:between ${isCurrent ? `surface:0:${color} chroma:1` : ''}`}
 						>
 							<a
-								href={resolve(`${route}/${presetQuery}`)}
+								href={`${route}/${presetQuery}`}
 								class="font:sm raviolink grow"
 							>
 								{preset.name}

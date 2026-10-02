@@ -1,6 +1,6 @@
 import type {Cookies} from '@sveltejs/kit'
 import type {UiStateGetInput, UiStateSetInput} from '$lib/types/services.js'
-import {dev} from '$app/environment'
+import {dev} from '$app/env'
 
 const expire = {
 	short: 60 * 60 * 15,
@@ -34,7 +34,7 @@ function setSecureCookie({
  * @param {cookies, key} Cookies object and key to get the state
  * @returns
  */
-function getUiState({cookies, key}: UiStateGetInput): any {
+function getUiState({cookies, key}: UiStateGetInput): unknown {
 	let prefixedKey = key
 	if (!dev) {
 		prefixedKey = `__Host-${key}`

@@ -1,5 +1,11 @@
 # @fat-fuzzy/config
 
+## 0.1.29
+
+### Patch Changes
+
+- a7b99cb: Update dependencies, ui & test fixes
+
 ## 0.1.28
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @fat-fuzzy/chlorophyll
 
+## 0.1.3
+
+### Patch Changes
+
+- a7b99cb: Update dependencies, ui & test fixes
+
 ## 0.1.2
 
 ### Patch Changes

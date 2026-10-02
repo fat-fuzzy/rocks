@@ -1,12 +1,12 @@
 <script lang="ts">
-	import {page} from '$app/stores'
+	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
 
 	const {PageRails} = ui.content
 	const {EscapeHtml} = ui.headless
 
-	let pageContext = $derived({...$page.data.pageContext, title: 'On this Page'})
-	let markdown = $derived($page.data.content)
+	let pageContext = $derived({...page.data.pageContext, title: 'On this Page'})
+	let markdown = $derived(page.data.content)
 	let title = $derived(markdown.meta.title)
 	let description = $derived(markdown.meta.description)
 	let html = $derived(markdown.html)
@@ -20,8 +20,8 @@
 	{title}
 	{description}
 	size="sm"
-	path={$page.url.pathname}
-	nav={$page.data.pageNav}
+	path={page.url.pathname}
+	nav={page.data.pageNav}
 	context={pageContext}
 	layout="metro"
 >

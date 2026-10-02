@@ -1,5 +1,11 @@
 # @fat-fuzzy/ui
 
+## 0.1.110
+
+### Patch Changes
+
+- a7b99cb: Update dependencies, ui & test fixes
+
 ## 0.1.109
 
 ### Patch Changes

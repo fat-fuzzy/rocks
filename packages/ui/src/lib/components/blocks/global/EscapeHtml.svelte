@@ -1,5 +1,5 @@
 <script lang="ts">
-	import {browser} from '$app/environment'
+	import {browser} from '$app/env'
 	import DOMPurify from 'dompurify'
 	import {onMount} from 'svelte'
 

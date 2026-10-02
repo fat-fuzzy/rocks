@@ -1,5 +1,11 @@
 # @fat-fuzzy/sketch
 
+## 0.1.44
+
+### Patch Changes
+
+- a7b99cb: Update dependencies, ui & test fixes
+
 ## 0.1.43
 
 ### Patch Changes

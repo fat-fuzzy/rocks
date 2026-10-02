@@ -29,7 +29,7 @@
 			...i,
 			name: inputProps.name,
 			disabled: skipDisabled ? false : i.disabled,
-			validator,
+			errors: validator.getFieldErrors(inputProps.name) ?? [],
 		})),
 	)
 

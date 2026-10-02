@@ -1,5 +1,11 @@
 # @fat-fuzzy/playbook
 
+## 0.1.45
+
+### Patch Changes
+
+- a7b99cb: Update dependencies, ui & test fixes
+
 ## 0.1.44
 
 ### Patch Changes

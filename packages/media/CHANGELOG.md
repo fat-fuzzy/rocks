@@ -1,5 +1,11 @@
 # @fat-fuzzy/lib
 
+## 0.1.13
+
+### Patch Changes
+
+- a7b99cb: Update dependencies, ui & test fixes
+
 ## 0.1.12
 
 ### Patch Changes
