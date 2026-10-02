@@ -1,6 +1,5 @@
 <script lang="ts">
 	import {page} from '$app/state'
-	import {dev} from '$app/environment'
 
 	import gfx from '@fat-fuzzy/gfx'
 	import Sketch from '$lib/components/sketch/Sketch.svelte'
@@ -12,6 +11,6 @@
 
 {#key scene}
 	{#if scene}
-		<Sketch {scene} meta={scene.meta} size="sm" {dev} />
+		<Sketch {scene} meta={scene.meta} size="sm" dev={true} />
 	{/if}
 {/key}
