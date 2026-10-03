@@ -8,7 +8,7 @@ export const load = async ({params}) => {
 
 	try {
 		imageData = await images.getImageData('media', slug)
-	} catch (e) {
+	} catch {
 		error(500, 'Error loading image data')
 	}
 

@@ -1,4 +1,4 @@
-import {error, json} from '@sveltejs/kit'
+import {error} from '@sveltejs/kit'
 import blog from '$data/blog'
 import pages from '$data/pages'
 
@@ -18,5 +18,5 @@ export async function GET() {
 		content,
 	}
 
-	return json(data)
+	return Response.json(data)
 }
