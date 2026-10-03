@@ -16,6 +16,7 @@
 		"lint:scss": "./node_modules/@fat-fuzzy/config/node_modules/.bin/stylelint ./src/lib/styles/scss/**/*.scss &> ./logs/stylelint-scss.log",
 		"format": "prettier --write --ignore-path=../../.prettierignore .",
 		"test": "pnpm test:e2e",
+		"test:dev": "vitest",
 		"test:unit": "vitest run",
 		"test:types": "vitest run --typecheck",
 		"test:coverage": "vitest --ui",
