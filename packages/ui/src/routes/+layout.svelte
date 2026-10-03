@@ -6,7 +6,7 @@
 	import {resolve} from '$app/paths'
 	import {page} from '$app/state'
 
-	import navConfig from '$config/navigation'
+	import navConfig from '#config/navigation.js'
 	const {links} = navConfig
 
 	type Props = {children: Snippet}

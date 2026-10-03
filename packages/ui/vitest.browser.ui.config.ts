@@ -1,4 +1,3 @@
-import path from 'path'
 import {defineConfig} from 'vitest/config'
 import {sveltekit} from '@sveltejs/kit/vite'
 import {vitePreprocess} from '@sveltejs/vite-plugin-svelte'
@@ -6,7 +5,7 @@ import {playwright} from '@vitest/browser-playwright'
 import {mdsvex} from 'mdsvex'
 import adapter from '@sveltejs/adapter-auto'
 import mdsvexConfig from './mdsvex.config.js'
-import {ALIAS_BASE, TEST_CONFIG_BASE} from './vitest.browser.config'
+import {TEST_CONFIG_BASE} from './vitest.browser.config'
 
 export const COVERAGE_BASE = {
 	enabled: true,
@@ -30,15 +29,9 @@ export default defineConfig({
 			preprocess: [vitePreprocess(), mdsvex(mdsvexConfig)],
 			// See https://kit.svelte.dev/docs/adapters for more information about adapters.
 			adapter: adapter(),
-			alias: {
-				$config: path.resolve('./src/config'),
-			},
 			extensions: ['.svelte', '.md', '.svx'],
 		}),
 	],
-	resolve: {
-		alias: ALIAS_BASE,
-	},
 	test: {
 		...TEST_CONFIG_BASE,
 		reporters: ['html'],
