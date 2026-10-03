@@ -4,8 +4,8 @@
 
 	import {onMount, getContext, setContext} from 'svelte'
 	import {page} from '$app/state'
-	import playbookActor from '$lib/api/actor.svelte'
-	import StylesApi from '$lib/api/styles.svelte'
+	import playbookActor from '#lib/api/actor.svelte.js'
+	import StylesApi from '#lib/api/styles.svelte.js'
 
 	type Props = {
 		app: ViewingPreferences

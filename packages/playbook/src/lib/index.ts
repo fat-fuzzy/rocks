@@ -6,23 +6,23 @@ export type * from '$types'
  * Styles Api components
  * - Used to display documentation about UI library components and their options (=API) in documentation website
  */
-import PlaybookCollection from '$lib/components/PlaybookCollection.svelte'
-import PlaybookElement from '$lib/components/PlaybookElement.svelte'
-import PlaybookRaw from '$lib/components/PlaybookRaw.svelte'
-import Playbook from '$lib/components/Playbook.svelte'
+import PlaybookCollection from '#lib/components/PlaybookCollection.svelte'
+import PlaybookElement from '#lib/components/PlaybookElement.svelte'
+import PlaybookRaw from '#lib/components/PlaybookRaw.svelte'
+import Playbook from '#lib/components/Playbook.svelte'
 
-import StylesApi from '$lib/api/styles.svelte'
-import * as props from '$lib/props'
+import StylesApi from '#lib/api/styles.svelte.js'
+import * as props from '#lib/props/index.js'
 
 /**
  * Forms
  */
-import DsStylesUpdate from '$lib/forms/ds-styles-update'
+import DsStylesUpdate from '#lib/forms/ds-styles-update.js'
 
 /**
  * Stores
  */
-import {PlaybookActor} from '$lib/api/actor.svelte'
+import {PlaybookActor} from '#lib/api/actor.svelte.js'
 
 /**
  * Tests Api components

@@ -1,13 +1,14 @@
 <script lang="ts">
+	import type {Component} from 'svelte'
 	import {getContext} from 'svelte'
-	import {PlaybookActor} from '$lib/api/actor.svelte'
+	import {PlaybookActor} from '#lib/api/actor.svelte.js'
 
 	type Props = {
 		id?: string
 		title: string
 		name?: string
-		SpecifiedElement: any // TODO: fix types
-		props: any
+		SpecifiedElement: Component
+		props: object
 		formaction?: string
 		actionPath?: string
 		redirect?: string

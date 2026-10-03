@@ -1,13 +1,13 @@
 <script lang="ts">
+	import type {Component} from 'svelte'
 	import {getContext} from 'svelte'
-	import {PlaybookActor} from '$lib/api/actor.svelte'
+	import {PlaybookActor} from '#lib/api/actor.svelte.js'
 
 	type Props = {
 		title: string
 		name?: string
-		isPage?: boolean
-		SpecifiedElement: any // TODO: fix types
-		props: any // TODO: fix types
+		SpecifiedElement: Component
+		props: object // TODO: fix types
 	}
 
 	let {title, name = title, SpecifiedElement, props}: Props = $props()
