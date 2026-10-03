@@ -1,7 +1,7 @@
 import type {Slug, NamespaceKey, AllowedParamName, Route} from '$types'
 
 import {NAMESPACES} from '$types'
-import {sanitizeSlugValue, sanitizeLanguageValue} from '$lib/common/sanitize'
+import {sanitizeSlugValue, sanitizeLanguageValue} from '#lib/common/sanitize.js'
 
 export const MAX_PARAMS = 100
 

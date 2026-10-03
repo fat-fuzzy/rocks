@@ -9,8 +9,8 @@
 
 	import ui from '@fat-fuzzy/ui'
 
-	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
-	import FormLanguage from '$lib/ui/controls/settings/FormLanguage.svelte'
+	import dialogActor from '#lib/ui/overlays/dialog/actor.svelte.js'
+	import FormLanguage from '#lib/ui/controls/settings/FormLanguage.svelte'
 	import type {ICoordinateMetadata} from '$types'
 
 	const {Button} = ui.blocks

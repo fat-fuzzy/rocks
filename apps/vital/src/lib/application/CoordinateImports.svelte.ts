@@ -10,8 +10,8 @@ import type {
 } from '$types'
 import type {UiStatus} from '@fat-fuzzy/ui'
 
-import {guardedExport} from '$lib/common/download'
-import {STATUS_LABEL, STATUS_FEEDBACK} from '$lib/intl/l10n'
+import {guardedExport} from '#lib/common/download.js'
+import {STATUS_LABEL, STATUS_FEEDBACK} from '#lib/intl/l10n.js'
 
 /**
  * CoordinateImports class to manage data transfer operations into storage

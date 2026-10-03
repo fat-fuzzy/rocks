@@ -7,14 +7,17 @@
 	import {page} from '$app/state'
 	// @ts-expect-error types not used for css
 	import '@fat-fuzzy/style/css'
-	import '$lib/styles/css/main.css'
+	import '#lib/styles/css/main.css'
 
 	import {buildNav} from '$data/nav'
-	import {getRouteNameFromRouteId} from '$lib/common/routing'
-	import {initBridge, destroyBridge} from '$lib/aggregates/bridge'
-	import {createAggregates} from '$lib/aggregates/container'
-	import {createCoords, createCompareCoords} from '$lib/application/container'
-	import Dialog from '$lib/ui/overlays/dialog/Dialog.svelte'
+	import {getRouteNameFromRouteId} from '#lib/common/routing.js'
+	import {initBridge, destroyBridge} from '#lib/aggregates/bridge.js'
+	import {createAggregates} from '#lib/aggregates/container.js'
+	import {
+		createCoords,
+		createCompareCoords,
+	} from '#lib/application/container.js'
+	import Dialog from '#lib/ui/overlays/dialog/Dialog.svelte'
 
 	const {ToggleTree, ToggleReveal, ToggleSettings} = ui.drafts
 	const {SkipLinks} = ui.recipes

@@ -5,7 +5,7 @@
 	import ui from '@fat-fuzzy/ui'
 	import {page} from '$app/state'
 
-	import Export from '$lib/ui/controls/data/Export.svelte'
+	import Export from '#lib/ui/controls/data/Export.svelte'
 
 	const {Button, InputGroup, Feedback} = ui.blocks
 

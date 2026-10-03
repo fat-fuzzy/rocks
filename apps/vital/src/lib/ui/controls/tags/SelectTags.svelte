@@ -10,7 +10,7 @@
 
 	import ui from '@fat-fuzzy/ui'
 
-	import {getTagGroupName} from '$lib/common/tags'
+	import {getTagGroupName} from '#lib/common/tags.js'
 
 	const {InputGroup} = ui.blocks
 	const {styles} = ui.utils

@@ -10,13 +10,13 @@
 
 	import {getContext, onMount} from 'svelte'
 
-	import {isHidden, checkTags} from '$lib/common/tags'
+	import {isHidden, checkTags} from '#lib/common/tags.js'
 	import {DOC_LANGUAGE, DOC_FORMAT} from '$config/setup'
 
-	import BlockBuilder from '$lib/ui/builder/BlockBuilder.svelte'
-	import FeedbackContent from '$lib/ui/FeedbackContent.svelte'
-	import Loading from '$lib/ui/Loading.svelte'
-	import {LOCALIZATIONS} from '$lib/intl/l10n'
+	import BlockBuilder from '#lib/ui/builder/BlockBuilder.svelte'
+	import FeedbackContent from '#lib/ui/FeedbackContent.svelte'
+	import Loading from '#lib/ui/Loading.svelte'
+	import {LOCALIZATIONS} from '#lib/intl/l10n.js'
 	import type {UiColor} from '@fat-fuzzy/ui'
 
 	const coordinators: CurrentCoordinators = getContext('currentCoordinators')

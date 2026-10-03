@@ -4,10 +4,10 @@
 
 	import ui from '@fat-fuzzy/ui'
 
-	import {NAMESPACE_TO_PRESET_LABEL} from '$lib/intl/l10n'
-	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
+	import {NAMESPACE_TO_PRESET_LABEL} from '#lib/intl/l10n.js'
+	import dialogActor from '#lib/ui/overlays/dialog/actor.svelte.js'
 
-	import FormPreset from '$lib/ui/controls/preset/FormPreset.svelte'
+	import FormPreset from '#lib/ui/controls/preset/FormPreset.svelte'
 
 	const {Button} = ui.blocks
 

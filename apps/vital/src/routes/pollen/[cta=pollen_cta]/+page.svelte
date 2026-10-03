@@ -4,8 +4,8 @@
 	import {getContext} from 'svelte'
 	import {page} from '$app/state'
 
-	import {getThemeForNamespace} from '$lib/styles/theme'
-	import PageAction from '$lib/ui/PageAction.svelte'
+	import {getThemeForNamespace} from '#lib/styles/theme.js'
+	import PageAction from '#lib/ui/PageAction.svelte'
 
 	const coordinators: CurrentCoordinators = getContext('currentCoordinators')
 

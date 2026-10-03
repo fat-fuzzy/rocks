@@ -1,6 +1,6 @@
 import {browser} from '$app/env'
-import WorkerBridge from '$lib/workers/worker-bridge'
-import StorageWorker from '$lib/workers/storage.worker?worker'
+import WorkerBridge from '#lib/workers/worker-bridge.js'
+import StorageWorker from '#lib/workers/storage.worker?worker'
 
 let bridge: WorkerBridge | undefined
 

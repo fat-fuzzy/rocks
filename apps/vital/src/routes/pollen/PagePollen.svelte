@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type {RouteNameFor} from '$types'
 
-	import ContentGrid from '$lib/ui/ContentGrid.svelte'
+	import ContentGrid from '#lib/ui/ContentGrid.svelte'
 
 	const CTA: RouteNameFor<'pollen'>[] = ['write', 'reflect', 'explore']
 	const CTA_LINK_LABELS: {[cta: string]: string} = {

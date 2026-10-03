@@ -9,8 +9,8 @@ import type {
 	NamespaceId,
 } from '$types'
 
-import {buildTagIndex} from '$lib/common/transform/store-to-index'
-import {getTagKey} from '$lib/common/format'
+import {buildTagIndex} from '#lib/common/transform/store-to-index.js'
+import {getTagKey} from '#lib/common/format.js'
 import {SvelteMap} from 'svelte/reactivity'
 
 /**

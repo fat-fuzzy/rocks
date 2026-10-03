@@ -3,8 +3,8 @@
 
 	import ui from '@fat-fuzzy/ui'
 
-	import DialogData from '$lib/ui/overlays/dialog/DialogData.svelte'
-	import Export from '$lib/ui/controls/data/Export.svelte'
+	import DialogData from '#lib/ui/overlays/dialog/DialogData.svelte'
+	import Export from '#lib/ui/controls/data/Export.svelte'
 	import type {ICoordinateImports} from '$types'
 
 	const {Popover} = ui.drafts

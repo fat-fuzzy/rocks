@@ -5,9 +5,12 @@ import {
 	getBaseHandle,
 	getStructureHandle,
 	readDirectoryRecursive,
-} from '$lib/workers/storage/opfs-tools'
+} from '#lib/workers/storage/opfs-tools.js'
 
-import {parseBase, parseStructure} from '$lib/common/transform/parse-or-throw'
+import {
+	parseBase,
+	parseStructure,
+} from '#lib/common/transform/parse-or-throw.js'
 
 export async function getBaseData(root: NamespaceId): Promise<{
 	content: FrontmatterBase

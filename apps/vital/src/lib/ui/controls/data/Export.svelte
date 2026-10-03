@@ -5,7 +5,7 @@
 	import ui from '@fat-fuzzy/ui'
 	import {getContext} from 'svelte'
 
-	import {generateDownload} from '$lib/common/download'
+	import {generateDownload} from '#lib/common/download.js'
 
 	const coordinators: CurrentCoordinators = getContext('currentCoordinators')
 

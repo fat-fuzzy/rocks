@@ -6,7 +6,7 @@ import {
 	CTA_TO_DESCRIPTION,
 	LOCALIZATIONS,
 	NAMESPACE_TO_TITLE,
-} from '$lib/intl/l10n'
+} from '#lib/intl/l10n.js'
 
 import type {
 	NamespaceId,
