@@ -15,13 +15,14 @@
 		"format": "prettier --write --ignore-path=../../.prettierignore .",
 		"lint": "prettier --check . && eslint .",
 		"test": "pnpm test:unit",
+		"test:dev": "vitest",
 		"test:unit": "vitest run",
 		"test:types": "vitest run --typecheck",
 		"test:coverage": "vitest --ui",
+		"test:report": "vitest run --reporter=verbose",
 		"test:e2e": "NODE_ENV=test playwright test",
-		"test:ui": "NODE_ENV=test playwright test --ui",
-		"test:dev:unit": "vitest",
-		"test:report": "NODE_ENV=test playwright test --reporter=html"
+		"test:e2e:ui": "NODE_ENV=test playwright test --ui",
+		"test:e2e:report": "NODE_ENV=test playwright test --reporter=html"
 	},
 	"main": "./dist/index.js",
 	"files": [
