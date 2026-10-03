@@ -1,5 +1,5 @@
 import {error} from '@sveltejs/kit'
-import images from '$data/images'
+import images from '#data/images.js'
 import {actions as parentActions} from '../+page.server'
 
 export const load = async ({params}) => {

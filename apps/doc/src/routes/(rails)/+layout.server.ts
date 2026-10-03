@@ -1,4 +1,4 @@
-import {pages} from '$config/navigation'
+import {pages} from '#config/navigation.js'
 import {buildNav} from '#lib/server/services/navigation/setup.js'
 
 export const load = async ({locals, url}) => {

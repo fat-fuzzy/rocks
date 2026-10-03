@@ -1,5 +1,5 @@
 import {error} from '@sveltejs/kit'
-import blog from '$data/blog'
+import blog from '#data/blog.js'
 import {commonActions} from '#lib/server/actions/page-actions.js'
 
 /**

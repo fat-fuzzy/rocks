@@ -3,10 +3,10 @@ import {
 	buildSubnav,
 	buildNavItems,
 } from '#lib/server/services/navigation/setup.js'
-import {pages} from '$config/navigation'
-import decisions from '$data/decisions'
-import usages from '$data/usages'
-import speaking from '$data/speaking'
+import {pages} from '#config/navigation.js'
+import decisions from '#data/decisions.js'
+import usages from '#data/usages.js'
+import speaking from '#data/speaking.js'
 
 const decisionsMarkdowns = decisions.markdowns
 	.filter(({meta}) => meta.status !== 'draft')

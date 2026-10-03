@@ -7,8 +7,8 @@
 	import {resolve} from '$app/paths'
 	import {page} from '$app/state'
 
-	import {links} from '$config/navigation'
-	import {linksSocials} from '$config/navigation'
+	import {links} from '#config/navigation.js'
+	import {linksSocials} from '#config/navigation.js'
 
 	import Footer from '#lib/ui/Footer.svelte'
 	import Socials from '#lib/ui/Socials.svelte'

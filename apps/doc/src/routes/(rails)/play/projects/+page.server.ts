@@ -1,5 +1,5 @@
 import {error} from '@sveltejs/kit'
-import pages from '$data/pages'
+import pages from '#data/pages.js'
 import {actions as parentActions} from '../+page.server'
 
 const page = 'projects'

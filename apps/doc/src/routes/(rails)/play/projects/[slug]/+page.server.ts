@@ -1,6 +1,6 @@
 import {error} from '@sveltejs/kit'
 import {actions as parentActions} from '../+page.server'
-import projectsMarkdowns from '$data/projects'
+import projectsMarkdowns from '#data/projects.js'
 
 export const load = async ({parent, params, locals}) => {
 	const {projects} = await parent()

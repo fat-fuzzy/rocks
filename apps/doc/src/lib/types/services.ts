@@ -8,6 +8,6 @@ export type UiStateGetInput = {
 export type UiStateSetInput = {
 	cookies: Cookies
 	key: string
-	value?: any
+	value?: object
 	options: {path: string; domain?: string}
 }

@@ -1,6 +1,6 @@
 import {error, redirect} from '@sveltejs/kit'
-import assets from '$data/ui'
-import pages from '$data/pages'
+import assets from '#data/ui.js'
+import pages from '#data/pages.js'
 
 const page = 'ui'
 const markdowns = assets.markdowns
