@@ -2,7 +2,7 @@
 	import ui from '@fat-fuzzy/ui'
 	const {InputRange} = ui.blocks
 
-	import type {CameraProps} from '$types'
+	import type {CameraProps} from '#types'
 
 	let {
 		color = '',

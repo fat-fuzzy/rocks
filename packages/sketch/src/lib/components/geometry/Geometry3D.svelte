@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {Geometry2DProps} from '$types'
+	import type {Geometry2DProps} from '#types'
 
 	import Position from '#lib/components/geometry/Position.svelte'
 	import Scale from '#lib/components/geometry/Scale.svelte'

@@ -5,7 +5,7 @@ import type {
 	SketchTransitionsType,
 	SketchFeedbackType,
 	SketchEventType,
-} from '$types'
+} from '#types'
 
 import {PLAYER_TRANSITIONS} from '#lib/components/player/definitions.js'
 

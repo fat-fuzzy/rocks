@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {TextureControlProps} from '$types'
+	import type {TextureControlProps} from '#types'
 	import Filters from '#lib/components/texture/Filters.svelte'
 	import actor from '#lib/components/sketch/actor.svelte.js'
 

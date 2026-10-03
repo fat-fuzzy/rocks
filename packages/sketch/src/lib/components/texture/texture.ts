@@ -1,4 +1,4 @@
-import type {Filters} from '$types'
+import type {Filters} from '#types'
 import type {UiColor, UiSize, UiVariant} from '@fat-fuzzy/ui'
 
 export type FiltersProps = {
