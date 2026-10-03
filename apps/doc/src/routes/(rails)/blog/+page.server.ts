@@ -9,13 +9,13 @@ export const load = async ({parent}) => {
 	const {sidebar} = await parent()
 
 	if (!markdowns?.length) {
-		error(404, {message: 'Not found'})
+		error(404, 'Not found')
 	}
 
 	const content = markdowns[0]
 
 	if (!content?.meta) {
-		error(404, {message: 'Not found'})
+		error(404, 'Not found')
 	}
 
 	return {

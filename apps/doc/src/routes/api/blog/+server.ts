@@ -10,7 +10,7 @@ export async function GET() {
 	const content = await pages.fetchMarkdowns(page)
 
 	if (!content || !content[0].meta) {
-		error(404, {message: 'Not found'})
+		error(404, 'Not found')
 	}
 
 	const data = {

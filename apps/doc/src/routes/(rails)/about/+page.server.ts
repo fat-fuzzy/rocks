@@ -12,12 +12,12 @@ export const load = async ({parent}) => {
 	const imageSlug = '001-intro'
 
 	if (!markdowns?.length) {
-		error(404, {message: 'Not found'})
+		error(404, 'Not found')
 	}
 	const content = markdowns[0]
 
 	if (!content?.meta) {
-		error(404, {message: 'Not found'})
+		error(404, 'Not found')
 	}
 
 	try {
