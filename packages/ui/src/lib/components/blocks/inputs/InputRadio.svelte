@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {InputRadioProps} from '$types'
+	import type {InputRadioProps} from '#types'
 	import styleHelper from '#lib/utils/styles.js'
 	import Feedback from '#lib/components/blocks/inputs/InputFeedback.svelte'
 	import Tooltip from '#lib/components/blocks/overlays/Tooltip.svelte'

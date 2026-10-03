@@ -2,7 +2,7 @@
  * Fuzzy State Machine
  */
 
-import type {UiState, UiVariant} from '$types'
+import type {UiState, UiVariant} from '#types'
 
 export type FuzzyEvent = 'toggle' | 'switch' | 'collapse' | 'expand'
 

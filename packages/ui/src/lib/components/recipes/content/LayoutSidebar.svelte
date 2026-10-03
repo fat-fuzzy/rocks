@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {LayoutProps} from '$types'
+	import type {LayoutProps} from '#types'
 	import SkipLinks from '#lib/components/recipes/navs/SkipLinks.svelte'
 	import ToggleReveal from '#lib/components/recipes/toggle/ToggleReveal.svelte'
 	import ToggleTree from '#lib/components/recipes/toggle/ToggleTree.svelte'

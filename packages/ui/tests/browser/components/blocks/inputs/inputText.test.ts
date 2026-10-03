@@ -3,7 +3,7 @@ import {userEvent} from 'vitest/browser'
 import {render} from 'vitest-browser-svelte'
 
 import InputTextTest from './InputTextTest.svelte'
-import {INPUTS} from '$tests/fixtures/form-inputs'
+import {INPUTS} from '#tests/fixtures/form-inputs.ts'
 
 const inputTypes = ['text', 'phone', 'email', 'password']
 

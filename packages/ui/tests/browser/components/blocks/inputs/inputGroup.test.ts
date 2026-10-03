@@ -3,7 +3,7 @@ import {userEvent} from 'vitest/browser'
 import {render} from 'vitest-browser-svelte'
 
 import InputGroupTest from './InputGroupTest.svelte'
-import {INPUTS} from '$tests/fixtures/form-inputs'
+import {INPUTS} from '#tests/fixtures/form-inputs.ts'
 
 describe(`InputGroup - a component group of radio or checkbox inputs`, () => {
 	describe('checkbox', () => {

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {ToggleTreeProps, NavItem} from '$types'
+	import type {ToggleTreeProps, NavItem} from '#types'
 
 	import ToggleLink from './ToggleLink.svelte'
 	import ToggleTree from './ToggleTree.svelte'

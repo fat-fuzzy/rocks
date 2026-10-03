@@ -9,7 +9,7 @@ import type {
 	UiVariant,
 	UiAssetType,
 	FeedbackProps,
-} from '$types'
+} from '#types'
 import type {HTMLInputTypeAttribute} from 'svelte/elements'
 
 export type MessageGroup = {

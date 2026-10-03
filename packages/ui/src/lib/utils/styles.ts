@@ -3,7 +3,7 @@ import type {
 	UiContainerProps,
 	UiLayoutProps,
 	UiBlockProps,
-} from '$types'
+} from '#types'
 
 const STYLE_BASE_CLASS: Record<string, string> = {
 	align: 'align',

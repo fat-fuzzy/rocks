@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {FuzzyPayload, ButtonType, ToggleMenuProps} from '$types'
+	import type {FuzzyPayload, ButtonType, ToggleMenuProps} from '#types'
 
 	import {onMount} from 'svelte'
 

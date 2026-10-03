@@ -1,14 +1,14 @@
 <script lang="ts">
-	import type {UiColor} from '$types'
+	import type {UiColor} from '#types'
 
 	import {page} from '$app/state'
 
-	import {TestFormValidator} from '$lib/utils/validate'
-	import FormValidator from '$lib/utils/browser/FormValidator.svelte'
+	import {TestFormValidator} from '#lib/utils/validate.js'
+	import FormValidator from '#lib/utils/browser/FormValidator.svelte'
 
-	import InputGroup from '$lib/components/blocks/inputs/InputGroup.svelte'
-	import TestContext from '$tests/browser/TestContext.svelte'
-	import {INPUTS} from '$tests/fixtures/form-inputs'
+	import InputGroup from '#lib/components/blocks/inputs/InputGroup.svelte'
+	import TestContext from '#tests/browser/TestContext.svelte'
+	import {INPUTS} from '#tests/fixtures/form-inputs.ts'
 
 	let validator = new FormValidator(TestFormValidator)
 

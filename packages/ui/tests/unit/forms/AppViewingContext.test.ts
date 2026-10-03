@@ -1,7 +1,7 @@
 import {describe} from 'vitest'
 // import {describe, it, expect} from 'vitest'
-// import AppContext from '$lib/forms/AppContext'
-// import constants from '$lib/types/constants'
+// import AppContext from '#lib/forms/AppContext.js'
+// import constants from '#lib/types/constants.js'
 // const {DEFAULT_PREFERENCES} = constants
 
 describe.skip(`AppContext - a class that updates an app's ViewingPreferences based on FormData`, () => {

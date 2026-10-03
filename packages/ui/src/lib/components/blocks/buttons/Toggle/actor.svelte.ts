@@ -6,7 +6,7 @@ import type {
 	ToggleMachine,
 	UiStateToggle,
 	UiVariant,
-} from '$types'
+} from '#types'
 import {TOGGLE_MACHINE, TOGGLE_TRANSITIONS} from './definitions'
 
 import styleHelper from '#lib/utils/styles.js'

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {LayoutGridProps} from '$types'
+	import type {LayoutGridProps} from '#types'
 
 	import {onMount} from 'svelte'
 	import format from '#lib/utils/format.js'

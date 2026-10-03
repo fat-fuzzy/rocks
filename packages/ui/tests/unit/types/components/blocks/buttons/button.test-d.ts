@@ -1,5 +1,5 @@
 import {test, expectTypeOf, assertType} from 'vitest'
-import type {ButtonProps, FuzzyPayload} from '$types'
+import type {ButtonProps, FuzzyPayload} from '#types'
 
 test('my types work properly', () => {
 	const buttonProps: ButtonProps = {

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {CookiePreferences, CookiesPreferencesProps} from '$types'
+	import type {CookiePreferences, CookiesPreferencesProps} from '#types'
 	import {onMount} from 'svelte'
 	import {enhance} from '$app/forms'
 

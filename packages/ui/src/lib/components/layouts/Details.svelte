@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {DetailsLayoutProps} from '$types'
+	import type {DetailsLayoutProps} from '#types'
 
 	let {
 		layout,
@@ -15,7 +15,7 @@
 
 	let expanded = $state(open)
 
-	function toggleReveal(event) {
+	function toggleReveal() {
 		expanded = !expanded
 	}
 

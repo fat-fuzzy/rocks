@@ -5,7 +5,7 @@
 	import {TestFormValidator} from '#lib/utils/validate.js'
 	import FormValidator from '#lib/utils/browser/FormValidator.svelte.js'
 	import InputGroup from '#lib/components/blocks/inputs/InputGroup.svelte'
-	import {INPUTS} from '$tests/fixtures/form-inputs'
+	import {INPUTS} from '#tests/fixtures/form-inputs.ts'
 
 	let validator = new FormValidator(TestFormValidator)
 	let form: HTMLFormElement

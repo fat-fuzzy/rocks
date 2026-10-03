@@ -1,11 +1,11 @@
 <script lang="ts">
-	import type {MediaProps} from '$types'
+	import type {MediaProps} from '#types'
 
 	let {
 		src,
 		ext,
 		alt,
-		orientation = 'landscape',
+		// orientation = 'landscape',
 		loading,
 		width,
 		height,

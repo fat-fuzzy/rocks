@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {FieldsetProps} from '$types'
+	import type {FieldsetProps} from '#types'
 	import styleHelper from '#lib/utils/styles.js'
 
 	let {

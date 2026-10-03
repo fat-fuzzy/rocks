@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {ButtonProps} from '$types'
+	import type {ButtonProps} from '#types'
 	import styleHelper from '#lib/utils/styles.js'
 
 	let {

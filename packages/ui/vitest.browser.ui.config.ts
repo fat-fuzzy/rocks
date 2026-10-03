@@ -32,9 +32,6 @@ export default defineConfig({
 			adapter: adapter(),
 			alias: {
 				$config: path.resolve('./src/config'),
-				$types: path.resolve('./src/lib/types/index.ts'),
-				$tests: path.resolve('./tests'),
-				$lib: path.resolve('./src/lib'),
 			},
 			extensions: ['.svelte', '.md', '.svx'],
 		}),

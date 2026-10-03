@@ -4,7 +4,7 @@
 		FieldsetProps,
 		InputCheckProps,
 		InputRadioProps,
-	} from '$types'
+	} from '#types'
 
 	import styleHelper from '#lib/utils/styles.js'
 	import Fieldset from '#lib/components/blocks/inputs/Fieldset.svelte'

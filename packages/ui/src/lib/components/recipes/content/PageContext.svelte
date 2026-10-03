@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {AsideProps} from '$types'
+	import type {AsideProps} from '#types'
 	import Feedback from '#lib/components/blocks/global/Feedback.svelte'
 	import {resolve} from '$app/paths'
 

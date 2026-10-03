@@ -8,7 +8,7 @@ import type {
 	UiLayoutProps,
 	CookiePreferences,
 	UiLayout,
-} from '$types'
+} from '#types'
 
 export type ProseProps = {
 	title: string

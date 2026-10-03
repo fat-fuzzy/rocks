@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {FeedbackProps, AriaLive, UiStatus, UiTextContext} from '$types'
+	import type {FeedbackProps, AriaLive, UiStatus, UiTextContext} from '#types'
 	import styleHelper from '#lib/utils/styles.js'
 
 	let {

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {LayoutPrimitiveProps} from '$types'
+	import type {LayoutPrimitiveProps} from '#types'
 
 	let {size = 'md', threshold, children}: LayoutPrimitiveProps = $props()
 </script>

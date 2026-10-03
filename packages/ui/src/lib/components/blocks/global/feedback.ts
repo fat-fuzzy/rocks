@@ -1,5 +1,5 @@
 import type {Snippet} from 'svelte'
-import type {UiBlockProps, UiLayoutProps, UiStatus, UiTextContext} from '$types'
+import type {UiBlockProps, UiLayoutProps, UiStatus, UiTextContext} from '#types'
 
 export type FeedbackProps = UiBlockProps &
 	UiLayoutProps & {

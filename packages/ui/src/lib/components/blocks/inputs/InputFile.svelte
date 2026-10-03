@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {InputFileProps} from '$types'
+	import type {InputFileProps} from '#types'
 	import styleHelper from '#lib/utils/styles.js'
 	import Feedback from '#lib/components/blocks/inputs/InputFeedback.svelte'
 	import Fieldset from '#lib/components/blocks/inputs/Fieldset.svelte'

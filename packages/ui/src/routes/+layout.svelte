@@ -49,7 +49,7 @@
 					? 'page'
 					: undefined}
 			>
-				<a data-sveltekit-preload-data href={resolve(`/${slug}`)}>
+				<a data-sveltekit-preload-data href={`/${slug}`}>
 					{label}
 				</a>
 			</li>

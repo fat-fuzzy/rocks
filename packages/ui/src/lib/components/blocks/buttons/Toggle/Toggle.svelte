@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {FuzzyPayload, ToggleProps} from '$types'
+	import type {FuzzyPayload, ToggleProps} from '#types'
 	import {onMount} from 'svelte'
 	import Actor from './actor.svelte.js'
 

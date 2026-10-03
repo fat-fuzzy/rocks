@@ -1,11 +1,11 @@
-import type {ButtonEvent, FuzzyPayload} from '$types'
+import type {ButtonEvent, FuzzyPayload} from '#types'
 import {describe, it, expect} from 'vitest'
-import SwitchActor from '$lib/components/blocks/buttons/Switch/actor.svelte'
+import SwitchActor from '#lib/components/blocks/buttons/Switch/actor.svelte.js'
 import {
 	SWITCH_MACHINE,
 	SWITCH_TRANSITIONS,
-} from '$lib/components/blocks/buttons/Switch/definitions'
-import {PROPS_BLOCK} from '$tests/fixtures/style-props'
+} from '#lib/components/blocks/buttons/Switch/definitions.js'
+import {PROPS_BLOCK} from '#tests/fixtures/style-props.js'
 
 const defaultActiveConfig = {
 	initial: 'active',

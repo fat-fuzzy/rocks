@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Image from './Image.svelte'
-	import type {MediaProps} from '$types'
+	import type {MediaProps} from '#types'
 
 	let {
 		id,
@@ -45,7 +45,7 @@
 </script>
 
 <picture {id} class={frameClass}>
-	{#each srcset as set}
+	{#each srcset as set, i (i)}
 		<source srcset={set.srcset} media={set.query} />
 	{/each}
 	<Image

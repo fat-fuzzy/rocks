@@ -1,9 +1,9 @@
 <script lang="ts">
-	import {clickOutside} from '$lib/utils/browser/click-outside'
+	import {clickOutside} from '#lib/utils/browser/click-outside.js'
 
 	let outsideClicked = $state(false)
 
-	function handleClickOutside(event: Event) {
+	function handleClickOutside() {
 		outsideClicked = true
 	}
 </script>

@@ -4,7 +4,7 @@ import type {
 	ViewingPreferences,
 	PrivacyPreferences,
 	NavItem,
-} from '$types'
+} from '#types'
 
 import {SWITCH_MACHINE} from '#lib/components/blocks/buttons/Switch/definitions.js'
 import {EXPAND_MACHINE} from '#lib/components/blocks/buttons/Expand/definitions.js'

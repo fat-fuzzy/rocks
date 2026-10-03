@@ -5,7 +5,7 @@ import type {
 	NavItem,
 	ViewingPreferences,
 	UiControl,
-} from '$types'
+} from '#types'
 
 export type ToggleRevealProps = UiBlockProps &
 	UiLayoutProps & {

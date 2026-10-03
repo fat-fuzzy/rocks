@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {ContentProps} from '$types'
+	import type {ContentProps} from '#types'
 	import styleHelper from '#lib/utils/styles.js'
 	let {
 		id,

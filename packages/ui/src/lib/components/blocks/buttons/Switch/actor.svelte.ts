@@ -6,7 +6,7 @@ import type {
 	SwitchMachine,
 	UiVariant,
 	FuzzyEvent,
-} from '$types'
+} from '#types'
 
 import {SWITCH_MACHINE, SWITCH_TRANSITIONS} from './definitions.js'
 import styleHelper from '#lib/utils/styles.js'

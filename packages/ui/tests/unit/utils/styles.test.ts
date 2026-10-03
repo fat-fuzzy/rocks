@@ -1,12 +1,12 @@
 import {describe, test, expect} from 'vitest'
 
-import styles from '$lib/utils/styles'
+import styles from '#lib/utils/styles.js'
 import {
 	PROPS_BLOCK,
 	PROPS_CONTAINER,
 	PROPS_LAYOUT,
 	PROPS_FEEDBACK,
-} from '$tests/fixtures/style-props'
+} from '#tests/fixtures/style-props.js'
 
 describe('style.ts - a module to build class names from props', () => {
 	describe('getContainerStyles', () => {

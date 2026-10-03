@@ -1,4 +1,4 @@
-import type {FeedbackProps} from '$types'
+import type {FeedbackProps} from '#types'
 import toaster from '#lib/components/blocks/overlays/Toast/actor.svelte.js'
 
 export const errorToast = (text: string) => {

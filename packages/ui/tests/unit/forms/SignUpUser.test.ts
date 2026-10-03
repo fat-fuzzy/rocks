@@ -1,6 +1,6 @@
 import {describe, it, expect} from 'vitest'
-import SignUpUser from '$lib/forms/SignUpUser'
-import {SIGNUP_INPUTS} from '$tests/fixtures/form-inputs'
+import SignUpUser from '#lib/forms/SignUpUser.js'
+import {SIGNUP_INPUTS} from '#tests/fixtures/form-inputs.ts'
 
 const signUpFields = ['username', 'email', 'password', 'confirm_password']
 

@@ -1,6 +1,6 @@
-import type {TestForm} from '$types'
+import type {TestForm} from '#types'
 import fatFuzzyIntl from '@fat-fuzzy/intl'
-import FormValidator from '$lib/utils/browser/FormValidator.svelte'
+import FormValidator from '#lib/utils/browser/FormValidator.svelte.js'
 
 const {L10nFormatter} = fatFuzzyIntl
 const messages = new L10nFormatter('en')
@@ -30,7 +30,7 @@ type InputProps = {
 	}
 }
 
-const INPUTS: InputProps = {
+export const INPUTS: InputProps = {
 	name: {
 		label: 'Username',
 		name: 'name',
@@ -185,7 +185,7 @@ const INPUTS: InputProps = {
 	},
 }
 
-const SIGNUP_INPUTS: InputProps = {
+export const SIGNUP_INPUTS: InputProps = {
 	username: {
 		label: 'Username',
 		type: 'text',
@@ -202,7 +202,7 @@ const SIGNUP_INPUTS: InputProps = {
 	confirm_password: INPUTS.confirm_password,
 }
 
-function getSampleInputFields() {
+export function getSampleInputFields() {
 	return Object.keys(INPUTS)
 		.map((key) => ({
 			[key]: INPUTS[key].type,
@@ -210,14 +210,14 @@ function getSampleInputFields() {
 		.reduce((acc, curr) => ({...acc, ...curr}), {})
 }
 
-function getBasicInputFields() {
+export function getBasicInputFields() {
 	const INPUT_PROPS = Object.values(INPUTS)
 	const inputTypes = ['text', 'phone', 'email', 'password']
 
 	return INPUT_PROPS.filter((i) => inputTypes.find((t) => t === i.type))
 }
 
-async function initFormDataWithSampleInputs(
+export async function initFormDataWithSampleInputs(
 	validator: FormValidator<TestForm>,
 	state: 'valid' | 'invalid' | 'sanitized' | 'unsanitized',
 ) {
@@ -245,12 +245,4 @@ async function initFormDataWithSampleInputs(
 		}
 	})
 	await validator.init(formData, getSampleInputFields())
-}
-
-export {
-	INPUTS,
-	SIGNUP_INPUTS,
-	getSampleInputFields,
-	initFormDataWithSampleInputs,
-	getBasicInputFields,
 }
