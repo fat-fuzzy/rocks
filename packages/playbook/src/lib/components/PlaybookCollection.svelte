@@ -1,13 +1,12 @@
 <script lang="ts">
 	import type {Snippet} from 'svelte'
-	import type {Meta} from '$types'
+	import type {Meta} from '#types'
 
 	import ui from '@fat-fuzzy/ui'
 	import PropsDemo from './PropsDemo.svelte'
 	import PropsDoc from './PropsDoc.svelte'
 	import Element from './Element.svelte'
 	import {getPlaybookTab, getDocTab} from '#lib/props/index.js'
-	import {resolve} from '$app/paths'
 
 	const {EscapeHtml} = ui.headless
 	const {PageRails} = ui.content
@@ -61,7 +60,9 @@
 			labelledBy: category,
 		},
 	])
-	const components: {category: string; items: unknown}[] = [
+
+	// eslint-disable-next-line
+	const components: {category: string; items: any}[] = [
 		{category: 'tokens', items: ui.tokens},
 		{category: 'blocks', items: ui.blocks},
 		{category: 'layouts', items: ui.layouts},
@@ -94,7 +95,7 @@
 						: `${link}/${category}/${name}`}
 					<li>
 						<a
-							href={resolve(href)}
+							{href}
 							class="ravioli:xs size:xs l:flex emoji:link surface:1:primary align:center"
 						>
 							<svelte:element
@@ -124,7 +125,7 @@
 						class="link font:sm"
 					>
 						<a
-							href={resolve(href)}
+							{href}
 							class="title ravioli:xs size:xs l:flex emoji:link surface:1:primary align:center"
 						>
 							{name}

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {IStyleInputGroup, IStyleFamily} from '$types'
+	import type {IStyleInputGroup, IStyleFamily} from '#types'
 
 	import type {
 		FuzzyPayload,

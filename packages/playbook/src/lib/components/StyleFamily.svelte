@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {Meta, StyleTree} from '$types'
+	import type {Meta, StyleTree} from '#types'
 
 	import {getContext} from 'svelte'
 

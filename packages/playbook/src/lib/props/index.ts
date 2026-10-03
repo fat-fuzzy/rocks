@@ -1,4 +1,4 @@
-import type {Meta, Markdown, Markdowns, PlaybookProps, StyleProps} from '$types'
+import type {Meta, Markdown, Markdowns, PlaybookProps, StyleProps} from '#types'
 import constants from '#lib/types/constants.js'
 import {getFamily} from '#lib/props/props-style.js'
 

@@ -8,7 +8,7 @@ import type {
 	StyleOptions,
 	StyleTree,
 	StyleCategory,
-} from '$types'
+} from '#types'
 import StyleInputGroup from './styles.input-group'
 import StyleFamily from './styles.family'
 import {getFamily} from '#lib/props/props-style.js'
