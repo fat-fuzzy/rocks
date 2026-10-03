@@ -10,12 +10,7 @@ export type UiState =
 	| 'over'
 
 export type ButtonEvent =
-	| 'expand'
-	| 'collapse'
-	| 'toggle'
-	| 'switch'
-	| 'click'
-	| 'outside'
+	'expand' | 'collapse' | 'toggle' | 'switch' | 'click' | 'outside'
 
 export type AriaInvoke = 'manual' | 'auto' | 'hint'
 

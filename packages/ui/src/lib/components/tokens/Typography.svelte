@@ -9,9 +9,7 @@
 </script>
 
 {#each headings as text, i (i)}
-	<svelte:element this={text} class={color}>
-		Fox Jumps Over Dog
-	</svelte:element>
+	<svelte:element this={text} class={color}>Fox Jumps Over Dog</svelte:element>
 {/each}
 {#each body as text, i (i)}
 	<svelte:element this={text}>
