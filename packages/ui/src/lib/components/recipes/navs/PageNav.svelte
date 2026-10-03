@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {PageNavProps} from '$types'
-	import styleHelper from '$lib/utils/styles'
+	import styleHelper from '#lib/utils/styles.js'
 
 	let {
 		id = 'page-nav',

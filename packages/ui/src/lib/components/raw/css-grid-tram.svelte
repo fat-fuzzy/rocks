@@ -1,9 +1,9 @@
 <script lang="ts">
-	import MainNav from '$lib/components/raw/fixtures/nav-1.svelte'
-	import SideNav from '$lib/components/raw/fixtures/nav-2.svelte'
-	import AppContext from '$lib/components/raw/fixtures/app-context.svelte'
-	import Gallery from '$lib/components/raw/fixtures/gallery.svelte'
-	import Details from '$lib/components/raw/fixtures/details.svelte'
+	import MainNav from '#lib/components/raw/fixtures/nav-1.svelte'
+	import SideNav from '#lib/components/raw/fixtures/nav-2.svelte'
+	import AppContext from '#lib/components/raw/fixtures/app-context.svelte'
+	import Gallery from '#lib/components/raw/fixtures/gallery.svelte'
+	import Details from '#lib/components/raw/fixtures/details.svelte'
 
 	let title = '🚋 Tram'
 	let parent = 'tram'

@@ -1,8 +1,8 @@
 <script lang="ts">
 	import type {FeedbackProps} from '$types'
 	import {onMount} from 'svelte'
-	import toaster from '$lib/components/blocks/overlays/Toast/actor.svelte'
-	import Feedback from '$lib/components/blocks/global/Feedback.svelte'
+	import toaster from '#lib/components/blocks/overlays/Toast/actor.svelte.js'
+	import Feedback from '#lib/components/blocks/global/Feedback.svelte'
 
 	const {
 		id,

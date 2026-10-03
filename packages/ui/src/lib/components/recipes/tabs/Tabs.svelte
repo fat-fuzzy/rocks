@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {TabsProps, Tab} from '$types'
-	import styleHelper from '$lib/utils/styles'
+	import styleHelper from '#lib/utils/styles.js'
 	import {onMount} from 'svelte'
 
 	let {

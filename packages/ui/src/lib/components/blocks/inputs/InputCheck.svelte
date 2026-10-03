@@ -1,8 +1,8 @@
 <script lang="ts">
 	import type {InputCheckProps} from '$types'
-	import styleHelper from '$lib/utils/styles'
-	import Feedback from '$lib/components/blocks/inputs/InputFeedback.svelte'
-	import Tooltip from '$lib/components/blocks/overlays/Tooltip.svelte'
+	import styleHelper from '#lib/utils/styles.js'
+	import Feedback from '#lib/components/blocks/inputs/InputFeedback.svelte'
+	import Tooltip from '#lib/components/blocks/overlays/Tooltip.svelte'
 
 	let {
 		id,

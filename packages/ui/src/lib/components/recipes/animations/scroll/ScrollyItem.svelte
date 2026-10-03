@@ -1,8 +1,8 @@
 <script lang="ts">
 	import {onMount} from 'svelte'
 	import type {ScrollyItemProps} from '$types'
-	import Picture from '$lib/components/blocks/media/Picture.svelte'
-	import Magic from '$lib/components/blocks/global/Magic.svelte'
+	import Picture from '#lib/components/blocks/media/Picture.svelte'
+	import Magic from '#lib/components/blocks/global/Magic.svelte'
 
 	let {
 		item,
@@ -73,7 +73,7 @@
 			</a>
 		{/if}
 	{:else if item.title}
-		<div class={`ravioli:lg text:center`}>
+		<div class="ravioli:lg text:center">
 			<svelte:element
 				this={`h${level}`}
 				class={`emoji:${item.asset} h${level + 1}`}

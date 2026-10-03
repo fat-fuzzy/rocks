@@ -1,18 +1,18 @@
 /**
  * Forms
  */
-import SignUpUser from '$lib/forms/SignUpUser.js'
-import AppContext from '$lib/forms/AppContext.js'
+import SignUpUser from '#lib/forms/SignUpUser.js'
+import AppContext from '#lib/forms/AppContext.js'
 
 /**
  * Actors
  */
-import Toaster from '$lib/components/blocks/overlays/Toast/actor.svelte.js'
-import PopoverActor from '$lib/components/blocks/overlays/Popover/actor.svelte.js'
+import Toaster from '#lib/components/blocks/overlays/Toast/actor.svelte.js'
+import PopoverActor from '#lib/components/blocks/overlays/Popover/actor.svelte.js'
 
-import constants from '$lib/types/constants.js'
-import * as clickOutside from '$lib/utils/browser/click-outside.js'
-import format from '$lib/utils/format.js'
+import constants from '#lib/types/constants.js'
+import * as clickOutside from '#lib/utils/browser/click-outside.js'
+import format from '#lib/utils/format.js'
 
 export interface Utils {
 	format: typeof format

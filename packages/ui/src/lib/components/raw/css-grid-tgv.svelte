@@ -1,7 +1,7 @@
 <script lang="ts">
-	import MainNav from '$lib/components/raw/fixtures/nav-1.svelte'
-	import AppContext from '$lib/components/raw/fixtures/app-context.svelte'
-	import Details from '$lib/components/raw/fixtures/details.svelte'
+	import MainNav from '#lib/components/raw/fixtures/nav-1.svelte'
+	import AppContext from '#lib/components/raw/fixtures/app-context.svelte'
+	import Details from '#lib/components/raw/fixtures/details.svelte'
 
 	let title = '🚄 TGV'
 	let parent = 'tgv'
