@@ -7,7 +7,7 @@ export const load = async ({parent, params}) => {
 	})
 
 	if (!meta) {
-		throw error(404, {message: 'Sketch not found'})
+		throw error(404, 'Sketch not found')
 	}
 
 	return meta
