@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {UiColor} from '@fat-fuzzy/ui'
-	import type {ActionCrud, ICoordinateMetadata} from '$types'
+	import type {ActionCrud, ICoordinateMetadata} from '#types'
 
 	import {onDestroy, onMount} from 'svelte'
 	import {SvelteURL} from 'svelte/reactivity'
@@ -8,9 +8,9 @@
 
 	import {page} from '$app/state'
 
-	import {FormLanguageValidator} from '$lib/common/validate'
-	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
-	import {DOC_LANGUAGE} from '$config/setup'
+	import {FormLanguageValidator} from '#lib/common/validate.js'
+	import dialogActor from '#lib/ui/overlays/dialog/actor.svelte.js'
+	import {DOC_LANGUAGE} from '#config/setup.js'
 
 	const {Button, Input, Feedback} = ui.blocks
 	const {FormValidator} = ui.utils
@@ -103,7 +103,7 @@
 
 		dialogActor.close()
 
-		let url = new SvelteURL(page.url)
+		let url = new SvelteURL(page.url.href)
 		url.searchParams.delete('language')
 		url.searchParams.append('language', newLanguage)
 
@@ -114,7 +114,7 @@
 		// TODO
 		// dialogActor.close()
 		// if (page.url.searchParams.get('language') === newLanguage) {
-		// 	let url = new SvelteURL(page.url)
+		// 	let url = new SvelteURL(page.url.href)
 		// 	url.searchParams.delete('language')
 		// 	window.location.href = url.href
 		// }

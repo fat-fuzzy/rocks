@@ -8,7 +8,7 @@
 		TagProps,
 		ICoordinateMetadata,
 		AllowedParamName,
-	} from '$types'
+	} from '#types'
 
 	import {onDestroy, onMount} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
@@ -18,11 +18,11 @@
 		checkSelectAll,
 		parseGroupFromTargetData,
 		applyTags,
-	} from '$lib/common/tags'
+	} from '#lib/common/tags.js'
 
-	import {FormTagValidator} from '$lib/common/validate'
-	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
-	import SelectTags from '$lib/ui/controls/tags/SelectTags.svelte'
+	import {FormTagValidator} from '#lib/common/validate.js'
+	import dialogActor from '#lib/ui/overlays/dialog/actor.svelte.js'
+	import SelectTags from '#lib/ui/controls/tags/SelectTags.svelte'
 
 	const {Button, Input, InputCheck, Feedback} = ui.blocks
 	const {FormValidator} = ui.utils

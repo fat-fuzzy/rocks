@@ -1,4 +1,4 @@
-import type {FuzzyTransitions, SwitchMachine} from '$types'
+import type {FuzzyTransitions, SwitchMachine} from '#types'
 
 export const SWITCH_MACHINE: SwitchMachine = {
 	active: {

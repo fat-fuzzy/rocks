@@ -6,18 +6,14 @@ import type {
 	UiShape,
 	InputProps,
 } from '@fat-fuzzy/ui'
-import type {Slug, Uuid} from '$types'
+import type {Slug, Uuid} from '#types'
 
 export type InputCheckedTypes = 'radio' | 'checkbox'
 
 export type InputGroupMenus = {[name: string]: InputProps[]}
 
 export type DialogState =
-	| 'idle'
-	| 'loading'
-	| 'visible'
-	| 'closed'
-	| 'cancelled'
+	'idle' | 'loading' | 'visible' | 'closed' | 'cancelled'
 
 // TODO move elsewhere
 export type ImportStatus =

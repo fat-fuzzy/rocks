@@ -7,12 +7,12 @@
 	import {resolve} from '$app/paths'
 	import {page} from '$app/state'
 
-	import {links} from '$config/navigation'
-	import {linksSocials} from '$config/navigation'
+	import {links} from '#config/navigation.js'
+	import {linksSocials} from '#config/navigation.js'
 
-	import Footer from '$lib/ui/Footer.svelte'
-	import Socials from '$lib/ui/Socials.svelte'
-	import NavSlides from '$lib/ui/NavSlides.svelte'
+	import Footer from '#lib/ui/Footer.svelte'
+	import Socials from '#lib/ui/Socials.svelte'
+	import NavSlides from '#lib/ui/NavSlides.svelte'
 
 	const {ToggleTree, ToggleReveal, Cookies, ToggleSettings} = ui.drafts
 	const {SkipLinks} = ui.recipes

@@ -1,4 +1,4 @@
-import type {FuzzyState, ButtonStateProps} from '$lib/types'
+import type {FuzzyState, ButtonStateProps} from '#lib/types/index.js'
 
 export type UiStateToggle = 'active' | 'inactive'
 

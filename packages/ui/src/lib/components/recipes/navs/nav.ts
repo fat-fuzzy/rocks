@@ -1,4 +1,4 @@
-import type {UiBlockProps, UiControl} from '$types'
+import type {UiBlockProps, UiControl} from '#types'
 
 import type {Snippet} from 'svelte'
 

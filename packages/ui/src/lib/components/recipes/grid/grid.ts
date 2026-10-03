@@ -1,4 +1,4 @@
-import type {NavItem, PageProps, GridProps, ViewingPreferences} from '$types'
+import type {NavItem, PageProps, GridProps, ViewingPreferences} from '#types'
 
 export type LayoutGridProps = GridProps & {
 	app: ViewingPreferences

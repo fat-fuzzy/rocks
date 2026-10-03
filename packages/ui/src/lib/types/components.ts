@@ -1,102 +1,102 @@
 export interface Utils {
-	format: typeof import('$lib/utils/format.js').default
-	styles: typeof import('$lib/utils/styles.js').default
-	clickOutside: typeof import('$lib/utils/browser/click-outside.js')
-	FormValidator: typeof import('$lib/utils/browser/FormValidator.svelte').default
+	format: typeof import('#lib/utils/format.js').default
+	styles: typeof import('#lib/utils/styles.js').default
+	clickOutside: typeof import('#lib/utils/browser/click-outside.js')
+	FormValidator: typeof import('#lib/utils/browser/FormValidator.svelte.js').default
 }
 
 export interface Forms {
-	AppContext: typeof import('$lib/forms/AppContext.js').default
-	SignUpUser: typeof import('$lib/forms/SignUpUser.js').default
+	AppContext: typeof import('#lib/forms/AppContext.js').default
+	SignUpUser: typeof import('#lib/forms/SignUpUser.js').default
 }
 
 export interface Actors {
-	Toaster: typeof import('$lib/components/blocks/overlays/Toast/actor.svelte.js').default
-	PopoverActor: typeof import('$lib/components/blocks/overlays/Popover/actor.svelte.js').default
+	Toaster: typeof import('#lib/components/blocks/overlays/Toast/actor.svelte.js').default
+	PopoverActor: typeof import('#lib/components/blocks/overlays/Popover/actor.svelte.js').default
 }
 
 export interface Tokens {
-	Color: typeof import('$lib/components/tokens/Color.svelte').default
-	Typography: typeof import('$lib/components/tokens/Typography.svelte').default
+	Color: typeof import('#lib/components/tokens/Color.svelte').default
+	Typography: typeof import('#lib/components/tokens/Typography.svelte').default
 }
 
 export interface Blocks {
-	Button: typeof import('$lib/components/blocks/buttons/Button.svelte').default
-	Expand: typeof import('$lib/components/blocks/buttons/Expand/Expand.svelte').default
-	Switch: typeof import('$lib/components/blocks/buttons/Switch/Switch.svelte').default
-	Toggle: typeof import('$lib/components/blocks/buttons/Toggle/Toggle.svelte').default
-	Feedback: typeof import('$lib/components/blocks/global/Feedback.svelte').default
-	Input: typeof import('$lib/components/blocks/inputs/Input.svelte').default
-	InputCheck: typeof import('$lib/components/blocks/inputs/InputCheck.svelte').default
-	InputRadio: typeof import('$lib/components/blocks/inputs/InputRadio.svelte').default
-	InputGroup: typeof import('$lib/components/blocks/inputs/InputGroup.svelte').default
-	InputRange: typeof import('$lib/components/blocks/inputs/InputRange.svelte').default
-	InputSidecar: typeof import('$lib/components/blocks/inputs/InputSidecar.svelte').default
-	InputFile: typeof import('$lib/components/blocks/inputs/InputFile.svelte').default
-	Magic: typeof import('$lib/components/blocks/global/Magic.svelte').default
+	Button: typeof import('#lib/components/blocks/buttons/Button.svelte').default
+	Expand: typeof import('#lib/components/blocks/buttons/Expand/Expand.svelte').default
+	Switch: typeof import('#lib/components/blocks/buttons/Switch/Switch.svelte').default
+	Toggle: typeof import('#lib/components/blocks/buttons/Toggle/Toggle.svelte').default
+	Feedback: typeof import('#lib/components/blocks/global/Feedback.svelte').default
+	Input: typeof import('#lib/components/blocks/inputs/Input.svelte').default
+	InputCheck: typeof import('#lib/components/blocks/inputs/InputCheck.svelte').default
+	InputRadio: typeof import('#lib/components/blocks/inputs/InputRadio.svelte').default
+	InputGroup: typeof import('#lib/components/blocks/inputs/InputGroup.svelte').default
+	InputRange: typeof import('#lib/components/blocks/inputs/InputRange.svelte').default
+	InputSidecar: typeof import('#lib/components/blocks/inputs/InputSidecar.svelte').default
+	InputFile: typeof import('#lib/components/blocks/inputs/InputFile.svelte').default
+	Magic: typeof import('#lib/components/blocks/global/Magic.svelte').default
 }
 
 export interface Layouts {
-	Burrito: typeof import('$lib/components/layouts/Burrito.svelte').default
-	Stack: typeof import('$lib/components/layouts/Stack.svelte').default
-	Switcher: typeof import('$lib/components/layouts/Switcher.svelte').default
-	Sidebar: typeof import('$lib/components/layouts/Sidebar.svelte').default
+	Burrito: typeof import('#lib/components/layouts/Burrito.svelte').default
+	Stack: typeof import('#lib/components/layouts/Stack.svelte').default
+	Switcher: typeof import('#lib/components/layouts/Switcher.svelte').default
+	Sidebar: typeof import('#lib/components/layouts/Sidebar.svelte').default
 }
 
 export interface Recipes {
-	ButtonMenu: typeof import('$lib/components/recipes/menus/ButtonMenu.svelte').default
-	ToggleMenu: typeof import('$lib/components/recipes/menus/ToggleMenu/ToggleMenu.svelte').default
-	SignUp: typeof import('$lib/components/recipes/forms/SignUp.svelte').default
-	SkipLinks: typeof import('$lib/components/recipes/navs/SkipLinks.svelte').default
-	Nav: typeof import('$lib/components/recipes/navs/Nav.svelte').default
+	ButtonMenu: typeof import('#lib/components/recipes/menus/ButtonMenu.svelte').default
+	ToggleMenu: typeof import('#lib/components/recipes/menus/ToggleMenu/ToggleMenu.svelte').default
+	SignUp: typeof import('#lib/components/recipes/forms/SignUp.svelte').default
+	SkipLinks: typeof import('#lib/components/recipes/navs/SkipLinks.svelte').default
+	Nav: typeof import('#lib/components/recipes/navs/Nav.svelte').default
 }
 
 export interface Raw {
-	CSSMetro: typeof import('$lib/components/raw/css-grid-metro.svelte').default
-	CSSRailway: typeof import('$lib/components/raw/css-grid-railway.svelte').default
-	CSSSteam: typeof import('$lib/components/raw/css-grid-steam.svelte').default
-	CSSTgv: typeof import('$lib/components/raw/css-grid-tgv.svelte').default
-	CSSTram: typeof import('$lib/components/raw/css-grid-tram.svelte').default
-	CSSVoyager: typeof import('$lib/components/raw/css-grid-voyager.svelte').default
-	CSSUrbanist: typeof import('$lib/components/raw/css-grid-urbanist.svelte').default
-	CSSTheme: typeof import('$lib/components/raw/css-theme.svelte').default
+	CSSMetro: typeof import('#lib/components/raw/css-grid-metro.svelte').default
+	CSSRailway: typeof import('#lib/components/raw/css-grid-railway.svelte').default
+	CSSSteam: typeof import('#lib/components/raw/css-grid-steam.svelte').default
+	CSSTgv: typeof import('#lib/components/raw/css-grid-tgv.svelte').default
+	CSSTram: typeof import('#lib/components/raw/css-grid-tram.svelte').default
+	CSSVoyager: typeof import('#lib/components/raw/css-grid-voyager.svelte').default
+	CSSUrbanist: typeof import('#lib/components/raw/css-grid-urbanist.svelte').default
+	CSSTheme: typeof import('#lib/components/raw/css-theme.svelte').default
 }
 
 export interface Content {
-	LayoutGrid: typeof import('$lib/components/recipes/grid/LayoutGrid.svelte').default
-	LayoutSidebar: typeof import('$lib/components/recipes/content/LayoutSidebar.svelte').default
-	PageMain: typeof import('$lib/components/recipes/content/PageMain.svelte').default
-	PageRails: typeof import('$lib/components/recipes/grid/PageRails.svelte').default
-	PageContext: typeof import('$lib/components/recipes/content/PageContext.svelte').default
+	LayoutGrid: typeof import('#lib/components/recipes/grid/LayoutGrid.svelte').default
+	LayoutSidebar: typeof import('#lib/components/recipes/content/LayoutSidebar.svelte').default
+	PageMain: typeof import('#lib/components/recipes/content/PageMain.svelte').default
+	PageRails: typeof import('#lib/components/recipes/grid/PageRails.svelte').default
+	PageContext: typeof import('#lib/components/recipes/content/PageContext.svelte').default
 }
 
 export interface Drafts {
-	Fieldset: typeof import('$lib/components/blocks/inputs/Fieldset.svelte').default
-	Popover: typeof import('$lib/components/blocks/overlays/Popover/Popover.svelte').default
-	Image: typeof import('$lib/components/blocks/media/Image.svelte').default
-	Picture: typeof import('$lib/components/blocks/media/Picture.svelte').default
-	Scrolly: typeof import('$lib/components/recipes/animations/scroll/Scrolly.svelte').default
-	ScrollyItem: typeof import('$lib/components/recipes/animations/scroll/ScrollyItem.svelte').default
-	Cookies: typeof import('$lib/components/recipes/forms/Cookies.svelte').default
-	Breadcrumbs: typeof import('$lib/components/recipes/navs/Breadcrumbs.svelte').default
-	PageNav: typeof import('$lib/components/recipes/navs/PageNav.svelte').default
-	PageHeader: typeof import('$lib/components/recipes/content/PageHeader.svelte').default
-	Zoomer: typeof import('$lib/components/blocks/overlays/Zoomer.svelte').default
-	Tabs: typeof import('$lib/components/recipes/tabs/Tabs.svelte').default
-	Toast: typeof import('$lib/components/blocks/overlays/Toast/Toast.svelte').default
-	ToastGroup: typeof import('$lib/components/blocks/overlays/Toast/ToastGroup.svelte').default
+	Fieldset: typeof import('#lib/components/blocks/inputs/Fieldset.svelte').default
+	Popover: typeof import('#lib/components/blocks/overlays/Popover/Popover.svelte').default
+	Image: typeof import('#lib/components/blocks/media/Image.svelte').default
+	Picture: typeof import('#lib/components/blocks/media/Picture.svelte').default
+	Scrolly: typeof import('#lib/components/recipes/animations/scroll/Scrolly.svelte').default
+	ScrollyItem: typeof import('#lib/components/recipes/animations/scroll/ScrollyItem.svelte').default
+	Cookies: typeof import('#lib/components/recipes/forms/Cookies.svelte').default
+	Breadcrumbs: typeof import('#lib/components/recipes/navs/Breadcrumbs.svelte').default
+	PageNav: typeof import('#lib/components/recipes/navs/PageNav.svelte').default
+	PageHeader: typeof import('#lib/components/recipes/content/PageHeader.svelte').default
+	Zoomer: typeof import('#lib/components/blocks/overlays/Zoomer.svelte').default
+	Tabs: typeof import('#lib/components/recipes/tabs/Tabs.svelte').default
+	Toast: typeof import('#lib/components/blocks/overlays/Toast/Toast.svelte').default
+	ToastGroup: typeof import('#lib/components/blocks/overlays/Toast/ToastGroup.svelte').default
 
 	// New: replace Reveal mechanisms
-	ToggleReveal: typeof import('$lib/components/recipes/toggle/ToggleReveal.svelte').default
-	ToggleLink: typeof import('$lib/components/recipes/toggle/ToggleLink.svelte').default
-	ToggleTree: typeof import('$lib/components/recipes/toggle/ToggleTree.svelte').default
+	ToggleReveal: typeof import('#lib/components/recipes/toggle/ToggleReveal.svelte').default
+	ToggleLink: typeof import('#lib/components/recipes/toggle/ToggleLink.svelte').default
+	ToggleTree: typeof import('#lib/components/recipes/toggle/ToggleTree.svelte').default
 	// New: replace Settings actions
-	ToggleSettings: typeof import('$lib/components/recipes/toggle/ToggleSettings.svelte').default
+	ToggleSettings: typeof import('#lib/components/recipes/toggle/ToggleSettings.svelte').default
 }
 
 export interface Headless {
-	Head: typeof import('$lib/components/blocks/global/Head.svelte').default
-	EscapeHtml: typeof import('$lib/components/blocks/global/EscapeHtml.svelte').default
+	Head: typeof import('#lib/components/blocks/global/Head.svelte').default
+	EscapeHtml: typeof import('#lib/components/blocks/global/EscapeHtml.svelte').default
 }
 
 export interface FatFuzzyUi {
@@ -112,6 +112,6 @@ export interface FatFuzzyUi {
 	// Tools
 	actors: Actors
 	forms: Forms
-	constants: typeof import('$lib/types/constants').default
+	constants: typeof import('#lib/types/constants.js').default
 	utils: Utils
 }

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {MarkdownMeta} from '$types'
+	import type {MarkdownMeta} from '#types'
 
 	const {meta, series}: {meta: MarkdownMeta; series: string[]} = $props()
 </script>

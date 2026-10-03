@@ -20,22 +20,22 @@ import type {
 	FrontmatterStructure,
 	OPFSTreeStructure,
 	NamespaceId,
-} from '$types'
+} from '#types'
 
 import {
 	isRecord,
 	isRawSection,
 	isRawPreset,
 	isSection,
-} from '$lib/common/transform/opfs-to-doc'
+} from '#lib/common/transform/opfs-to-doc.js'
 
-import {seedDocToDoc} from '$lib/common/transform/seed-to-doc'
+import {seedDocToDoc} from '#lib/common/transform/seed-to-doc.js'
 
 import {
 	parseSection,
 	parseBase,
 	parseStructure,
-} from '$lib/common/transform/parse-or-throw'
+} from '#lib/common/transform/parse-or-throw.js'
 
 import {
 	getBaseHandle,
@@ -45,9 +45,9 @@ import {
 	saveSectionToOPFS,
 	saveEntry,
 	getRootHandle,
-} from '$lib/workers/storage/opfs-tools'
+} from '#lib/workers/storage/opfs-tools.js'
 
-import {savePreset} from '$lib/workers/storage/opfs'
+import {savePreset} from '#lib/workers/storage/opfs.js'
 
 export async function isSeedComplete(options: {
 	root: NamespaceId

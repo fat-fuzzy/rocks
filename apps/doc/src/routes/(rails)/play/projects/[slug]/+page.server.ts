@@ -1,6 +1,6 @@
 import {error} from '@sveltejs/kit'
 import {actions as parentActions} from '../+page.server'
-import projectsMarkdowns from '$data/projects'
+import projectsMarkdowns from '#data/projects.js'
 
 export const load = async ({parent, params, locals}) => {
 	const {projects} = await parent()
@@ -14,7 +14,7 @@ export const load = async ({parent, params, locals}) => {
 	const content = markdowns?.find((v) => v.meta.slug === slug)
 
 	if (!content && !meta) {
-		error(404, {message: 'Sketch not found'})
+		error(404, 'Sketch not found')
 	}
 
 	const pageContext = locals.pageContext ?? {}

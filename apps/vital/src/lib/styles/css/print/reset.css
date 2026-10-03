@@ -30,6 +30,19 @@
 	}
 }
 
+.doc-preview #builder-cover-letter-header-you {
+	text-align: end;
+	margin-block-end: 1rem;
+}
+
+.doc-preview #builder-cover-letter-date {
+	text-align: end;
+}
+
+.doc-preview #builder-cover-letter-signature {
+	margin-block-start: 1.5rem;
+}
+
 @media print {
 	body {
 		color: black; /* Prints faster */

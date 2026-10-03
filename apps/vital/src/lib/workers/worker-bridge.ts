@@ -26,7 +26,7 @@ import type {
 	OPFSTreeBase,
 	OPFSTreeStructure,
 	NamespaceId,
-} from '$types'
+} from '#types'
 
 const REQUEST_TIMEOUT_MS = 100000
 

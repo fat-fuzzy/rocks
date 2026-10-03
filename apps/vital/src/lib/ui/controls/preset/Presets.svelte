@@ -5,16 +5,16 @@
 		RouteId,
 		NamespaceId,
 		ICoordinateCompare,
-	} from '$types'
+	} from '#types'
 
 	import {getContext} from 'svelte'
 	import {resolve} from '$app/paths'
 	import ui, {type UiColor} from '@fat-fuzzy/ui'
 
-	import DialogSavePreset from '$lib/ui/overlays/dialog/DialogSavePreset.svelte'
-	import DialogDeletePreset from '$lib/ui/overlays/dialog/DialogDeletePreset.svelte'
-	import Loading from '$lib/ui/Loading.svelte'
-	import {getNamespaces} from '$lib/common/routing'
+	import DialogSavePreset from '#lib/ui/overlays/dialog/DialogSavePreset.svelte'
+	import DialogDeletePreset from '#lib/ui/overlays/dialog/DialogDeletePreset.svelte'
+	import Loading from '#lib/ui/Loading.svelte'
+	import {getNamespaces} from '#lib/common/routing.js'
 	import {goto} from '$app/navigation'
 
 	const {Feedback, Button} = ui.blocks
@@ -170,7 +170,7 @@
 		>
 			{#if presets.length === 0}
 				<div
-					class="feedback:prose w:full justify:center ravioli:2xl variant:bare scroll:y"
+					class={`feedback:prose w:full justify:center ravioli:2xl variant:bare scroll:y color:${color}`}
 				>
 					<div class="l:stack font:sm raviolink">
 						{#if canEdit?.presets && query.includes('section')}
@@ -193,9 +193,12 @@
 					</div>
 				</div>
 			{:else}
-				<ul class="unstyled scroll:y">
+				<ul class={`unstyled scroll:y color:${color}`}>
 					{#each presets as preset, i (i)}
 						{@const isCurrent = currentPreset === preset.name}
+						{@const surfaceColor = isCurrent
+							? `surface:0:${color} chroma:1`
+							: ''}
 						{@const presetQuery =
 							role === 'default'
 								? coordPresets.getPresetQuery(preset.name)
@@ -208,7 +211,7 @@
 
 						<li
 							aria-current={isCurrent}
-							class={`raviolink l:flex justify:between ${isCurrent ? `surface:0:${color} chroma:1` : ''}`}
+							class={`raviolink l:flex justify:between ${surfaceColor}`}
 						>
 							<a
 								href={`${route}/${presetQuery}`}

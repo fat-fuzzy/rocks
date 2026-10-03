@@ -7,10 +7,12 @@
 	Create your package using @sveltejs/package and preview/showcase your work
 	with SvelteKit
 </p>
+
 <p>
-	Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the
-	documentation
+	Visit
+	<a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a>
+	to read the documentation
 </p>
 
-<a href={resolve('/editor')}>Go to the editor</a>
-<a href={resolve('/demo/paraglide')}>paraglide</a>
+<a href={resolve('editor')}>Go to the editor</a>
+<a href={resolve('demo/paraglide')}>paraglide</a>

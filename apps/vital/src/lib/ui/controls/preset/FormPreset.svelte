@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {ActionCrud, Preset, ICoordinatePresets} from '$types'
+	import type {ActionCrud, Preset, ICoordinatePresets} from '#types'
 	import type {UiColor} from '@fat-fuzzy/ui'
 
 	import {onDestroy, onMount} from 'svelte'
@@ -7,9 +7,9 @@
 	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
 
-	import {FormPresetValidator} from '$lib/common/validate'
-	import {getSanitizedParamValue} from '$lib/common/url'
-	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
+	import {FormPresetValidator} from '#lib/common/validate.js'
+	import {getSanitizedParamValue} from '#lib/common/url.js'
+	import dialogActor from '#lib/ui/overlays/dialog/actor.svelte.js'
 
 	const {Button, Input, Feedback} = ui.blocks
 	const {FormValidator} = ui.utils
@@ -86,7 +86,7 @@
 
 		const presetName = String(toUpdate.name)
 
-		let url = new SvelteURL(page.url)
+		let url = new SvelteURL(page.url.href)
 		url.searchParams.delete('preset')
 		url.searchParams.append('preset', presetName)
 
@@ -131,12 +131,10 @@
 
 		dialogActor.close()
 
-		const currentPreset = getSanitizedParamValue(
-			page.url.searchParams,
-			'preset',
-		)
+		const url = new SvelteURL(page.url.href)
+
+		const currentPreset = getSanitizedParamValue(url.searchParams, 'preset')
 		if (currentPreset === presetName) {
-			let url = new SvelteURL(page.url)
 			url.searchParams.delete('preset')
 
 			window.location.href = url.href

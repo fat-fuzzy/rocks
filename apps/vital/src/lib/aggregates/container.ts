@@ -1,8 +1,8 @@
-import type {NamespaceId, Aggregators} from '$types'
-import AggregateDataLifecycle from '$lib/aggregates/AggregateDataLifecycle.svelte'
-import AggregateDocs from '$lib/aggregates/AggregateDocs.svelte'
-import AggregatePresets from '$lib/aggregates/AggregatePresets.svelte'
-import AggregateMetadata from '$lib/aggregates/AggregateMetadata.svelte'
+import type {NamespaceId, Aggregators} from '#types'
+import AggregateDataLifecycle from '#lib/aggregates/AggregateDataLifecycle.svelte.js'
+import AggregateDocs from '#lib/aggregates/AggregateDocs.svelte.js'
+import AggregatePresets from '#lib/aggregates/AggregatePresets.svelte.js'
+import AggregateMetadata from '#lib/aggregates/AggregateMetadata.svelte.js'
 
 export function createAggregates(roots: NamespaceId[]): {
 	[key in NamespaceId]: Aggregators

@@ -1,14 +1,14 @@
 <script lang="ts">
 	import type {UiColor, UiSize, UiVariant} from '@fat-fuzzy/ui'
-	import type {ICoordinateImports} from '$types'
+	import type {ICoordinateImports} from '#types'
 
 	import {SvelteURL} from 'svelte/reactivity'
 	import ui from '@fat-fuzzy/ui'
 
 	import {page} from '$app/state'
 
-	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
-	import FormData from '$lib/ui/controls/data/FormData.svelte'
+	import dialogActor from '#lib/ui/overlays/dialog/actor.svelte.js'
+	import FormData from '#lib/ui/controls/data/FormData.svelte'
 
 	const {Button} = ui.blocks
 
@@ -56,7 +56,7 @@
 
 			coordImports.setStatus('idle')
 
-			const newUrl = new SvelteURL(page.url)
+			const newUrl = new SvelteURL(page.url.href)
 			newUrl.search = ''
 
 			window.location.href = newUrl.href // FIXME: hacky solution to reload for now

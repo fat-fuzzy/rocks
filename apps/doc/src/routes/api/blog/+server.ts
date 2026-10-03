@@ -1,6 +1,6 @@
-import {error, json} from '@sveltejs/kit'
-import blog from '$data/blog'
-import pages from '$data/pages'
+import {error} from '@sveltejs/kit'
+import blog from '#data/blog.js'
+import pages from '#data/pages.js'
 
 const page = 'blog'
 
@@ -10,7 +10,7 @@ export async function GET() {
 	const content = await pages.fetchMarkdowns(page)
 
 	if (!content || !content[0].meta) {
-		error(404, {message: 'Not found'})
+		error(404, 'Not found')
 	}
 
 	const data = {
@@ -18,5 +18,5 @@ export async function GET() {
 		content,
 	}
 
-	return json(data)
+	return Response.json(data)
 }

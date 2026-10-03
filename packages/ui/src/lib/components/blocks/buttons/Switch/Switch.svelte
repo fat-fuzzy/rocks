@@ -1,6 +1,6 @@
 <script lang="ts">
 	import {onMount} from 'svelte'
-	import type {FuzzyPayload, SwitchProps} from '$types'
+	import type {FuzzyPayload, SwitchProps} from '#types'
 	import Actor from './actor.svelte.js'
 
 	let {
@@ -19,7 +19,7 @@
 		size,
 		font,
 		shape,
-		layout,
+		layout = 'switcher',
 		variant,
 		dimensions,
 		type = 'submit',
@@ -60,12 +60,12 @@
 			asset,
 			assetType,
 			variant,
-			layout: shape ? 'flex' : 'switcher',
+			layout: shape ? 'flex' : layout,
 			dimensions,
 		}),
 	)
 
-	function handleClick(event: MouseEvent) {
+	function handleClick() {
 		if (actor.currentState.event) {
 			actor.update(actor.currentState.event)
 		}

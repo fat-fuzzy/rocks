@@ -8,7 +8,7 @@
 		RouteNameFor,
 		CurrentCoordinators,
 		CompareCoordinators,
-	} from '$types'
+	} from '#types'
 
 	import {getContext, tick} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
@@ -18,25 +18,25 @@
 	import {
 		getSanitizedParamValueList,
 		getAllowedParamsForRoute,
-	} from '$lib/common/url'
+	} from '#lib/common/url.js'
 	import {
 		getNamespaceFromRoute,
 		getRouteLabelsForNamespace,
 		getTitleForRoute,
 		getDescriptionForRoute,
 		getPrefixForRoute,
-		getRouteNameFromRoute,
-	} from '$lib/common/routing'
+		getRouteNameFromRouteId,
+	} from '#lib/common/routing.js'
 
-	import SectionEditor from '$lib/ui/editor/SectionEditor.svelte'
-	import SectionBuilder from '$lib/ui/builder/SectionBuilder.svelte'
-	import Tags from '$lib/ui/controls/tags/Tags.svelte'
-	import Presets from '$lib/ui/controls/preset/Presets.svelte'
-	import Loading from '$lib/ui/Loading.svelte'
+	import SectionEditor from '#lib/ui/editor/SectionEditor.svelte'
+	import SectionBuilder from '#lib/ui/builder/SectionBuilder.svelte'
+	import Tags from '#lib/ui/controls/tags/Tags.svelte'
+	import Presets from '#lib/ui/controls/preset/Presets.svelte'
+	import Loading from '#lib/ui/Loading.svelte'
 
-	import ContentActions from '$lib/ui/controls/ContentActions.svelte'
-	import ContentHeading from '$lib/ui/controls/ContentHeading.svelte'
-	import {DOC_FORMAT, DOC_LANGUAGE} from '$config/setup'
+	import ContentActions from '#lib/ui/controls/ContentActions.svelte'
+	import ContentHeading from '#lib/ui/controls/ContentHeading.svelte'
+	import {DOC_FORMAT, DOC_LANGUAGE} from '#config/setup.js'
 
 	const {PageRails} = ui.content
 	const {Feedback} = ui.blocks
@@ -52,7 +52,7 @@
 			}
 		}
 		twinLayout: {
-			[key in RouteNameFor<NamespaceId>]?: boolean
+			[key in RouteNameFor<NamespaceId> | NamespaceId]?: boolean
 		}
 		editor: {
 			[key in RouteNameFor<NamespaceId>]?: boolean
@@ -81,7 +81,7 @@
 	}: Props = $props()
 
 	let color = $derived(theme)
-	let cta = $derived(getRouteNameFromRoute(route))
+	let cta = $derived(getRouteNameFromRouteId(route))
 	let searchParams = $derived(new URL(page.url.href).searchParams)
 	let namespace = $derived(getNamespaceFromRoute(route))
 	let isTwinLayout = $derived(twinLayout[cta])
@@ -221,6 +221,7 @@
 </script>
 
 <PageRails
+	theme="neutral"
 	{title}
 	{prefix}
 	{description}

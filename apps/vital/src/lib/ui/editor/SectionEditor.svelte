@@ -1,19 +1,19 @@
 <script lang="ts">
 	import type {UiColor} from '@fat-fuzzy/ui'
-	import type {Slug, DocLanguage, Section, CurrentCoordinators} from '$types'
+	import type {Slug, DocLanguage, Section, CurrentCoordinators} from '#types'
 
 	import {getContext, onMount} from 'svelte'
 
-	import {isHidden, checkTags} from '$lib/common/tags'
+	import {isHidden, checkTags} from '#lib/common/tags.js'
 
-	import {DOC_LANGUAGE, DOC_FORMAT} from '$config/setup'
-	import {LOCALIZATIONS} from '$lib/intl/l10n'
+	import {DOC_LANGUAGE, DOC_FORMAT} from '#config/setup.js'
+	import {LOCALIZATIONS} from '#lib/intl/l10n.js'
 
-	import DialogSaveBlock from '$lib/ui/overlays/dialog/DialogSaveBlock.svelte'
-	import BlockPlaceholder from '$lib/ui/editor/BlockPlaceholder.svelte'
-	import BlockEditor from '$lib/ui/editor/BlockEditor.svelte'
-	import FeedbackContent from '$lib/ui/FeedbackContent.svelte'
-	import Loading from '$lib/ui/Loading.svelte'
+	import DialogSaveBlock from '#lib/ui/overlays/dialog/DialogSaveBlock.svelte'
+	import BlockPlaceholder from '#lib/ui/editor/BlockPlaceholder.svelte'
+	import BlockEditor from '#lib/ui/editor/BlockEditor.svelte'
+	import FeedbackContent from '#lib/ui/FeedbackContent.svelte'
+	import Loading from '#lib/ui/Loading.svelte'
 
 	const coordinators: CurrentCoordinators = getContext('currentCoordinators')
 

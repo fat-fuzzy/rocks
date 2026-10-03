@@ -1,4 +1,4 @@
-import type {ICoordinateCompare, NamespaceId, Coordinators, Slug} from '$types'
+import type {ICoordinateCompare, NamespaceId, Coordinators, Slug} from '#types'
 
 import {SvelteURLSearchParams} from 'svelte/reactivity'
 

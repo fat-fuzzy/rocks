@@ -11,9 +11,8 @@
 /// <reference types="../../.svelte-kit/ambient.d.ts" />
 
 import {version} from '$app/env'
-
-// This gives `self` the correct types
-const self = globalThis.self as unknown as ServiceWorkerGlobalScope
+import {assets, immutable, prerendered} from '$app/manifest'
+import {self} from '$app/service-worker'
 
 // Create a unique cache name for this deployment
 const CACHE = `cache-${version}`
@@ -37,17 +36,30 @@ const CTA = [
 	REFLECT_URL,
 	EXPLORE_URL,
 ]
-const ASSETS = [SHELL_URL, POLLEN_URL, CHLOROPHYLL_URL]
+
+const STATIC = assets
+	.map((a) => `/${a.path}`)
+	.filter((v) => v.indexOf('.DS_Store') === -1)
+const IMMUTABLE = immutable.map((a) => a.path)
+const PRERENDERED = prerendered.map((a) => a.path)
+
+const ASSETS = [SHELL_URL, CHLOROPHYLL_URL, POLLEN_URL, ...STATIC]
 
 self.addEventListener('install', (event) => {
 	// Create a new cache and add all files to it
-	async function addFilesToCache() {
-		const cache = await caches.open(CACHE)
-		await cache.addAll(ASSETS)
-		await cache.addAll(CTA)
-	}
+	try {
+		async function addFilesToCache() {
+			const cache = await caches.open(CACHE)
+			await cache.addAll(ASSETS)
+			await cache.addAll(IMMUTABLE)
+			await cache.addAll(PRERENDERED)
+			await cache.addAll(CTA)
+		}
 
-	event.waitUntil(addFilesToCache())
+		event.waitUntil(addFilesToCache())
+	} catch (error) {
+		throw new Error('Install failed', {cause: error})
+	}
 })
 
 self.addEventListener('activate', (event) => {

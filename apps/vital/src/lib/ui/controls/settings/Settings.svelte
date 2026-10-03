@@ -1,13 +1,13 @@
 <script lang="ts">
 	import type {UiColor, UiVariant, InputProps} from '@fat-fuzzy/ui'
-	import type {ICoordinateMetadata} from '$types'
+	import type {ICoordinateMetadata} from '#types'
 
 	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
 
-	import {DOC_LANGUAGE, DOC_FORMAT} from '$config/setup'
-	import DialogSaveLanguage from '$lib/ui/overlays/dialog/DialogSaveLanguage.svelte'
-	import DialogSaveFormat from '$lib/ui/overlays/dialog/DialogSaveFormat.svelte'
+	import {DOC_LANGUAGE, DOC_FORMAT} from '#config/setup.js'
+	import DialogSaveLanguage from '#lib/ui/overlays/dialog/DialogSaveLanguage.svelte'
+	import DialogSaveFormat from '#lib/ui/overlays/dialog/DialogSaveFormat.svelte'
 
 	const {InputGroup} = ui.blocks
 
@@ -23,7 +23,7 @@
 		coordMetadata: ICoordinateMetadata
 	} = $props()
 
-	let cta = $derived(page.params.page)
+	let cta = $derived(page.params.cta)
 	let baseLanguages = $derived(coordMetadata.getLanguages())
 	let baseFormats = $derived(coordMetadata.getFormats())
 

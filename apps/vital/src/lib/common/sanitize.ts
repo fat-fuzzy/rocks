@@ -11,7 +11,7 @@ import type {
 	Path,
 	DateString,
 	Uuid,
-} from '$types'
+} from '#types'
 
 import {
 	BlockValidator,
@@ -25,7 +25,7 @@ import {
 	PathValidator,
 	DateStringValidator,
 	UuidValidator,
-} from '$lib/common/validate'
+} from '#lib/common/validate.js'
 
 /*******************
  *  Hard fails

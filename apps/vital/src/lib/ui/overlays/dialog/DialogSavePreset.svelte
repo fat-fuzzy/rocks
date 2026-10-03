@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {ICoordinatePresets, Preset} from '$types'
+	import type {ICoordinatePresets, Preset} from '#types'
 	import type {
 		UiAssetType,
 		UiColor,
@@ -10,8 +10,8 @@
 
 	import ui from '@fat-fuzzy/ui'
 
-	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
-	import FormPreset from '$lib/ui/controls/preset/FormPreset.svelte'
+	import dialogActor from '#lib/ui/overlays/dialog/actor.svelte.js'
+	import FormPreset from '#lib/ui/controls/preset/FormPreset.svelte'
 
 	const {Button} = ui.blocks
 

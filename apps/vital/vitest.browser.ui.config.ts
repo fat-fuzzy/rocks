@@ -1,4 +1,3 @@
-import path from 'node:path'
 import {defineConfig} from 'vitest/config'
 import {sveltekit} from '@sveltejs/kit/vite'
 import {vitePreprocess} from '@sveltejs/vite-plugin-svelte'
@@ -6,8 +5,7 @@ import adapter from '@sveltejs/adapter-cloudflare'
 import {playwright} from '@vitest/browser-playwright'
 import {mdsvex} from 'mdsvex'
 import mdsvexConfig from './mdsvex.config.js'
-
-import {ALIAS_BASE, TEST_CONFIG_BASE} from './vitest.browser.config'
+import {TEST_CONFIG_BASE} from './vitest.browser.config'
 
 export const COVERAGE_BASE = {
 	enabled: true,
@@ -35,19 +33,8 @@ export default defineConfig({
 			// If your environment is not supported, or you settled on a specific environment, switch out the adapter.
 			// See https://svelte.dev/docs/kit/adapters for more information about adapters.
 			adapter: adapter(),
-			alias: {
-				$config: path.resolve('./src/config'),
-				$data: path.resolve('./src/data'),
-				$types: path.resolve('./src/lib/types/index.ts'),
-				$schemas: path.resolve('./src/schemas'),
-				$tests: path.resolve('./tests'),
-				$lib: path.resolve('./src/lib'),
-			},
 		}),
 	],
-	resolve: {
-		alias: ALIAS_BASE,
-	},
 	test: {
 		...TEST_CONFIG_BASE,
 		reporters: ['html'],

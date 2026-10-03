@@ -10,7 +10,7 @@ import type {
 	DocLanguage,
 	Path,
 	DateString,
-} from '$types'
+} from '#types'
 
 import {
 	BlockValidator,
@@ -23,7 +23,7 @@ import {
 	FrontmatterStructureValidator,
 	PathValidator,
 	DateStringValidator,
-} from '$lib/common/validate'
+} from '#lib/common/validate.js'
 
 /*******************
  *  Hard fails

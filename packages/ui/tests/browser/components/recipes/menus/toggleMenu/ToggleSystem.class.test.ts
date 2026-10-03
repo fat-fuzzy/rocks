@@ -1,6 +1,6 @@
 import {describe, it, expect, beforeEach} from 'vitest'
-import ToggleSystem from '$lib/components/recipes/menus/ToggleMenu/system.svelte'
-import {TOGGLE_PROPS, TOGGLE_GROUP_PROPS} from '$tests/fixtures/block-props'
+import ToggleSystem from '#lib/components/recipes/menus/ToggleMenu/system.svelte'
+import {TOGGLE_PROPS, TOGGLE_GROUP_PROPS} from '#tests/fixtures/block-props.js'
 
 describe(`ToggleSystem - a class to manage ToggleMenu components`, () => {
 	const system = new ToggleSystem()

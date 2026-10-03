@@ -1,5 +1,5 @@
-import type {Doc, DocStore, OPFSTreeDoc, Section} from '$types'
-import {SCHEMA_VERSION} from '$config/setup'
+import type {Doc, DocStore, OPFSTreeDoc, Section} from '#types'
+import {SCHEMA_VERSION} from '#config/setup.js'
 
 export const DOC_ID = crypto.randomUUID()
 export const SECTION_IDS = [crypto.randomUUID(), crypto.randomUUID()]

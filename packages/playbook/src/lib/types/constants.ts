@@ -1,4 +1,4 @@
-import type {StyleTree, Meta} from '$types'
+import type {StyleTree, Meta} from '#types'
 import type {UiColor, UiShape, UiSize, UiVariant} from '@fat-fuzzy/ui'
 
 const NUMBER_TO_SIZE: {[key: string]: string} = {

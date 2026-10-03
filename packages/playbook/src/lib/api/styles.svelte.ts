@@ -8,10 +8,10 @@ import type {
 	StyleOptions,
 	StyleTree,
 	StyleCategory,
-} from '$types'
+} from '#types'
 import StyleInputGroup from './styles.input-group'
 import StyleFamily from './styles.family'
-import {getFamily} from '$lib/props/props-style'
+import {getFamily} from '#lib/props/props-style.js'
 
 const tokens: TokenStyles = {
 	name: 'tokens',
@@ -160,7 +160,8 @@ class StylesApi {
 	}
 
 	getValue(styles: StyleTree, id: string): string {
-		let [category, family, style, _] = id.split('.')
+		// eslint-disable-next-line
+		const [category, family, style, _] = id.split('.')
 		let result = ''
 		if (
 			styles[category] &&

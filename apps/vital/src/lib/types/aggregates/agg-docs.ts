@@ -11,7 +11,7 @@ import type {
 	Section,
 	Slug,
 	Uuid,
-} from '$types'
+} from '#types'
 
 export type DocStore = {
 	[language in DocLanguage]?: {

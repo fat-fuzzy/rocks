@@ -7,13 +7,17 @@
 	import {page} from '$app/state'
 	// @ts-expect-error types not used for css
 	import '@fat-fuzzy/style/css'
-	import '$lib/styles/css/main.css'
+	import '#lib/styles/css/main.css'
 
-	import {buildNav} from '$data/nav'
-	import {initBridge, destroyBridge} from '$lib/aggregates/bridge'
-	import {createAggregates} from '$lib/aggregates/container'
-	import {createCoords, createCompareCoords} from '$lib/application/container'
-	import Dialog from '$lib/ui/overlays/dialog/Dialog.svelte'
+	import {buildNav} from '#data/nav.js'
+	import {getRouteNameFromRouteId} from '#lib/common/routing.js'
+	import {initBridge, destroyBridge} from '#lib/aggregates/bridge.js'
+	import {createAggregates} from '#lib/aggregates/container.js'
+	import {
+		createCoords,
+		createCompareCoords,
+	} from '#lib/application/container.js'
+	import Dialog from '#lib/ui/overlays/dialog/Dialog.svelte'
 
 	const {ToggleTree, ToggleReveal, ToggleSettings} = ui.drafts
 	const {SkipLinks} = ui.recipes
@@ -36,16 +40,19 @@
 	setContext('coordinators', coordinators)
 	setContext('coordCompare', coordCompare)
 
+	let pathname = $derived(page.url.pathname)
+	let cta = $derived(
+		page.params.cta ??
+			(pathname === '/' ? pathname : getRouteNameFromRouteId(pathname)),
+	)
+
 	/**
 	 * Setup page data (loaded / generated)
 	 */
 	const sidenav = buildNav('vital')
 
-	let pathname = $derived(page.url.pathname)
 	let layout: UiLayout = $derived.by(() => {
-		const _page = page.params.page ? page.params.page : page.url.pathname
-
-		switch (_page) {
+		switch (cta) {
 			case 'build':
 			case 'edit':
 			case 'compare':
@@ -56,14 +63,12 @@
 			case 'analyze':
 			case 'engage':
 				return 'railway'
-			case '/chlorophyll':
-			case '/mycelium':
-			case '/pollen':
-				return 'tgv'
+			case 'chlorophyll':
+			case 'mycelium':
+			case 'pollen':
 			case '/':
-				return 'tgv'
 			default:
-				return 'voyager'
+				return 'tgv'
 		}
 	})
 

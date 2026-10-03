@@ -2,10 +2,14 @@
 .bg\:dark,
 .bg\:inherit,
 [class*='bg:blur'] {
-	--shade: oklch(var(--lightness) var(--chroma, var(--chroma-base)) var(--hue));
+	--shade: oklch(var(--lightness) var(--color-chroma-neutral) var(--hue));
 	--ink: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
 	--accent: oklch(var(--lightness-accent) var(--chroma-contrast) var(--hue));
 	--shadow: oklch(var(--lightness-contrast) var(--chroma-contrast) var(--hue));
+	--thumb: oklch(
+		var(--lightness-surface-3) var(--color-chroma-neutral) var(--hue)
+	);
+	--track: var(--shade);
 
 	color: var(--ink);
 	background-color: var(--shade);
@@ -16,6 +20,7 @@
 	color: inherit;
 	accent-color: inherit;
 	background-color: inherit;
+	scrollbar-color: var(--thumb) var(--track);
 }
 
 [class*='bg:blur'] {

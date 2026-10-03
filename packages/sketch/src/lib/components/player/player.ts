@@ -1,5 +1,4 @@
-import {EventOrder} from '$types'
-import type {PlayerEvent, PlayerState, PlayerAction} from '$types'
+import type {PlayerEvent, PlayerState, PlayerAction, EventOrder} from '#types'
 import type {UiColor, UiSize, UiVariant, FuzzyPayload} from '@fat-fuzzy/ui'
 
 export type PlayerUi = 'play' | 'pause' | 'stop' | 'clear'

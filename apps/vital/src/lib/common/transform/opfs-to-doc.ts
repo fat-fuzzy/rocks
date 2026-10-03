@@ -16,15 +16,15 @@ import type {
 	Uuid,
 	DocPath,
 	OPFStructure,
-} from '$types'
+} from '#types'
 
-import {SCHEMA_VERSION} from '$config/setup'
+import {SCHEMA_VERSION} from '#config/setup.js'
 import {
 	parseSection,
 	parseBase,
 	parsePreset,
 	parseStructure,
-} from '$lib/common/transform/parse-or-throw'
+} from '#lib/common/transform/parse-or-throw.js'
 
 export function isRecord(value: unknown): value is Record<string, unknown> {
 	return typeof value === 'object' && value !== null

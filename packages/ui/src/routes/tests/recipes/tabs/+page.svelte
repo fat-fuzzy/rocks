@@ -1,7 +1,7 @@
 <script lang="ts">
 	import {page} from '$app/state'
 
-	import Tabs from '$lib/components/recipes/tabs/Tabs.svelte'
+	import Tabs from '#lib/components/recipes/tabs/Tabs.svelte'
 
 	const TABS = [
 		{

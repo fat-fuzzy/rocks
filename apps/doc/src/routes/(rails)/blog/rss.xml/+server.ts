@@ -3,7 +3,7 @@
  * more resources:
  * - https://www.davidwparker.com/posts/how-to-make-an-rss-feed-in-sveltekit
  */
-import blog from '$data/blog'
+import blog from '#data/blog.js'
 import {sanitize} from '@fat-fuzzy/validation'
 export const prerender = true
 

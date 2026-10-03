@@ -1,10 +1,10 @@
-import type {Aggregators, Coordinators, NamespaceId} from '$types'
-import CoordinateCompare from '$lib/application/CoordinateCompare.svelte'
-import CoordinateDocs from '$lib/application/CoordinateDocs.svelte'
-import CoordinateExports from '$lib/application/CoordinateExports.svelte'
-import CoordinateImports from '$lib/application/CoordinateImports.svelte'
-import CoordinateMetadata from '$lib/application/CoordinateMetadata.svelte'
-import CoordinatePresets from '$lib/application/CoordinatePresets.svelte'
+import type {Aggregators, Coordinators, NamespaceId} from '#types'
+import CoordinateCompare from '#lib/application/CoordinateCompare.svelte.js'
+import CoordinateDocs from '#lib/application/CoordinateDocs.svelte.js'
+import CoordinateExports from '#lib/application/CoordinateExports.svelte.js'
+import CoordinateImports from '#lib/application/CoordinateImports.svelte.js'
+import CoordinateMetadata from '#lib/application/CoordinateMetadata.svelte.js'
+import CoordinatePresets from '#lib/application/CoordinatePresets.svelte.js'
 
 export function createCoords(options: {[key in NamespaceId]: Aggregators}): {
 	[key in NamespaceId]: Coordinators

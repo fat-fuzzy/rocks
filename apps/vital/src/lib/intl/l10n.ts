@@ -5,20 +5,20 @@ import type {
 	LabelsForNamespace,
 	LabelsForRoutes,
 	NamespaceKey,
-} from '$types'
+} from '#types'
 
 export const LOCALIZATIONS: Localizations = {
 	en: {
 		experience: 'Experience',
 		education: 'Education & Development',
 		skills: 'Main Skills',
-		cv: 'Resume',
+		cv: '',
 	},
 	fr: {
 		experience: 'Expérience',
 		education: 'Formation et Développement Professionnel',
 		skills: 'Compétences Clés',
-		cv: 'CV',
+		cv: '',
 	},
 }
 

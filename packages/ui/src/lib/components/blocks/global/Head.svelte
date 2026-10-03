@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {HeadProps} from '$types'
+	import type {HeadProps} from '#types'
 
 	let {
 		title,

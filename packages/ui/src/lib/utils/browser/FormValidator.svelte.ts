@@ -6,7 +6,7 @@ import type {
 	SchemaToValidate,
 	ValidationError,
 	AjvValidateFunction,
-} from '$types'
+} from '#types'
 
 /**
  * Use this Class to provide frontend validation capabilities to a form rendered by the server.

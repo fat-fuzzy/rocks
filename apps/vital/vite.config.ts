@@ -1,4 +1,3 @@
-import path from 'node:path'
 import {mdsvex} from 'mdsvex'
 import adapter from '@sveltejs/adapter-cloudflare'
 import mdsvexConfig from './mdsvex.config.js'
@@ -19,14 +18,6 @@ export default defineConfig({
 			// If your environment is not supported, or you settled on a specific environment, switch out the adapter.
 			// See https://svelte.dev/docs/kit/adapters for more information about adapters.
 			adapter: adapter(),
-			alias: {
-				$config: path.resolve('./src/config'),
-				$data: path.resolve('./src/data'),
-				$types: path.resolve('./src/lib/types/index.ts'),
-				$schemas: path.resolve('./src/schemas'),
-				$tests: path.resolve('./tests'),
-				$lib: path.resolve('./src/lib'),
-			},
 			/**
 			 * This includes Content Security Policy (CSP) and other security-related headers.
 			 * Verify:

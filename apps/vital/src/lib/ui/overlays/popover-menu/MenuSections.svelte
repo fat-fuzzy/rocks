@@ -4,8 +4,8 @@
 
 	import ui from '@fat-fuzzy/ui'
 
-	import FilterSections from '$lib/ui/controls/section/FilterSections.svelte'
-	import type {CurrentCoordinators} from '$types'
+	import FilterSections from '#lib/ui/controls/section/FilterSections.svelte'
+	import type {CurrentCoordinators} from '#types'
 
 	const {Popover} = ui.drafts
 

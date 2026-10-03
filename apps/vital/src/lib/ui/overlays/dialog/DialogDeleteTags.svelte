@@ -6,12 +6,12 @@
 		UiSize,
 		UiVariant,
 	} from '@fat-fuzzy/ui'
-	import type {ICoordinateMetadata, TagGroup} from '$types'
+	import type {ICoordinateMetadata, TagGroup} from '#types'
 
 	import ui from '@fat-fuzzy/ui'
 
-	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
-	import FormTags from '$lib/ui/controls/tags/FormTags.svelte'
+	import dialogActor from '#lib/ui/overlays/dialog/actor.svelte.js'
+	import FormTags from '#lib/ui/controls/tags/FormTags.svelte'
 
 	const {Button} = ui.blocks
 

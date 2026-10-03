@@ -1,6 +1,6 @@
 <script lang="ts">
 	import '@fat-fuzzy/style/css'
-	import ToggleReveal from '$lib/components/recipes/toggle/ToggleReveal.svelte'
+	import ToggleReveal from '#lib/components/recipes/toggle/ToggleReveal.svelte'
 	import type {Snippet} from 'svelte'
 
 	import {resolve} from '$app/paths'
@@ -49,7 +49,7 @@
 					? 'page'
 					: undefined}
 			>
-				<a data-sveltekit-preload-data href={resolve(`/${slug}`)}>
+				<a data-sveltekit-preload-data href={`/${slug}`}>
 					{label}
 				</a>
 			</li>

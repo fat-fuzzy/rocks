@@ -1,4 +1,4 @@
-import type {Block, Section, SeedSection} from '$types'
+import type {Block, Section, SeedSection} from '#types'
 
 export function sortByNameAsc(a: SeedSection, b: SeedSection) {
 	return a.meta.name < b.meta.name ? -1 : b.meta.name < a.meta.name ? 1 : 0

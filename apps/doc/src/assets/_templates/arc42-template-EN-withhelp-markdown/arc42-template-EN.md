@@ -411,9 +411,9 @@ name and responsibility according to the following schema:
 +-----------------------+-----------------------------------------------+
 | **Name** | **Responsibility** |
 +=======================+===============================================+
-| _\<black box 1>_ |  *\<Text>* |
+| _\<black box 1>_ |  _\<Text>_ |
 +-----------------------+-----------------------------------------------+
-| _\<black box 2>_ |  *\<Text>* |
+| _\<black box 2>_ |  _\<Text>_ |
 +-----------------------+-----------------------------------------------+
 
 If you use a list of black box descriptions then you fill in a separate

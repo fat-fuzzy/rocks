@@ -1,6 +1,6 @@
 import {error} from '@sveltejs/kit'
 import {actions as parentActions} from '../+page.server'
-import images from '$data/images'
+import images from '#data/images.js'
 
 export const load = async ({parent, params}) => {
 	const {talks} = await parent()
@@ -8,7 +8,7 @@ export const load = async ({parent, params}) => {
 	const content = talks.find((p) => p.meta.slug === params.talk)
 
 	if (!content?.meta) {
-		error(404, {message: 'Not found'})
+		error(404, 'Not found')
 	}
 
 	let image

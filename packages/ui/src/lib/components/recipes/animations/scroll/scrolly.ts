@@ -1,4 +1,4 @@
-import type {MediaProps, MagicProps} from '$types'
+import type {MediaProps, MagicProps} from '#types'
 
 export type ScrollyItemProps = {
 	overlay?: boolean

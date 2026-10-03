@@ -6,7 +6,7 @@ import type {
 	IAggregatePresets,
 	IAggregateMetadata,
 	NamespaceId,
-} from '$types'
+} from '#types'
 
 export interface ICoordinatePresets {
 	readonly aggMetadata: IAggregateMetadata

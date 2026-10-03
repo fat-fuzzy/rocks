@@ -6,7 +6,7 @@ import type {
 	FrontmatterStructure,
 	DocLanguage,
 	Slug,
-} from '$types'
+} from '#types'
 // Storage Output
 
 export type OPFSTreeDoc = Record<

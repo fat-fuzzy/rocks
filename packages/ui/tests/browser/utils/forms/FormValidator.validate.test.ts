@@ -3,7 +3,7 @@ import type {Locator} from 'vitest/browser'
 import {describe, test, expect} from 'vitest'
 import {userEvent} from 'vitest/browser'
 import {render} from 'vitest-browser-svelte'
-import {INPUTS} from '$tests/fixtures/form-inputs'
+import {INPUTS} from '#tests/fixtures/form-inputs.ts'
 import Form from './FormTest.svelte'
 
 describe('FormValidator - Svelte Integration Tests', () => {

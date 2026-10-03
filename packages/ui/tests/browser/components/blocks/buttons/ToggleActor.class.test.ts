@@ -1,11 +1,11 @@
-import type {ButtonEvent, FuzzyPayload} from '$types'
+import type {ButtonEvent, FuzzyPayload} from '#types'
 import {describe, it, expect} from 'vitest'
-import ToggleActor from '$lib/components/blocks/buttons/Toggle/actor.svelte'
+import ToggleActor from '#lib/components/blocks/buttons/Toggle/actor.svelte.js'
 import {
 	TOGGLE_MACHINE,
 	TOGGLE_TRANSITIONS,
-} from '$lib/components/blocks/buttons/Toggle/definitions'
-import {PROPS_BLOCK} from '$tests/fixtures/style-props'
+} from '#lib/components/blocks/buttons/Toggle/definitions.js'
+import {PROPS_BLOCK} from '#tests/fixtures/style-props.js'
 
 const defaultActiveConfig = {
 	initial: 'active',

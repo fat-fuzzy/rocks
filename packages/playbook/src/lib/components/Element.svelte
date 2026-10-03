@@ -1,6 +1,7 @@
 <script lang="ts">
+	import type {Component} from 'svelte'
 	import {getContext} from 'svelte'
-	import {PlaybookActor} from '$lib/api/actor.svelte'
+	import {PlaybookActor} from '#lib/api/actor.svelte.js'
 
 	import Token from './Token.svelte'
 	import Block from './Block.svelte'
@@ -10,7 +11,7 @@
 	type Props = {
 		title: string
 		path?: string
-		SpecifiedElement: any // TODO: fix types
+		SpecifiedElement: Component
 		formaction?: string
 		actionPath?: string
 		category?: string
@@ -26,7 +27,7 @@
 	}: Props = $props()
 
 	// TODO: fix types
-	let ApiElement: {[category: string]: any} = {
+	let ApiElement: {[category: string]: unknown} = {
 		tokens: Token,
 		blocks: Block,
 		layouts: Layout,
@@ -55,12 +56,14 @@
 				? `l:${container}:${size}`
 				: '',
 	)
-	let GenericElement = $derived(ApiElement[category])
+	let GenericElement = $derived(ApiElement[category] as Component)
 	let fixtures = $derived(
 		playbookActor.getElementFixtures({category, component: title}),
 	)
 	let statusFixures = $derived(
-		fixtures?.status ? fixtures.status.find((p) => p.value === status) : {},
+		fixtures?.status
+			? fixtures.status.find((p: {value: string}) => p.value === status)
+			: {},
 	)
 	let currentProps = $derived(fixtures?.status ? statusFixures : fixtures)
 </script>

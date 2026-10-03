@@ -1,12 +1,12 @@
 <script lang="ts">
-	import type {Block, ICoordinateDocs, ICoordinateMetadata} from '$types'
+	import type {Block, ICoordinateDocs, ICoordinateMetadata} from '#types'
 	import type {UiAssetType, UiColor, UiShape, UiVariant} from '@fat-fuzzy/ui'
 
 	import ui from '@fat-fuzzy/ui'
 
-	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
+	import dialogActor from '#lib/ui/overlays/dialog/actor.svelte.js'
 
-	import FormBlock from '$lib/ui/controls/block/FormBlock.svelte'
+	import FormBlock from '#lib/ui/controls/block/FormBlock.svelte'
 
 	const {Button} = ui.blocks
 

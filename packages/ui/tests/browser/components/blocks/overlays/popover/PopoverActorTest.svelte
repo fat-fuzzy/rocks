@@ -1,7 +1,7 @@
 <script lang="ts">
-	import TestContext from '$tests/browser/TestContext.svelte'
-	import Button from '$lib/components/blocks/buttons/Button.svelte'
-	import {POPOVER_PROPS} from '$tests/fixtures/block-props'
+	import TestContext from '#tests/browser/TestContext.svelte'
+	import Button from '#lib/components/blocks/buttons/Button.svelte'
+	import {POPOVER_PROPS} from '#tests/fixtures/block-props'
 
 	let {count = 1}: {count?: number} = $props()
 

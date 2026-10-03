@@ -1,11 +1,11 @@
 <script lang="ts">
 	import type {UiColor, UiSize, UiVariant} from '@fat-fuzzy/ui'
-	import type {CurrentCoordinators} from '$types'
+	import type {CurrentCoordinators} from '#types'
 
 	import ui from '@fat-fuzzy/ui'
 	import {getContext} from 'svelte'
 
-	import {generateDownload} from '$lib/common/download'
+	import {generateDownload} from '#lib/common/download.js'
 
 	const coordinators: CurrentCoordinators = getContext('currentCoordinators')
 

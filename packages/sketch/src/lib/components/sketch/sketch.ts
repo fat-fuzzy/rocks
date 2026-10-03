@@ -1,6 +1,8 @@
 import type {UiColor, UiSize, UiVariant, UiLayout} from '@fat-fuzzy/ui'
-import type {FeedbackType, SceneMeta, Scene} from '$types'
-import {
+import type {
+	FeedbackType,
+	SceneMeta,
+	Scene,
 	SketchEvent,
 	SketchState,
 	SketchAction,
@@ -13,7 +15,7 @@ import {
 	PlayerEvent,
 	PlayerState,
 	PlayerAction,
-} from '$types'
+} from '#types'
 import type {Snippet} from 'svelte'
 
 export type SketchUi = 'sketch' | 'canvas' | 'player' | 'controls'
@@ -23,10 +25,7 @@ export type UiState = SketchState | ControlsState | PlayerState | CanvasState
 export type UiEvent = SketchEvent | ControlsEvent | PlayerEvent | CanvasEvent
 
 export type UiAction =
-	| SketchAction
-	| ControlsAction
-	| PlayerAction
-	| CanvasAction
+	SketchAction | ControlsAction | PlayerAction | CanvasAction
 
 export type SketchFeedbackType = {
 	[ui in SketchUi]: FeedbackType[]

@@ -3,7 +3,7 @@ import type {
 	FrontmatterSeed,
 	FrontmatterStructure,
 	NamespaceId,
-} from '$types'
+} from '#types'
 
 export interface IAggregateDataLifecycle {
 	readonly root: NamespaceId

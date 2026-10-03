@@ -1,9 +1,9 @@
-import type {Markdown} from '$types'
-import assetsUtils from '$lib/server/services/markdowns/assets'
+import type {Markdown} from '#types'
+import assetsUtils from '#lib/server/services/markdowns/assets.js'
 
 const pathPrefix = '/src/assets/pages/'
 
-const pages: {[page: string]: unknown} = {
+const pages: {[page: string]: object} = {
 	home: import.meta.glob('/src/assets/pages/home.md'),
 	doc: import.meta.glob('/src/assets/pages/about.md'),
 	play: import.meta.glob('/src/assets/pages/play.md'),

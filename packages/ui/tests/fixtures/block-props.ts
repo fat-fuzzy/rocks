@@ -4,10 +4,10 @@ import type {
 	UiCoords,
 	UiPosition,
 	UiState,
-} from '$types'
+} from '#types'
 
-import {TOGGLE_MACHINE} from '$lib/components/blocks/buttons/Toggle/definitions'
-import {EXPAND_MACHINE} from '$lib/components/blocks/buttons/Expand/definitions'
+import {TOGGLE_MACHINE} from '#lib/components/blocks/buttons/Toggle/definitions.js'
+import {EXPAND_MACHINE} from '#lib/components/blocks/buttons/Expand/definitions.js'
 
 const BUTTON_PROPS = [
 	{

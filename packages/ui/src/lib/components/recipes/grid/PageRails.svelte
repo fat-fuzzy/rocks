@@ -1,9 +1,9 @@
 <script lang="ts">
-	import type {UiSize, PageRailsProps, UiLayout} from '$types'
-	import Head from '$lib/components/blocks/global/Head.svelte'
-	import PageHeader from '$lib/components/recipes/content/PageHeader.svelte'
-	import PageNav from '$lib/components/recipes/navs/PageNav.svelte'
-	import Breadcrumbs from '$lib/components/recipes/navs/Breadcrumbs.svelte'
+	import type {UiSize, PageRailsProps, UiLayout} from '#types'
+	import Head from '#lib/components/blocks/global/Head.svelte'
+	import PageHeader from '#lib/components/recipes/content/PageHeader.svelte'
+	import PageNav from '#lib/components/recipes/navs/PageNav.svelte'
+	import Breadcrumbs from '#lib/components/recipes/navs/Breadcrumbs.svelte'
 
 	let {
 		id = 'main',
@@ -23,6 +23,7 @@
 		footer,
 		useHeader = true,
 		layout = 'metro',
+		theme = 'neutral',
 		headerLayout,
 	}: PageRailsProps = $props()
 
@@ -31,13 +32,13 @@
 	let mediaClass = $derived(dimensions ? `media:${dimensions}` : '')
 
 	const zoneMainClasses: {[key: string]: string} = {
-		metro: 'l:grid size:3xs scroll:y color:neutral align:start',
-		railway: 'l:grid size:3xs scroll:y color:neutral align:start',
-		steam: 'l:grid size:3xs scroll:y color:neutral align:start align:start',
+		metro: 'l:grid size:3xs scroll:y bg:inherit align:start',
+		railway: 'l:grid size:3xs scroll:y bg:inherit align:start',
+		steam: 'l:grid size:3xs scroll:y bg:inherit align:start align:start',
 		tgv: 'snap:center align:start',
-		tram: 'l:grid snap:start size:3xs scroll:y color:neutral align:start',
-		voyager: 'l:grid snap:start size:3xs scroll:y color:neutral align:start ',
-		urbanist: 'snap:start l:grid size:3xs scroll:y color:neutral',
+		tram: 'l:grid snap:start size:3xs scroll:y bg:inherit align:start',
+		voyager: 'l:grid snap:start size:3xs scroll:y bg:inherit align:start ',
+		urbanist: 'snap:start l:grid size:3xs scroll:y bg:inherit',
 	}
 
 	const pageMainClasses: {[key: string]: string} = {
@@ -66,8 +67,8 @@
 		steam: 'ff:callout magic:feather shape:soft',
 		tgv: '',
 		tram: 'ff:callout shape:soft',
-		voyager: '',
-		urbanist: '',
+		voyager: 'bg:inherit',
+		urbanist: 'bg:inherit',
 	}
 
 	let contextClass = $derived(
@@ -83,7 +84,7 @@
 
 <Head pageName={currentPage} {title} {description} {prefix} />
 
-<main {id} class={`zone:main ${layout} ${zoneMainClass}`}>
+<main {id} class={`zone:main ${layout} ${zoneMainClass} color:${theme}`}>
 	{#if layout === 'tgv'}
 		{#if useHeader}
 			<PageHeader {title} text={text as UiSize} layout="center" />
@@ -119,7 +120,7 @@
 {#if layout !== 'tgv'}
 	<aside
 		id={`context-${id}`}
-		class={`page-context ${contextClass} ${mediaClass} scroll:y color:neutral`}
+		class={`page-context ${contextClass} ${mediaClass} scroll:y bg:inherit color:${theme}`}
 	>
 		{#if nav && nav.length > 0}
 			<PageNav id="page-nav" {hash} items={nav} />

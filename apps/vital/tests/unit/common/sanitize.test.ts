@@ -1,5 +1,5 @@
 import {describe, test, expect} from 'vitest'
-import {sanitizeFileName} from '$lib/common/sanitize'
+import {sanitizeFileName} from '#lib/common/sanitize.js'
 
 const CONTAINS_PATH_TRAVERSAL = {
 	root: '/',

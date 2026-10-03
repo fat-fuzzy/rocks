@@ -1,4 +1,3 @@
-import path from 'node:path'
 import {mdsvex} from 'mdsvex'
 import mdsvexConfig from './mdsvex.config.js'
 import adapter from '@sveltejs/adapter-cloudflare'
@@ -70,14 +69,6 @@ const config: UserConfig = {
 					'upgrade-insecure-requests': true,
 					'worker-src': ['self', 'blob:'],
 				},
-			},
-			alias: {
-				$config: path.resolve('./src/config'),
-				$utils: path.resolve('./src/utils'),
-				$data: path.resolve('./src/data'),
-				$assets: path.resolve('./src/assets'),
-				$types: path.resolve('./src/lib/types/index'),
-				$lib: path.resolve('./src/lib'),
 			},
 			inspector: {
 				toggleKeyCombo: 'meta-shift-G',

@@ -1,2 +1,2 @@
-export * from '$lib/types/navs'
-export * from '$lib/types/markdowns'
+export * from '#lib/types/navs.js'
+export * from '#lib/types/markdowns.js'

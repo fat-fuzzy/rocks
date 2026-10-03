@@ -1,65 +1,68 @@
 <script lang="ts">
-	import type {RouteId, CurrentCoordinators} from '$types'
+	import type {CurrentCoordinators, RouteId} from '#types'
 
 	import {getContext} from 'svelte'
 	import {page} from '$app/state'
 
-	import {getThemeForNamespace} from '$lib/styles/theme'
-	import PageAction from '$lib/ui/PageAction.svelte'
+	import {getThemeForNamespace} from '#lib/styles/theme.js'
+	import PageAction from '#lib/ui/PageAction.svelte'
 
 	const coordinators: CurrentCoordinators = getContext('currentCoordinators')
 
 	let coordPresets = $derived(coordinators.presets)
 
-	let theme = $derived(getThemeForNamespace('pollen'))
+	let theme = $derived(getThemeForNamespace('chlorophyll'))
 
 	let route = $derived(page.url.pathname as RouteId)
 	let query = $derived(page.url.search)
 
 	let gettingStarted = {
-		write: {
+		edit: {
 			sections: getStartedSections,
 			presets: getStartedPresets,
 		},
-		reflect: {
+		build: {
 			sections: getStartedSections,
 			presets: getStartedPresets,
 		},
-		explore: {
+		compare: {
 			presets: getStartedCompare,
+		},
+		preview: {
+			presets: getStartedPrint,
 		},
 	}
 
 	let twinLayout = {
-		explore: true,
+		compare: true,
 	}
 
 	let editor = {
-		write: true,
+		edit: true,
 	}
 
 	let builder = {
-		reflect: true,
+		build: true,
 	}
 
 	let presetsEditor = {
-		write: true,
-		reflect: true,
+		edit: true,
+		build: true,
 	}
 
 	let docEditor = {
-		write: true,
-		reflect: true,
+		edit: true,
+		build: true,
 	}
 </script>
 
 {#snippet getStartedSections()}
-	<p>To get started you can:</p>
+	<h3 class={`font:heading font:bold color:${theme}`}>Getting Started</h3>
 	<ul>
 		<li>
 			Create your own content: go to <a
 				class="font:semibold"
-				href="/pollen/write/"
+				href="/chlorophyll/edit/"
 			>
 				Edit
 			</a>, then click on
@@ -76,19 +79,27 @@
 {#snippet getStartedPresets()}
 	<p>
 		To get started, first create a Preset from <a
-			href="/pollen/write"
+			href="/chlorophyll/edit/"
 			class="font:semibold"
 		>
 			Edit
 		</a>
 		or
-		<a href="/pollen/reflect" class="font:semibold"> Build </a>
+		<a href="/chlorophyll/build" class="font:semibold"> Build </a>
 	</p>
 {/snippet}
 
 {#snippet getStartedCompare()}
 	{#if coordPresets.hasPresets()}
 		<p class="font:md">Select a Preset to compare</p>
+	{:else}
+		{@render getStartedPresets()}
+	{/if}
+{/snippet}
+
+{#snippet getStartedPrint()}
+	{#if coordPresets.hasPresets()}
+		<p class="font:md">Select a Preset to print</p>
 	{:else}
 		{@render getStartedPresets()}
 	{/if}
