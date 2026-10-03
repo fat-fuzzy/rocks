@@ -41,6 +41,7 @@
 		"#tests": "./tests/index.js",
 		"#tests/*": "./tests/*",
 		"#config/*": "./src/config/*",
+		"#data/*": "./src/data/*",
 		"#types": "./src/lib/types/index.ts"
 	},
 	"devDependencies": {

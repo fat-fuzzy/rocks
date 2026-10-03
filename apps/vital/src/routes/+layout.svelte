@@ -9,7 +9,7 @@
 	import '@fat-fuzzy/style/css'
 	import '#lib/styles/css/main.css'
 
-	import {buildNav} from '$data/nav'
+	import {buildNav} from '#data/nav.js'
 	import {getRouteNameFromRouteId} from '#lib/common/routing.js'
 	import {initBridge, destroyBridge} from '#lib/aggregates/bridge.js'
 	import {createAggregates} from '#lib/aggregates/container.js'
