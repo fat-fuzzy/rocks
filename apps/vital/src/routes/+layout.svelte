@@ -62,11 +62,8 @@
 			case 'chlorophyll':
 			case 'mycelium':
 			case 'pollen':
-				return 'tgv'
-			case '':
-				return 'tgv'
 			default:
-				return 'voyager'
+				return 'tgv'
 		}
 	})
 
