@@ -56,7 +56,7 @@
 
 			coordImports.setStatus('idle')
 
-			const newUrl = new SvelteURL(page.url)
+			const newUrl = new SvelteURL(page.url.href)
 			newUrl.search = ''
 
 			window.location.href = newUrl.href // FIXME: hacky solution to reload for now
