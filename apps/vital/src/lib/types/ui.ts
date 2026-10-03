@@ -13,11 +13,7 @@ export type InputCheckedTypes = 'radio' | 'checkbox'
 export type InputGroupMenus = {[name: string]: InputProps[]}
 
 export type DialogState =
-	| 'idle'
-	| 'loading'
-	| 'visible'
-	| 'closed'
-	| 'cancelled'
+	'idle' | 'loading' | 'visible' | 'closed' | 'cancelled'
 
 // TODO move elsewhere
 export type ImportStatus =
