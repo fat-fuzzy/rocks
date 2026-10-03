@@ -1,6 +1,6 @@
 import {error} from '@sveltejs/kit'
 import {actions as parentActions} from '../+page.server'
-import images from '$data/images'
+import images from '#data/images.js'
 
 export const load = async ({parent, params}) => {
 	const {talks} = await parent()

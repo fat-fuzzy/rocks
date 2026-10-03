@@ -1,7 +1,7 @@
 import type {NavItem} from '#types'
 import {buildNav} from '#lib/server/services/navigation/setup.js'
-import {pages} from '$config/navigation'
-import blog from '$data/blog'
+import {pages} from '#config/navigation.js'
+import blog from '#data/blog.js'
 
 const posts = blog.markdowns.filter(({meta}) => meta.status !== 'draft')
 

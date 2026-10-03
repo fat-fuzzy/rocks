@@ -1,6 +1,6 @@
 import {error} from '@sveltejs/kit'
-import blog from '$data/blog'
-import pages from '$data/pages'
+import blog from '#data/blog.js'
+import pages from '#data/pages.js'
 
 const page = 'blog'
 

@@ -1,5 +1,5 @@
 import {error} from '@sveltejs/kit'
-import decisions from '$data/decisions'
+import decisions from '#data/decisions.js'
 import {actions as parentActions} from '../+page.server'
 
 /**
@@ -8,7 +8,7 @@ import {actions as parentActions} from '../+page.server'
  * @returns { title, year, rawHtml } frontmatter metadata and markdown content as a rawHtml string
  */
 export const load = async ({parent, params}) => {
-	let {sidebar} = await parent()
+	const {sidebar} = await parent()
 	const {slug} = params
 	sidebar.layout = 'metro'
 	const markdowns = decisions.markdowns

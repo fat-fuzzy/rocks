@@ -1,5 +1,5 @@
 import {error} from '@sveltejs/kit'
-import pages from '$data/pages'
+import pages from '#data/pages.js'
 import {commonActions} from '#lib/server/actions/page-actions.js'
 
 const page = 'blog'
