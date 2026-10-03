@@ -3,13 +3,13 @@
 	import type {JSONContent} from '@tiptap/core'
 	import type {OverlayProps, UiColor, UiSize, UiVariant} from '@fat-fuzzy/ui'
 
-	import '$lib/styles/css/editor.css'
+	import '#lib/styles/css/editor.css'
 	import DOMPurify from 'dompurify'
 	import {browser} from '$app/env'
 	import {onMount, onDestroy} from 'svelte'
 	import {Editor} from '@tiptap/core'
-	import settings from '$lib/editor/editor-settings'
-	import EditorMenu from '$lib/editor/EditorMenu.svelte'
+	import settings from '#lib/editor/editor-settings.js'
+	import EditorMenu from '#lib/editor/EditorMenu.svelte'
 
 	let {
 		content,
