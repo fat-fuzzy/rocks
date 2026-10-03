@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type {JSONContent} from '@tiptap/core'
 
-	import Editor from '$lib/editor/Editor.svelte'
+	import Editor from '#lib/editor/Editor.svelte'
 	import ui from '@fat-fuzzy/ui'
 	import {onMount} from 'svelte'
 
