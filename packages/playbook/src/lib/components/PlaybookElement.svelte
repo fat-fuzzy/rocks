@@ -5,8 +5,8 @@
 	import {getContext} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
 
-	import {PlaybookActor} from '$lib/api/actor.svelte'
-	import {getPlaybookTab, getDocTab} from '$lib/props'
+	import {PlaybookActor} from '#lib/api/actor.svelte.js'
+	import {getPlaybookTab, getDocTab} from '#lib/props/index.js'
 
 	import Token from './Token.svelte'
 	import Block from './Block.svelte'

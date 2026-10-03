@@ -1,5 +1,5 @@
-import StyleFamily from '$lib/api/styles.family'
-import StyleInputGroup from '$lib/api/styles.input-group'
+import StyleFamily from '#lib/api/styles.family.js'
+import StyleInputGroup from '#lib/api/styles.input-group.js'
 
 const brightness = {
 	initial: 'day',

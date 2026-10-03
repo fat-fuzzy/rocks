@@ -1,9 +1,9 @@
 import type {StyleTree} from '$types'
 import ui from '@fat-fuzzy/ui'
-import buttonFixtures from '$lib/fixtures/js/blocks'
-import tokenFixtures from '$lib/fixtures/js/tokens'
-import layoutsFixtures from '$lib/fixtures/js/layouts'
-import recipesFixtures from '$lib/fixtures/js/recipes'
+import buttonFixtures from '#lib/fixtures/js/blocks.js'
+import tokenFixtures from '#lib/fixtures/js/tokens.js'
+import layoutsFixtures from '#lib/fixtures/js/layouts.js'
+import recipesFixtures from '#lib/fixtures/js/recipes.js'
 
 const {DEFAULT_PREFERENCES, DEFAULT_STYLES} = ui.constants
 

@@ -1,11 +1,12 @@
 <script lang="ts">
+	import type {Component} from 'svelte'
 	import {getContext} from 'svelte'
-	import {PlaybookActor} from '$lib/api/actor.svelte'
+	import {PlaybookActor} from '#lib/api/actor.svelte.js'
 
 	type Props = {
 		title: string
-		SpecifiedElement: any // TODO: fix type
-		props: any // TODO: fix type
+		SpecifiedElement: Component
+		props: {asset: string} & object
 	}
 
 	let {title, SpecifiedElement, props}: Props = $props()

@@ -6,7 +6,7 @@
 	import PropsDemo from './PropsDemo.svelte'
 	import PropsDoc from './PropsDoc.svelte'
 	import Element from './Element.svelte'
-	import {getPlaybookTab, getDocTab} from '$lib/props'
+	import {getPlaybookTab, getDocTab} from '#lib/props/index.js'
 	import {resolve} from '$app/paths'
 
 	const {EscapeHtml} = ui.headless
