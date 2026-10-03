@@ -19,7 +19,7 @@ export const load = async ({locals, params, parent}) => {
 	if (!slug) {
 		content = await pages.fetchMarkdowns(page)
 		if (!content?.length) {
-			error(404, {message: 'Not found'})
+			error(404, 'Not found')
 		} else {
 			content = content[0]
 		}
@@ -28,24 +28,24 @@ export const load = async ({locals, params, parent}) => {
 	} else if (slug === component && category) {
 		const categoryMarkdowns = markdowns[category]
 		if (!categoryMarkdowns?.length) {
-			error(404, {message: 'Not found'})
+			error(404, 'Not found')
 		} else {
 			content = categoryMarkdowns.find(
 				({meta}) => meta.slug === slug && meta.status !== 'draft',
 			)
 			if (!content?.meta) {
-				error(404, {message: 'Not found'})
+				error(404, 'Not found')
 			}
 		}
 	} else if (slug === category) {
 		if (!markdowns[category]) {
-			error(404, {message: 'Not found'})
+			error(404, 'Not found')
 		}
 		content = markdowns[category].find(
 			({meta}) => meta.slug === category && meta.status !== 'draft',
 		)
 		if (!content?.meta) {
-			error(404, {message: 'Not found'})
+			error(404, 'Not found')
 		}
 	}
 
