@@ -1,11 +1,11 @@
+import type {Handle} from '@sveltejs/kit/hooks'
+
 /**
  * Set security headers for the application.
  * Verify:
  * - https://securityheaders.com
  * CSP Headers and Resources are in `svelte.config.js`.
  */
-import type {Handle} from '@sveltejs/kit'
-
 const PERMISSIONS_POLICY_DIRECTIVES = [
 	'accelerometer=()',
 	// 'ambient-light-sensor=()',
@@ -53,9 +53,9 @@ export const setPermissionsPolicy =
 		event.setHeaders({
 			'Permissions-Policy': PERMISSIONS_POLICY_DIRECTIVES.join(', '),
 		})
+
 		return resolve(event)
 	}
-
 export const setSecHeaders =
 	(): Handle =>
 	async ({event, resolve}) => {
