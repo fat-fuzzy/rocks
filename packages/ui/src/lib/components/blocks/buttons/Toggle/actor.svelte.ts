@@ -9,7 +9,7 @@ import type {
 } from '$types'
 import {TOGGLE_MACHINE, TOGGLE_TRANSITIONS} from './definitions'
 
-import styleHelper from '$lib/utils/styles.js'
+import styleHelper from '#lib/utils/styles.js'
 class ToggleActor implements FuzzyActor {
 	state: UiStateToggle = $state('inactive')
 	machine = $state(TOGGLE_MACHINE)

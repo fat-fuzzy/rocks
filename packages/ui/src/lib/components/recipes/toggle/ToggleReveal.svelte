@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type {ToggleRevealProps} from '$types'
-	import styleHelper from '$lib/utils/styles'
-	// import {clickOutside} from '$lib/utils/browser/click-outside'
+	import styleHelper from '#lib/utils/styles.js'
+	// import {clickOutside} from '#lib/utils/browser/click-outside.js'
 
 	let {
 		id = 'toggle-reveal',

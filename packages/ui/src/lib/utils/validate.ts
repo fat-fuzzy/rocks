@@ -6,7 +6,7 @@ import type {
 	CookiePreferences,
 } from '$types'
 
-import * as validators from '$lib/generated/ajv/validate.ajv.mjs'
+import * as validators from '#lib/generated/ajv/validate.ajv.mjs'
 
 export function getTypedValidatorFunction<T>(
 	fn: (data: unknown) => boolean,

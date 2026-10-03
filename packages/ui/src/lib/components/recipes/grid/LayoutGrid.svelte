@@ -2,7 +2,7 @@
 	import type {LayoutGridProps} from '$types'
 
 	import {onMount} from 'svelte'
-	import format from '$lib/utils/format'
+	import format from '#lib/utils/format.js'
 
 	let {areas, size, layout, app, path}: LayoutGridProps = $props()
 

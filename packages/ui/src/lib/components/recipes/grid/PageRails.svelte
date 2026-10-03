@@ -1,9 +1,9 @@
 <script lang="ts">
 	import type {UiSize, PageRailsProps, UiLayout} from '$types'
-	import Head from '$lib/components/blocks/global/Head.svelte'
-	import PageHeader from '$lib/components/recipes/content/PageHeader.svelte'
-	import PageNav from '$lib/components/recipes/navs/PageNav.svelte'
-	import Breadcrumbs from '$lib/components/recipes/navs/Breadcrumbs.svelte'
+	import Head from '#lib/components/blocks/global/Head.svelte'
+	import PageHeader from '#lib/components/recipes/content/PageHeader.svelte'
+	import PageNav from '#lib/components/recipes/navs/PageNav.svelte'
+	import Breadcrumbs from '#lib/components/recipes/navs/Breadcrumbs.svelte'
 
 	let {
 		id = 'main',

@@ -2,9 +2,9 @@
 	import {tick} from 'svelte'
 	import {page} from '$app/state'
 
-	import {TestFormValidator} from '$lib/utils/validate'
-	import FormValidator from '$lib/utils/browser/FormValidator.svelte'
-	import InputGroup from '$lib/components/blocks/inputs/InputGroup.svelte'
+	import {TestFormValidator} from '#lib/utils/validate.js'
+	import FormValidator from '#lib/utils/browser/FormValidator.svelte.js'
+	import InputGroup from '#lib/components/blocks/inputs/InputGroup.svelte'
 	import {INPUTS} from '$tests/fixtures/form-inputs'
 
 	let validator = new FormValidator(TestFormValidator)

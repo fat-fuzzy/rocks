@@ -9,7 +9,7 @@ import type {
 	UiState,
 } from '$types'
 import {EXPAND_MACHINE, EXPAND_TRANSITIONS} from './definitions.js'
-import styleHelper from '$lib/utils/styles.js'
+import styleHelper from '#lib/utils/styles.js'
 
 class ExpandActor implements FuzzyActor {
 	state = $state<UiStateExpand>('collapsed')

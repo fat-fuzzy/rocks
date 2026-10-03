@@ -1,7 +1,7 @@
 <script lang="ts">
 	import {page} from '$app/state'
 
-	import PageTabs from '$lib/components/recipes/content/PageTabs.svelte'
+	import PageTabs from '#lib/components/recipes/content/PageTabs.svelte'
 
 	const TABS = [
 		{

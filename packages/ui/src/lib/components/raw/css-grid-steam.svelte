@@ -1,9 +1,9 @@
 <script lang="ts">
-	import MainNav from '$lib/components/raw/fixtures/nav-1.svelte'
-	import SideNav from '$lib/components/raw/fixtures/nav-2.svelte'
-	import NavItems from '$lib/components/raw/fixtures/nav-2-emojis.svelte'
-	import AppContext from '$lib/components/raw/fixtures/app-context.svelte'
-	import Details from '$lib/components/raw/fixtures/details.svelte'
+	import MainNav from '#lib/components/raw/fixtures/nav-1.svelte'
+	import SideNav from '#lib/components/raw/fixtures/nav-2.svelte'
+	import NavItems from '#lib/components/raw/fixtures/nav-2-emojis.svelte'
+	import AppContext from '#lib/components/raw/fixtures/app-context.svelte'
+	import Details from '#lib/components/raw/fixtures/details.svelte'
 
 	let title = '🚂 Steam'
 	let parent = 'steam'

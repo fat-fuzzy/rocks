@@ -3,12 +3,12 @@
 	import {onMount} from 'svelte'
 	import {enhance} from '$app/forms'
 
-	import {SignUpValidator} from '$lib/utils/validate'
-	import Button from '$lib/components/blocks/buttons/Button.svelte'
-	import Feedback from '$lib/components/blocks/global/Feedback.svelte'
-	import Input from '$lib/components/blocks/inputs/Input.svelte'
-	import InputPassword from '$lib/components/blocks/inputs/InputPassword.svelte'
-	import FormValidator from '$lib/utils/browser/FormValidator.svelte'
+	import {SignUpValidator} from '#lib/utils/validate.js'
+	import Button from '#lib/components/blocks/buttons/Button.svelte'
+	import Feedback from '#lib/components/blocks/global/Feedback.svelte'
+	import Input from '#lib/components/blocks/inputs/Input.svelte'
+	import InputPassword from '#lib/components/blocks/inputs/InputPassword.svelte'
+	import FormValidator from '#lib/utils/browser/FormValidator.svelte.js'
 
 	let {
 		id = 'sign-up-form',
