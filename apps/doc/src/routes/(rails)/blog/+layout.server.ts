@@ -1,4 +1,4 @@
-import type {NavItem} from '$types'
+import type {NavItem} from '#types'
 import {buildNav} from '#lib/server/services/navigation/setup.js'
 import {pages} from '$config/navigation'
 import blog from '$data/blog'
