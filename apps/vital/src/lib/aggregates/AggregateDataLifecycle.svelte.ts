@@ -13,7 +13,7 @@ import type {
 	NamespaceId,
 } from '#types'
 
-import {DEFAULT_STRUCTURES, DEFAULT_CONTENT} from '$data/doc/cv-config'
+import {DEFAULT_STRUCTURES, DEFAULT_CONTENT} from '#data/doc/cv-config.js'
 import WorkerBridge from '#lib/workers/worker-bridge.js'
 import {getBridge} from '#lib/aggregates/bridge.js'
 

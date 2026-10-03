@@ -9,7 +9,7 @@
 
 	const {Button, InputGroup, Feedback} = ui.blocks
 
-	import {DEFAULT_STRUCTURES, DEFAULT_CONTENT} from '$data/doc/cv-config'
+	import {DEFAULT_STRUCTURES, DEFAULT_CONTENT} from '#data/doc/cv-config.js'
 
 	interface Props {
 		color?: UiColor

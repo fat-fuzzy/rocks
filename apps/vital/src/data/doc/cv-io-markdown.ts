@@ -9,7 +9,7 @@ import type {
 	FrontmatterStructure,
 } from '#types'
 
-import assetsUtils from '$data/markdown-in'
+import assetsUtils from '#data/markdown-in.js'
 import {sortByNameDesc} from '#lib/common/sort.js'
 
 import {
