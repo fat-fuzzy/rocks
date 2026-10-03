@@ -86,7 +86,7 @@
 
 		const presetName = String(toUpdate.name)
 
-		let url = new SvelteURL(page.url)
+		let url = new SvelteURL(page.url.href)
 		url.searchParams.delete('preset')
 		url.searchParams.append('preset', presetName)
 
@@ -131,12 +131,10 @@
 
 		dialogActor.close()
 
-		const currentPreset = getSanitizedParamValue(
-			page.url.searchParams,
-			'preset',
-		)
+		const url = new SvelteURL(page.url.href)
+
+		const currentPreset = getSanitizedParamValue(url.searchParams, 'preset')
 		if (currentPreset === presetName) {
-			let url = new SvelteURL(page.url)
 			url.searchParams.delete('preset')
 
 			window.location.href = url.href

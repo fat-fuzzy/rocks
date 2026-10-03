@@ -114,7 +114,7 @@
 		// TODO
 		// dialogActor.close()
 		// if (page.url.searchParams.get('format') === newFormat) {
-		// 	let url = new SvelteURL(page.url)
+		// 	let url = new SvelteURL(page.url.href)
 		// 	url.searchParams.delete('format')
 		// 	window.location.href = url.href
 		// }

@@ -103,7 +103,7 @@
 
 		dialogActor.close()
 
-		let url = new SvelteURL(page.url)
+		let url = new SvelteURL(page.url.href)
 		url.searchParams.delete('language')
 		url.searchParams.append('language', newLanguage)
 
@@ -114,7 +114,7 @@
 		// TODO
 		// dialogActor.close()
 		// if (page.url.searchParams.get('language') === newLanguage) {
-		// 	let url = new SvelteURL(page.url)
+		// 	let url = new SvelteURL(page.url.href)
 		// 	url.searchParams.delete('language')
 		// 	window.location.href = url.href
 		// }
