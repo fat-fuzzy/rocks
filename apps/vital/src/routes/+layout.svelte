@@ -38,7 +38,10 @@
 	setContext('coordCompare', coordCompare)
 
 	let pathname = $derived(page.url.pathname)
-	let cta = $derived(getRouteNameFromRouteId(pathname))
+	let cta = $derived(
+		page.params.cta ??
+			(pathname === '/' ? pathname : getRouteNameFromRouteId(pathname)),
+	)
 
 	/**
 	 * Setup page data (loaded / generated)
@@ -46,9 +49,7 @@
 	const sidenav = buildNav('vital')
 
 	let layout: UiLayout = $derived.by(() => {
-		const _page = cta ? cta : pathname
-
-		switch (_page) {
+		switch (cta) {
 			case 'build':
 			case 'edit':
 			case 'compare':
@@ -62,11 +63,9 @@
 			case 'chlorophyll':
 			case 'mycelium':
 			case 'pollen':
-				return 'tgv'
-			case '':
-				return 'tgv'
+			case '/':
 			default:
-				return 'voyager'
+				return 'tgv'
 		}
 	})
 
