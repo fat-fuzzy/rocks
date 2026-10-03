@@ -5,7 +5,7 @@ import {
 	checkSelectAll,
 	parseGroupFromTargetData,
 	applyTags,
-} from '$lib/common/tags'
+} from '#lib/common/tags.js'
 
 const INPUT_DATA = {
 	id: crypto.randomUUID(),

@@ -6,7 +6,7 @@ import {
 	isRawBase,
 	isRawStructure,
 	opfsDocTreeToDocStore,
-} from '$lib/common/transform/opfs-to-doc'
+} from '#lib/common/transform/opfs-to-doc.js'
 import {BASE, RAW_BASE, STRUCTURE, RAW_STRUCTURE} from '#tests/fixtures/meta.js'
 import {PRESETS, RAW_PRESETS} from '#tests/fixtures/preset.js'
 import {SEED_DOC, SEED_SECTIONS} from '#tests/fixtures/seed.js'
