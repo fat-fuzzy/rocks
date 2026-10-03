@@ -1,8 +1,8 @@
 // Reexport your entry components here
 import './types/index'
-import type {FatFuzzyProse} from '$types'
+import type {FatFuzzyProse} from '#types'
 
-export type * from '$types'
+export type * from '#types'
 
 /**
  * TipTap components
