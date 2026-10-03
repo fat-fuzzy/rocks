@@ -14,7 +14,7 @@ import type {
 	NamespaceId,
 } from '$types'
 
-import {updateSectionRanks} from '$lib/common/transform/operations-block'
+import {updateSectionRanks} from '#lib/common/transform/operations-block.js'
 
 /**
  * CoordinateDocs class to manage access to stored docs

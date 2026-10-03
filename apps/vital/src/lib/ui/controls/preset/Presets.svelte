@@ -11,10 +11,10 @@
 	import {resolve} from '$app/paths'
 	import ui, {type UiColor} from '@fat-fuzzy/ui'
 
-	import DialogSavePreset from '$lib/ui/overlays/dialog/DialogSavePreset.svelte'
-	import DialogDeletePreset from '$lib/ui/overlays/dialog/DialogDeletePreset.svelte'
-	import Loading from '$lib/ui/Loading.svelte'
-	import {getNamespaces} from '$lib/common/routing'
+	import DialogSavePreset from '#lib/ui/overlays/dialog/DialogSavePreset.svelte'
+	import DialogDeletePreset from '#lib/ui/overlays/dialog/DialogDeletePreset.svelte'
+	import Loading from '#lib/ui/Loading.svelte'
+	import {getNamespaces} from '#lib/common/routing.js'
 	import {goto} from '$app/navigation'
 
 	const {Feedback, Button} = ui.blocks

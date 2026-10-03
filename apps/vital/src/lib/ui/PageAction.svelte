@@ -18,7 +18,7 @@
 	import {
 		getSanitizedParamValueList,
 		getAllowedParamsForRoute,
-	} from '$lib/common/url'
+	} from '#lib/common/url.js'
 	import {
 		getNamespaceFromRoute,
 		getRouteLabelsForNamespace,
@@ -26,16 +26,16 @@
 		getDescriptionForRoute,
 		getPrefixForRoute,
 		getRouteNameFromRouteId,
-	} from '$lib/common/routing'
+	} from '#lib/common/routing.js'
 
-	import SectionEditor from '$lib/ui/editor/SectionEditor.svelte'
-	import SectionBuilder from '$lib/ui/builder/SectionBuilder.svelte'
-	import Tags from '$lib/ui/controls/tags/Tags.svelte'
-	import Presets from '$lib/ui/controls/preset/Presets.svelte'
-	import Loading from '$lib/ui/Loading.svelte'
+	import SectionEditor from '#lib/ui/editor/SectionEditor.svelte'
+	import SectionBuilder from '#lib/ui/builder/SectionBuilder.svelte'
+	import Tags from '#lib/ui/controls/tags/Tags.svelte'
+	import Presets from '#lib/ui/controls/preset/Presets.svelte'
+	import Loading from '#lib/ui/Loading.svelte'
 
-	import ContentActions from '$lib/ui/controls/ContentActions.svelte'
-	import ContentHeading from '$lib/ui/controls/ContentHeading.svelte'
+	import ContentActions from '#lib/ui/controls/ContentActions.svelte'
+	import ContentHeading from '#lib/ui/controls/ContentHeading.svelte'
 	import {DOC_FORMAT, DOC_LANGUAGE} from '$config/setup'
 
 	const {PageRails} = ui.content

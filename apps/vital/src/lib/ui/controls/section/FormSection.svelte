@@ -6,8 +6,8 @@
 	import ui from '@fat-fuzzy/ui'
 	import {page} from '$app/state'
 
-	import {FormSectionValidator} from '$lib/common/validate'
-	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
+	import {FormSectionValidator} from '#lib/common/validate.js'
+	import dialogActor from '#lib/ui/overlays/dialog/actor.svelte.js'
 	import {DOC_LANGUAGE, DOC_FORMAT} from '$config/setup'
 
 	const {Button, Input, InputGroup, Feedback} = ui.blocks

@@ -8,8 +8,8 @@
 
 	import {page} from '$app/state'
 
-	import {FormLanguageValidator} from '$lib/common/validate'
-	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
+	import {FormLanguageValidator} from '#lib/common/validate.js'
+	import dialogActor from '#lib/ui/overlays/dialog/actor.svelte.js'
 	import {DOC_LANGUAGE} from '$config/setup'
 
 	const {Button, Input, Feedback} = ui.blocks

@@ -1,54 +1,54 @@
-export * from '$lib/types/actions'
-export * from '$lib/types/intl'
-export * from '$lib/types/ui'
-export * from '$lib/types/messages'
+export * from '#lib/types/actions.js'
+export * from '#lib/types/intl.js'
+export * from '#lib/types/ui.js'
+export * from '#lib/types/messages.js'
 
 // Storage
-export * from '$lib/types/storage/fs-base'
-export * from '$lib/types/storage/fs-storage'
-export * from '$lib/types/storage/fs-markdowns'
+export * from '#lib/types/storage/fs-base.js'
+export * from '#lib/types/storage/fs-storage.js'
+export * from '#lib/types/storage/fs-markdowns.js'
 
 // Service Interfaces
-export * from '$lib/types/aggregates/agg-docs'
-export * from '$lib/types/aggregates/agg-preset'
-export * from '$lib/types/aggregates/agg-meta'
-export * from '$lib/types/aggregates/agg-data-lifecycle'
+export * from '#lib/types/aggregates/agg-docs.js'
+export * from '#lib/types/aggregates/agg-preset.js'
+export * from '#lib/types/aggregates/agg-meta.js'
+export * from '#lib/types/aggregates/agg-data-lifecycle.js'
 
 // Use case coordinators
-export * from '$lib/types/application/coord-compare'
-export * from '$lib/types/application/coord-docs'
-export * from '$lib/types/application/coord-metadata'
-export * from '$lib/types/application/coord-exports'
-export * from '$lib/types/application/coord-imports'
-export * from '$lib/types/application/coord-presets'
+export * from '#lib/types/application/coord-compare.js'
+export * from '#lib/types/application/coord-docs.js'
+export * from '#lib/types/application/coord-metadata.js'
+export * from '#lib/types/application/coord-exports.js'
+export * from '#lib/types/application/coord-imports.js'
+export * from '#lib/types/application/coord-presets.js'
 
 // Domain + Identity
-export * from '$lib/generated/types/Doc'
-export * from '$lib/generated/types/Preset'
-export * from '$lib/generated/types/Human'
+export * from '#lib/generated/types/Doc.js'
+export * from '#lib/generated/types/Preset.js'
+export * from '#lib/generated/types/Human.js'
 
 // Seed + Markdown
-export * from '$lib/generated/types/SeedDoc'
-export * from '$lib/generated/types/FrontmatterBase'
-export * from '$lib/generated/types/FrontmatterStructure'
+export * from '#lib/generated/types/SeedDoc.js'
+export * from '#lib/generated/types/FrontmatterBase.js'
+export * from '#lib/generated/types/FrontmatterStructure.js'
 
 // Forms + Transfer
-export * from '$lib/generated/types/FormPreset'
-export * from '$lib/generated/types/FormSection'
-export * from '$lib/generated/types/FormBlock'
-export * from '$lib/generated/types/FormTag'
+export * from '#lib/generated/types/FormPreset.js'
+export * from '#lib/generated/types/FormSection.js'
+export * from '#lib/generated/types/FormBlock.js'
+export * from '#lib/generated/types/FormTag.js'
 
 // Routing constants & types
-export * from '$lib/generated/types/Namespaces'
+export * from '#lib/generated/types/Namespaces.js'
 
 /*************************************************
  ******* OVERRIDE duplicate generated types ******
  ********* ( src: always domain/identity ) *******/
 
-export type {Query} from '$lib/types/messages'
-export type {Username} from '$lib/generated/types/Human'
-export type {SeedType} from '$lib/generated/types/SeedDoc'
-export type {Title} from '$lib/generated/types/FormSection'
+export type {Query} from '#lib/types/messages.js'
+export type {Username} from '#lib/generated/types/Human.js'
+export type {SeedType} from '#lib/generated/types/SeedDoc.js'
+export type {Title} from '#lib/generated/types/FormSection.js'
 
 export type {
 	Uuid,
@@ -63,4 +63,4 @@ export type {
 	DocVisibility,
 	Path,
 	Prose,
-} from '$lib/generated/types/Doc'
+} from '#lib/generated/types/Doc.js'

@@ -23,7 +23,7 @@ import {
 	FrontmatterStructureValidator,
 	PathValidator,
 	DateStringValidator,
-} from '$lib/common/validate'
+} from '#lib/common/validate.js'
 
 /*******************
  *  Hard fails

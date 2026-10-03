@@ -3,7 +3,7 @@
 
 	import ui from '@fat-fuzzy/ui'
 
-	import {checkTags} from '$lib/common/tags'
+	import {checkTags} from '#lib/common/tags.js'
 
 	const {EscapeHtml} = ui.headless
 

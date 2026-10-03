@@ -3,7 +3,7 @@ import {
 	getPresetsData,
 	getBaseData,
 	getStructureData,
-} from '$lib/workers/storage/opfs'
+} from '#lib/workers/storage/opfs.js'
 
 import type {
 	SeedDoc,
@@ -14,8 +14,8 @@ import type {
 } from '$types'
 
 import {DEFAULT_STRUCTURES, DEFAULT_CONTENT} from '$data/doc/cv-config'
-import WorkerBridge from '$lib/workers/worker-bridge'
-import {getBridge} from '$lib/aggregates/bridge'
+import WorkerBridge from '#lib/workers/worker-bridge.js'
+import {getBridge} from '#lib/aggregates/bridge.js'
 
 /**
  * AggregateDataLifecycle class to manage data transfer operations into storage

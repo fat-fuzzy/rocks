@@ -15,7 +15,7 @@ import type {
 	Uuid,
 } from '$types'
 
-import * as validators from '$lib/generated/ajv/validation/validate.ajv.mjs'
+import * as validators from '#lib/generated/ajv/validation/validate.ajv.mjs'
 
 function getTypedValidatorFunction<T>(
 	fn: (data: unknown) => boolean,

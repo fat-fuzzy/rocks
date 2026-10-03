@@ -14,13 +14,13 @@ import type {
 import {DOC_LANGUAGE, DOC_FORMAT} from '$config/setup'
 import {SCHEMA_VERSION} from '$config/setup'
 
-import WorkerBridge from '$lib/workers/worker-bridge'
-import {getBridge} from '$lib/aggregates/bridge'
+import WorkerBridge from '#lib/workers/worker-bridge.js'
+import {getBridge} from '#lib/aggregates/bridge.js'
 
 import {
 	opfsBaseTreeToFrontmatterBase,
 	opfsStructureTreeToFrontmatterStructures,
-} from '$lib/common/transform/opfs-to-doc'
+} from '#lib/common/transform/opfs-to-doc.js'
 
 /**
  * AggregateMetadata class to manage access to stored docs

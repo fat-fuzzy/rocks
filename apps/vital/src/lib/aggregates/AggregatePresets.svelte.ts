@@ -10,14 +10,14 @@ import type {
 	NamespaceId,
 } from '$types'
 
-import WorkerBridge from '$lib/workers/worker-bridge'
-import {getBridge} from '$lib/aggregates/bridge'
+import WorkerBridge from '#lib/workers/worker-bridge.js'
+import {getBridge} from '#lib/aggregates/bridge.js'
 
-import {getPresetKey} from '$lib/common/format'
+import {getPresetKey} from '#lib/common/format.js'
 
-import {opfsPresetTreeToPresetStore} from '$lib/common/transform/opfs-to-doc'
+import {opfsPresetTreeToPresetStore} from '#lib/common/transform/opfs-to-doc.js'
 
-import {buildPresetIndex} from '$lib/common/transform/store-to-index'
+import {buildPresetIndex} from '#lib/common/transform/store-to-index.js'
 
 /**
  * AggregatePresets class to manage access to stored presets

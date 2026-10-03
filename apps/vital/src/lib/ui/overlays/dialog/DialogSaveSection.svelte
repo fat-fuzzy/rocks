@@ -10,8 +10,8 @@
 
 	import ui from '@fat-fuzzy/ui'
 
-	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
-	import FormSection from '$lib/ui/controls/section/FormSection.svelte'
+	import dialogActor from '#lib/ui/overlays/dialog/actor.svelte.js'
+	import FormSection from '#lib/ui/controls/section/FormSection.svelte'
 
 	const {Button} = ui.blocks
 

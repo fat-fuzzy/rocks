@@ -5,7 +5,7 @@
 	import {DOC_LANGUAGE} from '$config/setup'
 	import PageChlorophyll from './PageChlorophyll.svelte'
 
-	import {getPrefixForRoute} from '$lib/common/routing'
+	import {getPrefixForRoute} from '#lib/common/routing.js'
 
 	const {PageRails} = ui.content
 

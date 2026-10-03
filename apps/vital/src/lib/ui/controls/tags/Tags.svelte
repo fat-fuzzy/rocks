@@ -12,9 +12,9 @@
 	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
 
-	import DialogSaveTag from '$lib/ui/overlays/dialog/DialogSaveTag.svelte'
-	import DialogDeleteTags from '$lib/ui/overlays/dialog/DialogDeleteTags.svelte'
-	import Loading from '$lib/ui/Loading.svelte'
+	import DialogSaveTag from '#lib/ui/overlays/dialog/DialogSaveTag.svelte'
+	import DialogDeleteTags from '#lib/ui/overlays/dialog/DialogDeleteTags.svelte'
+	import Loading from '#lib/ui/Loading.svelte'
 
 	const {InputGroup, Feedback} = ui.blocks
 

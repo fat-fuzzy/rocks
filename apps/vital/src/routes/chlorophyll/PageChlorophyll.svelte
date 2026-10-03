@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {RouteNameFor} from '$types'
-	import ContentGrid from '$lib/ui/ContentGrid.svelte'
+	import ContentGrid from '#lib/ui/ContentGrid.svelte'
 
 	const currentPage = 'chlorophyll'
 

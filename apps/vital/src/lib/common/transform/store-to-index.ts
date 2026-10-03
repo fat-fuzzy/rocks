@@ -4,7 +4,7 @@ import {
 	getBlockKey,
 	getPresetKey,
 	getTagKey,
-} from '$lib/common/format'
+} from '#lib/common/format.js'
 
 import type {
 	Block,

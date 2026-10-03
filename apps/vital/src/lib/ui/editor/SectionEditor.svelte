@@ -4,16 +4,16 @@
 
 	import {getContext, onMount} from 'svelte'
 
-	import {isHidden, checkTags} from '$lib/common/tags'
+	import {isHidden, checkTags} from '#lib/common/tags.js'
 
 	import {DOC_LANGUAGE, DOC_FORMAT} from '$config/setup'
-	import {LOCALIZATIONS} from '$lib/intl/l10n'
+	import {LOCALIZATIONS} from '#lib/intl/l10n.js'
 
-	import DialogSaveBlock from '$lib/ui/overlays/dialog/DialogSaveBlock.svelte'
-	import BlockPlaceholder from '$lib/ui/editor/BlockPlaceholder.svelte'
-	import BlockEditor from '$lib/ui/editor/BlockEditor.svelte'
-	import FeedbackContent from '$lib/ui/FeedbackContent.svelte'
-	import Loading from '$lib/ui/Loading.svelte'
+	import DialogSaveBlock from '#lib/ui/overlays/dialog/DialogSaveBlock.svelte'
+	import BlockPlaceholder from '#lib/ui/editor/BlockPlaceholder.svelte'
+	import BlockEditor from '#lib/ui/editor/BlockEditor.svelte'
+	import FeedbackContent from '#lib/ui/FeedbackContent.svelte'
+	import Loading from '#lib/ui/Loading.svelte'
 
 	const coordinators: CurrentCoordinators = getContext('currentCoordinators')
 

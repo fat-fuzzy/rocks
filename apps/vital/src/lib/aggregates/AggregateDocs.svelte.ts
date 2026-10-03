@@ -17,18 +17,18 @@ import type {
 	NamespaceId,
 } from '$types'
 
-import WorkerBridge from '$lib/workers/worker-bridge'
-import {getBridge} from '$lib/aggregates/bridge'
+import WorkerBridge from '#lib/workers/worker-bridge.js'
+import {getBridge} from '#lib/aggregates/bridge.js'
 
 import {SCHEMA_VERSION} from '$config/setup'
-import {sortByRankAsc} from '$lib/common/sort'
-import {getSectionKey, getBlockKey} from '$lib/common/format'
-import {opfsDocTreeToDocStore} from '$lib/common/transform/opfs-to-doc'
-import {buildDocIndex} from '$lib/common/transform/store-to-index'
+import {sortByRankAsc} from '#lib/common/sort.js'
+import {getSectionKey, getBlockKey} from '#lib/common/format.js'
+import {opfsDocTreeToDocStore} from '#lib/common/transform/opfs-to-doc.js'
+import {buildDocIndex} from '#lib/common/transform/store-to-index.js'
 import {
 	updateBlockInSection,
 	deleteBlockInSection,
-} from '$lib/common/transform/operations-block'
+} from '#lib/common/transform/operations-block.js'
 
 /**
  * AggregateDocs class to manage access to stored docs

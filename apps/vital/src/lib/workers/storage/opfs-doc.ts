@@ -13,12 +13,12 @@ import type {
 	NamespaceId,
 } from '$types'
 
-import {sanitizeFileName} from '$lib/common/sanitize'
-import {parseBlock, parseSection} from '$lib/common/transform/parse-or-throw'
+import {sanitizeFileName} from '#lib/common/sanitize.js'
+import {parseBlock, parseSection} from '#lib/common/transform/parse-or-throw.js'
 import {
 	isRawSection,
 	rawSectionToSection,
-} from '$lib/common/transform/opfs-to-doc'
+} from '#lib/common/transform/opfs-to-doc.js'
 import {
 	getDocsHandle,
 	saveEntry,
@@ -28,7 +28,7 @@ import {
 	saveBlockToOPFS,
 	saveSectionToOPFS,
 	getRootHandle,
-} from '$lib/workers/storage/opfs-tools'
+} from '#lib/workers/storage/opfs-tools.js'
 
 /**
  * Add new Language and clone content from source language

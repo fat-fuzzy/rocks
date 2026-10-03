@@ -7,9 +7,9 @@
 	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
 
-	import {FormPresetValidator} from '$lib/common/validate'
-	import {getSanitizedParamValue} from '$lib/common/url'
-	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
+	import {FormPresetValidator} from '#lib/common/validate.js'
+	import {getSanitizedParamValue} from '#lib/common/url.js'
+	import dialogActor from '#lib/ui/overlays/dialog/actor.svelte.js'
 
 	const {Button, Input, Feedback} = ui.blocks
 	const {FormValidator} = ui.utils
