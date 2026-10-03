@@ -1,7 +1,7 @@
 // Reexport your entry components here
 import './types/index'
 
-export type * from '$types'
+export type * from '#types'
 /**
  * Styles Api components
  * - Used to display documentation about UI library components and their options (=API) in documentation website

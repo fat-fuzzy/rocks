@@ -1,4 +1,4 @@
-import type {StyleTree} from '$types'
+import type {StyleTree} from '#types'
 import ui from '@fat-fuzzy/ui'
 import buttonFixtures from '#lib/fixtures/js/blocks.js'
 import tokenFixtures from '#lib/fixtures/js/tokens.js'

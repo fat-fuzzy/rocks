@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {Component} from 'svelte'
-	import type {Meta} from '$types'
+	import type {Meta} from '#types'
 
 	import {getContext} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
@@ -15,7 +15,6 @@
 	import Raw from './Raw.svelte'
 	import PropsDemo from './PropsDemo.svelte'
 	import PropsDoc from './PropsDoc.svelte'
-	import {resolve} from '$app/paths'
 
 	const {PageRails} = ui.content
 	const {Magic} = ui.blocks
@@ -150,7 +149,7 @@
 					<div class="l:center size:sm col:center">
 						<svelte:element this={`h3`} class="link font:sm">
 							<a
-								href={resolve(`${link}/${title}/template`)}
+								href={`${link}/${title}/template`}
 								class="ravioli:xs size:xs l:flex emoji:link surface:1:primary align:center"
 							>
 								Open {title} template

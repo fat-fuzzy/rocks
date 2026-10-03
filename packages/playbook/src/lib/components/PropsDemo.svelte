@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {Meta} from '$types'
+	import type {Meta} from '#types'
 	import Api from './Api.svelte'
 
 	type Props = {
