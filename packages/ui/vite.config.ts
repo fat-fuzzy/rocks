@@ -18,16 +18,10 @@ export default defineConfig({
 			preprocess: [vitePreprocess(), mdsvex(mdsvexConfig)],
 			// See https://kit.svelte.dev/docs/adapters for more information about adapters.
 			adapter: adapter(),
-			alias: {
-				$config: path.resolve('./src/config'),
-			},
 			extensions: ['.svelte', '.md', '.svx'],
 		}),
 	],
 	test: {
-		alias: {
-			$config: path.resolve('./src/config'),
-		},
 		reporters: ['html'],
 		include: [path.resolve('./tests/unit/**/*.{test,spec}.{js,ts}')],
 		coverage: {
