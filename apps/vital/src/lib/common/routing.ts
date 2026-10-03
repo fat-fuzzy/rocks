@@ -15,9 +15,9 @@ import type {
 	LabelsForRoutes,
 	RouteNameFor,
 	DocLanguage,
-} from '$types'
+} from '#types'
 
-import {NAMESPACES} from '$types'
+import {NAMESPACES} from '#types'
 
 export function getNamespaces(): {
 	name: NamespaceId

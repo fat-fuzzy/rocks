@@ -5,7 +5,7 @@ import type {
 	LabelsForNamespace,
 	LabelsForRoutes,
 	NamespaceKey,
-} from '$types'
+} from '#types'
 
 export const LOCALIZATIONS: Localizations = {
 	en: {

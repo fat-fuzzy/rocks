@@ -16,7 +16,7 @@ import type {
 	Uuid,
 	DocPath,
 	OPFStructure,
-} from '$types'
+} from '#types'
 
 import {SCHEMA_VERSION} from '$config/setup'
 import {

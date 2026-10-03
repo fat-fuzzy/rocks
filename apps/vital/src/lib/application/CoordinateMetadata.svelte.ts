@@ -7,7 +7,7 @@ import type {
 	IAggregateMetadata,
 	DocLanguage,
 	NamespaceId,
-} from '$types'
+} from '#types'
 
 import {buildTagIndex} from '#lib/common/transform/store-to-index.js'
 import {getTagKey} from '#lib/common/format.js'

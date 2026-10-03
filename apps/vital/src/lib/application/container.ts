@@ -1,4 +1,4 @@
-import type {Aggregators, Coordinators, NamespaceId} from '$types'
+import type {Aggregators, Coordinators, NamespaceId} from '#types'
 import CoordinateCompare from '#lib/application/CoordinateCompare.svelte.js'
 import CoordinateDocs from '#lib/application/CoordinateDocs.svelte.js'
 import CoordinateExports from '#lib/application/CoordinateExports.svelte.js'

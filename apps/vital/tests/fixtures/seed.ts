@@ -1,5 +1,5 @@
-import type {SeedDoc, SeedSection, SeedType} from '$types'
-import {DOC_ID, SECTION_IDS} from '$tests/fixtures/doc'
+import type {SeedDoc, SeedSection, SeedType} from '#types'
+import {DOC_ID, SECTION_IDS} from '#tests/fixtures/doc.js'
 
 export const SEED_SUBSECTION = {
 	id: crypto.randomUUID(),

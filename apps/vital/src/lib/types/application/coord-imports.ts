@@ -6,7 +6,7 @@ import type {
 	ImportStatus,
 	IAggregateDocs,
 	NamespaceId,
-} from '$types'
+} from '#types'
 import type {UiStatus} from '@fat-fuzzy/ui'
 
 export interface ICoordinateImports {

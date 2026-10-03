@@ -21,7 +21,7 @@ import type {
 	FrontmatterStructure,
 	OPFSTreeStructure,
 	NamespaceId,
-} from '$types'
+} from '#types'
 
 // ── Identifiers ────────────────────────────────────────────────────────────────
 

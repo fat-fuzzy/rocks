@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {DialogProps} from '$types'
+	import type {DialogProps} from '#types'
 	import actor from '#lib/ui/overlays/dialog/actor.svelte.js'
 
 	import ui from '@fat-fuzzy/ui'

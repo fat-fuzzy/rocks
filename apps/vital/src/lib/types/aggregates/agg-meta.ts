@@ -6,7 +6,7 @@ import type {
 	Rank,
 	Slug,
 	TagGroup,
-} from '$types'
+} from '#types'
 
 export interface IAggregateMetadata {
 	readonly root: NamespaceId

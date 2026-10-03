@@ -1,6 +1,6 @@
 <script lang="ts">
 	import {resolve} from '$app/paths'
-	import type {RouteId} from '$types'
+	import type {RouteId} from '#types'
 
 	type Props = {
 		color?: string

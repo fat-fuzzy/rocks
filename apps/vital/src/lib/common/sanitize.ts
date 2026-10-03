@@ -11,7 +11,7 @@ import type {
 	Path,
 	DateString,
 	Uuid,
-} from '$types'
+} from '#types'
 
 import {
 	BlockValidator,

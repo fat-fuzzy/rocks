@@ -16,7 +16,7 @@ import type {
 	Section,
 	TagIndex,
 	TagGroup,
-} from '$types'
+} from '#types'
 
 export function buildDocIndex(store: DocStore): DocIndex {
 	const sections: Record<string, Section> = {}

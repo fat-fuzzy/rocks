@@ -8,7 +8,7 @@
 		RouteNameFor,
 		CurrentCoordinators,
 		CompareCoordinators,
-	} from '$types'
+	} from '#types'
 
 	import {getContext, tick} from 'svelte'
 	import ui from '@fat-fuzzy/ui'

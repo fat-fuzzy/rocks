@@ -5,7 +5,7 @@ import type {
 	Slug,
 	TagGroup,
 	Uuid,
-} from '$types'
+} from '#types'
 
 import {sanitizeSlugValue, sanitizeUuidValue} from '#lib/common/sanitize.js'
 import {RESERVED_PARAM_NAMES} from '#lib/common/url.js'

@@ -8,7 +8,7 @@ import type {
 	OPFSTreePreset,
 	IAggregatePresets,
 	NamespaceId,
-} from '$types'
+} from '#types'
 
 import WorkerBridge from '#lib/workers/worker-bridge.js'
 import {getBridge} from '#lib/aggregates/bridge.js'

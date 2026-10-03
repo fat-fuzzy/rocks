@@ -1,4 +1,4 @@
-import type {FrontmatterBase, FrontmatterStructure, NamespaceId} from '$types'
+import type {FrontmatterBase, FrontmatterStructure, NamespaceId} from '#types'
 
 import {
 	saveEntry,

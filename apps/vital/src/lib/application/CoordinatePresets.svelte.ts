@@ -9,7 +9,7 @@ import type {
 	TagGroup,
 	Slug,
 	NamespaceId,
-} from '$types'
+} from '#types'
 
 import {SvelteURLSearchParams} from 'svelte/reactivity'
 

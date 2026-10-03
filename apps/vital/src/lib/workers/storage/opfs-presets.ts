@@ -8,7 +8,7 @@ import type {
 	OPFSTreeDoc,
 	OPFSTreePreset,
 	Preset,
-} from '$types'
+} from '#types'
 import {sanitizeFileName} from '#lib/common/sanitize.js'
 import {parsePreset} from '#lib/common/transform/parse-or-throw.js'
 

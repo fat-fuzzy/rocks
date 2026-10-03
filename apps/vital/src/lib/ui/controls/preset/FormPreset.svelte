@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {ActionCrud, Preset, ICoordinatePresets} from '$types'
+	import type {ActionCrud, Preset, ICoordinatePresets} from '#types'
 	import type {UiColor} from '@fat-fuzzy/ui'
 
 	import {onDestroy, onMount} from 'svelte'

@@ -1,4 +1,4 @@
-import type {RouteNameFor} from '$types'
+import type {RouteNameFor} from '#types'
 
 export const matchPollen = (
 	param: string,

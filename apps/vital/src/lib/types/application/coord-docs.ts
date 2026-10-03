@@ -11,7 +11,7 @@ import type {
 	Rank,
 	Section,
 	Slug,
-} from '$types'
+} from '#types'
 
 export interface ICoordinateDocs {
 	readonly aggMetadata: IAggregateMetadata

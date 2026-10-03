@@ -7,11 +7,6 @@ import {playwright} from '@vitest/browser-playwright'
 import {mdsvex} from 'mdsvex'
 import mdsvexConfig from './mdsvex.config.js'
 
-export const ALIAS_BASE = {
-	$types: path.resolve('./src/lib/types/index.ts'),
-	$tests: path.resolve('./tests'),
-}
-
 export const TEST_CONFIG_BASE = {
 	setupFiles: ['vitest-browser-svelte'],
 	include: ['tests/browser/**/*.{test,spec}.ts'],
@@ -32,16 +27,10 @@ export default defineConfig({
 			alias: {
 				$config: path.resolve('./src/config'),
 				$data: path.resolve('./src/data'),
-				$types: path.resolve('./src/lib/types/index.ts'),
 				$schemas: path.resolve('./src/schemas'),
-				$tests: path.resolve('./tests'),
-				$lib: path.resolve('./src/lib'),
 			},
 		}),
 	],
-	resolve: {
-		alias: ALIAS_BASE,
-	},
 	test: {
 		...TEST_CONFIG_BASE,
 		reporters: ['dot'],

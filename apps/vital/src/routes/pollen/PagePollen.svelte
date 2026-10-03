@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {RouteNameFor} from '$types'
+	import type {RouteNameFor} from '#types'
 
 	import ContentGrid from '#lib/ui/ContentGrid.svelte'
 

@@ -9,7 +9,7 @@ import type {
 	Section,
 	Slug,
 	Subsection,
-} from '$types'
+} from '#types'
 
 export function getUpdatedSectionList(options: {
 	name: Slug

@@ -11,7 +11,7 @@
 
 	import dialogActor from '#lib/ui/overlays/dialog/actor.svelte.js'
 	import FormFormat from '#lib/ui/controls/settings/FormFormat.svelte'
-	import type {ICoordinateMetadata} from '$types'
+	import type {ICoordinateMetadata} from '#types'
 
 	const {Button} = ui.blocks
 

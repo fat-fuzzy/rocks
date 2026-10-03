@@ -3,7 +3,7 @@ import type {
 	IAggregateDataLifecycle,
 	FileExt,
 	NamespaceId,
-} from '$types'
+} from '#types'
 
 export default class CoordinateExports implements ICoordinateExports {
 	aggDataLifecycle: IAggregateDataLifecycle

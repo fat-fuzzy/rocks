@@ -6,7 +6,7 @@
 		UiSize,
 		UiVariant,
 	} from '@fat-fuzzy/ui'
-	import type {ICoordinateMetadata, TagGroup} from '$types'
+	import type {ICoordinateMetadata, TagGroup} from '#types'
 
 	import ui from '@fat-fuzzy/ui'
 

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {UiColor} from '@fat-fuzzy/ui'
-	import type {Slug, DocLanguage, Section, CurrentCoordinators} from '$types'
+	import type {Slug, DocLanguage, Section, CurrentCoordinators} from '#types'
 
 	import {getContext, onMount} from 'svelte'
 

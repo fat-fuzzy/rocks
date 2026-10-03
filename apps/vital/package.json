@@ -37,7 +37,10 @@
 	},
 	"imports": {
 		"#lib": "./src/lib/index.js",
-		"#lib/*": "./src/lib/*"
+		"#lib/*": "./src/lib/*",
+		"#tests": "./tests/index.js",
+		"#tests/*": "./tests/*",
+		"#types": "./src/lib/types/index.ts"
 	},
 	"devDependencies": {
 		"@changesets/cli": "2.30.0",

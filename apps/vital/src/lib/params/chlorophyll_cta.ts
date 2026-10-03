@@ -1,4 +1,4 @@
-import type {RouteNameFor} from '$types'
+import type {RouteNameFor} from '#types'
 
 export const matchChlorophyll = (
 	param: string,

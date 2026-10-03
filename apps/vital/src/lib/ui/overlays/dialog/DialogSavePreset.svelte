@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {ICoordinatePresets, Preset} from '$types'
+	import type {ICoordinatePresets, Preset} from '#types'
 	import type {
 		UiAssetType,
 		UiColor,

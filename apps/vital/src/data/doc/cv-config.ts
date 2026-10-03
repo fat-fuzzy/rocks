@@ -4,7 +4,7 @@ import type {
 	MarkdownStructure,
 	SeedDoc,
 	Slug,
-} from '$types'
+} from '#types'
 
 import {SCHEMA_VERSION, DOC_LANGUAGE, DOC_FORMAT} from '$config/setup'
 

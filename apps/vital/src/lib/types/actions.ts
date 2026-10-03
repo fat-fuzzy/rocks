@@ -10,7 +10,7 @@ import type {
 	ICoordinatePresets,
 	NamespaceId,
 	Slug,
-} from '$types'
+} from '#types'
 
 export type ActionCrud = 'save' | 'delete' | 'update' | 'copy'
 
