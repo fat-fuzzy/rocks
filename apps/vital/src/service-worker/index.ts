@@ -38,7 +38,7 @@ const CTA = [
 ]
 
 const STATIC = assets
-	.map((a) => a.path)
+	.map((a) => `/${a.path}`)
 	.filter((v) => v.indexOf('.DS_Store') === -1)
 const IMMUTABLE = immutable.map((a) => a.path)
 const PRERENDERED = prerendered.map((a) => a.path)
