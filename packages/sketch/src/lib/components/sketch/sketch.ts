@@ -23,10 +23,7 @@ export type UiState = SketchState | ControlsState | PlayerState | CanvasState
 export type UiEvent = SketchEvent | ControlsEvent | PlayerEvent | CanvasEvent
 
 export type UiAction =
-	| SketchAction
-	| ControlsAction
-	| PlayerAction
-	| CanvasAction
+	SketchAction | ControlsAction | PlayerAction | CanvasAction
 
 export type SketchFeedbackType = {
 	[ui in SketchUi]: FeedbackType[]
