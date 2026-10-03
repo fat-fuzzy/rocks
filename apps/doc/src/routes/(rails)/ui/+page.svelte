@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {Markdown} from '$types'
+	import type {Markdown} from '#types'
 	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
 	import playbook from '@fat-fuzzy/playbook'

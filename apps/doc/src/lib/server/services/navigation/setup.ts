@@ -1,4 +1,4 @@
-import type {NavItem, Markdown} from '$types'
+import type {NavItem, Markdown} from '#types'
 import type {UiSize} from '@fat-fuzzy/ui'
 
 import ui from '@fat-fuzzy/ui'

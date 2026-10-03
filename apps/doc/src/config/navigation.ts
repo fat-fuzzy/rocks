@@ -32,6 +32,8 @@ export const linksSocials = [
 
 export const pages: {[key: string]: NavItem} = {
 	blog: {
+		id: 'blog',
+		name: 'blog',
 		slug: 'blog',
 		label: 'Blog',
 		title: 'Content',
@@ -42,6 +44,8 @@ export const pages: {[key: string]: NavItem} = {
 		actionPath: '/blog',
 	},
 	about: {
+		id: 'about',
+		name: 'about',
 		slug: 'about',
 		label: 'About',
 		title: 'Doc',
@@ -51,6 +55,8 @@ export const pages: {[key: string]: NavItem} = {
 		actionPath: '/about',
 		items: [
 			{
+				id: 'usage',
+				name: 'usage',
 				slug: 'usage',
 				title: 'Usage',
 				label: 'Usage',
@@ -60,6 +66,8 @@ export const pages: {[key: string]: NavItem} = {
 				items: [],
 			},
 			{
+				id: 'decisions',
+				name: 'decisions',
 				slug: 'decisions',
 				title: 'Decisions',
 				label: 'Decisions',
@@ -69,6 +77,8 @@ export const pages: {[key: string]: NavItem} = {
 				items: [],
 			},
 			{
+				id: 'speaking',
+				name: 'speaking',
 				slug: 'speaking',
 				title: 'Speaking',
 				label: 'Speaking',
@@ -81,6 +91,8 @@ export const pages: {[key: string]: NavItem} = {
 		],
 	},
 	play: {
+		id: 'play',
+		name: 'play',
 		slug: 'play',
 		label: 'Play',
 		title: 'Sketches',
@@ -90,6 +102,8 @@ export const pages: {[key: string]: NavItem} = {
 		actionPath: '/play',
 		items: [
 			{
+				id: 'projects',
+				name: 'projects',
 				slug: 'projects',
 				title: 'Projects',
 				label: 'Projects',
@@ -100,6 +114,8 @@ export const pages: {[key: string]: NavItem} = {
 				items: [],
 			},
 			{
+				id: 'learning',
+				name: 'learning',
 				slug: 'learning',
 				title: 'Learning',
 				label: 'Learning',
@@ -111,6 +127,8 @@ export const pages: {[key: string]: NavItem} = {
 		],
 	},
 	ui: {
+		id: 'ui',
+		name: 'ui',
 		slug: 'ui', // root path of the Playbook
 		title: 'UI Library',
 		asset: 'playbook',
@@ -120,6 +138,8 @@ export const pages: {[key: string]: NavItem} = {
 		actionPath: '/ui',
 		items: [
 			{
+				id: 'tokens',
+				name: 'tokens',
 				slug: 'tokens',
 				title: 'Tokens',
 				label: 'Tokens',
@@ -130,6 +150,8 @@ export const pages: {[key: string]: NavItem} = {
 				items: [],
 			},
 			{
+				id: 'blocks',
+				name: 'blocks',
 				slug: 'blocks',
 				title: 'Blocks',
 				label: 'Blocks',
@@ -140,6 +162,8 @@ export const pages: {[key: string]: NavItem} = {
 				items: [],
 			},
 			{
+				id: 'layouts',
+				name: 'layouts',
 				slug: 'layouts',
 				title: 'Layouts',
 				label: 'Layouts',
@@ -150,7 +174,9 @@ export const pages: {[key: string]: NavItem} = {
 				items: [],
 			},
 			{
-				slug: 'recipes',
+				id: 'layouts',
+				name: 'layouts',
+				slug: 'layouts',
 				title: 'Recipes',
 				label: 'Recipes',
 				asset: 'recipes',
@@ -160,6 +186,8 @@ export const pages: {[key: string]: NavItem} = {
 				items: [],
 			},
 			{
+				id: 'raw',
+				name: 'raw',
 				slug: 'raw',
 				title: 'Raw',
 				label: 'Raw',
@@ -172,6 +200,8 @@ export const pages: {[key: string]: NavItem} = {
 		],
 	},
 	media: {
+		id: 'media',
+		name: 'media',
 		slug: 'media',
 		label: 'Media',
 		title: 'Collections',
