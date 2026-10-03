@@ -1,4 +1,4 @@
-import type {FuzzyTransitions, ExpandMachine} from '$types'
+import type {FuzzyTransitions, ExpandMachine} from '#types'
 
 export const EXPAND_MACHINE: ExpandMachine = {
 	expanded: {

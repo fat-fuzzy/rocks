@@ -1,6 +1,6 @@
 <script lang="ts">
 	import {onMount} from 'svelte'
-	import type {ScrollyItemProps} from '$types'
+	import type {ScrollyItemProps} from '#types'
 	import Picture from '#lib/components/blocks/media/Picture.svelte'
 	import Magic from '#lib/components/blocks/global/Magic.svelte'
 

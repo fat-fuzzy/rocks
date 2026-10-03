@@ -1,5 +1,5 @@
 import {describe, test, expect} from 'vitest'
-import format from '$lib/utils/format'
+import format from '#lib/utils/format.js'
 
 describe('format.ts - formatting utilities', () => {
 	test('formats an href', () => {

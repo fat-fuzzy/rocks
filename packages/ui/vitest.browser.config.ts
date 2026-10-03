@@ -8,8 +8,7 @@ import {mdsvex} from 'mdsvex'
 import mdsvexConfig from './mdsvex.config.js'
 
 export const ALIAS_BASE = {
-	$types: path.resolve('./src/lib/types/index.ts'),
-	$tests: path.resolve('./tests'),
+	$config: path.resolve('./src/config'),
 }
 
 export const TEST_CONFIG_BASE = {
@@ -27,9 +26,6 @@ export default defineConfig({
 			adapter: adapter(),
 			alias: {
 				$config: path.resolve('./src/config'),
-				$types: path.resolve('./src/lib/types/index.ts'),
-				$tests: path.resolve('./tests'),
-				$lib: path.resolve('./src/lib'),
 			},
 			extensions: ['.svelte', '.md', '.svx'],
 		}),

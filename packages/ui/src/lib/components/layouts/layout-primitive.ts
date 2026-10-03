@@ -1,5 +1,5 @@
 import type {Snippet} from 'svelte'
-import type {LayoutProps, UiLayoutProps, UiContentProps} from '$types'
+import type {LayoutProps, UiLayoutProps, UiContentProps} from '#types'
 
 export type LayoutPrimitiveProps = LayoutProps & UiLayoutProps & UiContentProps
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {ToggleRevealProps} from '$types'
+	import type {ToggleRevealProps} from '#types'
 	import styleHelper from '#lib/utils/styles.js'
 	// import {clickOutside} from '#lib/utils/browser/click-outside.js'
 

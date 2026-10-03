@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {PageHeaderProps} from '$types'
+	import type {PageHeaderProps} from '#types'
 	import styleHelper from '#lib/utils/styles.js'
 
 	let {

@@ -1,4 +1,4 @@
-import type {FuzzyState, ButtonStateProps} from '$types'
+import type {FuzzyState, ButtonStateProps} from '#types'
 
 export type UiStateSwitch = 'active' | 'inactive'
 

@@ -1,8 +1,8 @@
 // Reexport your entry components here
 import './types/index'
-import type {FatFuzzyUi} from '$types'
+import type {FatFuzzyUi} from '#types'
 
-export type * from '$types'
+export type * from '#types'
 /**
  * Headless components
  */

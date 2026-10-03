@@ -1,12 +1,13 @@
-import type {ToggleProps, FuzzyPayload, FuzzySystem} from '$types'
+import type {ToggleProps, FuzzyPayload, FuzzySystem} from '#types'
+import {SvelteMap} from 'svelte/reactivity'
 
 class ToggleSystem implements FuzzySystem<ToggleProps> {
 	mode = 'radio'
-	state: Map<string, FuzzyPayload> = $state(new Map())
-	groups: Map<string, Map<string, FuzzyPayload>> = $state(new Map())
+	state: Map<string, FuzzyPayload> = $state(new SvelteMap())
+	groups: Map<string, Map<string, FuzzyPayload>> = $state(new SvelteMap())
 	public reset() {
-		this.state = new Map()
-		this.groups = new Map()
+		this.state = new SvelteMap()
+		this.groups = new SvelteMap()
 		this.mode = 'radio'
 	}
 
@@ -15,9 +16,9 @@ class ToggleSystem implements FuzzySystem<ToggleProps> {
 			this.mode = mode
 		}
 
-		const gridMenuItems = items?.reduce(this.buildGroups, new Map())
+		const gridMenuItems = items?.reduce(this.buildGroups, new SvelteMap())
 
-		this.groups = new Map(
+		this.groups = new SvelteMap(
 			Array.from(gridMenuItems.entries()).map(([group, items]) => {
 				const states = this.buildStates(items)
 				return [group, states]
@@ -65,7 +66,7 @@ class ToggleSystem implements FuzzySystem<ToggleProps> {
 	 * @returns a map of toggle menu items states
 	 */
 	buildStates(items: ToggleProps[]): Map<string, FuzzyPayload> {
-		return new Map(
+		return new SvelteMap(
 			items.map((item: ToggleProps) => [
 				item.id,
 				{...item, state: item.initial || 'inactive'},

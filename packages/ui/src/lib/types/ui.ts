@@ -11,7 +11,7 @@ import type {
 	UiAssetType,
 	UiPosition,
 	UiCoords,
-} from '$types'
+} from '#types'
 
 export type AriaLive = 'polite' | 'off' | 'assertive' | null | undefined
 

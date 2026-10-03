@@ -3,7 +3,7 @@ import {userEvent} from 'vitest/browser'
 import {render} from 'vitest-browser-svelte'
 
 import InputCheckTest from './InputCheckTest.svelte'
-import {INPUTS} from '$tests/fixtures/form-inputs'
+import {INPUTS} from '#tests/fixtures/form-inputs.ts'
 
 const key = 'checkbox'
 const input = INPUTS[key]

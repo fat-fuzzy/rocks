@@ -1,4 +1,4 @@
-import type {FuzzyTransitions, ToggleMachine} from '$types'
+import type {FuzzyTransitions, ToggleMachine} from '#types'
 
 export const TOGGLE_MACHINE: ToggleMachine = {
 	active: {

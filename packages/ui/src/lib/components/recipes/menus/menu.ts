@@ -1,4 +1,4 @@
-import type {UiBlockProps, ButtonProps, FuzzyPayload} from '$types'
+import type {UiBlockProps, ButtonProps, FuzzyPayload} from '#types'
 
 export type ButtonMenuProps = UiBlockProps & {
 	/**

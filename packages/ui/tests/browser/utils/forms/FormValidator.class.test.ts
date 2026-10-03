@@ -1,15 +1,15 @@
-import type {TestForm} from '$types'
+import type {TestForm} from '#types'
 import {describe, it, expect, beforeEach} from 'vitest'
 
 import {sanitize} from '@fat-fuzzy/validation'
 
-import {TestFormValidator} from '$lib/utils/validate'
-import FormValidator from '$lib/utils/browser/FormValidator.svelte'
+import {TestFormValidator} from '#lib/utils/validate.js'
+import FormValidator from '#lib/utils/browser/FormValidator.svelte.ts'
 import {
 	INPUTS,
 	getSampleInputFields,
 	initFormDataWithSampleInputs,
-} from '$tests/fixtures/form-inputs'
+} from '#tests/fixtures/form-inputs.ts'
 
 describe('FormValidator - a class that validates form inputs using validation functions from @fat-fuzzy/validation', () => {
 	let validator: FormValidator<TestForm>

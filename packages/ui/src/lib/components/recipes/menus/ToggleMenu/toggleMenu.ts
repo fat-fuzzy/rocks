@@ -1,4 +1,4 @@
-import type {UiBlockProps, FuzzyPayload, ToggleProps} from '$types'
+import type {UiBlockProps, FuzzyPayload, ToggleProps} from '#types'
 
 export type ToggleMenuProps = UiBlockProps & {
 	/**

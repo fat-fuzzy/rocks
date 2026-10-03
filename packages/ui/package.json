@@ -16,19 +16,23 @@
 		"lint": "prettier --check . && eslint .",
 		"format": "prettier --write --ignore-path=../../.prettierignore .",
 		"test": "pnpm test:unit && pnpm test:browser && pnpm test:e2e",
+		"test:dev": "vitest",
 		"test:unit": "vitest run",
 		"test:types": "vitest run --typecheck",
 		"test:coverage": "vitest --ui",
+		"test:report": "vitest run --reporter=verbose",
 		"test:browser": "vitest run --config=vitest.browser.config.ts",
 		"test:browser:ui": "vitest --config=vitest.browser.ui.config.ts",
 		"test:e2e": "NODE_ENV=test playwright test",
-		"test:ui": "NODE_ENV=test playwright test --ui",
-		"test:dev:unit": "vitest",
-		"test:report": "NODE_ENV=test playwright test --reporter=html"
+		"test:e2e:ui": "NODE_ENV=test playwright test --ui",
+		"test:e2e:report": "NODE_ENV=test playwright test --reporter=html"
 	},
 	"imports": {
 		"#lib": "./src/lib/index.js",
-		"#lib/*": "./src/lib/*"
+		"#lib/*": "./src/lib/*",
+		"#tests": "./tests/index.js",
+		"#tests/*": "./tests/*",
+		"#types": "./src/lib/types/index.ts"
 	},
 	"exports": {
 		".": {

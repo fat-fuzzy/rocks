@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {InputFeedbackProps} from '$types'
+	import type {InputFeedbackProps} from '#types'
 	import Feedback from '#lib/components/blocks/global/Feedback.svelte'
 
 	let {

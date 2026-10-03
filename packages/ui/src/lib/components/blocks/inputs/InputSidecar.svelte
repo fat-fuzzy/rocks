@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {InputProps, ButtonProps} from '$types'
+	import type {InputProps, ButtonProps} from '#types'
 	import styleHelper from '#lib/utils/styles.js'
 	import Button from '#lib/components/blocks/buttons/Button.svelte'
 	import Feedback from '#lib/components/blocks/inputs/InputFeedback.svelte'

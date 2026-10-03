@@ -1,4 +1,4 @@
-import type {UiState} from '$types'
+import type {UiState} from '#types'
 
 type PopoverState = {id: string; element: HTMLElement; state?: UiState}
 

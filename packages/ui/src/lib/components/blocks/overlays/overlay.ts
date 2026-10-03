@@ -6,7 +6,7 @@ import type {
 	FuzzyPayload,
 	AriaInvoke,
 	UiSize,
-} from '$types'
+} from '#types'
 
 export type OverlayProps = UiBlockProps &
 	UiLayoutProps & {

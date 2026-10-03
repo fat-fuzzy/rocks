@@ -3,7 +3,7 @@ import type {
 	UiContainerProps,
 	UiLayoutProps,
 	UiStatus,
-} from '$lib/types'
+} from '#types'
 
 const PROPS_CONTAINER: {props: UiContainerProps; expected: string}[] = [
 	{

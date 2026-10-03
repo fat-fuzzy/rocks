@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {TabsProps, Tab} from '$types'
+	import type {TabsProps, Tab} from '#types'
 	import styleHelper from '#lib/utils/styles.js'
 	import {onMount} from 'svelte'
 

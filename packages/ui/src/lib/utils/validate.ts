@@ -4,7 +4,7 @@ import type {
 	TestForm,
 	SignUp,
 	CookiePreferences,
-} from '$types'
+} from '#types'
 
 import * as validators from '#lib/generated/ajv/validate.ajv.mjs'
 

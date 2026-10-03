@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {CookiePreferences, CookiesPreferencesProps} from '$types'
+	import type {CookiePreferences, CookiesPreferencesProps} from '#types'
 	import {onMount} from 'svelte'
 
 	import {CookiePreferencesValidator} from '#lib/utils/validate.js'

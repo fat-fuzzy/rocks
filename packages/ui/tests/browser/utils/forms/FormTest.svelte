@@ -1,19 +1,19 @@
 <script lang="ts">
-	import type {FormProps, TestForm} from '$types'
+	import type {FormProps, TestForm} from '#types'
 	import {onMount} from 'svelte'
 	import {enhance} from '$app/forms'
 
-	import {TestFormValidator} from '$lib/utils/validate'
-	import Button from '$lib/components/blocks/buttons/Button.svelte'
-	import Feedback from '$lib/components/blocks/global/Feedback.svelte'
-	import Input from '$lib/components/blocks/inputs/Input.svelte'
-	import InputCheck from '$lib/components/blocks/inputs/InputCheck.svelte'
-	import InputRadio from '$lib/components/blocks/inputs/InputRadio.svelte'
-	import InputGroup from '$lib/components/blocks/inputs/InputGroup.svelte'
-	import InputPassword from '$lib/components/blocks/inputs/InputPassword.svelte'
-	import FormValidator from '$lib/utils/browser/FormValidator.svelte'
+	import {TestFormValidator} from '#lib/utils/validate.js'
+	import Button from '#lib/components/blocks/buttons/Button.svelte'
+	import Feedback from '#lib/components/blocks/global/Feedback.svelte'
+	import Input from '#lib/components/blocks/inputs/Input.svelte'
+	import InputCheck from '#lib/components/blocks/inputs/InputCheck.svelte'
+	import InputRadio from '#lib/components/blocks/inputs/InputRadio.svelte'
+	import InputGroup from '#lib/components/blocks/inputs/InputGroup.svelte'
+	import InputPassword from '#lib/components/blocks/inputs/InputPassword.svelte'
+	import FormValidator from '#lib/utils/browser/FormValidator.svelte'
 
-	import TestContext from '$tests/browser/TestContext.svelte'
+	import TestContext from '#tests/browser/TestContext.svelte'
 
 	let {
 		id = 'test-form',

@@ -1,4 +1,4 @@
-import type {FeedbackProps} from '$types'
+import type {FeedbackProps} from '#types'
 
 /**
  * Adapted from : https://web.dev/articles/building/a-toast-component

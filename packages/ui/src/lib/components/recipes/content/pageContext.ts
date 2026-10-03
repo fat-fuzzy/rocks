@@ -1,4 +1,4 @@
-import type {UiStatus, UiSurface} from '$types'
+import type {UiStatus, UiSurface} from '#types'
 import type {Snippet} from 'svelte'
 
 export type AsideProps = {

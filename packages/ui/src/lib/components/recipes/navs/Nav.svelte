@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {NavProps} from '$types'
+	import type {NavProps} from '#types'
 
 	import styleHelper from '#lib/utils/styles.js'
 	import ToggleTree from '#lib/components/recipes/toggle/ToggleTree.svelte'

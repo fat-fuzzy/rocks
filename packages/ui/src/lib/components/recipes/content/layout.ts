@@ -1,5 +1,5 @@
 import type {Snippet} from 'svelte'
-import type {NavProps, ViewingPreferences} from '$types'
+import type {NavProps, ViewingPreferences} from '#types'
 
 export type LayoutProps = {
 	size?: string

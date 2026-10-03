@@ -1,9 +1,9 @@
 <script lang="ts">
-	import type {FuzzyPayload, OverlayProps, UiState} from '$types'
+	import type {FuzzyPayload, OverlayProps, UiState} from '#types'
 
 	import {onMount} from 'svelte'
 	import Button from '#lib/components/blocks/buttons/Button.svelte'
-	import actor from './actor.svelte'
+	import actor from './actor.svelte.js'
 	import constants from '#lib/types/constants.js'
 
 	const {TRANSITION_REVEAL} = constants

@@ -1,9 +1,9 @@
 <script lang="ts">
-	import TestContext from '$tests/browser/TestContext.svelte'
 	import {onMount} from 'svelte'
-	import Popover from '$lib/components/blocks/overlays/Popover/Popover.svelte'
-	import {POPOVER_PROPS} from '$tests/fixtures/block-props'
-	import popoverActor from '$lib/components/blocks/overlays/Popover/actor.svelte'
+	import TestContext from '#tests/browser/TestContext.svelte'
+	import Popover from '#lib/components/blocks/overlays/Popover/Popover.svelte'
+	import {POPOVER_PROPS} from '#tests/fixtures/block-props.js'
+	import popoverActor from '#lib/components/blocks/overlays/Popover/actor.svelte.js'
 
 	let {
 		count = 1,

@@ -1,13 +1,13 @@
 <script lang="ts">
-	import type {UiColor} from '$types'
+	import type {UiColor} from '#types'
 
-	import {TestFormValidator} from '$lib/utils/validate'
-	import FormValidator from '$lib/utils/browser/FormValidator.svelte'
-
-	import InputRadio from '$lib/components/blocks/inputs/InputRadio.svelte'
-	import TestContext from '$tests/browser/TestContext.svelte'
-	import {INPUTS} from '$tests/fixtures/form-inputs'
 	import {page} from '$app/state'
+	import {TestFormValidator} from '#lib/utils/validate'
+	import FormValidator from '#lib/utils/browser/FormValidator.svelte'
+
+	import InputRadio from '#lib/components/blocks/inputs/InputRadio.svelte'
+	import TestContext from '#tests/browser/TestContext.svelte'
+	import {INPUTS} from '#tests/fixtures/form-inputs.ts'
 
 	let {id}: {id: string} = $props()
 

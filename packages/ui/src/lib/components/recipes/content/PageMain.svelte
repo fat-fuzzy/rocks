@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {UiSize, PageProps} from '$types'
+	import type {UiSize, PageProps} from '#types'
 	import Head from '#lib/components/blocks/global/Head.svelte'
 	import PageHeader from '#lib/components/recipes/content/PageHeader.svelte'
 

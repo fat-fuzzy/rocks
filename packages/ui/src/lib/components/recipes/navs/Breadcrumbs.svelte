@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {BreadcrumbsProps} from '$types'
+	import type {BreadcrumbsProps} from '#types'
 	import styleHelper from '#lib/utils/styles.js'
 
 	let {
