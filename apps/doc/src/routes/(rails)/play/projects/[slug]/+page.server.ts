@@ -14,7 +14,7 @@ export const load = async ({parent, params, locals}) => {
 	const content = markdowns?.find((v) => v.meta.slug === slug)
 
 	if (!content && !meta) {
-		error(404, {message: 'Sketch not found'})
+		error(404, 'Sketch not found')
 	}
 
 	const pageContext = locals.pageContext ?? {}
