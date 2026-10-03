@@ -1,17 +1,18 @@
 <script lang="ts">
-	import type {SketchProps, SceneContext, Filters} from '$types'
+	import type {
+		SketchProps,
+		SceneContext,
+		Filters,
+		SketchEvent,
+		ControlsEvent,
+		CanvasEvent,
+		PlayerEvent,
+	} from '#types'
 
 	import {onDestroy, onMount} from 'svelte'
 	import intl from '@fat-fuzzy/intl'
 	import ui from '@fat-fuzzy/ui'
 	import {page} from '$app/state'
-
-	import type {
-		SketchEvent,
-		ControlsEvent,
-		CanvasEvent,
-		PlayerEvent,
-	} from '$types'
 
 	import Geometry2D from '#lib/components/geometry/Geometry2D.svelte'
 	import Player from '#lib/components/player/Player.svelte'

@@ -1,8 +1,8 @@
 // Reexport your entry components here
 import './types/index'
-import type {FatFuzzySketch} from '$types'
+import type {FatFuzzySketch} from '#types'
 
-export type * from '$types'
+export type * from '#types'
 
 import './styles/css/sketch.css' /* Use for player inputs layout */
 import './styles/css/geometry.css' /* Use for geometry inputs **/

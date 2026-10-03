@@ -1,4 +1,4 @@
-import type {Filters, SceneContext} from '$types'
+import type {Filters, SceneContext} from '#types'
 import type {UiColor, UiLayout, UiSize} from '@fat-fuzzy/ui'
 
 export type CameraControlsProps = {

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {ScaleProps} from '$types'
+	import type {ScaleProps} from '#types'
 
 	import ui from '@fat-fuzzy/ui'
 	const {InputRange} = ui.blocks

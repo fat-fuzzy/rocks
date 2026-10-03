@@ -13,7 +13,7 @@ import type {
 	SketchState,
 	ControlsState,
 	CanvasState,
-} from '$types'
+} from '#types'
 
 import {
 	SKETCH_FEEDBACK,

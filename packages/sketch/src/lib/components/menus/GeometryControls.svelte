@@ -3,7 +3,7 @@
 		GeometryContext,
 		SceneContext,
 		GeometryControlsProps,
-	} from '$types'
+	} from '#types'
 	import Geometry3D from '#lib/components/geometry/Geometry3D.svelte'
 	import FieldOfView from '#lib/components/camera/FieldOfView.svelte'
 

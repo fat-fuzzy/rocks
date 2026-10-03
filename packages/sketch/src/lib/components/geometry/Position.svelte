@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {PositionProps} from '$types'
+	import type {PositionProps} from '#types'
 	import ui from '@fat-fuzzy/ui'
 	const {InputRange} = ui.blocks
 

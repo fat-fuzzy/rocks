@@ -7,7 +7,7 @@ import type {
 	PlayerState,
 	PlayerEvent,
 	PlayerAction,
-} from '$types'
+} from '#types'
 
 import {
 	PLAYER_EVENTS,

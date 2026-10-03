@@ -2,7 +2,7 @@ import type {
 	PlayerEventsType,
 	PlayerActionsType,
 	PlayerTransitionsType,
-} from '$types'
+} from '#types'
 
 export const PLAYER_SWITCH = {
 	active: {
