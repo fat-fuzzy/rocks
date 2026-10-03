@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type {GridControlProps} from '$types'
 	import ui from '@fat-fuzzy/ui'
-	import actor from '$lib/components/sketch/actor.svelte'
+	import actor from '#lib/components/sketch/actor.svelte.js'
 
 	const {ToggleMenu} = ui.recipes
 

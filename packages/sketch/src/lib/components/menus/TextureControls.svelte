@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type {TextureControlProps} from '$types'
-	import Filters from '$lib/components/texture/Filters.svelte'
-	import actor from '$lib/components/sketch/actor.svelte'
+	import Filters from '#lib/components/texture/Filters.svelte'
+	import actor from '#lib/components/sketch/actor.svelte.js'
 
 	let {size = 'xs', onupdate, filters}: TextureControlProps = $props()
 
