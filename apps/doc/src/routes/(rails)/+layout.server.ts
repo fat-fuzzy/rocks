@@ -1,5 +1,5 @@
 import {pages} from '$config/navigation'
-import {buildNav} from '$lib/server/services/navigation/setup'
+import {buildNav} from '#lib/server/services/navigation/setup.js'
 
 export const load = async ({locals, url}) => {
 	const pageName = url.pathname.split('/')

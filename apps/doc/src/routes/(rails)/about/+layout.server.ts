@@ -2,7 +2,7 @@ import {
 	buildNav,
 	buildSubnav,
 	buildNavItems,
-} from '$lib/server/services/navigation/setup'
+} from '#lib/server/services/navigation/setup.js'
 import {pages} from '$config/navigation'
 import decisions from '$data/decisions'
 import usages from '$data/usages'

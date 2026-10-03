@@ -10,9 +10,9 @@
 	import {links} from '$config/navigation'
 	import {linksSocials} from '$config/navigation'
 
-	import Footer from '$lib/ui/Footer.svelte'
-	import Socials from '$lib/ui/Socials.svelte'
-	import NavSlides from '$lib/ui/NavSlides.svelte'
+	import Footer from '#lib/ui/Footer.svelte'
+	import Socials from '#lib/ui/Socials.svelte'
+	import NavSlides from '#lib/ui/NavSlides.svelte'
 
 	const {ToggleTree, ToggleReveal, Cookies, ToggleSettings} = ui.drafts
 	const {SkipLinks} = ui.recipes
