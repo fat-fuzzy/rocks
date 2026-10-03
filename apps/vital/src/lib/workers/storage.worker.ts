@@ -1,4 +1,4 @@
-import type {WorkerMessage, WorkerResponse} from '$types'
+import type {WorkerMessage, WorkerResponse} from '#types'
 
 import {
 	isSeedComplete,

@@ -11,7 +11,7 @@ import type {
 	OPFSTreeDoc,
 	Rank,
 	NamespaceId,
-} from '$types'
+} from '#types'
 
 import {sanitizeFileName} from '#lib/common/sanitize.js'
 import {parseBlock, parseSection} from '#lib/common/transform/parse-or-throw.js'

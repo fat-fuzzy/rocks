@@ -7,7 +7,7 @@ import type {
 	FrontmatterSeed,
 	FrontmatterBase,
 	FrontmatterStructure,
-} from '$types'
+} from '#types'
 
 import assetsUtils from '$data/markdown-in'
 import {sortByNameDesc} from '#lib/common/sort.js'

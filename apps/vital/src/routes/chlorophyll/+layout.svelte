@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {Coordinators} from '$types'
+	import type {Coordinators} from '#types'
 
 	import {getContext, setContext, type Snippet} from 'svelte'
 

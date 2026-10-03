@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {UiColor, UiSize, UiVariant} from '@fat-fuzzy/ui'
-	import type {ICoordinateImports} from '$types'
+	import type {ICoordinateImports} from '#types'
 
 	import {SvelteURL} from 'svelte/reactivity'
 	import ui from '@fat-fuzzy/ui'

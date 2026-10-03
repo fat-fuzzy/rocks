@@ -1,4 +1,4 @@
-import type {FileExt, NamespaceId} from '$types'
+import type {FileExt, NamespaceId} from '#types'
 
 export interface ICoordinateExports {
 	readonly export: {type: string; meta: Record<string, unknown>; data: string}

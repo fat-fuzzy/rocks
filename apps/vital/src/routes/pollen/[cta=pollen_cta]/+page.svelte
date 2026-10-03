@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {RouteId, CurrentCoordinators} from '$types'
+	import type {RouteId, CurrentCoordinators} from '#types'
 
 	import {getContext} from 'svelte'
 	import {page} from '$app/state'

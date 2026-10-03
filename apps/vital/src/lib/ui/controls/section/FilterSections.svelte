@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {UiColor} from '@fat-fuzzy/ui'
-	import type {Slug, DocLanguage, ICoordinateDocs} from '$types'
+	import type {Slug, DocLanguage, ICoordinateDocs} from '#types'
 
 	import ui from '@fat-fuzzy/ui'
 

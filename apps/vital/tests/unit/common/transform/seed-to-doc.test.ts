@@ -1,7 +1,7 @@
 import {describe, test, expect} from 'vitest'
 import {seedDocToDoc} from '$lib/common/transform/seed-to-doc'
-import {SEED_DOC} from '$tests/fixtures/seed'
-import {TEST_DOC_EN_LONG} from '$tests/fixtures/doc'
+import {SEED_DOC} from '#tests/fixtures/seed.js'
+import {TEST_DOC_EN_LONG} from '#tests/fixtures/doc.js'
 
 describe('seed-to-doc.ts - transform SeedDoc data to Doc object', () => {
 	test('seedDocToDoc', () => {

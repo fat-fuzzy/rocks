@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {UiColor} from '@fat-fuzzy/ui'
-	import type {ActionCrud, ICoordinateMetadata} from '$types'
+	import type {ActionCrud, ICoordinateMetadata} from '#types'
 
 	import {onDestroy, onMount} from 'svelte'
 	import {SvelteURL} from 'svelte/reactivity'

@@ -13,7 +13,7 @@ import type {
 	FormTag,
 	FormPreset,
 	Uuid,
-} from '$types'
+} from '#types'
 
 import * as validators from '#lib/generated/ajv/validation/validate.ajv.mjs'
 

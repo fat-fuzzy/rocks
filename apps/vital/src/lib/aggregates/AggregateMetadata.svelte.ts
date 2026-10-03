@@ -9,7 +9,7 @@ import type {
 	TagGroup,
 	Rank,
 	NamespaceId,
-} from '$types'
+} from '#types'
 
 import {DOC_LANGUAGE, DOC_FORMAT} from '$config/setup'
 import {SCHEMA_VERSION} from '$config/setup'

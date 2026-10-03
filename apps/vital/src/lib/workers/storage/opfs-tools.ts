@@ -9,7 +9,7 @@ import type {
 	Block,
 	SeedType,
 	NamespaceId,
-} from '$types'
+} from '#types'
 
 import {sanitizeFileName} from '#lib/common/sanitize.js'
 

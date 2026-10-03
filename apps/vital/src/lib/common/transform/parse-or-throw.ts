@@ -10,7 +10,7 @@ import type {
 	DocLanguage,
 	Path,
 	DateString,
-} from '$types'
+} from '#types'
 
 import {
 	BlockValidator,

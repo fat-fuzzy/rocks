@@ -4,7 +4,7 @@ import type {
 	Coordinators,
 	ICoordinateDocs,
 	ICoordinatePresets,
-} from '$types'
+} from '#types'
 
 export interface ICoordinateCompare {
 	readonly coords: {

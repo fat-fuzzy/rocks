@@ -1,5 +1,5 @@
 import type {NavItem, UiColor, UiShape, UiSize, UiVariant} from '@fat-fuzzy/ui'
-import type {SeedSection} from '$types'
+import type {SeedSection} from '#types'
 
 export const links = [
 	{

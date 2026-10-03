@@ -1,5 +1,5 @@
 import {DOC_LANGUAGE, DOC_FORMAT, SCHEMA_VERSION} from '$config/setup'
-import type {DocMeta, FrontmatterBase, FrontmatterStructure} from '$types'
+import type {DocMeta, FrontmatterBase, FrontmatterStructure} from '#types'
 
 export const BASE_IDS = [crypto.randomUUID(), crypto.randomUUID()]
 export const STRUCTURE_IDS = [crypto.randomUUID(), crypto.randomUUID()]

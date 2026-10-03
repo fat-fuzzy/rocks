@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {Block, ICoordinateDocs, ICoordinateMetadata} from '$types'
+	import type {Block, ICoordinateDocs, ICoordinateMetadata} from '#types'
 	import type {UiAssetType, UiColor, UiShape, UiVariant} from '@fat-fuzzy/ui'
 
 	import ui from '@fat-fuzzy/ui'

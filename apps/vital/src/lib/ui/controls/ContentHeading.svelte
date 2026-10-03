@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {Preset, Slug, CurrentCoordinators} from '$types'
+	import type {Preset, Slug, CurrentCoordinators} from '#types'
 
 	import {getContext} from 'svelte'
 	import ui, {type UiColor, type UiSize} from '@fat-fuzzy/ui'

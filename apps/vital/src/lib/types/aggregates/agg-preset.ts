@@ -1,4 +1,4 @@
-import type {Uuid, DocMeta, DocPath, Preset, NamespaceId} from '$types'
+import type {Uuid, DocMeta, DocPath, Preset, NamespaceId} from '#types'
 
 export type PresetStore = {
 	[name: string]: Preset

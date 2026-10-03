@@ -1,4 +1,4 @@
-import type {DialogState, DialogProps} from '$types'
+import type {DialogState, DialogProps} from '#types'
 
 /**
  * Manages Dialog state (modal or non-modal), one dialog at a time

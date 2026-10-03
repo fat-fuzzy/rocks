@@ -6,7 +6,7 @@ import type {
 	UiShape,
 	InputProps,
 } from '@fat-fuzzy/ui'
-import type {Slug, Uuid} from '$types'
+import type {Slug, Uuid} from '#types'
 
 export type InputCheckedTypes = 'radio' | 'checkbox'
 

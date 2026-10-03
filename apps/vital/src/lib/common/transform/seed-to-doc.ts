@@ -9,7 +9,7 @@ import type {
 	SeedDoc,
 	SeedSection,
 	SeedBlock,
-} from '$types'
+} from '#types'
 
 import {SCHEMA_VERSION} from '$config/setup'
 

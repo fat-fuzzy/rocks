@@ -7,7 +7,7 @@
 		Slug,
 		InputCheckedTypes,
 		CurrentCoordinators,
-	} from '$types'
+	} from '#types'
 
 	import {getContext} from 'svelte'
 	import prose from '@fat-fuzzy/prose'

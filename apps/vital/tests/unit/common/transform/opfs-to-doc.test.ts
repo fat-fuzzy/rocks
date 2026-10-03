@@ -7,16 +7,16 @@ import {
 	isRawStructure,
 	opfsDocTreeToDocStore,
 } from '$lib/common/transform/opfs-to-doc'
-import {BASE, RAW_BASE, STRUCTURE, RAW_STRUCTURE} from '$tests/fixtures/meta'
-import {PRESETS, RAW_PRESETS} from '$tests/fixtures/preset'
-import {SEED_DOC, SEED_SECTIONS} from '$tests/fixtures/seed'
+import {BASE, RAW_BASE, STRUCTURE, RAW_STRUCTURE} from '#tests/fixtures/meta.js'
+import {PRESETS, RAW_PRESETS} from '#tests/fixtures/preset.js'
+import {SEED_DOC, SEED_SECTIONS} from '#tests/fixtures/seed.js'
 import {
 	TEST_DOC_EN_LONG,
 	OPFS_DOC,
 	OPFS_SECTIONS,
 	DOC_STORE,
-} from '$tests/fixtures/doc'
-import type {DocStore} from '$types'
+} from '#tests/fixtures/doc.js'
+import type {DocStore} from '#types'
 
 describe('opfs-to-doc.ts - transform OPFSTreeDoc data to Doc object', () => {
 	test('isRecord', () => {

@@ -6,7 +6,7 @@
 		NamespaceId,
 		CurrentCoordinators,
 		RouteNameFor,
-	} from '$types'
+	} from '#types'
 
 	import {getContext, onMount} from 'svelte'
 

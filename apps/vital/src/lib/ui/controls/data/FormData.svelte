@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {InputProps, UiColor, UiSurface} from '@fat-fuzzy/ui'
-	import type {ICoordinateImports} from '$types'
+	import type {ICoordinateImports} from '#types'
 
 	import ui from '@fat-fuzzy/ui'
 	import {page} from '$app/state'

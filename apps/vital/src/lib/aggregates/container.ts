@@ -1,4 +1,4 @@
-import type {NamespaceId, Aggregators} from '$types'
+import type {NamespaceId, Aggregators} from '#types'
 import AggregateDataLifecycle from '#lib/aggregates/AggregateDataLifecycle.svelte.js'
 import AggregateDocs from '#lib/aggregates/AggregateDocs.svelte.js'
 import AggregatePresets from '#lib/aggregates/AggregatePresets.svelte.js'

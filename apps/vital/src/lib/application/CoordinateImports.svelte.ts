@@ -7,7 +7,7 @@ import type {
 	ImportStatus,
 	IAggregateDocs,
 	NamespaceId,
-} from '$types'
+} from '#types'
 import type {UiStatus} from '@fat-fuzzy/ui'
 
 import {guardedExport} from '#lib/common/download.js'

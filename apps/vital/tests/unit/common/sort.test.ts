@@ -6,8 +6,8 @@ import {
 	sortByRankDesc,
 } from '$lib/common/sort'
 
-import {SEED_SECTIONS} from '$tests/fixtures/seed'
-import {SECTIONS} from '$tests/fixtures/doc'
+import {SEED_SECTIONS} from '#tests/fixtures/seed.js'
+import {SECTIONS} from '#tests/fixtures/doc.js'
 
 describe('sort.ts - sorting utilities', () => {
 	test('sortByNameAsc', () => {

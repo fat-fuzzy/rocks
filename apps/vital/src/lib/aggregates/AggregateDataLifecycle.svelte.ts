@@ -11,7 +11,7 @@ import type {
 	FrontmatterStructure,
 	IAggregateDataLifecycle,
 	NamespaceId,
-} from '$types'
+} from '#types'
 
 import {DEFAULT_STRUCTURES, DEFAULT_CONTENT} from '$data/doc/cv-config'
 import WorkerBridge from '#lib/workers/worker-bridge.js'

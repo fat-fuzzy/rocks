@@ -1,4 +1,4 @@
-import type {SeedDoc} from '$types'
+import type {SeedDoc} from '#types'
 
 import {error} from '@sveltejs/kit'
 

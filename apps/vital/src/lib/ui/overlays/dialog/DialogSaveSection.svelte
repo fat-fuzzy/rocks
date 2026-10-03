@@ -6,7 +6,7 @@
 		UiSize,
 		UiVariant,
 	} from '@fat-fuzzy/ui'
-	import type {ICoordinateDocs, Slug} from '$types'
+	import type {ICoordinateDocs, Slug} from '#types'
 
 	import ui from '@fat-fuzzy/ui'
 

@@ -1,4 +1,4 @@
-import type {Doc, DocStore, OPFSTreeDoc, Section} from '$types'
+import type {Doc, DocStore, OPFSTreeDoc, Section} from '#types'
 import {SCHEMA_VERSION} from '$config/setup'
 
 export const DOC_ID = crypto.randomUUID()

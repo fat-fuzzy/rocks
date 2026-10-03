@@ -5,7 +5,7 @@
 		RouteId,
 		NamespaceId,
 		ICoordinateCompare,
-	} from '$types'
+	} from '#types'
 
 	import {getContext} from 'svelte'
 	import {resolve} from '$app/paths'

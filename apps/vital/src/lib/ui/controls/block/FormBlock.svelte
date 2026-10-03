@@ -10,7 +10,7 @@
 		InputCheckedTypes,
 		ICoordinateDocs,
 		ICoordinateMetadata,
-	} from '$types'
+	} from '#types'
 
 	import {onDestroy, onMount} from 'svelte'
 	import ui from '@fat-fuzzy/ui'

@@ -1,4 +1,4 @@
-import type {DocMeta, DocVisibility} from '$types'
+import type {DocMeta, DocVisibility} from '#types'
 
 export type PresetContent = {query: string}
 
