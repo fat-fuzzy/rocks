@@ -36,7 +36,7 @@
 
 	import ContentActions from '#lib/ui/controls/ContentActions.svelte'
 	import ContentHeading from '#lib/ui/controls/ContentHeading.svelte'
-	import {DOC_FORMAT, DOC_LANGUAGE} from '$config/setup'
+	import {DOC_FORMAT, DOC_LANGUAGE} from '#config/setup.js'
 
 	const {PageRails} = ui.content
 	const {Feedback} = ui.blocks

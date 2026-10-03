@@ -6,7 +6,7 @@ import type {
 	Slug,
 } from '#types'
 
-import {SCHEMA_VERSION, DOC_LANGUAGE, DOC_FORMAT} from '$config/setup'
+import {SCHEMA_VERSION, DOC_LANGUAGE, DOC_FORMAT} from '#config/setup.js'
 
 const PATHS_CV_L10N_FORMATS: MarkdownStructure = {
 	en: {

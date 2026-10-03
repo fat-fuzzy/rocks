@@ -18,7 +18,7 @@ import type {
 	OPFStructure,
 } from '#types'
 
-import {SCHEMA_VERSION} from '$config/setup'
+import {SCHEMA_VERSION} from '#config/setup.js'
 import {
 	parseSection,
 	parseBase,

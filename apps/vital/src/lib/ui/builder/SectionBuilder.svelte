@@ -11,7 +11,7 @@
 	import {getContext, onMount} from 'svelte'
 
 	import {isHidden, checkTags} from '#lib/common/tags.js'
-	import {DOC_LANGUAGE, DOC_FORMAT} from '$config/setup'
+	import {DOC_LANGUAGE, DOC_FORMAT} from '#config/setup.js'
 
 	import BlockBuilder from '#lib/ui/builder/BlockBuilder.svelte'
 	import FeedbackContent from '#lib/ui/FeedbackContent.svelte'

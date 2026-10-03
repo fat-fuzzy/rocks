@@ -6,8 +6,7 @@ import adapter from '@sveltejs/adapter-cloudflare'
 import {playwright} from '@vitest/browser-playwright'
 import {mdsvex} from 'mdsvex'
 import mdsvexConfig from './mdsvex.config.js'
-
-import {ALIAS_BASE, TEST_CONFIG_BASE} from './vitest.browser.config'
+import {TEST_CONFIG_BASE} from './vitest.browser.config'
 
 export const COVERAGE_BASE = {
 	enabled: true,
@@ -36,15 +35,11 @@ export default defineConfig({
 			// See https://svelte.dev/docs/kit/adapters for more information about adapters.
 			adapter: adapter(),
 			alias: {
-				$config: path.resolve('./src/config'),
 				$data: path.resolve('./src/data'),
 				$schemas: path.resolve('./src/schemas'),
 			},
 		}),
 	],
-	resolve: {
-		alias: ALIAS_BASE,
-	},
 	test: {
 		...TEST_CONFIG_BASE,
 		reporters: ['html'],

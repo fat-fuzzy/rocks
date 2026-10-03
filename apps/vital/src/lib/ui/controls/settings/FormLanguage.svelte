@@ -10,7 +10,7 @@
 
 	import {FormLanguageValidator} from '#lib/common/validate.js'
 	import dialogActor from '#lib/ui/overlays/dialog/actor.svelte.js'
-	import {DOC_LANGUAGE} from '$config/setup'
+	import {DOC_LANGUAGE} from '#config/setup.js'
 
 	const {Button, Input, Feedback} = ui.blocks
 	const {FormValidator} = ui.utils

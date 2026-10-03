@@ -1,4 +1,4 @@
-import {APP_NAME} from '$config/setup'
+import {APP_NAME} from '#config/setup.js'
 
 import {
 	CTA_TO_LABEL,

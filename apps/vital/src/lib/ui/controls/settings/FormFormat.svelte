@@ -10,7 +10,7 @@
 
 	import {FormFormatValidator} from '#lib/common/validate.js'
 	import dialogActor from '#lib/ui/overlays/dialog/actor.svelte.js'
-	import {DOC_FORMAT} from '$config/setup'
+	import {DOC_FORMAT} from '#config/setup.js'
 
 	const {Button, Input, Feedback} = ui.blocks
 	const {FormValidator} = ui.utils
@@ -103,7 +103,7 @@
 
 		dialogActor.close()
 
-		let url = new SvelteURL(page.url)
+		let url = new SvelteURL(page.url.href)
 		url.searchParams.delete('format')
 		url.searchParams.append('format', newFormat)
 

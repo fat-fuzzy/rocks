@@ -20,7 +20,7 @@ import type {
 import WorkerBridge from '#lib/workers/worker-bridge.js'
 import {getBridge} from '#lib/aggregates/bridge.js'
 
-import {SCHEMA_VERSION} from '$config/setup'
+import {SCHEMA_VERSION} from '#config/setup.js'
 import {sortByRankAsc} from '#lib/common/sort.js'
 import {getSectionKey, getBlockKey} from '#lib/common/format.js'
 import {opfsDocTreeToDocStore} from '#lib/common/transform/opfs-to-doc.js'

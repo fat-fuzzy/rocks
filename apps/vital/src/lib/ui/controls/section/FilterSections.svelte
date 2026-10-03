@@ -5,7 +5,7 @@
 	import ui from '@fat-fuzzy/ui'
 
 	import {page} from '$app/state'
-	import {DOC_LANGUAGE, DOC_FORMAT} from '$config/setup'
+	import {DOC_LANGUAGE, DOC_FORMAT} from '#config/setup.js'
 
 	const {InputGroup} = ui.blocks
 

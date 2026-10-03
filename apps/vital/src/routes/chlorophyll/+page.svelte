@@ -2,7 +2,7 @@
 	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
 
-	import {DOC_LANGUAGE} from '$config/setup'
+	import {DOC_LANGUAGE} from '#config/setup.js'
 	import PageChlorophyll from './PageChlorophyll.svelte'
 
 	import {getPrefixForRoute} from '#lib/common/routing.js'

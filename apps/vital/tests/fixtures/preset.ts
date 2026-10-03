@@ -1,4 +1,4 @@
-import {SCHEMA_VERSION} from '$config/setup'
+import {SCHEMA_VERSION} from '#config/setup.js'
 
 export const PRESETS_IDS = [crypto.randomUUID(), crypto.randomUUID()]
 
