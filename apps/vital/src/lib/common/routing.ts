@@ -45,7 +45,7 @@ export function getRouteNameFromRouteId(
 	const route = id.split('/')[2] as RouteNameFor<NamespaceId>
 
 	if (!route) {
-		return key
+		return getNamespaceFromRoute(id as RouteId)
 	}
 
 	if (route && NAMESPACES[key].children.find((r) => r.name === route)) {

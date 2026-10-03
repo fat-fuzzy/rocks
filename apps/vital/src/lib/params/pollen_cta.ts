@@ -1,5 +1,9 @@
 import type {RouteNameFor} from '$types'
 
-export const matchPollen = (param: string): param is RouteNameFor<'pollen'> => {
-	return param === 'write' || param === 'reflect' || param === 'explore'
+export const matchPollen = (
+	param: string,
+): RouteNameFor<'pollen'> | undefined => {
+	if (param === 'write' || param === 'reflect' || param === 'explore') {
+		return param
+	}
 }
