@@ -1,5 +1,5 @@
 import {describe, test, expect} from 'vitest'
-import {seedDocToDoc} from '$lib/common/transform/seed-to-doc'
+import {seedDocToDoc} from '#lib/common/transform/seed-to-doc.js'
 import {SEED_DOC} from '#tests/fixtures/seed.js'
 import {TEST_DOC_EN_LONG} from '#tests/fixtures/doc.js'
 

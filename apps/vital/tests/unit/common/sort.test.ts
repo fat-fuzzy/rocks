@@ -4,7 +4,7 @@ import {
 	sortByNameDesc,
 	sortByRankAsc,
 	sortByRankDesc,
-} from '$lib/common/sort'
+} from '#lib/common/sort.js'
 
 import {SEED_SECTIONS} from '#tests/fixtures/seed.js'
 import {SECTIONS} from '#tests/fixtures/doc.js'

@@ -1,6 +1,6 @@
 import {describe, test, expect} from 'vitest'
 
-import {getSanitizedParamCsvValue} from '$lib/common/url'
+import {getSanitizedParamCsvValue} from '#lib/common/url.js'
 
 describe('url.ts - URL params helper', () => {
 	test('csv param sanitizer survives real compare-view section lists', () => {

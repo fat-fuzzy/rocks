@@ -5,7 +5,7 @@ import {
 	getBlockKey,
 	getPresetKey,
 	getTagKey,
-} from '$lib/common/format'
+} from '#lib/common/format.js'
 
 const SECTION_KEY_OPTIONS = {
 	language: 'en',
