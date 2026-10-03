@@ -4,10 +4,10 @@
 		SceneContext,
 		GeometryControlsProps,
 	} from '$types'
-	import Geometry3D from '$lib/components/geometry/Geometry3D.svelte'
-	import FieldOfView from '$lib/components/camera/FieldOfView.svelte'
+	import Geometry3D from '#lib/components/geometry/Geometry3D.svelte'
+	import FieldOfView from '#lib/components/camera/FieldOfView.svelte'
 
-	import actor from '$lib/components/sketch/actor.svelte'
+	import actor from '#lib/components/sketch/actor.svelte.js'
 
 	let {
 		id,

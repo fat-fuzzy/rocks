@@ -13,13 +13,13 @@
 		PlayerEvent,
 	} from '$types'
 
-	import Geometry2D from '$lib/components/geometry/Geometry2D.svelte'
-	import Player from '$lib/components/player/Player.svelte'
-	import TextureControls from '$lib/components/menus/TextureControls.svelte'
-	import GridControls from '$lib/components/menus/GridControls.svelte'
-	import CameraControls from '$lib/components/menus/CameraControls.svelte'
-	import GeometryControls from '$lib/components/menus/GeometryControls.svelte'
-	import Debug from '$lib/components/debug/Debug.svelte'
+	import Geometry2D from '#lib/components/geometry/Geometry2D.svelte'
+	import Player from '#lib/components/player/Player.svelte'
+	import TextureControls from '#lib/components/menus/TextureControls.svelte'
+	import GridControls from '#lib/components/menus/GridControls.svelte'
+	import CameraControls from '#lib/components/menus/CameraControls.svelte'
+	import GeometryControls from '#lib/components/menus/GeometryControls.svelte'
+	import Debug from '#lib/components/debug/Debug.svelte'
 
 	import {DEFAULT_FILTERS} from './definitions.js'
 	import actor from './actor.svelte'

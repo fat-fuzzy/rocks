@@ -7,7 +7,7 @@ import type {
 	SketchEventType,
 } from '$types'
 
-import {PLAYER_TRANSITIONS} from '$lib/components/player/definitions.js'
+import {PLAYER_TRANSITIONS} from '#lib/components/player/definitions.js'
 
 export const DEFAULT_FILTERS: Filters = {
 	channels: ['rgba'],
