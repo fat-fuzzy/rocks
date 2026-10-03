@@ -46,7 +46,7 @@
 	data-testid={id}
 	data-sveltekit-preload-data={preload ? preload : undefined}
 >
-	{#each items as item (item.slug)}
+	{#each items as item, i (i + depth)}
 		{@const {slug, label, asset, actionPath} = item}
 		{@const href = actionPath ?? `${pathname}/${slug}`}
 		{@const subItems = item.items}
