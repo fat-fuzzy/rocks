@@ -23,7 +23,7 @@
 		coordMetadata: ICoordinateMetadata
 	} = $props()
 
-	let cta = $derived(page.params.page)
+	let cta = $derived(page.params.cta)
 	let baseLanguages = $derived(coordMetadata.getLanguages())
 	let baseFormats = $derived(coordMetadata.getFormats())
 

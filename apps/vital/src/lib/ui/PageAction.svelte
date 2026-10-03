@@ -52,7 +52,7 @@
 			}
 		}
 		twinLayout: {
-			[key in RouteNameFor<NamespaceId>]?: boolean
+			[key in RouteNameFor<NamespaceId> | NamespaceId]?: boolean
 		}
 		editor: {
 			[key in RouteNameFor<NamespaceId>]?: boolean
