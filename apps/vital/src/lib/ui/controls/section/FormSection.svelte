@@ -8,7 +8,7 @@
 
 	import {FormSectionValidator} from '#lib/common/validate.js'
 	import dialogActor from '#lib/ui/overlays/dialog/actor.svelte.js'
-	import {DOC_LANGUAGE, DOC_FORMAT} from '$config/setup'
+	import {DOC_LANGUAGE, DOC_FORMAT} from '#config/setup.js'
 
 	const {Button, Input, InputGroup, Feedback} = ui.blocks
 	const {FormValidator} = ui.utils
@@ -145,7 +145,7 @@
 		dialogActor.close()
 
 		// FIXME: put selected sections into context (fix reactivity)
-		const newUrl = new URL(page.url)
+		const newUrl = new URL(page.url.href)
 		newUrl.searchParams.append('sections', newSection.name)
 
 		window.location.href = newUrl.href

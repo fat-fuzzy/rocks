@@ -11,7 +11,7 @@ import type {
 	SeedBlock,
 } from '#types'
 
-import {SCHEMA_VERSION} from '$config/setup'
+import {SCHEMA_VERSION} from '#config/setup.js'
 
 function seedBlockToBlock(
 	seed: SeedBlock,

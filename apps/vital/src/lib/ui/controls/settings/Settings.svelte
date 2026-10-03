@@ -5,7 +5,7 @@
 	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
 
-	import {DOC_LANGUAGE, DOC_FORMAT} from '$config/setup'
+	import {DOC_LANGUAGE, DOC_FORMAT} from '#config/setup.js'
 	import DialogSaveLanguage from '#lib/ui/overlays/dialog/DialogSaveLanguage.svelte'
 	import DialogSaveFormat from '#lib/ui/overlays/dialog/DialogSaveFormat.svelte'
 

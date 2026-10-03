@@ -20,7 +20,6 @@ export default defineConfig({
 			// See https://svelte.dev/docs/kit/adapters for more information about adapters.
 			adapter: adapter(),
 			alias: {
-				$config: path.resolve('./src/config'),
 				$data: path.resolve('./src/data'),
 				$schemas: path.resolve('./src/schemas'),
 			},

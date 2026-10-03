@@ -11,8 +11,7 @@ import type {
 	NamespaceId,
 } from '#types'
 
-import {DOC_LANGUAGE, DOC_FORMAT} from '$config/setup'
-import {SCHEMA_VERSION} from '$config/setup'
+import {DOC_LANGUAGE, DOC_FORMAT, SCHEMA_VERSION} from '#config/setup.js'
 
 import WorkerBridge from '#lib/workers/worker-bridge.js'
 import {getBridge} from '#lib/aggregates/bridge.js'

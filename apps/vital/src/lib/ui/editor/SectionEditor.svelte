@@ -6,7 +6,7 @@
 
 	import {isHidden, checkTags} from '#lib/common/tags.js'
 
-	import {DOC_LANGUAGE, DOC_FORMAT} from '$config/setup'
+	import {DOC_LANGUAGE, DOC_FORMAT} from '#config/setup.js'
 	import {LOCALIZATIONS} from '#lib/intl/l10n.js'
 
 	import DialogSaveBlock from '#lib/ui/overlays/dialog/DialogSaveBlock.svelte'
