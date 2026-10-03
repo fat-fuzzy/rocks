@@ -1,5 +1,5 @@
 import type {Cookies} from '@sveltejs/kit'
-import type {UiStateGetInput, UiStateSetInput} from '$lib/types/services.js'
+import type {UiStateGetInput, UiStateSetInput} from '#lib/types/services.js'
 import {dev} from '$app/env'
 import type {PrivacyPreferences} from '@fat-fuzzy/ui'
 

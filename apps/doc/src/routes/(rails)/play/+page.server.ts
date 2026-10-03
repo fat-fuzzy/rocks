@@ -1,6 +1,6 @@
 import {error} from '@sveltejs/kit'
 import pages from '$data/pages'
-import {commonActions} from '$lib/server/actions/page-actions'
+import {commonActions} from '#lib/server/actions/page-actions.js'
 
 const page = 'play'
 

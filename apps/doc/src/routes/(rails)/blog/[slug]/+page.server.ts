@@ -1,6 +1,6 @@
 import {error} from '@sveltejs/kit'
 import blog from '$data/blog'
-import {commonActions} from '$lib/server/actions/page-actions'
+import {commonActions} from '#lib/server/actions/page-actions.js'
 
 /**
  * Load data from markdown file based on route parameters

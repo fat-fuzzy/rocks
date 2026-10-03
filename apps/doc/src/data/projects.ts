@@ -1,5 +1,5 @@
 import type {Markdown} from '$types'
-import assetsUtils from '$lib/server/services/markdowns/assets'
+import assetsUtils from '#lib/server/services/markdowns/assets.js'
 
 const pathPrefix = '/src/assets/play/projects/'
 

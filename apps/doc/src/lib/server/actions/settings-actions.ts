@@ -1,8 +1,8 @@
-import type {UiActionSetOutput} from '$lib/types/actions.js'
+import type {UiActionSetOutput} from '#lib/types/actions.js'
 import type {RequestEvent} from '@sveltejs/kit'
 import ui from '@fat-fuzzy/ui'
 
-import uiStateService from '$lib/server/services/session.js'
+import uiStateService from '#lib/server/services/session.js'
 const {AppContext} = ui.forms
 
 const {APP_PREFIX, DEFAULT_COOKIES_PREFERENCES} = ui.constants

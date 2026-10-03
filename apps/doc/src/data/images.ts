@@ -1,4 +1,4 @@
-import assetsUtils from '$lib/server/services/markdowns/assets'
+import assetsUtils from '#lib/server/services/markdowns/assets.js'
 
 // Assets are only generated in client build, but the current markdown pipeline
 // only references the assets in the server build. So no assets are emitted.
