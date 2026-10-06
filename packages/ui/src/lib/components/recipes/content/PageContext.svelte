@@ -1,7 +1,6 @@
 <script lang="ts">
 	import type {AsideProps} from '#types'
 	import Feedback from '#lib/components/blocks/global/Feedback.svelte'
-	import {resolve} from '$app/paths'
 
 	let {
 		status,
@@ -53,7 +52,7 @@
 					aria-current={page && page === index + 1 ? 'page' : undefined}
 					class={page && page === index + 1 ? colorClass : ''}
 				>
-					<a href={resolve(item.link)} class="ravioli:xs font:sm">
+					<a href={item.link} class="ravioli:xs font:sm">
 						{item.title}
 					</a>
 				</li>
