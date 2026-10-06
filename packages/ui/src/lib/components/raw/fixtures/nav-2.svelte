@@ -2,7 +2,6 @@
 	import type {Snippet} from 'svelte'
 
 	let {
-		zone,
 		theme,
 		layout,
 		gare,
@@ -11,7 +10,6 @@
 		height,
 		size,
 	}: {
-		zone: string
 		theme: string
 		layout?: string
 		gare?: string
@@ -21,12 +19,12 @@
 		size?: string
 	} = $props()
 
-	let layoutClass = layout ? `l:${layout} size:${size}` : ''
-	let gareClass = gare ? `gare:${gare}` : ''
-	let gareControl = gare ? 'gare-control' : ''
-	let gareDepot = gare ? 'gare-depot' : ''
-	let widthClass = width ? `width:${width}` : ''
-	let heightClass = height ? `height:${height}` : ''
+	let layoutClass = $derived(layout ? `l:${layout} size:${size}` : '')
+	let gareClass = $derived(gare ? `gare:${gare}` : '')
+	let gareControl = $derived(gare ? 'gare-control' : '')
+	let gareDepot = $derived(gare ? 'gare-depot' : '')
+	let widthClass = $derived(width ? `width:${width}` : '')
+	let heightClass = $derived(height ? `height:${height}` : '')
 </script>
 
 <div class={`sidebar ${layoutClass}`}>
@@ -42,7 +40,7 @@
 					{@render children()}
 				{:else}
 					<ol class="unstyled">
-						{#each Array(15) as _, i}
+						{#each Array(20), i (i)}
 							<li class="raviolink">Item {i + 1}</li>
 						{/each}
 					</ol>

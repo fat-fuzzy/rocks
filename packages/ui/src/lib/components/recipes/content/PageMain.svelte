@@ -15,7 +15,7 @@
 		children,
 	}: PageProps = $props()
 
-	let currentPage = $state(pageName ?? title)
+	let currentPage = $derived(pageName ?? title)
 </script>
 
 <Head pageName={currentPage} {title} {description} />

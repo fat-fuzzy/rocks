@@ -6,8 +6,8 @@
 
 	let {size = 'md', sidenav, app, children}: LayoutProps = $props()
 	let pathname = $derived(sidenav?.pathname || '/')
-	let brightness = $derived(app?.settings?.brightness)
-	let contrast = $derived(app?.settings?.contrast)
+	let brightness = $derived(app?.brightness)
+	let contrast = $derived(app?.contrast)
 	let settingsClass = $derived(
 		brightness && contrast ? `settings:${brightness}:${contrast}` : '',
 	)
