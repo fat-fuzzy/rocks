@@ -100,7 +100,11 @@ export default class WorkerBridge {
 		})
 	}
 
-	seedBase(payload: {root: NamespaceId; base: FrontmatterBase}) {
+	seedBase(payload: {
+		root: NamespaceId
+		base: FrontmatterBase
+		schemaVersion: number
+	}) {
 		return this.send({
 			type: 'SEED_BASE',
 			requestId: crypto.randomUUID(),
@@ -119,6 +123,7 @@ export default class WorkerBridge {
 	seedStructure(payload: {
 		root: NamespaceId
 		structures: FrontmatterStructure[]
+		schemaVersion: number
 	}) {
 		return this.send({
 			type: 'SEED_STRUCTURE',
@@ -160,6 +165,7 @@ export default class WorkerBridge {
 		presets: OPFSTreePreset
 		base: OPFSTreeBase
 		structure: OPFSTreeStructure
+		schemaVersion: number
 	}) {
 		return this.send({
 			type: 'RESTORE_FROM_BACKUP',
