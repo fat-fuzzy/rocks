@@ -38,13 +38,17 @@ export type SeedRootCommand = {
 export type SeedBaseCommand = {
 	type: 'SEED_BASE'
 	requestId: RequestId
-	payload: {root: NamespaceId; base: FrontmatterBase}
+	payload: {root: NamespaceId; base: FrontmatterBase; schemaVersion: number}
 }
 
 export type SeedStructureCommand = {
 	type: 'SEED_STRUCTURE'
 	requestId: RequestId
-	payload: {root: NamespaceId; structures: FrontmatterStructure[]}
+	payload: {
+		root: NamespaceId
+		structures: FrontmatterStructure[]
+		schemaVersion: number
+	}
 }
 
 export type RestoreFromBackupCommand = {
@@ -56,6 +60,7 @@ export type RestoreFromBackupCommand = {
 		presets: OPFSTreePreset
 		base: OPFSTreeBase
 		structure: OPFSTreeStructure
+		schemaVersion: number
 	}
 }
 

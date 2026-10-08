@@ -29,6 +29,8 @@ import {
 	isSection,
 } from '#lib/common/transform/opfs-to-doc.js'
 
+import {migrate} from '#lib/common/migrate-schemas/engine.js'
+
 import {seedDocToDoc} from '#lib/common/transform/seed-to-doc.js'
 
 import {
@@ -155,15 +157,22 @@ export async function seedRoot(options: {
 export async function seedBase(options: {
 	root: NamespaceId
 	base: FrontmatterBase
+	schemaVersion: number
 }): Promise<void> {
-	const {root, base} = options
+	const {root, base, schemaVersion} = options
 
 	if (await isSeedComplete({root, type: 'base'})) {
 		return
 	}
 
 	try {
-		const data = parseBase('OPFS Seed Base', base)
+		const migrated = migrate(
+			base,
+			Number(base.schema_version),
+			schemaVersion,
+		).record
+
+		const data = parseBase('OPFS Seed Base', migrated)
 
 		const directoryHandle = await getBaseHandle({root, create: true})
 		await saveEntry(directoryHandle, {name: 'base'}, data)
@@ -180,8 +189,9 @@ export async function seedBase(options: {
 export async function seedStructure(options: {
 	root: NamespaceId
 	structures: FrontmatterStructure[]
+	schemaVersion: number
 }): Promise<void> {
-	const {root, structures} = options
+	const {root, structures, schemaVersion} = options
 
 	if (await isSeedComplete({root, type: 'structure'})) {
 		return
@@ -191,7 +201,13 @@ export async function seedStructure(options: {
 		const toSeed = []
 
 		for (const structure of structures) {
-			const data = parseStructure('OPFS Seed Structure', structure)
+			const migrated = migrate(
+				structure,
+				Number(structure.schema_version),
+				schemaVersion,
+			).record
+
+			const data = parseStructure('OPFS Seed Structure', migrated)
 			toSeed.push(data)
 		}
 
@@ -210,13 +226,18 @@ export async function restoreFromBackup(options: {
 	presets: OPFSTreePreset
 	base: OPFSTreeBase
 	structure: OPFSTreeStructure
+	schemaVersion: number
 }): Promise<void> {
-	const {root, base} = options
+	const {root, base, schemaVersion} = options
 	try {
-		await seedBase({root, base: base.content})
+		await seedBase({root, base: base.content, schemaVersion})
 
 		// FIXME: this is incomplete
-		await seedStructure({root, structures: options.structure.content.structure})
+		await seedStructure({
+			root,
+			structures: options.structure.content.structure,
+			schemaVersion,
+		})
 
 		if (await isSeedComplete({root, type: 'root'})) {
 			return
