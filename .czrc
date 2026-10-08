@@ -118,6 +118,10 @@
 			"description": "Data analysis and data viz related changes",
 			"title": "Data"
 		},
+		"🧩 ": {
+			"description": "Schema related changes",
+			"title": "Schema"
+		},
 		"🗄️ ": {
 			"description": "Database related changes",
 			"title": "Database"
