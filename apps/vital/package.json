@@ -24,6 +24,7 @@
 		"prepare": "svelte-kit sync || echo '' && husky",
 		"cz": "cz",
 		"test": "pnpm test:unit && pnpm test:browser && pnpm test:e2e",
+		"test:dev": "vitest run --reporter=hanging-process",
 		"test:dev:unit": "vitest",
 		"test:unit": "vitest run",
 		"test:types": "vitest run --typecheck",
