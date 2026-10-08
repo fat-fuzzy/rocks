@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {UiColor, UiSize, UiVariant} from '@fat-fuzzy/ui'
-	import type {ICoordinateImports} from '#types'
+	import type {ICoordinateExports, ICoordinateImports} from '#types'
 
 	import {SvelteURL} from 'svelte/reactivity'
 	import ui from '@fat-fuzzy/ui'
@@ -21,6 +21,7 @@
 		font?: UiSize
 		oninput?: () => void // hook for parent to refresh state
 		coordImports: ICoordinateImports
+		coordExports: ICoordinateExports
 	}
 	let {
 		id,
@@ -31,6 +32,7 @@
 		font = 'xs',
 		oninput,
 		coordImports,
+		coordExports,
 	}: Props = $props()
 
 	function showDialog() {
@@ -65,7 +67,7 @@
 </script>
 
 {#snippet dialogContent()}
-	<FormData {color} onsubmit={handleSubmit} {coordImports} />
+	<FormData {color} onsubmit={handleSubmit} {coordImports} {coordExports} />
 {/snippet}
 
 <Button
