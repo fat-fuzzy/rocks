@@ -20,6 +20,7 @@
 	let coordPresets = $derived(coordinators.presets)
 	let coordMetadata = $derived(coordinators.metadata)
 	let coordImports = $derived(coordinators.imports)
+	let coordExports = $derived(coordinators.exports)
 
 	let {
 		layout = 'switcher',
@@ -88,7 +89,14 @@
 			{#if !isTwinLayout}
 				<MenuSettings {oninput} {color} variant="outline" {size} {font} />
 			{/if}
-			<MenuData id="button-import" {color} {size} {font} {coordImports} />
+			<MenuData
+				id="button-import"
+				{color}
+				{size}
+				{font}
+				{coordImports}
+				{coordExports}
+			/>
 		</div>
 	</div>
 </div>
