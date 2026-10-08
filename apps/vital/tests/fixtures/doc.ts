@@ -2,6 +2,7 @@ import type {Doc, DocStore, OPFSTreeDoc, Section} from '#types'
 import {SCHEMA_VERSION} from '#config/setup.js'
 
 export const DOC_ID = crypto.randomUUID()
+export const SECTION_NAMES = ['section-1', 'section-2']
 export const SECTION_IDS = [crypto.randomUUID(), crypto.randomUUID()]
 export const SUBSECTION_IDS = [crypto.randomUUID(), crypto.randomUUID()]
 export const BLOCK_IDS = [crypto.randomUUID(), crypto.randomUUID()]
@@ -133,7 +134,7 @@ export const DOC_STORE: DocStore = {
 				filename: 'doc-root',
 				filetype: 'json',
 			},
-			schema_version: '0.1',
+			schema_version: 1,
 			sections: [],
 		},
 	},
@@ -146,7 +147,7 @@ export const DOC_STORE: DocStore = {
 				content_type: 'section',
 				label: 'doc-root',
 			},
-			schema_version: '0.1',
+			schema_version: 1,
 			path: {
 				filename: 'doc-root',
 				filetype: 'json',
