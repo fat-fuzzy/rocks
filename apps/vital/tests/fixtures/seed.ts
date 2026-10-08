@@ -72,6 +72,7 @@ export const SEED_SECTIONS: SeedSection[] = [
 ]
 
 export const SEED_DOC: SeedDoc = {
+	// @ts-expect-error tests schema migration
 	schema_version: '0.1',
 	seed_type: 'root' as SeedType,
 	language: 'en',
