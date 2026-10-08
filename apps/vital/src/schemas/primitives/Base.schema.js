@@ -1,7 +1,6 @@
 import {schemas} from '@fat-fuzzy/validation'
 import {defineDefinitions} from '../index.js'
 import {
-	VERSION_PATTERN,
 	SLUG_PATTERN,
 	LANGUAGE_PATTERN,
 	TITLE_PATTERN,
@@ -24,8 +23,7 @@ const BaseSchema = defineDefinitions({
 	...externalBase,
 	...EnumsSchema,
 	schemaVersion: {
-		type: 'string',
-		pattern: VERSION_PATTERN,
+		type: 'number',
 	},
 	slug: {
 		type: 'string',
