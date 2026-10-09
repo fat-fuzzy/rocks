@@ -27,7 +27,7 @@ import {
 	isRawSection,
 	isRawPreset,
 	isSection,
-} from '#lib/common/transform/opfs-to-doc.js'
+} from '#lib/common/transform/raw-to-typed.js'
 
 import {migrate} from '#lib/common/migrate-schemas/engine.js'
 

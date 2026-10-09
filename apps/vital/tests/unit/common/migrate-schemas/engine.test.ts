@@ -1,6 +1,7 @@
 import {describe, test, expect} from 'vitest'
 
-import {isRawSchema, migrate} from '#lib/common/migrate-schemas/engine.js'
+import {isRawSchema} from '#lib/common/transform/raw-to-typed.js'
+import {migrate} from '#lib/common/migrate-schemas/engine.js'
 
 import {SEED_DOC} from '#tests/fixtures/seed.js'
 import {DOC_STORE} from '#tests/fixtures/doc.js'
