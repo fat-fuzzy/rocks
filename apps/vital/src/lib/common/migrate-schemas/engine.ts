@@ -24,12 +24,14 @@ export const migrate = (
 	let status: MigrationStatus = 'unversioned'
 
 	if (isRawSchema(record)) {
-		if (record.schema_version === toVersion) {
+		if (Number(record.schema_version) === toVersion) {
+			record.schema_version = toVersion
 			status = 'current'
 		} else {
 			const migration = MIGRATIONS.find(
 				({from, to}) =>
-					from === Number(fromVersion) && to === Number(toVersion),
+					(from === Number(fromVersion) && to === Number(toVersion)) ||
+					(from === Number(toVersion) && to === Number(fromVersion)),
 			)
 
 			if (!migration) {
@@ -38,10 +40,12 @@ export const migrate = (
 				)
 			}
 
+			const min = fromVersion > toVersion ? toVersion : fromVersion
+			const max = fromVersion > toVersion ? fromVersion : toVersion
 			const migrationFn =
 				fromVersion > toVersion ? migration?.down : migration?.up
 
-			for (let v = fromVersion; v < toVersion; v++) {
+			for (let v = min; v < max; v++) {
 				record = migrationFn(record)
 			}
 
