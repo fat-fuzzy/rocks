@@ -1,19 +1,7 @@
 import type {MigrationResult, MigrationStatus} from '#types'
 
-import {isRecord} from '#lib/common/transform/opfs-to-doc.js'
+import {isScalar, isRawSchema} from '#lib/common/transform/raw-to-typed.js'
 import {MIGRATIONS} from '#lib/common/migrate-schemas/registry.js'
-
-type RawSchema = {
-	schema_version: number
-} & Record<string, unknown>
-
-export function isRawSchema(value: unknown): value is RawSchema {
-	if (!isRecord(value)) {
-		return false
-	}
-
-	return 'schema_version' in value
-}
 
 export const migrate = (
 	data: unknown,
@@ -22,6 +10,10 @@ export const migrate = (
 ): MigrationResult => {
 	let record = data
 	let status: MigrationStatus = 'unversioned'
+
+	if (!isScalar(fromVersion) || !isScalar(toVersion)) {
+		return {status, record}
+	}
 
 	if (isRawSchema(record)) {
 		if (Number(record.schema_version) === toVersion) {

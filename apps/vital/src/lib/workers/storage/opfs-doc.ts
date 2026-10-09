@@ -18,7 +18,7 @@ import {parseBlock, parseSection} from '#lib/common/transform/parse-or-throw.js'
 import {
 	isRawSection,
 	rawSectionToSection,
-} from '#lib/common/transform/opfs-to-doc.js'
+} from '#lib/common/transform/raw-to-typed.js'
 import {
 	getDocsHandle,
 	saveEntry,

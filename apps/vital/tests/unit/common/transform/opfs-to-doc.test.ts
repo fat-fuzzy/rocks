@@ -1,12 +1,13 @@
 import {describe, test, expect} from 'vitest'
+
+import {isRecord} from '#lib/common/transform/raw-to-typed.js'
 import {
-	isRecord,
 	isRawSection,
 	isRawPreset,
 	isRawBase,
 	isRawStructure,
-	opfsDocTreeToDocStore,
-} from '#lib/common/transform/opfs-to-doc.js'
+} from '#lib/common/transform/raw-to-typed.js'
+import {opfsDocTreeToDocStore} from '#lib/common/transform/opfs-to-doc.js'
 import {BASE, RAW_BASE, STRUCTURE, RAW_STRUCTURE} from '#tests/fixtures/meta.js'
 import {PRESETS, RAW_PRESETS} from '#tests/fixtures/preset.js'
 import {SEED_DOC, SEED_SECTIONS} from '#tests/fixtures/seed.js'
