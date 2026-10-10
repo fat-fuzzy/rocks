@@ -50,7 +50,7 @@
 	let content = $derived(section?.content)
 
 	let noContentFound = $derived(!coordDocs.isLoading() && !section)
-	let error = $derived(coordDocs.hasError())
+	let error = $derived(coordDocs.getError())
 
 	const observerOptions = $derived({
 		root: null,
@@ -97,7 +97,7 @@
 			<Loading message={`Loading ${name}`} />
 		</div>
 	{:else if error}
-		<FeedbackContent {name} content_type="section" isError={true} />
+		<FeedbackContent {name} content_type="section" {error} />
 	{:else if noContentFound}
 		<FeedbackContent {name} content_type="section" isEmpty={true} />
 	{:else if section}

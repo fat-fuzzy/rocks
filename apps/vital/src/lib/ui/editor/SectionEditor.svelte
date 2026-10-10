@@ -45,7 +45,7 @@
 	let name = $derived(section.name)
 	let displayBlockForm = $derived(name !== undefined)
 
-	let error = $derived(coordDocs.hasError())
+	let error = $derived(coordDocs.getError())
 	let blocksLoaded = $derived(coordDocs.lazyBlocks)
 	let sectionsLoaded = $derived(coordDocs.lazySections)
 	let noContentFound = $derived(!loading && !section)
@@ -98,7 +98,7 @@
 			<Loading message={`Loading ${name}`} {color} />
 		</div>
 	{:else if error}
-		<FeedbackContent {name} content_type="section" isError={true} />
+		<FeedbackContent {name} content_type="section" {error} />
 	{:else if noContentFound}
 		<FeedbackContent {name} content_type="section" isEmpty={true} />
 	{:else if section}

@@ -13,7 +13,7 @@ export interface IAggregateMetadata {
 	readonly base: FrontmatterBase
 	readonly structures: FrontmatterStructure[]
 	readonly loading: boolean
-	readonly error: boolean
+	readonly error: string | undefined
 	readonly tagGroups: TagGroup[]
 
 	init(): Promise<void>

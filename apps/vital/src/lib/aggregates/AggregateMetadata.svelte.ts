@@ -30,7 +30,7 @@ export default class AggregateMetadata implements IAggregateMetadata {
 	root: NamespaceId
 	bridge: WorkerBridge | undefined = $state()
 	loading = $state(false)
-	error = $state(false)
+	error: string | undefined = $state()
 	base: FrontmatterBase = $state({
 		schema_version: SCHEMA_VERSION,
 		languages: [DOC_LANGUAGE as DocLanguage],
@@ -53,8 +53,8 @@ export default class AggregateMetadata implements IAggregateMetadata {
 
 			await this.loadBase()
 			await this.loadStructure()
-		} catch {
-			this.error = true
+		} catch (error) {
+			this.error = (error as Error).message
 		} finally {
 			this.loading = false
 		}
@@ -207,8 +207,12 @@ export default class AggregateMetadata implements IAggregateMetadata {
 		const raw = (await this.bridge.getDocBase({
 			root: this.root,
 		})) as OPFSTreeBase
-
-		this.base = opfsBaseTreeToFrontmatterBase(raw)
+		try {
+			const base = opfsBaseTreeToFrontmatterBase(raw)
+			this.base = base
+		} catch (error) {
+			this.error = (error as Error).message
+		}
 	}
 
 	/**
@@ -224,9 +228,12 @@ export default class AggregateMetadata implements IAggregateMetadata {
 		const raw = (await this.bridge.getDocStructure({
 			root: this.root,
 		})) as OPFSTreeStructure
-
-		const structures = opfsStructureTreeToFrontmatterStructures(raw)
-		this.structures = structures
+		try {
+			const structures = opfsStructureTreeToFrontmatterStructures(raw)
+			this.structures = structures
+		} catch (error) {
+			this.error = (error as Error).message
+		}
 	}
 
 	/**

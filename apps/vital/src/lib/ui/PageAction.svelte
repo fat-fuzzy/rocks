@@ -369,13 +369,13 @@
 			{:else}
 				<div class={`${textClass} maki:block size:lg`}>
 					<Feedback
-						status={coordDocs.hasError() ? 'error' : undefined}
+						status={coordDocs.getError() ? 'error' : undefined}
 						context="prose"
 						variant="bare"
 						size={availableSections.length ? 'lg' : undefined}
 						font="md"
 					>
-						{#if coordDocs.hasError()}
+						{#if coordDocs.getError()}
 							<!-- TODO: Improve this message -->
 							<p class="font:md">There was an error loading your document</p>
 						{:else}
