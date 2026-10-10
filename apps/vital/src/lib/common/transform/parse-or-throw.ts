@@ -24,6 +24,7 @@ import {
 	PathValidator,
 	DateStringValidator,
 } from '#lib/common/validate.js'
+import {isRawSchema} from '#lib/common/transform/raw-to-typed.js'
 
 /*******************
  *  Hard fails
@@ -35,14 +36,25 @@ function parseOrThrow<T>(
 	validate: AjvValidateFunction<T>, // FIXME: define type AjvValidateFunction<T>
 ): T {
 	const isValid = validate(data)
-	if (isValid) return data as T // AJV narrows to T here
 
-	// console.log(validate.errors)
+	if (isValid) {
+		return data as T // AJV narrows to T here
+	}
 
-	const errors = validate.errors?.map(
-		(error) => `${error.instancePath} - ${error.message}`,
-	)
-	throw new Error(`[${label}] validation failed: ${errors}`)
+	const errors =
+		validate.errors?.map((error) => {
+			if (error.instancePath === '/schema_version') {
+				const currentSchema = error.params?.allowedValue
+
+				if (isRawSchema(data) && currentSchema) {
+					return `Schema Version ${data.schema_version} out of sync. Please sync to Version ${currentSchema}`
+				}
+			}
+
+			return `${error.instancePath} ${error.message}`
+		}) || []
+
+	throw Error(`[${label}] validation failed: ${errors.join(', ')}`)
 }
 
 export function parseBlock(label: string, data: unknown): Block {
