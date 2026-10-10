@@ -205,7 +205,7 @@
 	let textClass = $derived(
 		!editor[cta] || selectedSections.length === 0 ? `l:text:a4` : 'l:text:2xl',
 	)
-	let contentClass = $derived(`doc-${cta} ${textClass} l:stack:lg`)
+	let contentClass = $derived(`doc-${cta} ${textClass} l:stack:xs`)
 	let mainLayoutClass = $derived(
 		cta === 'compare'
 			? 'w:full col:center l:flex'
