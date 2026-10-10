@@ -6,7 +6,7 @@
 	const {Head} = ui.headless
 	const {Burrito} = ui.layouts
 
-	let title = $derived(`Fat Fuzzy ${page.status}`)
+	let title = $derived(`Vital | ${page.status}`)
 	let message = $derived(page.error?.message ?? 'Something went wrong!')
 </script>
 
@@ -30,7 +30,7 @@
 						href="/"
 					>
 						<span class="maki:inline:sm"> Home</span>
-						<ff-icon class="emoji:home font:lg justify:end"></ff-icon>
+						<ff-icon class="svg:lotus font:lg justify:end"></ff-icon>
 					</a>
 				</div>
 			</div>
