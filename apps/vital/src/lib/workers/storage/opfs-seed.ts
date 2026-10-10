@@ -166,11 +166,7 @@ export async function seedBase(options: {
 	}
 
 	try {
-		const migrated = migrate(
-			base,
-			Number(base.schema_version),
-			schemaVersion,
-		).record
+		const migrated = migrate(base, schemaVersion).record
 
 		const data = parseBase('OPFS Seed Base', migrated)
 
@@ -201,11 +197,7 @@ export async function seedStructure(options: {
 		const toSeed = []
 
 		for (const structure of structures) {
-			const migrated = migrate(
-				structure,
-				Number(structure.schema_version),
-				schemaVersion,
-			).record
+			const migrated = migrate(structure, schemaVersion).record
 
 			const data = parseStructure('OPFS Seed Structure', migrated)
 			toSeed.push(data)
