@@ -110,11 +110,7 @@ export function opfsBaseTreeToFrontmatterBase(
 	try {
 		if (isRawBase(tree)) {
 			data = rawBaseToBase(tree)
-			const migrated = migrate(
-				data,
-				Number(data.schema_version),
-				SCHEMA_VERSION,
-			)
+			const migrated = migrate(data, SCHEMA_VERSION)
 			const base = parseBase('OPFS Base', migrated.record)
 
 			return base
@@ -150,11 +146,7 @@ export function opfsStructureTreeToFrontmatterStructures(
 		}
 
 		for (const structure of data) {
-			const migrated = migrate(
-				structure,
-				Number(structure.schema_version),
-				SCHEMA_VERSION,
-			)
+			const migrated = migrate(structure, SCHEMA_VERSION)
 			result.push(parseStructure(`OPFS Structure`, migrated.record))
 		}
 		return result
