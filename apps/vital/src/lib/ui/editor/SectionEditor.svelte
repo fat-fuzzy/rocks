@@ -102,7 +102,12 @@
 	{:else if noContentFound}
 		<FeedbackContent {name} content_type="section" isEmpty={true} />
 	{:else if section}
-		<details id={`section-${name}`} data-section={name} class="shape:soft" open>
+		<details
+			id={`section-${name}`}
+			data-section={name}
+			class="l:stack:xs shape:soft"
+			open
+		>
 			<summary
 				class="w:full ravioli:3xs variant:bare color:neutral font:heading font:semibold size:xs font:md shape:mellow"
 			>
@@ -166,71 +171,76 @@
 			{/if}
 
 			{#if subsections}
-				{#each subsections as subsection, i (i)}
-					{@const blocks = subsection.blocks}
-					{@const tags = subsection.blocks.flatMap((b) => b.tags)}
-					{@const tagSet = new Set(tags)}
-					{@const tagsFound = checkTags(tags, selectedTags)}
-					{@const subsectionName =
-						subsection.name !== section.name ? subsection.name : undefined}
+				<div class="l:stack:xs">
+					{#each subsections as subsection, i (i)}
+						{@const blocks = subsection.blocks}
+						{@const tags = subsection.blocks.flatMap((b) => b.tags)}
+						{@const tagSet = new Set(tags)}
+						{@const tagsFound = checkTags(tags, selectedTags)}
+						{@const subsectionName =
+							subsection.name !== section.name ? subsection.name : undefined}
 
-					{#if tagsFound.length}
-						{@const subsectionIcon = tagsFound.length === 0 ? missingIcon : ''}
+						{#if tagsFound.length}
+							{@const subsectionIcon =
+								tagsFound.length === 0 ? missingIcon : ''}
 
-						{#if subsections.length > 1}
-							<h3 class="raviolink shape:mellow maki:block surface:1:neutral">
-								<span class={`${subsectionIcon} maki:inline:md font:heading`}>
-									{subsection.name}
-								</span>
-							</h3>
-						{/if}
-
-						{#each blocks as block, i (i)}
-							{@const blockLoaded = Boolean(blocksLoaded[block.name])}
-							{@const blockTagsFound = checkTags(block.tags, selectedTags)}
-							{@const hiddenTag = isHidden(block.tags, selectedTags)}
-
-							{#if hiddenTag && blockTagsFound.length}
-								<FeedbackContent
-									name={section.name}
-									content_type="block"
-									isHidden={true}
-									tags={Array.from(tagSet)}
-								/>
-							{:else if block.tags.length === 0 || blockTagsFound.length}
-								{#if blockLoaded}
-									<BlockEditor
-										{...block}
-										group={subsectionName}
-										sectionName={name}
-										content={block.content}
-										tagsFound={blockTagsFound}
-										{language}
-										{format}
-										{color}
-										{isTwinLayout}
-									/>
-								{:else}
-									<BlockPlaceholder
-										{observer}
-										name={block.name}
-										sectionName={name}
-										{subsectionName}
-										{color}
-									/>
-								{/if}
+							{#if subsections.length > 1}
+								<h3 class="raviolink shape:mellow maki:block surface:1:neutral">
+									<span class={`${subsectionIcon} maki:inline:md font:heading`}>
+										{subsection.name}
+									</span>
+								</h3>
 							{/if}
-						{/each}
-					{:else}
-						{@const contentName =
-							subsection.name !== section.name ? subsection.name : section.name}
-						<FeedbackContent
-							name={contentName}
-							content_type="block"
-							tags={Array.from(tagSet)}
-						/>
-					{/if}
-				{/each}
+
+							{#each blocks as block, i (i)}
+								{@const blockLoaded = Boolean(blocksLoaded[block.name])}
+								{@const blockTagsFound = checkTags(block.tags, selectedTags)}
+								{@const hiddenTag = isHidden(block.tags, selectedTags)}
+
+								{#if hiddenTag && blockTagsFound.length}
+									<FeedbackContent
+										name={section.name}
+										content_type="block"
+										isHidden={true}
+										tags={Array.from(tagSet)}
+									/>
+								{:else if block.tags.length === 0 || blockTagsFound.length}
+									{#if blockLoaded}
+										<BlockEditor
+											{...block}
+											group={subsectionName}
+											sectionName={name}
+											content={block.content}
+											tagsFound={blockTagsFound}
+											{language}
+											{format}
+											{color}
+											{isTwinLayout}
+										/>
+									{:else}
+										<BlockPlaceholder
+											{observer}
+											name={block.name}
+											sectionName={name}
+											{subsectionName}
+											{color}
+										/>
+									{/if}
+								{/if}
+							{/each}
+						{:else}
+							{@const contentName =
+								subsection.name !== section.name
+									? subsection.name
+									: section.name}
+							<FeedbackContent
+								name={contentName}
+								content_type="block"
+								tags={Array.from(tagSet)}
+							/>
+						{/if}
+					{/each}
+				</div>
 			{/if}
 			{#if !subsections && !content}
 				<FeedbackContent

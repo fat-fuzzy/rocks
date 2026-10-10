@@ -30,43 +30,41 @@
 	let surfaceLightness = $derived(surface === 'neutral' ? 1 : 0)
 </script>
 
-<div class="maki:block">
-	<Feedback
-		context="prose"
-		size="sm"
-		asset="none"
-		status={error ? 'error' : 'default'}
-		surface={`${surface} ${chroma}`}
-		variant="bare"
-		{surfaceLightness}
-		{chroma}
-	>
-		{#if error}
-			<p>
-				Failed to load content for {content_type}
-				<span class="font:bold font:heading">{name}</span>
-			</p>
-			<p>{error}</p>
-		{:else if isEmpty}
-			<h3>
-				No content found for {content_type} "{name}"
-			</h3>
-			<div class="ravioli:md">
-				<p>To fix this:</p>
-				<ul>
-					<li>Unselect and re-select all sections to remove this message</li>
-					<li>
-						If you have saved this content to a backup, you can import it (this
-						will delete the current document)
-					</li>
-					<li>
-						If this is a default section: you can re-seed content from markdown
-						defaults
-					</li>
-				</ul>
-			</div>
-		{:else}
-			<CardContent {content_type} {name} {tags} {isHidden} />
-		{/if}
-	</Feedback>
-</div>
+<Feedback
+	context="prose"
+	size="sm"
+	asset="none"
+	status={error ? 'error' : undefined}
+	surface={`${surface} ${chroma}`}
+	variant="bare"
+	{surfaceLightness}
+	{chroma}
+>
+	{#if error}
+		<p>
+			Failed to load content for {content_type}
+			<span class="font:bold font:heading">{name}</span>
+		</p>
+		<p>{error}</p>
+	{:else if isEmpty}
+		<h3>
+			No content found for {content_type} "{name}"
+		</h3>
+		<div class="ravioli:md">
+			<p>To fix this:</p>
+			<ul>
+				<li>Unselect and re-select all sections to remove this message</li>
+				<li>
+					If you have saved this content to a backup, you can import it (this
+					will delete the current document)
+				</li>
+				<li>
+					If this is a default section: you can re-seed content from markdown
+					defaults
+				</li>
+			</ul>
+		</div>
+	{:else}
+		<CardContent {content_type} {name} {tags} {isHidden} />
+	{/if}
+</Feedback>
