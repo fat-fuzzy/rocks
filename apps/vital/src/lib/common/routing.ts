@@ -55,6 +55,17 @@ export function getRouteNameFromRouteId(
 	throw Error('Route not found for namespace')
 }
 
+export function getCtaFromRouteId(id: string): RouteNameFor<NamespaceId> {
+	const key = id.split('/')[1] as NamespaceKey
+	const route = id.split('/')[2] as RouteNameFor<NamespaceId>
+
+	if (route && NAMESPACES[key].children.find((r) => r.name === route)) {
+		return route
+	}
+
+	throw Error('Route not found for namespace')
+}
+
 export function getRouteNamesForNamespace(
 	key: NamespaceKey,
 ): RouteNameFor<NamespaceKey>[] | undefined {
