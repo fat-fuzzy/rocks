@@ -4,7 +4,7 @@ import type {
 	InputTypes,
 	FormToValidate,
 	SchemaToValidate,
-	ValidationError,
+	ErrorObject,
 	AjvValidateFunction,
 } from '#types'
 
@@ -18,7 +18,7 @@ import type {
 class FormValidator<K> implements IFormValidator<K> {
 	form: FormToValidate = $state({})
 	inputTypes: InputTypes = $state({}) // Map of input names to their types
-	errors: ValidationError[] = $state([])
+	errors: ErrorObject<K>[] = $state([])
 	ajvValidate: AjvValidateFunction<K>
 	sanitize = sanitize.sanitizeForm
 
