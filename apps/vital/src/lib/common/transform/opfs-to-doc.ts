@@ -15,6 +15,7 @@ import type {
 } from '#types'
 
 import {SCHEMA_VERSION} from '#config/setup.js'
+import {migrate} from '#lib/common/migrate-schemas/engine.js'
 import {
 	isRecord,
 	isRawDoc,
@@ -106,11 +107,20 @@ export function opfsBaseTreeToFrontmatterBase(
 ): FrontmatterBase {
 	let data: FrontmatterBase
 
-	if (isRawBase(tree)) {
-		data = rawBaseToBase(tree)
-		const base = parseBase('OPFS Doc base', data)
+	try {
+		if (isRawBase(tree)) {
+			data = rawBaseToBase(tree)
+			const migrated = migrate(
+				data,
+				Number(data.schema_version),
+				SCHEMA_VERSION,
+			)
+			const base = parseBase('OPFS Base', migrated.record)
 
-		return base
+			return base
+		}
+	} catch (error) {
+		throw Error('Error loading FrontmatterBase', {cause: error})
 	}
 
 	// Return default fallback
@@ -130,18 +140,25 @@ export function opfsStructureTreeToFrontmatterStructures(
 	let data = []
 	const result = []
 
-	if (isRawStructureTree(tree)) {
-		data = rawStructureTreeToStructure(tree)
-	} else if (isRawStructure(tree)) {
-		const structure = rawStructureToStructure(tree)
+	try {
+		if (isRawStructureTree(tree)) {
+			data = rawStructureTreeToStructure(tree)
+		} else if (isRawStructure(tree)) {
+			const structure = rawStructureToStructure(tree)
 
-		data.push(structure)
-	}
+			data.push(structure)
+		}
 
-	for (const structure of data) {
-		result.push(
-			parseStructure(`OPFS Structure: ${structure.format}`, structure),
-		)
+		for (const structure of data) {
+			const migrated = migrate(
+				structure,
+				Number(structure.schema_version),
+				SCHEMA_VERSION,
+			)
+			result.push(parseStructure(`OPFS Structure`, migrated.record))
+		}
+		return result
+	} catch (error) {
+		throw Error('Error loading FrontmatterStructure', {cause: error})
 	}
-	return result
 }
