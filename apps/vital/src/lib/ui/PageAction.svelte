@@ -25,7 +25,7 @@
 		getTitleForRoute,
 		getDescriptionForRoute,
 		getPrefixForRoute,
-		getRouteNameFromRouteId,
+		getCtaFromRouteId,
 	} from '#lib/common/routing.js'
 
 	import SectionEditor from '#lib/ui/editor/SectionEditor.svelte'
@@ -81,7 +81,7 @@
 	}: Props = $props()
 
 	let color = $derived(theme)
-	let cta = $derived(getRouteNameFromRouteId(route))
+	let cta = $derived(getCtaFromRouteId(route))
 	let searchParams = $derived(new URL(page.url.href).searchParams)
 	let namespace = $derived(getNamespaceFromRoute(route))
 	let isTwinLayout = $derived(twinLayout[cta])
