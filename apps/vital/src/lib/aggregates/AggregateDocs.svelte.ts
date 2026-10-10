@@ -39,7 +39,7 @@ export default class AggregateDocs implements IAggregateDocs {
 	root: NamespaceId
 	bridge: WorkerBridge | undefined = $state()
 	loading = $state(false)
-	error = $state(false)
+	error: string | undefined = $state()
 	content: DocStore = $state({})
 	docIndex: DocIndex = $derived(buildDocIndex(this.content))
 
@@ -54,8 +54,8 @@ export default class AggregateDocs implements IAggregateDocs {
 			this.loading = true
 
 			await this.loadDocStore()
-		} catch {
-			this.error = true
+		} catch (error) {
+			this.error = (error as Error).message
 		} finally {
 			this.loading = false
 		}
@@ -614,8 +614,11 @@ export default class AggregateDocs implements IAggregateDocs {
 		// - content.json // Has Section shaped data FIXME: not always : se RawSection type
 		// - meta.json // Has DocMeta shaped data FIXME: not always : se RawSection type
 		const raw = (await this.bridge.getAllDocs({root: this.root})) as OPFSTreeDoc
-
-		this.content = opfsDocTreeToDocStore(raw)
+		try {
+			this.content = opfsDocTreeToDocStore(raw)
+		} catch (error) {
+			this.error = (error as Error).message
+		}
 
 		return this.content
 	}

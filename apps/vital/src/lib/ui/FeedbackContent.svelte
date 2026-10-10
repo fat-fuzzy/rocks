@@ -14,7 +14,7 @@
 		tags,
 		isHidden,
 		isEmpty,
-		isError,
+		error,
 	}: {
 		surface?: UiSurface
 		content_type: DocContentType
@@ -22,7 +22,7 @@
 		tags?: string[]
 		isHidden?: boolean
 		isEmpty?: boolean
-		isError?: boolean
+		error?: string
 	} = $props()
 
 	// TODO: Better color management
@@ -33,18 +33,20 @@
 <div class="maki:block">
 	<Feedback
 		context="prose"
-		size="md"
+		size="sm"
 		asset="none"
+		status={error ? 'error' : 'default'}
 		surface={`${surface} ${chroma}`}
 		variant="bare"
 		{surfaceLightness}
 		{chroma}
 	>
-		{#if isError}
-			<h3>
+		{#if error}
+			<p>
 				Failed to load content for {content_type}
-				<span class="font:bold">{name}</span>
-			</h3>
+				<span class="font:bold font:heading">{name}</span>
+			</p>
+			<p>{error}</p>
 		{:else if isEmpty}
 			<h3>
 				No content found for {content_type} "{name}"

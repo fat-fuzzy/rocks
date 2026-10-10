@@ -23,7 +23,7 @@ export interface ICoordinateDocs {
 
 	isLoading(): boolean
 
-	hasError(): boolean
+	getError(): string | undefined
 
 	getRoot(): NamespaceId
 

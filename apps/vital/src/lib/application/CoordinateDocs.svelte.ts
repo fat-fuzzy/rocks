@@ -41,7 +41,7 @@ export default class CoordinateDocs implements ICoordinateDocs {
 		return this.aggDocs.loading || this.aggMetadata.loading
 	}
 
-	hasError() {
+	getError() {
 		return this.aggDocs.error || this.aggMetadata.error
 	}
 
