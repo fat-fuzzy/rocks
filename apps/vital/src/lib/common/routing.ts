@@ -40,7 +40,7 @@ export function getNamespaceFromRoute(id: RouteId): NamespaceId {
 
 export function getRouteNameFromRouteId(
 	id: string,
-): NamespaceId | RouteNameFor<NamespaceId> {
+): NamespaceId | RouteNameFor<NamespaceId> | void {
 	const key = id.split('/')[1] as NamespaceKey
 	const route = id.split('/')[2] as RouteNameFor<NamespaceId>
 
@@ -48,11 +48,9 @@ export function getRouteNameFromRouteId(
 		return getNamespaceFromRoute(id as RouteId)
 	}
 
-	if (route && NAMESPACES[key].children.find((r) => r.name === route)) {
+	if (route && NAMESPACES[key]?.children.find((r) => r.name === route)) {
 		return route
 	}
-
-	throw Error('Route not found for namespace')
 }
 
 export function getCtaFromRouteId(id: string): RouteNameFor<NamespaceId> {
