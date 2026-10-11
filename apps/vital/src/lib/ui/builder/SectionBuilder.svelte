@@ -50,7 +50,7 @@
 	let content = $derived(section?.content)
 
 	let noContentFound = $derived(!coordDocs.isLoading() && !section)
-	let error = $derived(coordDocs.getError())
+	let error = $derived(coordDocs.getErrorMessage())
 
 	const observerOptions = $derived({
 		root: null,

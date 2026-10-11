@@ -45,7 +45,7 @@
 	let name = $derived(section.name)
 	let displayBlockForm = $derived(name !== undefined)
 
-	let error = $derived(coordDocs.getError())
+	let error = $derived(coordDocs.getErrorMessage())
 	let blocksLoaded = $derived(coordDocs.lazyBlocks)
 	let sectionsLoaded = $derived(coordDocs.lazySections)
 	let noContentFound = $derived(!loading && !section)

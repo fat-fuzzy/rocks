@@ -14,6 +14,7 @@
 	import ui from '@fat-fuzzy/ui'
 
 	import {page} from '$app/state'
+	import {dev} from '$app/env'
 
 	import {
 		getSanitizedParamValueList,
@@ -140,6 +141,10 @@
 	let pageContext = $derived({...page.data.pageContext, label: 'On this Page'})
 
 	let loading = $derived(coordDocs.isLoading())
+	let error = $derived(coordDocs.getErrorMessage())
+	let errorDetails = $derived(dev ? coordDocs.getErrorDetails() : undefined)
+	let syncApp = $derived(coordDocs.needsAppSync())
+	let syncData = $derived(coordDocs.needsDataSync())
 
 	let tags = $derived(coordMetadata.getTagGroups())
 	let tagsLoading = $derived(coordMetadata.loading)
@@ -369,19 +374,31 @@
 			{:else}
 				<div class={`${textClass} maki:block size:lg`}>
 					<Feedback
-						status={coordDocs.getError() ? 'error' : undefined}
+						status={error ? 'error' : undefined}
+						surfaceLightness={error ? 0 : undefined}
 						context="prose"
 						variant="bare"
+						asset="none"
 						size={availableSections.length ? 'lg' : undefined}
-						font="md"
+						font="sm"
 					>
-						{#if coordDocs.getError()}
+						{#if error}
 							<!-- TODO: Improve this message -->
-							<p class="font:md">There was an error loading your document</p>
+							<p class="font:md">{error}</p>
 						{:else}
 							<p class="font:md">Select a Section to edit</p>
 						{/if}
+						{#if errorDetails}
+							<p class="font:md">{errorDetails}</p>
+						{/if}
 					</Feedback>
+					{#if syncApp}
+						<p class="font:md">[TODO]: Sync App button</p>
+					{/if}
+
+					{#if syncData}
+						<p class="font:md">[TODO]: Sync Data button</p>
+					{/if}
 				</div>
 			{/if}
 		</div>
