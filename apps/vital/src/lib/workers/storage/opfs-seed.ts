@@ -167,6 +167,7 @@ export async function seedBase(options: {
 
 	try {
 		const migration = migrate(base, schemaVersion)
+
 		switch (migration.status) {
 			case 'migrated':
 			case 'synced':
@@ -176,10 +177,7 @@ export async function seedBase(options: {
 					await saveEntry(directoryHandle, {name: 'base'}, data)
 				}
 				break
-			case 'not-found':
-			case 'unversioned':
-				throw Error(`migration:${migration.status}`)
-			case 'unsupported':
+			default:
 				throw Error(`migration:${migration.status}`)
 		}
 	} catch (error) {

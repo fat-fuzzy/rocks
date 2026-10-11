@@ -17,7 +17,7 @@ import {getBridge} from '#lib/aggregates/bridge.js'
 import {getPresetKey} from '#lib/common/format.js'
 
 import {opfsPresetTreeToPresetStore} from '#lib/common/transform/opfs-to-doc.js'
-import {handleDataTransformError} from '#lib/common/errors/schemas.js'
+import {handleDataTransformError} from '#lib/common/errors/migration.js'
 
 import {buildPresetIndex} from '#lib/common/transform/store-to-index.js'
 

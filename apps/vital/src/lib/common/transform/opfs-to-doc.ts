@@ -117,10 +117,7 @@ export function opfsBaseTreeToFrontmatterBase(
 				case 'synced': {
 					return parseBase('OPFS Base', migration.record)
 				}
-				case 'not-found':
-				case 'unversioned':
-					throw Error(`migration:${migration.status}`)
-				case 'unsupported':
+				default:
 					throw Error(`migration:${migration.status}`)
 			}
 		}
@@ -165,10 +162,7 @@ export function opfsStructureTreeToFrontmatterStructures(
 						result.push(parsed)
 					}
 					break
-				case 'not-found':
-				case 'unversioned':
-					throw Error(`migration:${migration.status}`)
-				case 'unsupported':
+				default:
 					throw Error(`migration:${migration.status}`)
 			}
 		}

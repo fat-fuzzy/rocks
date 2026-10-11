@@ -26,7 +26,7 @@ import {sortByRankAsc} from '#lib/common/sort.js'
 import {getSectionKey, getBlockKey} from '#lib/common/format.js'
 import {opfsDocTreeToDocStore} from '#lib/common/transform/opfs-to-doc.js'
 import {buildDocIndex} from '#lib/common/transform/store-to-index.js'
-import {handleDataTransformError} from '#lib/common/errors/schemas.js'
+import {handleDataTransformError} from '#lib/common/errors/migration.js'
 import {
 	updateBlockInSection,
 	deleteBlockInSection,
