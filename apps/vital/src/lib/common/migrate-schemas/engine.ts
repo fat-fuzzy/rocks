@@ -10,28 +10,31 @@ export const migrate = (data: unknown, toVersion: number): MigrationResult => {
 		return {status: 'unversioned', record}
 	}
 
-	const fromVersion = Math.floor(Number(record.schema_version))
+	const fromVersion = Number(record.schema_version)
+	const toVersionNormalized = Number(toVersion)
 
-	if (!isScalar(fromVersion) || !isScalar(toVersion)) {
+	if (!isScalar(fromVersion) || !isScalar(toVersionNormalized)) {
 		return {status: 'unversioned', record}
 	}
 
-	if (fromVersion === toVersion) {
+	if (fromVersion === toVersionNormalized) {
+		record.schema_version = Number(record.schema_version)
+
 		return {status: 'synced', record}
 	}
 
-	if (fromVersion > toVersion) {
+	if (fromVersion > toVersionNormalized) {
 		return {
 			status: 'unsupported',
 			record: data,
 			from: fromVersion,
-			to: toVersion,
+			to: toVersionNormalized,
 		}
 	}
 
-	for (let v = fromVersion; v < Math.floor(toVersion); v++) {
+	for (let v = fromVersion; v < toVersionNormalized; v++) {
 		const migration = MIGRATIONS.find(
-			({from, to}) => from === v && to === v + 1,
+			({from, to}) => from === v && to === Math.floor(v) + 1,
 		)
 
 		if (!migration) {
@@ -39,12 +42,17 @@ export const migrate = (data: unknown, toVersion: number): MigrationResult => {
 				status: 'not-found',
 				record: data,
 				from: fromVersion,
-				to: toVersion,
+				to: toVersionNormalized,
 			}
 		}
 
 		record = migration.up(record)
 	}
 
-	return {status: 'migrated', record, from: fromVersion, to: toVersion}
+	return {
+		status: 'migrated',
+		record,
+		from: fromVersion,
+		to: toVersionNormalized,
+	}
 }
