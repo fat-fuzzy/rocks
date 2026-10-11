@@ -41,8 +41,26 @@ export default class CoordinateDocs implements ICoordinateDocs {
 		return this.aggDocs.loading || this.aggMetadata.loading
 	}
 
-	getError() {
-		return this.aggDocs.error || this.aggMetadata.error
+	getErrorMessage() {
+		return this.aggDocs.error?.message || this.aggMetadata.error?.message
+	}
+
+	getErrorDetails() {
+		return this.aggDocs.error?.details || this.aggMetadata.error?.details
+	}
+
+	needsAppSync() {
+		return (
+			this.aggDocs.error?.actions.sync === 'app' ||
+			this.aggMetadata.error?.actions.sync === 'app'
+		)
+	}
+
+	needsDataSync() {
+		return (
+			this.aggDocs.error?.actions.sync === 'data' ||
+			this.aggMetadata.error?.actions.sync === 'data'
+		)
 	}
 
 	getRoot(): NamespaceId {

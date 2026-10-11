@@ -6,6 +6,7 @@ import type {
 	Rank,
 	Slug,
 	TagGroup,
+	VitalError,
 } from '#types'
 
 export interface IAggregateMetadata {
@@ -13,7 +14,7 @@ export interface IAggregateMetadata {
 	readonly base: FrontmatterBase
 	readonly structures: FrontmatterStructure[]
 	readonly loading: boolean
-	readonly error: string | undefined
+	readonly error: VitalError | undefined
 	readonly tagGroups: TagGroup[]
 
 	init(): Promise<void>
