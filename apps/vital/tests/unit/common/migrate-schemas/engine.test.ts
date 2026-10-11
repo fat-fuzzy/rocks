@@ -49,6 +49,21 @@ describe('migrate-schemas/engine.ts - JSON Schema migration engine', () => {
 		}
 	})
 
+	test('migration down: 1 to 0.11', () => {
+		const targetVersion = 0.11
+		const sourceSchema = DOC_STORE.en?.long
+		const sourceVersion = sourceSchema?.schema_version
+
+		const migrated = migrate(sourceSchema, targetVersion)
+
+		expect(migrated.status).toBe('unsupported')
+		expect(isRawSchema(migrated.record)).toBe(true)
+
+		if (isRawSchema(migrated.record)) {
+			expect(migrated.record.schema_version).toBe(sourceVersion)
+		}
+	})
+
 	test('migration down: 1 to 0.1', () => {
 		const targetVersion = 0.1
 		const sourceSchema = DOC_STORE.en?.long
@@ -56,7 +71,7 @@ describe('migrate-schemas/engine.ts - JSON Schema migration engine', () => {
 
 		const migrated = migrate(sourceSchema, targetVersion)
 
-		expect(migrated.status).toBe('unsupported')
+		expect(migrated.status).toBe('outdated')
 		expect(isRawSchema(migrated.record)).toBe(true)
 
 		if (isRawSchema(migrated.record)) {
