@@ -58,7 +58,7 @@ export default class AggregateMetadata implements IAggregateMetadata {
 			await this.loadStructure()
 		} catch (error) {
 			const status = (error as Error).message
-			this.error = handleDataTransformError(status, 'Load Metadata', {})
+			this.error = handleDataTransformError('init-metadata', status, {})
 		} finally {
 			this.loading = false
 		}
@@ -218,7 +218,7 @@ export default class AggregateMetadata implements IAggregateMetadata {
 		} catch (error) {
 			const status = (error as Error).message
 
-			this.error = handleDataTransformError(status, 'Load Base', raw)
+			this.error = handleDataTransformError('load-base', status, raw)
 		}
 	}
 
@@ -241,8 +241,8 @@ export default class AggregateMetadata implements IAggregateMetadata {
 		} catch (error) {
 			const status = (error as Error).message
 			this.error = handleDataTransformError(
+				'load-structure',
 				status,
-				'Load Structure',
 				raw.content.structure[0],
 			)
 		}

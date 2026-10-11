@@ -50,7 +50,7 @@ export default class AggregatePresets implements IAggregatePresets {
 			await this.getAllPresets()
 		} catch (error) {
 			const status = (error as Error).message
-			this.error = handleDataTransformError(status, 'Load Presets', {})
+			this.error = handleDataTransformError('load-presets', status, {})
 		} finally {
 			this.loading = false
 		}
