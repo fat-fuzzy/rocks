@@ -5,7 +5,7 @@ import type {
 	FormToValidate,
 	FieldToValidate,
 	SchemaToValidate,
-	ErrorObject,
+	AjvErrorObject,
 	AjvValidateFunction,
 	ValidatorMap,
 } from './validation'
@@ -22,7 +22,7 @@ class FormValidator<
 > implements IFormValidator<K> {
 	form: FormToValidate = {}
 	inputTypes: InputTypes = {} // Map of input names to their types
-	errors: ErrorObject<K>[] = []
+	errors: AjvErrorObject<K>[] = []
 	ajvValidate: AjvValidateFunction<K>
 	sanitize = sanitize.sanitizeForm
 
