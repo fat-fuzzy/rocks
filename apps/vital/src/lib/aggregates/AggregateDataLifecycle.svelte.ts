@@ -139,8 +139,8 @@ export default class AggregateDataLifecycle implements IAggregateDataLifecycle {
 			const status = (error as Error).message
 
 			this.error = handleDataTransformError(
+				'init-seed',
 				status,
-				'Init Seed',
 				frontmatter.base,
 			)
 		}

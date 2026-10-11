@@ -60,7 +60,7 @@ export default class AggregateDocs implements IAggregateDocs {
 			await this.loadDocStore()
 		} catch (error) {
 			const status = (error as Error).message
-			this.error = handleDataTransformError(status, 'Load Metadata', {})
+			this.error = handleDataTransformError('load-metadata', status, {})
 		} finally {
 			this.loading = false
 		}
@@ -625,7 +625,7 @@ export default class AggregateDocs implements IAggregateDocs {
 		} catch (error) {
 			const status = (error as Error).message
 
-			this.error = handleDataTransformError(status, 'Load Doc Store', raw)
+			this.error = handleDataTransformError('load-doc-store', status, raw)
 		}
 
 		return this.content

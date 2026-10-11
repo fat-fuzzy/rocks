@@ -23,9 +23,29 @@ export const migrate = (data: unknown, toVersion: number): MigrationResult => {
 		return {status: 'synced', record}
 	}
 
-	if (fromVersion > toVersionNormalized) {
+	if (
+		fromVersion < 0.1 ||
+		(fromVersion > 0.1 && fromVersion < 1) ||
+		toVersionNormalized < 0.1 ||
+		(toVersionNormalized > 0.1 && toVersionNormalized < 1)
+	) {
 		return {
 			status: 'unsupported',
+			record: data,
+			from: fromVersion,
+			to: toVersionNormalized,
+		}
+	}
+
+	if (
+		fromVersion > toVersionNormalized ||
+		fromVersion < 0.1 ||
+		(fromVersion > 0.1 && fromVersion < 1) ||
+		toVersionNormalized < 0.1 ||
+		(toVersionNormalized > 0.1 && toVersionNormalized < 1)
+	) {
+		return {
+			status: 'outdated',
 			record: data,
 			from: fromVersion,
 			to: toVersionNormalized,
