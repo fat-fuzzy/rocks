@@ -110,10 +110,19 @@ export function opfsBaseTreeToFrontmatterBase(
 	try {
 		if (isRawBase(tree)) {
 			data = rawBaseToBase(tree)
-			const migrated = migrate(data, SCHEMA_VERSION)
-			const base = parseBase('OPFS Base', migrated.record)
+			const migration = migrate(data, SCHEMA_VERSION)
 
-			return base
+			switch (migration.status) {
+				case 'migrated':
+				case 'synced': {
+					return parseBase('OPFS Base', migration.record)
+				}
+				case 'not-found':
+				case 'unversioned':
+					throw Error(`migration:${migration.status}`)
+				case 'unsupported':
+					throw Error(`migration:${migration.status}`)
+			}
 		}
 	} catch (error) {
 		throw Error('Error loading FrontmatterBase', {cause: error})
@@ -146,11 +155,25 @@ export function opfsStructureTreeToFrontmatterStructures(
 		}
 
 		for (const structure of data) {
-			const migrated = migrate(structure, SCHEMA_VERSION)
-			result.push(parseStructure(`OPFS Structure`, migrated.record))
+			const migration = migrate(structure, SCHEMA_VERSION)
+
+			switch (migration.status) {
+				case 'migrated':
+				case 'synced':
+					{
+						const parsed = parseStructure(`OPFS Structure`, migration.record)
+						result.push(parsed)
+					}
+					break
+				case 'not-found':
+				case 'unversioned':
+					throw Error(`migration:${migration.status}`)
+				case 'unsupported':
+					throw Error(`migration:${migration.status}`)
+			}
 		}
 		return result
 	} catch (error) {
-		throw Error('Error loading FrontmatterStructure', {cause: error})
+		throw Error((error as Error).message, {cause: error})
 	}
 }

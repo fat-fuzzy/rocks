@@ -9,13 +9,14 @@ import type {
 	TagGroup,
 	Rank,
 	NamespaceId,
+	VitalError,
 } from '#types'
 
 import {DOC_LANGUAGE, DOC_FORMAT, SCHEMA_VERSION} from '#config/setup.js'
 
 import WorkerBridge from '#lib/workers/worker-bridge.js'
 import {getBridge} from '#lib/aggregates/bridge.js'
-
+import {handleDataTransformError} from '#lib/common/errors/schemas.js'
 import {
 	opfsBaseTreeToFrontmatterBase,
 	opfsStructureTreeToFrontmatterStructures,
@@ -30,7 +31,7 @@ export default class AggregateMetadata implements IAggregateMetadata {
 	root: NamespaceId
 	bridge: WorkerBridge | undefined = $state()
 	loading = $state(false)
-	error: string | undefined = $state()
+	error: VitalError | undefined = $state()
 	base: FrontmatterBase = $state({
 		schema_version: SCHEMA_VERSION,
 		languages: [DOC_LANGUAGE as DocLanguage],
@@ -48,13 +49,16 @@ export default class AggregateMetadata implements IAggregateMetadata {
 
 	async init() {
 		this.bridge = getBridge()
+		this.reset()
+
 		try {
 			this.loading = true
 
 			await this.loadBase()
 			await this.loadStructure()
 		} catch (error) {
-			this.error = (error as Error).message
+			const status = (error as Error).message
+			this.error = handleDataTransformError(status, 'Load Metadata', {})
 		} finally {
 			this.loading = false
 		}
@@ -69,6 +73,7 @@ export default class AggregateMetadata implements IAggregateMetadata {
 			settings: [],
 		}
 		this.structures = []
+		this.error = undefined
 	}
 
 	/**
@@ -211,7 +216,9 @@ export default class AggregateMetadata implements IAggregateMetadata {
 			const base = opfsBaseTreeToFrontmatterBase(raw)
 			this.base = base
 		} catch (error) {
-			this.error = (error as Error).message
+			const status = (error as Error).message
+
+			this.error = handleDataTransformError(status, 'Load Base', raw)
 		}
 	}
 
@@ -232,7 +239,12 @@ export default class AggregateMetadata implements IAggregateMetadata {
 			const structures = opfsStructureTreeToFrontmatterStructures(raw)
 			this.structures = structures
 		} catch (error) {
-			this.error = (error as Error).message
+			const status = (error as Error).message
+			this.error = handleDataTransformError(
+				status,
+				'Load Structure',
+				raw.content.structure[0],
+			)
 		}
 	}
 

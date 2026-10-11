@@ -8,6 +8,7 @@ import type {
 	OPFSTreePreset,
 	IAggregatePresets,
 	NamespaceId,
+	VitalError,
 } from '#types'
 
 import WorkerBridge from '#lib/workers/worker-bridge.js'
@@ -16,6 +17,7 @@ import {getBridge} from '#lib/aggregates/bridge.js'
 import {getPresetKey} from '#lib/common/format.js'
 
 import {opfsPresetTreeToPresetStore} from '#lib/common/transform/opfs-to-doc.js'
+import {handleDataTransformError} from '#lib/common/errors/schemas.js'
 
 import {buildPresetIndex} from '#lib/common/transform/store-to-index.js'
 
@@ -29,7 +31,7 @@ export default class AggregatePresets implements IAggregatePresets {
 	bridge: WorkerBridge | undefined = $state()
 	seeded: {date_seed?: string; source?: string} = $state({})
 	loading = $state(false)
-	error = $state(false)
+	error: VitalError | undefined = $state()
 	presets: PresetStore = $state({})
 	presetIndex: PresetIndex = $derived(buildPresetIndex(this.presets))
 
@@ -40,12 +42,15 @@ export default class AggregatePresets implements IAggregatePresets {
 
 	async init() {
 		this.bridge = getBridge()
+		this.reset()
+
 		try {
 			this.loading = true
 
 			await this.getAllPresets()
-		} catch {
-			this.error = true
+		} catch (error) {
+			const status = (error as Error).message
+			this.error = handleDataTransformError(status, 'Load Presets', {})
 		} finally {
 			this.loading = false
 		}
@@ -53,6 +58,7 @@ export default class AggregatePresets implements IAggregatePresets {
 
 	reset() {
 		this.presets = {}
+		this.error = undefined
 	}
 
 	/**

@@ -166,12 +166,22 @@ export async function seedBase(options: {
 	}
 
 	try {
-		const migrated = migrate(base, schemaVersion).record
-
-		const data = parseBase('OPFS Seed Base', migrated)
-
-		const directoryHandle = await getBaseHandle({root, create: true})
-		await saveEntry(directoryHandle, {name: 'base'}, data)
+		const migration = migrate(base, schemaVersion)
+		switch (migration.status) {
+			case 'migrated':
+			case 'synced':
+				{
+					const data = parseBase('OPFS Seed Base', migration.record)
+					const directoryHandle = await getBaseHandle({root, create: true})
+					await saveEntry(directoryHandle, {name: 'base'}, data)
+				}
+				break
+			case 'not-found':
+			case 'unversioned':
+				throw Error(`migration:${migration.status}`)
+			case 'unsupported':
+				throw Error(`migration:${migration.status}`)
+		}
 	} catch (error) {
 		throw new Error('Error seeding doc base', {cause: error})
 	}
@@ -197,10 +207,22 @@ export async function seedStructure(options: {
 		const toSeed = []
 
 		for (const structure of structures) {
-			const migrated = migrate(structure, schemaVersion).record
+			const migration = migrate(structure, schemaVersion)
 
-			const data = parseStructure('OPFS Seed Structure', migrated)
-			toSeed.push(data)
+			switch (migration.status) {
+				case 'migrated':
+				case 'synced':
+					{
+						const data = parseStructure('OPFS Seed Structure', migration.record)
+						toSeed.push(data)
+					}
+					break
+				case 'not-found':
+				case 'unversioned':
+					throw Error(`migration:${migration.status}`)
+				case 'unsupported':
+					throw Error(`migration:${migration.status}`)
+			}
 		}
 
 		const directoryHandle = await getStructureHandle({root, create: true})

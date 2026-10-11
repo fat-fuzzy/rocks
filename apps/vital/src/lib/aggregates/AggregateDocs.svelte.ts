@@ -15,6 +15,7 @@ import type {
 	IAggregateDocs,
 	Subsection,
 	NamespaceId,
+	VitalError,
 } from '#types'
 
 import WorkerBridge from '#lib/workers/worker-bridge.js'
@@ -25,6 +26,7 @@ import {sortByRankAsc} from '#lib/common/sort.js'
 import {getSectionKey, getBlockKey} from '#lib/common/format.js'
 import {opfsDocTreeToDocStore} from '#lib/common/transform/opfs-to-doc.js'
 import {buildDocIndex} from '#lib/common/transform/store-to-index.js'
+import {handleDataTransformError} from '#lib/common/errors/schemas.js'
 import {
 	updateBlockInSection,
 	deleteBlockInSection,
@@ -39,7 +41,7 @@ export default class AggregateDocs implements IAggregateDocs {
 	root: NamespaceId
 	bridge: WorkerBridge | undefined = $state()
 	loading = $state(false)
-	error: string | undefined = $state()
+	error: VitalError | undefined = $state()
 	content: DocStore = $state({})
 	docIndex: DocIndex = $derived(buildDocIndex(this.content))
 
@@ -50,12 +52,15 @@ export default class AggregateDocs implements IAggregateDocs {
 
 	async init() {
 		this.bridge = getBridge()
+		this.reset()
+
 		try {
 			this.loading = true
 
 			await this.loadDocStore()
 		} catch (error) {
-			this.error = (error as Error).message
+			const status = (error as Error).message
+			this.error = handleDataTransformError(status, 'Load Metadata', {})
 		} finally {
 			this.loading = false
 		}
@@ -63,6 +68,7 @@ export default class AggregateDocs implements IAggregateDocs {
 
 	reset() {
 		this.content = {}
+		this.error = undefined
 	}
 
 	/**
@@ -617,7 +623,9 @@ export default class AggregateDocs implements IAggregateDocs {
 		try {
 			this.content = opfsDocTreeToDocStore(raw)
 		} catch (error) {
-			this.error = (error as Error).message
+			const status = (error as Error).message
+
+			this.error = handleDataTransformError(status, 'Load Doc Store', raw)
 		}
 
 		return this.content
