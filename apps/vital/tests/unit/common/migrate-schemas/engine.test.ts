@@ -23,15 +23,14 @@ describe('migrate-schemas/engine.ts - JSON Schema migration engine', () => {
 	test('migration up: 0.1 to 0.1', () => {
 		const targetVersion = 0.1
 		const sourceSchema = SEED_DOC
-		const sourceVersion = SEED_DOC.schema_version
 
 		const migrated = migrate(sourceSchema, targetVersion)
 
-		expect(migrated.status).toBe('migrated')
+		expect(migrated.status).toBe('synced')
 		expect(isRawSchema(migrated.record)).toBe(true)
 
 		if (isRawSchema(migrated.record)) {
-			expect(migrated.record.schema_version).toBe(sourceVersion)
+			expect(migrated.record.schema_version).toBe(targetVersion)
 		}
 	})
 
