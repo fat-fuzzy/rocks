@@ -1,6 +1,8 @@
 export type MigrationStatus =
 	'synced' | 'unsupported' | 'not-found' | 'migrated' | 'unversioned'
 
+export type MigrationTarget = 'app' | 'data'
+
 export type Migration = {
 	from: number // schema_version it accepts
 	to: number // from + 1
