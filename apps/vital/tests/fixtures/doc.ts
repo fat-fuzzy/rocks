@@ -134,7 +134,7 @@ export const DOC_STORE: DocStore = {
 				filename: 'doc-root',
 				filetype: 'json',
 			},
-			schema_version: 1,
+			schema_version: SCHEMA_VERSION,
 			sections: [],
 		},
 	},
@@ -147,7 +147,7 @@ export const DOC_STORE: DocStore = {
 				content_type: 'section',
 				label: 'doc-root',
 			},
-			schema_version: 1,
+			schema_version: SCHEMA_VERSION,
 			path: {
 				filename: 'doc-root',
 				filetype: 'json',
