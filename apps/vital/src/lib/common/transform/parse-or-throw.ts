@@ -41,10 +41,11 @@ function parseOrThrow<T>(
 	}
 
 	const errors =
-		validate.errors?.map((error) => `${error.instancePath} ${error.message}`) ||
-		[]
+		validate.errors?.map(
+			(error) => `${error.instancePath.slice(1)} ${error.message}`,
+		) || []
 
-	throw Error(`[${label}] validation failed: ${errors.join(', ')}`)
+	throw Error(`[${label} validation failed]: ${errors.join(', ')}`)
 }
 
 export function parseBlock(label: string, data: unknown): Block {

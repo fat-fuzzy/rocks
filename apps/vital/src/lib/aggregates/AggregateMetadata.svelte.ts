@@ -16,7 +16,7 @@ import {DOC_LANGUAGE, DOC_FORMAT, SCHEMA_VERSION} from '#config/setup.js'
 
 import WorkerBridge from '#lib/workers/worker-bridge.js'
 import {getBridge} from '#lib/aggregates/bridge.js'
-import {handleDataTransformError} from '#lib/common/errors/schemas.js'
+import {handleDataTransformError} from '#lib/common/errors/migration.js'
 import {
 	opfsBaseTreeToFrontmatterBase,
 	opfsStructureTreeToFrontmatterStructures,

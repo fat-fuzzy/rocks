@@ -37,13 +37,7 @@ export const migrate = (data: unknown, toVersion: number): MigrationResult => {
 		}
 	}
 
-	if (
-		fromVersion > toVersionNormalized ||
-		fromVersion < 0.1 ||
-		(fromVersion > 0.1 && fromVersion < 1) ||
-		toVersionNormalized < 0.1 ||
-		(toVersionNormalized > 0.1 && toVersionNormalized < 1)
-	) {
+	if (fromVersion > toVersionNormalized) {
 		return {
 			status: 'outdated',
 			record: data,

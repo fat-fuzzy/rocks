@@ -20,7 +20,7 @@ import {
 } from '#data/doc/cv-config.js'
 import WorkerBridge from '#lib/workers/worker-bridge.js'
 import {getBridge} from '#lib/aggregates/bridge.js'
-import {handleDataTransformError} from '#lib/common/errors/schemas.js'
+import {handleDataTransformError} from '#lib/common/errors/migration.js'
 
 /**
  * AggregateDataLifecycle class to manage data transfer operations into storage
