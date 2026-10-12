@@ -21,7 +21,7 @@ export type Migration = {
 export type MigrationResult =
 	| {status: 'synced'; record: unknown}
 	| {status: 'unsupported'; record: unknown; from: number; to: number}
-	| {status: 'outdated'; record: unknown; from: number; to: number}
+	| {status: 'sync-app'; record: unknown; from: number; to: number}
 	| {status: 'not-found'; record: unknown; from: number; to: number}
 	| {status: 'migrated'; record: unknown; from: number; to: number}
 	| {status: 'unversioned'; record: unknown}

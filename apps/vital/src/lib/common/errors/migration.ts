@@ -30,7 +30,7 @@ export function handleDataTransformError(
 				error.actions = {}
 			}
 			break
-		case 'outdated':
+		case 'sync-app':
 			{
 				error.message = `Data schema version ${isRawSchema(data) ? data.schema_version : ''} is not supported. Current app schema version: ${SCHEMA_VERSION}. Update the app to fix this error.`
 				error.actions = {
