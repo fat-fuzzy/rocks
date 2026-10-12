@@ -16,11 +16,21 @@ const OfferSchema = defineSchema({
 			$ref: '#/definitions/schemaVersion',
 			const: SCHEMA_VERSION,
 		},
-		date_registered: {$ref: '#/definitions/dateString'},
-		date_due: {$ref: '#/definitions/dateString'},
-		company: {$ref: '#/definitions/title'},
-		recruiter: {$ref: '#/definitions/Human'},
-		content: {$ref: '#/definitions/Prose'},
+		date_registered: {
+			$ref: '#/definitions/dateString',
+		},
+		date_due: {
+			$ref: '#/definitions/dateString',
+		},
+		company: {
+			$ref: '#/definitions/title',
+		},
+		recruiter: {
+			$ref: '#/definitions/Human',
+		},
+		content: {
+			$ref: '#/definitions/Prose',
+		},
 	},
 	required: ['schema_version', 'id', 'date_created', 'events', 'seals'],
 	additionalProperties: false,
