@@ -27,7 +27,9 @@ export function handleDataTransformError(
 		case 'not-found':
 			{
 				error.message = `No migration path found from version ${isRawSchema(data) ? data.schema_version : '[unversioned]'} to version: ${SCHEMA_VERSION}.`
-				error.actions = {}
+				error.actions = {
+					sync: 'code',
+				}
 			}
 			break
 		case 'sync-app':
@@ -40,9 +42,9 @@ export function handleDataTransformError(
 			break
 		case 'unsupported':
 			{
-				error.message = `App schema version ${SCHEMA_VERSION} is unsupported. Update SCHEMA_VERSION settings to fix this error.`
+				error.message = `App schema version ${SCHEMA_VERSION} is unsupported. Update SCHEMA_VERSION settings or regenerate schemas to fix this error.`
 				error.actions = {
-					sync: 'app',
+					sync: 'code',
 				}
 			}
 			break
