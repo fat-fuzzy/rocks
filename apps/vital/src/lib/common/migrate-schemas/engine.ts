@@ -24,10 +24,8 @@ export const migrate = (data: unknown, toVersion: number): MigrationResult => {
 	}
 
 	if (
-		fromVersion < 0.1 ||
-		(fromVersion > 0.1 && fromVersion < 1) ||
-		toVersionNormalized < 0.1 ||
-		(toVersionNormalized > 0.1 && toVersionNormalized < 1)
+		(fromVersion < 1 && fromVersion !== 0.1) ||
+		(toVersionNormalized < 1 && toVersionNormalized !== 0.1)
 	) {
 		return {
 			status: 'unsupported',
