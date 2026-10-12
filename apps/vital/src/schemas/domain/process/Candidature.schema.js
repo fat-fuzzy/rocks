@@ -26,12 +26,19 @@ const CandidatureSchema = defineSchema({
 	$id: 'Candidature',
 	type: 'object',
 	properties: {
+		description: {
+			type: 'string',
+			const: 'Candidature process for a job',
+		},
 		schema_version: {
 			$ref: '#/definitions/schemaVersion',
 			const: SCHEMA_VERSION,
 		},
 		id: {
 			$ref: '#/definitions/uuid',
+		},
+		name: {
+			$ref: '#/definitions/slug',
 		},
 		title: {
 			$ref: '#/definitions/title',

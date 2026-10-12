@@ -2,7 +2,7 @@ import {defineSchema} from '../../index.js'
 import SealedSubsectionSchema from './SealedSubsection.schema.js'
 import FingerprintSchema from '../../primitives/Fingerprint.schema.js'
 
-const SectionSchema = defineSchema({
+const SealedSectionSchema = defineSchema({
 	type: 'object',
 	properties: {
 		name: {
@@ -30,4 +30,4 @@ const SectionSchema = defineSchema({
 	additionalProperties: false,
 })
 
-export default SectionSchema
+export default SealedSectionSchema

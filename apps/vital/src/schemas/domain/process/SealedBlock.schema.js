@@ -1,7 +1,7 @@
 import {defineSchema} from '../../index.js'
 import FingerprintSchema from '../../primitives/Fingerprint.schema.js'
 
-const BlockSchema = defineSchema({
+const SealedBlockSchema = defineSchema({
 	type: 'object',
 	properties: {
 		source_block_id: {
@@ -25,4 +25,4 @@ const BlockSchema = defineSchema({
 	additionalProperties: false,
 })
 
-export default BlockSchema
+export default SealedBlockSchema

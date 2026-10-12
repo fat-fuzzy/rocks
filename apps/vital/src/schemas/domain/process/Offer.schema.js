@@ -12,6 +12,10 @@ const OfferSchema = defineSchema({
 	$id: 'Offer',
 	type: 'object',
 	properties: {
+		description: {
+			type: 'string',
+			const: 'Offer description',
+		},
 		schema_version: {
 			$ref: '#/definitions/schemaVersion',
 			const: SCHEMA_VERSION,
