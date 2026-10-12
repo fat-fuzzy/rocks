@@ -62,6 +62,8 @@ export const setSecHeaders =
 		event.setHeaders({
 			'Strict-Transport-Security': 'max-age=31536000; includeSubDomains',
 			'Referrer-Policy': 'strict-origin-when-cross-origin',
+			'Cross-Origin-Embedder-Policy': 'require-corp',
+			'Cross-Origin-Opener-Policy': 'same-origin',
 			'X-Frame-Options': 'SAMEORIGIN',
 			'X-Content-Type-Options': 'nosniff',
 		})
