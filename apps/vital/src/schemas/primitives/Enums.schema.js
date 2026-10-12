@@ -53,6 +53,10 @@ const EnumsSchema = defineDefinitions({
 		type: 'string',
 		enum: ['idle', 'loading', 'visible', 'closed', 'cancelled'],
 	},
+	hashAlgorithm: {
+		type: 'string',
+		enum: ['sha256'],
+	},
 })
 
 export default EnumsSchema

@@ -103,10 +103,10 @@ const SCHEMAS_CONFIG = {
 		$id: '#/definitions/Offer',
 		mode: 'replace',
 	},
-	Archive: {
-		file: 'Archive.schema.json',
-		exportName: 'ArchiveValidationFunction',
-		$id: '#/definitions/Archive',
+	Seal: {
+		file: 'Seal.schema.json',
+		exportName: 'SealValidationFunction',
+		$id: '#/definitions/Seal',
 		mode: 'replace',
 	},
 	Candidature: {

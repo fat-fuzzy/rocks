@@ -1,11 +1,11 @@
-import {SCHEMA_VERSION} from '../../config/setup.js'
-import {defineSchema} from '../index.js'
+import {SCHEMA_VERSION} from '../../../config/setup.js'
+import {defineSchema} from '../../index.js'
 
-import BaseSchema from '../primitives/Base.schema.js'
-import HumanSchema from '../identity/Human.schema.js'
-import RoleSchema from '../identity/Role.schema.js'
-import GroupSchema from '../identity/Group.schema.js'
-import ProseSchema from '../primitives/Prose.schema.js'
+import BaseSchema from '../../primitives/Base.schema.js'
+import HumanSchema from '../../identity/Human.schema.js'
+import RoleSchema from '../../identity/Role.schema.js'
+import GroupSchema from '../../identity/Group.schema.js'
+import ProseSchema from '../../primitives/Prose.schema.js'
 
 const OfferSchema = defineSchema({
 	$schema: 'http://json-schema.org/draft-07/schema#',
@@ -32,7 +32,14 @@ const OfferSchema = defineSchema({
 			$ref: '#/definitions/Prose',
 		},
 	},
-	required: ['schema_version', 'id', 'date_created', 'events', 'seals'],
+	required: [
+		'schema_version',
+		'date_registered',
+		'date_due',
+		'company',
+		'recruiter',
+		'content',
+	],
 	additionalProperties: false,
 	definitions: {
 		...BaseSchema,

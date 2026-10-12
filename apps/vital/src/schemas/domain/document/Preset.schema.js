@@ -1,7 +1,7 @@
-import {SCHEMA_VERSION} from '../../config/setup.js'
-import {defineSchema} from '../index.js'
+import {SCHEMA_VERSION} from '../../../config/setup.js'
+import {defineSchema} from '../../index.js'
 
-import BaseSchema from '../primitives/Base.schema.js'
+import BaseSchema from '../../primitives/Base.schema.js'
 
 const PresetSchema = defineSchema({
 	$schema: 'http://json-schema.org/draft-07/schema#',
