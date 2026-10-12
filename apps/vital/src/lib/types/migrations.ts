@@ -1,7 +1,7 @@
 export type MigrationStatus =
 	'synced' | 'unsupported' | 'not-found' | 'migrated' | 'unversioned'
 
-export type MigrationTarget = 'app' | 'data'
+export type MigrationTarget = 'app' | 'data' | 'code'
 
 export type MigrationStep =
 	| 'init-seed'

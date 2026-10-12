@@ -42,11 +42,27 @@ export default class CoordinateDocs implements ICoordinateDocs {
 	}
 
 	getErrorMessage() {
-		return this.aggDocs.error?.message || this.aggMetadata.error?.message
+		const errorDocs =
+			this.aggDocs.error?.actions.sync !== 'code'
+				? this.aggDocs.error?.message
+				: undefined
+		const errorMetadata =
+			this.aggMetadata.error?.actions.sync !== 'code'
+				? this.aggMetadata.error?.message
+				: undefined
+		return errorDocs || errorMetadata
 	}
 
 	getErrorDetails() {
-		return this.aggDocs.error?.details || this.aggMetadata.error?.details
+		const errorDocs =
+			this.aggDocs.error?.actions.sync === 'code'
+				? `${this.aggDocs.error?.message}\n ${this.aggDocs.error?.details}`
+				: this.aggDocs.error?.details
+		const errorMetadata =
+			this.aggMetadata.error?.actions.sync === 'code'
+				? `${this.aggMetadata.error?.message}\n ${this.aggMetadata.error?.details}`
+				: this.aggMetadata.error?.details
+		return errorDocs || errorMetadata
 	}
 
 	needsAppSync() {

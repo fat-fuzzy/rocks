@@ -374,8 +374,8 @@
 			{:else}
 				<div class={`${textClass} maki:block size:lg`}>
 					<Feedback
-						status={error ? 'error' : undefined}
-						surfaceLightness={error ? 0 : undefined}
+						status={error || errorDetails ? 'error' : undefined}
+						surfaceLightness={error || errorDetails ? 0 : undefined}
 						context="prose"
 						variant="bare"
 						asset="none"
@@ -385,11 +385,12 @@
 						{#if error}
 							<!-- TODO: Improve this message -->
 							<p class="font:md">{error}</p>
-						{:else}
-							<p class="font:md">Select a Section to edit</p>
 						{/if}
 						{#if errorDetails}
 							<p class="font:md">{errorDetails}</p>
+						{/if}
+						{#if !error && !errorDetails}
+							<p class="font:md">Select a Section to edit</p>
 						{/if}
 					</Feedback>
 					{#if syncApp}
