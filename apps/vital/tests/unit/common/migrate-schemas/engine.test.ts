@@ -102,4 +102,22 @@ describe('migrate-schemas/engine.ts - JSON Schema migration engine', () => {
 		expect(migrated.status).toBe('unversioned')
 		expect(isRawSchema(migrated.record)).toBe(false)
 	})
+
+	test.each([
+		['0.1', 'migrated'], // legacy string is accepted and migrated
+		[1, 'synced'],
+		[0, 'unsupported'],
+		[-1, 'unsupported'],
+		[Infinity, 'unversioned'],
+		['fuzzy', 'unversioned'],
+		[true, 'unversioned'],
+		[[1], 'unversioned'],
+		[null, 'unversioned'],
+	])(
+		'migration edge cases - Source schema_version: %j, Status: %s',
+		(version, status) => {
+			const doc = {...SEED_DOC, schema_version: version}
+			expect(migrate(doc, SCHEMA_VERSION).status).toBe(status)
+		},
+	)
 })
