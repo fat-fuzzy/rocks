@@ -22,9 +22,9 @@ import {
 	saveStructure,
 	saveFormat,
 	saveLanguage,
-} from '#lib/workers/storage/opfs.js'
+} from '#lib/workers/opfs/opfs.js'
 
-import {deleteAllContent} from '#lib/workers/storage/opfs-tools.js'
+import {deleteAllContent} from '#lib/workers/opfs/opfs-tools.js'
 
 self.onmessage = async (event: MessageEvent<WorkerMessage>) => {
 	const msg = event.data
