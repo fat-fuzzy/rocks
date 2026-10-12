@@ -1,11 +1,11 @@
 import {defineSchema} from '../index.js'
 
-const EventSchema = defineSchema({
+const ExternalEventSchema = defineSchema({
 	type: 'object',
 	properties: {
 		type: {
 			$ref: '#/definitions/eventType',
-		}, // 'sent', 'response', 'interview', 'no-response'...
+		},
 		date_event: {
 			$ref: '#/definitions/dateString',
 		},
@@ -20,4 +20,4 @@ const EventSchema = defineSchema({
 	additionalProperties: false,
 })
 
-export default EventSchema
+export default ExternalEventSchema
