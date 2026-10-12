@@ -20,7 +20,7 @@ const SealSchema = defineSchema({
 		id: {
 			$ref: '#/definitions/uuid',
 		},
-		label: {
+		name: {
 			$ref: '#/definitions/slug',
 		},
 		date_sealed: {
@@ -40,7 +40,7 @@ const SealSchema = defineSchema({
 	required: [
 		'schema_version',
 		'id',
-		'label',
+		'name',
 		'date_sealed',
 		'language',
 		'format',
