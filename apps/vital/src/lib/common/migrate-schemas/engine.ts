@@ -1,21 +1,31 @@
-import type {MigrationResult} from '#types'
+import type {Migration, MigrationResult} from '#types'
 
-import {isScalar, isRawSchema} from '#lib/common/transform/raw-to-typed.js'
+import {
+	parseSchemaVersion,
+	isRawSchema,
+} from '#lib/common/transform/raw-to-typed.js'
 import {MIGRATIONS} from '#lib/common/migrate-schemas/registry.js'
 
-export const migrate = (data: unknown, toVersion: number): MigrationResult => {
+export const migrate = (
+	data: unknown,
+	toVersion: number,
+	registry: Migration[] = MIGRATIONS,
+): MigrationResult => {
 	let record = data
 
 	if (!isRawSchema(record)) {
 		return {status: 'unversioned', record}
 	}
 
-	const fromVersion = Number(record.schema_version)
-	const toVersionNormalized = Number(toVersion)
-
-	if (!isScalar(fromVersion) || !isScalar(toVersionNormalized)) {
+	if (
+		parseSchemaVersion(record.schema_version) === null ||
+		parseSchemaVersion(toVersion) === null
+	) {
 		return {status: 'unversioned', record}
 	}
+
+	const fromVersion = Number(record.schema_version)
+	const toVersionNormalized = Number(toVersion)
 
 	if (fromVersion === toVersionNormalized) {
 		record.schema_version = Number(record.schema_version)
@@ -44,12 +54,11 @@ export const migrate = (data: unknown, toVersion: number): MigrationResult => {
 		}
 	}
 
-	for (let v = fromVersion; v < toVersionNormalized; v++) {
-		const migration = MIGRATIONS.find(
-			({from, to}) => from === v && to === Math.floor(v) + 1,
-		)
+	let version = fromVersion
+	while (version !== toVersionNormalized) {
+		const step = registry.find((migration) => migration.from === version)
 
-		if (!migration) {
+		if (!step || step.to <= version || step.to > toVersionNormalized) {
 			return {
 				status: 'not-found',
 				record: data,
@@ -58,7 +67,8 @@ export const migrate = (data: unknown, toVersion: number): MigrationResult => {
 			}
 		}
 
-		record = migration.up(record)
+		record = step.up(record)
+		version = step.to
 	}
 
 	return {

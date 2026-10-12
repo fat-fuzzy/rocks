@@ -14,8 +14,18 @@ import type {
 
 import {parseSection} from '#lib/common/transform/parse-or-throw.js'
 
-export function isScalar(n: unknown): n is number {
-	return typeof n === 'number' && !Number.isNaN(n)
+/** Returns the version as a finite number, or null if it isn't a usable version. */
+export function parseSchemaVersion(raw: unknown): number | null {
+	if (typeof raw === 'number') {
+		return Number.isFinite(raw) ? raw : null
+	}
+
+	// legacy: before integers, schema_version was the string "0.1"
+	if (typeof raw === 'string' && raw === '0.1') {
+		return Number(raw)
+	}
+
+	return null
 }
 
 export function isRecord(value: unknown): value is Record<string, unknown> {
