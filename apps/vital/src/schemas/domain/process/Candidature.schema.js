@@ -1,24 +1,24 @@
-import {SCHEMA_VERSION} from '../../config/setup.js'
-import {defineSchema} from '../index.js'
+import {SCHEMA_VERSION} from '../../../config/setup.js'
+import {defineSchema} from '../../index.js'
 
-import BaseSchema from '../primitives/Base.schema.js'
-import ExternalEventSchema from '../primitives/ExternalEvent.schema.js'
+import BaseSchema from '../../primitives/Base.schema.js'
+import ExternalEventSchema from '../../primitives/ExternalEvent.schema.js'
 import OfferSchema from './Offer.schema.js'
-import ArchiveSchema from './Archive.schema.js'
+import SealSchema from './Seal.schema.js'
 
-import DocMetaSchema from '../primitives/DocMeta.schema.js'
-import DocPathSchema from '../primitives/DocPath.schema.js'
-import ProseSchema from '../primitives/Prose.schema.js'
-import TagSchema from '../primitives/Tag.schema.js'
+import DocMetaSchema from '../../primitives/DocMeta.schema.js'
+import DocPathSchema from '../../primitives/DocPath.schema.js'
+import ProseSchema from '../../primitives/Prose.schema.js'
+import TagSchema from '../../primitives/Tag.schema.js'
 
-import HumanSchema from '../identity/Human.schema.js'
-import RoleSchema from '../identity/Role.schema.js'
-import GroupSchema from '../identity/Group.schema.js'
+import HumanSchema from '../../identity/Human.schema.js'
+import RoleSchema from '../../identity/Role.schema.js'
+import GroupSchema from '../../identity/Group.schema.js'
 
-import BlockSchema from './Block.schema.js'
-import SectionSchema from './Section.schema.js'
-import SubsectionSchema from './Subsection.schema.js'
-import DocSchema from './Doc.schema.js'
+import BlockSchema from '../document/Block.schema.js'
+import SectionSchema from '../document/Section.schema.js'
+import SubsectionSchema from '../document/Subsection.schema.js'
+import DocSchema from '../document/Doc.schema.js'
 
 // sketch only: names of $refs are guesses, check them against your primitives
 const CandidatureSchema = defineSchema({
@@ -48,7 +48,7 @@ const CandidatureSchema = defineSchema({
 		},
 		seals: {
 			type: 'array',
-			items: ArchiveSchema,
+			items: SealSchema,
 		},
 		preset_id: {$ref: '#/definitions/uuid'},
 		offer: OfferSchema,

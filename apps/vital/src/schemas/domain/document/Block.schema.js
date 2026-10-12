@@ -1,4 +1,4 @@
-import {defineSchema} from '../index.js'
+import {defineSchema} from '../../index.js'
 
 const BlockSchema = defineSchema({
 	type: 'object',
