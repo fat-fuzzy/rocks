@@ -5,7 +5,7 @@ import {
 	getBaseHandle,
 	getStructureHandle,
 	readDirectoryRecursive,
-} from '#lib/workers/storage/opfs-tools.js'
+} from '#lib/workers/opfs/opfs-tools.js'
 
 import {
 	parseBase,

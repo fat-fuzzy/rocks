@@ -47,9 +47,9 @@ import {
 	saveSectionToOPFS,
 	saveEntry,
 	getRootHandle,
-} from '#lib/workers/storage/opfs-tools.js'
+} from '#lib/workers/opfs/opfs-tools.js'
 
-import {savePreset} from '#lib/workers/storage/opfs.js'
+import {savePreset} from '#lib/workers/opfs/opfs.js'
 
 export async function isSeedComplete(options: {
 	root: NamespaceId

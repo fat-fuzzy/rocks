@@ -28,7 +28,7 @@ import {
 	saveBlockToOPFS,
 	saveSectionToOPFS,
 	getRootHandle,
-} from '#lib/workers/storage/opfs-tools.js'
+} from '#lib/workers/opfs/opfs-tools.js'
 
 /**
  * Add new Language and clone content from source language
