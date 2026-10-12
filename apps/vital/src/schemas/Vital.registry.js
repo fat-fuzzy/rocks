@@ -4,7 +4,7 @@ import PathValueSchema from './primitives/values/PathValue.schema.js'
 import SlugValueSchema from './primitives/values/SlugValue.schema.js'
 import UuidValueSchema from './primitives/values/UuidValue.schema.js'
 
-import EventSchema from './primitives/Event.schema.js'
+import ExternalEventSchema from './primitives/ExternalEvent.schema.js'
 import NamespaceSchema from './primitives/Namespace.schema.js'
 import TagSchema from './primitives/Tag.schema.js'
 import TagGroupSchema from './primitives/TagGroup.schema.js'
@@ -19,6 +19,7 @@ import BlockSchema from './domain/Block.schema.js'
 import PresetSchema from './domain/Preset.schema.js'
 import OfferSchema from './domain/Offer.schema.js'
 import ArchiveSchema from './domain/Archive.schema.js'
+import CandidatureSchema from './domain/Candidature.schema.js'
 
 import HumanSchema from './identity/Human.schema.js'
 import RoleSchema from './identity/Role.schema.js'
@@ -90,8 +91,8 @@ export const schemas = {
 			version: getVersion(DocSchema),
 			isRoot: false,
 		},
-		Event: {
-			schema: EventSchema,
+		ExternalEvent: {
+			schema: ExternalEventSchema,
 			version: getVersion(DocSchema),
 			isRoot: false,
 		},
@@ -167,6 +168,11 @@ export const schemas = {
 		Archive: {
 			schema: ArchiveSchema,
 			version: getVersion(ArchiveSchema),
+			isRoot: true,
+		},
+		Candidature: {
+			schema: CandidatureSchema,
+			version: getVersion(CandidatureSchema),
 			isRoot: true,
 		},
 	},
