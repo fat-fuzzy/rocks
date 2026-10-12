@@ -12,7 +12,7 @@ import {
 	getPresetsData,
 	getBaseData,
 	getStructureData,
-} from '#lib/workers/storage/opfs.js'
+} from '#lib/workers/opfs/opfs.js'
 import {
 	DEFAULT_STRUCTURES,
 	DEFAULT_CONTENT,

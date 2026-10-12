@@ -17,7 +17,7 @@ import {
 	readDirectoryRecursive,
 	deleteEntryRecursive,
 	getRootHandle,
-} from '#lib/workers/storage/opfs-tools.js'
+} from '#lib/workers/opfs/opfs-tools.js'
 
 export async function loadPreset(options: {
 	root: NamespaceId
