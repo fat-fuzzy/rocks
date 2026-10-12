@@ -1,4 +1,11 @@
-import type {Uuid, DocMeta, DocPath, Preset, NamespaceId} from '#types'
+import type {
+	Uuid,
+	DocMeta,
+	DocPath,
+	Preset,
+	NamespaceId,
+	VitalError,
+} from '#types'
 
 export type PresetStore = {
 	[name: string]: Preset
@@ -12,7 +19,7 @@ export interface IAggregatePresets {
 	readonly root: NamespaceId
 	readonly seeded: {date_seed?: string; source?: string}
 	readonly loading: boolean
-	readonly error: boolean
+	readonly error: VitalError | undefined
 	readonly presets: PresetStore
 	readonly presetIndex: PresetIndex
 

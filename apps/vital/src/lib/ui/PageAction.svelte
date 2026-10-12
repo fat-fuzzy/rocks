@@ -14,6 +14,7 @@
 	import ui from '@fat-fuzzy/ui'
 
 	import {page} from '$app/state'
+	import {dev} from '$app/env'
 
 	import {
 		getSanitizedParamValueList,
@@ -25,7 +26,7 @@
 		getTitleForRoute,
 		getDescriptionForRoute,
 		getPrefixForRoute,
-		getRouteNameFromRouteId,
+		getCtaFromRouteId,
 	} from '#lib/common/routing.js'
 
 	import SectionEditor from '#lib/ui/editor/SectionEditor.svelte'
@@ -81,7 +82,7 @@
 	}: Props = $props()
 
 	let color = $derived(theme)
-	let cta = $derived(getRouteNameFromRouteId(route))
+	let cta = $derived(getCtaFromRouteId(route))
 	let searchParams = $derived(new URL(page.url.href).searchParams)
 	let namespace = $derived(getNamespaceFromRoute(route))
 	let isTwinLayout = $derived(twinLayout[cta])
@@ -140,6 +141,10 @@
 	let pageContext = $derived({...page.data.pageContext, label: 'On this Page'})
 
 	let loading = $derived(coordDocs.isLoading())
+	let error = $derived(coordDocs.getErrorMessage())
+	let errorDetails = $derived(dev ? coordDocs.getErrorDetails() : undefined)
+	let syncApp = $derived(coordDocs.needsAppSync())
+	let syncData = $derived(coordDocs.needsDataSync())
 
 	let tags = $derived(coordMetadata.getTagGroups())
 	let tagsLoading = $derived(coordMetadata.loading)
@@ -205,7 +210,7 @@
 	let textClass = $derived(
 		!editor[cta] || selectedSections.length === 0 ? `l:text:a4` : 'l:text:2xl',
 	)
-	let contentClass = $derived(`doc-${cta} ${textClass} l:stack:lg`)
+	let contentClass = $derived(`doc-${cta} ${textClass} l:stack:xs`)
 	let mainLayoutClass = $derived(
 		cta === 'compare'
 			? 'w:full col:center l:flex'
@@ -369,19 +374,32 @@
 			{:else}
 				<div class={`${textClass} maki:block size:lg`}>
 					<Feedback
-						status={coordDocs.hasError() ? 'error' : undefined}
+						status={error || errorDetails ? 'error' : undefined}
+						surfaceLightness={error || errorDetails ? 0 : undefined}
 						context="prose"
 						variant="bare"
+						asset="none"
 						size={availableSections.length ? 'lg' : undefined}
-						font="md"
+						font="sm"
 					>
-						{#if coordDocs.hasError()}
+						{#if error}
 							<!-- TODO: Improve this message -->
-							<p class="font:md">There was an error loading your document</p>
-						{:else}
+							<p class="font:md">{error}</p>
+						{/if}
+						{#if errorDetails}
+							<p class="font:md">{errorDetails}</p>
+						{/if}
+						{#if !error && !errorDetails}
 							<p class="font:md">Select a Section to edit</p>
 						{/if}
 					</Feedback>
+					{#if syncApp}
+						<p class="font:md">[TODO]: Sync App button</p>
+					{/if}
+
+					{#if syncData}
+						<p class="font:md">[TODO]: Sync Data button</p>
+					{/if}
 				</div>
 			{/if}
 		</div>

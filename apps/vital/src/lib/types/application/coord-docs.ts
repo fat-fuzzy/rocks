@@ -23,7 +23,11 @@ export interface ICoordinateDocs {
 
 	isLoading(): boolean
 
-	hasError(): boolean
+	getErrorMessage(): string | undefined
+	getErrorDetails(): string | undefined
+
+	needsAppSync(): boolean
+	needsDataSync(): boolean
 
 	getRoot(): NamespaceId
 

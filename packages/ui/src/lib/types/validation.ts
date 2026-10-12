@@ -16,12 +16,10 @@ export type SchemaToValidate = {
 	[fieldName: string]: FormDataEntryValue | undefined
 }
 
-export type ValidationError = {instancePath: string; message: string}
-
 export interface IFormValidator<K> {
 	form: FormToValidate
 	inputTypes: InputTypes
-	errors: ValidationError[]
+	errors: AjvErrorObject<K>[]
 	ajvValidate: AjvValidateFunction<K>
 	sanitize: unknown
 
@@ -43,12 +41,15 @@ export interface IFormValidator<K> {
  ****************************************/
 export interface AjvValidateFunction<T> {
 	(data: unknown): data is T
-	errors?: ValidationError[]
+	errors?: AjvErrorObject<T>[]
 }
 
 export type ValidatorMap<T> = Record<string, AjvValidateFunction<T>>
 
-export type ErrorObject = {
+export type AjvErrorObject<T> = {
 	instancePath: string
 	message: string
+	params?: {
+		allowedValue: T
+	}
 }

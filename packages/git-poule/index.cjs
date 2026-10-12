@@ -6,7 +6,6 @@ const shell = require('shelljs')
 const fs = require('fs')
 
 const COMMIT_HISTORY_FILE = 'commit-history.txt'
-const CZ_CONFIG_FILE = '.czrc'
 const SEPARATOR = '##SPLIT##'
 
 if (!shell.which('git')) {
@@ -27,18 +26,6 @@ if (
 	shell.exit(1)
 }
 
-fs.readFile(CZ_CONFIG_FILE, 'utf8', (err, data) => {
-	if (err) {
-		console.error(err)
-		return
-	}
-	const czConfig = JSON.parse(data)
-
-	if (czConfig?.types) {
-		COMMIT_TYPES = Object.keys(czConfig.types).map((c) => c.trim())
-	}
-})
-
 fs.readFile(COMMIT_HISTORY_FILE, 'utf8', (err, data) => {
 	if (err) {
 		console.error(err)
@@ -47,7 +34,7 @@ fs.readFile(COMMIT_HISTORY_FILE, 'utf8', (err, data) => {
 
 	const commits = data.split('\n')
 	const scopeRegex =
-		/\[(\s?[a-z,\d]\s?\/?\+?\-?\_?){1,10}(\s?[a-z,\d]\s?\/?\+?\-?\_?){1,10}?\]/g
+		/\[(\s?[a-z,\d]\s?\/?\+?-?_?){1,12}(\s?[a-z,\d]\s?\/?\+?-?_?){1,12}?\]/g
 
 	const scopes = [
 		'all',

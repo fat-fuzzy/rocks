@@ -1,6 +1,6 @@
 import type {
 	AjvValidateFunction,
-	ErrorObject,
+	AjvErrorObject,
 	TestForm,
 	SignUp,
 	CookiePreferences,
@@ -15,7 +15,7 @@ export function getTypedValidatorFunction<T>(
 		fn(data)) as AjvValidateFunction<T>
 	wrapped.errors = undefined
 	Object.defineProperty(wrapped, 'errors', {
-		get: () => (fn as {errors?: ErrorObject[] | null}).errors,
+		get: () => (fn as {errors?: AjvErrorObject<T>[] | null}).errors,
 	})
 	return wrapped
 }

@@ -2,6 +2,9 @@ export * from '#lib/types/actions.js'
 export * from '#lib/types/intl.js'
 export * from '#lib/types/ui.js'
 export * from '#lib/types/messages.js'
+export * from '#lib/types/migrations.js'
+export * from '#lib/types/raw.js'
+export * from '#lib/types/errors.js'
 
 // Storage
 export * from '#lib/types/storage/fs-base.js'

@@ -1,21 +1,26 @@
-import {
-	getContentData,
-	getPresetsData,
-	getBaseData,
-	getStructureData,
-} from '#lib/workers/storage/opfs.js'
-
 import type {
 	SeedDoc,
 	FrontmatterSeed,
 	FrontmatterStructure,
 	IAggregateDataLifecycle,
 	NamespaceId,
+	VitalError,
 } from '#types'
 
-import {DEFAULT_STRUCTURES, DEFAULT_CONTENT} from '#data/doc/cv-config.js'
+import {
+	getContentData,
+	getPresetsData,
+	getBaseData,
+	getStructureData,
+} from '#lib/workers/storage/opfs.js'
+import {
+	DEFAULT_STRUCTURES,
+	DEFAULT_CONTENT,
+	SCHEMA_VERSION,
+} from '#data/doc/cv-config.js'
 import WorkerBridge from '#lib/workers/worker-bridge.js'
 import {getBridge} from '#lib/aggregates/bridge.js'
+import {handleDataTransformError} from '#lib/common/errors/migration.js'
 
 /**
  * AggregateDataLifecycle class to manage data transfer operations into storage
@@ -26,6 +31,7 @@ export default class AggregateDataLifecycle implements IAggregateDataLifecycle {
 	root: NamespaceId
 	loading = $state(false)
 	bridge: WorkerBridge | undefined = $state()
+	error: VitalError | undefined = $state()
 	seeded: {date_seed?: string; source?: string} = $state({})
 	export = $state({
 		type: 'doc-root',
@@ -43,7 +49,9 @@ export default class AggregateDataLifecycle implements IAggregateDataLifecycle {
 		frontmatter: FrontmatterSeed,
 		seed?: {content: SeedDoc[]; structures: FrontmatterStructure[]},
 	) {
+		this.reset()
 		this.loading = true
+
 		this.bridge = getBridge()
 		const seeded = await this.checkSeed()
 
@@ -58,6 +66,7 @@ export default class AggregateDataLifecycle implements IAggregateDataLifecycle {
 
 	reset() {
 		this.seeded = {}
+		this.error = undefined
 	}
 
 	/**
@@ -100,29 +109,41 @@ export default class AggregateDataLifecycle implements IAggregateDataLifecycle {
 			return
 		}
 
-		const base = (await this.bridge.seedBase({
-			root: this.root,
-			base: frontmatter.base,
-		})) as {
-			seeded: number
-		}
+		try {
+			const base = (await this.bridge.seedBase({
+				root: this.root,
+				base: frontmatter.base,
+				schemaVersion: Number(SCHEMA_VERSION),
+			})) as {
+				seeded: number
+			}
 
-		const structure = (await this.bridge.seedStructure({
-			root: this.root,
-			structures: frontmatter.structures,
-		})) as {
-			seeded: number
-		}
+			const structure = (await this.bridge.seedStructure({
+				root: this.root,
+				structures: frontmatter.structures,
+				schemaVersion: Number(SCHEMA_VERSION),
+			})) as {
+				seeded: number
+			}
 
-		const docs = (await this.bridge.seedDocs({
-			root: this.root,
-			seed,
-		})) as {
-			seeded: number
-		}
+			const docs = (await this.bridge.seedDocs({
+				root: this.root,
+				seed,
+			})) as {
+				seeded: number
+			}
 
-		// FIXME: adjust and make use of this data or remove it
-		return {docs, base, structure}
+			// FIXME: adjust and make use of this data or remove it
+			return {docs, base, structure}
+		} catch (error) {
+			const status = (error as Error).message
+
+			this.error = handleDataTransformError(
+				'init-seed',
+				status,
+				frontmatter.base,
+			)
+		}
 	}
 
 	async importFromJson(jsonString: string) {
@@ -138,6 +159,7 @@ export default class AggregateDataLifecycle implements IAggregateDataLifecycle {
 			presets,
 			base,
 			structure,
+			schemaVersion: Number(SCHEMA_VERSION),
 		})
 	}
 

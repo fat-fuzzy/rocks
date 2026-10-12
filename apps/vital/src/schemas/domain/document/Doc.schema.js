@@ -1,11 +1,11 @@
-import {SCHEMA_VERSION} from '../../config/setup.js'
-import {defineSchema} from '../index.js'
+import {SCHEMA_VERSION} from '../../../config/setup.js'
+import {defineSchema} from '../../index.js'
 
-import BaseSchema from '../primitives/Base.schema.js'
-import DocMetaSchema from '../primitives/DocMeta.schema.js'
-import DocPathSchema from '../primitives/DocPath.schema.js'
-import ProseSchema from '../primitives/Prose.schema.js'
-import TagSchema from '../primitives/Tag.schema.js'
+import BaseSchema from '../../primitives/Base.schema.js'
+import DocMetaSchema from '../../primitives/DocMeta.schema.js'
+import DocPathSchema from '../../primitives/DocPath.schema.js'
+import ProseSchema from '../../primitives/Prose.schema.js'
+import TagSchema from '../../primitives/Tag.schema.js'
 
 import BlockSchema from './Block.schema.js'
 import SectionSchema from './Section.schema.js'

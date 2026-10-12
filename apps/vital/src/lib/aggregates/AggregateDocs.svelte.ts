@@ -15,6 +15,7 @@ import type {
 	IAggregateDocs,
 	Subsection,
 	NamespaceId,
+	VitalError,
 } from '#types'
 
 import WorkerBridge from '#lib/workers/worker-bridge.js'
@@ -25,6 +26,7 @@ import {sortByRankAsc} from '#lib/common/sort.js'
 import {getSectionKey, getBlockKey} from '#lib/common/format.js'
 import {opfsDocTreeToDocStore} from '#lib/common/transform/opfs-to-doc.js'
 import {buildDocIndex} from '#lib/common/transform/store-to-index.js'
+import {handleDataTransformError} from '#lib/common/errors/migration.js'
 import {
 	updateBlockInSection,
 	deleteBlockInSection,
@@ -39,7 +41,7 @@ export default class AggregateDocs implements IAggregateDocs {
 	root: NamespaceId
 	bridge: WorkerBridge | undefined = $state()
 	loading = $state(false)
-	error = $state(false)
+	error: VitalError | undefined = $state()
 	content: DocStore = $state({})
 	docIndex: DocIndex = $derived(buildDocIndex(this.content))
 
@@ -50,12 +52,15 @@ export default class AggregateDocs implements IAggregateDocs {
 
 	async init() {
 		this.bridge = getBridge()
+		this.reset()
+
 		try {
 			this.loading = true
 
 			await this.loadDocStore()
-		} catch {
-			this.error = true
+		} catch (error) {
+			const status = (error as Error).message
+			this.error = handleDataTransformError('load-metadata', status, {})
 		} finally {
 			this.loading = false
 		}
@@ -63,6 +68,7 @@ export default class AggregateDocs implements IAggregateDocs {
 
 	reset() {
 		this.content = {}
+		this.error = undefined
 	}
 
 	/**
@@ -614,8 +620,13 @@ export default class AggregateDocs implements IAggregateDocs {
 		// - content.json // Has Section shaped data FIXME: not always : se RawSection type
 		// - meta.json // Has DocMeta shaped data FIXME: not always : se RawSection type
 		const raw = (await this.bridge.getAllDocs({root: this.root})) as OPFSTreeDoc
+		try {
+			this.content = opfsDocTreeToDocStore(raw)
+		} catch (error) {
+			const status = (error as Error).message
 
-		this.content = opfsDocTreeToDocStore(raw)
+			this.error = handleDataTransformError('load-doc-store', status, raw)
+		}
 
 		return this.content
 	}
