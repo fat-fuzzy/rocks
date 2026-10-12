@@ -103,6 +103,12 @@ const SCHEMAS_CONFIG = {
 		$id: '#/definitions/Offer',
 		mode: 'replace',
 	},
+	Archive: {
+		file: 'Archive.schema.json',
+		exportName: 'ArchiveValidationFunction',
+		$id: '#/definitions/Archive',
+		mode: 'replace',
+	},
 	Human: {
 		file: 'Human.schema.json',
 		exportName: 'HumanValidationFunction',

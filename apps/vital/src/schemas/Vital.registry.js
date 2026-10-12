@@ -17,6 +17,7 @@ import SectionSchema from './domain/Section.schema.js'
 import BlockSchema from './domain/Block.schema.js'
 import PresetSchema from './domain/Preset.schema.js'
 import OfferSchema from './domain/Offer.schema.js'
+import ArchiveSchema from './domain/Archive.schema.js'
 
 import HumanSchema from './identity/Human.schema.js'
 import RoleSchema from './identity/Role.schema.js'
@@ -155,6 +156,11 @@ export const schemas = {
 		Offer: {
 			schema: OfferSchema,
 			version: getVersion(OfferSchema),
+			isRoot: true,
+		},
+		Archive: {
+			schema: ArchiveSchema,
+			version: getVersion(ArchiveSchema),
 			isRoot: true,
 		},
 	},
