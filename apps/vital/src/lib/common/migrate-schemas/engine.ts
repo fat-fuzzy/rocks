@@ -39,7 +39,7 @@ export const migrate = (data: unknown, toVersion: number): MigrationResult => {
 
 	if (fromVersion > toVersionNormalized) {
 		return {
-			status: 'outdated',
+			status: 'sync-app',
 			record: data,
 			from: fromVersion,
 			to: toVersionNormalized,

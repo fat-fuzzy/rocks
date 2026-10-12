@@ -71,7 +71,7 @@ describe('migrate-schemas/engine.ts - JSON Schema migration engine', () => {
 
 		const migrated = migrate(sourceSchema, targetVersion)
 
-		expect(migrated.status).toBe('outdated')
+		expect(migrated.status).toBe('sync-app')
 		expect(isRawSchema(migrated.record)).toBe(true)
 
 		if (isRawSchema(migrated.record)) {
