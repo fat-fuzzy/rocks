@@ -84,6 +84,20 @@ export default class WorkerBridge {
 	 ********** Public API **********
 	 ********************************/
 
+	initDb() {
+		return this.send({
+			type: 'SQLITE_INIT',
+			requestId: crypto.randomUUID(),
+		})
+	}
+
+	pingBackDb() {
+		return this.send({
+			type: 'SQLITE_PING_BACK',
+			requestId: crypto.randomUUID(),
+		})
+	}
+
 	checkSeed(root: NamespaceId, type: SeedType) {
 		return this.send({
 			type: 'CHECK_SEED',

@@ -1,4 +1,4 @@
-import type {MigrationStatus, MigrationTarget} from '#types'
+import type {MigrationStatus, MigrationTarget, DbStatus} from '#types'
 
 export type SchemaMismatchError = {
 	status: MigrationStatus
@@ -9,4 +9,10 @@ export type SchemaMismatchError = {
 	}
 }
 
-export type VitalError = SchemaMismatchError
+export type DbInitError = {
+	status: DbStatus
+	message: string
+	details: string
+}
+
+export type VitalError = SchemaMismatchError | DbInitError
