@@ -21,6 +21,7 @@ import {
 import WorkerBridge from '#lib/workers/worker-bridge.js'
 import {getBridge} from '#lib/aggregates/bridge.js'
 import {handleDataTransformError} from '#lib/common/errors/migration.js'
+import {handleDatabaseError} from '#lib/common/errors/database.js'
 
 /**
  * AggregateDataLifecycle class to manage data transfer operations into storage
@@ -61,6 +62,7 @@ export default class AggregateDataLifecycle implements IAggregateDataLifecycle {
 			await this.initSeed(DEFAULT_STRUCTURES, DEFAULT_CONTENT)
 		}
 
+		await this.initDb()
 		this.loading = false
 	}
 
@@ -97,6 +99,29 @@ export default class AggregateDataLifecycle implements IAggregateDataLifecycle {
 		}
 
 		return base.seeded && structure.seeded
+	}
+
+	/**
+	 * Initialize OPFS storage from seed markdown data
+	 * @param seed: parsed markdown data as JSON
+	 * @returns a Promise that will update when the worker message arrives
+	 */
+	async initDb() {
+		if (!this.bridge) {
+			return
+		}
+
+		try {
+			await this.bridge.initDb()
+			await this.bridge.pingBackDb()
+
+			// console.log('initDb')
+			// console.log(result)
+		} catch (error) {
+			const status = (error as Error).message
+
+			this.error = handleDatabaseError('init-db', status, {})
+		}
 	}
 
 	/**
