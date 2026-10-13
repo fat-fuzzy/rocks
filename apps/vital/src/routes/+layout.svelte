@@ -132,7 +132,9 @@
 		await aggregates.pollen.aggPresets.init()
 	})
 
-	onDestroy(() => destroyBridge())
+	onDestroy(() => {
+		destroyBridge()
+	})
 </script>
 
 <LayoutGrid
