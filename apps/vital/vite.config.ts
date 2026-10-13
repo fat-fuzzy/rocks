@@ -73,9 +73,21 @@ export default defineConfig({
 			},
 		}),
 	],
-	// server: {
-	// 	host: true, // Open to local network and display URL
-	// },
+	server: {
+		headers: {
+			'Cross-Origin-Opener-Policy': 'same-origin',
+			'Cross-Origin-Embedder-Policy': 'require-corp',
+		},
+	},
+	preview: {
+		headers: {
+			'Cross-Origin-Opener-Policy': 'same-origin',
+			'Cross-Origin-Embedder-Policy': 'require-corp',
+		},
+	},
+	optimizeDeps: {
+		exclude: ['@sqlite.org/sqlite-wasm'],
+	},
 	test: {
 		reporters: ['html', ...configDefaults.reporters],
 		include: ['tests/unit/**/*.{test,spec}.{js,ts}'],
