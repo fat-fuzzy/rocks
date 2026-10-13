@@ -24,6 +24,8 @@ import {
 	saveLanguage,
 } from '#lib/workers/opfs/opfs.js'
 
+import {initializeSQLite, pingBack} from '#lib/workers/sqlite/sqlite-tools.js'
+
 import {deleteAllContent} from '#lib/workers/opfs/opfs-tools.js'
 
 self.onmessage = async (event: MessageEvent<WorkerMessage>) => {
@@ -52,6 +54,16 @@ self.onmessage = async (event: MessageEvent<WorkerMessage>) => {
 
 async function dispatch(msg: WorkerMessage) {
 	switch (msg.type) {
+		case 'SQLITE_INIT': {
+			await initializeSQLite()
+
+			return
+		}
+
+		case 'SQLITE_PING_BACK': {
+			return pingBack()
+		}
+
 		case 'CHECK_SEED': {
 			try {
 				const seeded = await isSeedComplete(msg.payload)
@@ -259,6 +271,7 @@ async function dispatch(msg: WorkerMessage) {
 				throw new Error('Error deleting content')
 			}
 		}
+
 		// case 'EXPORT_ALL': {
 		// 	const markdown = await opfs.buildMarkdown(
 		// 		msg.payload.language,

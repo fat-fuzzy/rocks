@@ -165,6 +165,13 @@ export type ExportCommand = {
 	payload: {format: string; language: string}
 }
 
+// ── SQLite Commands (writes) ──────────────────────────────────────────────────────────
+
+export type SQLiteStartCommand = {
+	type: 'SQLITE_INIT'
+	requestId: RequestId
+}
+
 export type Command =
 	| SeedRootCommand
 	| SeedBaseCommand
@@ -182,6 +189,7 @@ export type Command =
 	| DeletePresetCommand
 	| DeleteAllCommand
 	| ExportCommand
+	| SQLiteStartCommand
 
 // ── Queries (reads) ────────────────────────────────────────────────────────────
 
@@ -227,6 +235,13 @@ export type CheckSeedQuery = {
 	payload: {root: NamespaceId; type: SeedType}
 }
 
+// ── SQLite Queries (reads) ──────────────────────────────────────────────────────────
+
+export type SQLitePingBackQuery = {
+	type: 'SQLITE_PING_BACK'
+	requestId: RequestId
+}
+
 export type Query =
 	| GetDocBaseQuery
 	| GetDocStructureQuery
@@ -235,6 +250,7 @@ export type Query =
 	| GetPresetQuery
 	| GetAllPresetsQuery
 	| CheckSeedQuery
+	| SQLitePingBackQuery
 
 export type WorkerMessage = Command | Query
 
@@ -284,6 +300,10 @@ export type ResponsePayload = {
 	GET_PRESET: {doc: Doc | void}
 	GET_ALL_PRESETS: PresetStore | void
 	CHECK_SEED: {seeded: boolean}
+
+	// ── SQLite Commands (writes) ──────────────────────────────────────────────────────────
+	SQLITE_INIT: void
+	SQLITE_PING_BACK: {time: number}
 }
 
 export type PendingRequest = {
