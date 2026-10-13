@@ -7,7 +7,7 @@ export function handleDataTransformError(
 	message: string,
 	data: unknown,
 ): SchemaMismatchError {
-	const [process, status] = message.split(':')
+	const [process, status] = message?.split(':') || [message]
 	const error = {
 		status: status as MigrationStatus,
 		message: 'There was an error loading your document',
