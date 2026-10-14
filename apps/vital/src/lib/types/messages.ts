@@ -154,7 +154,7 @@ export type DeletePresetCommand = {
 }
 
 export type DeleteAllCommand = {
-	type: 'DELETE_ALL'
+	type: 'DELETE_ROOT_CONTENT'
 	requestId: RequestId
 	payload: {root: NamespaceId}
 }
@@ -169,6 +169,11 @@ export type ExportCommand = {
 
 export type SQLiteStartCommand = {
 	type: 'SQLITE_INIT'
+	requestId: RequestId
+}
+
+export type SQLiteDropAllTablesCommand = {
+	type: 'SQLITE_DROP_ALL_TABLES'
 	requestId: RequestId
 }
 
@@ -190,6 +195,7 @@ export type Command =
 	| DeleteAllCommand
 	| ExportCommand
 	| SQLiteStartCommand
+	| SQLiteDropAllTablesCommand
 
 // ── Queries (reads) ────────────────────────────────────────────────────────────
 
@@ -292,7 +298,7 @@ export type ResponsePayload = {
 	DELETE_DOC: {deleted: boolean}
 	SAVE_PRESET: {id: Uuid}
 	DELETE_PRESET: {deleted: boolean}
-	DELETE_ALL: {
+	DELETE_ROOT_CONTENT: {
 		status: string
 		errors: string[]
 	}
@@ -303,6 +309,7 @@ export type ResponsePayload = {
 
 	// ── SQLite Commands (writes) ──────────────────────────────────────────────────────────
 	SQLITE_INIT: void
+	SQLITE_DROP_ALL_TABLES: void
 	SQLITE_PING_BACK: {time: number}
 }
 
