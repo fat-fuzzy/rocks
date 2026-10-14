@@ -62,7 +62,7 @@ export default class AggregateDataLifecycle implements IAggregateDataLifecycle {
 			await this.initSeed(DEFAULT_STRUCTURES, DEFAULT_CONTENT)
 		}
 
-		await this.initDb()
+		await this.dbInit()
 		this.loading = false
 	}
 
@@ -106,21 +106,37 @@ export default class AggregateDataLifecycle implements IAggregateDataLifecycle {
 	 * @param seed: parsed markdown data as JSON
 	 * @returns a Promise that will update when the worker message arrives
 	 */
-	async initDb() {
+	async dbInit() {
 		if (!this.bridge) {
 			return
 		}
 
 		try {
-			await this.bridge.initDb()
-			await this.bridge.pingBackDb()
-
-			// console.log('initDb')
-			// console.log(result)
+			await this.bridge.dbInit()
+			await this.bridge.dbPingBack()
 		} catch (error) {
 			const status = (error as Error).message
 
 			this.error = handleDatabaseError('init-db', status, {})
+		}
+	}
+
+	/**
+	 * Initialize OPFS storage from seed markdown data
+	 * @param seed: parsed markdown data as JSON
+	 * @returns a Promise that will update when the worker message arrives
+	 */
+	async dbReset() {
+		if (!this.bridge) {
+			return
+		}
+
+		try {
+			await this.bridge.dbDropAllTables()
+		} catch (error) {
+			const status = (error as Error).message
+
+			this.error = handleDatabaseError('reset-db', status, {})
 		}
 	}
 
@@ -192,13 +208,13 @@ export default class AggregateDataLifecycle implements IAggregateDataLifecycle {
 	 * Delete all content and presets from OPFS storage
 	 * @returns void
 	 */
-	async deleteAllContent(): Promise<void> {
+	async deleteWorkspaceContent(): Promise<void> {
 		if (!this.bridge) {
 			return
 		}
 
 		try {
-			await this.bridge.deleteAll({
+			await this.bridge.deleteRootContent({
 				root: this.root,
 			})
 			this.reset()

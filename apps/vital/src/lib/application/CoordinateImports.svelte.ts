@@ -152,7 +152,7 @@ export default class CoordinateImports implements ICoordinateImports {
 		this.status = 'deleting'
 
 		try {
-			await this.aggDataLifecycle.deleteAllContent()
+			await this.aggDataLifecycle.deleteWorkspaceContent()
 			await this.aggDocs.loadDocStore()
 		} catch {
 			this.status = 'error'
