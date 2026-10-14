@@ -507,7 +507,7 @@ export async function deleteDirectoryRecursive(
 	return result
 }
 
-export async function deleteAllContent(root: NamespaceId): Promise<{
+export async function deleteRootContent(root: NamespaceId): Promise<{
 	status: string
 	errors: string[]
 }> {
