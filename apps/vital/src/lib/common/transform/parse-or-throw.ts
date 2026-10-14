@@ -32,7 +32,7 @@ import {
 function parseOrThrow<T>(
 	label: string,
 	data: unknown,
-	validate: AjvValidateFunction<T>, // FIXME: define type AjvValidateFunction<T>
+	validate: AjvValidateFunction<T>,
 ): T {
 	const isValid = validate(data)
 
