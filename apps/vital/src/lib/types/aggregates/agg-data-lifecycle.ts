@@ -35,5 +35,5 @@ export interface IAggregateDataLifecycle {
 
 	buildMarkdownForExport(): Promise<string>
 
-	deleteAllContent(): Promise<void>
+	deleteWorkspaceContent(): Promise<void>
 }

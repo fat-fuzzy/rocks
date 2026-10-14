@@ -84,14 +84,21 @@ export default class WorkerBridge {
 	 ********** Public API **********
 	 ********************************/
 
-	initDb() {
+	dbInit() {
 		return this.send({
 			type: 'SQLITE_INIT',
 			requestId: crypto.randomUUID(),
 		})
 	}
 
-	pingBackDb() {
+	dbDropAllTables() {
+		return this.send({
+			type: 'SQLITE_INIT',
+			requestId: crypto.randomUUID(),
+		})
+	}
+
+	dbPingBack() {
 		return this.send({
 			type: 'SQLITE_PING_BACK',
 			requestId: crypto.randomUUID(),
@@ -319,9 +326,9 @@ export default class WorkerBridge {
 		})
 	}
 
-	deleteAll(payload: {root: NamespaceId}) {
+	deleteRootContent(payload: {root: NamespaceId}) {
 		return this.send({
-			type: 'DELETE_ALL',
+			type: 'DELETE_ROOT_CONTENT',
 			requestId: crypto.randomUUID(),
 			payload,
 		})
