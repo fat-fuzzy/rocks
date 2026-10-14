@@ -1,7 +1,7 @@
 import adapter from '@sveltejs/adapter-auto'
 import {vitePreprocess} from '@sveltejs/vite-plugin-svelte'
 import {sveltekit} from '@sveltejs/kit/vite'
-import {defineConfig} from 'vitest/config'
+import {configDefaults, defineConfig} from 'vitest/config'
 
 export default defineConfig({
 	plugins: [
@@ -16,7 +16,7 @@ export default defineConfig({
 		}),
 	],
 	test: {
-		reporters: ['html'],
+		reporters: ['html', ...configDefaults.reporters],
 		include: ['tests/unit/**/*.{test,spec}.{js,ts}'],
 		coverage: {
 			enabled: true,
