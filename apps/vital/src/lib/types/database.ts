@@ -1,7 +1,7 @@
 export type DbStatus =
 	'synced' | 'unsupported' | 'not-found' | 'migrated' | 'unversioned'
 
-export type DbStep = 'init-db' | 'ping-back'
+export type DbStep = 'init-db' | 'reset-db' | 'ping-back'
 
 export type DbResult =
 	| {status: 'synced'; record: unknown}

@@ -24,9 +24,13 @@ import {
 	saveLanguage,
 } from '#lib/workers/opfs/opfs.js'
 
-import {initializeSQLite, pingBack} from '#lib/workers/sqlite/sqlite-tools.js'
+import {
+	initializeSQLite,
+	dropAllTablesSQLite,
+	pingBack,
+} from '#lib/workers/sqlite/sqlite-tools.js'
 
-import {deleteAllContent} from '#lib/workers/opfs/opfs-tools.js'
+import {deleteRootContent} from '#lib/workers/opfs/opfs-tools.js'
 
 self.onmessage = async (event: MessageEvent<WorkerMessage>) => {
 	const msg = event.data
@@ -56,6 +60,12 @@ async function dispatch(msg: WorkerMessage) {
 	switch (msg.type) {
 		case 'SQLITE_INIT': {
 			await initializeSQLite()
+
+			return
+		}
+
+		case 'SQLITE_DROP_ALL_TABLES': {
+			await dropAllTablesSQLite()
 
 			return
 		}
@@ -262,8 +272,8 @@ async function dispatch(msg: WorkerMessage) {
 			}
 		}
 
-		case 'DELETE_ALL': {
-			const result = await deleteAllContent(msg.payload.root)
+		case 'DELETE_ROOT_CONTENT': {
+			const result = await deleteRootContent(msg.payload.root)
 
 			if (result) {
 				return result
