@@ -1,5 +1,5 @@
 import path from 'path'
-import {defineConfig} from 'vitest/config'
+import {configDefaults, defineConfig} from 'vitest/config'
 import {sveltekit} from '@sveltejs/kit/vite'
 import adapter from '@sveltejs/adapter-auto'
 import {vitePreprocess} from '@sveltejs/vite-plugin-svelte'
@@ -22,7 +22,7 @@ export default defineConfig({
 		}),
 	],
 	test: {
-		reporters: ['html'],
+		reporters: ['html', ...configDefaults.reporters],
 		include: [path.resolve('./tests/unit/**/*.{test,spec}.{js,ts}')],
 		coverage: {
 			enabled: true,
