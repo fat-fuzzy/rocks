@@ -59,17 +59,8 @@ const BaseSchema = defineDefinitions({
 		type: 'string',
 		pattern: QUERY_STRING_PATTERN,
 		minLength: 1,
-		maxLength: 256,
+		maxLength: 10000, // arbitrary for now, adjust as necessary
 	},
-	// TODO: fix this
-	// CHECK AJV output error:
-
-	// Generation failed: [@fat-fuzzy/validation] Unreplaced require() statement in compiled validator code.
-
-	// date_exported: {
-	// 	$ref: '#/definitions/date_time', // use ISO string, not Date object
-	// },
-	// TMP TODO: remove
 	dateString: {
 		type: 'string',
 		pattern: DATE_STRING_PATTERN,
