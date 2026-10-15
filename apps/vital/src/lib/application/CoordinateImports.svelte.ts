@@ -126,8 +126,9 @@ export default class CoordinateImports implements ICoordinateImports {
 			await this.aggDataLifecycle.importFromJson(jsonString)
 
 			this.status = 'done'
-		} catch {
+		} catch (error) {
 			this.status = 'error'
+			throw error
 		} finally {
 			this.loading = false
 		}

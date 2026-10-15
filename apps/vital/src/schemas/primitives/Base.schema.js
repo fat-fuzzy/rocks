@@ -59,7 +59,7 @@ const BaseSchema = defineDefinitions({
 		type: 'string',
 		pattern: QUERY_STRING_PATTERN,
 		minLength: 1,
-		maxLength: 256,
+		maxLength: 10000, // arbitrary for now, adjust as necessary
 	},
 	// TODO: fix this
 	// CHECK AJV output error:

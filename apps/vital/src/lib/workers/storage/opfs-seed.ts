@@ -241,6 +241,11 @@ export async function restoreFromBackup(options: {
 	schemaVersion: number
 }): Promise<void> {
 	const {root, base, schemaVersion} = options
+
+	if (await isSeedComplete({root, type: 'root'})) {
+		return
+	}
+
 	try {
 		await seedBase({root, base: base.content, schemaVersion})
 
@@ -250,10 +255,6 @@ export async function restoreFromBackup(options: {
 			structures: options.structure.content.structure,
 			schemaVersion,
 		})
-
-		if (await isSeedComplete({root, type: 'root'})) {
-			return
-		}
 
 		for (const [language, languageTree] of Object.entries(options.content)) {
 			if (!isRecord(languageTree)) continue
@@ -334,7 +335,11 @@ export async function restoreFromBackup(options: {
 			}
 		}
 	} catch (error) {
-		throw new Error('Error restoring from backup', {cause: error})
+		const message =
+			error instanceof Error && error.message
+				? error.message
+				: 'Error restoring from backup'
+		throw new Error(message, {cause: error})
 	}
 	await markSeedComplete(root, 'root')
 }
