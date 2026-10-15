@@ -281,7 +281,7 @@ export default class CoordinateDocs implements ICoordinateDocs {
 		const languages = this.aggMetadata.base.languages
 		const updateRanks: Section[] = updateSectionRanks({
 			rank,
-			docIndex: this.aggDocs.docIndex,
+			docIndex: $state.snapshot(this.aggDocs.docIndex),
 		})
 
 		await this.aggDocs.createSection({
@@ -291,7 +291,7 @@ export default class CoordinateDocs implements ICoordinateDocs {
 			updateRanks,
 		})
 
-		// FIXME: this should be done elsewhere
+		// FIXME: this should be done elsewhere (?)
 		// TODO: check: not sure structure.sections are necessary
 		await this.aggMetadata.updateDocStructureSections(options)
 

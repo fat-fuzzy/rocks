@@ -61,6 +61,7 @@
 						: 'Submit',
 	)
 
+	let errorMessage = $state('')
 	let sectionExistsError = $state(false)
 	let disabled: boolean | undefined = $derived(
 		validator.formHasErrors() || sectionExistsError ? true : undefined,
@@ -140,15 +141,18 @@
 			formats,
 		}
 
-		coordDocs.createSection(newSection)
+		try {
+			coordDocs.createSection(newSection)
+		} catch (error) {
+			errorMessage =
+				error instanceof Error && error.message
+					? error.message
+					: 'Create Section failed'
+		} finally {
+			dialogActor.close()
 
-		dialogActor.close()
-
-		// FIXME: put selected sections into context (fix reactivity)
-		const newUrl = new URL(page.url.href)
-		newUrl.searchParams.append('sections', newSection.name)
-
-		window.location.href = newUrl.href
+			// FIXME: update UI : select section into current doc
+		}
 	}
 
 	function deleteSection() {
@@ -285,6 +289,17 @@
 		</div>
 	{/if}
 	<div class={`l:flex justify:${sectionExistsError ? 'between' : 'end'}`}>
+		{#if errorMessage}
+			<Feedback
+				status="error"
+				context="prose"
+				variant="bare"
+				asset="default"
+				size="2xs"
+			>
+				<p class="font:sm">{errorMessage}</p>
+			</Feedback>
+		{/if}
 		{#if sectionExistsError}
 			<Feedback
 				status="error"

@@ -78,8 +78,7 @@ export function insertBlockInSection(options: {
 	tags: string[]
 	section: Section
 }): Section {
-	const section = $state.snapshot(options.section)
-	const {rank, name} = options
+	const {rank, name, section} = options
 
 	// TODO: enable optional format selection
 	// const formats = this.base.formats
@@ -247,7 +246,7 @@ export function updateSectionRanks(options: {
 		for (let i = options.rank; i < maxRank; i++) {
 			const toUpdate = getSectionsByRank({docIndex, rank: i})
 			if (toUpdate.length) {
-				updateRanks = updateRanks.concat($state.snapshot(toUpdate))
+				updateRanks = updateRanks.concat(toUpdate)
 			}
 		}
 	}

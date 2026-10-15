@@ -246,7 +246,7 @@ export default class AggregateDocs implements IAggregateDocs {
 			language,
 			format,
 			block,
-			section,
+			section: $state.snapshot(section),
 		})
 
 		if (!sectionToUpdate) {

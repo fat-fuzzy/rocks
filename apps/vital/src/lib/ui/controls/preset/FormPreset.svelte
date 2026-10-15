@@ -18,7 +18,7 @@
 		cta: ActionCrud
 		preset: Preset
 		color?: UiColor
-		onsubmit?: () => void // hook for parent to refresh state
+		onsubmit?: () => void
 		coordPresets: ICoordinatePresets
 	}
 	let {cta, preset, color = 'neutral', onsubmit, coordPresets}: Props = $props()
