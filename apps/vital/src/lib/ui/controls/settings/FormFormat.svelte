@@ -88,19 +88,18 @@
 	}
 
 	async function saveFormat() {
-		if (validator.formHasErrors()) {
+		if (validator.formHasErrors() || errorFormatExists) {
 			return
 		}
+		let url = new SvelteURL(page.url.href)
 
 		try {
-			let fromFormat = DOC_FORMAT
-			if (sourceFormat) {
-				fromFormat = sourceFormat
-			}
+			url.searchParams.delete('format')
+			url.searchParams.append('format', newFormat)
 
 			coordMetadata.addFormat({
 				name: newFormat,
-				sourceFormat: fromFormat,
+				sourceFormat: sourceFormat ?? DOC_FORMAT,
 			})
 		} catch (error) {
 			errorMessage =
@@ -109,11 +108,6 @@
 					: 'Adding format failed'
 		} finally {
 			dialogActor.close()
-
-			let url = new SvelteURL(page.url.href)
-			url.searchParams.delete('format')
-			url.searchParams.append('format', newFormat)
-
 			window.location.href = url.href
 		}
 	}
