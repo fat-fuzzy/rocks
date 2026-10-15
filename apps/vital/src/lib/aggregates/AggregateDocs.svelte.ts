@@ -13,9 +13,9 @@ import type {
 	OPFSTreeDoc,
 	DocContentType,
 	IAggregateDocs,
-	Subsection,
 	NamespaceId,
 	VitalError,
+	Subsection,
 } from '#types'
 
 import WorkerBridge from '#lib/workers/worker-bridge.js'
