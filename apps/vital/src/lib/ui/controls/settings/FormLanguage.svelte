@@ -45,6 +45,7 @@
 	)
 
 	let languages = $derived(coordMetadata.getLanguages())
+	let errorMessage = $state('')
 	let errorLanguageExists = $state(false)
 	let newLanguage = $derived(language)
 	let sourceLanguage: string | undefined = $state()
@@ -87,27 +88,28 @@
 	}
 
 	async function saveLanguage() {
-		if (validator.formHasErrors()) {
+		if (validator.formHasErrors() || errorLanguageExists) {
 			return
 		}
 
-		let fromLang = DOC_LANGUAGE
-		if (sourceLanguage) {
-			fromLang = sourceLanguage
-		}
-
-		await coordMetadata.addLanguage({
-			name: newLanguage,
-			sourceLanguage: fromLang,
-		})
-
-		dialogActor.close()
-
 		let url = new SvelteURL(page.url.href)
-		url.searchParams.delete('language')
-		url.searchParams.append('language', newLanguage)
 
-		window.location.href = url.href
+		try {
+			await coordMetadata.addLanguage({
+				name: newLanguage,
+				sourceLanguage: sourceLanguage ?? DOC_LANGUAGE,
+			})
+			url.searchParams.delete('language')
+			url.searchParams.append('language', newLanguage)
+		} catch (error) {
+			errorMessage =
+				error instanceof Error && error.message
+					? error.message
+					: 'Adding format failed'
+		} finally {
+			dialogActor.close()
+			window.location.href = url.href
+		}
 	}
 
 	function deleteLanguage() {
@@ -170,6 +172,18 @@
 				hint={sourceLanguageHint}
 				errors={validator.getFieldErrors('name')}
 			/>
+			{#if errorMessage}
+				<Feedback
+					status="error"
+					context="prose"
+					variant="bare"
+					size="sm"
+					asset="none"
+					surfaceLightness={0}
+				>
+					<p>{errorMessage}</p>
+				</Feedback>
+			{/if}
 			{#if errorLanguageExists}
 				<Feedback
 					status="error"
