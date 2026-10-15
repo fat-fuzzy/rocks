@@ -12,6 +12,7 @@ import type {
 	IAggregateDocs,
 	IAggregateMetadata,
 	NamespaceId,
+	Subsection,
 } from '#types'
 
 import {updateSectionRanks} from '#lib/common/transform/operations-block.js'
@@ -112,6 +113,21 @@ export default class CoordinateDocs implements ICoordinateDocs {
 		return this.aggDocs.getBlock(options)
 	}
 
+	getBlockMaxRank(options: {block: Block; subsections: Subsection[]}) {
+		const {block, subsections} = options
+
+		if (block.group && subsections) {
+			const subsection = subsections.find((s) => s.name === block.group)
+
+			if (subsection) {
+				const blockFound = subsection.blocks.find((b) => b.name === block.name)
+				return blockFound ? blockFound.rank : subsection.blocks.length + 1
+			}
+		}
+
+		return 1
+	}
+
 	lazyLoadBlock(
 		dataset: {block?: string; section?: string; subsection?: string},
 		language: DocLanguage,
@@ -140,23 +156,6 @@ export default class CoordinateDocs implements ICoordinateDocs {
 				subsection: dataset.subsection,
 			})
 		}
-	}
-
-	getSectionMaxRank(options: {language: DocLanguage; format: Slug}): number {
-		const {language, format} = options
-		const languageTree = this.aggDocs.content[language]
-
-		if (!languageTree) {
-			return 1
-		}
-
-		const docTree = languageTree[format]
-
-		if (!docTree) {
-			return 1
-		}
-
-		return docTree.sections.length + 1
 	}
 
 	/**
@@ -219,6 +218,23 @@ export default class CoordinateDocs implements ICoordinateDocs {
 		await this.aggDocs.deleteBlock({...options, languages, formats})
 
 		this.aggDocs.loadDocStore()
+	}
+
+	getSectionMaxRank(options: {language: DocLanguage; format: Slug}): number {
+		const {language, format} = options
+		const languageTree = this.aggDocs.content[language]
+
+		if (!languageTree) {
+			return 1
+		}
+
+		const docTree = languageTree[format]
+
+		if (!docTree) {
+			return 1
+		}
+
+		return docTree.sections.length + 1
 	}
 
 	/**

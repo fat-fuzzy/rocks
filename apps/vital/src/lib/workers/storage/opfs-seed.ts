@@ -339,7 +339,7 @@ export async function restoreFromBackup(options: {
 			error instanceof Error && error.message
 				? error.message
 				: 'Error restoring from backup'
-		throw new Error(message, {cause: error})
+		throw Error(message, {cause: error})
 	}
 	await markSeedComplete(root, 'root')
 }
