@@ -19,7 +19,6 @@
 		variant?: UiVariant
 		size?: UiSize
 		font?: UiSize
-		oninput?: () => void // hook for parent to refresh state
 		coordImports: ICoordinateImports
 		coordExports: ICoordinateExports
 	}
@@ -30,7 +29,6 @@
 		variant = 'outline',
 		size = '2xs',
 		font = 'xs',
-		oninput,
 		coordImports,
 		coordExports,
 	}: Props = $props()
@@ -49,20 +47,14 @@
 	}
 
 	function handleSubmit() {
-		if (oninput) {
-			oninput()
-		}
-
 		setTimeout(() => {
 			dialogActor.close()
-
 			coordImports.setStatus('idle')
 
 			const newUrl = new SvelteURL(page.url.href)
 			newUrl.search = ''
-
 			window.location.href = newUrl.href // FIXME: hacky solution to reload for now
-		}, 1000)
+		}, 800)
 	}
 </script>
 
