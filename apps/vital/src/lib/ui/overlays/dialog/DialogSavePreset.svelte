@@ -57,10 +57,16 @@
 
 		dialogActor.show()
 	}
+
+	function handleSubmit() {
+		setTimeout(() => {
+			dialogActor.close()
+		}, 50)
+	}
 </script>
 
 {#snippet presetForm()}
-	<FormPreset {preset} {color} {cta} {coordPresets} />
+	<FormPreset {preset} {color} {cta} {coordPresets} onsubmit={handleSubmit} />
 {/snippet}
 
 <!-- FIXME: add tooltip -->

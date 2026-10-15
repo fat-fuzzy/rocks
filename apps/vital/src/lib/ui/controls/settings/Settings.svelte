@@ -114,7 +114,6 @@
 	{#if cta === 'edit' || cta === 'build'}
 		<DialogSaveFormat
 			id="dialog-add-format"
-			label="Add Format"
 			asset="plus"
 			assetType="svg"
 			cta="save"
