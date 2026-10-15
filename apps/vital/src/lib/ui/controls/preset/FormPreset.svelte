@@ -2,13 +2,13 @@
 	import type {ActionCrud, Preset, ICoordinatePresets} from '#types'
 	import type {UiColor} from '@fat-fuzzy/ui'
 
-	import {onDestroy, onMount} from 'svelte'
 	import {SvelteURL} from 'svelte/reactivity'
-	import {page} from '$app/state'
+	import {onDestroy, onMount} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
 
+	import {page} from '$app/state'
+
 	import {FormPresetValidator} from '#lib/common/validate.js'
-	import {getSanitizedParamValue} from '#lib/common/url.js'
 	import dialogActor from '#lib/ui/overlays/dialog/actor.svelte.js'
 
 	const {Button, Input, Feedback} = ui.blocks
@@ -18,9 +18,10 @@
 		cta: ActionCrud
 		preset: Preset
 		color?: UiColor
+		onsubmit?: () => void // hook for parent to refresh state
 		coordPresets: ICoordinatePresets
 	}
-	let {coordPresets, cta, preset, color = 'neutral'}: Props = $props()
+	let {cta, preset, color = 'neutral', onsubmit, coordPresets}: Props = $props()
 
 	const validator = new FormValidator(FormPresetValidator)
 
@@ -42,6 +43,7 @@
 						: 'Submit',
 	)
 
+	let errorMessage = $state('')
 	let presetExistsError = $state(false)
 	let toUpdate: {[name: string]: string} = $derived({
 		name: cta === 'copy' ? `${preset.name}-copy` : preset.name,
@@ -85,59 +87,62 @@
 		}
 
 		const presetName = String(toUpdate.name)
-
 		let url = new SvelteURL(page.url.href)
+
 		url.searchParams.delete('preset')
 		url.searchParams.append('preset', presetName)
 
-		coordPresets.savePreset({
-			path: {
-				filename: presetName,
-				filetype: 'json',
-			},
-			meta: {
-				content_type: 'preset',
-				id: preset.id,
-				name: presetName,
-				label: presetName,
-			},
-			preset: {
-				...preset,
-				query: url.search,
-				name: presetName,
-			},
-		})
-
-		dialogActor.close()
-
-		window.location.href = url.href
+		try {
+			coordPresets.savePreset({
+				path: {
+					filename: presetName,
+					filetype: 'json',
+				},
+				meta: {
+					content_type: 'preset',
+					id: preset.id,
+					name: presetName,
+					label: presetName,
+				},
+				preset: {
+					...preset,
+					query: url.search,
+					name: presetName,
+				},
+			})
+		} catch (error) {
+			errorMessage =
+				error instanceof Error && error.message
+					? error.message
+					: 'Saving Preset failed'
+		} finally {
+			onsubmit?.()
+		}
 	}
 
 	function deletePreset() {
 		const presetName = String(toUpdate.name)
 
-		coordPresets.deletePreset({
-			path: {
-				filename: presetName,
-				filetype: 'json',
-			},
-			meta: {
-				content_type: 'preset',
-				id: preset.id,
-				name: presetName,
-				label: presetName,
-			},
-		})
-
-		dialogActor.close()
-
-		const url = new SvelteURL(page.url.href)
-
-		const currentPreset = getSanitizedParamValue(url.searchParams, 'preset')
-		if (currentPreset === presetName) {
-			url.searchParams.delete('preset')
-
-			window.location.href = url.href
+		try {
+			coordPresets.deletePreset({
+				path: {
+					filename: presetName,
+					filetype: 'json',
+				},
+				meta: {
+					content_type: 'preset',
+					id: preset.id,
+					name: presetName,
+					label: presetName,
+				},
+			})
+		} catch (error) {
+			errorMessage =
+				error instanceof Error && error.message
+					? error.message
+					: 'Deleting preset failed'
+		} finally {
+			onsubmit?.()
 		}
 	}
 
@@ -187,6 +192,17 @@
 			hint="Use lower or uppercase letters, numbers, dashes or underscores"
 			errors={validator.getFieldErrors('name')}
 		/>
+	{/if}
+	{#if errorMessage}
+		<Feedback
+			status="error"
+			context="prose"
+			variant="bare"
+			asset="default"
+			size="2xs"
+		>
+			<p class="font:sm">{errorMessage}</p>
+		</Feedback>
 	{/if}
 	{#if presetExistsError}
 		<Feedback

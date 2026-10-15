@@ -4,6 +4,7 @@
 
 	import {setContext, onMount, onDestroy} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
+
 	import {page} from '$app/state'
 	// @ts-expect-error types not used for css
 	import '@fat-fuzzy/style/css'

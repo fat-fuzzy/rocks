@@ -6,6 +6,7 @@ import {
 	TITLE_PATTERN,
 	PATH_PATTERN,
 	DATE_STRING_PATTERN,
+	QUERY_STRING_PATTERN,
 } from '../patterns.js'
 
 import EnumsSchema from './Enums.schema.js'
@@ -56,7 +57,9 @@ const BaseSchema = defineDefinitions({
 	},
 	query: {
 		type: 'string',
-		// pattern: TODO
+		pattern: QUERY_STRING_PATTERN,
+		minLength: 1,
+		maxLength: 256,
 	},
 	// TODO: fix this
 	// CHECK AJV output error:

@@ -3,7 +3,7 @@ import adapter from '@sveltejs/adapter-cloudflare'
 import mdsvexConfig from './mdsvex.config.js'
 import {vitePreprocess} from '@sveltejs/vite-plugin-svelte'
 
-import {defineConfig} from 'vitest/config'
+import {configDefaults, defineConfig} from 'vitest/config'
 import {sveltekit} from '@sveltejs/kit/vite'
 
 export default defineConfig({
@@ -71,7 +71,7 @@ export default defineConfig({
 	// 	host: true, // Open to local network and display URL
 	// },
 	test: {
-		reporters: ['html'],
+		reporters: ['html', ...configDefaults.reporters],
 		include: ['tests/unit/**/*.{test,spec}.{js,ts}'],
 		coverage: {
 			enabled: true,
