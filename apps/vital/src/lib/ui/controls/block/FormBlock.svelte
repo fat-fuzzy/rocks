@@ -53,26 +53,17 @@
 		parent: 'text',
 	}
 
-	let toUpdate: BlockProps = $derived({
-		name: '',
-		rank: 1,
-		parent,
-		tags: [],
+	let highestRank = $derived.by(() => {
+		return block && subsections
+			? coordDocs.getBlockMaxRank({block, subsections})
+			: 1
 	})
 
-	let highestRank = $derived.by(() => {
-		if (toUpdate.group && subsections) {
-			const subsection = subsections.find((s) => s.name === toUpdate.group)
-
-			if (subsection) {
-				const blockFound = subsection.blocks.find(
-					(b) => b.name === toUpdate.name,
-				)
-				return blockFound ? blockFound.rank : subsection.blocks.length + 1
-			}
-		}
-
-		return 1
+	let toUpdate: BlockProps = $derived({
+		name: '',
+		rank: highestRank,
+		parent,
+		tags: [],
 	})
 
 	let form: HTMLFormElement

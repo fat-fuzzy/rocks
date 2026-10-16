@@ -13,9 +13,9 @@ import type {
 	OPFSTreeDoc,
 	DocContentType,
 	IAggregateDocs,
-	Subsection,
 	NamespaceId,
 	VitalError,
+	Subsection,
 } from '#types'
 
 import WorkerBridge from '#lib/workers/worker-bridge.js'
@@ -246,7 +246,7 @@ export default class AggregateDocs implements IAggregateDocs {
 			language,
 			format,
 			block,
-			section,
+			section: $state.snapshot(section),
 		})
 
 		if (!sectionToUpdate) {

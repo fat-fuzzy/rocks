@@ -12,7 +12,7 @@
 
 <Head title="" pageName={String(page.status)} description={message} />
 
-<main id="main" class="ravioli:2xl maki:block:xl">
+<main id="main" class="zone:main tgv ravioli:2xl maki:block:xl">
 	<Burrito {title} size="3xl">
 		<Feedback context="prose" asset="none" size="lg" container="taco">
 			<div class="l:stack:lg">
