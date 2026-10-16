@@ -66,9 +66,7 @@
 			<span class="font:semibold"> New Section </span>
 		</li>
 		<li>
-			Load the demo: under <span class="font:semibold"> Data > Reset </span>,
-			click on
-			<span class="font:semibold"> Seed Demo </span>
+			Or load the demo under <span class="font:semibold"> Data > Source </span>
 		</li>
 	</ul>
 {/snippet}
