@@ -1,5 +1,11 @@
 # @fat-fuzzy/cz-changelog
 
+## 0.1.14
+
+### Patch Changes
+
+- 7469599: Remove unused, obsolete deps
+
 ## 0.1.13
 
 ### Patch Changes
