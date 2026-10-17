@@ -43,12 +43,8 @@ var filterSubject = function (subject, disableSubjectLowerCase) {
 module.exports = function (options) {
 	var types = options.types
 
-	console.log(types)
-
 	var length = longest(Object.keys(types)).length + 1
 	var choices = Object.entries(types).map((entry) => {
-		console.log(entry)
-
 		return {
 			name: (entry[0] + ':').padEnd(length) + ' ' + entry[1].description,
 			value: entry[1].title,
