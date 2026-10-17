@@ -1,8 +1,10 @@
 'format cjs'
 
+// eslint-disable-next-line
 var wrap = require('word-wrap')
-var map = require('lodash.map')
+// eslint-disable-next-line
 var longest = require('longest')
+// eslint-disable-next-line
 var chalk = require('chalk')
 
 var filter = function (array) {
@@ -41,11 +43,15 @@ var filterSubject = function (subject, disableSubjectLowerCase) {
 module.exports = function (options) {
 	var types = options.types
 
+	console.log(types)
+
 	var length = longest(Object.keys(types)).length + 1
-	var choices = map(types, function (type, key) {
+	var choices = Object.entries(types).map((entry) => {
+		console.log(entry)
+
 		return {
-			name: (key + ':').padEnd(length) + ' ' + type.description,
-			value: key,
+			name: (entry[0] + ':').padEnd(length) + ' ' + entry[1].description,
+			value: entry[1].title,
 		}
 	})
 
@@ -152,6 +158,7 @@ module.exports = function (options) {
 					when: function (answers) {
 						return answers.isBreaking && !answers.body
 					},
+					// eslint-disable-next-line
 					validate: function (breakingBody, answers) {
 						return (
 							breakingBody.trim().length > 0 ||
