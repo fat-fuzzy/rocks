@@ -8,8 +8,7 @@
 		"commit": "git-cz",
 		"test:tofix": "mocha *.test.js",
 		"test": "echo \"@fat-fuzzy/cz-changelog: no tests specified\"",
-		"format": "prettier --write --ignore-path=../../.prettierignore .",
-		"semantic-release": "semantic-release"
+		"format": "prettier --write --ignore-path=../../.prettierignore ."
 	},
 	"homepage": "https://github.com/fat-fuzzy/rocks/tree/main/packages/cz-changelog",
 	"repository": {
@@ -42,7 +41,6 @@
 		"cosmiconfig": "10.0.1",
 		"mocha": "12.0.3",
 		"mock-require": "3.0.3",
-		"semantic-release": "25.0.9",
 		"semver": "7.8.5"
 	},
 	"optionalDependencies": {
