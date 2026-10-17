@@ -71,7 +71,7 @@ function findUp(start, filename) {
 
 /**
  * Format AJV validation errors into a human-readable message.
- * @param {import('ajv').ErrorObject[]} errors
+ * @param {import('ajv').AjvErrorObject[]} errors
  * @param {string} configPath
  * @returns {string}
  */

@@ -10,16 +10,16 @@ const {VECTOR} = vectors
  */
 const M3 = {
 	translate: function (m, tx, ty) {
-		const m3 = this
-		return m3.multiply(m, m3.translation(tx, ty))
+		const translation = this.translation(tx, ty)
+		return this.multiply(m, translation)
 	},
 	rotate: function (m, angleInRadians) {
-		const m3 = this
-		return m3.multiply(m, m3.rotation(angleInRadians))
+		const rotation = this.rotation(angleInRadians)
+		return this.multiply(m, rotation)
 	},
 	scale: function (m, sx, sy) {
-		const m3 = this
-		return m3.multiply(m, m3.scaling(sx, sy))
+		const scaling = this.scaling(sx, sy)
+		return this.multiply(m, scaling)
 	},
 	identity: function () {
 		/* prettier-ignore */
@@ -137,24 +137,24 @@ const M3 = {
 
 const M4 = {
 	translate: function (m, tx, ty, tz) {
-		const m4 = this
-		return m4.multiply(m, m4.translation(tx, ty, tz))
+		const translation = this.translation(tx, ty, tz)
+		return this.multiply(m, translation)
 	},
 	xRotate: function (m, angleInRadians) {
-		const m4 = this
-		return m4.multiply(m, m4.xRotation(angleInRadians))
+		const xRotation = this.xRotation(angleInRadians)
+		return this.multiply(m, xRotation)
 	},
 	yRotate: function (m, angleInRadians) {
-		const m4 = this
-		return m4.multiply(m, m4.yRotation(angleInRadians))
+		const yRotation = this.yRotation(angleInRadians)
+		return this.multiply(m, yRotation)
 	},
 	zRotate: function (m, angleInRadians) {
-		const m4 = this
-		return m4.multiply(m, m4.zRotation(angleInRadians))
+		const zRotation = this.zRotation(angleInRadians)
+		return this.multiply(m, zRotation)
 	},
 	scale: function (m, sx, sy, sz) {
-		const m4 = this
-		return m4.multiply(m, m4.scaling(sx, sy, sz))
+		const scaling = this.scaling(sx, sy, sz)
+		return this.multiply(m, scaling)
 	},
 	identity: function () {
 		/* prettier-ignore */
@@ -430,16 +430,16 @@ const M4 = {
 
 		/* prettier-ignore */
 		var t0 = (tmp_0 * m11 + tmp_3 * m21 + tmp_4 * m31) -
-             (tmp_1 * m11 + tmp_2 * m21 + tmp_5 * m31);
+             (tmp_1 * m11 + tmp_2 * m21 + tmp_5 * m31)
 		/* prettier-ignore */
 		var t1 = (tmp_1 * m01 + tmp_6 * m21 + tmp_9 * m31) -
-             (tmp_0 * m01 + tmp_7 * m21 + tmp_8 * m31);
+             (tmp_0 * m01 + tmp_7 * m21 + tmp_8 * m31)
 		/* prettier-ignore */
 		var t2 = (tmp_2 * m01 + tmp_7 * m11 + tmp_10 * m31) -
-             (tmp_3 * m01 + tmp_6 * m11 + tmp_11 * m31);
+             (tmp_3 * m01 + tmp_6 * m11 + tmp_11 * m31)
 		/* prettier-ignore */
 		var t3 = (tmp_5 * m01 + tmp_8 * m11 + tmp_11 * m21) -
-             (tmp_4 * m01 + tmp_9 * m11 + tmp_10 * m21);
+             (tmp_4 * m01 + tmp_9 * m11 + tmp_10 * m21)
 
 		var d = 1.0 / (m00 * t0 + m10 * t1 + m20 * t2 + m30 * t3)
 
@@ -473,7 +473,7 @@ const M4 = {
            (tmp_22 * m32 + tmp_14 * m02 + tmp_19 * m12)),
       d * ((tmp_22 * m22 + tmp_16 * m02 + tmp_21 * m12) -
            (tmp_20 * m12 + tmp_23 * m22 + tmp_17 * m02)),
-    ];
+    ]
 	},
 
 	transformVector: function (m, v) {

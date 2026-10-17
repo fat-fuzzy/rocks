@@ -5,7 +5,7 @@
 
 	import DialogData from '#lib/ui/overlays/dialog/DialogData.svelte'
 	import Export from '#lib/ui/controls/data/Export.svelte'
-	import type {ICoordinateImports} from '#types'
+	import type {ICoordinateExports, ICoordinateImports} from '#types'
 
 	const {Popover} = ui.drafts
 
@@ -16,6 +16,7 @@
 		size = '2xs',
 		font = 'sm',
 		coordImports,
+		coordExports,
 	}: {
 		id?: string
 		color?: UiColor
@@ -23,6 +24,7 @@
 		size?: UiSize
 		font?: UiSize
 		coordImports: ICoordinateImports
+		coordExports: ICoordinateExports
 	} = $props()
 </script>
 
@@ -43,10 +45,11 @@
 		<Export
 			id="button-export"
 			label="Export"
-			filename="cv-content"
+			filename="content"
 			{color}
 			{size}
 			{font}
+			{coordExports}
 		/>
 		<DialogData
 			id="button-import"
@@ -55,6 +58,7 @@
 			{size}
 			{font}
 			{coordImports}
+			{coordExports}
 		/>
 	</menu>
 </Popover>

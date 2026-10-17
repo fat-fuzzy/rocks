@@ -54,7 +54,7 @@ export type FuzzyArgs<T> = {mode?: string; items: T[]}
 
 export interface FuzzySystem<T> {
 	mode?: string
-	state: Map<string, FuzzyPayload>
+	state: Map<string, FuzzyPayload> | undefined
 	reset: () => void
 	init: (args: FuzzyArgs<T>) => void
 	buildStates?: (items: T[]) => Map<string, FuzzyPayload>

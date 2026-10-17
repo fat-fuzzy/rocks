@@ -11,6 +11,7 @@ import type {
 	Rank,
 	Section,
 	Slug,
+	Subsection,
 } from '#types'
 
 export interface ICoordinateDocs {
@@ -23,7 +24,11 @@ export interface ICoordinateDocs {
 
 	isLoading(): boolean
 
-	hasError(): boolean
+	getErrorMessage(): string | undefined
+	getErrorDetails(): string | undefined
+
+	needsAppSync(): boolean
+	needsDataSync(): boolean
 
 	getRoot(): NamespaceId
 
@@ -80,6 +85,8 @@ export interface ICoordinateDocs {
 	}): Section[]
 
 	getSectionMaxRank(options: {language: DocLanguage; format: Slug}): number
+
+	getBlockMaxRank(options: {block: Block; subsections: Subsection[]}): number
 
 	getBlock(options: {
 		language: DocLanguage

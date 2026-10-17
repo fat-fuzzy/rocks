@@ -4,6 +4,8 @@ import PathValueSchema from './primitives/values/PathValue.schema.js'
 import SlugValueSchema from './primitives/values/SlugValue.schema.js'
 import UuidValueSchema from './primitives/values/UuidValue.schema.js'
 
+import ExternalEventSchema from './primitives/ExternalEvent.schema.js'
+import FingerprintSchema from './primitives/Fingerprint.schema.js'
 import NamespaceSchema from './primitives/Namespace.schema.js'
 import TagSchema from './primitives/Tag.schema.js'
 import TagGroupSchema from './primitives/TagGroup.schema.js'
@@ -11,11 +13,15 @@ import ProseSchema from './primitives/Prose.schema.js'
 import DocMetaSchema from './primitives/DocMeta.schema.js'
 import DocPathSchema from './primitives/DocPath.schema.js'
 
-import DocSchema from './domain/Doc.schema.js'
-import SubsectionSchema from './domain/Subsection.schema.js'
-import SectionSchema from './domain/Section.schema.js'
-import BlockSchema from './domain/Block.schema.js'
-import PresetSchema from './domain/Preset.schema.js'
+import DocSchema from './domain/document/Doc.schema.js'
+import SubsectionSchema from './domain/document/Subsection.schema.js'
+import SectionSchema from './domain/document/Section.schema.js'
+import BlockSchema from './domain/document/Block.schema.js'
+import PresetSchema from './domain/document/Preset.schema.js'
+
+import CandidatureSchema from './domain/process/Candidature.schema.js'
+import OfferSchema from './domain/process/Offer.schema.js'
+import SealSchema from './domain/process/Seal.schema.js'
 
 import HumanSchema from './identity/Human.schema.js'
 import RoleSchema from './identity/Role.schema.js'
@@ -87,6 +93,16 @@ export const schemas = {
 			version: getVersion(DocSchema),
 			isRoot: false,
 		},
+		ExternalEvent: {
+			schema: ExternalEventSchema,
+			version: getVersion(DocSchema),
+			isRoot: false,
+		},
+		Fingerprint: {
+			schema: FingerprintSchema,
+			version: getVersion(DocSchema),
+			isRoot: false,
+		},
 	},
 	seed: {
 		FrontmatterBase: {
@@ -149,6 +165,21 @@ export const schemas = {
 		Preset: {
 			schema: PresetSchema,
 			version: getVersion(PresetSchema),
+			isRoot: true,
+		},
+		Offer: {
+			schema: OfferSchema,
+			version: getVersion(OfferSchema),
+			isRoot: true,
+		},
+		Seal: {
+			schema: SealSchema,
+			version: getVersion(SealSchema),
+			isRoot: true,
+		},
+		Candidature: {
+			schema: CandidatureSchema,
+			version: getVersion(CandidatureSchema),
 			isRoot: true,
 		},
 	},

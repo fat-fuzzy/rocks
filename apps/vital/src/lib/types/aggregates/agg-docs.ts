@@ -11,6 +11,7 @@ import type {
 	Section,
 	Slug,
 	Uuid,
+	VitalError,
 } from '#types'
 
 export type DocStore = {
@@ -37,7 +38,7 @@ export interface DocIndex {
 export interface IAggregateDocs {
 	readonly root: NamespaceId
 	readonly loading: boolean
-	readonly error: boolean
+	readonly error: VitalError | undefined
 	readonly content: DocStore
 	readonly docIndex: DocIndex
 

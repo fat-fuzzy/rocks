@@ -32,17 +32,20 @@ import {
 function parseOrThrow<T>(
 	label: string,
 	data: unknown,
-	validate: AjvValidateFunction<T>, // FIXME: define type AjvValidateFunction<T>
+	validate: AjvValidateFunction<T>,
 ): T {
 	const isValid = validate(data)
-	if (isValid) return data as T // AJV narrows to T here
 
-	// console.log(validate.errors)
+	if (isValid) {
+		return data as T // AJV narrows to T here
+	}
 
-	const errors = validate.errors?.map(
-		(error) => `${error.instancePath} - ${error.message}`,
-	)
-	throw new Error(`[${label}] validation failed: ${errors}`)
+	const errors =
+		validate.errors?.map(
+			(error) => `${error.instancePath.slice(1)} ${error.message}`,
+		) || []
+
+	throw Error(`[${label} validation failed]: ${errors.join(', ')}`)
 }
 
 export function parseBlock(label: string, data: unknown): Block {

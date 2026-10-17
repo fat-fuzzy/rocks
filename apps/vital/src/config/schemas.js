@@ -97,6 +97,24 @@ const SCHEMAS_CONFIG = {
 		$id: '#/definitions/Preset',
 		mode: 'replace',
 	},
+	Offer: {
+		file: 'Offer.schema.json',
+		exportName: 'OfferValidationFunction',
+		$id: '#/definitions/Offer',
+		mode: 'replace',
+	},
+	Seal: {
+		file: 'Seal.schema.json',
+		exportName: 'SealValidationFunction',
+		$id: '#/definitions/Seal',
+		mode: 'replace',
+	},
+	Candidature: {
+		file: 'Candidature.schema.json',
+		exportName: 'CandidatureValidationFunction',
+		$id: '#/definitions/Candidature',
+		mode: 'replace',
+	},
 	Human: {
 		file: 'Human.schema.json',
 		exportName: 'HumanValidationFunction',

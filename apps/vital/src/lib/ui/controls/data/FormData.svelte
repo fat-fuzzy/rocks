@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {InputProps, UiColor, UiSurface} from '@fat-fuzzy/ui'
-	import type {ICoordinateImports} from '#types'
+	import type {ICoordinateExports, ICoordinateImports} from '#types'
 
 	import ui from '@fat-fuzzy/ui'
 	import {page} from '$app/state'
@@ -15,8 +15,14 @@
 		color?: UiColor
 		onsubmit?: () => void // hook for parent to refresh state
 		coordImports: ICoordinateImports
+		coordExports: ICoordinateExports
 	}
-	let {color = 'neutral', onsubmit, coordImports}: Props = $props()
+	let {
+		color = 'neutral',
+		onsubmit,
+		coordImports,
+		coordExports,
+	}: Props = $props()
 
 	let errorMessage = $state('')
 	let fileInput: HTMLInputElement
@@ -280,7 +286,7 @@
 			<h4 class="font:heading">To backup data</h4>
 		</div>
 		<div class="l:side">
-			<Export {color} id="export-data" filename="doc" />
+			<Export {color} id="export-data" filename="doc" {coordExports} />
 		</div>
 	</div>
 </form>

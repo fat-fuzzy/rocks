@@ -4,7 +4,6 @@ import {
 	CTA_TO_LABEL,
 	CTA_TO_TITLE,
 	CTA_TO_DESCRIPTION,
-	LOCALIZATIONS,
 	NAMESPACE_TO_TITLE,
 } from '#lib/intl/l10n.js'
 
@@ -14,7 +13,6 @@ import type {
 	RouteId,
 	LabelsForRoutes,
 	RouteNameFor,
-	DocLanguage,
 } from '#types'
 
 import {NAMESPACES} from '#types'
@@ -40,13 +38,22 @@ export function getNamespaceFromRoute(id: RouteId): NamespaceId {
 
 export function getRouteNameFromRouteId(
 	id: string,
-): NamespaceId | RouteNameFor<NamespaceId> {
+): NamespaceId | RouteNameFor<NamespaceId> | void {
 	const key = id.split('/')[1] as NamespaceKey
 	const route = id.split('/')[2] as RouteNameFor<NamespaceId>
 
 	if (!route) {
 		return getNamespaceFromRoute(id as RouteId)
 	}
+
+	if (route && NAMESPACES[key]?.children.find((r) => r.name === route)) {
+		return route
+	}
+}
+
+export function getCtaFromRouteId(id: string): RouteNameFor<NamespaceId> {
+	const key = id.split('/')[1] as NamespaceKey
+	const route = id.split('/')[2] as RouteNameFor<NamespaceId>
 
 	if (route && NAMESPACES[key].children.find((r) => r.name === route)) {
 		return route
@@ -97,9 +104,6 @@ export function getDescriptionForRoute(
 	return CTA_TO_DESCRIPTION[routeName] ?? ''
 }
 
-export function getPrefixForRoute(
-	language: DocLanguage,
-	cta?: RouteNameFor<NamespaceId>,
-) {
-	return cta === 'preview' ? `${LOCALIZATIONS[language].cv}` : `${APP_NAME} | `
+export function getPrefixForRoute(cta?: RouteNameFor<NamespaceId>) {
+	return cta === 'preview' ? '' : `${APP_NAME} | `
 }

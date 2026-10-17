@@ -1,11 +1,18 @@
+import type {DocContentType, DocStore} from '#types'
 import {describe, test, expect} from 'vitest'
+
+import {isRecord} from '#lib/common/transform/raw-to-typed.js'
 import {
-	isRecord,
 	isRawSection,
 	isRawPreset,
 	isRawBase,
 	isRawStructure,
+} from '#lib/common/transform/raw-to-typed.js'
+import {
+	opfsBaseTreeToFrontmatterBase,
 	opfsDocTreeToDocStore,
+	opfsPresetTreeToPresetStore,
+	opfsStructureTreeToFrontmatterStructures,
 } from '#lib/common/transform/opfs-to-doc.js'
 import {BASE, RAW_BASE, STRUCTURE, RAW_STRUCTURE} from '#tests/fixtures/meta.js'
 import {PRESETS, RAW_PRESETS} from '#tests/fixtures/preset.js'
@@ -16,7 +23,6 @@ import {
 	OPFS_SECTIONS,
 	DOC_STORE,
 } from '#tests/fixtures/doc.js'
-import type {DocStore} from '#types'
 
 describe('opfs-to-doc.ts - transform OPFSTreeDoc data to Doc object', () => {
 	test('isRecord', () => {
@@ -117,18 +123,6 @@ describe('opfs-to-doc.ts - transform OPFSTreeDoc data to Doc object', () => {
 		expect(result).toBe(false)
 	})
 
-	// test('rawBaseToBase', () => {
-	// 	const result = rawBaseToBase(RAW_BASE)
-
-	// 	expect(result).toStrictEqual(BASE)
-	// })
-
-	// test('rawStructureToStructure', () => {
-	// 	const result = rawStructureToStructure(RAW_STRUCTURE)
-
-	// 	expect(result).toStrictEqual([STRUCTURE])
-	// })
-
 	test('opfsDocTreeToDocStore', () => {
 		const result = opfsDocTreeToDocStore(OPFS_DOC)
 
@@ -183,5 +177,79 @@ describe('opfs-to-doc.ts - transform OPFSTreeDoc data to Doc object', () => {
 		}
 
 		expect(actual).toStrictEqual(expected)
+	})
+
+	test('opfsPresetTreeToPresetStore converts valid preset entries and ignores invalid values', () => {
+		const validPreset = {
+			schema_version: 1 as const,
+			name: 'preset-1',
+			id: '123e4567-e89b-12d3-a456-426614174003',
+			query: '?language=en&format=long',
+			locked: false,
+		}
+
+		const validRawPreset = {
+			meta: {
+				content_type: 'preset' as DocContentType,
+				id: validPreset.id,
+				name: validPreset.name,
+				language: 'en',
+				format: 'long',
+			},
+			content: validPreset,
+		}
+
+		const result = opfsPresetTreeToPresetStore({
+			'preset-1': validRawPreset,
+			// eslint-disable-next-line
+			broken: {meta: {}, content: {}} as any,
+		})
+
+		expect(result).toStrictEqual({
+			'preset-1': validPreset,
+		})
+
+		expect(
+			// eslint-disable-next-line
+			opfsPresetTreeToPresetStore({broken: {meta: {}, content: {}} as any}),
+		).toStrictEqual({})
+	})
+
+	test('opfsBaseTreeToFrontmatterBase validates and falls back on invalid trees', () => {
+		const result = opfsBaseTreeToFrontmatterBase(RAW_BASE)
+		expect(result).toStrictEqual(RAW_BASE.content)
+
+		expect(
+			// eslint-disable-next-line
+			opfsBaseTreeToFrontmatterBase({meta: {}, content: {}} as any),
+		).toStrictEqual({
+			schema_version: expect.any(Number),
+			languages: [],
+			formats: [],
+			tags: [],
+			settings: [],
+		})
+	})
+
+	test('opfsStructureTreeToFrontmatterStructures validates structures and rejects unversioned data', () => {
+		const fromTree = opfsStructureTreeToFrontmatterStructures({
+			meta: {
+				name: 'doc-long',
+			},
+			content: {structure: [STRUCTURE]},
+		})
+
+		expect(fromTree).toStrictEqual([STRUCTURE])
+		expect(
+			// eslint-disable-next-line
+			opfsStructureTreeToFrontmatterStructures({meta: {}, content: {}} as any),
+		).toStrictEqual([])
+		expect(() =>
+			opfsStructureTreeToFrontmatterStructures({
+				meta: {id: 'a'},
+				content: {format: 'article'},
+				// eslint-disable-next-line
+			} as any),
+		).toThrow(/migration:unversioned/)
 	})
 })

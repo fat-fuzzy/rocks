@@ -1,7 +1,7 @@
-import {defineConfig} from 'vitest/config'
+import {configDefaults, defineConfig} from 'vitest/config'
 import {sveltekit} from '@sveltejs/kit/vite'
 import {vitePreprocess} from '@sveltejs/vite-plugin-svelte'
-import adapter from '@sveltejs/adapter-cloudflare'
+import adapter from '@sveltejs/adapter-auto'
 import {playwright} from '@vitest/browser-playwright'
 import {mdsvex} from 'mdsvex'
 import mdsvexConfig from './mdsvex.config.js'
@@ -37,7 +37,7 @@ export default defineConfig({
 	],
 	test: {
 		...TEST_CONFIG_BASE,
-		reporters: ['html'],
+		reporters: ['html', ...configDefaults.reporters],
 		name: 'browser',
 		browser: {
 			enabled: true,

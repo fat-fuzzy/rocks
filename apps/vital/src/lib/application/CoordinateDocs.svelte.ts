@@ -12,6 +12,7 @@ import type {
 	IAggregateDocs,
 	IAggregateMetadata,
 	NamespaceId,
+	Subsection,
 } from '#types'
 
 import {updateSectionRanks} from '#lib/common/transform/operations-block.js'
@@ -41,8 +42,42 @@ export default class CoordinateDocs implements ICoordinateDocs {
 		return this.aggDocs.loading || this.aggMetadata.loading
 	}
 
-	hasError() {
-		return this.aggDocs.error || this.aggMetadata.error
+	getErrorMessage() {
+		const errorDocs =
+			this.aggDocs.error?.actions.sync !== 'code'
+				? this.aggDocs.error?.message
+				: undefined
+		const errorMetadata =
+			this.aggMetadata.error?.actions.sync !== 'code'
+				? this.aggMetadata.error?.message
+				: undefined
+		return errorDocs || errorMetadata
+	}
+
+	getErrorDetails() {
+		const errorDocs =
+			this.aggDocs.error?.actions.sync === 'code'
+				? `${this.aggDocs.error?.message}\n ${this.aggDocs.error?.details}`
+				: this.aggDocs.error?.details
+		const errorMetadata =
+			this.aggMetadata.error?.actions.sync === 'code'
+				? `${this.aggMetadata.error?.message}\n ${this.aggMetadata.error?.details}`
+				: this.aggMetadata.error?.details
+		return errorDocs || errorMetadata
+	}
+
+	needsAppSync() {
+		return (
+			this.aggDocs.error?.actions.sync === 'app' ||
+			this.aggMetadata.error?.actions.sync === 'app'
+		)
+	}
+
+	needsDataSync() {
+		return (
+			this.aggDocs.error?.actions.sync === 'data' ||
+			this.aggMetadata.error?.actions.sync === 'data'
+		)
 	}
 
 	getRoot(): NamespaceId {
@@ -78,6 +113,21 @@ export default class CoordinateDocs implements ICoordinateDocs {
 		return this.aggDocs.getBlock(options)
 	}
 
+	getBlockMaxRank(options: {block: Block; subsections: Subsection[]}) {
+		const {block, subsections} = options
+
+		if (block.group && subsections) {
+			const subsection = subsections.find((s) => s.name === block.group)
+
+			if (subsection) {
+				const blockFound = subsection.blocks.find((b) => b.name === block.name)
+				return blockFound ? blockFound.rank : subsection.blocks.length + 1
+			}
+		}
+
+		return 1
+	}
+
 	lazyLoadBlock(
 		dataset: {block?: string; section?: string; subsection?: string},
 		language: DocLanguage,
@@ -106,23 +156,6 @@ export default class CoordinateDocs implements ICoordinateDocs {
 				subsection: dataset.subsection,
 			})
 		}
-	}
-
-	getSectionMaxRank(options: {language: DocLanguage; format: Slug}): number {
-		const {language, format} = options
-		const languageTree = this.aggDocs.content[language]
-
-		if (!languageTree) {
-			return 1
-		}
-
-		const docTree = languageTree[format]
-
-		if (!docTree) {
-			return 1
-		}
-
-		return docTree.sections.length + 1
 	}
 
 	/**
@@ -187,6 +220,23 @@ export default class CoordinateDocs implements ICoordinateDocs {
 		this.aggDocs.loadDocStore()
 	}
 
+	getSectionMaxRank(options: {language: DocLanguage; format: Slug}): number {
+		const {language, format} = options
+		const languageTree = this.aggDocs.content[language]
+
+		if (!languageTree) {
+			return 1
+		}
+
+		const docTree = languageTree[format]
+
+		if (!docTree) {
+			return 1
+		}
+
+		return docTree.sections.length + 1
+	}
+
 	/**
 	 * Get selected section by name for given [language * format]
 	 * @param options language, format and name to match
@@ -247,7 +297,7 @@ export default class CoordinateDocs implements ICoordinateDocs {
 		const languages = this.aggMetadata.base.languages
 		const updateRanks: Section[] = updateSectionRanks({
 			rank,
-			docIndex: this.aggDocs.docIndex,
+			docIndex: $state.snapshot(this.aggDocs.docIndex),
 		})
 
 		await this.aggDocs.createSection({
@@ -257,7 +307,7 @@ export default class CoordinateDocs implements ICoordinateDocs {
 			updateRanks,
 		})
 
-		// FIXME: this should be done elsewhere
+		// FIXME: this should be done elsewhere (?)
 		// TODO: check: not sure structure.sections are necessary
 		await this.aggMetadata.updateDocStructureSections(options)
 

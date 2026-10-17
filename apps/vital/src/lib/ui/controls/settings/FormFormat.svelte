@@ -44,6 +44,7 @@
 						: 'Submit',
 	)
 	let formats = $derived(coordMetadata.getFormats())
+	let errorMessage = $state('')
 	let errorFormatExists = $state(false)
 	let newFormat = $derived(format)
 	let sourceFormat: string | undefined = $state()
@@ -87,27 +88,28 @@
 	}
 
 	async function saveFormat() {
-		if (validator.formHasErrors()) {
+		if (validator.formHasErrors() || errorFormatExists) {
 			return
 		}
-
-		let fromFormat = DOC_FORMAT
-		if (sourceFormat) {
-			fromFormat = sourceFormat
-		}
-
-		coordMetadata.addFormat({
-			name: newFormat,
-			sourceFormat: fromFormat,
-		})
-
-		dialogActor.close()
-
 		let url = new SvelteURL(page.url.href)
-		url.searchParams.delete('format')
-		url.searchParams.append('format', newFormat)
 
-		window.location.href = url.href
+		try {
+			url.searchParams.delete('format')
+			url.searchParams.append('format', newFormat)
+
+			coordMetadata.addFormat({
+				name: newFormat,
+				sourceFormat: sourceFormat ?? DOC_FORMAT,
+			})
+		} catch (error) {
+			errorMessage =
+				error instanceof Error && error.message
+					? error.message
+					: 'Adding format failed'
+		} finally {
+			dialogActor.close()
+			window.location.href = url.href
+		}
 	}
 
 	function deleteFormat() {
@@ -170,6 +172,19 @@
 				hint={sourceFormatHint}
 				errors={validator.getFieldErrors('name')}
 			/>
+			{#if errorMessage}
+				<Feedback
+					status="error"
+					context="prose"
+					variant="bare"
+					size="sm"
+					asset="none"
+					surfaceLightness={0}
+				>
+					<p>{errorMessage}</p>
+				</Feedback>
+			{/if}
+
 			{#if errorFormatExists}
 				<Feedback
 					status="error"

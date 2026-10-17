@@ -14,11 +14,18 @@ const HumanSchema = defineSchema({
 			$ref: '#/definitions/schemaVersion',
 			const: SCHEMA_VERSION,
 		},
+		visibility: {
+			$ref: '#/definitions/docVisibility',
+			const: 'restricted',
+		},
 		id: {
 			$ref: '#/definitions/uuid',
 		},
 		username: {
 			$ref: '#/definitions/username',
+		},
+		email: {
+			$ref: '#/definitions/email',
 		},
 		role: {
 			$ref: '#/definitions/Role',
@@ -27,7 +34,14 @@ const HumanSchema = defineSchema({
 			$ref: '#/definitions/dateString',
 		},
 	},
-	required: ['id', 'username', 'role', 'date_added'],
+	required: [
+		'schema_version',
+		'visibility',
+		'id',
+		'username',
+		'role',
+		'date_added',
+	],
 	additionalProperties: false,
 	definitions: {
 		...BaseSchema,

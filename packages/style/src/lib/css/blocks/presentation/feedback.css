@@ -1,6 +1,7 @@
 [class*='feedback:'][class*='status:']:where(
 		.feedback\:form,
-		.feedback\:prose
+		.feedback\:prose,
+		.feedback\:code
 	) {
 	display: flex;
 	flex-wrap: wrap;

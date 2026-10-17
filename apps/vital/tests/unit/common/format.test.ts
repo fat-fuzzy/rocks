@@ -70,27 +70,29 @@ describe('format.ts - formatting utilities', () => {
 		expect(key).toBe(SUBSECTION_KEY)
 	})
 
-	test('getBlockKey', () => {
-		const key = getBlockKey(
-			BLOCK_KEY_OPTIONS.language,
-			BLOCK_KEY_OPTIONS.format,
-			BLOCK_KEY_OPTIONS.section,
-			BLOCK_KEY_OPTIONS.name,
-			BLOCK_KEY_OPTIONS.subsection,
-		)
+	describe('getBlockKey', () => {
+		test('block with subsection', () => {
+			const key = getBlockKey(
+				BLOCK_KEY_OPTIONS.language,
+				BLOCK_KEY_OPTIONS.format,
+				BLOCK_KEY_OPTIONS.section,
+				BLOCK_KEY_OPTIONS.name,
+				BLOCK_KEY_OPTIONS.subsection,
+			)
 
-		expect(key).toBe(BLOCK_KEY)
-	})
+			expect(key).toBe(BLOCK_KEY)
+		})
 
-	test('getBlockKey - missing subsection', () => {
-		const key = getBlockKey(
-			BLOCK_KEY_OPTIONS.language,
-			BLOCK_KEY_OPTIONS.format,
-			BLOCK_KEY_OPTIONS.section,
-			BLOCK_KEY_OPTIONS.name,
-		)
+		test('block with no subsection', () => {
+			const key = getBlockKey(
+				BLOCK_KEY_OPTIONS.language,
+				BLOCK_KEY_OPTIONS.format,
+				BLOCK_KEY_OPTIONS.section,
+				BLOCK_KEY_OPTIONS.name,
+			)
 
-		expect(key).toBe(BLOCK_KEY_NO_GROUP)
+			expect(key).toBe(BLOCK_KEY_NO_GROUP)
+		})
 	})
 
 	test('getPresetKey', () => {
