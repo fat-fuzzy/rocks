@@ -1,5 +1,11 @@
 # @fat-fuzzy/chlorophyll
 
+## 0.1.4
+
+### Patch Changes
+
+- 20ea56f: Migrate to sk 3, update dependencies, update schemas
+
 ## 0.1.3
 
 ### Patch Changes
