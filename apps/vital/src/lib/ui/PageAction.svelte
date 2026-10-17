@@ -205,7 +205,7 @@
 	)
 
 	let description = $derived(getDescriptionForRoute(cta))
-	let prefix = $derived(getPrefixForRoute(language, cta))
+	let prefix = $derived(getPrefixForRoute(cta))
 
 	let textClass = $derived(
 		!editor[cta] || selectedSections.length === 0 ? `l:text:a4` : 'l:text:2xl',

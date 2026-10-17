@@ -4,7 +4,6 @@ import {
 	CTA_TO_LABEL,
 	CTA_TO_TITLE,
 	CTA_TO_DESCRIPTION,
-	LOCALIZATIONS,
 	NAMESPACE_TO_TITLE,
 } from '#lib/intl/l10n.js'
 
@@ -14,7 +13,6 @@ import type {
 	RouteId,
 	LabelsForRoutes,
 	RouteNameFor,
-	DocLanguage,
 } from '#types'
 
 import {NAMESPACES} from '#types'
@@ -106,9 +104,6 @@ export function getDescriptionForRoute(
 	return CTA_TO_DESCRIPTION[routeName] ?? ''
 }
 
-export function getPrefixForRoute(
-	language: DocLanguage,
-	cta?: RouteNameFor<NamespaceId>,
-) {
-	return cta === 'preview' ? `${LOCALIZATIONS[language].cv}` : `${APP_NAME} | `
+export function getPrefixForRoute(cta?: RouteNameFor<NamespaceId>) {
+	return cta === 'preview' ? '' : `${APP_NAME} | `
 }
