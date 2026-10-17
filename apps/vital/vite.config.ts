@@ -1,10 +1,16 @@
 import {mdsvex} from 'mdsvex'
-import adapter from '@sveltejs/adapter-cloudflare'
+import adapterAuto from '@sveltejs/adapter-auto'
+import adapterCloudflare from '@sveltejs/adapter-cloudflare'
 import mdsvexConfig from './mdsvex.config.js'
 import {vitePreprocess} from '@sveltejs/vite-plugin-svelte'
 
 import {configDefaults, defineConfig} from 'vitest/config'
 import {sveltekit} from '@sveltejs/kit/vite'
+
+/**
+ * More config options here: https://vitest.dev/config/#configuring-vitest
+ */
+const isVitest = process.env.VITEST === 'true' || process.env.mode === 'test'
 
 export default defineConfig({
 	plugins: [
@@ -17,7 +23,7 @@ export default defineConfig({
 			// adapter-auto only supports some environments, see https://svelte.dev/docs/kit/adapter-auto for a list.
 			// If your environment is not supported, or you settled on a specific environment, switch out the adapter.
 			// See https://svelte.dev/docs/kit/adapters for more information about adapters.
-			adapter: adapter(),
+			adapter: isVitest ? adapterAuto() : adapterCloudflare(),
 			/**
 			 * This includes Content Security Policy (CSP) and other security-related headers.
 			 * Verify:
