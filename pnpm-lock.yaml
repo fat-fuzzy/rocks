@@ -8129,9 +8129,9 @@ snapshots:
       obug: 2.2.1
       std-env: 4.2.0
       tinyrainbow: 3.1.1
-      vitest: 5.0.1(@types/node@26.6.4)(@vitest/browser-playwright@5.0.1)(@vitest/coverage-v8@5.0.1)(@vitest/ui@5.0.1)(vite@8.1.5(@types/node@26.6.4)(esbuild@0.27.3)(jiti@2.6.1)(sass@1.98.0)(terser@5.51.2)(yaml@2.9.1))
+      vitest: 5.0.1(@types/node@26.6.4)(@vitest/browser-playwright@5.0.1)(@vitest/coverage-v8@5.0.1)(@vitest/ui@5.0.1)(vite@8.1.5(@types/node@26.6.4)(esbuild@0.27.3)(jiti@2.6.1)(sass@1.97.3)(terser@5.51.2)(yaml@2.9.1))
     optionalDependencies:
-      '@vitest/browser': 5.0.1(vite@8.1.5(@types/node@26.6.4)(esbuild@0.27.3)(jiti@2.6.1)(sass@1.98.0)(terser@5.51.2)(yaml@2.9.1))(vitest@5.0.1)
+      '@vitest/browser': 5.0.1(vite@8.1.5(@types/node@26.6.4)(esbuild@0.27.3)(jiti@2.6.1)(sass@1.97.3)(terser@5.51.2)(yaml@2.9.1))(vitest@5.0.1)
 
   '@vitest/istanbul-lib-coverage@1.0.1': {}
 
@@ -8180,7 +8180,7 @@ snapshots:
       pathe: 2.0.3
       sirv: 3.0.2
       tinyrainbow: 3.1.1
-      vitest: 5.0.1(@types/node@26.6.4)(@vitest/browser-playwright@5.0.1)(@vitest/coverage-v8@5.0.1)(@vitest/ui@5.0.1)(vite@8.1.5(@types/node@26.6.4)(esbuild@0.27.3)(jiti@2.6.1)(sass@1.98.0)(terser@5.51.2)(yaml@2.9.1))
+      vitest: 5.0.1(@types/node@26.6.4)(@vitest/browser-playwright@5.0.1)(@vitest/coverage-v8@5.0.1)(@vitest/ui@5.0.1)(vite@8.1.5(@types/node@26.6.4)(esbuild@0.27.3)(jiti@2.6.1)(sass@1.97.3)(terser@5.51.2)(yaml@2.9.1))
 
   '@vitest/utils@5.0.1':
     dependencies:
