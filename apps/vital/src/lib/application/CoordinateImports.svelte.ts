@@ -145,7 +145,7 @@ export default class CoordinateImports implements ICoordinateImports {
 			this.status = 'backing-up'
 			// 1. Back up current content to filesystem
 			const data = await this.aggDataLifecycle.buildJsonForExport()
-			await guardedExport({data})
+			await guardedExport({root: this.getRoot(), data})
 		}
 
 		// 2. Delete existing storage: the import replaces OPFS content

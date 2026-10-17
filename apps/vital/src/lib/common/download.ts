@@ -20,6 +20,7 @@ async function createDownloadLink(filename: string, blob: Blob): Promise<void> {
 async function showDownloadDialog(filename: string, blob: Blob): Promise<void> {
 	let writable
 	try {
+		//@ts-expect-error throws if showSaveFilePicker does not exist
 		const handle = await window.showSaveFilePicker({
 			suggestedName: filename,
 			types: [
@@ -43,35 +44,33 @@ async function showDownloadDialog(filename: string, blob: Blob): Promise<void> {
 }
 
 export async function generateDownload(options: {
-	filename: string
+	root?: string
+	filename?: string
 	data: string
-	mimeType: string
+	mimeType?: string
 }): Promise<void> {
-	const mimeType = options.mimeType || 'application/json'
+	const {root, filename, mimeType, data} = options
 
-	const {data} = options
-	const blob = new Blob([data], {type: mimeType})
+	const blob = new Blob([data], {type: mimeType || 'application/json'})
 
-	const filename = `${options.filename}-${new Date().toISOString().slice(0, 10)}`
+	const prefix = root || 'vital'
+	let name = filename ? `${prefix}-${filename}` : `${prefix}-backup`
+	name = `${name}-${new Date().toISOString().slice(0, 10)}`
 
 	if ('showSaveFilePicker' in window) {
-		showDownloadDialog(filename, blob)
+		showDownloadDialog(name, blob)
 	} else {
-		createDownloadLink(filename, blob)
+		createDownloadLink(name, blob)
 	}
 }
 
 export async function guardedExport(options: {
+	root?: string
 	filename?: string
 	mimeType?: string
 	data: string
 }): Promise<void> {
-	const mimeType = options.mimeType || 'application/json'
-	const filename = options.filename || 'cv-backup'
-
 	const {data} = options
-
-	const fullName = `${filename}-${new Date().toISOString().slice(0, 10)}`
 
 	const parsed = JSON.parse(data)
 
@@ -80,11 +79,9 @@ export async function guardedExport(options: {
 		Object.keys(parsed.content ?? {}).length === 0 &&
 		(parsed.presets ?? []).length === 0
 
-	if (isEmpty) return
+	if (isEmpty) {
+		return
+	}
 
-	generateDownload({
-		filename: fullName,
-		data,
-		mimeType,
-	})
+	generateDownload(options)
 }
