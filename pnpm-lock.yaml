@@ -361,8 +361,8 @@ importers:
         specifier: 4.1.2
         version: 4.1.2
       commitizen:
-        specifier: 4.3.1
-        version: 4.3.1(@types/node@26.6.4)(typescript@6.0.3)
+        specifier: 4.3.2
+        version: 4.3.2(@types/node@26.6.4)(typescript@6.0.3)
       conventional-commit-types:
         specifier: 3.0.0
         version: 3.0.0
