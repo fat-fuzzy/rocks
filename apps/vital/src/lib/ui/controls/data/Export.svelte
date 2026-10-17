@@ -36,7 +36,7 @@
 		const data = await coordExports.exportData({
 			filetype: 'json',
 		})
-		generateDownload({filename, data, mimeType})
+		generateDownload({root: coordExports.getRoot(), filename, data, mimeType})
 	}
 </script>
 

@@ -45,7 +45,7 @@
 		<Export
 			id="button-export"
 			label="Export"
-			filename="cv-content"
+			filename="content"
 			{color}
 			{size}
 			{font}
