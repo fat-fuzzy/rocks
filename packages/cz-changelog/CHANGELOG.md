@@ -1,5 +1,11 @@
 # @fat-fuzzy/cz-changelog
 
+## 0.1.15
+
+### Patch Changes
+
+- 2b39e4c: Remove handlebars
+
 ## 0.1.14
 
 ### Patch Changes
