@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type {SceneContext, CameraControlsProps} from '$types'
-	import FieldOfView from '$lib/components/camera/FieldOfView.svelte'
-	import Camera from '$lib/components/camera/Camera.svelte'
-	import actor from '$lib/components/sketch/actor.svelte'
+	import type {SceneContext, CameraControlsProps} from '#types'
+	import FieldOfView from '#lib/components/camera/FieldOfView.svelte'
+	import Camera from '#lib/components/camera/Camera.svelte'
+	import actor from '#lib/components/sketch/actor.svelte.js'
 
 	let {
 		id = 'sketch',

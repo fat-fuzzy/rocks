@@ -9,18 +9,18 @@ import type {
 	TagGroup,
 	Rank,
 	NamespaceId,
-} from '$types'
+	VitalError,
+} from '#types'
 
-import {DOC_LANGUAGE, DOC_FORMAT} from '$config/setup'
-import {SCHEMA_VERSION} from '$config/setup'
+import {DOC_LANGUAGE, DOC_FORMAT, SCHEMA_VERSION} from '#config/setup.js'
 
-import WorkerBridge from '$lib/workers/worker-bridge'
-import {getBridge} from '$lib/aggregates/bridge'
-
+import WorkerBridge from '#lib/workers/worker-bridge.js'
+import {getBridge} from '#lib/aggregates/bridge.js'
+import {handleDataTransformError} from '#lib/common/errors/migration.js'
 import {
 	opfsBaseTreeToFrontmatterBase,
 	opfsStructureTreeToFrontmatterStructures,
-} from '$lib/common/transform/opfs-to-doc'
+} from '#lib/common/transform/opfs-to-doc.js'
 
 /**
  * AggregateMetadata class to manage access to stored docs
@@ -31,7 +31,7 @@ export default class AggregateMetadata implements IAggregateMetadata {
 	root: NamespaceId
 	bridge: WorkerBridge | undefined = $state()
 	loading = $state(false)
-	error = $state(false)
+	error: VitalError | undefined = $state()
 	base: FrontmatterBase = $state({
 		schema_version: SCHEMA_VERSION,
 		languages: [DOC_LANGUAGE as DocLanguage],
@@ -49,13 +49,16 @@ export default class AggregateMetadata implements IAggregateMetadata {
 
 	async init() {
 		this.bridge = getBridge()
+		this.reset()
+
 		try {
 			this.loading = true
 
 			await this.loadBase()
 			await this.loadStructure()
-		} catch {
-			this.error = true
+		} catch (error) {
+			const status = (error as Error).message
+			this.error = handleDataTransformError('init-metadata', status, {})
 		} finally {
 			this.loading = false
 		}
@@ -70,6 +73,7 @@ export default class AggregateMetadata implements IAggregateMetadata {
 			settings: [],
 		}
 		this.structures = []
+		this.error = undefined
 	}
 
 	/**
@@ -208,8 +212,14 @@ export default class AggregateMetadata implements IAggregateMetadata {
 		const raw = (await this.bridge.getDocBase({
 			root: this.root,
 		})) as OPFSTreeBase
+		try {
+			const base = opfsBaseTreeToFrontmatterBase(raw)
+			this.base = base
+		} catch (error) {
+			const status = (error as Error).message
 
-		this.base = opfsBaseTreeToFrontmatterBase(raw)
+			this.error = handleDataTransformError('load-base', status, raw)
+		}
 	}
 
 	/**
@@ -225,9 +235,17 @@ export default class AggregateMetadata implements IAggregateMetadata {
 		const raw = (await this.bridge.getDocStructure({
 			root: this.root,
 		})) as OPFSTreeStructure
-
-		const structures = opfsStructureTreeToFrontmatterStructures(raw)
-		this.structures = structures
+		try {
+			const structures = opfsStructureTreeToFrontmatterStructures(raw)
+			this.structures = structures
+		} catch (error) {
+			const status = (error as Error).message
+			this.error = handleDataTransformError(
+				'load-structure',
+				status,
+				raw.content.structure[0],
+			)
+		}
 	}
 
 	/**

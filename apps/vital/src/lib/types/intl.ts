@@ -1,4 +1,4 @@
-import type {DocLanguage, NamespaceKey, RouteNameFor} from '$types'
+import type {DocLanguage, NamespaceKey, RouteNameFor} from '#types'
 
 export type Localizations = {
 	[lang in DocLanguage]: {

@@ -2,7 +2,7 @@
 	import ui from '@fat-fuzzy/ui'
 	const {InputRange} = ui.blocks
 
-	import type {FieldOfViewProps} from '$types'
+	import type {FieldOfViewProps} from '#types'
 
 	let {
 		color = '',

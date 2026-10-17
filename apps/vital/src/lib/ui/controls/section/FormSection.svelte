@@ -1,14 +1,14 @@
 <script lang="ts">
 	import type {UiColor} from '@fat-fuzzy/ui'
-	import type {ActionCrud, Slug, DocLanguage, ICoordinateDocs} from '$types'
+	import type {ActionCrud, Slug, DocLanguage, ICoordinateDocs} from '#types'
 
 	import {onDestroy, onMount} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
 	import {page} from '$app/state'
 
-	import {FormSectionValidator} from '$lib/common/validate'
-	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
-	import {DOC_LANGUAGE, DOC_FORMAT} from '$config/setup'
+	import {FormSectionValidator} from '#lib/common/validate.js'
+	import dialogActor from '#lib/ui/overlays/dialog/actor.svelte.js'
+	import {DOC_LANGUAGE, DOC_FORMAT} from '#config/setup.js'
 
 	const {Button, Input, InputGroup, Feedback} = ui.blocks
 	const {FormValidator} = ui.utils
@@ -61,6 +61,7 @@
 						: 'Submit',
 	)
 
+	let errorMessage = $state('')
 	let sectionExistsError = $state(false)
 	let disabled: boolean | undefined = $derived(
 		validator.formHasErrors() || sectionExistsError ? true : undefined,
@@ -140,15 +141,18 @@
 			formats,
 		}
 
-		coordDocs.createSection(newSection)
+		try {
+			coordDocs.createSection(newSection)
+		} catch (error) {
+			errorMessage =
+				error instanceof Error && error.message
+					? error.message
+					: 'Create Section failed'
+		} finally {
+			dialogActor.close()
 
-		dialogActor.close()
-
-		// FIXME: put selected sections into context (fix reactivity)
-		const newUrl = new URL(page.url)
-		newUrl.searchParams.append('sections', newSection.name)
-
-		window.location.href = newUrl.href
+			// FIXME: update UI : select section into current doc
+		}
 	}
 
 	function deleteSection() {
@@ -285,6 +289,17 @@
 		</div>
 	{/if}
 	<div class={`l:flex justify:${sectionExistsError ? 'between' : 'end'}`}>
+		{#if errorMessage}
+			<Feedback
+				status="error"
+				context="prose"
+				variant="bare"
+				asset="default"
+				size="2xs"
+			>
+				<p class="font:sm">{errorMessage}</p>
+			</Feedback>
+		{/if}
 		{#if sectionExistsError}
 			<Feedback
 				status="error"

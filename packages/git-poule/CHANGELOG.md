@@ -1,5 +1,11 @@
 # @fat-fuzzy/git-poule
 
+## 0.1.26
+
+### Patch Changes
+
+- 20ea56f: Migrate to sk 3, update dependencies, update schemas
+
 ## 0.1.25
 
 ### Patch Changes

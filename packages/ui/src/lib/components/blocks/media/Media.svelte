@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Image from './Image.svelte'
-	import type {MediaProps} from '$types'
-	import Picture from '$lib/components/blocks/media/Picture.svelte'
+	import type {MediaProps} from '#types'
+	import Picture from '#lib/components/blocks/media/Picture.svelte'
 
 	let {
 		id,

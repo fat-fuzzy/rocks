@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type {UiSize, PageProps} from '$types'
-	import Head from '$lib/components/blocks/global/Head.svelte'
-	import PageHeader from '$lib/components/recipes/content/PageHeader.svelte'
+	import type {UiSize, PageProps} from '#types'
+	import Head from '#lib/components/blocks/global/Head.svelte'
+	import PageHeader from '#lib/components/recipes/content/PageHeader.svelte'
 
 	let {
 		id = 'main',
@@ -15,7 +15,7 @@
 		children,
 	}: PageProps = $props()
 
-	let currentPage = $state(pageName ?? title)
+	let currentPage = $derived(pageName ?? title)
 </script>
 
 <Head pageName={currentPage} {title} {description} />

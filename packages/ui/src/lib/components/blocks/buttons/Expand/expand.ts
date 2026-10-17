@@ -1,4 +1,4 @@
-import type {FuzzyState, ButtonStateProps} from '$types'
+import type {FuzzyState, ButtonStateProps} from '#types'
 
 export type UiStateExpand = 'expanded' | 'collapsed'
 

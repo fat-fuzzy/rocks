@@ -1,4 +1,4 @@
-import type {StyleNode, IStyleFamily, StyleFamilyOptions} from '$types'
+import type {StyleNode, IStyleFamily, StyleFamilyOptions} from '#types'
 import type {UiContainer, UiLayout, UiSize, UiVariant} from '@fat-fuzzy/ui'
 import StyleInputGroup from './styles.input-group'
 

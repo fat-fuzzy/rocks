@@ -11,7 +11,7 @@ import type {
 	Path,
 	DateString,
 	Uuid,
-} from '$types'
+} from '#types'
 
 import {
 	BlockValidator,
@@ -25,7 +25,7 @@ import {
 	PathValidator,
 	DateStringValidator,
 	UuidValidator,
-} from '$lib/common/validate'
+} from '#lib/common/validate.js'
 
 /*******************
  *  Hard fails
@@ -53,28 +53,28 @@ function sanitizeValue<T>(
 }
 
 export function sanitizeBlock(data: unknown): Block | null {
-	return sanitizeValue<Block>({value: data}, BlockValidator)
+	return sanitizeValue<Block>(data, BlockValidator)
 }
 
 export function sanitizeSection(data: unknown): Section | null {
-	return sanitizeValue<Section>({value: data}, SectionValidator)
+	return sanitizeValue<Section>(data, SectionValidator)
 }
 
 export function sanitizeDoc(data: unknown): Doc | null {
-	return sanitizeValue<Doc>({value: data}, DocValidator)
+	return sanitizeValue<Doc>(data, DocValidator)
 }
 
 export function sanitizePreset(data: unknown): Preset | null {
-	return sanitizeValue<Preset>({value: data}, PresetValidator)
+	return sanitizeValue<Preset>(data, PresetValidator)
 }
 
 export function sanitizeBase(data: unknown): FrontmatterBase | null {
-	return sanitizeValue<FrontmatterBase>({value: data}, FrontmatterBaseValidator)
+	return sanitizeValue<FrontmatterBase>(data, FrontmatterBaseValidator)
 }
 
 export function sanitizeStructure(data: unknown): FrontmatterStructure | null {
 	return sanitizeValue<FrontmatterStructure>(
-		{value: data},
+		data,
 		FrontmatterStructureValidator,
 	)
 }

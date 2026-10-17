@@ -1,5 +1,5 @@
 import path from 'path'
-import {defineConfig} from 'vitest/config'
+import {configDefaults, defineConfig} from 'vitest/config'
 import {sveltekit} from '@sveltejs/kit/vite'
 import adapter from '@sveltejs/adapter-auto'
 import {vitePreprocess} from '@sveltejs/vite-plugin-svelte'
@@ -18,17 +18,11 @@ export default defineConfig({
 			preprocess: [vitePreprocess(), mdsvex(mdsvexConfig)],
 			// See https://kit.svelte.dev/docs/adapters for more information about adapters.
 			adapter: adapter(),
-			alias: {
-				$config: path.resolve('./src/config'),
-				$types: path.resolve('./src/lib/types/index.ts'),
-				$tests: path.resolve('./tests'),
-				$lib: path.resolve('./src/lib'),
-			},
 			extensions: ['.svelte', '.md', '.svx'],
 		}),
 	],
 	test: {
-		reporters: ['html'],
+		reporters: ['html', ...configDefaults.reporters],
 		include: [path.resolve('./tests/unit/**/*.{test,spec}.{js,ts}')],
 		coverage: {
 			enabled: true,

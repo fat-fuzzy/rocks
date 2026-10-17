@@ -1,7 +1,9 @@
-import type {RouteNameFor} from '$types'
+import type {RouteNameFor} from '#types'
 
 export const matchMycelium = (
 	param: string,
-): param is RouteNameFor<'pollen'> => {
-	return param === 'analyze' || param === 'engage'
+): RouteNameFor<'mycelium'> | undefined => {
+	if (param === 'analyze' || param === 'engage') {
+		return param
+	}
 }

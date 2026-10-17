@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {FuzzyPayload} from '@fat-fuzzy/ui'
-	import type {PlayerProps, PlayerEvent} from '$types'
+	import type {PlayerProps, PlayerEvent} from '#types'
 	import {onMount} from 'svelte'
 
 	import ui from '@fat-fuzzy/ui'

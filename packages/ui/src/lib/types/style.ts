@@ -1,10 +1,5 @@
 export type UiContainer =
-	| 'burrito'
-	| 'taco'
-	| 'frame'
-	| 'ravioli'
-	| 'raviolink'
-	| 'text'
+	'burrito' | 'taco' | 'frame' | 'ravioli' | 'raviolink' | 'text'
 
 export type UiLayout =
 	| 'stack'
@@ -78,11 +73,7 @@ export type UiDimension =
 	| '90'
 
 export type UiPosition =
-	| 'absolute'
-	| 'anchored'
-	| 'fixed'
-	| 'relative'
-	| 'static'
+	'absolute' | 'anchored' | 'fixed' | 'relative' | 'static'
 
 export type UiLayoutCoords =
 	| 'nord'

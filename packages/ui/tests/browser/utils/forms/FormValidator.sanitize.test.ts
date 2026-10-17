@@ -1,9 +1,9 @@
-import type {TestForm} from '$types'
+import type {TestForm} from '#types'
 import {describe, it, expect, beforeEach} from 'vitest'
 
-import {TestFormValidator} from '$lib/utils/validate'
-import FormValidator from '$lib/utils/browser/FormValidator.svelte'
-import {INPUTS} from '$tests/fixtures/form-inputs'
+import {TestFormValidator} from '#lib/utils/validate.js'
+import FormValidator from '#lib/utils/browser/FormValidator.svelte.js'
+import {INPUTS} from '#tests/fixtures/form-inputs.ts'
 
 describe('FormValidator - sanitize inputs before validation', () => {
 	let validator: FormValidator<TestForm>

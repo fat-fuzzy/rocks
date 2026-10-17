@@ -3,9 +3,9 @@
 		ToggleSettingsProps,
 		InputCallbackProps,
 		InputProps,
-	} from '$types'
+	} from '#types'
 
-	import InputGroup from '$lib/components/blocks/inputs/InputGroup.svelte'
+	import InputGroup from '#lib/components/blocks/inputs/InputGroup.svelte'
 
 	let {
 		assetType = 'emoji',

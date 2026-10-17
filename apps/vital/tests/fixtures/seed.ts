@@ -1,5 +1,5 @@
-import type {SeedDoc, SeedSection, SeedType} from '$types'
-import {DOC_ID, SECTION_IDS} from '$tests/fixtures/doc'
+import type {SeedDoc, SeedSection, SeedType} from '#types'
+import {DOC_ID, SECTION_IDS} from '#tests/fixtures/doc.js'
 
 export const SEED_SUBSECTION = {
 	id: crypto.randomUUID(),
@@ -72,6 +72,7 @@ export const SEED_SECTIONS: SeedSection[] = [
 ]
 
 export const SEED_DOC: SeedDoc = {
+	// @ts-expect-error tests schema migration
 	schema_version: '0.1',
 	seed_type: 'root' as SeedType,
 	language: 'en',

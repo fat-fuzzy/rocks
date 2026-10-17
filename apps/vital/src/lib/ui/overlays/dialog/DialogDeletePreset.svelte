@@ -1,13 +1,16 @@
 <script lang="ts">
-	import type {ICoordinatePresets, Preset} from '$types'
+	import type {ICoordinatePresets, Preset} from '#types'
 	import type {UiColor, UiShape, UiSize, UiVariant} from '@fat-fuzzy/ui'
 
+	import {SvelteURL} from 'svelte/reactivity'
+	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
 
-	import {NAMESPACE_TO_PRESET_LABEL} from '$lib/intl/l10n'
-	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
+	import {NAMESPACE_TO_PRESET_LABEL} from '#lib/intl/l10n.js'
+	import dialogActor from '#lib/ui/overlays/dialog/actor.svelte.js'
+	import {getSanitizedParamValue} from '#lib/common/url.js'
 
-	import FormPreset from '$lib/ui/controls/preset/FormPreset.svelte'
+	import FormPreset from '#lib/ui/controls/preset/FormPreset.svelte'
 
 	const {Button} = ui.blocks
 
@@ -46,10 +49,32 @@
 
 		dialogActor.show()
 	}
+
+	function handleSubmit() {
+		const url = new SvelteURL(page.url.href)
+		const currentPreset = getSanitizedParamValue(url.searchParams, 'preset')
+		const presetName = preset.name
+
+		setTimeout(() => {
+			dialogActor.close()
+
+			if (currentPreset === presetName) {
+				url.searchParams.delete('preset')
+
+				window.location.href = url.href
+			}
+		}, 50)
+	}
 </script>
 
 {#snippet presetForm()}
-	<FormPreset cta="delete" {preset} {color} {coordPresets} />
+	<FormPreset
+		cta="delete"
+		{preset}
+		{color}
+		{coordPresets}
+		onsubmit={handleSubmit}
+	/>
 {/snippet}
 
 <!-- FIXME: add tooltip -->

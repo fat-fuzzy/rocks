@@ -1,6 +1,6 @@
-import type {Meta, Markdown, Markdowns, PlaybookProps, StyleProps} from '$types'
-import constants from '$lib/types/constants'
-import {getFamily} from '$lib/props/props-style'
+import type {Meta, Markdown, Markdowns, PlaybookProps, StyleProps} from '#types'
+import constants from '#lib/types/constants.js'
+import {getFamily} from '#lib/props/props-style.js'
 
 const {DEFAULT_META, TABS} = constants
 

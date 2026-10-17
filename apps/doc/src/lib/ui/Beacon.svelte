@@ -1,8 +1,7 @@
 <svelte:element
-	this={'script'}
+	this={"script"}
 	async
 	src="https://gc.zgo.at/count.js"
 	data-goatcounter="https://fat-fuzzy.goatcounter.com/count"
 	nonce="%sveltekit.nonce%"
->
-</svelte:element>
+></svelte:element>

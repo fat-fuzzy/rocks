@@ -1,6 +1,6 @@
 import {describe, test, expect} from 'vitest'
 
-import * as validators from '$lib/generated/ajv/validation/validate.ajv.mjs'
+import * as validators from '#lib/generated/ajv/validation/validate.ajv.mjs'
 
 describe('Base values schema definitions', () => {
 	test('Detect unanchored injection attempts', () => {

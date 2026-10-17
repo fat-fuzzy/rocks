@@ -1,4 +1,4 @@
-import {sanitizeSlugValue, sanitizeLanguageValue} from '$lib/common/sanitize'
+import {sanitizeSlugValue, sanitizeLanguageValue} from '#lib/common/sanitize.js'
 
 const buildBase = (language: string, format: string) => {
 	const languageKey = sanitizeLanguageValue(language)

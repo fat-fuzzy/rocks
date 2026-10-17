@@ -1,5 +1,11 @@
 # @fat-fuzzy/playbook
 
+## 0.1.46
+
+### Patch Changes
+
+- 20ea56f: Migrate to sk 3, update dependencies, update schemas
+
 ## 0.1.45
 
 ### Patch Changes

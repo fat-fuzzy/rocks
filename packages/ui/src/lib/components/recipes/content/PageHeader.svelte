@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type {PageHeaderProps} from '$types'
-	import styleHelper from '$lib/utils/styles'
+	import type {PageHeaderProps} from '#types'
+	import styleHelper from '#lib/utils/styles.js'
 
 	let {
 		title = 'PageHeader',

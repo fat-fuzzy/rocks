@@ -9,9 +9,9 @@ import type {
 	Block,
 	SeedType,
 	NamespaceId,
-} from '$types'
+} from '#types'
 
-import {sanitizeFileName} from '$lib/common/sanitize'
+import {sanitizeFileName} from '#lib/common/sanitize.js'
 
 const SEED_TYPES: SeedType[] = ['structure', 'root', 'base']
 // const OPFS_ROOT_FOLDERS: string[] = ['chlorophyll', 'pollen']

@@ -1,5 +1,5 @@
-import type {PrivacyPreferences} from '$types'
-import constants from '$lib/types/constants.js'
+import type {PrivacyPreferences} from '#types'
+import constants from '#lib/types/constants.js'
 
 const {DEFAULT_COOKIES_PREFERENCES} = constants
 

@@ -1,11 +1,11 @@
-import type {FuzzyPayload, UiState} from '$types'
+import type {FuzzyPayload, UiState} from '#types'
 import {describe, it, expect} from 'vitest'
-import ExpandActor from '$lib/components/blocks/buttons/Expand/actor.svelte'
+import ExpandActor from '#lib/components/blocks/buttons/Expand/actor.svelte.js'
 import {
 	EXPAND_MACHINE,
 	EXPAND_TRANSITIONS,
-} from '$lib/components/blocks/buttons/Expand/definitions'
-import {PROPS_BLOCK} from '$tests/fixtures/style-props'
+} from '#lib/components/blocks/buttons/Expand/definitions.js'
+import {PROPS_BLOCK} from '#tests/fixtures/style-props.js'
 
 const defaultCollapsedConfig = {
 	initial: 'collapsed' as UiState,

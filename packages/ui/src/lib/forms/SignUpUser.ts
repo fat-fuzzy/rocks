@@ -1,5 +1,5 @@
-import {CookiePreferencesValidator} from '$lib/utils/validate'
-import FormValidator from '$lib/utils/browser/FormValidator.svelte'
+import {CookiePreferencesValidator} from '#lib/utils/validate.js'
+import FormValidator from '#lib/utils/browser/FormValidator.svelte.js'
 
 class SignUpUser {
 	inputTypes: {[name: string]: string} = {

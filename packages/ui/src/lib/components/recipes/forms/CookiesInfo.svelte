@@ -1,13 +1,13 @@
 <script lang="ts">
-	import type {CookiePreferences, CookiesPreferencesProps} from '$types'
+	import type {CookiePreferences, CookiesPreferencesProps} from '#types'
 	import {onMount} from 'svelte'
 
-	import {CookiePreferencesValidator} from '$lib/utils/validate'
-	import FormValidator from '$lib/utils/browser/FormValidator.svelte'
-	import Button from '$lib/components/blocks/buttons/Button.svelte'
-	import Feedback from '$lib/components/blocks/global/Feedback.svelte'
-	import Popover from '$lib/components/blocks/overlays/Popover/Popover.svelte'
-	import Card from '$lib/components/recipes/content/Card.svelte'
+	import {CookiePreferencesValidator} from '#lib/utils/validate.js'
+	import FormValidator from '#lib/utils/browser/FormValidator.svelte.js'
+	import Button from '#lib/components/blocks/buttons/Button.svelte'
+	import Feedback from '#lib/components/blocks/global/Feedback.svelte'
+	import Popover from '#lib/components/blocks/overlays/Popover/Popover.svelte'
+	import Card from '#lib/components/recipes/content/Card.svelte'
 
 	let {
 		containerSize = 'lg',

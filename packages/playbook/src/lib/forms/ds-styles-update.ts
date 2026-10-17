@@ -1,6 +1,6 @@
 import ui from '@fat-fuzzy/ui'
-import type {StyleTree} from '$types'
-import StylesApi from '$lib/api/styles.svelte'
+import type {StyleTree} from '#types'
+import StylesApi from '#lib/api/styles.svelte.js'
 
 const {DEFAULT_PREFERENCES, NUMBER_TO_SIZE} = ui.constants
 
@@ -37,6 +37,7 @@ class DsStylesUpdate {
 		let _
 
 		for (const [key, value] of data) {
+			// eslint-disable-next-line
 			;[category, family, style, _] = key.split('.')
 			let styleValue = {[style]: value.toString()}
 			// FIXES: allows to enter range number values mapped to class names with no JS on client

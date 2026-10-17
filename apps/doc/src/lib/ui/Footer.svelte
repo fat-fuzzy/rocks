@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type {Snippet} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
-	import RcScout from '$lib/ui/RcScout.svelte'
+	import RcScout from '#lib/ui/RcScout.svelte'
 	import {page} from '$app/state'
 
 	type Props = {

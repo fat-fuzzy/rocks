@@ -4,9 +4,9 @@ import type {
 	InputTypes,
 	FormToValidate,
 	SchemaToValidate,
-	ValidationError,
+	AjvErrorObject,
 	AjvValidateFunction,
-} from '$types'
+} from '#types'
 
 /**
  * Use this Class to provide frontend validation capabilities to a form rendered by the server.
@@ -18,7 +18,7 @@ import type {
 class FormValidator<K> implements IFormValidator<K> {
 	form: FormToValidate = $state({})
 	inputTypes: InputTypes = $state({}) // Map of input names to their types
-	errors: ValidationError[] = $state([])
+	errors: AjvErrorObject<K>[] = $state([])
 	ajvValidate: AjvValidateFunction<K>
 	sanitize = sanitize.sanitizeForm
 

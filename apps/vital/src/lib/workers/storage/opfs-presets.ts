@@ -8,16 +8,16 @@ import type {
 	OPFSTreeDoc,
 	OPFSTreePreset,
 	Preset,
-} from '$types'
-import {sanitizeFileName} from '$lib/common/sanitize'
-import {parsePreset} from '$lib/common/transform/parse-or-throw'
+} from '#types'
+import {sanitizeFileName} from '#lib/common/sanitize.js'
+import {parsePreset} from '#lib/common/transform/parse-or-throw.js'
 
 import {
 	getPresetsHandle,
 	readDirectoryRecursive,
 	deleteEntryRecursive,
 	getRootHandle,
-} from '$lib/workers/storage/opfs-tools'
+} from '#lib/workers/storage/opfs-tools.js'
 
 export async function loadPreset(options: {
 	root: NamespaceId

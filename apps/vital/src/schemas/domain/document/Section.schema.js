@@ -1,4 +1,4 @@
-import {defineSchema} from '../index.js'
+import {defineSchema} from '../../index.js'
 
 const SectionSchema = defineSchema({
 	type: 'object',

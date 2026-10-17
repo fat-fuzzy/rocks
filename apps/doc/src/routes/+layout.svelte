@@ -5,8 +5,8 @@
 	import {page} from '$app/state'
 	import {dev} from '$app/env'
 	import ui from '@fat-fuzzy/ui'
-	import Beacon from '$lib/ui/Beacon.svelte'
-	import '$lib/styles/css/main.css'
+	import Beacon from '#lib/ui/Beacon.svelte'
+	import '#lib/styles/css/main.css'
 
 	const {ToastGroup} = ui.drafts
 

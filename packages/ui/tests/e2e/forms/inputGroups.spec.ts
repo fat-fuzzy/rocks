@@ -1,5 +1,5 @@
 import {expect, test} from '@playwright/test'
-import {INPUTS} from '$tests/fixtures/form-inputs'
+import {INPUTS} from '#tests/fixtures/form-inputs.ts'
 
 test('onclick event updates url search params', async ({page}) => {
 	const key1 = 'checkbox_group'

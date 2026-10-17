@@ -1,5 +1,5 @@
 import type {Snippet} from 'svelte'
-import type {GeometryContext, SceneContext} from '$types'
+import type {GeometryContext, SceneContext} from '#types'
 
 export type PositionProps = {
 	color: string

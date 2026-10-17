@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {RotationProps} from '$types'
+	import type {RotationProps} from '#types'
 
 	import ui from '@fat-fuzzy/ui'
 	const {InputRange} = ui.blocks

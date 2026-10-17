@@ -1,4 +1,4 @@
-import type {NavItem} from '$types'
+import type {NavItem} from '#types'
 
 // TODO: move to utils / clean
 const navBase = {

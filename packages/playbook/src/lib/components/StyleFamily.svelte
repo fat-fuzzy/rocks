@@ -1,10 +1,10 @@
 <script lang="ts">
-	import type {Meta, StyleTree} from '$types'
+	import type {Meta, StyleTree} from '#types'
 
 	import {getContext} from 'svelte'
 
-	import StylesApi from '$lib/api/styles.svelte'
-	import {PlaybookActor} from '$lib/api/actor.svelte'
+	import StylesApi from '#lib/api/styles.svelte.js'
+	import {PlaybookActor} from '#lib/api/actor.svelte.js'
 	import StyleInput from './StyleInput.svelte'
 
 	type Props = {

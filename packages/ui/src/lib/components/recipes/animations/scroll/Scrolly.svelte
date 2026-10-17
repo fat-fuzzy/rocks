@@ -1,6 +1,6 @@
 <script lang="ts">
 	import {onMount} from 'svelte'
-	import type {ScrollyProps} from '$types'
+	import type {ScrollyProps} from '#types'
 	import ScrollyItem from './ScrollyItem.svelte'
 
 	let {
@@ -15,7 +15,7 @@
 		magic,
 	}: ScrollyProps = $props()
 
-	let prevRatio = $state(0.0)
+	// let prevRatio = $state(0.0)
 	let nestedLevel = $derived(level && title ? level + 1 : level ? level : 2)
 	let scrollArea: HTMLElement | undefined = $state()
 	let observer: IntersectionObserver | undefined = $state()
@@ -80,7 +80,7 @@
 		bind:this={scrollArea}
 		class={`scroll:y snap ${direction} w:full unstyled`}
 	>
-		<li class={`snap:center scroll:title`}>
+		<li class="snap:center scroll:title">
 			<svelte:element this={`h${level}`} id="title" class="w:full text:center">
 				{title}
 			</svelte:element>

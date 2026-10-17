@@ -1,4 +1,4 @@
-import type {SwitchProps, FuzzyPayload, UiColor} from '$types'
+import type {SwitchProps, FuzzyPayload, UiColor} from '#types'
 
 export type AppContextItems = {
 	display: SwitchProps[]

@@ -1,11 +1,11 @@
 <script lang="ts">
-	import type {FuzzyPayload, ButtonType, ToggleMenuProps} from '$types'
+	import type {FuzzyPayload, ButtonType, ToggleMenuProps} from '#types'
 
 	import {onMount} from 'svelte'
 
-	import styleHelper from '$lib/utils/styles'
-	import Toggle from '$lib/components/blocks/buttons/Toggle/Toggle.svelte'
-	import ToggleSystem from './system.svelte.js'
+	import styleHelper from '#lib/utils/styles.js'
+	import Toggle from '#lib/components/blocks/buttons/Toggle/Toggle.svelte'
+	import ToggleSystem from '#lib/components/recipes/menus/ToggleMenu/system.svelte.js'
 
 	let {
 		id = 'toggle-menu',
@@ -94,9 +94,9 @@
 
 {#snippet menuContent()}
 	<menu {id} class={menuClasses} data-testid={id}>
-		{#if system.groups.size === 1}
+		{#if system.groups?.size === 1 && system.state}
 			{@render groupContent(system.state)}
-		{:else if system.groups.size > 1}
+		{:else if system.groups?.size && system.groups?.size > 1}
 			{#each system.groups as [group, items] (group)}
 				<li>
 					<ol class="unstyled">

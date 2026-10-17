@@ -5,21 +5,22 @@
 		CurrentCoordinators,
 		NamespaceKey,
 		LabelsForRoutes,
-	} from '$types'
+	} from '#types'
 
 	import {getContext} from 'svelte'
 	import {page} from '$app/state'
 
-	import {getSanitizedParamValue, buildForwardedQuery} from '$lib/common/url'
-	import MenuData from '$lib/ui/overlays/popover-menu/MenuData.svelte'
-	import MenuSections from '$lib/ui/overlays/popover-menu/MenuSections.svelte'
-	import MenuSettings from '$lib/ui/overlays/popover-menu/MenuSettings.svelte'
+	import {getSanitizedParamValue, buildForwardedQuery} from '#lib/common/url.js'
+	import MenuData from '#lib/ui/overlays/popover-menu/MenuData.svelte'
+	import MenuSections from '#lib/ui/overlays/popover-menu/MenuSections.svelte'
+	import MenuSettings from '#lib/ui/overlays/popover-menu/MenuSettings.svelte'
 
 	const coordinators: CurrentCoordinators = getContext('currentCoordinators')
 
 	let coordPresets = $derived(coordinators.presets)
 	let coordMetadata = $derived(coordinators.metadata)
 	let coordImports = $derived(coordinators.imports)
+	let coordExports = $derived(coordinators.exports)
 
 	let {
 		layout = 'switcher',
@@ -88,7 +89,14 @@
 			{#if !isTwinLayout}
 				<MenuSettings {oninput} {color} variant="outline" {size} {font} />
 			{/if}
-			<MenuData id="button-import" {color} {size} {font} {coordImports} />
+			<MenuData
+				id="button-import"
+				{color}
+				{size}
+				{font}
+				{coordImports}
+				{coordExports}
+			/>
 		</div>
 	</div>
 </div>

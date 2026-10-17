@@ -1,8 +1,8 @@
-import type {SeedDoc} from '$types'
+import type {SeedDoc} from '#types'
 
 import {error} from '@sveltejs/kit'
 
-import cvParser from '$data/doc/cv-io-markdown'
+import cvParser from '#data/doc/cv-io-markdown.js'
 
 export const prerender = true
 
@@ -19,7 +19,7 @@ export const load = async () => {
 	const {languages, formats} = seedMetadata
 
 	if (!languages || !formats) {
-		error(404, {message: 'Not found'})
+		error(404, 'Not found')
 	}
 
 	const structures = await cvParser.parseMarkdownCvMeta({
@@ -31,7 +31,7 @@ export const load = async () => {
 	})
 
 	if (!structures?.base || !structures?.structures) {
-		error(404, {message: 'Not found'})
+		error(404, 'Not found')
 	}
 
 	for (const language of languages) {

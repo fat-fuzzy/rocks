@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type {Snippet} from 'svelte'
 	import type {UiColor} from '@fat-fuzzy/ui'
-	import type {NamespaceId} from '$types'
+	import type {NamespaceId} from '#types'
 
 	import {resolve} from '$app/paths'
 

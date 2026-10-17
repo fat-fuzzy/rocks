@@ -2,7 +2,7 @@
 	import {page} from '$app/state'
 	import ui from '@fat-fuzzy/ui'
 
-	import TextCircle from '$lib/ui/svg/TextCircle.svelte'
+	import TextCircle from '#lib/ui/svg/TextCircle.svelte'
 
 	const {PageRails} = ui.content
 	const {Magic} = ui.blocks

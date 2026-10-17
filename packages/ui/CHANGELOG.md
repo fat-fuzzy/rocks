@@ -1,5 +1,11 @@
 # @fat-fuzzy/ui
 
+## 0.1.112
+
+### Patch Changes
+
+- 20ea56f: Migrate to sk 3, update dependencies, update schemas
+
 ## 0.1.111
 
 ### Patch Changes

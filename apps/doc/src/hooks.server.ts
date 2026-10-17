@@ -1,10 +1,9 @@
-import type {Handle} from '@sveltejs/kit'
-import {sequence} from '@sveltejs/kit/hooks'
-import {setStyles} from '$lib/server/hooks/setStyles'
+import {sequence, type Handle} from '@sveltejs/kit/hooks'
+import {setStyles} from '#lib/server/hooks/setStyles.js'
 import {
 	setSecHeaders,
 	setPermissionsPolicy,
-} from '$lib/server/hooks/setSecHeaders'
+} from '#lib/server/hooks/setSecHeaders.js'
 
 export const handle: Handle = sequence(
 	setSecHeaders(),

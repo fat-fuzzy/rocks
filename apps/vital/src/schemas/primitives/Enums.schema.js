@@ -29,6 +29,10 @@ const EnumsSchema = defineDefinitions({
 		type: 'string',
 		enum: ['draft', 'published', 'archived'],
 	},
+	eventType: {
+		type: 'string',
+		enum: ['sent', 'response', 'no-response', 'interview'],
+	},
 	fileExt: {
 		type: 'string',
 		enum: ['md', 'json', 'txt'],
@@ -48,6 +52,10 @@ const EnumsSchema = defineDefinitions({
 	uiDialogState: {
 		type: 'string',
 		enum: ['idle', 'loading', 'visible', 'closed', 'cancelled'],
+	},
+	hashAlgorithm: {
+		type: 'string',
+		enum: ['sha256'],
 	},
 })
 

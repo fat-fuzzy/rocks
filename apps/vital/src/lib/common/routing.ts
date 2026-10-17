@@ -1,12 +1,11 @@
-import {APP_NAME} from '$config/setup'
+import {APP_NAME} from '#config/setup.js'
 
 import {
 	CTA_TO_LABEL,
 	CTA_TO_TITLE,
 	CTA_TO_DESCRIPTION,
-	LOCALIZATIONS,
 	NAMESPACE_TO_TITLE,
-} from '$lib/intl/l10n'
+} from '#lib/intl/l10n.js'
 
 import type {
 	NamespaceId,
@@ -14,10 +13,9 @@ import type {
 	RouteId,
 	LabelsForRoutes,
 	RouteNameFor,
-	DocLanguage,
-} from '$types'
+} from '#types'
 
-import {NAMESPACES} from '$types'
+import {NAMESPACES} from '#types'
 
 export function getNamespaces(): {
 	name: NamespaceId
@@ -38,11 +36,26 @@ export function getNamespaceFromRoute(id: RouteId): NamespaceId {
 	throw Error('Namespace for route not available')
 }
 
-export function getRouteNameFromRoute(id: RouteId): RouteNameFor<NamespaceId> {
+export function getRouteNameFromRouteId(
+	id: string,
+): NamespaceId | RouteNameFor<NamespaceId> | void {
 	const key = id.split('/')[1] as NamespaceKey
 	const route = id.split('/')[2] as RouteNameFor<NamespaceId>
 
-	if (NAMESPACES[key].children.find((r) => r.name === route)) {
+	if (!route) {
+		return getNamespaceFromRoute(id as RouteId)
+	}
+
+	if (route && NAMESPACES[key]?.children.find((r) => r.name === route)) {
+		return route
+	}
+}
+
+export function getCtaFromRouteId(id: string): RouteNameFor<NamespaceId> {
+	const key = id.split('/')[1] as NamespaceKey
+	const route = id.split('/')[2] as RouteNameFor<NamespaceId>
+
+	if (route && NAMESPACES[key].children.find((r) => r.name === route)) {
 		return route
 	}
 
@@ -91,9 +104,6 @@ export function getDescriptionForRoute(
 	return CTA_TO_DESCRIPTION[routeName] ?? ''
 }
 
-export function getPrefixForRoute(
-	language: DocLanguage,
-	cta?: RouteNameFor<NamespaceId>,
-) {
-	return cta === 'preview' ? `${LOCALIZATIONS[language].cv}_` : `${APP_NAME} | `
+export function getPrefixForRoute(cta?: RouteNameFor<NamespaceId>) {
+	return cta === 'preview' ? '' : `${APP_NAME} | `
 }

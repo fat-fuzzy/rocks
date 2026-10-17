@@ -1,5 +1,11 @@
 # @fat-fuzzy/validation
 
+## 0.1.31
+
+### Patch Changes
+
+- 20ea56f: Migrate to sk 3, update dependencies, update schemas
+
 ## 0.1.30
 
 ### Patch Changes

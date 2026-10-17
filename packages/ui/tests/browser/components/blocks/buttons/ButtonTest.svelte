@@ -1,7 +1,7 @@
 <script lang="ts">
-	import Button from '$lib/components/blocks/buttons/Button.svelte'
-	import TestContext from '$tests/browser/TestContext.svelte'
-	import {BUTTON_PROPS} from '$tests/fixtures/block-props'
+	import Button from '#lib/components/blocks/buttons/Button.svelte'
+	import TestContext from '#tests/browser/TestContext.svelte'
+	import {BUTTON_PROPS} from '#tests/fixtures/block-props.js'
 </script>
 
 <TestContext>

@@ -1,4 +1,4 @@
-import type {NavItem, UiAssetType} from '$types'
+import type {NavItem, UiAssetType} from '#types'
 
 const links = [
 	{slug: 'style', label: 'Style', layout: 'sidebar'},

@@ -1,11 +1,11 @@
-import type {UiState} from '$types'
+import type {UiState} from '#types'
 import {page} from 'vitest/browser'
 import {describe, it, expect, beforeEach} from 'vitest'
 import {render} from 'vitest-browser-svelte'
-import actor from '$lib/components/blocks/overlays/Popover/actor.svelte'
+import actor from '#lib/components/blocks/overlays/Popover/actor.svelte.js'
 import Popover from './PopoverActorTest.svelte'
 
-import {POPOVER_PROPS} from '$tests/fixtures/block-props'
+import {POPOVER_PROPS} from '#tests/fixtures/block-props.js'
 
 describe(`PopoverActor - a class to manage popovers from external context`, () => {
 	beforeEach(() => {

@@ -18,6 +18,11 @@
 	--icon-url: url('/icons/openmoji/cherry-blossom.svg');
 }
 
+.svg\:chevron-left {
+	--icon-url: url('/icons/chevron-right.svg');
+	transform: rotateY(180deg);
+}
+
 .svg\:contrast {
 	--icon-url: url('/icons/openmoji/contrast.svg');
 }

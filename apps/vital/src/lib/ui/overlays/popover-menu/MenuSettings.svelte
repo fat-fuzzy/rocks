@@ -1,11 +1,11 @@
 <script lang="ts">
 	import type {UiColor, UiSize, UiVariant} from '@fat-fuzzy/ui'
-	import type {CurrentCoordinators} from '$types'
+	import type {CurrentCoordinators} from '#types'
 
 	import {getContext} from 'svelte'
 	import ui from '@fat-fuzzy/ui'
 
-	import Settings from '$lib/ui/controls/settings/Settings.svelte'
+	import Settings from '#lib/ui/controls/settings/Settings.svelte'
 
 	const coordinators: CurrentCoordinators = getContext('currentCoordinators')
 

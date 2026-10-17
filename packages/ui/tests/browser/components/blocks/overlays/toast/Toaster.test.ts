@@ -1,8 +1,8 @@
-import type {UiStatus} from '$types'
+import type {UiStatus} from '#types'
 
 import {describe, it, expect, beforeEach} from 'vitest'
 import {page} from 'vitest/browser'
-import actor from '$lib/components/blocks/overlays/Toast/actor.svelte'
+import actor from '#lib/components/blocks/overlays/Toast/actor.svelte.js'
 import ToastTest from './ToastTest.svelte'
 
 const toast = {

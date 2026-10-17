@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type {InputProps, ButtonProps} from '$types'
-	import styleHelper from '$lib/utils/styles'
-	import Button from '$lib/components/blocks/buttons/Button.svelte'
-	import Feedback from '$lib/components/blocks/inputs/InputFeedback.svelte'
+	import type {InputProps, ButtonProps} from '#types'
+	import styleHelper from '#lib/utils/styles.js'
+	import Button from '#lib/components/blocks/buttons/Button.svelte'
+	import Feedback from '#lib/components/blocks/inputs/InputFeedback.svelte'
 
 	let {
 		id,

@@ -8,7 +8,7 @@ import type {
 	UiLayoutProps,
 	CookiePreferences,
 	UiLayout,
-} from '$types'
+} from '#types'
 
 export type ProseProps = {
 	title: string
@@ -37,6 +37,7 @@ export type PageProps = {
 	prefix?: string // Customize the HTML document title (app name, or specific name for printed documents)
 	text?: string
 	header?: SidebarLayoutProps
+	layout?: UiLayout
 	justify?: string
 	children?: Snippet
 }

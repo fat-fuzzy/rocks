@@ -1,13 +1,13 @@
 <script lang="ts">
-	import type {LayoutProps} from '$types'
-	import SkipLinks from '$lib/components/recipes/navs/SkipLinks.svelte'
-	import ToggleReveal from '$lib/components/recipes/toggle/ToggleReveal.svelte'
-	import ToggleTree from '$lib/components/recipes/toggle/ToggleTree.svelte'
+	import type {LayoutProps} from '#types'
+	import SkipLinks from '#lib/components/recipes/navs/SkipLinks.svelte'
+	import ToggleReveal from '#lib/components/recipes/toggle/ToggleReveal.svelte'
+	import ToggleTree from '#lib/components/recipes/toggle/ToggleTree.svelte'
 
 	let {size = 'md', sidenav, app, children}: LayoutProps = $props()
 	let pathname = $derived(sidenav?.pathname || '/')
-	let brightness = $derived(app?.settings?.brightness)
-	let contrast = $derived(app?.settings?.contrast)
+	let brightness = $derived(app?.brightness)
+	let contrast = $derived(app?.contrast)
 	let settingsClass = $derived(
 		brightness && contrast ? `settings:${brightness}:${contrast}` : '',
 	)

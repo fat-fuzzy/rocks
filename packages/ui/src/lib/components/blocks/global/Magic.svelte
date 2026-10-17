@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {MagicProps} from '$types'
+	import type {MagicProps} from '#types'
 	let {
 		id,
 		text,

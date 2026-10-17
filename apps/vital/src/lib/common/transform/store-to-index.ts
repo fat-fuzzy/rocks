@@ -4,7 +4,7 @@ import {
 	getBlockKey,
 	getPresetKey,
 	getTagKey,
-} from '$lib/common/format'
+} from '#lib/common/format.js'
 
 import type {
 	Block,
@@ -16,7 +16,7 @@ import type {
 	Section,
 	TagIndex,
 	TagGroup,
-} from '$types'
+} from '#types'
 
 export function buildDocIndex(store: DocStore): DocIndex {
 	const sections: Record<string, Section> = {}

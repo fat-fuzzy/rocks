@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Loading from '$lib/ui/Loading.svelte'
+	import Loading from '#lib/ui/Loading.svelte'
 	import type {UiColor} from '@fat-fuzzy/ui'
 
 	let {

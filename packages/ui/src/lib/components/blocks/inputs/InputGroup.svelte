@@ -4,13 +4,13 @@
 		FieldsetProps,
 		InputCheckProps,
 		InputRadioProps,
-	} from '$types'
+	} from '#types'
 
-	import styleHelper from '$lib/utils/styles'
-	import Fieldset from '$lib/components/blocks/inputs/Fieldset.svelte'
-	import InputRadio from '$lib/components/blocks/inputs/InputRadio.svelte'
-	import InputCheck from '$lib/components/blocks/inputs/InputCheck.svelte'
-	import Feedback from '$lib/components/blocks/inputs/InputFeedback.svelte'
+	import styleHelper from '#lib/utils/styles.js'
+	import Fieldset from '#lib/components/blocks/inputs/Fieldset.svelte'
+	import InputRadio from '#lib/components/blocks/inputs/InputRadio.svelte'
+	import InputCheck from '#lib/components/blocks/inputs/InputCheck.svelte'
+	import Feedback from '#lib/components/blocks/inputs/InputFeedback.svelte'
 
 	let {
 		id,

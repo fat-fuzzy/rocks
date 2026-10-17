@@ -9,11 +9,11 @@ import type {
 	TagGroup,
 	Slug,
 	NamespaceId,
-} from '$types'
+} from '#types'
 
 import {SvelteURLSearchParams} from 'svelte/reactivity'
 
-import {getPresetKey} from '$lib/common/format'
+import {getPresetKey} from '#lib/common/format.js'
 
 /**
  * CoordinatePresets class to manage access to stored presets

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {DocContentType, Slug} from '$types'
+	import type {DocContentType, Slug} from '#types'
 
 	let {
 		content_type,

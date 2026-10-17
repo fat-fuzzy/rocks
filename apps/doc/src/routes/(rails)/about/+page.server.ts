@@ -1,8 +1,8 @@
 import {error} from '@sveltejs/kit'
 
-import images from '$data/images'
-import pages from '$data/pages'
-import {commonActions} from '$lib/server/actions/page-actions'
+import images from '#data/images.js'
+import pages from '#data/pages.js'
+import {commonActions} from '#lib/server/actions/page-actions.js'
 
 const page = 'doc'
 const markdowns = await pages.fetchMarkdowns(page)
@@ -12,12 +12,12 @@ export const load = async ({parent}) => {
 	const imageSlug = '001-intro'
 
 	if (!markdowns?.length) {
-		error(404, {message: 'Not found'})
+		error(404, 'Not found')
 	}
 	const content = markdowns[0]
 
 	if (!content?.meta) {
-		error(404, {message: 'Not found'})
+		error(404, 'Not found')
 	}
 
 	try {

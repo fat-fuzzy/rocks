@@ -2,7 +2,7 @@ import type {
 	IStyleInputGroup,
 	StyleInputOptions,
 	StyleInputGroupOptions,
-} from '$types'
+} from '#types'
 import type {
 	UiAssetType,
 	UiContainer,

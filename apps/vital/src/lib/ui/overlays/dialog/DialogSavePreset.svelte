@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {ICoordinatePresets, Preset} from '$types'
+	import type {ICoordinatePresets, Preset} from '#types'
 	import type {
 		UiAssetType,
 		UiColor,
@@ -10,8 +10,8 @@
 
 	import ui from '@fat-fuzzy/ui'
 
-	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
-	import FormPreset from '$lib/ui/controls/preset/FormPreset.svelte'
+	import dialogActor from '#lib/ui/overlays/dialog/actor.svelte.js'
+	import FormPreset from '#lib/ui/controls/preset/FormPreset.svelte'
 
 	const {Button} = ui.blocks
 
@@ -57,10 +57,16 @@
 
 		dialogActor.show()
 	}
+
+	function handleSubmit() {
+		setTimeout(() => {
+			dialogActor.close()
+		}, 50)
+	}
 </script>
 
 {#snippet presetForm()}
-	<FormPreset {preset} {color} {cta} {coordPresets} />
+	<FormPreset {preset} {color} {cta} {coordPresets} onsubmit={handleSubmit} />
 {/snippet}
 
 <!-- FIXME: add tooltip -->

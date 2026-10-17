@@ -1,13 +1,14 @@
 <script lang="ts">
+	import type {Component} from 'svelte'
 	import {getContext} from 'svelte'
-	import {PlaybookActor} from '$lib/api/actor.svelte'
+	import {PlaybookActor} from '#lib/api/actor.svelte.js'
 
 	type Props = {
 		id?: string
 		name?: string
 		title: string
-		SpecifiedElement: any // TODO: fix types
-		props: any
+		SpecifiedElement: Component // TODO: fix types
+		props: object
 		formaction?: string
 		actionPath?: string
 		redirect?: string
@@ -41,10 +42,12 @@
 	let sideContent = 'ravioli'
 	let mainContent = 'text'
 	let layoutContent = 'ravioli:md variant:outline size:md surface:1:neutral'
-	let fixtures = $derived(playbookActor.getLayoutFixtures(SpecifiedElement))
+	let fixtures = $derived(
+		playbookActor.getLayoutFixtures(typeof SpecifiedElement),
+	)
 </script>
 
-{#snippet children(props, contentType: string)}
+{#snippet children(props: {[key: string]: string}, contentType: string)}
 	{#if contentType === 'text'}
 		<p class="ravioli:md surface:1:neutral">
 			{props.text}

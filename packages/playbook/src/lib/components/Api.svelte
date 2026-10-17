@@ -1,9 +1,9 @@
 <script lang="ts">
 	import type {Snippet} from 'svelte'
-	import type {Meta} from '$types'
+	import type {Meta} from '#types'
 
 	import {enhance} from '$app/forms'
-	import StyleFamily from '$lib/components/StyleFamily.svelte'
+	import StyleFamily from '#lib/components/StyleFamily.svelte'
 	import ui from '@fat-fuzzy/ui'
 
 	const {Button} = ui.blocks

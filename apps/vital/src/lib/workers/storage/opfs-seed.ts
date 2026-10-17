@@ -20,22 +20,24 @@ import type {
 	FrontmatterStructure,
 	OPFSTreeStructure,
 	NamespaceId,
-} from '$types'
+} from '#types'
 
 import {
 	isRecord,
 	isRawSection,
 	isRawPreset,
 	isSection,
-} from '$lib/common/transform/opfs-to-doc'
+} from '#lib/common/transform/raw-to-typed.js'
 
-import {seedDocToDoc} from '$lib/common/transform/seed-to-doc'
+import {migrate} from '#lib/common/migrate-schemas/engine.js'
+
+import {seedDocToDoc} from '#lib/common/transform/seed-to-doc.js'
 
 import {
 	parseSection,
 	parseBase,
 	parseStructure,
-} from '$lib/common/transform/parse-or-throw'
+} from '#lib/common/transform/parse-or-throw.js'
 
 import {
 	getBaseHandle,
@@ -45,9 +47,9 @@ import {
 	saveSectionToOPFS,
 	saveEntry,
 	getRootHandle,
-} from '$lib/workers/storage/opfs-tools'
+} from '#lib/workers/storage/opfs-tools.js'
 
-import {savePreset} from '$lib/workers/storage/opfs'
+import {savePreset} from '#lib/workers/storage/opfs.js'
 
 export async function isSeedComplete(options: {
 	root: NamespaceId
@@ -155,18 +157,29 @@ export async function seedRoot(options: {
 export async function seedBase(options: {
 	root: NamespaceId
 	base: FrontmatterBase
+	schemaVersion: number
 }): Promise<void> {
-	const {root, base} = options
+	const {root, base, schemaVersion} = options
 
 	if (await isSeedComplete({root, type: 'base'})) {
 		return
 	}
 
 	try {
-		const data = parseBase('OPFS Seed Base', base)
+		const migration = migrate(base, schemaVersion)
 
-		const directoryHandle = await getBaseHandle({root, create: true})
-		await saveEntry(directoryHandle, {name: 'base'}, data)
+		switch (migration.status) {
+			case 'migrated':
+			case 'synced':
+				{
+					const data = parseBase('OPFS Seed Base', migration.record)
+					const directoryHandle = await getBaseHandle({root, create: true})
+					await saveEntry(directoryHandle, {name: 'base'}, data)
+				}
+				break
+			default:
+				throw Error(`migration:${migration.status}`)
+		}
 	} catch (error) {
 		throw new Error('Error seeding doc base', {cause: error})
 	}
@@ -180,8 +193,9 @@ export async function seedBase(options: {
 export async function seedStructure(options: {
 	root: NamespaceId
 	structures: FrontmatterStructure[]
+	schemaVersion: number
 }): Promise<void> {
-	const {root, structures} = options
+	const {root, structures, schemaVersion} = options
 
 	if (await isSeedComplete({root, type: 'structure'})) {
 		return
@@ -191,8 +205,22 @@ export async function seedStructure(options: {
 		const toSeed = []
 
 		for (const structure of structures) {
-			const data = parseStructure('OPFS Seed Structure', structure)
-			toSeed.push(data)
+			const migration = migrate(structure, schemaVersion)
+
+			switch (migration.status) {
+				case 'migrated':
+				case 'synced':
+					{
+						const data = parseStructure('OPFS Seed Structure', migration.record)
+						toSeed.push(data)
+					}
+					break
+				case 'not-found':
+				case 'unversioned':
+					throw Error(`migration:${migration.status}`)
+				case 'unsupported':
+					throw Error(`migration:${migration.status}`)
+			}
 		}
 
 		const directoryHandle = await getStructureHandle({root, create: true})
@@ -210,17 +238,23 @@ export async function restoreFromBackup(options: {
 	presets: OPFSTreePreset
 	base: OPFSTreeBase
 	structure: OPFSTreeStructure
+	schemaVersion: number
 }): Promise<void> {
-	const {root, base} = options
+	const {root, base, schemaVersion} = options
+
+	if (await isSeedComplete({root, type: 'root'})) {
+		return
+	}
+
 	try {
-		await seedBase({root, base: base.content})
+		await seedBase({root, base: base.content, schemaVersion})
 
 		// FIXME: this is incomplete
-		await seedStructure({root, structures: options.structure.content.structure})
-
-		if (await isSeedComplete({root, type: 'root'})) {
-			return
-		}
+		await seedStructure({
+			root,
+			structures: options.structure.content.structure,
+			schemaVersion,
+		})
 
 		for (const [language, languageTree] of Object.entries(options.content)) {
 			if (!isRecord(languageTree)) continue
@@ -301,7 +335,11 @@ export async function restoreFromBackup(options: {
 			}
 		}
 	} catch (error) {
-		throw new Error('Error restoring from backup', {cause: error})
+		const message =
+			error instanceof Error && error.message
+				? error.message
+				: 'Error restoring from backup'
+		throw Error(message, {cause: error})
 	}
 	await markSeedComplete(root, 'root')
 }

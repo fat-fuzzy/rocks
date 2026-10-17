@@ -5,7 +5,7 @@ import type {
 	ModuleImportInterface,
 	SeedMeta,
 	SeedSection,
-} from '$types'
+} from '#types'
 
 /**
  * Load data from markdown files as JSON

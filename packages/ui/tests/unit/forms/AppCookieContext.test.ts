@@ -1,6 +1,6 @@
 import {describe, it, expect} from 'vitest'
-import AppContext from '$lib/forms/AppContext'
-import constants from '$lib/types/constants'
+import AppContext from '#lib/forms/AppContext.js'
+import constants from '#lib/types/constants.js'
 const {DEFAULT_COOKIES_PREFERENCES} = constants
 
 describe(`AppContext - a class that updates an app's ViewingPreferences based on FormData`, () => {

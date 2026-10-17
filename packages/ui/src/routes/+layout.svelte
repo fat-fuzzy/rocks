@@ -1,12 +1,12 @@
 <script lang="ts">
 	import '@fat-fuzzy/style/css'
-	import ToggleReveal from '$lib/components/recipes/toggle/ToggleReveal.svelte'
+	import ToggleReveal from '#lib/components/recipes/toggle/ToggleReveal.svelte'
 	import type {Snippet} from 'svelte'
 
 	import {resolve} from '$app/paths'
 	import {page} from '$app/state'
 
-	import navConfig from '$config/navigation'
+	import navConfig from '#config/navigation.js'
 	const {links} = navConfig
 
 	type Props = {children: Snippet}
@@ -49,7 +49,7 @@
 					? 'page'
 					: undefined}
 			>
-				<a data-sveltekit-preload-data href={resolve(`/${slug}`)}>
+				<a data-sveltekit-preload-data href={`/${slug}`}>
 					{label}
 				</a>
 			</li>

@@ -1,7 +1,6 @@
-import type {Handle} from '@sveltejs/kit'
-
+import type {Handle} from '@sveltejs/kit/hooks'
 import ui from '@fat-fuzzy/ui'
-import uiStateService from '$lib/server/services/session'
+import uiStateService from '#lib/server/services/session.js'
 
 const {APP_PREFIX} = ui.constants
 
@@ -9,6 +8,7 @@ export const setStyles =
 	(): Handle =>
 	async ({event, resolve}) => {
 		const {cookies} = event
+
 		// Load all UI states into locals
 		const preferences = uiStateService.getUiState({
 			cookies,

@@ -1,11 +1,13 @@
-import type {ToggleProps, FuzzyPayload, FuzzySystem} from '$types'
+import type {ToggleProps, FuzzyPayload, FuzzySystem} from '#types'
 
 class ToggleSystem implements FuzzySystem<ToggleProps> {
 	mode = 'radio'
-	state: Map<string, FuzzyPayload> = $state(new Map())
-	groups: Map<string, Map<string, FuzzyPayload>> = $state(new Map())
+	state: Map<string, FuzzyPayload> | undefined = $state()
+	groups: Map<string, Map<string, FuzzyPayload>> | undefined = $state()
 	public reset() {
-		this.state = new Map()
+		// eslint-disable-next-line
+		this.state = new Map() // TODO: Figure out why SvelteMap breaks ui
+		// eslint-disable-next-line
 		this.groups = new Map()
 		this.mode = 'radio'
 	}
@@ -15,8 +17,10 @@ class ToggleSystem implements FuzzySystem<ToggleProps> {
 			this.mode = mode
 		}
 
+		// eslint-disable-next-line
 		const gridMenuItems = items?.reduce(this.buildGroups, new Map())
 
+		// eslint-disable-next-line
 		this.groups = new Map(
 			Array.from(gridMenuItems.entries()).map(([group, items]) => {
 				const states = this.buildStates(items)
@@ -65,6 +69,7 @@ class ToggleSystem implements FuzzySystem<ToggleProps> {
 	 * @returns a map of toggle menu items states
 	 */
 	buildStates(items: ToggleProps[]): Map<string, FuzzyPayload> {
+		// eslint-disable-next-line
 		return new Map(
 			items.map((item: ToggleProps) => [
 				item.id,
@@ -74,6 +79,10 @@ class ToggleSystem implements FuzzySystem<ToggleProps> {
 	}
 
 	public getState(): FuzzyPayload[] {
+		if (!this.state) {
+			return []
+		}
+
 		const selected: FuzzyPayload[] = []
 		this.state.forEach((item) => {
 			if (item.state === 'active') {
@@ -85,6 +94,10 @@ class ToggleSystem implements FuzzySystem<ToggleProps> {
 	}
 
 	public setState(payload: FuzzyPayload): void {
+		if (!this.state) {
+			return
+		}
+
 		const itemToUpdate = this.state.get(payload.id)
 
 		if (!itemToUpdate) {
@@ -99,6 +112,10 @@ class ToggleSystem implements FuzzySystem<ToggleProps> {
 			this.setState(payload)
 
 			if (this.mode === 'radio' && payload.state === 'active') {
+				if (!this.state) {
+					return
+				}
+
 				this.state.forEach((value, key) => {
 					if (
 						key !== payload.name &&

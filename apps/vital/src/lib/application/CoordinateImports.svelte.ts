@@ -7,11 +7,11 @@ import type {
 	ImportStatus,
 	IAggregateDocs,
 	NamespaceId,
-} from '$types'
+} from '#types'
 import type {UiStatus} from '@fat-fuzzy/ui'
 
-import {guardedExport} from '$lib/common/download'
-import {STATUS_LABEL, STATUS_FEEDBACK} from '$lib/intl/l10n'
+import {guardedExport} from '#lib/common/download.js'
+import {STATUS_LABEL, STATUS_FEEDBACK} from '#lib/intl/l10n.js'
 
 /**
  * CoordinateImports class to manage data transfer operations into storage
@@ -126,8 +126,9 @@ export default class CoordinateImports implements ICoordinateImports {
 			await this.aggDataLifecycle.importFromJson(jsonString)
 
 			this.status = 'done'
-		} catch {
+		} catch (error) {
 			this.status = 'error'
+			throw error
 		} finally {
 			this.loading = false
 		}
@@ -144,7 +145,7 @@ export default class CoordinateImports implements ICoordinateImports {
 			this.status = 'backing-up'
 			// 1. Back up current content to filesystem
 			const data = await this.aggDataLifecycle.buildJsonForExport()
-			await guardedExport({data})
+			await guardedExport({root: this.getRoot(), data})
 		}
 
 		// 2. Delete existing storage: the import replaces OPFS content

@@ -1,5 +1,5 @@
-import {DOC_LANGUAGE, DOC_FORMAT, SCHEMA_VERSION} from '$config/setup'
-import type {DocMeta, FrontmatterBase, FrontmatterStructure} from '$types'
+import {DOC_LANGUAGE, DOC_FORMAT, SCHEMA_VERSION} from '#config/setup.js'
+import type {DocMeta, FrontmatterBase, FrontmatterStructure} from '#types'
 
 export const BASE_IDS = [crypto.randomUUID(), crypto.randomUUID()]
 export const STRUCTURE_IDS = [crypto.randomUUID(), crypto.randomUUID()]
@@ -30,7 +30,7 @@ export const RAW_BASE: {content: FrontmatterBase; meta: DocMeta} = {
 
 export const STRUCTURE: FrontmatterStructure = {
 	schema_version: SCHEMA_VERSION,
-	seed_type: 'backup',
+	seed_type: 'structure',
 	name: 'doc-long',
 	path: {
 		filename: 'base',

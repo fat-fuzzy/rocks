@@ -3,14 +3,15 @@ import type {
 	FrontmatterSeed,
 	FrontmatterStructure,
 	NamespaceId,
-} from '$types'
+	VitalError,
+} from '#types'
 
 export interface IAggregateDataLifecycle {
 	readonly root: NamespaceId
 	readonly seeded: {date_seed?: string; source?: string}
 	readonly export: {type: string; meta: Record<string, unknown>; data: string}
 	readonly import: string
-
+	readonly error: VitalError | undefined
 	init(
 		frontmatter: FrontmatterSeed,
 		seed?: {content: SeedDoc[]; structures: FrontmatterStructure[]},

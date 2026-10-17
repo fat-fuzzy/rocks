@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {UiColor} from '@fat-fuzzy/ui'
-	import type {ActionCrud, ICoordinateMetadata} from '$types'
+	import type {ActionCrud, ICoordinateMetadata} from '#types'
 
 	import {onDestroy, onMount} from 'svelte'
 	import {SvelteURL} from 'svelte/reactivity'
@@ -8,9 +8,9 @@
 
 	import {page} from '$app/state'
 
-	import {FormFormatValidator} from '$lib/common/validate'
-	import dialogActor from '$lib/ui/overlays/dialog/actor.svelte'
-	import {DOC_FORMAT} from '$config/setup'
+	import {FormFormatValidator} from '#lib/common/validate.js'
+	import dialogActor from '#lib/ui/overlays/dialog/actor.svelte.js'
+	import {DOC_FORMAT} from '#config/setup.js'
 
 	const {Button, Input, Feedback} = ui.blocks
 	const {FormValidator} = ui.utils
@@ -44,6 +44,7 @@
 						: 'Submit',
 	)
 	let formats = $derived(coordMetadata.getFormats())
+	let errorMessage = $state('')
 	let errorFormatExists = $state(false)
 	let newFormat = $derived(format)
 	let sourceFormat: string | undefined = $state()
@@ -87,34 +88,35 @@
 	}
 
 	async function saveFormat() {
-		if (validator.formHasErrors()) {
+		if (validator.formHasErrors() || errorFormatExists) {
 			return
 		}
+		let url = new SvelteURL(page.url.href)
 
-		let fromFormat = DOC_FORMAT
-		if (sourceFormat) {
-			fromFormat = sourceFormat
+		try {
+			url.searchParams.delete('format')
+			url.searchParams.append('format', newFormat)
+
+			coordMetadata.addFormat({
+				name: newFormat,
+				sourceFormat: sourceFormat ?? DOC_FORMAT,
+			})
+		} catch (error) {
+			errorMessage =
+				error instanceof Error && error.message
+					? error.message
+					: 'Adding format failed'
+		} finally {
+			dialogActor.close()
+			window.location.href = url.href
 		}
-
-		coordMetadata.addFormat({
-			name: newFormat,
-			sourceFormat: fromFormat,
-		})
-
-		dialogActor.close()
-
-		let url = new SvelteURL(page.url)
-		url.searchParams.delete('format')
-		url.searchParams.append('format', newFormat)
-
-		window.location.href = url.href
 	}
 
 	function deleteFormat() {
 		// TODO
 		// dialogActor.close()
 		// if (page.url.searchParams.get('format') === newFormat) {
-		// 	let url = new SvelteURL(page.url)
+		// 	let url = new SvelteURL(page.url.href)
 		// 	url.searchParams.delete('format')
 		// 	window.location.href = url.href
 		// }
@@ -170,6 +172,19 @@
 				hint={sourceFormatHint}
 				errors={validator.getFieldErrors('name')}
 			/>
+			{#if errorMessage}
+				<Feedback
+					status="error"
+					context="prose"
+					variant="bare"
+					size="sm"
+					asset="none"
+					surfaceLightness={0}
+				>
+					<p>{errorMessage}</p>
+				</Feedback>
+			{/if}
+
 			{#if errorFormatExists}
 				<Feedback
 					status="error"

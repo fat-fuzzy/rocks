@@ -1,1 +1,1 @@
-export type * from '$lib/types/components'
+export type * from '#lib/types/components.js'

@@ -15,13 +15,14 @@
 		"format": "prettier --write --ignore-path=../../.prettierignore .",
 		"lint": "prettier --check . && eslint .",
 		"test": "pnpm test:unit",
+		"test:dev": "vitest",
 		"test:unit": "vitest run",
 		"test:types": "vitest run --typecheck",
 		"test:coverage": "vitest --ui",
+		"test:report": "vitest run --reporter=verbose",
 		"test:e2e": "NODE_ENV=test playwright test",
-		"test:ui": "NODE_ENV=test playwright test --ui",
-		"test:dev:unit": "vitest",
-		"test:report": "NODE_ENV=test playwright test --reporter=html"
+		"test:e2e:ui": "NODE_ENV=test playwright test --ui",
+		"test:e2e:report": "NODE_ENV=test playwright test --reporter=html"
 	},
 	"main": "./dist/index.js",
 	"files": [
@@ -37,7 +38,10 @@
 	"type": "module",
 	"imports": {
 		"#lib": "./src/lib/index.js",
-		"#lib/*": "./src/lib/*"
+		"#lib/*": "./src/lib/*",
+		"#tests": "./tests/index.js",
+		"#tests/*": "./tests/*",
+		"#types": "./src/lib/types/index.ts"
 	},
 	"exports": {
 		".": {
@@ -67,8 +71,8 @@
 		"@fat-fuzzy/style": "workspace:*",
 		"@fat-fuzzy/ui": "workspace:*",
 		"@playwright/test": "1.61.1",
-		"@sveltejs/adapter-auto": "8.0.0-next.4",
-		"@sveltejs/kit": "3.0.0-next.27",
+		"@sveltejs/adapter-auto": "8.0.0",
+		"@sveltejs/kit": "3.0.0",
 		"@sveltejs/package": "3.0.0-next.8",
 		"@sveltejs/vite-plugin-svelte": "7.3.0",
 		"@vitest/coverage-v8": "5.0.1",

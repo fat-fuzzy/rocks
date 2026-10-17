@@ -2,7 +2,7 @@
 	import {page} from '$app/state'
 
 	import gfx from '@fat-fuzzy/gfx'
-	import Sketch from '$lib/components/sketch/Sketch.svelte'
+	import Sketch from '#lib/components/sketch/Sketch.svelte'
 
 	let scene = $derived(
 		gfx.gl.sketches.learning.find((s) => s.meta.slug === page.params.slug),

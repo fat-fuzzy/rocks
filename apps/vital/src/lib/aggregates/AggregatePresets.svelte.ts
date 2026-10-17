@@ -8,16 +8,18 @@ import type {
 	OPFSTreePreset,
 	IAggregatePresets,
 	NamespaceId,
-} from '$types'
+	VitalError,
+} from '#types'
 
-import WorkerBridge from '$lib/workers/worker-bridge'
-import {getBridge} from '$lib/aggregates/bridge'
+import WorkerBridge from '#lib/workers/worker-bridge.js'
+import {getBridge} from '#lib/aggregates/bridge.js'
 
-import {getPresetKey} from '$lib/common/format'
+import {getPresetKey} from '#lib/common/format.js'
 
-import {opfsPresetTreeToPresetStore} from '$lib/common/transform/opfs-to-doc'
+import {opfsPresetTreeToPresetStore} from '#lib/common/transform/opfs-to-doc.js'
+import {handleDataTransformError} from '#lib/common/errors/migration.js'
 
-import {buildPresetIndex} from '$lib/common/transform/store-to-index'
+import {buildPresetIndex} from '#lib/common/transform/store-to-index.js'
 
 /**
  * AggregatePresets class to manage access to stored presets
@@ -29,7 +31,7 @@ export default class AggregatePresets implements IAggregatePresets {
 	bridge: WorkerBridge | undefined = $state()
 	seeded: {date_seed?: string; source?: string} = $state({})
 	loading = $state(false)
-	error = $state(false)
+	error: VitalError | undefined = $state()
 	presets: PresetStore = $state({})
 	presetIndex: PresetIndex = $derived(buildPresetIndex(this.presets))
 
@@ -40,12 +42,15 @@ export default class AggregatePresets implements IAggregatePresets {
 
 	async init() {
 		this.bridge = getBridge()
+		this.reset()
+
 		try {
 			this.loading = true
 
 			await this.getAllPresets()
-		} catch {
-			this.error = true
+		} catch (error) {
+			const status = (error as Error).message
+			this.error = handleDataTransformError('load-presets', status, {})
 		} finally {
 			this.loading = false
 		}
@@ -53,6 +58,7 @@ export default class AggregatePresets implements IAggregatePresets {
 
 	reset() {
 		this.presets = {}
+		this.error = undefined
 	}
 
 	/**

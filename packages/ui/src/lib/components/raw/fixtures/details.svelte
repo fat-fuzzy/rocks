@@ -21,15 +21,15 @@
 		children?: Snippet
 	} = $props()
 
-	let zoneClass = zone ? zone : ''
-	let layoutClass = layout ? `l:${layout}` : ''
-	let surfaceClass = surface
-		? `surface:${surface}:${theme}`
-		: `surface:1:${theme}`
-	let gareClass = gare ? `gare:${gare}` : ''
-	let gareControl = gare ? 'gare-control' : ''
-	let gareDepot = gare ? 'gare-depot' : ''
-	let heightClass = height ? `height:${height}` : ''
+	let zoneClass = $derived(zone ? zone : '')
+	let layoutClass = $derived(layout ? `l:${layout}` : '')
+	let surfaceClass = $derived(
+		surface ? `surface:${surface}:${theme}` : `surface:1:${theme}`,
+	)
+	let gareClass = $derived(gare ? `gare:${gare}` : '')
+	let gareControl = $derived(gare ? 'gare-control' : '')
+	let gareDepot = $derived(gare ? 'gare-depot' : '')
+	let heightClass = $derived(height ? `height:${height}` : '')
 </script>
 
 <details
@@ -41,7 +41,7 @@
 			{@render children()}
 		{:else}
 			<ol class="unstyled">
-				{#each Array(20) as _, i}
+				{#each Array(20), i (i)}
 					<li class="raviolink">Item {i + 1}</li>
 				{/each}
 			</ol>

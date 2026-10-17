@@ -4,10 +4,10 @@ import {
 	sortByNameDesc,
 	sortByRankAsc,
 	sortByRankDesc,
-} from '$lib/common/sort'
+} from '#lib/common/sort.js'
 
-import {SEED_SECTIONS} from '$tests/fixtures/seed'
-import {SECTIONS} from '$tests/fixtures/doc'
+import {SEED_SECTIONS} from '#tests/fixtures/seed.js'
+import {SECTIONS} from '#tests/fixtures/doc.js'
 
 describe('sort.ts - sorting utilities', () => {
 	test('sortByNameAsc', () => {

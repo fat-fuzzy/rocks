@@ -1,12 +1,12 @@
 import {schemas} from '@fat-fuzzy/validation'
 import {defineDefinitions} from '../index.js'
 import {
-	VERSION_PATTERN,
 	SLUG_PATTERN,
 	LANGUAGE_PATTERN,
 	TITLE_PATTERN,
 	PATH_PATTERN,
 	DATE_STRING_PATTERN,
+	QUERY_STRING_PATTERN,
 } from '../patterns.js'
 
 import EnumsSchema from './Enums.schema.js'
@@ -24,8 +24,7 @@ const BaseSchema = defineDefinitions({
 	...externalBase,
 	...EnumsSchema,
 	schemaVersion: {
-		type: 'string',
-		pattern: VERSION_PATTERN,
+		type: 'number',
 	},
 	slug: {
 		type: 'string',
@@ -58,17 +57,10 @@ const BaseSchema = defineDefinitions({
 	},
 	query: {
 		type: 'string',
-		// pattern: TODO
+		pattern: QUERY_STRING_PATTERN,
+		minLength: 1,
+		maxLength: 10000, // arbitrary for now, adjust as necessary
 	},
-	// TODO: fix this
-	// CHECK AJV output error:
-
-	// Generation failed: [@fat-fuzzy/validation] Unreplaced require() statement in compiled validator code.
-
-	// date_exported: {
-	// 	$ref: '#/definitions/date_time', // use ISO string, not Date object
-	// },
-	// TMP TODO: remove
 	dateString: {
 		type: 'string',
 		pattern: DATE_STRING_PATTERN,

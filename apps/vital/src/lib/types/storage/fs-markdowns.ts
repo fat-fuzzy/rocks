@@ -5,7 +5,7 @@ import type {
 	DocLanguage,
 	FrontmatterBase,
 	FrontmatterStructure,
-} from '$types'
+} from '#types'
 
 export interface ModuleImportInterface {
 	default: Component | string

@@ -1,6 +1,6 @@
 import {error} from '@sveltejs/kit'
-import pages from '$data/pages'
-import {commonActions} from '$lib/server/actions/page-actions'
+import pages from '#data/pages.js'
+import {commonActions} from '#lib/server/actions/page-actions.js'
 
 const page = 'play'
 
@@ -9,13 +9,13 @@ export const load = async ({parent}) => {
 	const markdowns = await pages.fetchMarkdowns(page)
 
 	if (!markdowns?.length) {
-		error(404, {message: 'Not found'})
+		error(404, 'Not found')
 	}
 
 	const content = markdowns[0]
 
 	if (!content?.meta) {
-		error(404, {message: 'Not found'})
+		error(404, 'Not found')
 	}
 
 	return {

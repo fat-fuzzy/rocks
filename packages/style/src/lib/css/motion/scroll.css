@@ -1,11 +1,21 @@
 /* Scroll container */
 [class*='scroll:'] {
-	--thumb: oklch(var(--lightness-surface-3) var(--chroma-surface-3) var(--hue));
 	--track: var(--shade);
 
 	scrollbar-gutter: stable;
 	scrollbar-width: thin;
+}
+
+[class*='scroll:']:not([class*='bg:']) {
+	--thumb: oklch(var(--lightness-surface-3) var(--chroma-surface-3) var(--hue));
+	--track: var(--shade);
 	scrollbar-color: var(--thumb) var(--track);
+}
+
+[class*='scroll:'][class*=':neutral'] {
+	--thumb: oklch(
+		var(--lightness-surface-3) var(--color-chroma-neutral) var(--hue)
+	);
 }
 
 [class*='scroll:'].compact {
