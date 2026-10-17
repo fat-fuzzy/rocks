@@ -1,7 +1,7 @@
 {
 	"name": "@fat-fuzzy/cz-changelog",
 	"package": "@fat-fuzzy/cz-changelog",
-	"version": "0.1.14",
+	"version": "0.1.15",
 	"description": "Commitizen adapter ADAPTED FROM the conventional-changelog format.",
 	"main": "index.js",
 	"scripts": {
@@ -22,8 +22,7 @@
 	"author": "Jim Cummins <jimthedev@gmail.com>",
 	"license": "MIT",
 	"peerDependencies": {
-		"@eslint/compat": "^1.0.0",
-		"handlebars": ">=4.7.10"
+		"@eslint/compat": "^1.0.0"
 	},
 	"dependencies": {
 		"chalk": "4.1.2",
