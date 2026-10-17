@@ -74,7 +74,7 @@
 		"hast-util-to-html": "9.0.5",
 		"hast-util-to-mdast": "10.1.2",
 		"husky": "9.1.7",
-		"json-schema-to-typescript": "15.0.4",
+		"json-schema-to-typescript": "16.0.0",
 		"mdast-util-to-hast": "13.2.1",
 		"mdast-util-to-markdown": "2.1.2",
 		"mdsvex": "0.12.7",
