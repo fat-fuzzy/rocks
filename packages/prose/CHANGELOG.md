@@ -1,5 +1,11 @@
 # @fat-fuzzy/prose
 
+## 0.1.53
+
+### Patch Changes
+
+- 20ea56f: Migrate to sk 3, update dependencies, update schemas
+
 ## 0.1.52
 
 ### Patch Changes
