@@ -1,5 +1,11 @@
 # @fat-fuzzy/cz-changelog
 
+## 0.1.13
+
+### Patch Changes
+
+- cd21098: Update handlebars
+
 ## 0.1.12
 
 ### Patch Changes
