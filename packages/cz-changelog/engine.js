@@ -47,7 +47,7 @@ module.exports = function (options) {
 	var choices = Object.entries(types).map((entry) => {
 		return {
 			name: (entry[0] + ':').padEnd(length) + ' ' + entry[1].description,
-			value: entry[1].title,
+			value: entry[0],
 		}
 	})
 
