@@ -1,5 +1,11 @@
 # @fat-fuzzy/validation
 
+## 0.1.32
+
+### Patch Changes
+
+- 327ebf7: Enable granular imports / exports
+
 ## 0.1.31
 
 ### Patch Changes
