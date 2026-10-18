@@ -1,5 +1,11 @@
 # @fat-fuzzy/playbook
 
+## 0.1.47
+
+### Patch Changes
+
+- 327ebf7: Enable granular imports / exports
+
 ## 0.1.46
 
 ### Patch Changes
