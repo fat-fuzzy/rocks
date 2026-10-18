@@ -3,7 +3,16 @@
 	import type {Meta} from '#types'
 
 	import {getContext} from 'svelte'
-	import ui from '@fat-fuzzy/ui'
+	import {
+		PageRails,
+		Magic,
+		EscapeHtml,
+		tokens,
+		blocks,
+		layouts,
+		recipes,
+		raw,
+	} from '@fat-fuzzy/ui'
 
 	import {PlaybookActor} from '#lib/api/actor.svelte.js'
 	import {getPlaybookTab, getDocTab} from '#lib/props/index.js'
@@ -15,11 +24,6 @@
 	import Raw from './Raw.svelte'
 	import PropsDemo from './PropsDemo.svelte'
 	import PropsDoc from './PropsDoc.svelte'
-
-	const {PageRails} = ui.content
-	const {Magic} = ui.blocks
-
-	const {EscapeHtml} = ui.headless
 
 	type Props = {
 		category: string
@@ -60,11 +64,11 @@
 
 	// eslint-disable-next-line
 	let categoryItems: {[name: string]: any} = {
-		tokens: ui.tokens,
-		blocks: ui.blocks,
-		layouts: ui.layouts,
-		recipes: ui.recipes,
-		raw: ui.raw,
+		tokens: tokens,
+		blocks: blocks,
+		layouts: layouts,
+		recipes: recipes,
+		raw: raw,
 	}
 
 	// eslint-disable-next-line

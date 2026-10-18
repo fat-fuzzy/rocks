@@ -3,7 +3,14 @@
 	import type {AreaProps, UiLayout} from '@fat-fuzzy/ui'
 
 	import {setContext, onMount, onDestroy} from 'svelte'
-	import ui from '@fat-fuzzy/ui'
+	import {
+		ToggleTree,
+		ToggleReveal,
+		ToggleSettings,
+		SkipLinks,
+		LayoutGrid,
+		Magic,
+	} from '@fat-fuzzy/ui'
 
 	import {page} from '$app/state'
 	// @ts-expect-error types not used for css
@@ -19,11 +26,6 @@
 		createCompareCoords,
 	} from '#lib/application/container.js'
 	import Dialog from '#lib/ui/overlays/dialog/Dialog.svelte'
-
-	const {ToggleTree, ToggleReveal, ToggleSettings} = ui.drafts
-	const {SkipLinks} = ui.recipes
-	const {LayoutGrid} = ui.content
-	const {Magic} = ui.blocks
 
 	let {
 		children,

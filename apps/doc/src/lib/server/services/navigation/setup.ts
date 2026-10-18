@@ -1,17 +1,17 @@
 import type {NavItem, Markdown} from '#types'
 import type {UiSize} from '@fat-fuzzy/ui'
 
-import ui from '@fat-fuzzy/ui'
+import {tokens, blocks, layouts, recipes, raw} from '@fat-fuzzy/ui'
 
 // TODO: move to utils / clean
 function sortAsc(a: string | number, b: string | number) {
 	return a < b ? -1 : b < a ? 1 : 0
 }
-const tokenNames = Object.keys(ui.tokens).sort(sortAsc)
-const blockNames = Object.keys(ui.blocks).sort(sortAsc)
-const layoutNames = Object.keys(ui.layouts).sort(sortAsc)
-const recipeNames = Object.keys(ui.recipes).sort(sortAsc)
-const rawNames = Object.keys(ui.raw).sort(sortAsc)
+const tokenNames = Object.keys(tokens).sort(sortAsc)
+const blockNames = Object.keys(blocks).sort(sortAsc)
+const layoutNames = Object.keys(layouts).sort(sortAsc)
+const recipeNames = Object.keys(recipes).sort(sortAsc)
+const rawNames = Object.keys(raw).sort(sortAsc)
 
 const navBase = {
 	id: 'sidebar',

@@ -13,15 +13,12 @@
 	} from '#types'
 
 	import {onDestroy, onMount} from 'svelte'
-	import ui from '@fat-fuzzy/ui'
+	import {Button, Input, Feedback, FormValidator} from '@fat-fuzzy/ui'
 
 	import {FormBlockValidator} from '#lib/common/validate.js'
 	import {applyTags} from '#lib/common/tags.js'
 	import dialogActor from '#lib/ui/overlays/dialog/actor.svelte.js'
 	import SelectTags from '#lib/ui/controls/tags/SelectTags.svelte'
-
-	const {Button, Input, Feedback} = ui.blocks
-	const {FormValidator} = ui.utils
 
 	interface Props {
 		block?: Block

@@ -35,6 +35,7 @@
 		"#lib/*": "./src/lib/*",
 		"#tests": "./tests/index.js",
 		"#tests/*": "./tests/*",
+		"#config/*": "./src/lib/config/*",
 		"#types": "./src/lib/types/index.ts"
 	},
 	"exports": {

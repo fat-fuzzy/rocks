@@ -2,12 +2,10 @@
 	import type {InputProps, UiColor, UiSurface} from '@fat-fuzzy/ui'
 	import type {ICoordinateExports, ICoordinateImports} from '#types'
 
-	import ui from '@fat-fuzzy/ui'
+	import {Button, InputGroup, Feedback} from '@fat-fuzzy/ui'
 	import {page} from '$app/state'
 
 	import Export from '#lib/ui/controls/data/Export.svelte'
-
-	const {Button, InputGroup, Feedback} = ui.blocks
 
 	import {DEFAULT_STRUCTURES, DEFAULT_CONTENT} from '#data/doc/cv-config.js'
 

@@ -1,8 +1,9 @@
 import type {Handle} from '@sveltejs/kit/hooks'
-import ui from '@fat-fuzzy/ui'
+
+import config from '#config/setup.js'
 import uiStateService from '#lib/server/services/session.js'
 
-const {APP_PREFIX} = ui.constants
+const {APP_PREFIX} = config
 
 export const setStyles =
 	(): Handle =>

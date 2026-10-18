@@ -1,11 +1,9 @@
 <script lang="ts">
 	import type {Block} from '#types'
 
-	import ui from '@fat-fuzzy/ui'
+	import {EscapeHtml} from '@fat-fuzzy/ui'
 
 	import {checkTags} from '#lib/common/tags.js'
-
-	const {EscapeHtml} = ui.headless
 
 	let {
 		name,

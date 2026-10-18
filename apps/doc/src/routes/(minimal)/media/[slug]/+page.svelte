@@ -1,15 +1,13 @@
 <script lang="ts">
 	import {page} from '$app/state'
-	import ui from '@fat-fuzzy/ui'
-
-	const {Picture, Zoomer} = ui.drafts
-	const {Head} = ui.headless
-	const {Sidebar} = ui.layouts
+	import {Picture, Zoomer, Head, Sidebar} from '@fat-fuzzy/ui'
 
 	let stage: boolean | undefined = $state(undefined)
 	let media = $derived(page.data)
 	let title = $derived(media.title ?? '')
-	let description = $derived(media.description ?? '')
+	let description = $derived(
+		media.description ?? `Details page for media: ${title}`,
+	)
 	let frameclass = $derived(
 		media.height < media.width
 			? 'maki:block:2xl l:flex justify:center align:start'
@@ -17,9 +15,9 @@
 	)
 </script>
 
-<Head {title} description={`Details page for media: ${title}`} />
+<Head {title} {description} />
 
-<Sidebar {title} {description} size="md">
+<Sidebar {title} size="md">
 	{#snippet side()}
 		<div class="l:stack:xs l:taco:md maki:block">
 			<button

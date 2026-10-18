@@ -3,10 +3,8 @@
 	import type {PlayerProps, PlayerEvent} from '#types'
 	import {onMount} from 'svelte'
 
-	import ui from '@fat-fuzzy/ui'
+	import {Button, Switch} from '@fat-fuzzy/ui'
 	import actor from './actor.svelte'
-
-	const {Button, Switch} = ui.blocks
 
 	let {
 		id = 'player',

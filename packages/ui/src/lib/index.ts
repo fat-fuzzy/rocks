@@ -10,6 +10,10 @@ import Head from '#lib/components/blocks/global/Head.svelte'
 import Color from '#lib/components/tokens/Color.svelte'
 import Typography from '#lib/components/tokens/Typography.svelte'
 
+export {Head}
+export {Color}
+export {Typography}
+
 /**
  * Block components
  */
@@ -29,6 +33,21 @@ import InputRange from '#lib/components/blocks/inputs/InputRange.svelte'
 import InputSidecar from '#lib/components/blocks/inputs/InputSidecar.svelte'
 import InputFile from '#lib/components/blocks/inputs/InputFile.svelte'
 
+export {Button}
+export {Expand}
+export {Switch}
+export {Toggle}
+export {Feedback}
+export {EscapeHtml}
+export {Popover}
+export {Input}
+export {InputCheck}
+export {InputRadio}
+export {InputGroup}
+export {InputRange}
+export {InputSidecar}
+export {InputFile}
+
 /**
  * Layout components
  */
@@ -36,6 +55,11 @@ import Burrito from '#lib/components/layouts/Burrito.svelte'
 import Sidebar from '#lib/components/layouts/Sidebar.svelte'
 import Stack from '#lib/components/layouts/Stack.svelte'
 import Switcher from '#lib/components/layouts/Switcher.svelte'
+
+export {Burrito}
+export {Sidebar}
+export {Stack}
+export {Switcher}
 
 /**
  * Recipes - Base
@@ -48,6 +72,13 @@ import Nav from '#lib/components/recipes/navs/Nav.svelte'
 import SkipLinks from '#lib/components/recipes/navs/SkipLinks.svelte'
 import Breadcrumbs from '#lib/components/recipes/navs/Breadcrumbs.svelte'
 
+export {ButtonMenu}
+export {ToggleMenu}
+export {SignUp}
+export {Nav}
+export {SkipLinks}
+export {Breadcrumbs}
+
 /**
  * Recipes - Content
  */
@@ -55,6 +86,11 @@ import LayoutGrid from '#lib/components/recipes/grid/LayoutGrid.svelte'
 import LayoutSidebar from '#lib/components/recipes/content/LayoutSidebar.svelte'
 import PageMain from '#lib/components/recipes/content/PageMain.svelte'
 import PageRails from '#lib/components/recipes/grid/PageRails.svelte'
+
+export {LayoutGrid}
+export {LayoutSidebar}
+export {PageMain}
+export {PageRails}
 /**
  * Raw - CSS Layout templates: use as guides, not as drop-in components
  */
@@ -66,6 +102,15 @@ import CSSTgv from '#lib/components/raw/css-grid-tgv.svelte'
 import CSSTram from '#lib/components/raw/css-grid-tram.svelte'
 import CSSVoyager from '#lib/components/raw/css-grid-voyager.svelte'
 import CSSUrbanist from '#lib/components/raw/css-grid-urbanist.svelte'
+
+export {CSSTheme}
+export {CSSMetro}
+export {CSSRailway}
+export {CSSSteam}
+export {CSSTgv}
+export {CSSTram}
+export {CSSVoyager}
+export {CSSUrbanist}
 /**
  * Draft components
  */
@@ -86,11 +131,31 @@ import ToastGroup from '#lib/components/blocks/overlays/Toast/ToastGroup.svelte'
 // import InputPassword from '#lib/components/blocks/inputs/InputPassword.svelte'
 // import InputFeedback from '#lib/components/blocks/inputs/InputFeedback.svelte'
 
+export {Fieldset}
+export {Magic}
+export {Image}
+export {Picture}
+export {PageContext}
+export {PageNav}
+export {PageHeader}
+export {Zoomer}
+export {Scrolly}
+export {ScrollyItem}
+export {Tabs}
+export {Cookies}
+export {Toast}
+export {ToastGroup}
+
 // New: replace Reveal mechanisms
 import ToggleReveal from '#lib/components/recipes/toggle/ToggleReveal.svelte'
 import ToggleLink from '#lib/components/recipes/toggle/ToggleLink.svelte'
 import ToggleTree from '#lib/components/recipes/toggle/ToggleTree.svelte'
 import ToggleSettings from '#lib/components/recipes/toggle/ToggleSettings.svelte'
+
+export {ToggleReveal}
+export {ToggleLink}
+export {ToggleTree}
+export {ToggleSettings}
 
 /**
  * Forms
@@ -98,11 +163,17 @@ import ToggleSettings from '#lib/components/recipes/toggle/ToggleSettings.svelte
 import SignUpUser from '#lib/forms/SignUpUser.js'
 import AppContext from '#lib/forms/AppContext.js'
 
+export {SignUpUser}
+export {AppContext}
+
 /**
  * Actors
  */
 import Toaster from '#lib/components/blocks/overlays/Toast/actor.svelte.js'
 import PopoverActor from '#lib/components/blocks/overlays/Popover/actor.svelte.js'
+
+export {Toaster}
+export {PopoverActor}
 
 /**
  * Utilities
@@ -113,32 +184,38 @@ import format from '#lib/utils/format.js'
 import styles from '#lib/utils/styles.js'
 import FormValidator from '#lib/utils/browser/FormValidator.svelte.js'
 
+export {constants}
+export {clickOutside}
+export {format}
+export {styles}
+export {FormValidator}
+
 /***************************************************
  * Prepare Exports
  **************************************************/
-const utils = {
+export const utils = {
 	format,
 	styles,
 	clickOutside,
 	FormValidator,
 }
 
-const actors = {
+export const actors = {
 	PopoverActor,
 	Toaster,
 }
 
-const forms = {
+export const forms = {
 	AppContext,
 	SignUpUser,
 }
 
-const tokens = {
+export const tokens = {
 	Color,
 	Typography,
 }
 
-const blocks = {
+export const blocks = {
 	Button,
 	Expand,
 	Switch,
@@ -154,14 +231,14 @@ const blocks = {
 	InputFile,
 }
 
-const layouts = {
+export const layouts = {
 	Burrito,
 	Stack,
 	Switcher,
 	Sidebar,
 }
 
-const recipes = {
+export const recipes = {
 	ButtonMenu,
 	ToggleMenu,
 	SignUp,
@@ -169,7 +246,7 @@ const recipes = {
 	Nav,
 }
 
-const raw = {
+export const raw = {
 	CSSTheme,
 	CSSMetro,
 	CSSRailway,
@@ -180,7 +257,7 @@ const raw = {
 	CSSUrbanist,
 }
 
-const content = {
+export const content = {
 	LayoutGrid,
 	LayoutSidebar,
 	PageMain,
@@ -188,7 +265,7 @@ const content = {
 	PageContext,
 }
 
-const drafts = {
+export const drafts = {
 	Fieldset,
 	Popover,
 	// InputPassword,
@@ -213,7 +290,7 @@ const drafts = {
 	ToggleSettings,
 }
 
-const headless = {
+export const headless = {
 	Head,
 	EscapeHtml,
 }

@@ -7,13 +7,11 @@
 		UiVariant,
 	} from '@fat-fuzzy/ui'
 
-	import ui from '@fat-fuzzy/ui'
+	import {Button} from '@fat-fuzzy/ui'
 
 	import dialogActor from '#lib/ui/overlays/dialog/actor.svelte.js'
 	import FormFormat from '#lib/ui/controls/settings/FormFormat.svelte'
 	import type {ICoordinateMetadata} from '#types'
-
-	const {Button} = ui.blocks
 
 	interface Props {
 		id: string

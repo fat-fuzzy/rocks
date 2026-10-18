@@ -10,7 +10,7 @@
 
 // RUNTIME — used in the browser to sanitize and validate form data.
 // import {sanitize} from '@fat-fuzzy/validation'
-export {default as sanitize} from './utils/sanitize.js'
+export * as sanitize from './utils/sanitize.js'
 
 // AUTHORING — used at schema-authoring time to compose consumer schemas
 // import {schemas} from '@fat-fuzzy/validation'

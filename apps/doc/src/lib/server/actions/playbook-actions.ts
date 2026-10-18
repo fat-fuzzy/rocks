@@ -1,13 +1,13 @@
 import type {RequestEvent} from '@sveltejs/kit'
 import {fail} from '@sveltejs/kit'
 
-import ui from '@fat-fuzzy/ui'
+import {SignUpUser} from '@fat-fuzzy/ui'
+import config from '#config/setup.js'
 import playbook from '@fat-fuzzy/playbook'
 import uiStateService from '#lib/server/services/session.js'
 
 const {DsStylesUpdate} = playbook.actions
-const {SignUpUser} = ui.forms
-const {APP_PREFIX} = ui.constants
+const {APP_PREFIX} = config
 
 export const playbookActions = {
 	updateStyles: async ({request, cookies, locals}: RequestEvent) => {
@@ -17,6 +17,8 @@ export const playbookActions = {
 			cookies,
 			key,
 		})
+
+		// FIXME: use schema for this
 		const styles = new DsStylesUpdate(cookieValue)
 		if (!styles.enter(data)) {
 			fail(400, {stylesError: true})

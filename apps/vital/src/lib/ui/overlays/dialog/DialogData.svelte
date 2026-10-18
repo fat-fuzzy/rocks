@@ -3,14 +3,12 @@
 	import type {ICoordinateExports, ICoordinateImports} from '#types'
 
 	import {SvelteURL} from 'svelte/reactivity'
-	import ui from '@fat-fuzzy/ui'
+	import {Button} from '@fat-fuzzy/ui'
 
 	import {page} from '$app/state'
 
 	import dialogActor from '#lib/ui/overlays/dialog/actor.svelte.js'
 	import FormData from '#lib/ui/controls/data/FormData.svelte'
-
-	const {Button} = ui.blocks
 
 	interface Props {
 		id: string

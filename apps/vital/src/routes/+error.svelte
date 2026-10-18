@@ -1,10 +1,6 @@
 <script lang="ts">
 	import {page} from '$app/state'
-	import ui from '@fat-fuzzy/ui'
-
-	const {Feedback} = ui.blocks
-	const {Head} = ui.headless
-	const {Burrito} = ui.layouts
+	import {Feedback, Head, Burrito} from '@fat-fuzzy/ui'
 
 	let title = $derived(`Vital | ${page.status}`)
 	let message = $derived(page.error?.message ?? 'Something went wrong!')

@@ -1,9 +1,7 @@
 <script lang="ts">
 	import type {Filters, FiltersProps} from '#types'
-	import ui from '@fat-fuzzy/ui'
+	import {ToggleMenu} from '@fat-fuzzy/ui'
 	import {DEFAULT_FILTERS} from '#lib/components/sketch/definitions.js'
-
-	const {ToggleMenu} = ui.recipes
 
 	let {
 		size = 'xs',

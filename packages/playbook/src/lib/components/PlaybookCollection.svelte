@@ -2,15 +2,20 @@
 	import type {Snippet} from 'svelte'
 	import type {Meta} from '#types'
 
-	import ui from '@fat-fuzzy/ui'
+	import {
+		EscapeHtml,
+		PageRails,
+		Magic,
+		tokens,
+		blocks,
+		layouts,
+		recipes,
+		raw,
+	} from '@fat-fuzzy/ui'
 	import PropsDemo from './PropsDemo.svelte'
 	import PropsDoc from './PropsDoc.svelte'
 	import Element from './Element.svelte'
 	import {getPlaybookTab, getDocTab} from '#lib/props/index.js'
-
-	const {EscapeHtml} = ui.headless
-	const {PageRails} = ui.content
-	const {Magic} = ui.blocks
 
 	type Props = {
 		category: string
@@ -63,11 +68,11 @@
 
 	// eslint-disable-next-line
 	const components: {category: string; items: any}[] = [
-		{category: 'tokens', items: ui.tokens},
-		{category: 'blocks', items: ui.blocks},
-		{category: 'layouts', items: ui.layouts},
-		{category: 'recipes', items: ui.recipes},
-		{category: 'raw', items: ui.raw},
+		{category: 'tokens', items: tokens},
+		{category: 'blocks', items: blocks},
+		{category: 'layouts', items: layouts},
+		{category: 'recipes', items: recipes},
+		{category: 'raw', items: raw},
 	]
 
 	let items = $derived(

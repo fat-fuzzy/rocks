@@ -3,7 +3,7 @@
 	import type {CurrentCoordinators} from '#types'
 
 	import {getContext} from 'svelte'
-	import ui from '@fat-fuzzy/ui'
+	import {Popover} from '@fat-fuzzy/ui'
 
 	import Settings from '#lib/ui/controls/settings/Settings.svelte'
 
@@ -11,7 +11,6 @@
 
 	let coordMetadata = $derived(coordinators.metadata)
 
-	const {Popover} = ui.drafts
 	let {
 		id = 'settings',
 		color = 'neutral',

@@ -17,7 +17,7 @@ function replaceChar(s) {
 	)
 }
 
-function sanitizePlainText(input) {
+export function sanitizePlainText(input) {
 	if (typeof input !== 'string') return ''
 	const sanitized = input.trim()
 	if (sanitized === '') return sanitized
@@ -25,17 +25,17 @@ function sanitizePlainText(input) {
 	return sanitized.replace(/[&<>"'`=\/]/g, replaceChar)
 }
 
-function sanitizeNumber(input) {
+export function sanitizeNumber(input) {
 	return isNaN(input) ? null : input
 }
 
 // TODO: https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html#email-address-validation
-function sanitizeEmail(input) {
+export function sanitizeEmail(input) {
 	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 	return emailRegex.test(input) ? input : ''
 }
 
-function sanitizeFilePath(input) {
+export function sanitizeFilePath(input) {
 	if (typeof input !== 'string') {
 		return ''
 	}
@@ -59,7 +59,7 @@ function sanitizeFilePath(input) {
 	)
 }
 
-function sanitizeURL(input) {
+export function sanitizeURL(input) {
 	const sanitized = input.trim()
 	if (sanitized === '') return sanitized
 	try {
@@ -73,11 +73,11 @@ function sanitizeURL(input) {
 	}
 }
 
-function sanitizeDate(input) {
+export function sanitizeDate(input) {
 	return !isNaN(Date.parse(input)) ? input : null
 }
 
-function sanitizeForm(type, value) {
+export function sanitizeForm(type, value) {
 	// Sanitize input based on its type
 
 	let sanitized
@@ -132,5 +132,3 @@ function sanitizeForm(type, value) {
 
 	return sanitized
 }
-
-export default {sanitizeForm, sanitizePlainText}

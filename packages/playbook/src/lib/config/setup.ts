@@ -1,0 +1,17 @@
+import {constants} from '@fat-fuzzy/ui'
+
+const {
+	APP_SETTINGS,
+	APP_PREFIX,
+	DEFAULT_PREFERENCES,
+	DEFAULT_STYLES,
+	NUMBER_TO_SIZE,
+} = constants
+
+export default {
+	APP_SETTINGS,
+	APP_PREFIX,
+	DEFAULT_PREFERENCES,
+	DEFAULT_STYLES,
+	NUMBER_TO_SIZE,
+}

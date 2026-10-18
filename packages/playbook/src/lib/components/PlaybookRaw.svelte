@@ -1,25 +1,21 @@
 <script lang="ts">
-	import ui from '@fat-fuzzy/ui'
+	import {Head, raw} from '@fat-fuzzy/ui'
 	import Raw from './Raw.svelte'
 
-	const {Head} = ui.headless
-
 	type Props = {
-		category: any // TODO: fix types
-		content: any
+		category: string
 		title: string
-		path: string
-		formaction?: string
-		actionPath?: string
-		redirect?: string
 	}
 	let {category, title}: Props = $props()
 
+	// FIXME: use schema for this
+	// eslint-disable-next-line
 	let categoryItems: {[name: string]: any} = {
-		raw: ui.raw,
+		raw,
 	}
 
-	// TODO: fix types
+	// FIXME: use schema for this
+	// eslint-disable-next-line
 	let ApiElement: {[category: string]: any} = {
 		raw: Raw,
 	}

@@ -1,11 +1,8 @@
 <script lang="ts">
 	import {page} from '$app/state'
-	import ui from '@fat-fuzzy/ui'
+	import {PageRails, Magic} from '@fat-fuzzy/ui'
 
 	import TextCircle from '#lib/ui/svg/TextCircle.svelte'
-
-	const {PageRails} = ui.content
-	const {Magic} = ui.blocks
 
 	let pageContext = $derived({...page.data.pageContext, label: 'On this Page'})
 	let title = 'Vital'

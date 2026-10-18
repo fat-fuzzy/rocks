@@ -1,11 +1,6 @@
 <script lang="ts">
 	import {page} from '$app/state'
-	import ui from '@fat-fuzzy/ui'
-
-	const {Sidebar} = ui.layouts
-	const {PageRails} = ui.content
-	const {EscapeHtml} = ui.headless
-	const {Picture} = ui.drafts
+	import {Sidebar, PageRails, EscapeHtml, Picture} from '@fat-fuzzy/ui'
 
 	let pageContext = $derived({...page.data.pageContext, label: 'On this Page'})
 	let images = $derived(page.data.images)

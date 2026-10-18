@@ -1,9 +1,7 @@
 <script lang="ts">
 	import {page} from '$app/state'
-	import ui from '@fat-fuzzy/ui'
+	import {PageRails} from '@fat-fuzzy/ui'
 	import PagePollen from './PagePollen.svelte'
-
-	const {PageRails} = ui.content
 
 	let pageContext = $derived({...page.data.pageContext, label: 'On this Page'})
 	let description =

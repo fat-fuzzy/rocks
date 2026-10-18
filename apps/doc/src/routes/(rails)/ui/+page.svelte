@@ -1,13 +1,11 @@
 <script lang="ts">
 	import type {Markdown} from '#types'
 	import {page} from '$app/state'
-	import ui from '@fat-fuzzy/ui'
+	import {PageRails, EscapeHtml} from '@fat-fuzzy/ui'
 	import playbook from '@fat-fuzzy/playbook'
 
 	const {PlaybookCollection} = playbook
 
-	const {PageRails} = ui.content
-	const {EscapeHtml} = ui.headless
 	let title = 'Fat Fuzzy UI'
 	let description = `${title} | Doc`
 

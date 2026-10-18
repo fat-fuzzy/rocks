@@ -1,10 +1,8 @@
 <script lang="ts">
 	import '@fat-fuzzy/style/css'
-	import ui from '@fat-fuzzy/ui'
+	import {PageHeader} from '@fat-fuzzy/ui'
 
 	import type {Snippet} from 'svelte'
-
-	const {PageHeader} = ui.drafts
 
 	type Props = {children: Snippet}
 

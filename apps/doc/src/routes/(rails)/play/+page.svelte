@@ -1,9 +1,6 @@
 <script lang="ts">
 	import {page} from '$app/state'
-	import ui from '@fat-fuzzy/ui'
-
-	const {PageRails} = ui.content
-	const {EscapeHtml} = ui.headless
+	import {PageRails, EscapeHtml} from '@fat-fuzzy/ui'
 
 	let pageContext = $derived({...page.data.pageContext, title: 'On this Page'})
 	let markdown = $derived(page.data.content)

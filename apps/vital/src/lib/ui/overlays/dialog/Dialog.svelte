@@ -2,9 +2,7 @@
 	import type {DialogProps} from '#types'
 	import actor from '#lib/ui/overlays/dialog/actor.svelte.js'
 
-	import ui from '@fat-fuzzy/ui'
-
-	const {Button} = ui.blocks
+	import {Button} from '@fat-fuzzy/ui'
 
 	let dialog: HTMLDialogElement
 

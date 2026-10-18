@@ -1,8 +1,9 @@
-import ui from '@fat-fuzzy/ui'
 import type {StyleTree} from '#types'
+
+import config from '#config/setup.js'
 import StylesApi from '#lib/api/styles.svelte.js'
 
-const {DEFAULT_PREFERENCES, NUMBER_TO_SIZE} = ui.constants
+const {DEFAULT_PREFERENCES, NUMBER_TO_SIZE} = config
 
 class DsStylesUpdate {
 	api
