@@ -1,9 +1,6 @@
 <script lang="ts">
 	import {page} from '$app/state'
-	import ui from '@fat-fuzzy/ui'
-
-	const {PageRails} = ui.content
-	const {Scrolly} = ui.drafts
+	import {PageRails, Scrolly} from '@fat-fuzzy/ui'
 
 	let sections = $state(page.data.sections)
 	let markdown = $derived(page.data.content)

@@ -2,7 +2,15 @@
 	import type {Snippet} from 'svelte'
 	import type {AreaProps, ViewingPreferences} from '@fat-fuzzy/ui'
 
-	import ui from '@fat-fuzzy/ui'
+	import {
+		ToggleTree,
+		ToggleReveal,
+		Cookies,
+		ToggleSettings,
+		SkipLinks,
+		LayoutGrid,
+		Magic,
+	} from '@fat-fuzzy/ui'
 
 	import {resolve} from '$app/paths'
 	import {page} from '$app/state'
@@ -13,11 +21,6 @@
 	import Footer from '#lib/ui/Footer.svelte'
 	import Socials from '#lib/ui/Socials.svelte'
 	import NavSlides from '#lib/ui/NavSlides.svelte'
-
-	const {ToggleTree, ToggleReveal, Cookies, ToggleSettings} = ui.drafts
-	const {SkipLinks} = ui.recipes
-	const {LayoutGrid} = ui.content
-	const {Magic} = ui.blocks
 
 	type Props = {
 		children: Snippet

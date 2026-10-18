@@ -3,15 +3,18 @@
 	import type {ActionCrud, Slug, DocLanguage, ICoordinateDocs} from '#types'
 
 	import {onDestroy, onMount} from 'svelte'
-	import ui from '@fat-fuzzy/ui'
+	import {
+		Button,
+		Input,
+		InputGroup,
+		Feedback,
+		FormValidator,
+	} from '@fat-fuzzy/ui'
 	import {page} from '$app/state'
 
 	import {FormSectionValidator} from '#lib/common/validate.js'
 	import dialogActor from '#lib/ui/overlays/dialog/actor.svelte.js'
 	import {DOC_LANGUAGE, DOC_FORMAT} from '#config/setup.js'
-
-	const {Button, Input, InputGroup, Feedback} = ui.blocks
-	const {FormValidator} = ui.utils
 
 	interface Props {
 		formats: Slug[]

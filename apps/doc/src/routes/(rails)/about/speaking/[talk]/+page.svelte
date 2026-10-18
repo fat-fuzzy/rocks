@@ -1,10 +1,6 @@
 <script lang="ts">
 	import {page} from '$app/state'
-	import ui from '@fat-fuzzy/ui'
-
-	const {PageRails} = ui.content
-	const {Image} = ui.drafts
-	const {EscapeHtml} = ui.headless
+	import {PageRails, Image, EscapeHtml} from '@fat-fuzzy/ui'
 
 	let markdown = $derived(page.data.content)
 	let appContext = $derived(page.data.appContext)

@@ -1,9 +1,8 @@
 <script lang="ts">
 	import '@fat-fuzzy/style/css'
 	import '#lib/styles/css/main.css'
-	import ui from '@fat-fuzzy/ui'
+	import {LayoutSidebar} from '@fat-fuzzy/ui'
 
-	const {LayoutSidebar} = ui.content
 	// import { i18n } from '#lib/i18n.js';
 	// import { ParaglideJS } from '@inlang/paraglide-sveltekit';
 	let {children} = $props()

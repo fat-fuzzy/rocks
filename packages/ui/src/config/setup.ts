@@ -1,4 +1,5 @@
 import type {NavItem} from '#types'
+import config from '#lib/types/constants.js'
 
 // TODO: move to utils / clean
 const navBase = {
@@ -25,3 +26,5 @@ export function buildNav(page: string, pages: {[key: string]: NavItem}) {
 
 	return nav
 }
+
+export const APP_SETTINGS = config.APP_SETTINGS

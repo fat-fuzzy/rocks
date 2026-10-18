@@ -8,12 +8,9 @@
 	} from '@fat-fuzzy/ui'
 	import type {TagGroup, InputGroupMenus, ActionCrud} from '#types'
 
-	import ui from '@fat-fuzzy/ui'
+	import {InputGroup, styles} from '@fat-fuzzy/ui'
 
 	import {getTagGroupName} from '#lib/common/tags.js'
-
-	const {InputGroup} = ui.blocks
-	const {styles} = ui.utils
 
 	const {
 		id,

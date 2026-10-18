@@ -1,8 +1,7 @@
 <script lang="ts">
-	import ui from '@fat-fuzzy/ui'
-	const {InputRange} = ui.blocks
-
 	import type {CameraProps} from '#types'
+
+	import {InputRange} from '@fat-fuzzy/ui'
 
 	let {
 		color = '',

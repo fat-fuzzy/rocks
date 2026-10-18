@@ -4,15 +4,13 @@
 
 	import {SvelteURL} from 'svelte/reactivity'
 	import {page} from '$app/state'
-	import ui from '@fat-fuzzy/ui'
+	import {Button} from '@fat-fuzzy/ui'
 
 	import {NAMESPACE_TO_PRESET_LABEL} from '#lib/intl/l10n.js'
 	import dialogActor from '#lib/ui/overlays/dialog/actor.svelte.js'
 	import {getSanitizedParamValue} from '#lib/common/url.js'
 
 	import FormPreset from '#lib/ui/controls/preset/FormPreset.svelte'
-
-	const {Button} = ui.blocks
 
 	interface Props {
 		id: string

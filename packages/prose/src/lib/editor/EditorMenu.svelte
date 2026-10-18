@@ -3,7 +3,7 @@
 	import type {Snippet} from 'svelte'
 
 	import {Editor} from '@tiptap/core'
-	import ui from '@fat-fuzzy/ui'
+	import {Popover, SkipLinks} from '@fat-fuzzy/ui'
 
 	import FontLevel from '#lib/editor/menus/FontLevel.svelte'
 	import FontStyle from '#lib/editor/menus/FontStyle.svelte'
@@ -11,9 +11,6 @@
 	import Format from '#lib/editor/menus/Format.svelte'
 	import Clear from '#lib/editor/menus/Clear.svelte'
 	import FlowControl from '#lib/editor/menus/FlowControl.svelte'
-
-	const {Popover} = ui.drafts
-	const {SkipLinks} = ui.recipes
 
 	let {
 		id,

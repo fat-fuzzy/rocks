@@ -2,11 +2,8 @@
 	import type {JSONContent} from '@tiptap/core'
 
 	import Editor from '#lib/editor/Editor.svelte'
-	import ui from '@fat-fuzzy/ui'
+	import {Feedback, PageMain} from '@fat-fuzzy/ui'
 	import {onMount} from 'svelte'
-
-	const {Feedback} = ui.blocks
-	const {PageMain} = ui.content
 
 	let title = 'Write some Prose'
 	let description = 'A rich text editor for the web.'

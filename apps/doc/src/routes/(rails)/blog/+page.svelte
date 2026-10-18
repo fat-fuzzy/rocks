@@ -1,9 +1,6 @@
 <script lang="ts">
 	import {page} from '$app/state'
-	import ui from '@fat-fuzzy/ui'
-
-	const {PageRails} = ui.content
-	const {EscapeHtml} = ui.headless
+	import {PageRails, EscapeHtml} from '@fat-fuzzy/ui'
 
 	let appContext = $derived(page.data.appContext)
 	let post = $derived(page.data.content)

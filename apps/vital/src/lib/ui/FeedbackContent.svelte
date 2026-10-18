@@ -2,10 +2,8 @@
 	import type {DocContentType, Slug} from '#types'
 	import type {UiSurface} from '@fat-fuzzy/ui'
 
-	import ui from '@fat-fuzzy/ui'
+	import {Feedback} from '@fat-fuzzy/ui'
 	import CardContent from '#lib/ui/CardContent.svelte'
-
-	const {Feedback} = ui.blocks
 
 	let {
 		surface = 'neutral',

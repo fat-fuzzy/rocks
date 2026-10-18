@@ -3,13 +3,9 @@
 	import type {UiColor, UiSize, UiSurface} from '@fat-fuzzy/ui'
 
 	import '@fat-fuzzy/style/css'
-	import ui from '@fat-fuzzy/ui'
+	import {ToggleTree, ToggleReveal, SkipLinks, LayoutGrid} from '@fat-fuzzy/ui'
 
 	import {page} from '$app/state'
-
-	const {ToggleTree, ToggleReveal} = ui.drafts
-	const {SkipLinks} = ui.recipes
-	const {LayoutGrid} = ui.content
 
 	type Props = {
 		children: Snippet

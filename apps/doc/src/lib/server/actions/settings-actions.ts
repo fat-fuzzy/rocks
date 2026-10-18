@@ -1,11 +1,11 @@
 import type {UiActionSetOutput} from '#lib/types/actions.js'
 import type {RequestEvent} from '@sveltejs/kit'
-import ui from '@fat-fuzzy/ui'
+import {AppContext} from '@fat-fuzzy/ui'
 
+import config from '#config/setup.js'
 import uiStateService from '#lib/server/services/session.js'
-const {AppContext} = ui.forms
 
-const {APP_PREFIX, DEFAULT_COOKIES_PREFERENCES} = ui.constants
+const {APP_PREFIX, DEFAULT_COOKIES_PREFERENCES} = config
 
 async function handleUpdateAppSettings(
 	event: RequestEvent,
@@ -20,7 +20,7 @@ async function handleUpdateAppSettings(
 	})
 
 	try {
-		// TODO: Fix type checking (currentState == {})
+		// FIXME: use schema for this
 		const newState = new AppContext(currentState)
 		let updatedState
 

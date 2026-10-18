@@ -11,7 +11,13 @@
 	} from '#types'
 
 	import {onDestroy, onMount} from 'svelte'
-	import ui from '@fat-fuzzy/ui'
+	import {
+		Button,
+		Input,
+		InputCheck,
+		Feedback,
+		FormValidator,
+	} from '@fat-fuzzy/ui'
 
 	import {
 		validateTagGroupName,
@@ -23,9 +29,6 @@
 	import {FormTagValidator} from '#lib/common/validate.js'
 	import dialogActor from '#lib/ui/overlays/dialog/actor.svelte.js'
 	import SelectTags from '#lib/ui/controls/tags/SelectTags.svelte'
-
-	const {Button, Input, InputCheck, Feedback} = ui.blocks
-	const {FormValidator} = ui.utils
 
 	interface Props {
 		groups: TagGroup[]

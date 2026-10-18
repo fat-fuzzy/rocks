@@ -1,12 +1,10 @@
 <script lang="ts">
 	import {page} from '$app/state'
-	import ui from '@fat-fuzzy/ui'
+	import {PageRails} from '@fat-fuzzy/ui'
 
 	import PageChlorophyll from './PageChlorophyll.svelte'
 
 	import {getPrefixForRoute} from '#lib/common/routing.js'
-
-	const {PageRails} = ui.content
 
 	let pageContext = $derived({...page.data.pageContext, label: 'On this Page'})
 	let description =

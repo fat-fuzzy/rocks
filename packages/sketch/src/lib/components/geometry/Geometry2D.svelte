@@ -4,9 +4,7 @@
 	import Position from '#lib/components/geometry/Position.svelte'
 	import Scale from '#lib/components/geometry/Scale.svelte'
 	import Rotation from '#lib/components/geometry/Rotation.svelte'
-	import ui from '@fat-fuzzy/ui'
-
-	const {Button} = ui.blocks
+	import {Button} from '@fat-fuzzy/ui'
 
 	let {
 		id = 'geometry-2d',

@@ -1,7 +1,5 @@
 import {describe, it, expect, vi} from 'vitest'
-import sanitize from '../src/utils/sanitize.js' // Adjust path as needed
-
-const {sanitizeForm, sanitizePlainText} = sanitize
+import {sanitizeForm, sanitizePlainText} from '../src/utils/sanitize.js' // Adjust path as needed
 
 describe('sanitizePlainText', () => {
 	it('should escape HTML special characters', () => {

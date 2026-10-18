@@ -11,7 +11,7 @@
 	} from '#types'
 
 	import {getContext, tick} from 'svelte'
-	import ui from '@fat-fuzzy/ui'
+	import {PageRails, Feedback} from '@fat-fuzzy/ui'
 
 	import {page} from '$app/state'
 	import {dev} from '$app/env'
@@ -38,9 +38,6 @@
 	import ContentActions from '#lib/ui/controls/ContentActions.svelte'
 	import ContentHeading from '#lib/ui/controls/ContentHeading.svelte'
 	import {DOC_FORMAT, DOC_LANGUAGE} from '#config/setup.js'
-
-	const {PageRails} = ui.content
-	const {Feedback} = ui.blocks
 
 	type Props = {
 		theme?: UiColor

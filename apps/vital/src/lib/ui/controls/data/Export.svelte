@@ -2,11 +2,9 @@
 	import type {UiColor, UiSize, UiVariant} from '@fat-fuzzy/ui'
 	import type {ICoordinateExports} from '#types'
 
-	import ui from '@fat-fuzzy/ui'
+	import {Button} from '@fat-fuzzy/ui'
 
 	import {generateDownload} from '#lib/common/download.js'
-
-	const {Button} = ui.blocks
 
 	interface Props {
 		id: string

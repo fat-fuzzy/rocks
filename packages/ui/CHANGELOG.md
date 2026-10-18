@@ -1,5 +1,11 @@
 # @fat-fuzzy/ui
 
+## 0.1.113
+
+### Patch Changes
+
+- 327ebf7: Enable granular imports / exports
+
 ## 0.1.112
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @fat-fuzzy/sketch
 
+## 0.1.46
+
+### Patch Changes
+
+- 327ebf7: Enable granular imports / exports
+
 ## 0.1.45
 
 ### Patch Changes

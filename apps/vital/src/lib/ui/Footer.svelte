@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {Snippet} from 'svelte'
-	import ui from '@fat-fuzzy/ui'
+	import {format} from '@fat-fuzzy/ui'
 	import {page} from '$app/state'
 
 	type Props = {
@@ -11,9 +11,7 @@
 
 	let {socials, children}: Props = $props()
 	let footerClass = 'text:center bg:inherit color:neutral '
-	let pageClass = $derived(
-		ui.utils.format.getClassNameFromPathname(page.url.pathname),
-	)
+	let pageClass = $derived(format.getClassNameFromPathname(page.url.pathname))
 	let aboutContainerClass = $derived(pageClass === 'page:home' ? '' : '')
 </script>
 

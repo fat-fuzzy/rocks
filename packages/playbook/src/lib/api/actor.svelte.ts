@@ -1,11 +1,12 @@
 import type {StyleTree} from '#types'
-import ui from '@fat-fuzzy/ui'
+import config from '#config/setup.js'
+
 import buttonFixtures from '#lib/fixtures/js/blocks.js'
 import tokenFixtures from '#lib/fixtures/js/tokens.js'
 import layoutsFixtures from '#lib/fixtures/js/layouts.js'
 import recipesFixtures from '#lib/fixtures/js/recipes.js'
 
-const {DEFAULT_PREFERENCES, DEFAULT_STYLES} = ui.constants
+const {DEFAULT_PREFERENCES, DEFAULT_STYLES} = config
 
 // eslint-disable-next-line
 const COMPONENT_FIXTURES: any = $state({

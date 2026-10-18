@@ -1,7 +1,7 @@
 {
 	"package": "@fat-fuzzy/playbook",
 	"name": "@fat-fuzzy/playbook",
-	"version": "0.1.46",
+	"version": "0.1.47",
 	"description": "A UI library explorer and demo",
 	"author": "Patricia Boh",
 	"license": "MIT",
@@ -35,6 +35,7 @@
 		"#lib/*": "./src/lib/*",
 		"#tests": "./tests/index.js",
 		"#tests/*": "./tests/*",
+		"#config/*": "./src/lib/config/*",
 		"#types": "./src/lib/types/index.ts"
 	},
 	"exports": {

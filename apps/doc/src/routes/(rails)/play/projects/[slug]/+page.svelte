@@ -2,12 +2,11 @@
 	import {page} from '$app/state'
 	import {dev} from '$app/env'
 
-	import ui from '@fat-fuzzy/ui'
+	import {EscapeHtml} from '@fat-fuzzy/ui'
 	import gfx from '@fat-fuzzy/gfx'
 	import sketch from '@fat-fuzzy/sketch'
 
 	const {Sketch} = sketch.graphics
-	const {EscapeHtml} = ui.headless
 
 	let html = $derived(page.data.html)
 	let slug = $derived(page.params.slug)

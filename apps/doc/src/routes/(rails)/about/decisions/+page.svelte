@@ -1,8 +1,6 @@
 <script lang="ts">
 	import {page} from '$app/state'
-	import ui from '@fat-fuzzy/ui'
-
-	const {PageRails} = ui.content
+	import {PageRails} from '@fat-fuzzy/ui'
 
 	let appContext = $derived(page.data.appContext)
 	let markdowns = $state(page.data.markdowns.decisions)
@@ -43,7 +41,7 @@
 			Tags
 		</p>
 		<div class="l:grid:auto size:sm maki:block">
-			{#each tags as tag}
+			{#each tags as tag, i (i)}
 				<details class="surface:1:neutral shape:soft" open>
 					<summary
 						class="color:neutral font:sm font:heading ravioli:3xs shape:soft"
@@ -52,7 +50,7 @@
 					</summary>
 					<div class="ravioli:md shape:soft">
 						<ul class="unstyled">
-							{#each markdowns as { meta }}
+							{#each markdowns as { meta }, j (j)}
 								{#if meta.tags.includes(tag)}
 									<li class={`size:sm emoji:${meta.asset}`}>
 										{#if meta.status !== 'draft'}

@@ -2,12 +2,10 @@
 	import type {UiColor} from '@fat-fuzzy/ui'
 	import type {Slug, DocLanguage, ICoordinateDocs} from '#types'
 
-	import ui from '@fat-fuzzy/ui'
+	import {InputGroup} from '@fat-fuzzy/ui'
 
 	import {page} from '$app/state'
 	import {DOC_LANGUAGE, DOC_FORMAT} from '#config/setup.js'
-
-	const {InputGroup} = ui.blocks
 
 	const {
 		color = 'neutral',

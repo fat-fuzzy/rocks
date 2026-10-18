@@ -4,15 +4,12 @@
 
 	import {SvelteURL} from 'svelte/reactivity'
 	import {onDestroy, onMount} from 'svelte'
-	import ui from '@fat-fuzzy/ui'
+	import {Button, Input, Feedback, FormValidator} from '@fat-fuzzy/ui'
 
 	import {page} from '$app/state'
 
 	import {FormPresetValidator} from '#lib/common/validate.js'
 	import dialogActor from '#lib/ui/overlays/dialog/actor.svelte.js'
-
-	const {Button, Input, Feedback} = ui.blocks
-	const {FormValidator} = ui.utils
 
 	interface Props {
 		cta: ActionCrud

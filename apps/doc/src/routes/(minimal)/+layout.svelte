@@ -3,14 +3,12 @@
 
 	import {onMount} from 'svelte'
 	import {page} from '$app/state'
-	import ui from '@fat-fuzzy/ui'
+	import {LayoutSidebar} from '@fat-fuzzy/ui'
 
 	type Props = {
 		children: Snippet
 	}
 	let {children}: Props = $props()
-
-	const {LayoutSidebar} = ui.content
 
 	let appContext = $derived(page.data.appContext)
 	let acceptsFullScreen = $derived(page.data.sidebar.layout === 'steam')

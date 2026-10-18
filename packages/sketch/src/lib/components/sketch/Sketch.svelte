@@ -11,7 +11,7 @@
 
 	import {onDestroy, onMount} from 'svelte'
 	import intl from '@fat-fuzzy/intl'
-	import ui from '@fat-fuzzy/ui'
+	import {Feedback, PageRails} from '@fat-fuzzy/ui'
 	import {page} from '$app/state'
 
 	import Geometry2D from '#lib/components/geometry/Geometry2D.svelte'
@@ -25,8 +25,6 @@
 	import {DEFAULT_FILTERS} from './definitions.js'
 	import actor from './actor.svelte'
 
-	const {Feedback} = ui.blocks
-	const {PageRails} = ui.content
 	const DatetimeFormatter = new intl.DatetimeFormatter()
 
 	let {
