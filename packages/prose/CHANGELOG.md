@@ -1,5 +1,11 @@
 # @fat-fuzzy/prose
 
+## 0.1.54
+
+### Patch Changes
+
+- 327ebf7: Enable granular imports / exports
+
 ## 0.1.53
 
 ### Patch Changes
