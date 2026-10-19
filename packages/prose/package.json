@@ -54,15 +54,15 @@
 		"svelte": "5.57.1"
 	},
 	"dependencies": {
-		"@tiptap/core": "3.31.3",
-		"@tiptap/extension-bold": "3.31.3",
-		"@tiptap/extension-link": "3.31.3",
-		"@tiptap/extension-list": "3.31.3",
-		"@tiptap/extension-text-style": "3.31.3",
-		"@tiptap/extension-typography": "3.31.3",
-		"@tiptap/pm": "3.31.3",
-		"@tiptap/starter-kit": "3.31.3",
-		"@tiptap/static-renderer": "3.31.3",
+		"@tiptap/core": "3.31.4",
+		"@tiptap/extension-bold": "3.31.4",
+		"@tiptap/extension-link": "3.31.4",
+		"@tiptap/extension-list": "3.31.4",
+		"@tiptap/extension-text-style": "3.31.4",
+		"@tiptap/extension-typography": "3.31.4",
+		"@tiptap/pm": "3.31.4",
+		"@tiptap/starter-kit": "3.31.4",
+		"@tiptap/static-renderer": "3.31.4",
 		"dompurify": "3.4.16"
 	},
 	"devDependencies": {
