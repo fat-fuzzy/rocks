@@ -1,7 +1,6 @@
 packages:
   - apps/*
   - packages/*
-registry: 'http://localhost:4873/'
 allowBuilds:
   '@parcel/watcher': false
   sharp: false
