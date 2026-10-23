@@ -25,7 +25,7 @@
 		"@eslint/compat": "^1.0.0"
 	},
 	"dependencies": {
-		"chalk": "4.1.2",
+		"chalk": "6.0.0",
 		"commitizen": "4.3.2",
 		"conventional-commit-types": "3.0.0",
 		"longest": "2.0.1",
