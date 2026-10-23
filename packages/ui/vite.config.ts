@@ -45,4 +45,5 @@ export default defineConfig({
 			external: ['dompurify'],
 		},
 	},
+	optimizeDeps: {include: ['dompurify']},
 })
