@@ -75,8 +75,8 @@
 		"@sveltejs/kit": "3.0.0",
 		"@sveltejs/package": "3.0.0-next.8",
 		"@sveltejs/vite-plugin-svelte": "7.3.0",
-		"@vitest/coverage-v8": "5.0.1",
-		"@vitest/ui": "5.0.1",
+		"@vitest/coverage-v8": "5.0.5",
+		"@vitest/ui": "5.0.5",
 		"mdsvex": "0.12.7",
 		"publint": "0.3.18",
 		"svelte": "5.57.1",
@@ -84,6 +84,6 @@
 		"typescript": "6.0.3",
 		"typescript-eslint": "8.65.0",
 		"vite": "8.3.4",
-		"vitest": "5.0.1"
+		"vitest": "5.0.5"
 	}
 }
