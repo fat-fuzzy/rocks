@@ -43,7 +43,7 @@
 		"@rollup/plugin-commonjs": "29.0.2",
 		"@rollup/plugin-terser": "1.0.0",
 		"@vitest/coverage-v8": "5.0.1",
-		"@vitest/ui": "5.0.1",
+		"@vitest/ui": "5.0.5",
 		"ajv": "8.18.0",
 		"ajv-errors": "3.0.0",
 		"ajv-formats": "3.0.1",
