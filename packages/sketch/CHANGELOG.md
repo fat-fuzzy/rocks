@@ -1,5 +1,11 @@
 # @fat-fuzzy/sketch
 
+## 0.1.47
+
+### Patch Changes
+
+- bbe1aed: Update nodejs, vite. Fix validation patterns
+
 ## 0.1.46
 
 ### Patch Changes
