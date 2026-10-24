@@ -1,13 +1,13 @@
-import {schemas} from '@fat-fuzzy/validation'
+import {schemas, patterns} from '@fat-fuzzy/validation'
 import {defineDefinitions} from '../index.js'
-import {
+const {
 	SLUG_PATTERN,
 	LANGUAGE_PATTERN,
 	TITLE_PATTERN,
 	PATH_PATTERN,
 	DATE_STRING_PATTERN,
 	QUERY_STRING_PATTERN,
-} from '../patterns.js'
+} = patterns
 
 import EnumsSchema from './Enums.schema.js'
 
