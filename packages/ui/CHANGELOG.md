@@ -1,5 +1,11 @@
 # @fat-fuzzy/ui
 
+## 0.1.114
+
+### Patch Changes
+
+- bbe1aed: Update nodejs, vite. Fix validation patterns
+
 ## 0.1.113
 
 ### Patch Changes
