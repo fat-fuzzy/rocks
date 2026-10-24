@@ -1,5 +1,11 @@
 # @fat-fuzzy/chlorophyll
 
+## 0.1.6
+
+### Patch Changes
+
+- bbe1aed: Update nodejs, vite. Fix validation patterns
+
 ## 0.1.5
 
 ### Patch Changes

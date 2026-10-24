@@ -5,11 +5,20 @@
  ************************************************************************************/
 
 import fatFuzzyIntl from '@fat-fuzzy/intl'
-import constants from '../../utils/constants.js'
+import {
+	BOOLEAN_INPUT_PATTERN,
+	PASSWORD_SPECIAL_CHARS,
+	PASSWORD_DIGITS,
+	PHONE,
+	ROUTE_PATTERN,
+	SLUG_PATTERN,
+	USERNAME,
+	UUID_PATTERN,
+	PATH_PATTERN,
+} from '../../utils/patterns.js'
 
 const {L10nFormatter} = fatFuzzyIntl
 const messages = new L10nFormatter('en')
-const {PATTERNS} = constants
 /**
  * Common Schemas for form inputs.
  * Adjust as necessary for your form.
@@ -37,8 +46,7 @@ export const BaseSchema = {
 	},
 	uuid: {
 		type: 'string',
-		pattern:
-			'^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$',
+		pattern: UUID_PATTERN,
 		errorMessage: messages.getErrorMessage('FORMAT_PATTERN'),
 	},
 	readonly: {
@@ -66,14 +74,14 @@ export const BaseSchema = {
 			},
 			{
 				type: 'string',
-				pattern: PATTERNS.USERNAME,
+				pattern: USERNAME,
 				errorMessage: messages.getErrorMessage('FORMAT_USERNAME'),
 			},
 		],
 	},
 	phone: {
 		type: 'string',
-		pattern: PATTERNS.PHONE,
+		pattern: PHONE,
 		errorMessage: messages.getErrorMessage('FORMAT_PHONE'),
 	},
 	// See: https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html#email-address-validation
@@ -114,13 +122,13 @@ export const BaseSchema = {
 			{
 				type: 'string',
 				format: 'password',
-				pattern: PATTERNS.PASSWORD_SPECIAL_CHARS,
+				pattern: PASSWORD_SPECIAL_CHARS,
 				errorMessage: messages.getErrorMessage('FORMAT_PATTERN_MIN', 3),
 			},
 			{
 				type: 'string',
 				format: 'password',
-				pattern: PATTERNS.PASSWORD_DIGITS,
+				pattern: PASSWORD_DIGITS,
 				errorMessage: messages.getErrorMessage(
 					'FORMAT_PATTERN_MIN',
 					3,
@@ -154,14 +162,14 @@ export const BaseSchema = {
 	},
 	checkbox: {
 		type: 'string',
-		pattern: 'on|true|([a-zA-Z]|-|[0-9])+',
+		pattern: BOOLEAN_INPUT_PATTERN,
 		errorMessage: {
 			minLength: messages.getErrorMessage('CHECKBOX_MIN', 1),
 		},
 	},
 	radio: {
 		type: 'string',
-		pattern: 'on|true|([a-zA-Z]|-|[0-9])+',
+		pattern: BOOLEAN_INPUT_PATTERN,
 		errorMessage: {
 			minLength: messages.getErrorMessage('RADIO_PATTERN', 1),
 		},
@@ -170,14 +178,14 @@ export const BaseSchema = {
 	disabled_field: {type: 'string'},
 	radio_group: {
 		type: 'string',
-		pattern: 'on|true|([a-zA-Z]|-|[0-9])+',
+		pattern: BOOLEAN_INPUT_PATTERN,
 		errorMessage: {
 			pattern: messages.getErrorMessage('RADIO_PATTERN', 200),
 		},
 	},
 	checkbox_group: {
 		type: 'string',
-		pattern: 'on|true|([a-zA-Z]|-|[0-9])+',
+		pattern: BOOLEAN_INPUT_PATTERN,
 		errorMessage: {
 			pattern: messages.getErrorMessage('CHECKBOX_PATTERN', 200),
 		},
@@ -228,12 +236,16 @@ export const RouteParamSchema = {
 			type: 'string',
 			minLength: 1,
 			maxLength: 64,
-			pattern: '^[A-Za-z_][A-Za-z0-9_-]*$',
+			pattern: SLUG_PATTERN,
 			description: "Valid route param name. eg. 'language'",
 		},
 		type: {
 			type: 'string',
-			pattern: '^atomic|multiple|csv$',
+			oneOf: [
+				{type: 'string', const: 'atomic'},
+				{type: 'string', const: 'multiple'},
+				{type: 'string', const: 'csv'},
+			],
 			description:
 				'Defines whether URL param value is a single string or an array of strings',
 		},
@@ -249,20 +261,20 @@ export const RouteSchema = {
 	additionalProperties: false,
 	required: ['id', 'name', 'allowedParams'],
 	properties: {
-		name: {
-			type: 'string',
-			minLength: 1,
-			maxLength: 64,
-			pattern: '^[A-Za-z_][A-Za-z0-9_-]*$',
-			description:
-				"Valid route name: the id stripped of the parent pathname: e.g 'edit' in '/doc/edit'",
-		},
 		id: {
 			type: 'string',
 			minLength: 1,
 			maxLength: 260,
-			pattern: '^/?([A-Za-z_][A-Za-z0-9_-]*\\/?){1,3}$',
+			pattern: PATH_PATTERN,
 			description: "Valid route id, e.g. '/doc/edit'.",
+		},
+		name: {
+			type: 'string',
+			minLength: 1,
+			maxLength: 64,
+			pattern: SLUG_PATTERN,
+			description:
+				"Valid route name: the id stripped of the parent pathname: e.g 'edit' in '/doc/edit'",
 		},
 		allowedParams: {
 			type: 'array',
@@ -286,21 +298,21 @@ export const NamespaceSchema = {
 			type: 'string',
 			minLength: 1,
 			maxLength: 260,
-			pattern: '^[A-Za-z_][A-Za-z0-9_-]*?$',
+			pattern: SLUG_PATTERN,
 			description: "Valid top-level namespace id, e.g. 'doc'.",
 		},
 		route: {
 			type: 'string',
 			minLength: 1,
 			maxLength: 260,
-			pattern: '^/[A-Za-z_][A-Za-z0-9_-]*$',
+			pattern: ROUTE_PATTERN,
 			description: "Valid top-level route id, e.g. '/doc'.",
 		},
 		theme: {
 			type: 'string',
 			minLength: 1,
 			maxLength: 64,
-			pattern: '^[A-Za-z_][A-Za-z0-9_-]*$',
+			pattern: SLUG_PATTERN,
 			description: 'Color theme for the namespace UI',
 		},
 		children: {

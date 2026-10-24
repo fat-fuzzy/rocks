@@ -4,7 +4,7 @@ const {L10nFormatter} = fatFuzzyIntl
 
 const messages = new L10nFormatter('en')
 
-const validationErrors: {
+export const validationErrors: {
 	[key: string]: {
 		input: string
 		testFn?: () => Promise<unknown>
@@ -16,5 +16,3 @@ const validationErrors: {
 		message: () => messages.getError('FORMAT_USERNAME'),
 	},
 }
-
-export default {validationErrors}

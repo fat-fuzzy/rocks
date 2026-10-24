@@ -1,5 +1,11 @@
 # @fat-fuzzy/doc
 
+## 0.1.94
+
+### Patch Changes
+
+- bbe1aed: Update nodejs, vite. Fix validation patterns
+
 ## 0.1.93
 
 ### Patch Changes
