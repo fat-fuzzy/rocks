@@ -1,5 +1,11 @@
 # @fat-fuzzy/cz-changelog
 
+## 0.1.16
+
+### Patch Changes
+
+- bbe1aed: Update nodejs, vite. Fix validation patterns
+
 ## 0.1.15
 
 ### Patch Changes
