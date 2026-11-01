@@ -10,9 +10,7 @@ import addFormats from 'ajv-formats'
 import addErrors from 'ajv-errors'
 import * as schemas from '../in/ajv.schemas.js'
 import utils from '../../utils/gpg.js'
-import constants from '../../utils/constants.js'
-
-const {modulePath, hashFilePath} = constants.PATHS
+import {modulePath, hashFilePath} from '../../utils/paths.js'
 
 const require = createRequire(import.meta.url)
 const standaloneCode = require('ajv/dist/standalone')
@@ -35,9 +33,12 @@ const AJV_OPTIONS = {
 
 // Add your Schemas here
 const Form = schemas.FormSchema
+const RouteParam = schemas.RouteParamSchema
+const Route = schemas.RouteSchema
+const Namespace = schemas.NamespaceSchema
 const ajv = new Ajv({
 	...AJV_OPTIONS,
-	schemas: [Form],
+	schemas: [Form, RouteParam, Route, Namespace],
 })
 
 addFormats(ajv)
@@ -48,6 +49,9 @@ addErrors(ajv)
  */
 let moduleCode = standaloneCode(ajv, {
 	FormValidationFunction: '#/definitions/FormSchema',
+	RouteParamValidationFunction: '#/definitions/RouteParamSchema',
+	RouteValidationFunction: '#/definitions/RouteSchema',
+	NamespaceValidationFunction: '#/definitions/NamespaceSchema',
 })
 
 /**

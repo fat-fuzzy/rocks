@@ -16,9 +16,7 @@ import {loadConfig} from './config/loadConfig.js'
 import {mergeSchemas} from './config/mergeSchemas.js'
 
 import utils from '../utils/gpg.js'
-import constants from '../utils/constants.js'
-
-const {modulePath, routingPath, hashFilePath} = constants.PATHS
+import {modulePath, routingPath, hashFilePath} from '../utils/paths.js'
 
 const require = createRequire(import.meta.url)
 const standaloneCode = require('ajv/dist/standalone')
