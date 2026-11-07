@@ -11,7 +11,7 @@
 	let {children}: Props = $props()
 
 	let appContext = $derived(page.data.appContext)
-	let acceptsFullScreen = $derived(page.data.sidebar.layout === 'steam')
+	let acceptsFullScreen = $derived(page.data.layout === 'steam')
 	let zoneContent: HTMLElement | undefined = $state()
 
 	function toggleFullScreen() {
