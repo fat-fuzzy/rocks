@@ -10,7 +10,7 @@
 	import {Button} from '@fat-fuzzy/ui'
 
 	import dialogActor from '#lib/ui/overlays/dialog/actor.svelte.js'
-	import FormFormat from '#lib/ui/controls/settings/FormFormat.svelte'
+	import FormFormat from '#lib/ui/forms/FormFormat.svelte'
 	import type {ICoordinateMetadata} from '#types'
 
 	interface Props {

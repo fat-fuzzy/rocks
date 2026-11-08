@@ -6,7 +6,7 @@
 
 	import dialogActor from '#lib/ui/overlays/dialog/actor.svelte.js'
 
-	import FormBlock from '#lib/ui/controls/block/FormBlock.svelte'
+	import FormBlock from '#lib/ui/forms/FormBlock.svelte'
 
 	interface Props {
 		id: string
