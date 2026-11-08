@@ -145,7 +145,7 @@
 		text-decoration: underline;
 	}
 
-	:where(audio, video:has[controls], object[form], [contenteditable]):not(
+	:where(audio, video:has(controls), form, [contenteditable]):not(
 			[disabled]
 		):focus {
 		--hue: var(--color-theme-primary);
@@ -158,8 +158,8 @@
 
 	:where(
 			audio,
-			video:has[controls],
-			object[form],
+			video:has(controls),
+			form,
 			[contenteditable],
 			[role='tabpanel'],
 			[tabindex]
