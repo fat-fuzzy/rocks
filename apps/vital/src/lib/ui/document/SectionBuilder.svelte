@@ -16,7 +16,7 @@
 	import {DOC_LANGUAGE, DOC_FORMAT} from '#config/setup.js'
 	import {LOCALIZATIONS} from '#lib/intl/l10n.js'
 
-	import BlockBuilder from '#lib/ui/builder/BlockBuilder.svelte'
+	import BlockBuilder from '#lib/ui/document/BlockBuilder.svelte'
 	import FeedbackContent from '#lib/ui/display/FeedbackContent.svelte'
 	import Loading from '#lib/ui/display/Loading.svelte'
 

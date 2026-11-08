@@ -29,8 +29,8 @@
 		getCtaFromRouteId,
 	} from '#lib/common/routing.js'
 
-	import SectionEditor from '#lib/ui/editor/SectionEditor.svelte'
-	import SectionBuilder from '#lib/ui/builder/SectionBuilder.svelte'
+	import SectionEditor from '#lib/ui/document/SectionEditor.svelte'
+	import SectionBuilder from '#lib/ui/document/SectionBuilder.svelte'
 	import Tags from '#lib/ui/controls/Tags.svelte'
 	import Presets from '#lib/ui/controls/Presets.svelte'
 	import Loading from '#lib/ui/display/Loading.svelte'
