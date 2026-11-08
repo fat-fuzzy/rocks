@@ -3,7 +3,7 @@
 	import type {UiSurface} from '@fat-fuzzy/ui'
 
 	import {Feedback} from '@fat-fuzzy/ui'
-	import CardContent from '#lib/ui/CardContent.svelte'
+	import CardContent from '#lib/ui/display/CardContent.svelte'
 
 	let {
 		surface = 'neutral',

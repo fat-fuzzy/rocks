@@ -1,5 +1,4 @@
 <script lang="ts">
-	import {resolve} from '$app/paths'
 	import type {RouteId} from '#types'
 
 	type Props = {
@@ -24,7 +23,7 @@
 		<li>
 			<a
 				class={`${variant} shape:${shape} color:${color} ${asset} justify:start size:${size}`}
-				href={resolve(url)}
+				href={url}
 			>
 				<span class="maki:inline size:3xs">{title}</span>
 			</a>
