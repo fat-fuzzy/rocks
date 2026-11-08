@@ -74,17 +74,24 @@ export async function saveStructure({
 }: {
 	root: NamespaceId
 	structures: FrontmatterStructure[]
-}): Promise<FrontmatterStructure | undefined> {
-	for (const structure of structures) {
-		try {
+}): Promise<FrontmatterStructure[] | undefined> {
+	const content: {
+		structures: FrontmatterStructure[]
+	} = {
+		structures: [],
+	}
+
+	try {
+		for (const structure of structures) {
 			const data = parseStructure('Save Structures', structure)
-
-			const directoryHandle = await getStructureHandle({root, create: true})
-			await saveEntry(directoryHandle, {name: 'structure'}, data)
-
-			return data
-		} catch (error) {
-			throw new Error('Error saving doc base', {cause: error})
+			content.structures.push(data)
 		}
+
+		const directoryHandle = await getStructureHandle({root, create: true})
+		await saveEntry(directoryHandle, {name: 'structure'}, content)
+
+		return content.structures
+	} catch (error) {
+		throw new Error('Error saving doc structure', {cause: error})
 	}
 }
