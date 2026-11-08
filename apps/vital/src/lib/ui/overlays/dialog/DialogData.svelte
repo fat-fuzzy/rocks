@@ -8,7 +8,7 @@
 	import {page} from '$app/state'
 
 	import dialogActor from '#lib/ui/overlays/dialog/actor.svelte.js'
-	import FormData from '#lib/ui/controls/data/FormData.svelte'
+	import FormData from '#lib/ui/forms/FormData.svelte'
 
 	interface Props {
 		id: string
