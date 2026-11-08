@@ -10,8 +10,8 @@
 	import {LOCALIZATIONS} from '#lib/intl/l10n.js'
 
 	import DialogSaveBlock from '#lib/ui/overlays/dialog/DialogSaveBlock.svelte'
-	import BlockPlaceholder from '#lib/ui/editor/BlockPlaceholder.svelte'
-	import BlockEditor from '#lib/ui/editor/BlockEditor.svelte'
+	import BlockPlaceholder from '#lib/ui/document/BlockPlaceholder.svelte'
+	import BlockEditor from '#lib/ui/document/BlockEditor.svelte'
 
 	import FeedbackContent from '#lib/ui/display/FeedbackContent.svelte'
 	import Loading from '#lib/ui/display/Loading.svelte'
