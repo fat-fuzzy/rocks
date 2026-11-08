@@ -11,7 +11,7 @@
 	import {Button} from '@fat-fuzzy/ui'
 
 	import dialogActor from '#lib/ui/overlays/dialog/actor.svelte.js'
-	import FormTags from '#lib/ui/controls/tags/FormTags.svelte'
+	import FormTags from '#lib/ui/forms/FormTags.svelte'
 
 	interface Props {
 		id: string
