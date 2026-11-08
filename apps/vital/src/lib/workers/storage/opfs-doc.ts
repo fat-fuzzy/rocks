@@ -288,6 +288,7 @@ export async function createSection(options: {
 
 			await saveSection({root, language, format, section: parsed})
 		}
+
 		// 3. Update ranks of sections around, if necessary
 		for (let i = 0; i < updateRanks.length; i++) {
 			const toUpdate = updateRanks[i]
