@@ -18,7 +18,7 @@
 	import {FormBlockValidator} from '#lib/common/validate.js'
 	import {applyTags} from '#lib/common/tags.js'
 	import dialogActor from '#lib/ui/overlays/dialog/actor.svelte.js'
-	import SelectTags from '#lib/ui/controls/tags/SelectTags.svelte'
+	import SelectTags from '#lib/ui/controls/SelectTags.svelte'
 
 	interface Props {
 		block?: Block

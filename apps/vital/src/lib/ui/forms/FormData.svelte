@@ -5,7 +5,7 @@
 	import {Button, InputGroup, Feedback} from '@fat-fuzzy/ui'
 	import {page} from '$app/state'
 
-	import Export from '#lib/ui/controls/data/Export.svelte'
+	import Export from '#lib/ui/controls/Export.svelte'
 
 	import {DEFAULT_STRUCTURES, DEFAULT_CONTENT} from '#data/doc/cv-config.js'
 

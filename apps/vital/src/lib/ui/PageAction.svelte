@@ -31,12 +31,12 @@
 
 	import SectionEditor from '#lib/ui/editor/SectionEditor.svelte'
 	import SectionBuilder from '#lib/ui/builder/SectionBuilder.svelte'
-	import Tags from '#lib/ui/controls/tags/Tags.svelte'
-	import Presets from '#lib/ui/controls/preset/Presets.svelte'
-	import Loading from '#lib/ui/Loading.svelte'
+	import Tags from '#lib/ui/controls/Tags.svelte'
+	import Presets from '#lib/ui/controls/Presets.svelte'
+	import Loading from '#lib/ui/display/Loading.svelte'
 
-	import ContentActions from '#lib/ui/controls/ContentActions.svelte'
-	import ContentHeading from '#lib/ui/controls/ContentHeading.svelte'
+	import ContentActions from '#lib/ui/display/ContentActions.svelte'
+	import ContentHeading from '#lib/ui/display/ContentHeading.svelte'
 	import {DOC_FORMAT, DOC_LANGUAGE} from '#config/setup.js'
 
 	type Props = {
