@@ -1,11 +1,11 @@
 <script lang="ts">
 	import type {UiColor, UiSize, UiVariant} from '@fat-fuzzy/ui'
+	import type {ICoordinateExports, ICoordinateImports} from '#types'
 
 	import {Popover} from '@fat-fuzzy/ui'
 
 	import DialogData from '#lib/ui/overlays/dialog/DialogData.svelte'
-	import Export from '#lib/ui/controls/data/Export.svelte'
-	import type {ICoordinateExports, ICoordinateImports} from '#types'
+	import Export from '#lib/ui/controls/Export.svelte'
 
 	let {
 		id = 'data',

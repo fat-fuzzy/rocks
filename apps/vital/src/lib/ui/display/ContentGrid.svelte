@@ -3,8 +3,6 @@
 	import type {UiColor} from '@fat-fuzzy/ui'
 	import type {NamespaceId} from '#types'
 
-	import {resolve} from '$app/paths'
-
 	let {
 		color = 'primary',
 		page,
@@ -44,7 +42,7 @@
 						class="l:stack w:full surface:2:{color} shape:mellow maki:inline:md maki:block:md"
 					>
 						<a
-							href={resolve(`/${page}/${action}`)}
+							href={`/${page}/${action}`}
 							class="l:flex font:semibold font:heading justify:center ravioli:2xs shape:mellow"
 						>
 							{actionLink}
