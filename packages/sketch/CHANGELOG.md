@@ -1,5 +1,11 @@
 # @fat-fuzzy/sketch
 
+## 0.1.49
+
+### Patch Changes
+
+- 921fde0: Dependency updates
+
 ## 0.1.48
 
 ### Patch Changes
