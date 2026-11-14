@@ -1,5 +1,11 @@
 # @fat-fuzzy/ui
 
+## 0.1.116
+
+### Patch Changes
+
+- 921fde0: Dependency updates
+
 ## 0.1.115
 
 ### Patch Changes
