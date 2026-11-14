@@ -9,15 +9,13 @@ import type {
 } from '#types'
 // Storage Output
 
-export type OPFSTreeDoc = Record<
+export type OPFSTreeDoc = Record<string, OPFSTreeSections>
+export type OPFSTreeSections = Record<
 	string,
-	Record<
-		string,
-		{
-			content: Doc
-			meta: {language: DocLanguage; format: Slug; name: DocLanguage}
-		}
-	>
+	{
+		content: Doc
+		meta: {language: DocLanguage; format: Slug; name: DocLanguage}
+	}
 >
 export type OPFSTreePreset = Record<string, {content: Preset; meta: DocMeta}>
 export type OPFSTreeBase = {

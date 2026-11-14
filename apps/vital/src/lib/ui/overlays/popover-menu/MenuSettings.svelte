@@ -5,7 +5,7 @@
 	import {getContext} from 'svelte'
 	import {Popover} from '@fat-fuzzy/ui'
 
-	import Settings from '#lib/ui/controls/settings/Settings.svelte'
+	import Settings from '#lib/ui/controls/Settings.svelte'
 
 	const coordinators: CurrentCoordinators = getContext('currentCoordinators')
 

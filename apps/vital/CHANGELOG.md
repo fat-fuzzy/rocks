@@ -1,5 +1,11 @@
 # @fat-fuzzy/chlorophyll
 
+## 0.1.7
+
+### Patch Changes
+
+- 09ae2bd: App bugfixes & gardening, dep updates
+
 ## 0.1.6
 
 ### Patch Changes

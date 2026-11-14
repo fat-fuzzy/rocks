@@ -107,13 +107,12 @@
 					name: presetName,
 				},
 			})
+			onsubmit?.()
 		} catch (error) {
 			errorMessage =
 				error instanceof Error && error.message
 					? error.message
 					: 'Saving Preset failed'
-		} finally {
-			onsubmit?.()
 		}
 	}
 
@@ -133,13 +132,12 @@
 					label: presetName,
 				},
 			})
+			onsubmit?.()
 		} catch (error) {
 			errorMessage =
 				error instanceof Error && error.message
 					? error.message
 					: 'Deleting preset failed'
-		} finally {
-			onsubmit?.()
 		}
 	}
 

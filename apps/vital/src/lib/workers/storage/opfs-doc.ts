@@ -9,6 +9,7 @@ import type {
 	Section,
 	Block,
 	OPFSTreeDoc,
+	OPFSTreeSections,
 	Rank,
 	NamespaceId,
 } from '#types'
@@ -44,21 +45,14 @@ export async function saveLanguage(options: {
 	const {root, language, sourceLanguage, formats} = options
 
 	try {
-		for (const format of formats) {
-			await saveFormat({
-				root,
-				format,
-				sourceFormat: formats[0], // TODO: test this
-				formats,
-				languages: [language],
-			})
-			const sourceDoc = await getContentDataForLanguage(root, sourceLanguage)
+		const sourceDoc = await getContentDataForLanguage(root, sourceLanguage)
 
+		for (const format of formats) {
 			await duplicateDocContent({
 				root,
 				language,
 				format,
-				opfsContent: sourceDoc.data,
+				opfsContent: sourceDoc.data[format],
 			})
 		}
 
@@ -68,14 +62,14 @@ export async function saveLanguage(options: {
 			},
 		}
 	} catch (error) {
-		throw new Error('Save block failed', {cause: error})
+		throw new Error('Save language failed', {cause: error})
 	}
 }
 
 /**
- * Add new Format and clone content from source language
- * @param options
- * @returns created language slug
+ * Add new Format and clone content from source format
+ * @param sourceDoc
+ * @returns created format slug
  */
 export async function saveFormat(options: {
 	root: NamespaceId
@@ -108,7 +102,7 @@ export async function saveFormat(options: {
 			},
 		}
 	} catch (error) {
-		throw new Error('Save block failed', {cause: error})
+		throw new Error('Save format failed', {cause: error})
 	}
 }
 
@@ -120,7 +114,7 @@ async function duplicateDocContent(options: {
 	root: NamespaceId
 	language: DocLanguage
 	format: Slug
-	opfsContent: OPFSTreeDoc
+	opfsContent: OPFSTreeSections
 }) {
 	const {root, language, format, opfsContent} = options
 
@@ -150,27 +144,31 @@ async function duplicateDocContent(options: {
 
 		await saveEntry(targetParentHandle, docMeta, docContent)
 
-		for (const sections of Object.values(opfsContent)) {
-			for (const sectionData of Object.values(sections)) {
-				let unsafeSection
-				if (isRawSection(sectionData)) {
-					unsafeSection = rawSectionToSection(sectionData)
-				}
+		for (const sectionData of Object.entries(opfsContent)) {
+			let unsafeSection
 
-				if (unsafeSection) {
-					unsafeSection.parentId = docMeta.meta.id
+			if (sectionData[0] === 'meta' || sectionData[0] === 'content') {
+				continue
+			}
 
-					const section = parseSection(
-						`Section ${unsafeSection.name}`,
-						unsafeSection,
-					)
+			if (isRawSection(sectionData[1])) {
+				unsafeSection = rawSectionToSection(sectionData[1])
+			}
 
-					await saveSectionToOPFS(targetParentHandle, section, 'json')
-				}
+			if (unsafeSection) {
+				unsafeSection.parentId = docMeta.meta.id
+				unsafeSection.id = crypto.randomUUID()
+
+				const section = parseSection(
+					`Section ${unsafeSection.name}`,
+					unsafeSection,
+				)
+
+				await saveSectionToOPFS(targetParentHandle, section, 'json')
 			}
 		}
 	} catch (error) {
-		throw new Error('Save block failed', {cause: error})
+		throw new Error('Duplicate doc tree failed', {cause: error})
 	}
 }
 
@@ -288,6 +286,7 @@ export async function createSection(options: {
 
 			await saveSection({root, language, format, section: parsed})
 		}
+
 		// 3. Update ranks of sections around, if necessary
 		for (let i = 0; i < updateRanks.length; i++) {
 			const toUpdate = updateRanks[i]
@@ -452,7 +451,7 @@ export async function getContentDataForFormat(
 	language: DocLanguage,
 	format: Slug,
 ): Promise<{
-	data: OPFSTreeDoc
+	data: OPFSTreeSections
 }> {
 	let contentHandle
 	let languageHandle
@@ -469,7 +468,7 @@ export async function getContentDataForFormat(
 		const data = await readDirectoryRecursive(formatHandle)
 
 		return {
-			data: data as OPFSTreeDoc,
+			data: data as OPFSTreeSections,
 		}
 	} catch (error) {
 		const notFound = String(error).startsWith('NotFoundError:')

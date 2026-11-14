@@ -1,5 +1,11 @@
 # @fat-fuzzy/ui
 
+## 0.1.115
+
+### Patch Changes
+
+- 09ae2bd: App bugfixes & gardening, dep updates
+
 ## 0.1.114
 
 ### Patch Changes

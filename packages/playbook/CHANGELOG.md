@@ -1,5 +1,11 @@
 # @fat-fuzzy/playbook
 
+## 0.1.48
+
+### Patch Changes
+
+- 09ae2bd: App bugfixes & gardening, dep updates
+
 ## 0.1.47
 
 ### Patch Changes
