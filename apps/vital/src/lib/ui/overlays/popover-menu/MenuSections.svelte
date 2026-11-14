@@ -4,7 +4,7 @@
 
 	import {Popover} from '@fat-fuzzy/ui'
 
-	import FilterSections from '#lib/ui/controls/section/FilterSections.svelte'
+	import FilterSections from '#lib/ui/controls/FilterSections.svelte'
 	import type {CurrentCoordinators} from '#types'
 
 	const coordinators: CurrentCoordinators = getContext('currentCoordinators')

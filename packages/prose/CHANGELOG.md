@@ -1,5 +1,17 @@
 # @fat-fuzzy/prose
 
+## 0.1.56
+
+### Patch Changes
+
+- 921fde0: Dependency updates
+
+## 0.1.55
+
+### Patch Changes
+
+- 09ae2bd: App bugfixes & gardening, dep updates
+
 ## 0.1.54
 
 ### Patch Changes

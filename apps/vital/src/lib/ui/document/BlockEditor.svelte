@@ -14,7 +14,7 @@
 
 	import {applyTags} from '#lib/common/tags.js'
 	import DialogDeleteBlock from '#lib/ui/overlays/dialog/DialogDeleteBlock.svelte'
-	import SelectTags from '#lib/ui/controls/tags/SelectTags.svelte'
+	import SelectTags from '#lib/ui/controls/SelectTags.svelte'
 	import type {UiColor, UiShape, UiSize} from '@fat-fuzzy/ui'
 
 	const {Editor} = prose.editor

@@ -10,7 +10,7 @@
 	import dialogActor from '#lib/ui/overlays/dialog/actor.svelte.js'
 	import {getSanitizedParamValue} from '#lib/common/url.js'
 
-	import FormPreset from '#lib/ui/controls/preset/FormPreset.svelte'
+	import FormPreset from '#lib/ui/forms/FormPreset.svelte'
 
 	interface Props {
 		id: string

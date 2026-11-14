@@ -1,5 +1,17 @@
 # @fat-fuzzy/doc
 
+## 0.1.96
+
+### Patch Changes
+
+- 921fde0: Dependency updates
+
+## 0.1.95
+
+### Patch Changes
+
+- 09ae2bd: App bugfixes & gardening, dep updates
+
 ## 0.1.94
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @fat-fuzzy/validation
 
+## 0.1.34
+
+### Patch Changes
+
+- 921fde0: Dependency updates
+
 ## 0.1.33
 
 ### Patch Changes
