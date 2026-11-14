@@ -3,10 +3,7 @@
 	import type {ActionCrud, ICoordinateMetadata} from '#types'
 
 	import {onDestroy, onMount} from 'svelte'
-	import {SvelteURL} from 'svelte/reactivity'
 	import {Button, Input, Feedback, FormValidator} from '@fat-fuzzy/ui'
-
-	import {page} from '$app/state'
 
 	import {FormFormatValidator} from '#lib/common/validate.js'
 	import dialogActor from '#lib/ui/overlays/dialog/actor.svelte.js'
@@ -88,24 +85,18 @@
 		if (validator.formHasErrors() || errorFormatExists) {
 			return
 		}
-		let url = new SvelteURL(page.url.href)
 
 		try {
-			url.searchParams.delete('format')
-			url.searchParams.append('format', newFormat)
-
 			coordMetadata.addFormat({
 				name: newFormat,
 				sourceFormat: sourceFormat ?? DOC_FORMAT,
 			})
+			dialogActor.close()
 		} catch (error) {
 			errorMessage =
 				error instanceof Error && error.message
 					? error.message
 					: 'Adding format failed'
-		} finally {
-			dialogActor.close()
-			window.location.href = url.href
 		}
 	}
 

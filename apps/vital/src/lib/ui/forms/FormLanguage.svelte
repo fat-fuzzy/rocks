@@ -3,10 +3,7 @@
 	import type {ActionCrud, ICoordinateMetadata} from '#types'
 
 	import {onDestroy, onMount} from 'svelte'
-	import {SvelteURL} from 'svelte/reactivity'
 	import {Button, Input, Feedback, FormValidator} from '@fat-fuzzy/ui'
-
-	import {page} from '$app/state'
 
 	import {FormLanguageValidator} from '#lib/common/validate.js'
 	import dialogActor from '#lib/ui/overlays/dialog/actor.svelte.js'
@@ -89,23 +86,17 @@
 			return
 		}
 
-		let url = new SvelteURL(page.url.href)
-
 		try {
 			await coordMetadata.addLanguage({
 				name: newLanguage,
 				sourceLanguage: sourceLanguage ?? DOC_LANGUAGE,
 			})
-			url.searchParams.delete('language')
-			url.searchParams.append('language', newLanguage)
+			dialogActor.close()
 		} catch (error) {
 			errorMessage =
 				error instanceof Error && error.message
 					? error.message
 					: 'Adding format failed'
-		} finally {
-			dialogActor.close()
-			window.location.href = url.href
 		}
 	}
 
