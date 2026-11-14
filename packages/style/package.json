@@ -48,7 +48,7 @@
 		"@terrazzo/plugin-js": "2.7.1",
 		"autoprefixer": "10.5.0",
 		"cssnano": "8.0.2",
-		"glob": "13.0.6",
+		"glob": "14.0.2",
 		"postcss": "8.5.27",
 		"postcss-import": "16.1.1",
 		"postcss-preset-env": "11.3.2",
