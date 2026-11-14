@@ -5,7 +5,7 @@
 	import {Button, InputGroup, Feedback} from '@fat-fuzzy/ui'
 	import {page} from '$app/state'
 
-	import Export from '#lib/ui/controls/data/Export.svelte'
+	import Export from '#lib/ui/controls/Export.svelte'
 
 	import {DEFAULT_STRUCTURES, DEFAULT_CONTENT} from '#data/doc/cv-config.js'
 
@@ -88,14 +88,12 @@
 			const serialized = await file.text() // read the file — parse happens inside importFromFile
 
 			await coordImports.restoreFromBackup(serialized)
+			onsubmit?.()
 		} catch (error) {
 			errorMessage =
 				error instanceof Error && error.message
 					? error.message
 					: 'Import failed'
-		} finally {
-			// 3. TODO: tell parent to reload from OPFS
-			onsubmit?.()
 		}
 	}
 
@@ -105,12 +103,10 @@
 	async function freshStart() {
 		try {
 			await coordImports.initSeed(DEFAULT_STRUCTURES, DEFAULT_CONTENT)
+			onsubmit?.()
 		} catch (error) {
 			errorMessage =
 				error instanceof Error && error.message ? error.message : 'Reset failed'
-		} finally {
-			// 3. TODO: tell parent to reload from OPFS
-			onsubmit?.()
 		}
 	}
 
@@ -124,11 +120,10 @@
 				{base: page.data.base, structures: page.data.structures},
 				page.data.seed.content,
 			)
+			onsubmit?.()
 		} catch (error) {
 			errorMessage =
 				error instanceof Error && error.message ? error.message : 'Seed failed'
-		} finally {
-			onsubmit?.()
 		}
 	}
 </script>

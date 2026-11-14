@@ -53,7 +53,8 @@ export default class CoordinateMetadata implements ICoordinateMetadata {
 	}
 
 	async addLanguage(options: {name: DocLanguage; sourceLanguage: DocLanguage}) {
-		this.aggMetadata.addLanguage(options)
+		await this.aggMetadata.addLanguage(options)
+		await this.aggDocs.loadDocStore()
 	}
 
 	getFormats(): Slug[] {
@@ -65,7 +66,8 @@ export default class CoordinateMetadata implements ICoordinateMetadata {
 	}
 
 	async addFormat(options: {name: Slug; sourceFormat: Slug}) {
-		this.aggMetadata.addFormat(options)
+		await this.aggMetadata.addFormat(options)
+		await this.aggDocs.loadDocStore()
 	}
 
 	getTagGroups(): TagGroup[] {
