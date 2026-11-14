@@ -118,6 +118,7 @@ export default class AggregateMetadata implements IAggregateMetadata {
 		if (!this.bridge) {
 			return
 		}
+
 		const {name, sourceFormat} = options
 
 		await this.bridge.saveFormat({
