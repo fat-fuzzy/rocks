@@ -183,15 +183,27 @@
 
 {#if tags.length === 0 || displayBlock}
 	{#key editorId}
-		<Editor
-			id={editorId}
-			type="html"
-			{content}
-			color="neutral"
-			{height}
-			width="2xl"
-			onblur={handleBlur}
-			{menus}
-		/>
+		<details
+			id={`block-${block.name}`}
+			data-block={block.name}
+			class="l:stack:xs shape:soft"
+			open
+		>
+			<summary
+				class="w:full raviolink variant:bare surface:1:neutral font:heading font:semibold size:xs font:xs shape:mellow"
+			>
+				{group ?? 'Default'} > {block.name}
+			</summary>
+			<Editor
+				id={editorId}
+				type="html"
+				{content}
+				color="neutral"
+				{height}
+				width="2xl"
+				onblur={handleBlur}
+				{menus}
+			/>
+		</details>
 	{/key}
 {/if}
