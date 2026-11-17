@@ -39,7 +39,6 @@
 
 	let observerRoot: HTMLElement | undefined = $state()
 	let observer: IntersectionObserver | undefined = $state()
-	let missingIcon = 'emoji:idea justify:end'
 	let loading = $derived(coordDocs.isLoading())
 	let localized = $derived(LOCALIZATIONS[language])
 
@@ -181,64 +180,73 @@
 						{@const subsectionName =
 							subsection.name !== section.name ? subsection.name : undefined}
 
-						{#if tagsFound.length}
-							{@const subsectionIcon =
-								tagsFound.length === 0 ? missingIcon : ''}
+						{#snippet subsectionBody()}
+							{#if tagsFound.length}
+								{#each blocks as block, i (i)}
+									{@const blockLoaded = Boolean(blocksLoaded[block.name])}
+									{@const blockTagsFound = checkTags(block.tags, selectedTags)}
+									{@const hiddenTag = isHidden(block.tags, selectedTags)}
 
-							{#if subsections.length > 1}
-								<h3 class="raviolink shape:mellow maki:block surface:1:neutral">
-									<span class={`${subsectionIcon} maki:inline:md font:heading`}>
-										{subsection.name}
-									</span>
-								</h3>
-							{/if}
-
-							{#each blocks as block, i (i)}
-								{@const blockLoaded = Boolean(blocksLoaded[block.name])}
-								{@const blockTagsFound = checkTags(block.tags, selectedTags)}
-								{@const hiddenTag = isHidden(block.tags, selectedTags)}
-
-								{#if hiddenTag && blockTagsFound.length}
-									<FeedbackContent
-										name={section.name}
-										content_type="block"
-										isHidden={true}
-										tags={Array.from(tagSet)}
-									/>
-								{:else if block.tags.length === 0 || blockTagsFound.length}
-									{#if blockLoaded}
-										<BlockEditor
-											{...block}
-											group={subsectionName}
-											sectionName={name}
-											content={block.content}
-											tagsFound={blockTagsFound}
-											{language}
-											{format}
-											{color}
-											{isTwinLayout}
+									{#if hiddenTag && blockTagsFound.length}
+										<FeedbackContent
+											name={section.name}
+											content_type="block"
+											isHidden={true}
+											tags={Array.from(tagSet)}
 										/>
-									{:else}
-										<BlockPlaceholder
-											{observer}
-											name={block.name}
-											sectionName={name}
-											{subsectionName}
-											{color}
-										/>
+									{:else if block.tags.length === 0 || blockTagsFound.length}
+										{#if blockLoaded}
+											<BlockEditor
+												{...block}
+												group={subsectionName}
+												sectionName={name}
+												content={block.content}
+												tagsFound={blockTagsFound}
+												{language}
+												{format}
+												{color}
+												{isTwinLayout}
+											/>
+										{:else}
+											<BlockPlaceholder
+												{observer}
+												name={block.name}
+												sectionName={name}
+												{subsectionName}
+												{color}
+											/>
+										{/if}
 									{/if}
-								{/if}
-							{/each}
+								{/each}
+							{:else}
+								{@const contentName =
+									subsection.name !== section.name
+										? subsection.name
+										: section.name}
+								<FeedbackContent
+									name={contentName}
+									content_type="block"
+									tags={Array.from(tagSet)}
+								/>
+							{/if}
+						{/snippet}
+
+						{#if subsectionName}
+							<details
+								id={`group-${subsectionName}`}
+								data-group={subsectionName}
+								class="l:stack:xs shape:soft"
+								open
+							>
+								<summary
+									class="w:full raviolink variant:bare surface:1:neutral font:heading font:semibold size:xs font:sm shape:mellow"
+								>
+									{section.name} > {subsectionName}
+								</summary>
+								{@render subsectionBody()}
+							</details>
 						{:else}
-							{@const contentName =
-								subsection.name !== section.name
-									? subsection.name
-									: section.name}
-							<FeedbackContent
-								name={contentName}
-								content_type="block"
-								tags={Array.from(tagSet)}
-							/>
+							{@render subsectionBody()}
 						{/if}
 					{/each}
 				</div>
