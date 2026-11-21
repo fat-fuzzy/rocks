@@ -78,7 +78,7 @@
 		"mdast-util-to-hast": "13.2.1",
 		"mdast-util-to-markdown": "2.1.2",
 		"mdsvex": "0.12.7",
-		"prettier": "3.9.9",
+		"prettier": "3.9.10",
 		"prettier-plugin-svelte": "4.1.1",
 		"svelte": "5.57.3",
 		"svelte-check": "4.7.8",
