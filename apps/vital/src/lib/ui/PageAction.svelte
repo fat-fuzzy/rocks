@@ -223,7 +223,7 @@
 </script>
 
 <PageRails
-	theme="neutral"
+	{theme}
 	{title}
 	{prefix}
 	{description}
