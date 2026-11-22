@@ -19,6 +19,12 @@ pre {
 	inline-size: auto;
 	max-inline-size: calc(100% - var(--ui-size-lg));
 	overflow: auto;
+	scrollbar-gutter: stable;
+	scrollbar-width: thin;
+}
+
+.chroma\:1 pre {
+	--lightness: var(--lightness-surface-1);
 }
 
 kbd {
