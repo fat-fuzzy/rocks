@@ -191,11 +191,11 @@ importers:
         specifier: 9.1.7
         version: 9.1.7
       prettier:
-        specifier: 3.9.9
-        version: 3.9.9
+        specifier: 3.9.10
+        version: 3.9.10
       prettier-plugin-svelte:
         specifier: 4.1.1
-        version: 4.1.1(prettier@3.9.9)(svelte@5.57.3(@typescript-eslint/types@8.71.0))
+        version: 4.1.1(prettier@3.9.10)(svelte@5.57.3(@typescript-eslint/types@8.71.0))
       turbo:
         specifier: 2.11.6
         version: 2.11.6
@@ -405,11 +405,11 @@ importers:
         specifier: 0.12.7
         version: 0.12.7(svelte@5.57.3(@typescript-eslint/types@8.71.0))
       prettier:
-        specifier: 3.9.9
-        version: 3.9.9
+        specifier: 3.9.10
+        version: 3.9.10
       prettier-plugin-svelte:
         specifier: 4.1.1
-        version: 4.1.1(prettier@3.9.9)(svelte@5.57.3(@typescript-eslint/types@8.71.0))
+        version: 4.1.1(prettier@3.9.10)(svelte@5.57.3(@typescript-eslint/types@8.71.0))
       svelte:
         specifier: 5.57.3
         version: 5.57.3(@typescript-eslint/types@8.71.0)
@@ -483,11 +483,11 @@ importers:
         specifier: 17.7.0
         version: 17.7.0
       prettier:
-        specifier: 3.9.9
-        version: 3.9.9
+        specifier: 3.9.10
+        version: 3.9.10
       prettier-plugin-svelte:
         specifier: 4.1.1
-        version: 4.1.1(prettier@3.9.9)(svelte@5.57.3(@typescript-eslint/types@8.71.0))
+        version: 4.1.1(prettier@3.9.10)(svelte@5.57.3(@typescript-eslint/types@8.71.0))
       publint:
         specifier: 0.3.18
         version: 0.3.18
@@ -5177,8 +5177,8 @@ packages:
     engines: {node: '>=10.13.0'}
     hasBin: true
 
-  prettier@3.9.9:
-    resolution: {integrity: sha512-Z/CJHIkdujO/OtN7nXUii0Rf3VT5SRuhjBA82Xvu2XhBUgX3nhP67T0LHceBdQLex7OOFGTox+Q5Yg8Jk2Qivg==}
+  prettier@3.9.10:
+    resolution: {integrity: sha512-skGHTH1Yb9QvaTC4hWnRTzEYtCpApF0UMBPz+t/0ZPzP8ihefo/btKd+QA7pUE0fEwA1SbS/NmhyEcstdXOIdA==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -9350,7 +9350,7 @@ snapshots:
       js-yaml: 5.5.0
       lodash: 4.18.1
       minimist: 1.2.8
-      prettier: 3.9.9
+      prettier: 3.9.10
       tinyglobby: 0.2.17
 
   json-schema-traverse@0.4.1: {}
@@ -10431,14 +10431,14 @@ snapshots:
 
   prelude-ls@1.2.1: {}
 
-  prettier-plugin-svelte@4.1.1(prettier@3.9.9)(svelte@5.57.3(@typescript-eslint/types@8.71.0)):
+  prettier-plugin-svelte@4.1.1(prettier@3.9.10)(svelte@5.57.3(@typescript-eslint/types@8.71.0)):
     dependencies:
-      prettier: 3.9.9
+      prettier: 3.9.10
       svelte: 5.57.3(@typescript-eslint/types@8.71.0)
 
   prettier@2.8.8: {}
 
-  prettier@3.9.9: {}
+  prettier@3.9.10: {}
 
   prism-svelte@0.4.7: {}
 
