@@ -33,7 +33,7 @@
 		"./svelte": "./dist/front/svelte.config.ts"
 	},
 	"peerDependencies": {
-		"@playwright/test": "1.58.2",
+		"@playwright/test": "1.65.1",
 		"@sveltejs/kit": "3.0.0-next.27",
 		"@sveltejs/vite-plugin-svelte": "7.3.0"
 	},
