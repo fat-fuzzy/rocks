@@ -143,8 +143,8 @@
 			"title": "Backend Serverless"
 		},
 		"🐳 ": {
-			"description": "Backend related changes (docker)",
-			"title": "Backend Docker"
+			"description": "Backend related changes (containers)",
+			"title": "Containers"
 		},
 		"👐 ": {
 			"description": "Accessibility related changes",
