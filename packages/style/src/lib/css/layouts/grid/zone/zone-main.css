@@ -1,5 +1,6 @@
 .zone\:main {
 	grid-area: zone-main;
+	grid-template-columns: subgrid;
 	grid-template-areas:
 		'page-header'
 		'page-main';
@@ -7,6 +8,7 @@
 
 	> .page-header {
 		grid-area: page-header;
+		grid-column-end: 5;
 		block-size: fit-content;
 		padding-block-start: calc(
 			var(--ui-header-height) + 2 * var(--size-base-3xs)
@@ -19,6 +21,7 @@
 
 	> .page-main {
 		grid-area: page-main;
+		grid-column-end: 5;
 	}
 
 	> .page-header,
