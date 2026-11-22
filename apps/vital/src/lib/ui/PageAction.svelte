@@ -276,7 +276,7 @@
 				<div class="l:switcher:md th:sm w:full justify:center">
 					{#if sourcePreset}
 						<div
-							class={`scroll:container contain:lg ${contentClass} raviolink`}
+							class={`scroll:container contain:xl ${contentClass} raviolink`}
 						>
 							<div
 								class={`scroll:y ravioli:lg layer:1 shape:mellow surface:0:${theme} chroma:1`}
@@ -310,7 +310,7 @@
 					{/if}
 
 					{#if targetPreset}
-						<div class={`scroll:container contain:lg ${contentClass}`}>
+						<div class={`scroll:container contain:xl ${contentClass}`}>
 							<div
 								class={`l:center scroll:y l:stack justify:start color:${color}`}
 							>

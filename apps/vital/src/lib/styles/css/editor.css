@@ -48,6 +48,7 @@ ff-prose .prose-editor.h\:lg {
 
 ff-prose .prose-editor[class*='h:'] {
 	block-size: fit-content;
+	max-block-size: calc(var(--max-block-size) - 6 * var(--ui-header-height));
 }
 
 ff-prose .editor-menu,
