@@ -337,7 +337,7 @@
 								font="md"
 							>
 								<p>
-									Select a <span class="font:semibold">Targe Preset</span> to edit
+									Select a <span class="font:semibold">Target Preset</span> to edit
 								</p>
 							</Feedback>
 						</div>
