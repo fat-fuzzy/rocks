@@ -3,7 +3,7 @@
  * Contains main content page context
  */
 .railway.zone\:2 {
-	grid-template-rows: 1fr auto;
+	grid-template-rows: subgrid;
 	grid-template-columns: subgrid;
 
 	> .page-context {
