@@ -102,86 +102,136 @@
 	{:else if noContentFound}
 		<FeedbackContent {name} content_type="section" isEmpty={true} />
 	{:else if section}
-		{#if section.title}
-			<h2>
-				{section.title}
-			</h2>
-		{:else if localized && localized[section.name]}
-			<h2>
-				{localized[section.name]}
-			</h2>
-		{/if}
-
-		{#if content}
-			{@const tagsFound = section.tags?.length
-				? checkTags(section.tags, selectedTags)
-				: []}
-			{@const hiddenTag = section.tags?.length
-				? isHidden(section.tags, selectedTags)
-				: false}
-
-			{#if hiddenTag}
-				<FeedbackContent
-					name={section.name}
-					content_type="section"
-					isHidden={true}
-				/>
-			{:else if !section.tags?.length || tagsFound.length}
-				<BlockBuilder
-					content_type="section"
-					{...section}
-					{content}
-					{selectedTags}
-					tags={section.tags ?? []}
-				/>
+		{#snippet sectionBody()}
+			{#if section.title}
+				<h2>
+					{section.title}
+				</h2>
+			{:else if localized && localized[section.name]}
+				<h2>
+					{localized[section.name]}
+				</h2>
 			{/if}
-		{/if}
 
-		{#if subsections}
-			{#each subsections as subsection, i (i)}
-				{@const blocks = subsection.blocks}
-				{@const tags = subsection.blocks.flatMap((b) => b.tags)}
-				{@const tagSet = new Set(tags)}
-				{@const tagsFound = checkTags(tags, selectedTags)}
+			{#if content}
+				{@const tagsFound = section.tags?.length
+					? checkTags(section.tags, selectedTags)
+					: []}
+				{@const hiddenTag = section.tags?.length
+					? isHidden(section.tags, selectedTags)
+					: false}
 
-				{#if tagsFound.length}
-					{@const subsectionIcon = tagsFound.length === 0 ? missingIcon : ''}
-
-					{#if cta !== 'preview' && subsections.length > 1}
-						<h3 class={`raviolink shape:mellow maki:block surface:0:${color}`}>
-							<span class={`${subsectionIcon} maki:inline:md font:heading`}>
-								{subsection.name}
-							</span>
-						</h3>
-					{/if}
-
-					{#each blocks as block, i (i)}
-						{@const blockTagsFound = checkTags(block.tags, selectedTags)}
-						{@const hiddenTag = isHidden(block.tags, selectedTags)}
-
-						{#if cta === 'build' && hiddenTag && blockTagsFound.length}
-							<FeedbackContent
-								name={section.name}
-								content_type="block"
-								isHidden={true}
-								tags={Array.from(tagSet)}
-							/>
-						{:else if block.tags.length === 0 || blockTagsFound.length}
-							<BlockBuilder {...block} content={block.content} {selectedTags} />
-						{/if}
-					{/each}
-				{:else if cta === 'build'}
-					{@const contentName =
-						subsection.name !== section.name ? subsection.name : section.name}
+				{#if hiddenTag}
 					<FeedbackContent
-						name={contentName}
-						content_type="block"
-						tags={Array.from(tagSet)}
+						name={section.name}
+						content_type="section"
+						isHidden={true}
+					/>
+				{:else if !section.tags?.length || tagsFound.length}
+					<BlockBuilder
+						content_type="section"
+						{...section}
+						{content}
+						{selectedTags}
+						tags={section.tags ?? []}
 					/>
 				{/if}
-			{/each}
-		{/if}
+			{/if}
 
+			{#if subsections}
+				{#each subsections as subsection, i (i)}
+					{@const blocks = subsection.blocks}
+					{@const tags = subsection.blocks.flatMap((b) => b.tags)}
+					{@const tagSet = new Set(tags)}
+					{@const tagsFound = checkTags(tags, selectedTags)}
+
+					{#snippet subsectionBody()}
+						{#if tagsFound.length}
+							{@const subsectionIcon =
+								tagsFound.length === 0 ? missingIcon : ''}
+
+							{#if cta !== 'preview' && subsections.length > 1}
+								<h3
+									class={`raviolink shape:mellow maki:block surface:0:${color}`}
+								>
+									<span class={`${subsectionIcon} maki:inline:md font:heading`}>
+										{subsection.name}
+									</span>
+								</h3>
+							{/if}
+
+							{#each blocks as block, i (i)}
+								{@const blockTagsFound = checkTags(block.tags, selectedTags)}
+								{@const hiddenTag = isHidden(block.tags, selectedTags)}
+
+								{#if cta === 'build' && hiddenTag && blockTagsFound.length}
+									<FeedbackContent
+										name={section.name}
+										content_type="block"
+										isHidden={true}
+										tags={Array.from(tagSet)}
+									/>
+								{:else if block.tags.length === 0 || blockTagsFound.length}
+									<BlockBuilder
+										{...block}
+										content={block.content}
+										{selectedTags}
+									/>
+								{/if}
+							{/each}
+						{:else if cta === 'build'}
+							{@const contentName =
+								subsection.name !== section.name
+									? subsection.name
+									: section.name}
+							<FeedbackContent
+								name={contentName}
+								content_type="block"
+								tags={Array.from(tagSet)}
+							/>
+						{/if}
+					{/snippet}
+
+					{#if cta === 'preview'}
+						{@render subsectionBody()}
+					{:else}
+						<details
+							id={`group-${subsection.name}`}
+							data-group={subsection.name}
+							class="l:stack:xs shape:soft"
+							open
+						>
+							<summary
+								class="w:full raviolink variant:bare surface:1:neutral font:heading font:semibold size:xs font:sm shape:mellow"
+							>
+								{section.name} > {subsection.name}
+							</summary>
+							{@render subsectionBody()}
+						</details>
+					{/if}
+				{/each}
+			{/if}
+		{/snippet}
+
+		{#if cta === 'preview'}
+			{@render sectionBody()}
+		{:else}
+			<details
+				id={`section-${name}`}
+				data-section={name}
+				class="l:stack:xs shape:soft"
+				open
+			>
+				<summary
+					class="w:full ravioli:3xs variant:bare color:neutral font:heading font:semibold size:xs font:md shape:mellow"
+				>
+					{section.rank}.
+					{section.name}
+				</summary>
+
+				{@render sectionBody()}
+			</details>
+		{/if}
 		{#if !subsections && !content}
 			<FeedbackContent
 				name={section.name}
