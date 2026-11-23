@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {Block} from '#types'
+	import type {Block, NamespaceId, RouteNameFor} from '#types'
 
 	import {EscapeHtml} from '@fat-fuzzy/ui'
 
@@ -7,11 +7,15 @@
 
 	let {
 		name,
+		group,
+		cta,
 		tags,
 		content,
 		selectedTags,
 	}: {
 		selectedTags: string[]
+		cta: RouteNameFor<NamespaceId>
+		group?: string
 	} & Block = $props()
 
 	let tagsFound: string[] = $state([])
@@ -28,5 +32,22 @@
 </script>
 
 {#if tags.length === 0 || tagsFound.length}
-	<EscapeHtml id={builderId} {html} size="2xl" />
+	{#if cta !== 'preview'}
+		<details
+			id={`block-${name}`}
+			data-block={name}
+			class="l:stack:xs shape:soft"
+			open
+		>
+			<summary
+				class="w:full raviolink variant:bare surface:1:neutral font:heading font:semibold size:xs font:xs shape:mellow"
+			>
+				{group ?? 'Default'} > {name}
+			</summary>
+
+			<EscapeHtml id={builderId} {html} size="2xl" />
+		</details>
+	{:else}
+		<EscapeHtml id={builderId} {html} size="2xl" />
+	{/if}
 {/if}

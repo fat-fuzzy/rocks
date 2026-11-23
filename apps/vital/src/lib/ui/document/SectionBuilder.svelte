@@ -131,6 +131,7 @@
 					<BlockBuilder
 						content_type="section"
 						{...section}
+						{cta}
 						{content}
 						{selectedTags}
 						tags={section.tags ?? []}
@@ -144,6 +145,8 @@
 					{@const tags = subsection.blocks.flatMap((b) => b.tags)}
 					{@const tagSet = new Set(tags)}
 					{@const tagsFound = checkTags(tags, selectedTags)}
+					{@const subsectionName =
+						subsection.name !== section.name ? subsection.name : undefined}
 
 					{#snippet subsectionBody()}
 						{#if tagsFound.length}
@@ -174,6 +177,8 @@
 								{:else if block.tags.length === 0 || blockTagsFound.length}
 									<BlockBuilder
 										{...block}
+										{cta}
+										group={subsectionName}
 										content={block.content}
 										{selectedTags}
 									/>
@@ -192,22 +197,22 @@
 						{/if}
 					{/snippet}
 
-					{#if cta === 'preview'}
-						{@render subsectionBody()}
-					{:else}
+					{#if subsectionName && cta !== 'preview'}
 						<details
-							id={`group-${subsection.name}`}
-							data-group={subsection.name}
+							id={`group-${subsectionName}`}
+							data-group={subsectionName}
 							class="l:stack:xs shape:soft"
 							open
 						>
 							<summary
 								class="w:full raviolink variant:bare surface:1:neutral font:heading font:semibold size:xs font:sm shape:mellow"
 							>
-								{section.name} > {subsection.name}
+								{subsectionName}
 							</summary>
 							{@render subsectionBody()}
 						</details>
+					{:else}
+						{@render subsectionBody()}
 					{/if}
 				{/each}
 			{/if}
