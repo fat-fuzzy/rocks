@@ -59,6 +59,7 @@
 	let toUpdate: BlockProps = $derived({
 		name: '',
 		rank: highestRank,
+		group: undefined,
 		parent,
 		tags: [],
 	})
@@ -342,7 +343,7 @@
 								onblur={updateGroup}
 								onfocus={handleFocus}
 							>
-								<option class="size:xs font:xs" value={parent}>
+								<option class="size:xs font:xs" value={toUpdate.group}>
 									No group selected
 								</option>
 								{#each subsections as subsection, i (i)}
