@@ -3,7 +3,7 @@
 	import type {UiSurface} from '@fat-fuzzy/ui'
 
 	import {Feedback} from '@fat-fuzzy/ui'
-	import CardContent from '#lib/ui/display/CardContent.svelte'
+	import ContentCard from '#lib/ui/display/ContentCard.svelte'
 
 	let {
 		surface = 'neutral',
@@ -63,6 +63,6 @@
 			</ul>
 		</div>
 	{:else}
-		<CardContent {content_type} {name} {tags} {isHidden} />
+		<ContentCard {content_type} {name} {tags} {isHidden} />
 	{/if}
 </Feedback>

@@ -17,7 +17,7 @@
 	import {LOCALIZATIONS} from '#lib/intl/l10n.js'
 
 	import BlockBuilder from '#lib/ui/document/BlockBuilder.svelte'
-	import FeedbackContent from '#lib/ui/display/FeedbackContent.svelte'
+	import FeedbackContent from '#lib/ui/display/ContentFeedback.svelte'
 	import Loading from '#lib/ui/display/Loading.svelte'
 
 	const coordinators: CurrentCoordinators = getContext('currentCoordinators')

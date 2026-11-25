@@ -13,7 +13,7 @@
 	import BlockPlaceholder from '#lib/ui/document/BlockPlaceholder.svelte'
 	import BlockEditor from '#lib/ui/document/BlockEditor.svelte'
 
-	import FeedbackContent from '#lib/ui/display/FeedbackContent.svelte'
+	import FeedbackContent from '#lib/ui/display/ContentFeedback.svelte'
 	import Loading from '#lib/ui/display/Loading.svelte'
 
 	const coordinators: CurrentCoordinators = getContext('currentCoordinators')
