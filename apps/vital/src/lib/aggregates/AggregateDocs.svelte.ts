@@ -153,14 +153,14 @@ export default class AggregateDocs implements IAggregateDocs {
 		}
 
 		if (!doc) {
-			throw Error(`Error creating document "${name}" in format "${format}"`)
+			throw Error(`Error creating block "${name}" in format "${format}"`)
 		}
 
 		const section = doc.sections?.find((s) => s.name === options.parent)
 
 		if (!section) {
 			throw Error(
-				`Error creating document "${name}" in section "${options.parent}"`,
+				`Error creating block "${name}" in section "${options.parent}"`,
 			)
 		}
 
