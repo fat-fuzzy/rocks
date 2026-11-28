@@ -22,7 +22,7 @@ export interface ICoordinateImports {
 
 	init(
 		frontmatter: FrontmatterSeed,
-		seed?: {content: SeedDoc[]; structures: FrontmatterStructure[]},
+		seed?: {content: SeedDoc[]; structure: FrontmatterStructure[]},
 	): Promise<void>
 
 	reset(): void

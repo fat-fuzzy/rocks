@@ -117,7 +117,7 @@
 		try {
 			// TODO: make it possible to seed without network ?
 			await coordImports.initSeed(
-				{base: page.data.base, structures: page.data.structures},
+				{base: page.data.base, structure: page.data.structure},
 				page.data.seed.content,
 			)
 			onsubmit?.()

@@ -46,7 +46,7 @@ export type SeedStructureCommand = {
 	requestId: RequestId
 	payload: {
 		root: NamespaceId
-		structures: FrontmatterStructure[]
+		structure: FrontmatterStructure[]
 		schemaVersion: number
 	}
 }
@@ -138,7 +138,7 @@ export type SaveBaseCommand = {
 export type SaveStructuresCommand = {
 	type: 'SAVE_STRUCTURES'
 	requestId: RequestId
-	payload: {root: NamespaceId; structures: FrontmatterStructure[]}
+	payload: {root: NamespaceId; structure: FrontmatterStructure[]}
 }
 
 export type SavePresetCommand = {

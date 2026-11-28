@@ -192,10 +192,10 @@ export async function seedBase(options: {
  */
 export async function seedStructure(options: {
 	root: NamespaceId
-	structures: FrontmatterStructure[]
+	structure: FrontmatterStructure[]
 	schemaVersion: number
 }): Promise<void> {
-	const {root, structures, schemaVersion} = options
+	const {root, structure, schemaVersion} = options
 
 	if (await isSeedComplete({root, type: 'structure'})) {
 		return
@@ -204,8 +204,8 @@ export async function seedStructure(options: {
 	try {
 		const toSeed = []
 
-		for (const structure of structures) {
-			const migration = migrate(structure, schemaVersion)
+		for (const item of structure) {
+			const migration = migrate(item, schemaVersion)
 
 			switch (migration.status) {
 				case 'migrated':
@@ -252,7 +252,7 @@ export async function restoreFromBackup(options: {
 		// FIXME: this is incomplete
 		await seedStructure({
 			root,
-			structures: options.structure.content.structure,
+			structure: options.structure.content.structure,
 			schemaVersion,
 		})
 

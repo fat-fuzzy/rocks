@@ -97,7 +97,7 @@ const NESTED_SECTIONS = ['experience']
 
 const DEFAULT_STRUCTURES: {
 	base: FrontmatterBase
-	structures: FrontmatterStructure[]
+	structure: FrontmatterStructure[]
 } = {
 	base: {
 		schema_version: SCHEMA_VERSION,
@@ -112,7 +112,7 @@ const DEFAULT_STRUCTURES: {
 		],
 		settings: [],
 	},
-	structures: [
+	structure: [
 		{
 			schema_version: SCHEMA_VERSION,
 			seed_type: 'root',

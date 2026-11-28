@@ -53,7 +53,7 @@ export default class CoordinateImports implements ICoordinateImports {
 
 	async init(
 		frontmatter: FrontmatterSeed,
-		seed?: {content: SeedDoc[]; structures: FrontmatterStructure[]},
+		seed?: {content: SeedDoc[]; structure: FrontmatterStructure[]},
 	) {
 		try {
 			this.loading = true

@@ -39,7 +39,7 @@ export default class AggregateMetadata implements IAggregateMetadata {
 		tags: [],
 		settings: [],
 	})
-	structures: FrontmatterStructure[] = $state([])
+	structure: FrontmatterStructure[] = $state([])
 	tagGroups: TagGroup[] = $derived(this.base.tags)
 
 	constructor(root: NamespaceId) {
@@ -72,7 +72,7 @@ export default class AggregateMetadata implements IAggregateMetadata {
 			tags: [],
 			settings: [],
 		}
-		this.structures = []
+		this.structure = []
 		this.error = undefined
 	}
 
@@ -237,8 +237,8 @@ export default class AggregateMetadata implements IAggregateMetadata {
 			root: this.root,
 		})) as OPFSTreeStructure
 		try {
-			const structures = opfsStructureTreeToFrontmatterStructures(raw)
-			this.structures = structures
+			const structure = opfsStructureTreeToFrontmatterStructures(raw)
+			this.structure = structure
 		} catch (error) {
 			const status = (error as Error).message
 			this.error = handleDataTransformError(
@@ -263,7 +263,7 @@ export default class AggregateMetadata implements IAggregateMetadata {
 		const {name, rank, formats} = options
 
 		for (const format of formats) {
-			const structureToUpdate = this.structures.find((s) => s.format === format)
+			const structureToUpdate = this.structure.find((s) => s.format === format)
 
 			if (structureToUpdate) {
 				// Insert section at rank
@@ -299,7 +299,7 @@ export default class AggregateMetadata implements IAggregateMetadata {
 		const structuresToUpdate: FrontmatterStructure[] = []
 
 		for (const format of formats) {
-			const structureToUpdate = this.structures.find((s) => s.format === format)
+			const structureToUpdate = this.structure.find((s) => s.format === format)
 			if (structureToUpdate) {
 				structuresToUpdate.push(structureToUpdate)
 			}
@@ -307,7 +307,7 @@ export default class AggregateMetadata implements IAggregateMetadata {
 
 		await this.bridge.saveStructures({
 			root: this.root,
-			structures: $state.snapshot(structuresToUpdate),
+			structure: $state.snapshot(structuresToUpdate),
 		})
 
 		await this.loadStructure()

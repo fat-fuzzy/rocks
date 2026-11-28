@@ -14,7 +14,7 @@ export interface IAggregateDataLifecycle {
 	readonly error: VitalError | undefined
 	init(
 		frontmatter: FrontmatterSeed,
-		seed?: {content: SeedDoc[]; structures: FrontmatterStructure[]},
+		seed?: {content: SeedDoc[]; structure: FrontmatterStructure[]},
 	): Promise<void>
 	reset(): void
 
