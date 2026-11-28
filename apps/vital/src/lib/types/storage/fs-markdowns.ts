@@ -25,7 +25,7 @@ export type MarkdownStructure = {
 
 export type FrontmatterSeed = {
 	base: FrontmatterBase
-	structures: FrontmatterStructure[]
+	structure: FrontmatterStructure[]
 }
 
 export type SeedRootParsingOptions = {

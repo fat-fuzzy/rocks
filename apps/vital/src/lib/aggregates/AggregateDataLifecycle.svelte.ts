@@ -47,7 +47,7 @@ export default class AggregateDataLifecycle implements IAggregateDataLifecycle {
 
 	async init(
 		frontmatter: FrontmatterSeed,
-		seed?: {content: SeedDoc[]; structures: FrontmatterStructure[]},
+		seed?: {content: SeedDoc[]; structure: FrontmatterStructure[]},
 	) {
 		this.reset()
 		this.loading = true
@@ -120,7 +120,7 @@ export default class AggregateDataLifecycle implements IAggregateDataLifecycle {
 
 			const structure = (await this.bridge.seedStructure({
 				root: this.root,
-				structures: frontmatter.structures,
+				structure: frontmatter.structure,
 				schemaVersion: Number(SCHEMA_VERSION),
 			})) as {
 				seeded: number

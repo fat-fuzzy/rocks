@@ -22,15 +22,11 @@ export const load = async () => {
 		error(404, 'Not found')
 	}
 
-	const structures = await cvParser.parseMarkdownCvMeta({
-		formats,
-	})
-
 	const metadata = await cvParser.parseMarkdownCvMeta({
 		formats,
 	})
 
-	if (!structures?.base || !structures?.structures) {
+	if (!metadata?.base || !metadata?.structure) {
 		error(404, 'Not found')
 	}
 
@@ -49,6 +45,6 @@ export const load = async () => {
 
 	return {
 		...metadata,
-		seed: {content, structures},
+		seed: {content, structure: metadata.structure},
 	}
 }

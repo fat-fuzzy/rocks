@@ -36,7 +36,7 @@ async function parseMarkdownCvMeta({
 	formats,
 }: SeedRootParsingOptions): Promise<FrontmatterSeed> {
 	const base = PATHS_STRUCTURE['base']
-	const structures: FrontmatterStructure[] = []
+	const structure: FrontmatterStructure[] = []
 
 	const baseMarkdown = await assetsUtils.parseBaseMarkdowns(
 		PATH_PREFIX_STRUCTURE,
@@ -44,16 +44,16 @@ async function parseMarkdownCvMeta({
 	)
 
 	for (const format of formats) {
-		const structure = PATHS_STRUCTURE[format]
+		const item = PATHS_STRUCTURE[format]
 		const structureMarkdown = await assetsUtils.parseStructureMarkdowns(
 			PATH_PREFIX_STRUCTURE,
-			structure as Record<string, () => Promise<ModuleImportInterface>>,
+			item as Record<string, () => Promise<ModuleImportInterface>>,
 		)
-		structures.push(structureMarkdown[0])
+		structure.push(structureMarkdown[0])
 	}
 	const markdownCvData: FrontmatterSeed = {
 		base: baseMarkdown[0],
-		structures,
+		structure,
 	}
 
 	return markdownCvData

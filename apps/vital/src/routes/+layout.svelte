@@ -76,7 +76,7 @@
 	})
 
 	let base = $derived(page.data.base)
-	let structures = $derived(page.data.structures)
+	let structures = $derived(page.data.structure)
 
 	/**
 	 * Setup App context (user controlled UI)

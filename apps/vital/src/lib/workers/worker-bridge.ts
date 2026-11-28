@@ -122,7 +122,7 @@ export default class WorkerBridge {
 
 	seedStructure(payload: {
 		root: NamespaceId
-		structures: FrontmatterStructure[]
+		structure: FrontmatterStructure[]
 		schemaVersion: number
 	}) {
 		return this.send({
@@ -134,7 +134,7 @@ export default class WorkerBridge {
 
 	saveStructures(payload: {
 		root: NamespaceId
-		structures: FrontmatterStructure[]
+		structure: FrontmatterStructure[]
 	}) {
 		return this.send({
 			type: 'SAVE_STRUCTURES',

@@ -12,7 +12,7 @@ import type {
 export interface IAggregateMetadata {
 	readonly root: NamespaceId
 	readonly base: FrontmatterBase
-	readonly structures: FrontmatterStructure[]
+	readonly structure: FrontmatterStructure[]
 	readonly loading: boolean
 	readonly error: VitalError | undefined
 	readonly tagGroups: TagGroup[]
